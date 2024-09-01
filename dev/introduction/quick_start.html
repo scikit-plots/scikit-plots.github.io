@@ -11,12 +11,12 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/introduction/quick_start.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="Quick Start: This guide provides a quick introduction to plotting with scikit-plots. A Simple Example: Let’s start with a basic example where we use a Random Forest classifier to evaluate the digit..." />
+<meta property="og:description" content="Quick Start: This guide provides a quick introduction to plotting with scikit-plots. Install Scikit-plots: - Use pip to install Scikit-plots:. A Simple Example: Let’s start with a basic example whe..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_images/quick_start-1.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="Quick Start: This guide provides a quick introduction to plotting with scikit-plots. A Simple Example: Let’s start with a basic example where we use a Random Forest classifier to evaluate the digit..." />
+<meta name="description" content="Quick Start: This guide provides a quick introduction to plotting with scikit-plots. Install Scikit-plots: - Use pip to install Scikit-plots:. A Simple Example: Let’s start with a basic example whe..." />
 
-    <title>scikit-plots: Machine Learning Visualization with Python &#8212; scikit-plots 0.3.9.dev0 documentation</title>
+    <title>scikit-plots: Machine Learning Visualization with Python &#8212; scikit-plots 0.3.9.dev1 documentation</title>
   
   
   
@@ -56,7 +56,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=d1b6dce2"></script>
+    <script src="../_static/documentation_options.js?v=75ce58fb"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -70,7 +70,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.dev0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.dev1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
     <script src="../_static/scripts/dropdown.js?v=e2048168"></script>
@@ -608,6 +608,14 @@ document.write(`
   <section id="quick-start">
 <span id="id1"></span><h1>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h1>
 <p>This guide provides a quick introduction to plotting with scikit-plots.</p>
+<ol class="arabic">
+<li><p><strong>Install Scikit-plots</strong>:
+- Use pip to install Scikit-plots:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="n">scikit</span><span class="o">-</span><span class="n">plots</span>
+</pre></div>
+</div>
+</li>
+</ol>
 <section id="a-simple-example">
 <h2>A Simple Example<a class="headerlink" href="#a-simple-example" title="Link to this heading">#</a></h2>
 <p>Let’s start with a basic example where we use a Random Forest classifier to evaluate the digits dataset provided by Scikit-learn.</p>
@@ -616,13 +624,13 @@ document.write(`
 <li><p><strong>Load the Dataset</strong>:
 We’ll use the digits dataset, which contains features and labels for classification.</p></li>
 <li><p><strong>Initialize the Classifier</strong>:
-Create a <code class="docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code> with specified parameters.</p></li>
+Create a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v1.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></a> with specified parameters.</p></li>
 <li><p><strong>Generate Predictions</strong>:
-Use <code class="docutils literal notranslate"><span class="pre">sklearn.model_selection.cross_val_predict</span></code> to obtain predicted labels through cross-validation. This function provides cross-validated estimates for each sample point, which helps in evaluating metrics like accuracy, precision, recall, and the confusion matrix.</p></li>
+Use <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_predict.html#sklearn.model_selection.cross_val_predict" title="(in scikit-learn v1.5)"><code class="xref py py-func docutils literal notranslate"><span class="pre">cross_val_predict</span></code></a> to obtain predicted labels through cross-validation. This function provides cross-validated estimates for each sample point, which helps in evaluating metrics like accuracy, precision, recall, and the confusion matrix.</p></li>
 <li><p><strong>Plot the Confusion Matrix</strong>:
-Use <code class="docutils literal notranslate"><span class="pre">scikitplot.metrics.plot_classifier_eval</span></code> to visualize the confusion matrix.</p></li>
+Use <a class="reference internal" href="../modules/generated/scikitplot.metrics.plot_classifier_eval.html#scikitplot.metrics.plot_classifier_eval" title="scikitplot.metrics.plot_classifier_eval"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_classifier_eval</span></code></a> to visualize the confusion matrix.</p></li>
 <li><p><strong>Display the Plot</strong>:
-Optionally, use <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> to display the plot.</p></li>
+Optionally, use <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v3.9.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">show</span></code></a> to display the plot.</p></li>
 </ol>
 <p>Here’s the code to illustrate the process:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span>
@@ -651,7 +659,9 @@ Optionally, use <code class="docutils literal notranslate"><span class="pre">plt
 </section>
 <section id="one-more-example">
 <h2>One More Example<a class="headerlink" href="#one-more-example" title="Link to this heading">#</a></h2>
-<p>Now, let’s see an example with a different classifier: Keras. We’ll generate precision-recall curves for a Keras classifier on a sample dataset.</p>
+<p>Maximum flexibility. Compatibility with non-scikit-learn objects.</p>
+<p>Although Scikit-plot is loosely based around the scikit-learn interface, you don’t actually need Scikit-learn objects to use the available functions. As long as you provide the functions what they’re asking for, they’ll happily draw the plots for you.</p>
+<p>Here’s a quick example to generate the precision-recall curves of a Keras classifier on a sample dataset.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;TF_CPP_MIN_LOG_LEVEL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;3&#39;</span>  <span class="c1"># or any {&#39;0&#39;, &#39;1&#39;, &#39;2&#39;}</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -706,7 +716,7 @@ Optionally, use <code class="docutils literal notranslate"><span class="pre">plt
 <img alt="../_images/quick_start-2.png" class="plot-directive" src="../_images/quick_start-2.png" />
 </figure>
 <p>Just pass the ground truth labels and predicted probabilities to
-<a class="reference internal" href="../modules/generated/scikitplot.metrics.plot_precision_recall_curve.html#scikitplot.metrics.plot_precision_recall_curve" title="scikitplot.metrics.plot_precision_recall_curve"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_precision_recall_curve</span></code></a> to generate the precision-recall curves.
+<a class="reference internal" href="../modules/generated/scikitplot.metrics.plot_precision_recall.html#scikitplot.metrics.plot_precision_recall" title="scikitplot.metrics.plot_precision_recall"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_precision_recall</span></code></a> to generate the precision-recall curves.
 This method is flexible and works with any classifier that produces predicted probabilities,
 from Keras classifiers to NLTK Naive Bayes to XGBoost as long as you pass in the predicted probabilities
 in the correct format.</p>

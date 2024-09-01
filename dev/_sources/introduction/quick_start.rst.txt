@@ -8,6 +8,12 @@ Quick Start
 
 This guide provides a quick introduction to plotting with scikit-plots.
 
+1. **Install Scikit-plots**:
+   - Use pip to install Scikit-plots::
+        
+        >>> pip install scikit-plots
+
+
 A Simple Example
 ----------------
 
@@ -19,16 +25,16 @@ A common way to assess a classifier's performance is through its confusion matri
    We'll use the digits dataset, which contains features and labels for classification.
    
 2. **Initialize the Classifier**: 
-   Create a `RandomForestClassifier` with specified parameters.
+   Create a :class:`~sklearn.ensemble.RandomForestClassifier` with specified parameters.
    
 3. **Generate Predictions**: 
-   Use `sklearn.model_selection.cross_val_predict` to obtain predicted labels through cross-validation. This function provides cross-validated estimates for each sample point, which helps in evaluating metrics like accuracy, precision, recall, and the confusion matrix.
+   Use :func:`~sklearn.model_selection.cross_val_predict` to obtain predicted labels through cross-validation. This function provides cross-validated estimates for each sample point, which helps in evaluating metrics like accuracy, precision, recall, and the confusion matrix.
 
 4. **Plot the Confusion Matrix**: 
-   Use `scikitplot.metrics.plot_classifier_eval` to visualize the confusion matrix.
+   Use :func:`~scikitplot.metrics.plot_classifier_eval` to visualize the confusion matrix.
 
 5. **Display the Plot**: 
-   Optionally, use `plt.show()` to display the plot.
+   Optionally, use :func:`~matplotlib.pyplot.show` to display the plot.
 
 Here’s the code to illustrate the process:
 
@@ -59,7 +65,11 @@ The resulting confusion matrix shows how well the classifier performs. In this c
 One More Example
 ----------------
 
-Now, let’s see an example with a different classifier: Keras. We'll generate precision-recall curves for a Keras classifier on a sample dataset.
+Maximum flexibility. Compatibility with non-scikit-learn objects.
+
+Although Scikit-plot is loosely based around the scikit-learn interface, you don't actually need Scikit-learn objects to use the available functions. As long as you provide the functions what they're asking for, they'll happily draw the plots for you.
+
+Here's a quick example to generate the precision-recall curves of a Keras classifier on a sample dataset.
 
 .. plot::
    :context: close-figs
@@ -115,7 +125,7 @@ Now, let’s see an example with a different classifier: Keras. We'll generate p
 
 
 Just pass the ground truth labels and predicted probabilities to
-:func:`~scikitplot.metrics.plot_precision_recall_curve` to generate the precision-recall curves.
+:func:`~scikitplot.metrics.plot_precision_recall` to generate the precision-recall curves.
 This method is flexible and works with any classifier that produces predicted probabilities,
 from Keras classifiers to NLTK Naive Bayes to XGBoost as long as you pass in the predicted probabilities
 in the correct format.
