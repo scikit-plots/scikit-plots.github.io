@@ -12,11 +12,11 @@
 <meta property="og:url" content="https://scikit-plots.github.io/stable/modules/generated/scikitplot.cluster.plot_elbow.html" />
 <meta property="og:site_name" content="scikit-plots" />
 <meta property="og:description" content="Gallery examples: plot_silhouette with examples" />
-<meta property="og:image" content="https://scikit-plots.github.io/stable/_images/plot_elbow.png" />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_images/scikitplot-cluster-plot_elbow-1.png" />
 <meta property="og:image:alt" content="Elbow Curve" />
 <meta name="description" content="Gallery examples: plot_silhouette with examples" />
 
-    <title>plot_elbow &#8212; scikit-plots 0.3.9.dev1 documentation</title>
+    <title>plot_elbow &#8212; scikit-plots 0.3.9.rc1 documentation</title>
   
   
   
@@ -57,7 +57,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=75ce58fb"></script>
+    <script src="../../_static/documentation_options.js?v=80760e40"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -71,7 +71,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.dev1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.rc1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
     <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
@@ -224,7 +224,7 @@
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../developers/index.html">
+  <a class="nav-link dropdown-item nav-external" href="https://scikit-plots.github.io/dev/developers/index.html">
     Developer’s Guide
   </a>
 </li>
@@ -432,7 +432,7 @@ document.write(`
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../developers/index.html">
+  <a class="nav-link nav-external" href="https://scikit-plots.github.io/dev/developers/index.html">
     Developer’s Guide
   </a>
 </li>
@@ -661,56 +661,49 @@ document.write(`
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cluster.plot_elbow">
 <span class="sig-prename descclassname"><span class="pre">scikitplot.cluster.</span></span><span class="sig-name descname"><span class="pre">plot_elbow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Elbow</span> <span class="pre">Curves'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cluster_ranges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_cluster_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'large'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'medium'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.cluster.plot_elbow" title="Link to this definition">#</a></dt>
-<dd><p>Plots elbow curve of different values of K for KMeans clustering.</p>
+<dd><p>Plot the elbow curve for different values of K in KMeans clustering.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>clf</strong> – Clusterer instance that implements <code class="docutils literal notranslate"><span class="pre">fit</span></code>,``fit_predict``, and
-<code class="docutils literal notranslate"><span class="pre">score</span></code> methods, and an <code class="docutils literal notranslate"><span class="pre">n_clusters</span></code> hyperparameter.
-e.g. <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" title="(in scikit-learn v1.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.cluster.KMeans</span></code></a> instance</p></li>
-<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – Data to cluster, where n_samples is the number of samples and
-n_features is the number of features.</p></li>
-<li><p><strong>title</strong> (<em>string</em><em>, </em><em>optional</em>) – Title of the generated plot. Defaults to
-“Elbow Plot”</p></li>
-<li><p><strong>cluster_ranges</strong> (None or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> of int, optional) – List of
-n_clusters for which to plot the explained variances. Defaults to
-<code class="docutils literal notranslate"><span class="pre">range(1,</span> <span class="pre">12,</span> <span class="pre">2)</span></code>.</p></li>
-<li><p><strong>n_jobs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – Number of jobs to run in parallel. Defaults to
-1.</p></li>
-<li><p><strong>show_cluster_time</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Include plot of time it took to
-cluster for a particular K.</p></li>
-<li><p><strong>ax</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.9.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>, optional) – The axes upon which to
-plot the curve. If None, the plot is drawn on a new set of axes.</p></li>
-<li><p><strong>figsize</strong> (<em>2-tuple</em><em>, </em><em>optional</em>) – Tuple denoting figure size of the plot
-e.g. (6, 6). Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
-<li><p><strong>title_fontsize</strong> (<em>string</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – Matplotlib-style fontsizes.
-Use e.g. “small”, “medium”, “large” or integer-values. Defaults to
-“large”.</p></li>
-<li><p><strong>text_fontsize</strong> (<em>string</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – Matplotlib-style fontsizes.
-Use e.g. “small”, “medium”, “large” or integer-values. Defaults to
-“medium”.</p></li>
+<li><p><strong>clf</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><em>object</em></a>) – A clusterer instance with <code class="docutils literal notranslate"><span class="pre">fit</span></code>, <code class="docutils literal notranslate"><span class="pre">fit_predict</span></code>, and <code class="docutils literal notranslate"><span class="pre">score</span></code> methods,
+and an <code class="docutils literal notranslate"><span class="pre">n_clusters</span></code> hyperparameter. Typically an instance of
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" title="(in scikit-learn v1.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.cluster.KMeans</span></code></a>.</p></li>
+<li><p><strong>X</strong> (<em>array-like</em><em> of </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The data to cluster, where <code class="docutils literal notranslate"><span class="pre">n_samples</span></code> is the number of samples and
+<code class="docutils literal notranslate"><span class="pre">n_features</span></code> is the number of features.</p></li>
+<li><p><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em><em>, </em><em>default=&quot;Elbow Plot&quot;</em>) – The title of the generated plot.</p></li>
+<li><p><strong>cluster_ranges</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em> of </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><em>None</em><em>, </em><em>optional</em><em>, </em><em>default=range</em><em>(</em><em>1</em><em>, </em><em>12</em><em>, </em><em>2</em><em>)</em>) – List of values for <code class="docutils literal notranslate"><span class="pre">n_clusters</span></code> over which to plot the explained variances.</p></li>
+<li><p><strong>n_jobs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=1</em>) – The number of jobs to run in parallel.</p></li>
+<li><p><strong>show_cluster_time</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether to include a plot of the time taken to cluster for each value of K.</p></li>
+<li><p><strong>ax</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.9.2)"><em>matplotlib.axes.Axes</em></a><em>, </em><em>optional</em>) – The axes on which to plot the curve. If None, a new set of axes will be created.</p></li>
+<li><p><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a><em>, </em><em>optional</em>) – Tuple denoting the figure size of the plot, e.g., (6, 6). If None, the default size will be used.</p></li>
+<li><p><strong>title_fontsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=&quot;large&quot;</em>) – Font size of the title. Accepts Matplotlib font sizes, such as “small”, “medium”, “large”, or an integer value.</p></li>
+<li><p><strong>text_fontsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=&quot;medium&quot;</em>) – Font size of the text labels. Accepts Matplotlib font sizes, such as “small”, “medium”, “large”, or an integer value.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><dl class="simple">
-<dt>The axes on which the plot was</dt><dd><p>drawn.</p>
-</dd>
-</dl>
-</p>
+<dd class="field-even"><p><strong>ax</strong> – The axes on which the plot was drawn.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>ax (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.9.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>)</p>
+<dd class="field-odd"><p><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.9.2)">matplotlib.axes.Axes</a></p>
 </dd>
 </dl>
-<p class="rubric">Example</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scikitplot</span> <span class="k">as</span> <span class="nn">skplt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">skplt</span><span class="o">.</span><span class="n">cluster</span><span class="o">.</span><span class="n">plot_elbow</span><span class="p">(</span><span class="n">kmeans</span><span class="p">,</span> <span class="n">cluster_ranges</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
-<span class="go">&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fe967d64490&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span> <span class="k">as</span> <span class="n">data_3_classes</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scikitplot</span> <span class="k">as</span> <span class="nn">skplt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">data_3_classes</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">skplt</span><span class="o">.</span><span class="n">cluster</span><span class="o">.</span><span class="n">plot_elbow</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">kmeans</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">X</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">cluster_ranges</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">);</span>
 </pre></div>
 </div>
-<img alt="Elbow Curve" class="align-center" src="../../_images/plot_elbow.png" />
+<p>(<a class="reference download internal" download="" href="../../_downloads/37ff6ab6902848aaac6376fdb076246e/scikitplot-cluster-plot_elbow-1.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/e31cef6fb5b5e75f4969a5cf10bb02ac/scikitplot-cluster-plot_elbow-1.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>)</p>
+<figure class="align-center">
+<img alt="Elbow Curve" class="plot-directive" src="../../_images/scikitplot-cluster-plot_elbow-1.png" />
+</figure>
 </dd></dl>
 
 <section id="gallery-examples">

@@ -12,11 +12,11 @@
 <meta property="og:url" content="https://scikit-plots.github.io/stable/modules/generated/scikitplot.metrics.plot_calibration_curve.html" />
 <meta property="og:site_name" content="scikit-plots" />
 <meta property="og:description" content="Gallery examples: plot_calibration_curve with examples" />
-<meta property="og:image" content="https://scikit-plots.github.io/stable/_images/plot_calibration_curve.png" />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_images/scikitplot-metrics-plot_calibration_curve-1.png" />
 <meta property="og:image:alt" content="Calibration Curves" />
 <meta name="description" content="Gallery examples: plot_calibration_curve with examples" />
 
-    <title>plot_calibration_curve &#8212; scikit-plots 0.3.9.dev1 documentation</title>
+    <title>plot_calibration_curve &#8212; scikit-plots 0.3.9.rc1 documentation</title>
   
   
   
@@ -57,7 +57,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=75ce58fb"></script>
+    <script src="../../_static/documentation_options.js?v=80760e40"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -71,7 +71,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.dev1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.rc1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
     <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
@@ -224,7 +224,7 @@
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../developers/index.html">
+  <a class="nav-link dropdown-item nav-external" href="https://scikit-plots.github.io/dev/developers/index.html">
     Developer’s Guide
   </a>
 </li>
@@ -432,7 +432,7 @@ document.write(`
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../developers/index.html">
+  <a class="nav-link nav-external" href="https://scikit-plots.github.io/dev/developers/index.html">
     Developer’s Guide
   </a>
 </li>
@@ -699,9 +699,13 @@ binary classification. Related to <code class="docutils literal notranslate"><sp
 <code class="docutils literal notranslate"><span class="pre">y_prob_list</span></code>. If None, class indices will be used.</p></li>
 <li><p><strong>classes_to_plot</strong> (<em>list-like</em><em>, </em><em>optional</em><em>, </em><em>default=</em><em>[</em><em>1</em><em>]</em>) – Specific classes to plot. If a given class does not exist, it will be ignored.
 If None, all classes are plotted.</p></li>
-<li><p><strong>strategy</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em><em>, </em><em>default='uniform'</em>) – Strategy used to define the widths of the bins:
+<li><p><strong>strategy</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em><em>, </em><em>default='uniform'</em>) – <p>Strategy used to define the widths of the bins:
 - ‘uniform’: Bins have identical widths.
-- ‘quantile’: Bins have the same number of samples and depend on <code class="docutils literal notranslate"><span class="pre">y_prob_list</span></code>.</p></li>
+- ‘quantile’: Bins have the same number of samples and depend on <code class="docutils literal notranslate"><span class="pre">y_prob_list</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.3.9.</span></p>
+</div>
+</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -717,26 +721,60 @@ If None, all classes are plotted.</p></li>
 <li><p>This function currently supports binary and multiclass classification.</p></li>
 </ul>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">LinearSVC</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_predict</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="p">;</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Import scikit-plot</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scikitplot</span> <span class="k">as</span> <span class="nn">skplt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lr</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nb</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">svm</span> <span class="o">=</span> <span class="n">LinearSVC</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rf_probas</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lr_probas</span> <span class="o">=</span> <span class="n">lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nb_probas</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">svm_scores</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">probas_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">rf_probas</span><span class="p">,</span> <span class="n">lr_probas</span><span class="p">,</span> <span class="n">nb_probas</span><span class="p">,</span> <span class="n">svm_scores</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">clf_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Random Forest&#39;</span><span class="p">,</span> <span class="s1">&#39;Logistic Regression&#39;</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>             <span class="s1">&#39;Gaussian Naive Bayes&#39;</span><span class="p">,</span> <span class="s1">&#39;Support Vector Machine&#39;</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">skplt</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">plot_calibration_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">probas_list</span><span class="p">,</span> <span class="n">y_is_decision</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load the data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">n_samples</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">n_features</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">n_informative</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">n_redundant</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">n_repeated</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">n_clusters_per_class</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="mi">1000</span><span class="p">],</span> <span class="n">y</span><span class="p">[:</span><span class="mi">1000</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="mi">1000</span><span class="p">:],</span> <span class="n">y</span><span class="p">[</span><span class="mi">1000</span><span class="p">:]</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create an instance of the LogisticRegression</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lr_probas</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nb_probas</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">svc_scores</span> <span class="o">=</span> <span class="n">LinearSVC</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rf_probas</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">probas_dict</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">LogisticRegression</span><span class="p">():</span> <span class="n">lr_probas</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">GaussianNB</span><span class="p">():</span> <span class="n">nb_probas</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">LinearSVC</span><span class="p">():</span> <span class="n">svc_scores</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">RandomForestClassifier</span><span class="p">():</span> <span class="n">rf_probas</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Plot!</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">skplt</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">plot_calibration_curve</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">y_val</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">y_prob_list</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">probas_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">y_is_decision</span><span class="o">=</span><span class="nb">list</span><span class="p">([</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]),</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">n_bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">clf_names</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">probas_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">multi_class</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">class_index</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">classes_to_plot</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">);</span>
 </pre></div>
 </div>
-<img alt="Calibration Curves" class="align-center" src="../../_images/plot_calibration_curve.png" />
+<p>(<a class="reference download internal" download="" href="../../_downloads/e2af0db2a423f552da47f53fcd78c424/scikitplot-metrics-plot_calibration_curve-1.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/5765842357e9bc0754e1aaf310bbfeb9/scikitplot-metrics-plot_calibration_curve-1.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>)</p>
+<figure class="align-center">
+<img alt="Calibration Curves" class="plot-directive" src="../../_images/scikitplot-metrics-plot_calibration_curve-1.png" />
+</figure>
 </dd></dl>
 
 <section id="gallery-examples">

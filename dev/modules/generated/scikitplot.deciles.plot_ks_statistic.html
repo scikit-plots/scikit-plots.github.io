@@ -12,11 +12,11 @@
 <meta property="og:url" content="https://scikit-plots.github.io/stable/modules/generated/scikitplot.deciles.plot_ks_statistic.html" />
 <meta property="og:site_name" content="scikit-plots" />
 <meta property="og:description" content="Gallery examples: plot_ks_statistic with examples" />
-<meta property="og:image" content="https://scikit-plots.github.io/stable/_images/plot_ks_statistic.png" />
-<meta property="og:image:alt" content="KS Statistic" />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_images/scikitplot-deciles-plot_ks_statistic-1.png" />
+<meta property="og:image:alt" content="KS Statistic Plot" />
 <meta name="description" content="Gallery examples: plot_ks_statistic with examples" />
 
-    <title>plot_ks_statistic &#8212; scikit-plots 0.3.9.dev1 documentation</title>
+    <title>plot_ks_statistic &#8212; scikit-plots 0.3.9.rc1 documentation</title>
   
   
   
@@ -57,7 +57,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=75ce58fb"></script>
+    <script src="../../_static/documentation_options.js?v=80760e40"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -71,7 +71,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.dev1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.rc1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
     <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
@@ -224,7 +224,7 @@
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../developers/index.html">
+  <a class="nav-link dropdown-item nav-external" href="https://scikit-plots.github.io/dev/developers/index.html">
     Developer’s Guide
   </a>
 </li>
@@ -432,7 +432,7 @@ document.write(`
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../developers/index.html">
+  <a class="nav-link nav-external" href="https://scikit-plots.github.io/dev/developers/index.html">
     Developer’s Guide
   </a>
 </li>
@@ -672,7 +672,11 @@ document.write(`
 <li><p><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a><em> of </em><em>2 ints</em><em>, </em><em>optional</em>) – Tuple denoting figure size of the plot e.g. (6, 6). Defaults to None.</p></li>
 <li><p><strong>title_fontsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – Matplotlib-style fontsizes. Use e.g. “small”, “medium”, “large” or integer-values. Defaults to “large”.</p></li>
 <li><p><strong>text_fontsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – Matplotlib-style fontsizes. Use e.g. “small”, “medium”, “large” or integer-values. Defaults to “medium”.</p></li>
-<li><p><strong>digits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – Number of digits for formatting output floating point values. Use e.g. 2 or 4. Defaults to 3.</p></li>
+<li><p><strong>digits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – <p>Number of digits for formatting output floating point values. Use e.g. 2 or 4. Defaults to 3.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.3.9.</span></p>
+</div>
+</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -683,17 +687,23 @@ document.write(`
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scikitplot</span> <span class="k">as</span> <span class="nn">skplt</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_breast_cancer</span> <span class="k">as</span> <span class="n">data_2_classes</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lr</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lr</span> <span class="o">=</span> <span class="n">lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y_probas</span> <span class="o">=</span> <span class="n">lr</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">skplt</span><span class="o">.</span><span class="n">deciles</span><span class="o">.</span><span class="n">plot_ks_statistic</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_probas</span><span class="p">)</span>
-<span class="go">&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fe967d64490&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scikitplot</span> <span class="k">as</span> <span class="nn">skplt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">data_2_classes</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="mf">1e5</span><span class="p">),</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_probas</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">skplt</span><span class="o">.</span><span class="n">deciles</span><span class="o">.</span><span class="n">plot_ks_statistic</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">y_val</span><span class="p">,</span> <span class="n">y_probas</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">);</span>
 </pre></div>
 </div>
-<img alt="KS Statistic" class="align-center" src="../../_images/plot_ks_statistic.png" />
+<p>(<a class="reference download internal" download="" href="../../_downloads/c78dfbd8f51b2d6a8890b2f0d692b6a4/scikitplot-deciles-plot_ks_statistic-1.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/0380dc7d6518318f59530acadc01c05b/scikitplot-deciles-plot_ks_statistic-1.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>)</p>
+<figure class="align-center">
+<img alt="KS Statistic Plot" class="plot-directive" src="../../_images/scikitplot-deciles-plot_ks_statistic-1.png" />
+</figure>
 </dd></dl>
 
 <section id="gallery-examples">

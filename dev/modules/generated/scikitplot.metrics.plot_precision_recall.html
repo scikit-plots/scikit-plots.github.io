@@ -12,11 +12,11 @@
 <meta property="og:url" content="https://scikit-plots.github.io/stable/modules/generated/scikitplot.metrics.plot_precision_recall.html" />
 <meta property="og:site_name" content="scikit-plots" />
 <meta property="og:description" content="Gallery examples: plot_precision_recall with examples" />
-<meta property="og:image" content="https://scikit-plots.github.io/stable/_images/plot_precision_recall.png" />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_images/scikitplot-metrics-plot_precision_recall-1.png" />
 <meta property="og:image:alt" content="Precision-Recall AUC Curves" />
 <meta name="description" content="Gallery examples: plot_precision_recall with examples" />
 
-    <title>plot_precision_recall &#8212; scikit-plots 0.3.9.dev1 documentation</title>
+    <title>plot_precision_recall &#8212; scikit-plots 0.3.9.rc1 documentation</title>
   
   
   
@@ -57,7 +57,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=75ce58fb"></script>
+    <script src="../../_static/documentation_options.js?v=80760e40"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -71,7 +71,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.dev1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.rc1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
     <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
@@ -224,7 +224,7 @@
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../developers/index.html">
+  <a class="nav-link dropdown-item nav-external" href="https://scikit-plots.github.io/dev/developers/index.html">
     Developer’s Guide
   </a>
 </li>
@@ -432,7 +432,7 @@ document.write(`
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../developers/index.html">
+  <a class="nav-link nav-external" href="https://scikit-plots.github.io/dev/developers/index.html">
     Developer’s Guide
   </a>
 </li>
@@ -661,7 +661,7 @@ document.write(`
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.metrics.plot_precision_recall">
 <span class="sig-prename descclassname"><span class="pre">scikitplot.metrics.</span></span><span class="sig-name descname"><span class="pre">plot_precision_recall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_probas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Precision-Recall</span> <span class="pre">AUC</span> <span class="pre">Curves'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'large'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'medium'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multi_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes_to_plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_micro</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_macro</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pr_auc'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.metrics.plot_precision_recall" title="Link to this definition">#</a></dt>
-<dd><p>Generates the Precision-Recall Curves from labels and predicted scores/probabilities.</p>
+<dd><p>Generates the Precision-Recall AUC Curves from labels and predicted scores/probabilities.</p>
 <p>The Precision-Recall curve plots the precision against the recall for different threshold values.
 The area under the curve (AUC) represents the classifier’s performance. This function supports
 both binary and multiclass classification tasks.</p>
@@ -686,17 +686,18 @@ See Matplotlib Colormap documentation for available choices.</p></li>
 <li><p><strong>class_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em> of </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em><em>, </em><em>default=None</em>) – List of class names for the legend. Order should match the order of classes in <code class="docutils literal notranslate"><span class="pre">y_probas</span></code>.</p></li>
 <li><p><strong>classes_to_plot</strong> (<em>list-like</em><em>, </em><em>optional</em><em>, </em><em>default=None</em>) – Specific classes to plot. If a given class does not exist, it will be ignored.
 If None, all classes are plotted.</p></li>
-<li><p><strong>plot_micro</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em><em>, </em><em>default=True</em>) – Whether to plot the micro-average Precision-Recall AUC curve.</p></li>
-<li><p><strong>plot_macro</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em><em>, </em><em>default=False</em>) – Whether to plot the macro-average Precision-Recall AUC curve.</p></li>
+<li><p><strong>plot_micro</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em><em>, </em><em>default=False</em>) – Whether to plot the micro-average ROC AUC curve.</p></li>
+<li><p><strong>plot_macro</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em><em>, </em><em>default=False</em>) – Whether to plot the macro-average ROC AUC curve.</p></li>
 <li><p><strong>show_labels</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em><em>, </em><em>default=True</em>) – Whether to display the legend labels.</p></li>
-<li><p><strong>digits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=3</em>) – Number of digits for formatting AUC values in the plot.</p></li>
-<li><p><strong>area</strong> (<em>{'average_precision'</em><em>, </em><em>'pr_auc'}</em><em>, </em><em>optional</em><em>, </em><em>default='pr_auc'</em>) – Strategy for calculating the area score:
-- ‘pr_auc’: Precision-Recall AUC.
-- ‘average_precision’: Average Precision score, closely related but computed differently.</p></li>
+<li><p><strong>digits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=3</em>) – <p>Number of digits for formatting PR AUC values in the plot.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.3.9.</span></p>
+</div>
+</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The axes with the plotted Precision-Recall AUC curves.</p>
+<dd class="field-even"><p>The axes with the plotted PR AUC curves.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.9.2)">matplotlib.axes.Axes</a></p>
@@ -707,20 +708,24 @@ If None, all classes are plotted.</p></li>
 the ‘ovr’ or ‘multinomial’ strategies can be used. When <code class="docutils literal notranslate"><span class="pre">multi_class='ovr'</span></code>,
 the plot focuses on the specified class (<code class="docutils literal notranslate"><span class="pre">class_index</span></code>).</p>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_breast_cancer</span> <span class="k">as</span> <span class="n">load_data</span>  <span class="c1"># binary</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span> <span class="k">as</span> <span class="n">data_10_classes</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scikitplot</span> <span class="k">as</span> <span class="nn">skplt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">data_10_classes</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y_probas</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">skplt</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">plot_precision_recall</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_probas</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_probas</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">skplt</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">plot_precision_recall</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">y_val</span><span class="p">,</span> <span class="n">y_probas</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">);</span>
 </pre></div>
 </div>
-<img alt="Precision-Recall AUC Curves" class="align-center" src="../../_images/plot_precision_recall.png" />
+<p>(<a class="reference download internal" download="" href="../../_downloads/2ce2502bab2b7b4e3cd33ff0035d9baf/scikitplot-metrics-plot_precision_recall-1.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/9f25e8ef00932669611ecb062a4a44fb/scikitplot-metrics-plot_precision_recall-1.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>)</p>
+<figure class="align-center">
+<img alt="Precision-Recall AUC Curves" class="plot-directive" src="../../_images/scikitplot-metrics-plot_precision_recall-1.png" />
+</figure>
 </dd></dl>
 
 <section id="gallery-examples">

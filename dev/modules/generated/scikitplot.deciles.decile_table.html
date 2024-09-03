@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
 
-    <title>decile_table &#8212; scikit-plots 0.3.9.dev1 documentation</title>
+    <title>decile_table &#8212; scikit-plots 0.3.9.rc1 documentation</title>
   
   
   
@@ -55,7 +55,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=75ce58fb"></script>
+    <script src="../../_static/documentation_options.js?v=80760e40"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -69,7 +69,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.dev1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.rc1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
     <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
@@ -222,7 +222,7 @@
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../developers/index.html">
+  <a class="nav-link dropdown-item nav-external" href="https://scikit-plots.github.io/dev/developers/index.html">
     Developer’s Guide
   </a>
 </li>
@@ -430,7 +430,7 @@ document.write(`
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../developers/index.html">
+  <a class="nav-link nav-external" href="https://scikit-plots.github.io/dev/developers/index.html">
     Developer’s Guide
   </a>
 </li>
@@ -672,7 +672,11 @@ groups each containing 10% of the customer base.</p>
 <li><p><strong>y_prob</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_classes</em><em>)</em>) – Prediction probabilities for each class returned by a classifier/algorithm.</p></li>
 <li><p><strong>labels</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em><em>, </em><em>default=True</em>) – If True, prints a legend for the abbreviations of decile table column names.</p></li>
 <li><p><strong>change_deciles</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=10</em>) – The number of partitions for creating the table. Defaults to 10 for deciles.</p></li>
-<li><p><strong>digits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=3</em>) – The decimal precision for the result.</p></li>
+<li><p><strong>digits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=3</em>) – <p>The decimal precision for the result.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.3.9.</span></p>
+</div>
+</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -685,17 +689,321 @@ groups each containing 10% of the customer base.</p>
 <p class="rubric">References</p>
 <p>[1] <a class="github reference external" href="https://github.com/tensorbored/kds/blob/master/kds/metrics.py#L32">tensorbored/kds</a></p>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scikitplot</span> <span class="k">as</span> <span class="nn">skplt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.33</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y_prob</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">skplt</span><span class="o">.</span><span class="n">deciles</span><span class="o">.</span><span class="n">decile_table</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span> <span class="k">as</span> <span class="n">data_3_classes</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">import</span> <span class="nn">scikitplot</span> <span class="k">as</span> <span class="nn">skplt</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">data_3_classes</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_prob</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">skplt</span><span class="o">.</span><span class="n">deciles</span><span class="o">.</span><span class="n">decile_table</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>LABELS INFO:
+
+ prob_min         : Minimum probability in a particular decile
+ prob_max         : Minimum probability in a particular decile
+ prob_avg         : Average probability in a particular decile
+ cnt_events       : Count of events in a particular decile
+ cnt_resp         : Count of responders in a particular decile
+ cnt_non_resp     : Count of non-responders in a particular decile
+ cnt_resp_rndm    : Count of responders if events assigned randomly in a particular decile
+ cnt_resp_wiz     : Count of best possible responders in a particular decile
+ resp_rate        : Response Rate in a particular decile [(cnt_resp/cnt_cust)*100]
+ cum_events       : Cumulative sum of events decile-wise 
+ cum_resp         : Cumulative sum of responders decile-wise 
+ cum_resp_wiz     : Cumulative sum of best possible responders decile-wise 
+ cum_non_resp     : Cumulative sum of non-responders decile-wise 
+ cum_events_pct   : Cumulative sum of percentages of events decile-wise 
+ cum_resp_pct     : Cumulative sum of percentages of responders decile-wise 
+ cum_resp_pct_wiz : Cumulative sum of percentages of best possible responders decile-wise 
+ cum_non_resp_pct : Cumulative sum of percentages of non-responders decile-wise 
+ KS               : KS Statistic decile-wise 
+ lift             : Cumuative Lift Value decile-wise
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>decile</th>
+      <th>prob_min</th>
+      <th>prob_max</th>
+      <th>prob_avg</th>
+      <th>cnt_cust</th>
+      <th>cnt_resp</th>
+      <th>cnt_non_resp</th>
+      <th>cnt_resp_rndm</th>
+      <th>cnt_resp_wiz</th>
+      <th>resp_rate</th>
+      <th>cum_cust</th>
+      <th>cum_resp</th>
+      <th>cum_resp_wiz</th>
+      <th>cum_non_resp</th>
+      <th>cum_cust_pct</th>
+      <th>cum_resp_pct</th>
+      <th>cum_resp_pct_wiz</th>
+      <th>cum_non_resp_pct</th>
+      <th>KS</th>
+      <th>lift</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0.435</td>
+      <td>0.435</td>
+      <td>0.435</td>
+      <td>8.0</td>
+      <td>11.0</td>
+      <td>0.0</td>
+      <td>7.8</td>
+      <td>16</td>
+      <td>137.500</td>
+      <td>8.0</td>
+      <td>11.0</td>
+      <td>16</td>
+      <td>0.0</td>
+      <td>10.667</td>
+      <td>14.103</td>
+      <td>20.513</td>
+      <td>0.000</td>
+      <td>14.103</td>
+      <td>1.322</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>0.435</td>
+      <td>0.435</td>
+      <td>0.435</td>
+      <td>7.0</td>
+      <td>12.0</td>
+      <td>0.0</td>
+      <td>7.8</td>
+      <td>14</td>
+      <td>171.429</td>
+      <td>15.0</td>
+      <td>23.0</td>
+      <td>30</td>
+      <td>0.0</td>
+      <td>20.000</td>
+      <td>29.487</td>
+      <td>38.462</td>
+      <td>0.000</td>
+      <td>29.487</td>
+      <td>1.474</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>0.435</td>
+      <td>0.435</td>
+      <td>0.435</td>
+      <td>8.0</td>
+      <td>14.0</td>
+      <td>0.0</td>
+      <td>7.8</td>
+      <td>16</td>
+      <td>175.000</td>
+      <td>23.0</td>
+      <td>37.0</td>
+      <td>46</td>
+      <td>0.0</td>
+      <td>30.667</td>
+      <td>47.436</td>
+      <td>58.974</td>
+      <td>0.000</td>
+      <td>47.436</td>
+      <td>1.547</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>0.435</td>
+      <td>0.435</td>
+      <td>0.435</td>
+      <td>7.0</td>
+      <td>9.0</td>
+      <td>0.0</td>
+      <td>7.8</td>
+      <td>8</td>
+      <td>128.571</td>
+      <td>30.0</td>
+      <td>46.0</td>
+      <td>54</td>
+      <td>0.0</td>
+      <td>40.000</td>
+      <td>58.974</td>
+      <td>69.231</td>
+      <td>0.000</td>
+      <td>58.974</td>
+      <td>1.474</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>0.435</td>
+      <td>0.435</td>
+      <td>0.435</td>
+      <td>8.0</td>
+      <td>12.0</td>
+      <td>0.0</td>
+      <td>7.8</td>
+      <td>8</td>
+      <td>150.000</td>
+      <td>38.0</td>
+      <td>58.0</td>
+      <td>62</td>
+      <td>0.0</td>
+      <td>50.667</td>
+      <td>74.359</td>
+      <td>79.487</td>
+      <td>0.000</td>
+      <td>74.359</td>
+      <td>1.468</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>0.435</td>
+      <td>0.435</td>
+      <td>0.435</td>
+      <td>7.0</td>
+      <td>8.0</td>
+      <td>0.0</td>
+      <td>7.8</td>
+      <td>7</td>
+      <td>114.286</td>
+      <td>45.0</td>
+      <td>66.0</td>
+      <td>69</td>
+      <td>0.0</td>
+      <td>60.000</td>
+      <td>84.615</td>
+      <td>88.462</td>
+      <td>0.000</td>
+      <td>84.615</td>
+      <td>1.410</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>0.435</td>
+      <td>0.435</td>
+      <td>0.435</td>
+      <td>8.0</td>
+      <td>10.0</td>
+      <td>0.0</td>
+      <td>7.8</td>
+      <td>8</td>
+      <td>125.000</td>
+      <td>53.0</td>
+      <td>76.0</td>
+      <td>77</td>
+      <td>0.0</td>
+      <td>70.667</td>
+      <td>97.436</td>
+      <td>98.718</td>
+      <td>0.000</td>
+      <td>97.436</td>
+      <td>1.379</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>0.000</td>
+      <td>0.435</td>
+      <td>0.062</td>
+      <td>7.0</td>
+      <td>2.0</td>
+      <td>6.0</td>
+      <td>7.8</td>
+      <td>1</td>
+      <td>28.571</td>
+      <td>60.0</td>
+      <td>78.0</td>
+      <td>78</td>
+      <td>6.0</td>
+      <td>80.000</td>
+      <td>100.000</td>
+      <td>100.000</td>
+      <td>28.571</td>
+      <td>71.429</td>
+      <td>1.250</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>8.0</td>
+      <td>0.0</td>
+      <td>8.0</td>
+      <td>7.8</td>
+      <td>0</td>
+      <td>0.000</td>
+      <td>68.0</td>
+      <td>78.0</td>
+      <td>78</td>
+      <td>14.0</td>
+      <td>90.667</td>
+      <td>100.000</td>
+      <td>100.000</td>
+      <td>66.667</td>
+      <td>33.333</td>
+      <td>1.103</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>7.0</td>
+      <td>0.0</td>
+      <td>7.0</td>
+      <td>7.8</td>
+      <td>0</td>
+      <td>0.000</td>
+      <td>75.0</td>
+      <td>78.0</td>
+      <td>78</td>
+      <td>21.0</td>
+      <td>100.000</td>
+      <td>100.000</td>
+      <td>100.000</td>
+      <td>100.000</td>
+      <td>0.000</td>
+      <td>1.000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
+</pre></div>
+</div>
+</div>
 </div>
 </dd></dl>
 

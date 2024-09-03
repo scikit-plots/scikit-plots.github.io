@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
 
-    <title>show_versions &#8212; scikit-plots 0.3.9.dev1 documentation</title>
+    <title>show_versions &#8212; scikit-plots 0.3.9.rc1 documentation</title>
   
   
   
@@ -55,7 +55,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=75ce58fb"></script>
+    <script src="../../_static/documentation_options.js?v=80760e40"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -69,7 +69,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.dev1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.rc1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
     <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
@@ -222,7 +222,7 @@
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../developers/index.html">
+  <a class="nav-link dropdown-item nav-external" href="https://scikit-plots.github.io/dev/developers/index.html">
     Developer’s Guide
   </a>
 </li>
@@ -430,7 +430,7 @@ document.write(`
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../developers/index.html">
+  <a class="nav-link nav-external" href="https://scikit-plots.github.io/dev/developers/index.html">
     Developer’s Guide
   </a>
 </li>
@@ -660,6 +660,62 @@ document.write(`
 <dt class="sig sig-object py" id="scikitplot.show_versions">
 <span class="sig-prename descclassname"><span class="pre">scikitplot.</span></span><span class="sig-name descname"><span class="pre">show_versions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.show_versions" title="Link to this definition">#</a></dt>
 <dd><p>Print useful debugging information</p>
+<p class="rubric">Examples</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scikitplot</span>
+<span class="n">scikitplot</span><span class="o">.</span><span class="n">show_versions</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
+System:
+    python: 3.11.6 | packaged by conda-forge | (main, Oct  3 2023, 10:40:35) [GCC 12.3.0]
+executable: /opt/conda/bin/python
+   machine: Linux-5.15.153.1-microsoft-standard-WSL2-x86_64-with-glibc2.35
+
+Python dependencies:
+   scikitplot: 0.3.9.rc1
+          pip: 23.3
+   setuptools: 68.2.2
+       Cython: None
+        numpy: 1.26.4
+       pandas: 2.2.2
+        scipy: 1.14.1
+   matplotlib: 3.9.2
+       joblib: 1.4.2
+threadpoolctl: 3.5.0
+
+threadpoolctl info:
+       user_api: blas
+   internal_api: openblas
+    num_threads: 8
+         prefix: libopenblas
+       filepath: /opt/conda/lib/python3.11/site-packages/numpy.libs/libopenblas64_p-r0-0cf96a72.3.23.dev.so
+        version: 0.3.23.dev
+threading_layer: pthreads
+   architecture: Haswell
+
+       user_api: blas
+   internal_api: openblas
+    num_threads: 8
+         prefix: libopenblas
+       filepath: /opt/conda/lib/libopenblasp-r0.3.27.so
+        version: 0.3.27
+threading_layer: pthreads
+   architecture: Haswell
+
+       user_api: openmp
+   internal_api: openmp
+    num_threads: 8
+         prefix: libgomp
+       filepath: /opt/conda/lib/libgomp.so.1.0.0
+        version: None
+</pre></div>
+</div>
+</div>
+</div>
 </dd></dl>
 
 </section>

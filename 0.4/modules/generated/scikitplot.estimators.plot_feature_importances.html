@@ -12,11 +12,11 @@
 <meta property="og:url" content="https://scikit-plots.github.io/stable/modules/generated/scikitplot.estimators.plot_feature_importances.html" />
 <meta property="og:site_name" content="scikit-plots" />
 <meta property="og:description" content="Gallery examples: plot_feature_importances with examples" />
-<meta property="og:image" content="https://scikit-plots.github.io/stable/_images/plot_feature_importances.png" />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_images/scikitplot-estimators-plot_feature_importances-1.png" />
 <meta property="og:image:alt" content="Feature Importances" />
 <meta name="description" content="Gallery examples: plot_feature_importances with examples" />
 
-    <title>plot_feature_importances &#8212; scikit-plots 0.3.9.dev1 documentation</title>
+    <title>plot_feature_importances &#8212; scikit-plots 0.3.9.rc1 documentation</title>
   
   
   
@@ -57,7 +57,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=75ce58fb"></script>
+    <script src="../../_static/documentation_options.js?v=80760e40"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -71,7 +71,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.dev1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.rc1';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
     <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
@@ -224,7 +224,7 @@
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../developers/index.html">
+  <a class="nav-link dropdown-item nav-external" href="https://scikit-plots.github.io/dev/developers/index.html">
     Developer’s Guide
   </a>
 </li>
@@ -432,7 +432,7 @@ document.write(`
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../developers/index.html">
+  <a class="nav-link nav-external" href="https://scikit-plots.github.io/dev/developers/index.html">
     Developer’s Guide
   </a>
 </li>
@@ -663,14 +663,24 @@ document.write(`
 <span class="sig-prename descclassname"><span class="pre">scikitplot.estimators.</span></span><span class="sig-name descname"><span class="pre">plot_feature_importances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Feature</span> <span class="pre">Importances'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'large'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'medium'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'PiYG'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'vertical'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_tick_rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bar_padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.estimators.plot_feature_importances" title="Link to this definition">#</a></dt>
 <dd><p>Generates a plot of a sklearn model’s feature importances.</p>
 <p>This function handles different types of classifiers and their respective
-feature importances or coefficient attributes. It supports models wrapped in pipelines.
-Error bars can be added based on different statistical methods or custom functions.</p>
-<p>Supports models like <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code>, <code class="docutils literal notranslate"><span class="pre">RidgeClassifier</span></code>,
-<code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code>, <code class="docutils literal notranslate"><span class="pre">LinearSVC</span></code>, <code class="docutils literal notranslate"><span class="pre">SVC</span></code>, <code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier</span></code>,
-<code class="docutils literal notranslate"><span class="pre">BaggingClassifier</span></code>, <code class="docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code>, <code class="docutils literal notranslate"><span class="pre">Perceptron</span></code>,
-<code class="docutils literal notranslate"><span class="pre">BayesianRidge</span></code>, <code class="docutils literal notranslate"><span class="pre">HuberRegressor</span></code>, <code class="docutils literal notranslate"><span class="pre">TweedieRegressor</span></code>,
-<code class="docutils literal notranslate"><span class="pre">LatentDirichletAllocation</span></code>, <code class="docutils literal notranslate"><span class="pre">PCA</span></code>, <code class="docutils literal notranslate"><span class="pre">LinearDiscriminantAnalysis</span></code>, and
-<code class="docutils literal notranslate"><span class="pre">QuadraticDiscriminantAnalysis</span></code>.</p>
+feature importances (<code class="docutils literal notranslate"><span class="pre">feature_importances_</span></code>) or coefficient (<code class="docutils literal notranslate"><span class="pre">coef_</span></code>) attributes,
+if not provide its compute sklearn permutation importances.
+It supports models wrapped in pipelines.</p>
+<dl class="simple">
+<dt>Supports models like:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression" title="(in scikit-learn v1.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearRegression</span></code></a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="(in scikit-learn v1.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier" title="(in scikit-learn v1.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code></a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="(in scikit-learn v1.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearSVC</span></code></a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC" title="(in scikit-learn v1.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SVC</span></code></a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier" title="(in scikit-learn v1.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DecisionTreeClassifier</span></code></a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v1.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="(in scikit-learn v1.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">PCA</span></code></a></p></li>
+<li><p><a class="reference external" href="https://xgboost.readthedocs.io/en/stable/python/python_api.html#module-xgboost.sklearn">xgboost Python API</a></p></li>
+<li><p><a class="reference external" href="https://catboost.ai/en/docs/concepts/python-quickstart">catboost Python API</a></p></li>
+</ul>
+</dd>
+</dl>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -686,7 +696,7 @@ integer-values. Defaults to “large”.</p></li>
 integer-values. Defaults to “medium”.</p></li>
 <li><p><strong>cmap</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.colors.Colormap.html#matplotlib.colors.Colormap" title="(in Matplotlib v3.9.2)"><em>matplotlib.colors.Colormap</em></a><em>, </em><em>optional</em><em>, </em><em>default='PiYG'</em>) – Colormap used for plotting.
 - See Matplotlib Colormap documentation for options.</p></li>
-<li><p><strong>orientation</strong> (<em>{'vertical'</em><em>, </em><em>'horizontal'}</em><em>, </em><em>optional</em>) – Orientation of the bar plot. Defaults to ‘vertical’.</p></li>
+<li><p><strong>orientation</strong> (<em>{'vertical'</em><em> | </em><em>'v'</em><em> | </em><em>'y'</em><em>, </em><em>'horizontal'</em><em> | </em><em>'h'</em><em> | </em><em>'y'}</em><em>, </em><em>optional</em>) – Orientation of the bar plot. Defaults to ‘vertical’.</p></li>
 <li><p><strong>x_tick_rotation</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – Rotates x-axis tick labels by the specified angle. Defaults to None
 (automatically set based on orientation).</p></li>
 <li><p><strong>bar_padding</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><em>optional</em>) – Padding between bars in the plot. Defaults to 11.</p></li>
@@ -700,7 +710,11 @@ be plotted. Defaults to None (plot all features).</p></li>
 (automatically set based on orientation).</p></li>
 <li><p><strong>feature_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em> of </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – List of feature names corresponding to the features. If None, feature
 indices are used.</p></li>
-<li><p><strong>digits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=4</em>) – Number of digits for formatting AUC values in the plot.</p></li>
+<li><p><strong>digits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=4</em>) – <p>Number of digits for formatting AUC values in the plot.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.3.9.</span></p>
+</div>
+</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -711,24 +725,24 @@ indices are used.</p></li>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># from sklearn.datasets import load_iris as load_data  # multi</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_breast_cancer</span> <span class="k">as</span> <span class="n">load_data</span>  <span class="c1"># binary</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span> <span class="k">as</span> <span class="n">data_10_classes</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scikitplot</span> <span class="k">as</span> <span class="nn">skplt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">RandomForestClassifier</span><span class="p">())</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="p">,</span> <span class="n">features</span> <span class="o">=</span> <span class="n">skplt</span><span class="o">.</span><span class="n">estimators</span><span class="o">.</span><span class="n">plot_feature_importances</span><span class="p">(</span><span class="n">clf</span><span class="p">);</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">features</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">data_10_classes</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">skplt</span><span class="o">.</span><span class="n">estimators</span><span class="o">.</span><span class="n">plot_feature_importances</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">model</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">);</span>
 </pre></div>
 </div>
-<img alt="Feature Importances" class="align-center" src="../../_images/plot_feature_importances.png" />
+<p>(<a class="reference download internal" download="" href="../../_downloads/e6b5617c0c151fa23e8a721960e04b7b/scikitplot-estimators-plot_feature_importances-1.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/c347d28a0b56e41675458e18c0d5ec32/scikitplot-estimators-plot_feature_importances-1.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>)</p>
+<figure class="align-center">
+<img alt="Feature Importances" class="plot-directive" src="../../_images/scikitplot-estimators-plot_feature_importances-1.png" />
+</figure>
 </dd></dl>
 
 <section id="gallery-examples">
