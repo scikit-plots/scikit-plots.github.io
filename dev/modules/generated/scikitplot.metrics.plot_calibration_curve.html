@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="Calibration Curves" />
 <meta name="description" content="Gallery examples: plot_calibration_curve with examples" />
 
-    <title>plot_calibration_curve &#8212; scikit-plots 0.3.9.rc1 documentation</title>
+    <title>plot_calibration_curve &#8212; scikit-plots 0.3.9.rc2 documentation</title>
   
   
   
@@ -57,7 +57,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=80760e40"></script>
+    <script src="../../_static/documentation_options.js?v=b78e842a"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -71,7 +71,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.rc1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.rc2';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
     <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
@@ -660,7 +660,7 @@ document.write(`
 <h1>plot_calibration_curve<a class="headerlink" href="#plot-calibration-curve" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.metrics.plot_calibration_curve">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.metrics.</span></span><span class="sig-name descname"><span class="pre">plot_calibration_curve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_prob_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_is_decision</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Calibration</span> <span class="pre">Curves</span> <span class="pre">(Reliability</span> <span class="pre">Diagrams)'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'large'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'medium'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clf_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multi_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes_to_plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[1]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strategy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'uniform'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.metrics.plot_calibration_curve" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.metrics.</span></span><span class="sig-name descname"><span class="pre">plot_calibration_curve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_probas_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_probas_is_decision</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strategy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'uniform'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multi_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_plot_class_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[1]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Calibration</span> <span class="pre">Curves</span> <span class="pre">(Reliability</span> <span class="pre">Diagrams)'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'large'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'medium'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.metrics.plot_calibration_curve" title="Link to this definition">#</a></dt>
 <dd><p>Plot calibration curves for a set of classifier probability estimates.</p>
 <p>This function plots calibration curves, also known as reliability curves,
 which are useful to assess the calibration of probabilistic models.
@@ -670,42 +670,50 @@ observed frequency of the positive class.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>y_true</strong> (<em>array-like</em><em> of </em><em>shape</em><em> (</em><em>n_samples</em><em>,</em><em>)</em>) – Ground truth (correct) target values.</p></li>
-<li><p><strong>y_prob_list</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em> of </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>2</em><em>) or </em><em>(</em><em>n_samples</em><em>,</em><em>)</em>) – A list containing the outputs of classifiers’ <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> or
+<li><p><strong>y_probas_list</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em> of </em><em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>2</em><em>) or </em><em>(</em><em>n_samples</em><em>,</em><em>)</em>) – A list containing the outputs of classifiers’ <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> or
 <code class="docutils literal notranslate"><span class="pre">decision_function</span></code> methods.</p></li>
-<li><p><strong>y_is_decision</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em> of </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – A list indicating whether the classifier’s probability method is
+<li><p><strong>y_probas_is_decision</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em> of </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – A list indicating whether the classifier’s probability method is
 <code class="docutils literal notranslate"><span class="pre">decision_function</span></code> (True) or <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> (False).</p></li>
+<li><p><strong>n_bins</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=10</em>) – Number of bins to use in the calibration curve. A higher number requires
+more data to produce reliable results.</p></li>
+<li><p><strong>strategy</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em><em>, </em><em>default='uniform'</em>) – <p>Strategy used to define the widths of the bins:
+- ‘uniform’: Bins have identical widths.
+- ‘quantile’: Bins have the same number of samples and depend on <code class="docutils literal notranslate"><span class="pre">y_probas_list</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.3.9.</span></p>
+</div>
+</p></li>
+<li><p><strong>estimator_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em> of </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em><em>, </em><em>default=None</em>) – A list of classifier names corresponding to the probability estimates in
+<code class="docutils literal notranslate"><span class="pre">y_probas_list</span></code>. If None, the names will be generated automatically as
+“Classifier 1”, “Classifier 2”, etc.</p></li>
+<li><p><strong>class_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em> of </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em><em>, </em><em>default=None</em>) – List of class names for the legend. The order should match the classes in
+<code class="docutils literal notranslate"><span class="pre">y_probas_list</span></code>. If None, class indices will be used.</p></li>
+<li><p><strong>multi_class</strong> (<em>{'ovr'</em><em>, </em><em>'multinomial'</em><em>, </em><em>None}</em><em>, </em><em>optional</em><em>, </em><em>default=None</em>) – Strategy for handling multiclass classification:
+- ‘ovr’: One-vs-Rest, plotting binary problems for each class.
+- ‘multinomial’ or None: Multinomial plot for the entire probability distribution.</p></li>
+<li><p><strong>class_index</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=1</em>) – Index of the class of interest for multiclass classification. Ignored for
+binary classification. Related to <code class="docutils literal notranslate"><span class="pre">multi_class</span></code> parameter. Not Implemented.</p></li>
+<li><p><strong>to_plot_class_index</strong> (<em>list-like</em><em>, </em><em>optional</em><em>, </em><em>default=</em><em>[</em><em>1</em><em>]</em>) – Specific classes to plot. If a given class does not exist, it will be ignored.
+If None, all classes are plotted.</p></li>
 <li><p><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em><em>, </em><em>default='Calibration plots</em><em> (</em><em>Reliability Curves</em><em>)</em><em>'</em>) – Title of the generated plot.</p></li>
-<li><p><strong>ax</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.9.2)"><em>matplotlib.axes.Axes</em></a><em>, </em><em>optional</em>) – The axes upon which to plot the curve. If None, a new figure and axes
-will be created.</p></li>
+<li><p><strong>ax</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.9.2)"><em>matplotlib.axes.Axes</em></a><em>, </em><em>optional</em><em>, </em><em>default=None</em>) – The axis to plot the figure on. If None is passed in the current axes
+will be used (or generated if required).</p></li>
+<li><p><strong>fig</strong> (<em>matplotlib.pyplot.figure</em><em>, </em><em>optional</em><em>, </em><em>default: None</em>) – <p>The figure to plot the Visualizer on. If None is passed in the current
+plot will be used (or generated if required).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.3.9.</span></p>
+</div>
+</p></li>
 <li><p><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a><em>, </em><em>optional</em>) – Tuple denoting the figure size of the plot, e.g., (6, 6). Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p><strong>title_fontsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default='large'</em>) – Font size of the plot title. Accepts Matplotlib-style sizes like “small”,
 “medium”, “large”, or an integer.</p></li>
 <li><p><strong>text_fontsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default='medium'</em>) – Font size of the plot text (axis labels). Accepts Matplotlib-style sizes
 like “small”, “medium”, “large”, or an integer.</p></li>
-<li><p><strong>cmap</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.colors.Colormap.html#matplotlib.colors.Colormap" title="(in Matplotlib v3.9.2)"><em>matplotlib.colors.Colormap</em></a><em>, </em><em>optional</em><em>, </em><em>default=None</em>) – Colormap used for plotting. If None, the default ‘viridis’ colormap is used.
-See Matplotlib colormap documentation for options.</p></li>
-<li><p><strong>n_bins</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=10</em>) – Number of bins to use in the calibration curve. A higher number requires
-more data to produce reliable results.</p></li>
-<li><p><strong>clf_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em> of </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em><em>, </em><em>default=None</em>) – A list of classifier names corresponding to the probability estimates in
-<code class="docutils literal notranslate"><span class="pre">y_prob_list</span></code>. If None, the names will be generated automatically as
-“Classifier 1”, “Classifier 2”, etc.</p></li>
-<li><p><strong>multi_class</strong> (<em>{'ovr'</em><em>, </em><em>'multinomial'</em><em>, </em><em>None}</em><em>, </em><em>optional</em><em>, </em><em>default=None</em>) – Strategy for handling multiclass classification:
-- ‘ovr’: One-vs-Rest, plotting binary problems for each class.
-- ‘multinomial’ or None: Multinomial plot for the entire probability distribution.
-- Not Implemented: Strategy not yet available.</p></li>
-<li><p><strong>class_index</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=1</em>) – Index of the class of interest for multiclass classification. Ignored for
-binary classification. Related to <code class="docutils literal notranslate"><span class="pre">multi_class</span></code> parameter. Not Implemented.</p></li>
-<li><p><strong>class_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em> of </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><em>None</em><em>, </em><em>optional</em><em>, </em><em>default=None</em>) – List of class names for the legend. The order should match the classes in
-<code class="docutils literal notranslate"><span class="pre">y_prob_list</span></code>. If None, class indices will be used.</p></li>
-<li><p><strong>classes_to_plot</strong> (<em>list-like</em><em>, </em><em>optional</em><em>, </em><em>default=</em><em>[</em><em>1</em><em>]</em>) – Specific classes to plot. If a given class does not exist, it will be ignored.
-If None, all classes are plotted.</p></li>
-<li><p><strong>strategy</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em><em>, </em><em>default='uniform'</em>) – <p>Strategy used to define the widths of the bins:
-- ‘uniform’: Bins have identical widths.
-- ‘quantile’: Bins have the same number of samples and depend on <code class="docutils literal notranslate"><span class="pre">y_prob_list</span></code>.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">Added in version 0.3.9.</span></p>
-</div>
-</p></li>
+<li><p><strong>cmap</strong> (<em>None</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.colors.Colormap.html#matplotlib.colors.Colormap" title="(in Matplotlib v3.9.2)"><em>matplotlib.colors.Colormap</em></a><em>, </em><em>optional</em><em>, </em><em>default=None</em>) – Colormap used for plotting.
+Options include ‘viridis’, ‘PiYG’, ‘plasma’, ‘inferno’, etc.
+See Matplotlib Colormap documentation for available choices.
+- <a class="reference external" href="https://matplotlib.org/stable/users/explain/colors/index.html">https://matplotlib.org/stable/users/explain/colors/index.html</a></p></li>
+<li><p><strong>kwargs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><em>dict</em></a>) – generic keyword arguments.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -717,10 +725,17 @@ If None, all classes are plotted.</p></li>
 </dl>
 <p class="rubric">Notes</p>
 <ul class="simple">
-<li><p>The calibration curve is plotted for the class specified by <code class="docutils literal notranslate"><span class="pre">classes_to_plot</span></code>.</p></li>
+<li><p>The calibration curve is plotted for the class specified by <code class="docutils literal notranslate"><span class="pre">to_plot_class_index</span></code>.</p></li>
 <li><p>This function currently supports binary and multiclass classification.</p></li>
 </ul>
-<p class="rubric">Examples</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="references">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">References<a class="headerlink" href="#references" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.calibration.calibration_curve.html#">“scikit-learn calibration_curve”</a>.</p></li>
+</ul>
+</div>
+</details><p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
@@ -747,10 +762,10 @@ If None, all classes are plotted.</p></li>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="mi">1000</span><span class="p">],</span> <span class="n">y</span><span class="p">[:</span><span class="mi">1000</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="mi">1000</span><span class="p">:],</span> <span class="n">y</span><span class="p">[</span><span class="mi">1000</span><span class="p">:]</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create an instance of the LogisticRegression</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lr_probas</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lr_probas</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="mf">1e5</span><span class="p">),</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nb_probas</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">svc_scores</span> <span class="o">=</span> <span class="n">LinearSVC</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rf_probas</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">svc_scores</span> <span class="o">=</span> <span class="n">LinearSVC</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rf_probas</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">probas_dict</span> <span class="o">=</span> <span class="p">{</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">LogisticRegression</span><span class="p">():</span> <span class="n">lr_probas</span><span class="p">,</span>
@@ -761,13 +776,12 @@ If None, all classes are plotted.</p></li>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Plot!</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">skplt</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">plot_calibration_curve</span><span class="p">(</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">y_val</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">y_prob_list</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">probas_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">y_is_decision</span><span class="o">=</span><span class="nb">list</span><span class="p">([</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]),</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">n_bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">clf_names</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">probas_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">multi_class</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">class_index</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">classes_to_plot</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">y_probas_list</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">probas_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">estimator_names</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">probas_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">y_probas_is_decision</span><span class="o">=</span><span class="nb">list</span><span class="p">([</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]),</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># multi_class=&#39;ovr&#39;,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># class_index=1,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">to_plot_class_index</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">);</span>
 </pre></div>
 </div>

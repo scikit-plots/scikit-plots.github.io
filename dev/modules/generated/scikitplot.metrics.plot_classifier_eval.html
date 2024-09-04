@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="Confusion Matrix" />
 <meta name="description" content="Gallery examples: plot_roc_curve with examples" />
 
-    <title>plot_classifier_eval &#8212; scikit-plots 0.3.9.rc1 documentation</title>
+    <title>plot_classifier_eval &#8212; scikit-plots 0.3.9.rc2 documentation</title>
   
   
   
@@ -57,7 +57,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=80760e40"></script>
+    <script src="../../_static/documentation_options.js?v=b78e842a"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -71,7 +71,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.rc1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.rc2';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
     <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
@@ -660,7 +660,7 @@ document.write(`
 <h1>plot_classifier_eval<a class="headerlink" href="#plot-classifier-eval" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.metrics.plot_classifier_eval">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.metrics.</span></span><span class="sig-name descname"><span class="pre">plot_classifier_eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'large'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'medium'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'viridis'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_tick_rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.metrics.plot_classifier_eval" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.metrics.</span></span><span class="sig-name descname"><span class="pre">plot_classifier_eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'train'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(8,</span> <span class="pre">3)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'large'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'medium'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_tick_rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.metrics.plot_classifier_eval" title="Link to this definition">#</a></dt>
 <dd><p>Generates various evaluation plots for a classifier, including confusion matrix, precision-recall curve, and ROC curve.</p>
 <p>This function provides a comprehensive view of a classifier’s performance through multiple plots,
 helping in the assessment of its effectiveness and areas for improvement.</p>
@@ -669,28 +669,45 @@ helping in the assessment of its effectiveness and areas for improvement.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>y_true</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>,</em><em>)</em>) – Ground truth (correct) target values.</p></li>
 <li><p><strong>y_pred</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>,</em><em>)</em>) – Predicted target values from the classifier.</p></li>
-<li><p><strong>title</strong> (<em>string</em><em>, </em><em>optional</em>) – Title of the generated plot. If None, no title is set.</p></li>
-<li><p><strong>ax</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.9.2)"><em>matplotlib.axes.Axes</em></a><em>, </em><em>optional</em>) – The axes upon which to plot the figures. If None, new axes are created.</p></li>
-<li><p><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a><em> of </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – Tuple denoting figure size of the plot, e.g. (10, 10). Defaults to None.</p></li>
-<li><p><strong>title_fontsize</strong> (<em>string</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=&quot;large&quot;</em>) – Font size for the plot title. Use e.g. “small”, “medium”, “large” or integer values.</p></li>
-<li><p><strong>text_fontsize</strong> (<em>string</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=&quot;medium&quot;</em>) – Font size for the text in the plot. Use e.g. “small”, “medium”, “large” or integer values.</p></li>
-<li><p><strong>cmap</strong> (<em>string</em><em> or </em><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.colors.Colormap.html#matplotlib.colors.Colormap" title="(in Matplotlib v3.9.2)"><em>matplotlib.colors.Colormap</em></a><em>, </em><em>optional</em><em>, </em><em>default='viridis'</em>) – Colormap used for plotting. View Matplotlib Colormap documentation for available options.</p></li>
-<li><p><strong>x_tick_rotation</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=0</em>) – Rotates x-axis tick labels by the specified angle.</p></li>
-<li><p><strong>labels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em> of </em><em>string</em><em>, </em><em>optional</em>) – List of labels for the classes. If None, labels are automatically generated based on the class indices.</p></li>
+<li><p><strong>labels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em> of </em><em>string</em><em>, </em><em>optional</em>) – List of labels for the classes.
+If None, labels are automatically generated based on the class indices.</p></li>
 <li><p><strong>normalize</strong> (<em>{'true'</em><em>, </em><em>'pred'</em><em>, </em><em>'all'</em><em>, </em><em>None}</em><em>, </em><em>optional</em>) – Normalizes the confusion matrix according to the specified mode. Defaults to None.
 - ‘true’: Normalizes by true (actual) values.
 - ‘pred’: Normalizes by predicted values.
 - ‘all’: Normalizes by total values.
 - None: No normalization.</p></li>
-<li><p><strong>digits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=3</em>) – <p>Number of digits for formatting floating point values in the plots.</p>
+<li><p><strong>digits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=3</em>) – Number of digits for formatting floating point values in the plots.</p></li>
+<li><p><strong>title</strong> (<em>string</em><em>, </em><em>optional</em><em>, </em><em>default='train'</em>) – Title of the generated plot.</p></li>
+<li><p><strong>ax</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em> of </em><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.9.2)"><em>matplotlib.axes.Axes</em></a><em>, </em><em>optional</em><em>, </em><em>default=None</em>) – The axis to plot the figure on. If None is passed in the current axes
+will be used (or generated if required).
+Need two axes like [fig.add_subplot(1, 2, 1), fig.add_subplot(1, 2, 2)]</p></li>
+<li><p><strong>fig</strong> (<em>matplotlib.pyplot.figure</em><em>, </em><em>optional</em><em>, </em><em>default: None</em>) – <p>The figure to plot the Visualizer on. If None is passed in the current
+plot will be used (or generated if required).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.3.9.</span></p>
+</div>
+</p></li>
+<li><p><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a><em> of </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=</em><em>(</em><em>8</em><em>, </em><em>3</em><em>)</em>) – Tuple denoting figure size of the plot, e.g. (8, 3).</p></li>
+<li><p><strong>title_fontsize</strong> (<em>string</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=&quot;large&quot;</em>) – Font size for the plot title.
+Use e.g. “small”, “medium”, “large” or integer values.</p></li>
+<li><p><strong>text_fontsize</strong> (<em>string</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=&quot;medium&quot;</em>) – Font size for the text in the plot.
+Use e.g. “small”, “medium”, “large” or integer values.</p></li>
+<li><p><strong>cmap</strong> (<em>None</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.colors.Colormap.html#matplotlib.colors.Colormap" title="(in Matplotlib v3.9.2)"><em>matplotlib.colors.Colormap</em></a><em>, </em><em>optional</em><em>, </em><em>default=None</em>) – Colormap used for plotting.
+Options include ‘viridis’, ‘PiYG’, ‘plasma’, ‘inferno’, etc.
+See Matplotlib Colormap documentation for available choices.
+- <a class="reference external" href="https://matplotlib.org/stable/users/explain/colors/index.html">https://matplotlib.org/stable/users/explain/colors/index.html</a></p></li>
+<li><p><strong>x_tick_rotation</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=0</em>) – <p>Rotates x-axis tick labels by the specified angle.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.3.9.</span></p>
 </div>
 </p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>fig</strong> – The figure on which the plot was drawn.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="(in Matplotlib v3.9.2)">matplotlib.figure.Figure</a></p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -698,7 +715,15 @@ helping in the assessment of its effectiveness and areas for improvement.</p>
 have the same shape and contain valid class labels. The <code class="docutils literal notranslate"><span class="pre">normalize</span></code> parameter is applicable
 to the confusion matrix plot. Adjust <code class="docutils literal notranslate"><span class="pre">cmap</span></code> and <code class="docutils literal notranslate"><span class="pre">x_tick_rotation</span></code> to customize the appearance
 of the plots.</p>
-<p class="rubric">Examples</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="references">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">References<a class="headerlink" href="#references" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html#">“scikit-learn classification_report”</a>.</p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html#">“scikit-learn confusion_matrix”</a>.</p></li>
+</ul>
+</div>
+</details><p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span> <span class="k">as</span> <span class="n">data_10_classes</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>

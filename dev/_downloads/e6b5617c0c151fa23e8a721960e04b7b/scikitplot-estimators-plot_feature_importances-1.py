@@ -8,5 +8,5 @@ model = RandomForestClassifier(random_state=0).fit(X_train, y_train)
 skplt.estimators.plot_feature_importances(
     model,
     orientation='y',
-    figsize=(12, 5),
+    figsize=(11, 5),
 );

@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="Learning Curves" />
 <meta name="description" content="Gallery examples: plot_learning_curve with examples" />
 
-    <title>plot_learning_curve &#8212; scikit-plots 0.3.9.rc1 documentation</title>
+    <title>plot_learning_curve &#8212; scikit-plots 0.3.9.rc2 documentation</title>
   
   
   
@@ -57,7 +57,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=80760e40"></script>
+    <script src="../../_static/documentation_options.js?v=b78e842a"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -71,7 +71,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.rc1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.rc2';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
     <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
@@ -660,36 +660,62 @@ document.write(`
 <h1>plot_learning_curve<a class="headerlink" href="#plot-learning-curve" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.estimators.plot_learning_curve">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.estimators.</span></span><span class="sig-name descname"><span class="pre">plot_learning_curve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Learning</span> <span class="pre">Curves'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'large'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'medium'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_sizes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.estimators.plot_learning_curve" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.estimators.</span></span><span class="sig-name descname"><span class="pre">plot_learning_curve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_sizes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Learning</span> <span class="pre">Curves'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'large'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'medium'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.estimators.plot_learning_curve" title="Link to this definition">#</a></dt>
 <dd><p>Generates a plot of the train and test learning curves for a classifier.</p>
-<p>The learning curves plot the performance of a classifier as a function of the number of training samples.
-This helps in understanding how well the classifier performs with different amounts of training data.</p>
+<p>The learning curves plot the performance of a classifier as a function of the number of
+training samples. This helps in understanding how well the classifier performs
+with different amounts of training data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>clf</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><em>object</em></a>) – Classifier instance that implements <code class="docutils literal notranslate"><span class="pre">fit</span></code> and <code class="docutils literal notranslate"><span class="pre">predict</span></code> methods.</p></li>
-<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – Training data, where <code class="docutils literal notranslate"><span class="pre">n_samples</span></code> is the number of samples and <code class="docutils literal notranslate"><span class="pre">n_features</span></code> is the number of features.</p></li>
-<li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>,</em><em>) or </em><em>(</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em><em>, </em><em>optional</em>) – Target relative to <code class="docutils literal notranslate"><span class="pre">X</span></code> for classification or regression; None for unsupervised learning.</p></li>
-<li><p><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em><em>, </em><em>default=&quot;Learning Curves&quot;</em>) – Title of the generated plot.</p></li>
-<li><p><strong>cv</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>cross-validation generator</em><em>, or </em><em>iterable</em><em>, </em><em>optional</em>) – <p>Determines the cross-validation strategy to use for splitting:
-- None, to use the default 3-fold cross-validation,
-- integer, to specify the number of folds,
-- An object to be used as a cross-validation generator,
-- An iterable yielding train/test splits.</p>
-<p>For integer/None inputs, if <code class="docutils literal notranslate"><span class="pre">y</span></code> is binary or multiclass, <code class="docutils literal notranslate"><span class="pre">StratifiedKFold</span></code> is used.
-If the estimator is not a classifier or if <code class="docutils literal notranslate"><span class="pre">y</span></code> is neither binary nor multiclass, <code class="docutils literal notranslate"><span class="pre">KFold</span></code> is used.</p>
-</p></li>
-<li><p><strong>shuffle</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em><em>, </em><em>default=True</em>) – Whether to shuffle the training data before splitting using cross-validation.</p></li>
-<li><p><strong>random_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><em>RandomState</em><em>, </em><em>optional</em>) – Pseudo-random number generator state used for random sampling.</p></li>
+<li><p><strong>estimator</strong> (<em>object type that implements the &quot;fit&quot; method</em>) – An object of that type which is cloned for each validation. It must
+also implement “predict” unless <code class="docutils literal notranslate"><span class="pre">scoring</span></code> is a callable that doesn’t
+rely on “predict” to compute a score.</p></li>
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – Training data, where <code class="docutils literal notranslate"><span class="pre">n_samples</span></code> is the number of samples
+and <code class="docutils literal notranslate"><span class="pre">n_features</span></code> is the number of features.</p></li>
+<li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>,</em><em>) or </em><em>(</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em><em>, </em><em>optional</em>) – Target relative to <code class="docutils literal notranslate"><span class="pre">X</span></code> for classification or regression.
+None for unsupervised learning.</p></li>
 <li><p><strong>train_sizes</strong> (<em>iterable</em><em>, </em><em>optional</em>) – Determines the training sizes used to plot the learning curve.
 If None, <code class="docutils literal notranslate"><span class="pre">np.linspace(.1,</span> <span class="pre">1.0,</span> <span class="pre">5)</span></code> is used.</p></li>
-<li><p><strong>n_jobs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=1</em>) – Number of jobs to run in parallel.</p></li>
-<li><p><strong>scoring</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>callable</em><em>, or </em><em>None</em><em>, </em><em>optional</em><em>, </em><em>default=None</em>) – A string (see scikit-learn model evaluation documentation) or a scorer callable object/function
+<li><p><strong>cv</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>cross-validation generator</em><em>, </em><em>iterable</em><em> or </em><em>None</em><em>, </em><em>default=5</em>) – <p>Determines the cross-validation splitting strategy.
+Possible inputs for cv are:
+- None, to use the default 5-fold cross validation,
+- integer, to specify the number of folds.
+- <a class="reference internal" href="../../community/sklearn_glossary.html#term-CV-splitter"><span class="xref std std-term">CV splitter</span></a>,
+- An iterable that generates (train, test) splits as arrays of indices.</p>
+<p>For integer/None inputs, if classifier is True and <code class="docutils literal notranslate"><span class="pre">y</span></code> is either
+binary or multiclass, <code class="xref py py-class docutils literal notranslate"><span class="pre">StratifiedKFold</span></code> is used. In all other
+cases, <code class="xref py py-class docutils literal notranslate"><span class="pre">KFold</span></code> is used.</p>
+<p>Refer <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation" title="(in scikit-learn v1.5)"><span class="xref std std-ref">User Guide</span></a> for the various
+cross-validation strategies that can be used here.</p>
+</p></li>
+<li><p><strong>scoring</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>callable</em><em>, or </em><em>None</em><em>, </em><em>optional</em><em>, </em><em>default=None</em>) – A string (see scikit-learn model evaluation documentation)
+or a scorer callable object/function
 with signature <code class="docutils literal notranslate"><span class="pre">scorer(estimator,</span> <span class="pre">X,</span> <span class="pre">y)</span></code>.</p></li>
-<li><p><strong>ax</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.9.2)"><em>matplotlib.axes.Axes</em></a><em>, </em><em>optional</em>) – The axes upon which to plot the curve. If None, a new figure and axes are created.</p></li>
-<li><p><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a><em> of </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – Tuple denoting figure size of the plot, e.g., (6, 6). Defaults to None.</p></li>
-<li><p><strong>title_fontsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=&quot;large&quot;</em>) – Font size for the plot title. Use e.g., “small”, “medium”, “large” or integer values.</p></li>
-<li><p><strong>text_fontsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=&quot;medium&quot;</em>) – Font size for the text in the plot. Use e.g., “small”, “medium”, “large” or integer values.</p></li>
+<li><p><strong>n_jobs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=None</em>) – Number of jobs to run in parallel. Training the estimator and computing
+the score are parallelized over the different training and test sets.
+<code class="docutils literal notranslate"><span class="pre">None</span></code> means 1 unless in a <a class="reference external" href="https://joblib.readthedocs.io/en/latest/generated/joblib.parallel_backend.html#joblib.parallel_backend" title="(in joblib v1.5.dev0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">joblib.parallel_backend</span></code></a> context.
+<code class="docutils literal notranslate"><span class="pre">-1</span></code> means using all processors. See <a class="reference internal" href="../../community/sklearn_glossary.html#term-n_jobs"><span class="xref std std-term">Glossary</span></a>
+for more details.</p></li>
+<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>default=0</em>) – Controls the verbosity: the higher, the more messages.</p></li>
+<li><p><strong>shuffle</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em><em>, </em><em>default=True</em>) – Whether to shuffle the training data before splitting using cross-validation.</p></li>
+<li><p><strong>random_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> or </em><em>RandomState</em><em>, </em><em>optional</em>) – Pseudo-random number generator state used for random sampling.</p></li>
+<li><p><strong>fit_params</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><em>dict</em></a><em>, </em><em>default=None</em>) – <p>Parameters to pass to the fit method of the estimator.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.3.9.</span></p>
+</div>
+</p></li>
+<li><p><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em><em>, </em><em>default=&quot;Learning Curves&quot;</em>) – Title of the generated plot.</p></li>
+<li><p><strong>ax</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.9.2)"><em>matplotlib.axes.Axes</em></a><em>, </em><em>optional</em><em>, </em><em>default=None</em>) – The axis to plot the figure on. If None is passed in the current axes
+will be used (or generated if required).</p></li>
+<li><p><strong>fig</strong> (<em>matplotlib.pyplot.figure</em><em>, </em><em>optional</em><em>, </em><em>default: None</em>) – The figure to plot the Visualizer on. If None is passed in the current
+plot will be used (or generated if required).</p></li>
+<li><p><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a><em> of </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=None</em>) – Tuple denoting figure size of the plot, e.g., (6, 6).</p></li>
+<li><p><strong>title_fontsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default='large'</em>) – Font size for the plot title.
+Use e.g., “small”, “medium”, “large” or integer values.</p></li>
+<li><p><strong>text_fontsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default='medium'</em>) – Font size for the text in the plot.
+Use e.g., “small”, “medium”, “large” or integer values.</p></li>
+<li><p><strong>kwargs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><em>dict</em></a>) – generic keyword arguments.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -699,10 +725,14 @@ with signature <code class="docutils literal notranslate"><span class="pre">scor
 <dd class="field-odd"><p><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.9.2)">matplotlib.axes.Axes</a></p>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
-<p>If <code class="docutils literal notranslate"><span class="pre">cv</span></code> is not specified, 3-fold cross-validation is used by default. The plot will show the learning curves
-for training and test data across different training sizes.</p>
-<p class="rubric">Examples</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="references">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">References<a class="headerlink" href="#references" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.learning_curve.html#">“scikit-learn learning_curve”</a>.</p></li>
+</ul>
+</div>
+</details><p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span> <span class="k">as</span> <span class="n">data_10_classes</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
