@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="Silhouette Plot" />
 <meta name="description" content="Gallery examples: plot_silhouette with examples" />
 
-    <title>plot_silhouette &#8212; scikit-plots 0.3.9.rc2 documentation</title>
+    <title>plot_silhouette &#8212; scikit-plots 0.3.9.rc3 documentation</title>
   
   
   
@@ -57,7 +57,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=b78e842a"></script>
+    <script src="../../_static/documentation_options.js?v=13f60033"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -71,7 +71,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.rc2';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.rc3';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
     <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
@@ -79,7 +79,7 @@
     <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="scikitplot.utils" href="../../api/scikitplot.utils.html" />
+    <link rel="next" title="scikitplot.modelplotpy" href="../../api/scikitplot.modelplotpy.html" />
     <link rel="prev" title="plot_precision_recall" href="scikitplot.metrics.plot_precision_recall.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -551,13 +551,9 @@ document.write(`
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/scikitplot.deciles.html">scikitplot.deciles</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.deciles.print_labels.html">print_labels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.deciles.decile_table.html">decile_table</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.deciles.plot_cumulative_gain.html">plot_cumulative_gain</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.deciles.plot_lift.html">plot_lift</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.deciles.plot_lift_decile_wise.html">plot_lift_decile_wise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.deciles.plot_ks_statistic.html">plot_ks_statistic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.deciles.report.html">report</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/scikitplot.decomposition.html">scikitplot.decomposition</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -570,6 +566,16 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.estimators.plot_learning_curve.html">plot_learning_curve</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../api/scikitplot.kds.html">scikitplot.kds</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.kds.print_labels.html">print_labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.kds.decile_table.html">decile_table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.kds.plot_cumulative_gain.html">plot_cumulative_gain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.kds.plot_lift.html">plot_lift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.kds.plot_lift_decile_wise.html">plot_lift_decile_wise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.kds.plot_ks_statistic.html">plot_ks_statistic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.kds.report.html">report</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../api/scikitplot.metrics.html">scikitplot.metrics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.metrics.plot_calibration_curve.html">plot_calibration_curve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.metrics.plot_classifier_eval.html">plot_classifier_eval</a></li>
@@ -577,6 +583,20 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.metrics.plot_roc.html">plot_roc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.metrics.plot_precision_recall.html">plot_precision_recall</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">plot_silhouette</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../api/scikitplot.modelplotpy.html">scikitplot.modelplotpy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.modelplotpy.ModelPlotPy.html">ModelPlotPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.modelplotpy.plot_response.html">plot_response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.modelplotpy.plot_cumresponse.html">plot_cumresponse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.modelplotpy.plot_cumlift.html">plot_cumlift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.modelplotpy.plot_cumgains.html">plot_cumgains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.modelplotpy.plot_all.html">plot_all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.modelplotpy.plot_costsrevs.html">plot_costsrevs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.modelplotpy.plot_profit.html">plot_profit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.modelplotpy.plot_roi.html">plot_roi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.modelplotpy.range01.html">range01</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.modelplotpy.check_input.html">check_input</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/scikitplot.utils.html">scikitplot.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -679,7 +699,7 @@ use “precomputed” as the metric.</p></li>
 <li><p><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em><em>, </em><em>default='Silhouette Analysis'</em>) – Title of the generated plot.</p></li>
 <li><p><strong>ax</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em> of </em><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.9.2)"><em>matplotlib.axes.Axes</em></a><em>, </em><em>optional</em><em>, </em><em>default=None</em>) – The axis to plot the figure on. If None is passed in the current axes
 will be used (or generated if required).
-Need two axes like [fig.add_subplot(1, 2, 1), fig.add_subplot(1, 2, 2)]</p></li>
+Axes like <code class="docutils literal notranslate"><span class="pre">fig.add_subplot(1,</span> <span class="pre">1,</span> <span class="pre">1)</span></code> or <code class="docutils literal notranslate"><span class="pre">plt.gca()</span></code></p></li>
 <li><p><strong>fig</strong> (<em>matplotlib.pyplot.figure</em><em>, </em><em>optional</em><em>, </em><em>default: None</em>) – <p>The figure to plot the Visualizer on. If None is passed in the current
 plot will be used (or generated if required).</p>
 <div class="versionadded">
@@ -693,7 +713,7 @@ plot will be used (or generated if required).</p>
 Options include ‘viridis’, ‘PiYG’, ‘plasma’, ‘inferno’, ‘nipy_spectral’, etc.
 See Matplotlib Colormap documentation for available choices.
 - <a class="reference external" href="https://matplotlib.org/stable/users/explain/colors/index.html">https://matplotlib.org/stable/users/explain/colors/index.html</a></p></li>
-<li><p><strong>digits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=3</em>) – <p>Number of digits for formatting output floating point values.</p>
+<li><p><strong>digits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em><em>, </em><em>default=4</em>) – <p>Number of digits for formatting output floating point values.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.3.9.</span></p>
 </div>
@@ -761,11 +781,11 @@ See Matplotlib Colormap documentation for available choices.
       </div>
     </a>
     <a class="right-next"
-       href="../../api/scikitplot.utils.html"
+       href="../../api/scikitplot.modelplotpy.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">scikitplot.utils</p>
+        <p class="prev-next-title">scikitplot.modelplotpy</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

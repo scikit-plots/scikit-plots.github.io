@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="KS Statistic Plot" />
 <meta name="description" content="Gallery examples: plot_ks_statistic with examples" />
 
-    <title>plot_ks_statistic &#8212; scikit-plots 0.3.9.rc2 documentation</title>
+    <title>plot_ks_statistic &#8212; scikit-plots 0.3.9.rc3 documentation</title>
   
   
   
@@ -57,7 +57,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=b78e842a"></script>
+    <script src="../../_static/documentation_options.js?v=13f60033"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -71,7 +71,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.rc2';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.rc3';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
     <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
@@ -79,8 +79,8 @@
     <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="report" href="scikitplot.deciles.report.html" />
-    <link rel="prev" title="plot_lift_decile_wise" href="scikitplot.deciles.plot_lift_decile_wise.html" />
+    <link rel="next" title="scikitplot.decomposition" href="../../api/scikitplot.decomposition.html" />
+    <link rel="prev" title="plot_lift" href="scikitplot.deciles.plot_lift.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -551,13 +551,9 @@ document.write(`
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../api/scikitplot.deciles.html">scikitplot.deciles</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.deciles.print_labels.html">print_labels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.deciles.decile_table.html">decile_table</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.deciles.plot_cumulative_gain.html">plot_cumulative_gain</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.deciles.plot_lift.html">plot_lift</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.deciles.plot_lift_decile_wise.html">plot_lift_decile_wise</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">plot_ks_statistic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.deciles.report.html">report</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/scikitplot.decomposition.html">scikitplot.decomposition</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -570,6 +566,16 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.estimators.plot_learning_curve.html">plot_learning_curve</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../api/scikitplot.kds.html">scikitplot.kds</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.kds.print_labels.html">print_labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.kds.decile_table.html">decile_table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.kds.plot_cumulative_gain.html">plot_cumulative_gain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.kds.plot_lift.html">plot_lift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.kds.plot_lift_decile_wise.html">plot_lift_decile_wise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.kds.plot_ks_statistic.html">plot_ks_statistic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.kds.report.html">report</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/scikitplot.metrics.html">scikitplot.metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.metrics.plot_calibration_curve.html">plot_calibration_curve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.metrics.plot_classifier_eval.html">plot_classifier_eval</a></li>
@@ -577,6 +583,20 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.metrics.plot_roc.html">plot_roc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.metrics.plot_precision_recall.html">plot_precision_recall</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.metrics.plot_silhouette.html">plot_silhouette</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../api/scikitplot.modelplotpy.html">scikitplot.modelplotpy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.modelplotpy.ModelPlotPy.html">ModelPlotPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.modelplotpy.plot_response.html">plot_response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.modelplotpy.plot_cumresponse.html">plot_cumresponse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.modelplotpy.plot_cumlift.html">plot_cumlift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.modelplotpy.plot_cumgains.html">plot_cumgains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.modelplotpy.plot_all.html">plot_all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.modelplotpy.plot_costsrevs.html">plot_costsrevs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.modelplotpy.plot_profit.html">plot_profit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.modelplotpy.plot_roi.html">plot_roi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.modelplotpy.range01.html">range01</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.modelplotpy.check_input.html">check_input</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/scikitplot.utils.html">scikitplot.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -660,17 +680,22 @@ document.write(`
 <h1>plot_ks_statistic<a class="headerlink" href="#plot-ks-statistic" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.deciles.plot_ks_statistic">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.deciles.</span></span><span class="sig-name descname"><span class="pre">plot_ks_statistic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_probas</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'KS</span> <span class="pre">Statistic</span> <span class="pre">Plot'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'large'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'medium'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.deciles.plot_ks_statistic" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.deciles.</span></span><span class="sig-name descname"><span class="pre">plot_ks_statistic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_probas</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'KS</span> <span class="pre">Statistic</span> <span class="pre">Plot'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'large'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'medium'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.deciles.plot_ks_statistic" title="Link to this definition">#</a></dt>
 <dd><p>Generates the KS Statistic plot from labels and scores/probabilities.</p>
+<p>Kolmogorov-Smirnov (KS) statistic is used to measure how well the
+binary classifier model separates the Responder class (Yes) from
+Non-Responder class (No). The range of K-S statistic is between 0 and 1.
+Higher the KS statistic value better the model in separating the
+Responder class from Non-Responder class.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>y_true</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>)</em>) – Ground truth (correct) target values.</p></li>
 <li><p><strong>y_probas</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_classes</em><em>)</em>) – Prediction probabilities for each class returned by a classifier.</p></li>
-<li><p><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em>) – Title of the generated plot. Defaults to “KS Statistic Plot”.</p></li>
+<li><p><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><em>optional</em><em>, </em><em>default='KS Statistic Plot'</em>) – Title of the generated plot.</p></li>
 <li><p><strong>ax</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><em>list</em></a><em> of </em><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.9.2)"><em>matplotlib.axes.Axes</em></a><em>, </em><em>optional</em><em>, </em><em>default=None</em>) – The axis to plot the figure on. If None is passed in the current axes
 will be used (or generated if required).
-Need two axes like [fig.add_subplot(1, 2, 1), fig.add_subplot(1, 2, 2)]</p></li>
+Axes like <code class="docutils literal notranslate"><span class="pre">fig.add_subplot(1,</span> <span class="pre">1,</span> <span class="pre">1)</span></code> or <code class="docutils literal notranslate"><span class="pre">plt.gca()</span></code></p></li>
 <li><p><strong>fig</strong> (<em>matplotlib.pyplot.figure</em><em>, </em><em>optional</em><em>, </em><em>default: None</em>) – <p>The figure to plot the Visualizer on. If None is passed in the current
 plot will be used (or generated if required).</p>
 <div class="versionadded">
@@ -680,7 +705,7 @@ plot will be used (or generated if required).</p>
 <li><p><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a><em> of </em><em>2 ints</em><em>, </em><em>optional</em>) – Tuple denoting figure size of the plot e.g. (6, 6). Defaults to None.</p></li>
 <li><p><strong>title_fontsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – Matplotlib-style fontsizes. Use e.g. “small”, “medium”, “large” or integer-values. Defaults to “large”.</p></li>
 <li><p><strong>text_fontsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – Matplotlib-style fontsizes. Use e.g. “small”, “medium”, “large” or integer-values. Defaults to “medium”.</p></li>
-<li><p><strong>digits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – <p>Number of digits for formatting output floating point values. Use e.g. 2 or 4. Defaults to 3.</p>
+<li><p><strong>digits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – <p>Number of digits for formatting output floating point values. Use e.g. 2 or 4. Defaults to 2.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.3.9.</span></p>
 </div>
@@ -733,20 +758,20 @@ plot will be used (or generated if required).</p>
     <div class="footer-article-item">
 <div class="prev-next-area">
     <a class="left-prev"
-       href="scikitplot.deciles.plot_lift_decile_wise.html"
+       href="scikitplot.deciles.plot_lift.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">plot_lift_decile_wise</p>
+        <p class="prev-next-title">plot_lift</p>
       </div>
     </a>
     <a class="right-next"
-       href="scikitplot.deciles.report.html"
+       href="../../api/scikitplot.decomposition.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">report</p>
+        <p class="prev-next-title">scikitplot.decomposition</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
