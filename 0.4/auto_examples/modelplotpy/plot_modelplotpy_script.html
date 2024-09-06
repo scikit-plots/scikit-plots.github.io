@@ -1,0 +1,913 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../../" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Introduction to modelplotpy" property="og:title"/>
+<meta content="website" property="og:type"/>
+<meta content="https://scikit-plots.github.io/stable/auto_examples/modelplotpy/plot_modelplotpy_script.html" property="og:url"/>
+<meta content="scikit-plots" property="og:site_name"/>
+<meta content="To install the latest version (with pip): This exercise is used in the Marketing Analytics part of the ModelPlotPy section. References[1] https://modelplot.github.io/intro_modelplotpy.html. A tutor..." property="og:description"/>
+<meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
+<meta content="scikit-plots" property="og:image:alt"/>
+<meta content="To install the latest version (with pip): This exercise is used in the Marketing Analytics part of the ModelPlotPy section. References[1] https://modelplot.github.io/intro_modelplotpy.html. A tutor..." name="description"/>
+<title>Introduction to modelplotpy — scikit-plots 0.3.9.rc3 documentation</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet"/>
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet"/>
+<link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../_static/pygments.css?v=a746c00c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/jupyter-sphinx.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/thebelab.css" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
+<link href="../../_static/jupyterlite_sphinx.css?v=ca70e7f1" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery.css?v=d2d258e8" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery-binder.css?v=f4aeca0c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/colors.css?v=14208072" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/custom.css?v=e4cb1417" rel="stylesheet" type="text/css"/>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" rel="preload"/>
+<script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/documentation_options.js?v=13f60033"></script>
+<script src="../../_static/doctools.js?v=9a2dae69"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=97f0b27d"></script>
+<script src="../../_static/thebelab-helper.js"></script>
+<script src="../../_static/jupyterlite_sphinx.js?v=d6bdf5f8"></script>
+<script src="../../_static/design-tabs.js?v=f930bc37"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/modelplotpy/plot_modelplotpy_script';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.15.4';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.3.9.rc3';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+<script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
+<script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
+<link href="../../_static/scikit-plots-favicon.ico" rel="icon"/>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="../../whats_new/whats_new.html" rel="next" title="Release History"/>
+<link href="index.html" rel="prev" title="ModelPlotPy"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Skip to main content</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button">
+<i class="fa-solid fa-arrow-up"></i>Back to top</button>
+<input class="sidebar-toggle" id="pst-primary-sidebar-checkbox" type="checkbox"/>
+<label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+<input class="sidebar-toggle" id="pst-secondary-sidebar-checkbox" type="checkbox"/>
+<label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+<div class="search-button__wrapper">
+<div class="search-button__overlay"></div>
+<div class="search-button__search-container">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search the docs ..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" id="search-input" name="q" placeholder="Search the docs ..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+</div>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Version warning" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Site navigation" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../index.html">
+<img alt="scikit-plots homepage" class="logo__image only-light" src="../../_static/scikit-plots-logo-small.png"/>
+<script>document.write(`<img src="../../_static/scikit-plots-logo-small.png" class="logo__image only-dark" alt="scikit-plots homepage"/>`);</script>
+</a></div>
+</div>
+<div class="navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../introduction/introduction.html">
+    Introduction
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../user_guide/user_guide.html">
+    User Guide
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../api/index.html">
+    API Reference
+  </a>
+</li>
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../index.html">
+    Tutorials
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../whats_new/whats_new.html">
+    Release Notes
+  </a>
+</li>
+<li class="nav-item dropdown">
+<button aria-controls="pst-nav-more-links" aria-expanded="false" class="btn dropdown-toggle nav-item" data-bs-toggle="dropdown" type="button">
+                    More
+                </button>
+<ul class="dropdown-menu" id="pst-nav-more-links">
+<li class="">
+<a class="nav-link dropdown-item nav-external" href="https://zenodo.org/communities/scikit-plots">
+    Community
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-external" href="https://scikit-plots.github.io/dev/developers/index.html">
+    Developer’s Guide
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../community/faq.html">
+    FAQ
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../community/scikiplot_glossary.html">
+    Glossary
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../teams/about.html">
+    About us
+  </a>
+</li>
+</ul>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item navbar-persistent--container">
+<script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+</div>
+<div class="navbar-item">
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+<div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-2"
+      type="button"
+      class="version-switcher__button btn btn-sm dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-2"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-2"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-2">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+<div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/scikit-plots/scikit-plots" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i>
+<span class="sr-only">GitHub</span></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><i aria-hidden="true" class="fa-brands fa-python fa-lg"></i>
+<span class="sr-only">PyPI</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="navbar-persistent--mobile">
+<script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+</div>
+<button aria-label="On this page" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<div class="bd-sidebar-primary bd-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../introduction/introduction.html">
+    Introduction
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../user_guide/user_guide.html">
+    User Guide
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../api/index.html">
+    API Reference
+  </a>
+</li>
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../index.html">
+    Tutorials
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../whats_new/whats_new.html">
+    Release Notes
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-external" href="https://zenodo.org/communities/scikit-plots">
+    Community
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-external" href="https://scikit-plots.github.io/dev/developers/index.html">
+    Developer’s Guide
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../community/faq.html">
+    FAQ
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../community/scikiplot_glossary.html">
+    Glossary
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../teams/about.html">
+    About us
+  </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+<div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-3"
+      type="button"
+      class="version-switcher__button btn btn-sm dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-3"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-3"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-3">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+<div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/scikit-plots/scikit-plots" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i>
+<span class="sr-only">GitHub</span></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><i aria-hidden="true" class="fa-brands fa-python fa-lg"></i>
+<span class="sr-only">PyPI</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item">
+<nav aria-label="Section Navigation" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Section Navigation</p>
+<div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00-blogs/index.html">blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00-jupyter_notebooks/index.html">jupyter notebooks</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cluster/index.html">Cluster</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cluster/plot_elbow_script.html">plot_silhouette with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../deciles/index.html">Deciles</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deciles/plot_cumulative_gain_script.html">plot_cumulative_gain with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deciles/plot_ks_statistic_script.html">plot_ks_statistic with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deciles/plot_lift_script.html">plot_lift_curve with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../decomposition/index.html">Decomposition</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_2d_projection_script.html">plot_pca_2d_projection with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_component_variance_script.html">plot_pca_component_variance with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../estimators/index.html">Estimators</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../estimators/plot_feature_importances_script.html">plot_feature_importances with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../estimators/plot_learning_curve_script.html">plot_learning_curve with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../metrics/index.html">Metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../metrics/plot_calibration_curve_script.html">plot_calibration_curve with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metrics/plot_confusion_matrix_script.html">plot_confusion_matrix with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metrics/plot_precision_recall_script.html">plot_precision_recall with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metrics/plot_classifier_eval_script.html">plot_roc_curve with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metrics/plot_roc_script.html">plot_roc_curve with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metrics/plot_silhouette_script.html">plot_silhouette with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">ModelPlotPy</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Introduction to modelplotpy</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+</div>
+<div id="rtd-footer-container"></div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">Examples</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">ModelPlotPy</a></li>
+<li aria-current="page" class="breadcrumb-item active">Introduction...</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+
+<section class="sphx-glr-example-title" id="introduction-to-modelplotpy">
+<span id="sphx-glr-auto-examples-modelplotpy-plot-modelplotpy-script-py"></span><h1>Introduction to modelplotpy<a class="headerlink" href="#introduction-to-modelplotpy" title="Link to this heading">#</a></h1>
+<p>To install the latest version (with pip):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">scikit</span><span class="o">-</span><span class="n">plots</span>
+</pre></div>
+</div>
+<p>This exercise is used in the <a class="reference internal" href="../../user_guide/marketing_analytics.html#marketing-analytics"><span class="std std-ref">Marketing Analytics</span></a> part of the
+<a class="reference internal" href="../../modules/modelplotpy.html#modelplotpy"><span class="std std-ref">ModelPlotPy</span></a> section.</p>
+<p class="rubric">References</p>
+<ul class="simple">
+<li><p>[1] <a class="reference external" href="https://modelplot.github.io/intro_modelplotpy.html">https://modelplot.github.io/intro_modelplotpy.html</a></p></li>
+</ul>
+<p>A tutorial exercise example: Predictive models from sklearn
+on the Bank Marketing Data Set</p>
+<p>This example is based on a publicly available dataset, called the Bank Marketing Data Set.
+It is one of the most popular datasets which is made available on the
+<a class="reference external" href="https://archive.ics.uci.edu/dataset/222/bank+marketing">UCI Machine Learning Repository</a>.</p>
+<p>The data set comes from a Portugese bank and deals with a frequently-posed marketing question:
+whether a customer did or did not acquire a term deposit, a financial product.
+There are 4 datasets available and the bank-additional-full.csv is the one we use.
+It contains the information of 41.188 customers and 21 columns of information.</p>
+<p>To illustrate how to use modelplotpy, let’s say that we work for this bank
+and our marketing colleagues have asked us to help to select the customers
+that are most likely to respond to a term deposit offer. For that purpose,
+we will develop a predictive model and create the plots to discuss the results
+with our marketing colleagues. Since we want to show you how to build the plots,
+not how to build a perfect model, we’ll use six of these columns in our example.</p>
+<p>Here’s a short description on the data we use:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code>: has the client subscribed a term deposit?</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">duration</span></code>: last contact duration, in seconds (numeric)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">campaign</span></code>: number of contacts performed during this campaign and for this client</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pdays</span></code>: number of days that passed by after the client was last contacted from a previous campaign</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">previous</span></code>: number of contacts performed before this campaign and for this client (numeric)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">euribor3m</span></code>: euribor 3 month rate</p></li>
+</ul>
+<p>Let’s load the data and have a quick look at it:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: The scikit-plots developers</span>
+<span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
+</pre></div>
+</div>
+<section id="loading-the-dataset">
+<h2>Loading the dataset<a class="headerlink" href="#loading-the-dataset" title="Link to this heading">#</a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">zipfile</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="p">;</span> <a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.seed.html#numpy.random.seed" title="numpy.random.seed"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<a class="sphx-glr-backref-module-warnings sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/warnings.html#warnings.filterwarnings" title="warnings.filterwarnings"><span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span></a><span class="p">(</span><span class="s1">'ignore'</span><span class="p">)</span>
+
+<span class="c1">#r = requests.get("https://archive.ics.uci.edu/ml/machine-learning-databases/00222/bank-additional.zip")</span>
+<span class="c1"># we encountered that the source at uci.edu is not always available,</span>
+<span class="c1"># therefore we made a copy to our repos.</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'https://modelplot.github.io/img/bank-additional.zip'</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <a class="sphx-glr-backref-module-zipfile sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/zipfile.html#zipfile.ZipFile" title="zipfile.ZipFile"><span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span></a><span class="p">(</span><a class="sphx-glr-backref-module-io sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/io.html#io.BytesIO" title="io.BytesIO"><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span></a><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+<span class="c1"># You can change the path, currently the data is written to the working directory</span>
+<span class="n">path</span> <span class="o">=</span> <a class="sphx-glr-backref-module-os sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/os.html#os.getcwd" title="os.getcwd"><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span></a><span class="p">()</span>
+<span class="n">z</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="n">bank</span> <span class="o">=</span> <a class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-function" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html#pandas.read_csv" title="pandas.read_csv"><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span></a><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">"/bank-additional/bank-additional-full.csv"</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">';'</span><span class="p">)</span>
+
+<span class="c1"># select the 6 columns</span>
+<span class="n">bank</span> <span class="o">=</span> <span class="n">bank</span><span class="p">[[</span><span class="s1">'y'</span><span class="p">,</span> <span class="s1">'duration'</span><span class="p">,</span> <span class="s1">'campaign'</span><span class="p">,</span> <span class="s1">'pdays'</span><span class="p">,</span> <span class="s1">'previous'</span><span class="p">,</span> <span class="s1">'euribor3m'</span><span class="p">]]</span>
+<span class="c1"># rename target class value 'yes' for better interpretation</span>
+<span class="n">bank</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">bank</span><span class="o">.</span><span class="n">y</span> <span class="o">==</span> <span class="s1">'yes'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'term deposit'</span>
+
+<span class="c1"># dimensions of the data</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bank</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># show the first rows of the dataset</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bank</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(41188, 6)
+    y  duration  campaign  pdays  previous  euribor3m
+0  no       261         1    999         0      4.857
+1  no       149         1    999         0      4.857
+2  no       226         1    999         0      4.857
+3  no       151         1    999         0      4.857
+4  no       307         1    999         0      4.857
+</pre></div>
+</div>
+</section>
+<section id="train-models-on-the-bank-dataset">
+<h2>Train models on the bank dataset<a class="headerlink" href="#train-models-on-the-bank-dataset" title="Link to this heading">#</a></h2>
+<p>On this data, we’ve applied some predictive modeling techniques from the sklearn module.
+This well known module is a wrapper for many predictive modeling techniques,
+such as logistic regression, random forest and many, many others.
+Lets train a few models to evaluate with our plots.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># to create predictive models</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a>
+
+<span class="c1"># define target vector y</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">bank</span><span class="o">.</span><span class="n">y</span>
+<span class="c1"># define feature matrix X</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">bank</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">'y'</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Create the necessary datasets to build models</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">2018</span><span class="p">)</span>
+
+<span class="c1"># Instantiate a few classification models</span>
+<span class="n">clf_rf</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">clf_mult</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a><span class="p">(</span><span class="n">multi_class</span><span class="o">=</span><span class="s1">'multinomial'</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">'newton-cg'</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="plotting-partial-dependence-for-two-features">
+<h2>Plotting partial dependence for two features<a class="headerlink" href="#plotting-partial-dependence-for-two-features" title="Link to this heading">#</a></h2>
+<p>For now, we focus on explaining to our marketing colleagues how good our predictive model
+can help them select customers for their term deposit campaign.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scikitplot.modelplotpy</span> <span class="k">as</span> <span class="nn">mp</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">modelplotpy</span><span class="p">(</span>
+    <span class="n">feature_data</span>   <span class="o">=</span> <span class="p">[</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">],</span>
+    <span class="n">label_data</span>     <span class="o">=</span> <span class="p">[</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">],</span>
+    <span class="n">dataset_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'train_data'</span><span class="p">,</span> <span class="s1">'test_data'</span><span class="p">],</span>
+    <span class="n">models</span>         <span class="o">=</span> <span class="p">[</span><span class="n">clf_rf</span><span class="p">,</span> <span class="n">clf_mult</span><span class="p">],</span>
+    <span class="n">model_labels</span>   <span class="o">=</span> <span class="p">[</span><span class="s1">'random_forest'</span><span class="p">,</span> <span class="s1">'multinomial_logit'</span><span class="p">],</span>
+    <span class="n">ntiles</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="p">)</span>
+
+<span class="c1"># transform data generated with prepare_scores_and_deciles into aggregated data for chosen plotting scope</span>
+<span class="n">ps</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">plotting_scope</span><span class="p">(</span><span class="n">select_model_label</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'random_forest'</span><span class="p">],</span> <span class="n">select_dataset_label</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'test_data'</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Default scope value no_comparison selected, single evaluation line will be plotted.
+The label with smallest class is term deposit
+Target class term deposit, dataset test_data and model random_forest.
+</pre></div>
+</div>
+<p>What just happened? In the modelplotpy a class is instantiated and the plotting_scope function specifies
+the scope of the plots you want to show. In general, there are 3 methods (functions) that can be applied to
+the modelplotpy class but you don’t have to specify them since they are chained to each other.</p>
+<p>These functions are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">prepare_scores_and_deciles</span></code>: scores the customers in the train dataset
+and test dataset with their probability to acquire a term deposit</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aggregate_over_deciles</span></code>: aggregates all scores to deciles and calculates the information to show</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plotting_scope</span></code>: allows you to specify the scope of the analysis.</p></li>
+</ul>
+<p>In the second line of code, we specified the scope of the analysis.
+We’ve not specified the “scope” parameter, therefore the default - no comparison - is chosen.
+As the output notes, you can use modelplotpy to evaluate your model(s) from several perspectives:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Interpret</span> <span class="pre">just</span> <span class="pre">one</span> <span class="pre">model</span> <span class="pre">(the</span> <span class="pre">default)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Compare</span> <span class="pre">the</span> <span class="pre">model</span> <span class="pre">performance</span> <span class="pre">across</span> <span class="pre">different</span> <span class="pre">datasets</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Compare</span> <span class="pre">the</span> <span class="pre">performance</span> <span class="pre">across</span> <span class="pre">different</span> <span class="pre">models</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Compare</span> <span class="pre">the</span> <span class="pre">performance</span> <span class="pre">across</span> <span class="pre">different</span> <span class="pre">target</span> <span class="pre">classes</span></code></p></li>
+</ul>
+<p>Here, we will keep it simple and evaluate - from a business perspective - how well a selected model
+will perform in a selected dataset for one target class. We did specify values for some parameters,
+to focus on the random forest model on the test data. The default value for the target class is
+<code class="docutils literal notranslate"><span class="pre">term</span> <span class="pre">deposit</span></code> since we want to focus on customers that do take term deposits,
+this default is perfect.</p>
+</section>
+<section id="let-s-introduce-the-gains-lift-and-cumulative-response-plots">
+<h2>Let’s introduce the Gains, Lift and (cumulative) Response plots.<a class="headerlink" href="#let-s-introduce-the-gains-lift-and-cumulative-response-plots" title="Link to this heading">#</a></h2>
+<p>Although each plot sheds light on the business value of your model
+from a different angle, they all use the same data:</p>
+<ul class="simple">
+<li><p>Predicted probability for the target class</p></li>
+<li><p>Equally sized groups based on this predicted probability</p></li>
+<li><p>Actual number of observed target class observations in these groups</p></li>
+</ul>
+<section id="cumulative-gains-plot">
+<h3>1. Cumulative gains plot<a class="headerlink" href="#cumulative-gains-plot" title="Link to this heading">#</a></h3>
+<p>The cumulative gains plot - often named ‘gains plot’ - helps you answer the question:</p>
+<p>When we apply the model and select the best X deciles,
+what % of the actual target class observations can we expect to target?</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the cumulative gains plot and annotate the plot at decile = 3</span>
+<a class="sphx-glr-backref-module-scikitplot-modelplotpy sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.modelplotpy.plot_cumgains.html#scikitplot.modelplotpy.plot_cumgains" title="scikitplot.modelplotpy.plot_cumgains"><span class="n">mp</span><span class="o">.</span><span class="n">plot_cumgains</span></a><span class="p">(</span>
+    <span class="n">ps</span><span class="p">,</span>
+    <span class="n">highlight_ntile</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">save_fig</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<img alt="Cumulative gains, model: random_forest &amp; dataset: test_data &amp; target class: term deposit" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_modelplotpy_script_001.png" srcset="../../_images/sphx_glr_plot_modelplotpy_script_001.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>When we select 30% with the highest probability according to model random_forest, this selection holds 94% of all term deposit cases in dataset test_data.
+
+&lt;Axes: title={'center': 'model: random_forest &amp; dataset: test_data &amp; target class: term deposit'}, xlabel='decile', ylabel='cumulative gains'&gt;
+</pre></div>
+</div>
+</section>
+<section id="cumulative-lift-plot">
+<h3>2. Cumulative lift plot<a class="headerlink" href="#cumulative-lift-plot" title="Link to this heading">#</a></h3>
+<p>The cumulative lift plot, often referred to as lift plot or index plot, helps you answer the question:</p>
+<p>When we apply the model and select the best X deciles,
+how many times better is that than using no model at all?</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the cumulative lift plot and annotate the plot at decile = 3</span>
+<a class="sphx-glr-backref-module-scikitplot-modelplotpy sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.modelplotpy.plot_cumlift.html#scikitplot.modelplotpy.plot_cumlift" title="scikitplot.modelplotpy.plot_cumlift"><span class="n">mp</span><span class="o">.</span><span class="n">plot_cumlift</span></a><span class="p">(</span>
+    <span class="n">ps</span><span class="p">,</span>
+    <span class="n">highlight_ntile</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">save_fig</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<img alt="Cumulative lift, model: random_forest &amp; dataset: test_data &amp; target class: term deposit" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_modelplotpy_script_002.png" srcset="../../_images/sphx_glr_plot_modelplotpy_script_002.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>When we select 30% with the highest probability according to model random_forest in dataset test_data, this selection for target class term deposit is 3.14 times than selecting without a model.
+
+&lt;Axes: title={'center': 'model: random_forest &amp; dataset: test_data &amp; target class: term deposit'}, xlabel='decile', ylabel='cumulative lift'&gt;
+</pre></div>
+</div>
+</section>
+<section id="response-plot">
+<h3>3. Response plot<a class="headerlink" href="#response-plot" title="Link to this heading">#</a></h3>
+<p>One of the easiest to explain evaluation plots is the response plot.
+It simply plots the percentage of target class observations per decile.
+It can be used to answer the following business question:</p>
+<p>When we apply the model and select decile X,
+what is the expected % of target class observations in that decile?</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the response plot and annotate the plot at decile = 3</span>
+<a class="sphx-glr-backref-module-scikitplot-modelplotpy sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.modelplotpy.plot_response.html#scikitplot.modelplotpy.plot_response" title="scikitplot.modelplotpy.plot_response"><span class="n">mp</span><span class="o">.</span><span class="n">plot_response</span></a><span class="p">(</span>
+    <span class="n">ps</span><span class="p">,</span>
+    <span class="n">highlight_ntile</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">save_fig</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<img alt="Response, model: random_forest &amp; dataset: test_data &amp; target class: term deposit" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_modelplotpy_script_003.png" srcset="../../_images/sphx_glr_plot_modelplotpy_script_003.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>When we select decile 3 from model random_forest in dataset test_data the percentage of term deposit cases in the selection is 13%.
+
+&lt;Axes: title={'center': 'model: random_forest &amp; dataset: test_data &amp; target class: term deposit'}, xlabel='decile', ylabel='response'&gt;
+</pre></div>
+</div>
+</section>
+<section id="cumulative-response-plot">
+<h3>4. Cumulative response plot<a class="headerlink" href="#cumulative-response-plot" title="Link to this heading">#</a></h3>
+<p>Finally, one of the most used plots: The cumulative response plot.
+It answers the question burning on each business reps lips:</p>
+<p>When we apply the model and select up until decile X,
+what is the expected % of target class observations in the selection?</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the cumulative response plot and annotate the plot at decile = 3</span>
+<a class="sphx-glr-backref-module-scikitplot-modelplotpy sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.modelplotpy.plot_cumresponse.html#scikitplot.modelplotpy.plot_cumresponse" title="scikitplot.modelplotpy.plot_cumresponse"><span class="n">mp</span><span class="o">.</span><span class="n">plot_cumresponse</span></a><span class="p">(</span>
+    <span class="n">ps</span><span class="p">,</span>
+    <span class="n">highlight_ntile</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">save_fig</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<img alt="Cumulative response, model: random_forest &amp; dataset: test_data &amp; target class: term deposit" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_modelplotpy_script_004.png" srcset="../../_images/sphx_glr_plot_modelplotpy_script_004.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>When we select deciles 1 until 3 according to model random_forest in dataset test_data the percentage of term deposit cases in the selection is 35%.
+
+&lt;Axes: title={'center': 'model: random_forest &amp; dataset: test_data &amp; target class: term deposit'}, xlabel='decile', ylabel='cumulative response'&gt;
+</pre></div>
+</div>
+</section>
+</section>
+<section id="all-four-plots-together">
+<h2>All four plots together<a class="headerlink" href="#all-four-plots-together" title="Link to this heading">#</a></h2>
+<p>With the function call plot_all we get all four plots on one grid.
+We can easily save it to a file to include it in a presentation or share it with colleagues.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot all four evaluation plots and save to file</span>
+<a class="sphx-glr-backref-module-scikitplot-modelplotpy sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.modelplotpy.plot_all.html#scikitplot.modelplotpy.plot_all" title="scikitplot.modelplotpy.plot_all"><span class="n">mp</span><span class="o">.</span><span class="n">plot_all</span></a><span class="p">(</span>
+    <span class="n">ps</span><span class="p">,</span>
+    <span class="n">save_fig</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="c1"># save_fig_filename = 'Selection model Term Deposits'</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<img alt="model: random_forest &amp; dataset: test_data &amp; target class: term deposit, Cumulative gains, Cumulative lift, Response, Cumulative response" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_modelplotpy_script_005.png" srcset="../../_images/sphx_glr_plot_modelplotpy_script_005.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={'center': 'Cumulative gains'}, ylabel='cumulative gains'&gt;
+</pre></div>
+</div>
+</section>
+<section id="financial-implications">
+<h2>Financial Implications<a class="headerlink" href="#financial-implications" title="Link to this heading">#</a></h2>
+<p>To plot the financial implications of implementing a predictive model,
+modelplotr provides three additional plots: the Costs &amp; revenues plot,
+the Profit plot and the ROI plot.</p>
+<p>For financial plots, three extra parameters need to be provided:</p>
+<div class="line-block">
+<div class="line">Parameter     |  Type.and.Description |</div>
+<div class="line">:-: | :-: |</div>
+<div class="line">fixed_costs   | Numeric. Specifying the fixed costs related to a selection based on the model. These costs are constant and do not vary with selection size (ntiles). |</div>
+<div class="line">variable_costs_per_unit       | Numeric. Specifying the variable costs per selected unit for a selection based on the model. These costs vary with selection size (ntiles). |</div>
+<div class="line">profit_per_unit       | Numeric. Specifying the profit per unit in case the selected unit converts / responds positively. |</div>
+</div>
+<section id="return-on-investment-plot">
+<h3>1. Return on investment plot<a class="headerlink" href="#return-on-investment-plot" title="Link to this heading">#</a></h3>
+<p>The Return on Investment plot plots the cumulative revenues as a percentage of investments up
+until that decile when the model is used for campaign selection.
+It can be used to answer the following business question:</p>
+<p>When we apply the model and select up until decile X,
+what is the expected % return on investment of the campaign?</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Return on Investment (ROI) plot</span>
+<a class="sphx-glr-backref-module-scikitplot-modelplotpy sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.modelplotpy.plot_roi.html#scikitplot.modelplotpy.plot_roi" title="scikitplot.modelplotpy.plot_roi"><span class="n">mp</span><span class="o">.</span><span class="n">plot_roi</span></a><span class="p">(</span>
+    <span class="n">ps</span><span class="p">,</span>
+    <span class="n">fixed_costs</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
+    <span class="n">variable_costs_per_unit</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">profit_per_unit</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="n">highlight_ntile</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">save_fig</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<img alt="Return on Investment (ROI), model: random_forest &amp; dataset: test_data &amp; target class: term deposit" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_modelplotpy_script_006.png" srcset="../../_images/sphx_glr_plot_modelplotpy_script_006.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>When we select decile 1 until 3 from model random_forest in dataset test_data the percentage of term deposit cases in the expected expected return on investment is 71%.
+
+&lt;Axes: title={'center': 'model: random_forest &amp; dataset: test_data &amp; target class: term deposit'}, xlabel='decile', ylabel='% roi'&gt;
+</pre></div>
+</div>
+</section>
+<section id="costs-revenues-plot">
+<h3>2. Costs &amp; Revenues plot<a class="headerlink" href="#costs-revenues-plot" title="Link to this heading">#</a></h3>
+<p>The costs &amp; revenues plot plots both the cumulative revenues and the cumulative costs
+(investments) up until that decile when the model is used for campaign selection.
+It can be used to answer the following business question:</p>
+<p>When we apply the model and select up until decile X,
+what are the expected revenues and investments of the campaign?</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Costs &amp; Revenues plot, highlighted at max roi instead of max profit</span>
+<a class="sphx-glr-backref-module-scikitplot-modelplotpy sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.modelplotpy.plot_costsrevs.html#scikitplot.modelplotpy.plot_costsrevs" title="scikitplot.modelplotpy.plot_costsrevs"><span class="n">mp</span><span class="o">.</span><span class="n">plot_costsrevs</span></a><span class="p">(</span>
+    <span class="n">ps</span><span class="p">,</span>
+    <span class="n">fixed_costs</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
+    <span class="n">variable_costs_per_unit</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">profit_per_unit</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="n">highlight_ntile</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="c1"># highlight_ntile = "max_roi",</span>
+    <span class="n">save_fig</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<img alt="Costs / Revenues, model: random_forest &amp; dataset: test_data &amp; target class: term deposit" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_modelplotpy_script_007.png" srcset="../../_images/sphx_glr_plot_modelplotpy_script_007.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>When we select decile 1 until 3 from model random_forest in dataset test_data the percentage of term deposit cases in the revenue is 65100.
+
+&lt;Axes: title={'center': 'model: random_forest &amp; dataset: test_data &amp; target class: term deposit'}, xlabel='decile', ylabel='costs / revenue'&gt;
+</pre></div>
+</div>
+</section>
+<section id="profit-plot">
+<h3>3. Profit plot<a class="headerlink" href="#profit-plot" title="Link to this heading">#</a></h3>
+<p>The profit plot visualized the cumulative profit up until that decile
+when the model is used for campaign selection.
+It can be used to answer the following business question:</p>
+<p>When we apply the model and select up until decile X,
+what is the expected profit of the campaign?</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Profit plot , highlighted at custom ntile instead of at max profit</span>
+<a class="sphx-glr-backref-module-scikitplot-modelplotpy sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.modelplotpy.plot_profit.html#scikitplot.modelplotpy.plot_profit" title="scikitplot.modelplotpy.plot_profit"><span class="n">mp</span><span class="o">.</span><span class="n">plot_profit</span></a><span class="p">(</span>
+    <span class="n">ps</span><span class="p">,</span>
+    <span class="n">fixed_costs</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
+    <span class="n">variable_costs_per_unit</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">profit_per_unit</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="n">highlight_ntile</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">save_fig</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<img alt="Profit, model: random_forest &amp; dataset: test_data &amp; target class: term deposit" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_modelplotpy_script_008.png" srcset="../../_images/sphx_glr_plot_modelplotpy_script_008.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>When we select decile 1 until 3 from model random_forest in dataset test_data the percentage of term deposit cases in the expected profit is 27030.
+
+&lt;Axes: title={'center': 'model: random_forest &amp; dataset: test_data &amp; target class: term deposit'}, xlabel='decile', ylabel='profit'&gt;
+</pre></div>
+</div>
+</section>
+</section>
+<section id="get-more-out-of-modelplotpy-using-different-scopes">
+<h2>Get more out of modelplotpy: using different scopes<a class="headerlink" href="#get-more-out-of-modelplotpy-using-different-scopes" title="Link to this heading">#</a></h2>
+<p>As we mentioned discussed earlier, the modelplotpy also enables to make interesting comparisons,
+using the scope parameter. Comparisons between different models, between different datasets
+and (in case of a multiclass target) between different target classes. Curious?
+Please have a look at the package documentation or read our other posts on modelplot.</p>
+<section id="compare-models">
+<h3>1. compare_models<a class="headerlink" href="#compare-models" title="Link to this heading">#</a></h3>
+<p>However, to give one example, we could compare whether random forest
+was indeed the best choice to select the top-30% customers for a term deposit offer:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">ps2</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">plotting_scope</span><span class="p">(</span>
+    <span class="n">scope</span>                <span class="o">=</span> <span class="s2">"compare_models"</span><span class="p">,</span>
+    <span class="n">select_dataset_label</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'test_data'</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="c1"># plot the cumulative response plot and annotate the plot at decile = 3</span>
+<a class="sphx-glr-backref-module-scikitplot-modelplotpy sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.modelplotpy.plot_cumresponse.html#scikitplot.modelplotpy.plot_cumresponse" title="scikitplot.modelplotpy.plot_cumresponse"><span class="n">mp</span><span class="o">.</span><span class="n">plot_cumresponse</span></a><span class="p">(</span>
+    <span class="n">ps2</span><span class="p">,</span>
+    <span class="n">highlight_ntile</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">save_fig</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<img alt="Cumulative response, Scope: comparing models &amp; dataset: test_data &amp; target class: term deposit" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_modelplotpy_script_009.png" srcset="../../_images/sphx_glr_plot_modelplotpy_script_009.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>compare models
+The label with smallest class is ['term deposit']
+When we select deciles 1 until 3 according to model multinomial_logit in dataset test_data the percentage of term deposit cases in the selection is 33%.
+When we select deciles 1 until 3 according to model random_forest in dataset test_data the percentage of term deposit cases in the selection is 35%.
+
+&lt;Axes: title={'center': 'Scope: comparing models &amp; dataset: test_data &amp; target class: term deposit'}, xlabel='decile', ylabel='cumulative response'&gt;
+</pre></div>
+</div>
+<p>Seems like the algorithm used will not make a big difference in this case.
+Hopefully you agree by now that using these plots really can make a difference in explaining
+the business value of your predictive models!</p>
+<p>In case you experience issues when using modelplotpy, please let us know
+via the <a class="reference external" href="https://github.com/pbmarcus/modelplotpy/issues">issues section on Github</a>.
+Any other feedback or suggestions, please let us know
+via <a class="reference external" href="mailto:pb.marcus%40hotmail.com">pb<span>.</span>marcus</a>
+or <a class="reference external" href="mailto:jurriaan.nagelkerke%40gmail.com">jurriaan<span>.</span>nagelkerke</a>.</p>
+<p>Happy modelplotting!</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 13.532 seconds)</p>
+
+<p class="rubric">Related examples</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the plot_roc_curve method used by a scikit-learn classifier"><img alt="" src="../../_images/sphx_glr_plot_classifier_eval_script_thumb.png"/>
+<p><a class="reference internal" href="../metrics/plot_classifier_eval_script.html#sphx-glr-auto-examples-metrics-plot-classifier-eval-script-py"><span class="std std-ref">plot_roc_curve with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">plot_roc_curve with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the plot_feature_importances method used by a scikit-learn classifier"><img alt="" src="../../_images/sphx_glr_plot_feature_importances_script_thumb.png"/>
+<p><a class="reference internal" href="../estimators/plot_feature_importances_script.html#sphx-glr-auto-examples-estimators-plot-feature-importances-script-py"><span class="std std-ref">plot_feature_importances with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">plot_feature_importances with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the plot_confusion_matrix method used by a scikit-learn classifier"><img alt="" src="../../_images/sphx_glr_plot_confusion_matrix_script_thumb.png"/>
+<p><a class="reference internal" href="../metrics/plot_confusion_matrix_script.html#sphx-glr-auto-examples-metrics-plot-confusion-matrix-script-py"><span class="std std-ref">plot_confusion_matrix with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">plot_confusion_matrix with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the plot_calibration_curve method used by a scikit-learn classifier"><img alt="" src="../../_images/sphx_glr_plot_calibration_curve_script_thumb.png"/>
+<p><a class="reference internal" href="../metrics/plot_calibration_curve_script.html#sphx-glr-auto-examples-metrics-plot-calibration-curve-script-py"><span class="std std-ref">plot_calibration_curve with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">plot_calibration_curve with examples</div>
+</div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+</section>
+</article>
+<footer class="bd-footer-article">
+<div class="footer-article-items footer-article__inner">
+<div class="footer-article-item">
+<div class="prev-next-area">
+<a class="left-prev" href="index.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">ModelPlotPy</p>
+</div>
+</a>
+<a class="right-next" href="../../whats_new/whats_new.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">Release History</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div></div>
+</div>
+</footer>
+</div>
+<div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> On this page
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="bd-toc-nav page-toc">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-dataset">Loading the dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-models-on-the-bank-dataset">Train models on the bank dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-partial-dependence-for-two-features">Plotting partial dependence for two features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-introduce-the-gains-lift-and-cumulative-response-plots">Let’s introduce the Gains, Lift and (cumulative) Response plots.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-gains-plot">1. Cumulative gains plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-lift-plot">2. Cumulative lift plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#response-plot">3. Response plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-response-plot">4. Cumulative response plot</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#all-four-plots-together">All four plots together</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financial-implications">Financial Implications</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#return-on-investment-plot">1. Return on investment plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#costs-revenues-plot">2. Costs &amp; Revenues plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#profit-plot">3. Profit plot</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-more-out-of-modelplotpy-using-different-scopes">Get more out of modelplotpy: using different scopes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-models">1. compare_models</a></li>
+</ul>
+</li>
+</ul>
+</nav></div>
+
+<div class="sidebar-secondary-item"><div title="plot_modelplotpy_script.py"><a download="" href="../../_downloads/08b91eeb22423cd5d35693e35a04e372/plot_modelplotpy_script.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_modelplotpy_script.ipynb"><a download="" href="../../_downloads/0e925ad37ffd6b53dbf281a1863e06eb/plot_modelplotpy_script.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/modelplotpy/plot_modelplotpy_script.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo5.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/0.3.X?urlpath=lab/tree/notebooks/auto_examples/modelplotpy/plot_modelplotpy_script.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo5.svg"/></a></div></div></div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">
+    
+      © Copyright 2024 - 2024, Muhammed Çelik (BSD License).
+      <br/>
+</p>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>
