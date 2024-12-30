@@ -1,0 +1,854 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="SEP23: Multiple Figures per GUI window" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://scikit-plots.github.io/stable/devel/SEP/SEP23.html" />
+<meta property="og:site_name" content="scikit-plots" />
+<meta property="og:description" content="Status, Branches and Pull requests, Abstract, Detailed description, Implementation- FigureManagerBase, new_figure_manager, new_figure_manager_given_figure, NavigationBase., Backward compatibility, ..." />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
+<meta property="og:image:alt" content="scikit-plots" />
+<meta name="description" content="Status, Branches and Pull requests, Abstract, Detailed description, Implementation- FigureManagerBase, new_figure_manager, new_figure_manager_given_figure, NavigationBase., Backward compatibility, ..." />
+
+    <title>SEP23: Multiple Figures per GUI window &#8212; scikit-plots 0.5.dev0+git20241230.7c9d1c2 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyterlite_sphinx.css?v=ca70e7f1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=14208072" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=e4cb1417" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=a218ecfe"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=e93d8674"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/jupyterlite_sphinx.js?v=d6bdf5f8"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'devel/SEP/SEP23';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
+    <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
+    <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="SEP24: Negative radius in polar plots" href="SEP24.html" />
+    <link rel="prev" title="SEP22: Toolbar rewrite" href="SEP22.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.5" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/scikit-plots-logo-small.png" class="logo__image only-light" alt="scikit-plots homepage"/>
+    <img src="../../_static/scikit-plots-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-plots homepage"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whats_new/index.html">
+    Release Notes
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://zenodo.org/communities/scikit-plots">
+    Community
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="../index.html">
+    Developer’s Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/index.html">
+    About us
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whats_new/index.html">
+    Release Notes
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://zenodo.org/communities/scikit-plots">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Developer’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/index.html">
+    About us
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contributing guide</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../development_setup.html">Setting up scikit-plots for development</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../development_workflow.html">Development workflow</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../coding_guide.html">Coding guidelines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../license.html">Licenses for contributed code</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_changes.html">API guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing.html">Testing</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../document.html">Write documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../style_guide.html">Documentation style guide</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tag_guidelines.html">Tagging guidelines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tag_glossary.html">Tag Glossary</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../triage.html">Bug triaging and issue curation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pr_guide.html">Pull request guidelines</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../release_guide.html">Release guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../communication_guide.html">Community management guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../min_dep_policy.html">Dependency version policy</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Scikit-plots Enhancement Proposals</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="template.html">SEP Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SEP08.html">SEP8: PEP8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SEP09.html">SEP9: Global interaction manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SEP10.html">SEP10: Docstring consistency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SEP11.html">SEP11: Third-party dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SEP12.html">SEP12: Improve Gallery and Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SEP13.html">SEP13: Use properties for Artists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SEP14.html">SEP14: Text handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SEP15.html">SEP15: Fix axis autoscaling when limits are specified for one axis only</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SEP19.html">SEP19: Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SEP21.html">SEP21: color and cm refactor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SEP22.html">SEP22: Toolbar rewrite</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">SEP23: Multiple Figures per GUI window</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SEP24.html">SEP24: Negative radius in polar plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SEP25.html">SEP25: Serialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SEP26.html">SEP26: Artist styling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SEP27.html">SEP27: Decouple pyplot from backends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SEP28.html">SEP28: Remove Complexity from Axes.boxplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SEP29.html">SEP29: Text light markup</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../maintainer.html">Maintainer Information</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Contribute</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Scikit-plots Enhancement Proposals</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">SEP23: Multiple Figures per GUI window</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="sep23-multiple-figures-per-gui-window">
+<h1>SEP23: Multiple Figures per GUI window<a class="headerlink" href="#sep23-multiple-figures-per-gui-window" title="Link to this heading">#</a></h1>
+<div class="admonition-template admonition">
+<p class="admonition-title">Template</p>
+<p>Template for further usage, template belong to matplotlib MEPs.</p>
+</div>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#status" id="id1">Status</a></p></li>
+<li><p><a class="reference internal" href="#branches-and-pull-requests" id="id2">Branches and Pull requests</a></p></li>
+<li><p><a class="reference internal" href="#abstract" id="id3">Abstract</a></p></li>
+<li><p><a class="reference internal" href="#detailed-description" id="id4">Detailed description</a></p></li>
+<li><p><a class="reference internal" href="#implementation" id="id5">Implementation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#figuremanagerbase" id="id6"><code class="docutils literal notranslate"><span class="pre">FigureManagerBase</span></code></a></p></li>
+<li><p><a class="reference internal" href="#new-figure-manager" id="id7"><code class="docutils literal notranslate"><span class="pre">new_figure_manager</span></code></a></p></li>
+<li><p><a class="reference internal" href="#new-figure-manager-given-figure" id="id8"><code class="docutils literal notranslate"><span class="pre">new_figure_manager_given_figure</span></code></a></p></li>
+<li><p><a class="reference internal" href="#navigationbase" id="id9"><code class="docutils literal notranslate"><span class="pre">NavigationBase</span></code></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#backward-compatibility" id="id10">Backward compatibility</a></p></li>
+<li><p><a class="reference internal" href="#alternatives" id="id11">Alternatives</a></p></li>
+</ul>
+</nav>
+<section id="status">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Status</a><a class="headerlink" href="#status" title="Link to this heading">#</a></h2>
+<p><strong>Discussion</strong></p>
+</section>
+<section id="branches-and-pull-requests">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Branches and Pull requests</a><a class="headerlink" href="#branches-and-pull-requests" title="Link to this heading">#</a></h2>
+<p><strong>Previous work</strong>
+- <a class="github reference external" href="https://github.com/matplotlib/matplotlib/pull/2465">matplotlib/matplotlib#2465</a> <strong>To-delete</strong></p>
+</section>
+<section id="abstract">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Abstract</a><a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
+<p>Add the possibility to have multiple figures grouped under the same
+<code class="docutils literal notranslate"><span class="pre">~.backend_template.FigureManager</span></code></p>
+</section>
+<section id="detailed-description">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Detailed description</a><a class="headerlink" href="#detailed-description" title="Link to this heading">#</a></h2>
+<p>Under the current structure, every canvas has its own window.</p>
+<p>This is and may continue to be the desired method of operation for
+most use cases.</p>
+<p>Sometimes when there are too many figures open at the same time, it is
+desirable to be able to group these under the same window. See <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/2194/">PR #2194</a>.</p>
+<p>The proposed solution modifies <code class="docutils literal notranslate"><span class="pre">.FigureManagerBase</span></code> to contain and manage more
+than one <code class="docutils literal notranslate"><span class="pre">Canvas</span></code>. The <code class="docutils literal notranslate"><span class="pre">backend.multifigure</span></code> rcParam controls when the
+<strong>MultiFigure</strong> behaviour is desired.</p>
+<p><strong>Note</strong></p>
+<p>It is important to note, that the proposed solution, assumes that the
+<a class="reference external" href="https://github.com/matplotlib/matplotlib/wiki/Mep22">MEP22</a>. is
+already in place. This is simply because the actual implementation of
+the <code class="docutils literal notranslate"><span class="pre">Toolbar</span></code> makes it pretty hard to switch between canvases.</p>
+</section>
+<section id="implementation">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Implementation</a><a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
+<p>The first implementation will be done in GTK3 using a Notebook as
+canvas container.</p>
+<section id="figuremanagerbase">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">FigureManagerBase</span></code></a><a class="headerlink" href="#figuremanagerbase" title="Link to this heading">#</a></h3>
+<p>will add the following new methods</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">add_canvas</span></code>: To add a canvas to an existing
+<code class="docutils literal notranslate"><span class="pre">~.backend_template.FigureManager</span></code> object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">remove_canvas</span></code>: To remove a canvas from a
+<code class="docutils literal notranslate"><span class="pre">~.backend_template.FigureManager</span></code> object, if it is the last one, it will be
+destroyed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">move_canvas</span></code>: To move a canvas from one <code class="docutils literal notranslate"><span class="pre">~.backend_template.FigureManager</span></code>
+to another.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set_canvas_title</span></code>: To change the title associated with a specific
+canvas container</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_canvas_title</span></code>: To get the title associated with a specific
+canvas container</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_active_canvas</span></code>: To get the canvas that is in the foreground and
+is subject to the gui events. There is no <code class="docutils literal notranslate"><span class="pre">set_active_canvas</span></code>
+because the active canvas, is defined when <code class="docutils literal notranslate"><span class="pre">show</span></code> is called on a
+<code class="docutils literal notranslate"><span class="pre">Canvas</span></code> object.</p></li>
+</ul>
+</section>
+<section id="new-figure-manager">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">new_figure_manager</span></code></a><a class="headerlink" href="#new-figure-manager" title="Link to this heading">#</a></h3>
+<p>To control which <code class="docutils literal notranslate"><span class="pre">~.backend_template.FigureManager</span></code> will contain the new
+figures, an extra optional parameter <em>figuremanager</em> will be added, this
+parameter value will be passed to <code class="docutils literal notranslate"><span class="pre">new_figure_manager_given_figure</span></code>.</p>
+</section>
+<section id="new-figure-manager-given-figure">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">new_figure_manager_given_figure</span></code></a><a class="headerlink" href="#new-figure-manager-given-figure" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>If <em>figuremanager</em> parameter is given, this
+<code class="docutils literal notranslate"><span class="pre">~.backend_template.FigureManager</span></code> object will be used instead of creating a
+new one.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">rcParams['backend.multifigure']</span></code> is True: The last
+<code class="docutils literal notranslate"><span class="pre">~.backend_template.FigureManager</span></code> object will be used instead of creating a
+new one.</p></li>
+</ul>
+</section>
+<section id="navigationbase">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">NavigationBase</span></code></a><a class="headerlink" href="#navigationbase" title="Link to this heading">#</a></h3>
+<p>Modifies the <code class="docutils literal notranslate"><span class="pre">NavigationBase</span></code> to keep a list of canvases, directing the
+actions to the active one.</p>
+</section>
+</section>
+<section id="backward-compatibility">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Backward compatibility</a><a class="headerlink" href="#backward-compatibility" title="Link to this heading">#</a></h2>
+<p>For the <strong>MultiFigure</strong> properties to be visible, the user has to
+activate them directly setting <code class="docutils literal notranslate"><span class="pre">rcParams['backend.multifigure']</span> <span class="pre">=</span>
+<span class="pre">True</span></code></p>
+<p>It should be backwards compatible for backends that adhere to the
+current <code class="docutils literal notranslate"><span class="pre">.FigureManagerBase</span></code> structure even if they have not
+implemented the <strong>MultiFigure</strong> magic yet.</p>
+</section>
+<section id="alternatives">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">Alternatives</a><a class="headerlink" href="#alternatives" title="Link to this heading">#</a></h2>
+<p>Instead of modifying the <code class="docutils literal notranslate"><span class="pre">.FigureManagerBase</span></code> it could be possible to add
+a parallel class, that handles the cases where
+<code class="docutils literal notranslate"><span class="pre">rcParams['backend.multifigure']</span> <span class="pre">=</span> <span class="pre">True</span></code>.  This will warranty that
+there won’t be any problems with custom made backends, but also makes
+bigger the code, and more things to maintain.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item">
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="SEP22.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">SEP22: Toolbar rewrite</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="SEP24.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">SEP24: Negative radius in polar plots</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+                </footer>
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#status">Status</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#branches-and-pull-requests">Branches and Pull requests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detailed-description">Detailed description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#figuremanagerbase"><code class="docutils literal notranslate"><span class="pre">FigureManagerBase</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-figure-manager"><code class="docutils literal notranslate"><span class="pre">new_figure_manager</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-figure-manager-given-figure"><code class="docutils literal notranslate"><span class="pre">new_figure_manager_given_figure</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#navigationbase"><code class="docutils literal notranslate"><span class="pre">NavigationBase</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backward-compatibility">Backward compatibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternatives">Alternatives</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/devel/SEP/SEP23.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024 - 2024, scikit-plots developers (BSD-3 Clause License).
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

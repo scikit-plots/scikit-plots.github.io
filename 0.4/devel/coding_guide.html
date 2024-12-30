@@ -1,0 +1,989 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Coding guidelines" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://scikit-plots.github.io/stable/devel/coding_guide.html" />
+<meta property="og:site_name" content="scikit-plots" />
+<meta property="og:description" content="We appreciate these guidelines being followed because it improves the readability, consistency, and maintainability of the code base. PEP8, as enforced by flake8: Formatting should follow the recom..." />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
+<meta property="og:image:alt" content="scikit-plots" />
+<meta name="description" content="We appreciate these guidelines being followed because it improves the readability, consistency, and maintainability of the code base. PEP8, as enforced by flake8: Formatting should follow the recom..." />
+
+    <title>Coding guidelines &#8212; scikit-plots 0.4.0rc0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=ca70e7f1" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=14208072" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=e4cb1417" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=bfecb351"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=e93d8674"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=d6bdf5f8"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'devel/coding_guide';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <script src="../_static/scripts/dropdown.js?v=e2048168"></script>
+    <script src="../_static/scripts/version-switcher.js?v=9bbada16"></script>
+    <link rel="icon" href="../_static/scikit-plots-favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.4" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/scikit-plots-logo-small.png" class="logo__image only-light" alt="scikit-plots homepage"/>
+    <img src="../_static/scikit-plots-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-plots homepage"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../whats_new/index.html">
+    Release Notes
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://zenodo.org/communities/scikit-plots">
+    Community
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
+    Developer’s Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/index.html">
+    About us
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../whats_new/index.html">
+    Release Notes
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://zenodo.org/communities/scikit-plots">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
+    Developer’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/index.html">
+    About us
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="license.html">Licenses for contributed code</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Coding guidelines</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="coding-guidelines">
+<span id="id1"></span><h1>Coding guidelines<a class="headerlink" href="#coding-guidelines" title="Link to this heading">#</a></h1>
+<div class="admonition-template admonition">
+<p class="admonition-title">Template</p>
+<p>Template for further usage, template belong to matplotlib.</p>
+</div>
+<p>We appreciate these guidelines being followed because it improves the readability,
+consistency, and maintainability of the code base.</p>
+<div class="seealso admonition">
+<p class="admonition-title">API guidelines</p>
+<p>If adding new features, changing behavior or function signatures, or removing
+public interfaces, please consult the <a class="reference internal" href="api_changes.html#api-changes"><span class="std std-ref">API guidelines</span></a>.</p>
+</div>
+<section id="pep8-as-enforced-by-flake8">
+<span id="code-style"></span><h2>PEP8, as enforced by flake8<a class="headerlink" href="#pep8-as-enforced-by-flake8" title="Link to this heading">#</a></h2>
+<p>Formatting should follow the recommendations of <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP8</a>, as enforced by <a class="reference external" href="https://flake8.pycqa.org/">flake8</a>.
+Matplotlib modifies PEP8 to extend the maximum line length to 88
+characters. You can check flake8 compliance from the command line with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">flake8</span>
+<span class="n">flake8</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">module</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>or your editor may provide integration with it.  Note that Matplotlib intentionally
+does not use the <a class="reference external" href="https://black.readthedocs.io/">black</a> auto-formatter (<a class="reference external" href="https://github.com/matplotlib/matplotlib/issues/18796">1</a>), in particular due to its inability
+to understand the semantics of mathematical expressions (<a class="reference external" href="https://github.com/psf/black/issues/148">2</a>, <a class="reference external" href="https://github.com/psf/black/issues/1984">3</a>).</p>
+</section>
+<section id="package-imports">
+<h2>Package imports<a class="headerlink" href="#package-imports" title="Link to this heading">#</a></h2>
+<p>Import the following modules using the standard scipy conventions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy.ma</span> <span class="k">as</span> <span class="nn">ma</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.cbook</span> <span class="k">as</span> <span class="nn">cbook</span>
+<span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">mpatches</span>
+</pre></div>
+</div>
+<p>In general, Matplotlib modules should <strong>not</strong> import <code class="docutils literal notranslate"><span class="pre">.rcParams</span></code> using <code class="docutils literal notranslate"><span class="pre">from</span>
+<span class="pre">matplotlib</span> <span class="pre">import</span> <span class="pre">rcParams</span></code>, but rather access it as <code class="docutils literal notranslate"><span class="pre">mpl.rcParams</span></code>.  This
+is because some modules are imported very early, before the <code class="docutils literal notranslate"><span class="pre">.rcParams</span></code>
+singleton is constructed.</p>
+</section>
+<section id="variable-names">
+<h2>Variable names<a class="headerlink" href="#variable-names" title="Link to this heading">#</a></h2>
+<p>When feasible, please use our internal variable naming convention for objects
+of a given class and objects of any child class:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>base class</p></th>
+<th class="head"><p>variable</p></th>
+<th class="head"><p>multiples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">~matplotlib.figure.FigureBase</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">fig</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">~matplotlib.axes.Axes</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ax</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p><code class="docutils literal notranslate"><span class="pre">~matplotlib.transforms.Transform</span></code></p></td>
+<td rowspan="2"><p><code class="docutils literal notranslate"><span class="pre">trans</span></code></p></td>
+<td rowspan="2"><p><code class="docutils literal notranslate"><span class="pre">trans_&lt;source&gt;_&lt;target&gt;</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">trans_&lt;source&gt;</span></code> when target is screen</p>
+</td>
+</tr>
+<tr class="row-odd"></tr>
+</tbody>
+</table>
+</div>
+<p>Generally, denote more than one instance of the same class by adding suffixes to
+the variable names. If a format isn’t specified in the table, use numbers or
+letters as appropriate.</p>
+</section>
+<section id="type-hints">
+<span id="id5"></span><h2>Type hints<a class="headerlink" href="#type-hints" title="Link to this heading">#</a></h2>
+<p>If you add new public API or change public API, update or add the
+corresponding <a class="reference external" href="https://mypy.readthedocs.io/en/latest/">mypy</a> type hints.
+We generally use <a class="reference external" href="https://typing.readthedocs.io/en/latest/source/stubs.html#type-stubs">stub files</a>
+(<code class="docutils literal notranslate"><span class="pre">*.pyi</span></code>) to store the type information; for example <code class="docutils literal notranslate"><span class="pre">colors.pyi</span></code> contains
+the type information for <code class="docutils literal notranslate"><span class="pre">colors.py</span></code>. A notable exception is <code class="docutils literal notranslate"><span class="pre">pyplot.py</span></code>,
+which is type hinted inline.</p>
+<p>Type hints can be validated by the <a class="reference external" href="https://mypy.readthedocs.io/en/stable/stubtest.html">stubtest</a> tool, which can be run
+locally using <code class="docutils literal notranslate"><span class="pre">tox</span> <span class="pre">-e</span> <span class="pre">stubtest</span></code> and is a part of the <a class="reference internal" href="development_workflow.html#automated-tests"><span class="std std-ref">Automated tests</span></a>
+suite. Type hints for existing functions are also checked by the mypy
+<a class="reference internal" href="development_setup.html#pre-commit-hooks"><span class="std std-ref">pre-commit hook</span></a>.</p>
+</section>
+<section id="new-modules-and-files-installation">
+<h2>New modules and files: installation<a class="headerlink" href="#new-modules-and-files-installation" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>If you have added new files or directories, or reorganized existing ones, make sure the
+new files are included in the <code class="file docutils literal notranslate"><span class="pre">meson.build</span></code> in the corresponding directories.</p></li>
+<li><p>New modules <em>may</em> be typed inline or using parallel stub file like existing modules.</p></li>
+</ul>
+</section>
+<section id="c-c-extensions">
+<h2>C/C++ extensions<a class="headerlink" href="#c-c-extensions" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Extensions may be written in C or C++.</p></li>
+<li><p>Code style should conform to PEP7 (understanding that PEP7 doesn’t
+address C++, but most of its admonitions still apply).</p></li>
+<li><p>Python/C interface code should be kept separate from the core C/C++
+code.  The interface code should be named <code class="file docutils literal notranslate"><span class="pre">FOO_wrap.cpp</span></code> or
+<code class="file docutils literal notranslate"><span class="pre">FOO_wrapper.cpp</span></code>.</p></li>
+<li><p>Header file documentation (aka docstrings) should be in Numpydoc
+format.  We don’t plan on using automated tools for these
+docstrings, and the Numpydoc format is well understood in the
+scientific Python community.</p></li>
+<li><p>C/C++ code in the <code class="file docutils literal notranslate"><span class="pre">extern/</span></code> directory is vendored, and should be kept
+close to upstream whenever possible.  It can be modified to fix bugs or
+implement new features only if the required changes cannot be made elsewhere
+in the codebase.  In particular, avoid making style fixes to it.</p></li>
+</ul>
+</section>
+<section id="keyword-argument-processing">
+<span id="id6"></span><h2>Keyword argument processing<a class="headerlink" href="#keyword-argument-processing" title="Link to this heading">#</a></h2>
+<p>Matplotlib makes extensive use of <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> for pass-through customizations
+from one function to another.  A typical example is
+<code class="docutils literal notranslate"><span class="pre">~matplotlib.axes.Axes.text</span></code>.  The definition of <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.text</span></code> is a
+simple pass-through to <code class="docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.text</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># in pyplot.py</span>
+<span class="k">def</span> <span class="nf">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="n">fontdict</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">matplotlib.axes.Axes.text</span></code> (simplified for illustration) just
+passes all <code class="docutils literal notranslate"><span class="pre">args</span></code> and <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> on to <code class="docutils literal notranslate"><span class="pre">matplotlib.text.Text.__init__</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># in axes/_axes.py</span>
+<span class="k">def</span> <span class="nf">text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">Text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">s</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and <code class="docutils literal notranslate"><span class="pre">matplotlib.text.Text.__init__</span></code> (again, simplified)
+just passes them on to the <code class="docutils literal notranslate"><span class="pre">matplotlib.artist.Artist.update</span></code> method:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># in text.py</span>
+<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">update</span></code> does the work looking for methods named like
+<code class="docutils literal notranslate"><span class="pre">set_property</span></code> if <code class="docutils literal notranslate"><span class="pre">property</span></code> is a keyword argument.  i.e., no one
+looks at the keywords, they just get passed through the API to the
+artist constructor which looks for suitably named methods and calls
+them with the value.</p>
+<p>As a general rule, the use of <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> should be reserved for
+pass-through keyword arguments, as in the example above.  If all the
+keyword args are to be used in the function, and not passed
+on, use the key/value keyword args in the function definition rather
+than the <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> idiom.</p>
+<p>In some cases, you may want to consume some keys in the local
+function, and let others pass through.  Instead of popping arguments to
+use off <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code>, specify them as keyword-only arguments to the local
+function.  This makes it obvious at a glance which arguments will be
+consumed in the function.  For example, in
+<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v3.10.0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot</span></code></a>, <code class="docutils literal notranslate"><span class="pre">scalex</span></code> and <code class="docutils literal notranslate"><span class="pre">scaley</span></code> are
+local arguments and the rest are passed on as
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">Line2D</span></code> keyword arguments:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># in axes/_axes.py</span>
+<span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">scalex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scaley</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_lines</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_line</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="using-logging-for-debug-messages">
+<span id="using-logging"></span><h2>Using logging for debug messages<a class="headerlink" href="#using-logging-for-debug-messages" title="Link to this heading">#</a></h2>
+<p>Matplotlib uses the standard Python <code class="docutils literal notranslate"><span class="pre">logging</span></code> library to write verbose
+warnings, information, and debug messages. Please use it! In all those places
+you write <code class="docutils literal notranslate"><span class="pre">print</span></code> calls to do your debugging, try using <code class="docutils literal notranslate"><span class="pre">logging.debug</span></code>
+instead!</p>
+<p>To include <code class="docutils literal notranslate"><span class="pre">logging</span></code> in your module, at the top of the module, you need to
+<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">logging</span></code>.  Then calls in your code like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">_log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>  <span class="c1"># right after the imports</span>
+
+<span class="c1"># code</span>
+<span class="c1"># more code</span>
+<span class="n">_log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Here is some information&#39;</span><span class="p">)</span>
+<span class="n">_log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Here is some more detailed information&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>will log to a logger named <code class="docutils literal notranslate"><span class="pre">matplotlib.yourmodulename</span></code>.</p>
+<p>If an end-user of Matplotlib sets up <code class="docutils literal notranslate"><span class="pre">logging</span></code> to display at levels more
+verbose than <code class="docutils literal notranslate"><span class="pre">logging.WARNING</span></code> in their code with the Matplotlib-provided
+helper:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">set_loglevel</span><span class="p">(</span><span class="s2">&quot;debug&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or manually with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+<p>Then they will receive messages like</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>DEBUG:matplotlib.backends:backend MacOSX version unknown
+DEBUG:matplotlib.yourmodulename:Here is some information
+DEBUG:matplotlib.yourmodulename:Here is some more detailed information
+</pre></div>
+</div>
+<p>Avoid using pre-computed strings (<code class="docutils literal notranslate"><span class="pre">f-strings</span></code>, <code class="docutils literal notranslate"><span class="pre">str.format</span></code>,etc.) for logging because
+of security and performance issues, and because they interfere with style handlers. For
+example, use <code class="docutils literal notranslate"><span class="pre">_log.error('hello</span> <span class="pre">%s',</span> <span class="pre">'world')</span></code>  rather than <code class="docutils literal notranslate"><span class="pre">_log.error('hello</span>
+<span class="pre">{}'.format('world'))</span></code> or <code class="docutils literal notranslate"><span class="pre">_log.error(f'hello</span> <span class="pre">{s}')</span></code>.</p>
+<section id="which-logging-level-to-use">
+<h3>Which logging level to use?<a class="headerlink" href="#which-logging-level-to-use" title="Link to this heading">#</a></h3>
+<p>There are five levels at which you can emit messages.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">logging.critical</span></code> and <code class="docutils literal notranslate"><span class="pre">logging.error</span></code> are really only there for errors that
+will end the use of the library but not kill the interpreter.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">logging.warning</span></code> and <code class="docutils literal notranslate"><span class="pre">._api.warn_external</span></code> are used to warn the user,
+see below.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">logging.info</span></code> is for information that the user may want to know if the
+program behaves oddly. They are not displayed by default. For instance, if
+an object isn’t drawn because its position is <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, that can usually
+be ignored, but a mystified user could call
+<code class="docutils literal notranslate"><span class="pre">logging.basicConfig(level=logging.INFO)</span></code> and get an error message that
+says why.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">logging.debug</span></code> is the least likely to be displayed, and hence can be the
+most verbose.  “Expected” code paths (e.g., reporting normal intermediate
+steps of layouting or rendering) should only log at this level.</p></li>
+</ul>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">logging</span></code> displays all log messages at levels higher than
+<code class="docutils literal notranslate"><span class="pre">logging.WARNING</span></code> to <code class="docutils literal notranslate"><span class="pre">sys.stderr</span></code>.</p>
+<p>The <a class="reference external" href="https://docs.python.org/3/howto/logging.html#logging-basic-tutorial">logging tutorial</a> suggests that the difference between <code class="docutils literal notranslate"><span class="pre">logging.warning</span></code>
+and <code class="docutils literal notranslate"><span class="pre">._api.warn_external</span></code> (which uses <code class="docutils literal notranslate"><span class="pre">warnings.warn</span></code>) is that
+<code class="docutils literal notranslate"><span class="pre">._api.warn_external</span></code> should be used for things the user must change to stop
+the warning (typically in the source), whereas <code class="docutils literal notranslate"><span class="pre">logging.warning</span></code> can be more
+persistent. Moreover, note that <code class="docutils literal notranslate"><span class="pre">._api.warn_external</span></code> will by default only
+emit a given warning <em>once</em> for each line of user code, whereas
+<code class="docutils literal notranslate"><span class="pre">logging.warning</span></code> will display the message every time it is called.</p>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">warnings.warn</span></code> displays the line of code that has the <code class="docutils literal notranslate"><span class="pre">warn</span></code>
+call. This usually isn’t more informative than the warning message itself.
+Therefore, Matplotlib uses <code class="docutils literal notranslate"><span class="pre">._api.warn_external</span></code> which uses <code class="docutils literal notranslate"><span class="pre">warnings.warn</span></code>,
+but goes up the stack and displays the first line of code outside of
+Matplotlib. For example, for the module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># in my_matplotlib_module.py</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="k">def</span> <span class="nf">set_range</span><span class="p">(</span><span class="n">bottom</span><span class="p">,</span> <span class="n">top</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">bottom</span> <span class="o">==</span> <span class="n">top</span><span class="p">:</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Attempting to set identical bottom==top&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>running the script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">my_matplotlib_module</span>
+<span class="n">my_matplotlib_module</span><span class="o">.</span><span class="n">set_range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># set range</span>
+</pre></div>
+</div>
+<p>will display</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>UserWarning: Attempting to set identical bottom==top
+warnings.warn(&#39;Attempting to set identical bottom==top&#39;)
+</pre></div>
+</div>
+<p>Modifying the module to use <code class="docutils literal notranslate"><span class="pre">._api.warn_external</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">_api</span>
+
+<span class="k">def</span> <span class="nf">set_range</span><span class="p">(</span><span class="n">bottom</span><span class="p">,</span> <span class="n">top</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">bottom</span> <span class="o">==</span> <span class="n">top</span><span class="p">:</span>
+        <span class="n">_api</span><span class="o">.</span><span class="n">warn_external</span><span class="p">(</span><span class="s1">&#39;Attempting to set identical bottom==top&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and running the same script will display</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>UserWarning: Attempting to set identical bottom==top
+my_matplotlib_module.set_range(0, 0)  # set range
+</pre></div>
+</div>
+</section>
+</section>
+<section id="licenses-for-contributed-code">
+<span id="licence-coding-guide"></span><h2>Licenses for contributed code<a class="headerlink" href="#licenses-for-contributed-code" title="Link to this heading">#</a></h2>
+<p>scikit-plots only uses BSD compatible code.  If you bring in code from
+another project make sure it has a PSF, BSD, MIT or compatible license
+(see the Open Source Initiative <a class="reference external" href="https://opensource.org/licenses">licenses page</a> for details on individual
+licenses).  If it doesn’t, you may consider contacting the author and
+asking them to relicense it.  GPL and LGPL code are not acceptable in
+the main code base, though we are considering an alternative way of
+distributing L/GPL code through an separate channel, possibly a
+toolkit.  If you include code, make sure you include a copy of that
+code’s license in the license directory if the code’s license requires
+you to distribute the license with it.  Non-BSD compatible licenses
+are acceptable in scikit-plots toolkits (e.g., basemap), but make sure you
+clearly state the licenses you are using.</p>
+<section id="why-bsd-compatible">
+<h3>Why BSD compatible?<a class="headerlink" href="#why-bsd-compatible" title="Link to this heading">#</a></h3>
+<p>The two dominant license variants in the wild are GPL-style and
+BSD-style. There are countless other licenses that place specific
+restrictions on code reuse, but there is an important difference to be
+considered in the GPL and BSD variants.  The best known and perhaps
+most widely used license is the GPL, which in addition to granting you
+full rights to the source code including redistribution, carries with
+it an extra obligation. If you use GPL code in your own code, or link
+with it, your product must be released under a GPL compatible
+license. i.e., you are required to give the source code to other
+people and give them the right to redistribute it as well. Many of the
+most famous and widely used open source projects are released under
+the GPL, including linux, gcc, emacs and sage.</p>
+<p>The second major class are the BSD-style licenses (which includes MIT
+and the python PSF license). These basically allow you to do whatever
+you want with the code: ignore it, include it in your own open source
+project, include it in your proprietary product, sell it,
+whatever. python itself is released under a BSD compatible license, in
+the sense that, quoting from the PSF license page:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">There</span> <span class="ow">is</span> <span class="n">no</span> <span class="n">GPL</span><span class="o">-</span><span class="n">like</span> <span class="s2">&quot;copyleft&quot;</span> <span class="n">restriction</span><span class="o">.</span> <span class="n">Distributing</span>
+<span class="n">binary</span><span class="o">-</span><span class="n">only</span> <span class="n">versions</span> <span class="n">of</span> <span class="n">Python</span><span class="p">,</span> <span class="n">modified</span> <span class="ow">or</span> <span class="ow">not</span><span class="p">,</span> <span class="ow">is</span> <span class="n">allowed</span><span class="o">.</span> <span class="n">There</span>
+<span class="ow">is</span> <span class="n">no</span> <span class="n">requirement</span> <span class="n">to</span> <span class="n">release</span> <span class="nb">any</span> <span class="n">of</span> <span class="n">your</span> <span class="n">source</span> <span class="n">code</span><span class="o">.</span> <span class="n">You</span> <span class="n">can</span> <span class="n">also</span>
+<span class="n">write</span> <span class="n">extension</span> <span class="n">modules</span> <span class="k">for</span> <span class="n">Python</span> <span class="ow">and</span> <span class="n">provide</span> <span class="n">them</span> <span class="n">only</span> <span class="ow">in</span> <span class="n">binary</span>
+<span class="n">form</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Famous projects released under a BSD-style license in the permissive
+sense of the last paragraph are the BSD operating system, python and
+TeX.</p>
+<p>There are several reasons why early scikit-plots developers selected a
+BSD compatible license. scikit-plots is a python extension, and we
+choose a license that was based on the python license (BSD
+compatible).  Also, we wanted to attract as many users and developers
+as possible, and many software companies will not use GPL code in
+software they plan to distribute, even those that are highly committed
+to open source development, such as <a class="reference external" href="https://www.enthought.com">enthought</a>, out of legitimate concern that use of the
+GPL will “infect” their code base by its viral nature. In effect, they
+want to retain the right to release some proprietary code. Companies
+and institutions who use scikit-plots often make significant
+contributions, because they have the resources to get a job done, even
+a boring one. Two of the scikit-plots backends (FLTK and WX) were
+contributed by private companies.  The final reason behind the
+licensing choice is compatibility with the other python extensions for
+scientific computing: ipython, numpy, scipy, the enthought tool suite
+and python itself are all distributed under BSD compatible licenses.</p>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item">
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+                </footer>
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pep8-as-enforced-by-flake8">PEP8, as enforced by flake8</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-imports">Package imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-names">Variable names</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type-hints">Type hints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-modules-and-files-installation">New modules and files: installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-c-extensions">C/C++ extensions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keyword-argument-processing">Keyword argument processing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-logging-for-debug-messages">Using logging for debug messages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-logging-level-to-use">Which logging level to use?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#licenses-for-contributed-code">Licenses for contributed code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-bsd-compatible">Why BSD compatible?</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/devel/coding_guide.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024 - 2024, scikit-plots developers (BSD-3 Clause License).
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

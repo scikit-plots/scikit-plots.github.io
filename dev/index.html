@@ -1,0 +1,795 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>scikit-plots: machine learning visualization in Python &#8212; scikit-plots 0.5.dev0+git20241230.7c9d1c2 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyterlite_sphinx.css?v=ca70e7f1" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/index.css?v=e49e61c4" />
+    <link rel="stylesheet" type="text/css" href="_static/shell_styles.css?v=d56e2b36" />
+    <link rel="stylesheet" type="text/css" href="_static/shell_code_styles.css?v=26cc6fdd" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/colors.css?v=14208072" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/custom.css?v=e4cb1417" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=a218ecfe"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=e93d8674"></script>
+    <script src="_static/thebelab-helper.js"></script>
+    <script src="_static/jupyterlite_sphinx.js?v=d6bdf5f8"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-python.min.js"></script>
+    <script src="_static/shell_scripts.js?v=f7c71dd3"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <script src="_static/scripts/dropdown.js?v=e2048168"></script>
+    <script src="_static/scripts/version-switcher.js?v=9bbada16"></script>
+    <link rel="icon" href="_static/scikit-plots-favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.5" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/scikit-plots-logo-small.png" class="logo__image only-light" alt="scikit-plots homepage"/>
+    <img src="_static/scikit-plots-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-plots homepage"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="whats_new/index.html">
+    Release Notes
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://zenodo.org/communities/scikit-plots">
+    Community
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="devel/index.html">
+    Developer’s Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="project/index.html">
+    About us
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+<div class="container-fluid sk-landing-top-bar py-4">
+  <div class="container sk-landing-container">
+    <div class="row justify-content-center">
+      <!-- Centered Content -->
+      <div class="col-lg-8 text-center">
+        <h1 class="sk-landing-header font-monospace">scikit-plots</h1>
+        <h4 class="sk-landing-subheader fst-italic mb-3">Machine Learning Visualization in Python</h4>
+
+        <!-- Conditional rendering for "Getting Started" button -->
+
+        <!-- Conditional rendering for "Release Highlights" button -->
+
+        <!-- Description List -->
+        <ul class="sk-landing-header-body list-unstyled mt-4">
+          <li>Open source, commercially usable - BSD license</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="whats_new/index.html">
+    Release Notes
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://zenodo.org/communities/scikit-plots">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="devel/index.html">
+    Developer’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="project/index.html">
+    About us
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+<div class="container sk-landing-container pt-3 sk-landing-body" role="main">
+  <div class="row no-gutters">
+    <!-- Dimensionality reduction -->
+    <div class="col-md-4 mb-3 px-md-2 sk-px-xl-4">
+      <div class="card h-100" sk-align-group="1">
+        <div class="card-body">
+          <h4 class="sk-card-title card-title sk-vert-align" sk-align-name="title">
+            <a href="modules/api/decomposition.html">Dimensionality Reduction</a>
+          </h4>
+          <p class="sk-vert-align" sk-align-name="desc">Plotting the reducing the number of random variables to consider.</p>
+          <p>
+            <strong>Applications:</strong> Visualization, increased efficiency.</br>
+            <strong>Algorithms:</strong>
+            <a href="modules/api/decomposition.html#plot-pca-2d-projection">Plots the 2-dimensional projection of PCA</a>,
+            <a href="modules/api/decomposition.html#plot-pca-component-variance">Plots PCA components’ explained variance ratios</a>,
+            and <a href="modules/api/decomposition.html">more...</a>
+          </p>
+        </div>
+        <div class="sk-card-img-container overflow-hidden mx-2 flex-fill">
+          <a href="auto_examples/decomposition/index.html" aria-label="Dimensionality reduction">
+            <img src="_images/sphx_glr_plot_pca_2d_projection_script_001.png" alt="pca sample">
+          </a>
+        </div>
+        <a href="auto_examples/decomposition/index.html" class="sk-btn-cyan btn" role="button">Tutorials</a>
+      </div>
+    </div>
+    <!-- Model Evaluation Metric Performance -->
+    <div class="col-md-4 mb-3 px-md-2 sk-px-xl-4">
+      <div class="card h-100" sk-align-group="1">
+        <div class="card-body">
+          <h4 class="sk-card-title card-title sk-vert-align" sk-align-name="title">
+            <a href="modules/api/index.html">Metric Performance Evaluation</a>
+          </h4>
+          <p class="sk-vert-align" sk-align-name="desc">Model Evaluation: Metrics Performance.</p>
+          <p>
+            <strong>Applications:</strong> Spam detection, image recognition.</br>
+            <strong>Metrics:</strong>
+            <a href="modules/api/estimators.html#plot-feature-importances">Feature Importances</a>,
+            <a href="modules/api/metrics.html#plot-roc">ROC AUC Curves</a>,
+            <a href="modules/api/metrics.html#plot-precision-recall">Precision-Recall Curves</a>,
+            and <a href="modules/api/index.html">more...</a>
+          </p>
+        </div>
+        <div class="sk-card-img-container overflow-hidden mx-2 flex-fill">
+          <a href="auto_examples/index.html#classification" aria-label="metrics">
+            <img src="_images/sphx_glr_plot_classifier_eval_script_001.png" alt="metrics sample">
+          </a>
+        </div>
+        <a href="auto_examples/index.html#classification" class="sk-btn-cyan btn" role="button">Tutorials</a>
+      </div>
+    </div>
+    <!-- Model Evaluation Decile-Wise Performance -->
+    <div class="col-md-4 mb-3 px-md-2 sk-px-xl-4">
+      <div class="card h-100" sk-align-group="1">
+        <div class="card-body">
+          <h4 class="sk-card-title card-title sk-vert-align" sk-align-name="title">
+            <a href="modules/decile_wise_perf/index.html">Decile-wise Performance Evaluation</a>
+          </h4>
+          <p class="sk-vert-align" sk-align-name="desc">Model Evaluation: Decile-wise Performance.</p>
+          <p>
+            <strong>Applications:</strong> Spam detection, image recognition.</br>
+            <strong>Algorithms:</strong>
+            <a href="modules/decile_wise_perf/kds.html#plot-ks-statistic">Generates the KS Statistic plot</a>,
+            <a href="modules/decile_wise_perf/kds.html#plot-cumulative-gain">Generates the Cumulative Gains plot</a>,
+            <a href="modules/decile_wise_perf/modelplotpy.html#plot-cumgains">Generates the Cumulative Gains plot</a>,
+            and <a href="modules/decile_wise_perf/index.html">more...</a>
+          </p>
+        </div>
+        <div class="sk-card-img-container overflow-hidden mx-2 flex-fill">
+          <a href="auto_examples/index.html#modelplotpy" aria-label="Model selection">
+            <img src="_images/sphx_glr_plot_ks_statistic_script_001.png" alt="deciles report">
+          </a>
+        </div>
+        <a href="auto_examples/index.html#modelplotpy" class="sk-btn-cyan btn" role="button">Tutorials</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="additional-content">
+
+<div class="hero-right">
+  <!-- Include title section -->
+  <div class="flex-column shell-title-container">
+      <div class="shell-title">Try scikit-plots</div>
+      <div class="shell-content-message">
+        <p>Use the interactive shell to try scikit-plots in the browser</p>
+        <p style="font-size:11px;">Pyodide uses older, compatible versions of some PyPI packages; latest versions may not be supported.</p>
+      </div>
+  </div>
+  <div class="numpy-shell-container">
+
+    <!-- Include Python example code section -->
+    <div class="shell-lesson code-content">
+  <p>To try the examples in the browser:</p>
+  <ul>
+    <li>Type code in the input cell and press <code>Shift + Enter</code> to execute</li>
+    <li>Or copy-paste the code, and click on the <code>Run</code> button in the toolbar</li>
+    <li>Run <code>micropip.list()</code> to view installed packages.</li>
+  </ul>
+
+  <!-- First Code block with copy button -->
+  <div class="code-container">
+    <pre><code class="language-python" id="code-block-1"
+># Example code to try:
+from sklearn.datasets import (
+    make_classification,
+    load_breast_cancer as data_2_classes,
+    load_iris as data_3_classes,
+    load_digits as data_10_classes,
+)
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+
+#import matplotlib.pyplot as plt
+import scikitplot as skplt
+
+# Load the data
+X, y = data_3_classes(return_X_y=True, as_frame=True)
+X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.5)
+
+# Create and train the model
+model = RandomForestClassifier().fit(X_train, y_train)
+
+# Plot feature importances
+ax, features = skplt.estimators.plot_feature_importances(
+    model, display_bar_label=False,
+    figsize=(12,5)
+);</code></pre>
+    <!-- Copy button with data-copy-target attribute -->
+    <button class="copy-btn" data-copy-target="code-block-1">&#128203; Copy</button>
+  </div>
+
+  <!-- Second Code block with copy button -->
+  <div class="code-container">
+    <pre><code class="language-python" id="code-block-2"
+>import micropip; micropip.list()</code></pre>
+    <!-- Copy button with data-copy-target attribute -->
+    <button class="copy-btn" data-copy-target="code-block-2">&#128203; Copy</button>
+  </div>
+
+  <!-- Add more code blocks with their respective copy buttons as needed -->
+
+</div>
+    
+    <!-- Include interactive shell section -->
+    
+<div class="shell-lesson shell-content">
+  <!-- Interactive Shell -->
+  <!-- src="https://jupyterlite.github.io/demo/repl/?toolbar=1&kernel=python&code=import%20numpy%20as%20np" -->
+  <iframe
+    class="numpy-shell"
+    src=https://scikit-plots.github.io/demo/repl/?toolbar=1&kernel=python&code=import%20micropip%3Bawait%20micropip.install%28%27scikit-plots%3D%3D0.3.9rc3%27%2Ckeep_going%3DTrue%29
+    width="100%" height="500px"
+  >Try the REPL!
+  </iframe>
+</div>
+    
+  </div>
+</div>
+</div>
+      </main>
+    </div>
+  </div>
+  
+
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+<div class="container-fluid sk-landing-more-info py-3">
+  <div class="container sk-landing-container bd-page-width">
+    <div class="row">
+      <!--Testimonials -->
+      <div class="col-md-4">
+        <h4 class="sk-landing-call-header">Adopters</h4>
+        <div id="skWhoUsesCarousel" class="carousel slide sk-who-uses-carousel" data-bs-ride="carousel" data-bs-interval="5000">
+          <div class="carousel-inner">
+            <!-- <div class="carousel-item active">
+              <img class="d-block mx-auto img-thumbnail" src="_images/inria.png" alt="inria">
+              <em>"We use scikit-learn to support leading-edge basic research [...]"</em>
+            </div> -->
+            <!-- <div class="carousel-item">
+              <img class="d-block mx-auto img-thumbnail" src="_images/spotify.png" alt="spotify">
+              <em>"I think it's the most well-designed ML package I've seen so far."</em>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block mx-auto img-thumbnail" src="_images/change-logo.png" alt="change-logo">
+              <em>"scikit-learn's ease-of-use, performance and overall variety of algorithms implemented has proved invaluable [...]"</em>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block mx-auto img-thumbnail" src="_images/telecomparistech.jpg" alt="telecomparistech">
+              <em>"The great benefit of scikit-learn is its fast learning curve [...]"</em>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block mx-auto img-thumbnail" src="_images/aweber.png" alt="aweber">
+              <em>"It allows us to do AWesome stuff we would not otherwise accomplish."</em>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block mx-auto img-thumbnail" src="_images/yhat.png" alt="yhat">
+              <em>"scikit-learn makes doing advanced analysis in Python accessible to anyone."</em>
+            </div> -->
+          </div>
+        </div>
+        <p class="sk-more-testimonials">
+          <!-- <a href="testimonials/testimonials.html">More testimonials...</a> -->
+        </p>
+      </div>
+      <!-- Changelog -->
+      <div class="col-md-4">
+        <h4 class="sk-landing-call-header">Release Notes</h4>
+        <ul class="sk-landing-call-list list-unstyled">
+          <li><strong>On-going development:</strong> <a href="whats_new/v0.5.html#version-0-5-0">scikit-plots 0.5 (Changelog)</a>.</li>
+          <li><strong>Nov 2024.</strong> scikit-plots 0.4.0 is available for download (<a href="whats_new/v0.4.html#version-0-4-0">Changelog</a>).</li>
+          <li><strong>All releases:</strong> <a href="https://scikit-plots.github.io/dev/whats_new/index.html"><strong>What's new</strong> (Changelog)</a>.</li>
+        </ul>
+      </div>
+      <!-- Community -->
+      <div class="col-md-4">
+        <h4 class="sk-landing-call-header">Meet the Community</h4>
+        <ul class="sk-landing-call-list list-unstyled">
+          <li><strong>About us:</strong> See <a href="project/teams/index2.html#the-people-behind-scikit-plots">people</a> and <a href="devel/index.html" >contributing</a></li>
+          <!-- <li><strong>More Machine Learning:</strong> Find <a href="related_projects.html">related projects</a></li>
+          <li><strong>Questions?</strong> See <a href="faq.html">FAQ</a>, <a href="support.html">support</a>, and <a href="https://stackoverflow.com/questions/tagged/scikit-learn">stackoverflow</a></li>
+          <li><strong>Subscribe to the</strong> <a href="https://mail.python.org/mailman/listinfo/scikit-learn">mailing list</a></li>
+          <li><strong>Blog:</strong> <a href="https://blog.scikit-learn.org">blog.scikit-learn.org</a></li>
+          <li><strong>Logos & Branding:</strong> <a href="https://github.com/scikit-learn/scikit-learn/tree/main/doc/logos">logos and branding</a></li>
+          <li><strong>Calendar:</strong> <a href="https://blog.scikit-learn.org/calendar/">calendar</a></li>
+          <li><strong>Twitter:</strong> <a href="https://twitter.com/scikit_learn">@scikit_learn</a></li>
+          <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/scikit-learn">linkedin/scikit-learn</a></li>
+          <li><strong>YouTube:</strong> <a href="https://www.youtube.com/channel/UCJosFjYm0ZYVUARxuOZqnnw/playlists">youtube.com/scikit-learn</a></li>
+          <li><strong>Facebook:</strong> <a href="https://www.facebook.com/scikitlearnofficial/">@scikitlearnofficial</a></li>
+          <li><strong>Instagram:</strong> <a href="https://www.instagram.com/scikitlearnofficial/">@scikitlearnofficial</a></li>
+          <li><strong>TikTok:</strong> <a href="https://www.tiktok.com/@scikit.learn">@scikit.learn</a></li>
+          <li><strong>Mastodon:</strong> <a href="https://mastodon.social/@sklearn@fosstodon.org">@sklearn</a></li>
+          <li><strong>Discord:</strong> <a href="https://discord.gg/h9qyrK8Jc8">@scikit-learn</a></li>
+          <li>Communication on all channels should respect <a href="https://www.python.org/psf/conduct/">PSF's code of conduct.</a></li> -->
+        </ul>
+        <p>
+          <!-- <a class="btn sk-btn-orange mb-1" href="https://numfocus.org/donate-to-scikit-learn">Help us, <strong>donate!</strong></a> -->
+          <a class="btn sk-btn-orange mb-1" href="project/citing.html"><strong>Cite us!</strong></a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid sk-landing-footer py-3">
+  <div class="container sk-landing-container">
+    <a class="sk-footer-funding-link" href="project/funding.html">
+      <div class="text-center">
+        <p class="mt-2 sk-footer-funding-text">
+          scikit-plots supported by
+        </p>
+        <!-- <div class="sk-footer-funding-logos">
+          <img src="_static/probabl.png" title="Probabl">
+          <img src="_static/inria-small.png" title="INRIA">
+          <img src="_static/chanel-small.png" title="Chanel">
+          <img src="_static/axa-small.png" title="AXA Assurances">
+          <img src="_static/bnp-small.png" title="BNP Paris Bas Cardif">
+          <img src="_static/microsoft-small.png" title="Microsoft">
+          <img src="_static/dataiku-small.png" title="Dataiku">
+          <img src="_static/nvidia-small.png" title="Nvidia">
+          <img src="_static/quansight-labs-small.png" title="Quansight Labs">
+          <img src="_static/czi-small.png" title="Chan Zuckerberg Initiative">
+          <img src="_static/wellcome-trust-small.png" title="Wellcome Trust">
+        </div> -->
+      </div>
+    </a>
+  </div>
+</div>
+  </body>
+</html>

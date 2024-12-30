@@ -1,0 +1,515 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../../" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="plot_learning_curve with examples" property="og:title"/>
+<meta content="website" property="og:type"/>
+<meta content="https://scikit-plots.github.io/stable/auto_examples/classification/plot_learning_curve_script.html" property="og:url"/>
+<meta content="scikit-plots" property="og:site_name"/>
+<meta content="An example showing the plot_learning_curve function used by a scikit-learn classifier. Tags: model-type: classification model-workflow: model evaluation plot-type: line plot-type: learning curve le..." property="og:description"/>
+<meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
+<meta content="scikit-plots" property="og:image:alt"/>
+<meta content="An example showing the plot_learning_curve function used by a scikit-learn classifier. Tags: model-type: classification model-workflow: model evaluation plot-type: line plot-type: learning curve le..." name="description"/>
+<title>plot_learning_curve with examples — scikit-plots 0.4.0rc0 documentation</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+<!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet"/>
+<link href="../../_static/pygments.css?v=a746c00c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/graphviz.css?v=fd3f3429" rel="stylesheet" type="text/css"/>
+<link href="../../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/jupyter-sphinx.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/thebelab.css" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
+<link href="../../_static/jupyterlite_sphinx.css?v=ca70e7f1" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery.css?v=d2d258e8" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery-binder.css?v=f4aeca0c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/colors.css?v=14208072" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/custom.css?v=e4cb1417" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" rel="preload"/>
+<script src="../../_static/documentation_options.js?v=bfecb351"></script>
+<script src="../../_static/doctools.js?v=9a2dae69"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=e93d8674"></script>
+<script src="../../_static/thebelab-helper.js"></script>
+<script src="../../_static/jupyterlite_sphinx.js?v=d6bdf5f8"></script>
+<script src="../../_static/design-tabs.js?v=f930bc37"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/classification/plot_learning_curve_script';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+<script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
+<script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
+<link href="../../_static/scikit-plots-favicon.ico" rel="icon"/>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="plot_precision_recall_script.html" rel="next" title="plot_precision_recall with examples"/>
+<link href="plot_feature_importances_script.html" rel="prev" title="plot_feature_importances with examples"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="0.4" name="docsearch:version"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Skip to main content</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button">
+<i class="fa-solid fa-arrow-up"></i>Back to top</button>
+<dialog id="pst-search-dialog">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search the docs ..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search the docs ..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Version warning" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Site navigation" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../index.html">
+<img alt="scikit-plots homepage" class="logo__image only-light" src="../../_static/scikit-plots-logo-small.png"/>
+<img alt="scikit-plots homepage" class="logo__image only-dark pst-js-only" src="../../_static/scikit-plots-logo-small.png"/>
+</a></div>
+</div>
+<div class="navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../api/index.html">
+    APIs Reference
+  </a>
+</li>
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../index.html">
+    Tutorials
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../whats_new/index.html">
+    Release Notes
+  </a>
+</li>
+<li class="nav-item dropdown">
+<button aria-controls="pst-nav-more-links" aria-expanded="false" class="btn dropdown-toggle nav-item" data-bs-toggle="dropdown" type="button">
+                    More
+                </button>
+<ul class="dropdown-menu" id="pst-nav-more-links">
+<li class="">
+<a class="nav-link dropdown-item nav-external" href="https://zenodo.org/communities/scikit-plots">
+    Community
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
+    Developer’s Guide
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/index.html">
+    About us
+  </a>
+</li>
+</ul>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item navbar-persistent--container">
+<button aria-label="Search" class="btn search-button-field search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Search">
+<i class="fa-solid fa-magnifying-glass"></i>
+<span class="search-button__default-text">Search</span>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+</div>
+<div class="navbar-item">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Version switcher list" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">
+    Choose version  <!-- this text may get changed later by javascript -->
+<span class="caret"></span>
+</button>
+<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/scikit-plots/scikit-plots" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i>
+<span class="sr-only">GitHub</span></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><i aria-hidden="true" class="fa-brands fa-python fa-lg"></i>
+<span class="sr-only">PyPI</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="navbar-persistent--mobile">
+<button aria-label="Search" class="btn search-button-field search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Search">
+<i class="fa-solid fa-magnifying-glass"></i>
+<span class="search-button__default-text">Search</span>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+</div>
+<button aria-label="On this page" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../api/index.html">
+    APIs Reference
+  </a>
+</li>
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../index.html">
+    Tutorials
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../whats_new/index.html">
+    Release Notes
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-external" href="https://zenodo.org/communities/scikit-plots">
+    Community
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
+    Developer’s Guide
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/index.html">
+    About us
+  </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Version switcher list" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">
+    Choose version  <!-- this text may get changed later by javascript -->
+<span class="caret"></span>
+</button>
+<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/scikit-plots/scikit-plots" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i>
+<span class="sr-only">GitHub</span></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><i aria-hidden="true" class="fa-brands fa-python fa-lg"></i>
+<span class="sr-only">PyPI</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item">
+<nav aria-label="Section Navigation" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Section Navigation</p>
+<div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00-blogs/index.html">blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00-jupyter_notebooks/index.html">jupyter notebooks</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../calibration/index.html">Calibration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calibration/plot_calibration_script.html">plot_calibration with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Classification</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plot_classifier_eval_script.html">plot_classifier_eval with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_confusion_matrix_script.html">plot_confusion_matrix with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_feature_importances_script.html">plot_feature_importances with examples</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">plot_learning_curve with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_precision_recall_script.html">plot_precision_recall with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_roc_script.html">plot_roc_curve with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../clustering/index.html">Clustering</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_elbow_script.html">plot_elbow with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_silhouette_script.html">plot_silhouette with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../decomposition/index.html">Decomposition</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_2d_projection_script.html">plot_pca_2d_projection with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_component_variance_script.html">plot_pca_component_variance with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../kds/index.html">KeyToDataScience</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../kds/plot_cumulative_gain_script.html">plot_cumulative_gain with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kds/plot_ks_statistic_script.html">plot_ks_statistic with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kds/plot_lift_script.html">plot_lift with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../modelplotpy/index.html">modelplotpy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modelplotpy/plot_modelplotpy_script.html">Introduction to modelplotpy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../regression/index.html">Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../regression/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../stats/index.html">Stats</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../visualkeras_ANN/index.html">Visualkeras ANN</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_ANN/plot_conv_dense.html">Visualkeras Spam Classification Conv1D Dense Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_ANN/plot_dense.html">visualkeras Spam Dense example</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../visualkeras_CNN/index.html">Visualkeras CNN</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_autoencoder.html">visualkeras autoencoder example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_custom_vgg16.html">visualkeras custom vgg16 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_custom_vgg16_show_dimension.html">visualkeras custom vgg16 show dimension example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_efficientnetv2.html">visualkeras EfficientNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_resnetv2.html">visualkeras ResNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_vgg.html">visualkeras custom VGG example</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../visualkeras_NLP/index.html">Visualkeras NLP</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_NLP/plot_nlp_mpnet_with_tf_layers.html">visualkeras transformers example</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+</div>
+<div id="rtd-footer-container"></div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">Examples</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">Classification</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">plot_learning_curve with examples</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+
+<section class="sphx-glr-example-title" id="plot-learning-curve-with-examples">
+<span id="sphx-glr-auto-examples-classification-plot-learning-curve-script-py"></span><h1>plot_learning_curve with examples<a class="headerlink" href="#plot-learning-curve-with-examples" title="Link to this heading">#</a></h1>
+<p>An example showing the <a class="reference internal" href="../../modules/generated/scikitplot.api.estimators.plot_learning_curve.html#scikitplot.api.estimators.plot_learning_curve" title="scikitplot.api.estimators.plot_learning_curve"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_learning_curve</span></code></a> function
+used by a scikit-learn classifier.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: The scikit-plots developers</span>
+<span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">make_classification</span><span class="p">,</span>
+    <span class="n">load_breast_cancer</span> <span class="k">as</span> <span class="n">data_2_classes</span><span class="p">,</span>
+    <span class="n">load_iris</span> <span class="k">as</span> <span class="n">data_3_classes</span><span class="p">,</span>
+    <span class="n">load_digits</span> <span class="k">as</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html#sklearn.datasets.load_digits" title="sklearn.datasets.load_digits"><span class="n">data_10_classes</span></a><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">LinearSVC</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_predict</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="p">;</span> <a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.seed.html#numpy.random.seed" title="numpy.random.seed"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># reproducibility</span>
+<span class="c1"># importing pylab or pyplot</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Import scikit-plot</span>
+<span class="kn">import</span> <span class="nn">scikitplot</span> <span class="k">as</span> <span class="nn">sp</span>
+
+<span class="c1"># Load the data</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html#sklearn.datasets.load_digits" title="sklearn.datasets.load_digits"><span class="n">data_10_classes</span></a><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Create an instance of the LogisticRegression</span>
+<span class="n">model</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="mf">1e5</span><span class="p">),</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Plot!</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">estimators</span><span class="o">.</span><span class="n">plot_learning_curve</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+<span class="p">);</span>
+
+<span class="c1"># Adjust layout to make sure everything fits</span>
+<a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.tight_layout.html#matplotlib.pyplot.tight_layout" title="matplotlib.pyplot.tight_layout"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
+
+<span class="c1"># Save the plot with a filename based on the current script's name</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">save_current_plot</span><span class="p">()</span>
+
+<span class="c1"># Display the plot</span>
+<a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="LogisticRegression Learning Curves" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_learning_curve_script_001.png" srcset="../../_images/sphx_glr_plot_learning_curve_script_001.png"/><p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-model-evaluation.html"><span class="doc">model-workflow: model evaluation</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-line.html"><span class="doc">plot-type: line</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-learning-curve.html"><span class="doc">plot-type: learning curve</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.451 seconds)</p>
+
+<p class="rubric">Related examples</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.kds.plot_cumulative_gain function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_cumulative_gain_script_thumb.png"/>
+<p><a class="reference internal" href="../kds/plot_cumulative_gain_script.html#sphx-glr-auto-examples-kds-plot-cumulative-gain-script-py"><span class="std std-ref">plot_cumulative_gain with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">plot_cumulative_gain with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.kds.plot_lift function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_lift_script_thumb.png"/>
+<p><a class="reference internal" href="../kds/plot_lift_script.html#sphx-glr-auto-examples-kds-plot-lift-script-py"><span class="std std-ref">plot_lift with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">plot_lift with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_precision_recall function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_precision_recall_script_thumb.png"/>
+<p><a class="reference internal" href="plot_precision_recall_script.html#sphx-glr-auto-examples-classification-plot-precision-recall-script-py"><span class="std std-ref">plot_precision_recall with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">plot_precision_recall with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_roc_curve function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_roc_script_thumb.png"/>
+<p><a class="reference internal" href="plot_roc_script.html#sphx-glr-auto-examples-classification-plot-roc-script-py"><span class="std std-ref">plot_roc_curve with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">plot_roc_curve with examples</div>
+</div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</article>
+<footer class="bd-footer-article">
+<div class="footer-article-items footer-article__inner">
+<div class="footer-article-item">
+<div class="prev-next-area">
+<a class="left-prev" href="plot_feature_importances_script.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">plot_feature_importances with examples</p>
+</div>
+</a>
+<a class="right-next" href="plot_precision_recall_script.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">plot_precision_recall with examples</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div></div>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+<div class="sidebar-secondary-item"><div title="plot_learning_curve_script.py"><a download="" href="../../_downloads/c87727e7a99dc08c767a7aec044949e1/plot_learning_curve_script.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_learning_curve_script.ipynb"><a download="" href="../../_downloads/f223d93eafa558cbb2985afc3e45148f/plot_learning_curve_script.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/classification/plot_learning_curve_script.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo1.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/0.4.X?urlpath=lab/tree/notebooks/auto_examples/classification/plot_learning_curve_script.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo1.svg"/></a></div></div></div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">
+    
+      © Copyright 2024 - 2024, scikit-plots developers (BSD-3 Clause License).
+      <br/>
+</p>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>
