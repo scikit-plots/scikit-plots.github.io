@@ -74,7 +74,7 @@
         DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc0';
-        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
         </script>
     <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
     <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
@@ -690,7 +690,7 @@
 <h1>GoogleLogFormatter<a class="headerlink" href="#googlelogformatter" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.sp_logging.GoogleLogFormatter">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.sp_logging.</span></span><span class="sig-name descname"><span class="pre">GoogleLogFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datefmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%Y-%m-%d</span> <span class="pre">%H:%M:%S'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_time_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%Y-%m-%d</span> <span class="pre">%H:%M:%S'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_msec_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%s,%03d'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_datetime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/7c9d1c2/scikitplot/sp_logging.py#L246"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.GoogleLogFormatter" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.sp_logging.</span></span><span class="sig-name descname"><span class="pre">GoogleLogFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datefmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%Y-%m-%d</span> <span class="pre">%H:%M:%S'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_time_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%Y-%m-%d</span> <span class="pre">%H:%M:%S'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_msec_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%s,%03d'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_datetime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/abef504/scikitplot/sp_logging.py#L246"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.GoogleLogFormatter" title="Link to this definition">#</a></dt>
 <dd><p>Custom logging formatter that formats log messages in a Google-style format:
 YYYY-MM-DD HH:MM:SS.mmmmmm logger_name log_level message</p>
 <p>This formatter outputs logs in a structured format with the following fields:
@@ -731,7 +731,7 @@ When ‘seconds’ is not passed in, convert the current time instead.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.sp_logging.GoogleLogFormatter.format">
-<span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/7c9d1c2/scikitplot/sp_logging.py#L307"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.GoogleLogFormatter.format" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/abef504/scikitplot/sp_logging.py#L307"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.GoogleLogFormatter.format" title="Link to this definition">#</a></dt>
 <dd><p>Format the log record into a JSON string or a pretty-printed dictionary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -748,7 +748,7 @@ When ‘seconds’ is not passed in, convert the current time instead.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.sp_logging.GoogleLogFormatter.formatException">
-<span class="sig-name descname"><span class="pre">formatException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ei</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/7c9d1c2/scikitplot/../../../../../../opt/conda/lib/python3.11/logging/__init__.py#L633"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.GoogleLogFormatter.formatException" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">formatException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ei</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/abef504/scikitplot/../../../../../../opt/conda/lib/python3.11/logging/__init__.py#L633"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.GoogleLogFormatter.formatException" title="Link to this definition">#</a></dt>
 <dd><p>Format and return the specified exception information as a string.</p>
 <p>This default implementation just uses
 traceback.print_exception()</p>
@@ -756,12 +756,12 @@ traceback.print_exception()</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.sp_logging.GoogleLogFormatter.formatMessage">
-<span class="sig-name descname"><span class="pre">formatMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/7c9d1c2/scikitplot/../../../../../../opt/conda/lib/python3.11/logging/__init__.py#L658"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.GoogleLogFormatter.formatMessage" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">formatMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/abef504/scikitplot/../../../../../../opt/conda/lib/python3.11/logging/__init__.py#L658"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.GoogleLogFormatter.formatMessage" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.sp_logging.GoogleLogFormatter.formatStack">
-<span class="sig-name descname"><span class="pre">formatStack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stack_info</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/7c9d1c2/scikitplot/../../../../../../opt/conda/lib/python3.11/logging/__init__.py#L661"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.GoogleLogFormatter.formatStack" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">formatStack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stack_info</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/abef504/scikitplot/../../../../../../opt/conda/lib/python3.11/logging/__init__.py#L661"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.GoogleLogFormatter.formatStack" title="Link to this definition">#</a></dt>
 <dd><p>This method is provided as an extension point for specialized
 formatting of stack information.</p>
 <p>The input data is a string as returned from a call to
@@ -772,7 +772,7 @@ removed.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.sp_logging.GoogleLogFormatter.formatTime">
-<span class="sig-name descname"><span class="pre">formatTime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datefmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/7c9d1c2/scikitplot/../../../../../../opt/conda/lib/python3.11/logging/__init__.py#L606"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.GoogleLogFormatter.formatTime" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">formatTime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datefmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/abef504/scikitplot/../../../../../../opt/conda/lib/python3.11/logging/__init__.py#L606"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.GoogleLogFormatter.formatTime" title="Link to this definition">#</a></dt>
 <dd><p>Return the creation time of the specified LogRecord as formatted text.</p>
 <p>This method should be called from format() by a formatter which
 wants to make use of a formatted time. This method can be overridden
@@ -791,7 +791,7 @@ set the ‘converter’ attribute in the Formatter class.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.sp_logging.GoogleLogFormatter.usesTime">
-<span class="sig-name descname"><span class="pre">usesTime</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/7c9d1c2/scikitplot/../../../../../../opt/conda/lib/python3.11/logging/__init__.py#L652"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.GoogleLogFormatter.usesTime" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">usesTime</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/abef504/scikitplot/../../../../../../opt/conda/lib/python3.11/logging/__init__.py#L652"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.GoogleLogFormatter.usesTime" title="Link to this definition">#</a></dt>
 <dd><p>Check if the format uses the creation time of the record.</p>
 </dd></dl>
 
