@@ -13,13 +13,13 @@
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
 <meta content="To install the latest version (with pip): This exercise is used in ModelPlotPy class the part of the modelplotpy and modelplotpy financial sections. References[1] https://modelplot.github.io/intro_..." name="description"/>
-<title>Introduction to modelplotpy — scikit-plots 0.5.dev0+git20241230.7c9d1c2 documentation</title>
+<title>Introduction to modelplotpy — scikit-plots 0.5.dev0+git20250107.7cc804c documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-<!-- 
-    this give us a css class that will be invisible only if js is disabled 
+<!--
+    this give us a css class that will be invisible only if js is disabled
   -->
 <noscript>
 <style>
@@ -28,16 +28,16 @@
     </style>
 </noscript>
 <!-- Loaded before other Sphinx assets -->
-<link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet"/>
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet"/>
-<link href="../../_static/pygments.css?v=a746c00c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
 <link href="../../_static/graphviz.css?v=fd3f3429" rel="stylesheet" type="text/css"/>
 <link href="../../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
 <link href="../../_static/jupyter-sphinx.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/thebelab.css" rel="stylesheet" type="text/css"/>
 <link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
-<link href="../../_static/jupyterlite_sphinx.css?v=ca70e7f1" rel="stylesheet" type="text/css"/>
+<link href="../../_static/jupyterlite_sphinx.css?v=e3ca86de" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery.css?v=d2d258e8" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-binder.css?v=f4aeca0c" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" rel="stylesheet" type="text/css"/>
@@ -46,11 +46,11 @@
 <link href="../../_static/styles/colors.css?v=14208072" rel="stylesheet" type="text/css"/>
 <link href="../../_static/styles/custom.css?v=e4cb1417" rel="stylesheet" type="text/css"/>
 <!-- So that users can add custom icons -->
-<script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+<script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
 <!-- Pre-loaded scripts that we'll load fully later -->
-<link as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" rel="preload"/>
-<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" rel="preload"/>
-<script src="../../_static/documentation_options.js?v=a218ecfe"></script>
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<script src="../../_static/documentation_options.js?v=a391ba84"></script>
 <script src="../../_static/doctools.js?v=9a2dae69"></script>
 <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -62,10 +62,11 @@
 <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
 <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/modelplotpy/plot_modelplotpy_script';</script>
 <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
-        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
         </script>
 <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
 <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
@@ -368,7 +369,6 @@
 </div>
 <div class="sidebar-primary-items__end sidebar-primary__section">
 </div>
-<div id="rtd-footer-container"></div>
 </div>
 <main class="bd-main" id="main-content" role="main">
 <div class="bd-content">
@@ -439,15 +439,15 @@ not how to build a perfect model, we’ll use six of these columns in our exampl
 </div>
 <section id="loading-the-dataset">
 <h2>Loading the dataset<a class="headerlink" href="#loading-the-dataset" title="Link to this heading">#</a></h2>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">io</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">zipfile</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">zipfile</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 <a class="sphx-glr-backref-module-warnings sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/warnings.html#warnings.filterwarnings" title="warnings.filterwarnings"><span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span></a><span class="p">(</span><span class="s1">'ignore'</span><span class="p">)</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="p">;</span> <a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.seed.html#numpy.random.seed" title="numpy.random.seed"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># reproducibility</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span><span class="p">;</span> <a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.seed.html#numpy.random.seed" title="numpy.random.seed"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># reproducibility</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="c1">#r = requests.get("https://archive.ics.uci.edu/ml/machine-learning-databases/00222/bank-additional.zip")</span>
 <span class="c1"># we encountered that the source at uci.edu is not always available,</span>
@@ -494,9 +494,9 @@ This well known module is a wrapper for many predictive modeling techniques,
 such as logistic regression, random forest and many, many others.
 Lets train a few models to evaluate with our plots.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># to create predictive models</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a>
 
 <span class="c1"># define target vector y</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">bank</span><span class="o">.</span><span class="n">y</span>
@@ -519,7 +519,7 @@ Lets train a few models to evaluate with our plots.</p>
 <p>For now, we focus on explaining to our marketing colleagues how good our predictive model
 can help them select customers for their term deposit campaign.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># from scikitplot import modelplotpy as mp</span>
-<span class="kn">import</span> <span class="nn">scikitplot.modelplotpy</span> <span class="k">as</span> <span class="nn">mp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot.modelplotpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mp</span>
 <span class="n">obj</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-modelplotpy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/modelplotpy-cls.html#scikitplot.modelplotpy.ModelPlotPy" title="scikitplot.modelplotpy.ModelPlotPy"><span class="n">mp</span><span class="o">.</span><span class="n">ModelPlotPy</span></a><span class="p">(</span>
     <span class="n">feature_data</span>   <span class="o">=</span> <span class="p">[</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">],</span>
     <span class="n">label_data</span>     <span class="o">=</span> <span class="p">[</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">],</span>
@@ -800,7 +800,7 @@ Any other feedback or suggestions, please let us know
 via <a class="reference external" href="mailto:pb.marcus%40hotmail.com">pb<span>.</span>marcus</a>
 or <a class="reference external" href="mailto:jurriaan.nagelkerke%40gmail.com">jurriaan<span>.</span>nagelkerke</a>.</p>
 <p>Happy modelplotting!</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 13.659 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 17.265 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_residuals_distribution function used by a scikit-learn regressor."><img alt="" src="../../_images/sphx_glr_plot_residuals_distribution_script_thumb.png"/>
@@ -873,7 +873,13 @@ or <a class="reference external" href="mailto:jurriaan.nagelkerke%40gmail.com">j
 </li>
 </ul>
 </nav></div>
-
+<div class="sidebar-secondary-item">
+<div aria-label="source link" role="note">
+<h3>This Page</h3>
+<ul class="this-page-menu">
+<li><a href="../../_sources/auto_examples/modelplotpy/plot_modelplotpy_script.rst.txt" rel="nofollow">Show Source</a></li>
+</ul>
+</div></div>
 <div class="sidebar-secondary-item"><div title="plot_modelplotpy_script.py"><a download="" href="../../_downloads/08b91eeb22423cd5d35693e35a04e372/plot_modelplotpy_script.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_modelplotpy_script.ipynb"><a download="" href="../../_downloads/0e925ad37ffd6b53dbf281a1863e06eb/plot_modelplotpy_script.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/modelplotpy/plot_modelplotpy_script.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo5.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/modelplotpy/plot_modelplotpy_script.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo5.svg"/></a></div></div></div></div>
 </div>
 <footer class="bd-footer-content">
@@ -882,15 +888,15 @@ or <a class="reference external" href="mailto:jurriaan.nagelkerke%40gmail.com">j
 </div>
 </div>
 <!-- Scripts loaded after <body> so the DOM is not blocked -->
-<script defer="" src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer="" src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
 <div class="footer-items__start">
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2024, scikit-plots developers (BSD-3 Clause License).
+      © Copyright 2024 - 2025, scikit-plots developers (BSD-3 Clause License).
       <br/>
 </p>
 </div>
