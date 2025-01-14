@@ -1,0 +1,1027 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="scikitplot.stats" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://scikit-plots.github.io/stable/apis/scikitplot.stats.html" />
+<meta property="og:site_name" content="scikit-plots" />
+<meta property="og:description" content="Elegant statistical tools for intuitive and insightful data visualization and interpretation. The stats module offers a wide range of probability distributions, summary and frequency statistics, co..." />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
+<meta property="og:image:alt" content="scikit-plots" />
+<meta name="description" content="Elegant statistical tools for intuitive and insightful data visualization and interpretation. The stats module offers a wide range of probability distributions, summary and frequency statistics, co..." />
+
+    <title>scikitplot.stats &#8212; scikit-plots 0.5.dev0+git20250114.96321ef documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=13b285a0" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=14208072" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=e4cb1417" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=373ea374"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=e93d8674"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=1cca63f7"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'apis/scikitplot.stats';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <script src="../_static/scripts/dropdown.js?v=e2048168"></script>
+    <script src="../_static/scripts/version-switcher.js?v=9bbada16"></script>
+    <link rel="icon" href="../_static/scikit-plots-favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Events" href="../modules/generated/scikitplot._astropy.stats.Events.html" />
+    <link rel="prev" title="sp_logger" href="../modules/generated/scikitplot.sp_logging.sp_logger.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.5" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/scikit-plots-logo-small.png" class="logo__image only-light" alt="scikit-plots homepage"/>
+    <img src="../_static/scikit-plots-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-plots homepage"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../whats_new/index.html">
+    Release Notes
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://zenodo.org/communities/scikit-plots">
+    Community
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../devel/index.html">
+    Developer’s Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/index.html">
+    About us
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../whats_new/index.html">
+    Release Notes
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://zenodo.org/communities/scikit-plots">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../devel/index.html">
+    Developer’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/index.html">
+    About us
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.html">scikitplot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.config_context.html">config_context</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.get_config.html">get_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.set_config.html">set_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.show_config.html">show_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.show_versions.html">show_versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.online_help.html">online_help</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.api.html">scikitplot.api</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.decomposition.plot_pca_2d_projection.html">plot_pca_2d_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.decomposition.plot_pca_component_variance.html">plot_pca_component_variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.estimators.plot_feature_importances.html">plot_feature_importances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.estimators.plot_learning_curve.html">plot_learning_curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.estimators.plot_elbow.html">plot_elbow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_residuals_distribution.html">plot_residuals_distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_classifier_eval.html">plot_classifier_eval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_confusion_matrix.html">plot_confusion_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_precision_recall.html">plot_precision_recall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_roc.html">plot_roc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_calibration.html">plot_calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_silhouette.html">plot_silhouette</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api._utils.validate_labels.html">validate_labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api._utils.cumulative_gain_curve.html">cumulative_gain_curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api._utils.binary_ks_curve.html">binary_ks_curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api._utils.validate_plotting_kwargs.html">validate_plotting_kwargs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api._utils.save_figure.html">save_figure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api._utils.save_plot.html">save_plot</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._cy_experimental.expit.html">expit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._cy_experimental.log_expit.html">log_expit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._cy_experimental.logit.html">logit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._py_experimental.py_print.html">py_print</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._logsumexp.sigmoid.html">sigmoid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._logsumexp.softmax.html">softmax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._logsumexp.logsumexp.html">logsumexp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._logsumexp.log_softmax.html">log_softmax</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.kds.html">scikitplot.kds</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.kds.print_labels.html">print_labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.kds.decile_table.html">decile_table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.kds.plot_cumulative_gain.html">plot_cumulative_gain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.kds.plot_lift.html">plot_lift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.kds.plot_lift_decile_wise.html">plot_lift_decile_wise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.kds.plot_ks_statistic.html">plot_ks_statistic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.kds.report.html">report</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.modelplotpy.html">scikitplot.modelplotpy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/modelplotpy-cls.html">ModelPlotPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_response.html">plot_response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_cumresponse.html">plot_cumresponse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_cumlift.html">plot_cumlift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_cumgains.html">plot_cumgains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_all.html">plot_all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_costsrevs.html">plot_costsrevs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_profit.html">plot_profit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_roi.html">plot_roi</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.probscale.html">scikitplot.probscale</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.probscale.ProbScale.html">ProbScale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.probscale.probplot.html">probplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.probscale.plot_pos.html">plot_pos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.probscale.fit_line.html">fit_line</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.sp_logging.html">scikitplot.sp_logging</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.CRITICAL.html">CRITICAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.DEBUG.html">DEBUG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.ERROR.html">ERROR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.FATAL.html">FATAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.INFO.html">INFO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.NOTSET.html">NOTSET</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.WARN.html">WARN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.WARNING.html">WARNING</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.AlwaysStdErrHandler.html">AlwaysStdErrHandler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.GoogleLogFormatter.html">GoogleLogFormatter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/critical-function.html">critical</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/debug-function.html">debug</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/error-function.html">error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.error_log.html">error_log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/fatal-function.html">fatal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.getEffectiveLevel.html">getEffectiveLevel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.get_logger.html">get_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.log_if.html">log_if</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.setLevel.html">setLevel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.vlog.html">vlog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/warn-function.html">warn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/warning-function.html">warning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.SpLogger.html">SpLogger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.sp_logger.html">sp_logger</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">scikitplot.stats</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.Events.html">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.FitnessFunc.html">FitnessFunc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.PointMeasures.html">PointMeasures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.RegularEvents.html">RegularEvents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.bayesian_blocks.html">bayesian_blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.binned_binom_proportion.html">binned_binom_proportion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.binom_conf_interval.html">binom_conf_interval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.bootstrap.html">bootstrap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.cdf_from_intervals.html">cdf_from_intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.fold_intervals.html">fold_intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.gaussian_fwhm_to_sigma.html">gaussian_fwhm_to_sigma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.gaussian_sigma_to_fwhm.html">gaussian_sigma_to_fwhm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.histogram_intervals.html">histogram_intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.interval_overlap_length.html">interval_overlap_length</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.kuiper.html">kuiper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.kuiper_false_positive_probability.html">kuiper_false_positive_probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.kuiper_two.html">kuiper_two</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.mad_std.html">mad_std</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.median_absolute_deviation.html">median_absolute_deviation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.poisson_conf_interval.html">poisson_conf_interval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.signal_to_noise_oir_ccd.html">signal_to_noise_oir_ccd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.calculate_bin_edges.html">calculate_bin_edges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.freedman_bin_width.html">freedman_bin_width</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.histogram.html">histogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.knuth_bin_width.html">knuth_bin_width</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.scott_bin_width.html">scott_bin_width</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.akaike_info_criterion.html">akaike_info_criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.akaike_info_criterion_lsq.html">akaike_info_criterion_lsq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.bayesian_info_criterion.html">bayesian_info_criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.bayesian_info_criterion_lsq.html">bayesian_info_criterion_lsq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._tweedie.tweedie_gen.html">tweedie_gen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._tweedie.tweedie.html">tweedie</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.visualkeras.html">scikitplot.visualkeras</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.visualkeras.graph_view.html">graph_view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.visualkeras.layered_view.html">layered_view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.visualkeras.SpacingDummyLayer.html">SpacingDummyLayer</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="deprecated.html">Recently Deprecated</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._factory_api.html">_factory_api</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_roc_curve.html">plot_roc_curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_precision_recall_curve.html">plot_precision_recall_curve</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">APIs Reference</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">scikitplot.stats</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-scikitplot.stats">
+<span id="scikitplot-stats"></span><span id="stats-ref"></span><h1>scikitplot.stats<a class="headerlink" href="#module-scikitplot.stats" title="Link to this heading">#</a></h1>
+<p>Elegant statistical tools for intuitive and insightful data visualization and interpretation.</p>
+<p>The <a class="reference internal" href="#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">stats</span></code></a> module offers a wide range of probability distributions, summary
+and frequency statistics, correlation functions, statistical tests,
+masked statistics, and additional tools.</p>
+<p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/stats/index.html#stats-index"><span class="std std-ref">Stats (experimental)</span></a> section for further details.</p>
+<section id="module-scikitplot._astropy.stats._bayesian_blocks">
+<span id="astrostatistics-bayesian-blocks-for-time-series-analysis"></span><span id="stats-ref-astrostatistics-bayesian-blocks-for-time-series-analysis"></span><h2>Astrostatistics: Bayesian Blocks for Time Series Analysis<a class="headerlink" href="#module-scikitplot._astropy.stats._bayesian_blocks" title="Link to this heading">#</a></h2>
+<p>Use Bayesian Blocks for Time Series Analysis.</p>
+<section id="bayesian-blocks-for-time-series-analysis">
+<h3>Bayesian Blocks for Time Series Analysis?<a class="headerlink" href="#bayesian-blocks-for-time-series-analysis" title="Link to this heading">#</a></h3>
+<p>Dynamic programming algorithm for solving a piecewise-constant model for
+various datasets. This is based on the algorithm presented in Scargle
+et al 2013 <a class="reference internal" href="#r638c79c1c7f4-1" id="id1">[1]</a>. This code was ported from the astroML project <a class="reference internal" href="#r638c79c1c7f4-2" id="id2">[2]</a>.</p>
+<p>Applications include:</p>
+<ul class="simple">
+<li><p>finding an optimal histogram with adaptive bin widths</p></li>
+<li><p>finding optimal segmentation of time series data</p></li>
+<li><p>detecting inflection points in the rate of event data</p></li>
+</ul>
+<p>The primary interface to these routines is the <code class="xref py py-func docutils literal notranslate"><span class="pre">bayesian_blocks</span></code>
+function. This module provides fitness functions suitable for three types
+of data:</p>
+<ul class="simple">
+<li><p>Irregularly-spaced event data via the <a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.Events.html#scikitplot._astropy.stats.Events" title="scikitplot._astropy.stats._bayesian_blocks.Events"><code class="xref py py-class docutils literal notranslate"><span class="pre">Events</span></code></a> class</p></li>
+<li><p>Regularly-spaced event data via the <a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.RegularEvents.html#scikitplot._astropy.stats.RegularEvents" title="scikitplot._astropy.stats._bayesian_blocks.RegularEvents"><code class="xref py py-class docutils literal notranslate"><span class="pre">RegularEvents</span></code></a> class</p></li>
+<li><p>Irregularly-spaced point measurements via the <a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.PointMeasures.html#scikitplot._astropy.stats.PointMeasures" title="scikitplot._astropy.stats._bayesian_blocks.PointMeasures"><code class="xref py py-class docutils literal notranslate"><span class="pre">PointMeasures</span></code></a> class</p></li>
+</ul>
+<p>For more fine-tuned control over the fitness functions used, it is possible
+to define custom <a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.FitnessFunc.html#scikitplot._astropy.stats.FitnessFunc" title="scikitplot._astropy.stats._bayesian_blocks.FitnessFunc"><code class="xref py py-class docutils literal notranslate"><span class="pre">FitnessFunc</span></code></a> classes directly and use them with
+the <code class="xref py py-func docutils literal notranslate"><span class="pre">bayesian_blocks</span></code> routine.</p>
+<p>One common application of the Bayesian Blocks algorithm is the determination
+of optimal adaptive-width histogram bins. This uses the same fitness function
+as for irregularly-spaced time series events. The easiest interface for
+creating Bayesian Blocks histograms is the <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.stats.histogram.html#astropy.stats.histogram" title="(in Astropy v7.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">astropy.stats.histogram</span></code></a>
+function.</p>
+<p>For detailed explanations see <a class="reference internal" href="#r638c79c1c7f4-1" id="id3">[1]</a>-<a class="reference internal" href="#r638c79c1c7f4-2" id="id4">[2]</a>-<a class="reference internal" href="#r638c79c1c7f4-3" id="id5">[3]</a>-<a class="reference internal" href="#r638c79c1c7f4-4" id="id6">[4]</a>.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r638c79c1c7f4-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id3">2</a>)</span>
+<p>Scargle, J et al. 2013.
+<a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2013ApJ...764..167S">https://ui.adsabs.harvard.edu/abs/2013ApJ…764..167S</a></p>
+</div>
+<div class="citation" id="r638c79c1c7f4-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id4">2</a>)</span>
+<p><a class="reference external" href="https://www.astroml.org/">https://www.astroml.org/</a> <a class="github reference external" href="https://github.com//astroML/astroML/">astroML/astroML</a></p>
+</div>
+<div class="citation" id="r638c79c1c7f4-3" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">3</a><span class="fn-bracket">]</span></span>
+<p>Bellman, R.E., Dreyfus, S.E., (1962). Applied Dynamic
+Programming. Princeton University Press, Princeton.
+<a class="reference external" href="https://press.princeton.edu/books/hardcover/9780691651873/applied-dynamic-programming">https://press.princeton.edu/books/hardcover/9780691651873/applied-dynamic-programming</a></p>
+</div>
+<div class="citation" id="r638c79c1c7f4-4" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">4</a><span class="fn-bracket">]</span></span>
+<p>Bellman, R., Roth, R., (1969). Curve fitting by segmented
+straight lines. J. Amer. Statist. Assoc. 64, 1079–1084.
+<a class="reference external" href="https://www.tandfonline.com/doi/abs/10.1080/01621459.1969.10501038">https://www.tandfonline.com/doi/abs/10.1080/01621459.1969.10501038</a></p>
+</div>
+</div>
+</section>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.Events.html#scikitplot._astropy.stats.Events" title="scikitplot._astropy.stats.Events"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Events</span></code></a></p></td>
+<td><p>Bayesian blocks fitness for binned or unbinned events.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.FitnessFunc.html#scikitplot._astropy.stats.FitnessFunc" title="scikitplot._astropy.stats.FitnessFunc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FitnessFunc</span></code></a></p></td>
+<td><p>Base class for bayesian blocks fitness functions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.PointMeasures.html#scikitplot._astropy.stats.PointMeasures" title="scikitplot._astropy.stats.PointMeasures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PointMeasures</span></code></a></p></td>
+<td><p>Bayesian blocks fitness for point measures.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.RegularEvents.html#scikitplot._astropy.stats.RegularEvents" title="scikitplot._astropy.stats.RegularEvents"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RegularEvents</span></code></a></p></td>
+<td><p>Bayesian blocks fitness for regular events.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.bayesian_blocks.html#scikitplot._astropy.stats.bayesian_blocks" title="scikitplot._astropy.stats.bayesian_blocks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bayesian_blocks</span></code></a></p></td>
+<td><p>Compute optimal segmentation of data with Scargle's Bayesian Blocks.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="module-scikitplot._astropy.stats.funcs">
+<span id="astrostatistics-tools"></span><span id="stats-ref-astrostatistics-tools"></span><h2>Astrostatistics Tools<a class="headerlink" href="#module-scikitplot._astropy.stats.funcs" title="Link to this heading">#</a></h2>
+<p>This module contains simple statistical algorithms that are
+straightforwardly implemented as a single python function (or family of
+functions).</p>
+<p>This module should generally not be used directly.  Everything in
+<code class="docutils literal notranslate"><span class="pre">__all__</span></code> is imported into <code class="docutils literal notranslate"><span class="pre">astropy.stats</span></code>, and hence that package
+should be used for access.</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.binned_binom_proportion.html#scikitplot._astropy.stats.binned_binom_proportion" title="scikitplot._astropy.stats.binned_binom_proportion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">binned_binom_proportion</span></code></a></p></td>
+<td><p>Binomial proportion and confidence interval in bins of a continuous variable <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.binom_conf_interval.html#scikitplot._astropy.stats.binom_conf_interval" title="scikitplot._astropy.stats.binom_conf_interval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">binom_conf_interval</span></code></a></p></td>
+<td><p>Binomial proportion confidence interval given k successes, n trials.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.bootstrap.html#scikitplot._astropy.stats.bootstrap" title="scikitplot._astropy.stats.bootstrap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bootstrap</span></code></a></p></td>
+<td><p>Performs bootstrap resampling on numpy arrays.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.cdf_from_intervals.html#scikitplot._astropy.stats.cdf_from_intervals" title="scikitplot._astropy.stats.cdf_from_intervals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cdf_from_intervals</span></code></a></p></td>
+<td><p>Construct a callable piecewise-linear CDF from a pair of arrays.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.fold_intervals.html#scikitplot._astropy.stats.fold_intervals" title="scikitplot._astropy.stats.fold_intervals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fold_intervals</span></code></a></p></td>
+<td><p>Fold the weighted intervals to the interval (0,1).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.gaussian_fwhm_to_sigma.html#scikitplot._astropy.stats.gaussian_fwhm_to_sigma" title="scikitplot._astropy.stats.gaussian_fwhm_to_sigma"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gaussian_fwhm_to_sigma</span></code></a></p></td>
+<td><p>Convert a string or number to a floating point number, if possible.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.gaussian_sigma_to_fwhm.html#scikitplot._astropy.stats.gaussian_sigma_to_fwhm" title="scikitplot._astropy.stats.gaussian_sigma_to_fwhm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gaussian_sigma_to_fwhm</span></code></a></p></td>
+<td><p>Convert a string or number to a floating point number, if possible.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.histogram_intervals.html#scikitplot._astropy.stats.histogram_intervals" title="scikitplot._astropy.stats.histogram_intervals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">histogram_intervals</span></code></a></p></td>
+<td><p>Histogram of a piecewise-constant weight function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.interval_overlap_length.html#scikitplot._astropy.stats.interval_overlap_length" title="scikitplot._astropy.stats.interval_overlap_length"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interval_overlap_length</span></code></a></p></td>
+<td><p>Compute the length of overlap of two intervals.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.kuiper.html#scikitplot._astropy.stats.kuiper" title="scikitplot._astropy.stats.kuiper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kuiper</span></code></a></p></td>
+<td><p>Compute the Kuiper statistic.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.kuiper_false_positive_probability.html#scikitplot._astropy.stats.kuiper_false_positive_probability" title="scikitplot._astropy.stats.kuiper_false_positive_probability"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kuiper_false_positive_probability</span></code></a></p></td>
+<td><p>Compute the false positive probability for the Kuiper statistic.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.kuiper_two.html#scikitplot._astropy.stats.kuiper_two" title="scikitplot._astropy.stats.kuiper_two"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kuiper_two</span></code></a></p></td>
+<td><p>Compute the Kuiper statistic to compare two samples.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.mad_std.html#scikitplot._astropy.stats.mad_std" title="scikitplot._astropy.stats.mad_std"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mad_std</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.median_absolute_deviation.html#scikitplot._astropy.stats.median_absolute_deviation" title="scikitplot._astropy.stats.median_absolute_deviation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">median_absolute_deviation</span></code></a></p></td>
+<td><p>Calculate the median absolute deviation (MAD).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.poisson_conf_interval.html#scikitplot._astropy.stats.poisson_conf_interval" title="scikitplot._astropy.stats.poisson_conf_interval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">poisson_conf_interval</span></code></a></p></td>
+<td><p>Poisson parameter confidence interval given observed counts.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.signal_to_noise_oir_ccd.html#scikitplot._astropy.stats.signal_to_noise_oir_ccd" title="scikitplot._astropy.stats.signal_to_noise_oir_ccd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">signal_to_noise_oir_ccd</span></code></a></p></td>
+<td><p>Computes the signal to noise ratio for source being observed in the optical/IR using a CCD.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="module-scikitplot._astropy.stats._histogram">
+<span id="astrostatistics-selecting-the-bin-width-of-histograms"></span><span id="stats-ref-astrostatistics-selecting-the-bin-width-of-histograms"></span><h2>Astrostatistics: Selecting the bin width of histograms<a class="headerlink" href="#module-scikitplot._astropy.stats._histogram" title="Link to this heading">#</a></h2>
+<p>Methods for selecting the bin width of histograms.</p>
+<p>Ported from the astroML project: <a class="reference external" href="https://www.astroml.org/">https://www.astroml.org/</a></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.calculate_bin_edges.html#scikitplot._astropy.stats.calculate_bin_edges" title="scikitplot._astropy.stats.calculate_bin_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_bin_edges</span></code></a></p></td>
+<td><p>Calculate histogram bin edges like <code class="docutils literal notranslate"><span class="pre">numpy.histogram_bin_edges</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.freedman_bin_width.html#scikitplot._astropy.stats.freedman_bin_width" title="scikitplot._astropy.stats.freedman_bin_width"><code class="xref py py-obj docutils literal notranslate"><span class="pre">freedman_bin_width</span></code></a></p></td>
+<td><p>Return the optimal histogram bin width using the Freedman-Diaconis rule.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.histogram.html#scikitplot._astropy.stats.histogram" title="scikitplot._astropy.stats.histogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">histogram</span></code></a></p></td>
+<td><p>Enhanced histogram function, providing adaptive binnings.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.knuth_bin_width.html#scikitplot._astropy.stats.knuth_bin_width" title="scikitplot._astropy.stats.knuth_bin_width"><code class="xref py py-obj docutils literal notranslate"><span class="pre">knuth_bin_width</span></code></a></p></td>
+<td><p>Return the optimal histogram bin width using Knuth's rule.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.scott_bin_width.html#scikitplot._astropy.stats.scott_bin_width" title="scikitplot._astropy.stats.scott_bin_width"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scott_bin_width</span></code></a></p></td>
+<td><p>Return the optimal histogram bin width using Scott's rule.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="module-scikitplot._astropy.stats.info_theory">
+<span id="astrostatistics-model-selection"></span><span id="stats-ref-astrostatistics-model-selection"></span><h2>Astrostatistics: Model Selection<a class="headerlink" href="#module-scikitplot._astropy.stats.info_theory" title="Link to this heading">#</a></h2>
+<p>This module contains simple functions for model selection.</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.akaike_info_criterion.html#scikitplot._astropy.stats.akaike_info_criterion" title="scikitplot._astropy.stats.akaike_info_criterion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">akaike_info_criterion</span></code></a></p></td>
+<td><p>Computes the Akaike Information Criterion (AIC).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.akaike_info_criterion_lsq.html#scikitplot._astropy.stats.akaike_info_criterion_lsq" title="scikitplot._astropy.stats.akaike_info_criterion_lsq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">akaike_info_criterion_lsq</span></code></a></p></td>
+<td><p>Computes the Akaike Information Criterion assuming that the observations are Gaussian distributed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.bayesian_info_criterion.html#scikitplot._astropy.stats.bayesian_info_criterion" title="scikitplot._astropy.stats.bayesian_info_criterion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bayesian_info_criterion</span></code></a></p></td>
+<td><p>Computes the Bayesian Information Criterion (BIC) given the log of the likelihood function evaluated at the estimated (or analytically derived) parameters, the number of parameters, and the number of samples.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.bayesian_info_criterion_lsq.html#scikitplot._astropy.stats.bayesian_info_criterion_lsq" title="scikitplot._astropy.stats.bayesian_info_criterion_lsq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bayesian_info_criterion_lsq</span></code></a></p></td>
+<td><p>Computes the Bayesian Information Criterion (BIC) assuming that the observations come from a Gaussian distribution.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="module-scikitplot._tweedie._tweedie_dist">
+<span id="discrete-distributions-tools"></span><span id="stats-ref-discrete-distributions-tools"></span><h2>Discrete Distributions Tools<a class="headerlink" href="#module-scikitplot._tweedie._tweedie_dist" title="Link to this heading">#</a></h2>
+<section id="tweedie-distribution-module">
+<h3>Tweedie Distribution Module<a class="headerlink" href="#tweedie-distribution-module" title="Link to this heading">#</a></h3>
+<p>This module implements the Tweedie distribution,
+a member of the exponential dispersion model (EDM) family,
+using SciPy’s <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_continuous.html#scipy.stats.rv_continuous" title="(in SciPy v1.15.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">rv_continuous</span></code></a> class.</p>
+<p>It is especially useful for modeling claim amounts in the insurance industry,
+where data often exhibit a mixture of zeroes and positive continuous values.</p>
+<p>The primary focus of this package is the compound-Poisson behavior
+of the Tweedie distribution, particularly in the range <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">&lt;</span> <span class="pre">p</span> <span class="pre">&lt;</span> <span class="pre">2</span></code>.
+However, it supports calculations for all valid values of the shape parameter <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p>
+<p class="rubric">Notes</p>
+<p>The probability density function (PDF) of the Tweedie distribution cannot be expressed in a closed form for most values of <code class="docutils literal notranslate"><span class="pre">p</span></code>.
+However, approximations and numerical methods are employed to compute the PDF for practical purposes.</p>
+<p>The Tweedie distribution family includes several well-known distributions based on the value of the shape parameter <code class="docutils literal notranslate"><span class="pre">p</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">0</span></code>     : Normal distribution</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">1</span></code>     : Poisson distribution</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">&lt;</span> <span class="pre">p</span> <span class="pre">&lt;</span> <span class="pre">2</span></code> : Compound Poisson-Gamma distribution</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">2</span></code>     : Gamma distribution</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">&lt;</span> <span class="pre">p</span> <span class="pre">&lt;</span> <span class="pre">3</span></code> : Positive stable distributions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">3</span></code>     : Inverse Gaussian distribution</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">&gt;</span> <span class="pre">3</span></code>     : Positive stable distributions</p></li>
+</ul>
+<p>The Tweedie distribution is undefined for values of <code class="docutils literal notranslate"><span class="pre">p</span></code> in the range <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">1)</span></code>.</p>
+<p class="rubric">References</p>
+<dl class="simple">
+<dt>[1] Jørgensen, B. (1987). “Exponential dispersion models”.</dt><dd><p>Journal of the Royal Statistical Society, Series B. 49 (2): 127–162.</p>
+</dd>
+<dt>[2] Tweedie, M. C. K. (1984). “An index which distinguishes between some important exponential families”.</dt><dd><p>In Statistics: Applications and New Directions.
+Proceedings of the Indian Statistical Institute Golden Jubilee International Conference.</p>
+</dd>
+<dt>[3] [YouTube]</dt><dd><p>Statistical Methods Series: Zero-Inflated GLM and GLMM.</p>
+</dd>
+</dl>
+<p>[4] <a class="reference external" href="https://www.statisticshowto.com/tweedie-distribution/">https://www.statisticshowto.com/tweedie-distribution/</a></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.statsmodels.org/dev/generated/statsmodels.genmod.families.family.Tweedie.html">https://www.statsmodels.org/dev/generated/statsmodels.genmod.families.family.Tweedie.html</a></p></li>
+<li><p><a class="reference external" href="https://glum.readthedocs.io/en/latest/glm.html#glum.TweedieDistribution">https://glum.readthedocs.io/en/latest/glm.html#glum.TweedieDistribution</a></p></li>
+<li><p><a class="reference external" href="https://glum.readthedocs.io/en/latest/glm.html#glum.TweedieDistribution.log_likelihood">https://glum.readthedocs.io/en/latest/glm.html#glum.TweedieDistribution.log_likelihood</a></p></li>
+</ul>
+</div>
+</section>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._tweedie.tweedie_gen.html#scikitplot._tweedie.tweedie_gen" title="scikitplot._tweedie.tweedie_gen"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tweedie_gen</span></code></a></p></td>
+<td><p>A Tweedie continuous random variable inherited <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_continuous.html#scipy.stats.rv_continuous" title="(in SciPy v1.15.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">scipy.stats.rv_continuous</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._tweedie.tweedie.html#scikitplot._tweedie.tweedie" title="scikitplot._tweedie.tweedie"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tweedie</span></code></a></p></td>
+<td><p>An instance of <a class="reference internal" href="../modules/generated/scikitplot._tweedie.tweedie_gen.html#scikitplot._tweedie.tweedie_gen" title="scikitplot._tweedie.tweedie_gen"><code class="xref py py-class docutils literal notranslate"><span class="pre">tweedie_gen</span></code></a>, providing Tweedie distribution functionality.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item">
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../modules/generated/scikitplot.sp_logging.sp_logger.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">sp_logger</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../modules/generated/scikitplot._astropy.stats.Events.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Events</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+                </footer>
+              
+              
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024 - 2025, scikit-plots developers (BSD-3 Clause License).
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

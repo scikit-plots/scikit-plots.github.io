@@ -1,0 +1,1824 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="APIs Reference" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://scikit-plots.github.io/stable/apis/index.html" />
+<meta property="og:site_name" content="scikit-plots" />
+<meta property="og:description" content="This is the class and function reference of scikit-plots. Please refer to the full user guide for further details, as the raw specifications of classes and functions may not be enough to give full ..." />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
+<meta property="og:image:alt" content="scikit-plots" />
+<meta name="description" content="This is the class and function reference of scikit-plots. Please refer to the full user guide for further details, as the raw specifications of classes and functions may not be enough to give full ..." />
+
+    <title>APIs Reference &#8212; scikit-plots 0.5.dev0+git20250114.96321ef documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=13b285a0" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/apis-search.css?v=d8131c54" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=14208072" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=e4cb1417" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=373ea374"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=e93d8674"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=1cca63f7"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>
+    <script src="../_static/scripts/apis-search.js?v=4451726e"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'apis/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <script src="../_static/scripts/dropdown.js?v=e2048168"></script>
+    <script src="../_static/scripts/version-switcher.js?v=9bbada16"></script>
+    <link rel="icon" href="../_static/scikit-plots-favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="scikitplot" href="scikitplot.html" />
+    <link rel="prev" title="LightNumPy (experimental)" href="../user_guide/__lightnumpy/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.5" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/scikit-plots-logo-small.png" class="logo__image only-light" alt="scikit-plots homepage"/>
+    <img src="../_static/scikit-plots-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-plots homepage"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../whats_new/index.html">
+    Release Notes
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://zenodo.org/communities/scikit-plots">
+    Community
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../devel/index.html">
+    Developer’s Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/index.html">
+    About us
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../whats_new/index.html">
+    Release Notes
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://zenodo.org/communities/scikit-plots">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../devel/index.html">
+    Developer’s Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/index.html">
+    About us
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.html">scikitplot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.config_context.html">config_context</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.get_config.html">get_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.set_config.html">set_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.show_config.html">show_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.show_versions.html">show_versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.online_help.html">online_help</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.api.html">scikitplot.api</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.decomposition.plot_pca_2d_projection.html">plot_pca_2d_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.decomposition.plot_pca_component_variance.html">plot_pca_component_variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.estimators.plot_feature_importances.html">plot_feature_importances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.estimators.plot_learning_curve.html">plot_learning_curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.estimators.plot_elbow.html">plot_elbow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_residuals_distribution.html">plot_residuals_distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_classifier_eval.html">plot_classifier_eval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_confusion_matrix.html">plot_confusion_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_precision_recall.html">plot_precision_recall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_roc.html">plot_roc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_calibration.html">plot_calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_silhouette.html">plot_silhouette</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api._utils.validate_labels.html">validate_labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api._utils.cumulative_gain_curve.html">cumulative_gain_curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api._utils.binary_ks_curve.html">binary_ks_curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api._utils.validate_plotting_kwargs.html">validate_plotting_kwargs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api._utils.save_figure.html">save_figure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api._utils.save_plot.html">save_plot</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._cy_experimental.expit.html">expit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._cy_experimental.log_expit.html">log_expit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._cy_experimental.logit.html">logit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._py_experimental.py_print.html">py_print</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._logsumexp.sigmoid.html">sigmoid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._logsumexp.softmax.html">softmax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._logsumexp.logsumexp.html">logsumexp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._logsumexp.log_softmax.html">log_softmax</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.kds.html">scikitplot.kds</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.kds.print_labels.html">print_labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.kds.decile_table.html">decile_table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.kds.plot_cumulative_gain.html">plot_cumulative_gain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.kds.plot_lift.html">plot_lift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.kds.plot_lift_decile_wise.html">plot_lift_decile_wise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.kds.plot_ks_statistic.html">plot_ks_statistic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.kds.report.html">report</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.modelplotpy.html">scikitplot.modelplotpy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/modelplotpy-cls.html">ModelPlotPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_response.html">plot_response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_cumresponse.html">plot_cumresponse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_cumlift.html">plot_cumlift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_cumgains.html">plot_cumgains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_all.html">plot_all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_costsrevs.html">plot_costsrevs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_profit.html">plot_profit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_roi.html">plot_roi</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.probscale.html">scikitplot.probscale</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.probscale.ProbScale.html">ProbScale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.probscale.probplot.html">probplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.probscale.plot_pos.html">plot_pos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.probscale.fit_line.html">fit_line</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.sp_logging.html">scikitplot.sp_logging</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.CRITICAL.html">CRITICAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.DEBUG.html">DEBUG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.ERROR.html">ERROR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.FATAL.html">FATAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.INFO.html">INFO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.NOTSET.html">NOTSET</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.WARN.html">WARN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.WARNING.html">WARNING</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.AlwaysStdErrHandler.html">AlwaysStdErrHandler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.GoogleLogFormatter.html">GoogleLogFormatter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/critical-function.html">critical</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/debug-function.html">debug</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/error-function.html">error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.error_log.html">error_log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/fatal-function.html">fatal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.getEffectiveLevel.html">getEffectiveLevel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.get_logger.html">get_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.log_if.html">log_if</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.setLevel.html">setLevel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.vlog.html">vlog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/warn-function.html">warn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/warning-function.html">warning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.SpLogger.html">SpLogger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.sp_logger.html">sp_logger</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.stats.html">scikitplot.stats</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.Events.html">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.FitnessFunc.html">FitnessFunc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.PointMeasures.html">PointMeasures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.RegularEvents.html">RegularEvents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.bayesian_blocks.html">bayesian_blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.binned_binom_proportion.html">binned_binom_proportion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.binom_conf_interval.html">binom_conf_interval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.bootstrap.html">bootstrap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.cdf_from_intervals.html">cdf_from_intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.fold_intervals.html">fold_intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.gaussian_fwhm_to_sigma.html">gaussian_fwhm_to_sigma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.gaussian_sigma_to_fwhm.html">gaussian_sigma_to_fwhm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.histogram_intervals.html">histogram_intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.interval_overlap_length.html">interval_overlap_length</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.kuiper.html">kuiper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.kuiper_false_positive_probability.html">kuiper_false_positive_probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.kuiper_two.html">kuiper_two</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.mad_std.html">mad_std</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.median_absolute_deviation.html">median_absolute_deviation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.poisson_conf_interval.html">poisson_conf_interval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.signal_to_noise_oir_ccd.html">signal_to_noise_oir_ccd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.calculate_bin_edges.html">calculate_bin_edges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.freedman_bin_width.html">freedman_bin_width</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.histogram.html">histogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.knuth_bin_width.html">knuth_bin_width</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.scott_bin_width.html">scott_bin_width</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.akaike_info_criterion.html">akaike_info_criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.akaike_info_criterion_lsq.html">akaike_info_criterion_lsq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.bayesian_info_criterion.html">bayesian_info_criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.bayesian_info_criterion_lsq.html">bayesian_info_criterion_lsq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._tweedie.tweedie_gen.html">tweedie_gen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._tweedie.tweedie.html">tweedie</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.visualkeras.html">scikitplot.visualkeras</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.visualkeras.graph_view.html">graph_view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.visualkeras.layered_view.html">layered_view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.visualkeras.SpacingDummyLayer.html">SpacingDummyLayer</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="deprecated.html">Recently Deprecated</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._factory_api.html">_factory_api</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_roc_curve.html">plot_roc_curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_precision_recall_curve.html">plot_precision_recall_curve</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">APIs Reference</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="apis-reference">
+<span id="apis-ref-index"></span><h1>APIs Reference<a class="headerlink" href="#apis-reference" title="Link to this heading">#</a></h1>
+<p>This is the class and function reference of scikit-plots. Please refer to the
+<a class="reference internal" href="../user_guide/index.html#user-guide-index"><span class="std std-ref">full user guide</span></a> for further details, as the raw specifications of
+classes and functions may not be enough to give full guidelines on their uses. For
+reference on concepts repeated across the APIs, see <a class="reference internal" href="../project/glossary/index.html#glossary-index"><span class="std std-ref">scikit-plots Glossary</span></a>.</p>
+<div class="toctree-wrapper compound">
+</div>
+<div class="pst-scrollable-table-container"><table class="apis-search-table table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Object</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.config_context.html#scikitplot.config_context" title="scikitplot.config_context"><code class="xref py py-obj docutils literal notranslate"><span class="pre">config_context</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Context manager for global scikit-plots configuration.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.html#module-scikitplot" title="scikitplot"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.get_config.html#scikitplot.get_config" title="scikitplot.get_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_config</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Retrieve current values for configuration set by <a class="reference internal" href="../modules/generated/scikitplot.set_config.html#scikitplot.set_config" title="scikitplot.set_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_config</span></code></a>.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.html#module-scikitplot" title="scikitplot"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.set_config.html#scikitplot.set_config" title="scikitplot.set_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_config</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Set global scikit-plots configuration.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.html#module-scikitplot" title="scikitplot"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.show_config.html#scikitplot.show_config" title="scikitplot.show_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_config</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Show libraries and system information on which SciPy was built</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.html#module-scikitplot" title="scikitplot"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.show_versions.html#scikitplot.show_versions" title="scikitplot.show_versions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_versions</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Print useful debugging information</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.html#module-scikitplot" title="scikitplot"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.online_help.html#scikitplot.online_help" title="scikitplot.online_help"><code class="xref py py-obj docutils literal notranslate"><span class="pre">online_help</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Open the online documentation search page</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.html#module-scikitplot" title="scikitplot"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.api.decomposition.plot_pca_2d_projection.html#scikitplot.api.decomposition.plot_pca_2d_projection" title="scikitplot.api.decomposition.plot_pca_2d_projection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_pca_2d_projection</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Plots the 2-dimensional projection of PCA on a given dataset.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.api.html#module-scikitplot.api.decomposition" title="scikitplot.api.decomposition"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.api.decomposition</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.api.decomposition.plot_pca_component_variance.html#scikitplot.api.decomposition.plot_pca_component_variance" title="scikitplot.api.decomposition.plot_pca_component_variance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_pca_component_variance</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Plots PCA components’ explained variance ratios. (new in v0.2.2)</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.api.html#module-scikitplot.api.decomposition" title="scikitplot.api.decomposition"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.api.decomposition</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.api.estimators.plot_feature_importances.html#scikitplot.api.estimators.plot_feature_importances" title="scikitplot.api.estimators.plot_feature_importances"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_feature_importances</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Generates a plot of a sklearn model’s feature importances.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.api.html#module-scikitplot.api.estimators" title="scikitplot.api.estimators"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.api.estimators</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.api.estimators.plot_learning_curve.html#scikitplot.api.estimators.plot_learning_curve" title="scikitplot.api.estimators.plot_learning_curve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_learning_curve</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Generates a plot of the train and test learning curves for a classifier.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.api.html#module-scikitplot.api.estimators" title="scikitplot.api.estimators"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.api.estimators</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.api.estimators.plot_elbow.html#scikitplot.api.estimators.plot_elbow" title="scikitplot.api.estimators.plot_elbow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_elbow</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Plot the elbow curve for different values of K in KMeans clustering.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.api.html#module-scikitplot.api.estimators" title="scikitplot.api.estimators"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.api.estimators</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_residuals_distribution.html#scikitplot.api.metrics.plot_residuals_distribution" title="scikitplot.api.metrics.plot_residuals_distribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_residuals_distribution</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Plot residuals and fit various distributions to assess their goodness of fit.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.api.html#module-scikitplot.api.metrics" title="scikitplot.api.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.api.metrics</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_classifier_eval.html#scikitplot.api.metrics.plot_classifier_eval" title="scikitplot.api.metrics.plot_classifier_eval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_classifier_eval</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Generates various evaluation plots for a classifier, including confusion matrix, precision-recall curve, and ROC curve.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.api.html#module-scikitplot.api.metrics" title="scikitplot.api.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.api.metrics</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_confusion_matrix.html#scikitplot.api.metrics.plot_confusion_matrix" title="scikitplot.api.metrics.plot_confusion_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_confusion_matrix</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Generates a confusion matrix plot from predictions and true labels.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.api.html#module-scikitplot.api.metrics" title="scikitplot.api.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.api.metrics</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_precision_recall.html#scikitplot.api.metrics.plot_precision_recall" title="scikitplot.api.metrics.plot_precision_recall"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_precision_recall</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Generates the Precision-Recall AUC Curves from labels and predicted scores/probabilities.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.api.html#module-scikitplot.api.metrics" title="scikitplot.api.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.api.metrics</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_roc.html#scikitplot.api.metrics.plot_roc" title="scikitplot.api.metrics.plot_roc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_roc</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Generates the ROC AUC curves from labels and predicted scores/probabilities.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.api.html#module-scikitplot.api.metrics" title="scikitplot.api.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.api.metrics</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_calibration.html#scikitplot.api.metrics.plot_calibration" title="scikitplot.api.metrics.plot_calibration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_calibration</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Plot calibration curves for a set of classifier probability estimates.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.api.html#module-scikitplot.api.metrics" title="scikitplot.api.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.api.metrics</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_silhouette.html#scikitplot.api.metrics.plot_silhouette" title="scikitplot.api.metrics.plot_silhouette"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_silhouette</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Plots silhouette analysis of clusters provided.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.api.html#module-scikitplot.api.metrics" title="scikitplot.api.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.api.metrics</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.api._utils.validate_labels.html#scikitplot.api._utils.validate_labels" title="scikitplot.api._utils.validate_labels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_labels</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Validates the labels passed into arguments such as <code class="docutils literal notranslate"><span class="pre">true_labels</span></code> or <code class="docutils literal notranslate"><span class="pre">pred_labels</span></code></p>
+<div class="caption docutils">
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.api._utils</span></code></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.api._utils.cumulative_gain_curve.html#scikitplot.api._utils.cumulative_gain_curve" title="scikitplot.api._utils.cumulative_gain_curve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cumulative_gain_curve</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Generate the data points necessary to plot the Cumulative Gain curve for binary classification tasks.</p>
+<div class="caption docutils">
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.api._utils</span></code></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.api._utils.binary_ks_curve.html#scikitplot.api._utils.binary_ks_curve" title="scikitplot.api._utils.binary_ks_curve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">binary_ks_curve</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Generate the data points necessary to plot the Kolmogorov-Smirnov (KS)</p>
+<div class="caption docutils">
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.api._utils</span></code></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.api._utils.validate_plotting_kwargs.html#scikitplot.api._utils.validate_plotting_kwargs" title="scikitplot.api._utils.validate_plotting_kwargs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_plotting_kwargs</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Validate the provided axes and figure or create new ones if needed.</p>
+<div class="caption docutils">
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.api._utils</span></code></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.api._utils.save_figure.html#scikitplot.api._utils.save_figure" title="scikitplot.api._utils.save_figure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_figure</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Combine multiple figures into a single image,</p>
+<div class="caption docutils">
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.api._utils</span></code></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.api._utils.save_plot.html#scikitplot.api._utils.save_plot" title="scikitplot.api._utils.save_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_plot</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Save the current plot if the environment variable to save plots is enabled.</p>
+<div class="caption docutils">
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.api._utils</span></code></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._cy_experimental.expit.html#scikitplot.experimental._cy_experimental.expit" title="scikitplot.experimental._cy_experimental.expit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">expit</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Compute the expit (sigmoid) function of the input value <code class="docutils literal notranslate"><span class="pre">x0</span></code>.</p>
+<div class="caption docutils">
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.experimental._cy_experimental</span></code></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._cy_experimental.log_expit.html#scikitplot.experimental._cy_experimental.log_expit" title="scikitplot.experimental._cy_experimental.log_expit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log_expit</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Compute the logarithm of the expit (sigmoid) function for the input value <code class="docutils literal notranslate"><span class="pre">x0</span></code>.</p>
+<div class="caption docutils">
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.experimental._cy_experimental</span></code></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._cy_experimental.logit.html#scikitplot.experimental._cy_experimental.logit" title="scikitplot.experimental._cy_experimental.logit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logit</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Compute the logit function, which is the inverse of the sigmoid function, for the input value <code class="docutils literal notranslate"><span class="pre">x0</span></code>.</p>
+<div class="caption docutils">
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.experimental._cy_experimental</span></code></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._py_experimental.py_print.html#scikitplot.experimental._py_experimental.py_print" title="scikitplot.experimental._py_experimental.py_print"><code class="xref py py-obj docutils literal notranslate"><span class="pre">py_print</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>py_print(message: str = ‘Hello, from Pybind11 C++!’) -&gt; None</p>
+<div class="caption docutils">
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.experimental._py_experimental</span></code></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._logsumexp.sigmoid.html#scikitplot.experimental._logsumexp.sigmoid" title="scikitplot.experimental._logsumexp.sigmoid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sigmoid</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Compute the sigmoid function for the input array <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
+<div class="caption docutils">
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.experimental._logsumexp</span></code></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._logsumexp.softmax.html#scikitplot.experimental._logsumexp.softmax" title="scikitplot.experimental._logsumexp.softmax"><code class="xref py py-obj docutils literal notranslate"><span class="pre">softmax</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Compute the softmax function.</p>
+<div class="caption docutils">
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.experimental._logsumexp</span></code></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._logsumexp.logsumexp.html#scikitplot.experimental._logsumexp.logsumexp" title="scikitplot.experimental._logsumexp.logsumexp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logsumexp</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Compute the log of the sum of exponentials of input elements.</p>
+<div class="caption docutils">
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.experimental._logsumexp</span></code></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._logsumexp.log_softmax.html#scikitplot.experimental._logsumexp.log_softmax" title="scikitplot.experimental._logsumexp.log_softmax"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log_softmax</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Compute the logarithm of the softmax function.</p>
+<div class="caption docutils">
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.experimental._logsumexp</span></code></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.kds.print_labels.html#scikitplot.kds.print_labels" title="scikitplot.kds.print_labels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_labels</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>A legend for the abbreviations of decile table column names.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.kds.html#module-scikitplot.kds" title="scikitplot.kds"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.kds</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.kds.decile_table.html#scikitplot.kds.decile_table" title="scikitplot.kds.decile_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decile_table</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Generates the Decile Table from labels and probabilities</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.kds.html#module-scikitplot.kds" title="scikitplot.kds"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.kds</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.kds.plot_cumulative_gain.html#scikitplot.kds.plot_cumulative_gain" title="scikitplot.kds.plot_cumulative_gain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_cumulative_gain</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Generates the Decile-wise Lift Plot from labels and probabilities</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.kds.html#module-scikitplot.kds" title="scikitplot.kds"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.kds</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.kds.plot_lift.html#scikitplot.kds.plot_lift" title="scikitplot.kds.plot_lift"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_lift</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Generates the Decile based cumulative Lift Plot from labels and probabilities.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.kds.html#module-scikitplot.kds" title="scikitplot.kds"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.kds</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.kds.plot_lift_decile_wise.html#scikitplot.kds.plot_lift_decile_wise" title="scikitplot.kds.plot_lift_decile_wise"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_lift_decile_wise</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Generates the Decile-wise Lift Plot from labels and probabilities</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.kds.html#module-scikitplot.kds" title="scikitplot.kds"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.kds</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.kds.plot_ks_statistic.html#scikitplot.kds.plot_ks_statistic" title="scikitplot.kds.plot_ks_statistic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_ks_statistic</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Generates the KS Statistic Plot from labels and probabilities</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.kds.html#module-scikitplot.kds" title="scikitplot.kds"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.kds</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.kds.report.html#scikitplot.kds.report" title="scikitplot.kds.report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">report</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Generates a decile table and four plots:</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.kds.html#module-scikitplot.kds" title="scikitplot.kds"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.kds</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/modelplotpy-cls.html#scikitplot.modelplotpy.ModelPlotPy" title="scikitplot.modelplotpy.ModelPlotPy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotPy</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>ModelPlotPy decile analysis.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.modelplotpy.html#module-scikitplot.modelplotpy" title="scikitplot.modelplotpy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.modelplotpy</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_response.html#scikitplot.modelplotpy.plot_response" title="scikitplot.modelplotpy.plot_response"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_response</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Plotting response curve</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.modelplotpy.html#module-scikitplot.modelplotpy" title="scikitplot.modelplotpy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.modelplotpy</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_cumresponse.html#scikitplot.modelplotpy.plot_cumresponse" title="scikitplot.modelplotpy.plot_cumresponse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_cumresponse</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Plotting cumulative response curve</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.modelplotpy.html#module-scikitplot.modelplotpy" title="scikitplot.modelplotpy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.modelplotpy</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_cumlift.html#scikitplot.modelplotpy.plot_cumlift" title="scikitplot.modelplotpy.plot_cumlift"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_cumlift</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Plotting cumulative lift curve</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.modelplotpy.html#module-scikitplot.modelplotpy" title="scikitplot.modelplotpy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.modelplotpy</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_cumgains.html#scikitplot.modelplotpy.plot_cumgains" title="scikitplot.modelplotpy.plot_cumgains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_cumgains</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Plotting cumulative gains curve</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.modelplotpy.html#module-scikitplot.modelplotpy" title="scikitplot.modelplotpy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.modelplotpy</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_all.html#scikitplot.modelplotpy.plot_all" title="scikitplot.modelplotpy.plot_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_all</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Plotting cumulative gains curve</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.modelplotpy.html#module-scikitplot.modelplotpy" title="scikitplot.modelplotpy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.modelplotpy</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_costsrevs.html#scikitplot.modelplotpy.plot_costsrevs" title="scikitplot.modelplotpy.plot_costsrevs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_costsrevs</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Plotting costs / revenue curve</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.modelplotpy.html#module-scikitplot.modelplotpy" title="scikitplot.modelplotpy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.modelplotpy</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_profit.html#scikitplot.modelplotpy.plot_profit" title="scikitplot.modelplotpy.plot_profit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_profit</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Plotting profit curve</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.modelplotpy.html#module-scikitplot.modelplotpy" title="scikitplot.modelplotpy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.modelplotpy</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_roi.html#scikitplot.modelplotpy.plot_roi" title="scikitplot.modelplotpy.plot_roi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_roi</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Plotting ROI curve</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.modelplotpy.html#module-scikitplot.modelplotpy" title="scikitplot.modelplotpy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.modelplotpy</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.probscale.ProbScale.html#scikitplot.probscale.ProbScale" title="scikitplot.probscale.ProbScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProbScale</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>A probability scale for matplotlib Axes.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.probscale.html#module-scikitplot.probscale" title="scikitplot.probscale"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.probscale</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.probscale.probplot.html#scikitplot.probscale.probplot" title="scikitplot.probscale.probplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">probplot</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Probability, percentile, and quantile plots.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.probscale.html#module-scikitplot.probscale" title="scikitplot.probscale"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.probscale</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.probscale.plot_pos.html#scikitplot.probscale.plot_pos" title="scikitplot.probscale.plot_pos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_pos</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Compute the plotting positions for a dataset. Heavily borrows from</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.probscale.html#module-scikitplot.probscale" title="scikitplot.probscale"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.probscale</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.probscale.fit_line.html#scikitplot.probscale.fit_line" title="scikitplot.probscale.fit_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit_line</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Fits a line to x-y data in various forms (linear, log, prob scales).</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.probscale.html#module-scikitplot.probscale" title="scikitplot.probscale"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.probscale</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.CRITICAL.html#scikitplot.sp_logging.CRITICAL" title="scikitplot.sp_logging.CRITICAL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CRITICAL</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>int([x]) -&gt; integer</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.DEBUG.html#scikitplot.sp_logging.DEBUG" title="scikitplot.sp_logging.DEBUG"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEBUG</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>int([x]) -&gt; integer</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.ERROR.html#scikitplot.sp_logging.ERROR" title="scikitplot.sp_logging.ERROR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ERROR</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>int([x]) -&gt; integer</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.FATAL.html#scikitplot.sp_logging.FATAL" title="scikitplot.sp_logging.FATAL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FATAL</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>int([x]) -&gt; integer</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.INFO.html#scikitplot.sp_logging.INFO" title="scikitplot.sp_logging.INFO"><code class="xref py py-obj docutils literal notranslate"><span class="pre">INFO</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>int([x]) -&gt; integer</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.NOTSET.html#scikitplot.sp_logging.NOTSET" title="scikitplot.sp_logging.NOTSET"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NOTSET</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>int([x]) -&gt; integer</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.WARN.html#scikitplot.sp_logging.WARN" title="scikitplot.sp_logging.WARN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WARN</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>int([x]) -&gt; integer</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.WARNING.html#scikitplot.sp_logging.WARNING" title="scikitplot.sp_logging.WARNING"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WARNING</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>int([x]) -&gt; integer</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.AlwaysStdErrHandler.html#scikitplot.sp_logging.AlwaysStdErrHandler" title="scikitplot.sp_logging.AlwaysStdErrHandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AlwaysStdErrHandler</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>A custom logging handler that allows selecting between standard error (stderr)</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.GoogleLogFormatter.html#scikitplot.sp_logging.GoogleLogFormatter" title="scikitplot.sp_logging.GoogleLogFormatter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GoogleLogFormatter</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Custom logging formatter that formats log messages in a Google-style format:</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/critical-function.html#scikitplot.sp_logging.critical" title="scikitplot.sp_logging.critical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">critical</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Logs a message at the CRITICAL log level.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/debug-function.html#scikitplot.sp_logging.debug" title="scikitplot.sp_logging.debug"><code class="xref py py-obj docutils literal notranslate"><span class="pre">debug</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Logs a message at the DEBUG log level.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/error-function.html#scikitplot.sp_logging.error" title="scikitplot.sp_logging.error"><code class="xref py py-obj docutils literal notranslate"><span class="pre">error</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Logs a message at the ERROR log level.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.error_log.html#scikitplot.sp_logging.error_log" title="scikitplot.sp_logging.error_log"><code class="xref py py-obj docutils literal notranslate"><span class="pre">error_log</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Empty helper method.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/fatal-function.html#scikitplot.sp_logging.fatal" title="scikitplot.sp_logging.fatal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fatal</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Logs a message at the FATAL - CRITICAL log level.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.getEffectiveLevel.html#scikitplot.sp_logging.getEffectiveLevel" title="scikitplot.sp_logging.getEffectiveLevel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getEffectiveLevel</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Return how much logging output will be produced.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.get_logger.html#scikitplot.sp_logging.get_logger" title="scikitplot.sp_logging.get_logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_logger</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Return SP (scikitpot) logger instance.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.log_if.html#scikitplot.sp_logging.log_if" title="scikitplot.sp_logging.log_if"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log_if</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Log ‘msg % args’ at level ‘level’ only if condition is fulfilled.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.setLevel.html#scikitplot.sp_logging.setLevel" title="scikitplot.sp_logging.setLevel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLevel</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Sets the threshold for what messages will be logged.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.vlog.html#scikitplot.sp_logging.vlog" title="scikitplot.sp_logging.vlog"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vlog</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Logs a message at the specified log level.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/warn-function.html#scikitplot.sp_logging.warn" title="scikitplot.sp_logging.warn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">warn</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Logs a message at the WARN - WARNING log level.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/warning-function.html#scikitplot.sp_logging.warning" title="scikitplot.sp_logging.warning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">warning</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Logs a message at the WARNING log level.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.SpLogger.html#scikitplot.sp_logging.SpLogger" title="scikitplot.sp_logging.SpLogger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpLogger</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>A singleton logger class that provides a shared logger instance with customizable</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.sp_logger.html#scikitplot.sp_logging.sp_logger" title="scikitplot.sp_logging.sp_logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sp_logger</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>An instance of <a class="reference internal" href="../modules/generated/scikitplot.sp_logging.SpLogger.html#scikitplot.sp_logging.SpLogger" title="scikitplot.sp_logging.SpLogger"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpLogger</span></code></a>, providing logging functionality.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.Events.html#scikitplot._astropy.stats.Events" title="scikitplot._astropy.stats.Events"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Events</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Bayesian blocks fitness for binned or unbinned events.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.FitnessFunc.html#scikitplot._astropy.stats.FitnessFunc" title="scikitplot._astropy.stats.FitnessFunc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FitnessFunc</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Base class for bayesian blocks fitness functions.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.PointMeasures.html#scikitplot._astropy.stats.PointMeasures" title="scikitplot._astropy.stats.PointMeasures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PointMeasures</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Bayesian blocks fitness for point measures.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.RegularEvents.html#scikitplot._astropy.stats.RegularEvents" title="scikitplot._astropy.stats.RegularEvents"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RegularEvents</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Bayesian blocks fitness for regular events.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.bayesian_blocks.html#scikitplot._astropy.stats.bayesian_blocks" title="scikitplot._astropy.stats.bayesian_blocks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bayesian_blocks</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Compute optimal segmentation of data with Scargle’s Bayesian Blocks.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.binned_binom_proportion.html#scikitplot._astropy.stats.binned_binom_proportion" title="scikitplot._astropy.stats.binned_binom_proportion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">binned_binom_proportion</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Binomial proportion and confidence interval in bins of a continuous</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.binom_conf_interval.html#scikitplot._astropy.stats.binom_conf_interval" title="scikitplot._astropy.stats.binom_conf_interval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">binom_conf_interval</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Binomial proportion confidence interval given k successes,</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.bootstrap.html#scikitplot._astropy.stats.bootstrap" title="scikitplot._astropy.stats.bootstrap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bootstrap</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Performs bootstrap resampling on numpy arrays.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.cdf_from_intervals.html#scikitplot._astropy.stats.cdf_from_intervals" title="scikitplot._astropy.stats.cdf_from_intervals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cdf_from_intervals</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Construct a callable piecewise-linear CDF from a pair of arrays.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.fold_intervals.html#scikitplot._astropy.stats.fold_intervals" title="scikitplot._astropy.stats.fold_intervals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fold_intervals</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Fold the weighted intervals to the interval (0,1).</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.gaussian_fwhm_to_sigma.html#scikitplot._astropy.stats.gaussian_fwhm_to_sigma" title="scikitplot._astropy.stats.gaussian_fwhm_to_sigma"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gaussian_fwhm_to_sigma</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Convert a string or number to a floating point number, if possible.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.gaussian_sigma_to_fwhm.html#scikitplot._astropy.stats.gaussian_sigma_to_fwhm" title="scikitplot._astropy.stats.gaussian_sigma_to_fwhm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gaussian_sigma_to_fwhm</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Convert a string or number to a floating point number, if possible.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.histogram_intervals.html#scikitplot._astropy.stats.histogram_intervals" title="scikitplot._astropy.stats.histogram_intervals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">histogram_intervals</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Histogram of a piecewise-constant weight function.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.interval_overlap_length.html#scikitplot._astropy.stats.interval_overlap_length" title="scikitplot._astropy.stats.interval_overlap_length"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interval_overlap_length</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Compute the length of overlap of two intervals.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.kuiper.html#scikitplot._astropy.stats.kuiper" title="scikitplot._astropy.stats.kuiper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kuiper</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Compute the Kuiper statistic.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.kuiper_false_positive_probability.html#scikitplot._astropy.stats.kuiper_false_positive_probability" title="scikitplot._astropy.stats.kuiper_false_positive_probability"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kuiper_false_positive_probability</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Compute the false positive probability for the Kuiper statistic.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.kuiper_two.html#scikitplot._astropy.stats.kuiper_two" title="scikitplot._astropy.stats.kuiper_two"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kuiper_two</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Compute the Kuiper statistic to compare two samples.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.mad_std.html#scikitplot._astropy.stats.mad_std" title="scikitplot._astropy.stats.mad_std"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mad_std</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p></p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.median_absolute_deviation.html#scikitplot._astropy.stats.median_absolute_deviation" title="scikitplot._astropy.stats.median_absolute_deviation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">median_absolute_deviation</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Calculate the median absolute deviation (MAD).</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.poisson_conf_interval.html#scikitplot._astropy.stats.poisson_conf_interval" title="scikitplot._astropy.stats.poisson_conf_interval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">poisson_conf_interval</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Poisson parameter confidence interval given observed counts.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.signal_to_noise_oir_ccd.html#scikitplot._astropy.stats.signal_to_noise_oir_ccd" title="scikitplot._astropy.stats.signal_to_noise_oir_ccd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">signal_to_noise_oir_ccd</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Computes the signal to noise ratio for source being observed in the</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.calculate_bin_edges.html#scikitplot._astropy.stats.calculate_bin_edges" title="scikitplot._astropy.stats.calculate_bin_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_bin_edges</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Calculate histogram bin edges like <code class="docutils literal notranslate"><span class="pre">numpy.histogram_bin_edges</span></code>.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.freedman_bin_width.html#scikitplot._astropy.stats.freedman_bin_width" title="scikitplot._astropy.stats.freedman_bin_width"><code class="xref py py-obj docutils literal notranslate"><span class="pre">freedman_bin_width</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Return the optimal histogram bin width using the Freedman-Diaconis rule.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.histogram.html#scikitplot._astropy.stats.histogram" title="scikitplot._astropy.stats.histogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">histogram</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Enhanced histogram function, providing adaptive binnings.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.knuth_bin_width.html#scikitplot._astropy.stats.knuth_bin_width" title="scikitplot._astropy.stats.knuth_bin_width"><code class="xref py py-obj docutils literal notranslate"><span class="pre">knuth_bin_width</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Return the optimal histogram bin width using Knuth’s rule.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.scott_bin_width.html#scikitplot._astropy.stats.scott_bin_width" title="scikitplot._astropy.stats.scott_bin_width"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scott_bin_width</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Return the optimal histogram bin width using Scott’s rule.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.akaike_info_criterion.html#scikitplot._astropy.stats.akaike_info_criterion" title="scikitplot._astropy.stats.akaike_info_criterion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">akaike_info_criterion</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Computes the Akaike Information Criterion (AIC).</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.akaike_info_criterion_lsq.html#scikitplot._astropy.stats.akaike_info_criterion_lsq" title="scikitplot._astropy.stats.akaike_info_criterion_lsq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">akaike_info_criterion_lsq</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Computes the Akaike Information Criterion assuming that the observations</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.bayesian_info_criterion.html#scikitplot._astropy.stats.bayesian_info_criterion" title="scikitplot._astropy.stats.bayesian_info_criterion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bayesian_info_criterion</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Computes the Bayesian Information Criterion (BIC) given the log of the</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.bayesian_info_criterion_lsq.html#scikitplot._astropy.stats.bayesian_info_criterion_lsq" title="scikitplot._astropy.stats.bayesian_info_criterion_lsq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bayesian_info_criterion_lsq</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Computes the Bayesian Information Criterion (BIC) assuming that the</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._tweedie.tweedie_gen.html#scikitplot._tweedie.tweedie_gen" title="scikitplot._tweedie.tweedie_gen"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tweedie_gen</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>A Tweedie continuous random variable inherited <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_continuous.html#scipy.stats.rv_continuous" title="(in SciPy v1.15.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">scipy.stats.rv_continuous</span></code></a>.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._tweedie.tweedie.html#scikitplot._tweedie.tweedie" title="scikitplot._tweedie.tweedie"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tweedie</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>An instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">tweedie_gen</span></code>, providing Tweedie distribution functionality.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.visualkeras.graph_view.html#scikitplot.visualkeras.graph_view" title="scikitplot.visualkeras.graph_view"><code class="xref py py-obj docutils literal notranslate"><span class="pre">graph_view</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Generates an architectural visualization for a given linear Keras model</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.visualkeras.html#module-scikitplot.visualkeras" title="scikitplot.visualkeras"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.visualkeras</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layered_view</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Generates an architectural visualization for a given linear Keras model</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.visualkeras.html#module-scikitplot.visualkeras" title="scikitplot.visualkeras"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.visualkeras</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.visualkeras.SpacingDummyLayer.html#scikitplot.visualkeras.SpacingDummyLayer" title="scikitplot.visualkeras.SpacingDummyLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpacingDummyLayer</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>A dummy layer to add spacing or other custom behavior.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.visualkeras.html#module-scikitplot.visualkeras" title="scikitplot.visualkeras"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.visualkeras</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._factory_api.html#module-scikitplot._factory_api" title="scikitplot._factory_api"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_factory_api</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>scikit-plots Factory API</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.html#module-scikitplot" title="scikitplot"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot</span></code></a>
+<a class="sd-sphinx-override sd-badge sd-outline-danger sd-text-danger reference internal" href="deprecated.html#apis-depr-ref-0-5"><span class="std std-ref">Deprecated in version 0.5</span></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_roc_curve.html#scikitplot.api.metrics.plot_roc_curve" title="scikitplot.api.metrics.plot_roc_curve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_roc_curve</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Generates the ROC curves from labels and predicted scores/probabilities</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.api.html#module-scikitplot.api.metrics" title="scikitplot.api.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.api.metrics</span></code></a>
+<a class="sd-sphinx-override sd-badge sd-outline-danger sd-text-danger reference internal" href="deprecated.html#apis-depr-ref-0-5"><span class="std std-ref">Deprecated in version 0.5</span></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_precision_recall_curve.html#scikitplot.api.metrics.plot_precision_recall_curve" title="scikitplot.api.metrics.plot_precision_recall_curve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_precision_recall_curve</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Generates the Precision Recall Curve from labels and probabilities</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.api.html#module-scikitplot.api.metrics" title="scikitplot.api.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.api.metrics</span></code></a>
+<a class="sd-sphinx-override sd-badge sd-outline-danger sd-text-danger reference internal" href="deprecated.html#apis-depr-ref-0-5"><span class="std std-ref">Deprecated in version 0.5</span></a></p>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item">
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../user_guide/__lightnumpy/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">LightNumPy (experimental)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="scikitplot.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">scikitplot</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+                </footer>
+              
+              
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024 - 2025, scikit-plots developers (BSD-3 Clause License).
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -9,11 +9,11 @@
 <meta content="website" property="og:type"/>
 <meta content="https://scikit-plots.github.io/stable/auto_examples/visualkeras_NLP/plot_nlp_mpnet_with_tf_layers.html" property="og:url"/>
 <meta content="scikit-plots" property="og:site_name"/>
-<meta content="An example showing the visualkeras function used by a tf.keras.Model or Module or TFPreTrainedModel model., Total running time of the script:(1 minutes 6.420 seconds) Launch binder Launch JupyterLi..." property="og:description"/>
+<meta content="An example showing the visualkeras function used by a tf.keras.Model or Module or TFPreTrainedModel model., Total running time of the script:(1 minutes 55.591 seconds) Launch binder Launch JupyterL..." property="og:description"/>
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
-<meta content="An example showing the visualkeras function used by a tf.keras.Model or Module or TFPreTrainedModel model., Total running time of the script:(1 minutes 6.420 seconds) Launch binder Launch JupyterLi..." name="description"/>
-<title>visualkeras transformers example — scikit-plots 0.5.dev0+git20250107.7cc804c documentation</title>
+<meta content="An example showing the visualkeras function used by a tf.keras.Model or Module or TFPreTrainedModel model., Total running time of the script:(1 minutes 55.591 seconds) Launch binder Launch JupyterL..." name="description"/>
+<title>visualkeras transformers example — scikit-plots 0.5.dev0+git20250114.96321ef documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
@@ -31,13 +31,13 @@
 <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
 <link href="../../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
-<link href="../../_static/graphviz.css?v=fd3f3429" rel="stylesheet" type="text/css"/>
+<link href="../../_static/graphviz.css?v=4ae1632d" rel="stylesheet" type="text/css"/>
 <link href="../../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
 <link href="../../_static/jupyter-sphinx.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/thebelab.css" rel="stylesheet" type="text/css"/>
 <link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
-<link href="../../_static/jupyterlite_sphinx.css?v=e3ca86de" rel="stylesheet" type="text/css"/>
+<link href="../../_static/jupyterlite_sphinx.css?v=13b285a0" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery.css?v=d2d258e8" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-binder.css?v=f4aeca0c" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" rel="stylesheet" type="text/css"/>
@@ -50,13 +50,13 @@
 <!-- Pre-loaded scripts that we'll load fully later -->
 <link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
 <link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
-<script src="../../_static/documentation_options.js?v=a391ba84"></script>
-<script src="../../_static/doctools.js?v=9a2dae69"></script>
+<script src="../../_static/documentation_options.js?v=373ea374"></script>
+<script src="../../_static/doctools.js?v=9bcbadda"></script>
 <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
 <script src="../../_static/copybutton.js?v=e93d8674"></script>
 <script src="../../_static/thebelab-helper.js"></script>
-<script src="../../_static/jupyterlite_sphinx.js?v=d6bdf5f8"></script>
+<script src="../../_static/jupyterlite_sphinx.js?v=1cca63f7"></script>
 <script src="../../_static/design-tabs.js?v=f930bc37"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
@@ -122,7 +122,7 @@
   </a>
 </li>
 <li class="nav-item">
-<a class="nav-link nav-internal" href="../../api/index.html">
+<a class="nav-link nav-internal" href="../../apis/index.html">
     APIs Reference
   </a>
 </li>
@@ -234,7 +234,7 @@
   </a>
 </li>
 <li class="nav-item">
-<a class="nav-link nav-internal" href="../../api/index.html">
+<a class="nav-link nav-internal" href="../../apis/index.html">
     APIs Reference
   </a>
 </li>
@@ -307,6 +307,7 @@
 <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00-blogs/index.html">blog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../00-jupyter_notebooks/index.html">jupyter notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../array_api/index.html">Array API support (experimental)</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../calibration/index.html">Calibration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../calibration/plot_calibration_script.html">plot_calibration with examples</a></li>
 </ul>
@@ -398,9 +399,9 @@
 
 <section class="sphx-glr-example-title" id="visualkeras-transformers-example">
 <span id="sphx-glr-auto-examples-visualkeras-nlp-plot-nlp-mpnet-with-tf-layers-py"></span><h1>visualkeras transformers example<a class="headerlink" href="#visualkeras-transformers-example" title="Link to this heading">#</a></h1>
-<p>An example showing the <a class="reference internal" href="../../api/scikitplot.visualkeras.html#module-scikitplot.visualkeras" title="scikitplot.visualkeras"><code class="xref py py-func docutils literal notranslate"><span class="pre">visualkeras</span></code></a> function
+<p>An example showing the <a class="reference internal" href="../../apis/scikitplot.visualkeras.html#module-scikitplot.visualkeras" title="scikitplot.visualkeras"><code class="xref py py-func docutils literal notranslate"><span class="pre">visualkeras</span></code></a> function
 used by a <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/Model" title="(in TensorFlow v2.4)"><code class="docutils literal notranslate"><span class="pre">tf.keras.Model</span></code></a> or <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a> or <a class="reference external" href="https://huggingface.co/docs/transformers/main/en/main_classes/model#transformers.TFPreTrainedModel" title="(in transformers vmain)"><code class="xref py py-class docutils literal notranslate"><span class="pre">TFPreTrainedModel</span></code></a> model.</p>
-<img alt="plot nlp mpnet with tf layers" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_nlp_mpnet_with_tf_layers_001.png" srcset="../../_images/sphx_glr_plot_nlp_mpnet_with_tf_layers_001.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Some weights of the PyTorch model were not used when initializing the TF 2.0 model TFMPNetModel: ['lm_head.bias', 'lm_head.decoder.bias', 'lm_head.decoder.weight', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.layer_norm.bias', 'lm_head.dense.weight']
+<img alt="plot nlp mpnet with tf layers" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_nlp_mpnet_with_tf_layers_001.png" srcset="../../_images/sphx_glr_plot_nlp_mpnet_with_tf_layers_001.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Some weights of the PyTorch model were not used when initializing the TF 2.0 model TFMPNetModel: ['lm_head.layer_norm.bias', 'lm_head.decoder.weight', 'lm_head.bias', 'lm_head.decoder.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.dense.weight']
 - This IS expected if you are initializing TFMPNetModel from a PyTorch model trained on another task or with another architecture (e.g. initializing a TFBertForSequenceClassification model from a BertForPreTraining model).
 - This IS NOT expected if you are initializing TFMPNetModel from a PyTorch model that you expect to be exactly identical (e.g. initializing a TFBertForSequenceClassification model from a BertForSequenceClassification model).
 Some weights or buffers of the TF 2.0 model TFMPNetModel were not initialized from the PyTorch model and are newly initialized: ['mpnet.pooler.dense.weight', 'mpnet.pooler.dense.bias']
@@ -498,7 +499,7 @@ You should probably TRAIN this model on a down-stream task to be able to use it 
     <span class="k">pass</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 6.420 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 55.591 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_thumb.png"/>

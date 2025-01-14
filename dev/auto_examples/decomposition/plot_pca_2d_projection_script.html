@@ -13,7 +13,7 @@
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
 <meta content="An example showing the plot_pca_2d_projection function used by a scikit-learn PCA object. Tags: model-type: classification model-workflow: feature engineering plot-type: scatter plot-type: 2D plot-..." name="description"/>
-<title>plot_pca_2d_projection with examples — scikit-plots 0.5.dev0+git20250107.7cc804c documentation</title>
+<title>plot_pca_2d_projection with examples — scikit-plots 0.5.dev0+git20250114.96321ef documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
@@ -31,13 +31,13 @@
 <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
 <link href="../../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
-<link href="../../_static/graphviz.css?v=fd3f3429" rel="stylesheet" type="text/css"/>
+<link href="../../_static/graphviz.css?v=4ae1632d" rel="stylesheet" type="text/css"/>
 <link href="../../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
 <link href="../../_static/jupyter-sphinx.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/thebelab.css" rel="stylesheet" type="text/css"/>
 <link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
-<link href="../../_static/jupyterlite_sphinx.css?v=e3ca86de" rel="stylesheet" type="text/css"/>
+<link href="../../_static/jupyterlite_sphinx.css?v=13b285a0" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery.css?v=d2d258e8" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-binder.css?v=f4aeca0c" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" rel="stylesheet" type="text/css"/>
@@ -50,13 +50,13 @@
 <!-- Pre-loaded scripts that we'll load fully later -->
 <link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
 <link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
-<script src="../../_static/documentation_options.js?v=a391ba84"></script>
-<script src="../../_static/doctools.js?v=9a2dae69"></script>
+<script src="../../_static/documentation_options.js?v=373ea374"></script>
+<script src="../../_static/doctools.js?v=9bcbadda"></script>
 <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
 <script src="../../_static/copybutton.js?v=e93d8674"></script>
 <script src="../../_static/thebelab-helper.js"></script>
-<script src="../../_static/jupyterlite_sphinx.js?v=d6bdf5f8"></script>
+<script src="../../_static/jupyterlite_sphinx.js?v=1cca63f7"></script>
 <script src="../../_static/design-tabs.js?v=f930bc37"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
@@ -122,7 +122,7 @@
   </a>
 </li>
 <li class="nav-item">
-<a class="nav-link nav-internal" href="../../api/index.html">
+<a class="nav-link nav-internal" href="../../apis/index.html">
     APIs Reference
   </a>
 </li>
@@ -234,7 +234,7 @@
   </a>
 </li>
 <li class="nav-item">
-<a class="nav-link nav-internal" href="../../api/index.html">
+<a class="nav-link nav-internal" href="../../apis/index.html">
     APIs Reference
   </a>
 </li>
@@ -307,6 +307,7 @@
 <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00-blogs/index.html">blog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../00-jupyter_notebooks/index.html">jupyter notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../array_api/index.html">Array API support (experimental)</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../calibration/index.html">Calibration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../calibration/plot_calibration_script.html">plot_calibration with examples</a></li>
 </ul>
@@ -446,14 +447,14 @@ used by a scikit-learn PCA object.</p>
 <a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.tight_layout.html#matplotlib.pyplot.tight_layout" title="matplotlib.pyplot.tight_layout"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
 
 <span class="c1"># Save the plot with a filename based on the current script's name</span>
-<span class="n">sp</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">save_current_plot</span><span class="p">()</span>
+<span class="c1"># sp.api._utils.save_plot()</span>
 
 <span class="c1"># Display the plot</span>
 <a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="PCA 2-D Projection" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_pca_2d_projection_script_001.png" srcset="../../_images/sphx_glr_plot_pca_2d_projection_script_001.png"/><p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-feature-engineering.html"><span class="doc">model-workflow: feature engineering</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-scatter.html"><span class="doc">plot-type: scatter</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-2d.html"><span class="doc">plot-type: 2D</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-principal-component.html"><span class="doc">plot-type: principal component</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-pca.html"><span class="doc">plot-type: PCA</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.027 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.572 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.decomposition.plot_pca_component_variance function used by a scikit-learn PCA object."><img alt="" src="../../_images/sphx_glr_plot_pca_component_variance_script_thumb.png"/>
@@ -465,9 +466,9 @@ used by a scikit-learn PCA object.</p>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.kds.plot_lift function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_lift_script_thumb.png"/>
 <p><a class="reference internal" href="../kds/plot_lift_script.html#sphx-glr-auto-examples-kds-plot-lift-script-py"><span class="std std-ref">plot_lift with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">plot_lift with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_confusion_matrix function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_confusion_matrix_script_thumb.png"/>
-<p><a class="reference internal" href="../classification/plot_confusion_matrix_script.html#sphx-glr-auto-examples-classification-plot-confusion-matrix-script-py"><span class="std std-ref">plot_confusion_matrix with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">plot_confusion_matrix with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.kds.plot_ks_statistic function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_ks_statistic_script_thumb.png"/>
+<p><a class="reference internal" href="../kds/plot_ks_statistic_script.html#sphx-glr-auto-examples-kds-plot-ks-statistic-script-py"><span class="std std-ref">plot_ks_statistic with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">plot_ks_statistic with examples</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </article>

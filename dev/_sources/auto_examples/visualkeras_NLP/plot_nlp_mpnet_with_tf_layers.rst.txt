@@ -38,7 +38,7 @@ used by a :py:class:`~tensorflow.keras.Model` or :py:class:`~torch.nn.Module` or
 
  .. code-block:: none
 
-    Some weights of the PyTorch model were not used when initializing the TF 2.0 model TFMPNetModel: ['lm_head.bias', 'lm_head.decoder.bias', 'lm_head.decoder.weight', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.layer_norm.bias', 'lm_head.dense.weight']
+    Some weights of the PyTorch model were not used when initializing the TF 2.0 model TFMPNetModel: ['lm_head.layer_norm.bias', 'lm_head.decoder.weight', 'lm_head.bias', 'lm_head.decoder.bias', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.dense.weight']
     - This IS expected if you are initializing TFMPNetModel from a PyTorch model trained on another task or with another architecture (e.g. initializing a TFBertForSequenceClassification model from a BertForPreTraining model).
     - This IS NOT expected if you are initializing TFMPNetModel from a PyTorch model that you expect to be exactly identical (e.g. initializing a TFBertForSequenceClassification model from a BertForSequenceClassification model).
     Some weights or buffers of the TF 2.0 model TFMPNetModel were not initialized from the PyTorch model and are newly initialized: ['mpnet.pooler.dense.weight', 'mpnet.pooler.dense.bias']
@@ -142,7 +142,7 @@ used by a :py:class:`~tensorflow.keras.Model` or :py:class:`~torch.nn.Module` or
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 6.420 seconds)
+   **Total running time of the script:** (1 minutes 55.591 seconds)
 
 
 .. _sphx_glr_download_auto_examples_visualkeras_NLP_plot_nlp_mpnet_with_tf_layers.py:
