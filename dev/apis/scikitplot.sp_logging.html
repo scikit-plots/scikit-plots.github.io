@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="Scikit-plots Logging Module This module provides advanced logging utilities for Python applications, including support for singleton-based logging with customizable formatters, handlers, and thread..." />
 
-    <title>scikitplot.sp_logging &#8212; scikit-plots 0.5.dev0+git20250114.96321ef documentation</title>
+    <title>scikitplot.sp_logging &#8212; scikit-plots 0.5.dev0+git.20250115.2727f8c documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=373ea374"></script>
+    <script src="../_static/documentation_options.js?v=39682b9a"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -212,8 +212,15 @@
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community G
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-external" href="https://zenodo.org/communities/scikit-plots">
-    Community
+    Community Z
   </a>
 </li>
 
@@ -394,8 +401,15 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community G
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-external" href="https://zenodo.org/communities/scikit-plots">
-    Community
+    Community Z
   </a>
 </li>
 
@@ -701,13 +715,11 @@ including support for singleton-based logging with customizable formatters,
 handlers, and thread-safety. It extends Python’s standard logging library
 to enhance usability and flexibility for large-scale projects.</p>
 <p>Scikit-plots logging helpers, supports vendoring.</p>
-<dl class="simple">
-<dt>Module Dependencies:</dt><dd><ul class="simple">
+<p>Module Dependencies:</p>
+<ul class="simple">
 <li><p>Python standard library: <a class="reference external" href="https://docs.python.org/3/library/logging.html#module-logging" title="(in Python v3.13)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">logging</span></code></a></p></li>
 <li><p>This module defines a logging class based on the built-in logging module.</p></li>
 </ul>
-</dd>
-</dl>
 <p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/sp_logging/index.html#sp-logging-index"><span class="std std-ref">Logging System</span></a> section for further details.</p>
 <section id="logging-levels">
 <span id="sp-logging-ref-logging-levels"></span><h2>Logging Levels<a class="headerlink" href="#logging-levels" title="Link to this heading">#</a></h2>
@@ -746,10 +758,10 @@ to enhance usability and flexibility for large-scale projects.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.AlwaysStdErrHandler.html#scikitplot.sp_logging.AlwaysStdErrHandler" title="scikitplot.sp_logging.AlwaysStdErrHandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AlwaysStdErrHandler</span></code></a></p></td>
-<td><p>A custom logging handler that allows selecting between standard error (stderr) and standard output (stdout), enforcing rules for stream assignment.</p></td>
+<td><p>A custom logging handler inherited from <a class="reference external" href="https://docs.python.org/3/library/logging.handlers.html#logging.StreamHandler" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamHandler</span></code></a> that enforces the use of a specific output stream: either standard error (<code class="docutils literal notranslate"><span class="pre">sys.stderr</span></code>) or standard output (<code class="docutils literal notranslate"><span class="pre">sys.stdout</span></code>).</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.GoogleLogFormatter.html#scikitplot.sp_logging.GoogleLogFormatter" title="scikitplot.sp_logging.GoogleLogFormatter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GoogleLogFormatter</span></code></a></p></td>
-<td><p>Custom logging formatter that formats log messages in a Google-style format: YYYY-MM-DD HH:MM:SS.mmmmmm logger_name log_level message</p></td>
+<td><p>A custom logging formatter inherited from <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Formatter" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formatter</span></code></a> that formats log messages in a Google-style format.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/critical-function.html#scikitplot.sp_logging.critical" title="scikitplot.sp_logging.critical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">critical</span></code></a></p></td>
 <td><p>Logs a message at the CRITICAL log level.</p></td>

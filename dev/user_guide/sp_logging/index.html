@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="This module contains functions related to sp_logging(Scikit-plots Logging). Configuring the logging system: First, import the logger, Get a root logger by module: Get a root logger by func: Get a r..." />
 
-    <title>Logging System &#8212; scikit-plots 0.5.dev0+git20250114.96321ef documentation</title>
+    <title>Logging System &#8212; scikit-plots 0.5.dev0+git.20250115.2727f8c documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=373ea374"></script>
+    <script src="../../_static/documentation_options.js?v=39682b9a"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -212,8 +212,15 @@
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community G
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-external" href="https://zenodo.org/communities/scikit-plots">
-    Community
+    Community Z
   </a>
 </li>
 
@@ -398,8 +405,15 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community G
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-external" href="https://zenodo.org/communities/scikit-plots">
-    Community
+    Community Z
   </a>
 </li>
 
@@ -532,7 +546,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../experimental/index.html">Experimental (experimental)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../_seaborn/index.html">Seaborn (experimental)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../probscale/index.html">Probability Plots (experimental)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../_tweedie/index.html">Tweedie Distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_tweedie/index.html">Tweedie Family</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../__lightnumpy/index.html">LightNumPy (experimental)</a></li>
 </ul>
 </div>
@@ -615,7 +629,7 @@ This module defines a logging class based on the built-in logging module.</p>
 </div></div>
 <div class="cell_output docutils container">
 <div class="thebelab-output" data-output="true"><div class="docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-01-14 19:12:36 INFO scikitplot 140563971405632 sp_logging.py 758 This is a info message from the sp logger. 
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-01-15 16:57:16 INFO scikitplot 139718292285248 sp_logging.py 818 This is a info message from the sp logger. 
 </pre></div>
 </div>
 </div>
@@ -634,7 +648,7 @@ This module defines a logging class based on the built-in logging module.</p>
 </div></div>
 <div class="cell_output docutils container">
 <div class="thebelab-output" data-output="true"><div class="docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-01-14 19:12:37 INFO scikitplot 140563971405632 1353514787.py 3 This is a info message from the sp logger. 
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-01-15 16:57:16 INFO scikitplot 139718292285248 1353514787.py 3 This is a info message from the sp logger. 
 </pre></div>
 </div>
 </div>
@@ -653,7 +667,7 @@ This module defines a logging class based on the built-in logging module.</p>
 </div></div>
 <div class="cell_output docutils container">
 <div class="thebelab-output" data-output="true"><div class="docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-01-14 19:12:37 INFO scikitplot 140563971405632 sp_logging.py 1077 This is a info message from the sp logger. 
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-01-15 16:57:16 INFO scikitplot 139718292285248 sp_logging.py 1142 This is a info message from the sp logger. 
 </pre></div>
 </div>
 </div>
@@ -672,7 +686,7 @@ This module defines a logging class based on the built-in logging module.</p>
 </div></div>
 <div class="cell_output docutils container">
 <div class="thebelab-output" data-output="true"><div class="docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-01-14 19:12:37 INFO scikitplot 140563971405632 sp_logging.py 1077 This is a info message from the sp logger. 
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-01-15 16:57:16 INFO scikitplot 139718292285248 sp_logging.py 1142 This is a info message from the sp logger. 
 </pre></div>
 </div>
 </div>
@@ -680,20 +694,25 @@ This module defines a logging class based on the built-in logging module.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module builds on Python’s standard <code class="docutils literal notranslate"><span class="pre">logging</span></code> library. For more information
-on Python’s logging API, refer to the official documentation:
-<a class="reference external" href="https://docs.python.org/3/library/logging.html">https://docs.python.org/3/library/logging.html</a></p>
+<p>This module builds on Python’s standard <a class="reference external" href="https://docs.python.org/3/library/logging.html#module-logging" title="(in Python v3.13)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">logging</span></code></a> library.
+For more information on Python’s logging API, refer to the official
+documentation: <a class="reference external" href="https://docs.python.org/3/library/logging.html">https://docs.python.org/3/library/logging.html</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>Logging Levels:</p>
 <ul class="simple">
-<li><p>NOTSET (0)  : NOTSET</p></li>
-<li><p>DEBUG (10)  : Detailed information useful during development,
+<li><p><code class="docutils literal notranslate"><span class="pre">NOTSET</span></code> (0)  : NOTSET</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> (10)  : Detailed information useful during development,
 typically of interest only when diagnosing problems.</p></li>
-<li><p>INFO (20)   : Confirmation that things are working as expected.</p></li>
-<li><p>WARNING (30): An indication that something unexpected happened,
+<li><p><code class="docutils literal notranslate"><span class="pre">INFO</span></code> (20)   : Confirmation that things are working as expected.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WARNING</span></code> (30): An indication that something unexpected happened,
 or indicative of some problem in the near future.</p></li>
-<li><p>ERROR (40)  : Due to a more serious problem,
+<li><p><code class="docutils literal notranslate"><span class="pre">ERROR</span></code> (40)  : Due to a more serious problem,
 the software has not been able to perform some function.</p></li>
-<li><p>CRITICAL = FATAL (50): A very serious error, indicating that
+<li><p><code class="docutils literal notranslate"><span class="pre">CRITICAL</span></code> = <code class="docutils literal notranslate"><span class="pre">FATAL</span></code> (50): A very serious error, indicating that
 the program itself may be unable to continue running.</p></li>
 </ul>
 </div>

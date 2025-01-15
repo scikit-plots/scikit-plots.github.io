@@ -11,12 +11,12 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/user_guide/stats/index.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="Examples relevant to the stats module. Astrostatistics Tools (experimental): Documentation is available in the docstrings and online at https://www.astropy.org/. Tweedie Distribution: Applications:..." />
+<meta property="og:description" content="Examples relevant to the stats module. Astrostatistics Tools (experimental): Documentation is available in the docstrings and online at https://www.astropy.org/. Tweedie Distribution (generalized f..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="Examples relevant to the stats module. Astrostatistics Tools (experimental): Documentation is available in the docstrings and online at https://www.astropy.org/. Tweedie Distribution: Applications:..." />
+<meta name="description" content="Examples relevant to the stats module. Astrostatistics Tools (experimental): Documentation is available in the docstrings and online at https://www.astropy.org/. Tweedie Distribution (generalized f..." />
 
-    <title>Stats (experimental) &#8212; scikit-plots 0.5.dev0+git20250114.96321ef documentation</title>
+    <title>Stats (experimental) &#8212; scikit-plots 0.5.dev0+git.20250115.2727f8c documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=373ea374"></script>
+    <script src="../../_static/documentation_options.js?v=39682b9a"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -212,8 +212,15 @@
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community G
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-external" href="https://zenodo.org/communities/scikit-plots">
-    Community
+    Community Z
   </a>
 </li>
 
@@ -398,8 +405,15 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community G
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-external" href="https://zenodo.org/communities/scikit-plots">
-    Community
+    Community Z
   </a>
 </li>
 
@@ -532,7 +546,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../experimental/index.html">Experimental (experimental)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../_seaborn/index.html">Seaborn (experimental)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../probscale/index.html">Probability Plots (experimental)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../_tweedie/index.html">Tweedie Distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_tweedie/index.html">Tweedie Family</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../__lightnumpy/index.html">LightNumPy (experimental)</a></li>
 </ul>
 </div>
@@ -591,21 +605,35 @@
 <span id="stats-index"></span><h1>Stats (experimental)<a class="headerlink" href="#stats-experimental" title="Link to this heading">#</a></h1>
 <p>Examples relevant to the <a class="reference internal" href="../../apis/scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">stats</span></code></a> module.</p>
 <section id="astrostatistics-tools-experimental">
-<h2>Astrostatistics Tools (experimental)<a class="headerlink" href="#astrostatistics-tools-experimental" title="Link to this heading">#</a></h2>
+<span id="astrostatistics-index"></span><h2>Astrostatistics Tools (experimental)<a class="headerlink" href="#astrostatistics-tools-experimental" title="Link to this heading">#</a></h2>
 <p>Documentation is available in the docstrings and
 online at <a class="reference external" href="https://www.astropy.org/">https://www.astropy.org/</a>.</p>
 </section>
-<section id="tweedie-distribution">
-<h2>Tweedie Distribution<a class="headerlink" href="#tweedie-distribution" title="Link to this heading">#</a></h2>
-<section id="applications">
-<h3>Applications<a class="headerlink" href="#applications" title="Link to this heading">#</a></h3>
+<section id="tweedie-distribution-generalized-family">
+<span id="tweedie-dist-index"></span><h2>Tweedie Distribution (generalized family)<a class="headerlink" href="#tweedie-distribution-generalized-family" title="Link to this heading">#</a></h2>
+<p>Examples relevant to the <a class="reference internal" href="../../modules/generated/scikitplot._tweedie.tweedie.html#scikitplot._tweedie.tweedie" title="scikitplot._tweedie.tweedie"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tweedie</span></code></a> variable.</p>
+<p>Tweedie distributions are a very general family of distributions
+that includes the Gaussian, Poisson, and Gamma (among many others)
+as special cases.</p>
+<p>Parameter 𝑝: The Tweedie family is defined by a parameter 𝑝,
+which controls the distribution’s properties. For different values of 𝑝,
+the distribution can take different forms.</p>
+<p>Example of the Tweedie Family:</p>
+<ul class="simple">
+<li><p>𝑝=0: Gaussian (Normal) distribution</p></li>
+<li><p>𝑝=1: Poisson distribution</p></li>
+<li><p>𝑝=2: Gamma distribution</p></li>
+<li><p>𝑝=3: Inverse Gaussian distribution</p></li>
+</ul>
+<section id="common-applications">
+<h3>Common Applications<a class="headerlink" href="#common-applications" title="Link to this heading">#</a></h3>
+<p>Generalized Linear Models (GLMs): The Tweedie distributions are often used in GLMs, especially in cases where the data has non-constant variance or is overdispersed (i.e., variance greater than the mean).</p>
 <p>The Tweedie distribution is widely used in:</p>
 <ul class="simple">
 <li><p>Insurance industry: Modeling claim amounts and policy exposure.</p></li>
 <li><p>Medical and genomic testing: Analyzing datasets with zero-inflated and continuous positive values.</p></li>
 <li><p>Environmental science: Rainfall modeling and hydrology studies.</p></li>
 </ul>
-<p>Examples relevant to the <a class="reference internal" href="../../modules/generated/scikitplot._tweedie.tweedie.html#scikitplot._tweedie.tweedie" title="scikitplot._tweedie.tweedie"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tweedie</span></code></a> variable.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
@@ -671,8 +699,8 @@ online at <a class="reference external" href="https://www.astropy.org/">https://
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astrostatistics-tools-experimental">Astrostatistics Tools (experimental)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tweedie-distribution">Tweedie Distribution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">Applications</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tweedie-distribution-generalized-family">Tweedie Distribution (generalized family)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-applications">Common Applications</a></li>
 </ul>
 </li>
 </ul>

@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="A lightweight version of NumPy (or similar functionality). Why LightNumPy?: Performance-Driven: Optimized for both CPU and hardware accelerators (GPU/TPU). Focused: Includes essential features with..." />
 
-    <title>LightNumPy (experimental) &#8212; scikit-plots 0.5.dev0+git20250114.96321ef documentation</title>
+    <title>LightNumPy (experimental) &#8212; scikit-plots 0.5.dev0+git.20250115.2727f8c documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=373ea374"></script>
+    <script src="../../_static/documentation_options.js?v=39682b9a"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -84,7 +84,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="APIs Reference" href="../../apis/index.html" />
-    <link rel="prev" title="Tweedie Distribution" href="../_tweedie/index.html" />
+    <link rel="prev" title="Tweedie Family" href="../_tweedie/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.5" />
@@ -212,8 +212,15 @@
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community G
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-external" href="https://zenodo.org/communities/scikit-plots">
-    Community
+    Community Z
   </a>
 </li>
 
@@ -398,8 +405,15 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community G
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-external" href="https://zenodo.org/communities/scikit-plots">
-    Community
+    Community Z
   </a>
 </li>
 
@@ -532,7 +546,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../experimental/index.html">Experimental (experimental)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../_seaborn/index.html">Seaborn (experimental)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../probscale/index.html">Probability Plots (experimental)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../_tweedie/index.html">Tweedie Distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_tweedie/index.html">Tweedie Family</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">LightNumPy (experimental)</a></li>
 </ul>
 </div>
@@ -603,9 +617,37 @@
 Focused: Includes essential features without unnecessary overhead.
 Adaptable: Modular structure for customized extensions.
 Scalable: Ideal for IoT, embedded systems, and resource-limited devices.</p>
+<p>Get Header files location:</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="thebelab-code" data-executable="true" data-language="ipython"><div class="docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">try</span><span class="p">:</span>
+<span class="o">&gt;&gt;&gt;</span>   <span class="c1"># pip install git+https://github.com/scikit-plots/lightnumpy.git@main</span>
+<span class="o">&gt;&gt;&gt;</span>   <span class="kn">import</span><span class="w"> </span><span class="nn">lightnumpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">lp</span>
+<span class="o">&gt;&gt;&gt;</span>   <span class="c1"># Return the directory that contains the lightnumpy and NumCpp *.h header files.</span>
+<span class="o">&gt;&gt;&gt;</span>   <span class="n">inc_dir_lightnumpy</span> <span class="o">=</span> <span class="n">lp</span><span class="o">.</span><span class="n">get_include</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">except</span><span class="p">:</span> <span class="k">pass</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">else</span><span class="p">:</span>
+<span class="o">&gt;&gt;&gt;</span>   <span class="o">!</span>ls<span class="w"> </span><span class="nv">$inc_dir_lightnumpy</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<div class="cell_output docutils container">
+<div class="thebelab-output" data-output="true"><div class="docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>lightnumpy  NumCpp
+</pre></div>
+</div>
+</div>
+</div></div>
+</div>
 </section>
 </section>
-
+<button title="Make live" class="thebelab-button" id="thebelab-activate-button" onclick="initThebelab()">Make live</button>
+<script type="text/x-thebe-config">
+{"binderOptions": {"org": "scikit-plots", "repo": "scikit-plots", "branch": "main", "dependencies": "./binder/requirements.txt"}, "predefinedOutput": true, "requestKernel": true}
+</script>
+<script type="text/javascript" src="https://unpkg.com/thebelab@^0.4.0"></script>
 
                 </article>
               
@@ -622,7 +664,7 @@ Scalable: Ideal for IoT, embedded systems, and resource-limited devices.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Tweedie Distribution</p>
+        <p class="prev-next-title">Tweedie Family</p>
       </div>
     </a>
     <a class="right-next"

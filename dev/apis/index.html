@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="This is the class and function reference of scikit-plots. Please refer to the full user guide for further details, as the raw specifications of classes and functions may not be enough to give full ..." />
 
-    <title>APIs Reference &#8212; scikit-plots 0.5.dev0+git20250114.96321ef documentation</title>
+    <title>APIs Reference &#8212; scikit-plots 0.5.dev0+git.20250115.2727f8c documentation</title>
   
   
   
@@ -39,6 +39,7 @@
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.2.1/css/dataTables.dataTables.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -51,8 +52,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.min.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/apis-search.css?v=d8131c54" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/apis-search.css?v=f29a6111" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=14208072" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=e4cb1417" />
   
@@ -62,9 +62,11 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=373ea374"></script>
+    <script src="../_static/documentation_options.js?v=39682b9a"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.2.1/js/dataTables.min.js"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=e93d8674"></script>
     <script src="../_static/thebelab-helper.js"></script>
@@ -73,9 +75,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script src="https://cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>
-    <script src="../_static/scripts/apis-search.js?v=4451726e"></script>
+    <script src="../_static/scripts/apis-search.js?v=a8f5777f"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'apis/index';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
@@ -218,8 +218,15 @@
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community G
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-external" href="https://zenodo.org/communities/scikit-plots">
-    Community
+    Community Z
   </a>
 </li>
 
@@ -400,8 +407,15 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community G
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-external" href="https://zenodo.org/communities/scikit-plots">
-    Community
+    Community Z
   </a>
 </li>
 
@@ -1253,7 +1267,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.AlwaysStdErrHandler.html#scikitplot.sp_logging.AlwaysStdErrHandler" title="scikitplot.sp_logging.AlwaysStdErrHandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AlwaysStdErrHandler</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
-<p>A custom logging handler that allows selecting between standard error (stderr)</p>
+<p>A custom logging handler inherited from <a class="reference external" href="https://docs.python.org/3/library/logging.handlers.html#logging.StreamHandler" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamHandler</span></code></a></p>
 <div class="caption docutils">
 <p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
 </div>
@@ -1262,7 +1276,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.GoogleLogFormatter.html#scikitplot.sp_logging.GoogleLogFormatter" title="scikitplot.sp_logging.GoogleLogFormatter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GoogleLogFormatter</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
-<p>Custom logging formatter that formats log messages in a Google-style format:</p>
+<p>A custom logging formatter inherited from <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Formatter" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formatter</span></code></a></p>
 <div class="caption docutils">
 <p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
 </div>
@@ -1685,7 +1699,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.visualkeras.graph_view.html#scikitplot.visualkeras.graph_view" title="scikitplot.visualkeras.graph_view"><code class="xref py py-obj docutils literal notranslate"><span class="pre">graph_view</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
-<p>Generates an architectural visualization for a given linear Keras model</p>
+<p>Generates an architectural visualization for a given linear Keras</p>
 <div class="caption docutils">
 <p><a class="reference internal" href="scikitplot.visualkeras.html#module-scikitplot.visualkeras" title="scikitplot.visualkeras"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.visualkeras</span></code></a></p>
 </div>
@@ -1694,7 +1708,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layered_view</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
-<p>Generates an architectural visualization for a given linear Keras model</p>
+<p>Generates an architectural visualization for a given linear Keras</p>
 <div class="caption docutils">
 <p><a class="reference internal" href="scikitplot.visualkeras.html#module-scikitplot.visualkeras" title="scikitplot.visualkeras"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.visualkeras</span></code></a></p>
 </div>

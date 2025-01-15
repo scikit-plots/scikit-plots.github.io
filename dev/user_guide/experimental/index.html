@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="This module contains functions related to experimental. Placeholder for experimental features for developers… Cython Bindings: The Cython language is a superset of the Python language that addition..." />
 
-    <title>Experimental (experimental) &#8212; scikit-plots 0.5.dev0+git20250114.96321ef documentation</title>
+    <title>Experimental (experimental) &#8212; scikit-plots 0.5.dev0+git.20250115.2727f8c documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=373ea374"></script>
+    <script src="../../_static/documentation_options.js?v=39682b9a"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -212,8 +212,15 @@
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community G
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-external" href="https://zenodo.org/communities/scikit-plots">
-    Community
+    Community Z
   </a>
 </li>
 
@@ -398,8 +405,15 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community G
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-external" href="https://zenodo.org/communities/scikit-plots">
-    Community
+    Community Z
   </a>
 </li>
 
@@ -532,7 +546,7 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Experimental (experimental)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../_seaborn/index.html">Seaborn (experimental)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../probscale/index.html">Probability Plots (experimental)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../_tweedie/index.html">Tweedie Distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_tweedie/index.html">Tweedie Family</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../__lightnumpy/index.html">LightNumPy (experimental)</a></li>
 </ul>
 </div>
@@ -598,7 +612,9 @@ supports calling C functions and declaring C types on variables
 and class attributes.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference external" href="https://cython.org/">https://cython.org/</a></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cython.org/">https://cython.org/</a></p></li>
+</ul>
 </div>
 </section>
 <section id="pybind11-bindings">
@@ -607,7 +623,9 @@ and class attributes.</p>
 and vice versa, mainly to create Python bindings of existing C++ code.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="github reference external" href="https://github.com/pybind/pybind11">pybind/pybind11</a></p>
+<ul class="simple">
+<li><p><a class="github reference external" href="https://github.com/pybind/pybind11">pybind/pybind11</a></p></li>
+</ul>
 </div>
 </section>
 <section id="c-cpp-headers-source">
@@ -656,12 +674,14 @@ The best way to truly understand …</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="thebelab-code" data-executable="true" data-language="ipython"><div class="docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">lightnumpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">lp</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="c1"># Return the directory that contains the NumCpp *.h header files.</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">inc_dir_lightnumpy</span> <span class="o">=</span> <span class="n">lp</span><span class="o">.</span><span class="n">get_include</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">inc_dir_lightnumpy</span>
-
-<span class="o">&gt;&gt;&gt;</span> <span class="o">!</span>ls<span class="w"> </span><span class="nv">$inc_dir_lightnumpy</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">try</span><span class="p">:</span>
+<span class="o">&gt;&gt;&gt;</span>   <span class="c1"># pip install git+https://github.com/scikit-plots/lightnumpy.git@main</span>
+<span class="o">&gt;&gt;&gt;</span>   <span class="kn">import</span><span class="w"> </span><span class="nn">lightnumpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">lp</span>
+<span class="o">&gt;&gt;&gt;</span>   <span class="c1"># Return the directory that contains the NumCpp *.h header files.</span>
+<span class="o">&gt;&gt;&gt;</span>   <span class="n">inc_dir_lightnumpy</span> <span class="o">=</span> <span class="n">lp</span><span class="o">.</span><span class="n">get_include</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">except</span><span class="p">:</span> <span class="k">pass</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">else</span><span class="p">:</span>
+<span class="o">&gt;&gt;&gt;</span>   <span class="o">!</span>ls<span class="w"> </span><span class="nv">$inc_dir_lightnumpy</span>
 </pre></div>
 </div>
 </div>

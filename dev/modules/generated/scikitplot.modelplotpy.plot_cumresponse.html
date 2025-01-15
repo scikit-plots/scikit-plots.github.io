@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="" />
 <meta name="description" content="Gallery examples: Introduction to modelplotpy" />
 
-    <title>plot_cumresponse &#8212; scikit-plots 0.5.dev0+git20250114.96321ef documentation</title>
+    <title>plot_cumresponse &#8212; scikit-plots 0.5.dev0+git.20250115.2727f8c documentation</title>
   
   
   
@@ -61,7 +61,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=373ea374"></script>
+    <script src="../../_static/documentation_options.js?v=39682b9a"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -213,8 +213,15 @@
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community G
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-external" href="https://zenodo.org/communities/scikit-plots">
-    Community
+    Community Z
   </a>
 </li>
 
@@ -399,8 +406,15 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community G
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-external" href="https://zenodo.org/communities/scikit-plots">
-    Community
+    Community Z
   </a>
 </li>
 
@@ -705,7 +719,7 @@
 <h1>plot_cumresponse<a class="headerlink" href="#plot-cumresponse" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.modelplotpy.plot_cumresponse">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.modelplotpy.</span></span><span class="sig-name descname"><span class="pre">plot_cumresponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fig_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlight_ntile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlight_how</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'plot_text'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/96321ef/scikitplot/modelplotpy/_modelplotpy.py#L1164"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.modelplotpy.plot_cumresponse" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.modelplotpy.</span></span><span class="sig-name descname"><span class="pre">plot_cumresponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fig_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlight_ntile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlight_how</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'plot_text'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/2727f8c/scikitplot/modelplotpy/_modelplotpy.py#L1150"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.modelplotpy.plot_cumresponse" title="Link to this definition">#</a></dt>
 <dd><p>Plotting cumulative response curve</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -730,19 +744,22 @@ It can be shown as text, on the plot or both.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>It returns a matplotlib.axes._subplots.AxesSubplot object</dt><dd></dd>
-<dt>that can be transformed into the same plot with the .figure command.</dt><dd></dd>
-<dt>The plot is by default written to disk (save_fig = True).</dt><dd></dd>
-<dt>The location and filetype of the file depend on the save_fig_filename parameter.</dt><dd></dd>
-<dt>If the save_fig_filename parameter is empty (not specified),</dt><dd></dd>
-<dt>the plot will be written to the working directory as png.</dt><dd></dd>
-<dt>Otherwise the location and file type is specified by the user.</dt><dd></dd>
+<dt>matplotlib.axes._subplots.AxesSubplot</dt><dd><p>It returns a matplotlib.axes._subplots.AxesSubplot object
+that can be transformed into the same plot with the .figure command.
+The plot is by default written to disk (save_fig = True).
+The location and filetype of the file depend on the save_fig_filename parameter.
+If the save_fig_filename parameter is empty (not specified),
+the plot will be written to the working directory as png.
+Otherwise the location and file type is specified by the user.</p>
+</dd>
 </dl>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>TypeError: If <code class="docutils literal notranslate"><span class="pre">highlight_ntile</span></code> is not specified as an int.</dt><dd></dd>
-<dt>ValueError: If the wrong <code class="docutils literal notranslate"><span class="pre">highlight_how</span></code> value is specified.</dt><dd></dd>
+<dt>TypeError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">highlight_ntile</span></code> is not specified as an int.</p>
+</dd>
+<dt>ValueError</dt><dd><p>If the wrong <code class="docutils literal notranslate"><span class="pre">highlight_how</span></code> value is specified.</p>
+</dd>
 </dl>
 </dd>
 <dt class="field-even">Parameters<span class="colon">:</span></dt>
