@@ -13,13 +13,13 @@
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
 <meta content="An example showing the visualkeras function used by a tf.keras.Model model. Tags: model-type: classification model-workflow: model building plot-type: visualkeras domain: neural network level: begi..." name="description"/>
-<title>visualkeras custom VGG example — scikit-plots 0.4.0rc0 documentation</title>
+<title>visualkeras custom VGG example — scikit-plots 0.4.0rc1 documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-<!-- 
-    this give us a css class that will be invisible only if js is disabled 
+<!--
+    this give us a css class that will be invisible only if js is disabled
   -->
 <noscript>
 <style>
@@ -28,16 +28,16 @@
     </style>
 </noscript>
 <!-- Loaded before other Sphinx assets -->
-<link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet"/>
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet"/>
-<link href="../../_static/pygments.css?v=a746c00c" rel="stylesheet" type="text/css"/>
-<link href="../../_static/graphviz.css?v=fd3f3429" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../../_static/graphviz.css?v=4ae1632d" rel="stylesheet" type="text/css"/>
 <link href="../../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
 <link href="../../_static/jupyter-sphinx.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/thebelab.css" rel="stylesheet" type="text/css"/>
 <link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
-<link href="../../_static/jupyterlite_sphinx.css?v=ca70e7f1" rel="stylesheet" type="text/css"/>
+<link href="../../_static/jupyterlite_sphinx.css?v=13b285a0" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery.css?v=d2d258e8" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-binder.css?v=f4aeca0c" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" rel="stylesheet" type="text/css"/>
@@ -46,26 +46,27 @@
 <link href="../../_static/styles/colors.css?v=14208072" rel="stylesheet" type="text/css"/>
 <link href="../../_static/styles/custom.css?v=e4cb1417" rel="stylesheet" type="text/css"/>
 <!-- So that users can add custom icons -->
-<script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+<script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
 <!-- Pre-loaded scripts that we'll load fully later -->
-<link as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" rel="preload"/>
-<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" rel="preload"/>
-<script src="../../_static/documentation_options.js?v=bfecb351"></script>
-<script src="../../_static/doctools.js?v=9a2dae69"></script>
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<script src="../../_static/documentation_options.js?v=1b943748"></script>
+<script src="../../_static/doctools.js?v=9bcbadda"></script>
 <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
 <script src="../../_static/copybutton.js?v=e93d8674"></script>
 <script src="../../_static/thebelab-helper.js"></script>
-<script src="../../_static/jupyterlite_sphinx.js?v=d6bdf5f8"></script>
+<script src="../../_static/jupyterlite_sphinx.js?v=1cca63f7"></script>
 <script src="../../_static/design-tabs.js?v=f930bc37"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
 <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/visualkeras_CNN/plot_vgg';</script>
 <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc0';
-        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
         </script>
 <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
 <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
@@ -121,7 +122,7 @@
   </a>
 </li>
 <li class="nav-item">
-<a class="nav-link nav-internal" href="../../api/index.html">
+<a class="nav-link nav-internal" href="../../apis/index.html">
     APIs Reference
   </a>
 </li>
@@ -131,8 +132,8 @@
   </a>
 </li>
 <li class="nav-item">
-<a class="nav-link nav-internal" href="../../whats_new/index.html">
-    Release Notes
+<a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
+    Tags
   </a>
 </li>
 <li class="nav-item dropdown">
@@ -141,8 +142,18 @@
                 </button>
 <ul class="dropdown-menu" id="pst-nav-more-links">
 <li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../whats_new/index.html">
+    Release Notes
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community-G
+  </a>
+</li>
+<li class="">
 <a class="nav-link dropdown-item nav-external" href="https://zenodo.org/communities/scikit-plots">
-    Community
+    Community-Z
   </a>
 </li>
 <li class="">
@@ -151,8 +162,13 @@
   </a>
 </li>
 <li class="">
-<a class="nav-link dropdown-item nav-internal" href="../../_tags/tagsindex.html">
-    Tags
+<a class="nav-link dropdown-item nav-internal" href="../../project/governance.html">
+    Governance
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
+    Roadmap
   </a>
 </li>
 <li class="">
@@ -233,7 +249,7 @@
   </a>
 </li>
 <li class="nav-item">
-<a class="nav-link nav-internal" href="../../api/index.html">
+<a class="nav-link nav-internal" href="../../apis/index.html">
     APIs Reference
   </a>
 </li>
@@ -243,13 +259,23 @@
   </a>
 </li>
 <li class="nav-item">
+<a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+<li class="nav-item">
 <a class="nav-link nav-internal" href="../../whats_new/index.html">
     Release Notes
   </a>
 </li>
 <li class="nav-item">
+<a class="nav-link nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community-G
+  </a>
+</li>
+<li class="nav-item">
 <a class="nav-link nav-external" href="https://zenodo.org/communities/scikit-plots">
-    Community
+    Community-Z
   </a>
 </li>
 <li class="nav-item">
@@ -258,8 +284,13 @@
   </a>
 </li>
 <li class="nav-item">
-<a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
-    Tags
+<a class="nav-link nav-internal" href="../../project/governance.html">
+    Governance
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/roadmap.html">
+    Roadmap
   </a>
 </li>
 <li class="nav-item">
@@ -306,6 +337,7 @@
 <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00-blogs/index.html">blog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../00-jupyter_notebooks/index.html">jupyter notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../array_api/index.html">Array API support (experimental)</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../calibration/index.html">Calibration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../calibration/plot_calibration_script.html">plot_calibration with examples</a></li>
 </ul>
@@ -368,7 +400,6 @@
 </div>
 <div class="sidebar-primary-items__end sidebar-primary__section">
 </div>
-<div id="rtd-footer-container"></div>
 </div>
 <main class="bd-main" id="main-content" role="main">
 <div class="bd-content">
@@ -398,18 +429,18 @@
 
 <section class="sphx-glr-example-title" id="visualkeras-custom-vgg-example">
 <span id="sphx-glr-auto-examples-visualkeras-cnn-plot-vgg-py"></span><h1>visualkeras custom VGG example<a class="headerlink" href="#visualkeras-custom-vgg-example" title="Link to this heading">#</a></h1>
-<p>An example showing the <a class="reference internal" href="../../api/scikitplot.visualkeras.html#module-scikitplot.visualkeras" title="scikitplot.visualkeras"><code class="xref py py-func docutils literal notranslate"><span class="pre">visualkeras</span></code></a> function
+<p>An example showing the <a class="reference internal" href="../../apis/scikitplot.visualkeras.html#module-scikitplot.visualkeras" title="scikitplot.visualkeras"><code class="xref py py-func docutils literal notranslate"><span class="pre">visualkeras</span></code></a> function
 used by a <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/Model" title="(in TensorFlow v2.4)"><code class="docutils literal notranslate"><span class="pre">tf.keras.Model</span></code></a> model.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: The scikit-plots developers</span>
 <span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
 
 <span class="c1"># Force garbage collection</span>
-<span class="kn">import</span> <span class="nn">gc</span><span class="p">;</span> <a class="sphx-glr-backref-module-gc sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/gc.html#gc.collect" title="gc.collect"><span class="n">gc</span><span class="o">.</span><span class="n">collect</span></a><span class="p">()</span>
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">gc</span><span class="p">;</span> <a class="sphx-glr-backref-module-gc sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/gc.html#gc.collect" title="gc.collect"><span class="n">gc</span><span class="o">.</span><span class="n">collect</span></a><span class="p">()</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
 <span class="c1"># Clear any session to reset the state of TensorFlow/Keras</span>
 <a class="sphx-glr-backref-module-tensorflow-keras-backend sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/backend/clear_session" title="tensorflow.keras.backend.clear_session"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">clear_session</span></a><span class="p">()</span>
 
-<span class="kn">from</span> <span class="nn">scikitplot</span> <span class="kn">import</span> <span class="n">visualkeras</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">visualkeras</span>
 
 <span class="c1"># model = tf.keras.applications.VGG16(</span>
 <span class="c1">#     include_top=True,</span>
@@ -445,7 +476,7 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
   <span class="n">to_file</span><span class="o">=</span><span class="s1">'../result_images/vgg19.png'</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
     <a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.imshow.html#matplotlib.pyplot.imshow" title="matplotlib.pyplot.imshow"><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span></a><span class="p">(</span><span class="n">img_vgg19</span><span class="p">)</span>
     <a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axis.html#matplotlib.pyplot.axis" title="matplotlib.pyplot.axis"><span class="n">plt</span><span class="o">.</span><span class="n">axis</span></a><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
     <a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
@@ -454,7 +485,7 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 </pre></div>
 </div>
 <img alt="plot vgg" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_vgg_001.png" srcset="../../_images/sphx_glr_plot_vgg_001.png"/><p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-model-building.html"><span class="doc">model-workflow: model building</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-visualkeras.html"><span class="doc">plot-type: visualkeras</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger reference internal" href="../../_tags/domain-neural-network.html"><span class="doc">domain: neural network</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.348 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.790 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_resnetv2_thumb.png"/>
@@ -496,7 +527,13 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 </div>
 <dialog id="pst-secondary-sidebar-modal"></dialog>
 <div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
+<div class="sidebar-secondary-item">
+<div aria-label="source link" role="note">
+<h3>This Page</h3>
+<ul class="this-page-menu">
+<li><a href="../../_sources/auto_examples/visualkeras_CNN/plot_vgg.rst.txt" rel="nofollow">Show Source</a></li>
+</ul>
+</div></div>
 <div class="sidebar-secondary-item"><div title="plot_vgg.py"><a download="" href="../../_downloads/1e38dd424426ee02102613934db38691/plot_vgg.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_vgg.ipynb"><a download="" href="../../_downloads/e8d4688f7ec18997b13f8cf2604e1cd0/plot_vgg.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/visualkeras_CNN/plot_vgg.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo8.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/0.4.X?urlpath=lab/tree/notebooks/auto_examples/visualkeras_CNN/plot_vgg.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo8.svg"/></a></div></div></div></div>
 </div>
 <footer class="bd-footer-content">
@@ -505,15 +542,15 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 </div>
 </div>
 <!-- Scripts loaded after <body> so the DOM is not blocked -->
-<script defer="" src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer="" src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
 <div class="footer-items__start">
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2024, scikit-plots developers (BSD-3 Clause License).
+      © Copyright 2024 - 2025, scikit-plots developers (BSD-3 Clause License).
       <br/>
 </p>
 </div>

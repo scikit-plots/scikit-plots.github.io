@@ -11,12 +11,12 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/devel/document.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="Getting started: General file structure: All documentation is built from the doc/. The doc/ directory contains configuration files for Sphinx and reStructuredText ( ReST;.rst) files that are render..." />
+<meta property="og:description" content="restructuredtext References: https://www.sphinx-doc.org/en/master/index.html, https://sphinx-tutorial.readthedocs.io/cheatsheet/#rst-cheat-sheet, https://documatt.com/restructuredtext-reference/, h..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="Getting started: General file structure: All documentation is built from the doc/. The doc/ directory contains configuration files for Sphinx and reStructuredText ( ReST;.rst) files that are render..." />
+<meta name="description" content="restructuredtext References: https://www.sphinx-doc.org/en/master/index.html, https://sphinx-tutorial.readthedocs.io/cheatsheet/#rst-cheat-sheet, https://documatt.com/restructuredtext-reference/, h..." />
 
-    <title>Write documentation &#8212; scikit-plots 0.4.0rc0 documentation</title>
+    <title>Write documentation &#8212; scikit-plots 0.4.0rc1 documentation</title>
   
   
   
@@ -24,8 +24,8 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
+  <!--
+    this give us a css class that will be invisible only if js is disabled
   -->
   <noscript>
     <style>
@@ -35,17 +35,17 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=ca70e7f1" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=13b285a0" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -55,27 +55,28 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=e4cb1417" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=bfecb351"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/documentation_options.js?v=1b943748"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=e93d8674"></script>
     <script src="../_static/thebelab-helper.js"></script>
-    <script src="../_static/jupyterlite_sphinx.js?v=d6bdf5f8"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=1cca63f7"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'devel/document';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc0';
-        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
         </script>
     <script src="../_static/scripts/dropdown.js?v=e2048168"></script>
     <script src="../_static/scripts/version-switcher.js?v=9bbada16"></script>
@@ -181,7 +182,7 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../api/index.html">
+  <a class="nav-link nav-internal" href="../apis/index.html">
     APIs Reference
   </a>
 </li>
@@ -195,20 +196,36 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../whats_new/index.html">
-    Release Notes
+  <a class="nav-link nav-internal" href="../_tags/tagsindex.html">
+    Tags
   </a>
 </li>
 
             <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
                     More
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../whats_new/index.html">
+    Release Notes
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community-G
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-external" href="https://zenodo.org/communities/scikit-plots">
-    Community
+    Community-Z
   </a>
 </li>
 
@@ -221,8 +238,15 @@
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../_tags/tagsindex.html">
-    Tags
+  <a class="nav-link dropdown-item nav-internal" href="../project/governance.html">
+    Governance
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/roadmap.html">
+    Roadmap
   </a>
 </li>
 
@@ -372,7 +396,7 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../api/index.html">
+  <a class="nav-link nav-internal" href="../apis/index.html">
     APIs Reference
   </a>
 </li>
@@ -386,6 +410,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../whats_new/index.html">
     Release Notes
   </a>
@@ -393,8 +424,15 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community-G
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-external" href="https://zenodo.org/communities/scikit-plots">
-    Community
+    Community-Z
   </a>
 </li>
 
@@ -407,8 +445,15 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../_tags/tagsindex.html">
-    Tags
+  <a class="nav-link nav-internal" href="../project/governance.html">
+    Governance
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/roadmap.html">
+    Roadmap
   </a>
 </li>
 
@@ -501,8 +546,6 @@
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -551,7 +594,20 @@
 <p class="admonition-title">Template</p>
 <p>Template for further usage, template belong to matplotlib.</p>
 </div>
-<section id="getting-started">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="restructuredtext-references:">
+<summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
+<span class="sd-summary-text">restructuredtext References:<a class="headerlink" href="#restructuredtext-references:" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://www.sphinx-doc.org/en/master/index.html">https://www.sphinx-doc.org/en/master/index.html</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://sphinx-tutorial.readthedocs.io/cheatsheet/#rst-cheat-sheet">https://sphinx-tutorial.readthedocs.io/cheatsheet/#rst-cheat-sheet</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://documatt.com/restructuredtext-reference/">https://documatt.com/restructuredtext-reference/</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://docs.anaconda.com/restructuredtext/#restructuredtext-cheat-sheet">https://docs.anaconda.com/restructuredtext/#restructuredtext-cheat-sheet</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#comments">https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#comments</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://bashtage.github.io/sphinx-material/rst-cheatsheet/rst-cheatsheet.html">https://bashtage.github.io/sphinx-material/rst-cheatsheet/rst-cheatsheet.html</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://sphinxdocs.ansys.com/version/stable/examples/sphinx-design.html">https://sphinxdocs.ansys.com/version/stable/examples/sphinx-design.html</a></p></li>
+</ul>
+</div>
+</details><section id="getting-started">
 <h2>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h2>
 <section id="general-file-structure">
 <h3>General file structure<a class="headerlink" href="#general-file-structure" title="Link to this heading">#</a></h3>
@@ -891,7 +947,7 @@ library.</p>
 <section id="example-docstring">
 <h3>Example docstring<a class="headerlink" href="#example-docstring" title="Link to this heading">#</a></h3>
 <p>An example docstring looks like:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hlines</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">hlines</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span>
            <span class="n">label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Plot horizontal lines at each *y* from *xmin* to *xmax*.</span>
@@ -940,12 +996,12 @@ to keep in mind:</p>
 <section id="quote-positions">
 <h4>Quote positions<a class="headerlink" href="#quote-positions" title="Link to this heading">#</a></h4>
 <p>The quotes for single line docstrings are on the same line (pydocstyle D200):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_linewidth</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_linewidth</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the line width in points.&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 <p>The quotes for multi-line docstrings are on separate lines (pydocstyle D213):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_linestyle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ls</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">set_linestyle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ls</span><span class="p">):</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Set the linestyle of the line.</span>
 
@@ -1083,7 +1139,7 @@ over:
 starting on the new line without any indent (no indent because pydoc will
 parse the docstring and strip the line continuation so that indent would
 result in a lot of whitespace within the line):</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_axes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">add_axes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    ...</span>
 
@@ -1116,7 +1172,7 @@ By convention, these setters and getters are named <code class="docutils literal
 their values can be listed by the <code class="docutils literal notranslate"><span class="pre">~.pyplot.setp</span></code> and <code class="docutils literal notranslate"><span class="pre">~.pyplot.getp</span></code> functions.</p>
 <p>The Parameters block of property setter methods is parsed to document the
 accepted values, e.g. the docstring of <code class="docutils literal notranslate"><span class="pre">.Line2D.set_linestyle</span></code> starts with</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_linestyle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ls</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">set_linestyle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ls</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Set the linestyle of the line.</span>
 
@@ -1136,7 +1192,7 @@ accepted values, e.g. the docstring of <code class="docutils literal notranslate
 unpacked tuple), the accepted values cannot be documented in such a fashion;
 in that case, they can be documented as an <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">ACCEPTS:</span></code> block, e.g. for
 <code class="docutils literal notranslate"><span class="pre">.axes.Axes.set_xlim</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_xlim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">set_xlim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Set the x-axis view limits.</span>
 
@@ -1186,7 +1242,7 @@ are updated automatically.</p></li>
 a summary of the <code class="docutils literal notranslate"><span class="pre">.Line2D</span></code> properties, as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># in axes.py</span>
 <span class="nd">@_docstring</span><span class="o">.</span><span class="n">interpd</span>
-<span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Some stuff omitted</span>
 
@@ -1232,13 +1288,13 @@ automatically, if the subclass method does not have a docstring.</p>
 <p>Use a plain comment <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">docstring</span> <span class="pre">inherited</span></code> to denote the intention to reuse
 the parent docstring. That way we do not accidentally create a docstring in
 the future:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">A</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">A</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">foo</span><span class="p">():</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;The parent docstring.&quot;&quot;&quot;</span>
         <span class="k">pass</span>
 
-<span class="k">class</span> <span class="nc">B</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">B</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">foo</span><span class="p">():</span>
         <span class="c1"># docstring inherited</span>
         <span class="k">pass</span>
 </pre></div>
@@ -1335,8 +1391,8 @@ like:</p>
 
 <span class="sd">Create a simple plot.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># Data for plotting</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
@@ -1386,7 +1442,7 @@ ReST text are delimited by the line <code class="docutils literal notranslate"><
 <p>When sample data comes from a public dataset, please cite the source of the
 data. Sample data should be written out in the code. When this is not
 feasible, the data can be loaded using <code class="docutils literal notranslate"><span class="pre">.cbook.get_sample_data</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.cbook</span> <span class="k">as</span> <span class="nn">cbook</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.cbook</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cbook</span>
 <span class="n">fh</span> <span class="o">=</span> <span class="n">cbook</span><span class="o">.</span><span class="n">get_sample_data</span><span class="p">(</span><span class="s1">&#39;mydata.dat&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1689,13 +1745,13 @@ style or topbar should be made there to propagate across all subprojects.</p>
   </nav></div>
 
   <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../_sources/devel/document.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/devel/document.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
 
 </div></div>
               
@@ -1710,8 +1766,8 @@ style or topbar should be made there to propagate across all subprojects.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1722,7 +1778,7 @@ style or topbar should be made there to propagate across all subprojects.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2024, scikit-plots developers (BSD-3 Clause License).
+      © Copyright 2024 - 2025, scikit-plots developers (BSD-3 Clause License).
       <br/>
     
   </p>

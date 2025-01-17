@@ -11,12 +11,12 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/project/index.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="This project was started in 2024. Project information: Mission Statement, History, Code of Conduct- Our Pledge, Our Standards, Enforcement Responsibilities, Scope, Enforcement, Enforcement Guidelin..." />
+<meta property="og:description" content="This project was started in 2024. Project information: Citing scikit-plots- DOIs., History, License- Copyright policy, License agreement, Bundled software, Third Party., Mission Statement, Teams- T..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="This project was started in 2024. Project information: Mission Statement, History, Code of Conduct- Our Pledge, Our Standards, Enforcement Responsibilities, Scope, Enforcement, Enforcement Guidelin..." />
+<meta name="description" content="This project was started in 2024. Project information: Citing scikit-plots- DOIs., History, License- Copyright policy, License agreement, Bundled software, Third Party., Mission Statement, Teams- T..." />
 
-    <title>About us &#8212; scikit-plots 0.4.0rc0 documentation</title>
+    <title>About us &#8212; scikit-plots 0.4.0rc1 documentation</title>
   
   
   
@@ -24,8 +24,8 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
+  <!--
+    this give us a css class that will be invisible only if js is disabled
   -->
   <noscript>
     <style>
@@ -35,17 +35,17 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=ca70e7f1" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=13b285a0" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -55,35 +55,36 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=e4cb1417" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=bfecb351"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/documentation_options.js?v=1b943748"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=e93d8674"></script>
     <script src="../_static/thebelab-helper.js"></script>
-    <script src="../_static/jupyterlite_sphinx.js?v=d6bdf5f8"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=1cca63f7"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'project/index';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc0';
-        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
         </script>
     <script src="../_static/scripts/dropdown.js?v=e2048168"></script>
     <script src="../_static/scripts/version-switcher.js?v=9bbada16"></script>
     <link rel="icon" href="../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Mission Statement" href="mission.html" />
-    <link rel="prev" title="My tags: topic: tagging" href="../_tags/topic-tagging.html" />
+    <link rel="next" title="Citing scikit-plots" href="citing.html" />
+    <link rel="prev" title="Roadmap" href="roadmap.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.4" />
@@ -183,7 +184,7 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../api/index.html">
+  <a class="nav-link nav-internal" href="../apis/index.html">
     APIs Reference
   </a>
 </li>
@@ -197,20 +198,36 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../whats_new/index.html">
-    Release Notes
+  <a class="nav-link nav-internal" href="../_tags/tagsindex.html">
+    Tags
   </a>
 </li>
 
             <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
                     More
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../whats_new/index.html">
+    Release Notes
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community-G
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-external" href="https://zenodo.org/communities/scikit-plots">
-    Community
+    Community-Z
   </a>
 </li>
 
@@ -223,8 +240,15 @@
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../_tags/tagsindex.html">
-    Tags
+  <a class="nav-link dropdown-item nav-internal" href="governance.html">
+    Governance
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="roadmap.html">
+    Roadmap
   </a>
 </li>
 
@@ -374,7 +398,7 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../api/index.html">
+  <a class="nav-link nav-internal" href="../apis/index.html">
     APIs Reference
   </a>
 </li>
@@ -388,6 +412,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../whats_new/index.html">
     Release Notes
   </a>
@@ -395,8 +426,15 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community-G
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-external" href="https://zenodo.org/communities/scikit-plots">
-    Community
+    Community-Z
   </a>
 </li>
 
@@ -409,8 +447,15 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../_tags/tagsindex.html">
-    Tags
+  <a class="nav-link nav-internal" href="governance.html">
+    Governance
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="roadmap.html">
+    Roadmap
   </a>
 </li>
 
@@ -497,17 +542,20 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="mission.html">Mission Statement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="history.html">History</a></li>
-<li class="toctree-l1"><a class="reference internal" href="code_of_conduct.html">Code of Conduct</a></li>
 <li class="toctree-l1"><a class="reference internal" href="citing.html">Citing scikit-plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mission.html">Mission Statement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teams/index.html">Teams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="governance.html">Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roadmap.html">Roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="funding.html">Funding scikit-plots</a></li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="glossary/index.html">Glossary</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="glossary/sklearn_glossary.html">1. scikit-learn Glossary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="glossary/_glossary_sklearn.html">1. scikit-learn Glossary</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
 </ul>
 </div>
 </nav></div>
@@ -516,8 +564,6 @@
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -561,15 +607,42 @@
                 <article class="bd-article">
                   
   <section id="about-us">
-<span id="about"></span><h1>About us<a class="headerlink" href="#about-us" title="Link to this heading">#</a></h1>
+<span id="about-index"></span><h1>About us<a class="headerlink" href="#about-us" title="Link to this heading">#</a></h1>
 <p>This project was started in 2024.</p>
 </section>
 <section id="project-information">
 <span id="id1"></span><h1>Project information<a class="headerlink" href="#project-information" title="Link to this heading">#</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="mission.html">Mission Statement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citing.html">Citing scikit-plots</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="citing.html#dois">DOIs</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="history.html">History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="license.html#copyright-policy">Copyright policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license.html#license-agreement">License agreement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license.html#bundled-software">Bundled software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license.html#third-party">Third Party</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mission.html">Mission Statement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teams/index.html">Teams</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="teams/index.html#the-people-behind-scikit-plots">The people behind Scikit-plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teams/index.html#project-lead">Project Lead</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teams/index.html#deputy-project-leads">Deputy Project Leads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teams/index.html#steering-council">Steering Council</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teams/index.html#coc-subcommittee">CoC Subcommittee</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teams/index.html#numfocus-subcommittee">NumFOCUS Subcommittee</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teams/index.html#project-specific-leads">Project Specific Leads</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="governance.html">Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="governance.html#roles-and-responsibilities">Roles And Responsibilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="governance.html#decision-making-process">Decision Making Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="governance.html#enhancement-proposals-speps">Enhancement proposals (SPEPs)</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="code_of_conduct.html">Code of Conduct</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="code_of_conduct.html#our-pledge">Our Pledge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="code_of_conduct.html#our-standards">Our Standards</a></li>
@@ -580,24 +653,19 @@
 <li class="toctree-l2"><a class="reference internal" href="code_of_conduct.html#attribution">Attribution</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="citing.html">Citing scikit-plots</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="citing.html#dois">DOIs</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="license.html">License</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="license.html#copyright-policy">Copyright policy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="license.html#license-agreement">License agreement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="license.html#bundled-software">Bundled software</a></li>
-<li class="toctree-l2"><a class="reference internal" href="license.html#third-party">Third Party</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roadmap.html">Roadmap</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="roadmap.html#purpose-of-this-document">Purpose of this document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roadmap.html#statement-of-purpose-scikit-plots-in-2024">Statement of purpose: Scikit-plots in 2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roadmap.html#architectural-general-goals">Architectural / general goals</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="funding.html">Funding scikit-plots</a></li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="faq.html#about-the-project">About the project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary/index.html">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="glossary/_glossary_sklearn.html">1. scikit-learn Glossary</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="glossary/index.html">Glossary</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="glossary/sklearn_glossary.html">1. scikit-learn Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#about-the-project">About the project</a></li>
 </ul>
 </li>
 </ul>
@@ -615,20 +683,20 @@
     <div class="footer-article-item">
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../_tags/topic-tagging.html"
+       href="roadmap.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">My tags: topic: tagging</p>
+        <p class="prev-next-title">Roadmap</p>
       </div>
     </a>
     <a class="right-next"
-       href="mission.html"
+       href="citing.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Mission Statement</p>
+        <p class="prev-next-title">Citing scikit-plots</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -662,13 +730,13 @@
   </nav></div>
 
   <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../_sources/project/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/project/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
 
 </div></div>
               
@@ -683,8 +751,8 @@
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -695,7 +763,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024 - 2024, scikit-plots developers (BSD-3 Clause License).
+      © Copyright 2024 - 2025, scikit-plots developers (BSD-3 Clause License).
       <br/>
     
   </p>

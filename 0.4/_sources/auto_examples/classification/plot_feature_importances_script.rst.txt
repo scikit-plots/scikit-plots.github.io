@@ -33,10 +33,10 @@ used by a scikit-learn classifier.
     # SPDX-License-Identifier: BSD-3-Clause
 
     from sklearn.datasets import (
-        make_classification,
-        load_breast_cancer as data_2_classes,
-        load_iris as data_3_classes,
-        load_digits as data_10_classes,
+      make_classification,
+      load_breast_cancer as data_2_classes,
+      load_iris as data_3_classes,
+      load_digits as data_10_classes,
     )
     from sklearn.model_selection import train_test_split
     from sklearn.linear_model import LogisticRegression
@@ -61,15 +61,15 @@ used by a scikit-learn classifier.
 
     # Plot!
     ax, features = sp.estimators.plot_feature_importances(
-        model, 
-        feature_names=['petal length', 'petal width', 'sepal length', 'sepal width'],
+      model, 
+      feature_names=['petal length', 'petal width', 'sepal length', 'sepal width'],
     );
 
     # Adjust layout to make sure everything fits
     plt.tight_layout()
 
     # Save the plot with a filename based on the current script's name
-    sp.utils.save_current_plot()
+    # sp.api._utils.save_plot()
 
     # Display the plot
     plt.show(block=True)
@@ -106,7 +106,7 @@ used by a scikit-learn classifier.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.621 seconds)
+   **Total running time of the script:** (0 minutes 0.557 seconds)
 
 
 .. _sphx_glr_download_auto_examples_classification_plot_feature_importances_script.py:
