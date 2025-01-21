@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="Thank you for your interest in helping to improve scikit-plots! This project is a community effort, and everyone is welcome to contribute. Everyone within the community is expected to abide by our ..." />
 
-    <title>Contribute &#8212; scikit-plots 0.5.dev0+git.20250117.7acdb98 documentation</title>
+    <title>Contribute &#8212; scikit-plots 0.5.dev0+git.20250122.3dd9845 documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=721f107a"></script>
+    <script src="../_static/documentation_options.js?v=123e8ae9"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -83,7 +83,7 @@
     <link rel="icon" href="../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Contributing guide" href="contribute.html" />
+    <link rel="next" title="Quickstart Guide to Contributing" href="quickstart_contributing.html" />
     <link rel="prev" title="Older Versions" href="../whats_new/older_versions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -213,7 +213,7 @@
                     
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../whats_new/index.html">
-    Release Notes
+    Release History
   </a>
 </li>
 
@@ -420,7 +420,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../whats_new/index.html">
-    Release Notes
+    Release History
   </a>
 </li>
 
@@ -541,14 +541,18 @@
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contributing guide</a></li>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="quickstart_contributing.html">Quickstart Contributing</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="development_setup.html">Setting up scikit-plots for development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Getting Started Contributing</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="development_workflow.html">Development workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development_setup.html">Development Setup</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="development_workflow.html">Development Workflow</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
@@ -577,7 +581,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_guide.html">Release guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="communication_guide.html">Community management guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="min_dep_policy.html">Dependency version policy</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="SPEP/index.html">Scikit-plots Enhancement Proposals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="SPEP/index.html">Sp Enhancement Proposals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="SPEP/template.html">SPEP Template</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SPEP/spep000/proposal.html">SPEP000: SPEP and its workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SPEP/spep000/proposal.html">SPEP000: SPEP and its workflow</a></li>
@@ -640,20 +644,42 @@
                   
   <section id="contribute">
 <span id="developers-guide-index"></span><h1>Contribute<a class="headerlink" href="#contribute" title="Link to this heading">#</a></h1>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>If you plan to contribute to scikit-plots, please read the
-<a class="reference external" href="https://scikit-plots.github.io/dev/devel/index.html">development version</a>
-of this document as it will have the most up to date installation
-instructions, workflow process, and contributing guidelines.</p>
-</div>
-<p><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-heart sd-text-info" viewBox="0 0 16 16" aria-hidden="true"><path d="m8 14.25.345.666a.75.75 0 0 1-.69 0l-.008-.004-.018-.01a7.152 7.152 0 0 1-.31-.17 22.055 22.055 0 0 1-3.434-2.414C2.045 10.731 0 8.35 0 5.5 0 2.836 2.086 1 4.25 1 5.797 1 7.153 1.802 8 3.02 8.847 1.802 10.203 1 11.75 1 13.914 1 16 2.836 16 5.5c0 2.85-2.045 5.231-3.885 6.818a22.066 22.066 0 0 1-3.744 2.584l-.018.01-.006.003h-.002ZM4.25 2.5c-1.336 0-2.75 1.164-2.75 3 0 2.15 1.58 4.144 3.365 5.682A20.58 20.58 0 0 0 8 13.393a20.58 20.58 0 0 0 3.135-2.211C12.92 9.644 14.5 7.65 14.5 5.5c0-1.836-1.414-3-2.75-3-1.373 0-2.609.986-3.029 2.456a.749.749 0 0 1-1.442 0C6.859 3.486 5.623 2.5 4.25 2.5Z"></path></svg> Thank you for your interest in helping to improve
-scikit-plots! <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-heart sd-text-info" viewBox="0 0 16 16" aria-hidden="true"><path d="m8 14.25.345.666a.75.75 0 0 1-.69 0l-.008-.004-.018-.01a7.152 7.152 0 0 1-.31-.17 22.055 22.055 0 0 1-3.434-2.414C2.045 10.731 0 8.35 0 5.5 0 2.836 2.086 1 4.25 1 5.797 1 7.153 1.802 8 3.02 8.847 1.802 10.203 1 11.75 1 13.914 1 16 2.836 16 5.5c0 2.85-2.045 5.231-3.885 6.818a22.066 22.066 0 0 1-3.744 2.584l-.018.01-.006.003h-.002ZM4.25 2.5c-1.336 0-2.75 1.164-2.75 3 0 2.15 1.58 4.144 3.365 5.682A20.58 20.58 0 0 0 8 13.393a20.58 20.58 0 0 0 3.135-2.211C12.92 9.644 14.5 7.65 14.5 5.5c0-1.836-1.414-3-2.75-3-1.373 0-2.609.986-3.029 2.456a.749.749 0 0 1-1.442 0C6.859 3.486 5.623 2.5 4.25 2.5Z"></path></svg></p>
-<p>This project is a community effort, and everyone is welcome to contribute. Everyone
+<div style="text-align: center;"><p><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-heart sd-text-info" viewBox="0 0 16 16" aria-hidden="true"><path d="m8 14.25.345.666a.75.75 0 0 1-.69 0l-.008-.004-.018-.01a7.152 7.152 0 0 1-.31-.17 22.055 22.055 0 0 1-3.434-2.414C2.045 10.731 0 8.35 0 5.5 0 2.836 2.086 1 4.25 1 5.797 1 7.153 1.802 8 3.02 8.847 1.802 10.203 1 11.75 1 13.914 1 16 2.836 16 5.5c0 2.85-2.045 5.231-3.885 6.818a22.066 22.066 0 0 1-3.744 2.584l-.018.01-.006.003h-.002ZM4.25 2.5c-1.336 0-2.75 1.164-2.75 3 0 2.15 1.58 4.144 3.365 5.682A20.58 20.58 0 0 0 8 13.393a20.58 20.58 0 0 0 3.135-2.211C12.92 9.644 14.5 7.65 14.5 5.5c0-1.836-1.414-3-2.75-3-1.373 0-2.609.986-3.029 2.456a.749.749 0 0 1-1.442 0C6.859 3.486 5.623 2.5 4.25 2.5Z"></path></svg>
+Thank you for your interest in helping to improve scikit-plots!
+<svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-heart sd-text-info" viewBox="0 0 16 16" aria-hidden="true"><path d="m8 14.25.345.666a.75.75 0 0 1-.69 0l-.008-.004-.018-.01a7.152 7.152 0 0 1-.31-.17 22.055 22.055 0 0 1-3.434-2.414C2.045 10.731 0 8.35 0 5.5 0 2.836 2.086 1 4.25 1 5.797 1 7.153 1.802 8 3.02 8.847 1.802 10.203 1 11.75 1 13.914 1 16 2.836 16 5.5c0 2.85-2.045 5.231-3.885 6.818a22.066 22.066 0 0 1-3.744 2.584l-.018.01-.006.003h-.002ZM4.25 2.5c-1.336 0-2.75 1.164-2.75 3 0 2.15 1.58 4.144 3.365 5.682A20.58 20.58 0 0 0 8 13.393a20.58 20.58 0 0 0 3.135-2.211C12.92 9.644 14.5 7.65 14.5 5.5c0-1.836-1.414-3-2.75-3-1.373 0-2.609.986-3.029 2.456a.749.749 0 0 1-1.442 0C6.859 3.486 5.623 2.5 4.25 2.5Z"></path></svg></p>
+</div><p>This project is a community effort, and everyone is welcome to contribute. Everyone
 within the community is expected to abide by our <a class="reference internal" href="../project/code_of_conduct.html#code-of-conduct"><span class="std std-ref">code of conduct</span></a>.</p>
 <p>There are various ways to contribute, such as optimizing and refactoring code,
 detailing unclear documentation and writing new examples, helping the community,
 reporting and fixing bugs, requesting and implementing new features…</p>
+<section id="quickstart-guide-to-contributing">
+<h2>Quickstart Guide to Contributing<a class="headerlink" href="#quickstart-guide-to-contributing" title="Link to this heading">#</a></h2>
+<p>Here you’ll find all the guidance and resources you need to quickly start contributing to this project.</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 sf-fs-1 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>Quickstart</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Get up and running quickly:</p>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart_contributing.html">Quickstart Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart_contributing.html#creating-a-development-environment">Creating a development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart_contributing.html#creating-and-submitting-a-pull-request">Creating and submitting a pull request</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="github-issue-tracker">
 <span id="request-a-new-feature"></span><span id="submitting-a-bug-report"></span><h2>GitHub issue tracker<a class="headerlink" href="#github-issue-tracker" title="Link to this heading">#</a></h2>
 <p>The <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/issues">issue tracker</a> serves as the
@@ -692,8 +718,8 @@ context that may be necessary for resolving the issue:</p>
 to also <a class="reference internal" href="contribute.html#contribute-code"><span class="std std-ref">participate</span></a> in fixing bugs and implementing new
 features.</p>
 </section>
-<section id="contributing-guide">
-<h2>Contributing guide<a class="headerlink" href="#contributing-guide" title="Link to this heading">#</a></h2>
+<section id="getting-started-guide-to-contributing">
+<h2>Getting Started Guide to Contributing<a class="headerlink" href="#getting-started-guide-to-contributing" title="Link to this heading">#</a></h2>
 <p>We welcome you to get more involved with the scikit-plots project! If you are new
 to contributing, we recommend that you first read our
 <a class="reference internal" href="contribute.html#contributing"><span class="std std-ref">contributing guide</span></a>:</p>
@@ -770,7 +796,7 @@ and managing a development environment and workflow:</p>
 <div class="sd-card-body docutils">
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="development_setup.html">Setting up scikit-plots for development</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="development_setup.html">Development Setup</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="development_setup.html#fork-the-scikit-plots-repository">Fork the scikit-plots repository</a></li>
 <li class="toctree-l2"><a class="reference internal" href="development_setup.html#retrieve-the-latest-version-of-the-code">Retrieve the latest version of the code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="development_setup.html#create-a-dedicated-environment">Create a dedicated environment</a></li>
@@ -793,7 +819,7 @@ and managing a development environment and workflow:</p>
 <div class="sd-card-body docutils">
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="development_workflow.html">Development workflow</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="development_workflow.html">Development Workflow</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="development_workflow.html#workflow-summary">Workflow summary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="development_workflow.html#update-the-main-branch">Update the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="development_workflow.html#make-a-new-feature-branch">Make a new feature branch</a></li>
@@ -884,7 +910,7 @@ manage, or release manage, these guidelines describe how our current process wor
 <li class="toctree-l1"><a class="reference internal" href="release_guide.html">Release guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="communication_guide.html">Community management guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="min_dep_policy.html">Dependency version policy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SPEP/index.html">Scikit-plots Enhancement Proposals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SPEP/index.html">Sp Enhancement Proposals</a></li>
 </ul>
 </div>
 </div>
@@ -945,11 +971,11 @@ bug-fix release.</p>
       </div>
     </a>
     <a class="right-next"
-       href="contribute.html"
+       href="quickstart_contributing.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Contributing guide</p>
+        <p class="prev-next-title">Quickstart Guide to Contributing</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -976,8 +1002,9 @@ bug-fix release.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quickstart-guide-to-contributing">Quickstart Guide to Contributing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-issue-tracker">GitHub issue tracker</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributing-guide">Contributing guide</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started-guide-to-contributing">Getting Started Guide to Contributing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#development-workflow">Development workflow</a><ul class="nav section-nav flex-column">
 </ul>
 </li>

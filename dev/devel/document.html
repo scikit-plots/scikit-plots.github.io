@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="restructuredtext References: https://www.sphinx-doc.org/en/master/index.html, https://sphinx-tutorial.readthedocs.io/cheatsheet/#rst-cheat-sheet, https://documatt.com/restructuredtext-reference/, h..." />
 
-    <title>Write documentation &#8212; scikit-plots 0.5.dev0+git.20250117.7acdb98 documentation</title>
+    <title>Write documentation &#8212; scikit-plots 0.5.dev0+git.20250122.3dd9845 documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=721f107a"></script>
+    <script src="../_static/documentation_options.js?v=123e8ae9"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -213,7 +213,7 @@
                     
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../whats_new/index.html">
-    Release Notes
+    Release History
   </a>
 </li>
 
@@ -420,7 +420,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../whats_new/index.html">
-    Release Notes
+    Release History
   </a>
 </li>
 
@@ -541,14 +541,18 @@
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contributing guide</a></li>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="quickstart_contributing.html">Quickstart Contributing</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="development_setup.html">Setting up scikit-plots for development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Getting Started Contributing</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="development_workflow.html">Development workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development_setup.html">Development Setup</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="development_workflow.html">Development Workflow</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
@@ -577,7 +581,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_guide.html">Release guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="communication_guide.html">Community management guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="min_dep_policy.html">Dependency version policy</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="SPEP/index.html">Scikit-plots Enhancement Proposals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="SPEP/index.html">Sp Enhancement Proposals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="SPEP/template.html">SPEP Template</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SPEP/spep000/proposal.html">SPEP000: SPEP and its workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SPEP/spep000/proposal.html">SPEP000: SPEP and its workflow</a></li>
@@ -868,7 +872,7 @@ See the example <span class="na">:doc:</span><span class="nv">`/gallery/lines_ba
 <p>will render as:</p>
 <blockquote>
 <div><p>See the <a class="reference internal" href="../install/index.html"><span class="doc">Installation</span></a></p>
-<p>See the tutorial <a class="reference internal" href="../introduction/quick_start.html#quick-start"><span class="std std-ref">Quick Start</span></a></p>
+<p>See the tutorial <a class="reference internal" href="../introduction/quick_start.html#quick-start"><span class="std std-ref">Quick Start Guide</span></a></p>
 <p>See the example <span class="xref std std-doc">/gallery/lines_bars_and_markers/simple_plot</span></p>
 </div></blockquote>
 <p>Sections can also be given reference labels.  For instance from the
@@ -1465,7 +1469,7 @@ like:</p>
 <p>The first comment block is treated as <a class="reference external" href="https://docutils.sourceforge.io/rst.html">ReST</a> text.  The other comment blocks
 render as comments in <span class="xref std std-doc">/gallery/lines_bars_and_markers/simple_plot</span>.</p>
 <p>Tutorials are made with the exact same mechanism, except they are longer and
-typically have more than one comment block (i.e. <a class="reference internal" href="../introduction/quick_start.html#quick-start"><span class="std std-ref">Quick Start</span></a>).  The
+typically have more than one comment block (i.e. <a class="reference internal" href="../introduction/quick_start.html#quick-start"><span class="std std-ref">Quick Start Guide</span></a>).  The
 first comment block can be the same as the example above.  Subsequent blocks of
 ReST text are delimited by the line <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">%%</span></code> :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -1575,7 +1579,7 @@ documentation (e.g. tutorials, user guides and API entries) and tag the example 
 related concepts.</p>
 <section id="format">
 <h4>Format<a class="headerlink" href="#format" title="Link to this heading">#</a></h4>
-<p>All <a class="reference external" href="https://matplotlib.org/stable/gallery/index.html#examples-index" title="(in Matplotlib v3.10.0)"><span>Examples</span></a> should aim to follow these guidelines:</p>
+<p>All <a class="reference internal" href="../auto_examples/index.html#examples-index"><span class="std std-ref">Examples</span></a> should aim to follow these guidelines:</p>
 <dl class="field-list">
 <dt class="field-odd">Title<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Describe content in a short sentence (approx. 1-6 words). Do not use <em>demo</em> as
