@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="Creating a development environment: To make and test code changes and build the documentation locally you will need to create a development environment. If you run into problems at any stage do not..." />
 
-    <title>Quickstart Guide to Contributing &#8212; scikit-plots 0.5.dev0+git.20250122.3dd9845 documentation</title>
+    <title>Quickstart Guide to Contributing &#8212; scikit-plots 0.5.dev0+git.20250211.985a0f5 documentation</title>
   
   
   
@@ -45,7 +45,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=13b285a0" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=e3ca86de" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -60,13 +60,13 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=123e8ae9"></script>
+    <script src="../_static/documentation_options.js?v=3bc2d56f"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=e93d8674"></script>
     <script src="../_static/thebelab-helper.js"></script>
-    <script src="../_static/jupyterlite_sphinx.js?v=1cca63f7"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=d6bdf5f8"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
@@ -83,7 +83,7 @@
     <link rel="icon" href="../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Getting Started Guide to Contributing" href="contribute.html" />
+    <link rel="next" title="Docker Desktop or Github Codespaces" href="docker.html" />
     <link rel="prev" title="Contribute" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -541,10 +541,15 @@
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">quickstart</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Quickstart Contributing</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">docker</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">getting started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">Getting Started Contributing</a></li>
 </ul>
@@ -658,7 +663,7 @@ to <a class="reference external" href="https://scikit-plots.github.io/dev/help.h
 contribute, you will need a <a class="reference external" href="https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github">GitHub account</a>.</p>
 <p>We use <a class="reference external" href="https://git-scm.com/">Git</a> for version control and to allow many people to
 work together on the project. See the <a class="reference external" href="https://docs.github.com/en/get-started/quickstart/set-up-git">GitHub quickstart instructions</a> for installing and
-configuring git, as well as the <a class="reference external" href="https://scikit-image.org/docs/stable/gitwash/git_resources.html#git-resources" title="(in skimage v0.25.0)"><span>git resources</span></a> page.</p>
+configuring git, as well as the <a class="reference external" href="https://scikit-image.org/docs/stable/gitwash/git_resources.html#git-resources" title="(in skimage v0.25.1)"><span>git resources</span></a> page.</p>
 <p>If you are new to contributing to projects through forking on GitHub, see the
 <a class="reference external" href="https://docs.github.com/en/get-started/quickstart/contributing-to-projects">GitHub documentation for contributing to projects</a>.</p>
 </section>
@@ -698,9 +703,17 @@ and you need to make a clone.</p>
 by going to the <a class="reference external" href="https://github.com/scikit-plots/scikit-plots">scikit-plots project page</a>
 and hitting the <code class="docutils literal notranslate"><span class="pre">Fork</span></code> button.</p>
 <p>Next, <a class="reference external" href="https://git-scm.com/docs/git-clone">clone</a> your GitHub fork to your machine:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/YOUR-USER-NAME/scikit-plots.git
-git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w">  </span><span class="c1"># download submodules</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Forked repo: https://github.com/scikit-plots/scikit-plots.git</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/YOUR-USER-NAME/scikit-plots.git
 <span class="nb">cd</span><span class="w"> </span>scikit-plots
+
+<span class="c1"># to initialise local config file and fetch + checkout submodule (not needed every time)</span>
+git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive<span class="w">  </span><span class="c1"># download submodules</span>
+<span class="c1"># pulls changes from the upstream remote repo and merges them</span>
+git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--recursive<span class="w"> </span>--remote<span class="w"> </span>--merge
+<span class="c1"># Updating your submodule to the latest commit</span>
+git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--remote
+
 git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/scikit-plots/scikit-plots.git
 git<span class="w"> </span>fetch<span class="w"> </span>upstream<span class="w"> </span>--tags
 </pre></div>
@@ -712,8 +725,8 @@ git<span class="w"> </span>fetch<span class="w"> </span>upstream<span class="w">
 </pre></div>
 </div>
 <p>You will see something like:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">origin</span>  <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">YOUR</span><span class="o">-</span><span class="n">USER</span><span class="o">-</span><span class="n">NAME</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">plots</span><span class="o">.</span><span class="n">git</span> <span class="p">(</span><span class="n">fetch</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">origin</span>  <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">YOUR</span><span class="o">-</span><span class="n">USER</span><span class="o">-</span><span class="n">NAME</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">plots</span><span class="o">.</span><span class="n">git</span> <span class="p">(</span><span class="n">push</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">origin</span>  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">YOUR</span><span class="o">-</span><span class="n">USER</span><span class="o">-</span><span class="n">NAME</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">plots</span> <span class="p">(</span><span class="n">fetch</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">origin</span>  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">YOUR</span><span class="o">-</span><span class="n">USER</span><span class="o">-</span><span class="n">NAME</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">plots</span> <span class="p">(</span><span class="n">push</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">upstream</span>        <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">plots</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">plots</span><span class="o">.</span><span class="n">git</span> <span class="p">(</span><span class="n">fetch</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">upstream</span>        <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">plots</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">plots</span><span class="o">.</span><span class="n">git</span> <span class="p">(</span><span class="n">push</span><span class="p">)</span>
 </pre></div>
@@ -776,12 +789,19 @@ section.</p>
 <section id="install-pre-commit">
 <span id="contributing-pre-commit"></span><h3>Install pre-commit<a class="headerlink" href="#install-pre-commit" title="Link to this heading">#</a></h3>
 <p>This is optional, but <em>highly recommended</em>. <a class="reference external" href="https://pre-commit.com/">Pre-commit</a> is a
-tool that runs a number of <a class="reference external" href="https://docs.xarray.dev/en/stable/contributing.html#contributing-ci" title="(in xarray v2025.1.2.dev0)"><span class="xref std std-ref">Continuous Integration (CI)</span></a> checks
+tool that runs a number of <a class="reference external" href="https://docs.xarray.dev/en/stable/contributing.html#contributing-ci" title="(in xarray v2025.1.3.dev0)"><span class="xref std std-ref">Continuous Integration (CI)</span></a> checks
 (e.g. code formatting) on your code before you commit it. If you skip this step then it
 is likely that one or more of those CI checks will fail when you make a pull request,
 resulting in lost time (yours and CI resources).</p>
 <p>Installation is straightforward. From the root of the <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> repository, run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">install</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># triggered when committing if pass then pushing changes</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">install</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># (Optionally) update and reinstall pre-commit hooks, If Needed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">clean</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">autoupdate</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">install</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># pre-commit run --all-files</span>
 </pre></div>
 </div>
 <p>Now all of the styling checks will be run each time you commit changes, ensuring that
@@ -808,7 +828,8 @@ being accepted.</p>
 <p>Your local <code class="docutils literal notranslate"><span class="pre">main</span></code> branch should always reflect the current state of <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> repository.
 First ensure it’s up-to-date with the main <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> repository:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">switch</span> <span class="n">main</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">pull</span> <span class="n">upstream</span> <span class="n">main</span> <span class="o">--</span><span class="n">ff</span><span class="o">-</span><span class="n">only</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">## Download &amp; Fast-Forward If Possible</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">pull</span> <span class="o">--</span><span class="n">ff</span><span class="o">-</span><span class="n">only</span> <span class="n">upstream</span> <span class="n">main</span>
 </pre></div>
 </div>
 <p>Now create a development branch for making your changes. For example:</p>
@@ -821,7 +842,7 @@ branch brings to <code class="docutils literal notranslate"><span class="pre">sc
 using the <a class="reference external" href="https://git-scm.com/docs/git-switch">git switch</a> command.</p>
 <p>Using a descriptive branch name can help you stay organized. For example
 <code class="docutils literal notranslate"><span class="pre">`kds-commented-header`</span></code> might be a good name for a branch that fixes the
-commented header issue <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/issues/15513">#15513</a> in
+commented header issue <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/issues/1">#1</a> in
 the <code class="docutils literal notranslate"><span class="pre">kds</span></code> sub-package.</p>
 <p>When you want to update the feature branch with changes in main after
 you created the branch, check the section on
@@ -907,7 +928,7 @@ again to address any feedback and update your pull request:</p>
 </pre></div>
 </div>
 <p>Any <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> will automatically update your pull request with your branch’s changes
-and restart the <a class="reference external" href="https://docs.xarray.dev/en/stable/contributing.html#contributing-ci" title="(in xarray v2025.1.2.dev0)"><span class="xref std std-ref">Continuous Integration</span></a> checks.</p>
+and restart the <a class="reference external" href="https://docs.xarray.dev/en/stable/contributing.html#contributing-ci" title="(in xarray v2025.1.3.dev0)"><span class="xref std std-ref">Continuous Integration</span></a> checks.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>At this point please read (or at least skim) the sections <span class="xref std std-ref">revise
@@ -954,11 +975,11 @@ required reviewers and a faster review process.</p></li>
       </div>
     </a>
     <a class="right-next"
-       href="contribute.html"
+       href="docker.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Getting Started Guide to Contributing</p>
+        <p class="prev-next-title">Docker Desktop or Github Codespaces</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

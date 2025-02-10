@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="Elegant statistical tools for intuitive and insightful data visualization and interpretation. The stats module offers a wide range of probability distributions, summary and frequency statistics, co..." />
 
-    <title>scikitplot.stats &#8212; scikit-plots 0.5.dev0+git.20250122.3dd9845 documentation</title>
+    <title>scikitplot.stats &#8212; scikit-plots 0.5.dev0+git.20250211.985a0f5 documentation</title>
   
   
   
@@ -45,7 +45,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=13b285a0" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=e3ca86de" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -60,13 +60,13 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=123e8ae9"></script>
+    <script src="../_static/documentation_options.js?v=3bc2d56f"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=e93d8674"></script>
     <script src="../_static/thebelab-helper.js"></script>
-    <script src="../_static/jupyterlite_sphinx.js?v=1cca63f7"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=d6bdf5f8"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
@@ -84,7 +84,7 @@
     <link rel="icon" href="../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Events" href="../modules/generated/scikitplot._astropy.stats.Events.html" />
+    <link rel="next" title="Events" href="../modules/generated/scikitplot.stats.Events.html" />
     <link rel="prev" title="sp_logger" href="../modules/generated/scikitplot.sp_logging.sp_logger.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -637,11 +637,11 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">scikitplot.stats</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.Events.html">Events</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.FitnessFunc.html">FitnessFunc</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.PointMeasures.html">PointMeasures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.RegularEvents.html">RegularEvents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.bayesian_blocks.html">bayesian_blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.stats.Events.html">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.stats.FitnessFunc.html">FitnessFunc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.stats.PointMeasures.html">PointMeasures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.stats.RegularEvents.html">RegularEvents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.stats.bayesian_blocks.html">bayesian_blocks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.binned_binom_proportion.html">binned_binom_proportion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.binom_conf_interval.html">binom_conf_interval</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.bootstrap.html">bootstrap</a></li>
@@ -743,79 +743,23 @@
 and frequency statistics, correlation functions, statistical tests,
 masked statistics, and additional tools.</p>
 <p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/stats/index.html#stats-index"><span class="std std-ref">Stats (experimental)</span></a> section for further details.</p>
-<section id="module-scikitplot._astropy.stats._bayesian_blocks">
-<span id="astrostatistics-bayesian-blocks-for-time-series-analysis"></span><span id="stats-ref-astrostatistics-bayesian-blocks-for-time-series-analysis"></span><h2>Astrostatistics: Bayesian Blocks for Time Series Analysis<a class="headerlink" href="#module-scikitplot._astropy.stats._bayesian_blocks" title="Link to this heading">#</a></h2>
-<p>Use Bayesian Blocks for Time Series Analysis.</p>
-<section id="bayesian-blocks-for-time-series-analysis">
-<h3>Bayesian Blocks for Time Series Analysis?<a class="headerlink" href="#bayesian-blocks-for-time-series-analysis" title="Link to this heading">#</a></h3>
-<p>Dynamic programming algorithm for solving a piecewise-constant model for
-various datasets. This is based on the algorithm presented in Scargle
-et al 2013 <a class="reference internal" href="#r638c79c1c7f4-1" id="id1">[1]</a>. This code was ported from the astroML project <a class="reference internal" href="#r638c79c1c7f4-2" id="id2">[2]</a>.</p>
-<p>Applications include:</p>
-<ul class="simple">
-<li><p>finding an optimal histogram with adaptive bin widths</p></li>
-<li><p>finding optimal segmentation of time series data</p></li>
-<li><p>detecting inflection points in the rate of event data</p></li>
-</ul>
-<p>The primary interface to these routines is the <code class="xref py py-func docutils literal notranslate"><span class="pre">bayesian_blocks</span></code>
-function. This module provides fitness functions suitable for three types
-of data:</p>
-<ul class="simple">
-<li><p>Irregularly-spaced event data via the <a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.Events.html#scikitplot._astropy.stats.Events" title="scikitplot._astropy.stats._bayesian_blocks.Events"><code class="xref py py-class docutils literal notranslate"><span class="pre">Events</span></code></a> class</p></li>
-<li><p>Regularly-spaced event data via the <a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.RegularEvents.html#scikitplot._astropy.stats.RegularEvents" title="scikitplot._astropy.stats._bayesian_blocks.RegularEvents"><code class="xref py py-class docutils literal notranslate"><span class="pre">RegularEvents</span></code></a> class</p></li>
-<li><p>Irregularly-spaced point measurements via the <a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.PointMeasures.html#scikitplot._astropy.stats.PointMeasures" title="scikitplot._astropy.stats._bayesian_blocks.PointMeasures"><code class="xref py py-class docutils literal notranslate"><span class="pre">PointMeasures</span></code></a> class</p></li>
-</ul>
-<p>For more fine-tuned control over the fitness functions used, it is possible
-to define custom <a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.FitnessFunc.html#scikitplot._astropy.stats.FitnessFunc" title="scikitplot._astropy.stats._bayesian_blocks.FitnessFunc"><code class="xref py py-class docutils literal notranslate"><span class="pre">FitnessFunc</span></code></a> classes directly and use them with
-the <code class="xref py py-func docutils literal notranslate"><span class="pre">bayesian_blocks</span></code> routine.</p>
-<p>One common application of the Bayesian Blocks algorithm is the determination
-of optimal adaptive-width histogram bins. This uses the same fitness function
-as for irregularly-spaced time series events. The easiest interface for
-creating Bayesian Blocks histograms is the <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.stats.histogram.html#astropy.stats.histogram" title="(in Astropy v7.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">astropy.stats.histogram</span></code></a>
-function.</p>
-<p>For detailed explanations see <a class="reference internal" href="#r638c79c1c7f4-1" id="id3">[1]</a>-<a class="reference internal" href="#r638c79c1c7f4-2" id="id4">[2]</a>-<a class="reference internal" href="#r638c79c1c7f4-3" id="id5">[3]</a>-<a class="reference internal" href="#r638c79c1c7f4-4" id="id6">[4]</a>.</p>
-<p class="rubric">References</p>
-<div role="list" class="citation-list">
-<div class="citation" id="r638c79c1c7f4-1" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
-<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id3">2</a>)</span>
-<p>Scargle, J et al. 2013.
-<a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2013ApJ...764..167S">https://ui.adsabs.harvard.edu/abs/2013ApJ…764..167S</a></p>
-</div>
-<div class="citation" id="r638c79c1c7f4-2" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
-<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id4">2</a>)</span>
-<p><a class="reference external" href="https://www.astroml.org/">https://www.astroml.org/</a> <a class="github reference external" href="https://github.com//astroML/astroML/">astroML/astroML</a></p>
-</div>
-<div class="citation" id="r638c79c1c7f4-3" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">3</a><span class="fn-bracket">]</span></span>
-<p>Bellman, R.E., Dreyfus, S.E., (1962). Applied Dynamic
-Programming. Princeton University Press, Princeton.
-<a class="reference external" href="https://press.princeton.edu/books/hardcover/9780691651873/applied-dynamic-programming">https://press.princeton.edu/books/hardcover/9780691651873/applied-dynamic-programming</a></p>
-</div>
-<div class="citation" id="r638c79c1c7f4-4" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">4</a><span class="fn-bracket">]</span></span>
-<p>Bellman, R., Roth, R., (1969). Curve fitting by segmented
-straight lines. J. Amer. Statist. Assoc. 64, 1079–1084.
-<a class="reference external" href="https://www.tandfonline.com/doi/abs/10.1080/01621459.1969.10501038">https://www.tandfonline.com/doi/abs/10.1080/01621459.1969.10501038</a></p>
-</div>
-</div>
-</section>
+<section id="astrostatistics-bayesian-blocks-for-time-series-analysis">
+<span id="stats-ref-astrostatistics-bayesian-blocks-for-time-series-analysis"></span><h2>Astrostatistics: Bayesian Blocks for Time Series Analysis<a class="headerlink" href="#astrostatistics-bayesian-blocks-for-time-series-analysis" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.Events.html#scikitplot._astropy.stats.Events" title="scikitplot._astropy.stats.Events"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Events</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.stats.Events.html#scikitplot.stats.Events" title="scikitplot.stats.Events"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Events</span></code></a></p></td>
 <td><p>Bayesian blocks fitness for binned or unbinned events.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.FitnessFunc.html#scikitplot._astropy.stats.FitnessFunc" title="scikitplot._astropy.stats.FitnessFunc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FitnessFunc</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.stats.FitnessFunc.html#scikitplot.stats.FitnessFunc" title="scikitplot.stats.FitnessFunc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FitnessFunc</span></code></a></p></td>
 <td><p>Base class for bayesian blocks fitness functions.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.PointMeasures.html#scikitplot._astropy.stats.PointMeasures" title="scikitplot._astropy.stats.PointMeasures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PointMeasures</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.stats.PointMeasures.html#scikitplot.stats.PointMeasures" title="scikitplot.stats.PointMeasures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PointMeasures</span></code></a></p></td>
 <td><p>Bayesian blocks fitness for point measures.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.RegularEvents.html#scikitplot._astropy.stats.RegularEvents" title="scikitplot._astropy.stats.RegularEvents"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RegularEvents</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.stats.RegularEvents.html#scikitplot.stats.RegularEvents" title="scikitplot.stats.RegularEvents"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RegularEvents</span></code></a></p></td>
 <td><p>Bayesian blocks fitness for regular events.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.bayesian_blocks.html#scikitplot._astropy.stats.bayesian_blocks" title="scikitplot._astropy.stats.bayesian_blocks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bayesian_blocks</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.stats.bayesian_blocks.html#scikitplot.stats.bayesian_blocks" title="scikitplot.stats.bayesian_blocks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bayesian_blocks</span></code></a></p></td>
 <td><p>Compute optimal segmentation of data with Scargle's Bayesian Blocks.</p></td>
 </tr>
 </tbody>
@@ -869,7 +813,7 @@ should be used for access.</p>
 <td><p>Compute the Kuiper statistic to compare two samples.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.mad_std.html#scikitplot._astropy.stats.mad_std" title="scikitplot._astropy.stats.mad_std"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mad_std</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Calculate a robust standard deviation using the <a class="reference external" href="https://en.wikipedia.org/wiki/Median_absolute_deviation">median absolute deviation (MAD)</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.median_absolute_deviation.html#scikitplot._astropy.stats.median_absolute_deviation" title="scikitplot._astropy.stats.median_absolute_deviation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">median_absolute_deviation</span></code></a></p></td>
 <td><p>Calculate the median absolute deviation (MAD).</p></td>
@@ -884,10 +828,8 @@ should be used for access.</p>
 </table>
 </div>
 </section>
-<section id="module-scikitplot._astropy.stats._histogram">
-<span id="astrostatistics-selecting-the-bin-width-of-histograms"></span><span id="stats-ref-astrostatistics-selecting-the-bin-width-of-histograms"></span><h2>Astrostatistics: Selecting the bin width of histograms<a class="headerlink" href="#module-scikitplot._astropy.stats._histogram" title="Link to this heading">#</a></h2>
-<p>Methods for selecting the bin width of histograms.</p>
-<p>Ported from the astroML project: <a class="reference external" href="https://www.astroml.org/">https://www.astroml.org/</a></p>
+<section id="astrostatistics-selecting-the-bin-width-of-histograms">
+<span id="stats-ref-astrostatistics-selecting-the-bin-width-of-histograms"></span><h2>Astrostatistics: Selecting the bin width of histograms<a class="headerlink" href="#astrostatistics-selecting-the-bin-width-of-histograms" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._astropy.stats.calculate_bin_edges.html#scikitplot._astropy.stats.calculate_bin_edges" title="scikitplot._astropy.stats.calculate_bin_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_bin_edges</span></code></a></p></td>
@@ -1011,7 +953,7 @@ Proceedings of the Indian Statistical Institute Golden Jubilee International Con
       </div>
     </a>
     <a class="right-next"
-       href="../modules/generated/scikitplot._astropy.stats.Events.html"
+       href="../modules/generated/scikitplot.stats.Events.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>

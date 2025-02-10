@@ -24,7 +24,7 @@ plot_silhouette with examples
 An example showing the :py:func:`~scikitplot.api.metrics.plot_silhouette` function
 used by a scikit-learn clusterer.
 
-.. GENERATED FROM PYTHON SOURCE LINES 8-52
+.. GENERATED FROM PYTHON SOURCE LINES 8-47
 
 .. code-block:: Python
 
@@ -32,17 +32,14 @@ used by a scikit-learn clusterer.
     # Authors: The scikit-plots developers
     # SPDX-License-Identifier: BSD-3-Clause
 
+    import numpy as np
+    from sklearn.cluster import KMeans
     from sklearn.datasets import (
-        make_classification,
-        load_breast_cancer as data_2_classes,
         load_iris as data_3_classes,
-        load_digits as data_10_classes,
     )
     from sklearn.model_selection import train_test_split
-    from sklearn.cluster import KMeans
-    from sklearn.model_selection import cross_val_predict
 
-    import numpy as np; np.random.seed(0)  # reproducibility
+    np.random.seed(0)  # reproducibility
     # importing pylab or pyplot
     import matplotlib.pyplot as plt
 
@@ -59,9 +56,7 @@ used by a scikit-learn clusterer.
     cluster_labels = model.fit_predict(X_train)
 
     # Plot!
-    ax = sp.metrics.plot_silhouette(
-        X_train, cluster_labels
-    );
+    ax = sp.metrics.plot_silhouette(X_train, cluster_labels)
 
     # Adjust layout to make sure everything fits
     plt.tight_layout()
@@ -81,10 +76,19 @@ used by a scikit-learn clusterer.
    :class: sphx-glr-single-img
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    /opt/conda/lib/python3.11/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning:
+
+    The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 53-61
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 48-57
 
 .. tags::
 
@@ -99,7 +103,7 @@ used by a scikit-learn clusterer.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.293 seconds)
+   **Total running time of the script:** (0 minutes 0.303 seconds)
 
 
 .. _sphx_glr_download_auto_examples_clustering_plot_silhouette_script.py:

@@ -24,16 +24,20 @@ visualkeras EfficientNetV2 example
 An example showing the :py:func:`~scikitplot.visualkeras` function
 used by a :py:class:`~tensorflow.keras.Model` model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 8-43
+.. GENERATED FROM PYTHON SOURCE LINES 8-48
 
 .. code-block:: Python
+
 
     # Authors: The scikit-plots developers
     # SPDX-License-Identifier: BSD-3-Clause
 
     # Force garbage collection
-    import gc; gc.collect()
+    import gc
+
+    gc.collect()
     import tensorflow as tf
+
     # Clear any session to reset the state of TensorFlow/Keras
     tf.keras.backend.clear_session()
 
@@ -50,15 +54,16 @@ used by a :py:class:`~tensorflow.keras.Model` model.
         name="efficientnetv2-b0",
     )
     img_efficientnetv2 = visualkeras.layered_view(
-      model,
-      legend=True,
-      show_dimension=True,
-      to_file='../result_images/efficientnetv2-b0.png',
+        model,
+        legend=True,
+        show_dimension=True,
+        to_file="../result_images/efficientnetv2-b0.png",
     )
     try:
         import matplotlib.pyplot as plt
+
         plt.imshow(img_efficientnetv2)
-        plt.axis('off')
+        plt.axis("off")
         plt.show()
     except:
         pass
@@ -75,7 +80,7 @@ used by a :py:class:`~tensorflow.keras.Model` model.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 44-52
+.. GENERATED FROM PYTHON SOURCE LINES 49-57
 
 .. tags::
 
@@ -86,7 +91,7 @@ used by a :py:class:`~tensorflow.keras.Model` model.
    level: beginner
    purpose: showcase
 
-.. GENERATED FROM PYTHON SOURCE LINES 53-154
+.. GENERATED FROM PYTHON SOURCE LINES 58-160
 
 .. code-block:: Python
 
@@ -199,9 +204,10 @@ used by a :py:class:`~tensorflow.keras.Model` model.
 
 
 
+
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 7.287 seconds)
+   **Total running time of the script:** (0 minutes 8.374 seconds)
 
 
 .. _sphx_glr_download_auto_examples_visualkeras_CNN_plot_efficientnetv2.py:
