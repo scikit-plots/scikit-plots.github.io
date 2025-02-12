@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_images/scikitplot-api-_utils-binary_ks_curve-1.png" />
 <meta property="og:image:alt" content="Kolmogorov-Smirnov (KS) Statistic" />
 
-    <title>binary_ks_curve &#8212; scikit-plots 0.5.dev0+git.20250211.985a0f5 documentation</title>
+    <title>binary_ks_curve &#8212; scikit-plots 0.5.dev0+git.20250212.a5ebfad documentation</title>
   
   
   
@@ -59,7 +59,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=3bc2d56f"></script>
+    <script src="../../_static/documentation_options.js?v=dbf90462"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -745,7 +745,7 @@
 <h1>binary_ks_curve<a class="headerlink" href="#binary-ks-curve" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.api._utils.binary_ks_curve">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.api._utils.</span></span><span class="sig-name descname"><span class="pre">binary_ks_curve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_probas</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/985a0f5/scikitplot/api/_utils/_helpers.py#L251"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.api._utils.binary_ks_curve" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.api._utils.</span></span><span class="sig-name descname"><span class="pre">binary_ks_curve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_probas</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/a5ebfad/scikitplot/api/_utils/_helpers.py#L248"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.api._utils.binary_ks_curve" title="Link to this definition">#</a></dt>
 <dd><p>Generate the data points necessary to plot the Kolmogorov-Smirnov (KS)
 curve for binary classification tasks.</p>
 <p>The KS Statistic measures the maximum vertical distance between
@@ -819,9 +819,16 @@ that the KS curve starts and ends at the boundaries of the predicted probability
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Generate a binary classification dataset</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">n_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">n_informative</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Split into training and test sets</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span>
+<span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Train a logistic regression model</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -829,7 +836,14 @@ that the KS curve starts and ends at the boundaries of the predicted probability
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_probas</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Calculate the KS Statistic curve</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">thresholds</span><span class="p">,</span> <span class="n">pct1</span><span class="p">,</span> <span class="n">pct2</span><span class="p">,</span> <span class="n">ks_statistic</span><span class="p">,</span> <span class="n">max_distance_at</span><span class="p">,</span> <span class="n">classes</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">_utils</span><span class="o">.</span><span class="n">binary_ks_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_probas</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">thresholds</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">pct1</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">pct2</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">ks_statistic</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">max_distance_at</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">classes</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">_utils</span><span class="o">.</span><span class="n">binary_ks_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_probas</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Plot the KS Statistic curve</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">thresholds</span><span class="p">,</span> <span class="n">pct1</span> <span class="o">-</span> <span class="n">pct2</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Threshold&#39;</span><span class="p">)</span>

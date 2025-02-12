@@ -3,4 +3,10 @@ from sklearn.datasets import load_iris as data_3_classes
 import scikitplot as skplt
 X, y = data_3_classes(return_X_y=True, as_frame=True)
 pca = PCA(random_state=0).fit(X)
-skplt.decomposition.plot_pca_2d_projection(pca, X, y, biplot=True, feature_labels=X.columns.tolist());
+skplt.decomposition.plot_pca_2d_projection(
+    pca,
+    X,
+    y,
+    biplot=True,
+    feature_labels=X.columns.tolist(),
+)

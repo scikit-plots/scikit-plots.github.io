@@ -6,7 +6,9 @@ from sklearn.svm import LinearSVC
 from sklearn.calibration import CalibratedClassifierCV
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import cross_val_predict
-import numpy as np; np.random.seed(0)
+import numpy as np
+
+np.random.seed(0)
 import matplotlib.pyplot as plt
 import scikitplot as skplt
 X, y = make_classification(
@@ -19,13 +21,34 @@ X, y = make_classification(
     n_clusters_per_class=2,
     random_state=0
 )
-X_train, y_train, X_val, y_val = X[:1000], y[:1000], X[1000:], y[1000:]
-lr_probas = LogisticRegression(max_iter=int(1e5), random_state=0).fit(X_train, y_train).predict_proba(X_val)
+X_train, y_train, X_val, y_val = (
+    X[:1000],
+    y[:1000],
+    X[1000:],
+    y[1000:],
+)
+lr_probas = (
+    LogisticRegression(max_iter=int(1e5), random_state=0)
+    .fit(X_train, y_train)
+    .predict_proba(X_val)
+)
 nb_probas = GaussianNB().fit(X_train, y_train).predict_proba(X_val)
 svc_scores = LinearSVC().fit(X_train, y_train).decision_function(X_val)
-svc_isotonic = CalibratedClassifierCV(LinearSVC(), cv=2, method="isotonic").fit(X_train, y_train).predict_proba(X_val)
-svc_sigmoid = CalibratedClassifierCV(LinearSVC(), cv=2, method="sigmoid").fit(X_train, y_train).predict_proba(X_val)
-rf_probas = RandomForestClassifier(random_state=0).fit(X_train, y_train).predict_proba(X_val)
+svc_isotonic = (
+    CalibratedClassifierCV(LinearSVC(), cv=2, method='isotonic')
+    .fit(X_train, y_train)
+    .predict_proba(X_val)
+)
+svc_sigmoid = (
+    CalibratedClassifierCV(LinearSVC(), cv=2, method='sigmoid')
+    .fit(X_train, y_train)
+    .predict_proba(X_val)
+)
+rf_probas = (
+    RandomForestClassifier(random_state=0)
+    .fit(X_train, y_train)
+    .predict_proba(X_val)
+)
 probas_dict = {
     LogisticRegression(): lr_probas,
     "LinearSVC() + MinMax": svc_scores,

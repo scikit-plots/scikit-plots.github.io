@@ -29,6 +29,13 @@ If you are new to contributing to projects through forking on GitHub, see the
 `GitHub documentation for contributing to projects
 <https://docs.github.com/en/get-started/quickstart/contributing-to-projects>`_.
 
+
+.. important::
+
+  If you dont want to install any packages on your local you can use
+  ``Docker Pre-Installed Env`` via :ref:`docker-index`.
+
+
 Install a C compiler if needed
 ------------------------------
 
@@ -89,10 +96,11 @@ Next, `clone <https://git-scm.com/docs/git-clone>`__ your GitHub fork to your ma
 
     # to initialise local config file and fetch + checkout submodule (not needed every time)
     git submodule update --init --recursive  # download submodules
-    # pulls changes from the upstream remote repo and merges them
-    git submodule update --recursive --remote --merge
-    # Updating your submodule to the latest commit
-    git submodule update --remote
+
+    # (Optionally) pulls changes from the upstream remote repo and merges them
+    git submodule update --recursive --remote --merge # (not needed every time)
+    # (Optionally) Updating your submodule to the latest commit
+    git submodule update --remote # (not needed every time)
 
     git remote add upstream https://github.com/scikit-plots/scikit-plots.git
     git fetch upstream --tags
@@ -142,6 +150,7 @@ to create and manage isolated Python environments.
 
 Now create and activate an ``skplt-dev`` conda environment using the following::
 
+   >>> # (Optionally) Can be run on `conda base` or `venv` env
    >>> conda create -n skplt-dev python graphviz
    >>> conda activate skplt-dev
 
@@ -189,14 +198,24 @@ resulting in lost time (yours and CI resources).
 
 Installation is straightforward. From the root of the ``scikit-plots`` repository, run::
 
-    >>> # triggered when committing if pass then pushing changes
+    >>> ## It triggered when committing `git commit ...` if pass then next pushing changes
     >>> pre-commit install
 
-    >>> # (Optionally) update and reinstall pre-commit hooks, If Needed
-    >>> pre-commit clean
-    >>> pre-commit autoupdate
-    >>> pre-commit install
-    >>> # pre-commit run --all-files
+Manually one-by-one testing::
+
+    >>> ## (Optionally) Manually one-by-one testing:
+    >>> ## If the test is successful one by one
+    >>> ## but there is an error in the entire test, check the inconsistency
+    >>> # pre-commit run ruff-format --verbose # (with `--all-files` option not recommended)
+    >>> pre-commit run ruff
+    >>> pre-commit run black
+
+Update and reinstall pre-commit hooks (not needed every time)::
+
+    >>> ## (Optionally) Update and reinstall pre-commit hooks (not needed every time), If Needed
+    >>> pre-commit autoupdate  # (not needed every time)
+    >>> pre-commit clean && pre-commit install
+    >>> pre-commit run # (with `--all-files` option not recommended)
 
 Now all of the styling checks will be run each time you commit changes, ensuring that
 the CI formatting checks for your :ref:`pull request <quickstart-pull-request>` will
@@ -362,6 +381,11 @@ and restart the :ref:`Continuous Integration <contributing.ci>` checks.
     and push`, :ref:`rebase`, and :ref:`squash-if-necessary`. The information here
     covers situations that happen on occasion and can be cause trouble. As always if
     you have questions, ask for help from the maintainer reviewing your PR.
+
+..
+    git branch -d subpackage-bug-fix
+    git fetch origin  # Get the latest changes from remote
+    git reset --hard origin/<branch-name>  # Reset local branch to match remote
 
 Tips for a successful pull request
 ----------------------------------

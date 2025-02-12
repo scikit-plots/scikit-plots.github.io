@@ -24,7 +24,7 @@ visualkeras custom vgg16 show dimension example
 An example showing the :py:func:`~scikitplot.visualkeras` function
 used by a :py:class:`~tensorflow.keras.Model` model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 8-206
+.. GENERATED FROM PYTHON SOURCE LINES 8-207
 
 .. code-block:: Python
 
@@ -120,15 +120,16 @@ used by a :py:class:`~tensorflow.keras.Model` model.
         try:
             if system_platform == "windows":
                 return ImageFont.truetype("arial.ttf", 32)
-            elif system_platform == "darwin":  # macOS
+            if system_platform == "darwin":  # macOS
                 return ImageFont.truetype(
                     "/Library/Fonts/Arial.ttf", 32
                 )  # or "/System/Library/Fonts/Helvetica.ttc"
-            elif system_platform == "linux":
+            if system_platform == "linux":
                 # Try a more common font path
-                return ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 32)
-            else:
-                raise ValueError("Unsupported platform")
+                return ImageFont.truetype(
+                    "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 32
+                )
+            raise ValueError("Unsupported platform")
         except OSError:
             # Fallback font if the specified font is not found
             print("Font not found, using default font.")
@@ -244,7 +245,7 @@ used by a :py:class:`~tensorflow.keras.Model` model.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 207-215
+.. GENERATED FROM PYTHON SOURCE LINES 208-216
 
 .. tags::
 
@@ -258,7 +259,7 @@ used by a :py:class:`~tensorflow.keras.Model` model.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 9.712 seconds)
+   **Total running time of the script:** (0 minutes 21.194 seconds)
 
 
 .. _sphx_glr_download_auto_examples_visualkeras_CNN_plot_custom_vgg16_show_dimension.py:

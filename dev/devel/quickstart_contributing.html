@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="Creating a development environment: To make and test code changes and build the documentation locally you will need to create a development environment. If you run into problems at any stage do not..." />
 
-    <title>Quickstart Guide to Contributing &#8212; scikit-plots 0.5.dev0+git.20250211.985a0f5 documentation</title>
+    <title>Quickstart Guide to Contributing &#8212; scikit-plots 0.5.dev0+git.20250212.a5ebfad documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=3bc2d56f"></script>
+    <script src="../_static/documentation_options.js?v=dbf90462"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -666,6 +666,11 @@ work together on the project. See the <a class="reference external" href="https:
 configuring git, as well as the <a class="reference external" href="https://scikit-image.org/docs/stable/gitwash/git_resources.html#git-resources" title="(in skimage v0.25.1)"><span>git resources</span></a> page.</p>
 <p>If you are new to contributing to projects through forking on GitHub, see the
 <a class="reference external" href="https://docs.github.com/en/get-started/quickstart/contributing-to-projects">GitHub documentation for contributing to projects</a>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you dont want to install any packages on your local you can use
+<code class="docutils literal notranslate"><span class="pre">Docker</span> <span class="pre">Pre-Installed</span> <span class="pre">Env</span></code> via <a class="reference internal" href="docker.html#docker-index"><span class="std std-ref">Docker Desktop or Github Codespaces</span></a>.</p>
+</div>
 </section>
 <section id="install-a-c-compiler-if-needed">
 <h3>Install a C compiler if needed<a class="headerlink" href="#install-a-c-compiler-if-needed" title="Link to this heading">#</a></h3>
@@ -709,10 +714,11 @@ git<span class="w"> </span>clone<span class="w"> </span>https://github.com/YOUR-
 
 <span class="c1"># to initialise local config file and fetch + checkout submodule (not needed every time)</span>
 git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive<span class="w">  </span><span class="c1"># download submodules</span>
-<span class="c1"># pulls changes from the upstream remote repo and merges them</span>
-git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--recursive<span class="w"> </span>--remote<span class="w"> </span>--merge
-<span class="c1"># Updating your submodule to the latest commit</span>
-git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--remote
+
+<span class="c1"># (Optionally) pulls changes from the upstream remote repo and merges them</span>
+git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--recursive<span class="w"> </span>--remote<span class="w"> </span>--merge<span class="w"> </span><span class="c1"># (not needed every time)</span>
+<span class="c1"># (Optionally) Updating your submodule to the latest commit</span>
+git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--remote<span class="w"> </span><span class="c1"># (not needed every time)</span>
 
 git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/scikit-plots/scikit-plots.git
 git<span class="w"> </span>fetch<span class="w"> </span>upstream<span class="w"> </span>--tags
@@ -753,7 +759,8 @@ can be useful for testing.</p>
 your system but the end result is to provide a <code class="docutils literal notranslate"><span class="pre">conda</span></code> executable that you can use
 to create and manage isolated Python environments.</p>
 <p>Now create and activate an <code class="docutils literal notranslate"><span class="pre">skplt-dev</span></code> conda environment using the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">skplt</span><span class="o">-</span><span class="n">dev</span> <span class="n">python</span> <span class="n">graphviz</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># (Optionally) Can be run on `conda base` or `venv` env</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">skplt</span><span class="o">-</span><span class="n">dev</span> <span class="n">python</span> <span class="n">graphviz</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">conda</span> <span class="n">activate</span> <span class="n">skplt</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 </div>
@@ -794,14 +801,24 @@ tool that runs a number of <a class="reference external" href="https://docs.xarr
 is likely that one or more of those CI checks will fail when you make a pull request,
 resulting in lost time (yours and CI resources).</p>
 <p>Installation is straightforward. From the root of the <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> repository, run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># triggered when committing if pass then pushing changes</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## It triggered when committing `git commit ...` if pass then next pushing changes</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">install</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># (Optionally) update and reinstall pre-commit hooks, If Needed</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">clean</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">autoupdate</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">install</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># pre-commit run --all-files</span>
+</pre></div>
+</div>
+<p>Manually one-by-one testing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## (Optionally) Manually one-by-one testing:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">## If the test is successful one by one</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">## but there is an error in the entire test, check the inconsistency</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># pre-commit run ruff-format --verbose # (with `--all-files` option not recommended)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">run</span> <span class="n">ruff</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">run</span> <span class="n">black</span>
+</pre></div>
+</div>
+<p>Update and reinstall pre-commit hooks (not needed every time):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## (Optionally) Update and reinstall pre-commit hooks (not needed every time), If Needed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">autoupdate</span>  <span class="c1"># (not needed every time)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">clean</span> <span class="o">&amp;&amp;</span> <span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">install</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">run</span> <span class="c1"># (with `--all-files` option not recommended)</span>
 </pre></div>
 </div>
 <p>Now all of the styling checks will be run each time you commit changes, ensuring that

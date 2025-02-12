@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
 
-    <title>SpLogger &#8212; scikit-plots 0.5.dev0+git.20250211.985a0f5 documentation</title>
+    <title>SpLogger &#8212; scikit-plots 0.5.dev0+git.20250212.a5ebfad documentation</title>
   
   
   
@@ -59,7 +59,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=3bc2d56f"></script>
+    <script src="../../_static/documentation_options.js?v=dbf90462"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -745,7 +745,7 @@
 <h1>SpLogger<a class="headerlink" href="#splogger" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.sp_logging.SpLogger">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.sp_logging.</span></span><span class="sig-name descname"><span class="pre">SpLogger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/985a0f5/scikitplot/sp_logging.py#L882"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.sp_logging.</span></span><span class="sig-name descname"><span class="pre">SpLogger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/a5ebfad/scikitplot/sp_logging.py#L907"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger" title="Link to this definition">#</a></dt>
 <dd><p>A singleton logger class that provides a shared logger instance with customizable
 name, formatter, handler, logging level, and thread-safety.</p>
 <p>This class implements the Singleton pattern, ensuring only a single instance of
@@ -792,8 +792,8 @@ If True, a threading lock is used.</p>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>args</strong> (<em>Any</em>)</p></li>
 <li><p><strong>name</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>)</p></li>
-<li><p><strong>formatter</strong> (<em>Optional</em><em>[</em><em>'Formatter'</em><em>]</em>)</p></li>
-<li><p><strong>handler</strong> (<em>Optional</em><em>[</em><em>'StreamHandler'</em><em>]</em>)</p></li>
+<li><p><strong>formatter</strong> (<em>Optional</em><em>[</em><em>_logging.Formatter</em><em>]</em>)</p></li>
+<li><p><strong>handler</strong> (<em>Optional</em><em>[</em><em>StreamHandler</em><em>]</em>)</p></li>
 <li><p><strong>log_level</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>]</em>)</p></li>
 <li><p><strong>thread_safe</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
 <li><p><strong>kwargs</strong> (<em>Any</em>)</p></li>
@@ -842,7 +842,7 @@ for detailed API. Below is only a summary.</p>
 <div class="cell_input code_cell docutils container">
 <div class="thebelab-code" data-executable="true" data-language="ipython"><div class="docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot.sp_logging</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">logging</span>  <span class="c1"># module logger</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">logging</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>           <span class="c1"># default WARNING</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">logging</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>  <span class="c1"># default WARNING</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This is a info message from the sp logger.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -850,7 +850,7 @@ for detailed API. Below is only a summary.</p>
 </div></div>
 <div class="cell_output docutils container">
 <div class="thebelab-output" data-output="true"><div class="docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-02-10 21:39:41 INFO scikitplot 140663909787456 sp_logging.py 858 This is a info message from the sp logger. 
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-02-12 20:55:05 INFO scikitplot 140269760603968 sp_logging.py 882 This is a info message from the sp logger. 
 </pre></div>
 </div>
 </div>
@@ -860,8 +860,10 @@ for detailed API. Below is only a summary.</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="thebelab-code" data-executable="true" data-language="ipython"><div class="docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">sp_logging</span><span class="p">,</span> <span class="n">get_logger</span><span class="p">;</span> <span class="n">logging</span><span class="o">=</span><span class="n">get_logger</span><span class="p">()</span>  <span class="c1"># pure python logger, not have direct log level</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">logging</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">sp_logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>                                    <span class="c1"># default WARNING</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">sp_logging</span><span class="p">,</span> <span class="n">get_logger</span>
+<span class="o">...</span>
+<span class="o">...</span> <span class="n">logging</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">()</span>  <span class="c1"># pure python logger, not have direct log level</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">logging</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">sp_logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>  <span class="c1"># default WARNING</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This is a info message from the sp logger.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -869,7 +871,7 @@ for detailed API. Below is only a summary.</p>
 </div></div>
 <div class="cell_output docutils container">
 <div class="thebelab-output" data-output="true"><div class="docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-02-10 21:39:41 INFO scikitplot 140663909787456 1353514787.py 3 This is a info message from the sp logger. 
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-02-12 20:55:05 INFO scikitplot 140269760603968 867886142.py 5 This is a info message from the sp logger. 
 </pre></div>
 </div>
 </div>
@@ -879,8 +881,10 @@ for detailed API. Below is only a summary.</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="thebelab-code" data-executable="true" data-language="ipython"><div class="docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">SpLogger</span><span class="p">;</span> <span class="n">logging</span><span class="o">=</span><span class="n">SpLogger</span><span class="p">()</span>  <span class="c1"># class logger</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">logging</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>                       <span class="c1"># default WARNING</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">SpLogger</span>
+<span class="o">...</span>
+<span class="o">...</span> <span class="n">logging</span> <span class="o">=</span> <span class="n">SpLogger</span><span class="p">()</span>  <span class="c1"># class logger</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">logging</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>  <span class="c1"># default WARNING</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This is a info message from the sp logger.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -888,7 +892,7 @@ for detailed API. Below is only a summary.</p>
 </div></div>
 <div class="cell_output docutils container">
 <div class="thebelab-output" data-output="true"><div class="docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-02-10 21:39:41 INFO scikitplot 140663909787456 sp_logging.py 1188 This is a info message from the sp logger. 
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-02-12 20:55:05 INFO scikitplot 140269760603968 sp_logging.py 1232 This is a info message from the sp logger. 
 </pre></div>
 </div>
 </div>
@@ -898,8 +902,10 @@ for detailed API. Below is only a summary.</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="thebelab-code" data-executable="true" data-language="ipython"><div class="docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">sp_logger</span> <span class="k">as</span> <span class="n">logging</span>  <span class="c1"># class instance logger</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">logging</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>               <span class="c1"># default WARNING</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<span class="o">...</span>     <span class="n">sp_logger</span> <span class="k">as</span> <span class="n">logging</span><span class="p">,</span>
+<span class="o">...</span> <span class="p">)</span>  <span class="c1"># class instance logger</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">logging</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>  <span class="c1"># default WARNING</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This is a info message from the sp logger.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -907,7 +913,7 @@ for detailed API. Below is only a summary.</p>
 </div></div>
 <div class="cell_output docutils container">
 <div class="thebelab-output" data-output="true"><div class="docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-02-10 21:39:41 INFO scikitplot 140663909787456 sp_logging.py 1188 This is a info message from the sp logger. 
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-02-12 20:55:05 INFO scikitplot 140269760603968 sp_logging.py 1232 This is a info message from the sp logger. 
 </pre></div>
 </div>
 </div>
@@ -915,7 +921,7 @@ for detailed API. Below is only a summary.</p>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.sp_logging.SpLogger.critical">
-<span class="sig-name descname"><span class="pre">critical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/985a0f5/scikitplot/sp_logging.py#L1203"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger.critical" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">critical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/a5ebfad/scikitplot/sp_logging.py#L1247"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger.critical" title="Link to this definition">#</a></dt>
 <dd><p>Logs a message at the CRITICAL level.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -930,7 +936,7 @@ for detailed API. Below is only a summary.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.sp_logging.SpLogger.debug">
-<span class="sig-name descname"><span class="pre">debug</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/985a0f5/scikitplot/sp_logging.py#L1227"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger.debug" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">debug</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/a5ebfad/scikitplot/sp_logging.py#L1271"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger.debug" title="Link to this definition">#</a></dt>
 <dd><p>Logs a message at the DEBUG level.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -945,7 +951,7 @@ for detailed API. Below is only a summary.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.sp_logging.SpLogger.error">
-<span class="sig-name descname"><span class="pre">error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/985a0f5/scikitplot/sp_logging.py#L1211"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger.error" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/a5ebfad/scikitplot/sp_logging.py#L1255"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger.error" title="Link to this definition">#</a></dt>
 <dd><p>Logs a message at the ERROR level.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -960,13 +966,13 @@ for detailed API. Below is only a summary.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.sp_logging.SpLogger.error_log">
-<span class="sig-name descname"><span class="pre">error_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error_msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">40</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/985a0f5/scikitplot/sp_logging.py#L1195"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger.error_log" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">error_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error_msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">40</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/a5ebfad/scikitplot/sp_logging.py#L1239"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger.error_log" title="Link to this definition">#</a></dt>
 <dd><p>Empty helper method.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.sp_logging.SpLogger.fatal">
-<span class="sig-name descname"><span class="pre">fatal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/985a0f5/scikitplot/sp_logging.py#L1207"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger.fatal" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fatal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/a5ebfad/scikitplot/sp_logging.py#L1251"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger.fatal" title="Link to this definition">#</a></dt>
 <dd><p>Logs a message at the CRITICAL level.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -981,7 +987,7 @@ for detailed API. Below is only a summary.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.sp_logging.SpLogger.getEffectiveLevel">
-<span class="sig-name descname"><span class="pre">getEffectiveLevel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/985a0f5/scikitplot/sp_logging.py#L1124"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger.getEffectiveLevel" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">getEffectiveLevel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/a5ebfad/scikitplot/sp_logging.py#L1164"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger.getEffectiveLevel" title="Link to this definition">#</a></dt>
 <dd><p>Gets the current logging level of the logger.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -998,7 +1004,7 @@ for detailed API. Below is only a summary.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.sp_logging.SpLogger.info">
-<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/985a0f5/scikitplot/sp_logging.py#L1223"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger.info" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/a5ebfad/scikitplot/sp_logging.py#L1267"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger.info" title="Link to this definition">#</a></dt>
 <dd><p>Logs a message at the INFO level.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1027,7 +1033,7 @@ for detailed API. Below is only a summary.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.sp_logging.SpLogger.log">
-<span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/985a0f5/scikitplot/sp_logging.py#L1173"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger.log" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/a5ebfad/scikitplot/sp_logging.py#L1216"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger.log" title="Link to this definition">#</a></dt>
 <dd><p>Logs a message at the specified log level.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1055,7 +1061,7 @@ for detailed API. Below is only a summary.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.sp_logging.SpLogger.log_if">
-<span class="sig-name descname"><span class="pre">log_if</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/985a0f5/scikitplot/sp_logging.py#L1190"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger.log_if" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">log_if</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/a5ebfad/scikitplot/sp_logging.py#L1234"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger.log_if" title="Link to this definition">#</a></dt>
 <dd><p>Log ‘msg % args’ at level ‘level’ only if condition is fulfilled.</p>
 </dd></dl>
 
@@ -1075,7 +1081,7 @@ for detailed API. Below is only a summary.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.sp_logging.SpLogger.setLevel">
-<span class="sig-name descname"><span class="pre">setLevel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/985a0f5/scikitplot/sp_logging.py#L1136"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger.setLevel" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">setLevel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/a5ebfad/scikitplot/sp_logging.py#L1177"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger.setLevel" title="Link to this definition">#</a></dt>
 <dd><p>Set the logger’s logging level.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1092,7 +1098,7 @@ for detailed API. Below is only a summary.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.sp_logging.SpLogger.vlog">
-<span class="sig-name descname"><span class="pre">vlog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/985a0f5/scikitplot/sp_logging.py#L1199"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger.vlog" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">vlog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/a5ebfad/scikitplot/sp_logging.py#L1243"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger.vlog" title="Link to this definition">#</a></dt>
 <dd><p>Logs a message at the specified log level.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1108,7 +1114,7 @@ for detailed API. Below is only a summary.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.sp_logging.SpLogger.warn">
-<span class="sig-name descname"><span class="pre">warn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/985a0f5/scikitplot/sp_logging.py#L1219"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger.warn" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">warn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/a5ebfad/scikitplot/sp_logging.py#L1263"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger.warn" title="Link to this definition">#</a></dt>
 <dd><p>Logs a message at the WARNING level.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1123,7 +1129,7 @@ for detailed API. Below is only a summary.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.sp_logging.SpLogger.warning">
-<span class="sig-name descname"><span class="pre">warning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/985a0f5/scikitplot/sp_logging.py#L1215"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger.warning" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">warning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/a5ebfad/scikitplot/sp_logging.py#L1259"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.SpLogger.warning" title="Link to this definition">#</a></dt>
 <dd><p>Logs a message at the WARNING level.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
