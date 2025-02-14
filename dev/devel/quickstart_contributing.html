@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="Creating a development environment: To make and test code changes and build the documentation locally you will need to create a development environment. If you run into problems at any stage do not..." />
 
-    <title>Quickstart Guide to Contributing &#8212; scikit-plots 0.5.dev0+git.20250212.a5ebfad documentation</title>
+    <title>Quickstart Guide to Contributing &#8212; scikit-plots 0.5.dev0+git.20250214.737a5f1 documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=dbf90462"></script>
+    <script src="../_static/documentation_options.js?v=60079022"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -711,16 +711,20 @@ and hitting the <code class="docutils literal notranslate"><span class="pre">For
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Forked repo: https://github.com/scikit-plots/scikit-plots.git</span>
 git<span class="w"> </span>clone<span class="w"> </span>https://github.com/YOUR-USER-NAME/scikit-plots.git
 <span class="nb">cd</span><span class="w"> </span>scikit-plots
-
-<span class="c1"># to initialise local config file and fetch + checkout submodule (not needed every time)</span>
+</pre></div>
+</div>
+<p>Initialize and Fetch Submodules (Not Needed Every Time):</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># to initialise local config file and fetch + checkout submodule (not needed every time)</span>
 git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive<span class="w">  </span><span class="c1"># download submodules</span>
 
 <span class="c1"># (Optionally) pulls changes from the upstream remote repo and merges them</span>
 git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--recursive<span class="w"> </span>--remote<span class="w"> </span>--merge<span class="w"> </span><span class="c1"># (not needed every time)</span>
 <span class="c1"># (Optionally) Updating your submodule to the latest commit</span>
 git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--remote<span class="w"> </span><span class="c1"># (not needed every time)</span>
-
-git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/scikit-plots/scikit-plots.git
+</pre></div>
+</div>
+<p>Adding and Fetching Upstream Remote:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/scikit-plots/scikit-plots.git
 git<span class="w"> </span>fetch<span class="w"> </span>upstream<span class="w"> </span>--tags
 </pre></div>
 </div>
@@ -800,12 +804,12 @@ tool that runs a number of <a class="reference external" href="https://docs.xarr
 (e.g. code formatting) on your code before you commit it. If you skip this step then it
 is likely that one or more of those CI checks will fail when you make a pull request,
 resulting in lost time (yours and CI resources).</p>
-<p>Installation is straightforward. From the root of the <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> repository, run:</p>
+<p>(Recommended) Installation is straightforward. From the root of the <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> repository, run:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## It triggered when committing `git commit ...` if pass then next pushing changes</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">install</span>
 </pre></div>
 </div>
-<p>Manually one-by-one testing:</p>
+<p>(Optionally) Manually one-by-one testing (not needed every time):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## (Optionally) Manually one-by-one testing:</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1">## If the test is successful one by one</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1">## but there is an error in the entire test, check the inconsistency</span>
@@ -814,7 +818,7 @@ resulting in lost time (yours and CI resources).</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">run</span> <span class="n">black</span>
 </pre></div>
 </div>
-<p>Update and reinstall pre-commit hooks (not needed every time):</p>
+<p>(Optionally) Update and reinstall pre-commit hooks (not needed every time):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## (Optionally) Update and reinstall pre-commit hooks (not needed every time), If Needed</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">autoupdate</span>  <span class="c1"># (not needed every time)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">clean</span> <span class="o">&amp;&amp;</span> <span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">install</span>
@@ -843,10 +847,65 @@ being accepted.</p>
 <section id="creating-a-branch">
 <h3>Creating a branch<a class="headerlink" href="#creating-a-branch" title="Link to this heading">#</a></h3>
 <p>Your local <code class="docutils literal notranslate"><span class="pre">main</span></code> branch should always reflect the current state of <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> repository.
-First ensure it’s up-to-date with the main <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> repository:</p>
+First ensure it’s up-to-date with the <code class="docutils literal notranslate"><span class="pre">main</span></code> <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> repository:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">switch</span> <span class="n">main</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1">## Download &amp; Fast-Forward If Possible</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">pull</span> <span class="o">--</span><span class="n">ff</span><span class="o">-</span><span class="n">only</span> <span class="n">upstream</span> <span class="n">main</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Fast-forward only: Updates your branch only if it can be fast-forwarded (i.e., no local commits that diverge from upstream/main).</p></li>
+<li><p>If divergence exists: Git refuses to pull, and you must manually resolve the situation (e.g., using git rebase or git merge).</p></li>
+<li><p>Use case: When you want a clean history and are sure your local branch is either up-to-date or strictly behind upstream/main.</p></li>
+</ul>
+<p>Use when you have no local commits diverging from upstream/main:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## When you just want to update and have no local commits diverging from upstream.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">pull</span> <span class="n">upstream</span> <span class="n">main</span> <span class="o">--</span><span class="n">ff</span><span class="o">-</span><span class="n">only</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## Example Scenario Before Fast-forward only:
+
+A---B---C---D---E---F  (upstream/main)
+         \
+          (local main)
+
+## ✅ Works: After git pull upstream main --ff-only, local main becomes:
+
+A---B---C---D---E---F  (local main = upstream/main)
+
+## ❌ Fails (Diverging History): You&#39;ve made local commits (X and Y), but upstream has new commits (D, E, F):
+## Because the histories have diverged, Git refuses to merge since a fast-forward isn&#39;t possible.
+
+A---B---C---D---E---F  (upstream/main)
+         \
+          X---Y  (local main)  ❌ (Fast-forward not possible)
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Rebases your local commits on top of the latest upstream/main</p></li>
+<li><p>Rewrites history by replaying your commits on top of upstream/main, making the history linear</p></li>
+<li><p>Use case: When you want to keep a clean history while incorporating upstream changes without a merge commit.</p></li>
+<li><p>Since no local commits exist, both commands do the same thing: fast-forward the branch.</p></li>
+</ul>
+<p>Use when you have local commits and want to apply them on top of upstream/main while keeping a linear history:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## When you do have local commits and want to apply them cleanly on top of the latest upstream changes.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">pull</span> <span class="n">upstream</span> <span class="n">main</span> <span class="o">--</span><span class="n">rebase</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Example Scenario Before Rebasing:</span>
+
+<span class="n">A</span><span class="o">---</span><span class="n">B</span><span class="o">---</span><span class="n">C</span><span class="o">---</span><span class="n">D</span><span class="o">---</span><span class="n">E</span><span class="o">---</span><span class="n">F</span>  <span class="p">(</span><span class="n">upstream</span><span class="o">/</span><span class="n">main</span><span class="p">)</span>
+         \
+          <span class="n">X</span><span class="o">---</span><span class="n">Y</span>  <span class="p">(</span><span class="n">local</span> <span class="n">main</span><span class="p">)</span>
+
+<span class="c1">## ✅ Works: After git pull upstream main --rebase, local main becomes:</span>
+<span class="c1">## ✅ Rewrites history, replaying local commits on top of upstream/main:</span>
+<span class="c1">## Your commits (X and Y) are reapplied on top of F, creating new commits (X&#39; and Y&#39; with new hashes).</span>
+
+<span class="n">A</span><span class="o">---</span><span class="n">B</span><span class="o">---</span><span class="n">C</span><span class="o">---</span><span class="n">D</span><span class="o">---</span><span class="n">E</span><span class="o">---</span><span class="n">F</span><span class="o">---</span><span class="n">X</span><span class="s1">&#39;---Y&#39;</span>  <span class="p">(</span><span class="n">rebased</span> <span class="n">local</span> <span class="n">main</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To view the commit history in Git, you can use the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">pretty</span><span class="o">=</span><span class="nb">format</span><span class="p">:</span><span class="s2">&quot;%h - </span><span class="si">%a</span><span class="s2">n, </span><span class="si">%a</span><span class="s2">r : </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">-</span><span class="n">n</span> <span class="mi">9</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">oneline</span> <span class="o">--</span><span class="n">graph</span> <span class="o">--</span><span class="n">decorate</span> <span class="o">--</span><span class="nb">all</span> <span class="o">-</span><span class="n">n</span> <span class="mi">9</span>
 </pre></div>
 </div>
 <p>Now create a development branch for making your changes. For example:</p>
