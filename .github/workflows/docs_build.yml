@@ -81,13 +81,19 @@ jobs:
           # Build sdist on lowest supported Python
           python-version: "3.11"
 
+      - name: Clone GitHub Pages repo
+        run: |
+          echo "HERE: $PWD"
+          git clone https://github.com/scikit-plots/scikit-plots.github.io.git
+          ls scikit-plots
+
       # Step 3: Install dependencies for building and publishing
       - name: Install dependencies
         run: |
-          echo $PWD
+          echo "HERE: $PWD"
           cd scikit-plots
           pip install -r requirements/build.txt
-          pip install --no-cache-dir -e .[build,dev,test,doc] -v
+          pip install --no-cache-dir -e .[build,dev,test,doc] -v -Csetup-args=-Dallow-noblas=true
 
           ## Can't import "scikitplot" within "scikitplot" source directory
           python -c "import scikitplot, sys; print(scikitplot.__version__);"
@@ -95,26 +101,20 @@ jobs:
       - name: Get scikitplot version
         id: get-version
         run: |
-          echo $PWD
+          echo "HERE: $PWD"
           VERSION=$(python -c "import scikitplot; print(scikitplot.version.short_version)")
           echo "VERSION=$VERSION" >> "$GITHUB_OUTPUT"
           echo "VERSION=$VERSION"
 
       - name: Build docs
         run: |
-          echo $PWD
+          echo "HERE: $PWD"
           cd scikit-plots/docs
           make html  # output: ./docs/source/html/stable
 
-      - name: Clone GitHub Pages repo
-        run: |
-          echo $PWD
-          git clone https://github.com/scikit-plots/scikit-plots.github.io.git gh-pages-repo
-          ls gh-pages-repo
-
       - name: Copy built docs into dev folder
         run: |
-          echo $PWD
+          echo "HERE: $PWD"
           # mkdir -p gh-pages-repo/dev
           rm -rf gh-pages-repo/dev/*
           cp -r scikit-plots/docs/source/html/stable/* gh-pages-repo/dev/
