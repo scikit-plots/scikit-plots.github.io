@@ -84,7 +84,9 @@ jobs:
       # Step 3: Install dependencies for building and publishing
       - name: Install dependencies
         run: |
-          pip install -r scikit-plots/requirements/build.txt
+          echo $PWD
+          cd scikit-plots
+          pip install -r requirements/build.txt
           pip install --no-cache-dir -e .[build,dev,test,doc] -v
 
           ## Can't import "scikitplot" within "scikitplot" source directory
@@ -93,21 +95,26 @@ jobs:
       - name: Get scikitplot version
         id: get-version
         run: |
+          echo $PWD
           VERSION=$(python -c "import scikitplot; print(scikitplot.version.short_version)")
           echo "VERSION=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "VERSION=$VERSION"
 
       - name: Build docs
         run: |
+          echo $PWD
           cd scikit-plots/docs
           make html  # output: ./docs/source/html/stable
 
       - name: Clone GitHub Pages repo
         run: |
+          echo $PWD
           git clone https://github.com/scikit-plots/scikit-plots.github.io.git gh-pages-repo
           ls gh-pages-repo
 
       - name: Copy built docs into dev folder
         run: |
+          echo $PWD
           # mkdir -p gh-pages-repo/dev
           rm -rf gh-pages-repo/dev/*
           cp -r scikit-plots/docs/source/html/stable/* gh-pages-repo/dev/
