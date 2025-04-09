@@ -92,11 +92,12 @@ jobs:
         run: |
           echo "HERE: $PWD"
           sudo apt-get update
-          sudo apt-get install -y ninja-build build-essential
+          sudo apt-get install -y ninja-build build-essential make
 
           cd scikit-plots
           pip install -r requirements/all.txt
-          pip install --no-cache-dir -e .[build,dev,test,doc] -v -Csetup-args=-Dallow-noblas=true
+          python -m build --sdist -Csetup-args=-Dallow-noblas=true
+          python -m pip install -v dist/*.gz -Csetup-args=-Dallow-noblas=true
 
           ## Can't import "scikitplot" within "scikitplot" source directory
           python -c "import scikitplot, sys; print(scikitplot.__version__);"
