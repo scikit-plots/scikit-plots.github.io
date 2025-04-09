@@ -1,0 +1,147 @@
+## Documentation: https://packaging.python.org/en/latest/guides/publishing-package-distribution-releases-using-github-actions-ci-cd-workflows/
+## This workflow automates the process of publishing your Python package to TestPyPI or PyPI.
+## https://docs.pypi.org/trusted-publishers/adding-a-publisher/
+---
+name: CI Docs Build
+
+## Trigger the workflow manually via GitHub Actions' "workflow_dispatch".
+on:
+  workflow_dispatch:  # Allows manual triggering of the workflow
+    inputs:
+      conda_source:  # Specify whether to conda pkg source
+        description: 'conda pkg source'
+        required: true           # 👈 This makes the input mandatory
+        default: 'scikit-plots-wheels-staging-nightly'  # Default
+      pypi_repo:  # Specify whether to publish to TestPyPI or PyPI
+        description: 'Repository to upload to (test.pypi or pypi)'
+        required: true           # 👈 This makes the input mandatory
+        default: 'test.pypi'      # 👈 Default is still used if user doesn't change it
+        type: choice
+        options:
+          - 'test.pypi'  # Default to TestPyPI for safety
+          - 'pypi'
+      version:  # Specify the version of the package to upload
+        description: 'Version to upload to PyPI (e.g., 1.0.0)'
+        required: true           # 👈 This makes the input mandatory
+        default: '0.5.0rc0'      # 👈 Default is still used if user doesn't change it
+        type: choice
+        options:
+          - '0.4.0rc0'
+          - '0.4.0rc1'
+          - '0.4.0rc2'
+          - '0.4.0rc3'
+          - '0.4.0'
+          - '0.5.0rc0'
+          - '0.5.0rc1'
+          - '0.5.0rc2'
+          - '0.5.0rc3'
+          - '0.5.0'
+
+## Top-level permissions (outside jobs)
+## Job-level permissions (inside a specific job)
+## Restrict the permissions granted to the use of secrets.GITHUB_TOKEN in this
+## github actions workflow:
+## https://docs.github.com/en/actions/security-guides/automatic-token-authentication
+permissions:
+  ## only required for workflows in private repositories
+  contents: write  # for actions/checkout to fetch code
+
+## Global environment variables (available to all jobs and steps)
+## Job-level environment variables (override global, scoped to this job)
+## Step-level environment variables (override job + global, scoped to this step)
+
+jobs:
+  builder:
+    name: docs builder  # "${{ github.event.inputs.pypi_repo }}"
+    runs-on: ubuntu-latest  # Use the latest Ubuntu virtual environment
+
+    ## Restrict this job to the 'publish_pypi' environment
+    ## If Activated, Accessing Environment Secret for 'publish_pypi'
+    # environment:
+    #   publish_pypi  # Specify the environment for environment secrets
+    #   url: https://pypi.org/p/<your-pypi-project-name>
+    env:  # Step level environment NAME: '', $NAME, ${{ env.NAME }}
+      SKPLT_VERSION: ${{ github.event.inputs.version }}
+      CONDA_SOURCE: ${{ github.event.inputs.conda_source }}
+
+    steps:
+      # Step 1: Check out the code from the repository
+      - name: Checkout (cloned) repository with full history
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false  # Prevents accidental credential exposure
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+          fetch-tags: true
+
+      # Step 2: Set up the Python environment
+      - name: Python Setup
+        uses: actions/setup-python@8d9ed9ac5c53483de85588cdf95a591a75ab9f55 # v5.5.0
+        with:
+          # Build sdist on lowest supported Python
+          python-version: "3.11"
+
+      # Step 3: Install dependencies for building and publishing
+      - name: Install dependencies
+        run: |
+          pip install -r scikit-plots/requirements/build.txt
+          pip install --no-cache-dir -e .[build,dev,test,doc] -v
+
+          ## Can't import "scikitplot" within "scikitplot" source directory
+          python -c "import scikitplot, sys; print(scikitplot.__version__);"
+
+      - name: Get scikitplot version
+        id: get-version
+        run: |
+          VERSION=$(python -c "import scikitplot; print(scikitplot.version.short_version)")
+          echo "VERSION=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Build docs
+        run: |
+          cd scikit-plots/docs
+          make html  # output: ./docs/source/html/stable
+
+      - name: Clone GitHub Pages repo
+        run: |
+          git clone https://github.com/scikit-plots/scikit-plots.github.io.git gh-pages-repo
+          ls gh-pages-repo
+
+      - name: Copy built docs into dev folder
+        run: |
+          # mkdir -p gh-pages-repo/dev
+          rm -rf gh-pages-repo/dev/*
+          cp -r scikit-plots/docs/source/html/stable/* gh-pages-repo/dev/
+          ls -al gh-pages-repo/dev
+
+      # - name: Commit and push updated docs
+      #   run: |
+      #     cd gh-pages-repo
+      #     git config user.name "github-actions[bot]"
+      #     git config user.email "github-actions[bot]@users.noreply.github.com"
+      #     git add dev/
+      #     git commit -m "Update dev docs from submodule build: ${{ github.sha }}" || echo "No changes to commit"
+      #     git push origin main  # Change to gh-pages if your pages branch is different
+
+      # - name: Upload Submodule Docs files to github.io
+      #   id: artifact-upload-step
+      #   uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+      #   with:
+      #     name: sdist
+      #     path: scikit-plots/docs/source/html/stable 
+      #     # include-hidden-files: true
+
+      # - name: Clone GitHub Pages repo
+      #   run: |
+      #     git clone https://github.com/<your-username>/<your-username>.github.io.git gh-pages-repo
+      #     ls gh-pages-repo
+
+      # - name: Copy built docs into dev folder
+      #   run: |
+      #     mkdir -p gh-pages-repo/dev
+      #     cp -r scikit-plots/docs/source/html/stable/* gh-pages-repo/dev/
+      #     cd gh-pages-repo
+      #     git config user.name "github-actions[bot]"
+      #     git config user.email "github-actions[bot]@users.noreply.github.com"
+      #     git add dev/
+      #     git commit -m "Update dev docs from submodule build: ${{ github.sha }}"
+      #     git push origin main  # or gh-pages, depending on your GitHub Pages branch
