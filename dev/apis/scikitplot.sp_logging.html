@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="Scikit-plots Logging Module This module provides advanced logging utilities for Python applications, including support for singleton-based logging with customizable formatters, handlers, and thread..." />
 
-    <title>scikitplot.sp_logging &#8212; scikit-plots 0.5.dev0+git.20250214.737a5f1 documentation</title>
+    <title>scikitplot.sp_logging &#8212; scikit-plots 0.5.0.dev0+git.20250414.3a87bde documentation</title>
   
   
   
@@ -45,7 +45,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=e3ca86de" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=2c9f8f05" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -60,13 +60,13 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=60079022"></script>
+    <script src="../_static/documentation_options.js?v=4919782e"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=e93d8674"></script>
     <script src="../_static/thebelab-helper.js"></script>
-    <script src="../_static/jupyterlite_sphinx.js?v=d6bdf5f8"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
@@ -74,7 +74,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.0.dev0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -234,7 +234,14 @@
 
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../devel/index.html">
-    Developer’s Guide
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/code_of_conduct.html">
+    Code of Conduct
   </a>
 </li>
 
@@ -437,7 +444,14 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../devel/index.html">
-    Developer’s Guide
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/code_of_conduct.html">
+    Code of Conduct
   </a>
 </li>
 
@@ -751,7 +765,7 @@ to enhance usability and flexibility for large-scale projects.</p>
 <p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/sp_logging/index.html#sp-logging-index"><span class="std std-ref">Logging System</span></a> section for further details.</p>
 <section id="logging-levels">
 <span id="sp-logging-ref-logging-levels"></span><h2>Logging Levels<a class="headerlink" href="#logging-levels" title="Link to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.CRITICAL.html#scikitplot.sp_logging.CRITICAL" title="scikitplot.sp_logging.CRITICAL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CRITICAL</span></code></a></p></td>
 <td><p>int([x]) -&gt; integer</p></td>
@@ -783,7 +797,7 @@ to enhance usability and flexibility for large-scale projects.</p>
 </section>
 <section id="functional-interface-get-logger">
 <span id="sp-logging-ref-functional-interface-get-logger"></span><h2>Functional Interface - get_logger<a class="headerlink" href="#functional-interface-get-logger" title="Link to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.AlwaysStdErrHandler.html#scikitplot.sp_logging.AlwaysStdErrHandler" title="scikitplot.sp_logging.AlwaysStdErrHandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AlwaysStdErrHandler</span></code></a></p></td>
 <td><p>A custom logging handler inherited from <a class="reference external" href="https://docs.python.org/3/library/logging.handlers.html#logging.StreamHandler" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamHandler</span></code></a> that enforces the use of a specific output stream: either standard error (<code class="docutils literal notranslate"><span class="pre">sys.stderr</span></code>) or standard output (<code class="docutils literal notranslate"><span class="pre">sys.stdout</span></code>).</p></td>
@@ -833,7 +847,7 @@ to enhance usability and flexibility for large-scale projects.</p>
 </section>
 <section id="class-interface-splogger">
 <span id="sp-logging-ref-class-interface-splogger"></span><h2>Class Interface - SpLogger<a class="headerlink" href="#class-interface-splogger" title="Link to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.SpLogger.html#scikitplot.sp_logging.SpLogger" title="scikitplot.sp_logging.SpLogger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpLogger</span></code></a></p></td>
 <td><p>A singleton logger class that provides a shared logger instance with customizable name, formatter, handler, logging level, and thread-safety.</p></td>
@@ -909,7 +923,7 @@ to enhance usability and flexibility for large-scale projects.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025, scikit-plots developers (BSD-3 Clause License).
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250414.3a87bde 2025-04-14T13:46Z.
       <br/>
     
   </p>

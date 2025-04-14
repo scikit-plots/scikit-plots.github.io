@@ -13,7 +13,7 @@
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
 <meta content="An example showing the plot_calibration function used by a scikit-learn classifier. Tags: model-type: classification model-workflow: model evaluation component: fitted model plot-type: line plot-ty..." name="description"/>
-<title>plot_calibration with examples — scikit-plots 0.5.dev0+git.20250214.737a5f1 documentation</title>
+<title>plot_calibration with examples — scikit-plots 0.5.0.dev0+git.20250414.3a87bde documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
@@ -37,7 +37,7 @@
 <link href="../../_static/jupyter-sphinx.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/thebelab.css" rel="stylesheet" type="text/css"/>
 <link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
-<link href="../../_static/jupyterlite_sphinx.css?v=e3ca86de" rel="stylesheet" type="text/css"/>
+<link href="../../_static/jupyterlite_sphinx.css?v=2c9f8f05" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery.css?v=d2d258e8" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-binder.css?v=f4aeca0c" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" rel="stylesheet" type="text/css"/>
@@ -50,13 +50,13 @@
 <!-- Pre-loaded scripts that we'll load fully later -->
 <link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
 <link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
-<script src="../../_static/documentation_options.js?v=60079022"></script>
+<script src="../../_static/documentation_options.js?v=4919782e"></script>
 <script src="../../_static/doctools.js?v=9bcbadda"></script>
 <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
 <script src="../../_static/copybutton.js?v=e93d8674"></script>
 <script src="../../_static/thebelab-helper.js"></script>
-<script src="../../_static/jupyterlite_sphinx.js?v=d6bdf5f8"></script>
+<script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
 <script src="../../_static/design-tabs.js?v=f930bc37"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
@@ -64,7 +64,7 @@
 <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.0.dev0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -158,7 +158,12 @@
 </li>
 <li class="">
 <a class="nav-link dropdown-item nav-internal" href="../../devel/index.html">
-    Developer’s Guide
+    Developer's Guide
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/code_of_conduct.html">
+    Code of Conduct
   </a>
 </li>
 <li class="">
@@ -280,7 +285,12 @@
 </li>
 <li class="nav-item">
 <a class="nav-link nav-internal" href="../../devel/index.html">
-    Developer’s Guide
+    Developer's Guide
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/code_of_conduct.html">
+    Code of Conduct
   </a>
 </li>
 <li class="nav-item">
@@ -510,48 +520,7 @@ used by a scikit-learn classifier.</p>
 <a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Calibration Curves (Reliability Diagrams)" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_calibration_script_001.png" srcset="../../_images/sphx_glr_plot_calibration_script_001.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.11/site-packages/sklearn/svm/_classes.py:32: FutureWarning:
-
-The default value of `dual` will change from `True` to `'auto'` in 1.5. Set the value of `dual` explicitly to suppress the warning.
-
-/opt/conda/lib/python3.11/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning:
-
-Liblinear failed to converge, increase the number of iterations.
-
-/opt/conda/lib/python3.11/site-packages/sklearn/svm/_classes.py:32: FutureWarning:
-
-The default value of `dual` will change from `True` to `'auto'` in 1.5. Set the value of `dual` explicitly to suppress the warning.
-
-/opt/conda/lib/python3.11/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning:
-
-Liblinear failed to converge, increase the number of iterations.
-
-/opt/conda/lib/python3.11/site-packages/sklearn/svm/_classes.py:32: FutureWarning:
-
-The default value of `dual` will change from `True` to `'auto'` in 1.5. Set the value of `dual` explicitly to suppress the warning.
-
-/opt/conda/lib/python3.11/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning:
-
-Liblinear failed to converge, increase the number of iterations.
-
-/opt/conda/lib/python3.11/site-packages/sklearn/svm/_classes.py:32: FutureWarning:
-
-The default value of `dual` will change from `True` to `'auto'` in 1.5. Set the value of `dual` explicitly to suppress the warning.
-
-/opt/conda/lib/python3.11/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning:
-
-Liblinear failed to converge, increase the number of iterations.
-
-/opt/conda/lib/python3.11/site-packages/sklearn/svm/_classes.py:32: FutureWarning:
-
-The default value of `dual` will change from `True` to `'auto'` in 1.5. Set the value of `dual` explicitly to suppress the warning.
-
-/opt/conda/lib/python3.11/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning:
-
-Liblinear failed to converge, increase the number of iterations.
-</pre></div>
-</div>
-<div class="admonition-interpretation admonition">
+<img alt="Calibration Curves (Reliability Diagrams)" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_calibration_script_001.png" srcset="../../_images/sphx_glr_plot_calibration_script_001.png"/><div class="admonition-interpretation admonition">
 <p class="admonition-title">Interpretation</p>
 <p>Primary Use: Evaluating probabilistic classifiers by comparing predicted probabilities to observed frequencies of the positive class.</p>
 <p>Goal: To assess how well the predicted probabilities align with the actual outcomes, identifying if a model is well-calibrated, overconfident, or underconfident.</p>
@@ -563,7 +532,7 @@ Liblinear failed to converge, increase the number of iterations.
 </ul>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-model-evaluation.html"><span class="doc">model-workflow: model evaluation</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/component-fitted-model.html"><span class="doc">component: fitted model</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-line.html"><span class="doc">plot-type: line</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-calibration-plot.html"><span class="doc">plot-type: calibration plot</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 5.716 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.284 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_precision_recall function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_precision_recall_script_thumb.png"/>
@@ -628,7 +597,7 @@ Liblinear failed to converge, increase the number of iterations.
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025, scikit-plots developers (BSD-3 Clause License).
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250414.3a87bde 2025-04-14T13:46Z.
       <br/>
 </p>
 </div>

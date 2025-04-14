@@ -1,0 +1,1200 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Quickstart Contributing Guidelines" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://scikit-plots.github.io/stable/devel/guide_qu_contribute.html" />
+<meta property="og:site_name" content="scikit-plots" />
+<meta property="og:description" content="Creating a development environment: To make and test code changes and build the documentation locally you will need to create a development environment. If you run into problems at any stage do not..." />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
+<meta property="og:image:alt" content="scikit-plots" />
+<meta name="description" content="Creating a development environment: To make and test code changes and build the documentation locally you will need to create a development environment. If you run into problems at any stage do not..." />
+
+    <title>Quickstart Contributing Guidelines &#8212; scikit-plots 0.5.0.dev0+git.20250414.3a87bde documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=2c9f8f05" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=14208072" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=e4cb1417" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=4919782e"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=e93d8674"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'devel/guide_qu_contribute';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.0.dev0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <script src="../_static/scripts/dropdown.js?v=e2048168"></script>
+    <script src="../_static/scripts/version-switcher.js?v=9bbada16"></script>
+    <link rel="icon" href="../_static/scikit-plots-favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Docker Containerization Guidelines" href="guide_docker.html" />
+    <link rel="prev" title="Contributing Guidelines to scikit-plots" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.5" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/scikit-plots-logo-small.png" class="logo__image only-light" alt="scikit-plots homepage"/>
+    <img src="../_static/scikit-plots-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-plots homepage"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../whats_new/index.html">
+    Release History
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community-G
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://zenodo.org/communities/scikit-plots">
+    Community-Z
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/governance.html">
+    Governance
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/index.html">
+    About us
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../whats_new/index.html">
+    Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community-G
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://zenodo.org/communities/scikit-plots">
+    Community-Z
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/governance.html">
+    Governance
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/index.html">
+    About us
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">quickstart</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Quickstart Contribute Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">docker</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="guide_docker.html">Docker Guidelines</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="guide_gs_contribute.html">Getting Started Contribute Guide</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="guide_devel_setup.html">Development Setup Guide</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="guide_devel_workflow.html">Development Workflow Guide</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="guide_troubleshooting.html">Troubleshooting Guide</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="guide_code_style_write.html">Code Style and Writing Guidelines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide_code_license.html">Licenses for contributed code</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="guide_code_api_ver_change.html">Code API Versioning and Change Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide_code_testing.html">Code Testing Guidelines</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="guide_document_write.html">Documentation Writing Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide_document_style.html">Documentation Styling Guidelines</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="guide_document_tag.html">Documentation Tagging Guidelines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide_document_tag_glossary.html">Tag Glossary</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="guide_maintainer.html">Maintainer Guidelines</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="guide_release.html">Release Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide_communication.html">Community Management Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide_min_dep_policy.html">Dependency Version Policy Guidelines</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="SPEP/index.html">Sp Enhancement Proposals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="SPEP/template.html">SPEP Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SPEP/spep000/proposal.html">SPEP000: SPEP and its workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SPEP/spep000/proposal.html">SPEP000: SPEP and its workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SPEP/spep000/proposal.html">SPEP000: SPEP and its workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SPEP/spep000/proposal.html">SPEP000: SPEP and its workflow</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="guide_triage.html">Bug Triaging and Issue Curation Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide_pr.html">Pull Request Guidelines</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Contributing Guidelines to scikit-plots</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Quickstart Contributing Guidelines</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="quickstart-contributing-guidelines">
+<span id="quickstart-contributing"></span><h1>Quickstart Contributing Guidelines<a class="headerlink" href="#quickstart-contributing-guidelines" title="Link to this heading">#</a></h1>
+<section id="creating-a-development-environment">
+<span id="contributing-environment"></span><h2>Creating a development environment<a class="headerlink" href="#creating-a-development-environment" title="Link to this heading">#</a></h2>
+<p>To make and test code changes and build the documentation locally you will need to
+create a development environment. If you run into problems at any stage do not hesitate
+to <a class="reference external" href="https://scikit-plots.github.io/dev/help.html">TEMPLATE ask for help</a>.</p>
+<section id="set-up-github-and-git">
+<h3>Set up GitHub and Git<a class="headerlink" href="#set-up-github-and-git" title="Link to this heading">#</a></h3>
+<p>scikit-plots is hosted on <a class="reference external" href="https://github.com/scikit-plots/scikit-plots">GitHub</a>, and to
+contribute, you will need a <a class="reference external" href="https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github">GitHub account</a>.</p>
+<p>We use <a class="reference external" href="https://git-scm.com/">Git</a> for version control and to allow many people to
+work together on the project. See the <a class="reference external" href="https://docs.github.com/en/get-started/quickstart/set-up-git">GitHub quickstart instructions</a> for installing and
+configuring git, as well as the <a class="reference external" href="https://scikit-image.org/docs/stable/gitwash/git_resources.html#git-resources" title="(in skimage v0.25.2)"><span>git resources</span></a> page.</p>
+<p>If you are new to contributing to projects through forking on GitHub, see the
+<a class="reference external" href="https://docs.github.com/en/get-started/quickstart/contributing-to-projects">GitHub documentation for contributing to projects</a>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you dont want to install any packages on your local you can use
+<code class="docutils literal notranslate"><span class="pre">Setup</span> <span class="pre">Docker</span> <span class="pre">Pre-Installed</span> <span class="pre">Env</span></code> via <a class="reference internal" href="guide_docker.html#docker-index"><span class="std std-ref">Docker Containerization Guidelines</span></a>.</p>
+</div>
+</section>
+<section id="install-a-c-compiler-if-needed">
+<h3>Install a C compiler if needed<a class="headerlink" href="#install-a-c-compiler-if-needed" title="Link to this heading">#</a></h3>
+<p>How to do this will depend on your platform.</p>
+<p><strong>Windows</strong></p>
+<p>You will need <a class="reference external" href="https://visualstudio.microsoft.com/downloads/?q=build+tools">Build Tools for Visual Studio</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You DO NOT need to install Visual Studio.
+You only need “Build Tools for Visual Studio” found by
+scrolling down to “All downloads” -&gt; “Tools for Visual Studio” -&gt; “Build Tools
+for Visual Studio”.</p>
+</div>
+<p>Alternative options include:</p>
+<ul class="simple">
+<li><p>Install the necessary components on the command line using <a class="reference external" href="https://learn.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio?source=recommendations&amp;view=vs-2022">vs_BuildTools.exe</a>.</p></li>
+<li><p>Use the <a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/install">WSL</a>.</p></li>
+</ul>
+<p><strong>MacOS</strong></p>
+<p>Install the Developer Tools using <code class="docutils literal notranslate"><span class="pre">xcode-select</span> <span class="pre">--install</span></code>. There is no need to
+install the full Xcode application and this command will install only the command line
+tools and developer utilities.</p>
+<p>Further details and related information can be found at
+<a class="reference external" href="https://devguide.python.org/setup/#macos">https://devguide.python.org/setup/#macos</a>.</p>
+<p><strong>Linux</strong></p>
+<p>For Linux-based installations, you won’t have to install any additional components.</p>
+</section>
+</section>
+<section id="create-a-clone-of-scikit-plots">
+<span id="contributing-forking"></span><h2>Create a clone of scikit-plots<a class="headerlink" href="#create-a-clone-of-scikit-plots" title="Link to this heading">#</a></h2>
+<p>If you have not done so already, you will need your own copy of <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> to
+build it and/or contribute to the source. scikit-plots is hosted in the
+<a class="reference external" href="https://www.github.com/scikit-plots/scikit-plots">scikit-plots GitHub repository</a>
+and you need to make a clone.</p>
+<p>First, create a <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo">GitHub Fork</a>
+by going to the <a class="reference external" href="https://github.com/scikit-plots/scikit-plots">scikit-plots project page</a>
+and hitting the <code class="docutils literal notranslate"><span class="pre">Fork</span></code> button.</p>
+<p>Next, <a class="reference external" href="https://git-scm.com/docs/git-clone">clone</a> your GitHub fork to your machine:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">## Forked repo: https://github.com/scikit-plots/scikit-plots.git</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/YOUR-USER-NAME/scikit-plots.git
+<span class="nb">cd</span><span class="w"> </span>scikit-plots
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">## Or use `git config ...` to add `scikit-plots` in git safe dirs</span>
+bash<span class="w"> </span>docker/script/safe_dirs.sh<span class="w">  </span><span class="c1"># add safe directories for git</span>
+
+<span class="c1"># to initialise local config file and fetch + checkout submodule (not needed every time)</span>
+git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive<span class="w">  </span><span class="c1"># download submodules</span>
+
+<span class="c1"># (Optionally) pulls changes from the upstream remote repo and merges them</span>
+<span class="c1"># Check if user wants to pull changes from upstream</span>
+git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--recursive<span class="w"> </span>--remote<span class="w"> </span>--merge<span class="w"> </span><span class="c1"># (not needed every time)</span>
+<span class="c1"># (Optionally) Updating your submodule to the latest commit</span>
+<span class="c1"># Check if user wants to update submodules to the latest commit</span>
+git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--remote<span class="w"> </span><span class="c1"># (not needed every time)</span>
+</pre></div>
+</div>
+<p>Adding and Fetching Upstream Remote:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/scikit-plots/scikit-plots.git
+git<span class="w"> </span>fetch<span class="w"> </span>upstream<span class="w"> </span>--tags
+</pre></div>
+</div>
+<p>This creates the directory <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> and connects your repository to the upstream
+(main project) <a class="reference external" href="https://github.com/scikit-plots/scikit-plots">scikit-plots</a> repository.</p>
+<p>You can see the remote repositories as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">remote</span> <span class="o">--</span><span class="n">verbose</span>
+</pre></div>
+</div>
+<p>You will see something like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">origin</span>  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">YOUR</span><span class="o">-</span><span class="n">USER</span><span class="o">-</span><span class="n">NAME</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">plots</span> <span class="p">(</span><span class="n">fetch</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">origin</span>  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">YOUR</span><span class="o">-</span><span class="n">USER</span><span class="o">-</span><span class="n">NAME</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">plots</span> <span class="p">(</span><span class="n">push</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">upstream</span>        <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">plots</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">plots</span><span class="o">.</span><span class="n">git</span> <span class="p">(</span><span class="n">fetch</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">upstream</span>        <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">plots</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">plots</span><span class="o">.</span><span class="n">git</span> <span class="p">(</span><span class="n">push</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="create-an-isolated-development-environment">
+<span id="create-isolated-env"></span><h2>Create an isolated development environment<a class="headerlink" href="#create-an-isolated-development-environment" title="Link to this heading">#</a></h2>
+<p>A key requirement is to have an isolated Python environment, meaning that it is
+isolated from both your system Python and any other Python environments you may have
+for doing other work. This is important because the development environment will often
+be unstable and possibly broken at times, and you don’t want to break your other work.</p>
+<p>There are many good options for doing this, including a number of virtual environment
+managers (e.g., the Python standard library <a class="reference external" href="https://docs.python.org/3/library/venv.html">venv</a>
+module). Users who have a preference for a particular virtual environment manager are
+encouraged to use it!</p>
+<p>For this quickstart guide we use the <a class="reference external" href="https://docs.conda.io/en/latest/">conda</a> package
+manager provided by <a class="reference external" href="https://github.com/conda-forge/miniforge">miniforge</a>. This is a
+popular choice and generally works well, especially for newcomers. It is easy to install
+and use on all platforms and it makes it easy to install different Python versions which
+can be useful for testing.</p>
+<p>If you do not already have <code class="docutils literal notranslate"><span class="pre">conda</span></code> installed, <a class="reference external" href="https://github.com/conda-forge/miniforge/blob/main/README.md">download and install miniforge</a>. The details depend on
+your system but the end result is to provide a <code class="docutils literal notranslate"><span class="pre">conda</span></code> executable that you can use
+to create and manage isolated Python environments.</p>
+<p>Now create and activate an <code class="docutils literal notranslate"><span class="pre">skplt-dev</span></code> conda environment using the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># (Optionally) Can be run on `conda base` or `venv` env</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">skplt</span><span class="o">-</span><span class="n">dev</span> <span class="n">python</span> <span class="n">graphviz</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conda</span> <span class="n">activate</span> <span class="n">skplt</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+<p>Note the <code class="docutils literal notranslate"><span class="pre">graphviz</span></code> package is required for building the documentation.</p>
+<section id="install-the-development-version-of-scikit-plots">
+<h3>Install the development version of scikit-plots<a class="headerlink" href="#install-the-development-version-of-scikit-plots" title="Link to this heading">#</a></h3>
+<p>Now you can install the development version of <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> into your new environment. This
+will install the latest version of <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> from your local git repo, along with
+all the dependencies needed to build and fully test <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## (Optionally) setup one line scikit-plots development version</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">make</span> <span class="n">install_dev</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">## Setup scikit-plots lib dep</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># pip install -r ./requirements/all.txt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="o">./</span><span class="n">requirements</span><span class="o">/</span><span class="n">build</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">## Setup scikit-plots lib dep</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">build</span><span class="o">-</span><span class="n">isolation</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cache</span><span class="o">-</span><span class="nb">dir</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span> <span class="o">-</span><span class="n">v</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">## (Optionally) It is also possible to include optional dependencies:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">build</span><span class="o">-</span><span class="n">isolation</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cache</span><span class="o">-</span><span class="nb">dir</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span><span class="p">[</span><span class="n">build</span><span class="p">,</span><span class="n">dev</span><span class="p">,</span><span class="n">test</span><span class="p">,</span><span class="n">doc</span><span class="p">]</span> <span class="o">-</span><span class="n">v</span>
+</pre></div>
+</div>
+<section id="checking-the-build-scikit-plots">
+<span id="contributing-check-build"></span><h4>Checking the build scikit-plots<a class="headerlink" href="#checking-the-build-scikit-plots" title="Link to this heading">#</a></h4>
+<p>At this point you should be able to <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">scikitplot</span></code> from your locally built version:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;import scikitplot; scikitplot.show_config()&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">## Checking the build without root</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bash</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;cd ~ &amp;&amp; python -c &#39;import scikitplot; scikitplot.show_config()&#39;&quot;</span>
+</pre></div>
+</div>
+<p>Next you may want to try running some or all of the <code class="docutils literal notranslate"><span class="pre">scikitplot</span></code> unit tests.
+Running the full test suite can take a few minutes, so you may want to start with a
+single sub-package (e.g. <a class="reference internal" href="../user_guide/decile_wise_perf/kds.html#kds-index"><span class="std std-ref">KeyToDataScience</span></a>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## python -m pytest -p vscode_pytest --collect-only --rootdir=.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">## run a sub set of the test suite</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pytest</span> <span class="n">scikitplot</span><span class="o">/</span><span class="n">kds</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">## or the whole suite</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pytest</span>
+</pre></div>
+</div>
+<p>Details on running and writing tests can be found in the <a class="reference external" href="https://numpy.org/doc/stable/reference/testing.html#testing-guidelines" title="(in NumPy v2.2)"><span>Testing guidelines</span></a>
+section.</p>
+</section>
+</section>
+<section id="install-pre-commit">
+<span id="contributing-pre-commit"></span><h3>Install pre-commit<a class="headerlink" href="#install-pre-commit" title="Link to this heading">#</a></h3>
+<p>This is optional, but <em>highly recommended</em>. <a class="reference external" href="https://pre-commit.com/">Pre-commit</a> is a
+tool that runs a number of <a class="reference external" href="contributing_ci">Continuous Integration (CI)</a> checks
+(e.g. code formatting) on your code before you commit it. If you skip this step then it
+is likely that one or more of those CI checks will fail when you make a pull request,
+resulting in lost time (yours and CI resources).</p>
+<p>(Recommended) Installation is straightforward. From the root of the <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> repository, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## It triggered when committing `git commit ...` if pass then next pushing changes</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>(Optionally) Manually one-by-one testing (not needed every time):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## (Optionally) Manually one-by-one testing:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">## If the test is successful one by one</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">## but there is an error in the entire test, check the inconsistency</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># pre-commit run ruff-format --verbose # (with `--all-files` option not recommended)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">run</span> <span class="n">ruff</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">run</span> <span class="n">black</span>
+</pre></div>
+</div>
+<p>(Optionally) Update and reinstall pre-commit hooks (not needed every time):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## (Optionally) Update and reinstall pre-commit hooks (not needed every time), If Needed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">autoupdate</span>  <span class="c1"># (not needed every time)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">clean</span> <span class="o">&amp;&amp;</span> <span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">install</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">run</span> <span class="c1"># (with `--all-files` option not recommended)</span>
+</pre></div>
+</div>
+<p>Now all of the styling checks will be run each time you commit changes, ensuring that
+the CI formatting checks for your <span class="xref std std-ref">pull request</span> will
+pass.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To learn more about pre-commit, see the <span class="xref std std-ref">pre-commit</span> section.</p>
+</div>
+</section>
+</section>
+<section id="creating-and-submitting-a-pull-request">
+<span id="contributing-pull-request"></span><h2>Creating and submitting a pull request<a class="headerlink" href="#creating-and-submitting-a-pull-request" title="Link to this heading">#</a></h2>
+<p>You can contribute bug fixes, new features, and documentation updates by submitting a
+GitHub pull request (PR). This section will guide you through the process. We encourage
+you to <a class="reference external" href="https://github.com/orgs/scikit-plots/discussions">ask for help</a> if you get stuck.
+The <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> community is welcoming and friendly and will help you!</p>
+<p>If you are new to the <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> Project and interested to submit a large patch
+(e.g., a new big feature or significant refactoring), we encourage you to first
+discuss your ideas on GitHub to increase the chance of your PR
+being accepted.</p>
+<section id="creating-a-branch">
+<h3>Creating a branch<a class="headerlink" href="#creating-a-branch" title="Link to this heading">#</a></h3>
+<p>Your local <code class="docutils literal notranslate"><span class="pre">main</span></code> branch should always reflect the current state of <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> repository.
+First ensure it’s up-to-date with the <code class="docutils literal notranslate"><span class="pre">main</span></code> <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> repository:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># git checkout main</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">switch</span> <span class="n">main</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Fast-forward only: Updates your branch only if it can be fast-forwarded (i.e., no local commits that diverge from upstream/main).</p></li>
+<li><p>If divergence exists: Git refuses to pull, and you must manually resolve the situation (e.g., using git rebase or git merge).</p></li>
+<li><p>Use case: When you want a clean history and are sure your local branch is either up-to-date or strictly behind upstream/main.</p></li>
+</ul>
+<p>Use when you have no local commits diverging from upstream/main:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## When you just want to update and have no local commits diverging from upstream.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">pull</span> <span class="n">upstream</span> <span class="n">main</span> <span class="o">--</span><span class="n">ff</span><span class="o">-</span><span class="n">only</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## Example Scenario Before Fast-forward only:
+
+A---B---C---D---E---F  (upstream/main)
+         \
+          (local main)
+
+## ✅ Works: After git pull upstream main --ff-only, local main becomes:
+
+A---B---C---D---E---F  (local main = upstream/main)
+
+## ❌ Fails (Diverging History): You&#39;ve made local commits (X and Y), but upstream has new commits (D, E, F):
+## Because the histories have diverged, Git refuses to merge since a fast-forward isn&#39;t possible.
+
+A---B---C---D---E---F  (upstream/main)
+         \
+          X---Y  (local main)  ❌ (Fast-forward not possible)
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Rebases your local commits on top of the latest upstream/main</p></li>
+<li><p>Rewrites history by replaying your commits on top of upstream/main, making the history linear</p></li>
+<li><p>Use case: When you want to keep a clean history while incorporating upstream changes without a merge commit.</p></li>
+<li><p>Since no local commits exist, both commands do the same thing: fast-forward the branch.</p></li>
+</ul>
+<p>Use when you have local commits and want to apply them on top of upstream/main while keeping a linear history:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## When you do have local commits and want to apply them cleanly on top of the latest upstream changes.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">pull</span> <span class="n">upstream</span> <span class="n">main</span> <span class="o">--</span><span class="n">rebase</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Example Scenario Before Rebasing:</span>
+
+<span class="n">A</span><span class="o">---</span><span class="n">B</span><span class="o">---</span><span class="n">C</span><span class="o">---</span><span class="n">D</span><span class="o">---</span><span class="n">E</span><span class="o">---</span><span class="n">F</span>  <span class="p">(</span><span class="n">upstream</span><span class="o">/</span><span class="n">main</span><span class="p">)</span>
+         \
+          <span class="n">X</span><span class="o">---</span><span class="n">Y</span>  <span class="p">(</span><span class="n">local</span> <span class="n">main</span><span class="p">)</span>
+
+<span class="c1">## ✅ Works: After git pull upstream main --rebase, local main becomes:</span>
+<span class="c1">## ✅ Rewrites history, replaying local commits on top of upstream/main:</span>
+<span class="c1">## Your commits (X and Y) are reapplied on top of F, creating new commits (X&#39; and Y&#39; with new hashes).</span>
+
+<span class="n">A</span><span class="o">---</span><span class="n">B</span><span class="o">---</span><span class="n">C</span><span class="o">---</span><span class="n">D</span><span class="o">---</span><span class="n">E</span><span class="o">---</span><span class="n">F</span><span class="o">---</span><span class="n">X</span><span class="s1">&#39;---Y&#39;</span>  <span class="p">(</span><span class="n">rebased</span> <span class="n">local</span> <span class="n">main</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To view the commit history in Git, you can use the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">pretty</span><span class="o">=</span><span class="nb">format</span><span class="p">:</span><span class="s2">&quot;%h - </span><span class="si">%a</span><span class="s2">n, </span><span class="si">%a</span><span class="s2">r : </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">-</span><span class="n">n</span> <span class="mi">9</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">oneline</span> <span class="o">--</span><span class="n">graph</span> <span class="o">--</span><span class="n">decorate</span> <span class="o">--</span><span class="nb">all</span> <span class="o">-</span><span class="n">n</span> <span class="mi">9</span>
+</pre></div>
+</div>
+<p>Now create a development branch for making your changes. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">switch</span> <span class="o">-</span><span class="n">c</span> <span class="n">subpackage</span><span class="o">-</span><span class="n">bug</span><span class="o">-</span><span class="n">fix</span>
+</pre></div>
+</div>
+<p>Delete the branch locally:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># git checkout main &amp;&amp; git pull</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">switch</span> <span class="n">main</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">d</span> <span class="n">subpackage</span><span class="o">-</span><span class="n">bug</span><span class="o">-</span><span class="n">fix</span>
+</pre></div>
+</div>
+<p>This changes your working branch from <code class="docutils literal notranslate"><span class="pre">main</span></code> to the <code class="docutils literal notranslate"><span class="pre">subpackage-bug-fix</span></code> branch.
+Keep any changes in this branch specific to one bug or feature so it is clear what the
+branch brings to <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code>. You can have many feature branches and switch in between them
+using the <a class="reference external" href="https://git-scm.com/docs/git-switch">git switch</a> command.</p>
+<p>Using a descriptive branch name can help you stay organized. For example
+<code class="docutils literal notranslate"><span class="pre">`kds-commented-header`</span></code> might be a good name for a branch that fixes the
+commented header issue <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/issues/1">#1</a> in
+the <code class="docutils literal notranslate"><span class="pre">kds</span></code> sub-package.</p>
+<p>When you want to update the feature branch with changes in main after
+you created the branch, check the section on
+<a class="reference internal" href="#contributing-update-pr"><span class="std std-ref">updating a PR</span></a>.</p>
+</section>
+</section>
+<section id="making-code-or-documentation-changes">
+<span id="contributing-commit-code"></span><h2>Making code or documentation changes<a class="headerlink" href="#making-code-or-documentation-changes" title="Link to this heading">#</a></h2>
+<p>Now comes the fun part where you use your favorite editor or IDE to make changes to the
+code or documentation! At a high level this breaks into a few parts:</p>
+<ul class="simple">
+<li><p><strong>Make changes</strong>: Make the changes you want to make. This could be fixing a bug,
+adding a new feature, or updating the documentation.</p></li>
+<li><p><strong>Test changes</strong>: For code changes, ensure that they work as expected following the
+process outlined in the <a class="reference external" href="https://numpy.org/doc/stable/reference/testing.html#testing-guidelines" title="(in NumPy v2.2)"><span>Testing guidelines</span></a> section.</p></li>
+<li><p><strong>Build documentation</strong>: If you are updating the documentation, you will want to
+<span class="xref std std-ref">build the documentation</span> to ensure that it looks good.</p></li>
+<li><p><strong>Add a changelog entry</strong>: For most code changes you will need to
+<span class="xref std std-ref">add-changelog</span>.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For more information and examples see <a class="reference internal" href="guide_devel_workflow.html#edit-flow"><span class="std std-ref">The editing workflow</span></a> section.</p>
+</div>
+<p>You can see a summary of the changes you’ve currently made by running:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>status
+</pre></div>
+</div>
+<p>You can then commit your all your changes to your local repository with an explanatory
+<a class="reference external" href="https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">commit message</a>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>files-that-you-changed<span class="w"> </span>...
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;your commit message goes here&quot;</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Never merge changes from <code class="docutils literal notranslate"><span class="pre">upstream/main</span></code> into your feature branch. If
+changes in <code class="docutils literal notranslate"><span class="pre">main</span></code> require changes to our code you must <span class="xref std std-ref">rebase</span>.</p>
+</div>
+<section id="pushing-your-changes">
+<span id="contributing-push-code"></span><h3>Pushing your changes<a class="headerlink" href="#pushing-your-changes" title="Link to this heading">#</a></h3>
+<p>When you want your changes to appear publicly on your GitHub page, push your
+forked feature branch’s commits:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="o">--</span><span class="nb">set</span><span class="o">-</span><span class="n">upstream</span> <span class="n">subpackage</span><span class="o">-</span><span class="n">bug</span><span class="o">-</span><span class="n">fix</span>
+</pre></div>
+</div>
+<p>Here <code class="docutils literal notranslate"><span class="pre">origin</span></code> is the default name given to your fork on GitHub.</p>
+<p>Now your code is on GitHub, but it is not visible to the <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> maintainers. For that
+to happen, a pull request needs to be submitted on GitHub.</p>
+<p>The first time you push to a new branch on GitHub, you will see a message like below
+with a useful link to create a pull request:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">remote</span><span class="p">:</span> <span class="n">Create</span> <span class="n">a</span> <span class="n">pull</span> <span class="n">request</span> <span class="k">for</span> <span class="s1">&#39;subpackage-bug-fix&#39;</span> <span class="n">on</span> <span class="n">GitHub</span> <span class="n">by</span> <span class="n">visiting</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">remote</span><span class="p">:</span>      <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">YOUR</span><span class="o">-</span><span class="n">USER</span><span class="o">-</span><span class="n">NAME</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">plots</span><span class="o">/</span><span class="n">pull</span><span class="o">/</span><span class="n">new</span><span class="o">/</span><span class="n">subpackage</span><span class="o">-</span><span class="n">bug</span><span class="o">-</span><span class="n">fix</span>
+</pre></div>
+</div>
+</section>
+<section id="making-a-pull-request">
+<span id="quickstart-pull-request"></span><h3>Making a pull request<a class="headerlink" href="#making-a-pull-request" title="Link to this heading">#</a></h3>
+<p>If everything looks good, you are ready to make a pull request (PR). A PR is how
+code from your local repository becomes available to the GitHub community to review and
+merged into project to appear the in the next release.</p>
+<p>Most of the time you can just follow the link that <code class="docutils literal notranslate"><span class="pre">git</span></code> provided when you pushed
+your branch and create the PR. If you don’t have that link (and for a few more details),
+you can follow the <span class="xref std std-ref">pull-request</span> instructions.</p>
+<p>Follow the instructions in the PR template and fill it out as completely as possible.</p>
+<p>If your PR is still a work in progress then instead of clicking “Create pull request”,
+click on the small down arrow next to it and select “<a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests">Create draft pull request</a>”.
+In addition, if your commits are not ready for CI testing, you
+should include <code class="docutils literal notranslate"><span class="pre">[ci</span> <span class="pre">skip]</span></code> the last commit message – but note that code formatting
+checks and documentation building will still be done. Formatting and style errors <em>should</em>
+already have been fixed before committing if you have locally
+<a class="reference internal" href="#contributing-pre-commit"><span class="std std-ref">installed pre-commit</span></a>; but if you have not,
+you can use the <span class="xref std std-ref">pre-commit_bot</span> to fix them automatically in the PR.</p>
+<p>Once submitted (and marked as ready), this request goes to the <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> maintainers and
+they will review the PR.</p>
+</section>
+<section id="updating-your-pull-request">
+<span id="contributing-update-pr"></span><h3>Updating your pull request<a class="headerlink" href="#updating-your-pull-request" title="Link to this heading">#</a></h3>
+<p>Based on the review you get on your pull request, you will probably need to make
+some adjustments. You can follow the <a class="reference internal" href="#contributing-commit-code"><span class="std std-ref">code committing steps</span></a>
+again to address any feedback and update your pull request:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">subpackage</span><span class="o">-</span><span class="n">bug</span><span class="o">-</span><span class="n">fix</span>
+</pre></div>
+</div>
+<p>Any <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> will automatically update your pull request with your branch’s changes
+and restart the <a class="reference external" href="contributing_ci">Continuous Integration</a> checks.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>At this point please read (or at least skim) the sections <span class="xref std std-ref">revise
+and push</span>, <span class="xref std std-ref">rebase</span>, and <span class="xref std std-ref">squash-if-necessary</span>. The information here
+covers situations that happen on occasion and can be cause trouble. As always if
+you have questions, ask for help from the maintainer reviewing your PR.</p>
+</div>
+</section>
+<section id="tips-for-a-successful-pull-request">
+<h3>Tips for a successful pull request<a class="headerlink" href="#tips-for-a-successful-pull-request" title="Link to this heading">#</a></h3>
+<p>If you have made it to this point and submitted a pull request, one of the core
+maintainers will take a look. To make the process as smooth and efficient as possible,
+here are some tips:</p>
+<ul class="simple">
+<li><p><strong>Reference any existing open issue</strong> to <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests">link to that issue</a> and close the
+issue if the PR is merged.</p></li>
+<li><p><strong>Ensure you have appropriate tests</strong>.</p></li>
+<li><p><strong>Keep your pull requests as simple as possible</strong> – larger PRs take longer to review.</p></li>
+<li><p><strong>When practical, limit the scope of a PR to one sub-package</strong> – this means fewer
+required reviewers and a faster review process.</p></li>
+<li><p><strong>Ensure that CI is in a green state</strong> – any required failures should be addressed.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item">
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Contributing Guidelines to scikit-plots</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="guide_docker.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Docker Containerization Guidelines</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+                </footer>
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-development-environment">Creating a development environment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-github-and-git">Set up GitHub and Git</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-a-c-compiler-if-needed">Install a C compiler if needed</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-clone-of-scikit-plots">Create a clone of scikit-plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-isolated-development-environment">Create an isolated development environment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-development-version-of-scikit-plots">Install the development version of scikit-plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-the-build-scikit-plots">Checking the build scikit-plots</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-pre-commit">Install pre-commit</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-submitting-a-pull-request">Creating and submitting a pull request</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-branch">Creating a branch</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-code-or-documentation-changes">Making code or documentation changes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pushing-your-changes">Pushing your changes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-a-pull-request">Making a pull request</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-your-pull-request">Updating your pull request</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-for-a-successful-pull-request">Tips for a successful pull request</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/devel/guide_qu_contribute.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250414.3a87bde 2025-04-14T13:46Z.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>
