@@ -13,7 +13,7 @@
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
 <meta content="An example showing Spam the visualkeras function used by a tf.keras.Model model. Tags: model-type: classification model-workflow: model building plot-type: visualkeras domain: neural network level:..." name="description"/>
-<title>Visualkeras Spam Classification Conv1D Dense Example — scikit-plots 0.4.0rc1 documentation</title>
+<title>Visualkeras Spam Classification Conv1D Dense Example — scikit-plots 0.4.0rc2 documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
@@ -37,7 +37,7 @@
 <link href="../../_static/jupyter-sphinx.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/thebelab.css" rel="stylesheet" type="text/css"/>
 <link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
-<link href="../../_static/jupyterlite_sphinx.css?v=13b285a0" rel="stylesheet" type="text/css"/>
+<link href="../../_static/jupyterlite_sphinx.css?v=2c9f8f05" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery.css?v=d2d258e8" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-binder.css?v=f4aeca0c" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" rel="stylesheet" type="text/css"/>
@@ -50,13 +50,13 @@
 <!-- Pre-loaded scripts that we'll load fully later -->
 <link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
 <link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
-<script src="../../_static/documentation_options.js?v=1b943748"></script>
+<script src="../../_static/documentation_options.js?v=2c6cbd22"></script>
 <script src="../../_static/doctools.js?v=9bcbadda"></script>
 <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
 <script src="../../_static/copybutton.js?v=e93d8674"></script>
 <script src="../../_static/thebelab-helper.js"></script>
-<script src="../../_static/jupyterlite_sphinx.js?v=1cca63f7"></script>
+<script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
 <script src="../../_static/design-tabs.js?v=f930bc37"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
@@ -64,7 +64,7 @@
 <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc2';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -143,7 +143,7 @@
 <ul class="dropdown-menu" id="pst-nav-more-links">
 <li class="">
 <a class="nav-link dropdown-item nav-internal" href="../../whats_new/index.html">
-    Release Notes
+    Release History
   </a>
 </li>
 <li class="">
@@ -158,7 +158,12 @@
 </li>
 <li class="">
 <a class="nav-link dropdown-item nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
-    Developer’s Guide
+    Developer's Guide
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/code_of_conduct.html">
+    Code of Conduct
   </a>
 </li>
 <li class="">
@@ -265,7 +270,7 @@
 </li>
 <li class="nav-item">
 <a class="nav-link nav-internal" href="../../whats_new/index.html">
-    Release Notes
+    Release History
   </a>
 </li>
 <li class="nav-item">
@@ -280,7 +285,12 @@
 </li>
 <li class="nav-item">
 <a class="nav-link nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
-    Developer’s Guide
+    Developer's Guide
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/code_of_conduct.html">
+    Code of Conduct
   </a>
 </li>
 <li class="nav-item">
@@ -435,9 +445,15 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
 
 <span class="c1"># Force garbage collection</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">gc</span><span class="p">;</span> <a class="sphx-glr-backref-module-gc sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/gc.html#gc.collect" title="gc.collect"><span class="n">gc</span><span class="o">.</span><span class="n">collect</span></a><span class="p">()</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">gc</span>
+
+<a class="sphx-glr-backref-module-gc sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/gc.html#gc.collect" title="gc.collect"><span class="n">gc</span><span class="o">.</span><span class="n">collect</span></a><span class="p">()</span>
+
+<span class="c1"># pip install protobuf==5.29.4</span>
+
 <span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
-<span class="c1"># Clear the GPU memory cache</span>
+
+<span class="c1"># Clear any session to reset the state of TensorFlow/Keras</span>
 <a class="sphx-glr-backref-module-tensorflow-keras-backend sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/backend/clear_session" title="tensorflow.keras.backend.clear_session"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">clear_session</span></a><span class="p">()</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
@@ -448,7 +464,9 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <span class="c1"># The Conv1D layer expects a 3D input: (batch_size, steps, channels).</span>
 <span class="c1"># The Reshape layer now reshapes the input to (n_timesteps,n_features) like (100, 1),</span>
 <span class="c1"># which matches the expected input of Conv1D.</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Reshape" title="tensorflow.keras.layers.Reshape"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Reshape</span></a><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>  <span class="c1"># Shape: (batch_size, 100, 1), input_shape=(100,)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Reshape" title="tensorflow.keras.layers.Reshape"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Reshape</span></a><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="p">)</span>  <span class="c1"># Shape: (batch_size, 100, 1), input_shape=(100,)</span>
 
 <span class="c1"># Add Conv1D and other layers</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Conv1D" title="tensorflow.keras.layers.Conv1D"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv1D</span></a><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">))</span>
@@ -457,32 +475,36 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 
 <span class="c1"># Flatten and add Dense layers</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Flatten" title="tensorflow.keras.layers.Flatten"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span></a><span class="p">())</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dense" title="tensorflow.keras.layers.Dense"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span></a><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dense" title="tensorflow.keras.layers.Dense"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span></a><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dense" title="tensorflow.keras.layers.Dense"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'sigmoid'</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dense" title="tensorflow.keras.layers.Dense"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span></a><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dense" title="tensorflow.keras.layers.Dense"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span></a><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dense" title="tensorflow.keras.layers.Dense"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">"sigmoid"</span><span class="p">))</span>
 
 <span class="c1"># Compile the model</span>
-<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">'rmsprop'</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">'binary_crossentropy'</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">'accuracy'</span><span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">"rmsprop"</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">"binary_crossentropy"</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">"accuracy"</span><span class="p">])</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">visualkeras</span>
 
 <span class="n">img_spam</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
-  <span class="n">model</span><span class="p">,</span>
-  <span class="n">to_file</span><span class="o">=</span><span class="s1">'../result_images/spam_conv.png'</span><span class="p">,</span>
-  <span class="n">min_xy</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">min_z</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">scale_xy</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">scale_z</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-  <span class="n">one_dim_orientation</span><span class="o">=</span><span class="s1">'x'</span><span class="p">,</span>
+    <span class="n">model</span><span class="p">,</span>
+    <span class="n">to_file</span><span class="o">=</span><span class="s2">"../result_images/spam_conv.png"</span><span class="p">,</span>
+    <span class="n">min_xy</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">min_z</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">scale_xy</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">scale_z</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">one_dim_orientation</span><span class="o">=</span><span class="s2">"x"</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
     <a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.imshow.html#matplotlib.pyplot.imshow" title="matplotlib.pyplot.imshow"><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span></a><span class="p">(</span><span class="n">img_spam</span><span class="p">)</span>
-    <a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axis.html#matplotlib.pyplot.axis" title="matplotlib.pyplot.axis"><span class="n">plt</span><span class="o">.</span><span class="n">axis</span></a><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
+    <a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axis.html#matplotlib.pyplot.axis" title="matplotlib.pyplot.axis"><span class="n">plt</span><span class="o">.</span><span class="n">axis</span></a><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span>
     <a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
 <img alt="plot conv dense" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_conv_dense_001.png" srcset="../../_images/sphx_glr_plot_conv_dense_001.png"/><p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-model-building.html"><span class="doc">model-workflow: model building</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-visualkeras.html"><span class="doc">plot-type: visualkeras</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger reference internal" href="../../_tags/domain-neural-network.html"><span class="doc">domain: neural network</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-intermediate.html"><span class="doc">level: intermediate</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 7.983 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.474 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_dense_thumb.png"/>
@@ -531,7 +553,7 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <li><a href="../../_sources/auto_examples/visualkeras_ANN/plot_conv_dense.rst.txt" rel="nofollow">Show Source</a></li>
 </ul>
 </div></div>
-<div class="sidebar-secondary-item"><div title="plot_conv_dense.py"><a download="" href="../../_downloads/6f53ca3c94f0d0f90360c522b4976d86/plot_conv_dense.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_conv_dense.ipynb"><a download="" href="../../_downloads/6c042eb30e2bee3a52110593b42c698f/plot_conv_dense.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/visualkeras_ANN/plot_conv_dense.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo7.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/0.4.X?urlpath=lab/tree/notebooks/auto_examples/visualkeras_ANN/plot_conv_dense.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo7.svg"/></a></div></div></div></div>
+<div class="sidebar-secondary-item"><div title="plot_conv_dense.py"><a download="" href="../../_downloads/6f53ca3c94f0d0f90360c522b4976d86/plot_conv_dense.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_conv_dense.ipynb"><a download="" href="../../_downloads/6c042eb30e2bee3a52110593b42c698f/plot_conv_dense.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/visualkeras_ANN/plot_conv_dense.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo7.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/maintenance/0.4.X?urlpath=lab/tree/notebooks/auto_examples/visualkeras_ANN/plot_conv_dense.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo7.svg"/></a></div></div></div></div>
 </div>
 <footer class="bd-footer-content">
 </footer>
@@ -547,7 +569,7 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025, scikit-plots developers (BSD-3 Clause License).
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc2 April 14, 2025 11:30.
       <br/>
 </p>
 </div>

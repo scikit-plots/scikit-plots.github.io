@@ -24,7 +24,7 @@ plot_residuals_distribution with examples
 An example showing the :py:func:`~scikitplot.api.metrics.plot_residuals_distribution` function
 used by a scikit-learn regressor.
 
-.. GENERATED FROM PYTHON SOURCE LINES 8-54
+.. GENERATED FROM PYTHON SOURCE LINES 8-48
 
 .. code-block:: Python
 
@@ -32,23 +32,19 @@ used by a scikit-learn regressor.
     # Authors: The scikit-plots developers
     # SPDX-License-Identifier: BSD-3-Clause
 
+    import numpy as np
     from sklearn.datasets import (
-        make_classification,
         load_diabetes as load_data,
     )
-    from sklearn.model_selection import train_test_split
     from sklearn.linear_model import LinearRegression
-    from sklearn.svm import LinearSVR
-    from sklearn.ensemble import RandomForestRegressor
-    from sklearn.model_selection import cross_val_predict
+    from sklearn.model_selection import train_test_split
 
-    import numpy as np; np.random.seed(0)  # reproducibility
+    np.random.seed(0)  # reproducibility
     # importing pylab or pyplot
     import matplotlib.pyplot as plt
 
     # Import scikit-plot
     import scikitplot as sp
-    import scikitplot.probscale as probscale
 
     # Load the data
     X, y = load_data(return_X_y=True, as_frame=True)
@@ -61,9 +57,7 @@ used by a scikit-learn regressor.
     y_val_pred = model.predict(X_val)
 
     # Plot!
-    ax = sp.metrics.plot_residuals_distribution(
-        y_val, y_val_pred, dist_type='normal'
-    );
+    ax = sp.metrics.plot_residuals_distribution(y_val, y_val_pred, dist_type="normal")
 
     # Adjust layout to make sure everything fits
     plt.tight_layout()
@@ -93,7 +87,7 @@ used by a scikit-learn regressor.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 55-71
+.. GENERATED FROM PYTHON SOURCE LINES 49-66
 
 .. admonition:: References
 
@@ -116,7 +110,7 @@ used by a scikit-learn regressor.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.899 seconds)
+   **Total running time of the script:** (0 minutes 0.366 seconds)
 
 
 .. _sphx_glr_download_auto_examples_regression_plot_residuals_distribution_script.py:
@@ -128,7 +122,7 @@ used by a scikit-learn regressor.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-plots/scikit-plots/0.4.X?urlpath=lab/tree/notebooks/auto_examples/regression/plot_residuals_distribution_script.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-plots/scikit-plots/maintenance/0.4.X?urlpath=lab/tree/notebooks/auto_examples/regression/plot_residuals_distribution_script.ipynb
         :alt: Launch binder
         :width: 150 px
 

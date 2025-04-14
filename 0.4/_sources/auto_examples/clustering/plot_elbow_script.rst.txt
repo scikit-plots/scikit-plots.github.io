@@ -46,21 +46,18 @@ Load the dataset
 
 We will start by loading the ``iris`` dataset.
 
-.. GENERATED FROM PYTHON SOURCE LINES 17-38
+.. GENERATED FROM PYTHON SOURCE LINES 17-35
 
 .. code-block:: Python
 
+    import numpy as np
+    from sklearn.cluster import KMeans
     from sklearn.datasets import (
-        make_classification,
-        load_breast_cancer as data_2_classes,
         load_iris as data_3_classes,
-        load_digits as data_10_classes,
     )
     from sklearn.model_selection import train_test_split
-    from sklearn.cluster import KMeans
-    from sklearn.model_selection import cross_val_predict
 
-    import numpy as np; np.random.seed(0)  # reproducibility
+    np.random.seed(0)  # reproducibility
     # importing pylab or pyplot
     import matplotlib.pyplot as plt
 
@@ -78,14 +75,14 @@ We will start by loading the ``iris`` dataset.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 39-43
+.. GENERATED FROM PYTHON SOURCE LINES 36-40
 
 Model Training
 --------------
 
 Create an instance of the LogisticRegression
 
-.. GENERATED FROM PYTHON SOURCE LINES 43-46
+.. GENERATED FROM PYTHON SOURCE LINES 40-43
 
 .. code-block:: Python
 
@@ -99,22 +96,18 @@ Create an instance of the LogisticRegression
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-51
+.. GENERATED FROM PYTHON SOURCE LINES 44-48
 
 Visualize the results
 ---------------------
 
 Plot!
 
-.. GENERATED FROM PYTHON SOURCE LINES 51-66
+.. GENERATED FROM PYTHON SOURCE LINES 48-59
 
 .. code-block:: Python
 
-    ax = sp.estimators.plot_elbow(
-        model, 
-        X_train, 
-        cluster_ranges=range(1, 11)
-    );
+    ax = sp.estimators.plot_elbow(model, X_train, cluster_ranges=range(1, 11))
 
     # Adjust layout to make sure everything fits
     plt.tight_layout()
@@ -137,7 +130,7 @@ Plot!
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-76
+.. GENERATED FROM PYTHON SOURCE LINES 60-70
 
 .. tags::
 
@@ -153,7 +146,7 @@ Plot!
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.539 seconds)
+   **Total running time of the script:** (0 minutes 0.183 seconds)
 
 
 .. _sphx_glr_download_auto_examples_clustering_plot_elbow_script.py:
@@ -165,7 +158,7 @@ Plot!
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-plots/scikit-plots/0.4.X?urlpath=lab/tree/notebooks/auto_examples/clustering/plot_elbow_script.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-plots/scikit-plots/maintenance/0.4.X?urlpath=lab/tree/notebooks/auto_examples/clustering/plot_elbow_script.ipynb
         :alt: Launch binder
         :width: 150 px
 

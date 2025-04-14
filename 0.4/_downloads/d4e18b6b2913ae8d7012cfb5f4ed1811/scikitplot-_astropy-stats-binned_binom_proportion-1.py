@@ -2,8 +2,7 @@ import numpy as np
 from scipy.special import erf
 from scipy.stats.distributions import binom
 import matplotlib.pyplot as plt
-# from astropy.stats import binned_binom_proportion
-from scikitplot.stats import binned_binom_proportion
+from ..stats import binned_binom_proportion
 def true_efficiency(x):
     return 0.5 - 0.5 * erf((x - 25.) / 2.)
 np.random.seed(400)

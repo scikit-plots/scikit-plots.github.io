@@ -25,7 +25,7 @@ plot_ks_statistic with examples
 An example showing the :py:func:`~scikitplot.kds.plot_ks_statistic` function used
 by a scikit-learn classifier.
 
-.. GENERATED FROM PYTHON SOURCE LINES 9-57
+.. GENERATED FROM PYTHON SOURCE LINES 9-49
 
 .. code-block:: Python
 
@@ -33,20 +33,14 @@ by a scikit-learn classifier.
     # Authors: The scikit-plots developers
     # SPDX-License-Identifier: BSD-3-Clause
 
+    import numpy as np
     from sklearn.datasets import (
-        make_classification,
         load_breast_cancer as data_2_classes,
-        load_iris as data_3_classes,
-        load_digits as data_10_classes,
     )
-    from sklearn.model_selection import train_test_split
     from sklearn.linear_model import LogisticRegression
-    from sklearn.naive_bayes import GaussianNB
-    from sklearn.svm import LinearSVC
-    from sklearn.ensemble import RandomForestClassifier
-    from sklearn.model_selection import cross_val_predict
+    from sklearn.model_selection import train_test_split
 
-    import numpy as np; np.random.seed(0)  # reproducibility
+    np.random.seed(0)  # reproducibility
     # importing pylab or pyplot
     import matplotlib.pyplot as plt
 
@@ -64,9 +58,7 @@ by a scikit-learn classifier.
     y_val_prob = model.predict_proba(X_val)
 
     # Plot!
-    ax = sp.kds.plot_ks_statistic(
-        y_val, y_val_prob
-    );
+    ax = sp.kds.plot_ks_statistic(y_val, y_val_prob)
 
     # Adjust layout to make sure everything fits
     plt.tight_layout()
@@ -89,7 +81,7 @@ by a scikit-learn classifier.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 58-67
+.. GENERATED FROM PYTHON SOURCE LINES 50-60
 
 .. tags::
 
@@ -105,7 +97,7 @@ by a scikit-learn classifier.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.736 seconds)
+   **Total running time of the script:** (0 minutes 1.002 seconds)
 
 
 .. _sphx_glr_download_auto_examples_kds_plot_ks_statistic_script.py:
@@ -117,7 +109,7 @@ by a scikit-learn classifier.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-plots/scikit-plots/0.4.X?urlpath=lab/tree/notebooks/auto_examples/kds/plot_ks_statistic_script.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-plots/scikit-plots/maintenance/0.4.X?urlpath=lab/tree/notebooks/auto_examples/kds/plot_ks_statistic_script.ipynb
         :alt: Launch binder
         :width: 150 px
 

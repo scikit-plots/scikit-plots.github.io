@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="Runtime dependencies: Required: When installing through a package manager like pip or conda, the mandatory dependencies are automatically installed. This list is mainly for reference. Python(>= 3.1..." />
 
-    <title>Dependencies &#8212; scikit-plots 0.4.0rc1 documentation</title>
+    <title>Dependencies &#8212; scikit-plots 0.4.0rc2 documentation</title>
   
   
   
@@ -45,7 +45,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=13b285a0" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=2c9f8f05" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -60,13 +60,13 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=1b943748"></script>
+    <script src="../_static/documentation_options.js?v=2c6cbd22"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=e93d8674"></script>
     <script src="../_static/thebelab-helper.js"></script>
-    <script src="../_static/jupyterlite_sphinx.js?v=1cca63f7"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
@@ -74,7 +74,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc2';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -83,7 +83,7 @@
     <link rel="icon" href="../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Quick Start" href="../introduction/quick_start.html" />
+    <link rel="next" title="Quick Start Guide" href="../introduction/quick_start.html" />
     <link rel="prev" title="Installing scikit-plots" href="installation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -213,7 +213,7 @@
                     
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../whats_new/index.html">
-    Release Notes
+    Release History
   </a>
 </li>
 
@@ -234,7 +234,14 @@
 
 <li class=" ">
   <a class="nav-link dropdown-item nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
-    Developer’s Guide
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/code_of_conduct.html">
+    Code of Conduct
   </a>
 </li>
 
@@ -420,7 +427,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../whats_new/index.html">
-    Release Notes
+    Release History
   </a>
 </li>
 
@@ -441,7 +448,14 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
-    Developer’s Guide
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/code_of_conduct.html">
+    Code of Conduct
   </a>
 </li>
 
@@ -637,7 +651,7 @@ of Matplotlib.</p>
 <section id="backends">
 <span id="backend-dependencies"></span><h4>Backends<a class="headerlink" href="#backends" title="Link to this heading">#</a></h4>
 <p>Matplotlib figures can be rendered to various user interfaces. See
-<a class="reference external" href="https://matplotlib.org/stable/users/explain/figure/backends.html#what-is-a-backend" title="(in Matplotlib v3.10.0)"><span>What is a backend?</span></a> for more details on the optional Matplotlib backends
+<a class="reference external" href="https://matplotlib.org/stable/users/explain/figure/backends.html#what-is-a-backend" title="(in Matplotlib v3.10.1)"><span>What is a backend?</span></a> for more details on the optional Matplotlib backends
 and the capabilities they provide.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.python.org/3/library/tk.html">Tk</a> (&gt;= 8.5, != 8.6.0 or 8.6.1): for the Tk-based backends. Tk is part of
@@ -767,12 +781,12 @@ which have a minimum version of pip which will recognize the wheels</p>
 <span id="development-dependencies"></span><h2>Build dependencies<a class="headerlink" href="#build-dependencies" title="Link to this heading">#</a></h2>
 <section id="setup-dependencies">
 <span id="id3"></span><h3>Python<a class="headerlink" href="#setup-dependencies" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">pip</span></code> normally builds packages using <a class="reference external" href="https://pip.pypa.io/en/stable/reference/build-system/pyproject-toml/" title="(in pip v24.3)"><span class="xref std std-doc">build isolation</span></a>,
+<p><code class="docutils literal notranslate"><span class="pre">pip</span></code> normally builds packages using <a class="reference external" href="https://pip.pypa.io/en/stable/reference/build-system/pyproject-toml/" title="(in pip v25.0)"><span class="xref std std-doc">build isolation</span></a>,
 which means that <code class="docutils literal notranslate"><span class="pre">pip</span></code> installs the dependencies listed here for the
 duration of the build process. However, build isolation is disabled via the the
-<a class="reference external" href="https://pip.pypa.io/en/stable/cli/pip_install/#install-no-build-isolation" title="(in pip v24.3)"><span class="xref std std-ref">–no-build-isolation</span></a> flag
-when <a class="reference internal" href="../devel/development_setup.html#development-install"><span class="std std-ref">installing Matplotlib for development</span></a>, which
-means that the dependencies must be explicitly installed, either by <a class="reference internal" href="../devel/development_setup.html#dev-environment"><span class="std std-ref">creating a virtual environment</span></a>
+<a class="reference external" href="https://pip.pypa.io/en/stable/cli/pip_install/#install-no-build-isolation" title="(in pip v25.0)"><span class="xref std std-ref">–no-build-isolation</span></a> flag
+when <a class="reference internal" href="../devel/guide_devel_setup.html#development-install"><span class="std std-ref">installing Matplotlib for development</span></a>, which
+means that the dependencies must be explicitly installed, either by <a class="reference internal" href="../devel/guide_devel_setup.html#dev-environment"><span class="std std-ref">creating a virtual environment</span></a>
 (recommended) or by manually installing the following packages:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://meson-python.readthedocs.io/">meson-python</a> (&gt;= 0.13.1).</p></li>
@@ -862,7 +876,7 @@ VS Code or Linux package manager. Choose <strong>one</strong> compiler from this
 <section id="test-dependencies">
 <span id="id5"></span><h2>Test dependencies<a class="headerlink" href="#test-dependencies" title="Link to this heading">#</a></h2>
 <p>This section lists the additional software required for
-<a class="reference internal" href="../devel/testing.html#testing"><span class="std std-ref">running the tests</span></a>.</p>
+<a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/testing.html#testing" title="(in xarray v2025.3.2.dev0)"><span class="xref std std-ref">running the tests</span></a>.</p>
 <section id="id6">
 <h3>Required<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -875,7 +889,7 @@ VS Code or Linux package manager. Choose <strong>one</strong> compiler from this
 testing the following will be used if they are installed.</p>
 <section id="id8">
 <h4>Python<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
-<p>These packages are installed when <a class="reference internal" href="../devel/development_setup.html#dev-environment"><span class="std std-ref">creating a virtual environment</span></a>,
+<p>These packages are installed when <a class="reference internal" href="../devel/guide_devel_setup.html#dev-environment"><span class="std std-ref">creating a virtual environment</span></a>,
 otherwise they must be installed manually:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://pypi.org/project/nbformat/">nbformat</a> and <a class="reference external" href="https://pypi.org/project/nbconvert/">nbconvert</a> used to test the notebook backend</p></li>
@@ -916,39 +930,12 @@ tests will not find it.</p>
 <section id="id9">
 <h3>Python<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p>The additional Python packages required to build the
-<a class="reference external" href="https://matplotlib.org/stable/devel/document.html#documenting-matplotlib" title="(in Matplotlib v3.10.0)"><span class="xref std std-ref">documentation</span></a> are listed in
+<a class="reference external" href="https://matplotlib.org/stable/devel/document.html#documenting-matplotlib" title="(in Matplotlib v3.10.1)"><span class="xref std std-ref">documentation</span></a> are listed in
 <code class="file docutils literal notranslate"><span class="pre">doc-requirements.txt</span></code> and can be installed using</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">doc</span><span class="o">-</span><span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
-<p>The content of <code class="file docutils literal notranslate"><span class="pre">doc-requirements.txt</span></code> is also shown below:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Requirements for building docs</span>
-<span class="c1">#</span>
-<span class="c1"># You will first need a matching Matplotlib installation</span>
-<span class="c1"># e.g (from the Matplotlib root directory)</span>
-<span class="c1">#     pip install --no-build-isolation --editable .[dev]</span>
-<span class="c1">#</span>
-<span class="c1"># Install the documentation requirements with:</span>
-<span class="c1">#     pip install -r requirements/doc/doc-requirements.txt</span>
-<span class="c1">#</span>
-<span class="n">sphinx</span><span class="o">&gt;=</span><span class="mf">5.1.0</span><span class="p">,</span><span class="o">!=</span><span class="mf">6.1.2</span>
-<span class="n">colorspacious</span>
-<span class="n">ipython</span>
-<span class="n">ipywidgets</span>
-<span class="n">ipykernel</span>
-<span class="n">numpydoc</span><span class="o">&gt;=</span><span class="mf">1.0</span>
-<span class="n">packaging</span><span class="o">&gt;=</span><span class="mi">20</span>
-<span class="n">pydata</span><span class="o">-</span><span class="n">sphinx</span><span class="o">-</span><span class="n">theme</span><span class="o">~=</span><span class="mf">0.15.0</span>
-<span class="n">mpl</span><span class="o">-</span><span class="n">sphinx</span><span class="o">-</span><span class="n">theme</span><span class="o">~=</span><span class="mf">3.9.0</span>
-<span class="n">pyyaml</span>
-<span class="n">sphinxcontrib</span><span class="o">-</span><span class="n">svg2pdfconverter</span><span class="o">&gt;=</span><span class="mf">1.1.0</span>
-<span class="n">sphinxcontrib</span><span class="o">-</span><span class="n">video</span><span class="o">&gt;=</span><span class="mf">0.2.1</span>
-<span class="n">sphinx</span><span class="o">-</span><span class="n">copybutton</span>
-<span class="n">sphinx</span><span class="o">-</span><span class="n">design</span>
-<span class="n">sphinx</span><span class="o">-</span><span class="n">gallery</span><span class="p">[</span><span class="n">parallel</span><span class="p">]</span><span class="o">&gt;=</span><span class="mf">0.12.0</span>
-<span class="n">sphinx</span><span class="o">-</span><span class="n">tags</span><span class="o">&gt;=</span><span class="mf">0.4.0</span>
-</pre></div>
-</div>
+<p>The content of <code class="file docutils literal notranslate"><span class="pre">docs.txt</span></code> is also shown below:</p>
 </section>
 <section id="doc-dependencies-external">
 <span id="id10"></span><h3>External tools<a class="headerlink" href="#doc-dependencies-external" title="Link to this heading">#</a></h3>
@@ -1010,7 +997,7 @@ process will raise various warnings.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Quick Start</p>
+        <p class="prev-next-title">Quick Start Guide</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1114,7 +1101,7 @@ process will raise various warnings.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025, scikit-plots developers (BSD-3 Clause License).
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc2 April 14, 2025 11:30.
       <br/>
     
   </p>

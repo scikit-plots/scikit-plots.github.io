@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="Obtaining Matplotlib version: To find out your Matplotlib version number, import it and print the__version__ attribute: matplotlib install location: You can find what directory Matplotlib is instal..." />
 
-    <title>Troubleshooting &#8212; scikit-plots 0.4.0rc1 documentation</title>
+    <title>Troubleshooting &#8212; scikit-plots 0.4.0rc2 documentation</title>
   
   
   
@@ -45,7 +45,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=13b285a0" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=2c9f8f05" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -60,13 +60,13 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=1b943748"></script>
+    <script src="../_static/documentation_options.js?v=2c6cbd22"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=e93d8674"></script>
     <script src="../_static/thebelab-helper.js"></script>
-    <script src="../_static/jupyterlite_sphinx.js?v=1cca63f7"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
@@ -74,7 +74,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc2';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -211,7 +211,7 @@
                     
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../whats_new/index.html">
-    Release Notes
+    Release History
   </a>
 </li>
 
@@ -232,7 +232,14 @@
 
 <li class=" ">
   <a class="nav-link dropdown-item nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
-    Developer’s Guide
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/code_of_conduct.html">
+    Code of Conduct
   </a>
 </li>
 
@@ -420,7 +427,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../whats_new/index.html">
-    Release Notes
+    Release History
   </a>
 </li>
 
@@ -441,7 +448,14 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
-    Developer’s Guide
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/code_of_conduct.html">
+    Code of Conduct
   </a>
 </li>
 
@@ -606,9 +620,9 @@ and printing the <code class="docutils literal notranslate"><span class="pre">__
 <section id="matplotlib-configuration-and-cache-directory-locations">
 <span id="locating-matplotlib-config-dir"></span><h2><code class="file docutils literal notranslate"><span class="pre">matplotlib</span></code> configuration and cache directory locations<a class="headerlink" href="#matplotlib-configuration-and-cache-directory-locations" title="Link to this heading">#</a></h2>
 <p>Each user has a Matplotlib configuration directory which may contain a
-<a class="reference external" href="https://matplotlib.org/stable/users/explain/customizing.html#customizing-with-matplotlibrc-files" title="(in Matplotlib v3.10.0)"><span class="xref std std-ref">matplotlibrc</span></a> file. To
+<a class="reference external" href="https://matplotlib.org/stable/users/explain/customizing.html#customizing-with-matplotlibrc-files" title="(in Matplotlib v3.10.1)"><span class="xref std std-ref">matplotlibrc</span></a> file. To
 locate your <code class="file docutils literal notranslate"><span class="pre">matplotlib/</span></code> configuration directory, use
-<a class="reference external" href="https://matplotlib.org/stable/api/matplotlib_configuration_api.html#matplotlib.get_configdir" title="(in Matplotlib v3.10.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.get_configdir</span></code></a>:</p>
+<a class="reference external" href="https://matplotlib.org/stable/api/matplotlib_configuration_api.html#matplotlib.get_configdir" title="(in Matplotlib v3.10.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.get_configdir</span></code></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mpl</span><span class="o">.</span><span class="n">get_configdir</span><span class="p">()</span>
 <span class="go">&#39;/home/darren/.config/matplotlib&#39;</span>
@@ -618,7 +632,7 @@ locate your <code class="file docutils literal notranslate"><span class="pre">ma
 <span class="target" id="index-0"></span><a class="reference internal" href="environment_variables_faq.html#envvar-HOME"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">HOME</span></code></a> directory under the <code class="file docutils literal notranslate"><span class="pre">.config/</span></code> directory.</p>
 <p>In addition, users have a cache directory. On Unix-like systems, this is
 separate from the configuration directory by default. To locate your
-<code class="file docutils literal notranslate"><span class="pre">.cache/</span></code> directory, use <a class="reference external" href="https://matplotlib.org/stable/api/matplotlib_configuration_api.html#matplotlib.get_cachedir" title="(in Matplotlib v3.10.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.get_cachedir</span></code></a>:</p>
+<code class="file docutils literal notranslate"><span class="pre">.cache/</span></code> directory, use <a class="reference external" href="https://matplotlib.org/stable/api/matplotlib_configuration_api.html#matplotlib.get_cachedir" title="(in Matplotlib v3.10.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.get_cachedir</span></code></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mpl</span><span class="o">.</span><span class="n">get_cachedir</span><span class="p">()</span>
 <span class="go">&#39;/home/darren/.cache/matplotlib&#39;</span>
@@ -716,7 +730,7 @@ directory and the cache directory.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025, scikit-plots developers (BSD-3 Clause License).
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc2 April 14, 2025 11:30.
       <br/>
     
   </p>

@@ -24,7 +24,7 @@ plot_feature_importances with examples
 An example showing the :py:func:`~scikitplot.api.estimators.plot_feature_importances` function
 used by a scikit-learn classifier.
 
-.. GENERATED FROM PYTHON SOURCE LINES 8-54
+.. GENERATED FROM PYTHON SOURCE LINES 8-48
 
 .. code-block:: Python
 
@@ -32,20 +32,14 @@ used by a scikit-learn classifier.
     # Authors: The scikit-plots developers
     # SPDX-License-Identifier: BSD-3-Clause
 
+    import numpy as np
     from sklearn.datasets import (
-      make_classification,
-      load_breast_cancer as data_2_classes,
-      load_iris as data_3_classes,
-      load_digits as data_10_classes,
+        load_iris as data_3_classes,
     )
-    from sklearn.model_selection import train_test_split
-    from sklearn.linear_model import LogisticRegression
-    from sklearn.naive_bayes import GaussianNB
-    from sklearn.svm import LinearSVC
     from sklearn.ensemble import RandomForestClassifier
-    from sklearn.model_selection import cross_val_predict
+    from sklearn.model_selection import train_test_split
 
-    import numpy as np; np.random.seed(0)  # reproducibility
+    np.random.seed(0)  # reproducibility
     # importing pylab or pyplot
     import matplotlib.pyplot as plt
 
@@ -61,9 +55,9 @@ used by a scikit-learn classifier.
 
     # Plot!
     ax, features = sp.estimators.plot_feature_importances(
-      model, 
-      feature_names=['petal length', 'petal width', 'sepal length', 'sepal width'],
-    );
+        model,
+        feature_names=["petal length", "petal width", "sepal length", "sepal width"],
+    )
 
     # Adjust layout to make sure everything fits
     plt.tight_layout()
@@ -86,7 +80,7 @@ used by a scikit-learn classifier.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 55-68
+.. GENERATED FROM PYTHON SOURCE LINES 49-63
 
 .. admonition:: References
 
@@ -106,7 +100,7 @@ used by a scikit-learn classifier.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.557 seconds)
+   **Total running time of the script:** (0 minutes 0.237 seconds)
 
 
 .. _sphx_glr_download_auto_examples_classification_plot_feature_importances_script.py:
@@ -118,7 +112,7 @@ used by a scikit-learn classifier.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-plots/scikit-plots/0.4.X?urlpath=lab/tree/notebooks/auto_examples/classification/plot_feature_importances_script.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-plots/scikit-plots/maintenance/0.4.X?urlpath=lab/tree/notebooks/auto_examples/classification/plot_feature_importances_script.ipynb
         :alt: Launch binder
         :width: 150 px
 
