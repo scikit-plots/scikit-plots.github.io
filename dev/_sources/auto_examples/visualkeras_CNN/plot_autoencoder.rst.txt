@@ -18,13 +18,13 @@
 .. _sphx_glr_auto_examples_visualkeras_CNN_plot_autoencoder.py:
 
 
-visualkeras autoencoder example
+visualkeras: autoencoder example
 ==========================================
 
 An example showing the :py:func:`~scikitplot.visualkeras` function
 used by a :py:class:`~tensorflow.keras.Model` model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 8-61
+.. GENERATED FROM PYTHON SOURCE LINES 8-12
 
 .. code-block:: Python
 
@@ -32,17 +32,61 @@ used by a :py:class:`~tensorflow.keras.Model` model.
     # Authors: The scikit-plots developers
     # SPDX-License-Identifier: BSD-3-Clause
 
-    # Force garbage collection
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 13-14
+
+Force garbage collection
+
+.. GENERATED FROM PYTHON SOURCE LINES 14-19
+
+.. code-block:: Python
+
+
     import gc
 
     gc.collect()
 
-    # pip install protobuf==5.29.4
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    3
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 20-27
+
+.. code-block:: Python
+
+
+    # pip install protobuf==5.29.4
     import tensorflow as tf
 
     # Clear any session to reset the state of TensorFlow/Keras
     tf.keras.backend.clear_session()
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 28-49
+
+.. code-block:: Python
+
 
     # encoder Model
     encoder_input = tf.keras.Input(shape=(28, 28, 1), name="img")
@@ -62,24 +106,116 @@ used by a :py:class:`~tensorflow.keras.Model` model.
     x = tf.keras.layers.Conv2DTranspose(16, 3, activation="relu")(x)
     decoder_output = tf.keras.layers.Conv2DTranspose(1, 3, activation="relu")(x)
     autoencoder = tf.keras.Model(encoder_input, decoder_output, name="autoencoder")
+    autoencoder.summary()
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Model: "autoencoder"
+    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+    ┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃
+    ┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+    │ img (InputLayer)                │ (None, 28, 28, 1)      │             0 │
+    ├─────────────────────────────────┼────────────────────────┼───────────────┤
+    │ conv2d (Conv2D)                 │ (None, 26, 26, 16)     │           160 │
+    ├─────────────────────────────────┼────────────────────────┼───────────────┤
+    │ conv2d_1 (Conv2D)               │ (None, 24, 24, 32)     │         4,640 │
+    ├─────────────────────────────────┼────────────────────────┼───────────────┤
+    │ max_pooling2d (MaxPooling2D)    │ (None, 8, 8, 32)       │             0 │
+    ├─────────────────────────────────┼────────────────────────┼───────────────┤
+    │ conv2d_2 (Conv2D)               │ (None, 6, 6, 32)       │         9,248 │
+    ├─────────────────────────────────┼────────────────────────┼───────────────┤
+    │ conv2d_3 (Conv2D)               │ (None, 4, 4, 16)       │         4,624 │
+    ├─────────────────────────────────┼────────────────────────┼───────────────┤
+    │ global_max_pooling2d            │ (None, 16)             │             0 │
+    │ (GlobalMaxPooling2D)            │                        │               │
+    ├─────────────────────────────────┼────────────────────────┼───────────────┤
+    │ reshape (Reshape)               │ (None, 4, 4, 1)        │             0 │
+    ├─────────────────────────────────┼────────────────────────┼───────────────┤
+    │ conv2d_transpose                │ (None, 6, 6, 16)       │           160 │
+    │ (Conv2DTranspose)               │                        │               │
+    ├─────────────────────────────────┼────────────────────────┼───────────────┤
+    │ conv2d_transpose_1              │ (None, 8, 8, 32)       │         4,640 │
+    │ (Conv2DTranspose)               │                        │               │
+    ├─────────────────────────────────┼────────────────────────┼───────────────┤
+    │ up_sampling2d (UpSampling2D)    │ (None, 24, 24, 32)     │             0 │
+    ├─────────────────────────────────┼────────────────────────┼───────────────┤
+    │ conv2d_transpose_2              │ (None, 26, 26, 16)     │         4,624 │
+    │ (Conv2DTranspose)               │                        │               │
+    ├─────────────────────────────────┼────────────────────────┼───────────────┤
+    │ conv2d_transpose_3              │ (None, 28, 28, 1)      │           145 │
+    │ (Conv2DTranspose)               │                        │               │
+    └─────────────────────────────────┴────────────────────────┴───────────────┘
+     Total params: 28,241 (110.32 KB)
+     Trainable params: 28,241 (110.32 KB)
+     Non-trainable params: 0 (0.00 B)
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 50-70
+
+.. code-block:: Python
+
+
+    # Build the model with an explicit input shape
+    autoencoder.build(
+        input_shape=(None, 28, 28, 1)
+    )  # Batch size of None, shape (28, 28, 1)
+
+    # Create a dummy input tensor with a batch size of 1
+    dummy_input = tf.random.normal([1, 28, 28, 1])  # Batch size of 1, shape (28, 28, 1)
+    # Run the dummy input through the model to trigger shape calculation
+    encoder_output = autoencoder(dummy_input)
+    # Now check the output shape of the encoder
+    print("Output shape after running model with dummy input:", encoder_output.shape)
+
+    # Check each layer's output shape after building the model
+    for layer in encoder.layers:
+        if hasattr(layer, "output_shape"):
+            print(f"{layer.name} output shape: {layer.output_shape}")
+        if hasattr(layer, "output"):
+            print(f"{layer.name} shape: {layer.output.shape}")
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Output shape after running model with dummy input: (1, 28, 28, 1)
+    img shape: (None, 28, 28, 1)
+    conv2d shape: (None, 26, 26, 16)
+    conv2d_1 shape: (None, 24, 24, 32)
+    max_pooling2d shape: (None, 8, 8, 32)
+    conv2d_2 shape: (None, 6, 6, 32)
+    conv2d_3 shape: (None, 4, 4, 16)
+    global_max_pooling2d shape: (None, 16)
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 71-82
+
+.. code-block:: Python
+
 
     from scikitplot import visualkeras
 
-    img_encoder = visualkeras.layered_view(encoder, to_file="../result_images/encoder.png")
-    img_autoencoder = visualkeras.layered_view(
-        autoencoder, to_file="../result_images/autoencoder.png"
+    img_encoder = visualkeras.layered_view(
+        encoder,
+        text_callable="default",
+        # to_file="result_images/encoder.png",
+        save_fig=True,
+        save_fig_filename="encoder.png",
     )
-    try:
-        import matplotlib.pyplot as plt
-
-        plt.imshow(img_encoder)
-        plt.axis("off")
-        plt.show()
-        plt.imshow(img_autoencoder)
-        plt.axis("off")
-        plt.show()
-    except:
-        pass
 
 
 
@@ -93,7 +229,73 @@ used by a :py:class:`~tensorflow.keras.Model` model.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 62-70
+.. GENERATED FROM PYTHON SOURCE LINES 83-91
+
+.. code-block:: Python
+
+
+    img_autoencoder = visualkeras.layered_view(
+        autoencoder,
+        # to_file="result_images/autoencoder.png",
+        save_fig=True,
+        save_fig_filename="autoencoder.png",
+    )
+
+
+
+
+.. image-sg:: /auto_examples/visualkeras_CNN/images/sphx_glr_plot_autoencoder_002.png
+   :alt: plot autoencoder
+   :srcset: /auto_examples/visualkeras_CNN/images/sphx_glr_plot_autoencoder_002.png
+   :class: sphx-glr-single-img
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 92-111
+
+.. code-block:: Python
+
+
+    img_autoencoder_text = visualkeras.layered_view(
+        autoencoder,
+        min_z=1,
+        min_xy=1,
+        max_z=4096,
+        max_xy=4096,
+        scale_z=1,
+        scale_xy=1,
+        # font={"font_size": 14},
+        text_callable="default",
+        # to_file="result_images/autoencoder_text.png",
+        save_fig=True,
+        save_fig_filename="autoencoder_text.png",
+        overwrite=False,
+        add_timestamp=True,
+        verbose=True,
+    )
+
+
+
+
+.. image-sg:: /auto_examples/visualkeras_CNN/images/sphx_glr_plot_autoencoder_003.png
+   :alt: plot autoencoder
+   :srcset: /auto_examples/visualkeras_CNN/images/sphx_glr_plot_autoencoder_003.png
+   :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    [INFO] Saving path to: /home/circleci/repo/galleries/examples/visualkeras_CNN/result_images/autoencoder_text_20250422_153924Z.png
+    [INFO] Image saved using Matplotlib: /home/circleci/repo/galleries/examples/visualkeras_CNN/result_images/autoencoder_text_20250422_153924Z.png
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 112-120
 
 .. tags::
 
@@ -107,7 +309,7 @@ used by a :py:class:`~tensorflow.keras.Model` model.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.673 seconds)
+   **Total running time of the script:** (0 minutes 1.248 seconds)
 
 
 .. _sphx_glr_download_auto_examples_visualkeras_CNN_plot_autoencoder.py:

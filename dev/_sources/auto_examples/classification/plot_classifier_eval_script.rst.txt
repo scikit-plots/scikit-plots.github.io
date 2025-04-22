@@ -24,7 +24,7 @@ plot_classifier_eval with examples
 An example showing the :py:func:`~scikitplot.api.metrics.plot_classifier_eval` function
 used by a scikit-learn classifier.
 
-.. GENERATED FROM PYTHON SOURCE LINES 8-66
+.. GENERATED FROM PYTHON SOURCE LINES 8-65
 
 .. code-block:: Python
 
@@ -32,12 +32,13 @@ used by a scikit-learn classifier.
     # Authors: The scikit-plots developers
     # SPDX-License-Identifier: BSD-3-Clause
 
-    import numpy as np
     from sklearn.datasets import (
         load_iris as data_3_classes,
     )
     from sklearn.linear_model import LogisticRegression
     from sklearn.model_selection import train_test_split
+
+    import numpy as np
 
     np.random.seed(0)  # reproducibility
     # importing pylab or pyplot
@@ -64,6 +65,11 @@ used by a scikit-learn classifier.
         labels=np.unique(y_train),
         figsize=(8, 2),
         title="Val",
+        save_fig=True,
+        save_fig_filename="",
+        # overwrite=True,
+        add_timestamp=True,
+        # verbose=True,
     )
     # plt.show(block=True)
     fig2 = sp.metrics.plot_classifier_eval(
@@ -72,33 +78,38 @@ used by a scikit-learn classifier.
         labels=np.unique(y_train),
         figsize=(8, 2),
         title="Train",
+        save_fig=True,
+        save_fig_filename="",
+        # overwrite=True,
+        add_timestamp=True,
+        # verbose=True,
     )
 
-    # Save the combined figures as an simple image file
-    figs = sp.api._utils.save_figure((fig1, fig2), to_save=False)
-
-    # Adjust layout to make sure everything fits
-    plt.tight_layout()
-
-    # Save the plot with a filename based on the current script's name
-    # sp.api._utils.save_plot()
-
-    # Display the plot
-    plt.show(block=True)
 
 
 
-
-.. image-sg:: /auto_examples/classification/images/sphx_glr_plot_classifier_eval_script_001.png
-   :alt: plot classifier eval script
-   :srcset: /auto_examples/classification/images/sphx_glr_plot_classifier_eval_script_001.png
-   :class: sphx-glr-single-img
+.. rst-class:: sphx-glr-horizontal
 
 
+    *
+
+      .. image-sg:: /auto_examples/classification/images/sphx_glr_plot_classifier_eval_script_001.png
+         :alt: Val Classification Report , Val Confusion Matrix 
+         :srcset: /auto_examples/classification/images/sphx_glr_plot_classifier_eval_script_001.png
+         :class: sphx-glr-multi-img
+
+    *
+
+      .. image-sg:: /auto_examples/classification/images/sphx_glr_plot_classifier_eval_script_002.png
+         :alt: Train Classification Report , Train Confusion Matrix 
+         :srcset: /auto_examples/classification/images/sphx_glr_plot_classifier_eval_script_002.png
+         :class: sphx-glr-multi-img
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-75
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 66-74
 
 .. tags::
 
@@ -112,7 +123,7 @@ used by a scikit-learn classifier.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.595 seconds)
+   **Total running time of the script:** (0 minutes 0.737 seconds)
 
 
 .. _sphx_glr_download_auto_examples_classification_plot_classifier_eval_script.py:

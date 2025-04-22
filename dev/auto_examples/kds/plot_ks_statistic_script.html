@@ -13,7 +13,7 @@
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
 <meta content="An example showing the plot_ks_statistic function used by a scikit-learn classifier. Tags: model-type: classification model-workflow: model evaluation plot-type: line plot-type: ks-statistic curve ..." name="description"/>
-<title>plot_ks_statistic with examples — scikit-plots 0.5.0.dev0+git.20250414.8635894 documentation</title>
+<title>plot_ks_statistic with examples — scikit-plots 0.5.0.dev0+git.20250422.9409787 documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
@@ -50,7 +50,7 @@
 <!-- Pre-loaded scripts that we'll load fully later -->
 <link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
 <link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
-<script src="../../_static/documentation_options.js?v=f119baf9"></script>
+<script src="../../_static/documentation_options.js?v=71763443"></script>
 <script src="../../_static/doctools.js?v=9bcbadda"></script>
 <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -387,21 +387,21 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../stats/index.html">Stats</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../visualkeras_ANN/index.html">Visualkeras ANN</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_ANN/plot_conv_dense.html">Visualkeras Spam Classification Conv1D Dense Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_ANN/plot_dense.html">visualkeras Spam Dense example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_ANN/plot_conv_dense.html">Visualkeras: Spam Classification Conv1D Dense Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_ANN/plot_dense.html">visualkeras: Spam Dense example</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../visualkeras_CNN/index.html">Visualkeras CNN</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_autoencoder.html">visualkeras autoencoder example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_custom_vgg16.html">visualkeras custom vgg16 example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_custom_vgg16_show_dimension.html">visualkeras custom vgg16 show dimension example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_efficientnetv2.html">visualkeras EfficientNetV2 example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_resnetv2.html">visualkeras ResNetV2 example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_vgg.html">visualkeras custom VGG example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_autoencoder.html">visualkeras: autoencoder example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_custom_vgg16.html">visualkeras: custom vgg16 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_custom_vgg16_show_dimension.html">visualkeras: custom vgg16 show dimension example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_efficientnetv2.html">visualkeras: EfficientNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_resnetv2.html">visualkeras: ResNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_vgg.html">visualkeras: custom VGG example</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../visualkeras_NLP/index.html">Visualkeras NLP</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_NLP/plot_nlp_mpnet_with_tf_layers.html">visualkeras transformers example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_NLP/plot_nlp_mpnet_with_tf_layers.html">visualkeras: transformers example</a></li>
 </ul>
 </details></li>
 </ul>
@@ -444,12 +444,13 @@ by a scikit-learn classifier.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: The scikit-plots developers</span>
 <span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">load_breast_cancer</span> <span class="k">as</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer" title="sklearn.datasets.load_breast_cancer"><span class="n">data_2_classes</span></a><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.seed.html#numpy.random.seed" title="numpy.random.seed"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># reproducibility</span>
 <span class="c1"># importing pylab or pyplot</span>
@@ -469,20 +470,19 @@ by a scikit-learn classifier.</p>
 <span class="n">y_val_prob</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
 
 <span class="c1"># Plot!</span>
-<span class="n">ax</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-kds sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.kds.plot_ks_statistic.html#scikitplot.kds.plot_ks_statistic" title="scikitplot.kds.plot_ks_statistic"><span class="n">sp</span><span class="o">.</span><span class="n">kds</span><span class="o">.</span><span class="n">plot_ks_statistic</span></a><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">y_val_prob</span><span class="p">)</span>
-
-<span class="c1"># Adjust layout to make sure everything fits</span>
-<a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.tight_layout.html#matplotlib.pyplot.tight_layout" title="matplotlib.pyplot.tight_layout"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
-
-<span class="c1"># Save the plot with a filename based on the current script's name</span>
-<span class="c1"># sp.api._utils.save_plot()</span>
-
-<span class="c1"># Display the plot</span>
-<a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-kds sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.kds.plot_ks_statistic.html#scikitplot.kds.plot_ks_statistic" title="scikitplot.kds.plot_ks_statistic"><span class="n">sp</span><span class="o">.</span><span class="n">kds</span><span class="o">.</span><span class="n">plot_ks_statistic</span></a><span class="p">(</span>
+    <span class="n">y_val</span><span class="p">,</span>
+    <span class="n">y_val_prob</span><span class="p">,</span>
+    <span class="n">save_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">save_fig_filename</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span>
+    <span class="c1"># overwrite=True,</span>
+    <span class="n">add_timestamp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="c1"># verbose=True,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 <img alt="KS Statistic Plot" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_ks_statistic_script_001.png" srcset="../../_images/sphx_glr_plot_ks_statistic_script_001.png"/><p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-model-evaluation.html"><span class="doc">model-workflow: model evaluation</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-line.html"><span class="doc">plot-type: line</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-ks-statistic-curve.html"><span class="doc">plot-type: ks-statistic curve</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger reference internal" href="../../_tags/domain-statistics.html"><span class="doc">domain: statistics</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger reference internal" href="../../_tags/domain-ks-kolmogorov-smirnov.html"><span class="doc">domain: KS (kolmogorov-smirnov)</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.833 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.331 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.kds.plot_lift function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_lift_script_thumb.png"/>
@@ -491,12 +491,12 @@ by a scikit-learn classifier.</p>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.estimators.plot_learning_curve function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_learning_curve_script_thumb.png"/>
 <p><a class="reference internal" href="../classification/plot_learning_curve_script.html#sphx-glr-auto-examples-classification-plot-learning-curve-script-py"><span class="std std-ref">plot_learning_curve with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">plot_learning_curve with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.kds.plot_cumulative_gain function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_cumulative_gain_script_thumb.png"/>
+<p><a class="reference internal" href="plot_cumulative_gain_script.html#sphx-glr-auto-examples-kds-plot-cumulative-gain-script-py"><span class="std std-ref">plot_cumulative_gain with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">plot_cumulative_gain with examples</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_precision_recall function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_precision_recall_script_thumb.png"/>
 <p><a class="reference internal" href="../classification/plot_precision_recall_script.html#sphx-glr-auto-examples-classification-plot-precision-recall-script-py"><span class="std std-ref">plot_precision_recall with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">plot_precision_recall with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_roc_curve function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_roc_script_thumb.png"/>
-<p><a class="reference internal" href="../classification/plot_roc_script.html#sphx-glr-auto-examples-classification-plot-roc-script-py"><span class="std std-ref">plot_roc_curve with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">plot_roc_curve with examples</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </article>
@@ -547,7 +547,7 @@ by a scikit-learn classifier.</p>
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250414.8635894 2025-04-14T15:31Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250422.9409787 2025-04-22T15:38Z.
       <br/>
 </p>
 </div>

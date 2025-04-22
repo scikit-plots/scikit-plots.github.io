@@ -24,7 +24,7 @@ plot_pca_2d_projection with examples
 An example showing the :py:func:`~scikitplot.api.decomposition.plot_pca_2d_projection` function
 used by a scikit-learn PCA object.
 
-.. GENERATED FROM PYTHON SOURCE LINES 8-53
+.. GENERATED FROM PYTHON SOURCE LINES 8-54
 
 .. code-block:: Python
 
@@ -32,12 +32,13 @@ used by a scikit-learn PCA object.
     # Authors: The scikit-plots developers
     # SPDX-License-Identifier: BSD-3-Clause
 
-    import numpy as np
     from sklearn.datasets import (
         load_iris as data_3_classes,
     )
     from sklearn.decomposition import PCA
     from sklearn.model_selection import train_test_split
+
+    import numpy as np
 
     np.random.seed(0)  # reproducibility
     # importing pylab or pyplot
@@ -61,17 +62,17 @@ used by a scikit-learn PCA object.
 
     # Plot!
     ax = sp.decomposition.plot_pca_2d_projection(
-        pca, X_train, y_train, biplot=True, feature_labels=X.columns.tolist()
+        pca,
+        X_train,
+        y_train,
+        biplot=True,
+        feature_labels=X.columns.tolist(),
+        save_fig=True,
+        save_fig_filename="",
+        # overwrite=True,
+        add_timestamp=True,
+        # verbose=True,
     )
-
-    # Adjust layout to make sure everything fits
-    plt.tight_layout()
-
-    # Save the plot with a filename based on the current script's name
-    # sp.api._utils.save_plot()
-
-    # Display the plot
-    plt.show(block=True)
 
 
 
@@ -85,7 +86,7 @@ used by a scikit-learn PCA object.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-64
+.. GENERATED FROM PYTHON SOURCE LINES 55-65
 
 .. tags::
 
@@ -101,7 +102,7 @@ used by a scikit-learn PCA object.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.266 seconds)
+   **Total running time of the script:** (0 minutes 0.545 seconds)
 
 
 .. _sphx_glr_download_auto_examples_decomposition_plot_pca_2d_projection_script.py:

@@ -24,7 +24,7 @@ plot_residuals_distribution with examples
 An example showing the :py:func:`~scikitplot.api.metrics.plot_residuals_distribution` function
 used by a scikit-learn regressor.
 
-.. GENERATED FROM PYTHON SOURCE LINES 8-48
+.. GENERATED FROM PYTHON SOURCE LINES 8-49
 
 .. code-block:: Python
 
@@ -32,12 +32,13 @@ used by a scikit-learn regressor.
     # Authors: The scikit-plots developers
     # SPDX-License-Identifier: BSD-3-Clause
 
-    import numpy as np
     from sklearn.datasets import (
         load_diabetes as load_data,
     )
     from sklearn.linear_model import LinearRegression
     from sklearn.model_selection import train_test_split
+
+    import numpy as np
 
     np.random.seed(0)  # reproducibility
     # importing pylab or pyplot
@@ -57,16 +58,16 @@ used by a scikit-learn regressor.
     y_val_pred = model.predict(X_val)
 
     # Plot!
-    ax = sp.metrics.plot_residuals_distribution(y_val, y_val_pred, dist_type="normal")
-
-    # Adjust layout to make sure everything fits
-    plt.tight_layout()
-
-    # Save the plot with a filename based on the current script's name
-    # sp.api._utils.save_plot()
-
-    # Display the plot
-    plt.show(block=True)
+    ax = sp.metrics.plot_residuals_distribution(
+        y_val,
+        y_val_pred,
+        dist_type="normal",
+        save_fig=True,
+        save_fig_filename="",
+        # overwrite=True,
+        add_timestamp=True,
+        verbose=True,
+    )
 
 
 
@@ -83,11 +84,13 @@ used by a scikit-learn regressor.
 
     Fitted mean-mu (μ): -4.4509
     Fitted std (σ)    : 55.2768
+    [INFO] Saving path to: /home/circleci/repo/galleries/examples/regression/result_images/plot_residuals_distribution_20250422_153917Z.png
+    [INFO] Plot saved to: /home/circleci/repo/galleries/examples/regression/result_images/plot_residuals_distribution_20250422_153917Z.png
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 49-66
+.. GENERATED FROM PYTHON SOURCE LINES 50-67
 
 .. admonition:: References
 
@@ -110,7 +113,7 @@ used by a scikit-learn regressor.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.421 seconds)
+   **Total running time of the script:** (0 minutes 0.845 seconds)
 
 
 .. _sphx_glr_download_auto_examples_regression_plot_residuals_distribution_script.py:

@@ -11,12 +11,12 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/modules/generated/scikitplot.visualkeras.SpacingDummyLayer.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="Gallery examples: visualkeras custom vgg16 example visualkeras custom vgg16 show dimension example" />
+<meta property="og:description" content="Gallery examples: visualkeras: custom vgg16 example visualkeras: custom vgg16 show dimension example" />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_images/sphx_glr_plot_custom_vgg16_thumb.png" />
 <meta property="og:image:alt" content="" />
-<meta name="description" content="Gallery examples: visualkeras custom vgg16 example visualkeras custom vgg16 show dimension example" />
+<meta name="description" content="Gallery examples: visualkeras: custom vgg16 example visualkeras: custom vgg16 show dimension example" />
 
-    <title>SpacingDummyLayer &#8212; scikit-plots 0.5.0.dev0+git.20250414.8635894 documentation</title>
+    <title>SpacingDummyLayer &#8212; scikit-plots 0.5.0.dev0+git.20250422.9409787 documentation</title>
   
   
   
@@ -61,7 +61,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=f119baf9"></script>
+    <script src="../../_static/documentation_options.js?v=71763443"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -761,8 +761,11 @@
 <h1>SpacingDummyLayer<a class="headerlink" href="#spacingdummylayer" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.visualkeras.SpacingDummyLayer">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.visualkeras.</span></span><span class="sig-name descname"><span class="pre">SpacingDummyLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8635894/scikitplot/visualkeras/layer_utils.py#L89"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.visualkeras.SpacingDummyLayer" title="Link to this definition">#</a></dt>
-<dd><p>A dummy layer to add spacing or other custom behavior.</p>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.visualkeras.</span></span><span class="sig-name descname"><span class="pre">SpacingDummyLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9409787/scikitplot/visualkeras/layer_utils.py#L181"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.visualkeras.SpacingDummyLayer" title="Link to this definition">#</a></dt>
+<dd><p>A factory class for dynamically generating a dummy Keras layer with custom spacing.</p>
+<p>This is useful in model visualization pipelines where visual gaps or structural separation
+between layers need to be represented without introducing real computation.</p>
+<p>TensorFlow is only imported when the class is instantiated to avoid unnecessary dependencies.</p>
 <p>This class dynamically inherits from TensorFlow’s <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Layer" title="(in TensorFlow v2.4)"><code class="docutils literal notranslate"><span class="pre">tf.keras.layers.Layer</span></code></a>
 class, ensuring that TensorFlow is only imported when this class is instantiated.</p>
 <dl class="field-list simple">
@@ -775,11 +778,11 @@ class, ensuring that TensorFlow is only imported when this class is instantiated
 <section id="gallery-examples">
 <h2>Gallery examples<a class="headerlink" href="#gallery-examples" title="Link to this heading">#</a></h2>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_custom_vgg16_thumb.png" />
-<p><a class="reference internal" href="../../auto_examples/visualkeras_CNN/plot_custom_vgg16.html#sphx-glr-auto-examples-visualkeras-cnn-plot-custom-vgg16-py"><span class="std std-ref">visualkeras custom vgg16 example</span></a></p>
-  <div class="sphx-glr-thumbnail-title">visualkeras custom vgg16 example</div>
+<p><a class="reference internal" href="../../auto_examples/visualkeras_CNN/plot_custom_vgg16.html#sphx-glr-auto-examples-visualkeras-cnn-plot-custom-vgg16-py"><span class="std std-ref">visualkeras: custom vgg16 example</span></a></p>
+  <div class="sphx-glr-thumbnail-title">visualkeras: custom vgg16 example</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_thumb.png" />
-<p><a class="reference internal" href="../../auto_examples/visualkeras_CNN/plot_custom_vgg16_show_dimension.html#sphx-glr-auto-examples-visualkeras-cnn-plot-custom-vgg16-show-dimension-py"><span class="std std-ref">visualkeras custom vgg16 show dimension example</span></a></p>
-  <div class="sphx-glr-thumbnail-title">visualkeras custom vgg16 show dimension example</div>
+<p><a class="reference internal" href="../../auto_examples/visualkeras_CNN/plot_custom_vgg16_show_dimension.html#sphx-glr-auto-examples-visualkeras-cnn-plot-custom-vgg16-show-dimension-py"><span class="std std-ref">visualkeras: custom vgg16 show dimension example</span></a></p>
+  <div class="sphx-glr-thumbnail-title">visualkeras: custom vgg16 show dimension example</div>
 </div></div></section>
 </section>
 
@@ -877,7 +880,7 @@ class, ensuring that TensorFlow is only imported when this class is instantiated
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250414.8635894 2025-04-14T15:31Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250422.9409787 2025-04-22T15:38Z.
       <br/>
     
   </p>

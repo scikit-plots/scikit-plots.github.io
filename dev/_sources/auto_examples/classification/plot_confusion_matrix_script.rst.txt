@@ -24,7 +24,7 @@ plot_confusion_matrix with examples
 An example showing the :py:func:`~scikitplot.api.metrics.plot_confusion_matrix` function
 used by a scikit-learn classifier.
 
-.. GENERATED FROM PYTHON SOURCE LINES 8-48
+.. GENERATED FROM PYTHON SOURCE LINES 8-49
 
 .. code-block:: Python
 
@@ -32,12 +32,13 @@ used by a scikit-learn classifier.
     # Authors: The scikit-plots developers
     # SPDX-License-Identifier: BSD-3-Clause
 
-    import numpy as np
     from sklearn.datasets import (
         load_digits as data_10_classes,
     )
     from sklearn.linear_model import LogisticRegression
     from sklearn.model_selection import train_test_split
+
+    import numpy as np
 
     np.random.seed(0)  # reproducibility
     # importing pylab or pyplot
@@ -57,16 +58,16 @@ used by a scikit-learn classifier.
     y_val_pred = model.predict(X_val)
 
     # Plot!
-    ax = sp.metrics.plot_confusion_matrix(y_val, y_val_pred, normalize=False)
-
-    # Adjust layout to make sure everything fits
-    plt.tight_layout()
-
-    # Save the plot with a filename based on the current script's name
-    # sp.api._utils.save_plot()
-
-    # Display the plot
-    plt.show(block=True)
+    ax = sp.metrics.plot_confusion_matrix(
+        y_val,
+        y_val_pred,
+        normalize=False,
+        save_fig=True,
+        save_fig_filename="",
+        # overwrite=True,
+        add_timestamp=True,
+        # verbose=True,
+    )
 
 
 
@@ -80,7 +81,7 @@ used by a scikit-learn classifier.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 49-56
+.. GENERATED FROM PYTHON SOURCE LINES 50-57
 
 .. tags::
 
@@ -93,7 +94,7 @@ used by a scikit-learn classifier.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.493 seconds)
+   **Total running time of the script:** (0 minutes 0.819 seconds)
 
 
 .. _sphx_glr_download_auto_examples_classification_plot_confusion_matrix_script.py:

@@ -46,16 +46,18 @@ Load the dataset
 
 We will start by loading the ``iris`` dataset.
 
-.. GENERATED FROM PYTHON SOURCE LINES 17-35
+.. GENERATED FROM PYTHON SOURCE LINES 17-37
 
 .. code-block:: Python
 
-    import numpy as np
+
     from sklearn.cluster import KMeans
     from sklearn.datasets import (
         load_iris as data_3_classes,
     )
     from sklearn.model_selection import train_test_split
+
+    import numpy as np
 
     np.random.seed(0)  # reproducibility
     # importing pylab or pyplot
@@ -75,14 +77,14 @@ We will start by loading the ``iris`` dataset.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 36-40
+.. GENERATED FROM PYTHON SOURCE LINES 38-42
 
 Model Training
 --------------
 
 Create an instance of the LogisticRegression
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-43
+.. GENERATED FROM PYTHON SOURCE LINES 42-45
 
 .. code-block:: Python
 
@@ -96,27 +98,27 @@ Create an instance of the LogisticRegression
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 44-48
+.. GENERATED FROM PYTHON SOURCE LINES 46-50
 
 Visualize the results
 ---------------------
 
 Plot!
 
-.. GENERATED FROM PYTHON SOURCE LINES 48-59
+.. GENERATED FROM PYTHON SOURCE LINES 50-61
 
 .. code-block:: Python
 
-    ax = sp.estimators.plot_elbow(model, X_train, cluster_ranges=range(1, 11))
-
-    # Adjust layout to make sure everything fits
-    plt.tight_layout()
-
-    # Save the plot with a filename based on the current script's name
-    # sp.api._utils.save_plot()
-
-    # Display the plot
-    plt.show(block=True)
+    ax = sp.estimators.plot_elbow(
+        model,
+        X_train,
+        cluster_ranges=range(1, 11),
+        save_fig=True,
+        save_fig_filename="",
+        # overwrite=True,
+        add_timestamp=True,
+        # verbose=True,
+    )
 
 
 
@@ -130,7 +132,7 @@ Plot!
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 60-70
+.. GENERATED FROM PYTHON SOURCE LINES 62-72
 
 .. tags::
 
@@ -146,7 +148,7 @@ Plot!
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.215 seconds)
+   **Total running time of the script:** (0 minutes 0.426 seconds)
 
 
 .. _sphx_glr_download_auto_examples_clustering_plot_elbow_script.py:

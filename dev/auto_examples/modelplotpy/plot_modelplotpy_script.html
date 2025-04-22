@@ -13,7 +13,7 @@
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
 <meta content="To install the latest version (with pip): This exercise is used in ModelPlotPy class the part of the modelplotpy and modelplotpy financial sections. References https://modelplot.github.io/intro_mod..." name="description"/>
-<title>Introduction to modelplotpy — scikit-plots 0.5.0.dev0+git.20250414.8635894 documentation</title>
+<title>Introduction to modelplotpy — scikit-plots 0.5.0.dev0+git.20250422.9409787 documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
@@ -50,7 +50,7 @@
 <!-- Pre-loaded scripts that we'll load fully later -->
 <link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
 <link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
-<script src="../../_static/documentation_options.js?v=f119baf9"></script>
+<script src="../../_static/documentation_options.js?v=71763443"></script>
 <script src="../../_static/doctools.js?v=9bcbadda"></script>
 <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -387,21 +387,21 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../stats/index.html">Stats</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../visualkeras_ANN/index.html">Visualkeras ANN</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_ANN/plot_conv_dense.html">Visualkeras Spam Classification Conv1D Dense Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_ANN/plot_dense.html">visualkeras Spam Dense example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_ANN/plot_conv_dense.html">Visualkeras: Spam Classification Conv1D Dense Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_ANN/plot_dense.html">visualkeras: Spam Dense example</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../visualkeras_CNN/index.html">Visualkeras CNN</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_autoencoder.html">visualkeras autoencoder example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_custom_vgg16.html">visualkeras custom vgg16 example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_custom_vgg16_show_dimension.html">visualkeras custom vgg16 show dimension example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_efficientnetv2.html">visualkeras EfficientNetV2 example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_resnetv2.html">visualkeras ResNetV2 example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_vgg.html">visualkeras custom VGG example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_autoencoder.html">visualkeras: autoencoder example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_custom_vgg16.html">visualkeras: custom vgg16 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_custom_vgg16_show_dimension.html">visualkeras: custom vgg16 show dimension example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_efficientnetv2.html">visualkeras: EfficientNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_resnetv2.html">visualkeras: ResNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_vgg.html">visualkeras: custom VGG example</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../visualkeras_NLP/index.html">Visualkeras NLP</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_NLP/plot_nlp_mpnet_with_tf_layers.html">visualkeras transformers example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_NLP/plot_nlp_mpnet_with_tf_layers.html">visualkeras: transformers example</a></li>
 </ul>
 </details></li>
 </ul>
@@ -482,36 +482,37 @@ not how to build a perfect model, we’ll use six of these columns in our exampl
 <h2>Loading the dataset<a class="headerlink" href="#loading-the-dataset" title="Link to this heading">#</a></h2>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">zipfile</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 
 <a class="sphx-glr-backref-module-warnings sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/warnings.html#warnings.filterwarnings" title="warnings.filterwarnings"><span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span></a><span class="p">(</span><span class="s2">"ignore"</span><span class="p">)</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.seed.html#numpy.random.seed" title="numpy.random.seed"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># reproducibility</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="c1"># r = requests.get("https://archive.ics.uci.edu/ml/machine-learning-databases/00222/bank-additional.zip")</span>
+<span class="c1"># You can change the path, currently the data is written to the working directory</span>
+<span class="n">path</span> <span class="o">=</span> <a class="sphx-glr-backref-module-os sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/os.html#os.getcwd" title="os.getcwd"><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span></a><span class="p">()</span>
+
+<span class="c1"># r = requests.get(</span>
+<span class="c1">#     "https://archive.ics.uci.edu/ml/machine-learning-databases/00222/bank-additional.zip"</span>
+<span class="c1"># )</span>
 <span class="c1"># we encountered that the source at uci.edu is not always available,</span>
 <span class="c1"># therefore we made a copy to our repos.</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"https://modelplot.github.io/img/bank-additional.zip"</span><span class="p">)</span>
 <span class="n">z</span> <span class="o">=</span> <a class="sphx-glr-backref-module-zipfile sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/zipfile.html#zipfile.ZipFile" title="zipfile.ZipFile"><span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span></a><span class="p">(</span><a class="sphx-glr-backref-module-io sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/io.html#io.BytesIO" title="io.BytesIO"><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span></a><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
-<span class="c1"># You can change the path, currently the data is written to the working directory</span>
-<span class="n">path</span> <span class="o">=</span> <a class="sphx-glr-backref-module-os sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/os.html#os.getcwd" title="os.getcwd"><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span></a><span class="p">()</span>
 <span class="n">z</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-<span class="c1"># Define the directory to be removed</span>
-<span class="n">dir_to_remove</span> <span class="o">=</span> <a class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/os.path.html#os.path.join" title="os.path.join"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span></a><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">"bank-additional/__MACOSX"</span><span class="p">)</span>
-<span class="c1"># Check if the directory exists before attempting to remove it</span>
-<span class="k">if</span> <a class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/os.path.html#os.path.exists" title="os.path.exists"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span></a><span class="p">(</span><span class="n">dir_to_remove</span><span class="p">):</span>
-    <a class="sphx-glr-backref-module-os sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/os.html#os.remove" title="os.remove"><span class="n">os</span><span class="o">.</span><span class="n">remove</span></a><span class="p">(</span><span class="n">dir_to_remove</span><span class="p">)</span>
+
 <span class="c1"># Load csv data</span>
 <span class="n">bank</span> <span class="o">=</span> <a class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-function" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html#pandas.read_csv" title="pandas.read_csv"><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span></a><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">"/bank-additional/bank-additional-full.csv"</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">";"</span><span class="p">)</span>
 
 <span class="c1"># select the 6 columns</span>
 <span class="n">bank</span> <span class="o">=</span> <span class="n">bank</span><span class="p">[[</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"duration"</span><span class="p">,</span> <span class="s2">"campaign"</span><span class="p">,</span> <span class="s2">"pdays"</span><span class="p">,</span> <span class="s2">"previous"</span><span class="p">,</span> <span class="s2">"euribor3m"</span><span class="p">]]</span>
+
 <span class="c1"># rename target class value 'yes' for better interpretation</span>
 <span class="n">bank</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">bank</span><span class="o">.</span><span class="n">y</span> <span class="o">==</span> <span class="s2">"yes"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"term deposit"</span>
 
@@ -565,8 +566,9 @@ Lets train a few models to evaluate with our plots.</p>
 <h2>Plotting partial dependence for two features<a class="headerlink" href="#plotting-partial-dependence-for-two-features" title="Link to this heading">#</a></h2>
 <p>For now, we focus on explaining to our marketing colleagues how good our predictive model
 can help them select customers for their term deposit campaign.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># from scikitplot import modelplotpy as mp</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot.modelplotpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mp</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot.modelplotpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mp</span>
+
+<span class="c1"># from scikitplot import modelplotpy as mp</span>
 
 <span class="n">obj</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-modelplotpy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/modelplotpy-cls.html#scikitplot.modelplotpy.ModelPlotPy" title="scikitplot.modelplotpy.ModelPlotPy"><span class="n">mp</span><span class="o">.</span><span class="n">ModelPlotPy</span></a><span class="p">(</span>
     <span class="n">feature_data</span><span class="o">=</span><span class="p">[</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">],</span>
@@ -628,7 +630,7 @@ from a different angle, they all use the same data:</p>
 <p>When we apply the model and select the best X deciles,
 what % of the actual target class observations can we expect to target?</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the cumulative gains plot and annotate the plot at decile = 3</span>
-<a class="sphx-glr-backref-module-scikitplot-modelplotpy sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.modelplotpy.plot_cumgains.html#scikitplot.modelplotpy.plot_cumgains" title="scikitplot.modelplotpy.plot_cumgains"><span class="n">mp</span><span class="o">.</span><span class="n">plot_cumgains</span></a><span class="p">(</span><span class="n">ps</span><span class="p">,</span> <span class="n">highlight_ntile</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">save_fig</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a class="sphx-glr-backref-module-scikitplot-modelplotpy sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.modelplotpy.plot_cumgains.html#scikitplot.modelplotpy.plot_cumgains" title="scikitplot.modelplotpy.plot_cumgains"><span class="n">mp</span><span class="o">.</span><span class="n">plot_cumgains</span></a><span class="p">(</span><span class="n">ps</span><span class="p">,</span> <span class="n">highlight_ntile</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">save_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="Cumulative gains, model: random_forest &amp; dataset: test_data &amp; target class: term deposit" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_modelplotpy_script_001.png" srcset="../../_images/sphx_glr_plot_modelplotpy_script_001.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>When we select 30% with the highest probability according to model random_forest, this selection holds 93% of all term deposit cases in dataset test_data.
@@ -644,7 +646,7 @@ what % of the actual target class observations can we expect to target?</p>
 <p>When we apply the model and select the best X deciles,
 how many times better is that than using no model at all?</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the cumulative lift plot and annotate the plot at decile = 3</span>
-<a class="sphx-glr-backref-module-scikitplot-modelplotpy sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.modelplotpy.plot_cumlift.html#scikitplot.modelplotpy.plot_cumlift" title="scikitplot.modelplotpy.plot_cumlift"><span class="n">mp</span><span class="o">.</span><span class="n">plot_cumlift</span></a><span class="p">(</span><span class="n">ps</span><span class="p">,</span> <span class="n">highlight_ntile</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">save_fig</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a class="sphx-glr-backref-module-scikitplot-modelplotpy sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.modelplotpy.plot_cumlift.html#scikitplot.modelplotpy.plot_cumlift" title="scikitplot.modelplotpy.plot_cumlift"><span class="n">mp</span><span class="o">.</span><span class="n">plot_cumlift</span></a><span class="p">(</span><span class="n">ps</span><span class="p">,</span> <span class="n">highlight_ntile</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">save_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="Cumulative lift, model: random_forest &amp; dataset: test_data &amp; target class: term deposit" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_modelplotpy_script_002.png" srcset="../../_images/sphx_glr_plot_modelplotpy_script_002.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>When we select 30% with the highest probability according to model random_forest in dataset test_data, this selection for target class term deposit is 3.13 times than selecting without a model.
@@ -662,7 +664,7 @@ It can be used to answer the following business question:</p>
 <p>When we apply the model and select decile X,
 what is the expected % of target class observations in that decile?</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the response plot and annotate the plot at decile = 3</span>
-<a class="sphx-glr-backref-module-scikitplot-modelplotpy sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.modelplotpy.plot_response.html#scikitplot.modelplotpy.plot_response" title="scikitplot.modelplotpy.plot_response"><span class="n">mp</span><span class="o">.</span><span class="n">plot_response</span></a><span class="p">(</span><span class="n">ps</span><span class="p">,</span> <span class="n">highlight_ntile</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">save_fig</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a class="sphx-glr-backref-module-scikitplot-modelplotpy sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.modelplotpy.plot_response.html#scikitplot.modelplotpy.plot_response" title="scikitplot.modelplotpy.plot_response"><span class="n">mp</span><span class="o">.</span><span class="n">plot_response</span></a><span class="p">(</span><span class="n">ps</span><span class="p">,</span> <span class="n">highlight_ntile</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">save_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="Response, model: random_forest &amp; dataset: test_data &amp; target class: term deposit" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_modelplotpy_script_003.png" srcset="../../_images/sphx_glr_plot_modelplotpy_script_003.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>When we select decile 3 from model random_forest in dataset test_data the percentage of term deposit cases in the selection is 13%.
@@ -678,7 +680,7 @@ It answers the question burning on each business reps lips:</p>
 <p>When we apply the model and select up until decile X,
 what is the expected % of target class observations in the selection?</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the cumulative response plot and annotate the plot at decile = 3</span>
-<a class="sphx-glr-backref-module-scikitplot-modelplotpy sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.modelplotpy.plot_cumresponse.html#scikitplot.modelplotpy.plot_cumresponse" title="scikitplot.modelplotpy.plot_cumresponse"><span class="n">mp</span><span class="o">.</span><span class="n">plot_cumresponse</span></a><span class="p">(</span><span class="n">ps</span><span class="p">,</span> <span class="n">highlight_ntile</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">save_fig</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a class="sphx-glr-backref-module-scikitplot-modelplotpy sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.modelplotpy.plot_cumresponse.html#scikitplot.modelplotpy.plot_cumresponse" title="scikitplot.modelplotpy.plot_cumresponse"><span class="n">mp</span><span class="o">.</span><span class="n">plot_cumresponse</span></a><span class="p">(</span><span class="n">ps</span><span class="p">,</span> <span class="n">highlight_ntile</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">save_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="Cumulative response, model: random_forest &amp; dataset: test_data &amp; target class: term deposit" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_modelplotpy_script_004.png" srcset="../../_images/sphx_glr_plot_modelplotpy_script_004.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>When we select deciles 1 until 3 according to model random_forest in dataset test_data the percentage of term deposit cases in the selection is 35%.
@@ -695,12 +697,17 @@ We can easily save it to a file to include it in a presentation or share it with
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot all four evaluation plots and save to file</span>
 <a class="sphx-glr-backref-module-scikitplot-modelplotpy sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.modelplotpy.plot_all.html#scikitplot.modelplotpy.plot_all" title="scikitplot.modelplotpy.plot_all"><span class="n">mp</span><span class="o">.</span><span class="n">plot_all</span></a><span class="p">(</span>
     <span class="n">ps</span><span class="p">,</span>
-    <span class="n">save_fig</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="c1"># save_fig_filename = 'Selection model Term Deposits'</span>
+    <span class="n">save_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">add_timestamp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<img alt="model: random_forest &amp; dataset: test_data &amp; target class: term deposit, Cumulative gains, Cumulative lift, Response, Cumulative response" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_modelplotpy_script_005.png" srcset="../../_images/sphx_glr_plot_modelplotpy_script_005.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={'center': 'Cumulative gains'}, ylabel='cumulative gains'&gt;
+<img alt="model: random_forest &amp; dataset: test_data &amp; target class: term deposit, Cumulative gains, Cumulative lift, Response, Cumulative response" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_modelplotpy_script_005.png" srcset="../../_images/sphx_glr_plot_modelplotpy_script_005.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[INFO] Saving path to: /home/circleci/repo/galleries/examples/modelplotpy/result_images/plot_all_20250422_153912Z.png
+[INFO] Plot saved to: /home/circleci/repo/galleries/examples/modelplotpy/result_images/plot_all_20250422_153912Z.png
+
+&lt;Axes: title={'center': 'Cumulative gains'}, ylabel='cumulative gains'&gt;
 </pre></div>
 </div>
 </section>
@@ -731,7 +738,7 @@ what is the expected % return on investment of the campaign?</p>
     <span class="n">variable_costs_per_unit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
     <span class="n">profit_per_unit</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
     <span class="n">highlight_ntile</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-    <span class="n">save_fig</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">save_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -756,7 +763,7 @@ what are the expected revenues and investments of the campaign?</p>
     <span class="n">profit_per_unit</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
     <span class="n">highlight_ntile</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
     <span class="c1"># highlight_ntile = "max_roi",</span>
-    <span class="n">save_fig</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">save_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -780,7 +787,7 @@ what is the expected profit of the campaign?</p>
     <span class="n">variable_costs_per_unit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
     <span class="n">profit_per_unit</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
     <span class="n">highlight_ntile</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-    <span class="n">save_fig</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">save_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -804,7 +811,7 @@ was indeed the best choice to select the top-30% customers for a term deposit of
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">ps2</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">plotting_scope</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">"compare_models"</span><span class="p">,</span> <span class="n">select_dataset_label</span><span class="o">=</span><span class="p">[</span><span class="s2">"test_data"</span><span class="p">])</span>
 
 <span class="c1"># plot the cumulative response plot and annotate the plot at decile = 3</span>
-<a class="sphx-glr-backref-module-scikitplot-modelplotpy sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.modelplotpy.plot_cumresponse.html#scikitplot.modelplotpy.plot_cumresponse" title="scikitplot.modelplotpy.plot_cumresponse"><span class="n">mp</span><span class="o">.</span><span class="n">plot_cumresponse</span></a><span class="p">(</span><span class="n">ps2</span><span class="p">,</span> <span class="n">highlight_ntile</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">save_fig</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a class="sphx-glr-backref-module-scikitplot-modelplotpy sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.modelplotpy.plot_cumresponse.html#scikitplot.modelplotpy.plot_cumresponse" title="scikitplot.modelplotpy.plot_cumresponse"><span class="n">mp</span><span class="o">.</span><span class="n">plot_cumresponse</span></a><span class="p">(</span><span class="n">ps2</span><span class="p">,</span> <span class="n">highlight_ntile</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">save_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="Cumulative response, Scope: comparing models &amp; dataset: test_data &amp; target class: term deposit" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_modelplotpy_script_009.png" srcset="../../_images/sphx_glr_plot_modelplotpy_script_009.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>compare models
@@ -813,6 +820,11 @@ When we select deciles 1 until 3 according to model multinomial_logit in dataset
 When we select deciles 1 until 3 according to model random_forest in dataset test_data the percentage of term deposit cases in the selection is 35%.
 
 &lt;Axes: title={'center': 'Scope: comparing models &amp; dataset: test_data &amp; target class: term deposit'}, xlabel='decile', ylabel='cumulative response'&gt;
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+
+<span class="n">sp</span><span class="o">.</span><span class="n">remove_paths</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Seems like the algorithm used will not make a big difference in this case.
@@ -824,21 +836,21 @@ Any other feedback or suggestions, please let us know
 via <a class="reference external" href="mailto:pb.marcus%40hotmail.com">pb<span>.</span>marcus</a>
 or <a class="reference external" href="mailto:jurriaan.nagelkerke%40gmail.com">jurriaan<span>.</span>nagelkerke</a>.</p>
 <p>Happy modelplotting!</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 6.113 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 9.608 seconds)</p>
 
 <p class="rubric">Related examples</p>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_calibration function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_calibration_script_thumb.png"/>
-<p><a class="reference internal" href="../calibration/plot_calibration_script.html#sphx-glr-auto-examples-calibration-plot-calibration-script-py"><span class="std std-ref">plot_calibration with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">plot_calibration with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_residuals_distribution function used by a scikit-learn regressor."><img alt="" src="../../_images/sphx_glr_plot_residuals_distribution_script_thumb.png"/>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_residuals_distribution function used by a scikit-learn regressor."><img alt="" src="../../_images/sphx_glr_plot_residuals_distribution_script_thumb.png"/>
 <p><a class="reference internal" href="../regression/plot_residuals_distribution_script.html#sphx-glr-auto-examples-regression-plot-residuals-distribution-script-py"><span class="std std-ref">plot_residuals_distribution with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">plot_residuals_distribution with examples</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.estimators.plot_feature_importances function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_feature_importances_script_thumb.png"/>
 <p><a class="reference internal" href="../classification/plot_feature_importances_script.html#sphx-glr-auto-examples-classification-plot-feature-importances-script-py"><span class="std std-ref">plot_feature_importances with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">plot_feature_importances with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_dense_thumb.png"/>
-<p><a class="reference internal" href="../visualkeras_ANN/plot_dense.html#sphx-glr-auto-examples-visualkeras-ann-plot-dense-py"><span class="std std-ref">visualkeras Spam Dense example</span></a></p>
-<div class="sphx-glr-thumbnail-title">visualkeras Spam Dense example</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_calibration function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_calibration_script_thumb.png"/>
+<p><a class="reference internal" href="../calibration/plot_calibration_script.html#sphx-glr-auto-examples-calibration-plot-calibration-script-py"><span class="std std-ref">plot_calibration with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">plot_calibration with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.kds.plot_ks_statistic function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_ks_statistic_script_thumb.png"/>
+<p><a class="reference internal" href="../kds/plot_ks_statistic_script.html#sphx-glr-auto-examples-kds-plot-ks-statistic-script-py"><span class="std std-ref">plot_ks_statistic with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">plot_ks_statistic with examples</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </section>
@@ -920,7 +932,7 @@ or <a class="reference external" href="mailto:jurriaan.nagelkerke%40gmail.com">j
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250414.8635894 2025-04-14T15:31Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250422.9409787 2025-04-22T15:38Z.
       <br/>
 </p>
 </div>

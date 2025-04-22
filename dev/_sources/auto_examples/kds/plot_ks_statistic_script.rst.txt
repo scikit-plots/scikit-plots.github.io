@@ -33,12 +33,13 @@ by a scikit-learn classifier.
     # Authors: The scikit-plots developers
     # SPDX-License-Identifier: BSD-3-Clause
 
-    import numpy as np
     from sklearn.datasets import (
         load_breast_cancer as data_2_classes,
     )
     from sklearn.linear_model import LogisticRegression
     from sklearn.model_selection import train_test_split
+
+    import numpy as np
 
     np.random.seed(0)  # reproducibility
     # importing pylab or pyplot
@@ -58,16 +59,15 @@ by a scikit-learn classifier.
     y_val_prob = model.predict_proba(X_val)
 
     # Plot!
-    ax = sp.kds.plot_ks_statistic(y_val, y_val_prob)
-
-    # Adjust layout to make sure everything fits
-    plt.tight_layout()
-
-    # Save the plot with a filename based on the current script's name
-    # sp.api._utils.save_plot()
-
-    # Display the plot
-    plt.show(block=True)
+    ax = sp.kds.plot_ks_statistic(
+        y_val,
+        y_val_prob,
+        save_fig=True,
+        save_fig_filename="",
+        # overwrite=True,
+        add_timestamp=True,
+        # verbose=True,
+    )
 
 
 
@@ -97,7 +97,7 @@ by a scikit-learn classifier.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 1.833 seconds)
+   **Total running time of the script:** (0 minutes 1.331 seconds)
 
 
 .. _sphx_glr_download_auto_examples_kds_plot_ks_statistic_script.py:
