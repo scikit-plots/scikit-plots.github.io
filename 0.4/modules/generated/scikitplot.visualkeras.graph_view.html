@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
 
-    <title>graph_view &#8212; scikit-plots 0.4.0rc2 documentation</title>
+    <title>graph_view &#8212; scikit-plots 0.4.0rc3 documentation</title>
   
   
   
@@ -59,7 +59,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=2c6cbd22"></script>
+    <script src="../../_static/documentation_options.js?v=8814393b"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -73,7 +73,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc2';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc3';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -759,73 +759,143 @@
 <h1>graph_view<a class="headerlink" href="#graph-view" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.visualkeras.graph_view">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.visualkeras.</span></span><span class="sig-name descname"><span class="pre">graph_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background_fill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'white'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer_spacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">250</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_spacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connector_fill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gray'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connector_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ellipsize_after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inout_as_tensor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_neurons</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/574dac1/scikitplot/visualkeras/graph.py#L24"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.visualkeras.graph_view" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.visualkeras.</span></span><span class="sig-name descname"><span class="pre">graph_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background_fill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'white'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer_spacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">250</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_spacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connector_fill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gray'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connector_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ellipsize_after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inout_as_tensor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_neurons</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_os_viewer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fig_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_timestamp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/e7cc78c/scikitplot/visualkeras/graph.py#L106"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.visualkeras.graph_view" title="Link to this definition">#</a></dt>
 <dd><p>Generates an architectural visualization for a given linear Keras
 <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/Model" title="(in TensorFlow v2.4)"><code class="docutils literal notranslate"><span class="pre">tf.keras.Model</span></code></a> model
 (i.e., one input and output tensor for each layer) in graph style.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>model</strong><span class="classifier">tensorflow.keras.Model</span></dt><dd><p>A Keras <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/Model" title="(in TensorFlow v2.4)"><code class="docutils literal notranslate"><span class="pre">tf.keras.Model</span></code></a> model to be visualized.</p>
 </dd>
-<dt><strong>to_file</strong><span class="classifier">str or None</span></dt><dd><p>Path to the file where the generated image will be saved.
+<dt><strong>to_file</strong><span class="classifier">str, optional</span></dt><dd><p>Path to the file where the generated image will be saved.
 The file type is inferred from the file extension.
-If None, no file is created.</p>
+If None, the image is not saved.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.4.0: </span>The <code class="docutils literal notranslate"><span class="pre">to_file</span></code> is now deprecated, and will be removed in a future release.
+Users are encouraged to use <code class="docutils literal notranslate"><span class="pre">'save_fig'</span></code> and <code class="docutils literal notranslate"><span class="pre">'save_fig_filename'</span></code>
+instead for improved compatibility.</p>
+</div>
 </dd>
-<dt><strong>color_map</strong><span class="classifier">dict</span></dt><dd><p>A dictionary defining the fill and outline colors for each layer type.
-Layers not specified will use default colors.</p>
+<dt><strong>color_map</strong><span class="classifier">dict, optional</span></dt><dd><p>A dictionary defining the fill and outline colors for each layer type.
+Layers not specified will use default (None uses default colors).</p>
 </dd>
-<dt><strong>node_size</strong><span class="classifier">int</span></dt><dd><p>Size (in pixels) of each node in the visualization.</p>
+<dt><strong>node_size</strong><span class="classifier">int, optional</span></dt><dd><p>The size (in pixels) of each node (default is 50).</p>
 </dd>
-<dt><strong>background_fill</strong><span class="classifier">str or tuple</span></dt><dd><p>Background color of the image. Can be a string or a tuple (R, G, B, A).</p>
+<dt><strong>background_fill</strong><span class="classifier">str or tuple, optional</span></dt><dd><p>Background color of the image (default is “white”).
+Can be a string or a tuple (R, G, B, A).</p>
 </dd>
-<dt><strong>padding</strong><span class="classifier">int</span></dt><dd><p>Distance (in pixels) before the first and after the last layer in the visualization.</p>
+<dt><strong>padding</strong><span class="classifier">int, optional</span></dt><dd><p>Padding before and after layers (default is 10).
+Distance (in pixels) before the first and
+after the last layer in the visualization.</p>
 </dd>
-<dt><strong>layer_spacing</strong><span class="classifier">int</span></dt><dd><p>Horizontal spacing (in pixels) between consecutive layers.</p>
+<dt><strong>layer_spacing</strong><span class="classifier">int, optional</span></dt><dd><p>Horizontal spacing (in pixels) between consecutive layers (default is 250).</p>
 </dd>
-<dt><strong>node_spacing</strong><span class="classifier">int</span></dt><dd><p>Horizontal spacing (in pixels) between nodes within a layer.</p>
+<dt><strong>node_spacing</strong><span class="classifier">int, optional</span></dt><dd><p>Horizontal spacing (in pixels) between nodes within the layer (default is 10).</p>
 </dd>
-<dt><strong>connector_fill</strong><span class="classifier">str or tuple</span></dt><dd><p>Color of the connectors. Can be a string or a tuple (R, G, B, A).</p>
+<dt><strong>connector_fill</strong><span class="classifier">str or tuple, optional</span></dt><dd><p>Color of connectors between layers (default is “gray”).
+Can be a string or a tuple (R, G, B, A).</p>
 </dd>
-<dt><strong>connector_width</strong><span class="classifier">int</span></dt><dd><p>Line width (in pixels) of the connectors between nodes.</p>
+<dt><strong>connector_width</strong><span class="classifier">int, optional</span></dt><dd><p>Line width (in pixels) of the connectors between nodes (default is 1).</p>
 </dd>
-<dt><strong>ellipsize_after</strong><span class="classifier">int</span></dt><dd><p>Maximum number of neurons per layer to draw.
-Layers exceeding this limit will represent the remaining neurons as ellipses.</p>
+<dt><strong>ellipsize_after</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum number of neurons per layer to visualize.
+Layers exceeding this limit will represent
+the remaining neurons as ellipses (default is 10).</p>
 </dd>
-<dt><strong>inout_as_tensor</strong><span class="classifier">bool</span></dt><dd><p>If True, one input and output node will be created for each tensor.
+<dt><strong>inout_as_tensor</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, one input and output node will be created for each tensor.
 If False, tensors will be flattened, and one node for each scalar will be created
-(e.g., a tensor with shape (10, 10) will be represented by 100 nodes).</p>
+(e.g., a tensor with shape (10, 10) will be represented by 100 nodes)
+(default is True).</p>
 </dd>
-<dt><strong>show_neurons</strong><span class="classifier">bool</span></dt><dd><p>If True, each neuron in supported layers will be represented as a node
+<dt><strong>show_neurons</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, each neuron in supported layers will be represented as a node
 (subject to <code class="docutils literal notranslate"><span class="pre">ellipsize_after</span></code> limit).
-If False, each layer is represented by a single node.</p>
+If False, each layer is represented by a single node
+(default is True).</p>
+</dd>
+<dt><strong>backend</strong><span class="classifier">bool, str, optional</span></dt><dd><p>Specifies the backend used to process and save the image.
+If the value is one of <code class="docutils literal notranslate"><span class="pre">'matplotlib'</span></code>, <code class="docutils literal notranslate"><span class="pre">'true'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'none'</span></code> (case-insensitive),
+the Matplotlib backend will be used. This is useful for better DPI control and
+consistent rendering. Any other value will fall back to using the PIL backend.
+Common values include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'matplotlib'</span></code>, <code class="docutils literal notranslate"><span class="pre">'true'</span></code>, <code class="docutils literal notranslate"><span class="pre">'none'</span></code> : Use Matplotlib</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'pil'</span></code>, <code class="docutils literal notranslate"><span class="pre">'fast'</span></code>, etc. : Use PIL (Python Imaging Library)</p></li>
+</ul>
+<p>Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0: </span>The <code class="docutils literal notranslate"><span class="pre">backend</span></code> parameter was added to allow switching between PIL and Matplotlib.</p>
+</div>
+</dd>
+<dt><strong>show_os_viewer</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, displays the saved image (by PIL) in the system’s default image viewer
+using PIL’s <code class="docutils literal notranslate"><span class="pre">.show()</span></code> method. Default is False.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>save_fig</strong><span class="classifier">bool, default=True</span></dt><dd><p>Save the plot.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>save_fig_filename</strong><span class="classifier">str, optional, default=’’</span></dt><dd><p>Specify the path and filetype to save the plot.
+If nothing specified, the plot will be saved as png
+to the current working directory.
+Defaults to name to use func.__name__.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>overwrite</strong><span class="classifier">bool, optional, default=True</span></dt><dd><p>If False and a file exists, auto-increments the filename to avoid overwriting.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>add_timestamp</strong><span class="classifier">bool, optional, default=False</span></dt><dd><p>Whether to append a timestamp to the filename.
+Default is False.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>verbose</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, enables verbose output with informative messages during execution.
+Useful for debugging or understanding internal operations such as backend selection,
+font loading, and file saving status. If False, runs silently unless errors occur.</p>
+<p>Default is False.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0: </span>The <code class="docutils literal notranslate"><span class="pre">verbose</span></code> parameter was added to control logging and user feedback verbosity.</p>
+</div>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>image</dt><dd><p>The generated architecture visualization image.</p>
+<dt>PIL.Image.Image</dt><dd><p>The generated image visualizing the model’s architecture.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>to_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
-<li><p><strong>color_map</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>)</p></li>
+<li><p><strong>to_file</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>)</p></li>
+<li><p><strong>color_map</strong> (<em>Optional</em><em>[</em><em>&quot;Dict&quot;</em><em>]</em>)</p></li>
 <li><p><strong>node_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
-<li><p><strong>background_fill</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><em>Any</em></a>)</p></li>
+<li><p><strong>background_fill</strong> (<em>Any</em>)</p></li>
 <li><p><strong>padding</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
 <li><p><strong>layer_spacing</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
 <li><p><strong>node_spacing</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
-<li><p><strong>connector_fill</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><em>Any</em></a>)</p></li>
+<li><p><strong>connector_fill</strong> (<em>Any</em>)</p></li>
 <li><p><strong>connector_width</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
 <li><p><strong>ellipsize_after</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
 <li><p><strong>inout_as_tensor</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
 <li><p><strong>show_neurons</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+<li><p><strong>backend</strong> (<em>Optional</em><em>[</em><em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>,</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em><em>]</em>)</p></li>
+<li><p><strong>show_os_viewer</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+<li><p><strong>save_fig</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+<li><p><strong>save_fig_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
+<li><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>&lt;module ‘PIL.Image’ from ‘/home/circleci/.pyenv/versions/3.11.12/lib/python3.11/site-packages/PIL/Image.py’&gt;</p>
+<dd class="field-even"><p><a class="reference external" href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image" title="(in Pillow (PIL Fork) v11.2.1)">PIL.Image.Image</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -925,7 +995,7 @@ If False, each layer is represented by a single node.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc2 April 14, 2025 11:30.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc3 2025-04-22T20:41Z.
       <br/>
     
   </p>

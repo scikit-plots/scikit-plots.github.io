@@ -83,43 +83,44 @@ Let's load the data and have a quick look at it:
 Loading the dataset
 ------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-97
+.. GENERATED FROM PYTHON SOURCE LINES 54-98
 
 .. code-block:: Python
 
 
     import io
     import os
-    import warnings
     import zipfile
 
-    import requests
+    import warnings
 
     warnings.filterwarnings("ignore")
 
     import numpy as np
 
     np.random.seed(0)  # reproducibility
+
+    import requests
     import pandas as pd
 
-    # r = requests.get("https://archive.ics.uci.edu/ml/machine-learning-databases/00222/bank-additional.zip")
+    # You can change the path, currently the data is written to the working directory
+    path = os.getcwd()
+
+    # r = requests.get(
+    #     "https://archive.ics.uci.edu/ml/machine-learning-databases/00222/bank-additional.zip"
+    # )
     # we encountered that the source at uci.edu is not always available,
     # therefore we made a copy to our repos.
     r = requests.get("https://modelplot.github.io/img/bank-additional.zip")
     z = zipfile.ZipFile(io.BytesIO(r.content))
-    # You can change the path, currently the data is written to the working directory
-    path = os.getcwd()
     z.extractall(path)
-    # Define the directory to be removed
-    dir_to_remove = os.path.join(path, "bank-additional/__MACOSX")
-    # Check if the directory exists before attempting to remove it
-    if os.path.exists(dir_to_remove):
-        os.remove(dir_to_remove)
+
     # Load csv data
     bank = pd.read_csv(path + "/bank-additional/bank-additional-full.csv", sep=";")
 
     # select the 6 columns
     bank = bank[["y", "duration", "campaign", "pdays", "previous", "euribor3m"]]
+
     # rename target class value 'yes' for better interpretation
     bank.y[bank.y == "yes"] = "term deposit"
 
@@ -149,7 +150,7 @@ Loading the dataset
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 98-104
+.. GENERATED FROM PYTHON SOURCE LINES 99-105
 
 Train models on the bank dataset
 ------------------------------------------------
@@ -158,7 +159,7 @@ This well known module is a wrapper for many predictive modeling techniques,
 such as logistic regression, random forest and many, many others.
 Lets train a few models to evaluate with our plots.
 
-.. GENERATED FROM PYTHON SOURCE LINES 104-127
+.. GENERATED FROM PYTHON SOURCE LINES 105-128
 
 .. code-block:: Python
 
@@ -192,20 +193,21 @@ Lets train a few models to evaluate with our plots.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 128-132
+.. GENERATED FROM PYTHON SOURCE LINES 129-133
 
 Plotting partial dependence for two features
 ------------------------------------------------
 For now, we focus on explaining to our marketing colleagues how good our predictive model
 can help them select customers for their term deposit campaign.
 
-.. GENERATED FROM PYTHON SOURCE LINES 132-151
+.. GENERATED FROM PYTHON SOURCE LINES 133-153
 
 .. code-block:: Python
 
 
-    # from scikitplot import modelplotpy as mp
     import scikitplot.modelplotpy as mp
+
+    # from scikitplot import modelplotpy as mp
 
     obj = mp.ModelPlotPy(
         feature_data=[X_train, X_test],
@@ -237,7 +239,7 @@ can help them select customers for their term deposit campaign.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 152-177
+.. GENERATED FROM PYTHON SOURCE LINES 154-179
 
 What just happened? In the modelplotpy a class is instantiated and the plotting_scope function specifies
 the scope of the plots you want to show. In general, there are 3 methods (functions) that can be applied to
@@ -265,7 +267,7 @@ to focus on the random forest model on the test data. The default value for the 
 ``term deposit`` since we want to focus on customers that do take term deposits,
 this default is perfect.
 
-.. GENERATED FROM PYTHON SOURCE LINES 180-188
+.. GENERATED FROM PYTHON SOURCE LINES 182-190
 
 Let's introduce the Gains, Lift and (cumulative) Response plots.
 --------------------------------------------------------------------
@@ -276,7 +278,7 @@ from a different angle, they all use the same data:
 - Equally sized groups based on this predicted probability
 - Actual number of observed target class observations in these groups
 
-.. GENERATED FROM PYTHON SOURCE LINES 191-197
+.. GENERATED FROM PYTHON SOURCE LINES 193-199
 
 1. Cumulative gains plot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -285,13 +287,13 @@ The cumulative gains plot - often named 'gains plot' - helps you answer the ques
 When we apply the model and select the best X deciles,
 what % of the actual target class observations can we expect to target?
 
-.. GENERATED FROM PYTHON SOURCE LINES 197-201
+.. GENERATED FROM PYTHON SOURCE LINES 199-203
 
 .. code-block:: Python
 
 
     # plot the cumulative gains plot and annotate the plot at decile = 3
-    mp.plot_cumgains(ps, highlight_ntile=3, save_fig=False)
+    mp.plot_cumgains(ps, highlight_ntile=3, save_fig=True)
 
 
 
@@ -312,7 +314,7 @@ what % of the actual target class observations can we expect to target?
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 202-210
+.. GENERATED FROM PYTHON SOURCE LINES 204-212
 
 .. tags::
 
@@ -323,7 +325,7 @@ what % of the actual target class observations can we expect to target?
    level: beginner
    purpose: showcase
 
-.. GENERATED FROM PYTHON SOURCE LINES 214-220
+.. GENERATED FROM PYTHON SOURCE LINES 216-222
 
 2. Cumulative lift plot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -332,13 +334,13 @@ The cumulative lift plot, often referred to as lift plot or index plot, helps yo
 When we apply the model and select the best X deciles,
 how many times better is that than using no model at all?
 
-.. GENERATED FROM PYTHON SOURCE LINES 220-224
+.. GENERATED FROM PYTHON SOURCE LINES 222-226
 
 .. code-block:: Python
 
 
     # plot the cumulative lift plot and annotate the plot at decile = 3
-    mp.plot_cumlift(ps, highlight_ntile=3, save_fig=False)
+    mp.plot_cumlift(ps, highlight_ntile=3, save_fig=True)
 
 
 
@@ -359,7 +361,7 @@ how many times better is that than using no model at all?
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 225-234
+.. GENERATED FROM PYTHON SOURCE LINES 227-236
 
 .. tags::
 
@@ -371,7 +373,7 @@ how many times better is that than using no model at all?
    level: beginner
    purpose: showcase
 
-.. GENERATED FROM PYTHON SOURCE LINES 238-246
+.. GENERATED FROM PYTHON SOURCE LINES 240-248
 
 3. Response plot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -382,13 +384,13 @@ It can be used to answer the following business question:
 When we apply the model and select decile X,
 what is the expected % of target class observations in that decile?
 
-.. GENERATED FROM PYTHON SOURCE LINES 246-251
+.. GENERATED FROM PYTHON SOURCE LINES 248-253
 
 .. code-block:: Python
 
 
     # plot the response plot and annotate the plot at decile = 3
-    mp.plot_response(ps, highlight_ntile=3, save_fig=False)
+    mp.plot_response(ps, highlight_ntile=3, save_fig=True)
 
 
 
@@ -410,7 +412,7 @@ what is the expected % of target class observations in that decile?
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 252-259
+.. GENERATED FROM PYTHON SOURCE LINES 254-261
 
 4. Cumulative response plot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -420,13 +422,13 @@ It answers the question burning on each business reps lips:
 When we apply the model and select up until decile X,
 what is the expected % of target class observations in the selection?
 
-.. GENERATED FROM PYTHON SOURCE LINES 259-264
+.. GENERATED FROM PYTHON SOURCE LINES 261-266
 
 .. code-block:: Python
 
 
     # plot the cumulative response plot and annotate the plot at decile = 3
-    mp.plot_cumresponse(ps, highlight_ntile=3, save_fig=False)
+    mp.plot_cumresponse(ps, highlight_ntile=3, save_fig=True)
 
 
 
@@ -448,14 +450,14 @@ what is the expected % of target class observations in the selection?
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 265-269
+.. GENERATED FROM PYTHON SOURCE LINES 267-271
 
 All four plots together
 --------------------------------------------------------------------
 With the function call plot_all we get all four plots on one grid.
 We can easily save it to a file to include it in a presentation or share it with colleagues.
 
-.. GENERATED FROM PYTHON SOURCE LINES 269-278
+.. GENERATED FROM PYTHON SOURCE LINES 271-282
 
 .. code-block:: Python
 
@@ -463,8 +465,10 @@ We can easily save it to a file to include it in a presentation or share it with
     # plot all four evaluation plots and save to file
     mp.plot_all(
         ps,
-        save_fig=False,
-        # save_fig_filename = 'Selection model Term Deposits'
+        save_fig=True,
+        overwrite=False,
+        add_timestamp=True,
+        verbose=True,
     )
 
 
@@ -481,12 +485,14 @@ We can easily save it to a file to include it in a presentation or share it with
 
  .. code-block:: none
 
+    [INFO] Saving path to: /home/circleci/repo/galleries/examples/modelplotpy/result_images/plot_all_20250422_204223Z.png
+    [INFO] Plot saved to: /home/circleci/repo/galleries/examples/modelplotpy/result_images/plot_all_20250422_204223Z.png
 
     <Axes: title={'center': 'Cumulative gains'}, ylabel='cumulative gains'>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 279-292
+.. GENERATED FROM PYTHON SOURCE LINES 283-296
 
 Financial Implications
 --------------------------------------------------------------------
@@ -502,7 +508,7 @@ For financial plots, three extra parameters need to be provided:
 | variable_costs_per_unit	| Numeric. Specifying the variable costs per selected unit for a selection based on the model. These costs vary with selection size (ntiles). |
 | profit_per_unit	| Numeric. Specifying the profit per unit in case the selected unit converts / responds positively. |
 
-.. GENERATED FROM PYTHON SOURCE LINES 295-303
+.. GENERATED FROM PYTHON SOURCE LINES 299-307
 
 1. Return on investment plot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -513,7 +519,7 @@ It can be used to answer the following business question:
 When we apply the model and select up until decile X,
 what is the expected % return on investment of the campaign?
 
-.. GENERATED FROM PYTHON SOURCE LINES 303-315
+.. GENERATED FROM PYTHON SOURCE LINES 307-319
 
 .. code-block:: Python
 
@@ -525,7 +531,7 @@ what is the expected % return on investment of the campaign?
         variable_costs_per_unit=10,
         profit_per_unit=50,
         highlight_ntile=3,
-        save_fig=False,
+        save_fig=True,
     )
 
 
@@ -548,7 +554,7 @@ what is the expected % return on investment of the campaign?
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 316-324
+.. GENERATED FROM PYTHON SOURCE LINES 320-328
 
 2. Costs & Revenues plot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -559,7 +565,7 @@ It can be used to answer the following business question:
 When we apply the model and select up until decile X,
 what are the expected revenues and investments of the campaign?
 
-.. GENERATED FROM PYTHON SOURCE LINES 324-337
+.. GENERATED FROM PYTHON SOURCE LINES 328-341
 
 .. code-block:: Python
 
@@ -572,7 +578,7 @@ what are the expected revenues and investments of the campaign?
         profit_per_unit=50,
         highlight_ntile=3,
         # highlight_ntile = "max_roi",
-        save_fig=False,
+        save_fig=True,
     )
 
 
@@ -595,7 +601,7 @@ what are the expected revenues and investments of the campaign?
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 338-346
+.. GENERATED FROM PYTHON SOURCE LINES 342-350
 
 3. Profit plot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -606,7 +612,7 @@ It can be used to answer the following business question:
 When we apply the model and select up until decile X,
 what is the expected profit of the campaign?
 
-.. GENERATED FROM PYTHON SOURCE LINES 346-358
+.. GENERATED FROM PYTHON SOURCE LINES 350-362
 
 .. code-block:: Python
 
@@ -618,7 +624,7 @@ what is the expected profit of the campaign?
         variable_costs_per_unit=10,
         profit_per_unit=50,
         highlight_ntile=3,
-        save_fig=False,
+        save_fig=True,
     )
 
 
@@ -641,7 +647,7 @@ what is the expected profit of the campaign?
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 359-365
+.. GENERATED FROM PYTHON SOURCE LINES 363-369
 
 Get more out of modelplotpy: using different scopes
 --------------------------------------------------------------------
@@ -650,14 +656,14 @@ using the scope parameter. Comparisons between different models, between differe
 and (in case of a multiclass target) between different target classes. Curious?
 Please have a look at the package documentation or read our other posts on modelplot.
 
-.. GENERATED FROM PYTHON SOURCE LINES 367-371
+.. GENERATED FROM PYTHON SOURCE LINES 371-375
 
 1. compare_models
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 However, to give one example, we could compare whether random forest
 was indeed the best choice to select the top-30% customers for a term deposit offer:
 
-.. GENERATED FROM PYTHON SOURCE LINES 371-378
+.. GENERATED FROM PYTHON SOURCE LINES 375-381
 
 .. code-block:: Python
 
@@ -665,8 +671,7 @@ was indeed the best choice to select the top-30% customers for a term deposit of
     ps2 = obj.plotting_scope(scope="compare_models", select_dataset_label=["test_data"])
 
     # plot the cumulative response plot and annotate the plot at decile = 3
-    mp.plot_cumresponse(ps2, highlight_ntile=3, save_fig=False)
-
+    mp.plot_cumresponse(ps2, highlight_ntile=3, save_fig=True)
 
 
 
@@ -690,7 +695,23 @@ was indeed the best choice to select the top-30% customers for a term deposit of
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 379-390
+.. GENERATED FROM PYTHON SOURCE LINES 382-387
+
+.. code-block:: Python
+
+
+    import scikitplot as sp
+
+    sp.remove_paths()
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 388-399
 
 Seems like the algorithm used will not make a big difference in this case.
 Hopefully you agree by now that using these plots really can make a difference in explaining
@@ -707,7 +728,7 @@ Happy modelplotting!
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 5.212 seconds)
+   **Total running time of the script:** (0 minutes 9.411 seconds)
 
 
 .. _sphx_glr_download_auto_examples_modelplotpy_plot_modelplotpy_script.py:

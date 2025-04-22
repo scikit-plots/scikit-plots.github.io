@@ -18,13 +18,13 @@
 .. _sphx_glr_auto_examples_visualkeras_ANN_plot_dense.py:
 
 
-visualkeras Spam Dense example
+visualkeras: Spam Dense example
 ==========================================
 
 An example showing the :py:func:`~scikitplot.visualkeras` function
 used by a :py:class:`~tensorflow.keras.Model` model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 8-60
+.. GENERATED FROM PYTHON SOURCE LINES 8-12
 
 .. code-block:: Python
 
@@ -32,13 +32,45 @@ used by a :py:class:`~tensorflow.keras.Model` model.
     # Authors: The scikit-plots developers
     # SPDX-License-Identifier: BSD-3-Clause
 
-    # Force garbage collection
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 13-14
+
+Force garbage collection
+
+.. GENERATED FROM PYTHON SOURCE LINES 14-19
+
+.. code-block:: Python
+
+
     import gc
 
     gc.collect()
 
-    # pip install protobuf==5.29.4
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    3
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 20-32
+
+.. code-block:: Python
+
+
+    # pip install protobuf==5.29.4
     import tensorflow as tf
 
     # Clear any session to reset the state of TensorFlow/Keras
@@ -48,6 +80,18 @@ used by a :py:class:`~tensorflow.keras.Model` model.
 
     # Clear any session to reset the state of TensorFlow/Keras
     tf_python.keras.backend.clear_session()
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 33-46
+
+.. code-block:: Python
+
 
     model = tf_python.keras.models.Sequential()
     model.add(tf_python.keras.layers.InputLayer(input_shape=(100,)))
@@ -59,26 +103,88 @@ used by a :py:class:`~tensorflow.keras.Model` model.
 
     # Compile the model
     model.compile(optimizer="rmsprop", loss="binary_crossentropy", metrics=["accuracy"])
+    model.summary()
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Model: "sequential"
+    _________________________________________________________________
+    Layer (type)                 Output Shape              Param #   
+    =================================================================
+    dense (Dense)                (None, 64)                6464      
+    _________________________________________________________________
+    dense_1 (Dense)              (None, 32)                2080      
+    _________________________________________________________________
+    dense_2 (Dense)              (None, 1)                 33        
+    =================================================================
+    Total params: 8,577
+    Trainable params: 8,577
+    Non-trainable params: 0
+    _________________________________________________________________
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 47-98
+
+.. code-block:: Python
+
 
     from scikitplot import visualkeras
 
     img_spam = visualkeras.layered_view(
         model,
-        to_file="../result_images/spam_dense.png",
-        min_xy=10,
-        min_z=10,
-        scale_xy=10,
-        scale_z=10,
+        min_z=1,
+        min_xy=1,
+        max_z=4096,
+        max_xy=4096,
+        scale_z=1,
+        scale_xy=1,
+        font={"font_size": 7},
+        text_callable="default",
         one_dim_orientation="x",
+        # to_file="result_images/spam_dense_x.png",
+        save_fig=True,
+        save_fig_filename="spam_dense_x.png",
     )
-    try:
-        import matplotlib.pyplot as plt
 
-        plt.imshow(img_spam)
-        plt.axis("off")
-        plt.show()
-    except:
-        pass
+    img_spam = visualkeras.layered_view(
+        model,
+        min_z=1,
+        min_xy=1,
+        max_z=4096,
+        max_xy=4096,
+        scale_z=1,
+        scale_xy=1,
+        font={"font_size": 7},
+        text_callable="default",
+        one_dim_orientation="y",
+        # to_file="result_images/spam_dense_y.png",
+        save_fig=True,
+        save_fig_filename="spam_dense_y.png",
+    )
+
+    img_spam = visualkeras.layered_view(
+        model,
+        min_z=1,
+        min_xy=1,
+        max_z=4096,
+        max_xy=4096,
+        scale_z=1,
+        scale_xy=1,
+        font={"font_size": 7},
+        text_callable="default",
+        one_dim_orientation="z",
+        # to_file="result_images/spam_dense_z.png",
+        save_fig=True,
+        save_fig_filename="spam_dense_z.png",
+    )
 
 
 
@@ -92,7 +198,7 @@ used by a :py:class:`~tensorflow.keras.Model` model.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 61-69
+.. GENERATED FROM PYTHON SOURCE LINES 99-107
 
 .. tags::
 
@@ -106,7 +212,7 @@ used by a :py:class:`~tensorflow.keras.Model` model.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.567 seconds)
+   **Total running time of the script:** (0 minutes 0.830 seconds)
 
 
 .. _sphx_glr_download_auto_examples_visualkeras_ANN_plot_dense.py:

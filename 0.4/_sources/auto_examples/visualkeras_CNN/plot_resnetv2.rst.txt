@@ -18,13 +18,13 @@
 .. _sphx_glr_auto_examples_visualkeras_CNN_plot_resnetv2.py:
 
 
-visualkeras ResNetV2 example
+visualkeras: ResNetV2 example
 ==========================================
 
 An example showing the :py:func:`~scikitplot.visualkeras` function
 used by a :py:class:`~tensorflow.keras.Model` model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 8-51
+.. GENERATED FROM PYTHON SOURCE LINES 8-12
 
 .. code-block:: Python
 
@@ -32,19 +32,62 @@ used by a :py:class:`~tensorflow.keras.Model` model.
     # Authors: The scikit-plots developers
     # SPDX-License-Identifier: BSD-3-Clause
 
-    # Force garbage collection
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 13-14
+
+Force garbage collection
+
+.. GENERATED FROM PYTHON SOURCE LINES 14-18
+
+.. code-block:: Python
+
     import gc
 
     gc.collect()
 
-    # pip install protobuf==5.29.4
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    3
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 19-28
+
+.. code-block:: Python
+
+
+    # pip install protobuf==5.29.4
     import tensorflow as tf
 
     # Clear any session to reset the state of TensorFlow/Keras
     tf.keras.backend.clear_session()
 
     from scikitplot import visualkeras
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 29-42
+
+.. code-block:: Python
+
 
     model = tf.keras.applications.ResNet50V2(
         include_top=True,
@@ -56,20 +99,34 @@ used by a :py:class:`~tensorflow.keras.Model` model.
         classifier_activation="softmax",
         name="resnet50v2",
     )
+    # model.summary()
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 43-59
+
+.. code-block:: Python
+
+
     img_resnet50v2 = visualkeras.layered_view(
         model,
         legend=True,
-        show_dimension=True,
-        to_file="../result_images/resnet50v2.png",
+        min_z=1,
+        min_xy=1,
+        max_z=4096,
+        max_xy=4096,
+        scale_z=0.01,
+        scale_xy=10,
+        font={"font_size": 99},
+        # to_file="result_images/resnet50v2.png",
+        save_fig=True,
+        save_fig_filename="resnet50v2.png",
     )
-    try:
-        import matplotlib.pyplot as plt
-
-        plt.imshow(img_resnet50v2)
-        plt.axis("off")
-        plt.show()
-    except:
-        pass
 
 
 
@@ -83,7 +140,7 @@ used by a :py:class:`~tensorflow.keras.Model` model.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 52-60
+.. GENERATED FROM PYTHON SOURCE LINES 60-68
 
 .. tags::
 
@@ -94,7 +151,7 @@ used by a :py:class:`~tensorflow.keras.Model` model.
    level: beginner
    purpose: showcase
 
-.. GENERATED FROM PYTHON SOURCE LINES 61-95
+.. GENERATED FROM PYTHON SOURCE LINES 71-105
 
 .. code-block:: Python
 
@@ -113,7 +170,7 @@ used by a :py:class:`~tensorflow.keras.Model` model.
     #   model,
     #   legend=True,
     #   show_dimension=True,
-    #   to_file='../result_images/resnet101v2.png',
+    #   to_file='result_images/resnet101v2.png',
     # )
 
     # model = tf.keras.applications.ResNet152V2(
@@ -130,7 +187,7 @@ used by a :py:class:`~tensorflow.keras.Model` model.
     #   model,
     #   legend=True,
     #   show_dimension=True,
-    #   to_file='../result_images/resnet152v2.png',
+    #   to_file='result_images/resnet152v2.png',
     # )
 
 
@@ -142,7 +199,7 @@ used by a :py:class:`~tensorflow.keras.Model` model.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 2.938 seconds)
+   **Total running time of the script:** (0 minutes 3.754 seconds)
 
 
 .. _sphx_glr_download_auto_examples_visualkeras_CNN_plot_resnetv2.py:

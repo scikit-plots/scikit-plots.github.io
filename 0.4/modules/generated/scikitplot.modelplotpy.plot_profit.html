@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="" />
 <meta name="description" content="Gallery examples: Introduction to modelplotpy" />
 
-    <title>plot_profit &#8212; scikit-plots 0.4.0rc2 documentation</title>
+    <title>plot_profit &#8212; scikit-plots 0.4.0rc3 documentation</title>
   
   
   
@@ -61,7 +61,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=2c6cbd22"></script>
+    <script src="../../_static/documentation_options.js?v=8814393b"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -75,7 +75,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc2';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc3';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -761,7 +761,7 @@
 <h1>plot_profit<a class="headerlink" href="#plot-profit" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.modelplotpy.plot_profit">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.modelplotpy.</span></span><span class="sig-name descname"><span class="pre">plot_profit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed_costs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable_costs_per_unit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">profit_per_unit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fig_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlight_ntile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlight_how</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'plot_text'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/574dac1/scikitplot/modelplotpy/_modelplotpy.py#L2987"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.modelplotpy.plot_profit" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.modelplotpy.</span></span><span class="sig-name descname"><span class="pre">plot_profit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed_costs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable_costs_per_unit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">profit_per_unit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fig_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlight_ntile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlight_how</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'plot_text'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/e7cc78c/scikitplot/modelplotpy/_modelplotpy.py#L3034"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.modelplotpy.plot_profit" title="Link to this definition">#</a></dt>
 <dd><p>Plotting profit curve</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -779,14 +779,16 @@ These costs vary with selection size (ntiles).</p>
 <dt><strong>save_fig</strong><span class="classifier">bool, default=True</span></dt><dd><p>Save the plot.</p>
 </dd>
 <dt><strong>save_fig_filename</strong><span class="classifier">str, optional, default=’’</span></dt><dd><p>Specify the path and filetype to save the plot.
-If nothing specified, the plot will be saved as jpeg to the current working directory.</p>
+If nothing specified, the plot will be saved as jpeg
+to the current working directory.
+Defaults to name to use func.__name__.</p>
 </dd>
 <dt><strong>highlight_ntile</strong><span class="classifier">int or None, optional, default=None</span></dt><dd><p>Highlight the value of the response curve at a specified ntile value.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 0.3.9: </span>Default changed from False to None.</p>
 </div>
 </dd>
-<dt><strong>highlight_how</strong><span class="classifier">str, optional, default=’plot_text’</span></dt><dd><p>Highlight_how specifies where information about the model performance is printed.
+<dt><strong>highlight_how</strong><span class="classifier">{‘plot’,’text’,’plot_text’}, optional, default=’plot_text’</span></dt><dd><p>Highlight_how specifies where information about the model performance is printed.
 It can be shown as text, on the plot or both.</p>
 </dd>
 </dl>
@@ -919,7 +921,7 @@ Otherwise the location and file type is specified by the user.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc2 April 14, 2025 11:30.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc3 2025-04-22T20:41Z.
       <br/>
     
   </p>

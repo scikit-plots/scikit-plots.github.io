@@ -11,12 +11,12 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/modules/generated/scikitplot.visualkeras.layered_view.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="Gallery examples: Visualkeras Spam Classification Conv1D Dense Example visualkeras Spam Dense example visualkeras autoencoder example visualkeras custom vgg16 example visualkeras custom vgg16 show ..." />
+<meta property="og:description" content="Gallery examples: Visualkeras: Spam Classification Conv1D Dense Example visualkeras: Spam Dense example visualkeras: autoencoder example visualkeras: custom vgg16 example visualkeras: custom vgg16 ..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_images/sphx_glr_plot_conv_dense_thumb.png" />
 <meta property="og:image:alt" content="" />
-<meta name="description" content="Gallery examples: Visualkeras Spam Classification Conv1D Dense Example visualkeras Spam Dense example visualkeras autoencoder example visualkeras custom vgg16 example visualkeras custom vgg16 show ..." />
+<meta name="description" content="Gallery examples: Visualkeras: Spam Classification Conv1D Dense Example visualkeras: Spam Dense example visualkeras: autoencoder example visualkeras: custom vgg16 example visualkeras: custom vgg16 ..." />
 
-    <title>layered_view &#8212; scikit-plots 0.4.0rc2 documentation</title>
+    <title>layered_view &#8212; scikit-plots 0.4.0rc3 documentation</title>
   
   
   
@@ -61,7 +61,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=2c6cbd22"></script>
+    <script src="../../_static/documentation_options.js?v=8814393b"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -75,7 +75,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc2';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc3';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -761,20 +761,25 @@
 <h1>layered_view<a class="headerlink" href="#layered-view" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.visualkeras.layered_view">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.visualkeras.</span></span><span class="sig-name descname"><span class="pre">layered_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_xy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">400</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_xy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_xy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_ignore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_ignore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">one_dim_orientation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'z'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_2d</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background_fill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'white'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw_volume</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw_reversed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_callable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_vspacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw_funnel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shade_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legend_text_spacing_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_dimension</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/574dac1/scikitplot/visualkeras/layered.py#L48"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.visualkeras.layered_view" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.visualkeras.</span></span><span class="sig-name descname"><span class="pre">layered_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_xy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">400</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_xy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_xy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_ignore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_ignore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">one_dim_orientation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'z'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_2d</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background_fill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'white'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw_volume</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw_reversed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_callable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_vspacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw_funnel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shade_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legend_text_spacing_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_dimension</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_os_viewer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fig_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_timestamp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/e7cc78c/scikitplot/visualkeras/layered.py#L44"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.visualkeras.layered_view" title="Link to this definition">#</a></dt>
 <dd><p>Generates an architectural visualization for a given linear Keras
 <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/Model" title="(in TensorFlow v2.4)"><code class="docutils literal notranslate"><span class="pre">tf.keras.Model</span></code></a> model
 (i.e., one input and output tensor for each layer) in a layered style,
 which is particularly suitable for convolutional neural networks (CNNs).</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>model</strong><span class="classifier">tensorflow.keras.Model</span></dt><dd><p>A Keras <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/Model" title="(in TensorFlow v2.4)"><code class="docutils literal notranslate"><span class="pre">tf.keras.Model</span></code></a> model to be visualized.</p>
 </dd>
 <dt><strong>to_file</strong><span class="classifier">str or None</span></dt><dd><p>Path to the file where the generated image will be saved.
 If the image does not exist yet it will be created, else overwritten.
 The file type is inferred from the file extension.
 If None, no file is created.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.4.0: </span>The <code class="docutils literal notranslate"><span class="pre">to_file</span></code> is now deprecated, and will be removed in a future release.
+Users are encouraged to use <code class="docutils literal notranslate"><span class="pre">'save_fig'</span></code> and <code class="docutils literal notranslate"><span class="pre">'save_fig_filename'</span></code>
+instead for improved compatibility.</p>
+</div>
 </dd>
 <dt><strong>min_z</strong><span class="classifier">int</span></dt><dd><p>Minimum z-dimension size (in pixels) for a layer.</p>
 </dd>
@@ -808,7 +813,8 @@ Can be a string or a tuple (R, G, B, A).</p>
 </dd>
 <dt><strong>padding</strong><span class="classifier">int</span></dt><dd><p>Distance in pixels before the first and after the last layer.</p>
 </dd>
-<dt><strong>text_callable</strong><span class="classifier">callable</span></dt><dd><p>A callable that generates text for layers.
+<dt><strong>text_callable</strong><span class="classifier">{callable, ‘default’, None}</span></dt><dd><p>A callable that generates text for layers,
+‘default’ to use default behavior, or None to skip.
 The callable should take two arguments: the layer index (int) and the layer (Layer).</p>
 </dd>
 <dt><strong>text_vspacing</strong><span class="classifier">int</span></dt><dd><p>Vertical spacing in pixels between lines of text produced by <code class="docutils literal notranslate"><span class="pre">text_callable</span></code>.</p>
@@ -825,13 +831,90 @@ The callable should take two arguments: the layer index (int) and the layer (Lay
 <dt><strong>legend_text_spacing_offset</strong><span class="classifier">float</span></dt><dd><p>Offset for the space allocated to legend text.
 Useful for preventing text cutoff in the legend.</p>
 </dd>
-<dt><strong>font</strong><span class="classifier">str or None</span></dt><dd><p>Font to be used for legend text.
-If None, the default font is used.</p>
+<dt><strong>font</strong><span class="classifier">Union[ImageFont.ImageFont, Dict[str, Any]], optional</span></dt><dd><p>Font to be used for text rendering (e.g., legend or labels).</p>
+<ul class="simple">
+<li><p>If an <code class="docutils literal notranslate"><span class="pre">ImageFont.ImageFont</span></code> object is provided, it is used directly.</p></li>
+<li><dl class="simple">
+<dt>If a dictionary is provided, it can include customization options:</dt><dd><ul>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">font_path</span></code><span class="classifier">str, optional</span></dt><dd><p>Path to a one of ‘.ttf .otf .ttc’ font file.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">font_size</span></code><span class="classifier">int, optional</span></dt><dd><p>Size of the font. Must be a positive integer.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">use_default_font</span></code><span class="classifier">bool, optional</span></dt><dd><p>If True, uses the default system font.
+Default is True.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">None</span></code>, the default font is used.</p>
 </dd>
 <dt><strong>font_color</strong><span class="classifier">str or tuple</span></dt><dd><p>Color of the font.
 Can be a string or a tuple (R, G, B, A).</p>
 </dd>
 <dt><strong>show_dimension</strong><span class="classifier">bool</span></dt><dd><p>Whether to display layer dimensions in the legend (only when <code class="docutils literal notranslate"><span class="pre">legend</span></code> is True).</p>
+</dd>
+<dt><strong>backend</strong><span class="classifier">bool, str, optional</span></dt><dd><p>Specifies the backend used to process and save the image.
+If the value is one of <code class="docutils literal notranslate"><span class="pre">'matplotlib'</span></code>, <code class="docutils literal notranslate"><span class="pre">'true'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'none'</span></code> (case-insensitive),
+the Matplotlib backend will be used. This is useful for better DPI control and
+consistent rendering. Any other value will fall back to using the PIL backend.
+Common values include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'matplotlib'</span></code>, <code class="docutils literal notranslate"><span class="pre">'true'</span></code>, <code class="docutils literal notranslate"><span class="pre">'none'</span></code> : Use Matplotlib</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'pil'</span></code>, <code class="docutils literal notranslate"><span class="pre">'fast'</span></code>, etc. : Use PIL (Python Imaging Library)</p></li>
+</ul>
+<p>Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0: </span>The <code class="docutils literal notranslate"><span class="pre">backend</span></code> parameter was added to allow switching between PIL and Matplotlib.</p>
+</div>
+</dd>
+<dt><strong>show_os_viewer</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, displays the saved image (by PIL) in the system’s default image viewer
+using PIL’s <code class="docutils literal notranslate"><span class="pre">.show()</span></code> method. Default is False.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>save_fig</strong><span class="classifier">bool, default=True</span></dt><dd><p>Save the plot.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>save_fig_filename</strong><span class="classifier">str, optional, default=’’</span></dt><dd><p>Specify the path and filetype to save the plot.
+If nothing specified, the plot will be saved as png
+to the current working directory.
+Defaults to name to use func.__name__.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>overwrite</strong><span class="classifier">bool, optional, default=True</span></dt><dd><p>If False and a file exists, auto-increments the filename to avoid overwriting.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>add_timestamp</strong><span class="classifier">bool, optional, default=False</span></dt><dd><p>Whether to append a timestamp to the filename.
+Default is False.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>verbose</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, enables verbose output with informative messages during execution.
+Useful for debugging or understanding internal operations such as backend selection,
+font loading, and file saving status. If False, runs silently unless errors occur.</p>
+<p>Default is False.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0: </span>The <code class="docutils literal notranslate"><span class="pre">verbose</span></code> parameter was added to control logging and user feedback verbosity.</p>
+</div>
 </dd>
 </dl>
 </dd>
@@ -843,7 +926,7 @@ Can be a string or a tuple (R, G, B, A).</p>
 </dd>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>to_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
+<li><p><strong>to_file</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>)</p></li>
 <li><p><strong>min_z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
 <li><p><strong>min_xy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
 <li><p><strong>max_z</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
@@ -855,54 +938,66 @@ Can be a string or a tuple (R, G, B, A).</p>
 <li><p><strong>color_map</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>)</p></li>
 <li><p><strong>one_dim_orientation</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
 <li><p><strong>index_2d</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a>)</p></li>
-<li><p><strong>background_fill</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><em>Any</em></a>)</p></li>
+<li><p><strong>background_fill</strong> (<em>Any</em>)</p></li>
 <li><p><strong>draw_volume</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
 <li><p><strong>draw_reversed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
 <li><p><strong>padding</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
-<li><p><strong>text_callable</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.13)"><em>Callable</em></a><em>[</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>Layer</em><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>]</em>)</p></li>
+<li><p><strong>text_callable</strong> (<em>Optional</em><em>[
+        </em><em>Union</em><em>[</em><em>Callable</em><em>[</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>Layer</em><em>]</em><em>, </em><em>Tuple</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>]</em><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]
+    </em><em>]</em>)</p></li>
 <li><p><strong>text_vspacing</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
 <li><p><strong>spacing</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
 <li><p><strong>draw_funnel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
 <li><p><strong>legend</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
-<li><p><strong>font</strong> (<em>&lt;module 'PIL.ImageFont' from '/home/circleci/.pyenv/versions/3.11.12/lib/python3.11/site-packages/PIL/ImageFont.py'&gt;</em>)</p></li>
-<li><p><strong>font_color</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><em>Any</em></a>)</p></li>
+<li><p><strong>font</strong> (<em>Optional</em><em>[
+        </em><em>Union</em><em>[</em><em>ImageFont.ImageFont</em><em>, </em><em>Dict</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><em>&quot;Any&quot;</em><em>]</em><em>]
+    </em><em>]</em>)</p></li>
+<li><p><strong>font_color</strong> (<em>Any</em>)</p></li>
+<li><p><strong>backend</strong> (<em>Optional</em><em>[</em><em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>,</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em><em>]</em>)</p></li>
+<li><p><strong>show_os_viewer</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+<li><p><strong>save_fig</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+<li><p><strong>save_fig_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
+<li><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>&lt;module ‘PIL.Image’ from ‘/home/circleci/.pyenv/versions/3.11.12/lib/python3.11/site-packages/PIL/Image.py’&gt;</p>
+<dd class="field-even"><p><a class="reference external" href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image" title="(in Pillow (PIL Fork) v11.2.1)">PIL.Image.Image</a></p>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>This function calls <code class="docutils literal notranslate"><span class="pre">get_font(font)</span></code> internally to normalize the input.</p>
 </dd></dl>
 
 <section id="gallery-examples">
 <h2>Gallery examples<a class="headerlink" href="#gallery-examples" title="Link to this heading">#</a></h2>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing Spam the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_conv_dense_thumb.png" />
-<p><a class="reference internal" href="../../auto_examples/visualkeras_ANN/plot_conv_dense.html#sphx-glr-auto-examples-visualkeras-ann-plot-conv-dense-py"><span class="std std-ref">Visualkeras Spam Classification Conv1D Dense Example</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Visualkeras Spam Classification Conv1D Dense Example</div>
+<p><a class="reference internal" href="../../auto_examples/visualkeras_ANN/plot_conv_dense.html#sphx-glr-auto-examples-visualkeras-ann-plot-conv-dense-py"><span class="std std-ref">Visualkeras: Spam Classification Conv1D Dense Example</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Visualkeras: Spam Classification Conv1D Dense Example</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_dense_thumb.png" />
-<p><a class="reference internal" href="../../auto_examples/visualkeras_ANN/plot_dense.html#sphx-glr-auto-examples-visualkeras-ann-plot-dense-py"><span class="std std-ref">visualkeras Spam Dense example</span></a></p>
-  <div class="sphx-glr-thumbnail-title">visualkeras Spam Dense example</div>
+<p><a class="reference internal" href="../../auto_examples/visualkeras_ANN/plot_dense.html#sphx-glr-auto-examples-visualkeras-ann-plot-dense-py"><span class="std std-ref">visualkeras: Spam Dense example</span></a></p>
+  <div class="sphx-glr-thumbnail-title">visualkeras: Spam Dense example</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_autoencoder_thumb.png" />
-<p><a class="reference internal" href="../../auto_examples/visualkeras_CNN/plot_autoencoder.html#sphx-glr-auto-examples-visualkeras-cnn-plot-autoencoder-py"><span class="std std-ref">visualkeras autoencoder example</span></a></p>
-  <div class="sphx-glr-thumbnail-title">visualkeras autoencoder example</div>
+<p><a class="reference internal" href="../../auto_examples/visualkeras_CNN/plot_autoencoder.html#sphx-glr-auto-examples-visualkeras-cnn-plot-autoencoder-py"><span class="std std-ref">visualkeras: autoencoder example</span></a></p>
+  <div class="sphx-glr-thumbnail-title">visualkeras: autoencoder example</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_custom_vgg16_thumb.png" />
-<p><a class="reference internal" href="../../auto_examples/visualkeras_CNN/plot_custom_vgg16.html#sphx-glr-auto-examples-visualkeras-cnn-plot-custom-vgg16-py"><span class="std std-ref">visualkeras custom vgg16 example</span></a></p>
-  <div class="sphx-glr-thumbnail-title">visualkeras custom vgg16 example</div>
+<p><a class="reference internal" href="../../auto_examples/visualkeras_CNN/plot_custom_vgg16.html#sphx-glr-auto-examples-visualkeras-cnn-plot-custom-vgg16-py"><span class="std std-ref">visualkeras: custom vgg16 example</span></a></p>
+  <div class="sphx-glr-thumbnail-title">visualkeras: custom vgg16 example</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_thumb.png" />
-<p><a class="reference internal" href="../../auto_examples/visualkeras_CNN/plot_custom_vgg16_show_dimension.html#sphx-glr-auto-examples-visualkeras-cnn-plot-custom-vgg16-show-dimension-py"><span class="std std-ref">visualkeras custom vgg16 show dimension example</span></a></p>
-  <div class="sphx-glr-thumbnail-title">visualkeras custom vgg16 show dimension example</div>
+<p><a class="reference internal" href="../../auto_examples/visualkeras_CNN/plot_custom_vgg16_show_dimension.html#sphx-glr-auto-examples-visualkeras-cnn-plot-custom-vgg16-show-dimension-py"><span class="std std-ref">visualkeras: custom vgg16 show dimension example</span></a></p>
+  <div class="sphx-glr-thumbnail-title">visualkeras: custom vgg16 show dimension example</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_efficientnetv2_thumb.png" />
-<p><a class="reference internal" href="../../auto_examples/visualkeras_CNN/plot_efficientnetv2.html#sphx-glr-auto-examples-visualkeras-cnn-plot-efficientnetv2-py"><span class="std std-ref">visualkeras EfficientNetV2 example</span></a></p>
-  <div class="sphx-glr-thumbnail-title">visualkeras EfficientNetV2 example</div>
+<p><a class="reference internal" href="../../auto_examples/visualkeras_CNN/plot_efficientnetv2.html#sphx-glr-auto-examples-visualkeras-cnn-plot-efficientnetv2-py"><span class="std std-ref">visualkeras: EfficientNetV2 example</span></a></p>
+  <div class="sphx-glr-thumbnail-title">visualkeras: EfficientNetV2 example</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_resnetv2_thumb.png" />
-<p><a class="reference internal" href="../../auto_examples/visualkeras_CNN/plot_resnetv2.html#sphx-glr-auto-examples-visualkeras-cnn-plot-resnetv2-py"><span class="std std-ref">visualkeras ResNetV2 example</span></a></p>
-  <div class="sphx-glr-thumbnail-title">visualkeras ResNetV2 example</div>
+<p><a class="reference internal" href="../../auto_examples/visualkeras_CNN/plot_resnetv2.html#sphx-glr-auto-examples-visualkeras-cnn-plot-resnetv2-py"><span class="std std-ref">visualkeras: ResNetV2 example</span></a></p>
+  <div class="sphx-glr-thumbnail-title">visualkeras: ResNetV2 example</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_vgg_thumb.png" />
-<p><a class="reference internal" href="../../auto_examples/visualkeras_CNN/plot_vgg.html#sphx-glr-auto-examples-visualkeras-cnn-plot-vgg-py"><span class="std std-ref">visualkeras custom VGG example</span></a></p>
-  <div class="sphx-glr-thumbnail-title">visualkeras custom VGG example</div>
+<p><a class="reference internal" href="../../auto_examples/visualkeras_CNN/plot_vgg.html#sphx-glr-auto-examples-visualkeras-cnn-plot-vgg-py"><span class="std std-ref">visualkeras: custom VGG example</span></a></p>
+  <div class="sphx-glr-thumbnail-title">visualkeras: custom VGG example</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model or :py~torch.nn.Module or :py~transformers.TFPreTrainedModel model."><img alt="" src="../../_images/sphx_glr_plot_nlp_mpnet_with_tf_layers_thumb.png" />
-<p><a class="reference internal" href="../../auto_examples/visualkeras_NLP/plot_nlp_mpnet_with_tf_layers.html#sphx-glr-auto-examples-visualkeras-nlp-plot-nlp-mpnet-with-tf-layers-py"><span class="std std-ref">visualkeras transformers example</span></a></p>
-  <div class="sphx-glr-thumbnail-title">visualkeras transformers example</div>
+<p><a class="reference internal" href="../../auto_examples/visualkeras_NLP/plot_nlp_mpnet_with_tf_layers.html#sphx-glr-auto-examples-visualkeras-nlp-plot-nlp-mpnet-with-tf-layers-py"><span class="std std-ref">visualkeras: transformers example</span></a></p>
+  <div class="sphx-glr-thumbnail-title">visualkeras: transformers example</div>
 </div></div></section>
 </section>
 
@@ -1000,7 +1095,7 @@ Can be a string or a tuple (R, G, B, A).</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc2 April 14, 2025 11:30.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc3 2025-04-22T20:41Z.
       <br/>
     
   </p>

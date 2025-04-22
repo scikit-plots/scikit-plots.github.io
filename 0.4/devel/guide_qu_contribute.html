@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="Creating a development environment: To make and test code changes and build the documentation locally you will need to create a development environment. If you run into problems at any stage do not..." />
 
-    <title>Quickstart Contributing Guidelines &#8212; scikit-plots 0.4.0rc2 documentation</title>
+    <title>Quickstart Contributing Guidelines &#8212; scikit-plots 0.4.0rc3 documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=2c6cbd22"></script>
+    <script src="../_static/documentation_options.js?v=8814393b"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -74,7 +74,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc2';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc3';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -717,10 +717,10 @@ can be useful for testing.</p>
 <p>If you do not already have <code class="docutils literal notranslate"><span class="pre">conda</span></code> installed, <a class="reference external" href="https://github.com/conda-forge/miniforge/blob/main/README.md">download and install miniforge</a>. The details depend on
 your system but the end result is to provide a <code class="docutils literal notranslate"><span class="pre">conda</span></code> executable that you can use
 to create and manage isolated Python environments.</p>
-<p>Now create and activate an <code class="docutils literal notranslate"><span class="pre">skplt-dev</span></code> conda environment using the following:</p>
+<p>Now create and activate an <code class="docutils literal notranslate"><span class="pre">py311</span></code> conda environment using the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># (Optionally) Can be run on `conda base` or `venv` env</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">skplt</span><span class="o">-</span><span class="n">dev</span> <span class="n">python</span> <span class="n">graphviz</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">conda</span> <span class="n">activate</span> <span class="n">skplt</span><span class="o">-</span><span class="n">dev</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mamba</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">py311</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.11</span> <span class="n">ipykernel</span> <span class="n">graphviz</span> <span class="o">-</span><span class="n">y</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conda</span> <span class="n">activate</span> <span class="n">py311</span>
 </pre></div>
 </div>
 <p>Note the <code class="docutils literal notranslate"><span class="pre">graphviz</span></code> package is required for building the documentation.</p>
@@ -734,6 +734,7 @@ all the dependencies needed to build and fully test <code class="docutils litera
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1">## Setup scikit-plots lib dep</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># pip install -r ./requirements/all.txt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># pip install -r ./requirements/cpu.txt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="o">./</span><span class="n">requirements</span><span class="o">/</span><span class="n">build</span><span class="o">.</span><span class="n">txt</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1">## Setup scikit-plots lib dep</span>
@@ -1103,7 +1104,7 @@ required reviewers and a faster review process.</p></li>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc2 April 14, 2025 11:30.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc3 2025-04-22T20:41Z.
       <br/>
     
   </p>
