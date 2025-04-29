@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="🚀 Docker Containerization: 💡 Work on Docker Desktop or Github Codespaces Here’s how containerization works: Isolation: Containers run independently of each other and the host system, ensuring that ..." />
 
-    <title>Docker Containerization Guidelines &#8212; scikit-plots 0.4.0rc3 documentation</title>
+    <title>Docker Containerization Guidelines &#8212; scikit-plots 0.4.0rc4+git.20250429.54449f8 documentation</title>
   
   
   
@@ -45,7 +45,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
-    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=2c9f8f05" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=8814393b"></script>
+    <script src="../_static/documentation_options.js?v=9fb1cb48"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -74,7 +74,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc3';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc4';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -679,7 +679,7 @@ code<span class="w"> </span>.
   </a>
 </div></section>
 <section id="connect-docker-container-especially-when-docker-gui-dont-available">
-<h3>▶️ Connect Docker Container Especially When Docker GUI dont available<a class="headerlink" href="#connect-docker-container-especially-when-docker-gui-dont-available" title="Link to this heading">#</a></h3>
+<h3>▶️ Connect Docker Container Especially When <code class="docutils literal notranslate"><span class="pre">Docker-GUI</span> <span class="pre">dont</span> <span class="pre">available</span></code><a class="headerlink" href="#connect-docker-container-especially-when-docker-gui-dont-available" title="Link to this heading">#</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># docker-compose up --build notebook_cpu</span>
 
 docker<span class="w"> </span>ps<span class="w">  </span><span class="c1"># check running containers</span>
@@ -688,17 +688,28 @@ docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </spa
 </pre></div>
 </div>
 </section>
-<section id="run-post-create-commands-sh">
-<h3>▶️ Run post_create_commands.sh<a class="headerlink" href="#run-post-create-commands-sh" title="Link to this heading">#</a></h3>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># bash .devcontainer/script/post_create_commands.sh</span>
-bash<span class="w"> </span>docker/script/post_create_commands.sh<span class="w">  </span><span class="c1"># (not needed every time)</span>
+<section id="run-setup-vscode-ext-sh">
+<h3>▶️ Run setup_vscode_ext.sh<a class="headerlink" href="#run-setup-vscode-ext-sh" title="Link to this heading">#</a></h3>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1">## (Optionally) Install common vscode extensions</span>
+<span class="c1">##✅ c/C++/Python and Jupyter Notebook</span>
+<span class="c1">##✅ Linter and Formatter</span>
+bash<span class="w"> </span>docker/script/setup_vscode_ext.sh<span class="w">  </span><span class="c1"># (not needed every time)</span>
 </pre></div>
 </div>
 </section>
-<section id="run-setup-vscode-ext-sh">
-<h3>▶️ Run setup_vscode_ext.sh<a class="headerlink" href="#run-setup-vscode-ext-sh" title="Link to this heading">#</a></h3>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># (Optionally) vscode_ext</span>
-bash<span class="w"> </span>docker/script/setup_vscode_ext.sh<span class="w">  </span><span class="c1"># (not needed every time)</span>
+<section id="run-post-create-commands-sh">
+<h3>▶️ Run post_create_commands.sh<a class="headerlink" href="#run-post-create-commands-sh" title="Link to this heading">#</a></h3>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1">##👉 (recommended) Only Installed by `Codespaces default` option</span>
+<span class="c1">##✅ directories to mark as safe</span>
+<span class="c1">##✅ fetching submodules</span>
+<span class="c1">##✅ add remote upstream</span>
+<span class="c1">##✅ fetch tags from upstream</span>
+<span class="c1">##✅ create a new environment with python 3.11</span>
+<span class="c1">##✅ install required packages</span>
+<span class="c1">##✅ install pre-commit hooks</span>
+<span class="c1">##✅ install the development version of scikit-plots</span>
+<span class="c1"># bash .devcontainer/script/post_create_commands.sh  # (not needed every time)</span>
+bash<span class="w"> </span>docker/script/post_create_commands.sh<span class="w">  </span><span class="c1"># (not needed every time)</span>
 </pre></div>
 </div>
 </section>
@@ -804,9 +815,9 @@ docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </s
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-compose-quickstart-guide">🏷️ Docker Compose Quickstart Guide</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-easiest-way-to-launch-the-environment-is-using-docker-compose">💡 The easiest way to launch the environment is using Docker Compose.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-docker-env-jupyter-notebook-by-vs-code">▶️ Run Docker Env Jupyter Notebook by VS Code</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-docker-container-especially-when-docker-gui-dont-available">▶️ Connect Docker Container Especially When Docker GUI dont available</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-post-create-commands-sh">▶️ Run post_create_commands.sh</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-docker-container-especially-when-docker-gui-dont-available">▶️ Connect Docker Container Especially When <code class="docutils literal notranslate"><span class="pre">Docker-GUI</span> <span class="pre">dont</span> <span class="pre">available</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-setup-vscode-ext-sh">▶️ Run setup_vscode_ext.sh</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-post-create-commands-sh">▶️ Run post_create_commands.sh</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stop-containers">🚯 Stop Containers</a></li>
 </ul>
 </li>
@@ -851,7 +862,7 @@ docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </s
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc3 2025-04-22T20:41Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc4+git.20250429.54449f8 2025-04-29T09:41Z.
       <br/>
     
   </p>
