@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="Scikit-plots relies on Matplotlib and Scikit-learn for plotting model results. Additionally, it can work with results from other modeling libraries such as TensorFlow and PyTorch. Ensure that you h..." />
 
-    <title>Installing scikit-plots &#8212; scikit-plots 0.5.0.dev0+git.20250429.02740fa documentation</title>
+    <title>Installing scikit-plots &#8212; scikit-plots 0.5.0.dev0+git.20250430.079ba10 documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=494d4232"></script>
+    <script src="../_static/documentation_options.js?v=0740f6c8"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -668,7 +668,7 @@ span.prompt1:before {
   content: ">>> ";
 }
 </style><span class=""><span class="n">python</span> <span class="n">-m</span> <span class="n">venv</span> <span class="n">sklearn-env</span>
-<span class="n">sklearn-env</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">activate</span>  <span class="c"># activate</span>
+<span class="n">sklearn-env</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">activate</span>  <span class="c"># (or dot .) activate</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">-U</span> <span class="n">scikit-plots</span></span>
 </pre></div></div><p>In order to check your installation, you can use:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class=""><span class="n">python</span> <span class="n">-m</span> <span class="n">pip</span> <span class="n">show</span> <span class="n">scikit-plots</span>  <span class="c"># show scikit-plots version and location</span>
@@ -688,7 +688,7 @@ pip3<span class="w"> </span>--version</span>
 Note that the virtual environment is optional but strongly recommended, in
 order to avoid potential conflicts with other packages.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="">python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>sklearn-env
-<span class="nb">source</span><span class="w"> </span>sklearn-env/bin/activate<span class="w">  </span><span class="c1"># activate</span>
+<span class="nb">source</span><span class="w"> </span>sklearn-env/bin/activate<span class="w">  </span><span class="c1"># (or dot .) activate</span>
 pip3<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>scikit-plots</span>
 </pre></div></div><p>In order to check your installation, you can use:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="">python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>show<span class="w"> </span>scikit-plots<span class="w">  </span><span class="c1"># show scikit-plots version and location</span>
@@ -704,7 +704,7 @@ or by manually installing the package from the <a class="reference external" hre
 Note that the virtual environment is optional but strongly recommended, in
 order to avoid potential conflicts with other packages.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="">python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>sklearn-env
-<span class="nb">source</span><span class="w"> </span>sklearn-env/bin/activate<span class="w">  </span><span class="c1"># activate</span>
+<span class="nb">source</span><span class="w"> </span>sklearn-env/bin/activate<span class="w">  </span><span class="c1"># (or dot .) activate</span>
 pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>scikit-plots</span>
 </pre></div></div><p>In order to check your installation, you can use:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="">python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>show<span class="w"> </span>scikit-plots<span class="w">  </span><span class="c1"># show scikit-plots version and location</span>
@@ -716,31 +716,26 @@ python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;i
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label tab-6" for="sd-tab-item-1">
 conda</label><div class="sd-tab-content docutils">
-<dl class="field-list simple">
-<dt class="field-odd">orphan<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-<div class="admonition warning" id="installation-instructions-conda">
-<p class="admonition-title">Warning</p>
-<p>Not Implemented…</p>
-</div>
-<p>Install conda using the
+<span class="target" id="installation-instructions-conda"></span><p>Install conda using the
 <a class="reference external" href="https://github.com/conda-forge/miniforge#miniforge">miniforge installers</a> (no
 administrator permission required). Then run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="">conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>sklearn-env<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>scikit-plots
-conda<span class="w"> </span>activate<span class="w"> </span>sklearn-env
-
-<span class="c1">## (Optionally) Install the lost packages</span>
-<span class="c1">## wget https://raw.githubusercontent.com/scikit-plots/scikit-plots/main/requirements/default.txt</span>
-curl<span class="w"> </span>-O<span class="w"> </span>https://raw.githubusercontent.com/scikit-plots/scikit-plots/main/requirements/default.txt
-pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>default.txt
-
-<span class="c1">## Try Ensure all dependencies installed</span>
-pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>-i<span class="w"> </span>https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple<span class="w"> </span>scikit-plots</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class=""><span class="c1"># (conda or mamba) Create New Env and install scikit-plots</span>
+conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>sklearn-env<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>scikit-plots
+conda<span class="w"> </span>activate<span class="w"> </span>sklearn-env</span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class=""><span class="c1"># (conda or mamba) Install scikit-plots</span>
+conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>scikit-plots</span>
 </pre></div></div><p>In order to check your installation, you can use:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="">conda<span class="w"> </span>list<span class="w"> </span>scikit-plots<span class="w">  </span><span class="c1"># show scikit-plots version and location</span>
 conda<span class="w"> </span>list<span class="w">               </span><span class="c1"># show all installed packages in the environment</span>
 python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import scikitplot; scikitplot.show_versions()&quot;</span></span>
+</pre></div></div><p>(Not Recommended) Also available Nightly Version can cause conflict:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class=""><span class="c1">## (Optionally) Install the lost packages</span>
+<span class="c1">## wget https://raw.githubusercontent.com/scikit-plots/scikit-plots/main/requirements/default.txt</span>
+curl<span class="w"> </span>-O<span class="w"> </span>https://raw.githubusercontent.com/scikit-plots/scikit-plots/main/requirements/default.txt
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>default.txt
+
+<span class="c1">## Try After Ensure all dependencies installed</span>
+pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>-i<span class="w"> </span>https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple<span class="w"> </span>scikit-plots</span>
 </pre></div></div></div>
 </div>
 </div>
@@ -895,7 +890,7 @@ reference and troubleshooting.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250429.02740fa 2025-04-29T08:59Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250430.079ba10 2025-04-30T00:20Z.
       <br/>
     
   </p>

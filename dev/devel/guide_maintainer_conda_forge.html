@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="This guide provides a comprehensive, beginner-friendly walkthrough for adding scikit-plots to conda-forge, including best practices, important notes, and maintenance instructions. Prerequisites: En..." />
 
-    <title>How to Add scikit-plots to conda-forge Guidelines &#8212; scikit-plots 0.5.0.dev0+git.20250429.02740fa documentation</title>
+    <title>How to Add scikit-plots to conda-forge Guidelines &#8212; scikit-plots 0.5.0.dev0+git.20250430.079ba10 documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=494d4232"></script>
+    <script src="../_static/documentation_options.js?v=0740f6c8"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -673,12 +673,22 @@
 <p>Ensure you have:</p>
 <ul class="simple">
 <li><p>A GitHub account.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> published on <a class="reference external" href="https://pypi.org/project/scikit-plots/">PyPI</a>.</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> published one of:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">github</span></code> like <a class="reference external" href="https://github.com/scikit-plots/scikit-plots">GitHub</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">github</span> <span class="pre">release</span></code> like <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/releases">GitHub Release</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">distribution</span></code> like <a class="reference external" href="https://pypi.org/project/scikit-plots">PyPI</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">distribution</span></code> like <a class="reference external" href="https://anaconda.org/scikit-plots-wheels-staging-nightly/scikit-plots">Anaconda.org</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
 <li><p>Installed tools: <code class="docutils literal notranslate"><span class="pre">git</span></code>, <code class="docutils literal notranslate"><span class="pre">conda</span></code>, and <code class="docutils literal notranslate"><span class="pre">grayskull</span></code>.</p></li>
 </ul>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Your package <strong>must</strong> be on PyPI before you can add it to conda-forge!</p>
+<p>Your package must be available via <strong>a valid source distribution</strong> like GitHub, PyPI, or Anaconda.org before it can be added to conda-forge.
+But can be use direct <code class="docutils literal notranslate"><span class="pre">github</span> <span class="pre">repo</span></code>, read below more info.</p>
 </div>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
@@ -692,20 +702,78 @@
 </div>
 </div>
 </section>
-<section id="publishing-to-pypi">
-<h2>Publishing to PyPI<a class="headerlink" href="#publishing-to-pypi" title="Link to this heading">#</a></h2>
-<p>Before proceeding, confirm that <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> is correctly published on PyPI.</p>
+<section id="choosing-a-source-distribution">
+<span id="id1"></span><h2>Choosing a Source Distribution<a class="headerlink" href="#choosing-a-source-distribution" title="Link to this heading">#</a></h2>
+<p>When updating the recipe (<code class="docutils literal notranslate"><span class="pre">meta.yaml</span></code>), you must choose <strong>one</strong> of the valid source distribution types. Conda-forge supports four typical options:</p>
+<ol class="arabic">
+<li><p><strong>GitHub archive (tagged release)</strong></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">source</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/scikit-plots/scikit-plots/archive/v{{ version }}.tar.gz</span>
+<span class="w">  </span><span class="nt">sha256</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;fill-this-sha&gt;</span>
+</pre></div>
+</div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p><strong>Conda-forge</strong> builds the package <strong>from PyPI releases</strong>, <strong>not</strong> from GitHub source directly.</p>
+<ul class="simple">
+<li><p>Ensure the tag exists on GitHub.</p></li>
+<li><p>Use a specific release version to avoid build inconsistencies.</p></li>
+</ul>
+</div>
+</li>
+<li><p><strong>PyPI source distribution</strong></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">source</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://pypi.org/packages/source/s/scikit-plots/scikit_plots-{{ version }}.tar.gz</span>
+<span class="w">  </span><span class="nt">sha256</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;fill-this-sha&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is the most common and preferred method when available on PyPI.</p>
+</div>
+</li>
+<li><p><strong>Anaconda.org source (e.g., staging wheels)</strong></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">source</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://pypi.anaconda.org/&lt;channel&gt;/simple/scikit-plots/{{ version }}/scikit_plots-{{ version }}.tar.gz</span>
+<span class="w">  </span><span class="nt">sha256</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;fill-this-sha&gt;</span>
+</pre></div>
 </div>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>If you need help publishing, check out the official <a class="reference external" href="https://packaging.python.org/en/latest/tutorials/packaging-projects/">PyPI packaging tutorial</a>.</p>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">&lt;channel&gt;</span></code> with your actual Anaconda channel, such as <code class="docutils literal notranslate"><span class="pre">scikit-plots-wheels-staging-nightly</span></code>.</p>
+</div>
+</li>
+<li><p><strong>Direct Git repository source</strong></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">source</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">git_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/scikit-plots/scikit-plots.git</span>
+<span class="w">  </span><span class="nt">git_rev</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">tag</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="w">  </span><span class="c1"># 🔒 Use a tag or commit hash for reproducibility</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>Always use a <strong>tag</strong> or <strong>commit hash</strong>, not <code class="docutils literal notranslate"><span class="pre">main</span></code> or <code class="docutils literal notranslate"><span class="pre">master</span></code>.</p></li>
+<li><p>This method is less common and should only be used when source tarballs are not available.</p></li>
+</ul>
+</div>
+</li>
+</ol>
+</section>
+<section id="publishing-to-pypi">
+<span id="id2"></span><h2>Publishing to PyPI<a class="headerlink" href="#publishing-to-pypi" title="Link to this heading">#</a></h2>
+<p>If you use PyPI:</p>
+<p>Before proceeding, confirm that <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> is correctly published on PyPI.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Conda-forge</strong> builds the package <strong>from PyPI releases</strong>, not from GitHub directly (unless you configure otherwise in your recipe).</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If you need help publishing, check out the official
+<a class="reference external" href="https://packaging.python.org/en/latest/tutorials/packaging-projects/">PyPI packaging tutorial</a>.</p>
 </div>
 </section>
 <section id="creating-the-recipe-with-grayskull">
-<h2>Creating the Recipe with Grayskull<a class="headerlink" href="#creating-the-recipe-with-grayskull" title="Link to this heading">#</a></h2>
+<span id="id3"></span><h2>Creating the Recipe with Grayskull<a class="headerlink" href="#creating-the-recipe-with-grayskull" title="Link to this heading">#</a></h2>
 <p>Use <code class="docutils literal notranslate"><span class="pre">grayskull</span></code> to generate the initial conda recipe:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>grayskull<span class="w"> </span>pypi<span class="w"> </span>--strict-conda-forge<span class="w"> </span>scikit-plots
 </pre></div>
@@ -715,9 +783,49 @@
 <p class="admonition-title">Note</p>
 <p><code class="docutils literal notranslate"><span class="pre">grayskull</span></code> will automatically pull metadata from your PyPI release — <strong>but you must review it</strong>.</p>
 </div>
+<div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">name</span> <span class="o">=</span> <span class="s2">&quot;scikit-plots&quot;</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">set</span> <span class="nv">version</span> <span class="o">=</span> <span class="s2">&quot;0.4.0rc4&quot;</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">set</span> <span class="nv">tag</span> <span class="o">=</span> <span class="s2">&quot;v&quot;</span> <span class="o">~</span> <span class="nv">version</span> <span class="cp">%}</span>
+
+<span class="x">package:</span>
+<span class="x">  name: </span><span class="cp">{{</span> <span class="nv">name</span><span class="o">|</span><span class="nf">lower</span> <span class="cp">}}</span>
+<span class="x">  version: </span><span class="cp">{{</span> <span class="nv">version</span> <span class="cp">}}</span>
+
+<span class="x">source:</span>
+<span class="x">  # Choose one valid source:</span>
+
+<span class="x">  # GitHub</span>
+<span class="x">  git_url: https://github.com/scikit-plots/scikit-plots.git</span>
+<span class="x">  git_rev: </span><span class="cp">{{</span> <span class="nv">tag</span> <span class="cp">}}</span><span class="x">       # 🔒 use a tag or commit hash for reproducibility</span>
+
+<span class="x">  # GitHub archive</span>
+<span class="x">  # url: https://github.com/</span><span class="cp">{{</span> <span class="nv">name</span> <span class="cp">}}</span><span class="x">/</span><span class="cp">{{</span> <span class="nv">name</span> <span class="cp">}}</span><span class="x">/archive/</span><span class="cp">{{</span> <span class="nv">tag</span> <span class="cp">}}</span><span class="x">.tar.gz</span>
+
+<span class="x">  # PyPI source</span>
+<span class="x">  # url: https://pypi.org/packages/source/</span><span class="cp">{{</span> <span class="nv">name</span><span class="o">[</span><span class="m">0</span><span class="o">]</span> <span class="cp">}}</span><span class="x">/</span><span class="cp">{{</span> <span class="nv">name</span> <span class="cp">}}</span><span class="x">/</span><span class="cp">{{</span> <span class="nv">name</span> <span class="o">|</span> <span class="nf">replace</span><span class="o">(</span><span class="s2">&quot;-&quot;</span><span class="o">,</span> <span class="s2">&quot;_&quot;</span><span class="o">)</span> <span class="cp">}}</span><span class="x">-</span><span class="cp">{{</span> <span class="nv">version</span> <span class="cp">}}</span><span class="x">.tar.gz</span>
+
+<span class="x">  # Anaconda source (less common)</span>
+<span class="x">  # url: https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple/</span><span class="cp">{{</span> <span class="nv">name</span> <span class="cp">}}</span><span class="x">/</span><span class="cp">{{</span> <span class="nv">version</span> <span class="cp">}}</span><span class="x">/</span><span class="cp">{{</span> <span class="nv">name</span> <span class="o">|</span> <span class="nf">replace</span><span class="o">(</span><span class="s2">&quot;-&quot;</span><span class="o">,</span> <span class="s2">&quot;_&quot;</span><span class="o">)</span> <span class="cp">}}</span><span class="x">-</span><span class="cp">{{</span> <span class="nv">version</span> <span class="cp">}}</span><span class="x">.tar.gz</span>
+
+<span class="x">  url: https://pypi.org/packages/source/</span><span class="cp">{{</span> <span class="nv">name</span><span class="o">[</span><span class="m">0</span><span class="o">]</span> <span class="cp">}}</span><span class="x">/</span><span class="cp">{{</span> <span class="nv">name</span> <span class="cp">}}</span><span class="x">/scikit_plots-</span><span class="cp">{{</span> <span class="nv">version</span> <span class="cp">}}</span><span class="x">.tar.gz</span>
+<span class="x">  sha256: cd6c8a3d11cfe0b9cc3e4ecc95399efe16ea242ddb4c02505031c6271f8876f8</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You <strong>must include</strong> the correct <code class="docutils literal notranslate"><span class="pre">sha256</span></code> checksum for the chosen source archive.
+To compute it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">## wget https://github.com/scikit-plots/scikit-plots/archive/refs/tags/{{ tag }}.tar.gz</span>
+wget<span class="w"> </span>https://github.com/scikit-plots/scikit-plots/archive/refs/tags/v0.4.0rc4.tar.gz
+
+<span class="c1">## openssl sha256 {{ tag }}.tar.gz</span>
+openssl<span class="w"> </span>sha256<span class="w"> </span>v0.4.0rc4.tar.gz
+</pre></div>
+</div>
+</div>
 </section>
 <section id="submitting-to-staged-recipes">
-<h2>Submitting to Staged-Recipes<a class="headerlink" href="#submitting-to-staged-recipes" title="Link to this heading">#</a></h2>
+<span id="id4"></span><h2>Submitting to Staged-Recipes<a class="headerlink" href="#submitting-to-staged-recipes" title="Link to this heading">#</a></h2>
 <ol class="arabic">
 <li><p>Fork the <a class="reference external" href="https://github.com/conda-forge/staged-recipes">conda-forge/staged-recipes</a> repository.</p></li>
 <li><p>Clone your fork locally:</p>
@@ -756,7 +864,7 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 </div>
 </section>
 <section id="post-merge-feedstock-creation">
-<h2>Post-Merge: Feedstock Creation<a class="headerlink" href="#post-merge-feedstock-creation" title="Link to this heading">#</a></h2>
+<span id="id5"></span><h2>Post-Merge: Feedstock Creation<a class="headerlink" href="#post-merge-feedstock-creation" title="Link to this heading">#</a></h2>
 <p>After your PR is merged:</p>
 <ul class="simple">
 <li><p>A new feedstock repository will be created, for example: <a class="reference external" href="https://github.com/conda-forge/scikit-plots-feedstock">scikit-plots-feedstock</a>.</p></li>
@@ -774,7 +882,7 @@ Build errors may still appear even after the staged-recipes PR is merged.</p>
 </div>
 </section>
 <section id="maintaining-the-package">
-<h2>Maintaining the Package<a class="headerlink" href="#maintaining-the-package" title="Link to this heading">#</a></h2>
+<span id="id6"></span><h2>Maintaining the Package<a class="headerlink" href="#maintaining-the-package" title="Link to this heading">#</a></h2>
 <p>Future updates for <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code>:</p>
 <ul class="simple">
 <li><p>Publish a new release to PyPI.</p></li>
@@ -822,10 +930,22 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 <section id="quick-reference-summary">
 <h2>Quick Reference Summary<a class="headerlink" href="#quick-reference-summary" title="Link to this heading">#</a></h2>
 <p>Follow these steps to successfully add and maintain <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> on conda-forge.</p>
+<section id="steps-overview">
+<h3>Steps Overview<a class="headerlink" href="#steps-overview" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#choosing-a-source-distribution"><span class="std std-ref">Choose source distribution</span></a></p></li>
+<li><p><a class="reference internal" href="#publishing-to-pypi"><span class="std std-ref">Publish to PyPI (if needed)</span></a></p></li>
+<li><p><a class="reference internal" href="#creating-the-recipe-with-grayskull"><span class="std std-ref">Generate recipe with grayskull</span></a></p></li>
+<li><p><a class="reference internal" href="#submitting-to-staged-recipes"><span class="std std-ref">Submit PR to staged-recipes</span></a></p></li>
+<li><p><a class="reference internal" href="#post-merge-feedstock-creation"><span class="std std-ref">Wait for review &amp; merge</span></a></p></li>
+<li><p><a class="reference internal" href="#post-merge-feedstock-creation"><span class="std std-ref">Feedstock repository created</span></a></p></li>
+<li><p><a class="reference internal" href="#maintaining-the-package"><span class="std std-ref">Maintain future updates (bot/manual)</span></a></p></li>
+</ol>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>You can click on any action to jump directly to the detailed explanation!</p>
 </div>
+</section>
 </section>
 </section>
 
@@ -881,6 +1001,7 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-a-source-distribution">Choosing a Source Distribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-to-pypi">Publishing to PyPI</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-recipe-with-grayskull">Creating the Recipe with Grayskull</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submitting-to-staged-recipes">Submitting to Staged-Recipes</a></li>
@@ -888,7 +1009,10 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maintaining-the-package">Maintaining the Package</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-updates">Manual Updates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#congratulations">Congratulations 🎉</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-reference-summary">Quick Reference Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-reference-summary">Quick Reference Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steps-overview">Steps Overview</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
@@ -926,7 +1050,7 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250429.02740fa 2025-04-29T08:59Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250430.079ba10 2025-04-30T00:20Z.
       <br/>
     
   </p>
