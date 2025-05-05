@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
 
-    <title>decile_table &#8212; scikit-plots 0.5.0.dev0+git.20250430.079ba10 documentation</title>
+    <title>decile_table &#8212; scikit-plots 0.5.0.dev0+git.20250505.f5d58d0 documentation</title>
   
   
   
@@ -59,7 +59,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=0740f6c8"></script>
+    <script src="../../_static/documentation_options.js?v=e2b49d64"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -757,7 +757,7 @@
 <h1>decile_table<a class="headerlink" href="#decile-table" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.kds.decile_table">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.kds.</span></span><span class="sig-name descname"><span class="pre">decile_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_probas</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">change_deciles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/079ba10/scikitplot/kds/_kds.py#L91"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.kds.decile_table" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.kds.</span></span><span class="sig-name descname"><span class="pre">decile_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_probas</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">change_deciles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f5d58d0/scikitplot/kds/_kds.py#L109"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.kds.decile_table" title="Link to this definition">#</a></dt>
 <dd><p>Generates the Decile Table from labels and probabilities</p>
 <p>The Decile Table is creared by first sorting the customers by their predicted
 probabilities, in decreasing order from highest (closest to one) to
@@ -813,10 +813,20 @@ If None, returns all class probabilities in the 2D case. Ignored if y_probas is 
 <dl class="simple">
 <dt><a class="reference internal" href="scikitplot.kds.print_labels.html#scikitplot.kds.print_labels" title="scikitplot.kds.print_labels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_labels</span></code></a></dt><dd><p>A legend for the abbreviations of decile table column names.</p>
 </dd>
+<dt><a class="reference internal" href="#scikitplot.kds.decile_table" title="scikitplot.kds.decile_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decile_table</span></code></a></dt><dd><p>Generates the Decile Table from labels and probabilities.</p>
+</dd>
+<dt><a class="reference internal" href="scikitplot.kds.plot_lift.html#scikitplot.kds.plot_lift" title="scikitplot.kds.plot_lift"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_lift</span></code></a></dt><dd><p>Generates the Decile based cumulative Lift Plot from labels and probabilities.</p>
+</dd>
+<dt><a class="reference internal" href="scikitplot.kds.plot_lift_decile_wise.html#scikitplot.kds.plot_lift_decile_wise" title="scikitplot.kds.plot_lift_decile_wise"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_lift_decile_wise</span></code></a></dt><dd><p>Generates the Decile-wise Lift Plot from labels and probabilities.</p>
+</dd>
+<dt><a class="reference internal" href="scikitplot.kds.plot_cumulative_gain.html#scikitplot.kds.plot_cumulative_gain" title="scikitplot.kds.plot_cumulative_gain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_cumulative_gain</span></code></a></dt><dd><p>Generates the cumulative Gain Plot from labels and probabilities.</p>
+</dd>
+<dt><a class="reference internal" href="scikitplot.kds.plot_ks_statistic.html#scikitplot.kds.plot_ks_statistic" title="scikitplot.kds.plot_ks_statistic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_ks_statistic</span></code></a></dt><dd><p>Generates the Kolmogorov-Smirnov (KS) Statistic Plot from labels and probabilities.</p>
+</dd>
 </dl>
 </div>
 <p class="rubric">References</p>
-<p>[1] <a class="github reference external" href="https://github.com/tensorbored/kds/blob/master/kds/metrics.py#L32">tensorbored/kds</a></p>
+<p>[1] <a class="github reference external" href="https://github.com/tensorbored/kds/blob/master/kds/metrics.py#L382">tensorbored/kds</a></p>
 <p class="rubric">Examples</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
@@ -1244,7 +1254,7 @@ If None, returns all class probabilities in the 2D case. Ignored if y_probas is 
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250430.079ba10 2025-04-30T00:20Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250505.f5d58d0 2025-05-05T15:31Z.
       <br/>
     
   </p>

@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="" />
 <meta name="description" content="Gallery examples: Introduction to modelplotpy" />
 
-    <title>plot_roi &#8212; scikit-plots 0.5.0.dev0+git.20250430.079ba10 documentation</title>
+    <title>plot_roi &#8212; scikit-plots 0.5.0.dev0+git.20250505.f5d58d0 documentation</title>
   
   
   
@@ -61,7 +61,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=0740f6c8"></script>
+    <script src="../../_static/documentation_options.js?v=e2b49d64"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -759,7 +759,7 @@
 <h1>plot_roi<a class="headerlink" href="#plot-roi" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.modelplotpy.plot_roi">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.modelplotpy.</span></span><span class="sig-name descname"><span class="pre">plot_roi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed_costs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable_costs_per_unit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">profit_per_unit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fig_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlight_ntile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlight_how</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'plot_text'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/079ba10/scikitplot/modelplotpy/_modelplotpy.py#L3431"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.modelplotpy.plot_roi" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.modelplotpy.</span></span><span class="sig-name descname"><span class="pre">plot_roi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_input</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed_costs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable_costs_per_unit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">profit_per_unit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlight_ntile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlight_how</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'plot_text'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fig_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f5d58d0/scikitplot/modelplotpy/_modelplotpy.py#L3432"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.modelplotpy.plot_roi" title="Link to this definition">#</a></dt>
 <dd><p>Plotting ROI curve</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -774,13 +774,6 @@ These costs vary with selection size (ntiles).</p>
 </dd>
 <dt><strong>profit_per_unit</strong><span class="classifier">int / float</span></dt><dd><p>Specifying the profit per unit in case the selected unit converts / responds positively.</p>
 </dd>
-<dt><strong>save_fig</strong><span class="classifier">bool, default=True</span></dt><dd><p>Save the plot.</p>
-</dd>
-<dt><strong>save_fig_filename</strong><span class="classifier">str, optional, default=’’</span></dt><dd><p>Specify the path and filetype to save the plot.
-If nothing specified, the plot will be saved as jpeg
-to the current working directory.
-Defaults to name to use func.__name__.</p>
-</dd>
 <dt><strong>highlight_ntile</strong><span class="classifier">int or None, optional, default=None</span></dt><dd><p>Highlight the value of the response curve at a specified ntile value.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 0.3.9: </span>Default changed from False to None.</p>
@@ -788,6 +781,8 @@ Defaults to name to use func.__name__.</p>
 </dd>
 <dt><strong>highlight_how</strong><span class="classifier">{‘plot’,’text’,’plot_text’}, optional, default=’plot_text’</span></dt><dd><p>Highlight_how specifies where information about the model performance is printed.
 It can be shown as text, on the plot or both.</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">dict, optional</span></dt><dd><p>Generic keyword arguments.</p>
 </dd>
 </dl>
 </dd>
@@ -803,16 +798,31 @@ Otherwise the location and file type is specified by the user.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
+<dt><strong>show_fig</strong><span class="classifier">bool, default=True</span></dt><dd><p>Show the plot.</p>
+</dd>
+<dt><strong>save_fig</strong><span class="classifier">bool, default=False</span></dt><dd><p>Save the plot.</p>
+</dd>
+<dt><strong>save_fig_filename</strong><span class="classifier">str, optional, default=’’</span></dt><dd><p>Specify the path and filetype to save the plot.
+If nothing specified, the plot will be saved as png
+inside <code class="docutils literal notranslate"><span class="pre">result_images</span></code> under to the current working directory.
+Defaults to plot image named to used <code class="docutils literal notranslate"><span class="pre">func.__name__</span></code>.</p>
+</dd>
+<dt><strong>verbose</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, prints debugging information.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
 <dt>TypeError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">highlight_ntile</span></code> is not specified as an int.</p>
 </dd>
 <dt>ValueError</dt><dd><p>If the wrong <code class="docutils literal notranslate"><span class="pre">highlight_how</span></code> value is specified.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>plot_input</strong> (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.3)"><em>pandas.DataFrame</em></a>)</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>plot_input</strong> (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.3)"><em>pandas.DataFrame</em></a>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -919,7 +929,7 @@ Otherwise the location and file type is specified by the user.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250430.079ba10 2025-04-30T00:20Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250505.f5d58d0 2025-05-05T15:31Z.
       <br/>
     
   </p>

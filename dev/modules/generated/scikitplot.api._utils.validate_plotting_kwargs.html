@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
 
-    <title>validate_plotting_kwargs &#8212; scikit-plots 0.5.0.dev0+git.20250430.079ba10 documentation</title>
+    <title>validate_plotting_kwargs &#8212; scikit-plots 0.5.0.dev0+git.20250505.f5d58d0 documentation</title>
   
   
   
@@ -59,7 +59,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=0740f6c8"></script>
+    <script src="../../_static/documentation_options.js?v=e2b49d64"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -757,45 +757,54 @@
 <h1>validate_plotting_kwargs<a class="headerlink" href="#validate-plotting-kwargs" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.api._utils.validate_plotting_kwargs">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.api._utils.</span></span><span class="sig-name descname"><span class="pre">validate_plotting_kwargs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nrows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/079ba10/scikitplot/api/_utils/validation.py#L259"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.api._utils.validate_plotting_kwargs" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.api._utils.</span></span><span class="sig-name descname"><span class="pre">validate_plotting_kwargs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f5d58d0/scikitplot/api/_utils/validation.py#L380"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.api._utils.validate_plotting_kwargs" title="Link to this definition">#</a></dt>
 <dd><p>Validate the provided axes and figure or create new ones if needed.</p>
 <p>This function checks if valid axes and figure objects are provided. If not, it creates
 new ones based on the specified parameters.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.3.9.</span></p>
 </div>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>ax</strong><span class="classifier">mpl.axes.Axes, optional</span></dt><dd><p>The axes on which to plot. If None, a new one will be created.</p>
+<dd class="field-odd"><dl>
+<dt><strong>ax</strong><span class="classifier">matplotlib.axes.Axes, optional, default=None</span></dt><dd><p>The axis to plot the figure on. If None is passed in the current axes
+will be used (or generated if required).</p>
 </dd>
-<dt><strong>fig</strong><span class="classifier">mpl.figure.Figure, optional</span></dt><dd><p>The figure in which to place the axes. If None, a new one will be created.</p>
+<dt><strong>fig</strong><span class="classifier">matplotlib.pyplot.figure, optional, default: None</span></dt><dd><p>The figure to plot the Visualizer on. If None is passed in the current
+plot will be used (or generated if required).</p>
 </dd>
-<dt><strong>figsize</strong><span class="classifier">tuple, optional</span></dt><dd><p>Size of the figure if a new one is created. Default is None.</p>
+<dt><strong>figsize</strong><span class="classifier">tuple, optional, default=None</span></dt><dd><p>Width, height in inches.
+Tuple denoting figure size of the plot e.g. (12, 5)</p>
 </dd>
-<dt><strong>nrows</strong><span class="classifier">int, optional</span></dt><dd><p>Number of rows in the subplot grid. Default is 1.</p>
+<dt><strong>nrows</strong><span class="classifier">int, optional, default=1</span></dt><dd><p>Number of rows in the subplot grid.</p>
 </dd>
-<dt><strong>ncols</strong><span class="classifier">int, optional</span></dt><dd><p>Number of columns in the subplot grid. Default is 1.</p>
+<dt><strong>ncols</strong><span class="classifier">int, optional, default=1</span></dt><dd><p>Number of columns in the subplot grid.</p>
 </dd>
-<dt><strong>index</strong><span class="classifier">int or tuple, optional</span></dt><dd><p>The position of the subplot on the grid. It can be:
-- An integer specifying the position (1-based).</p>
-</dd>
-<dt><strong>*args</strong><span class="classifier">tuple, optional</span></dt><dd><p><code class="xref py py-func docutils literal notranslate"><span class="pre">validate_plotting_kwargs</span></code> properties
-Positional arguments passed to the function.</p>
-</dd>
-<dt><strong>**kwargs</strong><span class="classifier">dict, optional</span></dt><dd><p><code class="xref py py-func docutils literal notranslate"><span class="pre">validate_plotting_kwargs</span></code> properties
-Keyword arguments passed to the function.</p>
+<dt><strong>plot_style</strong><span class="classifier">str, optional, default=None</span></dt><dd><p>Check available styles with “plt.style.available”. Examples include:
+[‘ggplot’, ‘seaborn’, ‘bmh’, ‘classic’, ‘dark_background’, ‘fivethirtyeight’,
+‘grayscale’, ‘seaborn-bright’, ‘seaborn-colorblind’, ‘seaborn-dark’,
+‘seaborn-dark-palette’, ‘tableau-colorblind10’, ‘fast’].</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>fig</strong><span class="classifier">mpl.figure.Figure</span></dt><dd><p>The figure to be used for plotting.</p>
+<dt><strong>fig</strong><span class="classifier">matplotlib.figure.Figure</span></dt><dd><p>The figure to be used for plotting.</p>
 </dd>
-<dt><strong>ax</strong><span class="classifier">mpl.axes.Axes or list of mpl.axes.Axes</span></dt><dd><p>The axes to be used for plotting. Returns a single Axes object if only one subplot is created,
+<dt><strong>ax</strong><span class="classifier">matplotlib.axes.Axes or list of matplotlib.axes.Axes</span></dt><dd><p>The axes to be used for plotting.
+Returns a single Axes object if only one subplot is created,
 or a list of Axes objects if multiple subplots are created.</p>
 </dd>
 </dl>
+</dd>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a>)</p></li>
+<li><p><strong>kwargs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>)</p></li>
+</ul>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -914,7 +923,7 @@ index starts at 1 in the upper left corner and increases to the right.</p></li>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250430.079ba10 2025-04-30T00:20Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250505.f5d58d0 2025-05-05T15:31Z.
       <br/>
     
   </p>
