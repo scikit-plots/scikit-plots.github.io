@@ -150,12 +150,24 @@ Force garbage collection
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 57-111
+.. GENERATED FROM PYTHON SOURCE LINES 57-61
 
 .. code-block:: Python
 
 
+    import matplotlib.pyplot as plt
     from scikitplot import visualkeras
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 62-79
+
+.. code-block:: Python
 
     img_spam = visualkeras.layered_view(
         model,
@@ -172,6 +184,24 @@ Force garbage collection
         save_fig=True,
         save_fig_filename="spam_conv_x.png",
     )
+    img_spam
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    <PIL.Image.Image image mode=RGBA size=700x412 at 0x7FD23ED42DD0>
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 80-97
+
+.. code-block:: Python
 
     img_spam = visualkeras.layered_view(
         model,
@@ -188,6 +218,24 @@ Force garbage collection
         save_fig=True,
         save_fig_filename="spam_conv_y.png",
     )
+    img_spam
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    <PIL.Image.Image image mode=RGBA size=680x511 at 0x7FD26D079610>
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 98-118
+
+.. code-block:: Python
 
     img_spam = visualkeras.layered_view(
         model,
@@ -207,15 +255,22 @@ Force garbage collection
         add_timestamp=True,
         verbose=True,
     )
+    img_spam
 
 
 
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    <PIL.Image.Image image mode=RGBA size=468x282 at 0x7FD26D079850>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 112-120
+.. GENERATED FROM PYTHON SOURCE LINES 119-127
 
 .. tags::
 
@@ -229,7 +284,7 @@ Force garbage collection
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 2.786 seconds)
+   **Total running time of the script:** (0 minutes 2.610 seconds)
 
 
 .. _sphx_glr_download_auto_examples_visualkeras_ANN_plot_conv_dense.py:
