@@ -12,11 +12,11 @@
 <meta property="og:url" content="https://scikit-plots.github.io/stable/introduction/quick_start.html" />
 <meta property="og:site_name" content="scikit-plots" />
 <meta property="og:description" content="Quick Start Guide: This guide provides a quick introduction to plotting with scikit-plots. Install Scikit-plots:. Use pip to install Scikit-plots:. A Simple Example: Let’s start with a basic exampl..." />
-<meta property="og:image" content="https://scikit-plots.github.io/stable/_images/quick_start.png" />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="Quick Start Guide: This guide provides a quick introduction to plotting with scikit-plots. Install Scikit-plots:. Use pip to install Scikit-plots:. A Simple Example: Let’s start with a basic exampl..." />
 
-    <title>scikit-plots: Machine Learning Visualization with Python &#8212; scikit-plots 0.5.0.dev0+git.20250505.f5d58d0 documentation</title>
+    <title>scikit-plots: Machine Learning Visualization with Python &#8212; scikit-plots 0.5.0.dev0+git.20250529.d1fdf05 documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=e2b49d64"></script>
+    <script src="../_static/documentation_options.js?v=db079a0d"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -646,7 +646,7 @@ Use <a class="reference external" href="https://scikit-learn.org/stable/modules/
 <li><p><strong>Plot the Confusion Matrix</strong>:
 Use <a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_classifier_eval.html#scikitplot.api.metrics.plot_classifier_eval" title="scikitplot.api.metrics.plot_classifier_eval"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_classifier_eval</span></code></a> to visualize the confusion matrix.</p></li>
 <li><p><strong>Display the Plot</strong>:
-Optionally, use <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v3.10.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">show</span></code></a> to display the plot.</p></li>
+Optionally, use <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v3.10.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">show</span></code></a> to display the plot.</p></li>
 </ol>
 <p>Here’s the code to illustrate the process:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># introduction/quick_start.py</span>
@@ -689,10 +689,7 @@ Optionally, use <a class="reference external" href="https://matplotlib.org/stabl
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>(<a class="reference download internal" download="" href="../_downloads/e8f85fdb90082fb6ccf11b2fe60fa560/quick_start.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/c92f7fcb1c6e6831f056b2dbcb958cb5/quick_start.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>)</p>
-<figure class="align-center">
-<img alt="../_images/quick_start.png" class="plot-directive" src="../_images/quick_start.png" />
-</figure>
+<p>(<a class="reference download internal" download="" href="../_downloads/e8f85fdb90082fb6ccf11b2fe60fa560/quick_start.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>)</p>
 <p>The resulting confusion matrix shows how well the classifier performs. In this case, it struggles with digits 1, 8, and 9. Fine-tuning the Random Forest’s hyperparameters might improve performance.</p>
 </section>
 <section id="one-more-example">
@@ -700,7 +697,7 @@ Optionally, use <a class="reference external" href="https://matplotlib.org/stabl
 <p><strong>Maximum flexibility. Compatibility with non-scikit-learn objects.</strong></p>
 <p>Although Scikit-plot is loosely based around the scikit-learn interface, you don’t actually need Scikit-learn objects to use the available functions. As long as you provide the functions what they’re asking for, they’ll happily draw the plots for you.</p>
 <p>Try Deep Learning Models like <a class="reference external" href="https://www.tensorflow.org">Tensorflow</a> or <a class="reference external" href="https://pytorch.org">Pytorch</a> or  <a class="reference external" href="https://huggingface.co/docs/transformers/index">🤗 Transformers</a> etc.</p>
-<p>Here’s a quick example to generate the precision-recall curves of a <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/Model" title="(in TensorFlow v2.4)"><code class="docutils literal notranslate"><span class="pre">tf.keras.Model</span></code></a> or <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a> or <a class="reference external" href="https://huggingface.co/docs/transformers/main/en/main_classes/model#transformers.TFPreTrainedModel" title="(in transformers vmain)"><code class="xref py py-class docutils literal notranslate"><span class="pre">TFPreTrainedModel</span></code></a> model on a sample dataset.</p>
+<p>Here’s a quick example to generate the precision-recall curves of a <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/Model" title="(in TensorFlow v2.4)"><code class="docutils literal notranslate"><span class="pre">tf.keras.Model</span></code></a> or <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a> or <a class="reference external" href="https://huggingface.co/docs/transformers/main/en/main_classes/model#transformers.TFPreTrainedModel" title="(in transformers vmain)"><code class="xref py py-class docutils literal notranslate"><span class="pre">TFPreTrainedModel</span></code></a> model on a sample dataset.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># introduction/quick_start_tf.py</span>
 <span class="c1"># %run: Python scripts and shows any outputs directly in the notebook.</span>
 <span class="c1"># %run ../docs/source/introduction/quick_start_tf.py</span>
@@ -776,10 +773,7 @@ Optionally, use <a class="reference external" href="https://matplotlib.org/stabl
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>(<a class="reference download internal" download="" href="../_downloads/4604784ad8c49c7ce2868c866022d3a1/quick_start_tf.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/d3b708aa410c68bbca18a85abea1a5c3/quick_start_tf.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>)</p>
-<figure class="align-center">
-<img alt="../_images/quick_start_tf.png" class="plot-directive" src="../_images/quick_start_tf.png" />
-</figure>
+<p>(<a class="reference download internal" download="" href="../_downloads/4604784ad8c49c7ce2868c866022d3a1/quick_start_tf.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>)</p>
 <p>Just pass the ground truth labels and predicted probabilities to
 <a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_precision_recall.html#scikitplot.api.metrics.plot_precision_recall" title="scikitplot.api.metrics.plot_precision_recall"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_precision_recall</span></code></a> to generate the precision-recall curves.
 This method is flexible and works with any classifier that produces predicted probabilities,
@@ -884,7 +878,7 @@ in the correct format.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250505.f5d58d0 2025-05-05T15:31Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250529.d1fdf05 2025-05-29T15:45Z.
       <br/>
     
   </p>

@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="" />
 <meta name="description" content="Gallery examples: Introduction to modelplotpy" />
 
-    <title>plot_profit &#8212; scikit-plots 0.5.0.dev0+git.20250505.f5d58d0 documentation</title>
+    <title>plot_profit &#8212; scikit-plots 0.5.0.dev0+git.20250529.d1fdf05 documentation</title>
   
   
   
@@ -61,7 +61,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=e2b49d64"></script>
+    <script src="../../_static/documentation_options.js?v=db079a0d"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -585,6 +585,19 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.api._utils.validate_plotting_kwargs.html">validate_plotting_kwargs</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.doremi.html">scikitplot.doremi</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.ENVELOPES.html">ENVELOPES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.compose_as_waveform.html">compose_as_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.play_waveform.html">play_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.plot_waveform.html">plot_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.save_waveform.html">save_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.save_waveform_as_mp3.html">save_waveform_as_mp3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.sheet_to_note.html">sheet_to_note</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.sheet_converter.html">sheet_converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.serialize_sheet.html">serialize_sheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.export_sheet.html">export_sheet</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._cy_experimental.expit.html">expit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._cy_experimental.log_expit.html">log_expit</a></li>
@@ -648,8 +661,6 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.vlog.html">vlog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="warn-function.html">warn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="warning-function.html">warning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.SpLogger.html">SpLogger</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.sp_logger.html">sp_logger</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.stats.html">scikitplot.stats</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -759,7 +770,7 @@
 <h1>plot_profit<a class="headerlink" href="#plot-profit" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.modelplotpy.plot_profit">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.modelplotpy.</span></span><span class="sig-name descname"><span class="pre">plot_profit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_input</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed_costs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable_costs_per_unit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">profit_per_unit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlight_ntile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlight_how</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'plot_text'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fig_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f5d58d0/scikitplot/modelplotpy/_modelplotpy.py#L3035"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.modelplotpy.plot_profit" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.modelplotpy.</span></span><span class="sig-name descname"><span class="pre">plot_profit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_input</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed_costs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable_costs_per_unit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">profit_per_unit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlight_ntile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlight_how</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'plot_text'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fig_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d1fdf05/scikitplot/modelplotpy/_modelplotpy.py#L3035"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.modelplotpy.plot_profit" title="Link to this definition">#</a></dt>
 <dd><p>Plotting profit curve</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -799,17 +810,43 @@ Otherwise the location and file type is specified by the user.</p>
 </dl>
 </dd>
 <dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>show_fig</strong><span class="classifier">bool, default=True</span></dt><dd><p>Show the plot.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
 </dd>
 <dt><strong>save_fig</strong><span class="classifier">bool, default=False</span></dt><dd><p>Save the plot.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
 </dd>
 <dt><strong>save_fig_filename</strong><span class="classifier">str, optional, default=’’</span></dt><dd><p>Specify the path and filetype to save the plot.
 If nothing specified, the plot will be saved as png
 inside <code class="docutils literal notranslate"><span class="pre">result_images</span></code> under to the current working directory.
 Defaults to plot image named to used <code class="docutils literal notranslate"><span class="pre">func.__name__</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
 </dd>
-<dt><strong>verbose</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, prints debugging information.</p>
+<dt><strong>overwrite</strong><span class="classifier">bool, optional, default=True</span></dt><dd><p>If False and a file exists, auto-increments the filename to avoid overwriting.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>add_timestamp</strong><span class="classifier">bool, optional, default=False</span></dt><dd><p>Whether to append a timestamp to the filename.
+Default is False.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>verbose</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, enables verbose output with informative messages during execution.
+Useful for debugging or understanding internal operations such as backend selection,
+font loading, and file saving status. If False, runs silently unless errors occur.</p>
+<p>Default is False.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0: </span>The <code class="docutils literal notranslate"><span class="pre">verbose</span></code> parameter was added to control logging and user feedback verbosity.</p>
+</div>
 </dd>
 </dl>
 </dd>
@@ -929,7 +966,7 @@ Defaults to plot image named to used <code class="docutils literal notranslate">
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250505.f5d58d0 2025-05-05T15:31Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250529.d1fdf05 2025-05-29T15:45Z.
       <br/>
     
   </p>

@@ -11,12 +11,12 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/user_guide/sp_logging/index.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="This module contains functions related to sp_logging(Scikit-plots Logging). Configuring the logging system: First, import the logger, Get a root logger by module: Get a root logger by func: Get a r..." />
+<meta property="og:description" content="This module contains functions related to sp_logging(Scikit-plots Logging). Configuring the logging system: First, import the logger, Get a root logger by module: Get a root logger by func:" />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="This module contains functions related to sp_logging(Scikit-plots Logging). Configuring the logging system: First, import the logger, Get a root logger by module: Get a root logger by func: Get a r..." />
+<meta name="description" content="This module contains functions related to sp_logging(Scikit-plots Logging). Configuring the logging system: First, import the logger, Get a root logger by module: Get a root logger by func:" />
 
-    <title>Logging System &#8212; scikit-plots 0.5.0.dev0+git.20250505.f5d58d0 documentation</title>
+    <title>Logging System &#8212; scikit-plots 0.5.0.dev0+git.20250529.d1fdf05 documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=e2b49d64"></script>
+    <script src="../../_static/documentation_options.js?v=db079a0d"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -83,8 +83,8 @@
     <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Array API support (experimental)" href="../_xp_core_lib/index.html" />
-    <link rel="prev" title="Visualkeras (experimental)" href="../visualkeras/index.html" />
+    <link rel="next" title="Array API support (experimental)" href="../_lib/index.html" />
+    <link rel="prev" title="DoReMi" href="../doremi/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.5" />
@@ -556,7 +556,7 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../api/index.html">Metric Perfomance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api/index.html">Metric Performance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../api/decomposition.html">Decomposition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/estimators.html">Estimators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/metrics.html">Metrics</a></li>
@@ -564,7 +564,7 @@
 </details></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../decile_wise_perf/index.html">Decile-Wise Perfomance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../decile_wise_perf/index.html">Decile-Wise Performance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../decile_wise_perf/kds.html">KeyToDataScience</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../decile_wise_perf/modelplotpy.html">modelplotpy</a></li>
 </ul>
@@ -576,11 +576,14 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../visualkeras/index.html">Visualkeras (experimental)</a></li>
 </ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../doremi/index.html">DoReMi</a></li>
+</ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Logging System</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../_xp_core_lib/index.html">Array API support (experimental)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_lib/index.html">Array API support (experimental)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Development</span></p>
 <ul class="nav bd-sidenav">
@@ -662,16 +665,16 @@ This module defines a logging class based on the built-in logging module.</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="thebelab-code" data-executable="true" data-language="ipython"><div class="docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot.sp_logging</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">logging</span>  <span class="c1"># module logger</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">logging</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>           <span class="c1"># default WARNING</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This is a info message from the sp logger.&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logger</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>  <span class="c1"># default WARNING</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This is a info message from the sp logger.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div></div>
 <div class="cell_output docutils container">
 <div class="thebelab-output" data-output="true"><div class="docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-05-05 15:34:17 INFO scikitplot 140419496274816 sp_logging.py 882 This is a info message from the sp logger. 
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-05-29 15:47:16.116029: I scikitplot 140376101489536 948823027.py:3:&lt;module&gt;] This is a info message from the sp logger.
 </pre></div>
 </div>
 </div>
@@ -681,54 +684,16 @@ This module defines a logging class based on the built-in logging module.</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="thebelab-code" data-executable="true" data-language="ipython"><div class="docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">sp_logging</span><span class="p">,</span> <span class="n">get_logger</span><span class="p">;</span> <span class="n">logging</span><span class="o">=</span><span class="n">get_logger</span><span class="p">()</span>  <span class="c1"># pure python logger, not have direct log level</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">logging</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">sp_logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>                                    <span class="c1"># default WARNING</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This is a info message from the sp logger.&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logger</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>  <span class="c1"># default WARNING</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This is a info message from the sp logger.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div></div>
 <div class="cell_output docutils container">
 <div class="thebelab-output" data-output="true"><div class="docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-05-05 15:34:17 INFO scikitplot 140419496274816 1353514787.py 3 This is a info message from the sp logger. 
-</pre></div>
-</div>
-</div>
-</div></div>
-</div>
-<p>Get a root logger by class:</p>
-<div class="jupyter_cell jupyter_container docutils container">
-<div class="cell_input code_cell docutils container">
-<div class="thebelab-code" data-executable="true" data-language="ipython"><div class="docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">SpLogger</span><span class="p">;</span> <span class="n">logging</span><span class="o">=</span><span class="n">SpLogger</span><span class="p">()</span>  <span class="c1"># class logger</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">logging</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>                       <span class="c1"># default WARNING</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This is a info message from the sp logger.&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div></div>
-<div class="cell_output docutils container">
-<div class="thebelab-output" data-output="true"><div class="docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-05-05 15:34:17 INFO scikitplot 140419496274816 sp_logging.py 1232 This is a info message from the sp logger. 
-</pre></div>
-</div>
-</div>
-</div></div>
-</div>
-<p>Get a root logger by class instance:</p>
-<div class="jupyter_cell jupyter_container docutils container">
-<div class="cell_input code_cell docutils container">
-<div class="thebelab-code" data-executable="true" data-language="ipython"><div class="docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">sp_logger</span> <span class="k">as</span> <span class="n">logging</span>  <span class="c1"># class instance logger</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">logging</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>               <span class="c1"># default WARNING</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This is a info message from the sp logger.&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div></div>
-<div class="cell_output docutils container">
-<div class="thebelab-output" data-output="true"><div class="docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-05-05 15:34:17 INFO scikitplot 140419496274816 sp_logging.py 1232 This is a info message from the sp logger. 
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-05-29 15:47:16.121394: I scikitplot 140376101489536 948823027.py:3:&lt;module&gt;] This is a info message from the sp logger.
 </pre></div>
 </div>
 </div>
@@ -776,16 +741,16 @@ the program itself may be unable to continue running.</p></li>
     <div class="footer-article-item">
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../visualkeras/index.html"
+       href="../doremi/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Visualkeras (experimental)</p>
+        <p class="prev-next-title">DoReMi</p>
       </div>
     </a>
     <a class="right-next"
-       href="../_xp_core_lib/index.html"
+       href="../_lib/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
@@ -854,7 +819,7 @@ the program itself may be unable to continue running.</p></li>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250505.f5d58d0 2025-05-05T15:31Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250529.d1fdf05 2025-05-29T15:45Z.
       <br/>
     
   </p>

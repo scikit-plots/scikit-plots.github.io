@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
 
-    <title>graph_view &#8212; scikit-plots 0.5.0.dev0+git.20250505.f5d58d0 documentation</title>
+    <title>graph_view &#8212; scikit-plots 0.5.0.dev0+git.20250529.d1fdf05 documentation</title>
   
   
   
@@ -59,7 +59,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=e2b49d64"></script>
+    <script src="../../_static/documentation_options.js?v=db079a0d"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -583,6 +583,19 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.api._utils.validate_plotting_kwargs.html">validate_plotting_kwargs</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.doremi.html">scikitplot.doremi</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.ENVELOPES.html">ENVELOPES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.compose_as_waveform.html">compose_as_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.play_waveform.html">play_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.plot_waveform.html">plot_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.save_waveform.html">save_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.save_waveform_as_mp3.html">save_waveform_as_mp3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.sheet_to_note.html">sheet_to_note</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.sheet_converter.html">sheet_converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.serialize_sheet.html">serialize_sheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.export_sheet.html">export_sheet</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._cy_experimental.expit.html">expit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._cy_experimental.log_expit.html">log_expit</a></li>
@@ -646,8 +659,6 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.vlog.html">vlog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="warn-function.html">warn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="warning-function.html">warning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.SpLogger.html">SpLogger</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.sp_logger.html">sp_logger</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.stats.html">scikitplot.stats</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -757,7 +768,7 @@
 <h1>graph_view<a class="headerlink" href="#graph-view" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.visualkeras.graph_view">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.visualkeras.</span></span><span class="sig-name descname"><span class="pre">graph_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background_fill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'white'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer_spacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">250</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_spacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connector_fill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gray'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connector_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ellipsize_after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inout_as_tensor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_neurons</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_os_viewer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fig_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_timestamp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f5d58d0/scikitplot/visualkeras/graph.py#L106"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.visualkeras.graph_view" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.visualkeras.</span></span><span class="sig-name descname"><span class="pre">graph_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background_fill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'white'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer_spacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">250</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_spacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connector_fill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gray'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connector_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ellipsize_after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inout_as_tensor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_neurons</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_os_viewer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fig_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_timestamp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d1fdf05/scikitplot/visualkeras/graph.py#L109"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.visualkeras.graph_view" title="Link to this definition">#</a></dt>
 <dd><p>Generates an architectural visualization for a given linear Keras
 <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/Model" title="(in TensorFlow v2.4)"><code class="docutils literal notranslate"><span class="pre">tf.keras.Model</span></code></a> model
 (i.e., one input and output tensor for each layer) in graph style.</p>
@@ -810,35 +821,51 @@ If False, tensors will be flattened, and one node for each scalar will be create
 If False, each layer is represented by a single node
 (default is True).</p>
 </dd>
-<dt><strong>backend</strong><span class="classifier">bool, str, optional</span></dt><dd><p>Specifies the backend used to process and save the image.
+<dt><strong>**kwargs</strong><span class="classifier">dict</span></dt><dd><p>Generic keyword arguments.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>PIL.Image.Image</dt><dd><p>The generated image visualizing the model’s architecture.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>backend</strong><span class="classifier">bool, str, optional, default=None</span></dt><dd><p>Specifies the backend used to process and save the image.
 If the value is one of <code class="docutils literal notranslate"><span class="pre">'matplotlib'</span></code>, <code class="docutils literal notranslate"><span class="pre">'true'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'none'</span></code> (case-insensitive),
 the Matplotlib backend will be used. This is useful for better DPI control and
 consistent rendering. Any other value will fall back to using the PIL backend.
-Common values include:</p>
+Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>. Common values include:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">'matplotlib'</span></code>, <code class="docutils literal notranslate"><span class="pre">'true'</span></code>, <code class="docutils literal notranslate"><span class="pre">'none'</span></code> : Use Matplotlib</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">'pil'</span></code>, <code class="docutils literal notranslate"><span class="pre">'fast'</span></code>, etc. : Use PIL (Python Imaging Library)</p></li>
 </ul>
-<p>Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.4.0: </span>The <code class="docutils literal notranslate"><span class="pre">backend</span></code> parameter was added to allow switching between PIL and Matplotlib.</p>
 </div>
 </dd>
-<dt><strong>show_os_viewer</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, displays the saved image (by PIL) in the system’s default image viewer
+<dt><strong>show_os_viewer</strong><span class="classifier">bool, optional, default=False</span></dt><dd><p>If True, displays the saved image (by PIL) in the system’s default image viewer
 using PIL’s <code class="docutils literal notranslate"><span class="pre">.show()</span></code> method. Default is False.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.4.0.</span></p>
 </div>
 </dd>
-<dt><strong>save_fig</strong><span class="classifier">bool, default=True</span></dt><dd><p>Save the plot.</p>
+<dt><strong>show_fig</strong><span class="classifier">bool, default=True</span></dt><dd><p>Show the plot.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>save_fig</strong><span class="classifier">bool, default=False</span></dt><dd><p>Save the plot.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.4.0.</span></p>
 </div>
 </dd>
 <dt><strong>save_fig_filename</strong><span class="classifier">str, optional, default=’’</span></dt><dd><p>Specify the path and filetype to save the plot.
 If nothing specified, the plot will be saved as png
-to the current working directory.
-Defaults to name to use func.__name__.</p>
+inside <code class="docutils literal notranslate"><span class="pre">result_images</span></code> under to the current working directory.
+Defaults to plot image named to used <code class="docutils literal notranslate"><span class="pre">func.__name__</span></code>.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.4.0.</span></p>
 </div>
@@ -864,14 +891,8 @@ font loading, and file saving status. If False, runs silently unless errors occu
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt>PIL.Image.Image</dt><dd><p>The generated image visualizing the model’s architecture.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
 <li><p><strong>to_file</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>)</p></li>
 <li><p><strong>color_map</strong> (<em>Optional</em><em>[</em><em>&quot;Dict&quot;</em><em>]</em>)</p></li>
 <li><p><strong>node_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>)</p></li>
@@ -886,14 +907,15 @@ font loading, and file saving status. If False, runs silently unless errors occu
 <li><p><strong>show_neurons</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
 <li><p><strong>backend</strong> (<em>Optional</em><em>[</em><em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em>,</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em><em>]</em>)</p></li>
 <li><p><strong>show_os_viewer</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
+<li><p><strong>show_fig</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
 <li><p><strong>save_fig</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
 <li><p><strong>save_fig_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>)</p></li>
 <li><p><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
 <li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image" title="(in Pillow (PIL Fork) v11.2.1)">PIL.Image.Image</a></p>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image" title="(in Pillow (PIL Fork) v11.2.1)">PIL.Image.Image</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -993,7 +1015,7 @@ font loading, and file saving status. If False, runs silently unless errors occu
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250505.f5d58d0 2025-05-05T15:31Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250529.d1fdf05 2025-05-29T15:45Z.
       <br/>
     
   </p>

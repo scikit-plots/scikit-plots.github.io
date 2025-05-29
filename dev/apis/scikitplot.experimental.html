@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="Experimental functions and utilities by Python and Cython/Pybind11 Bindings. This package contains experimental functions and utilities for use with Cython/Pybind11 Bindings and Python implementati..." />
 
-    <title>scikitplot.experimental &#8212; scikit-plots 0.5.0.dev0+git.20250505.f5d58d0 documentation</title>
+    <title>scikitplot.experimental &#8212; scikit-plots 0.5.0.dev0+git.20250529.d1fdf05 documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=e2b49d64"></script>
+    <script src="../_static/documentation_options.js?v=db079a0d"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -84,7 +84,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="expit" href="../modules/generated/scikitplot.experimental._cy_experimental.expit.html" />
-    <link rel="prev" title="validate_plotting_kwargs" href="../modules/generated/scikitplot.api._utils.validate_plotting_kwargs.html" />
+    <link rel="prev" title="export_sheet" href="../modules/generated/scikitplot.export_sheet.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.5" />
@@ -580,6 +580,19 @@
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api._utils.validate_plotting_kwargs.html">validate_plotting_kwargs</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.doremi.html">scikitplot.doremi</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.ENVELOPES.html">ENVELOPES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.compose_as_waveform.html">compose_as_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.play_waveform.html">play_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.plot_waveform.html">plot_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.save_waveform.html">save_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.save_waveform_as_mp3.html">save_waveform_as_mp3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sheet_to_note.html">sheet_to_note</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sheet_converter.html">sheet_converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.serialize_sheet.html">serialize_sheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.export_sheet.html">export_sheet</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">scikitplot.experimental</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._cy_experimental.expit.html">expit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._cy_experimental.log_expit.html">log_expit</a></li>
@@ -643,8 +656,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.vlog.html">vlog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/warn-function.html">warn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/warning-function.html">warning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.SpLogger.html">SpLogger</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.sp_logger.html">sp_logger</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.stats.html">scikitplot.stats</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -818,12 +829,12 @@ change in future releases.</p>
     <div class="footer-article-item">
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../modules/generated/scikitplot.api._utils.validate_plotting_kwargs.html"
+       href="../modules/generated/scikitplot.export_sheet.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">validate_plotting_kwargs</p>
+        <p class="prev-next-title">export_sheet</p>
       </div>
     </a>
     <a class="right-next"
@@ -869,7 +880,7 @@ change in future releases.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250505.f5d58d0 2025-05-05T15:31Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250529.d1fdf05 2025-05-29T15:45Z.
       <br/>
     
   </p>

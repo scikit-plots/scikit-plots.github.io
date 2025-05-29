@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
 
-    <title>validate_plotting_kwargs &#8212; scikit-plots 0.5.0.dev0+git.20250505.f5d58d0 documentation</title>
+    <title>validate_plotting_kwargs &#8212; scikit-plots 0.5.0.dev0+git.20250529.d1fdf05 documentation</title>
   
   
   
@@ -59,7 +59,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=e2b49d64"></script>
+    <script src="../../_static/documentation_options.js?v=db079a0d"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -82,7 +82,7 @@
     <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="scikitplot.experimental" href="../../apis/scikitplot.experimental.html" />
+    <link rel="next" title="scikitplot.doremi" href="../../apis/scikitplot.doremi.html" />
     <link rel="prev" title="binary_ks_curve" href="scikitplot.api._utils.binary_ks_curve.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -583,6 +583,19 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">validate_plotting_kwargs</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.doremi.html">scikitplot.doremi</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.ENVELOPES.html">ENVELOPES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.compose_as_waveform.html">compose_as_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.play_waveform.html">play_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.plot_waveform.html">plot_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.save_waveform.html">save_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.save_waveform_as_mp3.html">save_waveform_as_mp3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.sheet_to_note.html">sheet_to_note</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.sheet_converter.html">sheet_converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.serialize_sheet.html">serialize_sheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.export_sheet.html">export_sheet</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._cy_experimental.expit.html">expit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._cy_experimental.log_expit.html">log_expit</a></li>
@@ -646,8 +659,6 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.vlog.html">vlog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="warn-function.html">warn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="warning-function.html">warning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.SpLogger.html">SpLogger</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.sp_logger.html">sp_logger</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.stats.html">scikitplot.stats</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -757,7 +768,7 @@
 <h1>validate_plotting_kwargs<a class="headerlink" href="#validate-plotting-kwargs" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.api._utils.validate_plotting_kwargs">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.api._utils.</span></span><span class="sig-name descname"><span class="pre">validate_plotting_kwargs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f5d58d0/scikitplot/api/_utils/validation.py#L380"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.api._utils.validate_plotting_kwargs" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.api._utils.</span></span><span class="sig-name descname"><span class="pre">validate_plotting_kwargs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d1fdf05/scikitplot/api/_utils/validation.py#L188"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.api._utils.validate_plotting_kwargs" title="Link to this definition">#</a></dt>
 <dd><p>Validate the provided axes and figure or create new ones if needed.</p>
 <p>This function checks if valid axes and figure objects are provided. If not, it creates
 new ones based on the specified parameters.</p>
@@ -769,16 +780,31 @@ new ones based on the specified parameters.</p>
 <dd class="field-odd"><dl>
 <dt><strong>ax</strong><span class="classifier">matplotlib.axes.Axes, optional, default=None</span></dt><dd><p>The axis to plot the figure on. If None is passed in the current axes
 will be used (or generated if required).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
 </dd>
 <dt><strong>fig</strong><span class="classifier">matplotlib.pyplot.figure, optional, default: None</span></dt><dd><p>The figure to plot the Visualizer on. If None is passed in the current
 plot will be used (or generated if required).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
 </dd>
 <dt><strong>figsize</strong><span class="classifier">tuple, optional, default=None</span></dt><dd><p>Width, height in inches.
 Tuple denoting figure size of the plot e.g. (12, 5)</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
 </dd>
 <dt><strong>nrows</strong><span class="classifier">int, optional, default=1</span></dt><dd><p>Number of rows in the subplot grid.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
 </dd>
 <dt><strong>ncols</strong><span class="classifier">int, optional, default=1</span></dt><dd><p>Number of columns in the subplot grid.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
 </dd>
 <dt><strong>plot_style</strong><span class="classifier">str, optional, default=None</span></dt><dd><p>Check available styles with “plt.style.available”. Examples include:
 [‘ggplot’, ‘seaborn’, ‘bmh’, ‘classic’, ‘dark_background’, ‘fivethirtyeight’,
@@ -850,11 +876,11 @@ index starts at 1 in the upper left corner and increases to the right.</p></li>
       </div>
     </a>
     <a class="right-next"
-       href="../../apis/scikitplot.experimental.html"
+       href="../../apis/scikitplot.doremi.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">scikitplot.experimental</p>
+        <p class="prev-next-title">scikitplot.doremi</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -923,7 +949,7 @@ index starts at 1 in the upper left corner and increases to the right.</p></li>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250505.f5d58d0 2025-05-05T15:31Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250529.d1fdf05 2025-05-29T15:45Z.
       <br/>
     
   </p>
