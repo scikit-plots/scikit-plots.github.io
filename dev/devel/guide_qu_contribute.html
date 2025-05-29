@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="Creating a development environment: To make and test code changes and build the documentation locally you will need to create a development environment. If you run into problems at any stage do not..." />
 
-    <title>Quickstart Contributing Guidelines &#8212; scikit-plots 0.5.0.dev0+git.20250529.d67f930 documentation</title>
+    <title>Quickstart Contributing Guidelines &#8212; scikit-plots 0.5.0.dev0+git.20250529.11a4b54 documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=7dcefb47"></script>
+    <script src="../_static/documentation_options.js?v=09b9b383"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -729,6 +729,8 @@ git<span class="w"> </span>clone<span class="w"> </span>https://github.com/YOUR-
 <span class="nb">cd</span><span class="w"> </span>scikit-plots
 </pre></div>
 </div>
+<section id="initialize-and-fetch-submodules-not-needed-every-time">
+<h3>Initialize and Fetch Submodules (Not Needed Every Time):<a class="headerlink" href="#initialize-and-fetch-submodules-not-needed-every-time" title="Link to this heading">#</a></h3>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">## Or use `git config ...` to add `scikit-plots` in git safe dirs</span>
 bash<span class="w"> </span>docker/script/safe_dirs.sh<span class="w">  </span><span class="c1"># add safe directories for git</span>
 
@@ -760,6 +762,7 @@ git<span class="w"> </span>fetch<span class="w"> </span>upstream<span class="w">
 </pre></div>
 </div>
 </section>
+</section>
 <section id="create-an-isolated-development-environment">
 <span id="create-isolated-env"></span><h2>Create an isolated development environment<a class="headerlink" href="#create-an-isolated-development-environment" title="Link to this heading">#</a></h2>
 <p>A key requirement is to have an isolated Python environment, meaning that it is
@@ -775,6 +778,8 @@ manager provided by <a class="reference external" href="https://github.com/conda
 popular choice and generally works well, especially for newcomers. It is easy to install
 and use on all platforms and it makes it easy to install different Python versions which
 can be useful for testing.</p>
+<section id="install-miniforge-and-conda">
+<h3>Install miniforge and conda<a class="headerlink" href="#install-miniforge-and-conda" title="Link to this heading">#</a></h3>
 <p>If you do not already have <code class="docutils literal notranslate"><span class="pre">conda</span></code> installed, <a class="reference external" href="https://github.com/conda-forge/miniforge/blob/main/README.md">download and install miniforge</a>. The details depend on
 your system but the end result is to provide a <code class="docutils literal notranslate"><span class="pre">conda</span></code> executable that you can use
 to create and manage isolated Python environments.</p>
@@ -787,6 +792,7 @@ to create and manage isolated Python environments.</p>
 </pre></div>
 </div>
 <p>Note the <code class="docutils literal notranslate"><span class="pre">graphviz</span></code> package is required for building the documentation.</p>
+</section>
 <section id="install-the-development-version-of-scikit-plots">
 <h3>Install the development version of scikit-plots<a class="headerlink" href="#install-the-development-version-of-scikit-plots" title="Link to this heading">#</a></h3>
 <p>Now you can install the development version of <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> into your new environment. This
@@ -887,6 +893,9 @@ First ensure it’s up-to-date with the <code class="docutils literal notranslat
 <span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">switch</span> <span class="n">main</span>
 </pre></div>
 </div>
+</section>
+<section id="recommended-use-fast-forward-only">
+<h3>(Recommended) Use Fast-forward only:<a class="headerlink" href="#recommended-use-fast-forward-only" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Fast-forward only: Updates your branch only if it can be fast-forwarded (i.e., no local commits that diverge from upstream/main).</p></li>
 <li><p>If divergence exists: Git refuses to pull, and you must manually resolve the situation (e.g., using git rebase or git merge).</p></li>
@@ -915,6 +924,9 @@ A---B---C---D---E---F  (upstream/main)
           X---Y  (local main)  ❌ (Fast-forward not possible)
 </pre></div>
 </div>
+</section>
+<section id="optionally-rebases">
+<h3>(Optionally) Rebases:<a class="headerlink" href="#optionally-rebases" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Rebases your local commits on top of the latest upstream/main</p></li>
 <li><p>Rewrites history by replaying your commits on top of upstream/main, making the history linear</p></li>
@@ -1129,8 +1141,12 @@ required reviewers and a faster review process.</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-a-c-compiler-if-needed">Install a C compiler if needed</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-clone-of-scikit-plots">Create a clone of scikit-plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-clone-of-scikit-plots">Create a clone of scikit-plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-fetch-submodules-not-needed-every-time">Initialize and Fetch Submodules (Not Needed Every Time):</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-isolated-development-environment">Create an isolated development environment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-miniforge-and-conda">Install miniforge and conda</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-development-version-of-scikit-plots">Install the development version of scikit-plots</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-the-build-scikit-plots">Checking the build scikit-plots</a></li>
 </ul>
@@ -1140,6 +1156,8 @@ required reviewers and a faster review process.</p></li>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-submitting-a-pull-request">Creating and submitting a pull request</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-branch">Creating a branch</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-use-fast-forward-only">(Recommended) Use Fast-forward only:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optionally-rebases">(Optionally) Rebases:</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-code-or-documentation-changes">Making code or documentation changes</a><ul class="nav section-nav flex-column">
@@ -1186,7 +1204,7 @@ required reviewers and a faster review process.</p></li>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250529.d67f930 2025-05-29T18:56Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250529.11a4b54 2025-05-29T20:27Z.
       <br/>
     
   </p>

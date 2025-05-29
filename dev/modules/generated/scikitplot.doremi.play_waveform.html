@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
 
-    <title>play_waveform &#8212; scikit-plots 0.5.0.dev0+git.20250529.d67f930 documentation</title>
+    <title>play_waveform &#8212; scikit-plots 0.5.0.dev0+git.20250529.11a4b54 documentation</title>
   
   
   
@@ -59,7 +59,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=7dcefb47"></script>
+    <script src="../../_static/documentation_options.js?v=09b9b383"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -768,7 +768,7 @@
 <h1>play_waveform<a class="headerlink" href="#play-waveform" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.doremi.play_waveform">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.doremi.</span></span><span class="sig-name descname"><span class="pre">play_waveform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blocking</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_generated</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d67f930/scikitplot/doremi/waveform_playback.py#L62"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.doremi.play_waveform" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.doremi.</span></span><span class="sig-name descname"><span class="pre">play_waveform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blocking</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_generated</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/11a4b54/scikitplot/doremi/waveform_playback.py#L62"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.doremi.play_waveform" title="Link to this definition">#</a></dt>
 <dd><p>Play audio from a NumPy array using either IPython (for Jupyter) or sounddevice.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -829,11 +829,11 @@ or inputs are misconfigured.</p>
 <p class="rubric">Notes</p>
 <p>🔧 Requires either IPython (for Jupyter playback) or the <code class="docutils literal notranslate"><span class="pre">sounddevice</span></code> package.
 To install sounddevice and its backend:</p>
-<blockquote>
-<div><p># Install PortAudio library (needed for sounddevice to work on Linux)
-sudo apt-get install libportaudio2 libportaudiocpp0 portaudio19-dev
-pip install sounddevice</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install PortAudio library (needed for sounddevice to work on Linux)</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libportaudio2</span> <span class="n">libportaudiocpp0</span> <span class="n">portaudio19</span><span class="o">-</span><span class="n">dev</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">sounddevice</span>
+</pre></div>
+</div>
 <p>If you’re in Docker or WSL/Linux without sound, You must either:
 - Mount PulseAudio socket or use –device /dev/snd and libasound2
 - Or avoid using sounddevice and stick to IPython.display.Audio or exporting .wav files</p>
@@ -846,15 +846,15 @@ pip install sounddevice</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">play_waveform</span><span class="p">(</span><span class="n">sine_wave</span><span class="p">,</span> <span class="n">rate</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Automatically picks best option</p>
+<p>Automatically picks best option:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">play_waveform</span><span class="p">(</span><span class="n">music</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">doremi</span><span class="o">.</span><span class="n">DEFAULT_SAMPLE_RATE</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Force Jupyter output</p>
+<p>Force Jupyter output:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">play_waveform</span><span class="p">(</span><span class="n">music</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">doremi</span><span class="o">.</span><span class="n">DEFAULT_SAMPLE_RATE</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;jupyter&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Force sounddevice</p>
+<p>Force sounddevice:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">play_waveform</span><span class="p">(</span><span class="n">music</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">doremi</span><span class="o">.</span><span class="n">DEFAULT_SAMPLE_RATE</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;sounddevice&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -955,7 +955,7 @@ pip install sounddevice</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250529.d67f930 2025-05-29T18:56Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250529.11a4b54 2025-05-29T20:27Z.
       <br/>
     
   </p>

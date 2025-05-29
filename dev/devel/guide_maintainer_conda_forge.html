@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="This guide provides a comprehensive, beginner-friendly walkthrough for adding scikit-plots to conda-forge, including best practices, important notes, and maintenance instructions. Prerequisites: En..." />
 
-    <title>How to Add scikit-plots to conda-forge Guidelines &#8212; scikit-plots 0.5.0.dev0+git.20250529.d67f930 documentation</title>
+    <title>How to Add scikit-plots to conda-forge Guidelines &#8212; scikit-plots 0.5.0.dev0+git.20250529.11a4b54 documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=7dcefb47"></script>
+    <script src="../_static/documentation_options.js?v=09b9b383"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -757,6 +757,10 @@ But can be use direct <code class="docutils literal notranslate"><span class="pr
 </div>
 </li>
 </ol>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">grayskull</span> <span class="pre">pypi</span> <span class="pre">scikit-plots</span></code> to auto-generate a <code class="docutils literal notranslate"><span class="pre">meta.yaml</span></code> based on your latest PyPI release, then modify the <code class="docutils literal notranslate"><span class="pre">source</span></code> field if needed.</p>
+</div>
 </section>
 <section id="publishing-to-pypi">
 <span id="id2"></span><h2>Publishing to PyPI<a class="headerlink" href="#publishing-to-pypi" title="Link to this heading">#</a></h2>
@@ -782,6 +786,13 @@ But can be use direct <code class="docutils literal notranslate"><span class="pr
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><code class="docutils literal notranslate"><span class="pre">grayskull</span></code> will automatically pull metadata from your PyPI release — <strong>but you must review it</strong>.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>After generation:
+- Check license information.
+- Verify dependencies (<code class="docutils literal notranslate"><span class="pre">requirements</span></code> section).
+- Correct any missing classifiers or Python version constraints.</p>
 </div>
 <div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">name</span> <span class="o">=</span> <span class="s2">&quot;scikit-plots&quot;</span> <span class="cp">%}</span>
 <span class="cp">{%</span> <span class="k">set</span> <span class="nv">version</span> <span class="o">=</span> <span class="s2">&quot;0.4.0rc4&quot;</span> <span class="cp">%}</span>
@@ -888,6 +899,10 @@ Build errors may still appear even after the staged-recipes PR is merged.</p>
 <li><p>Publish a new release to PyPI.</p></li>
 <li><p>The <strong>conda-forge bot</strong> will open a PR automatically to update the feedstock recipe.</p></li>
 </ul>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Regularly check your feedstock repository for pending bot PRs!</p>
+</div>
 </section>
 <section id="manual-updates">
 <h2>Manual Updates<a class="headerlink" href="#manual-updates" title="Link to this heading">#</a></h2>
@@ -1050,7 +1065,7 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250529.d67f930 2025-05-29T18:56Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250529.11a4b54 2025-05-29T20:27Z.
       <br/>
     
   </p>
