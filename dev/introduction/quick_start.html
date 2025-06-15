@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="Quick Start Guide: This guide provides a quick introduction to plotting with scikit-plots. Install Scikit-plots:. Use pip to install Scikit-plots:. A Simple Example: Let’s start with a basic exampl..." />
 
-    <title>scikit-plots: Machine Learning Visualization with Python &#8212; scikit-plots 0.5.0.dev0+git.20250529.11a4b54 documentation</title>
+    <title>scikit-plots: Machine Learning Visualization with Python &#8212; scikit-plots 0.5.0.dev0+git.20250615.d4426f0 documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=09b9b383"></script>
+    <script src="../_static/documentation_options.js?v=ef687d8b"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -640,9 +640,9 @@
 <li><p><strong>Load the Dataset</strong>:
 We’ll use the digits dataset, which contains features and labels for classification.</p></li>
 <li><p><strong>Initialize the Classifier</strong>:
-Create a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></a> with specified parameters.</p></li>
+Create a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></a> with specified parameters.</p></li>
 <li><p><strong>Generate Predictions</strong>:
-Use <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_predict.html#sklearn.model_selection.cross_val_predict" title="(in scikit-learn v1.6)"><code class="xref py py-func docutils literal notranslate"><span class="pre">cross_val_predict</span></code></a> to obtain predicted labels through cross-validation. This function provides cross-validated estimates for each sample point, which helps in evaluating metrics like accuracy, precision, recall, and the confusion matrix.</p></li>
+Use <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_predict.html#sklearn.model_selection.cross_val_predict" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">cross_val_predict</span></code></a> to obtain predicted labels through cross-validation. This function provides cross-validated estimates for each sample point, which helps in evaluating metrics like accuracy, precision, recall, and the confusion matrix.</p></li>
 <li><p><strong>Plot the Confusion Matrix</strong>:
 Use <a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_classifier_eval.html#scikitplot.api.metrics.plot_classifier_eval" title="scikitplot.api.metrics.plot_classifier_eval"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_classifier_eval</span></code></a> to visualize the confusion matrix.</p></li>
 <li><p><strong>Display the Plot</strong>:
@@ -675,6 +675,7 @@ Optionally, use <a class="reference external" href="https://matplotlib.org/stabl
 <span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
 
 <span class="n">sp</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+
 <span class="n">sp</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">plot_classifier_eval</span><span class="p">(</span>
     <span class="n">y_train</span><span class="p">,</span>
     <span class="n">y_pred</span><span class="p">,</span>
@@ -706,21 +707,23 @@ Optionally, use <a class="reference external" href="https://matplotlib.org/stabl
 <span class="c1"># %run ../docs/source/introduction/quick_start_tf.py</span>
 
 <span class="c1"># Import Libraries</span>
-<span class="c1"># Before tf {&#39;0&#39;:&#39;All&#39;, &#39;1&#39;:&#39;Warnings+&#39;, &#39;2&#39;:&#39;Errors+&#39;, &#39;3&#39;:&#39;Fatal Only&#39;} if any</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TF_CPP_MIN_LOG_LEVEL&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;3&quot;</span>
-<span class="c1"># Disable GPU and force TensorFlow to use CPU</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;CUDA_VISIBLE_DEVICES&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 
 <span class="c1"># Set TensorFlow&#39;s logging level to Fatal</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="c1"># Before tf {&#39;0&#39;:&#39;All&#39;, &#39;1&#39;:&#39;Warnings+&#39;, &#39;2&#39;:&#39;Errors+&#39;, &#39;3&#39;:&#39;Fatal Only&#39;} if any</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TF_CPP_MIN_LOG_LEVEL&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;3&quot;</span>
+<span class="c1"># Disable GPU and force TensorFlow to use CPU</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;CUDA_VISIBLE_DEVICES&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+
+<span class="n">sp</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
 
-<span class="n">tf</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">CRITICAL</span><span class="p">)</span>
+<span class="c1"># Set TensorFlow&#39;s logging level to Fatal</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">CRITICAL</span><span class="p">)</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_digits</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
@@ -758,12 +761,6 @@ Optionally, use <a class="reference external" href="https://matplotlib.org/stabl
 <span class="c1"># Predict probabilities on the validation set</span>
 <span class="n">y_probas</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
 
-<span class="c1"># Plot the data</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
-
-<span class="n">sp</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
 <span class="c1"># Plot precision-recall curves</span>
 <span class="n">sp</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">plot_precision_recall</span><span class="p">(</span>
     <span class="n">y_val</span><span class="p">,</span>
@@ -884,7 +881,7 @@ in the correct format.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250529.11a4b54 2025-05-29T20:27Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250615.d4426f0 2025-06-15T00:14Z.
       <br/>
     
   </p>
