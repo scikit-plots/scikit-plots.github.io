@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="This glossary hopes to definitively represent the tacit and explicit conventions applied in Scikit-learn and its API, while providing a reference for users and contributors. It aims to describe the..." />
 
-    <title>1. Glossary of Common Terms and API Elements &#8212; scikit-plots 0.5.0.dev0+git.20250619.cde37d4 documentation</title>
+    <title>1. Glossary of Common Terms and API Elements &#8212; scikit-plots 0.5.dev0 documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=e8e8d4ee"></script>
+    <script src="../../_static/documentation_options.js?v=de0fc20e"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -74,7 +74,7 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.0.dev0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -1178,7 +1178,7 @@ kernel functions (a constrained class of similarity functions) in
 matrices that are symmetric and hence store data redundantly.</p>
 <p>See also <a class="reference internal" href="#term-precomputed"><span class="xref std std-term">precomputed</span></a> and <a class="reference internal" href="#term-metric"><span class="xref std std-term">metric</span></a>.</p>
 <p>Note that for most distance metrics, we rely on implementations from
-<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/spatial.distance.html#module-scipy.spatial.distance" title="(in SciPy v1.15.3)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy.spatial.distance</span></code></a>, but may reimplement for efficiency in
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/spatial.distance.html#module-scipy.spatial.distance" title="(in SciPy v1.16.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy.spatial.distance</span></code></a>, but may reimplement for efficiency in
 our context. The <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.DistanceMetric.html#sklearn.metrics.DistanceMetric" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">metrics.DistanceMetric</span></code></a> interface is used to implement
 distance metrics for integration with efficient neighbors search.</p>
 </dd>
@@ -1245,7 +1245,7 @@ to <a class="reference internal" href="#term-unlabeled"><span class="xref std st
 </dd>
 <dt id="term-sparse-matrix">sparse matrix<a class="headerlink" href="#term-sparse-matrix" title="Link to this term">#</a></dt><dt id="term-sparse-graph">sparse graph<a class="headerlink" href="#term-sparse-graph" title="Link to this term">#</a></dt><dd><p>A representation of two-dimensional numeric data that is more memory
 efficient the corresponding dense numpy array where almost all elements
-are zero. We use the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/sparse.html#module-scipy.sparse" title="(in SciPy v1.15.3)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy.sparse</span></code></a> framework, which provides
+are zero. We use the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/sparse.html#module-scipy.sparse" title="(in SciPy v1.16.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy.sparse</span></code></a> framework, which provides
 several underlying sparse data representations, or <em>formats</em>.
 Some formats are more efficient than others for particular tasks, and
 when a particular format provides especial benefit, we try to document
@@ -1263,7 +1263,7 @@ interpretation most often adopted, e.g. when sparse matrices
 are used for feature matrices or <a class="reference internal" href="#term-multilabel-indicator-matrices"><span class="xref std std-term">multilabel indicator
 matrices</span></a>.</p>
 </dd>
-<dt>graph semantics</dt><dd><p>As with <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/sparse.csgraph.html#module-scipy.sparse.csgraph" title="(in SciPy v1.15.3)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy.sparse.csgraph</span></code></a>, explicit zeros are
+<dt>graph semantics</dt><dd><p>As with <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/sparse.csgraph.html#module-scipy.sparse.csgraph" title="(in SciPy v1.16.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy.sparse.csgraph</span></code></a>, explicit zeros are
 interpreted as the number 0, but implicit zeros indicate a masked
 or absent value, such as the absence of an edge between two
 vertices of a graph, where an explicit value indicates an edge’s
@@ -2275,7 +2275,7 @@ and sometimes do so even when multiple outputs are assumed.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250619.cde37d4 2025-06-19T02:07Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.1b60baa 2025-06-25T22:26Z.
       <br/>
     
   </p>

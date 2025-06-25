@@ -13,7 +13,7 @@
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
 <meta content="An example showing the visualkeras function used by a tf.keras.Model model. Force garbage collection Tags: model-type: classification model-workflow: model building plot-type: visualkeras domain: n..." name="description"/>
-<title>visualkeras: custom VGG example — scikit-plots 0.5.0.dev0+git.20250619.cde37d4 documentation</title>
+<title>visualkeras: custom VGG example — scikit-plots 0.5.dev0 documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
@@ -50,7 +50,7 @@
 <!-- Pre-loaded scripts that we'll load fully later -->
 <link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
 <link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
-<script src="../../_static/documentation_options.js?v=e8e8d4ee"></script>
+<script src="../../_static/documentation_options.js?v=de0fc20e"></script>
 <script src="../../_static/doctools.js?v=9bcbadda"></script>
 <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -64,7 +64,7 @@
 <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.0.dev0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -441,88 +441,88 @@
 <span id="sphx-glr-auto-examples-visualkeras-cnn-plot-vgg-py"></span><h1>visualkeras: custom VGG example<a class="headerlink" href="#visualkeras-custom-vgg-example" title="Link to this heading">#</a></h1>
 <p>An example showing the <a class="reference internal" href="../../apis/scikitplot.visualkeras.html#module-scikitplot.visualkeras" title="scikitplot.visualkeras"><code class="xref py py-func docutils literal notranslate"><span class="pre">visualkeras</span></code></a> function
 used by a <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/Model" title="(in TensorFlow v2.4)"><code class="docutils literal notranslate"><span class="pre">tf.keras.Model</span></code></a> model.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: The scikit-plots developers</span>
-<span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 9</span> <span class="c1"># Authors: The scikit-plots developers</span>
+<span class="linenos">10</span> <span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
 </pre></div>
 </div>
 <p>Force garbage collection</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">gc</span>
-
-<a class="sphx-glr-backref-module-gc sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/gc.html#gc.collect" title="gc.collect"><span class="n">gc</span><span class="o">.</span><span class="n">collect</span></a><span class="p">()</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">15</span> <span class="kn">import</span><span class="w"> </span><span class="nn">gc</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span> <a class="sphx-glr-backref-module-gc sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/gc.html#gc.collect" title="gc.collect"><span class="n">gc</span><span class="o">.</span><span class="n">collect</span></a><span class="p">()</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>3
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip install protobuf==5.29.4</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">21</span> <span class="c1"># pip install protobuf==5.29.4</span>
+<span class="linenos">22</span> <span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+<span class="linenos">23</span>
+<span class="linenos">24</span> <span class="c1"># Clear any session to reset the state of TensorFlow/Keras</span>
+<span class="linenos">25</span> <a class="sphx-glr-backref-module-tensorflow-keras-backend sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/backend/clear_session" title="tensorflow.keras.backend.clear_session"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">clear_session</span></a><span class="p">()</span>
+<span class="linenos">26</span>
+<span class="linenos">27</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">visualkeras</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">31</span> <span class="c1"># model = tf.keras.applications.VGG16(</span>
+<span class="linenos">32</span> <span class="c1">#     include_top=True,</span>
+<span class="linenos">33</span> <span class="c1">#     weights=None,  # "imagenet" or 'path/'</span>
+<span class="linenos">34</span> <span class="c1">#     input_tensor=None,</span>
+<span class="linenos">35</span> <span class="c1">#     input_shape=None,</span>
+<span class="linenos">36</span> <span class="c1">#     pooling=None,</span>
+<span class="linenos">37</span> <span class="c1">#     classes=1000,</span>
+<span class="linenos">38</span> <span class="c1">#     classifier_activation="softmax",</span>
+<span class="linenos">39</span> <span class="c1">#     name="vgg16",</span>
+<span class="linenos">40</span> <span class="c1"># )</span>
+<span class="linenos">41</span> <span class="c1"># model.summary()</span>
+<span class="linenos">42</span> <span class="c1"># visualkeras.layered_view(</span>
+<span class="linenos">43</span> <span class="c1">#   model,</span>
+<span class="linenos">44</span> <span class="c1">#   legend=True,</span>
+<span class="linenos">45</span> <span class="c1">#   show_dimension=True,</span>
+<span class="linenos">46</span> <span class="c1">#   to_file='result_images/vgg16.png',</span>
+<span class="linenos">47</span> <span class="c1"># )</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">51</span> <span class="n">model</span> <span class="o">=</span> <a class="sphx-glr-backref-module-tensorflow-keras-applications sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/applications/VGG19" title="tensorflow.keras.applications.VGG19"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">applications</span><span class="o">.</span><span class="n">VGG19</span></a><span class="p">(</span>
+<span class="linenos">52</span>     <span class="n">include_top</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos">53</span>     <span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="c1"># "imagenet" or 'path/'</span>
+<span class="linenos">54</span>     <span class="n">input_tensor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="linenos">55</span>     <span class="n">input_shape</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="linenos">56</span>     <span class="n">pooling</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="linenos">57</span>     <span class="n">classes</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+<span class="linenos">58</span>     <span class="n">classifier_activation</span><span class="o">=</span><span class="s2">"softmax"</span><span class="p">,</span>
+<span class="linenos">59</span>     <span class="n">name</span><span class="o">=</span><span class="s2">"vgg19"</span><span class="p">,</span>
+<span class="linenos">60</span> <span class="p">)</span>
+<span class="linenos">61</span> <span class="c1"># model.summary()</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">65</span> <span class="n">img_vgg19</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
+<span class="linenos">66</span>     <span class="n">model</span><span class="p">,</span>
+<span class="linenos">67</span>     <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos">68</span>     <span class="n">show_dimension</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos">69</span>     <span class="n">min_z</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="linenos">70</span>     <span class="n">min_xy</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="linenos">71</span>     <span class="n">max_z</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span>
+<span class="linenos">72</span>     <span class="n">max_xy</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span>
+<span class="linenos">73</span>     <span class="n">scale_z</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+<span class="linenos">74</span>     <span class="n">scale_xy</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span>
+<span class="linenos">75</span>     <span class="n">font</span><span class="o">=</span><span class="p">{</span><span class="s2">"font_size"</span><span class="p">:</span> <span class="mi">199</span><span class="p">},</span>
+<span class="linenos">76</span>     <span class="c1"># to_file="result_images/vgg19.png",</span>
+<span class="linenos">77</span>     <span class="n">save_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos">78</span>     <span class="n">save_fig_filename</span><span class="o">=</span><span class="s2">"vgg19.png"</span><span class="p">,</span>
+<span class="linenos">79</span>     <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="linenos">80</span>     <span class="n">add_timestamp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos">81</span>     <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos">82</span> <span class="p">)</span>
+<span class="linenos">83</span> <span class="n">img_vgg19</span>
+</pre></div>
+</div>
+<img alt="plot vgg" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_vgg_001.png" srcset="../../_images/sphx_glr_plot_vgg_001.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[INFO] Saving path to: /home/circleci/repo/galleries/examples/visualkeras_CNN/result_images/vgg19_20250625_222712Z.png
 
-<span class="c1"># Clear any session to reset the state of TensorFlow/Keras</span>
-<a class="sphx-glr-backref-module-tensorflow-keras-backend sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/backend/clear_session" title="tensorflow.keras.backend.clear_session"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">clear_session</span></a><span class="p">()</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">visualkeras</span>
-</pre></div>
-</div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># model = tf.keras.applications.VGG16(</span>
-<span class="c1">#     include_top=True,</span>
-<span class="c1">#     weights=None,  # "imagenet" or 'path/'</span>
-<span class="c1">#     input_tensor=None,</span>
-<span class="c1">#     input_shape=None,</span>
-<span class="c1">#     pooling=None,</span>
-<span class="c1">#     classes=1000,</span>
-<span class="c1">#     classifier_activation="softmax",</span>
-<span class="c1">#     name="vgg16",</span>
-<span class="c1"># )</span>
-<span class="c1"># model.summary()</span>
-<span class="c1"># visualkeras.layered_view(</span>
-<span class="c1">#   model,</span>
-<span class="c1">#   legend=True,</span>
-<span class="c1">#   show_dimension=True,</span>
-<span class="c1">#   to_file='result_images/vgg16.png',</span>
-<span class="c1"># )</span>
-</pre></div>
-</div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <a class="sphx-glr-backref-module-tensorflow-keras-applications sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/applications/VGG19" title="tensorflow.keras.applications.VGG19"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">applications</span><span class="o">.</span><span class="n">VGG19</span></a><span class="p">(</span>
-    <span class="n">include_top</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="c1"># "imagenet" or 'path/'</span>
-    <span class="n">input_tensor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">input_shape</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">pooling</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">classes</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
-    <span class="n">classifier_activation</span><span class="o">=</span><span class="s2">"softmax"</span><span class="p">,</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">"vgg19"</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="c1"># model.summary()</span>
-</pre></div>
-</div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">img_vgg19</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
-    <span class="n">model</span><span class="p">,</span>
-    <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">show_dimension</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">min_z</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">min_xy</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">max_z</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span>
-    <span class="n">max_xy</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span>
-    <span class="n">scale_z</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-    <span class="n">scale_xy</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span>
-    <span class="n">font</span><span class="o">=</span><span class="p">{</span><span class="s2">"font_size"</span><span class="p">:</span> <span class="mi">199</span><span class="p">},</span>
-    <span class="c1"># to_file="result_images/vgg19.png",</span>
-    <span class="n">save_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">save_fig_filename</span><span class="o">=</span><span class="s2">"vgg19.png"</span><span class="p">,</span>
-    <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">add_timestamp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">img_vgg19</span>
-</pre></div>
-</div>
-<img alt="plot vgg" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_vgg_001.png" srcset="../../_images/sphx_glr_plot_vgg_001.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[INFO] Saving path to: /home/circleci/repo/galleries/examples/visualkeras_CNN/result_images/vgg19_20250619_020855Z.png
-
-&lt;matplotlib.image.AxesImage object at 0x7f393c7338d0&gt;
+&lt;matplotlib.image.AxesImage object at 0x7fe370220190&gt;
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-model-building.html"><span class="doc">model-workflow: model building</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-visualkeras.html"><span class="doc">plot-type: visualkeras</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger reference internal" href="../../_tags/domain-neural-network.html"><span class="doc">domain: neural network</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 12.234 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 12.023 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_resnetv2_thumb.png"/>
@@ -531,12 +531,12 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_efficientnetv2_thumb.png"/>
 <p><a class="reference internal" href="plot_efficientnetv2.html#sphx-glr-auto-examples-visualkeras-cnn-plot-efficientnetv2-py"><span class="std std-ref">visualkeras: EfficientNetV2 example</span></a></p>
 <div class="sphx-glr-thumbnail-title">visualkeras: EfficientNetV2 example</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing Spam the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_conv_dense_thumb.png"/>
-<p><a class="reference internal" href="../visualkeras_ANN/plot_conv_dense.html#sphx-glr-auto-examples-visualkeras-ann-plot-conv-dense-py"><span class="std std-ref">Visualkeras: Spam Classification Conv1D Dense Example</span></a></p>
-<div class="sphx-glr-thumbnail-title">Visualkeras: Spam Classification Conv1D Dense Example</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_dense_thumb.png"/>
 <p><a class="reference internal" href="../visualkeras_ANN/plot_dense.html#sphx-glr-auto-examples-visualkeras-ann-plot-dense-py"><span class="std std-ref">visualkeras: Spam Dense example</span></a></p>
 <div class="sphx-glr-thumbnail-title">visualkeras: Spam Dense example</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing Spam the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_conv_dense_thumb.png"/>
+<p><a class="reference internal" href="../visualkeras_ANN/plot_conv_dense.html#sphx-glr-auto-examples-visualkeras-ann-plot-conv-dense-py"><span class="std std-ref">Visualkeras: Spam Classification Conv1D Dense Example</span></a></p>
+<div class="sphx-glr-thumbnail-title">Visualkeras: Spam Classification Conv1D Dense Example</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </article>
@@ -587,7 +587,7 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250619.cde37d4 2025-06-19T02:07Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.1b60baa 2025-06-25T22:26Z.
       <br/>
 </p>
 </div>

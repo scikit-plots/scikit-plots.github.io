@@ -24,9 +24,10 @@ Visualkeras: Spam Classification Conv1D Dense Example
 An example showing Spam the :py:func:`~scikitplot.visualkeras` function
 used by a :py:class:`~tensorflow.keras.Model` model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 8-12
+.. GENERATED FROM PYTHON SOURCE LINES 8-13
 
 .. code-block:: Python
+   :lineno-start: 9
 
 
     # Authors: The scikit-plots developers
@@ -39,35 +40,23 @@ used by a :py:class:`~tensorflow.keras.Model` model.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 13-14
 
-Force garbage collection
+.. GENERATED FROM PYTHON SOURCE LINES 14-23
 
-.. GENERATED FROM PYTHON SOURCE LINES 14-19
+Installing dependencies
+https://sphinx-gallery.github.io/stable/configuration.html#using-multiple-code-blocks-to-create-a-single-figure
 
-.. code-block:: Python
+    .. code-block:: bash
 
+      %%bash
+      # (e.g. %%bash or %%writefile) will be turned into a runnable code block.
+      # pip install -q tensorflow
+      # apt-get -qq install curl
 
-    import gc
-
-    gc.collect()
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-
-    8870
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 20-27
+.. GENERATED FROM PYTHON SOURCE LINES 26-33
 
 .. code-block:: Python
+   :lineno-start: 27
 
 
     # pip install protobuf==5.29.4
@@ -83,9 +72,10 @@ Force garbage collection
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 28-56
+.. GENERATED FROM PYTHON SOURCE LINES 34-62
 
 .. code-block:: Python
+   :lineno-start: 35
 
 
     model = tf.keras.models.Sequential()
@@ -150,9 +140,10 @@ Force garbage collection
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 57-61
+.. GENERATED FROM PYTHON SOURCE LINES 63-67
 
 .. code-block:: Python
+   :lineno-start: 64
 
 
     import matplotlib.pyplot as plt
@@ -165,9 +156,10 @@ Force garbage collection
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 62-80
+.. GENERATED FROM PYTHON SOURCE LINES 68-86
 
 .. code-block:: Python
+   :lineno-start: 68
 
     img_spam = visualkeras.layered_view(
         model,
@@ -201,13 +193,14 @@ Force garbage collection
  .. code-block:: none
 
 
-    <matplotlib.image.AxesImage object at 0x7f395ceb4390>
+    <matplotlib.image.AxesImage object at 0x7fdc983994d0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 81-98
+.. GENERATED FROM PYTHON SOURCE LINES 87-104
 
 .. code-block:: Python
+   :lineno-start: 87
 
     img_spam = visualkeras.layered_view(
         model,
@@ -240,13 +233,14 @@ Force garbage collection
  .. code-block:: none
 
 
-    <matplotlib.image.AxesImage object at 0x7f395cd574d0>
+    <matplotlib.image.AxesImage object at 0x7fdc983c1d10>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-119
+.. GENERATED FROM PYTHON SOURCE LINES 105-125
 
 .. code-block:: Python
+   :lineno-start: 105
 
     img_spam = visualkeras.layered_view(
         model,
@@ -281,13 +275,13 @@ Force garbage collection
 
  .. code-block:: none
 
-    [INFO] Saving path to: /home/circleci/repo/galleries/examples/visualkeras_ANN/result_images/spam_conv_z_20250619_020810Z.png
+    [INFO] Saving path to: /home/circleci/repo/galleries/examples/visualkeras_ANN/result_images/spam_conv_z_20250625_222640Z.png
 
-    <matplotlib.image.AxesImage object at 0x7f395cdd0350>
+    <matplotlib.image.AxesImage object at 0x7fdc883a2250>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 120-128
+.. GENERATED FROM PYTHON SOURCE LINES 126-134
 
 .. tags::
 
@@ -301,7 +295,7 @@ Force garbage collection
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 3.359 seconds)
+   **Total running time of the script:** (0 minutes 3.214 seconds)
 
 
 .. _sphx_glr_download_auto_examples_visualkeras_ANN_plot_conv_dense.py:

@@ -9,11 +9,11 @@
 <meta content="website" property="og:type"/>
 <meta content="https://scikit-plots.github.io/stable/auto_examples/calibration/plot_calibration_script.html" property="og:url"/>
 <meta content="scikit-plots" property="og:site_name"/>
-<meta content="An example showing the plot_calibration function used by a scikit-learn classifier. Tags: model-type: classification model-workflow: model evaluation component: fitted model plot-type: line plot-ty..." property="og:description"/>
+<meta content="An example showing the plot_calibration function used by a scikit-learn classifier. Import scikit-plots: Loading the dataset: Model Training: Plot!: Tags: model-type: classification model-workflow:..." property="og:description"/>
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
-<meta content="An example showing the plot_calibration function used by a scikit-learn classifier. Tags: model-type: classification model-workflow: model evaluation component: fitted model plot-type: line plot-ty..." name="description"/>
-<title>plot_calibration with examples — scikit-plots 0.5.0.dev0+git.20250619.cde37d4 documentation</title>
+<meta content="An example showing the plot_calibration function used by a scikit-learn classifier. Import scikit-plots: Loading the dataset: Model Training: Plot!: Tags: model-type: classification model-workflow:..." name="description"/>
+<title>plot_calibration with examples — scikit-plots 0.5.dev0 documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
@@ -50,7 +50,7 @@
 <!-- Pre-loaded scripts that we'll load fully later -->
 <link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
 <link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
-<script src="../../_static/documentation_options.js?v=e8e8d4ee"></script>
+<script src="../../_static/documentation_options.js?v=de0fc20e"></script>
 <script src="../../_static/doctools.js?v=9bcbadda"></script>
 <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -64,7 +64,7 @@
 <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.0.dev0';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
@@ -441,88 +441,133 @@
 <span id="sphx-glr-auto-examples-calibration-plot-calibration-script-py"></span><h1>plot_calibration with examples<a class="headerlink" href="#plot-calibration-with-examples" title="Link to this heading">#</a></h1>
 <p>An example showing the <a class="reference internal" href="../../modules/generated/scikitplot.api.metrics.plot_calibration.html#scikitplot.api.metrics.plot_calibration" title="scikitplot.api.metrics.plot_calibration"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_calibration</span></code></a> function
 used by a scikit-learn classifier.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: The scikit-plots developers</span>
-<span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
-
-<span class="c1"># run: Python scripts and shows any outputs directly in the notebook.</span>
-<span class="c1"># %run ./examples/calibration/plot_calibration_script.py</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.calibration</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-calibration sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.calibration.CalibratedClassifierCV.html#sklearn.calibration.CalibratedClassifierCV" title="sklearn.calibration.CalibratedClassifierCV"><span class="n">CalibratedClassifierCV</span></a>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html#sklearn.datasets.make_classification" title="sklearn.datasets.make_classification"><span class="n">make_classification</span></a>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.naive_bayes</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-naive_bayes sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html#sklearn.naive_bayes.GaussianNB" title="sklearn.naive_bayes.GaussianNB"><span class="n">GaussianNB</span></a>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.svm</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-svm sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="sklearn.svm.LinearSVC"><span class="n">LinearSVC</span></a>
-
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-<a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.seed.html#numpy.random.seed" title="numpy.random.seed"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># reproducibility</span>
-<span class="c1"># importing pylab or pyplot</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-
-<span class="c1"># Import scikit-plot</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
-
-<span class="c1"># Load the data</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html#sklearn.datasets.make_classification" title="sklearn.datasets.make_classification"><span class="n">make_classification</span></a><span class="p">(</span>
-    <span class="n">n_samples</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span>
-    <span class="n">n_features</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-    <span class="n">n_informative</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
-    <span class="n">n_redundant</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-    <span class="n">n_repeated</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-    <span class="n">n_clusters_per_class</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="mi">1000</span><span class="p">],</span> <span class="n">y</span><span class="p">[:</span><span class="mi">1000</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="mi">1000</span><span class="p">:],</span> <span class="n">y</span><span class="p">[</span><span class="mi">1000</span><span class="p">:]</span>
-
-<span class="c1"># Create an instance of the LogisticRegression</span>
-<span class="n">lr_probas</span> <span class="o">=</span> <span class="p">(</span>
-    <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="mf">1e5</span><span class="p">),</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
-<span class="p">)</span>
-<span class="n">nb_probas</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-naive_bayes sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html#sklearn.naive_bayes.GaussianNB" title="sklearn.naive_bayes.GaussianNB"><span class="n">GaussianNB</span></a><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
-<span class="n">svc_scores</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-svm sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="sklearn.svm.LinearSVC"><span class="n">LinearSVC</span></a><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
-<span class="n">svc_isotonic</span> <span class="o">=</span> <span class="p">(</span>
-    <a class="sphx-glr-backref-module-sklearn-calibration sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.calibration.CalibratedClassifierCV.html#sklearn.calibration.CalibratedClassifierCV" title="sklearn.calibration.CalibratedClassifierCV"><span class="n">CalibratedClassifierCV</span></a><span class="p">(</span><a class="sphx-glr-backref-module-sklearn-svm sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="sklearn.svm.LinearSVC"><span class="n">LinearSVC</span></a><span class="p">(),</span> <span class="n">cv</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">"isotonic"</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
-<span class="p">)</span>
-<span class="n">svc_sigmoid</span> <span class="o">=</span> <span class="p">(</span>
-    <a class="sphx-glr-backref-module-sklearn-calibration sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.calibration.CalibratedClassifierCV.html#sklearn.calibration.CalibratedClassifierCV" title="sklearn.calibration.CalibratedClassifierCV"><span class="n">CalibratedClassifierCV</span></a><span class="p">(</span><a class="sphx-glr-backref-module-sklearn-svm sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="sklearn.svm.LinearSVC"><span class="n">LinearSVC</span></a><span class="p">(),</span> <span class="n">cv</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">"sigmoid"</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
-<span class="p">)</span>
-<span class="n">rf_probas</span> <span class="o">=</span> <span class="p">(</span>
-    <a class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
-<span class="p">)</span>
-
-<span class="n">probas_dict</span> <span class="o">=</span> <span class="p">{</span>
-    <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a><span class="p">():</span> <span class="n">lr_probas</span><span class="p">,</span>
-    <span class="c1"># GaussianNB(): nb_probas,</span>
-    <span class="s2">"LinearSVC() + MinMax"</span><span class="p">:</span> <span class="n">svc_scores</span><span class="p">,</span>
-    <span class="s2">"LinearSVC() + Isotonic"</span><span class="p">:</span> <span class="n">svc_isotonic</span><span class="p">,</span>
-    <span class="s2">"LinearSVC() + Sigmoid"</span><span class="p">:</span> <span class="n">svc_sigmoid</span><span class="p">,</span>
-    <span class="c1"># RandomForestClassifier(): rf_probas,</span>
-<span class="p">}</span>
-<span class="c1"># Plot!</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">plot_calibration</span><span class="p">(</span>
-    <span class="n">y_val</span><span class="p">,</span>
-    <span class="n">y_probas_list</span><span class="o">=</span><span class="n">probas_dict</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span>
-    <span class="n">estimator_names</span><span class="o">=</span><span class="n">probas_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
-    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
-    <span class="n">save_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">save_fig_filename</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span>
-    <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">add_timestamp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 9</span> <span class="c1"># Authors: The scikit-plots developers</span>
+<span class="linenos">10</span> <span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span> <span class="c1"># run: Python scripts and shows any outputs directly in the notebook.</span>
+<span class="linenos">13</span> <span class="c1"># %run ./examples/calibration/plot_calibration_script.py</span>
 </pre></div>
 </div>
-<img alt="Calibration Curves (Reliability Diagrams)" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_calibration_script_001.png" srcset="../../_images/sphx_glr_plot_calibration_script_001.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[INFO] Saving path to: /home/circleci/repo/galleries/examples/calibration/result_images/plot_calibration_20250619_020744Z.png
-[INFO] Plot saved to: /home/circleci/repo/galleries/examples/calibration/result_images/plot_calibration_20250619_020744Z.png
+<section id="import-scikit-plots">
+<h2>Import scikit-plots<a class="headerlink" href="#import-scikit-plots" title="Link to this heading">#</a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">19</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.calibration</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-calibration sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.calibration.CalibratedClassifierCV.html#sklearn.calibration.CalibratedClassifierCV" title="sklearn.calibration.CalibratedClassifierCV"><span class="n">CalibratedClassifierCV</span></a>
+<span class="linenos">20</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html#sklearn.datasets.make_classification" title="sklearn.datasets.make_classification"><span class="n">make_classification</span></a>
+<span class="linenos">21</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a>
+<span class="linenos">22</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a>
+<span class="linenos">23</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.naive_bayes</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-naive_bayes sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html#sklearn.naive_bayes.GaussianNB" title="sklearn.naive_bayes.GaussianNB"><span class="n">GaussianNB</span></a>
+<span class="linenos">24</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.svm</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-svm sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="sklearn.svm.LinearSVC"><span class="n">LinearSVC</span></a>
+<span class="linenos">25</span>
+<span class="linenos">26</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="linenos">27</span>
+<span class="linenos">28</span> <a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.seed.html#numpy.random.seed" title="numpy.random.seed"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># reproducibility</span>
+<span class="linenos">29</span> <span class="c1"># importing pylab or pyplot</span>
+<span class="linenos">30</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="linenos">31</span>
+<span class="linenos">32</span> <span class="c1"># Import scikit-plot</span>
+<span class="linenos">33</span> <span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+</pre></div>
+</div>
+</section>
+<section id="loading-the-dataset">
+<h2>Loading the dataset<a class="headerlink" href="#loading-the-dataset" title="Link to this heading">#</a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">39</span> <span class="c1"># Load the data</span>
+<span class="linenos">40</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html#sklearn.datasets.make_classification" title="sklearn.datasets.make_classification"><span class="n">make_classification</span></a><span class="p">(</span>
+<span class="linenos">41</span>     <span class="n">n_samples</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span>
+<span class="linenos">42</span>     <span class="n">n_features</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<span class="linenos">43</span>     <span class="n">n_informative</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+<span class="linenos">44</span>     <span class="n">n_redundant</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="linenos">45</span>     <span class="n">n_repeated</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="linenos">46</span>     <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="linenos">47</span>     <span class="n">n_clusters_per_class</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="linenos">48</span>     <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="linenos">49</span> <span class="p">)</span>
+<span class="linenos">50</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="mi">1000</span><span class="p">],</span> <span class="n">y</span><span class="p">[:</span><span class="mi">1000</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="mi">1000</span><span class="p">:],</span> <span class="n">y</span><span class="p">[</span><span class="mi">1000</span><span class="p">:]</span>
+</pre></div>
+</div>
+</section>
+<section id="model-training">
+<h2>Model Training<a class="headerlink" href="#model-training" title="Link to this heading">#</a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">56</span> <span class="c1"># Create an instance of the LogisticRegression</span>
+<span class="linenos">57</span> <span class="n">lr_probas</span> <span class="o">=</span> <span class="p">(</span>
+<span class="linenos">58</span>     <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="mf">1e5</span><span class="p">),</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">59</span>     <span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="linenos">60</span>     <span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+<span class="linenos">61</span> <span class="p">)</span>
+<span class="linenos">62</span> <span class="n">nb_probas</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-naive_bayes sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html#sklearn.naive_bayes.GaussianNB" title="sklearn.naive_bayes.GaussianNB"><span class="n">GaussianNB</span></a><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+<span class="linenos">63</span> <span class="n">svc_scores</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-svm sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="sklearn.svm.LinearSVC"><span class="n">LinearSVC</span></a><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+<span class="linenos">64</span> <span class="n">svc_isotonic</span> <span class="o">=</span> <span class="p">(</span>
+<span class="linenos">65</span>     <a class="sphx-glr-backref-module-sklearn-calibration sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.calibration.CalibratedClassifierCV.html#sklearn.calibration.CalibratedClassifierCV" title="sklearn.calibration.CalibratedClassifierCV"><span class="n">CalibratedClassifierCV</span></a><span class="p">(</span><a class="sphx-glr-backref-module-sklearn-svm sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="sklearn.svm.LinearSVC"><span class="n">LinearSVC</span></a><span class="p">(),</span> <span class="n">cv</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">"isotonic"</span><span class="p">)</span>
+<span class="linenos">66</span>     <span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="linenos">67</span>     <span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+<span class="linenos">68</span> <span class="p">)</span>
+<span class="linenos">69</span> <span class="n">svc_sigmoid</span> <span class="o">=</span> <span class="p">(</span>
+<span class="linenos">70</span>     <a class="sphx-glr-backref-module-sklearn-calibration sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.calibration.CalibratedClassifierCV.html#sklearn.calibration.CalibratedClassifierCV" title="sklearn.calibration.CalibratedClassifierCV"><span class="n">CalibratedClassifierCV</span></a><span class="p">(</span><a class="sphx-glr-backref-module-sklearn-svm sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="sklearn.svm.LinearSVC"><span class="n">LinearSVC</span></a><span class="p">(),</span> <span class="n">cv</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">"sigmoid"</span><span class="p">)</span>
+<span class="linenos">71</span>     <span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="linenos">72</span>     <span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+<span class="linenos">73</span> <span class="p">)</span>
+<span class="linenos">74</span> <span class="n">rf_probas</span> <span class="o">=</span> <span class="p">(</span>
+<span class="linenos">75</span>     <a class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+<span class="linenos">76</span> <span class="p">)</span>
+<span class="linenos">77</span>
+<span class="linenos">78</span> <span class="n">probas_dict</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos">79</span>     <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a><span class="p">():</span> <span class="n">lr_probas</span><span class="p">,</span>
+<span class="linenos">80</span>     <span class="c1"># GaussianNB(): nb_probas,</span>
+<span class="linenos">81</span>     <span class="s2">"LinearSVC() + MinMax"</span><span class="p">:</span> <span class="n">svc_scores</span><span class="p">,</span>
+<span class="linenos">82</span>     <span class="s2">"LinearSVC() + Isotonic"</span><span class="p">:</span> <span class="n">svc_isotonic</span><span class="p">,</span>
+<span class="linenos">83</span>     <span class="s2">"LinearSVC() + Sigmoid"</span><span class="p">:</span> <span class="n">svc_sigmoid</span><span class="p">,</span>
+<span class="linenos">84</span>     <span class="c1"># RandomForestClassifier(): rf_probas,</span>
+<span class="linenos">85</span> <span class="p">}</span>
+<span class="linenos">86</span> <span class="n">probas_dict</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{LogisticRegression(): array([[0.81630981, 0.09296828, 0.09072191],
+       [0.67725691, 0.0160746 , 0.30666849],
+       [0.25378422, 0.00096865, 0.74524713],
+       ...,
+       [0.01335815, 0.62376013, 0.36288171],
+       [0.03551495, 0.0508954 , 0.91358965],
+       [0.00664527, 0.70371215, 0.28964258]]), 'LinearSVC() + MinMax': array([[ 0.3380658 , -0.70059113, -0.84551216],
+       [ 0.32189335, -1.54567754, -0.11575068],
+       [ 0.22549259, -2.49509036,  0.69223215],
+       ...,
+       [-1.4690199 ,  0.16087262, -0.22137806],
+       [-1.00072177, -0.95593185,  0.42770417],
+       [-1.65162242,  0.34262892, -0.20019956]]), 'LinearSVC() + Isotonic': array([[0.75192088, 0.18665461, 0.06142451],
+       [0.55808311, 0.        , 0.44191689],
+       [0.34438275, 0.        , 0.65561725],
+       ...,
+       [0.01302864, 0.60399643, 0.38297494],
+       [0.05420294, 0.10488174, 0.84091532],
+       [0.        , 0.58988428, 0.41011572]]), 'LinearSVC() + Sigmoid': array([[0.73559196, 0.13937371, 0.12503433],
+       [0.6086243 , 0.02233023, 0.36904547],
+       [0.37500556, 0.00263819, 0.62235624],
+       ...,
+       [0.02215638, 0.60023759, 0.37760603],
+       [0.07558115, 0.1089974 , 0.81542145],
+       [0.01489511, 0.64718593, 0.33791896]])}
+</pre></div>
+</div>
+</section>
+<section id="plot">
+<h2>Plot!<a class="headerlink" href="#plot" title="Link to this heading">#</a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 92</span> <span class="c1"># Plot!</span>
+<span class="linenos"> 93</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="linenos"> 94</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">plot_calibration</span><span class="p">(</span>
+<span class="linenos"> 95</span>     <span class="n">y_val</span><span class="p">,</span>
+<span class="linenos"> 96</span>     <span class="n">y_probas_list</span><span class="o">=</span><span class="n">probas_dict</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span>
+<span class="linenos"> 97</span>     <span class="n">estimator_names</span><span class="o">=</span><span class="n">probas_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
+<span class="linenos"> 98</span>     <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+<span class="linenos"> 99</span>     <span class="n">save_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos">100</span>     <span class="n">save_fig_filename</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span>
+<span class="linenos">101</span>     <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos">102</span>     <span class="n">add_timestamp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos">103</span>     <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos">104</span> <span class="p">)</span>
+</pre></div>
+</div>
+<img alt="Calibration Curves (Reliability Diagrams)" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_calibration_script_001.png" srcset="../../_images/sphx_glr_plot_calibration_script_001.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2025-06-25 22:26:19.375281: E scikitplot 140587224537984 _calibration.py:318:plot_calibration] 3
+[INFO] Saving path to: /home/circleci/repo/galleries/examples/calibration/result_images/plot_calibration_20250625_222619Z.png
+[INFO] Plot saved to: /home/circleci/repo/galleries/examples/calibration/result_images/plot_calibration_20250625_222619Z.png
 </pre></div>
 </div>
 <div class="admonition-interpretation admonition">
@@ -537,7 +582,7 @@ used by a scikit-learn classifier.</p>
 </ul>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-model-evaluation.html"><span class="doc">model-workflow: model evaluation</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/component-fitted-model.html"><span class="doc">component: fitted model</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-line.html"><span class="doc">plot-type: line</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-calibration-plot.html"><span class="doc">plot-type: calibration plot</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.311 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.720 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_precision_recall function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_precision_recall_script_thumb.png"/>
@@ -553,6 +598,7 @@ used by a scikit-learn classifier.</p>
 <p><a class="reference internal" href="../regression/plot_residuals_distribution_script.html#sphx-glr-auto-examples-regression-plot-residuals-distribution-script-py"><span class="std std-ref">plot_residuals_distribution with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">plot_residuals_distribution with examples</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
 </section>
 </article>
 <footer class="bd-footer-article">
@@ -580,6 +626,18 @@ used by a scikit-learn classifier.</p>
 <dialog id="pst-secondary-sidebar-modal"></dialog>
 <div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
 <div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> On this page
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="bd-toc-nav page-toc">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-scikit-plots">Import scikit-plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-dataset">Loading the dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-training">Model Training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot">Plot!</a></li>
+</ul>
+</nav></div>
+<div class="sidebar-secondary-item">
 <div aria-label="source link" role="note">
 <h3>This Page</h3>
 <ul class="this-page-menu">
@@ -602,7 +660,7 @@ used by a scikit-learn classifier.</p>
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.0.dev0+git.20250619.cde37d4 2025-06-19T02:07Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.1b60baa 2025-06-25T22:26Z.
       <br/>
 </p>
 </div>

@@ -27,6 +27,7 @@ used by a :py:class:`~tensorflow.keras.Model` model.
 .. GENERATED FROM PYTHON SOURCE LINES 8-12
 
 .. code-block:: Python
+   :lineno-start: 9
 
 
     # Authors: The scikit-plots developers
@@ -46,6 +47,7 @@ Force garbage collection
 .. GENERATED FROM PYTHON SOURCE LINES 14-19
 
 .. code-block:: Python
+   :lineno-start: 15
 
 
     import gc
@@ -68,6 +70,7 @@ Force garbage collection
 .. GENERATED FROM PYTHON SOURCE LINES 20-29
 
 .. code-block:: Python
+   :lineno-start: 21
 
 
     # pip install protobuf==5.29.4
@@ -88,6 +91,7 @@ Force garbage collection
 .. GENERATED FROM PYTHON SOURCE LINES 30-86
 
 .. code-block:: Python
+   :lineno-start: 31
 
 
     # create VGG16
@@ -159,6 +163,7 @@ Now visualize the model!
 .. GENERATED FROM PYTHON SOURCE LINES 88-99
 
 .. code-block:: Python
+   :lineno-start: 89
 
 
     from collections import defaultdict
@@ -181,6 +186,7 @@ Now visualize the model!
 .. GENERATED FROM PYTHON SOURCE LINES 100-105
 
 .. code-block:: Python
+   :lineno-start: 101
 
 
     from PIL import ImageFont
@@ -196,13 +202,14 @@ Now visualize the model!
  .. code-block:: none
 
 
-    <PIL.ImageFont.FreeTypeFont object at 0x7f393c93cdd0>
+    <PIL.ImageFont.FreeTypeFont object at 0x7f34bc9907d0>
 
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 106-115
 
 .. code-block:: Python
+   :lineno-start: 107
 
 
     img_vgg16 = visualkeras.layered_view(
@@ -222,12 +229,21 @@ Now visualize the model!
    :class: sphx-glr-single-img
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    2025-06-25 22:26:51.140675: W scikitplot 139864856103808 utils_pil.py:203:load_font] Error loading system font: cannot open resource
+    2025-06-25 22:26:51.140761: W scikitplot 139864856103808 utils_pil.py:205:load_font] Falling back to PIL default font.
+    2025-06-25 22:26:51.140898: W scikitplot 139864856103808 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
+
 
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 116-132
 
 .. code-block:: Python
+   :lineno-start: 117
 
 
     img_vgg16_legend = visualkeras.layered_view(
@@ -258,14 +274,18 @@ Now visualize the model!
 
  .. code-block:: none
 
+    2025-06-25 22:26:52.975401: W scikitplot 139864856103808 utils_pil.py:203:load_font] Error loading system font: cannot open resource
+    2025-06-25 22:26:52.975492: W scikitplot 139864856103808 utils_pil.py:205:load_font] Falling back to PIL default font.
+    2025-06-25 22:26:52.975642: W scikitplot 139864856103808 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
 
-    <matplotlib.image.AxesImage object at 0x7f393c7b6f90>
+    <matplotlib.image.AxesImage object at 0x7f343c13c610>
 
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 133-144
 
 .. code-block:: Python
+   :lineno-start: 134
 
 
     img_vgg16_spacing_layers = visualkeras.layered_view(
@@ -291,14 +311,18 @@ Now visualize the model!
 
  .. code-block:: none
 
+    2025-06-25 22:26:53.990300: W scikitplot 139864856103808 utils_pil.py:203:load_font] Error loading system font: cannot open resource
+    2025-06-25 22:26:53.990415: W scikitplot 139864856103808 utils_pil.py:205:load_font] Falling back to PIL default font.
+    2025-06-25 22:26:53.990563: W scikitplot 139864856103808 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
 
-    <matplotlib.image.AxesImage object at 0x7f393c84e450>
+    <matplotlib.image.AxesImage object at 0x7f343c14b5d0>
 
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 145-160
 
 .. code-block:: Python
+   :lineno-start: 146
 
 
     img_vgg16_type_ignore = visualkeras.layered_view(
@@ -328,14 +352,18 @@ Now visualize the model!
 
  .. code-block:: none
 
+    2025-06-25 22:26:54.811692: W scikitplot 139864856103808 utils_pil.py:203:load_font] Error loading system font: cannot open resource
+    2025-06-25 22:26:54.811762: W scikitplot 139864856103808 utils_pil.py:205:load_font] Falling back to PIL default font.
+    2025-06-25 22:26:54.811892: W scikitplot 139864856103808 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
 
-    <matplotlib.image.AxesImage object at 0x7f393c84ef90>
+    <matplotlib.image.AxesImage object at 0x7f343c016150>
 
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 161-172
 
 .. code-block:: Python
+   :lineno-start: 162
 
 
     img_vgg16_color_map = visualkeras.layered_view(
@@ -361,14 +389,18 @@ Now visualize the model!
 
  .. code-block:: none
 
+    2025-06-25 22:26:55.411177: W scikitplot 139864856103808 utils_pil.py:203:load_font] Error loading system font: cannot open resource
+    2025-06-25 22:26:55.411247: W scikitplot 139864856103808 utils_pil.py:205:load_font] Falling back to PIL default font.
+    2025-06-25 22:26:55.411392: W scikitplot 139864856103808 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
 
-    <matplotlib.image.AxesImage object at 0x7f393c71b990>
+    <matplotlib.image.AxesImage object at 0x7f343c053d90>
 
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 173-184
 
 .. code-block:: Python
+   :lineno-start: 174
 
 
     img_vgg16_flat = visualkeras.layered_view(
@@ -394,14 +426,18 @@ Now visualize the model!
 
  .. code-block:: none
 
+    2025-06-25 22:26:56.342892: W scikitplot 139864856103808 utils_pil.py:203:load_font] Error loading system font: cannot open resource
+    2025-06-25 22:26:56.342961: W scikitplot 139864856103808 utils_pil.py:205:load_font] Falling back to PIL default font.
+    2025-06-25 22:26:56.343098: W scikitplot 139864856103808 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
 
-    <matplotlib.image.AxesImage object at 0x7f393c582fd0>
+    <matplotlib.image.AxesImage object at 0x7f343c0f6910>
 
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 185-203
 
 .. code-block:: Python
+   :lineno-start: 186
 
 
     img_vgg16_scaling = visualkeras.layered_view(
@@ -434,8 +470,11 @@ Now visualize the model!
 
  .. code-block:: none
 
+    2025-06-25 22:26:56.987656: W scikitplot 139864856103808 utils_pil.py:203:load_font] Error loading system font: cannot open resource
+    2025-06-25 22:26:56.987726: W scikitplot 139864856103808 utils_pil.py:205:load_font] Falling back to PIL default font.
+    2025-06-25 22:26:56.987850: W scikitplot 139864856103808 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
 
-    <matplotlib.image.AxesImage object at 0x7f393c5d0f90>
+    <matplotlib.image.AxesImage object at 0x7f3418713d90>
 
 
 
@@ -453,7 +492,7 @@ Now visualize the model!
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 13.620 seconds)
+   **Total running time of the script:** (0 minutes 19.039 seconds)
 
 
 .. _sphx_glr_download_auto_examples_visualkeras_CNN_plot_custom_vgg16.py:

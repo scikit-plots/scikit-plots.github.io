@@ -12,6 +12,10 @@ used by a scikit-learn classifier.
 # run: Python scripts and shows any outputs directly in the notebook.
 # %run ./examples/calibration/plot_calibration_script.py
 
+# %%
+# Import scikit-plots
+# ------------------------
+
 from sklearn.calibration import CalibratedClassifierCV
 from sklearn.datasets import make_classification
 from sklearn.ensemble import RandomForestClassifier
@@ -28,6 +32,10 @@ import matplotlib.pyplot as plt
 # Import scikit-plot
 import scikitplot as sp
 
+# %%
+# Loading the dataset
+# ------------------------
+
 # Load the data
 X, y = make_classification(
     n_samples=100000,
@@ -40,6 +48,10 @@ X, y = make_classification(
     random_state=0,
 )
 X_train, y_train, X_val, y_val = X[:1000], y[:1000], X[1000:], y[1000:]
+
+# %%
+# Model Training
+# --------------
 
 # Create an instance of the LogisticRegression
 lr_probas = (
@@ -71,6 +83,12 @@ probas_dict = {
     "LinearSVC() + Sigmoid": svc_sigmoid,
     # RandomForestClassifier(): rf_probas,
 }
+probas_dict
+
+# %%
+# Plot!
+# ------------------------
+
 # Plot!
 fig, ax = plt.subplots(figsize=(12, 6))
 ax = sp.metrics.plot_calibration(

@@ -1,3 +1,4 @@
+from sklearn.datasets import make_blobs
 from sklearn.cluster import KMeans
 from sklearn.datasets import load_iris as data_3_classes
 import scikitplot as skplt

@@ -24,13 +24,32 @@ plot_precision_recall with examples
 An example showing the :py:func:`~scikitplot.api.metrics.plot_precision_recall` function
 used by a scikit-learn classifier.
 
-.. GENERATED FROM PYTHON SOURCE LINES 8-48
+.. GENERATED FROM PYTHON SOURCE LINES 8-12
 
 .. code-block:: Python
+   :lineno-start: 9
 
 
     # Authors: The scikit-plots developers
     # SPDX-License-Identifier: BSD-3-Clause
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 13-15
+
+Import scikit-plots
+------------------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 15-31
+
+.. code-block:: Python
+   :lineno-start: 16
+
 
     from sklearn.datasets import (
         load_digits as data_10_classes,
@@ -47,9 +66,45 @@ used by a scikit-learn classifier.
     # Import scikit-plot
     import scikitplot as sp
 
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 32-34
+
+Loading the dataset
+------------------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 34-39
+
+.. code-block:: Python
+   :lineno-start: 35
+
+
     # Load the data
     X, y = data_10_classes(return_X_y=True, as_frame=False)
     X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=0)
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 40-42
+
+Model Training
+--------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 42-49
+
+.. code-block:: Python
+   :lineno-start: 43
+
 
     # Create an instance of the LogisticRegression
     model = LogisticRegression(max_iter=1, random_state=0).fit(X_train, y_train)
@@ -57,24 +112,8 @@ used by a scikit-learn classifier.
     # Perform predictions
     y_val_prob = model.predict_proba(X_val)
 
-    # Plot!
-    ax = sp.metrics.plot_precision_recall(
-        y_val,
-        y_val_prob,
-        save_fig=True,
-        save_fig_filename="",
-        # overwrite=True,
-        add_timestamp=True,
-        # verbose=True,
-    )
 
 
-
-
-.. image-sg:: /auto_examples/classification/images/sphx_glr_plot_precision_recall_script_001.png
-   :alt: Precision-Recall AUC Curves
-   :srcset: /auto_examples/classification/images/sphx_glr_plot_precision_recall_script_001.png
-   :class: sphx-glr-single-img
 
 
 .. rst-class:: sphx-glr-script-out
@@ -96,7 +135,41 @@ used by a scikit-learn classifier.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 49-57
+.. GENERATED FROM PYTHON SOURCE LINES 50-52
+
+Plot!
+------------------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 52-64
+
+.. code-block:: Python
+   :lineno-start: 53
+
+
+    # Plot!
+    ax = sp.metrics.plot_precision_recall(
+        y_val,
+        y_val_prob,
+        save_fig=True,
+        save_fig_filename="",
+        # overwrite=True,
+        add_timestamp=True,
+        # verbose=True,
+    )
+
+
+
+
+.. image-sg:: /auto_examples/classification/images/sphx_glr_plot_precision_recall_script_001.png
+   :alt: Precision-Recall AUC Curves
+   :srcset: /auto_examples/classification/images/sphx_glr_plot_precision_recall_script_001.png
+   :class: sphx-glr-single-img
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 65-73
 
 .. tags::
 
@@ -110,7 +183,7 @@ used by a scikit-learn classifier.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.407 seconds)
+   **Total running time of the script:** (0 minutes 0.468 seconds)
 
 
 .. _sphx_glr_download_auto_examples_classification_plot_precision_recall_script.py:
