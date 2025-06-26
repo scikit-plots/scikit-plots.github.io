@@ -42,38 +42,13 @@ used by a :py:class:`~tensorflow.keras.Model` model.
 
 .. GENERATED FROM PYTHON SOURCE LINES 13-14
 
-Force garbage collection
+pip install protobuf==5.29.4
 
-.. GENERATED FROM PYTHON SOURCE LINES 14-19
-
-.. code-block:: Python
-   :lineno-start: 15
-
-
-    import gc
-
-    gc.collect()
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-
-    3
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 20-32
+.. GENERATED FROM PYTHON SOURCE LINES 14-24
 
 .. code-block:: Python
-   :lineno-start: 21
+   :lineno-start: 14
 
-
-    # pip install protobuf==5.29.4
     import tensorflow as tf
 
     # Clear any session to reset the state of TensorFlow/Keras
@@ -91,11 +66,10 @@ Force garbage collection
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 33-46
+.. GENERATED FROM PYTHON SOURCE LINES 25-37
 
 .. code-block:: Python
-   :lineno-start: 34
-
+   :lineno-start: 25
 
     model = tf_python.keras.models.Sequential()
     model.add(tf_python.keras.layers.InputLayer(input_shape=(100,)))
@@ -135,11 +109,10 @@ Force garbage collection
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-50
+.. GENERATED FROM PYTHON SOURCE LINES 38-40
 
 .. code-block:: Python
-   :lineno-start: 48
-
+   :lineno-start: 38
 
     from scikitplot import visualkeras
 
@@ -150,11 +123,10 @@ Force garbage collection
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 51-60
+.. GENERATED FROM PYTHON SOURCE LINES 41-49
 
 .. code-block:: Python
-   :lineno-start: 52
-
+   :lineno-start: 41
 
     img_spam = visualkeras.graph_view(
         model,
@@ -178,15 +150,14 @@ Force garbage collection
  .. code-block:: none
 
 
-    <matplotlib.image.AxesImage object at 0x7f01d2395ed0>
+    <matplotlib.image.AxesImage object at 0x7f27afea3510>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 61-79
+.. GENERATED FROM PYTHON SOURCE LINES 50-67
 
 .. code-block:: Python
-   :lineno-start: 62
-
+   :lineno-start: 50
 
     img_spam = visualkeras.layered_view(
         model,
@@ -219,15 +190,14 @@ Force garbage collection
  .. code-block:: none
 
 
-    <matplotlib.image.AxesImage object at 0x7f01d033d650>
+    <matplotlib.image.AxesImage object at 0x7f2794785ad0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 80-98
+.. GENERATED FROM PYTHON SOURCE LINES 68-85
 
 .. code-block:: Python
-   :lineno-start: 81
-
+   :lineno-start: 68
 
     img_spam = visualkeras.layered_view(
         model,
@@ -260,15 +230,14 @@ Force garbage collection
  .. code-block:: none
 
 
-    <matplotlib.image.AxesImage object at 0x7f01c8753c50>
+    <matplotlib.image.AxesImage object at 0x7f27947d5ad0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-117
+.. GENERATED FROM PYTHON SOURCE LINES 86-103
 
 .. code-block:: Python
-   :lineno-start: 100
-
+   :lineno-start: 86
 
     img_spam = visualkeras.layered_view(
         model,
@@ -301,11 +270,11 @@ Force garbage collection
  .. code-block:: none
 
 
-    <matplotlib.image.AxesImage object at 0x7f01c87c5110>
+    <matplotlib.image.AxesImage object at 0x7f27941d6310>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 118-126
+.. GENERATED FROM PYTHON SOURCE LINES 104-112
 
 .. tags::
 
@@ -319,7 +288,7 @@ Force garbage collection
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 3.047 seconds)
+   **Total running time of the script:** (0 minutes 3.172 seconds)
 
 
 .. _sphx_glr_download_auto_examples_visualkeras_ANN_plot_dense.py:

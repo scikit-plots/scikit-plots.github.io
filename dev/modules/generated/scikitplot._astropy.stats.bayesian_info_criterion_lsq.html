@@ -772,7 +772,7 @@
 <h1>bayesian_info_criterion_lsq<a class="headerlink" href="#bayesian-info-criterion-lsq" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot._astropy.stats.bayesian_info_criterion_lsq">
-<span class="sig-prename descclassname"><span class="pre">scikitplot._astropy.stats.</span></span><span class="sig-name descname"><span class="pre">bayesian_info_criterion_lsq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ssr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_samples</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/de3f41b/scikitplot/_astropy/stats/info_theory.py#L128"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot._astropy.stats.bayesian_info_criterion_lsq" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot._astropy.stats.</span></span><span class="sig-name descname"><span class="pre">bayesian_info_criterion_lsq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ssr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_samples</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1ce2f5d/scikitplot/_astropy/stats/info_theory.py#L128"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot._astropy.stats.bayesian_info_criterion_lsq" title="Link to this definition">#</a></dt>
 <dd><p>Computes the Bayesian Information Criterion (BIC) assuming that the
 observations come from a Gaussian distribution.</p>
 <p>In this case, BIC is given as</p>
@@ -782,7 +782,7 @@ observations come from a Gaussian distribution.</p>
 parameters and <span class="math notranslate nohighlight">\(\mathrm{SSR}\)</span> stands for the sum of squared residuals
 between model and data.</p>
 <p>This is applicable, for instance, when the parameters of a model are
-estimated using the least squares statistic. See <a class="reference internal" href="#ra8ce25ff4479-1" id="id1">[1]</a> and <a class="reference internal" href="#ra8ce25ff4479-2" id="id2">[2]</a>.</p>
+estimated using the least squares statistic. See <a class="reference internal" href="#ra8ce25ff4479-1" id="id24">[1]</a> and <a class="reference internal" href="#ra8ce25ff4479-2" id="id25">[2]</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -814,24 +814,24 @@ parameter space.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="ra8ce25ff4479-1" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id24">1</a><span class="fn-bracket">]</span></span>
 <p>Wikipedia. Bayesian Information Criterion.
 &lt;<a class="reference external" href="https://en.wikipedia.org/wiki/Bayesian_information_criterion">https://en.wikipedia.org/wiki/Bayesian_information_criterion</a>&gt;</p>
 </div>
 <div class="citation" id="ra8ce25ff4479-2" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id25">2</a><span class="fn-bracket">]</span></span>
 <p>Origin Lab. Comparing Two Fitting Functions.
 &lt;<a class="reference external" href="https://www.originlab.com/doc/Origin-Help/PostFit-CompareFitFunc">https://www.originlab.com/doc/Origin-Help/PostFit-CompareFitFunc</a>&gt;</p>
 </div>
 <div class="citation" id="ra8ce25ff4479-3" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">3</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id29">3</a><span class="fn-bracket">]</span></span>
 <p>Astropy Models and Fitting
 &lt;<a class="reference external" href="https://docs.astropy.org/en/stable/modeling">https://docs.astropy.org/en/stable/modeling</a>&gt;</p>
 </div>
 </div>
 <p class="rubric">Examples</p>
 <p>Consider the simple 1-D fitting example presented in the Astropy
-modeling webpage <a class="reference internal" href="#ra8ce25ff4479-3" id="id6">[3]</a>. There, two models (Box and Gaussian) were fitted to
+modeling webpage <a class="reference internal" href="#ra8ce25ff4479-3" id="id29">[3]</a>. There, two models (Box and Gaussian) were fitted to
 a source flux using the least squares statistic. However, the fittings
 themselves do not tell much about which model better represents this
 hypothetical source. Therefore, we are going to apply to BIC in order to
@@ -964,7 +964,7 @@ is, obviously, expected since the true model is Gaussian.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.de3f41b 2025-06-26T13:16Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.1ce2f5d 2025-06-26T20:35Z.
       <br/>
     
   </p>

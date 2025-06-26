@@ -69,6 +69,7 @@
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'modules/generated/scikitplot.experimental._cy_experimental.logit';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
@@ -772,13 +773,52 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.experimental._cy_experimental.logit">
 <span class="sig-prename descclassname"><span class="pre">scikitplot.experimental._cy_experimental.</span></span><span class="sig-name descname"><span class="pre">logit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.experimental._cy_experimental.logit" title="Link to this definition">#</a></dt>
-<dd><p>Compute the logit function, which is the inverse of the sigmoid function, for the input value <code class="docutils literal notranslate"><span class="pre">x0</span></code>.</p>
-<p>The logit function is defined as:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">logit</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">log</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">))</span>
+<dd><p>Compute the logit (inverse sigmoid) of a scalar input.</p>
+<p>The logit function transforms a probability in the interval (0, 1) into
+a real-valued number. It is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\operatorname{logit}(x) = \log\left(\frac{x}{1 - x}\right)\]</div>
+<p>This function is commonly used in logistic regression and other
+probabilistic models.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x0</strong><span class="classifier">dfg_number_t</span></dt><dd><p>Scalar input value in the range (0, 1). Typically a <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">double</span></code>,
+or <code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">double</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>dfg_number_t</dt><dd><p>The logit of the input value, returned with the same type as <code class="docutils literal notranslate"><span class="pre">x0</span></code>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="scikitplot.experimental._cy_experimental.expit.html#scikitplot.experimental._cy_experimental.expit" title="scikitplot.experimental._cy_experimental.expit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">expit</span></code></a></dt><dd><p>The sigmoid (logistic) function.</p>
+</dd>
+<dt><a class="reference internal" href="scikitplot.experimental._cy_experimental.log_expit.html#scikitplot.experimental._cy_experimental.log_expit" title="scikitplot.experimental._cy_experimental.log_expit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log_expit</span></code></a></dt><dd><p>Logarithm of the sigmoid function.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The input must be strictly within the interval (0, 1) to avoid
+mathematical domain errors (e.g., division by zero or log of zero).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.3.9.</span></p>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">logit</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="go">0.0</span>
 </pre></div>
 </div>
-<p>It is commonly used in logistic regression and other statistical models to
-transform probabilities (ranging from 0 to 1) into real-valued numbers.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">logit</span><span class="p">(</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="go">1.3862943611198906</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>
@@ -876,7 +916,7 @@ transform probabilities (ranging from 0 to 1) into real-valued numbers.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.de3f41b 2025-06-26T13:16Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.1ce2f5d 2025-06-26T20:35Z.
       <br/>
     
   </p>

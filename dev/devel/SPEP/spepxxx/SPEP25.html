@@ -603,30 +603,30 @@
 </div>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#status" id="id1">Status</a></p></li>
-<li><p><a class="reference internal" href="#branches-and-pull-requests" id="id2">Branches and Pull requests</a></p></li>
-<li><p><a class="reference internal" href="#abstract" id="id3">Abstract</a></p></li>
-<li><p><a class="reference internal" href="#detailed-description" id="id4">Detailed description</a></p></li>
-<li><p><a class="reference internal" href="#examples" id="id5">Examples</a></p></li>
-<li><p><a class="reference internal" href="#implementation" id="id6">Implementation</a></p></li>
-<li><p><a class="reference internal" href="#backward-compatibility" id="id7">Backward compatibility</a></p></li>
-<li><p><a class="reference internal" href="#alternatives" id="id8">Alternatives</a></p></li>
+<li><p><a class="reference internal" href="#status" id="id24">Status</a></p></li>
+<li><p><a class="reference internal" href="#branches-and-pull-requests" id="id25">Branches and Pull requests</a></p></li>
+<li><p><a class="reference internal" href="#abstract" id="id26">Abstract</a></p></li>
+<li><p><a class="reference internal" href="#detailed-description" id="id27">Detailed description</a></p></li>
+<li><p><a class="reference internal" href="#examples" id="id28">Examples</a></p></li>
+<li><p><a class="reference internal" href="#implementation" id="id29">Implementation</a></p></li>
+<li><p><a class="reference internal" href="#backward-compatibility" id="id30">Backward compatibility</a></p></li>
+<li><p><a class="reference internal" href="#alternatives" id="id31">Alternatives</a></p></li>
 </ul>
 </nav>
 <section id="status">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">Status</a><a class="headerlink" href="#status" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id24" role="doc-backlink">Status</a><a class="headerlink" href="#status" title="Link to this heading">#</a></h2>
 <p><strong>Rejected</strong></p>
 <p>This work is important, but this particular effort has stalled.</p>
 </section>
 <section id="branches-and-pull-requests">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">Branches and Pull requests</a><a class="headerlink" href="#branches-and-pull-requests" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id25" role="doc-backlink">Branches and Pull requests</a><a class="headerlink" href="#branches-and-pull-requests" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>development branches:</p></li>
 <li><p>related pull requests:</p></li>
 </ul>
 </section>
 <section id="abstract">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">Abstract</a><a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id26" role="doc-backlink">Abstract</a><a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
 <p>This MEP aims at adding a serializable <code class="docutils literal notranslate"><span class="pre">Controller</span></code> objects to act
 as an <code class="docutils literal notranslate"><span class="pre">Artist</span></code> managers. Users would then communicate changes to an
 <code class="docutils literal notranslate"><span class="pre">Artist</span></code> via a <code class="docutils literal notranslate"><span class="pre">Controller</span></code>. In this way, functionality of the
@@ -637,7 +637,7 @@ high-level descriptions of figures and libraries requiring low-level
 interpretations.</p>
 </section>
 <section id="detailed-description">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">Detailed description</a><a class="headerlink" href="#detailed-description" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id27" role="doc-backlink">Detailed description</a><a class="headerlink" href="#detailed-description" title="Link to this heading">#</a></h2>
 <p>Matplotlib is a core plotting engine with an API that many users
 already understand. It’s difficult/impossible for other graphing
 libraries to (1) get a complete figure description, (2) output raw
@@ -686,7 +686,7 @@ with a figure and (b) build a figure with a <code class="docutils literal notran
 </ul>
 </section>
 <section id="examples">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id28" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
 <p>Here are some examples of what the controllers should be able to do.</p>
 <ol class="arabic">
 <li><p>Instantiate a matplotlib figure from a serialized representation (e.g., JSON):</p>
@@ -716,7 +716,7 @@ with a figure and (b) build a figure with a <code class="docutils literal notran
 </ol>
 </section>
 <section id="implementation">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">Implementation</a><a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id29" role="doc-backlink">Implementation</a><a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <ol class="arabic">
 <li><p>Create base <code class="docutils literal notranslate"><span class="pre">Controller</span></code> objects that are able to manage
 <code class="docutils literal notranslate"><span class="pre">Artist</span></code> objects (e.g., <code class="docutils literal notranslate"><span class="pre">Hist</span></code>)</p>
@@ -762,14 +762,14 @@ each <code class="docutils literal notranslate"><span class="pre">Artist</span><
 happens in #3. Delete comments when you see this.</p>
 </section>
 <section id="backward-compatibility">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">Backward compatibility</a><a class="headerlink" href="#backward-compatibility" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id30" role="doc-backlink">Backward compatibility</a><a class="headerlink" href="#backward-compatibility" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>pickling will change</p></li>
 <li><p>non-affine transformations will require a defined pickling method</p></li>
 </ul>
 </section>
 <section id="alternatives">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">Alternatives</a><a class="headerlink" href="#alternatives" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id31" role="doc-backlink">Alternatives</a><a class="headerlink" href="#alternatives" title="Link to this heading">#</a></h2>
 <p>PR #3150 suggested adding semantics by parasitically attaching extra
 containers to axes objects. This is a more complete solution with what
 should be a more developed/flexible/powerful framework.</p>
@@ -854,7 +854,7 @@ should be a more developed/flexible/powerful framework.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.de3f41b 2025-06-26T13:16Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.1ce2f5d 2025-06-26T20:35Z.
       <br/>
     
   </p>

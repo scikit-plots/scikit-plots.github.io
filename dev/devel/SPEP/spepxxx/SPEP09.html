@@ -603,29 +603,29 @@
 </div>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#status" id="id1">Status</a></p></li>
-<li><p><a class="reference internal" href="#branches-and-pull-requests" id="id2">Branches and Pull requests</a></p></li>
-<li><p><a class="reference internal" href="#abstract" id="id3">Abstract</a></p></li>
-<li><p><a class="reference internal" href="#detailed-description" id="id4">Detailed description</a></p></li>
-<li><p><a class="reference internal" href="#implementation" id="id5">Implementation</a></p></li>
-<li><p><a class="reference internal" href="#current-summary-of-the-mixin" id="id6">Current summary of the mixin</a></p></li>
-<li><p><a class="reference internal" href="#backward-compatibility" id="id7">Backward compatibility</a></p></li>
-<li><p><a class="reference internal" href="#alternatives" id="id8">Alternatives</a></p></li>
+<li><p><a class="reference internal" href="#status" id="id24">Status</a></p></li>
+<li><p><a class="reference internal" href="#branches-and-pull-requests" id="id25">Branches and Pull requests</a></p></li>
+<li><p><a class="reference internal" href="#abstract" id="id26">Abstract</a></p></li>
+<li><p><a class="reference internal" href="#detailed-description" id="id27">Detailed description</a></p></li>
+<li><p><a class="reference internal" href="#implementation" id="id28">Implementation</a></p></li>
+<li><p><a class="reference internal" href="#current-summary-of-the-mixin" id="id29">Current summary of the mixin</a></p></li>
+<li><p><a class="reference internal" href="#backward-compatibility" id="id30">Backward compatibility</a></p></li>
+<li><p><a class="reference internal" href="#alternatives" id="id31">Alternatives</a></p></li>
 </ul>
 </nav>
 <p>Add a global manager for all user interactivity with artists; make any
 artist resizeable, moveable, highlightable, and selectable as desired
 by the user.</p>
 <section id="status">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">Status</a><a class="headerlink" href="#status" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id24" role="doc-backlink">Status</a><a class="headerlink" href="#status" title="Link to this heading">#</a></h2>
 <p><strong>Discussion</strong></p>
 </section>
 <section id="branches-and-pull-requests">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">Branches and Pull requests</a><a class="headerlink" href="#branches-and-pull-requests" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id25" role="doc-backlink">Branches and Pull requests</a><a class="headerlink" href="#branches-and-pull-requests" title="Link to this heading">#</a></h2>
 <p><a class="github reference external" href="https://github.com/dhyams/matplotlib/tree/MEP9">dhyams/matplotlib</a></p>
 </section>
 <section id="abstract">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">Abstract</a><a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id26" role="doc-backlink">Abstract</a><a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
 <p>The goal is to be able to interact with matplotlib artists in a very
 similar way as drawing programs do.  When appropriate, the user should
 be able to move, resize, or select an artist that is already on the
@@ -646,7 +646,7 @@ support to the logical level, where callbacks are performed on the
 artists when certain interactive gestures from the user are detected.</p>
 </section>
 <section id="detailed-description">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">Detailed description</a><a class="headerlink" href="#detailed-description" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id27" role="doc-backlink">Detailed description</a><a class="headerlink" href="#detailed-description" title="Link to this heading">#</a></h2>
 <p>This new functionality would be used to allow the end-user to better
 interact with the graph.  Many times, a graph is almost what the user
 wants, but a small repositioning and/or resizing of components is
@@ -676,7 +676,7 @@ interface and make it work for all artists.</p>
 appropriate boxes drawn when artists are moved or resized.</p>
 </section>
 <section id="implementation">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">Implementation</a><a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id28" role="doc-backlink">Implementation</a><a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Add appropriate methods to the “tree” of artists so that the
 interactivity manager has a consistent interface for the
@@ -702,7 +702,7 @@ currently have it coded.</p></li>
 </ul>
 </section>
 <section id="current-summary-of-the-mixin">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">Current summary of the mixin</a><a class="headerlink" href="#current-summary-of-the-mixin" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id29" role="doc-backlink">Current summary of the mixin</a><a class="headerlink" href="#current-summary-of-the-mixin" title="Link to this heading">#</a></h2>
 <p>(Note that this mixin is for now just private code, but can be added
 to a branch obviously)</p>
 <p>InteractiveArtistMixin:</p>
@@ -803,13 +803,13 @@ fixed by having each backend supply these things.</p></li>
 </ul>
 </section>
 <section id="backward-compatibility">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">Backward compatibility</a><a class="headerlink" href="#backward-compatibility" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id30" role="doc-backlink">Backward compatibility</a><a class="headerlink" href="#backward-compatibility" title="Link to this heading">#</a></h2>
 <p>No problems with backward compatibility, although once this is in
 place, it would be appropriate to obsolete some of the existing
 interactive functions (like legend.draggable())</p>
 </section>
 <section id="alternatives">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">Alternatives</a><a class="headerlink" href="#alternatives" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id31" role="doc-backlink">Alternatives</a><a class="headerlink" href="#alternatives" title="Link to this heading">#</a></h2>
 <p>None that I know of.</p>
 </section>
 </section>
@@ -892,7 +892,7 @@ interactive functions (like legend.draggable())</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.de3f41b 2025-06-26T13:16Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.1ce2f5d 2025-06-26T20:35Z.
       <br/>
     
   </p>

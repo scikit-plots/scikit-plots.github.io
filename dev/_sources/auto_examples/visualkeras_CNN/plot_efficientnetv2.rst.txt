@@ -24,7 +24,7 @@ visualkeras: EfficientNetV2 example
 An example showing the :py:func:`~scikitplot.visualkeras` function
 used by a :py:class:`~tensorflow.keras.Model` model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 8-12
+.. GENERATED FROM PYTHON SOURCE LINES 8-13
 
 .. code-block:: Python
    :lineno-start: 9
@@ -40,40 +40,16 @@ used by a :py:class:`~tensorflow.keras.Model` model.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 13-14
 
-Force garbage collection
+.. GENERATED FROM PYTHON SOURCE LINES 14-15
 
-.. GENERATED FROM PYTHON SOURCE LINES 14-19
+pip install protobuf==5.29.4
+
+.. GENERATED FROM PYTHON SOURCE LINES 15-22
 
 .. code-block:: Python
    :lineno-start: 15
 
-
-    import gc
-
-    gc.collect()
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-
-    3
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 20-29
-
-.. code-block:: Python
-   :lineno-start: 21
-
-
-    # pip install protobuf==5.29.4
     import tensorflow as tf
 
     # Clear any session to reset the state of TensorFlow/Keras
@@ -88,11 +64,10 @@ Force garbage collection
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 30-43
+.. GENERATED FROM PYTHON SOURCE LINES 23-35
 
 .. code-block:: Python
-   :lineno-start: 31
-
+   :lineno-start: 23
 
     model = tf.keras.applications.EfficientNetV2B0(
         include_top=True,
@@ -113,11 +88,10 @@ Force garbage collection
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 44-61
+.. GENERATED FROM PYTHON SOURCE LINES 36-52
 
 .. code-block:: Python
-   :lineno-start: 45
-
+   :lineno-start: 36
 
     img_efficientnetv2 = visualkeras.layered_view(
         model,
@@ -149,11 +123,11 @@ Force garbage collection
  .. code-block:: none
 
 
-    <matplotlib.image.AxesImage object at 0x7f3d6743f190>
+    <matplotlib.image.AxesImage object at 0x7fa45029ff90>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 62-70
+.. GENERATED FROM PYTHON SOURCE LINES 53-61
 
 .. tags::
 
@@ -164,10 +138,10 @@ Force garbage collection
    level: beginner
    purpose: showcase
 
-.. GENERATED FROM PYTHON SOURCE LINES 71-173
+.. GENERATED FROM PYTHON SOURCE LINES 62-164
 
 .. code-block:: Python
-   :lineno-start: 72
+   :lineno-start: 63
 
 
     # model = tf.keras.applications.EfficientNetV2B1(
@@ -281,7 +255,7 @@ Force garbage collection
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 4.584 seconds)
+   **Total running time of the script:** (0 minutes 6.983 seconds)
 
 
 .. _sphx_glr_download_auto_examples_visualkeras_CNN_plot_efficientnetv2.py:

@@ -24,7 +24,7 @@ Visualkeras: Spam Classification Conv1D Dense Example
 An example showing Spam the :py:func:`~scikitplot.visualkeras` function
 used by a :py:class:`~tensorflow.keras.Model` model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 8-13
+.. GENERATED FROM PYTHON SOURCE LINES 8-12
 
 .. code-block:: Python
    :lineno-start: 9
@@ -40,8 +40,7 @@ used by a :py:class:`~tensorflow.keras.Model` model.
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 14-23
+.. GENERATED FROM PYTHON SOURCE LINES 13-22
 
 Installing dependencies
 https://sphinx-gallery.github.io/stable/configuration.html#using-multiple-code-blocks-to-create-a-single-figure
@@ -53,13 +52,15 @@ https://sphinx-gallery.github.io/stable/configuration.html#using-multiple-code-b
       # pip install -q tensorflow
       # apt-get -qq install curl
 
-.. GENERATED FROM PYTHON SOURCE LINES 26-33
+.. GENERATED FROM PYTHON SOURCE LINES 25-26
+
+pip install protobuf==5.29.4
+
+.. GENERATED FROM PYTHON SOURCE LINES 26-31
 
 .. code-block:: Python
-   :lineno-start: 27
+   :lineno-start: 26
 
-
-    # pip install protobuf==5.29.4
     import tensorflow as tf
 
     # Clear any session to reset the state of TensorFlow/Keras
@@ -72,11 +73,10 @@ https://sphinx-gallery.github.io/stable/configuration.html#using-multiple-code-b
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 34-62
+.. GENERATED FROM PYTHON SOURCE LINES 32-59
 
 .. code-block:: Python
-   :lineno-start: 35
-
+   :lineno-start: 32
 
     model = tf.keras.models.Sequential()
     model.add(tf.keras.layers.InputLayer(input_shape=(100,)))
@@ -140,11 +140,10 @@ https://sphinx-gallery.github.io/stable/configuration.html#using-multiple-code-b
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 63-67
+.. GENERATED FROM PYTHON SOURCE LINES 60-63
 
 .. code-block:: Python
-   :lineno-start: 64
-
+   :lineno-start: 60
 
     import matplotlib.pyplot as plt
     from scikitplot import visualkeras
@@ -156,10 +155,10 @@ https://sphinx-gallery.github.io/stable/configuration.html#using-multiple-code-b
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 68-86
+.. GENERATED FROM PYTHON SOURCE LINES 64-82
 
 .. code-block:: Python
-   :lineno-start: 68
+   :lineno-start: 64
 
     img_spam = visualkeras.layered_view(
         model,
@@ -193,14 +192,14 @@ https://sphinx-gallery.github.io/stable/configuration.html#using-multiple-code-b
  .. code-block:: none
 
 
-    <matplotlib.image.AxesImage object at 0x7fda706e7790>
+    <matplotlib.image.AxesImage object at 0x7f84d475d9d0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 87-104
+.. GENERATED FROM PYTHON SOURCE LINES 83-100
 
 .. code-block:: Python
-   :lineno-start: 87
+   :lineno-start: 83
 
     img_spam = visualkeras.layered_view(
         model,
@@ -233,14 +232,14 @@ https://sphinx-gallery.github.io/stable/configuration.html#using-multiple-code-b
  .. code-block:: none
 
 
-    <matplotlib.image.AxesImage object at 0x7fda70787650>
+    <matplotlib.image.AxesImage object at 0x7f84d47f1410>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 105-125
+.. GENERATED FROM PYTHON SOURCE LINES 101-121
 
 .. code-block:: Python
-   :lineno-start: 105
+   :lineno-start: 101
 
     img_spam = visualkeras.layered_view(
         model,
@@ -275,13 +274,13 @@ https://sphinx-gallery.github.io/stable/configuration.html#using-multiple-code-b
 
  .. code-block:: none
 
-    [INFO] Saving path to: /home/circleci/repo/galleries/examples/visualkeras_ANN/result_images/spam_conv_z_20250626_131640Z.png
+    [INFO] Saving path to: /home/circleci/repo/galleries/examples/visualkeras_ANN/result_images/spam_conv_z_20250626_203544Z.png
 
-    <matplotlib.image.AxesImage object at 0x7fda6075f790>
+    <matplotlib.image.AxesImage object at 0x7f84d47206d0>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 126-134
+.. GENERATED FROM PYTHON SOURCE LINES 122-130
 
 .. tags::
 
@@ -295,7 +294,7 @@ https://sphinx-gallery.github.io/stable/configuration.html#using-multiple-code-b
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 2.892 seconds)
+   **Total running time of the script:** (0 minutes 3.276 seconds)
 
 
 .. _sphx_glr_download_auto_examples_visualkeras_ANN_plot_conv_dense.py:

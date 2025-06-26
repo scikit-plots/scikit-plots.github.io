@@ -455,39 +455,39 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 </pre></div>
 </div>
 </div></blockquote>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">27</span> <span class="c1"># pip install protobuf==5.29.4</span>
-<span class="linenos">28</span> <span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
-<span class="linenos">29</span>
-<span class="linenos">30</span> <span class="c1"># Clear any session to reset the state of TensorFlow/Keras</span>
-<span class="linenos">31</span> <a class="sphx-glr-backref-module-tensorflow-keras-backend sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/backend/clear_session" title="tensorflow.keras.backend.clear_session"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">clear_session</span></a><span class="p">()</span>
+<p>pip install protobuf==5.29.4</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">26</span> <span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+<span class="linenos">27</span>
+<span class="linenos">28</span> <span class="c1"># Clear any session to reset the state of TensorFlow/Keras</span>
+<span class="linenos">29</span> <a class="sphx-glr-backref-module-tensorflow-keras-backend sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/backend/clear_session" title="tensorflow.keras.backend.clear_session"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">clear_session</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">35</span> <span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
-<span class="linenos">36</span> <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/InputLayer" title="tensorflow.keras.layers.InputLayer"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">InputLayer</span></a><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,)))</span>
-<span class="linenos">37</span>
-<span class="linenos">38</span> <span class="c1"># To convert 2D of input data into a 3D input</span>
-<span class="linenos">39</span> <span class="c1"># Reshape to a compatible shape for Conv1D as [batch_size, time_steps, input_dimension]</span>
-<span class="linenos">40</span> <span class="c1"># The Conv1D layer expects a 3D input: (batch_size, steps, channels).</span>
-<span class="linenos">41</span> <span class="c1"># The Reshape layer now reshapes the input to (n_timesteps,n_features) like (100, 1),</span>
-<span class="linenos">42</span> <span class="c1"># which matches the expected input of Conv1D.</span>
-<span class="linenos">43</span> <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
-<span class="linenos">44</span>     <a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Reshape" title="tensorflow.keras.layers.Reshape"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Reshape</span></a><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="linenos">45</span> <span class="p">)</span>  <span class="c1"># Shape: (batch_size, 100, 1), input_shape=(100,)</span>
-<span class="linenos">46</span>
-<span class="linenos">47</span> <span class="c1"># Add Conv1D and other layers</span>
-<span class="linenos">48</span> <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Conv1D" title="tensorflow.keras.layers.Conv1D"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv1D</span></a><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">))</span>
-<span class="linenos">49</span> <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dropout" title="tensorflow.keras.layers.Dropout"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span></a><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
-<span class="linenos">50</span> <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling1D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
-<span class="linenos">51</span>
-<span class="linenos">52</span> <span class="c1"># Flatten and add Dense layers</span>
-<span class="linenos">53</span> <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Flatten" title="tensorflow.keras.layers.Flatten"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span></a><span class="p">())</span>
-<span class="linenos">54</span> <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dense" title="tensorflow.keras.layers.Dense"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span></a><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">))</span>
-<span class="linenos">55</span> <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dense" title="tensorflow.keras.layers.Dense"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span></a><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">))</span>
-<span class="linenos">56</span> <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dense" title="tensorflow.keras.layers.Dense"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">"sigmoid"</span><span class="p">))</span>
-<span class="linenos">57</span>
-<span class="linenos">58</span> <span class="c1"># Compile the model</span>
-<span class="linenos">59</span> <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">"rmsprop"</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">"binary_crossentropy"</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">"accuracy"</span><span class="p">])</span>
-<span class="linenos">60</span> <span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">32</span> <span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
+<span class="linenos">33</span> <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/InputLayer" title="tensorflow.keras.layers.InputLayer"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">InputLayer</span></a><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,)))</span>
+<span class="linenos">34</span>
+<span class="linenos">35</span> <span class="c1"># To convert 2D of input data into a 3D input</span>
+<span class="linenos">36</span> <span class="c1"># Reshape to a compatible shape for Conv1D as [batch_size, time_steps, input_dimension]</span>
+<span class="linenos">37</span> <span class="c1"># The Conv1D layer expects a 3D input: (batch_size, steps, channels).</span>
+<span class="linenos">38</span> <span class="c1"># The Reshape layer now reshapes the input to (n_timesteps,n_features) like (100, 1),</span>
+<span class="linenos">39</span> <span class="c1"># which matches the expected input of Conv1D.</span>
+<span class="linenos">40</span> <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+<span class="linenos">41</span>     <a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Reshape" title="tensorflow.keras.layers.Reshape"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Reshape</span></a><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="linenos">42</span> <span class="p">)</span>  <span class="c1"># Shape: (batch_size, 100, 1), input_shape=(100,)</span>
+<span class="linenos">43</span>
+<span class="linenos">44</span> <span class="c1"># Add Conv1D and other layers</span>
+<span class="linenos">45</span> <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Conv1D" title="tensorflow.keras.layers.Conv1D"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv1D</span></a><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">))</span>
+<span class="linenos">46</span> <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dropout" title="tensorflow.keras.layers.Dropout"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span></a><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="linenos">47</span> <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling1D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="linenos">48</span>
+<span class="linenos">49</span> <span class="c1"># Flatten and add Dense layers</span>
+<span class="linenos">50</span> <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Flatten" title="tensorflow.keras.layers.Flatten"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span></a><span class="p">())</span>
+<span class="linenos">51</span> <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dense" title="tensorflow.keras.layers.Dense"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span></a><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">))</span>
+<span class="linenos">52</span> <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dense" title="tensorflow.keras.layers.Dense"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span></a><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">))</span>
+<span class="linenos">53</span> <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dense" title="tensorflow.keras.layers.Dense"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">"sigmoid"</span><span class="p">))</span>
+<span class="linenos">54</span>
+<span class="linenos">55</span> <span class="c1"># Compile the model</span>
+<span class="linenos">56</span> <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">"rmsprop"</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">"binary_crossentropy"</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">"accuracy"</span><span class="p">])</span>
+<span class="linenos">57</span> <span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Model: "sequential"
@@ -515,81 +515,81 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
  Non-trainable params: 0 (0.00 B)
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">64</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="linenos">65</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">visualkeras</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">60</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="linenos">61</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">visualkeras</span>
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">68</span> <span class="n">img_spam</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
-<span class="linenos">69</span>     <span class="n">model</span><span class="p">,</span>
-<span class="linenos">70</span>     <span class="n">min_z</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="linenos">71</span>     <span class="n">min_xy</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="linenos">72</span>     <span class="n">max_z</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span>
-<span class="linenos">73</span>     <span class="n">max_xy</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span>
-<span class="linenos">74</span>     <span class="n">scale_z</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
-<span class="linenos">75</span>     <span class="n">scale_xy</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
-<span class="linenos">76</span>     <span class="n">font</span><span class="o">=</span><span class="p">{</span><span class="s2">"font_size"</span><span class="p">:</span> <span class="mi">14</span><span class="p">},</span>
-<span class="linenos">77</span>     <span class="n">text_callable</span><span class="o">=</span><span class="s2">"default"</span><span class="p">,</span>
-<span class="linenos">78</span>     <span class="n">one_dim_orientation</span><span class="o">=</span><span class="s2">"x"</span><span class="p">,</span>
-<span class="linenos">79</span>     <span class="c1"># to_file="./spam_conv_x.png",</span>
-<span class="linenos">80</span>     <span class="n">save_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="linenos">81</span>     <span class="n">save_fig_filename</span><span class="o">=</span><span class="s2">"spam_conv_x.png"</span><span class="p">,</span>
-<span class="linenos">82</span>     <span class="n">show_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="linenos">83</span> <span class="p">)</span>
-<span class="linenos">84</span> <span class="n">img_spam</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">64</span> <span class="n">img_spam</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
+<span class="linenos">65</span>     <span class="n">model</span><span class="p">,</span>
+<span class="linenos">66</span>     <span class="n">min_z</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="linenos">67</span>     <span class="n">min_xy</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="linenos">68</span>     <span class="n">max_z</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span>
+<span class="linenos">69</span>     <span class="n">max_xy</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span>
+<span class="linenos">70</span>     <span class="n">scale_z</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+<span class="linenos">71</span>     <span class="n">scale_xy</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+<span class="linenos">72</span>     <span class="n">font</span><span class="o">=</span><span class="p">{</span><span class="s2">"font_size"</span><span class="p">:</span> <span class="mi">14</span><span class="p">},</span>
+<span class="linenos">73</span>     <span class="n">text_callable</span><span class="o">=</span><span class="s2">"default"</span><span class="p">,</span>
+<span class="linenos">74</span>     <span class="n">one_dim_orientation</span><span class="o">=</span><span class="s2">"x"</span><span class="p">,</span>
+<span class="linenos">75</span>     <span class="c1"># to_file="./spam_conv_x.png",</span>
+<span class="linenos">76</span>     <span class="n">save_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos">77</span>     <span class="n">save_fig_filename</span><span class="o">=</span><span class="s2">"spam_conv_x.png"</span><span class="p">,</span>
+<span class="linenos">78</span>     <span class="n">show_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos">79</span> <span class="p">)</span>
+<span class="linenos">80</span> <span class="n">img_spam</span>
 </pre></div>
 </div>
-<img alt="plot conv dense" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_conv_dense_001.png" srcset="../../_images/sphx_glr_plot_conv_dense_001.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage object at 0x7fda706e7790&gt;
+<img alt="plot conv dense" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_conv_dense_001.png" srcset="../../_images/sphx_glr_plot_conv_dense_001.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage object at 0x7f84d475d9d0&gt;
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 87</span> <span class="n">img_spam</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
-<span class="linenos"> 88</span>     <span class="n">model</span><span class="p">,</span>
-<span class="linenos"> 89</span>     <span class="n">min_z</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="linenos"> 90</span>     <span class="n">min_xy</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="linenos"> 91</span>     <span class="n">max_z</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span>
-<span class="linenos"> 92</span>     <span class="n">max_xy</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span>
-<span class="linenos"> 93</span>     <span class="n">scale_z</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
-<span class="linenos"> 94</span>     <span class="n">scale_xy</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
-<span class="linenos"> 95</span>     <span class="n">font</span><span class="o">=</span><span class="p">{</span><span class="s2">"font_size"</span><span class="p">:</span> <span class="mi">14</span><span class="p">},</span>
-<span class="linenos"> 96</span>     <span class="n">text_callable</span><span class="o">=</span><span class="s2">"default"</span><span class="p">,</span>
-<span class="linenos"> 97</span>     <span class="n">one_dim_orientation</span><span class="o">=</span><span class="s2">"y"</span><span class="p">,</span>
-<span class="linenos"> 98</span>     <span class="c1"># to_file="./spam_conv_y.png",</span>
-<span class="linenos"> 99</span>     <span class="n">save_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="linenos">100</span>     <span class="n">save_fig_filename</span><span class="o">=</span><span class="s2">"spam_conv_y.png"</span><span class="p">,</span>
-<span class="linenos">101</span> <span class="p">)</span>
-<span class="linenos">102</span> <span class="n">img_spam</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">83</span> <span class="n">img_spam</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
+<span class="linenos">84</span>     <span class="n">model</span><span class="p">,</span>
+<span class="linenos">85</span>     <span class="n">min_z</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="linenos">86</span>     <span class="n">min_xy</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="linenos">87</span>     <span class="n">max_z</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span>
+<span class="linenos">88</span>     <span class="n">max_xy</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span>
+<span class="linenos">89</span>     <span class="n">scale_z</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+<span class="linenos">90</span>     <span class="n">scale_xy</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+<span class="linenos">91</span>     <span class="n">font</span><span class="o">=</span><span class="p">{</span><span class="s2">"font_size"</span><span class="p">:</span> <span class="mi">14</span><span class="p">},</span>
+<span class="linenos">92</span>     <span class="n">text_callable</span><span class="o">=</span><span class="s2">"default"</span><span class="p">,</span>
+<span class="linenos">93</span>     <span class="n">one_dim_orientation</span><span class="o">=</span><span class="s2">"y"</span><span class="p">,</span>
+<span class="linenos">94</span>     <span class="c1"># to_file="./spam_conv_y.png",</span>
+<span class="linenos">95</span>     <span class="n">save_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos">96</span>     <span class="n">save_fig_filename</span><span class="o">=</span><span class="s2">"spam_conv_y.png"</span><span class="p">,</span>
+<span class="linenos">97</span> <span class="p">)</span>
+<span class="linenos">98</span> <span class="n">img_spam</span>
 </pre></div>
 </div>
-<img alt="plot conv dense" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_conv_dense_002.png" srcset="../../_images/sphx_glr_plot_conv_dense_002.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage object at 0x7fda70787650&gt;
+<img alt="plot conv dense" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_conv_dense_002.png" srcset="../../_images/sphx_glr_plot_conv_dense_002.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage object at 0x7f84d47f1410&gt;
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">105</span> <span class="n">img_spam</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
-<span class="linenos">106</span>     <span class="n">model</span><span class="p">,</span>
-<span class="linenos">107</span>     <span class="n">min_z</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="linenos">108</span>     <span class="n">min_xy</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="linenos">109</span>     <span class="n">max_z</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span>
-<span class="linenos">110</span>     <span class="n">max_xy</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span>
-<span class="linenos">111</span>     <span class="n">scale_z</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
-<span class="linenos">112</span>     <span class="n">scale_xy</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="linenos">113</span>     <span class="n">font</span><span class="o">=</span><span class="p">{</span><span class="s2">"font_size"</span><span class="p">:</span> <span class="mi">9</span><span class="p">},</span>
-<span class="linenos">114</span>     <span class="n">text_callable</span><span class="o">=</span><span class="s2">"default"</span><span class="p">,</span>
-<span class="linenos">115</span>     <span class="n">one_dim_orientation</span><span class="o">=</span><span class="s2">"z"</span><span class="p">,</span>
-<span class="linenos">116</span>     <span class="c1"># to_file="./spam_conv_z.png",</span>
-<span class="linenos">117</span>     <span class="n">save_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="linenos">118</span>     <span class="n">save_fig_filename</span><span class="o">=</span><span class="s2">"spam_conv_z.png"</span><span class="p">,</span>
-<span class="linenos">119</span>     <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="linenos">120</span>     <span class="n">add_timestamp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="linenos">121</span>     <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="linenos">122</span> <span class="p">)</span>
-<span class="linenos">123</span> <span class="n">img_spam</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">101</span> <span class="n">img_spam</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
+<span class="linenos">102</span>     <span class="n">model</span><span class="p">,</span>
+<span class="linenos">103</span>     <span class="n">min_z</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="linenos">104</span>     <span class="n">min_xy</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="linenos">105</span>     <span class="n">max_z</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span>
+<span class="linenos">106</span>     <span class="n">max_xy</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span>
+<span class="linenos">107</span>     <span class="n">scale_z</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+<span class="linenos">108</span>     <span class="n">scale_xy</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="linenos">109</span>     <span class="n">font</span><span class="o">=</span><span class="p">{</span><span class="s2">"font_size"</span><span class="p">:</span> <span class="mi">9</span><span class="p">},</span>
+<span class="linenos">110</span>     <span class="n">text_callable</span><span class="o">=</span><span class="s2">"default"</span><span class="p">,</span>
+<span class="linenos">111</span>     <span class="n">one_dim_orientation</span><span class="o">=</span><span class="s2">"z"</span><span class="p">,</span>
+<span class="linenos">112</span>     <span class="c1"># to_file="./spam_conv_z.png",</span>
+<span class="linenos">113</span>     <span class="n">save_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos">114</span>     <span class="n">save_fig_filename</span><span class="o">=</span><span class="s2">"spam_conv_z.png"</span><span class="p">,</span>
+<span class="linenos">115</span>     <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="linenos">116</span>     <span class="n">add_timestamp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos">117</span>     <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos">118</span> <span class="p">)</span>
+<span class="linenos">119</span> <span class="n">img_spam</span>
 </pre></div>
 </div>
-<img alt="plot conv dense" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_conv_dense_003.png" srcset="../../_images/sphx_glr_plot_conv_dense_003.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[INFO] Saving path to: /home/circleci/repo/galleries/examples/visualkeras_ANN/result_images/spam_conv_z_20250626_131640Z.png
+<img alt="plot conv dense" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_conv_dense_003.png" srcset="../../_images/sphx_glr_plot_conv_dense_003.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[INFO] Saving path to: /home/circleci/repo/galleries/examples/visualkeras_ANN/result_images/spam_conv_z_20250626_203544Z.png
 
-&lt;matplotlib.image.AxesImage object at 0x7fda6075f790&gt;
+&lt;matplotlib.image.AxesImage object at 0x7f84d47206d0&gt;
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-model-building.html"><span class="doc">model-workflow: model building</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-visualkeras.html"><span class="doc">plot-type: visualkeras</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger reference internal" href="../../_tags/domain-neural-network.html"><span class="doc">domain: neural network</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-intermediate.html"><span class="doc">level: intermediate</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.892 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.276 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_dense_thumb.png"/>
@@ -654,7 +654,7 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.de3f41b 2025-06-26T13:16Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.1ce2f5d 2025-06-26T20:35Z.
       <br/>
 </p>
 </div>

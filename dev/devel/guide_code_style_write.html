@@ -624,6 +624,9 @@
 <li class="toctree-l1"><a class="reference internal" href="guide_triage.html">Bug Triaging and Issue Curation Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guide_pr.html">Pull Request Guidelines</a></li>
 </ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="guide_git_resources.html">Git Resources Guide</a></li>
+</ul>
 </div>
 </nav></div>
     </div>
@@ -691,7 +694,7 @@ public interfaces, please consult the <a class="reference external" href="https:
 </div>
 <section id="pep8-as-enforced-by-flake8">
 <span id="code-style"></span><h2>PEP8, as enforced by flake8<a class="headerlink" href="#pep8-as-enforced-by-flake8" title="Link to this heading">#</a></h2>
-<p>Formatting should follow the recommendations of <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP8</a>, as enforced by <a class="reference external" href="https://flake8.pycqa.org/">flake8</a>.
+<p>Formatting should follow the recommendations of <a href="#id30"><span class="problematic" id="id31">PEP8_</span></a>, as enforced by <a class="reference external" href="https://flake8.pycqa.org/">flake8</a>.
 Matplotlib modifies PEP8 to extend the maximum line length to 88
 characters. You can check flake8 compliance from the command line with</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">flake8</span>
@@ -753,7 +756,7 @@ the variable names. If a format isn’t specified in the table, use numbers or
 letters as appropriate.</p>
 </section>
 <section id="type-hints">
-<span id="id4"></span><h2>Type hints<a class="headerlink" href="#type-hints" title="Link to this heading">#</a></h2>
+<span id="id28"></span><h2>Type hints<a class="headerlink" href="#type-hints" title="Link to this heading">#</a></h2>
 <p>If you add new public API or change public API, update or add the
 corresponding <a class="reference external" href="https://mypy.readthedocs.io/en/latest/">mypy</a> type hints.
 We generally use <a class="reference external" href="https://typing.readthedocs.io/en/latest/source/stubs.html#type-stubs">stub files</a>
@@ -793,7 +796,7 @@ in the codebase.  In particular, avoid making style fixes to it.</p></li>
 </ul>
 </section>
 <section id="keyword-argument-processing">
-<span id="id5"></span><h2>Keyword argument processing<a class="headerlink" href="#keyword-argument-processing" title="Link to this heading">#</a></h2>
+<span id="id29"></span><h2>Keyword argument processing<a class="headerlink" href="#keyword-argument-processing" title="Link to this heading">#</a></h2>
 <p>Matplotlib makes extensive use of <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> for pass-through customizations
 from one function to another.  A typical example is
 <code class="docutils literal notranslate"><span class="pre">~matplotlib.axes.Axes.text</span></code>.  The definition of <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.text</span></code> is a
@@ -1118,7 +1121,7 @@ and python itself are all distributed under BSD compatible licenses.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.de3f41b 2025-06-26T13:16Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.1ce2f5d 2025-06-26T20:35Z.
       <br/>
     
   </p>

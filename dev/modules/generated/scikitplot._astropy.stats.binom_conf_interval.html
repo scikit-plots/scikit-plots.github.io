@@ -772,7 +772,7 @@
 <h1>binom_conf_interval<a class="headerlink" href="#binom-conf-interval" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot._astropy.stats.binom_conf_interval">
-<span class="sig-prename descclassname"><span class="pre">scikitplot._astropy.stats.</span></span><span class="sig-name descname"><span class="pre">binom_conf_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confidence_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.68269</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'wilson'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/de3f41b/scikitplot/_astropy/stats/funcs.py#L71"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot._astropy.stats.binom_conf_interval" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot._astropy.stats.</span></span><span class="sig-name descname"><span class="pre">binom_conf_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confidence_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.68269</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'wilson'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1ce2f5d/scikitplot/_astropy/stats/funcs.py#L71"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot._astropy.stats.binom_conf_interval" title="Link to this definition">#</a></dt>
 <dd><p>Binomial proportion confidence interval given k successes,
 n trials.</p>
 <dl class="field-list simple">
@@ -825,9 +825,9 @@ is simple to take the sample proportion of successes (k/n)
 as a reasonable best estimate of the true probability
 <span class="math notranslate nohighlight">\(\epsilon\)</span>. However, deriving an accurate confidence
 interval on <span class="math notranslate nohighlight">\(\epsilon\)</span> is non-trivial. There are several
-formulas for this interval (see <a class="reference internal" href="#r2285f6d7b80f-1" id="id1">[1]</a>). Four intervals are implemented
+formulas for this interval (see <a class="reference internal" href="#r2285f6d7b80f-1" id="id24">[1]</a>). Four intervals are implemented
 here:</p>
-<p><strong>1. The Wilson Interval.</strong> This interval, attributed to Wilson <a class="reference internal" href="#r2285f6d7b80f-2" id="id2">[2]</a>,
+<p><strong>1. The Wilson Interval.</strong> This interval, attributed to Wilson <a class="reference internal" href="#r2285f6d7b80f-2" id="id25">[2]</a>,
 is given by</p>
 <div class="math notranslate nohighlight">
 \[CI_{\rm Wilson} = \frac{k + \kappa^2/2}{n + \kappa^2}
@@ -842,7 +842,7 @@ confidence interval of 100(1 - <span class="math notranslate nohighlight">\(\alp
 \[\kappa = \Phi^{-1}(1-\alpha/2) = \sqrt{2}{\rm erf}^{-1}(1-\alpha).\]</div>
 <p><strong>2. The Jeffreys Interval.</strong> This interval is derived by applying
 Bayes’ theorem to the binomial distribution with the
-noninformative Jeffreys prior <a class="reference internal" href="#r2285f6d7b80f-3" id="id3">[3]</a>, <a class="reference internal" href="#r2285f6d7b80f-4" id="id4">[4]</a>. The noninformative Jeffreys
+noninformative Jeffreys prior <a class="reference internal" href="#r2285f6d7b80f-3" id="id26">[3]</a>, <a class="reference internal" href="#r2285f6d7b80f-4" id="id27">[4]</a>. The noninformative Jeffreys
 prior is the Beta distribution, Beta(1/2, 1/2), which has the density
 function</p>
 <div class="math notranslate nohighlight">
@@ -880,25 +880,25 @@ everyday practical statistics.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="r2285f6d7b80f-1" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id24">1</a><span class="fn-bracket">]</span></span>
 <p>Brown, Lawrence D.; Cai, T. Tony; DasGupta, Anirban (2001).
 “Interval Estimation for a Binomial Proportion”. Statistical
 Science 16 (2): 101-133. doi:10.1214/ss/1009213286</p>
 </div>
 <div class="citation" id="r2285f6d7b80f-2" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id25">2</a><span class="fn-bracket">]</span></span>
 <p>Wilson, E. B. (1927). “Probable inference, the law of
 succession, and statistical inference”. Journal of the American
 Statistical Association 22: 209-212.</p>
 </div>
 <div class="citation" id="r2285f6d7b80f-3" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id26">3</a><span class="fn-bracket">]</span></span>
 <p>Jeffreys, Harold (1946). “An Invariant Form for the Prior
 Probability in Estimation Problems”. Proc. R. Soc. Lond.. A 24 186
 (1007): 453-461. doi:10.1098/rspa.1946.0056</p>
 </div>
 <div class="citation" id="r2285f6d7b80f-4" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id27">4</a><span class="fn-bracket">]</span></span>
 <p>Jeffreys, Harold (1998). Theory of Probability. Oxford
 University Press, 3rd edition. ISBN 978-0198503682</p>
 </div>
@@ -1037,7 +1037,7 @@ For k = 0 or k = n, the interval always has zero length.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.de3f41b 2025-06-26T13:16Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.1ce2f5d 2025-06-26T20:35Z.
       <br/>
     
   </p>

@@ -603,23 +603,23 @@
 </div>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#status" id="id1">Status</a></p></li>
-<li><p><a class="reference internal" href="#branches-and-pull-requests" id="id2">Branches and Pull requests</a></p></li>
-<li><p><a class="reference internal" href="#abstract" id="id3">Abstract</a></p></li>
-<li><p><a class="reference internal" href="#detailed-description" id="id4">Detailed description</a></p></li>
-<li><p><a class="reference internal" href="#implementation" id="id5">Implementation</a></p></li>
-<li><p><a class="reference internal" href="#future-compatibility" id="id6">Future compatibility</a></p></li>
-<li><p><a class="reference internal" href="#backward-compatibility" id="id7">Backward compatibility</a></p></li>
-<li><p><a class="reference internal" href="#alternatives" id="id8">Alternatives</a></p></li>
-<li><p><a class="reference internal" href="#questions" id="id9">Questions</a></p></li>
+<li><p><a class="reference internal" href="#status" id="id24">Status</a></p></li>
+<li><p><a class="reference internal" href="#branches-and-pull-requests" id="id25">Branches and Pull requests</a></p></li>
+<li><p><a class="reference internal" href="#abstract" id="id26">Abstract</a></p></li>
+<li><p><a class="reference internal" href="#detailed-description" id="id27">Detailed description</a></p></li>
+<li><p><a class="reference internal" href="#implementation" id="id28">Implementation</a></p></li>
+<li><p><a class="reference internal" href="#future-compatibility" id="id29">Future compatibility</a></p></li>
+<li><p><a class="reference internal" href="#backward-compatibility" id="id30">Backward compatibility</a></p></li>
+<li><p><a class="reference internal" href="#alternatives" id="id31">Alternatives</a></p></li>
+<li><p><a class="reference internal" href="#questions" id="id32">Questions</a></p></li>
 </ul>
 </nav>
 <section id="status">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">Status</a><a class="headerlink" href="#status" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id24" role="doc-backlink">Status</a><a class="headerlink" href="#status" title="Link to this heading">#</a></h2>
 <p><strong>Progress</strong></p>
 </section>
 <section id="branches-and-pull-requests">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">Branches and Pull requests</a><a class="headerlink" href="#branches-and-pull-requests" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id25" role="doc-backlink">Branches and Pull requests</a><a class="headerlink" href="#branches-and-pull-requests" title="Link to this heading">#</a></h2>
 <p>Main PR (including GTK3):</p>
 <ul class="simple">
 <li><p><a class="github reference external" href="https://github.com/matplotlib/matplotlib/pull/4143">matplotlib/matplotlib#4143</a></p></li>
@@ -632,7 +632,7 @@
 </ul>
 </section>
 <section id="abstract">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">Abstract</a><a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id26" role="doc-backlink">Abstract</a><a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
 <p>This MEP refactors the backends to give a more structured and
 consistent API, removing generic code and consolidate existing code.
 To do this we propose splitting:</p>
@@ -644,7 +644,7 @@ functionality class <code class="docutils literal notranslate"><span class="pre"
 </ol>
 </section>
 <section id="detailed-description">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">Detailed description</a><a class="headerlink" href="#detailed-description" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id27" role="doc-backlink">Detailed description</a><a class="headerlink" href="#detailed-description" title="Link to this heading">#</a></h2>
 <p>This MEP aims to consolidate the backends API into one single uniform
 API, removing generic code out of the backend (which includes
 <code class="docutils literal notranslate"><span class="pre">_pylab_helpers</span></code> and <code class="docutils literal notranslate"><span class="pre">Gcf</span></code>), and push code to a more appropriate
@@ -683,7 +683,7 @@ figures from dying.</p></li>
 </ol>
 </section>
 <section id="implementation">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">Implementation</a><a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id28" role="doc-backlink">Implementation</a><a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <p>The description of this MEP gives us most of the solution:</p>
 <ol class="arabic simple">
 <li><p>To remove the windowing aspect out of <code class="docutils literal notranslate"><span class="pre">FigureManagerBase</span></code> letting
@@ -807,7 +807,7 @@ Gcf.show_all</p></td>
 </div>
 </section>
 <section id="future-compatibility">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">Future compatibility</a><a class="headerlink" href="#future-compatibility" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id29" role="doc-backlink">Future compatibility</a><a class="headerlink" href="#future-compatibility" title="Link to this heading">#</a></h2>
 <p>As eluded to above when discussing MEP 22, this refactor makes it easy
 to add in new generic features.  At the moment, MEP 22 has to make
 ugly hacks to each class extending from <code class="docutils literal notranslate"><span class="pre">FigureManagerBase</span></code>.  With
@@ -819,7 +819,7 @@ single <code class="docutils literal notranslate"><span class="pre">FigureManage
 in very handy.</p>
 </section>
 <section id="backward-compatibility">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">Backward compatibility</a><a class="headerlink" href="#backward-compatibility" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id30" role="doc-backlink">Backward compatibility</a><a class="headerlink" href="#backward-compatibility" title="Link to this heading">#</a></h2>
 <p>As we leave all backend code intact, only adding missing methods to
 existing classes, this should work seamlessly for all use cases.  The
 only difference will lie for backends that used
@@ -863,13 +863,13 @@ breaks BC.</p></td>
 </div>
 </section>
 <section id="alternatives">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">Alternatives</a><a class="headerlink" href="#alternatives" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id31" role="doc-backlink">Alternatives</a><a class="headerlink" href="#alternatives" title="Link to this heading">#</a></h2>
 <p>If there were any alternative solutions to solving the same problem,
 they should be discussed here, along with a justification for the
 chosen approach.</p>
 </section>
 <section id="questions">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">Questions</a><a class="headerlink" href="#questions" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id32" role="doc-backlink">Questions</a><a class="headerlink" href="#questions" title="Link to this heading">#</a></h2>
 <p>Mdehoon: Can you elaborate on how to run multiple backends
 concurrently?</p>
 <p>OceanWolf: &#64;mdehoon, as I say, not for this MEP, but I see this MEP
@@ -968,7 +968,7 @@ matplotlib. I think this MEP is a step in the right direction.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.de3f41b 2025-06-26T13:16Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.1ce2f5d 2025-06-26T20:35Z.
       <br/>
     
   </p>

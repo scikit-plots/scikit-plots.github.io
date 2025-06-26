@@ -603,34 +603,34 @@
 </div>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#status" id="id1">Status</a></p></li>
-<li><p><a class="reference internal" href="#branches-and-pull-requests" id="id2">Branches and Pull requests</a></p></li>
-<li><p><a class="reference internal" href="#abstract" id="id3">Abstract</a></p></li>
-<li><p><a class="reference internal" href="#detailed-description" id="id4">Detailed description</a></p>
+<li><p><a class="reference internal" href="#status" id="id24">Status</a></p></li>
+<li><p><a class="reference internal" href="#branches-and-pull-requests" id="id25">Branches and Pull requests</a></p></li>
+<li><p><a class="reference internal" href="#abstract" id="id26">Abstract</a></p></li>
+<li><p><a class="reference internal" href="#detailed-description" id="id27">Detailed description</a></p>
 <ul>
-<li><p><a class="reference internal" href="#current-behavior" id="id5">Current behavior</a></p></li>
-<li><p><a class="reference internal" href="#desired-behavior" id="id6">Desired behavior</a></p></li>
+<li><p><a class="reference internal" href="#current-behavior" id="id28">Current behavior</a></p></li>
+<li><p><a class="reference internal" href="#desired-behavior" id="id29">Desired behavior</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#implementation" id="id7">Implementation</a></p></li>
-<li><p><a class="reference internal" href="#backward-compatibility" id="id8">Backward compatibility</a></p></li>
-<li><p><a class="reference internal" href="#alternatives" id="id9">Alternatives</a></p></li>
+<li><p><a class="reference internal" href="#implementation" id="id30">Implementation</a></p></li>
+<li><p><a class="reference internal" href="#backward-compatibility" id="id31">Backward compatibility</a></p></li>
+<li><p><a class="reference internal" href="#alternatives" id="id32">Alternatives</a></p></li>
 </ul>
 </nav>
 <p>This MEP attempts to improve the way in which third-party dependencies
 in matplotlib are handled.</p>
 <section id="status">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">Status</a><a class="headerlink" href="#status" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id24" role="doc-backlink">Status</a><a class="headerlink" href="#status" title="Link to this heading">#</a></h2>
 <p><strong>Completed</strong> – needs to be merged</p>
 </section>
 <section id="branches-and-pull-requests">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">Branches and Pull requests</a><a class="headerlink" href="#branches-and-pull-requests" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id25" role="doc-backlink">Branches and Pull requests</a><a class="headerlink" href="#branches-and-pull-requests" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">#1157</span></code>: Use automatic dependency resolution</p>
 <p><code class="docutils literal notranslate"><span class="pre">#1290</span></code>: Debundle pyparsing</p>
 <p><code class="docutils literal notranslate"><span class="pre">#1261</span></code>: Update six to 1.2</p>
 </section>
 <section id="abstract">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">Abstract</a><a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id26" role="doc-backlink">Abstract</a><a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
 <p>One of the goals of matplotlib has been to keep it as easy to install
 as possible.  To that end, some third-party dependencies are included
 in the source tree and, under certain circumstances, installed
@@ -647,7 +647,7 @@ confuse the issue.  C libraries represent a larger and mostly
 orthogonal set of problems.</p>
 </section>
 <section id="detailed-description">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">Detailed description</a><a class="headerlink" href="#detailed-description" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id27" role="doc-backlink">Detailed description</a><a class="headerlink" href="#detailed-description" title="Link to this heading">#</a></h2>
 <p>matplotlib depends on the following third-party Python libraries:</p>
 <ul class="simple">
 <li><p>Numpy</p></li>
@@ -660,7 +660,7 @@ orthogonal set of problems.</p>
 optional, but one is required for an interactive GUI)</p></li>
 </ul>
 <section id="current-behavior">
-<h3><a class="toc-backref" href="#id5" role="doc-backlink">Current behavior</a><a class="headerlink" href="#current-behavior" title="Link to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id28" role="doc-backlink">Current behavior</a><a class="headerlink" href="#current-behavior" title="Link to this heading">#</a></h3>
 <p>When installing from source, a <strong class="program">git</strong> checkout or <a class="reference external" href="https://pypi.org/project/pip/">pip</a>:</p>
 <ul class="simple">
 <li><p><code class="file docutils literal notranslate"><span class="pre">setup.py</span></code> attempts to <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span></code>.  If this fails, the
@@ -695,7 +695,7 @@ may require a third-party pure Python library have a higher barrier to
 inclusion because of this burden.</p>
 </section>
 <section id="desired-behavior">
-<h3><a class="toc-backref" href="#id6" role="doc-backlink">Desired behavior</a><a class="headerlink" href="#desired-behavior" title="Link to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id29" role="doc-backlink">Desired behavior</a><a class="headerlink" href="#desired-behavior" title="Link to this heading">#</a></h3>
 <p>Third-party dependencies are downloaded and installed from their
 canonical locations by leveraging <a class="reference external" href="https://pypi.org/project/pip/">pip</a>, <a class="reference external" href="https://pypi.org/project/distribute/">distribute</a> and <a class="reference external" href="https://pypi.org">PyPI</a>.</p>
 <p><a class="reference external" href="https://pypi.org/project/python-dateutil/">dateutil</a>, <a class="reference external" href="https://pypi.org/project/pytz/">pytz</a>, and <a class="reference external" href="https://pypi.org/project/pyparsing/">pyparsing</a> should be made into optional
@@ -705,7 +705,7 @@ want to bother installing a particular feature.</p>
 </section>
 </section>
 <section id="implementation">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">Implementation</a><a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id30" role="doc-backlink">Implementation</a><a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <p>For installing from source, and assuming the user has all of the
 C-level compilers and dependencies, this can be accomplished fairly
 easily using <a class="reference external" href="https://pypi.org/project/distribute/">distribute</a> and following the instructions <a class="reference external" href="https://pypi.org/project/distribute/">here</a>.  The only anticipated
@@ -738,7 +738,7 @@ installed using an installer.</p>
 <p>TODO: How does this relate to the Mac OS-X installer?</p>
 </section>
 <section id="backward-compatibility">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">Backward compatibility</a><a class="headerlink" href="#backward-compatibility" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id31" role="doc-backlink">Backward compatibility</a><a class="headerlink" href="#backward-compatibility" title="Link to this heading">#</a></h2>
 <p>At present, matplotlib can be installed from source on a machine
 without the third party dependencies and without an internet
 connection.  After this change, an internet connection (and a working
@@ -747,7 +747,7 @@ PyPI) will be required to install matplotlib for the first time.
 accessing the network).</p>
 </section>
 <section id="alternatives">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">Alternatives</a><a class="headerlink" href="#alternatives" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id32" role="doc-backlink">Alternatives</a><a class="headerlink" href="#alternatives" title="Link to this heading">#</a></h2>
 <p>Distributing binary eggs doesn’t feel like a usable solution.  That
 requires getting <a class="reference external" href="https://setuptools.readthedocs.io/en/latest/easy_install.html">easy_install</a> installed first, and Windows users
 generally prefer the well known <code class="docutils literal notranslate"><span class="pre">.exe</span></code> or <code class="docutils literal notranslate"><span class="pre">.msi</span></code> installer that works
@@ -836,7 +836,7 @@ out of the box.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.de3f41b 2025-06-26T13:16Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.1ce2f5d 2025-06-26T20:35Z.
       <br/>
     
   </p>

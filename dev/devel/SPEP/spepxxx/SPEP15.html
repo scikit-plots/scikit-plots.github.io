@@ -603,31 +603,31 @@
 </div>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#status" id="id1">Status</a></p></li>
-<li><p><a class="reference internal" href="#branches-and-pull-requests" id="id2">Branches and Pull requests</a></p></li>
-<li><p><a class="reference internal" href="#abstract" id="id3">Abstract</a></p></li>
-<li><p><a class="reference internal" href="#detailed-description" id="id4">Detailed description</a></p></li>
-<li><p><a class="reference internal" href="#implementation" id="id5">Implementation</a></p></li>
-<li><p><a class="reference internal" href="#backward-compatibility" id="id6">Backward compatibility</a></p></li>
-<li><p><a class="reference internal" href="#alternatives" id="id7">Alternatives</a></p></li>
+<li><p><a class="reference internal" href="#status" id="id24">Status</a></p></li>
+<li><p><a class="reference internal" href="#branches-and-pull-requests" id="id25">Branches and Pull requests</a></p></li>
+<li><p><a class="reference internal" href="#abstract" id="id26">Abstract</a></p></li>
+<li><p><a class="reference internal" href="#detailed-description" id="id27">Detailed description</a></p></li>
+<li><p><a class="reference internal" href="#implementation" id="id28">Implementation</a></p></li>
+<li><p><a class="reference internal" href="#backward-compatibility" id="id29">Backward compatibility</a></p></li>
+<li><p><a class="reference internal" href="#alternatives" id="id30">Alternatives</a></p></li>
 </ul>
 </nav>
 <section id="status">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">Status</a><a class="headerlink" href="#status" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id24" role="doc-backlink">Status</a><a class="headerlink" href="#status" title="Link to this heading">#</a></h2>
 <p><strong>Discussion</strong></p>
 </section>
 <section id="branches-and-pull-requests">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">Branches and Pull requests</a><a class="headerlink" href="#branches-and-pull-requests" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id25" role="doc-backlink">Branches and Pull requests</a><a class="headerlink" href="#branches-and-pull-requests" title="Link to this heading">#</a></h2>
 <p>None so far.</p>
 </section>
 <section id="abstract">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">Abstract</a><a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id26" role="doc-backlink">Abstract</a><a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
 <p>When one Axis of a 2-dimensional plot is overridden via <code class="docutils literal notranslate"><span class="pre">~.Axes.set_xlim</span></code> or
 <code class="docutils literal notranslate"><span class="pre">~.Axes.set_ylim</span></code>, automatic scaling of the remaining Axis should be based on
 the data that falls within the specified limits of the first Axis.</p>
 </section>
 <section id="detailed-description">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">Detailed description</a><a class="headerlink" href="#detailed-description" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id27" role="doc-backlink">Detailed description</a><a class="headerlink" href="#detailed-description" title="Link to this heading">#</a></h2>
 <p>When axis limits for a 2-D plot are specified for one axis only (via <code class="docutils literal notranslate"><span class="pre">~.Axes.set_xlim</span></code> or
 <code class="docutils literal notranslate"><span class="pre">~.Axes.set_ylim</span></code>), matplotlib currently does not currently rescale the other axis.  The
 result is that the displayed curves or symbols may be compressed into a tiny
@@ -638,19 +638,19 @@ remaining axis using only the data that falls within the limits for the axis
 where limits were specified.</p>
 </section>
 <section id="implementation">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">Implementation</a><a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id28" role="doc-backlink">Implementation</a><a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <p>I don’t know enough about the internals of matplotlib to be able to suggest an
 implementation.</p>
 </section>
 <section id="backward-compatibility">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">Backward compatibility</a><a class="headerlink" href="#backward-compatibility" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id29" role="doc-backlink">Backward compatibility</a><a class="headerlink" href="#backward-compatibility" title="Link to this heading">#</a></h2>
 <p>From the standpoint of software interfaces, there would be no break in
 backward compatibility.  Some outputs would be different, but if the user
 truly desires the previous behavior, he/she can achieve this by overriding
 the axis scaling for both axes.</p>
 </section>
 <section id="alternatives">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">Alternatives</a><a class="headerlink" href="#alternatives" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id30" role="doc-backlink">Alternatives</a><a class="headerlink" href="#alternatives" title="Link to this heading">#</a></h2>
 <p>The only alternative that I can see is to maintain the status quo.</p>
 </section>
 </section>
@@ -732,7 +732,7 @@ the axis scaling for both axes.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.de3f41b 2025-06-26T13:16Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.1ce2f5d 2025-06-26T20:35Z.
       <br/>
     
   </p>

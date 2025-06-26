@@ -24,7 +24,7 @@ visualkeras: ResNetV2 example
 An example showing the :py:func:`~scikitplot.visualkeras` function
 used by a :py:class:`~tensorflow.keras.Model` model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 8-12
+.. GENERATED FROM PYTHON SOURCE LINES 8-13
 
 .. code-block:: Python
    :lineno-start: 9
@@ -40,39 +40,16 @@ used by a :py:class:`~tensorflow.keras.Model` model.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 13-14
 
-Force garbage collection
+.. GENERATED FROM PYTHON SOURCE LINES 14-15
 
-.. GENERATED FROM PYTHON SOURCE LINES 14-18
+pip install protobuf==5.29.4
 
-.. code-block:: Python
-   :lineno-start: 14
-
-    import gc
-
-    gc.collect()
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-
-    3
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 19-28
+.. GENERATED FROM PYTHON SOURCE LINES 15-22
 
 .. code-block:: Python
-   :lineno-start: 20
+   :lineno-start: 15
 
-
-    # pip install protobuf==5.29.4
     import tensorflow as tf
 
     # Clear any session to reset the state of TensorFlow/Keras
@@ -87,11 +64,10 @@ Force garbage collection
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 29-42
+.. GENERATED FROM PYTHON SOURCE LINES 23-35
 
 .. code-block:: Python
-   :lineno-start: 30
-
+   :lineno-start: 23
 
     model = tf.keras.applications.ResNet50V2(
         include_top=True,
@@ -112,11 +88,10 @@ Force garbage collection
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 43-60
+.. GENERATED FROM PYTHON SOURCE LINES 36-52
 
 .. code-block:: Python
-   :lineno-start: 44
-
+   :lineno-start: 36
 
     img_resnet50v2 = visualkeras.layered_view(
         model,
@@ -148,11 +123,11 @@ Force garbage collection
  .. code-block:: none
 
 
-    <matplotlib.image.AxesImage object at 0x7f13d4200390>
+    <matplotlib.image.AxesImage object at 0x7f02141dd190>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 61-69
+.. GENERATED FROM PYTHON SOURCE LINES 53-61
 
 .. tags::
 
@@ -163,10 +138,10 @@ Force garbage collection
    level: beginner
    purpose: showcase
 
-.. GENERATED FROM PYTHON SOURCE LINES 72-106
+.. GENERATED FROM PYTHON SOURCE LINES 64-98
 
 .. code-block:: Python
-   :lineno-start: 73
+   :lineno-start: 65
 
 
     # model = tf.keras.applications.ResNet101V2(
@@ -212,7 +187,7 @@ Force garbage collection
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 3.456 seconds)
+   **Total running time of the script:** (0 minutes 4.859 seconds)
 
 
 .. _sphx_glr_download_auto_examples_visualkeras_CNN_plot_resnetv2.py:

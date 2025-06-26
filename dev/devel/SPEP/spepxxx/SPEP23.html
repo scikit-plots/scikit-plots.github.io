@@ -603,38 +603,38 @@
 </div>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#status" id="id1">Status</a></p></li>
-<li><p><a class="reference internal" href="#branches-and-pull-requests" id="id2">Branches and Pull requests</a></p></li>
-<li><p><a class="reference internal" href="#abstract" id="id3">Abstract</a></p></li>
-<li><p><a class="reference internal" href="#detailed-description" id="id4">Detailed description</a></p></li>
-<li><p><a class="reference internal" href="#implementation" id="id5">Implementation</a></p>
+<li><p><a class="reference internal" href="#status" id="id24">Status</a></p></li>
+<li><p><a class="reference internal" href="#branches-and-pull-requests" id="id25">Branches and Pull requests</a></p></li>
+<li><p><a class="reference internal" href="#abstract" id="id26">Abstract</a></p></li>
+<li><p><a class="reference internal" href="#detailed-description" id="id27">Detailed description</a></p></li>
+<li><p><a class="reference internal" href="#implementation" id="id28">Implementation</a></p>
 <ul>
-<li><p><a class="reference internal" href="#figuremanagerbase" id="id6"><code class="docutils literal notranslate"><span class="pre">FigureManagerBase</span></code></a></p></li>
-<li><p><a class="reference internal" href="#new-figure-manager" id="id7"><code class="docutils literal notranslate"><span class="pre">new_figure_manager</span></code></a></p></li>
-<li><p><a class="reference internal" href="#new-figure-manager-given-figure" id="id8"><code class="docutils literal notranslate"><span class="pre">new_figure_manager_given_figure</span></code></a></p></li>
-<li><p><a class="reference internal" href="#navigationbase" id="id9"><code class="docutils literal notranslate"><span class="pre">NavigationBase</span></code></a></p></li>
+<li><p><a class="reference internal" href="#figuremanagerbase" id="id29"><code class="docutils literal notranslate"><span class="pre">FigureManagerBase</span></code></a></p></li>
+<li><p><a class="reference internal" href="#new-figure-manager" id="id30"><code class="docutils literal notranslate"><span class="pre">new_figure_manager</span></code></a></p></li>
+<li><p><a class="reference internal" href="#new-figure-manager-given-figure" id="id31"><code class="docutils literal notranslate"><span class="pre">new_figure_manager_given_figure</span></code></a></p></li>
+<li><p><a class="reference internal" href="#navigationbase" id="id32"><code class="docutils literal notranslate"><span class="pre">NavigationBase</span></code></a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#backward-compatibility" id="id10">Backward compatibility</a></p></li>
-<li><p><a class="reference internal" href="#alternatives" id="id11">Alternatives</a></p></li>
+<li><p><a class="reference internal" href="#backward-compatibility" id="id33">Backward compatibility</a></p></li>
+<li><p><a class="reference internal" href="#alternatives" id="id34">Alternatives</a></p></li>
 </ul>
 </nav>
 <section id="status">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">Status</a><a class="headerlink" href="#status" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id24" role="doc-backlink">Status</a><a class="headerlink" href="#status" title="Link to this heading">#</a></h2>
 <p><strong>Discussion</strong></p>
 </section>
 <section id="branches-and-pull-requests">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">Branches and Pull requests</a><a class="headerlink" href="#branches-and-pull-requests" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id25" role="doc-backlink">Branches and Pull requests</a><a class="headerlink" href="#branches-and-pull-requests" title="Link to this heading">#</a></h2>
 <p><strong>Previous work</strong>
 - <a class="github reference external" href="https://github.com/matplotlib/matplotlib/pull/2465">matplotlib/matplotlib#2465</a> <strong>To-delete</strong></p>
 </section>
 <section id="abstract">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">Abstract</a><a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id26" role="doc-backlink">Abstract</a><a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
 <p>Add the possibility to have multiple figures grouped under the same
 <code class="docutils literal notranslate"><span class="pre">~.backend_template.FigureManager</span></code></p>
 </section>
 <section id="detailed-description">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">Detailed description</a><a class="headerlink" href="#detailed-description" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id27" role="doc-backlink">Detailed description</a><a class="headerlink" href="#detailed-description" title="Link to this heading">#</a></h2>
 <p>Under the current structure, every canvas has its own window.</p>
 <p>This is and may continue to be the desired method of operation for
 most use cases.</p>
@@ -650,11 +650,11 @@ already in place. This is simply because the actual implementation of
 the <code class="docutils literal notranslate"><span class="pre">Toolbar</span></code> makes it pretty hard to switch between canvases.</p>
 </section>
 <section id="implementation">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">Implementation</a><a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id28" role="doc-backlink">Implementation</a><a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <p>The first implementation will be done in GTK3 using a Notebook as
 canvas container.</p>
 <section id="figuremanagerbase">
-<h3><a class="toc-backref" href="#id6" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">FigureManagerBase</span></code></a><a class="headerlink" href="#figuremanagerbase" title="Link to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id29" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">FigureManagerBase</span></code></a><a class="headerlink" href="#figuremanagerbase" title="Link to this heading">#</a></h3>
 <p>will add the following new methods</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">add_canvas</span></code>: To add a canvas to an existing
@@ -675,13 +675,13 @@ because the active canvas, is defined when <code class="docutils literal notrans
 </ul>
 </section>
 <section id="new-figure-manager">
-<h3><a class="toc-backref" href="#id7" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">new_figure_manager</span></code></a><a class="headerlink" href="#new-figure-manager" title="Link to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id30" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">new_figure_manager</span></code></a><a class="headerlink" href="#new-figure-manager" title="Link to this heading">#</a></h3>
 <p>To control which <code class="docutils literal notranslate"><span class="pre">~.backend_template.FigureManager</span></code> will contain the new
 figures, an extra optional parameter <em>figuremanager</em> will be added, this
 parameter value will be passed to <code class="docutils literal notranslate"><span class="pre">new_figure_manager_given_figure</span></code>.</p>
 </section>
 <section id="new-figure-manager-given-figure">
-<h3><a class="toc-backref" href="#id8" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">new_figure_manager_given_figure</span></code></a><a class="headerlink" href="#new-figure-manager-given-figure" title="Link to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id31" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">new_figure_manager_given_figure</span></code></a><a class="headerlink" href="#new-figure-manager-given-figure" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>If <em>figuremanager</em> parameter is given, this
 <code class="docutils literal notranslate"><span class="pre">~.backend_template.FigureManager</span></code> object will be used instead of creating a
@@ -692,13 +692,13 @@ new one.</p></li>
 </ul>
 </section>
 <section id="navigationbase">
-<h3><a class="toc-backref" href="#id9" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">NavigationBase</span></code></a><a class="headerlink" href="#navigationbase" title="Link to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id32" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">NavigationBase</span></code></a><a class="headerlink" href="#navigationbase" title="Link to this heading">#</a></h3>
 <p>Modifies the <code class="docutils literal notranslate"><span class="pre">NavigationBase</span></code> to keep a list of canvases, directing the
 actions to the active one.</p>
 </section>
 </section>
 <section id="backward-compatibility">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">Backward compatibility</a><a class="headerlink" href="#backward-compatibility" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id33" role="doc-backlink">Backward compatibility</a><a class="headerlink" href="#backward-compatibility" title="Link to this heading">#</a></h2>
 <p>For the <strong>MultiFigure</strong> properties to be visible, the user has to
 activate them directly setting <code class="docutils literal notranslate"><span class="pre">rcParams['backend.multifigure']</span> <span class="pre">=</span>
 <span class="pre">True</span></code></p>
@@ -707,7 +707,7 @@ current <code class="docutils literal notranslate"><span class="pre">.FigureMana
 implemented the <strong>MultiFigure</strong> magic yet.</p>
 </section>
 <section id="alternatives">
-<h2><a class="toc-backref" href="#id11" role="doc-backlink">Alternatives</a><a class="headerlink" href="#alternatives" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id34" role="doc-backlink">Alternatives</a><a class="headerlink" href="#alternatives" title="Link to this heading">#</a></h2>
 <p>Instead of modifying the <code class="docutils literal notranslate"><span class="pre">.FigureManagerBase</span></code> it could be possible to add
 a parallel class, that handles the cases where
 <code class="docutils literal notranslate"><span class="pre">rcParams['backend.multifigure']</span> <span class="pre">=</span> <span class="pre">True</span></code>.  This will warranty that
@@ -799,7 +799,7 @@ bigger the code, and more things to maintain.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.de3f41b 2025-06-26T13:16Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.1ce2f5d 2025-06-26T20:35Z.
       <br/>
     
   </p>

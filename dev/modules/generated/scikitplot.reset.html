@@ -771,28 +771,36 @@
 <h1>reset<a class="headerlink" href="#reset" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.reset">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.</span></span><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_gallery_conf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_fname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/de3f41b/scikitplot/_reset.py#L124"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.reset" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.</span></span><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_gallery_conf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_fname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1ce2f5d/scikitplot/_reset.py#L136"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.reset" title="Link to this definition">#</a></dt>
 <dd><p>Reset global state for NumPy, scikit-learn, matplotlib, and seaborn.</p>
-<p>This function is designed to restore key scientific computing and visualization
-libraries to their <strong>default configurations</strong>. It helps prevent state leakage
-between different scripts, examples, or plotting sessions.</p>
-<dl class="simple">
-<dt>This is particularly useful in:</dt><dd><ul class="simple">
-<li><p>Documentation builds using Sphinx-Gallery</p></li>
-<li><p>Interactive notebook development (Jupyter, Colab)</p></li>
-<li><p>Streamlit or Dash applications (reproducibility between reruns)</p></li>
-<li><p>Automated testing pipelines</p></li>
-<li><p>Educational or demo environments with sequential examples</p></li>
+<p>This function restores common scientific computing and visualization libraries
+to their <strong>default configurations</strong>, preventing state leakage between scripts,
+examples, or plotting sessions.</p>
+<p>It is especially useful in:
+- Documentation builds (e.g., with Sphinx-Gallery)
+- Interactive notebooks (Jupyter, Colab)
+- Streamlit or Dash apps (ensuring consistent reruns)
+- Automated testing pipelines
+- Educational or demo environments</p>
+<p>What gets reset:
+- <strong>NumPy</strong>: Restores default error handling (<code class="docutils literal notranslate"><span class="pre">np.seterr</span></code>) and print formatting</p>
+<blockquote>
+<div><p>(<code class="docutils literal notranslate"><span class="pre">np.set_printoptions</span></code>).</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>scikit-learn</strong>: Resets global configuration via <code class="docutils literal notranslate"><span class="pre">sklearn.set_config</span></code>, including
+options like <code class="docutils literal notranslate"><span class="pre">assume_finite</span></code> and <code class="docutils literal notranslate"><span class="pre">working_memory</span></code>.</p></li>
+<li><p><strong>matplotlib</strong>: Closes all open figures, resets <code class="docutils literal notranslate"><span class="pre">rcParams</span></code>, and reapplies the default style.</p></li>
+<li><p><strong>seaborn</strong> (if installed): Restores default theme and style to avoid residual settings.</p></li>
 </ul>
-</dd>
-</dl>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>_gallery_conf</strong><span class="classifier">dict, optional</span></dt><dd><p>Required by Sphinx-Gallery’s <code class="docutils literal notranslate"><span class="pre">reset_modules</span></code> hook, but ignored in this function.</p>
+<dt><strong>_gallery_conf</strong><span class="classifier">dict, optional</span></dt><dd><p>Required for compatibility with Sphinx-Gallery’s <code class="docutils literal notranslate"><span class="pre">reset_modules</span></code> hook.
+Not used internally.</p>
 </dd>
-<dt><strong>_fname</strong><span class="classifier">str, optional</span></dt><dd><p>Filename of the example being executed. Included for compatibility with Sphinx-Gallery,
-but not used internally.</p>
+<dt><strong>_fname</strong><span class="classifier">str, optional</span></dt><dd><p>Filename of the current example (provided by Sphinx-Gallery).
+Not used internally.</p>
 </dd>
 </dl>
 </dd>
@@ -800,44 +808,43 @@ but not used internally.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_numpy</span></code></dt><dd><p>Resets NumPy global state</p>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_numpy</span></code></dt><dd><p>Reset NumPy global state</p>
 </dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_sklearn</span></code></dt><dd><p>Resets scikit-learn configuration</p>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_sklearn</span></code></dt><dd><p>Reset scikit-learn configuration</p>
 </dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_matplotlib</span></code></dt><dd><p>Resets matplotlib figures and config</p>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_matplotlib</span></code></dt><dd><p>Reset matplotlib figures and configuration</p>
 </dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_seaborn</span></code></dt><dd><p>Resets seaborn theme (if available)</p>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_seaborn</span></code></dt><dd><p>Reset seaborn theme (if available)</p>
 </dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
 <ul>
-<li><p>This function is safe to call repeatedly; it is <strong>idempotent</strong>.</p></li>
-<li><p>In Sphinx-Gallery, you can register this with:</p>
+<li><p>This function is <strong>idempotent</strong> and safe to call multiple times.</p></li>
+<li><p>To use with Sphinx-Gallery, register it as:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sphinx_gallery_conf</span> <span class="o">=</span> <span class="p">{</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;reset_modules&#39;</span><span class="p">:</span> <span class="s1">&#39;scikitplot._reset.reset&#39;</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;reset_modules&#39;</span><span class="p">:</span> <span class="s1">&#39;scikitplot.reset&#39;</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">}</span>
+<span class="gp">... </span>    <span class="s2">&quot;reset_modules&quot;</span><span class="p">:</span> <span class="s2">&quot;scikitplot.reset&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">}</span>
 </pre></div>
 </div>
 </li>
-<li><p>For testing or production environments, you may register it via <code class="docutils literal notranslate"><span class="pre">atexit</span></code> or use
-as a pytest fixture:</p>
+<li><p>You can also register it with <code class="docutils literal notranslate"><span class="pre">atexit</span></code> or use it in a <code class="docutils literal notranslate"><span class="pre">pytest</span></code> fixture:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">atexit</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">atexit</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">reset</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">autouse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">clean_state</span><span class="p">():</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="k">yield</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">reset</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">autouse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">def</span><span class="w"> </span><span class="nf">clean_state</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="k">yield</span>
+<span class="gp">... </span>    <span class="n">reset</span><span class="p">()</span>
 </pre></div>
 </div>
 </li>
 </ul>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot._reset</span><span class="w"> </span><span class="kn">import</span> <span class="n">reset</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">reset</span><span class="p">()</span>  <span class="c1"># safely clean state between plotting functions</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reset</span><span class="p">()</span>  <span class="c1"># safely restore global state between examples</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -937,7 +944,7 @@ as a pytest fixture:</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.de3f41b 2025-06-26T13:16Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.1ce2f5d 2025-06-26T20:35Z.
       <br/>
     
   </p>
