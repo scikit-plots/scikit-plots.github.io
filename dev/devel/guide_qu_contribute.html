@@ -83,7 +83,7 @@
     <link rel="icon" href="../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Docker Containerization Guidelines" href="guide_docker.html" />
+    <link rel="next" title="Contributing Code: a Worked Example" href="git_edit_workflow_examples.html" />
     <link rel="prev" title="Contributing Guidelines to scikit-plots" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -558,6 +558,7 @@
   <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">quickstart</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Quickstart Contribute Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git_edit_workflow_examples.html">Contributing Code: A Worked Example</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">docker</span></p>
 <ul class="nav bd-sidenav">
@@ -577,12 +578,22 @@
 <li class="toctree-l1"><a class="reference internal" href="guide_troubleshooting.html">Troubleshooting Guide</a></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="guide_code.html">Coding Guide</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="guide_ccython.html">C or Cython Extensions Guide</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="guide_devel_details.html">Development Details Guide</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="guide_code_style_write.html">Code Style and Writing Guidelines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="guide_code_license.html">Licenses for contributed code</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="guide_code_api_ver_change.html">Code API Versioning and Change Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guide_code_testing.html">Code Testing Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide_cli_scripts.html">Command-Line Scripts Guide</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="guide_document_write.html">Documentation Writing Guidelines</a></li>
@@ -678,7 +689,7 @@ to <a class="reference external" href="https://scikit-plots.github.io/dev/help.h
 contribute, you will need a <a class="reference external" href="https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github">GitHub account</a>.</p>
 <p>We use <a class="reference external" href="https://git-scm.com/">Git</a> for version control and to allow many people to
 work together on the project. See the <a class="reference external" href="https://docs.github.com/en/get-started/quickstart/set-up-git">GitHub quickstart instructions</a> for installing and
-configuring git, as well as the <a class="reference external" href="https://scikit-image.org/docs/stable/gitwash/git_resources.html#git-resources" title="(in skimage v0.25.2)"><span>git resources</span></a> page.</p>
+configuring git, as well as the <a class="reference internal" href="guide_git_resources.html#git-resources"><span class="std std-ref">Git Resources Guidelines</span></a> page.</p>
 <p>If you are new to contributing to projects through forking on GitHub, see the
 <a class="reference external" href="https://docs.github.com/en/get-started/quickstart/contributing-to-projects">GitHub documentation for contributing to projects</a>.</p>
 <div class="admonition important">
@@ -867,11 +878,11 @@ resulting in lost time (yours and CI resources).</p>
 </pre></div>
 </div>
 <p>Now all of the styling checks will be run each time you commit changes, ensuring that
-the CI formatting checks for your <span class="xref std std-ref">pull request</span> will
+the CI formatting checks for your <a class="reference internal" href="#quickstart-pull-request"><span class="std std-ref">pull request</span></a> will
 pass.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>To learn more about pre-commit, see the <span class="xref std std-ref">pre-commit</span> section.</p>
+<p>To learn more about pre-commit, see the <a class="reference internal" href="guide_devel_details.html#pre-commit"><span class="std std-ref">Pre-commit</span></a> section.</p>
 </div>
 </section>
 </section>
@@ -991,7 +1002,7 @@ process outlined in the <a class="reference external" href="https://numpy.org/do
 <li><p><strong>Build documentation</strong>: If you are updating the documentation, you will want to
 <span class="xref std std-ref">build the documentation</span> to ensure that it looks good.</p></li>
 <li><p><strong>Add a changelog entry</strong>: For most code changes you will need to
-<span class="xref std std-ref">add-changelog</span>.</p></li>
+<a class="reference internal" href="guide_devel_details.html#add-changelog"><span class="std std-ref">Add a changelog entry</span></a>.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -1010,7 +1021,7 @@ git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </sp
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Never merge changes from <code class="docutils literal notranslate"><span class="pre">upstream/main</span></code> into your feature branch. If
-changes in <code class="docutils literal notranslate"><span class="pre">main</span></code> require changes to our code you must <span class="xref std std-ref">rebase</span>.</p>
+changes in <code class="docutils literal notranslate"><span class="pre">main</span></code> require changes to our code you must <a class="reference internal" href="guide_devel_details.html#rebase"><span class="std std-ref">Rebase if necessary</span></a>.</p>
 </div>
 <section id="pushing-your-changes">
 <span id="contributing-push-code"></span><h3>Pushing your changes<a class="headerlink" href="#pushing-your-changes" title="Link to this heading">#</a></h3>
@@ -1036,7 +1047,7 @@ code from your local repository becomes available to the GitHub community to rev
 merged into project to appear the in the next release.</p>
 <p>Most of the time you can just follow the link that <code class="docutils literal notranslate"><span class="pre">git</span></code> provided when you pushed
 your branch and create the PR. If you don’t have that link (and for a few more details),
-you can follow the <span class="xref std std-ref">pull-request</span> instructions.</p>
+you can follow the <a class="reference internal" href="guide_devel_details.html#pull-request"><span class="std std-ref">Make a pull request</span></a> instructions.</p>
 <p>Follow the instructions in the PR template and fill it out as completely as possible.</p>
 <p>If your PR is still a work in progress then instead of clicking “Create pull request”,
 click on the small down arrow next to it and select “<a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests">Create draft pull request</a>”.
@@ -1061,8 +1072,7 @@ again to address any feedback and update your pull request:</p>
 and restart the <a class="reference external" href="contributing_ci">Continuous Integration</a> checks.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>At this point please read (or at least skim) the sections <span class="xref std std-ref">revise
-and push</span>, <span class="xref std std-ref">rebase</span>, and <span class="xref std std-ref">squash-if-necessary</span>. The information here
+<p>At this point please read (or at least skim) the sections <a class="reference internal" href="guide_devel_details.html#revise-and-push"><span class="std std-ref">Do Not Create a Merge Commit</span></a>, <a class="reference internal" href="guide_devel_details.html#rebase"><span class="std std-ref">Rebase if necessary</span></a>, and <a class="reference internal" href="guide_devel_details.html#squash-if-necessary"><span class="std std-ref">Squash if necessary</span></a>. The information here
 covers situations that happen on occasion and can be cause trouble. As always if
 you have questions, ask for help from the maintainer reviewing your PR.</p>
 </div>
@@ -1105,11 +1115,11 @@ required reviewers and a faster review process.</p></li>
       </div>
     </a>
     <a class="right-next"
-       href="guide_docker.html"
+       href="git_edit_workflow_examples.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Docker Containerization Guidelines</p>
+        <p class="prev-next-title">Contributing Code: a Worked Example</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1204,7 +1214,7 @@ required reviewers and a faster review process.</p></li>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.1b60baa 2025-06-25T22:26Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.dff9a97 2025-06-26T09:14Z.
       <br/>
     
   </p>

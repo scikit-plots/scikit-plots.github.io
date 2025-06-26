@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/devel/index.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="Scikit-plots Contributing 0.5.dev0- June 25, 2025 22:26 UTC Thank you for your interest in helping to improve scikit-plots! This project is a community effort, and everyone is welcome to contribute..." />
+<meta property="og:description" content="Scikit-plots Contributing 0.5.dev0- June 26, 2025 09:14 UTC Thank you for your interest in helping to improve scikit-plots! This project is a community effort, and everyone is welcome to contribute..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="Scikit-plots Contributing 0.5.dev0- June 25, 2025 22:26 UTC Thank you for your interest in helping to improve scikit-plots! This project is a community effort, and everyone is welcome to contribute..." />
+<meta name="description" content="Scikit-plots Contributing 0.5.dev0- June 26, 2025 09:14 UTC Thank you for your interest in helping to improve scikit-plots! This project is a community effort, and everyone is welcome to contribute..." />
 
     <title>Contributing Guidelines to scikit-plots &#8212; scikit-plots 0.5.dev0 documentation</title>
   
@@ -558,6 +558,7 @@
   <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">quickstart</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="guide_qu_contribute.html">Quickstart Contribute Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git_edit_workflow_examples.html">Contributing Code: A Worked Example</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">docker</span></p>
 <ul class="nav bd-sidenav">
@@ -577,12 +578,22 @@
 <li class="toctree-l1"><a class="reference internal" href="guide_troubleshooting.html">Troubleshooting Guide</a></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="guide_code.html">Coding Guide</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="guide_ccython.html">C or Cython Extensions Guide</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="guide_devel_details.html">Development Details Guide</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="guide_code_style_write.html">Code Style and Writing Guidelines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="guide_code_license.html">Licenses for contributed code</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="guide_code_api_ver_change.html">Code API Versioning and Change Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guide_code_testing.html">Code Testing Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide_cli_scripts.html">Command-Line Scripts Guide</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="guide_document_write.html">Documentation Writing Guidelines</a></li>
@@ -663,7 +674,7 @@
                 <article class="bd-article">
                   
   <span class="target" id="scikit-plots-contributing"></span><p><span class="raw-html"><div style="text-align: center"><strong></span>
-Scikit-plots Contributing <br/> 0.5.dev0 - June 25, 2025 22:26 UTC
+Scikit-plots Contributing <br/> 0.5.dev0 - June 26, 2025 09:14 UTC
 <span class="raw-html"></strong></div></span></p>
 <section id="contributing-guidelines-to-scikit-plots">
 <span id="developers-guide-index"></span><h1>Contributing Guidelines to scikit-plots<a class="headerlink" href="#contributing-guidelines-to-scikit-plots" title="Link to this heading">#</a></h1>
@@ -675,6 +686,16 @@ within the community is expected to abide by our <a class="reference internal" h
 <p>There are various ways to contribute, such as optimizing and refactoring code,
 detailing unclear documentation and writing new examples, helping the community,
 reporting and fixing bugs, requesting and implementing new features…</p>
+<p>{% if is_development %}</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some Parts of this guides were adapted from the
+<a class="reference external" href="https://matplotlib.org/devdocs/devel/index.html">matplotlib developer documentation</a>.
+<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/development/index.html">pandas developer documentation</a>.
+<a class="reference external" href="https://docs.astropy.org/en/latest/index_dev.html">astropy developer documentation</a>.
+<a class="reference external" href="https://scikit-learn.org/dev/developers/index.html">scikit-learn developer documentation</a>.
+Scikit-plots is grateful to the these teams for their documentation efforts.</p>
+</div>
 <section id="quickstart-contribute-guide">
 <h2>Quickstart Contribute Guide<a class="headerlink" href="#quickstart-contribute-guide" title="Link to this heading">#</a></h2>
 <p>Here you’ll find all the guidance and resources you need to quickly start contributing to this project.</p>
@@ -696,6 +717,21 @@ reporting and fixing bugs, requesting and implementing new features…</p>
 <li class="toctree-l2"><a class="reference internal" href="guide_qu_contribute.html#create-an-isolated-development-environment">Create an isolated development environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="guide_qu_contribute.html#creating-and-submitting-a-pull-request">Creating and submitting a pull request</a></li>
 <li class="toctree-l2"><a class="reference internal" href="guide_qu_contribute.html#making-code-or-documentation-changes">Making code or documentation changes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="git_edit_workflow_examples.html">Contributing Code: A Worked Example</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="git_edit_workflow_examples.html#before-you-begin">Before you begin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_edit_workflow_examples.html#grab-the-latest-updates-to-astropy">Grab the latest updates to astropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_edit_workflow_examples.html#set-up-an-isolated-workspace">Set up an isolated workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_edit_workflow_examples.html#test-first-please">Test first, please</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_edit_workflow_examples.html#add-this-test-to-your-local-git-repo">Add this test to your local git repo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_edit_workflow_examples.html#fix-the-issue">Fix the issue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_edit_workflow_examples.html#stop-and-think-any-more-tests-or-other-changes">Stop and think: Any more tests or other changes?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_edit_workflow_examples.html#commit-any-additional-changes">Commit any additional changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_edit_workflow_examples.html#push-your-changes-to-your-github-fork-of-astropy">Push your changes to your GitHub fork of astropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_edit_workflow_examples.html#propose-your-changes-as-a-pull-request">Propose your changes as a pull request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_edit_workflow_examples.html#edit-the-changelog">Edit the changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_edit_workflow_examples.html#revise-and-push-as-necessary">Revise and push as necessary</a></li>
 </ul>
 </li>
 </ul>
@@ -907,6 +943,77 @@ and managing a development environment and workflow:</p>
 </div>
 </div>
 </div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>Coding Guide</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guide_code.html">Coding Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide_code.html#interface-and-dependencies">Interface and Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_code.html#documentation-and-testing">Documentation and Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_code.html#data-and-configuration">Data and Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_code.html#standard-output-warnings-and-errors">Standard output, warnings, and errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_code.html#coding-style-conventions">Coding Style/Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_code.html#unicode-guidelines">Unicode guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_code.html#including-c-code">Including C Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_code.html#requirements-specific-to-affiliated-packages">Requirements Specific to Affiliated Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_code.html#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>C or Cython Extensions Guide</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guide_ccython.html">C or Cython Extensions Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide_ccython.html#using-numpy-c-headers">Using Numpy C headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_ccython.html#installing-c-header-files">Installing C header files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_ccython.html#preventing-importing-at-build-time">Preventing importing at build time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_ccython.html#speed-up-your-builds-with-ccache">Speed up your builds with ccache</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>Development Details Guide</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guide_devel_details.html">Development Details Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide_devel_details.html#pre-commit">Pre-commit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_devel_details.html#the-editing-workflow">The editing workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_devel_details.html#add-a-changelog-entry">Add a changelog entry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_devel_details.html#make-a-pull-request">Make a pull request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_devel_details.html#do-not-create-a-merge-commit">Do Not Create a Merge Commit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_devel_details.html#rebase-if-necessary">Rebase if necessary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_devel_details.html#squash-if-necessary">Squash if necessary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_devel_details.html#how-to-push">How to push</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_devel_details.html#troubleshooting-the-build">Troubleshooting the build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_devel_details.html#external-c-libraries">External C Libraries</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -929,6 +1036,7 @@ manage, or release manage, these guidelines describe how our current process wor
 <li class="toctree-l1"><a class="reference internal" href="guide_code_style_write.html">Code Style and Writing Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guide_code_api_ver_change.html">Code API Versioning and Change Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guide_code_testing.html">Code Testing Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide_cli_scripts.html">Command-Line Scripts Guide</a></li>
 </ul>
 </div>
 </div>
@@ -998,8 +1106,23 @@ manage, or release manage, these guidelines describe how our current process wor
 </div>
 </div>
 </div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>Git Resources Guide</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
 </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+<p>{%else%}</p>
+<p>To read the developer documentation, you will need to go to the
+<a class="reference external" href="https://scikit-plots.github.io/dev/devel/index.html">latest developer version of the documentation</a>.</p>
+<p>{%endif%}</p>
 </section>
 </section>
 
@@ -1102,7 +1225,7 @@ manage, or release manage, these guidelines describe how our current process wor
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.1b60baa 2025-06-25T22:26Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.dff9a97 2025-06-26T09:14Z.
       <br/>
     
   </p>

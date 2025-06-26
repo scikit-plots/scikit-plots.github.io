@@ -298,27 +298,15 @@ what % of the actual target class observations can we expect to target?
 
 
     # plot the cumulative gains plot and annotate the plot at decile = 3
-    mp.plot_cumgains(ps, highlight_ntile=3, save_fig=True)
+    ax = mp.plot_cumgains(ps, highlight_ntile=3, save_fig=True)
 
 
 
 
-.. rst-class:: sphx-glr-horizontal
-
-
-    *
-
-      .. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_001.png
-         :alt: plot modelplotpy script
-         :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_001.png
-         :class: sphx-glr-multi-img
-
-    *
-
-      .. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_002.png
-         :alt: Cumulative gains, model: random_forest & dataset: test_data & target class: term deposit
-         :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_002.png
-         :class: sphx-glr-multi-img
+.. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_001.png
+   :alt: Cumulative gains, model: random_forest & dataset: test_data & target class: term deposit
+   :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_001.png
+   :class: sphx-glr-single-img
 
 
 .. rst-class:: sphx-glr-script-out
@@ -327,7 +315,6 @@ what % of the actual target class observations can we expect to target?
 
     When we select 30% with the highest probability according to model random_forest, this selection holds 93% of all term deposit cases in dataset test_data.
 
-    <Axes: title={'center': 'model: random_forest & dataset: test_data & target class: term deposit'}, xlabel='decile', ylabel='cumulative gains'>
 
 
 
@@ -358,27 +345,15 @@ how many times better is that than using no model at all?
 
 
     # plot the cumulative lift plot and annotate the plot at decile = 3
-    mp.plot_cumlift(ps, highlight_ntile=3, save_fig=True)
+    ax = mp.plot_cumlift(ps, highlight_ntile=3, save_fig=True)
 
 
 
 
-.. rst-class:: sphx-glr-horizontal
-
-
-    *
-
-      .. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_003.png
-         :alt: plot modelplotpy script
-         :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_003.png
-         :class: sphx-glr-multi-img
-
-    *
-
-      .. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_004.png
-         :alt: Cumulative lift, model: random_forest & dataset: test_data & target class: term deposit
-         :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_004.png
-         :class: sphx-glr-multi-img
+.. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_002.png
+   :alt: Cumulative lift, model: random_forest & dataset: test_data & target class: term deposit
+   :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_002.png
+   :class: sphx-glr-single-img
 
 
 .. rst-class:: sphx-glr-script-out
@@ -387,7 +362,6 @@ how many times better is that than using no model at all?
 
     When we select 30% with the highest probability according to model random_forest in dataset test_data, this selection for target class term deposit is 3.13 times than selecting without a model.
 
-    <Axes: title={'center': 'model: random_forest & dataset: test_data & target class: term deposit'}, xlabel='decile', ylabel='cumulative lift'>
 
 
 
@@ -421,28 +395,16 @@ what is the expected % of target class observations in that decile?
 
 
     # plot the response plot and annotate the plot at decile = 3
-    mp.plot_response(ps, highlight_ntile=3, save_fig=True)
+    ax = mp.plot_response(ps, highlight_ntile=3, save_fig=True)
 
 
 
 
 
-.. rst-class:: sphx-glr-horizontal
-
-
-    *
-
-      .. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_005.png
-         :alt: plot modelplotpy script
-         :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_005.png
-         :class: sphx-glr-multi-img
-
-    *
-
-      .. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_006.png
-         :alt: Response, model: random_forest & dataset: test_data & target class: term deposit
-         :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_006.png
-         :class: sphx-glr-multi-img
+.. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_003.png
+   :alt: Response, model: random_forest & dataset: test_data & target class: term deposit
+   :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_003.png
+   :class: sphx-glr-single-img
 
 
 .. rst-class:: sphx-glr-script-out
@@ -451,7 +413,6 @@ what is the expected % of target class observations in that decile?
 
     When we select decile 3 from model random_forest in dataset test_data the percentage of term deposit cases in the selection is 13%.
 
-    <Axes: title={'center': 'model: random_forest & dataset: test_data & target class: term deposit'}, xlabel='decile', ylabel='response'>
 
 
 
@@ -472,28 +433,16 @@ what is the expected % of target class observations in the selection?
 
 
     # plot the cumulative response plot and annotate the plot at decile = 3
-    mp.plot_cumresponse(ps, highlight_ntile=3, save_fig=True)
+    ax = mp.plot_cumresponse(ps, highlight_ntile=3, save_fig=True)
 
 
 
 
 
-.. rst-class:: sphx-glr-horizontal
-
-
-    *
-
-      .. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_007.png
-         :alt: plot modelplotpy script
-         :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_007.png
-         :class: sphx-glr-multi-img
-
-    *
-
-      .. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_008.png
-         :alt: Cumulative response, model: random_forest & dataset: test_data & target class: term deposit
-         :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_008.png
-         :class: sphx-glr-multi-img
+.. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_004.png
+   :alt: Cumulative response, model: random_forest & dataset: test_data & target class: term deposit
+   :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_004.png
+   :class: sphx-glr-single-img
 
 
 .. rst-class:: sphx-glr-script-out
@@ -502,7 +451,6 @@ what is the expected % of target class observations in the selection?
 
     When we select deciles 1 until 3 according to model random_forest in dataset test_data the percentage of term deposit cases in the selection is 35%.
 
-    <Axes: title={'center': 'model: random_forest & dataset: test_data & target class: term deposit'}, xlabel='decile', ylabel='cumulative response'>
 
 
 
@@ -520,7 +468,7 @@ We can easily save it to a file to include it in a presentation or share it with
 
 
     # plot all four evaluation plots and save to file
-    mp.plot_all(
+    ax = mp.plot_all(
         ps,
         save_fig=True,
         overwrite=False,
@@ -532,32 +480,19 @@ We can easily save it to a file to include it in a presentation or share it with
 
 
 
-.. rst-class:: sphx-glr-horizontal
-
-
-    *
-
-      .. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_009.png
-         :alt: plot modelplotpy script
-         :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_009.png
-         :class: sphx-glr-multi-img
-
-    *
-
-      .. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_010.png
-         :alt: model: random_forest & dataset: test_data & target class: term deposit, Cumulative gains, Cumulative lift, Response, Cumulative response
-         :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_010.png
-         :class: sphx-glr-multi-img
+.. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_005.png
+   :alt: model: random_forest & dataset: test_data & target class: term deposit, Cumulative gains, Cumulative lift, Response, Cumulative response
+   :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_005.png
+   :class: sphx-glr-single-img
 
 
 .. rst-class:: sphx-glr-script-out
 
  .. code-block:: none
 
-    [INFO] Saving path to: /home/circleci/repo/galleries/examples/modelplotpy/result_images/plot_all_20250625_222632Z.png
-    [INFO] Plot saved to: /home/circleci/repo/galleries/examples/modelplotpy/result_images/plot_all_20250625_222632Z.png
+    [INFO] Saving path to: /home/circleci/repo/galleries/examples/modelplotpy/result_images/plot_all_20250626_091452Z.png
+    [INFO] Plot saved to: /home/circleci/repo/galleries/examples/modelplotpy/result_images/plot_all_20250626_091452Z.png
 
-    <Axes: title={'center': 'Cumulative gains'}, ylabel='cumulative gains'>
 
 
 
@@ -595,7 +530,7 @@ what is the expected % return on investment of the campaign?
 
 
     # Return on Investment (ROI) plot
-    mp.plot_roi(
+    ax = mp.plot_roi(
         ps,
         fixed_costs=1000,
         variable_costs_per_unit=10,
@@ -608,22 +543,10 @@ what is the expected % return on investment of the campaign?
 
 
 
-.. rst-class:: sphx-glr-horizontal
-
-
-    *
-
-      .. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_011.png
-         :alt: plot modelplotpy script
-         :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_011.png
-         :class: sphx-glr-multi-img
-
-    *
-
-      .. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_012.png
-         :alt: Return on Investment (ROI), model: random_forest & dataset: test_data & target class: term deposit
-         :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_012.png
-         :class: sphx-glr-multi-img
+.. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_006.png
+   :alt: Return on Investment (ROI), model: random_forest & dataset: test_data & target class: term deposit
+   :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_006.png
+   :class: sphx-glr-single-img
 
 
 .. rst-class:: sphx-glr-script-out
@@ -632,7 +555,6 @@ what is the expected % return on investment of the campaign?
 
     When we select decile 1 until 3 from model random_forest in dataset test_data the percentage of term deposit cases in the expected expected return on investment is 70%.
 
-    <Axes: title={'center': 'model: random_forest & dataset: test_data & target class: term deposit'}, xlabel='decile', ylabel='% roi'>
 
 
 
@@ -654,7 +576,7 @@ what are the expected revenues and investments of the campaign?
 
 
     # Costs & Revenues plot, highlighted at max roi instead of max profit
-    mp.plot_costsrevs(
+    ax = mp.plot_costsrevs(
         ps,
         fixed_costs=1000,
         variable_costs_per_unit=10,
@@ -668,22 +590,10 @@ what are the expected revenues and investments of the campaign?
 
 
 
-.. rst-class:: sphx-glr-horizontal
-
-
-    *
-
-      .. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_013.png
-         :alt: plot modelplotpy script
-         :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_013.png
-         :class: sphx-glr-multi-img
-
-    *
-
-      .. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_014.png
-         :alt: Costs / Revenues, model: random_forest & dataset: test_data & target class: term deposit
-         :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_014.png
-         :class: sphx-glr-multi-img
+.. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_007.png
+   :alt: Costs / Revenues, model: random_forest & dataset: test_data & target class: term deposit
+   :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_007.png
+   :class: sphx-glr-single-img
 
 
 .. rst-class:: sphx-glr-script-out
@@ -692,7 +602,6 @@ what are the expected revenues and investments of the campaign?
 
     When we select decile 1 until 3 from model random_forest in dataset test_data the percentage of term deposit cases in the revenue is 64950.
 
-    <Axes: title={'center': 'model: random_forest & dataset: test_data & target class: term deposit'}, xlabel='decile', ylabel='costs / revenue'>
 
 
 
@@ -714,7 +623,7 @@ what is the expected profit of the campaign?
 
 
     # Profit plot , highlighted at custom ntile instead of at max profit
-    mp.plot_profit(
+    ax = mp.plot_profit(
         ps,
         fixed_costs=1000,
         variable_costs_per_unit=10,
@@ -727,22 +636,10 @@ what is the expected profit of the campaign?
 
 
 
-.. rst-class:: sphx-glr-horizontal
-
-
-    *
-
-      .. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_015.png
-         :alt: plot modelplotpy script
-         :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_015.png
-         :class: sphx-glr-multi-img
-
-    *
-
-      .. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_016.png
-         :alt: Profit, model: random_forest & dataset: test_data & target class: term deposit
-         :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_016.png
-         :class: sphx-glr-multi-img
+.. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_008.png
+   :alt: Profit, model: random_forest & dataset: test_data & target class: term deposit
+   :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_008.png
+   :class: sphx-glr-single-img
 
 
 .. rst-class:: sphx-glr-script-out
@@ -751,7 +648,6 @@ what is the expected profit of the campaign?
 
     When we select decile 1 until 3 from model random_forest in dataset test_data the percentage of term deposit cases in the expected profit is 26880.
 
-    <Axes: title={'center': 'model: random_forest & dataset: test_data & target class: term deposit'}, xlabel='decile', ylabel='profit'>
 
 
 
@@ -780,27 +676,15 @@ was indeed the best choice to select the top-30% customers for a term deposit of
     ps2 = obj.plotting_scope(scope="compare_models", select_dataset_label=["test_data"])
 
     # plot the cumulative response plot and annotate the plot at decile = 3
-    mp.plot_cumresponse(ps2, highlight_ntile=3, save_fig=True)
+    ax = mp.plot_cumresponse(ps2, highlight_ntile=3, save_fig=True)
 
 
 
 
-.. rst-class:: sphx-glr-horizontal
-
-
-    *
-
-      .. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_017.png
-         :alt: plot modelplotpy script
-         :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_017.png
-         :class: sphx-glr-multi-img
-
-    *
-
-      .. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_018.png
-         :alt: Cumulative response, Scope: comparing models & dataset: test_data & target class: term deposit
-         :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_018.png
-         :class: sphx-glr-multi-img
+.. image-sg:: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_009.png
+   :alt: Cumulative response, Scope: comparing models & dataset: test_data & target class: term deposit
+   :srcset: /auto_examples/modelplotpy/images/sphx_glr_plot_modelplotpy_script_009.png
+   :class: sphx-glr-single-img
 
 
 .. rst-class:: sphx-glr-script-out
@@ -812,7 +696,6 @@ was indeed the best choice to select the top-30% customers for a term deposit of
     When we select deciles 1 until 3 according to model multinomial_logit in dataset test_data the percentage of term deposit cases in the selection is 33%.
     When we select deciles 1 until 3 according to model random_forest in dataset test_data the percentage of term deposit cases in the selection is 35%.
 
-    <Axes: title={'center': 'Scope: comparing models & dataset: test_data & target class: term deposit'}, xlabel='decile', ylabel='cumulative response'>
 
 
 
@@ -850,7 +733,7 @@ Happy modelplotting!
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 8.410 seconds)
+   **Total running time of the script:** (0 minutes 8.922 seconds)
 
 
 .. _sphx_glr_download_auto_examples_modelplotpy_plot_modelplotpy_script.py:
