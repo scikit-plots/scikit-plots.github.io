@@ -674,7 +674,8 @@ Optionally, use <a class="reference external" href="https://matplotlib.org/stabl
 <span class="c1"># Plot the data</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
 
-<span class="n">sp</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+<span class="c1"># sp.get_logger().setLevel(sp.sp_logging.WARNING)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>  <span class="c1"># default WARNING</span>
 
 <span class="n">sp</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">plot_classifier_eval</span><span class="p">(</span>
     <span class="n">y_train</span><span class="p">,</span>
@@ -876,7 +877,7 @@ in the correct format.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.1aeab6f 2025-06-26T10:36Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.de3f41b 2025-06-26T13:16Z.
       <br/>
     
   </p>
