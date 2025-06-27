@@ -28,6 +28,7 @@ used by a :py:class:`~tensorflow.keras.Model` or :py:class:`~torch.nn.Module` or
 .. GENERATED FROM PYTHON SOURCE LINES 9-13
 
 .. code-block:: Python
+   :lineno-start: 10
 
 
     # Authors: The scikit-plots developers
@@ -42,36 +43,13 @@ used by a :py:class:`~tensorflow.keras.Model` or :py:class:`~torch.nn.Module` or
 
 .. GENERATED FROM PYTHON SOURCE LINES 14-15
 
-Force garbage collection
+pip install protobuf==5.29.4
 
-.. GENERATED FROM PYTHON SOURCE LINES 15-20
-
-.. code-block:: Python
-
-
-    import gc
-
-    gc.collect()
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-
-    3
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 21-32
+.. GENERATED FROM PYTHON SOURCE LINES 15-24
 
 .. code-block:: Python
+   :lineno-start: 15
 
-
-    # pip install protobuf==5.29.4
     import tensorflow as tf
 
     # Clear any session to reset the state of TensorFlow/Keras
@@ -88,12 +66,15 @@ Force garbage collection
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 33-45
+.. GENERATED FROM PYTHON SOURCE LINES 25-26
+
+Load the Hugging Face transformer model
+
+.. GENERATED FROM PYTHON SOURCE LINES 26-36
 
 .. code-block:: Python
+   :lineno-start: 26
 
-
-    # Load the Hugging Face transformer model
     transformer_model = TFAutoModel.from_pretrained("microsoft/mpnet-base")
 
 
@@ -112,7 +93,8 @@ Force garbage collection
 
  .. code-block:: none
 
-    Some weights of the PyTorch model were not used when initializing the TF 2.0 model TFMPNetModel: ['lm_head.dense.bias', 'lm_head.layer_norm.bias', 'lm_head.decoder.bias', 'lm_head.bias', 'lm_head.dense.weight', 'lm_head.decoder.weight', 'lm_head.layer_norm.weight']
+    TensorFlow and JAX classes are deprecated and will be removed in Transformers v5. We recommend migrating to PyTorch classes or pinning your version of Transformers.
+    Some weights of the PyTorch model were not used when initializing the TF 2.0 model TFMPNetModel: ['lm_head.dense.weight', 'lm_head.dense.bias', 'lm_head.decoder.bias', 'lm_head.layer_norm.bias', 'lm_head.decoder.weight', 'lm_head.bias', 'lm_head.layer_norm.weight']
     - This IS expected if you are initializing TFMPNetModel from a PyTorch model trained on another task or with another architecture (e.g. initializing a TFBertForSequenceClassification model from a BertForPreTraining model).
     - This IS NOT expected if you are initializing TFMPNetModel from a PyTorch model that you expect to be exactly identical (e.g. initializing a TFBertForSequenceClassification model from a BertForSequenceClassification model).
     Some weights or buffers of the TF 2.0 model TFMPNetModel were not initialized from the PyTorch model and are newly initialized: ['mpnet.pooler.dense.weight', 'mpnet.pooler.dense.bias']
@@ -121,12 +103,15 @@ Force garbage collection
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 46-115
+.. GENERATED FROM PYTHON SOURCE LINES 37-38
+
+Define Keras model inputs
+
+.. GENERATED FROM PYTHON SOURCE LINES 38-105
 
 .. code-block:: Python
+   :lineno-start: 38
 
-
-    # Define Keras model inputs
     input_ids = tf.keras.Input(shape=(128,), dtype=tf.int32, name="input_ids")
     attention_mask = tf.keras.Input(shape=(128,), dtype=tf.int32, name="attention_mask")
 
@@ -274,12 +259,15 @@ Force garbage collection
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 116-138
+.. GENERATED FROM PYTHON SOURCE LINES 106-107
+
+Visualize the wrapped model
+
+.. GENERATED FROM PYTHON SOURCE LINES 107-128
 
 .. code-block:: Python
+   :lineno-start: 107
 
-
-    # Visualize the wrapped model
     img_nlp_mpnet_with_tf_layers = visualkeras.layered_view(
         wrapped_model,
         legend=True,
@@ -299,6 +287,7 @@ Force garbage collection
         add_timestamp=True,
         verbose=True,
     )
+    img_nlp_mpnet_with_tf_layers
 
 
 
@@ -313,13 +302,13 @@ Force garbage collection
 
  .. code-block:: none
 
-    [INFO] Saving path to: /home/circleci/repo/galleries/examples/visualkeras_NLP/result_images/nlp_mpnet_with_tf_layers_20250429_122232Z.png
-    [INFO] Image saved using Matplotlib: /home/circleci/repo/galleries/examples/visualkeras_NLP/result_images/nlp_mpnet_with_tf_layers_20250429_122232Z.png
+    [INFO] Saving path to: /home/circleci/repo/galleries/examples/visualkeras_NLP/result_images/nlp_mpnet_with_tf_layers_20250627_091023Z.png
+
+    <matplotlib.image.AxesImage object at 0x7fcedc385190>
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 139-147
+.. GENERATED FROM PYTHON SOURCE LINES 129-137
 
 .. tags::
 
@@ -333,7 +322,7 @@ Force garbage collection
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 11.616 seconds)
+   **Total running time of the script:** (0 minutes 15.303 seconds)
 
 
 .. _sphx_glr_download_auto_examples_visualkeras_NLP_plot_nlp_mpnet_with_tf_layers.py:
@@ -345,7 +334,7 @@ Force garbage collection
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-plots/scikit-plots/maintenance/0.4.X?urlpath=lab/tree/notebooks/auto_examples/visualkeras_NLP/plot_nlp_mpnet_with_tf_layers.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-plots/scikit-plots/maintenance/0...X?urlpath=lab/tree/notebooks/auto_examples/visualkeras_NLP/plot_nlp_mpnet_with_tf_layers.ipynb
         :alt: Launch binder
         :width: 150 px
 

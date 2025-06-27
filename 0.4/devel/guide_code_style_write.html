@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="We appreciate these guidelines being followed because it improves the readability, consistency, and maintainability of the code base. PEP8, as enforced by flake8: Formatting should follow the recom..." />
 
-    <title>Code Style and Writing Guidelines &#8212; scikit-plots 0.4.0rc4+git.20250429.5a22d2b documentation</title>
+    <title>Code Style and Writing Guidelines &#8212; scikit-plots 0.4.0 documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=6dcf6205"></script>
+    <script src="../_static/documentation_options.js?v=6c02275b"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -74,9 +74,9 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc4';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
-            false;
+            true;
         </script>
     <script src="../_static/scripts/dropdown.js?v=e2048168"></script>
     <script src="../_static/scripts/version-switcher.js?v=9bbada16"></script>
@@ -372,8 +372,10 @@
       
       
       
+        
+      
       <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
         
 
   
@@ -548,18 +550,6 @@
     
   </div>
   
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-<nav class="bd-docs-nav bd-links"
-     aria-label="Section Navigation">
-  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="guide_code_license.html">Licenses for contributed code</a></li>
-</ul>
-</div>
-</nav></div>
-    </div>
-  
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
@@ -616,11 +606,11 @@ consistency, and maintainability of the code base.</p>
 <div class="seealso admonition">
 <p class="admonition-title">API guidelines</p>
 <p>If adding new features, changing behavior or function signatures, or removing
-public interfaces, please consult the <a class="reference external" href="https://matplotlib.org/stable/devel/api_changes.html#api-changes" title="(in Matplotlib v3.10.1)"><span>API guidelines</span></a>.</p>
+public interfaces, please consult the <a class="reference external" href="https://matplotlib.org/stable/devel/api_changes.html#api-changes" title="(in Matplotlib v3.10.3)"><span>API guidelines</span></a>.</p>
 </div>
 <section id="pep8-as-enforced-by-flake8">
 <span id="code-style"></span><h2>PEP8, as enforced by flake8<a class="headerlink" href="#pep8-as-enforced-by-flake8" title="Link to this heading">#</a></h2>
-<p>Formatting should follow the recommendations of <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP8</a>, as enforced by <a class="reference external" href="https://flake8.pycqa.org/">flake8</a>.
+<p>Formatting should follow the recommendations of <a href="#id11"><span class="problematic" id="id12">PEP8_</span></a>, as enforced by <a class="reference external" href="https://flake8.pycqa.org/">flake8</a>.
 Matplotlib modifies PEP8 to extend the maximum line length to 88
 characters. You can check flake8 compliance from the command line with</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">flake8</span>
@@ -682,7 +672,7 @@ the variable names. If a format isn’t specified in the table, use numbers or
 letters as appropriate.</p>
 </section>
 <section id="type-hints">
-<span id="id4"></span><h2>Type hints<a class="headerlink" href="#type-hints" title="Link to this heading">#</a></h2>
+<span id="id5"></span><h2>Type hints<a class="headerlink" href="#type-hints" title="Link to this heading">#</a></h2>
 <p>If you add new public API or change public API, update or add the
 corresponding <a class="reference external" href="https://mypy.readthedocs.io/en/latest/">mypy</a> type hints.
 We generally use <a class="reference external" href="https://typing.readthedocs.io/en/latest/source/stubs.html#type-stubs">stub files</a>
@@ -722,7 +712,7 @@ in the codebase.  In particular, avoid making style fixes to it.</p></li>
 </ul>
 </section>
 <section id="keyword-argument-processing">
-<span id="id5"></span><h2>Keyword argument processing<a class="headerlink" href="#keyword-argument-processing" title="Link to this heading">#</a></h2>
+<span id="id6"></span><h2>Keyword argument processing<a class="headerlink" href="#keyword-argument-processing" title="Link to this heading">#</a></h2>
 <p>Matplotlib makes extensive use of <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> for pass-through customizations
 from one function to another.  A typical example is
 <code class="docutils literal notranslate"><span class="pre">~matplotlib.axes.Axes.text</span></code>.  The definition of <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.text</span></code> is a
@@ -762,7 +752,7 @@ function, and let others pass through.  Instead of popping arguments to
 use off <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code>, specify them as keyword-only arguments to the local
 function.  This makes it obvious at a glance which arguments will be
 consumed in the function.  For example, in
-<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v3.10.1)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot</span></code></a>, <code class="docutils literal notranslate"><span class="pre">scalex</span></code> and <code class="docutils literal notranslate"><span class="pre">scaley</span></code> are
+<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v3.10.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot</span></code></a>, <code class="docutils literal notranslate"><span class="pre">scalex</span></code> and <code class="docutils literal notranslate"><span class="pre">scaley</span></code> are
 local arguments and the rest are passed on as
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">Line2D</span></code> keyword arguments:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># in axes/_axes.py</span>
@@ -1029,7 +1019,7 @@ and python itself are all distributed under BSD compatible licenses.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc4+git.20250429.5a22d2b 2025-04-29T12:20Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post1+git.20250627.a4c5b9e 2025-06-27T09:09Z.
       <br/>
     
   </p>

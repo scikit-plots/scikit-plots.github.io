@@ -1,0 +1,1119 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Git Resources Guidelines" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://scikit-plots.github.io/stable/devel/guide_git_resources.html" />
+<meta property="og:site_name" content="scikit-plots" />
+<meta property="og:description" content="Git is central to astropy development. While Git is undeniably complex and at times inscrutable, in practice there is only a very small subset of commands that you will need to know to make contrib..." />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_images/pull_button.png" />
+<meta property="og:image:alt" content="scikit-plots" />
+<meta name="description" content="Git is central to astropy development. While Git is undeniably complex and at times inscrutable, in practice there is only a very small subset of commands that you will need to know to make contrib..." />
+
+    <title>Git Resources Guidelines &#8212; scikit-plots 0.4.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=14208072" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=e4cb1417" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=6c02275b"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=e93d8674"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'devel/guide_git_resources';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <script src="../_static/scripts/dropdown.js?v=e2048168"></script>
+    <script src="../_static/scripts/version-switcher.js?v=9bbada16"></script>
+    <link rel="icon" href="../_static/scikit-plots-favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.4" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/scikit-plots-logo-small.png" class="logo__image only-light" alt="scikit-plots homepage"/>
+    <img src="../_static/scikit-plots-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-plots homepage"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../whats_new/index.html">
+    Release History
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community-G
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://zenodo.org/communities/scikit-plots">
+    Community-Z
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/governance.html">
+    Governance
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/index.html">
+    About us
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../whats_new/index.html">
+    Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community-G
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://zenodo.org/communities/scikit-plots">
+    Community-Z
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/governance.html">
+    Governance
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/index.html">
+    About us
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Git Resources Guidelines</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="git-resources-guidelines">
+<span id="git-resources"></span><h1>Git Resources Guidelines<a class="headerlink" href="#git-resources-guidelines" title="Link to this heading">#</a></h1>
+<p>Git is central to astropy development. While Git is undeniably complex and at times
+inscrutable, in practice there is only a very small subset of commands that you will
+need to know to make contributions to Astropy. This page provides Astropy-specific
+guidance to using Git along with a list of resources for learning more about Git.</p>
+<p>If you have never used git or have limited experience with it, take a few
+minutes to look at Git Basics, part of a much longer <a class="reference external" href="https://git-scm.com/book/">git book</a>.</p>
+<section id="essential-git-commands">
+<h2>Essential <a class="reference external" href="https://git-scm.com/">git</a> commands<a class="headerlink" href="#essential-git-commands" title="Link to this heading">#</a></h2>
+<p>Here are a few <code class="docutils literal notranslate"><span class="pre">git</span></code> commands you are likely to encounter in contributing
+to Astropy. In general if you google “git &lt;command&gt;” you will get the appropriate documentation page from <a class="reference external" href="https://git-scm.com/docs">git-scm.com</a>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">fetch</span></code> gets the latest development version of Astropy, which you will
+use as the basis for making your changes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> will fetch from and integrate with another repository or a local branch.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">switch</span></code> changes to a different development branch, optionally creating it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> stages files you have changed or created for addition to <a class="reference external" href="https://git-scm.com/">git</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> adds your staged changes to the repository.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> copies the changes you committed to GitHub</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> to see a list of files that have been modified or created.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A good graphical interface to git makes some of these steps much
+easier.
+You might find this
+<a class="reference external" href="https://git-scm.com/downloads/guis/">list of GUI Clients</a> to be helpful.
+You may also consider using an Interactive Development
+Environment (IDE) like <a class="reference external" href="https://www.jetbrains.com/pycharm/">PyCharm</a> or <a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a>. Both of these IDEs have
+built-in Git support.</p>
+</div>
+</section>
+<section id="if-something-goes-wrong">
+<h2>If something goes wrong<a class="headerlink" href="#if-something-goes-wrong" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://git-scm.com/">git</a> provides a number of ways to recover from errors. If you end up making a
+<a class="reference external" href="https://git-scm.com/">git</a> mistake, do not hesitate to ask for help. An additional resource that
+walks you through recovering from <a class="reference external" href="https://git-scm.com/">git</a> mistakes is the
+<a class="reference external" href="http://sethrobertson.github.io/GitFixUm/fixup.html">git choose-your-own-adventure</a>.</p>
+</section>
+<section id="tutorials-and-summaries">
+<span id="astropy-git"></span><h2>Tutorials and summaries<a class="headerlink" href="#tutorials-and-summaries" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://help.github.com/">GitHub Help</a> has an excellent series of how-to guides.</p></li>
+<li><p><a class="reference external" href="https://services.github.com/">learn.github</a> has an excellent series of tutorials</p></li>
+<li><p>The <a class="reference external" href="https://git-scm.com/book">pro git book</a> is a good in-depth book on git.</p></li>
+<li><p>A <a class="reference external" href="https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet">git cheat sheet</a> is a page giving summaries of common commands.</p></li>
+<li><p>The <a class="reference external" href="http://schacon.github.io/git/user-manual.html">git user manual</a></p></li>
+<li><p>The <a class="reference external" href="http://schacon.github.io/git/gittutorial.html">git tutorial</a></p></li>
+<li><p>The <a class="reference external" href="https://book.git-scm.com/">git community book</a></p></li>
+<li><p><a class="reference external" href="https://services.github.com/">git casts</a> — video snippets giving git how-tos.</p></li>
+<li><p>The <a class="reference external" href="https://tom.preston-werner.com/2009/05/19/the-git-parable.html">git parable</a> is an easy read explaining the concepts behind git.</p></li>
+<li><p><a class="reference external" href="http://matthew-brett.github.io/pydagogue/foundation.html">git foundation</a> expands on the <a class="reference external" href="https://tom.preston-werner.com/2009/05/19/the-git-parable.html">git parable</a>.</p></li>
+<li><p>Fernando Perez’s <a class="reference external" href="https://nbviewer.jupyter.org/github/fperez/reprosw/blob/master/Version%20Control.ipynb">ipython notebook on using git in science</a></p></li>
+<li><p>A good but technical page on <a class="reference external" href="https://www.sbf5.com/~cduan/technical/git/">git concepts</a></p></li>
+</ul>
+</section>
+<section id="additional-tips-and-tricks">
+<span id="additional-git"></span><h2>Additional Tips and Tricks<a class="headerlink" href="#additional-tips-and-tricks" title="Link to this heading">#</a></h2>
+<section id="about-names-in-git">
+<h3>About Names in <a class="reference external" href="https://git-scm.com/">git</a><a class="headerlink" href="#about-names-in-git" title="Link to this heading">#</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>tl;dr: Never work in your main branch, always work in a feature branch.</p>
+</div>
+<p><a class="reference external" href="https://git-scm.com/">git</a> is a <em>distributed</em> version control system. Each clone of
+a repository is, itself, a repository. That can lead to some confusion,
+especially for the branch called <code class="docutils literal notranslate"><span class="pre">main</span></code>. If you list all of the branches
+your clone of git knows about with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-a</span></code> you will see there are
+<em>three</em> different branches called <code class="docutils literal notranslate"><span class="pre">main</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">main</span>                              <span class="c1"># this is main in your local repo</span>
+<span class="n">remotes</span><span class="o">/</span><span class="n">upstream</span><span class="o">/</span><span class="n">main</span>               <span class="c1"># the official main branch of Astropy</span>
+<span class="n">remotes</span><span class="o">/</span><span class="n">origin</span><span class="o">/</span><span class="n">main</span>                 <span class="c1"># main on your fork of Astropy on GitHub</span>
+</pre></div>
+</div>
+<p>The naming scheme used by <a class="reference external" href="https://git-scm.com/">git</a> will also be used here. A plain branch name,
+like <code class="docutils literal notranslate"><span class="pre">main</span></code> means a branch in your local copy of Astropy. A branch on a
+remote, like <code class="docutils literal notranslate"><span class="pre">upstream</span></code> , is labeled by that remote, <code class="docutils literal notranslate"><span class="pre">upstream/main</span></code>.</p>
+<p>This duplication of names can get very confusing when working with pull
+requests, especially when the official main branch, <code class="docutils literal notranslate"><span class="pre">upstream/main</span></code>,
+changes due to other contributions before your contributions are merged in.</p>
+</section>
+<section id="delete-a-branch-on-github">
+<h3>Delete a branch on GitHub<a class="headerlink" href="#delete-a-branch-on-github" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://git-scm.com/">git</a> strongly encourages making a new branch each time you make a change in the
+code. At some point you will need to clean up the branches you no longer need–
+that point is <em>after</em> your changes have been accepted if you made a pull request
+for those changes.</p>
+<p>There are two places to delete the branch: in your local repo and on GitHub.</p>
+<p>You can do these independent of each other.</p>
+<p>To delete both your local copy AND the GitHub copy from the command line follow
+these instructions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># change to the main branch (if you still have one, otherwise change to</span>
+<span class="c1"># another branch)</span>
+<span class="n">git</span> <span class="n">switch</span> <span class="n">main</span>
+
+<span class="c1"># delete branch locally</span>
+<span class="c1"># Note: -d tells git to check whether your branch has been merged somewhere</span>
+<span class="c1"># if it hasn&#39;t, and you delete it, it is gone forever.</span>
+<span class="c1">#</span>
+<span class="c1"># Use -D instead to force deletion regardless of merge status</span>
+<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">d</span> <span class="n">my</span><span class="o">-</span><span class="n">unwanted</span><span class="o">-</span><span class="n">branch</span>
+
+<span class="c1"># delete branch on GitHub</span>
+<span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="p">:</span><span class="n">my</span><span class="o">-</span><span class="n">unwanted</span><span class="o">-</span><span class="n">branch</span>
+</pre></div>
+</div>
+<p>(Note the colon <code class="docutils literal notranslate"><span class="pre">:</span></code> before <code class="docutils literal notranslate"><span class="pre">test-branch</span></code>.) See <a class="reference external" href="https://help.github.com/en/articles/creating-and-deleting-branches-within-your-repository">Github’s instructions for
+deleting a branch</a>
+if you want to delete the GitHub copy through GitHub.</p>
+</section>
+<section id="several-people-sharing-a-single-repository">
+<h3>Several people sharing a single repository<a class="headerlink" href="#several-people-sharing-a-single-repository" title="Link to this heading">#</a></h3>
+<p>If you want to work on some stuff with other people, where you are all
+committing into the same repository, or even the same branch, then just
+share it via GitHub.</p>
+<p>First fork Astropy into your account, as from <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/development/contributing.html#contributing-forking" title="(in pandas v2.3.0)"><span>Create a fork of pandas</span></a>.</p>
+<p>Then, go to your forked repository GitHub page, e.g.,
+<code class="docutils literal notranslate"><span class="pre">https://github.com/your-user-name/astropy</span></code></p>
+<p>Click on the ‘Admin’ button, and add anyone else to the repo as a
+collaborator:</p>
+<blockquote>
+<div><img alt="../_images/pull_button.png" src="../_images/pull_button.png" />
+</div></blockquote>
+<p>Now all those people can do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">--</span><span class="n">recursive</span> <span class="n">git</span><span class="nd">@githhub</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">your</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">name</span><span class="o">/</span><span class="n">astropy</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>Remember that links starting with <code class="docutils literal notranslate"><span class="pre">git&#64;</span></code> use the ssh protocol and are
+read-write; links starting with <code class="docutils literal notranslate"><span class="pre">git://</span></code> are read-only.</p>
+<p>Your collaborators can then commit directly into that repo with the
+usual:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">am</span> <span class="s1">&#39;ENH - much better code&#39;</span>
+<span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">main</span> <span class="c1"># pushes directly into your repo</span>
+</pre></div>
+</div>
+</section>
+<section id="explore-your-repository">
+<h3>Explore your repository<a class="headerlink" href="#explore-your-repository" title="Link to this heading">#</a></h3>
+<p>To see a graphical representation of the repository branches and
+commits:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gitk</span> <span class="o">--</span><span class="nb">all</span>
+</pre></div>
+</div>
+<p>To see a linear list of commits for this branch:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">log</span>
+</pre></div>
+</div>
+<p>You can also look at the <a class="reference external" href="https://github.blog/2008-04-10-say-hello-to-the-network-graph-visualizer/">network graph visualizer</a> for your GitHub
+repo.</p>
+</section>
+<section id="rebasing-on-main">
+<span id="rebase-on-trunk"></span><h3>Rebasing on main<a class="headerlink" href="#rebasing-on-main" title="Link to this heading">#</a></h3>
+<p>Let’s say you thought of some work you’d like to do. You
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">fetch</span> <span class="pre">upstream</span> <span class="pre">--tags</span></code> and <a class="reference internal" href="guide_devel_workflow.html#make-feature-branch"><span class="std std-ref">Make a new feature branch</span></a> called
+<code class="docutils literal notranslate"><span class="pre">cool-feature</span></code>. At this stage main is at some commit, let’s call it E. Now
+you make some new commits on your <code class="docutils literal notranslate"><span class="pre">cool-feature</span></code> branch, let’s call them A,
+B, C. Maybe your changes take a while, or you come back to them after a while.
+In the meantime, main has progressed from commit E to commit (say) G:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>      <span class="n">A</span><span class="o">---</span><span class="n">B</span><span class="o">---</span><span class="n">C</span> <span class="n">cool</span><span class="o">-</span><span class="n">feature</span>
+     <span class="o">/</span>
+<span class="n">D</span><span class="o">---</span><span class="n">E</span><span class="o">---</span><span class="n">F</span><span class="o">---</span><span class="n">G</span> <span class="n">main</span>
+</pre></div>
+</div>
+<p>At this stage you consider merging main into your feature branch, and you
+remember that this here page sternly advises you not to do that, because the
+history will get messy. Most of the time you can just ask for a review, and
+not worry that main has got a little ahead. But sometimes, the changes in
+main might affect your changes, and you need to harmonize them. In this
+situation you may prefer to do a rebase.</p>
+<p>Rebase takes your changes (A, B, C) and replays them as if they had been made
+to the current state of <code class="docutils literal notranslate"><span class="pre">main</span></code>. In other words, in this case, it takes the
+changes represented by A, B, C and replays them on top of G. After the rebase,
+your history will look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>              <span class="n">A</span><span class="s1">&#39;--B&#39;</span><span class="o">--</span><span class="n">C</span><span class="s1">&#39; cool-feature</span>
+             <span class="o">/</span>
+<span class="n">D</span><span class="o">---</span><span class="n">E</span><span class="o">---</span><span class="n">F</span><span class="o">---</span><span class="n">G</span> <span class="n">main</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="http://matthew-brett.github.io/pydagogue/rebase_without_tears.html">rebase without tears</a> for more detail.</p>
+<p>To do a rebase on main:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Update the mirror of main</span>
+<span class="n">git</span> <span class="n">fetch</span> <span class="n">upstream</span>
+
+<span class="c1"># Go to the feature branch</span>
+<span class="n">git</span> <span class="n">switch</span> <span class="n">cool</span><span class="o">-</span><span class="n">feature</span>
+
+<span class="c1"># Make a backup in case you mess up</span>
+<span class="n">git</span> <span class="n">branch</span> <span class="n">tmp</span> <span class="n">cool</span><span class="o">-</span><span class="n">feature</span>
+
+<span class="c1"># Rebase cool-feature onto main</span>
+<span class="n">git</span> <span class="n">rebase</span> <span class="o">--</span><span class="n">onto</span> <span class="n">upstream</span><span class="o">/</span><span class="n">main</span> <span class="n">upstream</span><span class="o">/</span><span class="n">main</span> <span class="n">cool</span><span class="o">-</span><span class="n">feature</span>
+</pre></div>
+</div>
+<p>In this situation, where you are already on branch <code class="docutils literal notranslate"><span class="pre">cool-feature</span></code>, the last
+command can be written more succinctly as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">rebase</span> <span class="n">upstream</span><span class="o">/</span><span class="n">main</span>
+</pre></div>
+</div>
+<p>When all looks good you can delete your backup branch:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">D</span> <span class="n">tmp</span>
+</pre></div>
+</div>
+<p>If it doesn’t look good you may need to have a look at
+<a class="reference internal" href="#recovering-from-mess-up"><span class="std std-ref">Recovering from mess-ups</span></a>.</p>
+<p>If you have made changes to files that have also changed in main, this may
+generate merge conflicts that you need to resolve - see the <a class="reference external" href="http://schacon.github.io/git/git-rebase.html">git rebase</a> man
+page for some instructions at the end of the “Description” section. There is
+some related help on merging in the git user manual - see <a class="reference external" href="http://schacon.github.io/git/user-manual.html#resolving-a-merge">resolving a
+merge</a>.</p>
+<p>If your feature branch is already on GitHub and you rebase, you will have to
+force push the branch; a normal push would give an error. If the branch you
+rebased is called <code class="docutils literal notranslate"><span class="pre">cool-feature</span></code> and your GitHub fork is available as the
+remote called <code class="docutils literal notranslate"><span class="pre">origin</span></code>, you use this command to force-push:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="o">--</span><span class="n">force</span> <span class="n">origin</span> <span class="n">cool</span><span class="o">-</span><span class="n">feature</span>
+</pre></div>
+</div>
+<p>Note that this will overwrite the branch on GitHub, i.e. this is one of the few
+ways you can actually lose commits with git. Also note that it is never allowed
+to force push to the main astropy repo (typically called <code class="docutils literal notranslate"><span class="pre">upstream</span></code>), because
+this would re-write commit history and thus cause problems for all others.</p>
+</section>
+<section id="recovering-from-mess-ups">
+<span id="recovering-from-mess-up"></span><h3>Recovering from mess-ups<a class="headerlink" href="#recovering-from-mess-ups" title="Link to this heading">#</a></h3>
+<p>Sometimes, you mess up merges or rebases. Luckily, in git it is relatively
+straightforward to recover from such mistakes.</p>
+<p>If you mess up during a rebase:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">rebase</span> <span class="o">--</span><span class="n">abort</span>
+</pre></div>
+</div>
+<p>If you notice you messed up after the rebase:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reset branch back to the saved point</span>
+<span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span> <span class="n">tmp</span>
+</pre></div>
+</div>
+<p>If you forgot to make a backup branch:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Look at the reflog of the branch</span>
+<span class="n">git</span> <span class="n">reflog</span> <span class="n">show</span> <span class="n">cool</span><span class="o">-</span><span class="n">feature</span>
+
+<span class="mi">8630830</span> <span class="n">cool</span><span class="o">-</span><span class="n">feature</span><span class="o">@</span><span class="p">{</span><span class="mi">0</span><span class="p">}:</span> <span class="n">commit</span><span class="p">:</span> <span class="n">BUG</span><span class="p">:</span> <span class="n">io</span><span class="p">:</span> <span class="n">close</span> <span class="n">file</span> <span class="n">handles</span> <span class="n">immediately</span>
+<span class="mi">278</span><span class="n">dd2a</span> <span class="n">cool</span><span class="o">-</span><span class="n">feature</span><span class="o">@</span><span class="p">{</span><span class="mi">1</span><span class="p">}:</span> <span class="n">rebase</span> <span class="n">finished</span><span class="p">:</span> <span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">feature</span><span class="o">-</span><span class="n">branch</span> <span class="n">onto</span> <span class="mi">11</span><span class="n">ee694744f2552d</span>
+<span class="mi">26</span><span class="n">aa21a</span> <span class="n">cool</span><span class="o">-</span><span class="n">feature</span><span class="o">@</span><span class="p">{</span><span class="mi">2</span><span class="p">}:</span> <span class="n">commit</span><span class="p">:</span> <span class="n">BUG</span><span class="p">:</span> <span class="n">lib</span><span class="p">:</span> <span class="n">make</span> <span class="n">seek_gzip_factory</span> <span class="ow">not</span> <span class="n">leak</span> <span class="n">gzip</span> <span class="n">obj</span>
+<span class="o">...</span>
+
+<span class="c1"># Reset the branch to where it was before the botched rebase</span>
+<span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span> <span class="n">cool</span><span class="o">-</span><span class="n">feature</span><span class="o">@</span><span class="p">{</span><span class="mi">2</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="rewriting-commit-history">
+<span id="id1"></span><h3>Rewriting commit history<a class="headerlink" href="#rewriting-commit-history" title="Link to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do this only for your own feature branches.</p>
+</div>
+<p>There’s an embarrassing typo in a commit you made? Or perhaps the you
+made several false starts you would like the posterity not to see.</p>
+<p>This can be done via <em>interactive rebasing</em>.</p>
+<p>Suppose that the commit history looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">oneline</span>
+<span class="n">eadc391</span> <span class="n">Fix</span> <span class="n">some</span> <span class="n">remaining</span> <span class="n">bugs</span>
+<span class="n">a815645</span> <span class="n">Modify</span> <span class="n">it</span> <span class="n">so</span> <span class="n">that</span> <span class="n">it</span> <span class="n">works</span>
+<span class="mi">2</span><span class="n">dec1ac</span> <span class="n">Fix</span> <span class="n">a</span> <span class="n">few</span> <span class="n">bugs</span> <span class="o">+</span> <span class="n">disable</span>
+<span class="mi">13</span><span class="n">d7934</span> <span class="n">First</span> <span class="n">implementation</span>
+<span class="mi">6</span><span class="n">ad92e5</span> <span class="o">*</span> <span class="n">masked</span> <span class="ow">is</span> <span class="n">now</span> <span class="n">an</span> <span class="n">instance</span> <span class="n">of</span> <span class="n">a</span> <span class="n">new</span> <span class="nb">object</span><span class="p">,</span> <span class="n">MaskedConstant</span>
+<span class="mi">29001</span><span class="n">ed</span> <span class="n">Add</span> <span class="n">pre</span><span class="o">-</span><span class="n">nep</span> <span class="k">for</span> <span class="n">a</span> <span class="n">couple</span> <span class="n">of</span> <span class="n">structured_array_extensions</span><span class="o">.</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>and <code class="docutils literal notranslate"><span class="pre">6ad92e5</span></code> is the last commit in the <code class="docutils literal notranslate"><span class="pre">cool-feature</span></code> branch. Suppose we
+want to make the following changes:</p>
+<ul class="simple">
+<li><p>Rewrite the commit message for <code class="docutils literal notranslate"><span class="pre">13d7934</span></code> to something more sensible.</p></li>
+<li><p>Combine the commits <code class="docutils literal notranslate"><span class="pre">2dec1ac</span></code>, <code class="docutils literal notranslate"><span class="pre">a815645</span></code>, <code class="docutils literal notranslate"><span class="pre">eadc391</span></code> into a single one.</p></li>
+</ul>
+<p>We do as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># make a backup of the current state</span>
+<span class="n">git</span> <span class="n">branch</span> <span class="n">tmp</span> <span class="n">HEAD</span>
+<span class="c1"># interactive rebase</span>
+<span class="n">git</span> <span class="n">rebase</span> <span class="o">-</span><span class="n">i</span> <span class="mi">6</span><span class="n">ad92e5</span>
+</pre></div>
+</div>
+<p>This will open an editor with the following text in it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pick</span> <span class="mi">13</span><span class="n">d7934</span> <span class="n">First</span> <span class="n">implementation</span>
+<span class="n">pick</span> <span class="mi">2</span><span class="n">dec1ac</span> <span class="n">Fix</span> <span class="n">a</span> <span class="n">few</span> <span class="n">bugs</span> <span class="o">+</span> <span class="n">disable</span>
+<span class="n">pick</span> <span class="n">a815645</span> <span class="n">Modify</span> <span class="n">it</span> <span class="n">so</span> <span class="n">that</span> <span class="n">it</span> <span class="n">works</span>
+<span class="n">pick</span> <span class="n">eadc391</span> <span class="n">Fix</span> <span class="n">some</span> <span class="n">remaining</span> <span class="n">bugs</span>
+
+<span class="c1"># Rebase 6ad92e5..eadc391 onto 6ad92e5</span>
+<span class="c1">#</span>
+<span class="c1"># Commands:</span>
+<span class="c1">#  p, pick = use commit</span>
+<span class="c1">#  r, reword = use commit, but edit the commit message</span>
+<span class="c1">#  e, edit = use commit, but stop for amending</span>
+<span class="c1">#  s, squash = use commit, but meld into previous commit</span>
+<span class="c1">#  f, fixup = like &quot;squash&quot;, but discard this commit&#39;s log message</span>
+<span class="c1">#</span>
+<span class="c1"># If you remove a line here THAT COMMIT WILL BE LOST.</span>
+<span class="c1"># However, if you remove everything, the rebase will be aborted.</span>
+<span class="c1">#</span>
+</pre></div>
+</div>
+<p>To achieve what we want, we will make the following changes to it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="mi">13</span><span class="n">d7934</span> <span class="n">First</span> <span class="n">implementation</span>
+<span class="n">pick</span> <span class="mi">2</span><span class="n">dec1ac</span> <span class="n">Fix</span> <span class="n">a</span> <span class="n">few</span> <span class="n">bugs</span> <span class="o">+</span> <span class="n">disable</span>
+<span class="n">f</span> <span class="n">a815645</span> <span class="n">Modify</span> <span class="n">it</span> <span class="n">so</span> <span class="n">that</span> <span class="n">it</span> <span class="n">works</span>
+<span class="n">f</span> <span class="n">eadc391</span> <span class="n">Fix</span> <span class="n">some</span> <span class="n">remaining</span> <span class="n">bugs</span>
+</pre></div>
+</div>
+<p>This means that (i) we want to edit the commit message for <code class="docutils literal notranslate"><span class="pre">13d7934</span></code>, and
+(ii) collapse the last three commits into one. Now we save and quit the
+editor.</p>
+<p>Git will then immediately bring up an editor for editing the commit message.
+After revising it, we get the output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">detached</span> <span class="n">HEAD</span> <span class="mi">721</span><span class="n">fc64</span><span class="p">]</span> <span class="n">FOO</span><span class="p">:</span> <span class="n">First</span> <span class="n">implementation</span>
+ <span class="mi">2</span> <span class="n">files</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">199</span> <span class="n">insertions</span><span class="p">(</span><span class="o">+</span><span class="p">),</span> <span class="mi">66</span> <span class="n">deletions</span><span class="p">(</span><span class="o">-</span><span class="p">)</span>
+<span class="p">[</span><span class="n">detached</span> <span class="n">HEAD</span> <span class="mi">0</span><span class="n">f22701</span><span class="p">]</span> <span class="n">Fix</span> <span class="n">a</span> <span class="n">few</span> <span class="n">bugs</span> <span class="o">+</span> <span class="n">disable</span>
+ <span class="mi">1</span> <span class="n">files</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">79</span> <span class="n">insertions</span><span class="p">(</span><span class="o">+</span><span class="p">),</span> <span class="mi">61</span> <span class="n">deletions</span><span class="p">(</span><span class="o">-</span><span class="p">)</span>
+<span class="n">Successfully</span> <span class="n">rebased</span> <span class="ow">and</span> <span class="n">updated</span> <span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">feature</span><span class="o">-</span><span class="n">branch</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>and the history looks now like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span><span class="n">f22701</span> <span class="n">Fix</span> <span class="n">a</span> <span class="n">few</span> <span class="n">bugs</span> <span class="o">+</span> <span class="n">disable</span>
+<span class="mi">721</span><span class="n">fc64</span> <span class="n">ENH</span><span class="p">:</span> <span class="n">Sophisticated</span> <span class="n">feature</span>
+<span class="mi">6</span><span class="n">ad92e5</span> <span class="o">*</span> <span class="n">masked</span> <span class="ow">is</span> <span class="n">now</span> <span class="n">an</span> <span class="n">instance</span> <span class="n">of</span> <span class="n">a</span> <span class="n">new</span> <span class="nb">object</span><span class="p">,</span> <span class="n">MaskedConstant</span>
+</pre></div>
+</div>
+<p>If it went wrong, recovery is again possible as explained <a class="reference internal" href="#recovering-from-mess-up"><span class="std std-ref">above</span></a>.</p>
+</section>
+<section id="merge-commits-and-cherry-picks">
+<span id="id2"></span><h3>Merge commits and cherry picks<a class="headerlink" href="#merge-commits-and-cherry-picks" title="Link to this heading">#</a></h3>
+<p>Let’s say that you have a fork (origin) on GitHub of the main Astropy
+repository (upstream).  Your fork is up to date with upstream’s main branch
+and you’ve made some commits branching off from it on your own branch:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">upstream</span><span class="p">:</span>
+
+   <span class="n">main</span>
+      <span class="o">|</span>
+<span class="n">A</span><span class="o">--</span><span class="n">B</span><span class="o">--</span><span class="n">C</span>
+
+<span class="n">origin</span><span class="p">:</span>
+
+ <span class="n">upstream</span><span class="o">/</span><span class="n">main</span>
+      <span class="o">|</span>
+<span class="n">A</span><span class="o">--</span><span class="n">B</span><span class="o">--</span><span class="n">C</span>
+       \
+        <span class="n">D</span><span class="o">--</span><span class="n">E</span>
+           <span class="o">|</span>
+       <span class="n">issue</span><span class="o">-</span><span class="n">branch</span>
+</pre></div>
+</div>
+<p>Then say you make a pull request of issue-branch against Astroy’s main, and
+the pull request is accepted and merged.  When GitHub merges the pull request
+it’s basically doing the following in the upstream repository:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git switch main
+$ git remote add yourfork file:///path/to/your/fork/astropy
+$ git fetch yourfork
+$ git merge --no-ff yourfork/issue-branch
+</pre></div>
+</div>
+<p>Because it always uses <code class="docutils literal notranslate"><span class="pre">--no-ff</span></code> we always get a merge commit (it is possible
+to manually do a fast-forward merge of a pull request, but we rarely ever do
+that).  Now the main Astropy repository looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">upstream</span><span class="p">:</span>
+
+          <span class="n">main</span>
+             <span class="o">|</span>
+<span class="n">A</span><span class="o">--</span><span class="n">B</span><span class="o">--</span><span class="n">C</span><span class="o">------</span><span class="n">F</span>
+       \    <span class="o">/</span>
+        <span class="n">D</span><span class="o">--</span><span class="n">E</span>
+           <span class="o">|</span>
+    <span class="n">yourfork</span><span class="o">/</span><span class="n">issue</span><span class="o">-</span><span class="n">branch</span>
+</pre></div>
+</div>
+<p>where “F” is the merge commit GitHub just made in upstream.</p>
+<p>When you do cherry-pick of a non-merge commit, say you want to just cherry-pick
+“D” from the branch, what happens is it does a diff of “D” with its parent (in
+this case “C”) and applies that diff as a patch to whatever your HEAD is.</p>
+<p>The problem with a merge commit, such as “F”, is that “F” has two parents: “C”
+and “E”.  It doesn’t know whether to apply the diff of “F” with “C” or the diff
+of “F” with “E”.  Clearly in this case of backporting a pull request to a bug
+fix branch we want to apply everything that changed on main from the merge,
+so we want the diff of “F” with “C”.</p>
+<p>Since GitHub was on <code class="docutils literal notranslate"><span class="pre">main</span></code> when it did <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span> <span class="pre">yourfork/issue-branch</span></code>, the
+last commit in <code class="docutils literal notranslate"><span class="pre">main</span></code> is the first parent.  Basically whatever HEAD you’re on
+when you do the merge is the first parent, and the tip you’re merging from is
+the second parent (octopus merge gets more complicated but only a little, and
+that doesn’t apply to pull requests).  Since parents are numbered starting from
+“1” then we will always cherry-pick merge commits with <code class="docutils literal notranslate"><span class="pre">-m</span> <span class="pre">1</span></code> in this case.</p>
+<p>That’s not to say that the cherry-pick will always apply cleanly.  Say in
+upstream we also have a backport branch that we want to cherry pick “F” onto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">upstream</span><span class="p">:</span>
+
+  <span class="n">backport</span>
+     <span class="o">|</span>
+     <span class="n">G</span>       <span class="n">main</span>
+    <span class="o">/</span>          <span class="o">|</span>
+<span class="n">A</span><span class="o">--</span><span class="n">B</span><span class="o">----</span><span class="n">C</span><span class="o">------</span><span class="n">F</span>
+         \    <span class="o">/</span>
+          <span class="n">D</span><span class="o">--</span><span class="n">E</span>
+</pre></div>
+</div>
+<p>We would do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git switch backport
+$ git cherry-pick -m 1 F
+</pre></div>
+</div>
+<p>But this applies the diff of “F” with “C”, not of “F” with “G”.  So clearly
+there’s potential for conflicts and incongruity here.  But this will work like
+any merge that has conflicts–you can resolve any conflicts manually and then
+commit.  As long as the fix being merged is reasonably self-contained this
+usually requires little effort.</p>
+</section>
+<section id="git-mailmap">
+<h3>Git mailmap<a class="headerlink" href="#git-mailmap" title="Link to this heading">#</a></h3>
+<p>If you need to edit <a class="reference external" href="https://git-scm.com/docs/gitmailmap">.mailmap</a> and know how to do
+it then you can open a pull request for that. Please run <a class="reference external" href="https://git-scm.com/docs/git-shortlog">git shortlog -es</a> locally first with your changes to make sure
+your edit is correct, and you only appear in the list once.</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item">
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+                </footer>
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#essential-git-commands">Essential git commands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-something-goes-wrong">If something goes wrong</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials-and-summaries">Tutorials and summaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-tips-and-tricks">Additional Tips and Tricks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#about-names-in-git">About Names in git</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delete-a-branch-on-github">Delete a branch on GitHub</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#several-people-sharing-a-single-repository">Several people sharing a single repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-your-repository">Explore your repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rebasing-on-main">Rebasing on main</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recovering-from-mess-ups">Recovering from mess-ups</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rewriting-commit-history">Rewriting commit history</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-commits-and-cherry-picks">Merge commits and cherry picks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#git-mailmap">Git mailmap</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/devel/guide_git_resources.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post1+git.20250627.a4c5b9e 2025-06-27T09:09Z.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="Releasing: This section is about preparing a major/minor release, a release candidate (RC), or a bug-fix release. We follow PEP440 for the version scheme and to indicate different types of releases..." />
 
-    <title>Maintainer Guidelines &#8212; scikit-plots 0.4.0rc4+git.20250429.5a22d2b documentation</title>
+    <title>Maintainer Guidelines &#8212; scikit-plots 0.4.0 documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=6dcf6205"></script>
+    <script src="../_static/documentation_options.js?v=6c02275b"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -74,9 +74,9 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc4';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
-            false;
+            true;
         </script>
     <script src="../_static/scripts/dropdown.js?v=e2048168"></script>
     <script src="../_static/scripts/version-switcher.js?v=9bbada16"></script>
@@ -372,8 +372,10 @@
       
       
       
+        
+      
       <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
         
 
   
@@ -548,15 +550,6 @@
     
   </div>
   
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-<nav class="bd-docs-nav bd-links"
-     aria-label="Section Navigation">
-  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"></div>
-</nav></div>
-    </div>
-  
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
@@ -704,7 +697,7 @@ packages). This can be seen as an extension to CI which stands for <a class="ref
 Integration</a>. The CD
 workflow on GitHub Actions is also used to automatically create nightly builds
 and publish packages for the development branch of scikit-learn. See also
-<a class="reference external" href="https://scikit-learn.org/stable/developers/advanced_installation.html#install-nightly-builds" title="(in scikit-learn v1.6)"><span>Installing nightly builds</span></a>.</p>
+<a class="reference external" href="https://scikit-learn.org/stable/developers/advanced_installation.html#install-nightly-builds" title="(in scikit-learn v1.7)"><span>Installing nightly builds</span></a>.</p>
 </div>
 </li>
 <li><p>Once all the CD jobs have completed successfully in the PR, merge it with the
@@ -825,7 +818,7 @@ packages). This can be seen as an extension to CI which stands for <a class="ref
 Integration</a>. The CD
 workflow on GitHub Actions is also used to automatically create nightly builds
 and publish packages for the development branch of scikit-learn. See also
-<a class="reference external" href="https://scikit-learn.org/stable/developers/advanced_installation.html#install-nightly-builds" title="(in scikit-learn v1.6)"><span>Installing nightly builds</span></a>.</p>
+<a class="reference external" href="https://scikit-learn.org/stable/developers/advanced_installation.html#install-nightly-builds" title="(in scikit-learn v1.7)"><span>Installing nightly builds</span></a>.</p>
 </div>
 </li>
 <li><p>Once all the CD jobs have completed successfully in the PR, merge it with the
@@ -996,7 +989,7 @@ packages). This can be seen as an extension to CI which stands for <a class="ref
 Integration</a>. The CD
 workflow on GitHub Actions is also used to automatically create nightly builds
 and publish packages for the development branch of scikit-learn. See also
-<a class="reference external" href="https://scikit-learn.org/stable/developers/advanced_installation.html#install-nightly-builds" title="(in scikit-learn v1.6)"><span>Installing nightly builds</span></a>.</p>
+<a class="reference external" href="https://scikit-learn.org/stable/developers/advanced_installation.html#install-nightly-builds" title="(in scikit-learn v1.7)"><span>Installing nightly builds</span></a>.</p>
 </div>
 </li>
 <li><p>Once all the CD jobs have completed successfully in the PR, merge it with the
@@ -1098,7 +1091,7 @@ is available both on PyPI and conda-forge and once the website is up to date.</p
 </section>
 <section id="updating-authors-list">
 <h2>Updating Authors List<a class="headerlink" href="#updating-authors-list" title="Link to this heading">#</a></h2>
-<p>This section is about updating <a class="reference external" href="https://scikit-learn.org/stable/about.html#authors" title="(in scikit-learn v1.6)"><span>The people behind scikit-learn</span></a>. First create a <a class="reference external" href="https://github.com/settings/tokens/new">classic token on GitHub</a> with the <code class="docutils literal notranslate"><span class="pre">read:org</span></code> permission. Then run the
+<p>This section is about updating <a class="reference external" href="https://scikit-learn.org/stable/about.html#authors" title="(in scikit-learn v1.7)"><span>The people behind scikit-learn</span></a>. First create a <a class="reference external" href="https://github.com/settings/tokens/new">classic token on GitHub</a> with the <code class="docutils literal notranslate"><span class="pre">read:org</span></code> permission. Then run the
 following script and enter the token when prompted:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="nb">cd</span><span class="w"> </span>build_tools</span>
 <span class="prompt1">make<span class="w"> </span>authors<span class="w">  </span><span class="c1"># Enter the token when prompted</span></span>
@@ -1128,7 +1121,7 @@ builds and uploads the documentation automatically.</p>
 </section>
 <section id="experimental-features">
 <h2>Experimental Features<a class="headerlink" href="#experimental-features" title="Link to this heading">#</a></h2>
-<p>The <a class="reference external" href="https://scikit-learn.org/stable/api/sklearn.experimental.html#module-sklearn.experimental" title="(in scikit-learn v1.6)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.experimental</span></code></a> module was introduced in 0.21 and contains
+<p>The <a class="reference external" href="https://scikit-learn.org/stable/api/sklearn.experimental.html#module-sklearn.experimental" title="(in scikit-learn v1.7)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.experimental</span></code></a> module was introduced in 0.21 and contains
 experimental features and estimators that are subject to change without
 deprecation cycle.</p>
 <p>To create an experimental module, refer to the contents of <a class="reference external" href="https://github.com/scikit-learn/scikit-learn/blob/362cb92bb2f5b878229ea4f59519ad31c2fcee76/sklearn/experimental/enable_halving_search_cv.py">enable_halving_search_cv.py</a>,
@@ -1164,7 +1157,7 @@ modules. Note that using <code class="docutils literal notranslate"><span class=
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Some experimental classes and functions may not be included in the
-<a class="reference external" href="https://scikit-learn.org/stable/api/sklearn.experimental.html#module-sklearn.experimental" title="(in scikit-learn v1.6)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.experimental</span></code></a> module, e.g., <code class="docutils literal notranslate"><span class="pre">sklearn.datasets.fetch_openml</span></code>.</p>
+<a class="reference external" href="https://scikit-learn.org/stable/api/sklearn.experimental.html#module-sklearn.experimental" title="(in scikit-learn v1.7)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.experimental</span></code></a> module, e.g., <code class="docutils literal notranslate"><span class="pre">sklearn.datasets.fetch_openml</span></code>.</p>
 </div>
 <p>Once the feature becomes stable, remove all occurrences of
 <code class="docutils literal notranslate"><span class="pre">enable_my_experimental_feature</span></code> in the scikit-learn code base and make the
@@ -1254,7 +1247,7 @@ tests accordingly, see <a class="reference external" href="https://github.com/sc
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc4+git.20250429.5a22d2b 2025-04-29T12:20Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post1+git.20250627.a4c5b9e 2025-06-27T09:09Z.
       <br/>
     
   </p>

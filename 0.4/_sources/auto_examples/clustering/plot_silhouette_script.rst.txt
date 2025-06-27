@@ -24,13 +24,32 @@ plot_silhouette with examples
 An example showing the :py:func:`~scikitplot.api.metrics.plot_silhouette` function
 used by a scikit-learn clusterer.
 
-.. GENERATED FROM PYTHON SOURCE LINES 8-47
+.. GENERATED FROM PYTHON SOURCE LINES 8-12
 
 .. code-block:: Python
+   :lineno-start: 9
 
 
     # Authors: The scikit-plots developers
     # SPDX-License-Identifier: BSD-3-Clause
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 13-15
+
+Import scikit-plots
+------------------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 15-31
+
+.. code-block:: Python
+   :lineno-start: 16
+
 
     from sklearn.cluster import KMeans
     from sklearn.datasets import (
@@ -47,14 +66,68 @@ used by a scikit-learn clusterer.
     # Import scikit-plot
     import scikitplot as sp
 
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 32-34
+
+Loading the dataset
+------------------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 34-39
+
+.. code-block:: Python
+   :lineno-start: 35
+
+
     # Load the data
     X, y = data_3_classes(return_X_y=True, as_frame=False)
     X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.5, random_state=0)
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 40-42
+
+Model Training
+--------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 42-48
+
+.. code-block:: Python
+   :lineno-start: 43
+
 
     # Create an instance of the LogisticRegression
     model = KMeans(n_clusters=4, random_state=0)
 
     cluster_labels = model.fit_predict(X_train)
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 49-51
+
+Plot!
+------------------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 51-63
+
+.. code-block:: Python
+   :lineno-start: 52
+
 
     # Plot!
     ax = sp.metrics.plot_silhouette(
@@ -79,7 +152,7 @@ used by a scikit-learn clusterer.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 48-57
+.. GENERATED FROM PYTHON SOURCE LINES 64-73
 
 .. tags::
 
@@ -94,7 +167,7 @@ used by a scikit-learn clusterer.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.201 seconds)
+   **Total running time of the script:** (0 minutes 0.303 seconds)
 
 
 .. _sphx_glr_download_auto_examples_clustering_plot_silhouette_script.py:
@@ -106,7 +179,7 @@ used by a scikit-learn clusterer.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-plots/scikit-plots/maintenance/0.4.X?urlpath=lab/tree/notebooks/auto_examples/clustering/plot_silhouette_script.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-plots/scikit-plots/maintenance/0...X?urlpath=lab/tree/notebooks/auto_examples/clustering/plot_silhouette_script.ipynb
         :alt: Launch binder
         :width: 150 px
 

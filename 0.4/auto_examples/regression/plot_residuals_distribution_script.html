@@ -9,11 +9,11 @@
 <meta content="website" property="og:type"/>
 <meta content="https://scikit-plots.github.io/stable/auto_examples/regression/plot_residuals_distribution_script.html" property="og:url"/>
 <meta content="scikit-plots" property="og:site_name"/>
-<meta content="An example showing the plot_residuals_distribution function used by a scikit-learn regressor. Tags: model-type: regression model-workflow: model evaluation plot-type: histogram plot-type: qqplot do..." property="og:description"/>
+<meta content="An example showing the plot_residuals_distribution function used by a scikit-learn regressor. Import scikit-plots: Loading the dataset: Model Training: Plot!: Tags: model-type: regression model-wor..." property="og:description"/>
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
-<meta content="An example showing the plot_residuals_distribution function used by a scikit-learn regressor. Tags: model-type: regression model-workflow: model evaluation plot-type: histogram plot-type: qqplot do..." name="description"/>
-<title>plot_residuals_distribution with examples — scikit-plots 0.4.0rc4+git.20250429.5a22d2b documentation</title>
+<meta content="An example showing the plot_residuals_distribution function used by a scikit-learn regressor. Import scikit-plots: Loading the dataset: Model Training: Plot!: Tags: model-type: regression model-wor..." name="description"/>
+<title>plot_residuals_distribution with examples — scikit-plots 0.4.0 documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
@@ -50,7 +50,7 @@
 <!-- Pre-loaded scripts that we'll load fully later -->
 <link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
 <link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
-<script src="../../_static/documentation_options.js?v=6dcf6205"></script>
+<script src="../../_static/documentation_options.js?v=6c02275b"></script>
 <script src="../../_static/doctools.js?v=9bcbadda"></script>
 <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -64,9 +64,9 @@
 <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc4';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
-            false;
+            true;
         </script>
 <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
 <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
@@ -441,51 +441,66 @@
 <span id="sphx-glr-auto-examples-regression-plot-residuals-distribution-script-py"></span><h1>plot_residuals_distribution with examples<a class="headerlink" href="#plot-residuals-distribution-with-examples" title="Link to this heading">#</a></h1>
 <p>An example showing the <a class="reference internal" href="../../modules/generated/scikitplot.api.metrics.plot_residuals_distribution.html#scikitplot.api.metrics.plot_residuals_distribution" title="scikitplot.api.metrics.plot_residuals_distribution"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_residuals_distribution</span></code></a> function
 used by a scikit-learn regressor.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: The scikit-plots developers</span>
-<span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">load_diabetes</span> <span class="k">as</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_diabetes.html#sklearn.datasets.load_diabetes" title="sklearn.datasets.load_diabetes"><span class="n">load_data</span></a><span class="p">,</span>
-<span class="p">)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression" title="sklearn.linear_model.LinearRegression"><span class="n">LinearRegression</span></a>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
-
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-<a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.seed.html#numpy.random.seed" title="numpy.random.seed"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># reproducibility</span>
-<span class="c1"># importing pylab or pyplot</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-
-<span class="c1"># Import scikit-plot</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
-
-<span class="c1"># Load the data</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_diabetes.html#sklearn.datasets.load_diabetes" title="sklearn.datasets.load_diabetes"><span class="n">load_data</span></a><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># Create an instance of the LogisticRegression</span>
-<span class="n">model</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression" title="sklearn.linear_model.LinearRegression"><span class="n">LinearRegression</span></a><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-
-<span class="c1"># Perform predictions</span>
-<span class="n">y_val_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
-
-<span class="c1"># Plot!</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">plot_residuals_distribution</span><span class="p">(</span>
-    <span class="n">y_val</span><span class="p">,</span>
-    <span class="n">y_val_pred</span><span class="p">,</span>
-    <span class="n">dist_type</span><span class="o">=</span><span class="s2">"normal"</span><span class="p">,</span>
-    <span class="n">save_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">save_fig_filename</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span>
-    <span class="c1"># overwrite=True,</span>
-    <span class="n">add_timestamp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 9</span> <span class="c1"># Authors: The scikit-plots developers</span>
+<span class="linenos">10</span> <span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
+</pre></div>
+</div>
+<section id="import-scikit-plots">
+<h2>Import scikit-plots<a class="headerlink" href="#import-scikit-plots" title="Link to this heading">#</a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">16</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<span class="linenos">17</span>     <span class="n">load_diabetes</span> <span class="k">as</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_diabetes.html#sklearn.datasets.load_diabetes" title="sklearn.datasets.load_diabetes"><span class="n">load_data</span></a><span class="p">,</span>
+<span class="linenos">18</span> <span class="p">)</span>
+<span class="linenos">19</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression" title="sklearn.linear_model.LinearRegression"><span class="n">LinearRegression</span></a>
+<span class="linenos">20</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
+<span class="linenos">21</span>
+<span class="linenos">22</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="linenos">23</span>
+<span class="linenos">24</span> <a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.seed.html#numpy.random.seed" title="numpy.random.seed"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># reproducibility</span>
+<span class="linenos">25</span> <span class="c1"># importing pylab or pyplot</span>
+<span class="linenos">26</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="linenos">27</span>
+<span class="linenos">28</span> <span class="c1"># Import scikit-plots</span>
+<span class="linenos">29</span> <span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+</pre></div>
+</div>
+</section>
+<section id="loading-the-dataset">
+<h2>Loading the dataset<a class="headerlink" href="#loading-the-dataset" title="Link to this heading">#</a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">35</span> <span class="c1"># Load the data</span>
+<span class="linenos">36</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_diabetes.html#sklearn.datasets.load_diabetes" title="sklearn.datasets.load_diabetes"><span class="n">load_data</span></a><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="linenos">37</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="model-training">
+<h2>Model Training<a class="headerlink" href="#model-training" title="Link to this heading">#</a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">43</span> <span class="c1"># Create an instance of the LogisticRegression</span>
+<span class="linenos">44</span> <span class="n">model</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression" title="sklearn.linear_model.LinearRegression"><span class="n">LinearRegression</span></a><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="linenos">45</span>
+<span class="linenos">46</span> <span class="c1"># Perform predictions</span>
+<span class="linenos">47</span> <span class="n">y_val_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="plot">
+<h2>Plot!<a class="headerlink" href="#plot" title="Link to this heading">#</a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">53</span> <span class="c1"># Plot!</span>
+<span class="linenos">54</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">plot_residuals_distribution</span><span class="p">(</span>
+<span class="linenos">55</span>     <span class="n">y_val</span><span class="p">,</span>
+<span class="linenos">56</span>     <span class="n">y_val_pred</span><span class="p">,</span>
+<span class="linenos">57</span>     <span class="n">dist_type</span><span class="o">=</span><span class="s2">"normal"</span><span class="p">,</span>
+<span class="linenos">58</span>     <span class="n">save_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos">59</span>     <span class="n">save_fig_filename</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span>
+<span class="linenos">60</span>     <span class="c1"># overwrite=True,</span>
+<span class="linenos">61</span>     <span class="n">add_timestamp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos">62</span>     <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos">63</span> <span class="p">)</span>
 </pre></div>
 </div>
 <img alt="Histogram of Residuals, Q-Q Plot: Fitted Normal μ=-4.45, σ=55.28, Q-Q Plot: Standard Normal mean=0, std=1" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_residuals_distribution_script_001.png" srcset="../../_images/sphx_glr_plot_residuals_distribution_script_001.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitted mean-mu (μ): -4.4509
 Fitted std (σ)    : 55.2768
-[INFO] Saving path to: /home/circleci/repo/galleries/examples/regression/result_images/plot_residuals_distribution_20250429_122122Z.png
-[INFO] Plot saved to: /home/circleci/repo/galleries/examples/regression/result_images/plot_residuals_distribution_20250429_122122Z.png
+[INFO] Saving path to: /home/circleci/repo/galleries/examples/regression/result_images/plot_residuals_distribution_20250627_090925Z.png
+[INFO] Plot saved to: /home/circleci/repo/galleries/examples/regression/result_images/plot_residuals_distribution_20250627_090925Z.png
 </pre></div>
 </div>
 <div class="admonition-references admonition">
@@ -498,7 +513,7 @@ in this example:</p>
 </ul>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-regression.html"><span class="doc">model-type: regression</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-model-evaluation.html"><span class="doc">model-workflow: model evaluation</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-histogram.html"><span class="doc">plot-type: histogram</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-qqplot.html"><span class="doc">plot-type: qqplot</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger reference internal" href="../../_tags/domain-statistics.html"><span class="doc">domain: statistics</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-intermediate.html"><span class="doc">level: intermediate</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.730 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.721 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_confusion_matrix function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_confusion_matrix_script_thumb.png"/>
@@ -514,6 +529,7 @@ in this example:</p>
 <p><a class="reference internal" href="../classification/plot_feature_importances_script.html#sphx-glr-auto-examples-classification-plot-feature-importances-script-py"><span class="std std-ref">plot_feature_importances with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">plot_feature_importances with examples</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
 </section>
 </article>
 <footer class="bd-footer-article">
@@ -541,13 +557,25 @@ in this example:</p>
 <dialog id="pst-secondary-sidebar-modal"></dialog>
 <div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
 <div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> On this page
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="bd-toc-nav page-toc">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-scikit-plots">Import scikit-plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-dataset">Loading the dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-training">Model Training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot">Plot!</a></li>
+</ul>
+</nav></div>
+<div class="sidebar-secondary-item">
 <div aria-label="source link" role="note">
 <h3>This Page</h3>
 <ul class="this-page-menu">
 <li><a href="../../_sources/auto_examples/regression/plot_residuals_distribution_script.rst.txt" rel="nofollow">Show Source</a></li>
 </ul>
 </div></div>
-<div class="sidebar-secondary-item"><div title="plot_residuals_distribution_script.py"><a download="" href="../../_downloads/b1a9ad1bdba1d153600555eb802e45c5/plot_residuals_distribution_script.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_residuals_distribution_script.ipynb"><a download="" href="../../_downloads/beef2d9e494b21a17f519607edc8d6f2/plot_residuals_distribution_script.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/regression/plot_residuals_distribution_script.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo6.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/maintenance/0.4.X?urlpath=lab/tree/notebooks/auto_examples/regression/plot_residuals_distribution_script.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo6.svg"/></a></div></div></div></div>
+<div class="sidebar-secondary-item"><div title="plot_residuals_distribution_script.py"><a download="" href="../../_downloads/b1a9ad1bdba1d153600555eb802e45c5/plot_residuals_distribution_script.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_residuals_distribution_script.ipynb"><a download="" href="../../_downloads/beef2d9e494b21a17f519607edc8d6f2/plot_residuals_distribution_script.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/regression/plot_residuals_distribution_script.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo6.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/maintenance/0...X?urlpath=lab/tree/notebooks/auto_examples/regression/plot_residuals_distribution_script.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo6.svg"/></a></div></div></div></div>
 </div>
 <footer class="bd-footer-content">
 </footer>
@@ -563,7 +591,7 @@ in this example:</p>
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc4+git.20250429.5a22d2b 2025-04-29T12:20Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post1+git.20250627.a4c5b9e 2025-06-27T09:09Z.
       <br/>
 </p>
 </div>

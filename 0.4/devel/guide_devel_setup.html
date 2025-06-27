@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="To set up scikit-plots for development follow these steps: Fork the scikit-plots repository, Retrieve the latest version of the code, Create a dedicated environment, Install external dependencies, ..." />
 
-    <title>Development Setup Guidelines &#8212; scikit-plots 0.4.0rc4+git.20250429.5a22d2b documentation</title>
+    <title>Development Setup Guidelines &#8212; scikit-plots 0.4.0 documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=6dcf6205"></script>
+    <script src="../_static/documentation_options.js?v=6c02275b"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -74,9 +74,9 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc4';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
-            false;
+            true;
         </script>
     <script src="../_static/scripts/dropdown.js?v=e2048168"></script>
     <script src="../_static/scripts/version-switcher.js?v=9bbada16"></script>
@@ -372,8 +372,10 @@
       
       
       
+        
+      
       <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
         
 
   
@@ -548,15 +550,6 @@
     
   </div>
   
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-<nav class="bd-docs-nav bd-links"
-     aria-label="Section Navigation">
-  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"></div>
-</nav></div>
-    </div>
-  
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
@@ -611,21 +604,21 @@
 <p>To set up scikit-plots for development follow these steps:</p>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#fork-the-scikit-plots-repository" id="id1">Fork the scikit-plots repository</a></p></li>
-<li><p><a class="reference internal" href="#retrieve-the-latest-version-of-the-code" id="id2">Retrieve the latest version of the code</a></p></li>
-<li><p><a class="reference internal" href="#create-a-dedicated-environment" id="id3">Create a dedicated environment</a></p></li>
-<li><p><a class="reference internal" href="#install-external-dependencies" id="id4">Install external dependencies</a></p></li>
-<li><p><a class="reference internal" href="#install-scikit-plots-in-editable-mode" id="id5">Install scikit-plots in editable mode</a></p>
+<li><p><a class="reference internal" href="#fork-the-scikit-plots-repository" id="id2">Fork the scikit-plots repository</a></p></li>
+<li><p><a class="reference internal" href="#retrieve-the-latest-version-of-the-code" id="id3">Retrieve the latest version of the code</a></p></li>
+<li><p><a class="reference internal" href="#create-a-dedicated-environment" id="id4">Create a dedicated environment</a></p></li>
+<li><p><a class="reference internal" href="#install-external-dependencies" id="id5">Install external dependencies</a></p></li>
+<li><p><a class="reference internal" href="#install-scikit-plots-in-editable-mode" id="id6">Install scikit-plots in editable mode</a></p>
 <ul>
-<li><p><a class="reference internal" href="#build-options" id="id6">Build options</a></p></li>
+<li><p><a class="reference internal" href="#build-options" id="id7">Build options</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#verify-the-installation" id="id7">Verify the Installation</a></p></li>
-<li><p><a class="reference internal" href="#install-pre-commit-hooks" id="id8">Install pre-commit hooks</a></p></li>
+<li><p><a class="reference internal" href="#verify-the-installation" id="id8">Verify the Installation</a></p></li>
+<li><p><a class="reference internal" href="#install-pre-commit-hooks" id="id9">Install pre-commit hooks</a></p></li>
 </ul>
 </nav>
 <section id="fork-the-scikit-plots-repository">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">Fork the scikit-plots repository</a><a class="headerlink" href="#fork-the-scikit-plots-repository" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Fork the scikit-plots repository</a><a class="headerlink" href="#fork-the-scikit-plots-repository" title="Link to this heading">#</a></h2>
 <p>scikit-plots is hosted at <a class="github reference external" href="https://github.com/scikit-plots/scikit-plots.git">scikit-plots/scikit-plots.git</a>. If you
 plan on solving issues or submitting pull requests to the main scikit-plots
 repository, you should first fork this repository by <em>clicking</em> the
@@ -634,7 +627,7 @@ repository, you should first fork this repository by <em>clicking</em> the
 documentation</a> for more details.</p>
 </section>
 <section id="retrieve-the-latest-version-of-the-code">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">Retrieve the latest version of the code</a><a class="headerlink" href="#retrieve-the-latest-version-of-the-code" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Retrieve the latest version of the code</a><a class="headerlink" href="#retrieve-the-latest-version-of-the-code" title="Link to this heading">#</a></h2>
 <p>Now that your fork of the repository lives under your GitHub username, you can
 retrieve the most recent version of the source code with one of the following
 commands (replace <code class="docutils literal notranslate"><span class="pre">&lt;your-username&gt;</span></code> with your GitHub username):</p>
@@ -690,7 +683,7 @@ code, as described in <a class="reference internal" href="guide_devel_workflow.h
 <li><p class="sd-card-text"><a class="reference external" href="https://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project">GitHub-Contributing to a Project</a></p></li>
 <li><p class="sd-card-text"><a class="reference external" href="https://skills.github.com/">GitHub Skills</a></p></li>
 <li><p class="sd-card-text"><a class="reference external" href="https://scikit-image.org/docs/stable/gitwash/index.html#using-git" title="(in skimage v0.25.2)"><span>Working with scikit-image source code</span></a></p></li>
-<li><p class="sd-card-text"><a class="reference external" href="https://scikit-image.org/docs/stable/gitwash/git_resources.html#git-resources" title="(in skimage v0.25.2)"><span>git resources</span></a></p></li>
+<li><p class="sd-card-text"><a class="reference internal" href="guide_git_resources.html#git-resources"><span class="std std-ref">Git Resources Guidelines</span></a></p></li>
 <li><p class="sd-card-text"><a class="reference external" href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">Installing git</a></p></li>
 <li><p class="sd-card-text"><a class="reference external" href="https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories">Managing remote repositories</a></p></li>
 <li><p class="sd-card-text"><a class="reference external" href="https://tacaswell.github.io/think-like-git.html">https://tacaswell.github.io/think-like-git.html</a></p></li>
@@ -699,7 +692,7 @@ code, as described in <a class="reference internal" href="guide_devel_workflow.h
 </div>
 </details></section>
 <section id="create-a-dedicated-environment">
-<span id="dev-environment"></span><h2><a class="toc-backref" href="#id3" role="doc-backlink">Create a dedicated environment</a><a class="headerlink" href="#create-a-dedicated-environment" title="Link to this heading">#</a></h2>
+<span id="dev-environment"></span><h2><a class="toc-backref" href="#id4" role="doc-backlink">Create a dedicated environment</a><a class="headerlink" href="#create-a-dedicated-environment" title="Link to this heading">#</a></h2>
 <p>You should set up a dedicated environment to decouple your scikit-plots
 development from other Python and scikit-plots installations on your system.</p>
 <p>We recommend using one of the following options for a dedicated development environment
@@ -730,7 +723,7 @@ For a discussion of the technical reasons, see <a class="reference external" hre
 <input id="sd-tab-item-5" name="sd-tab-set-2" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-5">
 conda environment</label><div class="sd-tab-content docutils">
-<p>Create a new <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">conda</a> environment and install the Python dependencies with</p>
+<p>Create a new <a href="#id14"><span class="problematic" id="id15">`conda`_</span></a> environment and install the Python dependencies with</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml
 </pre></div>
 </div>
@@ -785,7 +778,7 @@ the file you want to open and select “Open with Live Server.”</p>
 </div>
 </section>
 <section id="install-external-dependencies">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">Install external dependencies</a><a class="headerlink" href="#install-external-dependencies" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Install external dependencies</a><a class="headerlink" href="#install-external-dependencies" title="Link to this heading">#</a></h2>
 <p>Python dependencies were installed as part of <a class="reference internal" href="#dev-environment"><span class="std std-ref">setting up the environment</span></a>.
 Additionally, the following non-Python dependencies must also be installed locally:</p>
 <ul class="checklist simple">
@@ -796,7 +789,7 @@ Additionally, the following non-Python dependencies must also be installed local
 need to be installed when working in codespaces.</p>
 </section>
 <section id="install-scikit-plots-in-editable-mode">
-<span id="development-install"></span><h2><a class="toc-backref" href="#id5" role="doc-backlink">Install scikit-plots in editable mode</a><a class="headerlink" href="#install-scikit-plots-in-editable-mode" title="Link to this heading">#</a></h2>
+<span id="development-install"></span><h2><a class="toc-backref" href="#id6" role="doc-backlink">Install scikit-plots in editable mode</a><a class="headerlink" href="#install-scikit-plots-in-editable-mode" title="Link to this heading">#</a></h2>
 <p>Install scikit-plots in editable mode from the <code class="file docutils literal notranslate"><span class="pre">scikit-plots</span></code> directory using the
 command</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--verbose<span class="w"> </span>--no-build-isolation<span class="w"> </span>--editable<span class="w"> </span><span class="s2">&quot;.[dev]&quot;</span>
@@ -811,9 +804,9 @@ have <a class="reference external" href="https://github.com/scikit-plots/scikit-
 each time you change any compiled extension code.</p>
 <p>If the installation is not working, please consult the <a class="reference internal" href="guide_troubleshooting.html#troubleshooting-faq"><span class="std std-ref">troubleshooting guide</span></a>.
 If the guide does not offer a solution, please reach out via <a class="reference external" href="https://gitter.im/scikit-plots/scikit-plots">chat</a>
-or <a class="reference internal" href="index.html#submitting-a-bug-report"><span class="std std-ref">open an issue</span></a>.</p>
+or <a class="reference external" href="https://matplotlib.org/stable/devel/index.html#submitting-a-bug-report" title="(in Matplotlib v3.10.3)"><span class="xref std std-ref">open an issue</span></a>.</p>
 <section id="build-options">
-<h3><a class="toc-backref" href="#id6" role="doc-backlink">Build options</a><a class="headerlink" href="#build-options" title="Link to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Build options</a><a class="headerlink" href="#build-options" title="Link to this heading">#</a></h3>
 <p>If you are working heavily with files that need to be compiled, you may want to
 inspect the compilation log. This can be enabled by setting the environment
 variable <span class="target" id="index-0"></span><a class="reference external" href="https://mesonbuild.com/meson-python/reference/environment-variables.html#envvar-MESONPY_EDITABLE_VERBOSE" title="(in meson-python)"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">MESONPY_EDITABLE_VERBOSE</span></code></a> or by setting the <code class="docutils literal notranslate"><span class="pre">editable-verbose</span></code>
@@ -827,7 +820,7 @@ Meson Python <a class="reference external" href="https://mesonbuild.com/meson-py
 </section>
 </section>
 <section id="verify-the-installation">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">Verify the Installation</a><a class="headerlink" href="#verify-the-installation" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Verify the Installation</a><a class="headerlink" href="#verify-the-installation" title="Link to this heading">#</a></h2>
 <p>Run the following command to make sure you have correctly installed scikit-plots in
 editable mode. The command should be run when the virtual environment is activated:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import scikitplot; print(scikitplot.__file__)&quot;</span>
@@ -838,12 +831,12 @@ editable mode. The command should be run when the virtual environment is activat
 and that the docs build cleanly, so that when you make code or document related changes
 you are aware of the existing issues beforehand.</p>
 <ul class="simple">
-<li><p>Run test cases to verify installation <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/testing.html#testing" title="(in xarray v2025.3.2.dev0)"><span>Testing your code</span></a></p></li>
+<li><p>Run test cases to verify installation <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/testing.html#testing" title="(in xarray v2025.6.2)"><span>Testing your code</span></a></p></li>
 <li><p>Verify documentation build <a class="reference internal" href="guide_document_write.html#documenting-scikit-plots"><span class="std std-ref">Documentation Writing Guidelines</span></a></p></li>
 </ul>
 </section>
 <section id="install-pre-commit-hooks">
-<span id="pre-commit-hooks"></span><h2><a class="toc-backref" href="#id8" role="doc-backlink">Install pre-commit hooks</a><a class="headerlink" href="#install-pre-commit-hooks" title="Link to this heading">#</a></h2>
+<span id="pre-commit-hooks"></span><h2><a class="toc-backref" href="#id9" role="doc-backlink">Install pre-commit hooks</a><a class="headerlink" href="#install-pre-commit-hooks" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://pre-commit.com/">pre-commit</a> hooks save time in the review process by
 identifying issues with the code before a pull request is formally opened. Most
 hooks can also aide in fixing the errors, and the checks should have
@@ -956,7 +949,7 @@ for new functions; instead the stubs for new functions are checked using the
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc4+git.20250429.5a22d2b 2025-04-29T12:20Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post1+git.20250627.a4c5b9e 2025-06-27T09:09Z.
       <br/>
     
   </p>

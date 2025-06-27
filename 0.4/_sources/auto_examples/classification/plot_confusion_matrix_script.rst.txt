@@ -24,13 +24,32 @@ plot_confusion_matrix with examples
 An example showing the :py:func:`~scikitplot.api.metrics.plot_confusion_matrix` function
 used by a scikit-learn classifier.
 
-.. GENERATED FROM PYTHON SOURCE LINES 8-49
+.. GENERATED FROM PYTHON SOURCE LINES 8-12
 
 .. code-block:: Python
+   :lineno-start: 9
 
 
     # Authors: The scikit-plots developers
     # SPDX-License-Identifier: BSD-3-Clause
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 13-15
+
+Import scikit-plots
+------------------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 15-31
+
+.. code-block:: Python
+   :lineno-start: 16
+
 
     from sklearn.datasets import (
         load_digits as data_10_classes,
@@ -47,15 +66,69 @@ used by a scikit-learn classifier.
     # Import scikit-plot
     import scikitplot as sp
 
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 32-34
+
+Loading the dataset
+------------------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 34-39
+
+.. code-block:: Python
+   :lineno-start: 35
+
+
     # Load the data
     X, y = data_10_classes(return_X_y=True, as_frame=False)
     X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.5, random_state=0)
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 40-42
+
+Model Training
+--------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 42-49
+
+.. code-block:: Python
+   :lineno-start: 43
+
 
     # Create an instance of the LogisticRegression
     model = LogisticRegression(max_iter=int(1e5), random_state=0).fit(X_train, y_train)
 
     # Perform predictions
     y_val_pred = model.predict(X_val)
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 50-52
+
+Plot!
+------------------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 52-65
+
+.. code-block:: Python
+   :lineno-start: 53
+
 
     # Plot!
     ax = sp.metrics.plot_confusion_matrix(
@@ -81,7 +154,7 @@ used by a scikit-learn classifier.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 50-57
+.. GENERATED FROM PYTHON SOURCE LINES 66-73
 
 .. tags::
 
@@ -94,7 +167,7 @@ used by a scikit-learn classifier.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.699 seconds)
+   **Total running time of the script:** (0 minutes 0.569 seconds)
 
 
 .. _sphx_glr_download_auto_examples_classification_plot_confusion_matrix_script.py:
@@ -106,7 +179,7 @@ used by a scikit-learn classifier.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-plots/scikit-plots/maintenance/0.4.X?urlpath=lab/tree/notebooks/auto_examples/classification/plot_confusion_matrix_script.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-plots/scikit-plots/maintenance/0...X?urlpath=lab/tree/notebooks/auto_examples/classification/plot_confusion_matrix_script.ipynb
         :alt: Launch binder
         :width: 150 px
 

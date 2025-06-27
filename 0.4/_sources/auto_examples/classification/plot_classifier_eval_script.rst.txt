@@ -24,13 +24,32 @@ plot_classifier_eval with examples
 An example showing the :py:func:`~scikitplot.api.metrics.plot_classifier_eval` function
 used by a scikit-learn classifier.
 
-.. GENERATED FROM PYTHON SOURCE LINES 8-65
+.. GENERATED FROM PYTHON SOURCE LINES 8-12
 
 .. code-block:: Python
+   :lineno-start: 9
 
 
     # Authors: The scikit-plots developers
     # SPDX-License-Identifier: BSD-3-Clause
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 13-15
+
+Import scikit-plots
+------------------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 15-32
+
+.. code-block:: Python
+   :lineno-start: 16
+
 
     from sklearn.datasets import (
         load_iris as data_3_classes,
@@ -48,9 +67,45 @@ used by a scikit-learn classifier.
     # Import scikit-plot
     import scikitplot as sp
 
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 33-35
+
+Loading the dataset
+------------------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 35-40
+
+.. code-block:: Python
+   :lineno-start: 36
+
+
     # Load the data
     X, y = data_3_classes(return_X_y=True, as_frame=True)
     X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.5, random_state=0)
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 41-43
+
+Model Training
+--------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 43-51
+
+.. code-block:: Python
+   :lineno-start: 44
+
 
     # Create an instance of the LogisticRegression
     model = LogisticRegression(max_iter=int(1e5), random_state=0).fit(X_train, y_train)
@@ -58,6 +113,24 @@ used by a scikit-learn classifier.
     # Perform predictions
     y_val_pred = model.predict(X_val)
     y_train_pred = model.predict(X_train)
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 52-54
+
+Plot!
+------------------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 54-81
+
+.. code-block:: Python
+   :lineno-start: 55
+
 
     fig1 = sp.metrics.plot_classifier_eval(
         y_val,
@@ -109,7 +182,7 @@ used by a scikit-learn classifier.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 66-74
+.. GENERATED FROM PYTHON SOURCE LINES 82-90
 
 .. tags::
 
@@ -123,7 +196,7 @@ used by a scikit-learn classifier.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.742 seconds)
+   **Total running time of the script:** (0 minutes 1.446 seconds)
 
 
 .. _sphx_glr_download_auto_examples_classification_plot_classifier_eval_script.py:
@@ -135,7 +208,7 @@ used by a scikit-learn classifier.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-plots/scikit-plots/maintenance/0.4.X?urlpath=lab/tree/notebooks/auto_examples/classification/plot_classifier_eval_script.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-plots/scikit-plots/maintenance/0...X?urlpath=lab/tree/notebooks/auto_examples/classification/plot_classifier_eval_script.ipynb
         :alt: Launch binder
         :width: 150 px
 

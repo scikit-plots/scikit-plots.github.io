@@ -1,0 +1,1105 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Coding Guidelines" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://scikit-plots.github.io/stable/devel/guide_code.html" />
+<meta property="og:site_name" content="scikit-plots" />
+<meta property="og:description" content="This section describes requirements and guidelines that should be followed both by the core package and by coordinated packages, and these are also recommended for affiliated packages. Interface an..." />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
+<meta property="og:image:alt" content="scikit-plots" />
+<meta name="description" content="This section describes requirements and guidelines that should be followed both by the core package and by coordinated packages, and these are also recommended for affiliated packages. Interface an..." />
+
+    <title>Coding Guidelines &#8212; scikit-plots 0.4.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=14208072" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=e4cb1417" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=6c02275b"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=e93d8674"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'devel/guide_code';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <script src="../_static/scripts/dropdown.js?v=e2048168"></script>
+    <script src="../_static/scripts/version-switcher.js?v=9bbada16"></script>
+    <link rel="icon" href="../_static/scikit-plots-favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.4" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/scikit-plots-logo-small.png" class="logo__image only-light" alt="scikit-plots homepage"/>
+    <img src="../_static/scikit-plots-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-plots homepage"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../whats_new/index.html">
+    Release History
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community-G
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://zenodo.org/communities/scikit-plots">
+    Community-Z
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/governance.html">
+    Governance
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/index.html">
+    About us
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../whats_new/index.html">
+    Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community-G
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://zenodo.org/communities/scikit-plots">
+    Community-Z
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/governance.html">
+    Governance
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/index.html">
+    About us
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Coding Guidelines</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="coding-guidelines">
+<span id="code-guide"></span><h1>Coding Guidelines<a class="headerlink" href="#coding-guidelines" title="Link to this heading">#</a></h1>
+<div class="admonition-template admonition">
+<p class="admonition-title">Template</p>
+<p>Template for further usage, template belong to <code class="docutils literal notranslate"><span class="pre">astropy</span></code>.</p>
+</div>
+<p>This section describes requirements and guidelines that should be followed both
+by the core package and by coordinated packages, and these are also recommended
+for affiliated packages.</p>
+<section id="interface-and-dependencies">
+<h2>Interface and Dependencies<a class="headerlink" href="#interface-and-dependencies" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>All code must be compatible with the versions of Python indicated by the
+<code class="docutils literal notranslate"><span class="pre">requires-python</span></code> key  under <code class="docutils literal notranslate"><span class="pre">[project]</span></code> in the <a class="reference external" href="https://github.com/astropy/astropy/blob/main/pyproject.toml">pyproject.toml</a> file of the
+core package.</p></li>
+<li><p>The core package should be importable with no
+dependencies other than components already in the Astropy core, the
+<a class="reference external" href="https://docs.python.org/3/library/index.html">Python Standard Library</a>,
+and <a class="reference external" href="https://numpy.org/">NumPy</a> <a href="#id5"><span class="problematic" id="id6">|minimum_numpy_version|</span></a> or later.</p></li>
+<li><p>Additional dependencies - such as <a href="#id11"><span class="problematic" id="id12">`SciPy`_</span></a>, <a class="reference external" href="https://matplotlib.org/">Matplotlib</a>, or other
+third-party packages - are allowed for sub-modules or in function
+calls, but they must be noted in the package documentation and
+should only affect the relevant component.  In functions and
+methods, the optional dependency should use a normal <code class="docutils literal notranslate"><span class="pre">import</span></code>
+statement, which will raise an <code class="docutils literal notranslate"><span class="pre">ImportError</span></code> if the dependency is
+not available. In the astropy core package, such optional dependencies should
+be recorded in the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file in the <code class="docutils literal notranslate"><span class="pre">[project.optional-dependencies]</span></code>
+entry (put it in the appropriate category of optional dependencies).</p>
+<p>At the module level, one can subclass a class from an optional dependency
+like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">opdep</span><span class="w"> </span><span class="kn">import</span> <span class="n">Superclass</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">warn</span><span class="p">(</span><span class="n">AstropyWarning</span><span class="p">(</span><span class="s1">&#39;opdep is not present, so &lt;functionality&gt;&#39;</span>
+                        <span class="s1">&#39;will not work.&#39;</span><span class="p">))</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Superclass</span><span class="p">:</span> <span class="k">pass</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Customclass</span><span class="p">(</span><span class="n">Superclass</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+</li>
+<li><p>General utilities necessary for but not specific to the package or
+sub-package should be placed in a <code class="docutils literal notranslate"><span class="pre">packagename.utils</span></code> module (e.g.
+<code class="docutils literal notranslate"><span class="pre">astropy.utils</span></code> for the core package). If a utility is already present in
+<a class="reference external" href="https://docs.astropy.org/en/stable/utils/ref_api.html#module-astropy.utils" title="(in Astropy v7.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">astropy.utils</span></code></a>, packages should always use that utility instead of
+re-implementing it in <code class="docutils literal notranslate"><span class="pre">packagename.utils</span></code> module.</p></li>
+</ul>
+</section>
+<section id="documentation-and-testing">
+<h2>Documentation and Testing<a class="headerlink" href="#documentation-and-testing" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Docstrings must be present for all public classes/methods/functions, and
+must follow the form outlined in the <span class="xref std std-doc">docguide</span> document.</p></li>
+<li><p>Write usage examples in the docstrings of all classes and functions whenever
+possible. These examples should be short and simple to reproduce–users
+should be able to copy them verbatim and run them. These examples should,
+whenever possible, be in the <span class="xref std std-ref">doctest</span> format and will be
+executed as part of the test suite.</p></li>
+<li><p>Unit tests should be provided for as many public methods and functions as
+possible, and should adhere to the standards set in the <span class="xref std std-doc">testguide</span>
+document.</p></li>
+</ul>
+</section>
+<section id="data-and-configuration">
+<h2>Data and Configuration<a class="headerlink" href="#data-and-configuration" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Packages can include data in a directory named <code class="docutils literal notranslate"><span class="pre">data</span></code> inside a subpackage
+source directory as long as it is less than about 100 kB. These data should
+always be accessed via the <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.utils.data.get_pkg_data_fileobj.html#astropy.utils.data.get_pkg_data_fileobj" title="(in Astropy v7.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_pkg_data_fileobj</span></code></a> or
+<a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.utils.data.get_pkg_data_filename.html#astropy.utils.data.get_pkg_data_filename" title="(in Astropy v7.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_pkg_data_filename</span></code></a> functions. If the data
+exceeds this size, it should be hosted outside the source code repository,
+either at a third-party location on the internet or the <a class="reference external" href="https://github.com/astropy/astropy-data">astropy data server</a>.
+In either case, it should always be downloaded using the
+<a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.utils.data.get_pkg_data_fileobj.html#astropy.utils.data.get_pkg_data_fileobj" title="(in Astropy v7.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_pkg_data_fileobj</span></code></a> or
+<a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.utils.data.get_pkg_data_filename.html#astropy.utils.data.get_pkg_data_filename" title="(in Astropy v7.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_pkg_data_filename</span></code></a> functions. If a specific
+version of a data file is needed, the hash mechanism described in
+<a class="reference external" href="https://docs.astropy.org/en/stable/utils/ref_api.html#module-astropy.utils.data" title="(in Astropy v7.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">astropy.utils.data</span></code></a> should be used.</p></li>
+<li><p>All persistent configuration should use the
+<a class="reference external" href="https://docs.astropy.org/en/stable/config/index.html#astropy-config" title="(in Astropy v7.1)"><span>Configuration System (astropy.config)</span></a> mechanism.  Such configuration items
+should be placed at the top of the module or package that makes use of them,
+and supply a description sufficient for users to understand what the setting
+changes.</p></li>
+</ul>
+</section>
+<section id="standard-output-warnings-and-errors">
+<h2>Standard output, warnings, and errors<a class="headerlink" href="#standard-output-warnings-and-errors" title="Link to this heading">#</a></h2>
+<p>The built-in <code class="docutils literal notranslate"><span class="pre">print(...)</span></code> function should only be used for output that
+is explicitly requested by the user, for example <code class="docutils literal notranslate"><span class="pre">print_header(...)</span></code>
+or <code class="docutils literal notranslate"><span class="pre">list_catalogs(...)</span></code>. Any other standard output, warnings, and
+errors should follow these rules:</p>
+<ul class="simple">
+<li><p>For errors/exceptions, one should always use <code class="docutils literal notranslate"><span class="pre">raise</span></code> with one of the
+built-in exception classes, or a custom exception class. The
+nondescript <code class="docutils literal notranslate"><span class="pre">Exception</span></code> class should be avoided as much as possible,
+in favor of more specific exceptions (<code class="docutils literal notranslate"><span class="pre">IOError</span></code>, <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>,
+etc.).</p></li>
+<li><p>For warnings, one should always use <code class="docutils literal notranslate"><span class="pre">warnings.warn(message,</span>
+<span class="pre">warning_class)</span></code>. These get redirected to <code class="docutils literal notranslate"><span class="pre">log.warning()</span></code> by default,
+but one can still use the standard warning-catching mechanism and custom
+warning classes. The warning class should be either
+<a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.utils.exceptions.AstropyUserWarning.html#astropy.utils.exceptions.AstropyUserWarning" title="(in Astropy v7.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstropyUserWarning</span></code></a> or inherit from it.</p></li>
+<li><p>For informational and debugging messages, one should always use
+<code class="docutils literal notranslate"><span class="pre">log.info(message)</span></code> and <code class="docutils literal notranslate"><span class="pre">log.debug(message)</span></code>.</p></li>
+</ul>
+<p>The logging system uses the built-in Python <a class="reference external" href="https://docs.python.org/3/library/logging.html#module-logging" title="(in Python v3.13)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">logging</span></code></a>
+module. The logger can be imported using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">astropy</span><span class="w"> </span><span class="kn">import</span> <span class="n">log</span>
+</pre></div>
+</div>
+</section>
+<section id="coding-style-conventions">
+<span id="code-style"></span><h2>Coding Style/Conventions<a class="headerlink" href="#coding-style-conventions" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>The code should follow the standard <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP8 Style Guide for Python Code</a>.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">astropy</span></code> itself enforces this style guide using the
+<a class="reference external" href="https://docs.astral.sh/ruff/formatter/">ruff format</a> code formatter, which closely follows the
+<a class="reference external" href="https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html">The Black Code Style</a>.</p></li>
+<li><p>In the rare cases that <a class="reference external" href="https://docs.astral.sh/ruff/">ruff</a> formatting is undesirable, it is possible to
+<a class="reference external" href="https://docs.astral.sh/ruff/formatter/#format-suppression">disable formatting locally</a>.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When a list or array should be formatted as one item per line then this is best
+achieved by using the
+<a class="reference external" href="https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html#the-magic-trailing-comma">magic trailing comma</a>.
+This is frequently sufficient for keeping matrices formatted as one row
+per line while still allowing <a class="reference external" href="https://docs.astral.sh/ruff/">ruff</a> to check the code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>  <span class="c1"># notice the trailing comma.</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</li>
+<li><p>Our testing infrastructure currently enforces a subset of the <a class="reference external" href="https://peps.python.org/pep-0008/">PEP8</a> style guide. In
+addition, these checks also enforce <a class="reference external" href="https://pycqa.github.io/isort/">isort</a> to sort
+the module imports and a large set of style-checks supported by <a class="reference external" href="https://docs.astral.sh/ruff/">ruff</a>.</p>
+<ul class="simple">
+<li><p>We provide a <a class="reference external" href="https://pre-commit.com/">pre-commit</a> configuration which
+automatically enforces and fixes (whenever possible) the coding style, see
+<a class="reference internal" href="guide_devel_details.html#pre-commit"><span class="std std-ref">Pre-commit</span></a> for details on how to set up and use this. We note that the
+particular set of <a class="reference external" href="https://peps.python.org/pep-0008/">PEP8</a> and style-related checks that are used in Astropy do not
+need to be used in affiliated packages. In particular, the set of <a class="reference external" href="https://docs.astral.sh/ruff/">ruff</a> checks is
+not required for affiliated packages.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are multiple options for testing PEP8 compliance of code,
+see <span class="xref std std-doc">testguide</span> for more information.</p>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">astropy</span></code> source code should contain a comment at the beginning of the file
+pointing to the license for the <code class="docutils literal notranslate"><span class="pre">astropy</span></code> source code.  This line should say:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Licensed under a 3-clause BSD style license - see LICENSE.rst</span>
+</pre></div>
+</div>
+</li>
+<li><p>Classes should either use direct variable access, or Python’s property
+mechanism for setting object instance variables. <code class="docutils literal notranslate"><span class="pre">get_value</span></code>/<code class="docutils literal notranslate"><span class="pre">set_value</span></code>
+style methods should be used only when getting and setting the values
+requires a computationally-expensive operation. The
+<a class="reference internal" href="#prop-get-set-example"><span class="std std-ref">Properties vs. get_/set_</span></a> example below illustrates this guideline.</p></li>
+<li><p>Classes should use the builtin <code class="docutils literal notranslate"><span class="pre">super</span></code> function when making calls to
+methods in their super-class(es) unless there are specific reasons not to.
+<code class="docutils literal notranslate"><span class="pre">super</span></code> should be used consistently in all subclasses since it does not
+work otherwise. The <a class="reference internal" href="#super-vs-direct-example"><span class="std std-ref">super() vs. Direct Calling</span></a> example below illustrates
+why this is important.</p></li>
+<li><p>Multiple inheritance should be avoided in general without good reason.
+Multiple inheritance is complicated to implement well, which is why many
+object-oriented languages, like Java, do not allow it at all.  Python does
+enable multiple inheritance through use of the
+<a class="reference external" href="https://www.python.org/download/releases/2.3/mro/">C3 Linearization</a>
+algorithm, which provides a consistent method resolution ordering.
+Non-trivial multiple-inheritance schemes should not be attempted without
+good justification, or without understanding how C3 is used to determine
+method resolution order.  However, trivial multiple inheritance using
+orthogonal base classes, known as the ‘mixin’ pattern, may be used.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> files for modules should not contain any significant
+implementation code. <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> can contain docstrings and code for
+organizing the module layout, however (e.g. <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">submodule</span> <span class="pre">import</span> <span class="pre">*</span></code>
+in accord with the guideline above). If a module is small enough that
+it fits in one file, it should simply be a single file, rather than a
+directory with an <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file.</p></li>
+<li><p>Command-line scripts should follow the form outlined in the <span class="xref std std-doc">scripts</span>
+document.</p></li>
+</ul>
+</section>
+<section id="unicode-guidelines">
+<span id="handling-unicode"></span><h2>Unicode guidelines<a class="headerlink" href="#unicode-guidelines" title="Link to this heading">#</a></h2>
+<p>For maximum compatibility, we need to assume that writing non-ASCII
+characters to the console or to files will not work.  However, for
+those that have a correctly configured Unicode environment, we should
+allow them to opt-in to take advantage of Unicode output when
+appropriate.  Therefore, there is a global configuration option,
+<code class="docutils literal notranslate"><span class="pre">astropy.conf.unicode_output</span></code> to enable Unicode output of values, set
+to <code class="docutils literal notranslate"><span class="pre">False</span></code> by default.</p>
+<p>The following conventions should be used for classes that implement the
+standard string conversion methods:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">~object.__repr__</span></code>: Return a <code class="docutils literal notranslate"><span class="pre">str</span></code> containing only ASCII characters.
+The output must be independent of the <code class="docutils literal notranslate"><span class="pre">astropy.conf.unicode_output</span></code>
+setting.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">~object.__str__</span></code>: Return a <code class="docutils literal notranslate"><span class="pre">str</span></code> containing only ASCII characters if
+<code class="docutils literal notranslate"><span class="pre">astropy.conf.unicode_output</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>.
+If <code class="docutils literal notranslate"><span class="pre">astropy.conf.unicode_output</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, it may contain non-ASCII
+characters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">~.object.__format__</span></code>: Return a <code class="docutils literal notranslate"><span class="pre">str</span></code> containing only ASCII characters if
+<code class="docutils literal notranslate"><span class="pre">astropy.conf.unicode_output</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code> and the <code class="docutils literal notranslate"><span class="pre">format_spec</span></code> argument
+is an empty string.
+Otherwise it may contain non-ASCII characters.</p></li>
+</ul>
+<p>For classes that are expected to roundtrip through strings, the parser must
+accept the output of <code class="docutils literal notranslate"><span class="pre">~object.__str__</span></code>.</p>
+<p>This design generally follows <a class="reference external" href="https://en.wikipedia.org/wiki/Robustness_principle">Postel’s Law</a>: “Be liberal in what you
+accept, and conservative in what you send.”</p>
+<p>There is a test helper,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">assert_follows_unicode_guidelines</span></code>,
+to check compliance with the above guidelines.</p>
+</section>
+<section id="including-c-code">
+<h2>Including C Code<a class="headerlink" href="#including-c-code" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>C extensions are only allowed when they provide a significant performance
+enhancement over pure Python, or a robust C library already exists to
+provided the needed functionality. When C extensions are used, the Python
+interface must meet the aforementioned Python interface guidelines.</p></li>
+<li><p>The use of <a class="reference external" href="https://cython.org/">Cython</a> is strongly recommended for C extensions. <a class="reference external" href="https://cython.org/">Cython</a>
+extensions should store <code class="docutils literal notranslate"><span class="pre">.pyx</span></code> files in the source code repository,
+but not the generated <code class="docutils literal notranslate"><span class="pre">.c</span></code> files.</p></li>
+<li><p>If a C extension has a dependency on an external C library, the source code
+for the library should be bundled with the Astropy core, provided the
+license for the C library is compatible with the Astropy license.
+Additionally, the package must be compatible with using a system-installed
+library in place of the library included in Astropy, and a user installing
+the package should be able to opt-in to using the system version using
+a <code class="docutils literal notranslate"><span class="pre">ASTROPY_USE_SYSTEM_???</span></code> environment variable, where <code class="docutils literal notranslate"><span class="pre">???</span></code> is the name
+of the library, e.g. <code class="docutils literal notranslate"><span class="pre">ASTROPY_USE_SYSTEM_WCSLIB</span></code> (see also
+<a class="reference internal" href="guide_devel_details.html#external-c-libraries"><span class="std std-ref">External C Libraries</span></a>).</p></li>
+<li><p>In cases where C extensions are needed but <a class="reference external" href="https://cython.org/">Cython</a> cannot be used, the <a class="reference external" href="https://www.python.org/dev/peps/pep-0007/">PEP 7
+Style Guide for C Code</a> is
+recommended.</p></li>
+<li><p>C extensions (<a class="reference external" href="https://cython.org/">Cython</a> or otherwise) should provide the necessary information
+for building the extension via the mechanisms described in
+<a class="reference internal" href="guide_ccython.html#building-c-or-cython-extensions"><span class="std std-ref">C or Cython Extensions Guidelines</span></a>.</p></li>
+</ul>
+</section>
+<section id="requirements-specific-to-affiliated-packages">
+<h2>Requirements Specific to Affiliated Packages<a class="headerlink" href="#requirements-specific-to-affiliated-packages" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Affiliated packages implementing many classes/functions not relevant to
+the affiliated package itself (for example leftover code from a previous
+package) will not be accepted - the package should only include the
+required functionality and relevant extensions.</p></li>
+<li><p>Affiliated packages must be registered on the <a class="reference external" href="https://pypi.org/">Python Package Index</a>, with proper metadata for downloading and
+installing the source package.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">astropy</span></code> root package name should not be used by affiliated
+packages - it is reserved for use by the core package.</p></li>
+</ul>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
+<p>This section shows a few examples (not all of which are correct!) to
+illustrate points from the guidelines.</p>
+<section id="properties-vs-get-set">
+<span id="prop-get-set-example"></span><h3>Properties vs. get_/set_<a class="headerlink" href="#properties-vs-get-set" title="Link to this heading">#</a></h3>
+<p>This example shows a sample class illustrating the guideline regarding the use
+of <a class="reference external" href="https://docs.python.org/3/library/functions.html#property">properties</a> as
+opposed to getter/setter methods.</p>
+<p>Let’s assume you’ve defined a <code class="docutils literal notranslate"><span class="pre">Star</span></code> class and create an instance like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Star</span><span class="p">(</span><span class="n">B</span><span class="o">=</span><span class="mf">5.48</span><span class="p">,</span> <span class="n">V</span><span class="o">=</span><span class="mf">4.83</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You should always use attribute syntax like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="mf">0.4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">color</span><span class="p">)</span>
+<span class="go">0.4</span>
+</pre></div>
+</div>
+<p>Rather than like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)</span>  <span class="c1"># Bad form!</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">get_color</span><span class="p">())</span>  <span class="c1"># Bad form!</span>
+<span class="go">0.4</span>
+</pre></div>
+</div>
+<p>Using Python properties, attribute syntax can still do anything possible with
+a get/set method. For lengthy or complex calculations, however, use a method:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">compute_color</span><span class="p">(</span><span class="mi">5800</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mf">5e9</span><span class="p">))</span>
+<span class="go">0.4</span>
+</pre></div>
+</div>
+</section>
+<section id="super-vs-direct-calling">
+<span id="super-vs-direct-example"></span><h3>super() vs. Direct Calling<a class="headerlink" href="#super-vs-direct-calling" title="Link to this heading">#</a></h3>
+<p>This example shows why the use of <code class="docutils literal notranslate"><span class="pre">super</span></code> leads to a more consistent
+method resolution order than manually calling methods of the super classes in a
+multiple inheritance case:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is dangerous and bug-prone!</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">A</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Doing A&#39;</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">B</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Doing B&#39;</span><span class="p">)</span>
+        <span class="n">A</span><span class="o">.</span><span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">C</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Doing C&#39;</span><span class="p">)</span>
+        <span class="n">A</span><span class="o">.</span><span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">D</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Doing D&#39;</span><span class="p">)</span>
+        <span class="n">C</span><span class="o">.</span><span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">B</span><span class="o">.</span><span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>if you then do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">B</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">method</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>you will see:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Doing</span> <span class="n">B</span>
+<span class="n">Doing</span> <span class="n">A</span>
+</pre></div>
+</div>
+<p>which is what you expect, and similarly for C. However, if you do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">D</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">method</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>you might expect to see the methods called in the order D, B, C, A but instead
+you see:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Doing</span> <span class="n">D</span>
+<span class="n">Doing</span> <span class="n">C</span>
+<span class="n">Doing</span> <span class="n">A</span>
+<span class="n">Doing</span> <span class="n">B</span>
+<span class="n">Doing</span> <span class="n">A</span>
+</pre></div>
+</div>
+<p>because both <code class="docutils literal notranslate"><span class="pre">B.method()</span></code> and <code class="docutils literal notranslate"><span class="pre">C.method()</span></code> call <code class="docutils literal notranslate"><span class="pre">A.method()</span></code> unaware of
+the fact that they’re being called as part of a chain in a hierarchy.  When
+<code class="docutils literal notranslate"><span class="pre">C.method()</span></code> is called it is unaware that it’s being called from a subclass
+that inherits from both <code class="docutils literal notranslate"><span class="pre">B</span></code> and <code class="docutils literal notranslate"><span class="pre">C</span></code>, and that <code class="docutils literal notranslate"><span class="pre">B.method()</span></code> should be
+called next.  By calling <code class="docutils literal notranslate"><span class="pre">super</span></code> the entire method resolution order for
+<code class="docutils literal notranslate"><span class="pre">D</span></code> is precomputed, enabling each superclass to cooperatively determine which
+class should be handed control in the next <code class="docutils literal notranslate"><span class="pre">super</span></code> call:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is safer</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">A</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Doing A&#39;</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">B</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Doing B&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">method</span><span class="p">()</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">C</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Doing C&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">method</span><span class="p">()</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">D</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Doing D&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">method</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">D</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">method</span><span class="p">()</span>
+<span class="go">Doing D</span>
+<span class="go">Doing C</span>
+<span class="go">Doing B</span>
+<span class="go">Doing A</span>
+</pre></div>
+</div>
+<p>As you can see, each superclass’s method is entered only once.  For this to
+work it is very important that each method in a class that calls its
+superclass’s version of that method use <code class="docutils literal notranslate"><span class="pre">super</span></code> instead of calling the
+method directly.  In the most common case of single-inheritance, using
+<code class="docutils literal notranslate"><span class="pre">super()</span></code> is functionally equivalent to calling the superclass’s method
+directly.  But as soon as a class is used in a multiple-inheritance
+hierarchy it must use <code class="docutils literal notranslate"><span class="pre">super()</span></code> in order to cooperate with other classes in
+the hierarchy.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information on the benefits of <code class="docutils literal notranslate"><span class="pre">super</span></code>, see
+<a class="reference external" href="https://rhettinger.wordpress.com/2011/05/26/super-considered-super/">https://rhettinger.wordpress.com/2011/05/26/super-considered-super/</a></p>
+</div>
+<blockquote>
+<div><p>See the <a href="#id13"><span class="problematic" id="id14">`matplotlib documentation`_</span></a> for more info.
+.. _matplotlib documentation: <a class="reference external" href="https://matplotlib.org/">https://matplotlib.org/</a></p>
+</div></blockquote>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item">
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+                </footer>
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interface-and-dependencies">Interface and Dependencies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation-and-testing">Documentation and Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-and-configuration">Data and Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-output-warnings-and-errors">Standard output, warnings, and errors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-style-conventions">Coding Style/Conventions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unicode-guidelines">Unicode guidelines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#including-c-code">Including C Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements-specific-to-affiliated-packages">Requirements Specific to Affiliated Packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-vs-get-set">Properties vs. get_/set_</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#super-vs-direct-calling">super() vs. Direct Calling</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/devel/guide_code.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post1+git.20250627.a4c5b9e 2025-06-27T09:09Z.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -10,14 +10,6 @@ used by a :py:class:`~tensorflow.keras.Model` model.
 # SPDX-License-Identifier: BSD-3-Clause
 
 # %%
-# Force garbage collection
-
-import gc
-
-gc.collect()
-
-# %%
-
 # pip install protobuf==5.29.4
 import tensorflow as tf
 
@@ -27,7 +19,6 @@ tf.keras.backend.clear_session()
 from scikitplot import visualkeras
 
 # %%
-
 # create VGG16
 image_size = 224
 model = tf.keras.models.Sequential()
@@ -97,14 +88,12 @@ color_map[tf.keras.layers.Dense]["fill"] = "green"
 color_map[tf.keras.layers.Flatten]["fill"] = "teal"
 
 # %%
-
 from PIL import ImageFont
 
 ImageFont.load_default()
 
 
 # %%
-
 img_vgg16_show_dimension = visualkeras.layered_view(
     model,
     legend=True,
@@ -119,9 +108,9 @@ img_vgg16_show_dimension = visualkeras.layered_view(
     save_fig=True,
     save_fig_filename="vgg16_show_dimension.png",
 )
+img_vgg16_show_dimension
 
 # %%
-
 img_vgg16_legend_show_dimension = visualkeras.layered_view(
     model,
     legend=True,
@@ -136,9 +125,9 @@ img_vgg16_legend_show_dimension = visualkeras.layered_view(
     save_fig=True,
     save_fig_filename="vgg16_legend_show_dimension.png",
 )
+img_vgg16_legend_show_dimension
 
 # %%
-
 img_vgg16_spacing_layers_show_dimension = visualkeras.layered_view(
     model,
     legend=True,
@@ -154,9 +143,9 @@ img_vgg16_spacing_layers_show_dimension = visualkeras.layered_view(
     save_fig=True,
     save_fig_filename="vgg16_spacing_layers_show_dimension.png",
 )
+img_vgg16_spacing_layers_show_dimension
 
 # %%
-
 img_vgg16_type_ignore_show_dimension = visualkeras.layered_view(
     model,
     legend=True,
@@ -176,9 +165,9 @@ img_vgg16_type_ignore_show_dimension = visualkeras.layered_view(
     save_fig=True,
     save_fig_filename="vgg16_type_ignore_show_dimension.png",
 )
+img_vgg16_type_ignore_show_dimension
 
 # %%
-
 img_vgg16_color_map_show_dimension = visualkeras.layered_view(
     model,
     legend=True,
@@ -194,9 +183,9 @@ img_vgg16_color_map_show_dimension = visualkeras.layered_view(
     save_fig=True,
     save_fig_filename="vgg16_color_map_show_dimension.png",
 )
+img_vgg16_color_map_show_dimension
 
 # %%
-
 img_vgg16_flat_show_dimension = visualkeras.layered_view(
     model,
     legend=True,
@@ -212,9 +201,9 @@ img_vgg16_flat_show_dimension = visualkeras.layered_view(
     save_fig=True,
     save_fig_filename="vgg16_flat_show_dimension.png",
 )
+img_vgg16_flat_show_dimension
 
 # %%
-
 img_vgg16_scaling_show_dimension = visualkeras.layered_view(
     model,
     legend=True,
@@ -231,6 +220,7 @@ img_vgg16_scaling_show_dimension = visualkeras.layered_view(
     save_fig=True,
     save_fig_filename="vgg16_scaling_show_dimension.png",
 )
+img_vgg16_scaling_show_dimension
 
 # %%
 #

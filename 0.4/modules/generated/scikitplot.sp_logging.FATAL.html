@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
 
-    <title>FATAL &#8212; scikit-plots 0.4.0rc4+git.20250429.5a22d2b documentation</title>
+    <title>FATAL &#8212; scikit-plots 0.4.0 documentation</title>
   
   
   
@@ -59,7 +59,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=6dcf6205"></script>
+    <script src="../../_static/documentation_options.js?v=6c02275b"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -73,9 +73,9 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc4';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
-            false;
+            true;
         </script>
     <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
     <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
@@ -558,6 +558,9 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.html">scikitplot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.config_context.html">config_context</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.get_config.html">get_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.get_logger.html">get_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.logger.html">logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.reset.html">reset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.set_config.html">set_config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.show_config.html">show_config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.show_versions.html">show_versions</a></li>
@@ -581,6 +584,19 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.api._utils.cumulative_gain_curve.html">cumulative_gain_curve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.api._utils.binary_ks_curve.html">binary_ks_curve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.api._utils.validate_plotting_kwargs.html">validate_plotting_kwargs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.doremi.html">scikitplot.doremi</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.ENVELOPES.html">ENVELOPES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.compose_as_waveform.html">compose_as_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.play_waveform.html">play_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.plot_waveform.html">plot_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.save_waveform.html">save_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.save_waveform_as_mp3.html">save_waveform_as_mp3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.sheet_to_note.html">sheet_to_note</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.sheet_converter.html">sheet_converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.serialize_sheet.html">serialize_sheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.export_sheet.html">export_sheet</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -634,20 +650,18 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.WARNING.html">WARNING</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.AlwaysStdErrHandler.html">AlwaysStdErrHandler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.GoogleLogFormatter.html">GoogleLogFormatter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="critical-function.html">critical</a></li>
-<li class="toctree-l2"><a class="reference internal" href="debug-function.html">debug</a></li>
-<li class="toctree-l2"><a class="reference internal" href="error-function.html">error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="critical-func.html">critical</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug-func.html">debug</a></li>
+<li class="toctree-l2"><a class="reference internal" href="error-func.html">error</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.error_log.html">error_log</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fatal-function.html">fatal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fatal-func.html">fatal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.getEffectiveLevel.html">getEffectiveLevel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.get_logger.html">get_logger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.log_if.html">log_if</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.setLevel.html">setLevel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.vlog.html">vlog</a></li>
-<li class="toctree-l2"><a class="reference internal" href="warn-function.html">warn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="warning-function.html">warning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.SpLogger.html">SpLogger</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.sp_logger.html">sp_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="warn-func.html">warn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="warning-func.html">warning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.stats.html">scikitplot.stats</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -867,7 +881,7 @@ Base 0 means to interpret the base from the string as an integer literal.
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc4+git.20250429.5a22d2b 2025-04-29T12:20Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post1+git.20250627.a4c5b9e 2025-06-27T09:09Z.
       <br/>
     
   </p>

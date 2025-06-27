@@ -11,12 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/modules/generated/scikitplot.api.metrics.plot_roc_curve.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="Gallery examples: plot_roc_curve with examples" />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_images/plot_roc_curve.png" />
 <meta property="og:image:alt" content="ROC Curves" />
-<meta name="description" content="Gallery examples: plot_roc_curve with examples" />
 
-    <title>plot_roc_curve &#8212; scikit-plots 0.4.0rc4+git.20250429.5a22d2b documentation</title>
+    <title>plot_roc_curve &#8212; scikit-plots 0.4.0 documentation</title>
   
   
   
@@ -61,7 +59,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=6dcf6205"></script>
+    <script src="../../_static/documentation_options.js?v=6c02275b"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -75,9 +73,9 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc4';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
-            false;
+            true;
         </script>
     <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
     <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
@@ -560,6 +558,9 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.html">scikitplot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.config_context.html">config_context</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.get_config.html">get_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.get_logger.html">get_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.logger.html">logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.reset.html">reset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.set_config.html">set_config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.show_config.html">show_config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.show_versions.html">show_versions</a></li>
@@ -583,6 +584,19 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.api._utils.cumulative_gain_curve.html">cumulative_gain_curve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.api._utils.binary_ks_curve.html">binary_ks_curve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.api._utils.validate_plotting_kwargs.html">validate_plotting_kwargs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.doremi.html">scikitplot.doremi</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.ENVELOPES.html">ENVELOPES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.compose_as_waveform.html">compose_as_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.play_waveform.html">play_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.plot_waveform.html">plot_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.save_waveform.html">save_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.save_waveform_as_mp3.html">save_waveform_as_mp3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.sheet_to_note.html">sheet_to_note</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.sheet_converter.html">sheet_converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.serialize_sheet.html">serialize_sheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.export_sheet.html">export_sheet</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -636,20 +650,18 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.WARNING.html">WARNING</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.AlwaysStdErrHandler.html">AlwaysStdErrHandler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.GoogleLogFormatter.html">GoogleLogFormatter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="critical-function.html">critical</a></li>
-<li class="toctree-l2"><a class="reference internal" href="debug-function.html">debug</a></li>
-<li class="toctree-l2"><a class="reference internal" href="error-function.html">error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="critical-func.html">critical</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug-func.html">debug</a></li>
+<li class="toctree-l2"><a class="reference internal" href="error-func.html">error</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.error_log.html">error_log</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fatal-function.html">fatal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fatal-func.html">fatal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.getEffectiveLevel.html">getEffectiveLevel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.get_logger.html">get_logger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.log_if.html">log_if</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.setLevel.html">setLevel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.vlog.html">vlog</a></li>
-<li class="toctree-l2"><a class="reference internal" href="warn-function.html">warn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="warning-function.html">warning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.SpLogger.html">SpLogger</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.sp_logger.html">sp_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="warn-func.html">warn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="warning-func.html">warning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.stats.html">scikitplot.stats</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -759,7 +771,7 @@
 <h1>plot_roc_curve<a class="headerlink" href="#plot-roc-curve" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.api.metrics.plot_roc_curve">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.api.metrics.</span></span><span class="sig-name descname"><span class="pre">plot_roc_curve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_probas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ROC</span> <span class="pre">Curves'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curves</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">('micro',</span> <span class="pre">'macro',</span> <span class="pre">'each_class')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nipy_spectral'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'large'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'medium'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/5a22d2b/scikitplot/api/metrics/_classification/_roc_curve.py#L39"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.api.metrics.plot_roc_curve" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.api.metrics.</span></span><span class="sig-name descname"><span class="pre">plot_roc_curve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_probas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ROC</span> <span class="pre">Curves'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curves</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">('micro',</span> <span class="pre">'macro',</span> <span class="pre">'each_class')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nipy_spectral'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'large'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'medium'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/a4c5b9e/scikitplot/api/metrics/_classification/_roc_curve.py#L45"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.api.metrics.plot_roc_curve" title="Link to this definition">#</a></dt>
 <dd><p>Generates the ROC curves from labels and predicted scores/probabilities</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -772,11 +784,11 @@
 resulting plot. Defaults to <code class="docutils literal notranslate"><span class="pre">(&quot;micro&quot;,</span> <span class="pre">&quot;macro&quot;,</span> <span class="pre">&quot;each_class&quot;)</span></code>
 i.e. “micro” for micro-averaged curve, “macro” for macro-averaged
 curve</p></li>
-<li><p><strong>ax</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.10.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>, optional) – The axes upon which to
+<li><p><strong>ax</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.10.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>, optional) – The axes upon which to
 plot the curve. If None, the plot is drawn on a new set of axes.</p></li>
 <li><p><strong>figsize</strong> (<em>2-tuple</em><em>, </em><em>optional</em>) – Tuple denoting figure size of the plot
 e.g. (6, 6). Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
-<li><p><strong>cmap</strong> (string or <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.colors.Colormap.html#matplotlib.colors.Colormap" title="(in Matplotlib v3.10.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.colors.Colormap</span></code></a> instance, optional) – Colormap used for plotting the projection. View Matplotlib Colormap
+<li><p><strong>cmap</strong> (string or <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.colors.Colormap.html#matplotlib.colors.Colormap" title="(in Matplotlib v3.10.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.colors.Colormap</span></code></a> instance, optional) – Colormap used for plotting the projection. View Matplotlib Colormap
 documentation for available options.
 <a class="reference external" href="https://matplotlib.org/users/colormaps.html">https://matplotlib.org/users/colormaps.html</a></p></li>
 <li><p><strong>title_fontsize</strong> (<em>string</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em>, </em><em>optional</em>) – Matplotlib-style fontsizes.
@@ -795,7 +807,7 @@ Use e.g. “small”, “medium”, “large” or integer-values. Defaults to
 </p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>ax (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.10.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>)</p>
+<dd class="field-odd"><p>ax (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.10.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>)</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -809,12 +821,6 @@ Use e.g. “small”, “medium”, “large” or integer-values. Defaults to
 <img alt="ROC Curves" class="align-center" src="../../_images/plot_roc_curve.png" />
 </dd></dl>
 
-<section id="gallery-examples">
-<h2>Gallery examples<a class="headerlink" href="#gallery-examples" title="Link to this heading">#</a></h2>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_roc_curve function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_roc_script_thumb.png" />
-<p><a class="reference internal" href="../../auto_examples/classification/plot_roc_script.html#sphx-glr-auto-examples-classification-plot-roc-script-py"><span class="std std-ref">plot_roc_curve with examples</span></a></p>
-  <div class="sphx-glr-thumbnail-title">plot_roc_curve with examples</div>
-</div></div></section>
 </section>
 
 
@@ -870,7 +876,6 @@ Use e.g. “small”, “medium”, “large” or integer-values. Defaults to
     
 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.api.metrics.plot_roc_curve"><code class="docutils literal notranslate"><span class="pre">plot_roc_curve</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gallery-examples">Gallery examples</a></li>
 </ul>
 
 
@@ -911,7 +916,7 @@ Use e.g. “small”, “medium”, “large” or integer-values. Defaults to
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc4+git.20250429.5a22d2b 2025-04-29T12:20Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post1+git.20250627.a4c5b9e 2025-06-27T09:09Z.
       <br/>
     
   </p>

@@ -23,8 +23,10 @@ y_pred = cross_val_predict(clf, X_train, y_train)
 # Plot the data
 import scikitplot as sp
 
-sp.get_logger().setLevel(sp.sp_logging.WARNING)
-train_r = sp.metrics.plot_classifier_eval(
+# sp.get_logger().setLevel(sp.sp_logging.WARNING)
+sp.logger.setLevel(sp.logger.INFO)  # default WARNING
+
+sp.metrics.plot_classifier_eval(
     y_train,
     y_pred,
     labels=np.unique(y),

@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="You’ve discovered a bug or something else you want to change in scikit-plots — excellent! You’ve worked out a way to fix it — even better! You want to tell us about it — best of all! Below, you can..." />
 
-    <title>Getting Started Contributing Guidelines &#8212; scikit-plots 0.4.0rc4+git.20250429.5a22d2b documentation</title>
+    <title>Getting Started Contributing Guidelines &#8212; scikit-plots 0.4.0 documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=6dcf6205"></script>
+    <script src="../_static/documentation_options.js?v=6c02275b"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -74,9 +74,9 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc4';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
-            false;
+            true;
         </script>
     <script src="../_static/scripts/dropdown.js?v=e2048168"></script>
     <script src="../_static/scripts/version-switcher.js?v=9bbada16"></script>
@@ -372,8 +372,10 @@
       
       
       
+        
+      
       <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
         
 
   
@@ -548,15 +550,6 @@
     
   </div>
   
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-<nav class="bd-docs-nav bd-links"
-     aria-label="Section Navigation">
-  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"></div>
-</nav></div>
-    </div>
-  
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
@@ -675,7 +668,7 @@ appreciated! Our library source code is found in:</p>
 our code consistent and mitigating the impact of changes.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="guide_code_style_write.html#coding-guidelines"><span class="std std-ref">Code Style and Writing Guidelines</span></a></p></li>
-<li><p><a class="reference external" href="https://matplotlib.org/stable/devel/api_changes.html#api-changes" title="(in Matplotlib v3.10.1)"><span>API guidelines</span></a></p></li>
+<li><p><a class="reference external" href="https://matplotlib.org/stable/devel/api_changes.html#api-changes" title="(in Matplotlib v3.10.3)"><span>API guidelines</span></a></p></li>
 <li><p><a class="reference internal" href="guide_pr.html#pr-guidelines"><span class="std std-ref">Pull Request Guidelines</span></a></p></li>
 </ul>
 <p>Code is contributed through pull requests, so we recommend that you start at
@@ -690,8 +683,8 @@ you can:</p>
 <ul class="simple">
 <li><p>Fix a typo</p></li>
 <li><p>Clarify a docstring</p></li>
-<li><p>Write or update an <a class="reference external" href="https://matplotlib.org/stable/gallery/index.html#gallery" title="(in Matplotlib v3.10.1)"><span class="xref std std-ref">example plot</span></a></p></li>
-<li><p>Write or update a comprehensive <a class="reference external" href="https://matplotlib.org/stable/tutorials/index.html#tutorials" title="(in Matplotlib v3.10.1)"><span class="xref std std-ref">tutorial</span></a></p></li>
+<li><p>Write or update an <a class="reference external" href="https://matplotlib.org/stable/gallery/index.html#gallery" title="(in Matplotlib v3.10.3)"><span class="xref std std-ref">example plot</span></a></p></li>
+<li><p>Write or update a comprehensive <a class="reference external" href="https://matplotlib.org/stable/tutorials/index.html#tutorials" title="(in Matplotlib v3.10.3)"><span class="xref std std-ref">tutorial</span></a></p></li>
 </ul>
 <p>Our code is documented inline in the source code files in <code class="file docutils literal notranslate"><span class="pre">matplotlib/lib</span></code>.
 Our website structure mirrors our folder structure, meaning that a narrative
@@ -729,9 +722,9 @@ document’s URL roughly corresponds to its location in our folder structure:</p
 </ul>
 <p>Instructions and guidelines for contributing documentation are found in:</p>
 <ul class="simple">
-<li><p><span class="xref std std-doc">document</span></p></li>
-<li><p><span class="xref std std-doc">style_guide</span></p></li>
-<li><p><span class="xref std std-doc">tag_guidelines</span></p></li>
+<li><p><span class="xref std std-doc">Documentation Writing Guide</span></p></li>
+<li><p><span class="xref std std-doc">Documentation Styling Guide</span></p></li>
+<li><p><span class="xref std std-doc">Documentation Tagging Guide</span></p></li>
 </ul>
 <p>Documentation is contributed through pull requests, so we recommend that you start
 at <a class="reference internal" href="#how-to-pull-request"><span class="std std-ref">Start a pull request</span></a>. If that feels intimidating, we encourage you to
@@ -757,7 +750,7 @@ we mean by triage are:</p>
 <section id="community">
 <span id="other-ways-to-contribute"></span><h3>Community<a class="headerlink" href="#community" title="Link to this heading">#</a></h3>
 <p>Matplotlib’s community is built by its members, if you would like to help out
-see our <a class="reference external" href="https://matplotlib.org/stable/devel/communication_guide.html#communications-guidelines" title="(in Matplotlib v3.10.1)"><span>Community management guide</span></a>.</p>
+see our <a class="reference external" href="https://matplotlib.org/stable/devel/communication_guide.html#communications-guidelines" title="(in Matplotlib v3.10.3)"><span>Community management guide</span></a>.</p>
 <p>It helps us if you spread the word: reference the project from your blog
 and articles or link to it from your website!</p>
 <p>If Matplotlib contributes to a project that leads to a scientific publication,
@@ -917,7 +910,7 @@ to hear back on your PR.--&gt;
 <p>When in doubt, we recommend going together! Get connected with our community of
 active contributors, many of whom felt just like you when they started out and
 are happy to welcome you and support you as you get to know how we work, and
-where things are. You can reach out on any of our <a class="reference external" href="https://matplotlib.org/stable/devel/communication_guide.html#communication-channels" title="(in Matplotlib v3.10.1)"><span>Official communication channels</span></a>.
+where things are. You can reach out on any of our <a class="reference external" href="https://matplotlib.org/stable/devel/communication_guide.html#communication-channels" title="(in Matplotlib v3.10.3)"><span>Official communication channels</span></a>.
 For development questions we recommend reaching out on our development <a class="reference external" href="https://gitter.im/matplotlib/matplotlib">gitter</a>
 chat room and for community questions reach out at <a class="reference external" href="https://gitter.im/matplotlib/community">community</a>.</p>
 </section>
@@ -1043,7 +1036,7 @@ the <a class="reference internal" href="#new-contributors-meeting"><span class="
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc4+git.20250429.5a22d2b 2025-04-29T12:20Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post1+git.20250627.a4c5b9e 2025-06-27T09:09Z.
       <br/>
     
   </p>

@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="Scikit-plots relies on Matplotlib and Scikit-learn for plotting model results. Additionally, it can work with results from other modeling libraries such as TensorFlow and PyTorch. Ensure that you h..." />
 
-    <title>Installing scikit-plots &#8212; scikit-plots 0.4.0rc4+git.20250429.5a22d2b documentation</title>
+    <title>Installing scikit-plots &#8212; scikit-plots 0.4.0 documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=6dcf6205"></script>
+    <script src="../_static/documentation_options.js?v=6c02275b"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -74,9 +74,9 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc4';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
-            false;
+            true;
         </script>
     <script src="../_static/scripts/dropdown.js?v=e2048168"></script>
     <script src="../_static/scripts/version-switcher.js?v=9bbada16"></script>
@@ -634,6 +634,9 @@ and pre-built packages are available for most platforms.</p></li>
 </ul>
 <section id="installing-the-latest-release">
 <span id="install-official-release"></span><h2>Installing the latest release<a class="headerlink" href="#installing-the-latest-release" title="Link to this heading">#</a></h2>
+<p>⚠️ Recommended: Use a Virtual Environmentt (like <code class="docutils literal notranslate"><span class="pre">venv</span></code> <code class="docutils literal notranslate"><span class="pre">pipenv</span></code>) to Avoid Conflicts</p>
+<p>🚫 Don’t use conda <code class="docutils literal notranslate"><span class="pre">base</span></code> — it’s prone to conflicts.</p>
+<p>✅ This avoids dependency issues and keeps your system stable.</p>
 <style>
   /* Show caption on large screens */
   @media screen and (min-width: 960px) {
@@ -668,12 +671,19 @@ span.prompt1:before {
   content: ">>> ";
 }
 </style><span class=""><span class="n">python</span> <span class="n">-m</span> <span class="n">venv</span> <span class="n">sklearn-env</span>
-<span class="n">sklearn-env</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">activate</span>  <span class="c"># activate</span>
+<span class="n">sklearn-env</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">activate</span>  <span class="c"># (or dot .) activate</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">-U</span> <span class="n">scikit-plots</span></span>
 </pre></div></div><p>In order to check your installation, you can use:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class=""><span class="n">python</span> <span class="n">-m</span> <span class="n">pip</span> <span class="n">show</span> <span class="n">scikit-plots</span>  <span class="c"># show scikit-plots version and location</span>
 <span class="n">python</span> <span class="n">-m</span> <span class="n">pip</span> <span class="n">freeze</span>             <span class="c"># show all installed packages in the environment</span>
-<span class="n">python</span> <span class="n">-c</span> <span class="s2">&quot;import scikitplot; scikitplot.show_versions()&quot;</span></span>
+
+<span class="c"># Version Check</span>
+<span class="n">python</span> <span class="n">-c</span> <span class="s2">&quot;import scikitplot; scikitplot.show_versions()&quot;</span>
+
+<span class="c"># (Optionally) CLI Version Check</span>
+<span class="n">scikitplot</span> <span class="p">-</span><span class="n">-version</span>
+<span class="n">scikitplot</span> <span class="n">-V</span>
+<span class="n">scikitplot</span> <span class="n">-v</span></span>
 </pre></div></div></div>
 <input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
 <label class="sd-tab-label tab-4" data-sync-group="tab" data-sync-id="package-manager-pip" for="sd-tab-item-3">
@@ -688,12 +698,19 @@ pip3<span class="w"> </span>--version</span>
 Note that the virtual environment is optional but strongly recommended, in
 order to avoid potential conflicts with other packages.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="">python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>sklearn-env
-<span class="nb">source</span><span class="w"> </span>sklearn-env/bin/activate<span class="w">  </span><span class="c1"># activate</span>
+<span class="nb">source</span><span class="w"> </span>sklearn-env/bin/activate<span class="w">  </span><span class="c1"># (or dot .) activate</span>
 pip3<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>scikit-plots</span>
 </pre></div></div><p>In order to check your installation, you can use:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="">python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>show<span class="w"> </span>scikit-plots<span class="w">  </span><span class="c1"># show scikit-plots version and location</span>
 python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>freeze<span class="w">             </span><span class="c1"># show all installed packages in the environment</span>
-python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import scikitplot; scikitplot.show_versions()&quot;</span></span>
+
+<span class="c1"># Version Check</span>
+python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import scikitplot; scikitplot.show_versions()&quot;</span>
+
+<span class="c1"># (Optionally) CLI Version Check</span>
+scikitplot<span class="w"> </span>--version
+scikitplot<span class="w"> </span>-V
+scikitplot<span class="w"> </span>-v</span>
 </pre></div></div></div>
 <input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
 <label class="sd-tab-label tab-4" data-sync-group="tab" data-sync-id="package-manager-pip" for="sd-tab-item-4">
@@ -704,43 +721,53 @@ or by manually installing the package from the <a class="reference external" hre
 Note that the virtual environment is optional but strongly recommended, in
 order to avoid potential conflicts with other packages.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="">python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>sklearn-env
-<span class="nb">source</span><span class="w"> </span>sklearn-env/bin/activate<span class="w">  </span><span class="c1"># activate</span>
+<span class="nb">source</span><span class="w"> </span>sklearn-env/bin/activate<span class="w">  </span><span class="c1"># (or dot .) activate</span>
 pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>scikit-plots</span>
 </pre></div></div><p>In order to check your installation, you can use:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="">python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>show<span class="w"> </span>scikit-plots<span class="w">  </span><span class="c1"># show scikit-plots version and location</span>
 python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>freeze<span class="w">             </span><span class="c1"># show all installed packages in the environment</span>
-python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import scikitplot; scikitplot.show_versions()&quot;</span></span>
+
+<span class="c1"># Version Check</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import scikitplot; scikitplot.show_versions()&quot;</span>
+
+<span class="c1"># (Optionally) CLI Version Check</span>
+scikitplot<span class="w"> </span>--version
+scikitplot<span class="w"> </span>-V
+scikitplot<span class="w"> </span>-v</span>
 </pre></div></div></div>
 </div>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label tab-6" for="sd-tab-item-1">
 conda</label><div class="sd-tab-content docutils">
-<dl class="field-list simple">
-<dt class="field-odd">orphan<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-<div class="admonition warning" id="installation-instructions-conda">
-<p class="admonition-title">Warning</p>
-<p>Not Implemented…</p>
-</div>
-<p>Install conda using the
+<span class="target" id="installation-instructions-conda"></span><p>Install conda using the
 <a class="reference external" href="https://github.com/conda-forge/miniforge#miniforge">miniforge installers</a> (no
 administrator permission required). Then run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="">conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>sklearn-env<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>scikit-plots
-conda<span class="w"> </span>activate<span class="w"> </span>sklearn-env
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class=""><span class="c1"># (conda or mamba) Create New Env and install ``scikit-plots``</span>
+mamba<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>py311<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11<span class="w"> </span>ipykernel<span class="w"> </span>-y
+conda<span class="w"> </span>activate<span class="w"> </span>py311</span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class=""><span class="c1">## (conda or mamba) Install scikit-plots (Upcoming)</span>
+conda<span class="w"> </span>install<span class="w"> </span>--yes<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>scikit-plots</span>
+</pre></div></div><p>In order to check your installation, you can use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class=""><span class="c1"># conda list               # show all installed packages in the environment</span>
+conda<span class="w"> </span>list<span class="w"> </span>scikit-plots<span class="w">    </span><span class="c1"># show scikit-plots version and location</span>
 
-<span class="c1">## (Optionally) Install the lost packages</span>
+<span class="c1"># Version Check</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import scikitplot; scikitplot.show_versions()&quot;</span>
+
+<span class="c1"># (Optionally) CLI Version Check</span>
+scikitplot<span class="w"> </span>--version
+scikitplot<span class="w"> </span>-V
+scikitplot<span class="w"> </span>-v</span>
+</pre></div></div><p>(Optionally) Also available Nightly Version <strong>can be cause conflict</strong> required <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">Environment</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class=""><span class="c1">## (Optionally) Install the lost packages &quot;Runtime dependencies&quot;</span>
 <span class="c1">## wget https://raw.githubusercontent.com/scikit-plots/scikit-plots/main/requirements/default.txt</span>
 curl<span class="w"> </span>-O<span class="w"> </span>https://raw.githubusercontent.com/scikit-plots/scikit-plots/main/requirements/default.txt
 pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>default.txt
 
-<span class="c1">## Try Ensure all dependencies installed</span>
-pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>-i<span class="w"> </span>https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple<span class="w"> </span>scikit-plots</span>
-</pre></div></div><p>In order to check your installation, you can use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="">conda<span class="w"> </span>list<span class="w"> </span>scikit-plots<span class="w">  </span><span class="c1"># show scikit-plots version and location</span>
-conda<span class="w"> </span>list<span class="w">               </span><span class="c1"># show all installed packages in the environment</span>
-python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import scikitplot; scikitplot.show_versions()&quot;</span></span>
+<span class="c1">## Try After Ensure all &quot;Runtime dependencies&quot; installed</span>
+<span class="c1"># pip install --extra-index-url https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple scikit-plots</span>
+pip<span class="w"> </span>install<span class="w"> </span>-i<span class="w"> </span>https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple<span class="w"> </span>scikit-plots</span>
 </pre></div></div></div>
 </div>
 </div>
@@ -895,7 +922,7 @@ reference and troubleshooting.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc4+git.20250429.5a22d2b 2025-04-29T12:20Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post1+git.20250627.a4c5b9e 2025-06-27T09:09Z.
       <br/>
     
   </p>

@@ -11,12 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/modules/generated/scikitplot.api.metrics.plot_silhouette.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="Gallery examples: plot_silhouette with examples" />
-<meta property="og:image" content="https://scikit-plots.github.io/stable/_images/scikitplot-api-metrics-plot_silhouette-1.png" />
-<meta property="og:image:alt" content="Silhouette Plot" />
-<meta name="description" content="Gallery examples: plot_silhouette with examples" />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
+<meta property="og:image:alt" content="scikit-plots" />
 
-    <title>plot_silhouette &#8212; scikit-plots 0.4.0rc4+git.20250429.5a22d2b documentation</title>
+    <title>plot_silhouette &#8212; scikit-plots 0.4.0 documentation</title>
   
   
   
@@ -61,7 +59,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=6dcf6205"></script>
+    <script src="../../_static/documentation_options.js?v=6c02275b"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -75,9 +73,9 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc4';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
-            false;
+            true;
         </script>
     <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
     <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
@@ -560,6 +558,9 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.html">scikitplot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.config_context.html">config_context</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.get_config.html">get_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.get_logger.html">get_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.logger.html">logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.reset.html">reset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.set_config.html">set_config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.show_config.html">show_config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.show_versions.html">show_versions</a></li>
@@ -583,6 +584,19 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.api._utils.cumulative_gain_curve.html">cumulative_gain_curve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.api._utils.binary_ks_curve.html">binary_ks_curve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.api._utils.validate_plotting_kwargs.html">validate_plotting_kwargs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.doremi.html">scikitplot.doremi</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.ENVELOPES.html">ENVELOPES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.compose_as_waveform.html">compose_as_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.play_waveform.html">play_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.plot_waveform.html">plot_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.save_waveform.html">save_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.save_waveform_as_mp3.html">save_waveform_as_mp3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.sheet_to_note.html">sheet_to_note</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.sheet_converter.html">sheet_converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.serialize_sheet.html">serialize_sheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.export_sheet.html">export_sheet</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -636,20 +650,18 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.WARNING.html">WARNING</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.AlwaysStdErrHandler.html">AlwaysStdErrHandler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.GoogleLogFormatter.html">GoogleLogFormatter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="critical-function.html">critical</a></li>
-<li class="toctree-l2"><a class="reference internal" href="debug-function.html">debug</a></li>
-<li class="toctree-l2"><a class="reference internal" href="error-function.html">error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="critical-func.html">critical</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug-func.html">debug</a></li>
+<li class="toctree-l2"><a class="reference internal" href="error-func.html">error</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.error_log.html">error_log</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fatal-function.html">fatal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fatal-func.html">fatal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.getEffectiveLevel.html">getEffectiveLevel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.get_logger.html">get_logger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.log_if.html">log_if</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.setLevel.html">setLevel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.vlog.html">vlog</a></li>
-<li class="toctree-l2"><a class="reference internal" href="warn-function.html">warn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="warning-function.html">warning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.SpLogger.html">SpLogger</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.sp_logger.html">sp_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="warn-func.html">warn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="warning-func.html">warning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.stats.html">scikitplot.stats</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -759,7 +771,7 @@
 <h1>plot_silhouette<a class="headerlink" href="#plot-silhouette" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.api.metrics.plot_silhouette">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.api.metrics.</span></span><span class="sig-name descname"><span class="pre">plot_silhouette</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cluster_labels</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'euclidean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Silhouette</span> <span class="pre">Analysis'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'large'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'medium'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/5a22d2b/scikitplot/api/metrics/_clustering/_silhouette.py#L32"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.api.metrics.plot_silhouette" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.api.metrics.</span></span><span class="sig-name descname"><span class="pre">plot_silhouette</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cluster_labels</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'euclidean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Silhouette</span> <span class="pre">Analysis'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'large'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'medium'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/a4c5b9e/scikitplot/api/metrics/_clustering/_silhouette.py#L40"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.api.metrics.plot_silhouette" title="Link to this definition">#</a></dt>
 <dd><p>Plots silhouette analysis of clusters provided.</p>
 <p>Silhouette analysis is a method of interpreting and validating the consistency
 within clusters of data. It measures how similar an object is to its own
@@ -781,18 +793,6 @@ use “precomputed” as the metric.</p>
 </dd>
 <dt><strong>title</strong><span class="classifier">str, optional, default=’Silhouette Analysis’</span></dt><dd><p>Title of the generated plot.</p>
 </dd>
-<dt><strong>ax</strong><span class="classifier">list of matplotlib.axes.Axes, optional, default=None</span></dt><dd><p>The axis to plot the figure on. If None is passed in the current axes
-will be used (or generated if required).
-Axes like <code class="docutils literal notranslate"><span class="pre">fig.add_subplot(1,</span> <span class="pre">1,</span> <span class="pre">1)</span></code> or <code class="docutils literal notranslate"><span class="pre">plt.gca()</span></code></p>
-</dd>
-<dt><strong>fig</strong><span class="classifier">matplotlib.pyplot.figure, optional, default: None</span></dt><dd><p>The figure to plot the Visualizer on. If None is passed in the current
-plot will be used (or generated if required).</p>
-<div class="versionadded">
-<p><span class="versionmodified added">Added in version 0.3.9.</span></p>
-</div>
-</dd>
-<dt><strong>figsize</strong><span class="classifier">tuple of int, optional, default=None</span></dt><dd><p>Size of the figure (width, height) in inches.</p>
-</dd>
 <dt><strong>title_fontsize</strong><span class="classifier">str or int, optional, default=’large’</span></dt><dd><p>Font size for the plot title.</p>
 </dd>
 <dt><strong>text_fontsize</strong><span class="classifier">str or int, optional, default=’medium’</span></dt><dd><p>Font size for the text in the plot.</p>
@@ -811,11 +811,13 @@ See Matplotlib Colormap documentation for available choices.</p>
 <p><span class="versionmodified added">Added in version 0.3.9.</span></p>
 </div>
 </dd>
+<dt><strong>**kwargs: dict</strong></dt><dd><p>Generic keyword arguments.</p>
+</dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>matplotlib.axes.Axes</dt><dd><p>The axes on which the plot was drawn.</p>
+<dt><strong>ax</strong><span class="classifier">matplotlib.axes.Axes</span></dt><dd><p>The axes on which the plot was drawn.</p>
 </dd>
 </dl>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="references">
@@ -824,9 +826,87 @@ See Matplotlib Colormap documentation for available choices.</p>
 * <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.silhouette_score.html#">“scikit-learn silhouette_score”</a>.<a class="headerlink" href="#references" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 </div>
 </details></dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>ax</strong><span class="classifier">matplotlib.axes.Axes, optional, default=None</span></dt><dd><p>The axis to plot the figure on. If None is passed in the current axes
+will be used (or generated if required).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>fig</strong><span class="classifier">matplotlib.pyplot.figure, optional, default: None</span></dt><dd><p>The figure to plot the Visualizer on. If None is passed in the current
+plot will be used (or generated if required).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>figsize</strong><span class="classifier">tuple, optional, default=None</span></dt><dd><p>Width, height in inches.
+Tuple denoting figure size of the plot e.g. (12, 5)</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>nrows</strong><span class="classifier">int, optional, default=1</span></dt><dd><p>Number of rows in the subplot grid.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>ncols</strong><span class="classifier">int, optional, default=1</span></dt><dd><p>Number of columns in the subplot grid.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>plot_style</strong><span class="classifier">str, optional, default=None</span></dt><dd><p>Check available styles with “plt.style.available”. Examples include:
+[‘ggplot’, ‘seaborn’, ‘bmh’, ‘classic’, ‘dark_background’, ‘fivethirtyeight’,
+‘grayscale’, ‘seaborn-bright’, ‘seaborn-colorblind’, ‘seaborn-dark’,
+‘seaborn-dark-palette’, ‘tableau-colorblind10’, ‘fast’].</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>show_fig</strong><span class="classifier">bool, default=True</span></dt><dd><p>Show the plot.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>save_fig</strong><span class="classifier">bool, default=False</span></dt><dd><p>Save the plot.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>save_fig_filename</strong><span class="classifier">str, optional, default=’’</span></dt><dd><p>Specify the path and filetype to save the plot.
+If nothing specified, the plot will be saved as png
+inside <code class="docutils literal notranslate"><span class="pre">result_images</span></code> under to the current working directory.
+Defaults to plot image named to used <code class="docutils literal notranslate"><span class="pre">func.__name__</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>overwrite</strong><span class="classifier">bool, optional, default=True</span></dt><dd><p>If False and a file exists, auto-increments the filename to avoid overwriting.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>add_timestamp</strong><span class="classifier">bool, optional, default=False</span></dt><dd><p>Whether to append a timestamp to the filename.
+Default is False.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>verbose</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, enables verbose output with informative messages during execution.
+Useful for debugging or understanding internal operations such as backend selection,
+font loading, and file saving status. If False, runs silently unless errors occur.</p>
+<p>Default is False.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0: </span>The <code class="docutils literal notranslate"><span class="pre">verbose</span></code> parameter was added to control logging and user feedback verbosity.</p>
+</div>
+</dd>
+</dl>
+</dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_blobs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_iris</span> <span class="k">as</span> <span class="n">data_3_classes</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">skplt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">data_3_classes</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -838,18 +918,9 @@ See Matplotlib Colormap documentation for available choices.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">);</span>
 </pre></div>
 </div>
-<p>(<a class="reference download internal" download="" href="../../_downloads/1b35ca0cdd9d88eea26cd4777dc4f932/scikitplot-api-metrics-plot_silhouette-1.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/c173cd458e122a3ff955575f97a3a4e2/scikitplot-api-metrics-plot_silhouette-1.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>)</p>
-<figure class="align-center">
-<img alt="Silhouette Plot" class="plot-directive" src="../../_images/scikitplot-api-metrics-plot_silhouette-1.png" />
-</figure>
+<p>(<a class="reference download internal" download="" href="../../_downloads/1b35ca0cdd9d88eea26cd4777dc4f932/scikitplot-api-metrics-plot_silhouette-1.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>)</p>
 </dd></dl>
 
-<section id="gallery-examples">
-<h2>Gallery examples<a class="headerlink" href="#gallery-examples" title="Link to this heading">#</a></h2>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_silhouette function used by a scikit-learn clusterer."><img alt="" src="../../_images/sphx_glr_plot_silhouette_script_thumb.png" />
-<p><a class="reference internal" href="../../auto_examples/clustering/plot_silhouette_script.html#sphx-glr-auto-examples-clustering-plot-silhouette-script-py"><span class="std std-ref">plot_silhouette with examples</span></a></p>
-  <div class="sphx-glr-thumbnail-title">plot_silhouette with examples</div>
-</div></div></section>
 </section>
 
 
@@ -905,7 +976,6 @@ See Matplotlib Colormap documentation for available choices.</p>
     
 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.api.metrics.plot_silhouette"><code class="docutils literal notranslate"><span class="pre">plot_silhouette</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gallery-examples">Gallery examples</a></li>
 </ul>
 
 
@@ -946,7 +1016,7 @@ See Matplotlib Colormap documentation for available choices.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc4+git.20250429.5a22d2b 2025-04-29T12:20Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post1+git.20250627.a4c5b9e 2025-06-27T09:09Z.
       <br/>
     
   </p>

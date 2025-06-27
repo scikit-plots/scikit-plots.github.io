@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="This module contains functions related to kds. kds Plots: Let’s introduce the Gains, Lift and (cumulative) Response plots.. plot cumulative gain: plot_cumulative_gain The mathematical formulation i..." />
 
-    <title>KeyToDataScience &#8212; scikit-plots 0.4.0rc4+git.20250429.5a22d2b documentation</title>
+    <title>KeyToDataScience &#8212; scikit-plots 0.4.0 documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=6dcf6205"></script>
+    <script src="../../_static/documentation_options.js?v=6c02275b"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -75,9 +75,9 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc4';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
-            false;
+            true;
         </script>
     <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
     <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
@@ -85,7 +85,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="modelplotpy" href="modelplotpy.html" />
-    <link rel="prev" title="Decile-Wise Perfomance" href="index.html" />
+    <link rel="prev" title="Decile-Wise Performance" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.4" />
@@ -557,7 +557,7 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../api/index.html">Metric Perfomance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api/index.html">Metric Performance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../api/decomposition.html">Decomposition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/estimators.html">Estimators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/metrics.html">Metrics</a></li>
@@ -565,7 +565,7 @@
 </details></li>
 </ul>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Decile-Wise Perfomance</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Decile-Wise Performance</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">KeyToDataScience</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modelplotpy.html">modelplotpy</a></li>
 </ul>
@@ -578,10 +578,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../visualkeras/index.html">Visualkeras (experimental)</a></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../doremi/index.html">DoReMi</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../sp_logging/index.html">Logging System</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../_xp_core_lib/index.html">Array API support (experimental)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_lib/index.html">Array API support (experimental)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Development</span></p>
 <ul class="nav bd-sidenav">
@@ -628,7 +631,7 @@
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">User Guide</a></li>
     
     
-    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Decile-Wise Perfomance</a></li>
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Decile-Wise Performance</a></li>
     
     <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">KeyToDataScience</span></li>
   </ul>
@@ -667,15 +670,15 @@
 <p>The mathematical formulation is the following:</p>
 <div class="math notranslate nohighlight">
 \[\hat{K}\]</div>
-<p>Trained model of <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="(in scikit-learn v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a> and
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></a>. For an example of
+<p>Trained model of <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a> and
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></a>. For an example of
 performing image:</p>
 <p class="rubric">Examples</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../../auto_examples/kds/plot_cumulative_gain_script.html#sphx-glr-auto-examples-kds-plot-cumulative-gain-script-py"><span class="std std-ref">plot_cumulative_gain with examples</span></a>: Example usage of
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="(in scikit-learn v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a> using the iris dataset</p></li>
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a> using the iris dataset</p></li>
 <li><p><a class="reference internal" href="../../auto_examples/kds/plot_cumulative_gain_script.html#sphx-glr-auto-examples-kds-plot-cumulative-gain-script-py"><span class="std std-ref">plot_cumulative_gain with examples</span></a>: Example usage of
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></a> using the iris dataset</p></li>
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></a> using the iris dataset</p></li>
 </ul>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="references">
 <summary class="sd-summary-title sd-card-header">
@@ -692,15 +695,15 @@ performing image:</p>
 <p class="admonition-title">Note</p>
 <p><strong>Lift Curve</strong></p>
 </div>
-<p>Trained model of <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="(in scikit-learn v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a> and
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></a>. For an example of
+<p>Trained model of <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a> and
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></a>. For an example of
 performing image:</p>
 <p class="rubric">Examples</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../../auto_examples/kds/plot_lift_script.html#sphx-glr-auto-examples-kds-plot-lift-script-py"><span class="std std-ref">plot_lift with examples</span></a>: Example usage of
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="(in scikit-learn v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a> using the iris dataset</p></li>
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a> using the iris dataset</p></li>
 <li><p><a class="reference internal" href="../../auto_examples/kds/plot_lift_script.html#sphx-glr-auto-examples-kds-plot-lift-script-py"><span class="std std-ref">plot_lift with examples</span></a>: Example usage of
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></a> using the iris dataset</p></li>
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></a> using the iris dataset</p></li>
 </ul>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="references-2">
 <summary class="sd-summary-title sd-card-header">
@@ -713,15 +716,15 @@ performing image:</p>
 <section id="plot-ks-statistic">
 <span id="id3"></span><h3>plot_ks_statistic<a class="headerlink" href="#plot-ks-statistic" title="Link to this heading">#</a></h3>
 <p><a class="reference internal" href="../../modules/generated/scikitplot.kds.plot_ks_statistic.html#scikitplot.kds.plot_ks_statistic" title="scikitplot.kds.plot_ks_statistic"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_ks_statistic</span></code></a></p>
-<p>Trained model of <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="(in scikit-learn v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a> and
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></a>. For an example of
+<p>Trained model of <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a> and
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></a>. For an example of
 performing image:</p>
 <p class="rubric">Examples</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../../auto_examples/kds/plot_ks_statistic_script.html#sphx-glr-auto-examples-kds-plot-ks-statistic-script-py"><span class="std std-ref">plot_ks_statistic with examples</span></a>: Example usage of
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="(in scikit-learn v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a> using the iris dataset</p></li>
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a> using the iris dataset</p></li>
 <li><p><a class="reference internal" href="../../auto_examples/kds/plot_ks_statistic_script.html#sphx-glr-auto-examples-kds-plot-ks-statistic-script-py"><span class="std std-ref">plot_ks_statistic with examples</span></a>: Example usage of
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></a> using the iris dataset</p></li>
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></a> using the iris dataset</p></li>
 </ul>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" id="references-3">
 <summary class="sd-summary-title sd-card-header">
@@ -734,8 +737,8 @@ performing image:</p>
 <section id="report">
 <span id="id4"></span><h3>report<a class="headerlink" href="#report" title="Link to this heading">#</a></h3>
 <p><a class="reference internal" href="../../modules/generated/scikitplot.kds.report.html#scikitplot.kds.report" title="scikitplot.kds.report"><code class="xref py py-func docutils literal notranslate"><span class="pre">report</span></code></a></p>
-<p>Trained model of <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="(in scikit-learn v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a> and
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></a>. For an example of
+<p>Trained model of <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a> and
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></a>. For an example of
 performing image:</p>
 <p class="rubric">Examples</p>
 <ul class="simple">
@@ -768,7 +771,7 @@ performing image:</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Decile-Wise Perfomance</p>
+        <p class="prev-next-title">Decile-Wise Performance</p>
       </div>
     </a>
     <a class="right-next"
@@ -847,7 +850,7 @@ performing image:</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc4+git.20250429.5a22d2b 2025-04-29T12:20Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post1+git.20250627.a4c5b9e 2025-06-27T09:09Z.
       <br/>
     
   </p>

@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="Workflow summary: To keep your work well organized, with readable history, and in turn make it easier for project maintainers (that might be you) to see what you’ve done, and why you did it, we rec..." />
 
-    <title>Development Workflow Guidelines &#8212; scikit-plots 0.4.0rc4+git.20250429.5a22d2b documentation</title>
+    <title>Development Workflow Guidelines &#8212; scikit-plots 0.4.0 documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=6dcf6205"></script>
+    <script src="../_static/documentation_options.js?v=6c02275b"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -74,9 +74,9 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc4';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
-            false;
+            true;
         </script>
     <script src="../_static/scripts/dropdown.js?v=e2048168"></script>
     <script src="../_static/scripts/version-switcher.js?v=9bbada16"></script>
@@ -372,8 +372,10 @@
       
       
       
+        
+      
       <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
         
 
   
@@ -547,15 +549,6 @@
       </div>
     
   </div>
-  
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-<nav class="bd-docs-nav bd-links"
-     aria-label="Section Navigation">
-  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"></div>
-</nav></div>
-    </div>
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
@@ -910,7 +903,7 @@ Successfully<span class="w"> </span>rebased<span class="w"> </span>and<span clas
 6ad92e5<span class="w"> </span>*<span class="w"> </span>masked<span class="w"> </span>is<span class="w"> </span>now<span class="w"> </span>an<span class="w"> </span>instance<span class="w"> </span>of<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>object,<span class="w"> </span>MaskedConstant
 </pre></div>
 </div>
-<p>If it went wrong, recovery is again possible as explained <a class="reference internal" href="#recovering-from-mess-up"><span class="std std-ref">above</span></a>.</p>
+<p>If it went wrong, recovery is again possible as explained <a class="reference internal" href="guide_git_resources.html#recovering-from-mess-up"><span class="std std-ref">above</span></a>.</p>
 <p>If you have not yet pushed this branch to github, you can carry on as normal,
 however if you <em>have</em> already pushed this commit see <a class="reference internal" href="#force-push"><span class="std std-ref">Push with force</span></a> for how
 to replace your already published commits with the new ones.</p>
@@ -965,7 +958,7 @@ command can be written more succinctly as:</p>
 </pre></div>
 </div>
 <p>If it doesn’t look good you may need to have a look at
-<a class="reference internal" href="#recovering-from-mess-up"><span class="std std-ref">Recover from mistakes</span></a>.</p>
+<a class="reference internal" href="guide_git_resources.html#recovering-from-mess-up"><span class="std std-ref">Recovering from mess-ups</span></a>.</p>
 <p>If you have made changes to files that have also changed in <code class="docutils literal notranslate"><span class="pre">main</span></code>, this may
 generate merge conflicts that you need to resolve - see the <a class="reference external" href="https://git-scm.com/docs/git-rebase">git rebase</a> man
 page for some instructions at the end of the “Description” section. There is
@@ -977,7 +970,7 @@ to replace your already published commits with the new ones.</p>
 <section id="push-with-force">
 <span id="force-push"></span><h3>Push with force<a class="headerlink" href="#push-with-force" title="Link to this heading">#</a></h3>
 <p>If you have in some way re-written already pushed history (e.g. via
-<a class="reference internal" href="#rewriting-commit-history"><span class="std std-ref">Rewrite commit history</span></a> or <a class="reference internal" href="#rebase-on-main"><span class="std std-ref">Rebase onto upstream/main</span></a>) leaving you with
+<a class="reference internal" href="guide_git_resources.html#rewriting-commit-history"><span class="std std-ref">Rewriting commit history</span></a> or <a class="reference internal" href="#rebase-on-main"><span class="std std-ref">Rebase onto upstream/main</span></a>) leaving you with
 a git history that looks something like</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  A&#39;--E cool-feature
  /
@@ -1074,7 +1067,7 @@ pull request.</p>
 <div class="line">Azure pipelines</div>
 </div>
 </th>
-<td><p><a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/testing.html#testing" title="(in xarray v2025.3.2.dev0)"><span class="xref std std-ref">tests</span></a></p></td>
+<td><p><a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/testing.html#testing" title="(in xarray v2025.6.2)"><span class="xref std std-ref">tests</span></a></p></td>
 <td><div class="line-block">
 <div class="line">Search the log for <code class="docutils literal notranslate"><span class="pre">FAILURES</span></code>. Subsequent section should contain information
 on failed tests.</div>
@@ -1237,7 +1230,7 @@ see <a class="reference external" href="https://docs.github.com/en/actions/manag
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc4+git.20250429.5a22d2b 2025-04-29T12:20Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post1+git.20250627.a4c5b9e 2025-06-27T09:09Z.
       <br/>
     
   </p>

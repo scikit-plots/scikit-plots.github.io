@@ -24,13 +24,32 @@ plot_residuals_distribution with examples
 An example showing the :py:func:`~scikitplot.api.metrics.plot_residuals_distribution` function
 used by a scikit-learn regressor.
 
-.. GENERATED FROM PYTHON SOURCE LINES 8-49
+.. GENERATED FROM PYTHON SOURCE LINES 8-12
 
 .. code-block:: Python
+   :lineno-start: 9
 
 
     # Authors: The scikit-plots developers
     # SPDX-License-Identifier: BSD-3-Clause
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 13-15
+
+Import scikit-plots
+------------------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 15-31
+
+.. code-block:: Python
+   :lineno-start: 16
+
 
     from sklearn.datasets import (
         load_diabetes as load_data,
@@ -44,18 +63,72 @@ used by a scikit-learn regressor.
     # importing pylab or pyplot
     import matplotlib.pyplot as plt
 
-    # Import scikit-plot
+    # Import scikit-plots
     import scikitplot as sp
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 32-34
+
+Loading the dataset
+------------------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 34-39
+
+.. code-block:: Python
+   :lineno-start: 35
+
 
     # Load the data
     X, y = load_data(return_X_y=True, as_frame=True)
     X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.5, random_state=0)
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 40-42
+
+Model Training
+--------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 42-49
+
+.. code-block:: Python
+   :lineno-start: 43
+
 
     # Create an instance of the LogisticRegression
     model = LinearRegression().fit(X_train, y_train)
 
     # Perform predictions
     y_val_pred = model.predict(X_val)
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 50-52
+
+Plot!
+------------------------
+
+.. GENERATED FROM PYTHON SOURCE LINES 52-65
+
+.. code-block:: Python
+   :lineno-start: 53
+
 
     # Plot!
     ax = sp.metrics.plot_residuals_distribution(
@@ -84,13 +157,13 @@ used by a scikit-learn regressor.
 
     Fitted mean-mu (μ): -4.4509
     Fitted std (σ)    : 55.2768
-    [INFO] Saving path to: /home/circleci/repo/galleries/examples/regression/result_images/plot_residuals_distribution_20250429_122122Z.png
-    [INFO] Plot saved to: /home/circleci/repo/galleries/examples/regression/result_images/plot_residuals_distribution_20250429_122122Z.png
+    [INFO] Saving path to: /home/circleci/repo/galleries/examples/regression/result_images/plot_residuals_distribution_20250627_090925Z.png
+    [INFO] Plot saved to: /home/circleci/repo/galleries/examples/regression/result_images/plot_residuals_distribution_20250627_090925Z.png
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 50-67
+.. GENERATED FROM PYTHON SOURCE LINES 66-83
 
 .. admonition:: References
 
@@ -113,7 +186,7 @@ used by a scikit-learn regressor.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.730 seconds)
+   **Total running time of the script:** (0 minutes 0.721 seconds)
 
 
 .. _sphx_glr_download_auto_examples_regression_plot_residuals_distribution_script.py:
@@ -125,7 +198,7 @@ used by a scikit-learn regressor.
     .. container:: binder-badge
 
       .. image:: images/binder_badge_logo.svg
-        :target: https://mybinder.org/v2/gh/scikit-plots/scikit-plots/maintenance/0.4.X?urlpath=lab/tree/notebooks/auto_examples/regression/plot_residuals_distribution_script.ipynb
+        :target: https://mybinder.org/v2/gh/scikit-plots/scikit-plots/maintenance/0...X?urlpath=lab/tree/notebooks/auto_examples/regression/plot_residuals_distribution_script.ipynb
         :alt: Launch binder
         :width: 150 px
 

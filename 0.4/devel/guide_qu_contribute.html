@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="Creating a development environment: To make and test code changes and build the documentation locally you will need to create a development environment. If you run into problems at any stage do not..." />
 
-    <title>Quickstart Contributing Guidelines &#8212; scikit-plots 0.4.0rc4+git.20250429.5a22d2b documentation</title>
+    <title>Quickstart Contributing Guidelines &#8212; scikit-plots 0.4.0 documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=6dcf6205"></script>
+    <script src="../_static/documentation_options.js?v=6c02275b"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -74,9 +74,9 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc4';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
-            false;
+            true;
         </script>
     <script src="../_static/scripts/dropdown.js?v=e2048168"></script>
     <script src="../_static/scripts/version-switcher.js?v=9bbada16"></script>
@@ -372,8 +372,10 @@
       
       
       
+        
+      
       <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
         
 
   
@@ -548,15 +550,6 @@
     
   </div>
   
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-<nav class="bd-docs-nav bd-links"
-     aria-label="Section Navigation">
-  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"></div>
-</nav></div>
-    </div>
-  
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
@@ -615,7 +608,7 @@ to <a class="reference external" href="https://scikit-plots.github.io/dev/help.h
 contribute, you will need a <a class="reference external" href="https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github">GitHub account</a>.</p>
 <p>We use <a class="reference external" href="https://git-scm.com/">Git</a> for version control and to allow many people to
 work together on the project. See the <a class="reference external" href="https://docs.github.com/en/get-started/quickstart/set-up-git">GitHub quickstart instructions</a> for installing and
-configuring git, as well as the <a class="reference external" href="https://scikit-image.org/docs/stable/gitwash/git_resources.html#git-resources" title="(in skimage v0.25.2)"><span>git resources</span></a> page.</p>
+configuring git, as well as the <a class="reference internal" href="guide_git_resources.html#git-resources"><span class="std std-ref">Git Resources Guidelines</span></a> page.</p>
 <p>If you are new to contributing to projects through forking on GitHub, see the
 <a class="reference external" href="https://docs.github.com/en/get-started/quickstart/contributing-to-projects">GitHub documentation for contributing to projects</a>.</p>
 <div class="admonition important">
@@ -666,6 +659,8 @@ git<span class="w"> </span>clone<span class="w"> </span>https://github.com/YOUR-
 <span class="nb">cd</span><span class="w"> </span>scikit-plots
 </pre></div>
 </div>
+<section id="initialize-and-fetch-submodules-not-needed-every-time">
+<h3>Initialize and Fetch Submodules (Not Needed Every Time):<a class="headerlink" href="#initialize-and-fetch-submodules-not-needed-every-time" title="Link to this heading">#</a></h3>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">## Or use `git config ...` to add `scikit-plots` in git safe dirs</span>
 bash<span class="w"> </span>docker/script/safe_dirs.sh<span class="w">  </span><span class="c1"># add safe directories for git</span>
 
@@ -697,6 +692,7 @@ git<span class="w"> </span>fetch<span class="w"> </span>upstream<span class="w">
 </pre></div>
 </div>
 </section>
+</section>
 <section id="create-an-isolated-development-environment">
 <span id="create-isolated-env"></span><h2>Create an isolated development environment<a class="headerlink" href="#create-an-isolated-development-environment" title="Link to this heading">#</a></h2>
 <p>A key requirement is to have an isolated Python environment, meaning that it is
@@ -712,16 +708,21 @@ manager provided by <a class="reference external" href="https://github.com/conda
 popular choice and generally works well, especially for newcomers. It is easy to install
 and use on all platforms and it makes it easy to install different Python versions which
 can be useful for testing.</p>
+<section id="install-miniforge-and-conda">
+<h3>Install miniforge and conda<a class="headerlink" href="#install-miniforge-and-conda" title="Link to this heading">#</a></h3>
 <p>If you do not already have <code class="docutils literal notranslate"><span class="pre">conda</span></code> installed, <a class="reference external" href="https://github.com/conda-forge/miniforge/blob/main/README.md">download and install miniforge</a>. The details depend on
 your system but the end result is to provide a <code class="docutils literal notranslate"><span class="pre">conda</span></code> executable that you can use
 to create and manage isolated Python environments.</p>
 <p>Now create and activate an <code class="docutils literal notranslate"><span class="pre">py311</span></code> conda environment using the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># (Optionally) Can be run on `conda base` or `venv` env</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># (Optionally) Docker also created env `py311` ready to use</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># (Optionally) Can be run on mamba (or conda) `conda base` or `venv` env</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conda</span> <span class="n">info</span> <span class="o">-</span><span class="n">e</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mamba</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">py311</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.11</span> <span class="n">ipykernel</span> <span class="n">graphviz</span> <span class="o">-</span><span class="n">y</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">conda</span> <span class="n">activate</span> <span class="n">py311</span>
 </pre></div>
 </div>
 <p>Note the <code class="docutils literal notranslate"><span class="pre">graphviz</span></code> package is required for building the documentation.</p>
+</section>
 <section id="install-the-development-version-of-scikit-plots">
 <h3>Install the development version of scikit-plots<a class="headerlink" href="#install-the-development-version-of-scikit-plots" title="Link to this heading">#</a></h3>
 <p>Now you can install the development version of <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> into your new environment. This
@@ -763,7 +764,7 @@ single sub-package (e.g. <a class="reference internal" href="../user_guide/decil
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pytest</span>
 </pre></div>
 </div>
-<p>Details on running and writing tests can be found in the <a class="reference external" href="https://numpy.org/doc/stable/reference/testing.html#testing-guidelines" title="(in NumPy v2.2)"><span>Testing guidelines</span></a>
+<p>Details on running and writing tests can be found in the <a class="reference external" href="https://numpy.org/doc/stable/reference/testing.html#testing-guidelines" title="(in NumPy v2.3)"><span>Testing guidelines</span></a>
 section.</p>
 </section>
 </section>
@@ -796,11 +797,11 @@ resulting in lost time (yours and CI resources).</p>
 </pre></div>
 </div>
 <p>Now all of the styling checks will be run each time you commit changes, ensuring that
-the CI formatting checks for your <span class="xref std std-ref">pull request</span> will
+the CI formatting checks for your <a class="reference internal" href="#quickstart-pull-request"><span class="std std-ref">pull request</span></a> will
 pass.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>To learn more about pre-commit, see the <span class="xref std std-ref">pre-commit</span> section.</p>
+<p>To learn more about pre-commit, see the <a class="reference internal" href="guide_devel_details.html#pre-commit"><span class="std std-ref">Pre-commit</span></a> section.</p>
 </div>
 </section>
 </section>
@@ -822,6 +823,9 @@ First ensure it’s up-to-date with the <code class="docutils literal notranslat
 <span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">switch</span> <span class="n">main</span>
 </pre></div>
 </div>
+</section>
+<section id="recommended-use-fast-forward-only">
+<h3>(Recommended) Use Fast-forward only:<a class="headerlink" href="#recommended-use-fast-forward-only" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Fast-forward only: Updates your branch only if it can be fast-forwarded (i.e., no local commits that diverge from upstream/main).</p></li>
 <li><p>If divergence exists: Git refuses to pull, and you must manually resolve the situation (e.g., using git rebase or git merge).</p></li>
@@ -850,6 +854,9 @@ A---B---C---D---E---F  (upstream/main)
           X---Y  (local main)  ❌ (Fast-forward not possible)
 </pre></div>
 </div>
+</section>
+<section id="optionally-rebases">
+<h3>(Optionally) Rebases:<a class="headerlink" href="#optionally-rebases" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Rebases your local commits on top of the latest upstream/main</p></li>
 <li><p>Rewrites history by replaying your commits on top of upstream/main, making the history linear</p></li>
@@ -910,11 +917,11 @@ code or documentation! At a high level this breaks into a few parts:</p>
 <li><p><strong>Make changes</strong>: Make the changes you want to make. This could be fixing a bug,
 adding a new feature, or updating the documentation.</p></li>
 <li><p><strong>Test changes</strong>: For code changes, ensure that they work as expected following the
-process outlined in the <a class="reference external" href="https://numpy.org/doc/stable/reference/testing.html#testing-guidelines" title="(in NumPy v2.2)"><span>Testing guidelines</span></a> section.</p></li>
+process outlined in the <a class="reference external" href="https://numpy.org/doc/stable/reference/testing.html#testing-guidelines" title="(in NumPy v2.3)"><span>Testing guidelines</span></a> section.</p></li>
 <li><p><strong>Build documentation</strong>: If you are updating the documentation, you will want to
 <span class="xref std std-ref">build the documentation</span> to ensure that it looks good.</p></li>
 <li><p><strong>Add a changelog entry</strong>: For most code changes you will need to
-<span class="xref std std-ref">add-changelog</span>.</p></li>
+<a class="reference internal" href="guide_devel_details.html#add-changelog"><span class="std std-ref">Add a changelog entry</span></a>.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -933,7 +940,7 @@ git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </sp
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Never merge changes from <code class="docutils literal notranslate"><span class="pre">upstream/main</span></code> into your feature branch. If
-changes in <code class="docutils literal notranslate"><span class="pre">main</span></code> require changes to our code you must <span class="xref std std-ref">rebase</span>.</p>
+changes in <code class="docutils literal notranslate"><span class="pre">main</span></code> require changes to our code you must <a class="reference internal" href="guide_devel_details.html#rebase"><span class="std std-ref">Rebase if necessary</span></a>.</p>
 </div>
 <section id="pushing-your-changes">
 <span id="contributing-push-code"></span><h3>Pushing your changes<a class="headerlink" href="#pushing-your-changes" title="Link to this heading">#</a></h3>
@@ -959,7 +966,7 @@ code from your local repository becomes available to the GitHub community to rev
 merged into project to appear the in the next release.</p>
 <p>Most of the time you can just follow the link that <code class="docutils literal notranslate"><span class="pre">git</span></code> provided when you pushed
 your branch and create the PR. If you don’t have that link (and for a few more details),
-you can follow the <span class="xref std std-ref">pull-request</span> instructions.</p>
+you can follow the <a class="reference internal" href="guide_devel_details.html#pull-request"><span class="std std-ref">Make a pull request</span></a> instructions.</p>
 <p>Follow the instructions in the PR template and fill it out as completely as possible.</p>
 <p>If your PR is still a work in progress then instead of clicking “Create pull request”,
 click on the small down arrow next to it and select “<a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests">Create draft pull request</a>”.
@@ -984,8 +991,7 @@ again to address any feedback and update your pull request:</p>
 and restart the <a class="reference external" href="contributing_ci">Continuous Integration</a> checks.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>At this point please read (or at least skim) the sections <span class="xref std std-ref">revise
-and push</span>, <span class="xref std std-ref">rebase</span>, and <span class="xref std std-ref">squash-if-necessary</span>. The information here
+<p>At this point please read (or at least skim) the sections <a class="reference internal" href="guide_devel_details.html#revise-and-push"><span class="std std-ref">Do Not Create a Merge Commit</span></a>, <a class="reference internal" href="guide_devel_details.html#rebase"><span class="std std-ref">Rebase if necessary</span></a>, and <a class="reference internal" href="guide_devel_details.html#squash-if-necessary"><span class="std std-ref">Squash if necessary</span></a>. The information here
 covers situations that happen on occasion and can be cause trouble. As always if
 you have questions, ask for help from the maintainer reviewing your PR.</p>
 </div>
@@ -1046,8 +1052,12 @@ required reviewers and a faster review process.</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-a-c-compiler-if-needed">Install a C compiler if needed</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-clone-of-scikit-plots">Create a clone of scikit-plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-clone-of-scikit-plots">Create a clone of scikit-plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-fetch-submodules-not-needed-every-time">Initialize and Fetch Submodules (Not Needed Every Time):</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-isolated-development-environment">Create an isolated development environment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-miniforge-and-conda">Install miniforge and conda</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-development-version-of-scikit-plots">Install the development version of scikit-plots</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-the-build-scikit-plots">Checking the build scikit-plots</a></li>
 </ul>
@@ -1057,6 +1067,8 @@ required reviewers and a faster review process.</p></li>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-submitting-a-pull-request">Creating and submitting a pull request</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-branch">Creating a branch</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-use-fast-forward-only">(Recommended) Use Fast-forward only:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optionally-rebases">(Optionally) Rebases:</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-code-or-documentation-changes">Making code or documentation changes</a><ul class="nav section-nav flex-column">
@@ -1103,7 +1115,7 @@ required reviewers and a faster review process.</p></li>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc4+git.20250429.5a22d2b 2025-04-29T12:20Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post1+git.20250627.a4c5b9e 2025-06-27T09:09Z.
       <br/>
     
   </p>

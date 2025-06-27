@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/modules/generated/scikitplot.kds.plot_lift_decile_wise.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:image" content="https://scikit-plots.github.io/stable/_images/scikitplot-kds-plot_lift_decile_wise-1.png" />
-<meta property="og:image:alt" content="Lift Decile Wise Curves" />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
+<meta property="og:image:alt" content="scikit-plots" />
 
-    <title>plot_lift_decile_wise &#8212; scikit-plots 0.4.0rc4+git.20250429.5a22d2b documentation</title>
+    <title>plot_lift_decile_wise &#8212; scikit-plots 0.4.0 documentation</title>
   
   
   
@@ -59,7 +59,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=6dcf6205"></script>
+    <script src="../../_static/documentation_options.js?v=6c02275b"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -73,9 +73,9 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc4';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
-            false;
+            true;
         </script>
     <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
     <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
@@ -558,6 +558,9 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.html">scikitplot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.config_context.html">config_context</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.get_config.html">get_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.get_logger.html">get_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.logger.html">logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.reset.html">reset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.set_config.html">set_config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.show_config.html">show_config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.show_versions.html">show_versions</a></li>
@@ -581,6 +584,19 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.api._utils.cumulative_gain_curve.html">cumulative_gain_curve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.api._utils.binary_ks_curve.html">binary_ks_curve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.api._utils.validate_plotting_kwargs.html">validate_plotting_kwargs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.doremi.html">scikitplot.doremi</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.ENVELOPES.html">ENVELOPES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.compose_as_waveform.html">compose_as_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.play_waveform.html">play_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.plot_waveform.html">plot_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.save_waveform.html">save_waveform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.save_waveform_as_mp3.html">save_waveform_as_mp3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.sheet_to_note.html">sheet_to_note</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.sheet_converter.html">sheet_converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.serialize_sheet.html">serialize_sheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.doremi.export_sheet.html">export_sheet</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -634,20 +650,18 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.WARNING.html">WARNING</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.AlwaysStdErrHandler.html">AlwaysStdErrHandler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.GoogleLogFormatter.html">GoogleLogFormatter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="critical-function.html">critical</a></li>
-<li class="toctree-l2"><a class="reference internal" href="debug-function.html">debug</a></li>
-<li class="toctree-l2"><a class="reference internal" href="error-function.html">error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="critical-func.html">critical</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug-func.html">debug</a></li>
+<li class="toctree-l2"><a class="reference internal" href="error-func.html">error</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.error_log.html">error_log</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fatal-function.html">fatal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fatal-func.html">fatal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.getEffectiveLevel.html">getEffectiveLevel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.get_logger.html">get_logger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.log_if.html">log_if</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.setLevel.html">setLevel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.vlog.html">vlog</a></li>
-<li class="toctree-l2"><a class="reference internal" href="warn-function.html">warn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="warning-function.html">warning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.SpLogger.html">SpLogger</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.sp_logging.sp_logger.html">sp_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="warn-func.html">warn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="warning-func.html">warning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.stats.html">scikitplot.stats</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -757,7 +771,7 @@
 <h1>plot_lift_decile_wise<a class="headerlink" href="#plot-lift-decile-wise" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.kds.plot_lift_decile_wise">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.kds.</span></span><span class="sig-name descname"><span class="pre">plot_lift_decile_wise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_probas</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Decile-wise</span> <span class="pre">Lift</span> <span class="pre">Plot'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'large'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'medium'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/5a22d2b/scikitplot/kds/_kds.py#L416"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.kds.plot_lift_decile_wise" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.kds.</span></span><span class="sig-name descname"><span class="pre">plot_lift_decile_wise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_probas</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Decile-wise</span> <span class="pre">Lift</span> <span class="pre">Plot'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'large'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'medium'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/a4c5b9e/scikitplot/kds/_kds.py#L455"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.kds.plot_lift_decile_wise" title="Link to this definition">#</a></dt>
 <dd><p>Generates the Decile-wise Lift Plot from labels and probabilities</p>
 <p>The lift curve is used to determine the effectiveness of a
 binary classifier. A detailed explanation can be found at
@@ -765,7 +779,7 @@ binary classifier. A detailed explanation can be found at
 The implementation here works only for binary classification.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl>
+<dd class="field-odd"><dl class="simple">
 <dt><strong>y_true</strong><span class="classifier">array-like, shape (n_samples,)</span></dt><dd><p>Ground truth (correct) target values.</p>
 </dd>
 <dt><strong>y_probas</strong><span class="classifier">array-like, shape (n_samples, n_classes)</span></dt><dd><p>Prediction probabilities for each class returned by a classifier.</p>
@@ -778,16 +792,90 @@ The implementation here works only for binary classification.</p>
 <dt><strong>text_fontsize</strong><span class="classifier">str or int, optional, default=10</span></dt><dd><p>Font size for the text in the plot. Use e.g., “small”, “medium”, “large” or integer-values
 (8, 10, 12, etc.).</p>
 </dd>
-<dt><strong>figsize</strong><span class="classifier">tuple of int, optional, default=None</span></dt><dd><p>Tuple denoting figure size of the plot (e.g., (6, 6)).</p>
-<div class="versionadded">
-<p><span class="versionmodified added">Added in version 0.3.9.</span></p>
-</div>
+<dt><strong>**kwargs</strong><span class="classifier">dict, optional</span></dt><dd><p>Generic keyword arguments.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>matplotlib.axes.Axes</dt><dd><p>The axes with the plotted Decile-wise Lift curves.</p>
+<dt><strong>ax</strong><span class="classifier">matplotlib.axes.Axes</span></dt><dd><p>The axes with the plotted Decile-wise Lift curves.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>ax</strong><span class="classifier">matplotlib.axes.Axes, optional, default=None</span></dt><dd><p>The axis to plot the figure on. If None is passed in the current axes
+will be used (or generated if required).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>fig</strong><span class="classifier">matplotlib.pyplot.figure, optional, default: None</span></dt><dd><p>The figure to plot the Visualizer on. If None is passed in the current
+plot will be used (or generated if required).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>figsize</strong><span class="classifier">tuple, optional, default=None</span></dt><dd><p>Width, height in inches.
+Tuple denoting figure size of the plot e.g. (12, 5)</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>nrows</strong><span class="classifier">int, optional, default=1</span></dt><dd><p>Number of rows in the subplot grid.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>ncols</strong><span class="classifier">int, optional, default=1</span></dt><dd><p>Number of columns in the subplot grid.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>plot_style</strong><span class="classifier">str, optional, default=None</span></dt><dd><p>Check available styles with “plt.style.available”. Examples include:
+[‘ggplot’, ‘seaborn’, ‘bmh’, ‘classic’, ‘dark_background’, ‘fivethirtyeight’,
+‘grayscale’, ‘seaborn-bright’, ‘seaborn-colorblind’, ‘seaborn-dark’,
+‘seaborn-dark-palette’, ‘tableau-colorblind10’, ‘fast’].</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>show_fig</strong><span class="classifier">bool, default=True</span></dt><dd><p>Show the plot.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>save_fig</strong><span class="classifier">bool, default=False</span></dt><dd><p>Save the plot.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>save_fig_filename</strong><span class="classifier">str, optional, default=’’</span></dt><dd><p>Specify the path and filetype to save the plot.
+If nothing specified, the plot will be saved as png
+inside <code class="docutils literal notranslate"><span class="pre">result_images</span></code> under to the current working directory.
+Defaults to plot image named to used <code class="docutils literal notranslate"><span class="pre">func.__name__</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>overwrite</strong><span class="classifier">bool, optional, default=True</span></dt><dd><p>If False and a file exists, auto-increments the filename to avoid overwriting.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>add_timestamp</strong><span class="classifier">bool, optional, default=False</span></dt><dd><p>Whether to append a timestamp to the filename.
+Default is False.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0.</span></p>
+</div>
+</dd>
+<dt><strong>verbose</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, enables verbose output with informative messages during execution.
+Useful for debugging or understanding internal operations such as backend selection,
+font loading, and file saving status. If False, runs silently unless errors occur.</p>
+<p>Default is False.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.4.0: </span>The <code class="docutils literal notranslate"><span class="pre">verbose</span></code> parameter was added to control logging and user feedback verbosity.</p>
+</div>
 </dd>
 </dl>
 </dd>
@@ -795,12 +883,22 @@ The implementation here works only for binary classification.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
+<dt><a class="reference internal" href="scikitplot.kds.print_labels.html#scikitplot.kds.print_labels" title="scikitplot.kds.print_labels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_labels</span></code></a></dt><dd><p>A legend for the abbreviations of decile table column names.</p>
+</dd>
+<dt><a class="reference internal" href="scikitplot.kds.decile_table.html#scikitplot.kds.decile_table" title="scikitplot.kds.decile_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decile_table</span></code></a></dt><dd><p>Generates the Decile Table from labels and probabilities.</p>
+</dd>
 <dt><a class="reference internal" href="scikitplot.kds.plot_lift.html#scikitplot.kds.plot_lift" title="scikitplot.kds.plot_lift"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_lift</span></code></a></dt><dd><p>Generates the Decile based cumulative Lift Plot from labels and probabilities.</p>
+</dd>
+<dt><a class="reference internal" href="#scikitplot.kds.plot_lift_decile_wise" title="scikitplot.kds.plot_lift_decile_wise"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_lift_decile_wise</span></code></a></dt><dd><p>Generates the Decile-wise Lift Plot from labels and probabilities.</p>
+</dd>
+<dt><a class="reference internal" href="scikitplot.kds.plot_cumulative_gain.html#scikitplot.kds.plot_cumulative_gain" title="scikitplot.kds.plot_cumulative_gain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_cumulative_gain</span></code></a></dt><dd><p>Generates the cumulative Gain Plot from labels and probabilities.</p>
+</dd>
+<dt><a class="reference internal" href="scikitplot.kds.plot_ks_statistic.html#scikitplot.kds.plot_ks_statistic" title="scikitplot.kds.plot_ks_statistic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_ks_statistic</span></code></a></dt><dd><p>Generates the Kolmogorov-Smirnov (KS) Statistic Plot from labels and probabilities.</p>
 </dd>
 </dl>
 </div>
 <p class="rubric">References</p>
-<p>[1] <a class="github reference external" href="https://github.com/tensorbored/kds/blob/master/kds/metrics.py#L190">tensorbored/kds</a></p>
+<p>[1] <a class="github reference external" href="https://github.com/tensorbored/kds/blob/master/kds/metrics.py#L382">tensorbored/kds</a></p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">skplt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_iris</span>
@@ -816,10 +914,7 @@ The implementation here works only for binary classification.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">skplt</span><span class="o">.</span><span class="n">kds</span><span class="o">.</span><span class="n">plot_lift_decile_wise</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">,</span> <span class="n">class_index</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>(<a class="reference download internal" download="" href="../../_downloads/ace2e514572f9e4b7358efc7807e0e74/scikitplot-kds-plot_lift_decile_wise-1.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/17d31019c15565f5d512c7a31d07b08b/scikitplot-kds-plot_lift_decile_wise-1.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>)</p>
-<figure class="align-center">
-<img alt="Lift Decile Wise Curves" class="plot-directive" src="../../_images/scikitplot-kds-plot_lift_decile_wise-1.png" />
-</figure>
+<p>(<a class="reference download internal" download="" href="../../_downloads/ace2e514572f9e4b7358efc7807e0e74/scikitplot-kds-plot_lift_decile_wise-1.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>)</p>
 </dd></dl>
 
 </section>
@@ -917,7 +1012,7 @@ The implementation here works only for binary classification.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc4+git.20250429.5a22d2b 2025-04-29T12:20Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post1+git.20250627.a4c5b9e 2025-06-27T09:09Z.
       <br/>
     
   </p>

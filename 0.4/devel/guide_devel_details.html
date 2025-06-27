@@ -1,0 +1,1051 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Development Details Guidelines" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://scikit-plots.github.io/stable/devel/guide_devel_details.html" />
+<meta property="og:site_name" content="scikit-plots" />
+<meta property="og:description" content="This document contains somewhat-independent sections that provide details on topics covered in the contributing_quickstart guide. Pre-commit: All of the coding style checks described in PEP8, as en..." />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_images/branch_dropdown.png" />
+<meta property="og:image:alt" content="scikit-plots" />
+<meta name="description" content="This document contains somewhat-independent sections that provide details on topics covered in the contributing_quickstart guide. Pre-commit: All of the coding style checks described in PEP8, as en..." />
+
+    <title>Development Details Guidelines &#8212; scikit-plots 0.4.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=14208072" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=e4cb1417" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=6c02275b"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=e93d8674"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'devel/guide_devel_details';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <script src="../_static/scripts/dropdown.js?v=e2048168"></script>
+    <script src="../_static/scripts/version-switcher.js?v=9bbada16"></script>
+    <link rel="icon" href="../_static/scikit-plots-favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.4" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/scikit-plots-logo-small.png" class="logo__image only-light" alt="scikit-plots homepage"/>
+    <img src="../_static/scikit-plots-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-plots homepage"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../whats_new/index.html">
+    Release History
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community-G
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://zenodo.org/communities/scikit-plots">
+    Community-Z
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/governance.html">
+    Governance
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/index.html">
+    About us
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../whats_new/index.html">
+    Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community-G
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://zenodo.org/communities/scikit-plots">
+    Community-Z
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/governance.html">
+    Governance
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/index.html">
+    About us
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Development Details Guidelines</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="development-details-guidelines">
+<span id="development-details"></span><h1>Development Details Guidelines<a class="headerlink" href="#development-details-guidelines" title="Link to this heading">#</a></h1>
+<div class="admonition-template admonition">
+<p class="admonition-title">Template</p>
+<p>Template for further usage, template belong to <a class="reference external" href="https://docs.astropy.org/en/latest/development/development_details.html#">astropy</a>.</p>
+</div>
+<p>This document contains somewhat-independent sections that provide details on
+topics covered in the <span class="xref std std-ref">contributing_quickstart</span> guide.</p>
+<section id="pre-commit">
+<span id="id1"></span><h2>Pre-commit<a class="headerlink" href="#pre-commit" title="Link to this heading">#</a></h2>
+<p>All of the coding style checks described in <a class="reference internal" href="guide_code_style_write.html#code-style"><span class="std std-ref">PEP8, as enforced by flake8</span></a> can be performed automatically
+when you make a git commit using our provided <a class="reference external" href="https://pre-commit.com/">pre-commit hook</a>
+for git, for more information see
+<a class="reference external" href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks#_git_hooks">git hooks</a>.
+We encourage you to setup and use these hooks to ensure that your code always meets
+our coding style standards. The easiest way to do this is by installing <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pre</span><span class="o">-</span><span class="n">commit</span>
+</pre></div>
+</div>
+<p>Or if you prefer <a class="reference external" href="https://docs.conda.io/en/latest/">conda</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">pre</span><span class="o">-</span><span class="n">commit</span>
+</pre></div>
+</div>
+<p>This next command needs be done by installing <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> in the <strong>root</strong>
+of your astropy repository by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>For more detailed instructions on installing <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code>, see the
+<a class="reference external" href="https://pre-commit.com/#install">install guide</a>. Once this installation is
+complete, all the coding style checks will be run each time you commit and the
+necessary changes will automatically be applied to your code if possible.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The changes made by <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> will not be automatically staged, so you
+will need to review and re-stage any files that <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> has changed.</p>
+</div>
+<p>In general, git will not allow you to commit until the <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> hook has
+run successfully. If you need to make a commit which fails the <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> checks,
+you can skip these checks by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">commit</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">verify</span>
+</pre></div>
+</div>
+<p>If you do not want to use <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> as part of your git workflow, you can
+still run the checks manually (see, <a class="reference internal" href="guide_code_style_write.html#code-style"><span class="std std-ref">PEP8, as enforced by flake8</span></a>) using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tox</span> <span class="o">-</span><span class="n">e</span> <span class="n">codestyle</span>
+</pre></div>
+</div>
+<p>Or this will run whether you did <code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">install</span></code> or not:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">run</span>
+</pre></div>
+</div>
+<p>Again, this will automatically apply the necessary changes to your code if possible.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Once you have made a pull-request the <code class="docutils literal notranslate"><span class="pre">pre-commit.ci</span></code> bot is available to assist
+you with fixing any issues with your code style, see <span class="xref std std-ref">pre-commit_bot</span> for details
+on how to use this bot.</p>
+</div>
+</section>
+<section id="the-editing-workflow">
+<span id="edit-flow"></span><h2>The editing workflow<a class="headerlink" href="#the-editing-workflow" title="Link to this heading">#</a></h2>
+<p>Conceptually, you will:</p>
+<ol class="arabic simple">
+<li><p>Make changes to one or more files and/or add a new file.</p></li>
+<li><p>Check that your changes do not break existing code.</p></li>
+<li><p>Add documentation to your code and, as appropriate, to the Astropy
+documentation.</p></li>
+<li><p>Ideally, also make sure your changes do not break the documentation.</p></li>
+<li><p>Add tests of the code you contribute.</p></li>
+<li><p>Commit your changes in <a class="reference external" href="https://git-scm.com/">git</a>.</p></li>
+<li><p>Repeat as necessary.</p></li>
+</ol>
+<section id="in-more-detail">
+<h3>In more detail<a class="headerlink" href="#in-more-detail" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>Make some changes to one or more files. You should follow the Astropy
+<a class="reference internal" href="guide_code.html#code-guide"><span class="std std-ref">Coding Guidelines</span></a>. Each logical set of changes should be treated as one
+commit. For example, if you are fixing a known bug in Astropy and notice
+a different bug while implementing your fix, implement the fix to that new
+bug as a different set of changes.</p></li>
+<li><p>Test that your changes do not lead to <em>regressions</em>, i.e. that your
+changes do not break existing code, by running the Astropy tests
+as described in <a class="reference external" href="https://numpy.org/doc/stable/reference/testing.html#testing-guidelines" title="(in NumPy v2.3)"><span>Testing guidelines</span></a>.</p></li>
+<li><p>Make sure your code includes appropriate docstrings, in the
+<a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">Numpydoc format</a>.
+If appropriate, as when you are adding a new feature,
+you should update the appropriate documentation in the <code class="docutils literal notranslate"><span class="pre">docs</span></code> directory;
+a detailed description is in <span class="xref std std-ref">documentation-guidelines</span>.</p></li>
+<li><p>If you have sphinx installed, you can also check that
+the documentation builds and looks correct by running, from the
+<code class="docutils literal notranslate"><span class="pre">astropy</span></code> directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">docs</span>
+<span class="n">make</span> <span class="n">html</span>
+</pre></div>
+</div>
+<p>The last line should just state <code class="docutils literal notranslate"><span class="pre">build</span> <span class="pre">succeeded</span></code>, and should not mention
+any warnings.  (For more details, see <span class="xref std std-ref">documentation-guidelines</span>.)</p>
+</li>
+<li><p>Add tests of your new code, if appropriate. Some changes (e.g. to
+documentation) do not need tests. Detailed instructions are at
+<a class="reference external" href="https://docs.python.org/3/library/test.html#writing-tests" title="(in Python v3.13)"><span>Writing Unit Tests for the test package</span></a>, but if you have no experience writing tests or
+with the <a class="reference external" href="https://docs.pytest.org/en/stable/">pytest</a> testing framework submit your changes without adding
+tests, but mention in the pull request that you have not written tests.
+An example of writing a test is in
+<a class="reference internal" href="git_edit_workflow_examples.html#astropy-fix-add-tests"><span class="std std-ref">Stop and think: Any more tests or other changes?</span></a>.</p></li>
+<li><p>Stage your changes using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> and commit them using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>.
+An example of doing that, based on the fix for an actual Astropy issue, is
+at <a class="reference internal" href="git_edit_workflow_examples.html#astropy-fix-example"><span class="std std-ref">Contributing Code: a Worked Example</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make your <a class="reference external" href="https://git-scm.com/">git</a> commit messages short and descriptive. If a commit
+fixes an issue, include, on the second or later line of the commit
+message, the issue number in the commit message, like this:
+<code class="docutils literal notranslate"><span class="pre">Closes</span> <span class="pre">#123</span></code>. Doing so will automatically close the issue when the
+pull request is accepted.</p>
+</div>
+</li>
+<li><p>Some modifications require more than one commit; if in doubt, break
+your changes into a few, smaller, commits rather than one large commit
+that does many things at once. Repeat the steps above as necessary!</p></li>
+</ol>
+</section>
+</section>
+<section id="add-a-changelog-entry">
+<span id="add-changelog"></span><h2>Add a changelog entry<a class="headerlink" href="#add-a-changelog-entry" title="Link to this heading">#</a></h2>
+<p>Add a changelog fragment briefly describing the change you made by creating
+a new file in <code class="docutils literal notranslate"><span class="pre">docs/changes/&lt;sub-package&gt;/</span></code>. The file should be named like
+<code class="docutils literal notranslate"><span class="pre">&lt;PULL</span> <span class="pre">REQUEST&gt;.&lt;TYPE&gt;.rst</span></code>, where <code class="docutils literal notranslate"><span class="pre">&lt;PULL</span> <span class="pre">REQUEST&gt;</span></code> is a pull request
+number, and <code class="docutils literal notranslate"><span class="pre">&lt;TYPE&gt;</span></code> is one of:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">feature</span></code>: New feature.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">api</span></code>: API change.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bugfix</span></code>: Bug fix.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">perf</span></code>: Performance improvement (this should be significant enough to be measurable using the public API).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">other</span></code>: Other changes and additions.</p></li>
+</ul>
+<p>An example entry, for the changes in <a class="reference external" href="https://github.com/astropy/astropy/pull/1845">PR 1845</a>, the file would be
+<code class="docutils literal notranslate"><span class="pre">docs/changes/wcs/1845.bugfix.rst</span></code> and would contain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>``astropy.wcs.Wcs.printwcs`` will no longer warn that ``cdelt`` is
+being ignored when none was present in the FITS file.
+</pre></div>
+</div>
+<p>If you are opening a new pull request, you may not know its number yet, but you
+can add it <em>after</em> you make the pull request. If you’re not sure where to
+put the changelog entry, wait at least until a maintainer has reviewed your
+PR and assigned it to a milestone.</p>
+<p>When writing changelog entries, do not attempt to make API reference links
+by using single-backticks.  This is because the changelog (in its current
+format) runs for the history of the project, and API references you make today
+may not be valid in a future version of Astropy.  However, use of
+double-backticks for monospace rendering of module/class/function/argument
+names and the like is encouraged.</p>
+</section>
+<section id="make-a-pull-request">
+<span id="pull-request"></span><h2>Make a pull request<a class="headerlink" href="#make-a-pull-request" title="Link to this heading">#</a></h2>
+<p>A <em>pull request</em> on GitHub is a request to merge the changes you have made into
+another repository.</p>
+<p>You can follow the steps outlined in the GitHub documentation <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request">Creating
+a pull request</a>, or follow the steps below.</p>
+<p>When you are ready to ask for someone to review your code and consider merging
+it into Astropy:</p>
+<ol class="arabic">
+<li><p>Go to the URL of your fork of Astropy, e.g.,
+<code class="docutils literal notranslate"><span class="pre">https://github.com/your-user-name/astropy</span></code>.</p></li>
+<li><p>Use the ‘Switch Branches’ dropdown menu to select the branch with your
+changes:</p>
+<img alt="../_images/branch_dropdown.png" src="../_images/branch_dropdown.png" />
+</li>
+<li><p>Click on the ‘Pull request’ button:</p>
+<img alt="../_images/pull_button.png" src="../_images/pull_button.png" />
+<p>Enter a title for the set of changes, and some explanation of what you’ve
+done. If there is anything you’d like particular attention for, like a
+complicated change or some code you are not happy with, add the details
+here.</p>
+<p>If you don’t think your request is ready to be merged, just say so in your
+pull request message.  This is still a good way to start a preliminary
+code review.</p>
+<p>You may also opt to open a work-in-progress pull request.
+If you do so, instead of clicking “Create pull request”, click on the small
+down arrow next to it and select “Create draft pull request”. This will let
+the maintainers know that your work is not ready for a full review nor to be
+merged yet. In addition, if your commits are not ready for CI testing, you
+should also use <code class="docutils literal notranslate"><span class="pre">[ci</span> <span class="pre">skip]</span></code> or <code class="docutils literal notranslate"><span class="pre">[skip</span> <span class="pre">ci]</span></code> directive in your commit message.
+For usage of pre-commit hooks and directives, see <a class="reference internal" href="#pre-commit"><span class="std std-ref">Pre-commit</span></a> and <span class="xref std std-ref">pre-commit_bot</span>.</p>
+</li>
+</ol>
+</section>
+<section id="do-not-create-a-merge-commit">
+<span id="revise-and-push"></span><h2>Do Not Create a Merge Commit<a class="headerlink" href="#do-not-create-a-merge-commit" title="Link to this heading">#</a></h2>
+<p>If your branch associated with the pull request falls behind the <code class="docutils literal notranslate"><span class="pre">main</span></code>
+branch of <a class="github reference external" href="https://github.com/astropy/astropy">astropy/astropy</a>, GitHub might offer you the option
+to catch up or resolve conflicts via its web interface, but do not use this. Using
+the web interface might create a “merge commit” in your commit history, which is
+undesirable, as a “merge commit” can introduce maintenance overhead for the
+release manager as well as undesirable branch structure complexity. Do not use the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> command either.</p>
+<p>Instead, in your local checkout, do a <code class="docutils literal notranslate"><span class="pre">fetch</span></code> and then a <code class="docutils literal notranslate"><span class="pre">rebase</span></code>, and
+resolve conflicts as necessary. See <a class="reference internal" href="#rebase"><span class="std std-ref">Rebase if necessary</span></a> and <a class="reference internal" href="#howto-rebase"><span class="std std-ref">How to rebase</span></a>
+for further information.</p>
+</section>
+<section id="rebase-if-necessary">
+<span id="rebase"></span><h2>Rebase if necessary<a class="headerlink" href="#rebase-if-necessary" title="Link to this heading">#</a></h2>
+<p>Rebasing means taking your changes and applying them to the latest
+version of the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch of the official <code class="docutils literal notranslate"><span class="pre">astropy</span></code> repository as though that was the
+version you had originally branched from. Each individual commit remains
+visible, but with new commit hashes.</p>
+<section id="when-to-rebase">
+<h3>When to rebase<a class="headerlink" href="#when-to-rebase" title="Link to this heading">#</a></h3>
+<p>Pull requests <strong>must</strong> be rebased (but not necessarily squashed to a single
+commit) if at least one of the following conditions is met:</p>
+<ul class="simple">
+<li><p>There are conflicts with <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p></li>
+<li><p>There are commits in <code class="docutils literal notranslate"><span class="pre">main</span></code> (after the PR branch point) needed for continuous
+integration tests to run correctly.</p></li>
+<li><p>There are merge commits from <code class="docutils literal notranslate"><span class="pre">astropy/main</span></code> in the PR commit history (merge
+commits from PRs to the user’s fork are fine).</p></li>
+</ul>
+</section>
+<section id="how-to-rebase">
+<span id="howto-rebase"></span><h3>How to rebase<a class="headerlink" href="#how-to-rebase" title="Link to this heading">#</a></h3>
+<p>It is easier to make mistakes rebasing than other areas of <a class="reference external" href="https://git-scm.com/">git</a>, so before you
+start make a branch to serve as a backup copy of your work:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span> <span class="n">tmp</span> <span class="n">my</span><span class="o">-</span><span class="n">new</span><span class="o">-</span><span class="n">feature</span> <span class="c1"># make temporary branch--will be deleted later</span>
+</pre></div>
+</div>
+<p>After altering the history, e.g., with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rebase</span></code>, a normal <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code>
+is prevented, and a <code class="docutils literal notranslate"><span class="pre">--force</span></code> option will be required.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not update your branch with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>. Pulling changes from
+<code class="docutils literal notranslate"><span class="pre">astropy/main</span></code> includes merging the branches, which combines them in a
+way that preserves the commit history of both. The purpose of rebasing is
+rewriting the commit history of your branch, not preserving it.</p>
+</div>
+<p>Behind the scenes, <a class="reference external" href="https://git-scm.com/">git</a> is deleting the changes and branch you made, making the
+changes others made to the development branch of Astropy, then re-making your
+branch from the development branch and applying your changes to your branch.</p>
+<p>First, fetch the latest development astropy and go to your branch of interest:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">fetch</span> <span class="n">upstream</span> <span class="n">main</span>
+<span class="n">git</span> <span class="n">switch</span> <span class="n">my</span><span class="o">-</span><span class="n">new</span><span class="o">-</span><span class="n">feature</span>
+</pre></div>
+</div>
+<p>Now, do the rebase:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">rebase</span> <span class="n">upstream</span><span class="o">/</span><span class="n">main</span>
+</pre></div>
+</div>
+<p>You are more likely to run into <em>conflicts</em> here — places where the changes you made
+conflict with changes that someone else made — than anywhere else. Ask for help if you
+need it. Instructions are available on how to <a class="reference external" href="https://help.github.com/en/articles/resolving-merge-conflicts-after-a-git-rebase">resolve merge conflicts after a Git
+rebase</a>.</p>
+</section>
+</section>
+<section id="squash-if-necessary">
+<span id="id2"></span><h2>Squash if necessary<a class="headerlink" href="#squash-if-necessary" title="Link to this heading">#</a></h2>
+<p>Squashing refers to combining multiple commits into a single commit. This can be done
+using the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rebase</span></code> command or via <span class="xref std std-ref">github-squash-and-merge</span>.</p>
+<p>An Astropy maintainer will be happy to guide you through this process.</p>
+<section id="when-to-squash">
+<h3>When to squash<a class="headerlink" href="#when-to-squash" title="Link to this heading">#</a></h3>
+<p>If a pull request contains commits with large (approximately &gt; 10KB) intermediate
+changes which are ultimately removed or modified in the PR, the intermediate diffs
+<strong>must</strong> be squashed. An example is adding a large data file in one commit and then
+removing it in a subsequent commit. The goal is to avoid an unnecessary increase in the
+size of the <code class="docutils literal notranslate"><span class="pre">astropy</span></code> repository.</p>
+<p>Squashing commits is <strong>encouraged</strong> when there are numerous commits which do not add
+value to the commit history. Most small to medium pull requests can be done with a few
+commits. Some large or intricate pull requests may require more commits to capture the
+logical progression of the changes.</p>
+<p>In general, commits that reflect a specific atomic change (e.g., “Fixed bug revealed by
+tests for feature X”) may have value for the history.</p>
+<p>Commits that are good candidates for squashing include but not limited to:</p>
+<ul class="simple">
+<li><p>Content that gets removed later, most commonly changes in the implementation or
+temporary debugging code or, especially, data files (see above).</p></li>
+<li><p>Non-specific commits; e.g., “Added more code and fixed stuff.”</p></li>
+<li><p>Fixes of typos, linting fixes, or other inconsequential changes.</p></li>
+<li><p>Commit messages that violate the code of conduct.</p></li>
+</ul>
+</section>
+<section id="how-to-squash">
+<span id="howto-squash"></span><h3>How to squash<a class="headerlink" href="#how-to-squash" title="Link to this heading">#</a></h3>
+<p>In many cases, squashing can be done by a maintainer using the <span class="xref std std-ref">github-squash-and-merge</span> button on
+the GitHub pull request page. If this is not possible, we typically squash using <a class="reference external" href="https://git-scm.com/docs/git-rebase#_interactive_mode">git
+rebase –interactive</a>. In
+particular, you can rebase and squash within the existing branch using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">fetch</span> <span class="n">upstream</span> <span class="n">main</span>
+<span class="n">git</span> <span class="n">rebase</span> <span class="o">-</span><span class="n">i</span> <span class="n">upstream</span><span class="o">/</span><span class="n">main</span>
+</pre></div>
+</div>
+<p>The last command will open an editor with all your commits, allowing you to
+squash several commits together, rename them, etc. Helpfully, the file you are
+editing has the instructions on what to do.</p>
+</section>
+</section>
+<section id="how-to-push">
+<span id="howto-push-force"></span><h2>How to push<a class="headerlink" href="#how-to-push" title="Link to this heading">#</a></h2>
+<p>After using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rebase</span></code> you will still need to push your changes to
+GitHub so that they are visible to others and the pull request can be
+updated.  Use of a simple <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> will be prevented because of the
+changed history, and will need to be manually overridden using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">my</span><span class="o">-</span><span class="n">new</span><span class="o">-</span><span class="n">feature</span> <span class="o">--</span><span class="n">force</span>
+</pre></div>
+</div>
+<p>If you run into any problems, do not hesitate to ask. A more detailed conceptual
+discussing of rebasing is at <a class="reference internal" href="guide_git_resources.html#rebase-on-trunk"><span class="std std-ref">Rebasing on main</span></a>.</p>
+<p>Once the modifications and new git history are successfully pushed to GitHub you
+can delete any backup branches that may have been created:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">D</span> <span class="n">tmp</span>
+</pre></div>
+</div>
+</section>
+<section id="troubleshooting-the-build">
+<h2>Troubleshooting the build<a class="headerlink" href="#troubleshooting-the-build" title="Link to this heading">#</a></h2>
+<p>If when building you get an error directing use of option <code class="docutils literal notranslate"><span class="pre">-std=c99</span></code> or
+<code class="docutils literal notranslate"><span class="pre">-std=gnu99</span></code>, you can try installing with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CFLAGS</span><span class="o">=</span><span class="s1">&#39;-std=c99&#39;</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">editable</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>This is necessary for use with CentOS7.</p>
+</section>
+<section id="external-c-libraries">
+<span id="id3"></span><h2>External C Libraries<a class="headerlink" href="#external-c-libraries" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">astropy</span></code> source ships with the C source code of a number of
+libraries. By default, these internal copies are used to build
+<code class="docutils literal notranslate"><span class="pre">astropy</span></code>. However, if you wish to use the system-wide installation of
+one of those libraries, you can set environment variables with the
+pattern <code class="docutils literal notranslate"><span class="pre">ASTROPY_USE_SYSTEM_???</span></code> to <code class="docutils literal notranslate"><span class="pre">1</span></code> when building/installing
+the package.</p>
+<p>For example, to build <code class="docutils literal notranslate"><span class="pre">astropy</span></code> using the system’s expat parser
+library, use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ASTROPY_USE_SYSTEM_EXPAT</span><span class="o">=</span><span class="mi">1</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">editable</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>To build using all of the system libraries, use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ASTROPY_USE_SYSTEM_ALL</span><span class="o">=</span><span class="mi">1</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">editable</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>The C libraries currently bundled with <code class="docutils literal notranslate"><span class="pre">astropy</span></code> include:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.atnf.csiro.au/people/mcalabre/WCS/">wcslib</a> see
+<code class="docutils literal notranslate"><span class="pre">cextern/wcslib/README</span></code> for the bundled version. To use the
+system version, set <code class="docutils literal notranslate"><span class="pre">ASTROPY_USE_SYSTEM_WCSLIB=1</span></code>.</p></li>
+<li><p><a class="reference external" href="https://libexpat.github.io/">expat</a> see <code class="docutils literal notranslate"><span class="pre">cextern/expat/README</span></code> for the
+bundled version. To use the system version, set <code class="docutils literal notranslate"><span class="pre">ASTROPY_USE_SYSTEM_EXPAT=1</span></code>.</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item">
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+                </footer>
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-commit">Pre-commit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-editing-workflow">The editing workflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-more-detail">In more detail</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-changelog-entry">Add a changelog entry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-pull-request">Make a pull request</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#do-not-create-a-merge-commit">Do Not Create a Merge Commit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rebase-if-necessary">Rebase if necessary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-rebase">When to rebase</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-rebase">How to rebase</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#squash-if-necessary">Squash if necessary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-squash">When to squash</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-squash">How to squash</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-push">How to push</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting-the-build">Troubleshooting the build</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#external-c-libraries">External C Libraries</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/devel/guide_devel_details.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post1+git.20250627.a4c5b9e 2025-06-27T09:09Z.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

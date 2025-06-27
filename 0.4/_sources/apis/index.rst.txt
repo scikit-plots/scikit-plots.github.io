@@ -1,5 +1,33 @@
 :html_theme.sidebar_secondary.remove:
 
+.. _scikit-plots-apis:
+
+.. Welcome to Scikit-plots 101 |br| |release| - |today|
+..
+    substitutions don’t work in .. raw:: html
+    .. raw:: html
+
+    <div style="text-align: center"><strong>
+    Welcome to Scikit-plots 101<br>|full_version| - |today|
+    </strong></div>
+..
+    https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-centered
+    .. centered:: Welcome to Scikit-plots 101 :raw-html:`<br />` |full_version| - |today|
+    .. centered::
+        **Scikit-plots Documentation** :raw-html:`<br />` |full_version| - |today|
+
+.. https://docutils.sourceforge.io/docs/ref/rst/directives.html#custom-interpreted-text-roles
+.. role:: raw-html(raw)
+   :format: html
+
+.. |br| raw:: html
+
+   <br/>
+
+:raw-html:`<div style="text-align: center"><strong>` Scikit-plots APIs
+|br| |full_version| - |today|
+:raw-html:`</strong></div>`
+
 .. _apis_ref-index:
 
 ==============
@@ -17,6 +45,7 @@ reference on concepts repeated across the APIs, see :ref:`glossary-index`.
 
   scikitplot
   scikitplot.api
+  scikitplot.doremi
   scikitplot.experimental
   scikitplot.kds
   scikitplot.modelplotpy
@@ -47,6 +76,33 @@ reference on concepts repeated across the APIs, see :ref:`glossary-index`.
 
         .. currentmodule:: scikitplot
         .. autoshortsummary:: scikitplot.get_config
+        .. div:: caption
+
+          :mod:`scikitplot`
+
+  * - :obj:`~.get_logger` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot
+        .. autoshortsummary:: scikitplot.get_logger
+        .. div:: caption
+
+          :mod:`scikitplot`
+
+  * - :obj:`~.logger` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot
+        .. autoshortsummary:: scikitplot.logger
+        .. div:: caption
+
+          :mod:`scikitplot`
+
+  * - :obj:`~.reset` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot
+        .. autoshortsummary:: scikitplot.reset
         .. div:: caption
 
           :mod:`scikitplot`
@@ -231,23 +287,95 @@ reference on concepts repeated across the APIs, see :ref:`glossary-index`.
 
           :mod:`scikitplot.api._utils`
 
-  * - :obj:`~._utils.save_figure` 
+  * - :obj:`~.ENVELOPES` 
     - .. div:: sk-apis-search-desc
 
-        .. currentmodule:: scikitplot.api._utils
-        .. autoshortsummary:: scikitplot.api._utils.save_figure
+        .. currentmodule:: scikitplot.doremi
+        .. autoshortsummary:: scikitplot.doremi.ENVELOPES
         .. div:: caption
 
-          :mod:`scikitplot.api._utils`
+          :mod:`scikitplot.doremi`
 
-  * - :obj:`~._utils.save_plot` 
+  * - :obj:`~.compose_as_waveform` 
     - .. div:: sk-apis-search-desc
 
-        .. currentmodule:: scikitplot.api._utils
-        .. autoshortsummary:: scikitplot.api._utils.save_plot
+        .. currentmodule:: scikitplot.doremi
+        .. autoshortsummary:: scikitplot.doremi.compose_as_waveform
         .. div:: caption
 
-          :mod:`scikitplot.api._utils`
+          :mod:`scikitplot.doremi`
+
+  * - :obj:`~.play_waveform` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.doremi
+        .. autoshortsummary:: scikitplot.doremi.play_waveform
+        .. div:: caption
+
+          :mod:`scikitplot.doremi`
+
+  * - :obj:`~.plot_waveform` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.doremi
+        .. autoshortsummary:: scikitplot.doremi.plot_waveform
+        .. div:: caption
+
+          :mod:`scikitplot.doremi`
+
+  * - :obj:`~.save_waveform` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.doremi
+        .. autoshortsummary:: scikitplot.doremi.save_waveform
+        .. div:: caption
+
+          :mod:`scikitplot.doremi`
+
+  * - :obj:`~.save_waveform_as_mp3` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.doremi
+        .. autoshortsummary:: scikitplot.doremi.save_waveform_as_mp3
+        .. div:: caption
+
+          :mod:`scikitplot.doremi`
+
+  * - :obj:`~.sheet_to_note` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.doremi
+        .. autoshortsummary:: scikitplot.doremi.sheet_to_note
+        .. div:: caption
+
+          :mod:`scikitplot.doremi`
+
+  * - :obj:`~.sheet_converter` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.doremi
+        .. autoshortsummary:: scikitplot.doremi.sheet_converter
+        .. div:: caption
+
+          :mod:`scikitplot.doremi`
+
+  * - :obj:`~.serialize_sheet` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.doremi
+        .. autoshortsummary:: scikitplot.doremi.serialize_sheet
+        .. div:: caption
+
+          :mod:`scikitplot.doremi`
+
+  * - :obj:`~.export_sheet` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.doremi
+        .. autoshortsummary:: scikitplot.doremi.export_sheet
+        .. div:: caption
+
+          :mod:`scikitplot.doremi`
 
   * - :obj:`~._cy_experimental.expit` 
     - .. div:: sk-apis-search-desc
@@ -695,24 +823,6 @@ reference on concepts repeated across the APIs, see :ref:`glossary-index`.
 
         .. currentmodule:: scikitplot.sp_logging
         .. autoshortsummary:: scikitplot.sp_logging.warning
-        .. div:: caption
-
-          :mod:`scikitplot.sp_logging`
-
-  * - :obj:`~.SpLogger` 
-    - .. div:: sk-apis-search-desc
-
-        .. currentmodule:: scikitplot.sp_logging
-        .. autoshortsummary:: scikitplot.sp_logging.SpLogger
-        .. div:: caption
-
-          :mod:`scikitplot.sp_logging`
-
-  * - :obj:`~.sp_logger` 
-    - .. div:: sk-apis-search-desc
-
-        .. currentmodule:: scikitplot.sp_logging
-        .. autoshortsummary:: scikitplot.sp_logging.sp_logger
         .. div:: caption
 
           :mod:`scikitplot.sp_logging`

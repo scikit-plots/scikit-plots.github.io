@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="🚀 Docker Containerization: 💡 Work on Docker Desktop or Github Codespaces Here’s how containerization works: Isolation: Containers run independently of each other and the host system, ensuring that ..." />
 
-    <title>Docker Containerization Guidelines &#8212; scikit-plots 0.4.0rc4+git.20250429.5a22d2b documentation</title>
+    <title>Docker Containerization Guidelines &#8212; scikit-plots 0.4.0 documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=6dcf6205"></script>
+    <script src="../_static/documentation_options.js?v=6c02275b"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -74,9 +74,9 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc4';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
-            false;
+            true;
         </script>
     <script src="../_static/scripts/dropdown.js?v=e2048168"></script>
     <script src="../_static/scripts/version-switcher.js?v=9bbada16"></script>
@@ -372,8 +372,10 @@
       
       
       
+        
+      
       <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
         
 
   
@@ -548,15 +550,6 @@
     
   </div>
   
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-<nav class="bd-docs-nav bd-links"
-     aria-label="Section Navigation">
-  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"></div>
-</nav></div>
-    </div>
-  
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
@@ -628,7 +621,10 @@ click to continue to the quickstart section
 <section id="github-codespaces-guide">
 <h2>Github Codespaces Guide<a class="headerlink" href="#github-codespaces-guide" title="Link to this heading">#</a></h2>
 <p>(Connect IDE Interface Vscode or Jupyter Notebook)</p>
-<p>Choose (recommended) not (default) Option for best practise</p>
+<p><strong>👉 (recommended) Choose (recommended) not (default) Option for best practise:</strong></p>
+<a href="https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=889608023&skip_quickstart=true&machine=basicLinux32gb&devcontainer_path=.devcontainer%2Fnotebook_cpu%2Fdevcontainer.json&geo=EuropeWest" target="_blank">
+<img style="display:auto;width:auto;height:auto;" alt="Open in GitHub Codespaces" src="https://github.com/codespaces/badge.svg">
+</a><p><strong>Step by step:</strong></p>
 <img style="display: block;-webkit-user-select: none;margin: auto;cursor: zoom-in;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;"
 src="https://docs.github.com/assets/cb-49943/mw-1440/images/help/codespaces/who-will-pay.webp"
 width="322" height="305">
@@ -691,7 +687,7 @@ docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </spa
 <section id="run-setup-vscode-ext-sh">
 <h3>▶️ Run setup_vscode_ext.sh<a class="headerlink" href="#run-setup-vscode-ext-sh" title="Link to this heading">#</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1">## (Optionally) Install common vscode extensions</span>
-<span class="c1">##✅ c/C++/Python and Jupyter Notebook</span>
+<span class="c1">##✅ C/C++/Python and Jupyter Notebook</span>
 <span class="c1">##✅ Linter and Formatter</span>
 bash<span class="w"> </span>docker/script/setup_vscode_ext.sh<span class="w">  </span><span class="c1"># (not needed every time)</span>
 </pre></div>
@@ -862,7 +858,7 @@ docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </s
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc4+git.20250429.5a22d2b 2025-04-29T12:20Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post1+git.20250627.a4c5b9e 2025-06-27T09:09Z.
       <br/>
     
   </p>

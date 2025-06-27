@@ -10,14 +10,6 @@ used by a :py:class:`~tensorflow.keras.Model` model.
 # SPDX-License-Identifier: BSD-3-Clause
 
 # %%
-# Force garbage collection
-
-import gc
-
-gc.collect()
-
-# %%
-
 # pip install protobuf==5.29.4
 import tensorflow as tf
 
@@ -25,7 +17,6 @@ import tensorflow as tf
 tf.keras.backend.clear_session()
 
 # %%
-
 # encoder Model
 encoder_input = tf.keras.Input(shape=(28, 28, 1), name="img")
 x = tf.keras.layers.Conv2D(16, 3, activation="relu")(encoder_input)
@@ -47,7 +38,6 @@ autoencoder = tf.keras.Model(encoder_input, decoder_output, name="autoencoder")
 autoencoder.summary()
 
 # %%
-
 # Build the model with an explicit input shape
 autoencoder.build(
     input_shape=(None, 28, 28, 1)
@@ -68,7 +58,6 @@ for layer in encoder.layers:
         print(f"{layer.name} shape: {layer.output.shape}")
 
 # %%
-
 from scikitplot import visualkeras
 
 img_encoder = visualkeras.layered_view(
@@ -78,18 +67,18 @@ img_encoder = visualkeras.layered_view(
     save_fig=True,
     save_fig_filename="encoder.png",
 )
+img_encoder
 
 # %%
-
 img_autoencoder = visualkeras.layered_view(
     autoencoder,
     # to_file="result_images/autoencoder.png",
     save_fig=True,
     save_fig_filename="autoencoder.png",
 )
+img_autoencoder
 
 # %%
-
 img_autoencoder_text = visualkeras.layered_view(
     autoencoder,
     min_z=1,
@@ -107,6 +96,7 @@ img_autoencoder_text = visualkeras.layered_view(
     add_timestamp=True,
     verbose=True,
 )
+img_autoencoder_text
 
 # %%
 #

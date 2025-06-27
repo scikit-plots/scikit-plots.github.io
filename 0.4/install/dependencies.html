@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="Runtime dependencies: Required: When installing through a package manager like pip or conda, the mandatory dependencies are automatically installed. This list is mainly for reference. Python(>= 3.1..." />
 
-    <title>Dependencies &#8212; scikit-plots 0.4.0rc4+git.20250429.5a22d2b documentation</title>
+    <title>Dependencies &#8212; scikit-plots 0.4.0 documentation</title>
   
   
   
@@ -60,7 +60,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=6dcf6205"></script>
+    <script src="../_static/documentation_options.js?v=6c02275b"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -74,9 +74,9 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0rc4';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
-            false;
+            true;
         </script>
     <script src="../_static/scripts/dropdown.js?v=e2048168"></script>
     <script src="../_static/scripts/version-switcher.js?v=9bbada16"></script>
@@ -651,7 +651,7 @@ of Matplotlib.</p>
 <section id="backends">
 <span id="backend-dependencies"></span><h4>Backends<a class="headerlink" href="#backends" title="Link to this heading">#</a></h4>
 <p>Matplotlib figures can be rendered to various user interfaces. See
-<a class="reference external" href="https://matplotlib.org/stable/users/explain/figure/backends.html#what-is-a-backend" title="(in Matplotlib v3.10.1)"><span>What is a backend?</span></a> for more details on the optional Matplotlib backends
+<a class="reference external" href="https://matplotlib.org/stable/users/explain/figure/backends.html#what-is-a-backend" title="(in Matplotlib v3.10.3)"><span>What is a backend?</span></a> for more details on the optional Matplotlib backends
 and the capabilities they provide.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.python.org/3/library/tk.html">Tk</a> (&gt;= 8.5, != 8.6.0 or 8.6.1): for the Tk-based backends. Tk is part of
@@ -780,7 +780,7 @@ which have a minimum version of pip which will recognize the wheels</p>
 <section id="build-dependencies">
 <span id="development-dependencies"></span><h2>Build dependencies<a class="headerlink" href="#build-dependencies" title="Link to this heading">#</a></h2>
 <section id="setup-dependencies">
-<span id="id3"></span><h3>Python<a class="headerlink" href="#setup-dependencies" title="Link to this heading">#</a></h3>
+<span id="id5"></span><h3>Python<a class="headerlink" href="#setup-dependencies" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">pip</span></code> normally builds packages using <a class="reference external" href="https://pip.pypa.io/en/stable/reference/build-system/pyproject-toml/" title="(in pip v25.1)"><span class="xref std std-doc">build isolation</span></a>,
 which means that <code class="docutils literal notranslate"><span class="pre">pip</span></code> installs the dependencies listed here for the
 duration of the build process. However, build isolation is disabled via the the
@@ -874,26 +874,26 @@ VS Code or Linux package manager. Choose <strong>one</strong> compiler from this
 </section>
 </section>
 <section id="test-dependencies">
-<span id="id5"></span><h2>Test dependencies<a class="headerlink" href="#test-dependencies" title="Link to this heading">#</a></h2>
+<span id="id7"></span><h2>Test dependencies<a class="headerlink" href="#test-dependencies" title="Link to this heading">#</a></h2>
 <p>This section lists the additional software required for
-<a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/testing.html#testing" title="(in xarray v2025.3.2.dev0)"><span class="xref std std-ref">running the tests</span></a>.</p>
-<section id="id6">
-<h3>Required<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/testing.html#testing" title="(in xarray v2025.6.2)"><span class="xref std std-ref">running the tests</span></a>.</p>
+<section id="id8">
+<h3>Required<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="http://doc.pytest.org/en/latest/">pytest</a> (&gt;= 7.0.0)</p></li>
+<li><p><a href="#id28"><span class="problematic" id="id29">pytest_</span></a> (&gt;= 7.0.0)</p></li>
 </ul>
 </section>
-<section id="id7">
-<h3>Optional<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<section id="id9">
+<h3>Optional<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p>In addition to all of the optional dependencies on the main library, for
 testing the following will be used if they are installed.</p>
-<section id="id8">
-<h4>Python<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
+<section id="id10">
+<h4>Python<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
 <p>These packages are installed when <a class="reference internal" href="../devel/guide_devel_setup.html#dev-environment"><span class="std std-ref">creating a virtual environment</span></a>,
 otherwise they must be installed manually:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://pypi.org/project/nbformat/">nbformat</a> and <a class="reference external" href="https://pypi.org/project/nbconvert/">nbconvert</a> used to test the notebook backend</p></li>
-<li><p><a class="reference external" href="https://pypi.org/project/pandas/">pandas</a> used to test compatibility with Pandas</p></li>
+<li><p><a href="#id30"><span class="problematic" id="id31">pandas_</span></a> used to test compatibility with Pandas</p></li>
 <li><p><a class="reference external" href="https://pypi.org/project/pikepdf/">pikepdf</a> used in some tests for the pgf and pdf backends</p></li>
 <li><p><a class="reference external" href="https://pypi.org/project/psutil/">psutil</a> used in testing the interactive backends</p></li>
 <li><p><a class="reference external" href="https://pytest-cov.readthedocs.io/en/latest/">pytest-cov</a> (&gt;= 2.3.1) to collect coverage information</p></li>
@@ -927,20 +927,55 @@ tests will not find it.</p>
 </section>
 <section id="documentation-dependencies">
 <span id="doc-dependencies"></span><h2>Documentation dependencies<a class="headerlink" href="#documentation-dependencies" title="Link to this heading">#</a></h2>
-<section id="id9">
-<h3>Python<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<section id="id13">
+<h3>Python<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
 <p>The additional Python packages required to build the
-<a class="reference external" href="https://matplotlib.org/stable/devel/document.html#documenting-matplotlib" title="(in Matplotlib v3.10.1)"><span class="xref std std-ref">documentation</span></a> are listed in
+<a class="reference external" href="https://matplotlib.org/stable/devel/document.html#documenting-matplotlib" title="(in Matplotlib v3.10.3)"><span class="xref std std-ref">documentation</span></a> are listed in
 <code class="file docutils literal notranslate"><span class="pre">doc-requirements.txt</span></code> and can be installed using</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">doc</span><span class="o">-</span><span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
-<p>The content of <code class="file docutils literal notranslate"><span class="pre">docs.txt</span></code> is also shown below:</p>
+<p>The content of <code class="file docutils literal notranslate"><span class="pre">doc.txt</span></code> is also shown below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Created at: 2025-06-25 18:57:19.713193</span>
+<span class="c1"># Generated via tools/requirements/generate_requirements.py.</span>
+<span class="c1"># Do not edit this file; modify `pyproject.toml` instead and run `python tools/generate_requirements.py`.</span>
+<span class="o">-</span><span class="n">r</span> <span class="n">core</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">sphinx</span><span class="o">&gt;=</span><span class="mf">5.0.0</span><span class="p">,</span><span class="o">&lt;</span><span class="mf">100.0.0</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">copybutton</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">design</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">gallery</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">prompt</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">remove</span><span class="o">-</span><span class="n">toctrees</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">rtd</span><span class="o">-</span><span class="n">theme</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">tabs</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">tags</span>
+<span class="n">sphinxext</span><span class="o">-</span><span class="n">opengraph</span>
+<span class="n">sphinxcontrib</span><span class="o">-</span><span class="n">inlinesyntaxhighlight</span>
+<span class="n">sphinxcontrib</span><span class="o">-</span><span class="n">sass</span>
+<span class="n">sphinxcontrib</span><span class="o">-</span><span class="n">svg2pdfconverter</span>
+<span class="n">pydata</span><span class="o">-</span><span class="n">sphinx</span><span class="o">-</span><span class="n">theme</span>
+<span class="n">colorspacious</span>
+<span class="n">jinja2</span>
+<span class="n">jupyter</span><span class="o">-</span><span class="n">sphinx</span>
+<span class="n">jupyterlite</span><span class="o">-</span><span class="n">pyodide</span><span class="o">-</span><span class="n">kernel</span>
+<span class="n">jupyterlite</span><span class="o">-</span><span class="n">sphinx</span>
+<span class="n">jupytext</span>
+<span class="n">intersphinx_registry</span>
+<span class="n">numpydoc</span>
+<span class="n">myst</span><span class="o">-</span><span class="n">nb</span>
+<span class="n">myst</span><span class="o">-</span><span class="n">parser</span>
+<span class="n">packaging</span>
+<span class="n">pooch</span>
+<span class="n">towncrier</span>
+<span class="n">catboost</span>
+<span class="n">xgboost</span>
+</pre></div>
+</div>
 </section>
 <section id="doc-dependencies-external">
-<span id="id10"></span><h3>External tools<a class="headerlink" href="#doc-dependencies-external" title="Link to this heading">#</a></h3>
-<section id="id11">
-<h4>Required<a class="headerlink" href="#id11" title="Link to this heading">#</a></h4>
+<span id="id14"></span><h3>External tools<a class="headerlink" href="#doc-dependencies-external" title="Link to this heading">#</a></h3>
+<section id="id15">
+<h4>Required<a class="headerlink" href="#id15" title="Link to this heading">#</a></h4>
 <p>The documentation requires LaTeX and Graphviz.  These are not
 Python packages and must be installed separately.</p>
 <ul class="simple">
@@ -958,8 +993,8 @@ Python packages and must be installed separately.</p>
 <p>The complete version of many LaTex distribution installers, e.g.
 “texlive-full” or “texlive-all”, will often automatically include these packages.</p>
 </section>
-<section id="id12">
-<h4>Optional<a class="headerlink" href="#id12" title="Link to this heading">#</a></h4>
+<section id="id16">
+<h4>Optional<a class="headerlink" href="#id16" title="Link to this heading">#</a></h4>
 <p>The documentation can be built without Inkscape and optipng, but the build
 process will raise various warnings.</p>
 <ul class="simple">
@@ -1047,19 +1082,19 @@ process will raise various warnings.</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-dependencies">Test dependencies</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Required</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Optional</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Required</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Optional</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Python</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#external-tools">External tools</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation-dependencies">Documentation dependencies</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Python</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#doc-dependencies-external">External tools</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Required</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Optional</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Required</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Optional</a></li>
 </ul>
 </li>
 </ul>
@@ -1101,7 +1136,7 @@ process will raise various warnings.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0rc4+git.20250429.5a22d2b 2025-04-29T12:20Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post1+git.20250627.a4c5b9e 2025-06-27T09:09Z.
       <br/>
     
   </p>
