@@ -779,20 +779,57 @@ bash<span class="w"> </span>docker/script/setup_vscode_ext.sh<span class="w">  <
 </section>
 <section id="run-post-create-commands-sh">
 <h3>▶️ Run post_create_commands.sh<a class="headerlink" href="#run-post-create-commands-sh" title="Link to this heading">#</a></h3>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1">##👉 (recommended) Only Installed by `Codespaces default` option</span>
-<span class="c1">##✅ directories to mark as safe</span>
-<span class="c1">##✅ fetching submodules</span>
-<span class="c1">##✅ add remote upstream</span>
-<span class="c1">##✅ fetch tags from upstream</span>
-<span class="c1">##✅ create a new environment with python 3.11</span>
-<span class="c1">##✅ install required packages</span>
-<span class="c1">##✅ install pre-commit hooks</span>
-<span class="c1">##✅ install the development version of scikit-plots</span>
-<span class="c1"># bash .devcontainer/script/post_create_commands.sh  # (not needed every time)</span>
-bash<span class="w"> </span>docker/script/post_create_commands.sh<span class="w">  </span><span class="c1"># (not needed every time)</span>
+<p><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/main/docker/script/first-run-notice.txt">“See Also: first-run-notice.txt”</a></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sdd" id="first-run-notice.txt" open="open">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">first-run-notice.txt<a class="headerlink" href="#first-run-notice.txt" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>👋 Welcome to `scikit-plots` in GitHub Codespaces!
+
+🔍 To explore VS Code to its fullest, search using the Command Palette (Cmd/Ctrl + Shift + P or F1).
+
+ℹ️  Look at https://scikit-plots.github.io/dev/introduction/quick_start.html
+  for more contribution details https://scikit-plots.github.io/dev/devel/index.html.
+
+⭐⭐ =====================================  IMPORTANT!!  ===================================== ⭐⭐
+  To complete setup of your development environment to run the following script in the terminal:
+
+    ##💽 (Optionally) Memory size: df -h &amp;&amp; du -h --max-depth=1
+
+    ##🛠️ (recommended) Apply in bash `setup_conda_env_create.sh` `post_create_commands.sh`
+    ## 👉 Some steps can be skipped when container creation due to storage size limitations
+    ## ⚠️ `ERROR: ... : No space left on device`
+    ##✅ directories to mark as safe like ( git config --global --add safe.directory &#39;*&#39; )
+    ##✅ fetching submodules ( git submodule update --init )
+    ##✅ add remote upstream ( git remote add upstream https://github.com/scikit-plots/scikit-plots.git )
+    ##✅ fetch tags from upstream ( git fetch upstream --tags )
+    ##✅ create a new environment with python 3.11 ( mamba create -n &quot;py311&quot; python=3.11 ipykernel -y )
+    ##✅ install required packages ( pip install -r ./requirements/all.txt )
+    ##✅ install pre-commit hooks ( pre-commit install )
+    ##✅ install the development version of scikit-plots ( pip install --no-build-isolation --no-cache-dir -e . )
+    bash &quot;.devcontainer/script/post_create_commands.sh&quot;  # (not needed every time)
+
+    ##👉 Open to new terminal mamba (or conda)
+    conda init
+    conda info -e
+    # (DevContainer) mamba activate /workspaces/scikit-plots/venv
+    mamba activate py311
+    mamba activate base
+
+    ##✅ Checking the build without root
+    bash -c &quot;cd ~ &amp;&amp; python -c &#39;import scikitplot; scikitplot.show_config()&#39;&quot;
+
+    ##✅ Install tensorflow-cpu, if needed
+    pip install -r ./requirements/all.txt
+    pip install -r ./requirements/cpu.txt
+
+    ##✍ Continue to creating a branch
+    ##🌐 Read more at: https://scikit-plots.github.io/dev/devel/quickstart_contributing.html#creating-a-branch
+
+⭐⭐ ========================================================================================= ⭐⭐
 </pre></div>
 </div>
-</section>
+</div>
+</details></section>
 <section id="stop-containers">
 <h3>🚯 Stop Containers<a class="headerlink" href="#stop-containers" title="Link to this heading">#</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>down
@@ -960,7 +997,7 @@ docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </s
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.1ce2f5d 2025-06-26T20:35Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250629.d90515e 2025-06-29T13:41Z.
       <br/>
     
   </p>

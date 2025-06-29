@@ -763,7 +763,7 @@ test_arrays.py
 </div>
 <p><a class="reference external" href="https://github.com/astropy/astropy/issues/1761">Issue 1761</a> affects arrays of coordinates, so it seems sensible to put the
 new test in <code class="docutils literal notranslate"><span class="pre">test_arrays.py</span></code>. As with all of the steps, when in doubt,
-please ask on the <a href="#id25"><span class="problematic" id="id26">|astropy-dev mailing list|</span></a>.</p>
+please ask on the <a href="#id2"><span class="problematic" id="id3">|astropy-dev mailing list|</span></a>.</p>
 <p>The goal at this point may be a little counter-intuitive: write a test that we
 know will fail with the current code. This test allows <code class="docutils literal notranslate"><span class="pre">astropy</span></code> to check,
 in an automated way, whether our fix actually works and to prevent
@@ -805,7 +805,7 @@ an excerpt from the output is:</p>
 we just wrote is one logical change, so we will commit it. You could, if you
 prefer, wait and commit this test along with your fix.</p>
 <p>For this tutorial, we will commit the test separately. If you are not sure what to
-do, ask on <a href="#id27"><span class="problematic" id="id28">|astropy-dev mailing list|</span></a>.</p>
+do, ask on <a href="#id4"><span class="problematic" id="id5">|astropy-dev mailing list|</span></a>.</p>
 <section id="check-what-was-changed">
 <h3>Check what was changed<a class="headerlink" href="#check-what-was-changed" title="Link to this heading">#</a></h3>
 <p>We can see what has changed with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>:</p>
@@ -948,7 +948,7 @@ Success again!</p></li>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Tests that are skipped or xfailed are fine. A fail or an error is not
-fine. If you get stuck, ask on <a href="#id29"><span class="problematic" id="id30">|astropy-dev mailing list|</span></a> for help!</p>
+fine. If you get stuck, ask on <a href="#id6"><span class="problematic" id="id7">|astropy-dev mailing list|</span></a> for help!</p>
 </div>
 </section>
 <section id="stage-and-commit-your-change">
@@ -999,7 +999,7 @@ snippet below accomplishes that in bash (and similar shells):</p>
 </div>
 <p>If the commit message does not look right, run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">--amend</span></code>.
 If you still run into problems, please ask about fixing it at
-<a href="#id31"><span class="problematic" id="id32">|astropy-dev mailing list|</span></a>.</p>
+<a href="#id8"><span class="problematic" id="id9">|astropy-dev mailing list|</span></a>.</p>
 <p>At this point, none of the Astropy maintainers know anything about
 your changes.</p>
 <p>We will take care of that in a moment with a “pull request”, but first,
@@ -1018,7 +1018,7 @@ array?</p></li>
 </ul>
 <p>Both of these are mentioned in <a class="reference external" href="https://github.com/astropy/astropy/pull/1917">pull request 1917</a>, so it does not hurt to check
 them. In this case, they also provide an opportunity to illustrate a feature
-of the <a class="reference internal" href="#pytest">pytest</a> framework.</p>
+of the <a class="reference external" href="https://docs.pytest.org/en/stable/">pytest</a> framework.</p>
 <p>The second case is easier, so it will be handled first following the
 development cycle we used above:</p>
 <ul class="simple">
@@ -1042,7 +1042,7 @@ you chose and why; instructions for that are below.</p>
 <p>In this case, we opted for raising a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>, because
 the user needs to know that the coordinate they created is not going to
 behave like an array of one coordinate if they try to index it later on.</p>
-<p>The <a class="reference internal" href="#pytest">pytest</a> framework makes testing for an exception relatively
+<p>The <a class="reference external" href="https://docs.pytest.org/en/stable/">pytest</a> framework makes testing for an exception relatively
 easy; you put the code you expect to fail in a <code class="docutils literal notranslate"><span class="pre">with</span></code> block:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">ICRS</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">))</span>
 
@@ -1270,7 +1270,7 @@ to GitHub. GitHub will automatically update your pull request.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.1ce2f5d 2025-06-26T20:35Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250629.d90515e 2025-06-29T13:41Z.
       <br/>
     
   </p>

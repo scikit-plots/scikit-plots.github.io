@@ -600,33 +600,33 @@
 administrator permission required). Then run:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
 span.prompt1:before {
-  content: ">>> ";
+  content: "$ ";
 }
-</style><span class=""><span class="c1"># (conda or mamba) Create New Env and install ``scikit-plots``</span>
-mamba<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>py311<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11<span class="w"> </span>ipykernel<span class="w"> </span>-y
-conda<span class="w"> </span>activate<span class="w"> </span>py311</span>
-</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class=""><span class="c1">## (conda or mamba) Install scikit-plots (Upcoming)</span>
-conda<span class="w"> </span>install<span class="w"> </span>--yes<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>scikit-plots</span>
+</style><span class="prompt1"><span class="c1"># (conda or mamba) Create New Env and install ``scikit-plots``</span></span>
+<span class="prompt1">mamba<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>py311<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11<span class="w"> </span>ipykernel<span class="w"> </span>-y</span>
+<span class="prompt1">conda<span class="w"> </span>activate<span class="w"> </span>py311</span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (conda or mamba) Install scikit-plots (Upcoming)</span></span>
+<span class="prompt1">conda<span class="w"> </span>install<span class="w"> </span>--yes<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>scikit-plots</span>
 </pre></div></div><p>In order to check your installation, you can use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class=""><span class="c1"># conda list               # show all installed packages in the environment</span>
-conda<span class="w"> </span>list<span class="w"> </span>scikit-plots<span class="w">    </span><span class="c1"># show scikit-plots version and location</span>
-
-<span class="c1"># Version Check</span>
-python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import scikitplot; scikitplot.show_versions()&quot;</span>
-
-<span class="c1"># (Optionally) CLI Version Check</span>
-scikitplot<span class="w"> </span>--version
-scikitplot<span class="w"> </span>-V
-scikitplot<span class="w"> </span>-v</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1"># conda list               # show all installed packages in the environment</span></span>
+<span class="prompt1">conda<span class="w"> </span>list<span class="w"> </span>scikit-plots<span class="w">    </span><span class="c1"># show scikit-plots version and location</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="c1"># Version Check</span></span>
+<span class="prompt1">python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import scikitplot; scikitplot.show_versions()&quot;</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="c1"># (Optionally) CLI Version Check</span></span>
+<span class="prompt1">scikitplot<span class="w"> </span>--version</span>
+<span class="prompt1">scikitplot<span class="w"> </span>-V</span>
+<span class="prompt1">scikitplot<span class="w"> </span>-v</span>
 </pre></div></div><p>(Optionally) Also available Nightly Version <strong>can be cause conflict</strong> required <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">Environment</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class=""><span class="c1">## (Optionally) Install the lost packages &quot;Runtime dependencies&quot;</span>
-<span class="c1">## wget https://raw.githubusercontent.com/scikit-plots/scikit-plots/main/requirements/default.txt</span>
-curl<span class="w"> </span>-O<span class="w"> </span>https://raw.githubusercontent.com/scikit-plots/scikit-plots/main/requirements/default.txt
-pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>default.txt
-
-<span class="c1">## Try After Ensure all &quot;Runtime dependencies&quot; installed</span>
-<span class="c1"># pip install --extra-index-url https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple scikit-plots</span>
-pip<span class="w"> </span>install<span class="w"> </span>-i<span class="w"> </span>https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple<span class="w"> </span>scikit-plots</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (Optionally) Install the lost packages &quot;Runtime dependencies&quot;</span></span>
+<span class="prompt1"><span class="c1">## wget https://raw.githubusercontent.com/scikit-plots/scikit-plots/main/requirements/default.txt</span></span>
+<span class="prompt1">curl<span class="w"> </span>-O<span class="w"> </span>https://raw.githubusercontent.com/scikit-plots/scikit-plots/main/requirements/default.txt</span>
+<span class="prompt1">pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>default.txt</span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="c1">## Try After Ensure all &quot;Runtime dependencies&quot; installed</span></span>
+<span class="prompt1"><span class="c1"># pip install --extra-index-url https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple scikit-plots</span></span>
+<span class="prompt1">pip<span class="w"> </span>install<span class="w"> </span>-i<span class="w"> </span>https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple<span class="w"> </span>scikit-plots</span>
 </pre></div></div>
 
                 </article>
@@ -699,7 +699,7 @@ pip<span class="w"> </span>install<span class="w"> </span>-i<span class="w"> </s
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.1ce2f5d 2025-06-26T20:35Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250629.d90515e 2025-06-29T13:41Z.
       <br/>
     
   </p>

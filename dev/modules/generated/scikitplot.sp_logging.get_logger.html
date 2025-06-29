@@ -620,6 +620,13 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.kds.report.html">report</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.llm_provider.html">scikitplot.llm_provider</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.llm_provider.LLM_MODEL_PROVIDER2API_KEY.html">LLM_MODEL_PROVIDER2API_KEY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.llm_provider.LLM_MODEL_PROVIDER2CONFIG.html">LLM_MODEL_PROVIDER2CONFIG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.llm_provider.get_response.html">get_response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.llm_provider.load_mlflow_gateway_config.html">load_mlflow_gateway_config</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.modelplotpy.html">scikitplot.modelplotpy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="modelplotpy-cls.html">ModelPlotPy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.modelplotpy.plot_response.html">plot_response</a></li>
@@ -771,7 +778,7 @@
 <h1>get_logger<a class="headerlink" href="#get-logger" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.sp_logging.get_logger">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.sp_logging.</span></span><span class="sig-name descname"><span class="pre">get_logger</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1ce2f5d/scikitplot/sp_logging.py#L881"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.get_logger" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.sp_logging.</span></span><span class="sig-name descname"><span class="pre">get_logger</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d90515e/scikitplot/sp_logging.py#L882"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.get_logger" title="Link to this definition">#</a></dt>
 <dd><p>Return SP (scikitplot) logger instance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -787,7 +794,7 @@
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">logger</span></code></dt><dd><p>An alias of <code class="xref py py-mod docutils literal notranslate"><span class="pre">sp_logging</span></code> module, providing logging functionality.</p>
+<dt><a class="reference internal" href="scikitplot.logger.html#module-scikitplot.logger" title="scikitplot.logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scikitplot.logger</span></code></a></dt><dd><p>An alias of <a class="reference internal" href="../../apis/scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a> module, providing logging functionality.</p>
 </dd>
 <dt><a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.getLogger" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logging.getLogger</span></code></a></dt><dd><p>Standard library function to retrieve <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Logger" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">logging.Logger</span></code></a> instance. For more: <a class="reference external" href="https://docs.python.org/3/library/logging.html">https://docs.python.org/3/library/logging.html</a></p>
 </dd>
@@ -849,10 +856,10 @@ WARN level log will not be emitted:</p>
 </div></div>
 <div class="cell_output docutils container">
 <div class="thebelab-output" data-output="true"><div class="docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-06-26 20:37:55.344102: I scikitplot 139753776749440 3536182465.py:3:&lt;module&gt;] This is a info message from the sp logger.
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-06-29 13:44:20.994065: I scikitplot 140172478098304 3536182465.py:3:&lt;module&gt;] This is a info message from the sp logger.
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-06-26 20:37:55.344952: I scikitplot 139753776749440 3536182465.py:7:&lt;module&gt;] This is a info message from the sp logger.
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-06-29 13:44:20.994888: I scikitplot 140172478098304 3536182465.py:7:&lt;module&gt;] This is a info message from the sp logger.
 </pre></div>
 </div>
 </div>
@@ -871,7 +878,7 @@ WARN level log will not be emitted:</p>
 </div></div>
 <div class="cell_output docutils container">
 <div class="thebelab-output" data-output="true"><div class="docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-06-26 20:37:55.349852: I scikitplot 139753776749440 interactiveshell.py:3672:run_code] This is a info message from the sp logger.
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-06-29 13:44:20.999661: I scikitplot 140172478098304 interactiveshell.py:3672:run_code] This is a info message from the sp logger.
 </pre></div>
 </div>
 </div>
@@ -978,7 +985,7 @@ WARN level log will not be emitted:</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.1ce2f5d 2025-06-26T20:35Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250629.d90515e 2025-06-29T13:41Z.
       <br/>
     
   </p>

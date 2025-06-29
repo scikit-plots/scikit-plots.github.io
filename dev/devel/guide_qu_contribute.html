@@ -738,36 +738,43 @@ and you need to make a clone.</p>
 by going to the <a class="reference external" href="https://github.com/scikit-plots/scikit-plots">scikit-plots project page</a>
 and hitting the <code class="docutils literal notranslate"><span class="pre">Fork</span></code> button.</p>
 <p>Next, <a class="reference external" href="https://git-scm.com/docs/git-clone">clone</a> your GitHub fork to your machine:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">## Forked repo: https://github.com/scikit-plots/scikit-plots.git</span>
-git<span class="w"> </span>clone<span class="w"> </span>https://github.com/YOUR-USER-NAME/scikit-plots.git
-<span class="nb">cd</span><span class="w"> </span>scikit-plots
-</pre></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: "$ ";
+}
+</style><span class="prompt1"><span class="c1">## Forked repo: https://github.com/scikit-plots/scikit-plots.git</span></span>
+<span class="prompt1">git<span class="w"> </span>clone<span class="w"> </span>https://github.com/YOUR-USER-NAME/scikit-plots.git</span>
+<span class="prompt1"><span class="nb">cd</span><span class="w"> </span>scikit-plots</span>
+</pre></div></div><section id="initialize-and-fetch-submodules">
+<h3>Initialize and Fetch Submodules:<a class="headerlink" href="#initialize-and-fetch-submodules" title="Link to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Not Needed Every Time.</p>
 </div>
-<section id="initialize-and-fetch-submodules-not-needed-every-time">
-<h3>Initialize and Fetch Submodules (Not Needed Every Time):<a class="headerlink" href="#initialize-and-fetch-submodules-not-needed-every-time" title="Link to this heading">#</a></h3>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">## Or use `git config ...` to add `scikit-plots` in git safe dirs</span>
-bash<span class="w"> </span>docker/script/safe_dirs.sh<span class="w">  </span><span class="c1"># add safe directories for git</span>
-
-<span class="c1">## Initialize and clone any missing submodules, set up the working tree</span>
-<span class="c1">## Almost always used after cloning a repo with submodules.</span>
-git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive
-
-<span class="c1">## Update submodules to the latest commit on their configured remote branch</span>
-<span class="c1">## Used when you want your submodules to move to their latest remote commit.</span>
-git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--remote<span class="w"> </span>--recursive<span class="w"> </span><span class="c1"># (not needed every time)</span>
-</pre></div>
-</div>
-<p>Adding and Fetching Upstream Remote:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/scikit-plots/scikit-plots.git
-git<span class="w"> </span>fetch<span class="w"> </span>upstream<span class="w"> </span>--tags
-</pre></div>
-</div>
-<p>This creates the directory <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> and connects your repository to the upstream
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (Recommended) Add in git safe dirs</span></span>
+<span class="prompt1"><span class="c1">## Or use `git config ...` to add `scikit-plots` in git safe dirs</span></span>
+<span class="prompt1"><span class="c1"># bash docker/script/safe_dirs.sh  # add safe directories for git</span></span>
+<span class="prompt1">git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>--add<span class="w"> </span>safe.directory<span class="w"> </span><span class="s1">&#39;*&#39;</span></span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (Recommended) Initialize and clone any missing submodules, set up the working tree</span></span>
+<span class="prompt1"><span class="c1">## Almost always used after cloning a repo with submodules.</span></span>
+<span class="prompt1">git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive</span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (if Necessary) Update submodules to the latest commit on their configured remote branch</span></span>
+<span class="prompt1"><span class="c1">## Used when you want your submodules to move to their latest remote commit.</span></span>
+<span class="prompt1">git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--remote<span class="w"> </span>--recursive<span class="w"> </span><span class="c1"># (not needed every time)</span></span>
+</pre></div></div><p>Adding and Fetching Upstream Remote:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (Recommended) Add remote upstream</span></span>
+<span class="prompt1">git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/scikit-plots/scikit-plots.git</span>
+<span class="prompt1">git<span class="w"> </span>fetch<span class="w"> </span>upstream<span class="w"> </span>--tags</span>
+</pre></div></div><p>This creates the directory <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> and connects your repository to the upstream
 (main project) <a class="reference external" href="https://github.com/scikit-plots/scikit-plots">scikit-plots</a> repository.</p>
 <p>You can see the remote repositories as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">remote</span> <span class="o">--</span><span class="n">verbose</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">prompt</span><span class="p">::</span> <span class="n">bash</span>
 </pre></div>
 </div>
+<blockquote>
+<div><p>## (Recommended) Check remote upstream
+git remote –verbose</p>
+</div></blockquote>
 <p>You will see something like:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">origin</span>  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">YOUR</span><span class="o">-</span><span class="n">USER</span><span class="o">-</span><span class="n">NAME</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">plots</span> <span class="p">(</span><span class="n">fetch</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">origin</span>  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">YOUR</span><span class="o">-</span><span class="n">USER</span><span class="o">-</span><span class="n">NAME</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">plots</span> <span class="p">(</span><span class="n">push</span><span class="p">)</span>
@@ -798,46 +805,43 @@ can be useful for testing.</p>
 your system but the end result is to provide a <code class="docutils literal notranslate"><span class="pre">conda</span></code> executable that you can use
 to create and manage isolated Python environments.</p>
 <p>Now create and activate an <code class="docutils literal notranslate"><span class="pre">py311</span></code> conda environment using the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># (Optionally) Docker also created env `py311` ready to use</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># (Optionally) Can be run on mamba (or conda) `conda base` or `venv` env</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">conda</span> <span class="n">info</span> <span class="o">-</span><span class="n">e</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mamba</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">py311</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.11</span> <span class="n">ipykernel</span> <span class="n">graphviz</span> <span class="o">-</span><span class="n">y</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">conda</span> <span class="n">activate</span> <span class="n">py311</span>
-</pre></div>
-</div>
-<p>Note the <code class="docutils literal notranslate"><span class="pre">graphviz</span></code> package is required for building the documentation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (Recommended) Check Docker also can be created env `py311` to use</span></span>
+<span class="prompt1">conda<span class="w"> </span>info<span class="w"> </span>-e</span>
+<span class="prompt1">conda<span class="w"> </span>activate<span class="w"> </span>py311</span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (Recommended) Can be run on mamba (or conda) `conda base` or `venv` env</span></span>
+<span class="prompt1">mamba<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>py311<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11<span class="w"> </span>ipykernel<span class="w"> </span>graphviz<span class="w"> </span>-y</span>
+</pre></div></div><p>Note the <code class="docutils literal notranslate"><span class="pre">graphviz</span></code> package is required for building the documentation.</p>
 </section>
 <section id="install-the-development-version-of-scikit-plots">
 <h3>Install the development version of scikit-plots<a class="headerlink" href="#install-the-development-version-of-scikit-plots" title="Link to this heading">#</a></h3>
 <p>Now you can install the development version of <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> into your new environment. This
 will install the latest version of <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> from your local git repo, along with
 all the dependencies needed to build and fully test <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## (Optionally) setup one line scikit-plots development version</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">make</span> <span class="n">dev</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="c1">## Setup scikit-plots lib dep</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># pip install -r ./requirements/all.txt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># pip install -r ./requirements/cpu.txt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="o">./</span><span class="n">requirements</span><span class="o">/</span><span class="n">build</span><span class="o">.</span><span class="n">txt</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="c1">## Setup scikit-plots lib dep</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">build</span><span class="o">-</span><span class="n">isolation</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cache</span><span class="o">-</span><span class="nb">dir</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span> <span class="o">-</span><span class="n">v</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="c1">## (Optionally) It is also possible to include optional dependencies:</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1">## cpu refer tensorflow-cpu, keras, transformers</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">build</span><span class="o">-</span><span class="n">isolation</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cache</span><span class="o">-</span><span class="nb">dir</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span><span class="p">[</span><span class="n">build</span><span class="p">,</span><span class="n">dev</span><span class="p">,</span><span class="n">test</span><span class="p">,</span><span class="n">doc</span><span class="p">]</span> <span class="o">-</span><span class="n">v</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## (if Necessary) setup one line scikit-plots development version</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># make dev</span>
 </pre></div>
 </div>
-<section id="checking-the-build-scikit-plots">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (Recommended) Setup scikit-plots lib dep</span></span>
+<span class="prompt1"><span class="c1"># pip install -r ./requirements/build.txt</span></span>
+<span class="prompt1"><span class="c1"># pip install -r ./requirements/cpu.txt</span></span>
+<span class="prompt1">pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>./requirements/all.txt</span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (Recommended) Setup scikit-plots lib</span></span>
+<span class="prompt1">pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>--no-cache-dir<span class="w"> </span>-e<span class="w"> </span>.<span class="w"> </span>-v</span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (Optionally) It is also possible to include optional dependencies:</span></span>
+<span class="prompt1"><span class="c1">## cpu refer tensorflow-cpu, keras, transformers</span></span>
+<span class="prompt1">python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-build-isolation<span class="w"> </span>--no-cache-dir<span class="w"> </span>-e<span class="w"> </span>.<span class="o">[</span>build,dev,test,doc<span class="o">]</span><span class="w"> </span>-v</span>
+</pre></div></div><section id="checking-the-build-scikit-plots">
 <span id="contributing-check-build"></span><h4>Checking the build scikit-plots<a class="headerlink" href="#checking-the-build-scikit-plots" title="Link to this heading">#</a></h4>
 <p>At this point you should be able to <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">scikitplot</span></code> from your locally built version:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;import scikitplot; scikitplot.show_config()&#39;</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="c1">## Checking the build without root</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bash</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;cd ~ &amp;&amp; python -c &#39;import scikitplot; scikitplot.show_config()&#39;&quot;</span>
-</pre></div>
-</div>
-<p>Next you may want to try running some or all of the <code class="docutils literal notranslate"><span class="pre">scikitplot</span></code> unit tests.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## Checking the build without root</span></span>
+<span class="prompt1">bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;cd ~ &amp;&amp; python -c &#39;import scikitplot; scikitplot.show_config()&#39;&quot;</span></span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## Checking version</span></span>
+<span class="prompt1">python<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;import scikitplot; scikitplot.show_config()&#39;</span></span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## Checking version</span></span>
+<span class="prompt1">scikitplot<span class="w"> </span>--version</span>
+<span class="prompt1">scikitplot<span class="w"> </span>-V</span>
+<span class="prompt1">scikitplot<span class="w"> </span>-v</span>
+</pre></div></div><p>Next you may want to try running some or all of the <code class="docutils literal notranslate"><span class="pre">scikitplot</span></code> unit tests.
 Running the full test suite can take a few minutes, so you may want to start with a
 single sub-package (e.g. <a class="reference internal" href="../user_guide/decile_wise_perf/kds.html#kds-index"><span class="std std-ref">KeyToDataScience</span></a>):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## python -m pytest -p vscode_pytest --collect-only --rootdir=.</span>
@@ -864,8 +868,8 @@ resulting in lost time (yours and CI resources).</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">install</span>
 </pre></div>
 </div>
-<p>(Optionally) Manually one-by-one testing (not needed every time):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## (Optionally) Manually one-by-one testing:</span>
+<p>(if Necessary) Manually one-by-one testing (not needed every time):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## (if Necessary) Manually one-by-one testing:</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1">## If the test is successful one by one</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1">## but there is an error in the entire test, check the inconsistency</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># pre-commit run ruff-format --verbose # (with `--all-files` option not recommended)</span>
@@ -873,8 +877,8 @@ resulting in lost time (yours and CI resources).</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">run</span> <span class="n">black</span>
 </pre></div>
 </div>
-<p>(Optionally) Update and reinstall pre-commit hooks (not needed every time):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## (Optionally) Update and reinstall pre-commit hooks (not needed every time), If Needed</span>
+<p>(if Necessary) Update and reinstall pre-commit hooks (not needed every time):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## (if Necessary) Update and reinstall pre-commit hooks (not needed every time), If Needed</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">autoupdate</span>  <span class="c1"># (not needed every time)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">clean</span> <span class="o">&amp;&amp;</span> <span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">install</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">run</span> <span class="c1"># (with `--all-files` option not recommended)</span>
@@ -887,7 +891,57 @@ pass.</p>
 <p class="admonition-title">Tip</p>
 <p>To learn more about pre-commit, see the <a class="reference internal" href="guide_devel_details.html#pre-commit"><span class="std std-ref">Pre-commit</span></a> section.</p>
 </div>
-</section>
+<p><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/main/docker/script/first-run-notice.txt">“See Also: first-run-notice.txt”</a></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sdd" id="first-run-notice.txt" open="open">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">first-run-notice.txt<a class="headerlink" href="#first-run-notice.txt" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>👋 Welcome to `scikit-plots` in GitHub Codespaces!
+
+🔍 To explore VS Code to its fullest, search using the Command Palette (Cmd/Ctrl + Shift + P or F1).
+
+ℹ️  Look at https://scikit-plots.github.io/dev/introduction/quick_start.html
+  for more contribution details https://scikit-plots.github.io/dev/devel/index.html.
+
+⭐⭐ =====================================  IMPORTANT!!  ===================================== ⭐⭐
+  To complete setup of your development environment to run the following script in the terminal:
+
+    ##💽 (Optionally) Memory size: df -h &amp;&amp; du -h --max-depth=1
+
+    ##🛠️ (recommended) Apply in bash `setup_conda_env_create.sh` `post_create_commands.sh`
+    ## 👉 Some steps can be skipped when container creation due to storage size limitations
+    ## ⚠️ `ERROR: ... : No space left on device`
+    ##✅ directories to mark as safe like ( git config --global --add safe.directory &#39;*&#39; )
+    ##✅ fetching submodules ( git submodule update --init )
+    ##✅ add remote upstream ( git remote add upstream https://github.com/scikit-plots/scikit-plots.git )
+    ##✅ fetch tags from upstream ( git fetch upstream --tags )
+    ##✅ create a new environment with python 3.11 ( mamba create -n &quot;py311&quot; python=3.11 ipykernel -y )
+    ##✅ install required packages ( pip install -r ./requirements/all.txt )
+    ##✅ install pre-commit hooks ( pre-commit install )
+    ##✅ install the development version of scikit-plots ( pip install --no-build-isolation --no-cache-dir -e . )
+    bash &quot;.devcontainer/script/post_create_commands.sh&quot;  # (not needed every time)
+
+    ##👉 Open to new terminal mamba (or conda)
+    conda init
+    conda info -e
+    # (DevContainer) mamba activate /workspaces/scikit-plots/venv
+    mamba activate py311
+    mamba activate base
+
+    ##✅ Checking the build without root
+    bash -c &quot;cd ~ &amp;&amp; python -c &#39;import scikitplot; scikitplot.show_config()&#39;&quot;
+
+    ##✅ Install tensorflow-cpu, if needed
+    pip install -r ./requirements/all.txt
+    pip install -r ./requirements/cpu.txt
+
+    ##✍ Continue to creating a branch
+    ##🌐 Read more at: https://scikit-plots.github.io/dev/devel/quickstart_contributing.html#creating-a-branch
+
+⭐⭐ ========================================================================================= ⭐⭐
+</pre></div>
+</div>
+</div>
+</details></section>
 </section>
 <section id="creating-and-submitting-a-pull-request">
 <span id="contributing-pull-request"></span><h2>Creating and submitting a pull request<a class="headerlink" href="#creating-and-submitting-a-pull-request" title="Link to this heading">#</a></h2>
@@ -939,8 +993,8 @@ A---B---C---D---E---F  (upstream/main)
 </pre></div>
 </div>
 </section>
-<section id="optionally-rebases">
-<h3>(Optionally) Rebases:<a class="headerlink" href="#optionally-rebases" title="Link to this heading">#</a></h3>
+<section id="if-necessary-rebases">
+<h3>(if Necessary) Rebases:<a class="headerlink" href="#if-necessary-rebases" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Rebases your local commits on top of the latest upstream/main</p></li>
 <li><p>Rewrites history by replaying your commits on top of upstream/main, making the history linear</p></li>
@@ -1012,16 +1066,12 @@ process outlined in the <a class="reference external" href="https://numpy.org/do
 <p>For more information and examples see <a class="reference internal" href="guide_devel_workflow.html#edit-flow"><span class="std std-ref">The editing workflow</span></a> section.</p>
 </div>
 <p>You can see a summary of the changes you’ve currently made by running:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>status
-</pre></div>
-</div>
-<p>You can then commit your all your changes to your local repository with an explanatory
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">git<span class="w"> </span>status</span>
+</pre></div></div><p>You can then commit your all your changes to your local repository with an explanatory
 <a class="reference external" href="https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">commit message</a>:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>files-that-you-changed<span class="w"> </span>...
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;your commit message goes here&quot;</span>
-</pre></div>
-</div>
-<div class="admonition important">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">git<span class="w"> </span>add<span class="w"> </span>files-that-you-changed<span class="w"> </span>...</span>
+<span class="prompt1">git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;your commit message goes here&quot;</span></span>
+</pre></div></div><div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Never merge changes from <code class="docutils literal notranslate"><span class="pre">upstream/main</span></code> into your feature branch. If
 changes in <code class="docutils literal notranslate"><span class="pre">main</span></code> require changes to our code you must <a class="reference internal" href="guide_devel_details.html#rebase"><span class="std std-ref">Rebase if necessary</span></a>.</p>
@@ -1155,7 +1205,7 @@ required reviewers and a faster review process.</p></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-clone-of-scikit-plots">Create a clone of scikit-plots</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-fetch-submodules-not-needed-every-time">Initialize and Fetch Submodules (Not Needed Every Time):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-fetch-submodules">Initialize and Fetch Submodules:</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-isolated-development-environment">Create an isolated development environment</a><ul class="nav section-nav flex-column">
@@ -1170,7 +1220,7 @@ required reviewers and a faster review process.</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-submitting-a-pull-request">Creating and submitting a pull request</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-branch">Creating a branch</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-use-fast-forward-only">(Recommended) Use Fast-forward only:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optionally-rebases">(Optionally) Rebases:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-necessary-rebases">(if Necessary) Rebases:</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-code-or-documentation-changes">Making code or documentation changes</a><ul class="nav section-nav flex-column">
@@ -1217,7 +1267,7 @@ required reviewers and a faster review process.</p></li>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.1ce2f5d 2025-06-26T20:35Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250629.d90515e 2025-06-29T13:41Z.
       <br/>
     
   </p>

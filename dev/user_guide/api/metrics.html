@@ -83,7 +83,7 @@
     <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Decile-Wise Performance" href="../decile_wise_perf/index.html" />
+    <link rel="next" title="LLM Provider (experimental)" href="../llm_provider/index.html" />
     <link rel="prev" title="Estimators" href="estimators.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -555,7 +555,14 @@
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../decile_wise_perf/index.html">Decile-Wise Performance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../decile_wise_perf/kds.html">KeyToDataScience</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile_wise_perf/modelplotpy.html">modelplotpy</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Metric Performance</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="decomposition.html">Decomposition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="estimators.html">Estimators</a></li>
@@ -564,11 +571,10 @@
 </details></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../decile_wise_perf/index.html">Decile-Wise Performance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../decile_wise_perf/kds.html">KeyToDataScience</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../decile_wise_perf/modelplotpy.html">modelplotpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../llm_provider/index.html">LLM Provider (experimental)</a></li>
 </ul>
-</details></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sp_logging/index.html">Logging System</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../stats/index.html">Stats (experimental)</a></li>
@@ -577,20 +583,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../visualkeras/index.html">Visualkeras (experimental)</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../doremi/index.html">DoReMi</a></li>
-</ul>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../sp_logging/index.html">Logging System</a></li>
-</ul>
-<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../_lib/index.html">Array API support (experimental)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../doremi/index.html">DoReMi</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Development</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../_astropy/index.html">Astropy (experimental)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../experimental/index.html">Experimental (experimental)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../_seaborn/index.html">Seaborn (experimental)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../probscale/index.html">Probability Plots (experimental)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_astropy/index.html">Astropy (experimental)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_seaborn/index.html">Seaborn (experimental)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../_tweedie/index.html">Tweedie Family</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../__lightnumpy/index.html">LightNumPy (experimental)</a></li>
 </ul>
@@ -653,10 +656,10 @@
 <span id="metrics-index"></span><h1>Metrics<a class="headerlink" href="#metrics" title="Link to this heading">#</a></h1>
 <p>This module contains functions related to metrics.</p>
 <section id="regression-metrics">
-<span id="id24"></span><h2>Regression metrics<a class="headerlink" href="#regression-metrics" title="Link to this heading">#</a></h2>
+<span id="id1"></span><h2>Regression metrics<a class="headerlink" href="#regression-metrics" title="Link to this heading">#</a></h2>
 <p>This module contains functions related to <code class="docutils literal notranslate"><span class="pre">Regression</span> <span class="pre">metrics</span></code>.</p>
 <section id="plot-residuals-distribution">
-<span id="id25"></span><h3>plot residuals distribution<a class="headerlink" href="#plot-residuals-distribution" title="Link to this heading">#</a></h3>
+<span id="id2"></span><h3>plot residuals distribution<a class="headerlink" href="#plot-residuals-distribution" title="Link to this heading">#</a></h3>
 <p><a class="reference internal" href="../../modules/generated/scikitplot.api.metrics.plot_residuals_distribution.html#scikitplot.api.metrics.plot_residuals_distribution" title="scikitplot.api.metrics.plot_residuals_distribution"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_residuals_distribution</span></code></a></p>
 <p>Trained model of <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearRegression</span></code></a> or
 <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html#sklearn.ensemble.RandomForestRegressor" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestRegressor</span></code></a>. For an example of
@@ -676,10 +679,10 @@ performing image:</p>
 </details></section>
 </section>
 <section id="classification-metrics">
-<span id="id26"></span><h2>Classification metrics<a class="headerlink" href="#classification-metrics" title="Link to this heading">#</a></h2>
+<span id="id3"></span><h2>Classification metrics<a class="headerlink" href="#classification-metrics" title="Link to this heading">#</a></h2>
 <p>This module contains functions related to <code class="docutils literal notranslate"><span class="pre">Classification</span> <span class="pre">metrics</span></code>.</p>
 <section id="plot-calibration">
-<span id="id27"></span><h3>plot calibration<a class="headerlink" href="#plot-calibration" title="Link to this heading">#</a></h3>
+<span id="id4"></span><h3>plot calibration<a class="headerlink" href="#plot-calibration" title="Link to this heading">#</a></h3>
 <p><a class="reference internal" href="../../modules/generated/scikitplot.api.metrics.plot_calibration.html#scikitplot.api.metrics.plot_calibration" title="scikitplot.api.metrics.plot_calibration"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_calibration</span></code></a></p>
 <p>Trained model of <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a> or
 <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></a>. For an example of
@@ -698,7 +701,7 @@ performing image:</p>
 </div>
 </details></section>
 <section id="plot-precision-recall">
-<span id="id28"></span><h3>plot precision recall<a class="headerlink" href="#plot-precision-recall" title="Link to this heading">#</a></h3>
+<span id="id5"></span><h3>plot precision recall<a class="headerlink" href="#plot-precision-recall" title="Link to this heading">#</a></h3>
 <p><a class="reference internal" href="../../modules/generated/scikitplot.api.metrics.plot_precision_recall.html#scikitplot.api.metrics.plot_precision_recall" title="scikitplot.api.metrics.plot_precision_recall"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_precision_recall</span></code></a></p>
 <p>Trained model of <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a> or
 <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></a>. For an example of
@@ -717,7 +720,7 @@ performing image:</p>
 </div>
 </details></section>
 <section id="plot-roc">
-<span id="id29"></span><h3>plot roc<a class="headerlink" href="#plot-roc" title="Link to this heading">#</a></h3>
+<span id="id6"></span><h3>plot roc<a class="headerlink" href="#plot-roc" title="Link to this heading">#</a></h3>
 <p><a class="reference internal" href="../../modules/generated/scikitplot.api.metrics.plot_roc.html#scikitplot.api.metrics.plot_roc" title="scikitplot.api.metrics.plot_roc"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_roc</span></code></a></p>
 <p>Trained model of <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a> or
 <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></a>. For an example of
@@ -737,10 +740,10 @@ performing image:</p>
 </details></section>
 </section>
 <section id="clustering-metrics">
-<span id="id30"></span><h2>Clustering metrics<a class="headerlink" href="#clustering-metrics" title="Link to this heading">#</a></h2>
+<span id="id7"></span><h2>Clustering metrics<a class="headerlink" href="#clustering-metrics" title="Link to this heading">#</a></h2>
 <p>This module contains functions related to <code class="docutils literal notranslate"><span class="pre">Clustering</span> <span class="pre">metrics</span></code>.</p>
 <section id="plot-silhouette">
-<span id="id31"></span><h3>plot silhouette<a class="headerlink" href="#plot-silhouette" title="Link to this heading">#</a></h3>
+<span id="id8"></span><h3>plot silhouette<a class="headerlink" href="#plot-silhouette" title="Link to this heading">#</a></h3>
 <p><a class="reference internal" href="../../modules/generated/scikitplot.api.metrics.plot_silhouette.html#scikitplot.api.metrics.plot_silhouette" title="scikitplot.api.metrics.plot_silhouette"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_silhouette</span></code></a></p>
 <p>Trained model of <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">KMeans</span></code></a> or <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.MiniBatchKMeans.html#sklearn.cluster.MiniBatchKMeans" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MiniBatchKMeans</span></code></a>.
 For an example of performing image:</p>
@@ -781,11 +784,11 @@ For an example of performing image:</p>
       </div>
     </a>
     <a class="right-next"
-       href="../decile_wise_perf/index.html"
+       href="../llm_provider/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Decile-Wise Performance</p>
+        <p class="prev-next-title">LLM Provider (experimental)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -863,7 +866,7 @@ For an example of performing image:</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.1ce2f5d 2025-06-26T20:35Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250629.d90515e 2025-06-29T13:41Z.
       <br/>
     
   </p>

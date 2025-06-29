@@ -621,6 +621,13 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.kds.report.html">report</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.llm_provider.html">scikitplot.llm_provider</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.llm_provider.LLM_MODEL_PROVIDER2API_KEY.html">LLM_MODEL_PROVIDER2API_KEY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.llm_provider.LLM_MODEL_PROVIDER2CONFIG.html">LLM_MODEL_PROVIDER2CONFIG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.llm_provider.get_response.html">get_response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.llm_provider.load_mlflow_gateway_config.html">load_mlflow_gateway_config</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.modelplotpy.html">scikitplot.modelplotpy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="modelplotpy-cls.html">ModelPlotPy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.modelplotpy.plot_response.html">plot_response</a></li>
@@ -772,10 +779,10 @@
 <h1>bayesian_blocks<a class="headerlink" href="#bayesian-blocks" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.stats.bayesian_blocks">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.stats.</span></span><span class="sig-name descname"><span class="pre">bayesian_blocks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fitness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'events'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1ce2f5d/scikitplot/_astropy/stats/bayesian_blocks.py#L71"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.stats.bayesian_blocks" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.stats.</span></span><span class="sig-name descname"><span class="pre">bayesian_blocks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fitness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'events'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d90515e/scikitplot/_astropy/stats/bayesian_blocks.py#L71"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.stats.bayesian_blocks" title="Link to this definition">#</a></dt>
 <dd><p>Compute optimal segmentation of data with Scargle’s Bayesian Blocks.</p>
 <p>This is a flexible implementation of the Bayesian Blocks algorithm
-described in Scargle 2013 <a class="reference internal" href="#refb3b6bccc47-1" id="id24">[1]</a>.</p>
+described in Scargle 2013 <a class="reference internal" href="#refb3b6bccc47-1" id="id1">[1]</a>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
@@ -842,7 +849,7 @@ which takes precedence over <code class="docutils literal notranslate"><span cla
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="refb3b6bccc47-1" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id24">1</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>Scargle, J et al. (2013)
 <a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2013ApJ...764..167S">https://ui.adsabs.harvard.edu/abs/2013ApJ…764..167S</a></p>
 </div>
@@ -984,7 +991,7 @@ straight lines. J. Amer. Statist. Assoc. 64, 1079–1084.
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250626.1ce2f5d 2025-06-26T20:35Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250629.d90515e 2025-06-29T13:41Z.
       <br/>
     
   </p>
