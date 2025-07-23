@@ -563,6 +563,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">docker</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="guide_docker.html">Docker Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide_python_env_manager.html">Python Env Manager Guide</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">getting started</span></p>
 <ul class="nav bd-sidenav">
@@ -745,7 +746,92 @@ span.prompt1:before {
 </style><span class="prompt1"><span class="c1">## Forked repo: https://github.com/scikit-plots/scikit-plots.git</span></span>
 <span class="prompt1">git<span class="w"> </span>clone<span class="w"> </span>https://github.com/YOUR-USER-NAME/scikit-plots.git</span>
 <span class="prompt1"><span class="nb">cd</span><span class="w"> </span>scikit-plots</span>
-</pre></div></div><section id="initialize-and-fetch-submodules">
+</pre></div></div><div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Actually we run below scripts step-by-step in following Documentation.
+(See Also: <a href="#id3"><span class="problematic" id="id4">`https://github.com/scikit-plots/scikit-plots/blob/main/docker/scripts/bash-first-run-notice.txt`__</span></a>)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">bash<span class="w"> </span>docker/scripts/post_create_commands.sh</span>
+</pre></div></div></div>
+<p><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/main/docker/scripts/bash-first-run-notice.txt">“See Also: bash-first-run-notice.txt”</a></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sdd" id="bash-first-run-notice.txt" open="open">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">bash-first-run-notice.txt<a class="headerlink" href="#bash-first-run-notice.txt" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>👋  Welcome to the `scikit-plots` Dev Environment (Docker / Codespaces)
+
+🧭  Quick Navigation:
+• 🔎  Open the Command Palette → `Ctrl+Shift+P` / `Cmd+Shift+P` or `F1`
+• 📘  Quick Start → https://scikit-plots.github.io/dev/introduction/quick_start.html
+• 🛠️  Dev Guide → https://scikit-plots.github.io/dev/devel/index.html
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⭐ 🌟  IMPORTANT: Complete Environment Setup
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅  Check Installation:
+  $ scikitplot -V
+  $ python -c &quot;import scikitplot; scikitplot.show_config()&quot;
+
+✅  Post-Create Setup (Recommended):
+  $ bash docker/scripts/all_post_create.sh
+
+✅  Safe Git Configs:
+  $ git config --global --add safe.directory &#39;*&#39;
+  $ git submodule update --init
+  $ git remote add upstream https://github.com/scikit-plots/scikit-plots.git
+  $ git fetch upstream --tags
+
+✅  Create Environment (Micromamba/Conda):
+  $ mamba create -n py311 python=3.11 ipykernel -y
+  $ conda create -n py311 python=3.11 ipykernel -y
+  $ conda activate py311
+
+✅  Install Dependencies:
+  $ pip install -r requirements/all.txt
+  $ pre-commit install
+  $ pip install --no-build-isolation --no-cache-dir -e .
+
+✅  (Optional) Install CPU-specific packages:
+  $ pip install -r requirements/cpu.txt
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📦  Environment Management Notes:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Activate environments (depending on tool):
+  $ conda activate py311
+  $ micromamba activate py311
+
+• See environments:
+  $ conda info -e
+  $ micromamba info -e
+
+• Initialize Conda shell support (if needed):
+  $ conda init
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💡  Troubleshooting:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• 💽  Disk Space:
+  $ df -h &amp;&amp; du -h --max-depth=1
+
+• 💾  Creation logs (Codespaces):
+  ⚠️ 👇 Check Codespace Container creation raise `ERROR: ... : No space left on device`
+  $ cat /workspaces/.codespaces/.persistedshare/creation.log
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✍  Starting Development
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🌿  Create a new branch before working:
+  $ git checkout -b feature/my-new-feature
+
+✍  Proceed to create a branch if you have uncommitted changes and are beginning work on a new feature or bug fix.
+🔄  Read more: https://scikit-plots.github.io/dev/devel/quickstart_contributing.html#creating-a-branch
+</pre></div>
+</div>
+</div>
+</details><section id="initialize-and-fetch-submodules">
 <h3>Initialize and Fetch Submodules:<a class="headerlink" href="#initialize-and-fetch-submodules" title="Link to this heading">#</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -753,7 +839,7 @@ span.prompt1:before {
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (Recommended) Add in git safe dirs</span></span>
 <span class="prompt1"><span class="c1">## Or use `git config ...` to add `scikit-plots` in git safe dirs</span></span>
-<span class="prompt1"><span class="c1"># bash docker/script/safe_dirs.sh  # add safe directories for git</span></span>
+<span class="prompt1"><span class="c1"># bash docker/scripts/safe_dirs.sh  # add safe directories for git</span></span>
 <span class="prompt1">git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>--add<span class="w"> </span>safe.directory<span class="w"> </span><span class="s1">&#39;*&#39;</span></span>
 </pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (Recommended) Initialize and clone any missing submodules, set up the working tree</span></span>
 <span class="prompt1"><span class="c1">## Almost always used after cloning a repo with submodules.</span></span>
@@ -891,57 +977,7 @@ pass.</p>
 <p class="admonition-title">Tip</p>
 <p>To learn more about pre-commit, see the <a class="reference internal" href="guide_devel_details.html#pre-commit"><span class="std std-ref">Pre-commit</span></a> section.</p>
 </div>
-<p><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/main/docker/script/first-run-notice.txt">“See Also: first-run-notice.txt”</a></p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sdd" id="first-run-notice.txt" open="open">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">first-run-notice.txt<a class="headerlink" href="#first-run-notice.txt" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>👋 Welcome to `scikit-plots` in GitHub Codespaces!
-
-🔍 To explore VS Code to its fullest, search using the Command Palette (Cmd/Ctrl + Shift + P or F1).
-
-ℹ️  Look at https://scikit-plots.github.io/dev/introduction/quick_start.html
-  for more contribution details https://scikit-plots.github.io/dev/devel/index.html.
-
-⭐⭐ =====================================  IMPORTANT!!  ===================================== ⭐⭐
-  To complete setup of your development environment to run the following script in the terminal:
-
-    ##💽 (Optionally) Memory size: df -h &amp;&amp; du -h --max-depth=1
-
-    ##🛠️ (recommended) Apply in bash `setup_conda_env_create.sh` `post_create_commands.sh`
-    ## 👉 Some steps can be skipped when container creation due to storage size limitations
-    ## ⚠️ `ERROR: ... : No space left on device`
-    ##✅ directories to mark as safe like ( git config --global --add safe.directory &#39;*&#39; )
-    ##✅ fetching submodules ( git submodule update --init )
-    ##✅ add remote upstream ( git remote add upstream https://github.com/scikit-plots/scikit-plots.git )
-    ##✅ fetch tags from upstream ( git fetch upstream --tags )
-    ##✅ create a new environment with python 3.11 ( mamba create -n &quot;py311&quot; python=3.11 ipykernel -y )
-    ##✅ install required packages ( pip install -r ./requirements/all.txt )
-    ##✅ install pre-commit hooks ( pre-commit install )
-    ##✅ install the development version of scikit-plots ( pip install --no-build-isolation --no-cache-dir -e . )
-    bash &quot;.devcontainer/script/post_create_commands.sh&quot;  # (not needed every time)
-
-    ##👉 Open to new terminal mamba (or conda)
-    conda init
-    conda info -e
-    # (DevContainer) mamba activate /workspaces/scikit-plots/venv
-    mamba activate py311
-    mamba activate base
-
-    ##✅ Checking the build without root
-    bash -c &quot;cd ~ &amp;&amp; python -c &#39;import scikitplot; scikitplot.show_config()&#39;&quot;
-
-    ##✅ Install tensorflow-cpu, if needed
-    pip install -r ./requirements/all.txt
-    pip install -r ./requirements/cpu.txt
-
-    ##✍ Continue to creating a branch
-    ##🌐 Read more at: https://scikit-plots.github.io/dev/devel/quickstart_contributing.html#creating-a-branch
-
-⭐⭐ ========================================================================================= ⭐⭐
-</pre></div>
-</div>
-</div>
-</details></section>
+</section>
 </section>
 <section id="creating-and-submitting-a-pull-request">
 <span id="contributing-pull-request"></span><h2>Creating and submitting a pull request<a class="headerlink" href="#creating-and-submitting-a-pull-request" title="Link to this heading">#</a></h2>
@@ -1267,7 +1303,7 @@ required reviewers and a faster review process.</p></li>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250629.d90515e 2025-06-29T13:41Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250723.c45480d 2025-07-23T20:13Z.
       <br/>
     
   </p>
