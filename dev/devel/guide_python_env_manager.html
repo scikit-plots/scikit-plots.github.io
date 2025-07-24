@@ -7,16 +7,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="📦 Python Environment Manager Guidelines" />
+<meta property="og:title" content="📦 Python Env Manager Guidelines" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/devel/guide_python_env_manager.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="📦 Conda Environment Guidelines: 🛠 The Main Tools (And What They’re Good At): 🛠 The Main Tools (And What They’re Good At):,,,, Tool, Create Environment, ⚠️ Activate Environment, Critical Notes,,,, 4..." />
+<meta property="og:description" content="📦 Conda Environment Guidelines: 🛠 The Main Tools (And What They’re Good At): 🛠 The Main Tools (And What They’re Good At):,,,, Tool, Create Environment, ⚠️ Activate Environment, Critical Notes,,, co..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="📦 Conda Environment Guidelines: 🛠 The Main Tools (And What They’re Good At): 🛠 The Main Tools (And What They’re Good At):,,,, Tool, Create Environment, ⚠️ Activate Environment, Critical Notes,,,, 4..." />
+<meta name="description" content="📦 Conda Environment Guidelines: 🛠 The Main Tools (And What They’re Good At): 🛠 The Main Tools (And What They’re Good At):,,,, Tool, Create Environment, ⚠️ Activate Environment, Critical Notes,,, co..." />
 
-    <title>📦 Python Environment Manager Guidelines &#8212; scikit-plots 0.5.dev0 documentation</title>
+    <title>📦 Python Env Manager Guidelines &#8212; scikit-plots 0.5.dev0 documentation</title>
   
   
   
@@ -663,7 +663,7 @@
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Contributing Guidelines to scikit-plots</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">📦 Python Environment Manager Guidelines</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">📦 Python Env Manager Guidelines</span></li>
   </ul>
 </nav>
 </div>
@@ -680,13 +680,15 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="python-environment-manager-guidelines">
-<span id="python-environment-manager"></span><h1>📦 Python Environment Manager Guidelines<a class="headerlink" href="#python-environment-manager-guidelines" title="Link to this heading">#</a></h1>
+  <section id="python-env-manager-guidelines">
+<span id="python-env-manager"></span><h1>📦 Python Env Manager Guidelines<a class="headerlink" href="#python-env-manager-guidelines" title="Link to this heading">#</a></h1>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p>🔎 Run the latest scikit-plots container — with full or partial preinstallation — interactively:
-* <a class="reference external" href="https://hub.docker.com/r/scikitplot/scikit-plots">“Scikit-plots Runtime Docker Images”</a>
-* <a class="github reference external" href="https://github.com/scikit-plots/scikit-plots">scikit-plots/scikit-plots</a></p>
+<p>🔎 Run the latest scikit-plots container — with full or partial preinstallation — interactively:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://hub.docker.com/r/scikitplot/scikit-plots">“Scikit-plots Runtime Docker Images”</a></p></li>
+<li><p><a class="github reference external" href="https://github.com/scikit-plots/scikit-plots">scikit-plots/scikit-plots</a></p></li>
+</ul>
 </div>
 <section id="conda-environment-guidelines">
 <h2>📦 Conda Environment Guidelines<a class="headerlink" href="#conda-environment-guidelines" title="Link to this heading">#</a></h2>
@@ -702,16 +704,6 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td></td>
-<td><p>40</p></td>
-<td><p>20</p></td>
-<td><p>40</p></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
 <tr class="row-even"><td><p><strong>conda</strong></p></td>
 <td><p>conda create -n py311 python=3.11</p></td>
 <td><p>conda activate py311</p></td>
@@ -750,26 +742,12 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td></td>
-<td><p>10</p></td>
-<td><p>10</p></td>
-<td><p>10</p></td>
-<td><p>12</p></td>
-<td><p>36</p></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
 <tr class="row-even"><td><p><strong>Size</strong></p></td>
 <td><p>Large</p></td>
 <td><p>Medium</p></td>
 <td><p>Large</p></td>
 <td><p>Very Small</p></td>
-<td><p>micromamba is ideal for <strong>minimal</strong> or embedded environments</p></td>
+<td><p>micromamba is ideal for <strong>minimal</strong> or <strong>embedded</strong> environments</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Language</strong></p></td>
 <td><p>Python</p></td>
@@ -783,7 +761,7 @@
 <td><p>CLI</p></td>
 <td><p>via conda/pip</p></td>
 <td><p>Static binary</p></td>
-<td><p>🚀 micromamba: no Python needed, <strong>portable</strong></p></td>
+<td><p>🚀 micromamba: <strong>no Python</strong> needed, <strong>portable</strong></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Speed</strong></p></td>
 <td><p>Slow</p></td>
@@ -871,6 +849,7 @@ span.prompt1:before {
 <p class="admonition-title">See also</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://pypi.org/project/pipenv/">“pipenv”</a></p></li>
+<li><p><a class="github reference external" href="https://github.com/scikit-plots/scikit-plots/tree/main/docker/env_pipenv">scikit-plots/scikit-plots</a></p></li>
 </ul>
 </div>
 </section>
@@ -972,7 +951,7 @@ span.prompt1:before {
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250723.c45480d 2025-07-23T20:13Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250724.355bd62 2025-07-24T06:03Z.
       <br/>
     
   </p>
