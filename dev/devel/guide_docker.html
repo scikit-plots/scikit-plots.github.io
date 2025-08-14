@@ -830,6 +830,7 @@ bash<span class="w"> </span>docker/scripts/setup_vscode_ext.sh<span class="w">  
 ✅  Safe Git Configs:
   $ git config --global --add safe.directory &#39;*&#39;
   $ git submodule update --init
+  $ git submodule update --init --recursive
   $ git remote add upstream https://github.com/scikit-plots/scikit-plots.git
   $ git fetch upstream --tags
 
@@ -871,6 +872,10 @@ bash<span class="w"> </span>docker/scripts/setup_vscode_ext.sh<span class="w">  
 • 💾  Creation logs (Codespaces):
   ⚠️ 👇 Check Codespace Container creation raise `ERROR: ... : No space left on device`
   $ cat /workspaces/.codespaces/.persistedshare/creation.log
+
+• 📦 warning: Clock skew detected. Your build may be incomplete (⏻ Restart Computer or try 1 days later):
+  $ make clean &amp;&amp; find . -exec touch {} + &amp;&amp; python -m pip install --no-build-isolation --no-cache-dir -e . -v
+  $ python -m pip install --no-build-isolation --no-cache-dir -e . -v
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✍  Starting Development
@@ -1053,7 +1058,7 @@ docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </s
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250724.355bd62 2025-07-24T06:03Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250815.9e31692 2025-08-14T21:50Z.
       <br/>
     
   </p>
