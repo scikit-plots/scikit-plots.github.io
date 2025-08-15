@@ -9,43 +9,50 @@ scikitplot.experimental
 
 **User guide.** See the :ref:`experimental-index` section for further details.
 
-.. _experimental_ref-cython-bindings-samples:
+.. _experimental_ref-musical-note-handling--synthesis--and-notation:
 
-Cython Bindings samples
------------------------
+Musical note handling, synthesis, and notation.
+-----------------------------------------------
 
-.. autosummary::
-  :nosignatures:
-  :toctree: ../modules/generated/
-  :template: base.rst
-  
-  _cy_experimental.expit
-  _cy_experimental.log_expit
-  _cy_experimental.logit
+.. automodule:: scikitplot.experimental._doremi
 
-.. _experimental_ref-pybind11-bindings-samples:
+.. currentmodule:: scikitplot.experimental
 
-Pybind11 Bindings samples
--------------------------
+**User guide.** See the :ref:`doremi-index` section for further details.
 
 .. autosummary::
   :nosignatures:
   :toctree: ../modules/generated/
   :template: base.rst
   
-  _py_experimental.py_print
+  _doremi.ENVELOPES
+  _doremi.compose_as_waveform
+  _doremi.play_waveform
+  _doremi.plot_waveform
+  _doremi.save_waveform
+  _doremi.save_waveform_as_mp3
+  _doremi.sheet_to_note
+  _doremi.sheet_converter
+  _doremi.serialize_sheet
+  _doremi.export_sheet
 
-.. _experimental_ref-python-samples:
+.. _experimental_ref-large-language-models:
 
-Python samples
---------------
+Large Language Models.
+----------------------
+
+.. automodule:: scikitplot.experimental._llm_provider
+
+.. currentmodule:: scikitplot.experimental
+
+**User guide.** See the :ref:`llm_provider-index` section for further details.
 
 .. autosummary::
   :nosignatures:
   :toctree: ../modules/generated/
   :template: base.rst
   
-  _logsumexp.sigmoid
-  _logsumexp.softmax
-  _logsumexp.logsumexp
-  _logsumexp.log_softmax
+  _llm_provider.LLM_PROVIDER_CONFIG_MAP
+  _llm_provider.LLM_PROVIDER_ENV_CONNECTOR_MAP
+  _llm_provider.get_response
+  _llm_provider.load_mlflow_gateway_config

@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/devel/guide_docker.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="🚀 Docker Containerization: 💡 Work on Docker Desktop or Github Codespaces Here’s how containerization works: Isolation: Containers run independently of each other and the host system, ensuring that ..." />
+<meta property="og:description" content="🐋 Docker Containerization: 💡 Work on Docker Desktop or Github Codespaces Here’s how containerization works: Isolation: Containers run independently of each other and the host system, ensuring that ..." />
 <meta property="og:image" content="https://developer-blogs.nvidia.com/wp-content/uploads/2016/06/nvidia-docker.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="🚀 Docker Containerization: 💡 Work on Docker Desktop or Github Codespaces Here’s how containerization works: Isolation: Containers run independently of each other and the host system, ensuring that ..." />
+<meta name="description" content="🐋 Docker Containerization: 💡 Work on Docker Desktop or Github Codespaces Here’s how containerization works: Isolation: Containers run independently of each other and the host system, ensuring that ..." />
 
     <title>Docker Containerization Guidelines &#8212; scikit-plots 0.4.0 documentation</title>
   
@@ -599,16 +599,29 @@
 <span id="docker-index"></span><h1>Docker Containerization Guidelines<a class="headerlink" href="#docker-containerization-guidelines" title="Link to this heading">#</a></h1>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>When the <code class="docutils literal notranslate"><span class="pre">Docker</span> <span class="pre">Env</span></code> is ready to use, the details of which are available below,
-click to continue to the quickstart section
-<a class="reference internal" href="guide_qu_contribute.html#contributing-check-build"><span class="std std-ref">Checking the build scikit-plots</span></a>.</p>
+<p>By default, all Docker containers are pre-configured and ready to use.</p>
+<p>The <strong>editable development version</strong> of <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> is already installed,
+so you can verify the installation immediately by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scikitplot</span> <span class="o">-</span><span class="n">V</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Once the <strong>Docker environment</strong> is ready to use, you can proceed to the
+quickstart section to verify the build:</p>
+<p>See <a class="reference internal" href="guide_qu_contribute.html#contributing-check-build"><span class="std std-ref">Checking the scikit-plots build</span></a>.</p>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="github reference external" href="https://github.com/scikit-plots/scikit-plots/blob/main/docker/README.md">scikit-plots/scikit-plots</a></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://hub.docker.com/r/scikitplot/scikit-plots">“🐳 Run the latest scikit-plots container — with full or partial preinstallation — interactively”</a></p></li>
+<li><p><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/main/docker/README.md">“🐋 docker/README.md”</a></p></li>
+<li><p><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/main/docker/scripts/bash-first-run-notice.txt">“💡 bash-first-run-notice.txt”</a></p></li>
+</ul>
 </div>
 <section id="docker-containerization">
-<h2>🚀 Docker Containerization<a class="headerlink" href="#docker-containerization" title="Link to this heading">#</a></h2>
+<h2>🐋 Docker Containerization<a class="headerlink" href="#docker-containerization" title="Link to this heading">#</a></h2>
 <p>💡 Work on Docker Desktop or Github Codespaces</p>
 <p>Here’s how containerization works:</p>
 <ul class="simple">
@@ -619,10 +632,10 @@ click to continue to the quickstart section
 </ul>
 </section>
 <section id="github-codespaces-guide">
-<h2>Github Codespaces Guide<a class="headerlink" href="#github-codespaces-guide" title="Link to this heading">#</a></h2>
+<h2>🏷️ Github Codespaces Guide<a class="headerlink" href="#github-codespaces-guide" title="Link to this heading">#</a></h2>
 <p>(Connect IDE Interface Vscode or Jupyter Notebook)</p>
 <p><strong>👉 (recommended) Choose (recommended) not (default) Option for best practise:</strong></p>
-<a href="https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=889608023&skip_quickstart=true&machine=basicLinux32gb&devcontainer_path=.devcontainer%2Fnotebook_cpu%2Fdevcontainer.json&geo=EuropeWest" target="_blank">
+<a href="https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=889608023&skip_quickstart=true&machine=basicLinux32gb&devcontainer_path=.devcontainer%2Fscikit-plots_latest-jupyter%2Fdevcontainer.json&geo=EuropeWest" target="_blank">
 <img style="display:auto;width:auto;height:auto;" alt="Open in GitHub Codespaces" src="https://github.com/codespaces/badge.svg">
 </a><p><strong>Step by step:</strong></p>
 <img style="display: block;-webkit-user-select: none;margin: auto;cursor: zoom-in;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;"
@@ -637,7 +650,7 @@ width="322" height="305">
 src="https://docs.github.com/assets/cb-66206/mw-1440/images/help/codespaces/advanced-options.webp"
 width="60%" height="80%"></section>
 <section id="docker-desktop-guide">
-<h2>Docker Desktop Guide<a class="headerlink" href="#docker-desktop-guide" title="Link to this heading">#</a></h2>
+<h2>🏷️ Docker Desktop Guide<a class="headerlink" href="#docker-desktop-guide" title="Link to this heading">#</a></h2>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1">## Forked repo: https://github.com/scikit-plots/scikit-plots.git</span>
 git<span class="w"> </span>clone<span class="w"> </span>https://github.com/YOUR-USER-NAME/scikit-plots.git
 <span class="nb">cd</span><span class="w"> </span>scikit-plots/docker
@@ -651,11 +664,23 @@ code<span class="w"> </span>.
 <p>You can run containers with either host-installed CUDA or pre-installed CUDA inside the container.</p>
 </section>
 <section id="docker-compose-quickstart-guide">
-<h2>🏷️ Docker Compose Quickstart Guide<a class="headerlink" href="#docker-compose-quickstart-guide" title="Link to this heading">#</a></h2>
-<section id="the-easiest-way-to-launch-the-environment-is-using-docker-compose">
-<h3>💡 The easiest way to launch the environment is using Docker Compose.<a class="headerlink" href="#the-easiest-way-to-launch-the-environment-is-using-docker-compose" title="Link to this heading">#</a></h3>
+<h2>🐳 Docker Compose Quickstart Guide<a class="headerlink" href="#docker-compose-quickstart-guide" title="Link to this heading">#</a></h2>
+<section id="optionally-prebuilt-image-from-docker-hub">
+<h3>(Optionally) 📦 Prebuilt Image from Docker Hub<a class="headerlink" href="#optionally-prebuilt-image-from-docker-hub" title="Link to this heading">#</a></h3>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>You can use the prebuilt image directly from Docker Hub:</p>
+<p>📄 Docker Hub: <a href="#id1"><span class="problematic" id="id2">`https://hub.docker.com/r/scikitplot/scikit-plots`__</span></a></p>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># docker pull scikitplot/scikit-plots</span>
+docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>scikitplot/scikit-plots<span class="w"> </span>bash
+</pre></div>
+</div>
+</section>
+<section id="using-docker-compose-the-easiest-way-to-launch-the-environment">
+<h3>🏷️ Using Docker Compose: The easiest way to launch the environment.<a class="headerlink" href="#using-docker-compose-the-easiest-way-to-launch-the-environment" title="Link to this heading">#</a></h3>
 <p>▶️ Run Docker Env Jupyter Notebook (CPU only)</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>--build<span class="w"> </span>notebook_cpu
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>--build<span class="w"> </span>scikit-plots_latest-jupyter
 </pre></div>
 </div>
 <p>▶️ Run Docker Env Jupyter Notebook (With NVIDIA Host GPU)</p>
@@ -676,7 +701,7 @@ code<span class="w"> </span>.
 </div></section>
 <section id="connect-docker-container-especially-when-docker-gui-dont-available">
 <h3>▶️ Connect Docker Container Especially When <code class="docutils literal notranslate"><span class="pre">Docker-GUI</span> <span class="pre">dont</span> <span class="pre">available</span></code><a class="headerlink" href="#connect-docker-container-especially-when-docker-gui-dont-available" title="Link to this heading">#</a></h3>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># docker-compose up --build notebook_cpu</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># docker-compose up --build scikit-plots_latest-jupyter</span>
 
 docker<span class="w"> </span>ps<span class="w">  </span><span class="c1"># check running containers</span>
 docker<span class="w"> </span>logs<span class="w"> </span>CONTAINER_ID_OR_NAME<span class="w">  </span><span class="c1"># find jupyter (token) http address 127.0....</span>
@@ -689,26 +714,97 @@ docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </spa
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1">## (Optionally) Install common vscode extensions</span>
 <span class="c1">##✅ C/C++/Python and Jupyter Notebook</span>
 <span class="c1">##✅ Linter and Formatter</span>
-bash<span class="w"> </span>docker/script/setup_vscode_ext.sh<span class="w">  </span><span class="c1"># (not needed every time)</span>
+bash<span class="w"> </span>docker/scripts/setup_vscode_ext.sh<span class="w">  </span><span class="c1"># (not needed every time)</span>
 </pre></div>
 </div>
 </section>
 <section id="run-post-create-commands-sh">
 <h3>▶️ Run post_create_commands.sh<a class="headerlink" href="#run-post-create-commands-sh" title="Link to this heading">#</a></h3>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1">##👉 (recommended) Only Installed by `Codespaces default` option</span>
-<span class="c1">##✅ directories to mark as safe</span>
-<span class="c1">##✅ fetching submodules</span>
-<span class="c1">##✅ add remote upstream</span>
-<span class="c1">##✅ fetch tags from upstream</span>
-<span class="c1">##✅ create a new environment with python 3.11</span>
-<span class="c1">##✅ install required packages</span>
-<span class="c1">##✅ install pre-commit hooks</span>
-<span class="c1">##✅ install the development version of scikit-plots</span>
-<span class="c1"># bash .devcontainer/script/post_create_commands.sh  # (not needed every time)</span>
-bash<span class="w"> </span>docker/script/post_create_commands.sh<span class="w">  </span><span class="c1"># (not needed every time)</span>
+<p><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/main/docker/scripts/bash-first-run-notice.txt">“See Also: bash-first-run-notice.txt”</a></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sdd" id="bash-first-run-notice.txt" open="open">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">bash-first-run-notice.txt<a class="headerlink" href="#bash-first-run-notice.txt" title="Link to this dropdown">#</a></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>👋  Welcome to the `scikit-plots` Dev Environment (Docker / Codespaces)
+
+🧭  Quick Navigation:
+• 🔎  Open the Command Palette → `Ctrl+Shift+P` / `Cmd+Shift+P` or `F1`
+• 📘  Quick Start → https://scikit-plots.github.io/dev/introduction/quick_start.html
+• 🛠️  Dev Guide → https://scikit-plots.github.io/dev/devel/index.html
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⭐ 🌟  IMPORTANT: Complete Environment Setup
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅  Check Installation:
+  $ scikitplot -V
+  $ python -c &quot;import scikitplot; scikitplot.show_config()&quot;
+
+✅  Post-Create Setup (Recommended):
+  $ bash docker/scripts/all_post_create.sh
+
+✅  Safe Git Configs:
+  $ git config --global --add safe.directory &#39;*&#39;
+  $ git submodule update --init
+  $ git submodule update --init --recursive
+  $ git remote add upstream https://github.com/scikit-plots/scikit-plots.git
+  $ git fetch upstream --tags
+
+✅  Create Environment (Micromamba/Conda):
+  $ mamba create -n py311 python=3.11 ipykernel -y
+  $ conda create -n py311 python=3.11 ipykernel -y
+  $ conda activate py311
+
+✅  Install Dependencies:
+  $ pip install -r requirements/all.txt
+  $ pre-commit install
+  $ pip install --no-build-isolation --no-cache-dir -e .
+
+✅  (Optional) Install CPU-specific packages:
+  $ pip install -r requirements/cpu.txt
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📦  Environment Management Notes:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Activate environments (depending on tool):
+  $ conda activate py311
+  $ micromamba activate py311
+
+• See environments:
+  $ conda info -e
+  $ micromamba info -e
+
+• Initialize Conda shell support (if needed):
+  $ conda init
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💡  Troubleshooting:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• 💽  Disk Space:
+  $ df -h &amp;&amp; du -h --max-depth=1
+
+• 💾  Creation logs (Codespaces):
+  ⚠️ 👇 Check Codespace Container creation raise `ERROR: ... : No space left on device`
+  $ cat /workspaces/.codespaces/.persistedshare/creation.log
+
+• 📦 warning: Clock skew detected. Your build may be incomplete (⏻ Restart Computer or try 1 days later):
+  $ make clean &amp;&amp; find . -exec touch {} + &amp;&amp; python -m pip install --no-build-isolation --no-cache-dir -e . -v
+  $ python -m pip install --no-build-isolation --no-cache-dir -e . -v
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✍  Starting Development
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🌿  Create a new branch before working:
+  $ git checkout -b feature/my-new-feature
+
+✍  Proceed to create a branch if you have uncommitted changes and are beginning work on a new feature or bug fix.
+🔄  Read more: https://scikit-plots.github.io/dev/devel/quickstart_contributing.html#creating-a-branch
 </pre></div>
 </div>
-</section>
+</div>
+</details></section>
 <section id="stop-containers">
 <h3>🚯 Stop Containers<a class="headerlink" href="#stop-containers" title="Link to this heading">#</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>down
@@ -719,7 +815,7 @@ bash<span class="w"> </span>docker/script/post_create_commands.sh<span class="w"
 <section id="docker-compose-configuration">
 <h2>🐳 Docker Compose Configuration<a class="headerlink" href="#docker-compose-configuration" title="Link to this heading">#</a></h2>
 <p>This project is based on Docker Compose and includes multiple services:</p>
-<p>🔹 notebook_cpu (CPU-Only)</p>
+<p>🔹 scikit-plots_latest-jupyter (CPU-Only)</p>
 <p>Runs Jupyter Notebook using jupyter/tensorflow-notebook:latest</p>
 <p>No CUDA support, best for lightweight tasks</p>
 <p>Mounts the local folder scikit-plots to /home/jovyan/work</p>
@@ -754,8 +850,8 @@ docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </s
 ├── docker-compose.yml              # Primary Docker Compose file
 ├── docker-compose.override.yml     # Optional override file (auto-included if present)
 ├── Dockerfile                      # Custom Dockerfile
-├── script/
-│   ├── install_gpu_nvidia_cuda.sh  # GPU setup script
+├── scripts/
+│   ├── install_gpu_nvidia_cuda.sh  # GPU setup scripts
 </pre></div>
 </div>
 </section>
@@ -805,11 +901,12 @@ docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </s
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-containerization">🚀 Docker Containerization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-codespaces-guide">Github Codespaces Guide</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-desktop-guide">Docker Desktop Guide</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-compose-quickstart-guide">🏷️ Docker Compose Quickstart Guide</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-easiest-way-to-launch-the-environment-is-using-docker-compose">💡 The easiest way to launch the environment is using Docker Compose.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-containerization">🐋 Docker Containerization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-codespaces-guide">🏷️ Github Codespaces Guide</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-desktop-guide">🏷️ Docker Desktop Guide</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-compose-quickstart-guide">🐳 Docker Compose Quickstart Guide</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optionally-prebuilt-image-from-docker-hub">(Optionally) 📦 Prebuilt Image from Docker Hub</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-docker-compose-the-easiest-way-to-launch-the-environment">🏷️ Using Docker Compose: The easiest way to launch the environment.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-docker-env-jupyter-notebook-by-vs-code">▶️ Run Docker Env Jupyter Notebook by VS Code</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-docker-container-especially-when-docker-gui-dont-available">▶️ Connect Docker Container Especially When <code class="docutils literal notranslate"><span class="pre">Docker-GUI</span> <span class="pre">dont</span> <span class="pre">available</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-setup-vscode-ext-sh">▶️ Run setup_vscode_ext.sh</a></li>
@@ -858,7 +955,7 @@ docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </s
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post1+git.20250627.a4c5b9e 2025-06-27T09:09Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post2+git.20250815.8ddab79 2025-08-15T20:47Z.
       <br/>
     
   </p>

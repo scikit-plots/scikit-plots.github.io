@@ -30,7 +30,7 @@
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
@@ -56,7 +56,7 @@
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="_static/documentation_options.js?v=6c02275b"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=e93d8674"></script>
@@ -65,7 +65,6 @@
     <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-python.min.js"></script>
     <script src="_static/shell_scripts.js?v=2dfa42e0"></script>
@@ -671,7 +670,7 @@
         </div>
         <div class="sk-card-img-container overflow-hidden mx-2 flex-fill">
           <a href="auto_examples/index.html#stats" aria-label="Stats">
-            <img style="max-width: 100%; height: 200;" alt="stats" src="_images/scikitplot-_astropy-stats-binned_binom_proportion-1.png">
+            <img style="max-width: 100%; height: 200;" alt="stats" src="_images/sphx_glr_plot_residuals_distribution_script_001.png">
           </a>
         </div>
         <a href="auto_examples/index.html#stats" class="sk-btn-cyan btn" role="button">Tutorials</a>
@@ -739,8 +738,8 @@
         <p>Use the interactive shell to try `scikit-plots` in the browser.</p>
         <!-- 🔔 &#x1F514; -->
         <p style="font-size:12.5px;">🔔
-          <b>Note</b>
-          <code><span style="color:turquoise;">Pyodide</span></code> uses older, compatible versions of some PyPI packages;
+          <b>Note:</b>
+          <span style="color:turquoise;">Pyodide</span> uses older, compatible versions of some PyPI packages;
           <span style="color:red;">latest versions may not be supported</span>.
         </p>
       </div>
@@ -812,7 +811,7 @@
         <!-- JupyterLab link item -->
         <li>
           <a href="./lite/lab/index.html?path=auto_examples%2Fcalibration%2Fplot_calibration_script.ipynb"
-            target="_blank"                             
+            target="_blank"
             title="Try JupyterLab, a multi-document app">  <!-- Open in new tab -->
             <i class="fa-solid fa-flask"></i>               <!-- Flask icon -->
             Lab                                             <!-- Text label -->
@@ -912,9 +911,8 @@ await micropip.install('scikit-plots')</code></pre> -->
   <!-- Interactive Shell -->
   <!-- src="https://jupyterlite.github.io/demo/repl/?toolbar=1&kernel=python&code=import%20numpy%20as%20np" -->
   <iframe
-    style="margin-top: 6.5px; border-radius: 3.25px; border: none;"
     class="numpy-shell"
-    src=https://jupyterlite-pyodide-kernel.readthedocs.io/en/latest/_static/repl/index.html?kernel=python&code=try%3A%20import%20micropip%3B%20await%20micropip.install%28%0A%22https%3A//pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple/scikit-plots/0.4.0.post1/scikit_plots-0.4.0.post1-cp312-cp312-pyodide_2024_0_wasm32.whl%22%2C%0Akeep_going%3DTrue%2C%20%29%0A%23%20Fallback%20to%20a%20specific%20version%20if%20the%20latest%20fails%0Aexcept%20Exception%3A%20await%20micropip.install%28%22scikit-plots%3D%3D0.3.9rc3%22%2C%20keep_going%3DTrue%29%0A%23%20Now%20import%20and%20print%20version%20%28scikitplot%20-V%29%0Aimport%20scikitplot%3B%20print%28%22scikit-plots%20version%3A%22%2C%20scikitplot.__version__%29
+    src=https://jupyterlite-pyodide-kernel.readthedocs.io/en/latest/_static/repl/index.html?kernel=python&code=try%3A%20import%20micropip%3B%20await%20micropip.install%28%0A%23%20%22https%3A//pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple/scikit-plots/0.5.dev0/scikit_plots-0.5.dev0-cp312-cp312-pyodide_2024_0_wasm32.whl%22%2C%0A%22https%3A//pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple/scikit-plots/0.4.0.post2/scikit_plots-0.4.0.post2-cp312-cp312-pyodide_2024_0_wasm32.whl%22%2C%0Akeep_going%3DTrue%2C%20%29%0A%23%20Fallback%20to%20a%20specific%20version%20if%20the%20latest%20fails%0Aexcept%20Exception%3A%20await%20micropip.install%28%22scikit-plots%3D%3D0.3.9rc3%22%2C%20keep_going%3DTrue%29%0A%23%20Now%20import%20and%20print%20version%20%28scikitplot%20-V%29%0Aimport%20scikitplot%20as%20sp%3B%20print%28%22scikit-plots%20version%3A%22%2C%20sp.__version__%29%0Asp.show_versions%28%29
     width="100%" height="auto"
   >Try the REPL!
   </iframe>

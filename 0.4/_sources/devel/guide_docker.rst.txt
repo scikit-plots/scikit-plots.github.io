@@ -4,18 +4,37 @@
 Docker Containerization Guidelines
 ======================================================================
 
+
 .. important::
 
-   When the ``Docker Env`` is ready to use, the details of which are available below,
-   click to continue to the quickstart section
-   :ref:`Checking the build scikit-plots <contributing_check_build>`.
+   By default, all Docker containers are pre-configured and ready to use.
+
+   The **editable development version** of `scikit-plots` is already installed,
+   so you can verify the installation immediately by running:
+
+   ::
+
+      scikitplot -V
+
+
+.. important::
+
+   Once the **Docker environment** is ready to use, you can proceed to the
+   quickstart section to verify the build:
+
+   See :ref:`Checking the scikit-plots build <contributing_check_build>`.
+
 
 .. seealso::
 
-   https://github.com/scikit-plots/scikit-plots/blob/main/docker/README.md
+   * `"🐳 Run the latest scikit-plots container — with full or partial preinstallation — interactively" <https://hub.docker.com/r/scikitplot/scikit-plots>`_
+
+   * `"🐋 docker/README.md" <https://github.com/scikit-plots/scikit-plots/blob/main/docker/README.md>`_
+
+   * `"💡 bash-first-run-notice.txt" <https://github.com/scikit-plots/scikit-plots/blob/main/docker/scripts/bash-first-run-notice.txt>`_
 
 
-🚀 Docker Containerization
+🐋 Docker Containerization
 ---------------------------------------
 
 💡 Work on Docker Desktop or Github Codespaces
@@ -31,8 +50,8 @@ Here's how containerization works:
 - **Consistency**: The application inside the container runs the same way regardless of where it's deployed, ensuring consistency across environments.
 
 
-Github Codespaces Guide
-------------------------
+🏷️ Github Codespaces Guide
+----------------------------
 
 (Connect IDE Interface Vscode or Jupyter Notebook)
 
@@ -40,7 +59,7 @@ Github Codespaces Guide
 
 .. raw:: html
 
-   <a href="https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=889608023&skip_quickstart=true&machine=basicLinux32gb&devcontainer_path=.devcontainer%2Fnotebook_cpu%2Fdevcontainer.json&geo=EuropeWest" target="_blank">
+   <a href="https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=889608023&skip_quickstart=true&machine=basicLinux32gb&devcontainer_path=.devcontainer%2Fscikit-plots_latest-jupyter%2Fdevcontainer.json&geo=EuropeWest" target="_blank">
    <img style="display:auto;width:auto;height:auto;" alt="Open in GitHub Codespaces" src="https://github.com/codespaces/badge.svg">
    </a>
 
@@ -61,8 +80,8 @@ Github Codespaces Guide
    src="https://docs.github.com/assets/cb-66206/mw-1440/images/help/codespaces/advanced-options.webp"
    width="60%" height="80%">
 
-Docker Desktop Guide
----------------------
+🏷️ Docker Desktop Guide
+-------------------------
 
 .. code-block:: sh
 
@@ -79,17 +98,33 @@ This repository contains Docker & Docker Compose configurations for running Jupy
 
 You can run containers with either host-installed CUDA or pre-installed CUDA inside the container.
 
-🏷️ Docker Compose Quickstart Guide
+🐳 Docker Compose Quickstart Guide
 -----------------------------------
 
-💡 The easiest way to launch the environment is using Docker Compose.
+(Optionally) 📦 Prebuilt Image from Docker Hub
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. seealso::
+
+   You can use the prebuilt image directly from Docker Hub:
+
+   📄 Docker Hub: `https://hub.docker.com/r/scikitplot/scikit-plots`__
+
+
+.. code-block:: sh
+
+   # docker pull scikitplot/scikit-plots
+   docker run -it --rm scikitplot/scikit-plots bash
+
+
+🏷️ Using Docker Compose: The easiest way to launch the environment.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ▶️ Run Docker Env Jupyter Notebook (CPU only)
 
 .. code-block:: sh
 
-   docker compose up --build notebook_cpu
+   docker compose up --build scikit-plots_latest-jupyter
 
 ▶️ Run Docker Env Jupyter Notebook (With NVIDIA Host GPU)
 
@@ -119,7 +154,7 @@ You can run containers with either host-installed CUDA or pre-installed CUDA ins
 
 .. code-block:: sh
 
-   # docker-compose up --build notebook_cpu
+   # docker-compose up --build scikit-plots_latest-jupyter
 
    docker ps  # check running containers
    docker logs CONTAINER_ID_OR_NAME  # find jupyter (token) http address 127.0....
@@ -133,24 +168,20 @@ You can run containers with either host-installed CUDA or pre-installed CUDA ins
    ## (Optionally) Install common vscode extensions
    ##✅ C/C++/Python and Jupyter Notebook
    ##✅ Linter and Formatter
-   bash docker/script/setup_vscode_ext.sh  # (not needed every time)
+   bash docker/scripts/setup_vscode_ext.sh  # (not needed every time)
 
 ▶️ Run post_create_commands.sh
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: sh
+`"See Also: bash-first-run-notice.txt" <https://github.com/scikit-plots/scikit-plots/blob/main/docker/scripts/bash-first-run-notice.txt>`_
 
-   ##👉 (recommended) Only Installed by `Codespaces default` option
-   ##✅ directories to mark as safe
-   ##✅ fetching submodules
-   ##✅ add remote upstream
-   ##✅ fetch tags from upstream
-   ##✅ create a new environment with python 3.11
-   ##✅ install required packages
-   ##✅ install pre-commit hooks
-   ##✅ install the development version of scikit-plots
-   # bash .devcontainer/script/post_create_commands.sh  # (not needed every time)
-   bash docker/script/post_create_commands.sh  # (not needed every time)
+.. dropdown:: bash-first-run-notice.txt
+   :open:
+   :class-container: sdd
+
+   .. literalinclude:: ../../../docker/scripts/bash-first-run-notice.txt
+      :language: none
+
 
 🚯 Stop Containers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -159,12 +190,13 @@ You can run containers with either host-installed CUDA or pre-installed CUDA ins
 
    docker compose down
 
+
 🐳 Docker Compose Configuration
 --------------------------------
 
 This project is based on Docker Compose and includes multiple services:
 
-🔹 notebook_cpu (CPU-Only)
+🔹 scikit-plots_latest-jupyter (CPU-Only)
 
 Runs Jupyter Notebook using jupyter/tensorflow-notebook:latest
 
@@ -221,8 +253,8 @@ If you need more control, you can use Docker CLI commands.
    ├── docker-compose.yml              # Primary Docker Compose file
    ├── docker-compose.override.yml     # Optional override file (auto-included if present)
    ├── Dockerfile                      # Custom Dockerfile
-   ├── script/
-   │   ├── install_gpu_nvidia_cuda.sh  # GPU setup script
+   ├── scripts/
+   │   ├── install_gpu_nvidia_cuda.sh  # GPU setup scripts
 
 🖥️ Useful References
 --------------------------------
