@@ -768,34 +768,45 @@ span.prompt1:before {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ✅  Check Installation:
-  $ scikitplot -V
   $ python -c &quot;import scikitplot; scikitplot.show_config()&quot;
+  $ scikitplot -V
 
-✅  Post-Create Setup (Recommended):
+✅  Post-Create Setup All-In-One Script (Recommended):
   $ bash docker/scripts/all_post_create.sh
 
-✅  Safe Git Configs:
+✅  Git Safe Configs:
+  $ # bash docker/scripts/safe_dirs.sh  # add safe directories for git
   $ git config --global --add safe.directory &#39;*&#39;
+
+✅  (Optionally) Git Submodules Clone/Download/Initialize Configs, Not Needed Every Time:
   $ git submodule update --init
   $ git submodule update --init --recursive
+
+✅  Git Upstream Configs:
   $ git remote add upstream https://github.com/scikit-plots/scikit-plots.git
+
+✅  Git Tag Configs:
   $ git fetch upstream --tags
 
-✅  Create Environment (Micromamba/Conda):
-  $ mamba create -n py311 python=3.11 ipykernel -y
+✅  Create Environment (Conda/Mamba):
   $ conda create -n py311 python=3.11 ipykernel -y
   $ conda activate py311
 
-✅  Install Dependencies:
+✅  Install Build Dependencies:
+  $ pip install -r requirements/build.txt
   $ pip install -r requirements/all.txt
+
+✅  Git hooks manager Initialize, Ensures code meets quality standards before it
   $ pre-commit install
+
+✅  Install the current package in editable mode, using the current environment for building, and ignore cached builds:
   $ pip install --no-build-isolation --no-cache-dir -e .
 
 ✅  (Optional) Install CPU-specific packages:
   $ pip install -r requirements/cpu.txt
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📦  Environment Management Notes:
+📦  Environment Management Notes (Conda/Anaconda/Miniconda/Miniforge/Mamba/Micromamba):
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 • Activate environments (depending on tool):
@@ -820,8 +831,11 @@ span.prompt1:before {
   ⚠️ 👇 Check Codespace Container creation raise `ERROR: ... : No space left on device`
   $ cat /workspaces/.codespaces/.persistedshare/creation.log
 
-• 📦 warning: Clock skew detected. Your build may be incomplete (⏻ Restart Computer or try 1 days later):
-  $ make clean &amp;&amp; find . -exec touch {} + &amp;&amp; python -m pip install --no-build-isolation --no-cache-dir -e . -v
+• 📦 Warning: Clock skew detected. Your build may be incomplete (Mostly fixed; closed all open files.):
+  ⚠️ Issues mostly fixed by closing all currently open files.
+  ⚠️ ⏻ Restart Computer, If Needed.
+  $ make clean
+  $ find . -exec touch {} +
   $ python -m pip install --no-build-isolation --no-cache-dir -e . -v
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -842,16 +856,16 @@ span.prompt1:before {
 <p class="admonition-title">Note</p>
 <p>Not Needed Every Time.</p>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (Recommended) Add in git safe dirs</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (if Necessary) Add in git safe dirs</span></span>
 <span class="prompt1"><span class="c1">## Or use `git config ...` to add `scikit-plots` in git safe dirs</span></span>
 <span class="prompt1"><span class="c1"># bash docker/scripts/safe_dirs.sh  # add safe directories for git</span></span>
 <span class="prompt1">git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>--add<span class="w"> </span>safe.directory<span class="w"> </span><span class="s1">&#39;*&#39;</span></span>
-</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (Recommended) Initialize and clone any missing submodules, set up the working tree</span></span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (Optionally) Git Submodules Clone/Download/Initialize Configs, Not Needed Every Time.</span></span>
 <span class="prompt1"><span class="c1">## Almost always used after cloning a repo with submodules.</span></span>
-<span class="prompt1">git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive</span>
-</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (if Necessary) Update submodules to the latest commit on their configured remote branch</span></span>
+<span class="prompt1"><span class="c1"># git submodule update --init --recursive</span></span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (Optionally) Update submodules to the latest commit on their configured remote branch</span></span>
 <span class="prompt1"><span class="c1">## Used when you want your submodules to move to their latest remote commit.</span></span>
-<span class="prompt1">git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--remote<span class="w"> </span>--recursive<span class="w"> </span><span class="c1"># (not needed every time)</span></span>
+<span class="prompt1"><span class="c1"># git submodule update --init --recursive --remote  # (not needed every time)</span></span>
 </pre></div></div><p>Adding and Fetching Upstream Remote:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (Recommended) Add remote upstream</span></span>
 <span class="prompt1">git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/scikit-plots/scikit-plots.git</span>
@@ -899,8 +913,8 @@ to create and manage isolated Python environments.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (Recommended) Check Docker also can be created env `py311` to use</span></span>
 <span class="prompt1">conda<span class="w"> </span>info<span class="w"> </span>-e</span>
 <span class="prompt1">conda<span class="w"> </span>activate<span class="w"> </span>py311</span>
-</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (Recommended) Can be run on mamba (or conda) `conda base` or `venv` env</span></span>
-<span class="prompt1">mamba<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>py311<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11<span class="w"> </span>ipykernel<span class="w"> </span>graphviz<span class="w"> </span>-y</span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (Recommended) Can be run on conda (or mamba) `conda base` or `venv` env</span></span>
+<span class="prompt1">conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>py311<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11<span class="w"> </span>ipykernel<span class="w"> </span>graphviz<span class="w"> </span>-y</span>
 </pre></div></div><p>Note the <code class="docutils literal notranslate"><span class="pre">graphviz</span></code> package is required for building the documentation.</p>
 </section>
 <section id="install-the-development-version-of-scikit-plots">
@@ -931,7 +945,6 @@ all the dependencies needed to build and fully test <code class="docutils litera
 </pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## Checking version</span></span>
 <span class="prompt1">scikitplot<span class="w"> </span>--version</span>
 <span class="prompt1">scikitplot<span class="w"> </span>-V</span>
-<span class="prompt1">scikitplot<span class="w"> </span>-v</span>
 </pre></div></div><p>Next you may want to try running some or all of the <code class="docutils literal notranslate"><span class="pre">scikitplot</span></code> unit tests.
 Running the full test suite can take a few minutes, so you may want to start with a
 single sub-package (e.g. <a class="reference internal" href="../user_guide/decile_wise_perf/kds.html#kds-index"><span class="std std-ref">KeyToDataScience</span></a>):</p>
@@ -955,7 +968,8 @@ tool that runs a number of <a class="reference external" href="contributing_ci">
 is likely that one or more of those CI checks will fail when you make a pull request,
 resulting in lost time (yours and CI resources).</p>
 <p>(Recommended) Installation is straightforward. From the root of the <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code> repository, run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## It triggered when committing `git commit ...` if pass then next pushing changes</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## Git hooks manager Initialize, Ensures code meets quality standards before it</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">## Triggered when running `git commit ...;` if all checks pass, the commit proceeds, allowing you to push the changes.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">install</span>
 </pre></div>
 </div>
@@ -1308,7 +1322,7 @@ required reviewers and a faster review process.</p></li>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250815.259783e 2025-08-15T20:18Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250916.8839f5d 2025-09-16T18:01Z.
       <br/>
     
   </p>
