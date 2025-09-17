@@ -1,0 +1,875 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../../" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="plot_kdsplot_script with examples" property="og:title"/>
+<meta content="website" property="og:type"/>
+<meta content="https://scikit-plots.github.io/stable/auto_examples/snsx/plot_kdsplot_script.html" property="og:url"/>
+<meta content="scikit-plots" property="og:site_name"/>
+<meta content="An example showing the kdsplot function used by a scikit-learn regressor. Import scikit-plot Total running time of the script:(0 minutes 0.777 seconds) Launch binder Launch JupyterLite Download Jup..." property="og:description"/>
+<meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
+<meta content="scikit-plots" property="og:image:alt"/>
+<meta content="An example showing the kdsplot function used by a scikit-learn regressor. Import scikit-plot Total running time of the script:(0 minutes 0.777 seconds) Launch binder Launch JupyterLite Download Jup..." name="description"/>
+<title>plot_kdsplot_script with examples — scikit-plots 0.5.dev0 documentation</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../../_static/graphviz.css?v=4ae1632d" rel="stylesheet" type="text/css"/>
+<link href="../../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/jupyter-sphinx.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/thebelab.css" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
+<link href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery.css?v=d2d258e8" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery-binder.css?v=f4aeca0c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/colors.css?v=14208072" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/custom.css?v=e4cb1417" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<script src="../../_static/documentation_options.js?v=de0fc20e"></script>
+<script src="../../_static/doctools.js?v=9bcbadda"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=e93d8674"></script>
+<script src="../../_static/thebelab-helper.js"></script>
+<script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+<script src="../../_static/design-tabs.js?v=f930bc37"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/snsx/plot_kdsplot_script';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+<script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
+<script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
+<link href="../../_static/scikit-plots-favicon.ico" rel="icon"/>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="plot_prplot_script.html" rel="next" title="plot_prplot_script with examples"/>
+<link href="index.html" rel="prev" title="snsX (Seaborn eXtended)"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="0.5" name="docsearch:version"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Skip to main content</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button">
+<i class="fa-solid fa-arrow-up"></i>Back to top</button>
+<dialog id="pst-search-dialog">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search the docs ..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search the docs ..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Version warning" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Site navigation" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../index.html">
+<img alt="scikit-plots homepage" class="logo__image only-light" src="../../_static/scikit-plots-logo-small.png"/>
+<img alt="scikit-plots homepage" class="logo__image only-dark pst-js-only" src="../../_static/scikit-plots-logo-small.png"/>
+</a></div>
+</div>
+<div class="navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../index.html">
+    Tutorials
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+<li class="nav-item dropdown">
+<button aria-controls="pst-nav-more-links" aria-expanded="false" class="btn dropdown-toggle nav-item" data-bs-toggle="dropdown" type="button">
+                    More
+                </button>
+<ul class="dropdown-menu" id="pst-nav-more-links">
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../whats_new/index.html">
+    Release History
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community-G
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-external" href="https://zenodo.org/communities/scikit-plots">
+    Community-Z
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/governance.html">
+    Governance
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/index.html">
+    About us
+  </a>
+</li>
+</ul>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item navbar-persistent--container">
+<button aria-label="Search" class="btn search-button-field search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Search">
+<i class="fa-solid fa-magnifying-glass"></i>
+<span class="search-button__default-text">Search</span>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+</div>
+<div class="navbar-item">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Version switcher list" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">
+    Choose version  <!-- this text may get changed later by javascript -->
+<span class="caret"></span>
+</button>
+<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/scikit-plots/scikit-plots" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i>
+<span class="sr-only">GitHub</span></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><i aria-hidden="true" class="fa-brands fa-python fa-lg"></i>
+<span class="sr-only">PyPI</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="navbar-persistent--mobile">
+<button aria-label="Search" class="btn search-button-field search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Search">
+<i class="fa-solid fa-magnifying-glass"></i>
+<span class="search-button__default-text">Search</span>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+</div>
+<button aria-label="On this page" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../index.html">
+    Tutorials
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../whats_new/index.html">
+    Release History
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-external" href="https://github.com/orgs/scikit-plots/discussions">
+    Community-G
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-external" href="https://zenodo.org/communities/scikit-plots">
+    Community-Z
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/governance.html">
+    Governance
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/index.html">
+    About us
+  </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Version switcher list" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">
+    Choose version  <!-- this text may get changed later by javascript -->
+<span class="caret"></span>
+</button>
+<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/scikit-plots/scikit-plots" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i>
+<span class="sr-only">GitHub</span></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><i aria-hidden="true" class="fa-brands fa-python fa-lg"></i>
+<span class="sr-only">PyPI</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item">
+<nav aria-label="Section Navigation" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Section Navigation</p>
+<div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00-blogs/index.html">blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00-jupyter_notebooks/index.html">jupyter notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../array_api/index.html">Array API support (experimental)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../calibration/index.html">Calibration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calibration/plot_calibration_script.html">plot_calibration with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../classification/index.html">Classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_classifier_eval_script.html">plot_classifier_eval with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_confusion_matrix_script.html">plot_confusion_matrix with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_feature_importances_script.html">plot_feature_importances with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_learning_curve_script.html">plot_learning_curve with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_precision_recall_script.html">plot_precision_recall with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_roc_script.html">plot_roc_curve with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../clustering/index.html">Clustering</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_elbow_script.html">plot_elbow with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_silhouette_script.html">plot_silhouette with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../decomposition/index.html">Decomposition</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_2d_projection_script.html">plot_pca_2d_projection with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_component_variance_script.html">plot_pca_component_variance with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../kds/index.html">KeyToDataScience</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../kds/plot_cumulative_gain_script.html">plot_cumulative_gain with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kds/plot_ks_statistic_script.html">plot_ks_statistic with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kds/plot_lift_script.html">plot_lift with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../modelplotpy/index.html">modelplotpy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modelplotpy/plot_modelplotpy_script.html">Introduction to modelplotpy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../regression/index.html">Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../regression/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">snsX (Seaborn eXtended)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">plot_kdsplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_prplot_script.html">plot_prplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_rocplot_script.html">plot_rocplot_script with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../stats/index.html">Stats</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stats/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../visualkeras_ANN/index.html">Visualkeras ANN</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_ANN/plot_conv_dense.html">Visualkeras: Spam Classification Conv1D Dense Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_ANN/plot_dense.html">visualkeras: Spam Dense example</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../visualkeras_CNN/index.html">Visualkeras CNN</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_autoencoder.html">visualkeras: autoencoder example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_custom_vgg16.html">visualkeras: custom vgg16 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_custom_vgg16_show_dimension.html">visualkeras: custom vgg16 show dimension example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_efficientnetv2.html">visualkeras: EfficientNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_resnetv2.html">visualkeras: ResNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_vgg.html">visualkeras: custom VGG example</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualkeras_NLP/index.html">Visualkeras NLP</a></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">Examples</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">snsX (Seaborn eXtended)</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">plot_kdsplot_script with examples</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+
+<section class="sphx-glr-example-title" id="plot-kdsplot-script-with-examples">
+<span id="sphx-glr-auto-examples-snsx-plot-kdsplot-script-py"></span><h1>plot_kdsplot_script with examples<a class="headerlink" href="#plot-kdsplot-script-with-examples" title="Link to this heading">#</a></h1>
+<p>An example showing the <a class="reference internal" href="../../modules/generated/scikitplot.snsx.kdsplot.html#scikitplot.snsx.kdsplot" title="scikitplot.snsx.kdsplot"><code class="xref py py-func docutils literal notranslate"><span class="pre">kdsplot</span></code></a> function
+used by a scikit-learn regressor.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 9</span> <span class="c1"># Authors: The scikit-plots developers</span>
+<span class="linenos">10</span> <span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
+</pre></div>
+</div>
+<p>Import scikit-plot</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">14</span> <span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot.snsx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">18</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span><span class="p">;</span> <a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.seed.html#numpy.random.seed" title="numpy.random.seed"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># reproducibility</span>
+<span class="linenos">19</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="linenos">20</span>
+<span class="linenos">21</span> <span class="c1"># Create a DataFrame with predictions</span>
+<span class="linenos">22</span> <span class="n">df</span> <span class="o">=</span> <a class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame"><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span></a><span class="p">({</span>
+<span class="linenos">23</span>     <span class="s2">"y_true"</span><span class="p">:</span> <a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.normal.html#numpy.random.normal" title="numpy.random.normal"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span></a><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(),</span>
+<span class="linenos">24</span>     <span class="s2">"y_score"</span><span class="p">:</span> <a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.normal.html#numpy.random.normal" title="numpy.random.normal"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span></a><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+<span class="linenos">25</span>     <span class="s2">"hue"</span><span class="p">:</span> <a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.normal.html#numpy.random.normal" title="numpy.random.normal"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span></a><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(),</span>
+<span class="linenos">26</span> <span class="p">})</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">30</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.kdsplot.html#scikitplot.snsx.kdsplot" title="scikitplot.snsx.kdsplot"><span class="n">sp</span><span class="o">.</span><span class="n">kdsplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"df"</span><span class="p">,</span> <span class="n">n_deciles</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">round_digits</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="linenos">31</span> <span class="n">p</span>
+</pre></div>
+</div>
+<div class="output_subarea output_html rendered_html output_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>decile</th>
+<th>prob_min</th>
+<th>prob_max</th>
+<th>prob_avg</th>
+<th>cnt_resp</th>
+<th>cnt_resp_total</th>
+<th>cnt_resp_non</th>
+<th>cnt_resp_wiz</th>
+<th>cnt_resp_rndm</th>
+<th>rate_resp</th>
+<th>cum_resp</th>
+<th>cum_resp_pct</th>
+<th>cum_resp_total</th>
+<th>cum_resp_total_pct</th>
+<th>cum_resp_non</th>
+<th>cum_resp_non_pct</th>
+<th>cum_resp_wiz</th>
+<th>cum_resp_wiz_pct</th>
+<th>KS</th>
+<th>lift</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>1</td>
+<td>0.76</td>
+<td>0.86</td>
+<td>0.79</td>
+<td>5.0</td>
+<td>10.0</td>
+<td>5.0</td>
+<td>NaN</td>
+<td>5.5</td>
+<td>50.0</td>
+<td>5.0</td>
+<td>9.09</td>
+<td>10.0</td>
+<td>10.0</td>
+<td>5.0</td>
+<td>11.11</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>-2.02</td>
+<td>0.91</td>
+</tr>
+<tr>
+<th>1</th>
+<td>2</td>
+<td>0.64</td>
+<td>0.73</td>
+<td>0.68</td>
+<td>7.0</td>
+<td>10.0</td>
+<td>3.0</td>
+<td>10.0</td>
+<td>5.5</td>
+<td>70.0</td>
+<td>12.0</td>
+<td>21.82</td>
+<td>20.0</td>
+<td>20.0</td>
+<td>8.0</td>
+<td>17.78</td>
+<td>10.0</td>
+<td>18.18</td>
+<td>4.04</td>
+<td>1.09</td>
+</tr>
+<tr>
+<th>2</th>
+<td>3</td>
+<td>0.60</td>
+<td>0.64</td>
+<td>0.63</td>
+<td>6.0</td>
+<td>10.0</td>
+<td>4.0</td>
+<td>10.0</td>
+<td>5.5</td>
+<td>60.0</td>
+<td>18.0</td>
+<td>32.73</td>
+<td>30.0</td>
+<td>30.0</td>
+<td>12.0</td>
+<td>26.67</td>
+<td>20.0</td>
+<td>36.36</td>
+<td>6.06</td>
+<td>1.09</td>
+</tr>
+<tr>
+<th>3</th>
+<td>4</td>
+<td>0.56</td>
+<td>0.60</td>
+<td>0.59</td>
+<td>9.0</td>
+<td>10.0</td>
+<td>1.0</td>
+<td>10.0</td>
+<td>5.5</td>
+<td>90.0</td>
+<td>27.0</td>
+<td>49.09</td>
+<td>40.0</td>
+<td>40.0</td>
+<td>13.0</td>
+<td>28.89</td>
+<td>30.0</td>
+<td>54.55</td>
+<td>20.20</td>
+<td>1.23</td>
+</tr>
+<tr>
+<th>4</th>
+<td>5</td>
+<td>0.50</td>
+<td>0.56</td>
+<td>0.53</td>
+<td>4.0</td>
+<td>10.0</td>
+<td>6.0</td>
+<td>10.0</td>
+<td>5.5</td>
+<td>40.0</td>
+<td>31.0</td>
+<td>56.36</td>
+<td>50.0</td>
+<td>50.0</td>
+<td>19.0</td>
+<td>42.22</td>
+<td>40.0</td>
+<td>72.73</td>
+<td>14.14</td>
+<td>1.13</td>
+</tr>
+<tr>
+<th>5</th>
+<td>6</td>
+<td>0.45</td>
+<td>0.50</td>
+<td>0.48</td>
+<td>5.0</td>
+<td>10.0</td>
+<td>5.0</td>
+<td>10.0</td>
+<td>5.5</td>
+<td>50.0</td>
+<td>36.0</td>
+<td>65.45</td>
+<td>60.0</td>
+<td>60.0</td>
+<td>24.0</td>
+<td>53.33</td>
+<td>50.0</td>
+<td>90.91</td>
+<td>12.12</td>
+<td>1.09</td>
+</tr>
+<tr>
+<th>6</th>
+<td>7</td>
+<td>0.40</td>
+<td>0.44</td>
+<td>0.42</td>
+<td>4.0</td>
+<td>10.0</td>
+<td>6.0</td>
+<td>5.0</td>
+<td>5.5</td>
+<td>40.0</td>
+<td>40.0</td>
+<td>72.73</td>
+<td>70.0</td>
+<td>70.0</td>
+<td>30.0</td>
+<td>66.67</td>
+<td>55.0</td>
+<td>100.00</td>
+<td>6.06</td>
+<td>1.04</td>
+</tr>
+<tr>
+<th>7</th>
+<td>8</td>
+<td>0.37</td>
+<td>0.40</td>
+<td>0.39</td>
+<td>3.0</td>
+<td>10.0</td>
+<td>7.0</td>
+<td>0.0</td>
+<td>5.5</td>
+<td>30.0</td>
+<td>43.0</td>
+<td>78.18</td>
+<td>80.0</td>
+<td>80.0</td>
+<td>37.0</td>
+<td>82.22</td>
+<td>55.0</td>
+<td>100.00</td>
+<td>-4.04</td>
+<td>0.98</td>
+</tr>
+<tr>
+<th>8</th>
+<td>9</td>
+<td>0.32</td>
+<td>0.36</td>
+<td>0.34</td>
+<td>6.0</td>
+<td>10.0</td>
+<td>4.0</td>
+<td>0.0</td>
+<td>5.5</td>
+<td>60.0</td>
+<td>49.0</td>
+<td>89.09</td>
+<td>90.0</td>
+<td>90.0</td>
+<td>41.0</td>
+<td>91.11</td>
+<td>55.0</td>
+<td>100.00</td>
+<td>-2.02</td>
+<td>0.99</td>
+</tr>
+<tr>
+<th>9</th>
+<td>10</td>
+<td>0.17</td>
+<td>0.32</td>
+<td>0.28</td>
+<td>6.0</td>
+<td>10.0</td>
+<td>4.0</td>
+<td>0.0</td>
+<td>5.5</td>
+<td>60.0</td>
+<td>55.0</td>
+<td>100.00</td>
+<td>100.0</td>
+<td>100.0</td>
+<td>45.0</td>
+<td>100.00</td>
+<td>55.0</td>
+<td>100.00</td>
+<td>0.00</td>
+<td>1.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br/>
+<br/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">35</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.kdsplot.html#scikitplot.snsx.kdsplot" title="scikitplot.snsx.kdsplot"><span class="n">sp</span><span class="o">.</span><span class="n">kdsplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s2">"lift"</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="Lift Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_kdsplot_script_001.png" srcset="../../_images/sphx_glr_plot_kdsplot_script_001.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">38</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.kdsplot.html#scikitplot.snsx.kdsplot" title="scikitplot.snsx.kdsplot"><span class="n">sp</span><span class="o">.</span><span class="n">kdsplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s2">"lift_decile_wise"</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="Lift Decile-wise Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_kdsplot_script_002.png" srcset="../../_images/sphx_glr_plot_kdsplot_script_002.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">41</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.kdsplot.html#scikitplot.snsx.kdsplot" title="scikitplot.snsx.kdsplot"><span class="n">sp</span><span class="o">.</span><span class="n">kdsplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s2">"cumulative_gain"</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="Cumulative Gain Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_kdsplot_script_003.png" srcset="../../_images/sphx_glr_plot_kdsplot_script_003.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">44</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.kdsplot.html#scikitplot.snsx.kdsplot" title="scikitplot.snsx.kdsplot"><span class="n">sp</span><span class="o">.</span><span class="n">kdsplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s2">"ks_statistic"</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="KS Statistic" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_kdsplot_script_004.png" srcset="../../_images/sphx_glr_plot_kdsplot_script_004.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">47</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.kdsplot.html#scikitplot.snsx.kdsplot" title="scikitplot.snsx.kdsplot"><span class="n">sp</span><span class="o">.</span><span class="n">kdsplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s2">"report"</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="Lift Curve, Lift Decile-wise Curve, Cumulative Gain Curve, KS Statistic" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_kdsplot_script_005.png" srcset="../../_images/sphx_glr_plot_kdsplot_script_005.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{
+  "decile": "Ranked group (1=highest probability). Why: shows model discrimination. Fatal if top deciles don't capture positives.",
+  "prob_min": "Lowest predicted probability in the decile. Why: signals calibration. Fatal if too close to prob_max (model not ranking well).",
+  "prob_max": "Highest predicted probability in the decile. Why: checks spread. Fatal if overlaps lower deciles (poor separation).",
+  "prob_avg": "Average predicted probability in the decile. Why: good for calibration curves. Fatal if averages do not increase with decile.",
+  "cnt_resp": "Number of true responders. Why: measures captured positives. Fatal if counts are flat across deciles (model useless).",
+  "cnt_resp_total": "Total samples in the decile. Why: denominator for rates. Fatal if deciles differ in size — signals incorrect binning.",
+  "cnt_resp_non": "Number of non-responders. Why: tracks negatives. Fatal if too high in top deciles (bad ranking).",
+  "cnt_resp_wiz": "Ideal responders if model was perfect (sorted by actuals). Why: sets maximum benchmark. Fatal if actual is far below this.",
+  "cnt_resp_rndm": "Expected responders if random. Why: baseline. Fatal if model only slightly above random.",
+  "rate_resp": "Response rate (cnt_resp / total). Why: decile quality. Fatal if early deciles do not outperform later ones.",
+  "cum_resp": "Cumulative responders up to decile. Why: shows capture rate. Fatal if curve is too shallow.",
+  "cum_resp_pct": "Cumulative responder percentage. Why: needed for lift/gain charts. Fatal if curve near random line.",
+  "cum_resp_total": "Cumulative samples. Why: population coverage. Fatal if distribution biased.",
+  "cum_resp_total_pct": "Cumulative population percentage. Why: axis for gain/ROC curves. Fatal if deciles unbalanced.",
+  "cum_resp_non": "Cumulative non-responders. Why: tracks negatives. Fatal if they dominate early deciles.",
+  "cum_resp_non_pct": "Cumulative non-responder %. Why: used in KS. Fatal if almost same as cum_resp_pct (model fails).",
+  "cum_resp_wiz": "Cumulative ideal responders. Why: theoretical max. Fatal gap means weak targeting.",
+  "cum_resp_wiz_pct": "Cumulative % ideal responders. Why: benchmark. Fatal if actual far below.",
+  "KS": "Kolmogorov-Smirnov statistic. Why: measures max separation. Fatal if very low (&lt;0.2). Strong models often 0.3-0.5.",
+  "lift": "Cumulative lift vs random. Why: shows model gain. Fatal if &lt;2 in top decile (weak business value)."
+}
+   decile  prob_min  prob_max  ...  cum_resp_wiz_pct         KS      lift
+0       1  0.757001  0.857472  ...               NaN  -2.020202  0.909091
+1       2  0.642088  0.731452  ...         18.181818   4.040404  1.090909
+2       3  0.602239  0.641672  ...         36.363636   6.060606  1.090909
+3       4  0.561119  0.601465  ...         54.545455  20.202020  1.227273
+4       5  0.504775  0.559401  ...         72.727273  14.141414  1.127273
+5       6  0.446901  0.502622  ...         90.909091  12.121212  1.090909
+6       7  0.400478  0.437957  ...        100.000000   6.060606  1.038961
+7       8  0.370816  0.398850  ...        100.000000  -4.040404  0.977273
+8       9  0.324031  0.363077  ...        100.000000  -2.020202  0.989899
+9      10  0.166490  0.316185  ...        100.000000   0.000000  1.000000
+
+[10 rows x 20 columns]
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.777 seconds)</p>
+
+<p class="rubric">Related examples</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.snsx.prplot function used by a scikit-learn regressor."><img alt="" src="../../_images/sphx_glr_plot_prplot_script_thumb.png"/>
+<p><a class="reference internal" href="plot_prplot_script.html#sphx-glr-auto-examples-snsx-plot-prplot-script-py"><span class="std std-ref">plot_prplot_script with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">plot_prplot_script with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.snsx.rocplot function used by a scikit-learn regressor."><img alt="" src="../../_images/sphx_glr_plot_rocplot_script_thumb.png"/>
+<p><a class="reference internal" href="plot_rocplot_script.html#sphx-glr-auto-examples-snsx-plot-rocplot-script-py"><span class="std std-ref">plot_rocplot_script with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">plot_rocplot_script with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing Spam the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_conv_dense_thumb.png"/>
+<p><a class="reference internal" href="../visualkeras_ANN/plot_conv_dense.html#sphx-glr-auto-examples-visualkeras-ann-plot-conv-dense-py"><span class="std std-ref">Visualkeras: Spam Classification Conv1D Dense Example</span></a></p>
+<div class="sphx-glr-thumbnail-title">Visualkeras: Spam Classification Conv1D Dense Example</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_residuals_distribution function used by a scikit-learn regressor."><img alt="" src="../../_images/sphx_glr_plot_residuals_distribution_script_thumb.png"/>
+<p><a class="reference internal" href="../regression/plot_residuals_distribution_script.html#sphx-glr-auto-examples-regression-plot-residuals-distribution-script-py"><span class="std std-ref">plot_residuals_distribution with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">plot_residuals_distribution with examples</div>
+</div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</article>
+<footer class="bd-footer-article">
+<div class="footer-article-items footer-article__inner">
+<div class="footer-article-item">
+<div class="prev-next-area">
+<a class="left-prev" href="index.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">snsX (Seaborn eXtended)</p>
+</div>
+</a>
+<a class="right-next" href="plot_prplot_script.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">plot_prplot_script with examples</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div></div>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div aria-label="source link" role="note">
+<h3>This Page</h3>
+<ul class="this-page-menu">
+<li><a href="../../_sources/auto_examples/snsx/plot_kdsplot_script.rst.txt" rel="nofollow">Show Source</a></li>
+</ul>
+</div></div>
+<div class="sidebar-secondary-item"><div title="plot_kdsplot_script.py"><a download="" href="../../_downloads/c4210df5b80c6f33631de9de26c2d088/plot_kdsplot_script.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_kdsplot_script.ipynb"><a download="" href="../../_downloads/33415290471c360bfc6b6bd6ac1c88f2/plot_kdsplot_script.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/snsx/plot_kdsplot_script.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo7.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/snsx/plot_kdsplot_script.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo7.svg"/></a></div></div></div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">
+    
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250917.a67b890 2025-09-17T07:41Z.
+      <br/>
+</p>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

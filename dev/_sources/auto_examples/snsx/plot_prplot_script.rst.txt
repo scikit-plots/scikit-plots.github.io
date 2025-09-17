@@ -127,7 +127,7 @@ PR Curve
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-61
+.. GENERATED FROM PYTHON SOURCE LINES 40-63
 
 .. code-block:: Python
    :lineno-start: 40
@@ -141,6 +141,8 @@ PR Curve
         })
         ax = sp.prplot(df, x="true", y="prob", label=f"{i}")
 
+        # With raw arrays (no DataFrame)
+        # Works because seaborn normalizes arrays internally
         # ax = sp.rocplot(
         #     x=np.random.normal(0.5, 0.1, 100).round(),
         #     y=np.random.normal(0.5, 0.1, 100),
@@ -168,7 +170,7 @@ PR Curve
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.455 seconds)
+   **Total running time of the script:** (0 minutes 0.435 seconds)
 
 
 .. _sphx_glr_download_auto_examples_snsx_plot_prplot_script.py:

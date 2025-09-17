@@ -386,6 +386,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">snsX (Seaborn eXtended)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plot_kdsplot_script.html">plot_kdsplot_script with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_prplot_script.html">plot_prplot_script with examples</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">plot_rocplot_script with examples</a></li>
 </ul>
@@ -483,34 +484,36 @@ ax = sp.prplot(x=df.true, y=df.prob, hue=df.group)</p>
 <span class="linenos">47</span>     <span class="c1"># })</span>
 <span class="linenos">48</span>     <span class="c1"># ax = sp.prplot(df, x="true", y="prob", label=f"{i}")</span>
 <span class="linenos">49</span>
-<span class="linenos">50</span>     <span class="n">ax</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.rocplot.html#scikitplot.snsx.rocplot" title="scikitplot.snsx.rocplot"><span class="n">sp</span><span class="o">.</span><span class="n">rocplot</span></a><span class="p">(</span>
-<span class="linenos">51</span>         <span class="n">x</span><span class="o">=</span><a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.normal.html#numpy.random.normal" title="numpy.random.normal"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span></a><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(),</span>
-<span class="linenos">52</span>         <span class="n">y</span><span class="o">=</span><a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.normal.html#numpy.random.normal" title="numpy.random.normal"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span></a><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
-<span class="linenos">53</span>         <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
-<span class="linenos">54</span>     <span class="p">)</span>
-<span class="linenos">55</span>
-<span class="linenos">56</span>     <span class="c1"># --- Collect unique handles and labels ---</span>
-<span class="linenos">57</span>     <span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
-<span class="linenos">58</span>     <span class="n">by_label</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">handles</span><span class="p">))</span>  <span class="c1"># deduplicate</span>
-<span class="linenos">59</span>
-<span class="linenos">60</span>     <span class="c1"># Override legend</span>
-<span class="linenos">61</span>     <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">by_label</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">by_label</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Legend"</span><span class="p">)</span>
+<span class="linenos">50</span>     <span class="c1"># With raw arrays (no DataFrame)</span>
+<span class="linenos">51</span>     <span class="c1"># Works because seaborn normalizes arrays internally</span>
+<span class="linenos">52</span>     <span class="n">ax</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.rocplot.html#scikitplot.snsx.rocplot" title="scikitplot.snsx.rocplot"><span class="n">sp</span><span class="o">.</span><span class="n">rocplot</span></a><span class="p">(</span>
+<span class="linenos">53</span>         <span class="n">x</span><span class="o">=</span><a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.normal.html#numpy.random.normal" title="numpy.random.normal"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span></a><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(),</span>
+<span class="linenos">54</span>         <span class="n">y</span><span class="o">=</span><a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.normal.html#numpy.random.normal" title="numpy.random.normal"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span></a><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+<span class="linenos">55</span>         <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+<span class="linenos">56</span>     <span class="p">)</span>
+<span class="linenos">57</span>
+<span class="linenos">58</span>     <span class="c1"># --- Collect unique handles and labels ---</span>
+<span class="linenos">59</span>     <span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+<span class="linenos">60</span>     <span class="n">by_label</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">handles</span><span class="p">))</span>  <span class="c1"># deduplicate</span>
+<span class="linenos">61</span>
+<span class="linenos">62</span>     <span class="c1"># Override legend</span>
+<span class="linenos">63</span>     <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">by_label</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">by_label</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Legend"</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="ROC (Receiver Operating Characteristic) Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_rocplot_script_003.png" srcset="../../_images/sphx_glr_plot_rocplot_script_003.png"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.422 seconds)</p>
+<img alt="ROC (Receiver Operating Characteristic) Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_rocplot_script_003.png" srcset="../../_images/sphx_glr_plot_rocplot_script_003.png"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.361 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.snsx.rocplot function used by a scikit-learn regressor."><img alt="" src="../../_images/sphx_glr_plot_rocplot_script_thumb.png"/>
 <p><a class="reference internal" href="#sphx-glr-auto-examples-snsx-plot-rocplot-script-py"><span class="std std-ref">plot_rocplot_script with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">plot_rocplot_script with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.snsx.kdsplot function used by a scikit-learn regressor."><img alt="" src="../../_images/sphx_glr_plot_kdsplot_script_thumb.png"/>
+<p><a class="reference internal" href="plot_kdsplot_script.html#sphx-glr-auto-examples-snsx-plot-kdsplot-script-py"><span class="std std-ref">plot_kdsplot_script with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">plot_kdsplot_script with examples</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing Spam the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_conv_dense_thumb.png"/>
 <p><a class="reference internal" href="../visualkeras_ANN/plot_conv_dense.html#sphx-glr-auto-examples-visualkeras-ann-plot-conv-dense-py"><span class="std std-ref">Visualkeras: Spam Classification Conv1D Dense Example</span></a></p>
 <div class="sphx-glr-thumbnail-title">Visualkeras: Spam Classification Conv1D Dense Example</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_residuals_distribution function used by a scikit-learn regressor."><img alt="" src="../../_images/sphx_glr_plot_residuals_distribution_script_thumb.png"/>
 <p><a class="reference internal" href="../regression/plot_residuals_distribution_script.html#sphx-glr-auto-examples-regression-plot-residuals-distribution-script-py"><span class="std std-ref">plot_residuals_distribution with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">plot_residuals_distribution with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_residuals_distribution function used by a scikit-learn regressor."><img alt="" src="../../_images/sphx_glr_plot_residuals_distribution_script_thumb1.png"/>
-<p><a class="reference internal" href="../stats/plot_residuals_distribution_script.html#sphx-glr-auto-examples-stats-plot-residuals-distribution-script-py"><span class="std std-ref">plot_residuals_distribution with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">plot_residuals_distribution with examples</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
@@ -562,7 +565,7 @@ ax = sp.prplot(x=df.true, y=df.prob, hue=df.group)</p>
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250916.8839f5d 2025-09-16T18:01Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250917.a67b890 2025-09-17T07:41Z.
       <br/>
 </p>
 </div>
