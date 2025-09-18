@@ -791,8 +791,35 @@
 <h1>print_labels<a class="headerlink" href="#print-labels" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.snsx.print_labels">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.snsx.</span></span><span class="sig-name descname"><span class="pre">print_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">as_json</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/a67b890/scikitplot/snsx/_kds.py#L141"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.snsx.print_labels" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.snsx.</span></span><span class="sig-name descname"><span class="pre">print_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">as_json</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/85f7a89/scikitplot/snsx/_kds.py#L175"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.snsx.print_labels" title="Link to this definition">#</a></dt>
 <dd><p>Pretty-print the legend of decile table column names.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="s2">&quot;decile&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;prob_min&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;prob_max&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;prob_avg&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cnt_resp_total&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cnt_resp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cnt_resp_non&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cnt_resp_rndm&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cnt_resp_wiz&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;rate_resp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cum_resp_total&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cum_resp_total_pct&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cum_resp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cum_resp_pct&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cum_resp_non&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cum_resp_non_pct&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cum_resp_rndm&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cum_resp_rndm_pct&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cum_resp_wiz&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cum_resp_wiz_pct&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;KS&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cumulative_lift&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;decile_wise_lift&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -812,10 +839,74 @@
 <dd class="field-odd"><p>None</p>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="scikitplot.snsx.kdsplot.html#scikitplot.snsx.kdsplot" title="scikitplot.snsx.kdsplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kdsplot</span></code></a></dt><dd><p>Given binary labels y_true (0/1) and probabilities y_score 1d array, compute/plot a decile table.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r91df4c16acaa-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p><a class="github reference external" href="https://github.com/tensorbored/kds/blob/master/kds/metrics.py#L382">tensorbored/kds</a></p>
+</div>
+<div class="citation" id="r91df4c16acaa-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<p><a class="github reference external" href="https://github.com/tensorbored/kds/blob/master/kds/metrics.py#L382">tensorbored/kds</a></p>
+</div>
+</div>
+<p class="rubric">Examples</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="thebelab-code" data-executable="true" data-language="ipython"><div class="docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot.snsx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sp</span><span class="o">.</span><span class="n">print_labels</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<div class="cell_output docutils container">
+<div class="thebelab-output" data-output="true"><div class="docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>{
+  &quot;decile&quot;: &quot;Meaning: Ranked group (1 = highest predicted probability). Critical: Ensure sorted descending by model score. Fatal if top deciles don&#39;t capture positives.&quot;,
+  &quot;prob_min&quot;: &quot;Meaning: Lowest predicted probability in the decile. Critical: Signals model calibration. Fatal if too close to prob_max (poor ranking).&quot;,
+  &quot;prob_max&quot;: &quot;Meaning: Highest predicted probability in the decile. Critical: Checks separation. Fatal if overlaps lower deciles (poor discrimination).&quot;,
+  &quot;prob_avg&quot;: &quot;Meaning: Average predicted probability in the decile. Critical: Useful for calibration curves; should decrease monotonically across deciles.&quot;,
+  &quot;cnt_resp_total&quot;: &quot;Meaning: Total samples in the decile. Critical: Denominator for rate_resp and cumulative % calculations. Fatal if deciles uneven.&quot;,
+  &quot;cnt_resp&quot;: &quot;Meaning: Actual responders in the decile. Critical: Should never exceed cnt_resp_wiz. Flat counts across deciles indicate useless model.&quot;,
+  &quot;cnt_resp_non&quot;: &quot;Meaning: Non-responders in the decile. Critical: Used for KS/statistics. Too high in top deciles is a warning.&quot;,
+  &quot;cnt_resp_rndm&quot;: &quot;Meaning: Expected responders if randomly assigned. Critical: Baseline for comparison. Fatal if model only slightly above random.&quot;,
+  &quot;cnt_resp_wiz&quot;: &quot;Meaning: Ideal responders if model were perfect. Critical: Must be ≥ cnt_resp. Fatal if NaN or actual far below.&quot;,
+  &quot;rate_resp&quot;: &quot;Meaning: Response rate = cnt_resp / cnt_resp_total. Critical: Measures decile quality. Early deciles should outperform later ones.&quot;,
+  &quot;cum_resp_total&quot;: &quot;Meaning: Cumulative total samples. Critical: Tracks population coverage.&quot;,
+  &quot;cum_resp_total_pct&quot;: &quot;Meaning: % cumulative population. Critical: X-axis for lift/gain curves; check decile balance.&quot;,
+  &quot;cum_resp&quot;: &quot;Meaning: Cumulative responders up to this decile. Critical: Should increase; max = total responders. Flat curve = weak model.&quot;,
+  &quot;cum_resp_pct&quot;: &quot;Meaning: % cumulative responders = cum_resp / total_responders * 100. Critical: Wizard curve should be ≥ model; used in lift/gain charts.&quot;,
+  &quot;cum_resp_non&quot;: &quot;Meaning: Cumulative non-responders. Critical: Used in KS statistic; early dominance is bad.&quot;,
+  &quot;cum_resp_non_pct&quot;: &quot;Meaning: % cumulative non-responders. Critical: Should differ from cum_resp_pct; almost equal = model fails.&quot;,
+  &quot;cum_resp_rndm&quot;: &quot;Meaning: Cumulative expected responders if randomly assigned. Critical: Baseline for cumulative lift. Fatal if model ≈ random curve.&quot;,
+  &quot;cum_resp_rndm_pct&quot;: &quot;Meaning: % cumulative random responders = cum_resp_rndm / total_responders * 100. Critical: Random baseline curve (diagonal). Always linear from (0,0) to (100,100). Fatal if model curve is near or below it.&quot;,
+  &quot;cum_resp_wiz&quot;: &quot;Meaning: Cumulative ideal responders. Critical: Should always ≥ model; never NaN.&quot;,
+  &quot;cum_resp_wiz_pct&quot;: &quot;Meaning: % cumulative ideal responders. Critical: Wizard benchmark for lift/gain curves; gaps indicate model weakness.&quot;,
+  &quot;KS&quot;: &quot;Meaning: Kolmogorov-Smirnov statistic = cum_resp_pct - cum_resp_non_pct. Critical: Max separation shows discriminative power. Fatal if very low (&lt;0.2).&quot;,
+  &quot;cumulative_lift&quot;: &quot;Meaning: Cumulative lift = cum_resp_pct / cum_resp_total_pct. Critical: Shows model gain over random. Always cumulative. Fatal if &lt;1 or &lt;2 in top decile.&quot;,
+  &quot;decile_wise_lift&quot;: &quot;Meaning: Decile-wise lift = cnt_resp / cnt_resp_rndm. Critical: Measures decile-level improvement vs random. Fatal if &lt;1.&quot;
+}
+</pre></div>
+</div>
+</div>
+</div></div>
+</div>
 </dd></dl>
 
 </section>
-
+<button title="Make live" class="thebelab-button" id="thebelab-activate-button" onclick="initThebelab()">Make live</button>
+<script type="text/x-thebe-config">
+{"binderOptions": {"org": "scikit-plots", "repo": "scikit-plots", "branch": "main", "dependencies": "./binder/requirements.txt"}, "predefinedOutput": true, "requestKernel": true}
+</script>
+<script type="text/javascript" src="https://unpkg.com/thebelab@^0.4.0"></script>
 
                 </article>
               
@@ -909,7 +1000,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250917.a67b890 2025-09-17T07:41Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250918.85f7a89 2025-09-18T18:03Z.
       <br/>
     
   </p>

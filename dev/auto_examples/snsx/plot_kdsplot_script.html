@@ -9,10 +9,10 @@
 <meta content="website" property="og:type"/>
 <meta content="https://scikit-plots.github.io/stable/auto_examples/snsx/plot_kdsplot_script.html" property="og:url"/>
 <meta content="scikit-plots" property="og:site_name"/>
-<meta content="An example showing the kdsplot function used by a scikit-learn regressor. Import scikit-plot Total running time of the script:(0 minutes 0.777 seconds) Launch binder Launch JupyterLite Download Jup..." property="og:description"/>
+<meta content="An example showing the kdsplot function used by a scikit-learn regressor. Import scikit-plot Load the data import scikitplot as sp sp.kds.decile_table( y_val, y_val_prob[:, 1]) Total running time o..." property="og:description"/>
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
-<meta content="An example showing the kdsplot function used by a scikit-learn regressor. Import scikit-plot Total running time of the script:(0 minutes 0.777 seconds) Launch binder Launch JupyterLite Download Jup..." name="description"/>
+<meta content="An example showing the kdsplot function used by a scikit-learn regressor. Import scikit-plot Load the data import scikitplot as sp sp.kds.decile_table( y_val, y_val_prob[:, 1]) Total running time o..." name="description"/>
 <title>plot_kdsplot_script with examples — scikit-plots 0.5.dev0 documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
@@ -455,19 +455,78 @@ used by a scikit-learn regressor.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">14</span> <span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot.snsx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">18</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span><span class="p">;</span> <a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.seed.html#numpy.random.seed" title="numpy.random.seed"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># reproducibility</span>
-<span class="linenos">19</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="linenos">20</span>
-<span class="linenos">21</span> <span class="c1"># Create a DataFrame with predictions</span>
-<span class="linenos">22</span> <span class="n">df</span> <span class="o">=</span> <a class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame"><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span></a><span class="p">({</span>
-<span class="linenos">23</span>     <span class="s2">"y_true"</span><span class="p">:</span> <a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.normal.html#numpy.random.normal" title="numpy.random.normal"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span></a><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(),</span>
-<span class="linenos">24</span>     <span class="s2">"y_score"</span><span class="p">:</span> <a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.normal.html#numpy.random.normal" title="numpy.random.normal"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span></a><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
-<span class="linenos">25</span>     <span class="s2">"hue"</span><span class="p">:</span> <a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.normal.html#numpy.random.normal" title="numpy.random.normal"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span></a><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(),</span>
-<span class="linenos">26</span> <span class="p">})</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">18</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="linenos">19</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span><span class="p">;</span> <a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.seed.html#numpy.random.seed" title="numpy.random.seed"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># reproducibility</span>
+<span class="linenos">20</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<span class="linenos">23</span>     <span class="n">load_iris</span> <span class="k">as</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris" title="sklearn.datasets.load_iris"><span class="n">data_3_classes</span></a><span class="p">,</span>
+<span class="linenos">24</span> <span class="p">)</span>
+<span class="linenos">25</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a>
+<span class="linenos">26</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">30</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.kdsplot.html#scikitplot.snsx.kdsplot" title="scikitplot.snsx.kdsplot"><span class="n">sp</span><span class="o">.</span><span class="n">kdsplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"df"</span><span class="p">,</span> <span class="n">n_deciles</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">round_digits</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="linenos">31</span> <span class="n">p</span>
+<p>Load the data</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">30</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris" title="sklearn.datasets.load_iris"><span class="n">data_3_classes</span></a><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="linenos">31</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">32</span>
+<span class="linenos">33</span> <span class="c1"># Create an instance of the LogisticRegression</span>
+<span class="linenos">34</span> <span class="n">model</span> <span class="o">=</span> <span class="p">(</span>
+<span class="linenos">35</span>     <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="mf">1e5</span><span class="p">),</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">36</span>     <span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="linenos">37</span> <span class="p">)</span>
+<span class="linenos">38</span>
+<span class="linenos">39</span> <span class="c1"># Perform predictions</span>
+<span class="linenos">40</span> <span class="n">y_val_prob</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+<span class="linenos">41</span> <span class="c1"># Create a DataFrame with predictions</span>
+<span class="linenos">42</span> <span class="n">df</span> <span class="o">=</span> <a class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame"><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span></a><span class="p">({</span>
+<span class="linenos">43</span>     <span class="s2">"y_true"</span><span class="p">:</span> <span class="n">y_val</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># target class (0,1,2)</span>
+<span class="linenos">44</span>     <span class="s2">"y_score"</span><span class="p">:</span> <span class="n">y_val_prob</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>  <span class="c1"># target class (0,1,2)</span>
+<span class="linenos">45</span>     <span class="c1"># "y_true": np.random.normal(0.5, 0.1, 100).round(),</span>
+<span class="linenos">46</span>     <span class="c1"># "y_score": np.random.normal(0.5, 0.15, 100),</span>
+<span class="linenos">47</span>     <span class="c1"># "hue": np.random.normal(0.5, 0.4, 100).round(),</span>
+<span class="linenos">48</span> <span class="p">})</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">53</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.kdsplot.html#scikitplot.snsx.kdsplot" title="scikitplot.snsx.kdsplot"><span class="n">sp</span><span class="o">.</span><span class="n">kdsplot</span></a><span class="p">(</span>
+<span class="linenos">54</span>     <span class="n">df</span><span class="p">,</span>
+<span class="linenos">55</span>     <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span>
+<span class="linenos">56</span>     <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span>
+<span class="linenos">57</span>     <span class="n">kind</span><span class="o">=</span><span class="s2">"df"</span><span class="p">,</span>
+<span class="linenos">58</span>     <span class="n">n_deciles</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="linenos">59</span>     <span class="n">round_digits</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="linenos">60</span>     <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos">61</span> <span class="p">)</span>
+<span class="linenos">62</span> <span class="n">p</span>  <span class="c1"># .columns.tolist()</span>
+<span class="linenos">63</span> <span class="c1"># p.iloc[:,range(9,21)]</span>
+<span class="linenos">64</span> <span class="c1"># p[["decile", "cnt_resp", "cnt_resp_wiz", "cum_resp_pct", "cum_resp_wiz_pct"]]</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{
+  "decile": "Meaning: Ranked group (1 = highest predicted probability). Critical: Ensure sorted descending by model score. Fatal if top deciles don't capture positives.",
+  "prob_min": "Meaning: Lowest predicted probability in the decile. Critical: Signals model calibration. Fatal if too close to prob_max (poor ranking).",
+  "prob_max": "Meaning: Highest predicted probability in the decile. Critical: Checks separation. Fatal if overlaps lower deciles (poor discrimination).",
+  "prob_avg": "Meaning: Average predicted probability in the decile. Critical: Useful for calibration curves; should decrease monotonically across deciles.",
+  "cnt_resp_total": "Meaning: Total samples in the decile. Critical: Denominator for rate_resp and cumulative % calculations. Fatal if deciles uneven.",
+  "cnt_resp": "Meaning: Actual responders in the decile. Critical: Should never exceed cnt_resp_wiz. Flat counts across deciles indicate useless model.",
+  "cnt_resp_non": "Meaning: Non-responders in the decile. Critical: Used for KS/statistics. Too high in top deciles is a warning.",
+  "cnt_resp_rndm": "Meaning: Expected responders if randomly assigned. Critical: Baseline for comparison. Fatal if model only slightly above random.",
+  "cnt_resp_wiz": "Meaning: Ideal responders if model were perfect. Critical: Must be ≥ cnt_resp. Fatal if NaN or actual far below.",
+  "rate_resp": "Meaning: Response rate = cnt_resp / cnt_resp_total. Critical: Measures decile quality. Early deciles should outperform later ones.",
+  "cum_resp_total": "Meaning: Cumulative total samples. Critical: Tracks population coverage.",
+  "cum_resp_total_pct": "Meaning: % cumulative population. Critical: X-axis for lift/gain curves; check decile balance.",
+  "cum_resp": "Meaning: Cumulative responders up to this decile. Critical: Should increase; max = total responders. Flat curve = weak model.",
+  "cum_resp_pct": "Meaning: % cumulative responders = cum_resp / total_responders * 100. Critical: Wizard curve should be ≥ model; used in lift/gain charts.",
+  "cum_resp_non": "Meaning: Cumulative non-responders. Critical: Used in KS statistic; early dominance is bad.",
+  "cum_resp_non_pct": "Meaning: % cumulative non-responders. Critical: Should differ from cum_resp_pct; almost equal = model fails.",
+  "cum_resp_rndm": "Meaning: Cumulative expected responders if randomly assigned. Critical: Baseline for cumulative lift. Fatal if model ≈ random curve.",
+  "cum_resp_rndm_pct": "Meaning: % cumulative random responders = cum_resp_rndm / total_responders * 100. Critical: Random baseline curve (diagonal). Always linear from (0,0) to (100,100). Fatal if model curve is near or below it.",
+  "cum_resp_wiz": "Meaning: Cumulative ideal responders. Critical: Should always ≥ model; never NaN.",
+  "cum_resp_wiz_pct": "Meaning: % cumulative ideal responders. Critical: Wizard benchmark for lift/gain curves; gaps indicate model weakness.",
+  "KS": "Meaning: Kolmogorov-Smirnov statistic = cum_resp_pct - cum_resp_non_pct. Critical: Max separation shows discriminative power. Fatal if very low (&lt;0.2).",
+  "cumulative_lift": "Meaning: Cumulative lift = cum_resp_pct / cum_resp_total_pct. Critical: Shows model gain over random. Always cumulative. Fatal if &lt;1 or &lt;2 in top decile.",
+  "decile_wise_lift": "Meaning: Decile-wise lift = cnt_resp / cnt_resp_rndm. Critical: Measures decile-level improvement vs random. Fatal if &lt;1."
+}
 </pre></div>
 </div>
 <div class="output_subarea output_html rendered_html output_result">
@@ -493,313 +552,363 @@ used by a scikit-learn regressor.</p>
 <th>prob_min</th>
 <th>prob_max</th>
 <th>prob_avg</th>
-<th>cnt_resp</th>
 <th>cnt_resp_total</th>
+<th>cnt_resp</th>
 <th>cnt_resp_non</th>
-<th>cnt_resp_wiz</th>
 <th>cnt_resp_rndm</th>
+<th>cnt_resp_wiz</th>
 <th>rate_resp</th>
-<th>cum_resp</th>
-<th>cum_resp_pct</th>
 <th>cum_resp_total</th>
 <th>cum_resp_total_pct</th>
+<th>cum_resp</th>
+<th>cum_resp_pct</th>
 <th>cum_resp_non</th>
 <th>cum_resp_non_pct</th>
+<th>cum_resp_rndm</th>
+<th>cum_resp_rndm_pct</th>
 <th>cum_resp_wiz</th>
 <th>cum_resp_wiz_pct</th>
 <th>KS</th>
-<th>lift</th>
+<th>cumulative_lift</th>
+<th>decile_wise_lift</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <th>0</th>
 <td>1</td>
-<td>0.76</td>
-<td>0.86</td>
-<td>0.79</td>
-<td>5.0</td>
+<td>0.882</td>
+<td>0.960</td>
+<td>0.920</td>
+<td>8.0</td>
+<td>8.0</td>
+<td>0.0</td>
+<td>3.0</td>
+<td>8.0</td>
+<td>100.000</td>
+<td>8.0</td>
+<td>10.667</td>
+<td>8.0</td>
+<td>26.667</td>
+<td>0.0</td>
+<td>0.000</td>
+<td>3.0</td>
 <td>10.0</td>
-<td>5.0</td>
-<td>NaN</td>
-<td>5.5</td>
-<td>50.0</td>
-<td>5.0</td>
-<td>9.09</td>
-<td>10.0</td>
-<td>10.0</td>
-<td>5.0</td>
-<td>11.11</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>-2.02</td>
-<td>0.91</td>
+<td>8.0</td>
+<td>26.667</td>
+<td>26.667</td>
+<td>2.500</td>
+<td>2.667</td>
 </tr>
 <tr>
 <th>1</th>
 <td>2</td>
-<td>0.64</td>
-<td>0.73</td>
-<td>0.68</td>
+<td>0.811</td>
+<td>0.880</td>
+<td>0.856</td>
 <td>7.0</td>
-<td>10.0</td>
+<td>7.0</td>
+<td>0.0</td>
 <td>3.0</td>
-<td>10.0</td>
-<td>5.5</td>
-<td>70.0</td>
-<td>12.0</td>
-<td>21.82</td>
+<td>7.0</td>
+<td>100.000</td>
+<td>15.0</td>
+<td>20.000</td>
+<td>15.0</td>
+<td>50.000</td>
+<td>0.0</td>
+<td>0.000</td>
+<td>6.0</td>
 <td>20.0</td>
-<td>20.0</td>
-<td>8.0</td>
-<td>17.78</td>
-<td>10.0</td>
-<td>18.18</td>
-<td>4.04</td>
-<td>1.09</td>
+<td>15.0</td>
+<td>50.000</td>
+<td>50.000</td>
+<td>2.500</td>
+<td>2.333</td>
 </tr>
 <tr>
 <th>2</th>
 <td>3</td>
-<td>0.60</td>
-<td>0.64</td>
-<td>0.63</td>
-<td>6.0</td>
-<td>10.0</td>
-<td>4.0</td>
-<td>10.0</td>
-<td>5.5</td>
-<td>60.0</td>
-<td>18.0</td>
-<td>32.73</td>
+<td>0.710</td>
+<td>0.799</td>
+<td>0.735</td>
+<td>8.0</td>
+<td>7.0</td>
+<td>1.0</td>
+<td>3.0</td>
+<td>7.0</td>
+<td>87.500</td>
+<td>23.0</td>
+<td>30.667</td>
+<td>22.0</td>
+<td>73.333</td>
+<td>1.0</td>
+<td>2.222</td>
+<td>9.0</td>
 <td>30.0</td>
-<td>30.0</td>
-<td>12.0</td>
-<td>26.67</td>
-<td>20.0</td>
-<td>36.36</td>
-<td>6.06</td>
-<td>1.09</td>
+<td>22.0</td>
+<td>73.333</td>
+<td>71.111</td>
+<td>2.391</td>
+<td>2.333</td>
 </tr>
 <tr>
 <th>3</th>
 <td>4</td>
-<td>0.56</td>
-<td>0.60</td>
-<td>0.59</td>
-<td>9.0</td>
-<td>10.0</td>
+<td>0.553</td>
+<td>0.709</td>
+<td>0.652</td>
+<td>7.0</td>
+<td>6.0</td>
 <td>1.0</td>
-<td>10.0</td>
-<td>5.5</td>
-<td>90.0</td>
-<td>27.0</td>
-<td>49.09</td>
-<td>40.0</td>
-<td>40.0</td>
-<td>13.0</td>
-<td>28.89</td>
+<td>3.0</td>
+<td>6.0</td>
+<td>85.714</td>
 <td>30.0</td>
-<td>54.55</td>
-<td>20.20</td>
-<td>1.23</td>
+<td>40.000</td>
+<td>28.0</td>
+<td>93.333</td>
+<td>2.0</td>
+<td>4.444</td>
+<td>12.0</td>
+<td>40.0</td>
+<td>28.0</td>
+<td>93.333</td>
+<td>88.889</td>
+<td>2.333</td>
+<td>2.000</td>
 </tr>
 <tr>
 <th>4</th>
 <td>5</td>
-<td>0.50</td>
-<td>0.56</td>
-<td>0.53</td>
-<td>4.0</td>
-<td>10.0</td>
+<td>0.354</td>
+<td>0.539</td>
+<td>0.467</td>
+<td>8.0</td>
+<td>2.0</td>
 <td>6.0</td>
-<td>10.0</td>
-<td>5.5</td>
-<td>40.0</td>
-<td>31.0</td>
-<td>56.36</td>
+<td>3.0</td>
+<td>2.0</td>
+<td>25.000</td>
+<td>38.0</td>
+<td>50.667</td>
+<td>30.0</td>
+<td>100.000</td>
+<td>8.0</td>
+<td>17.778</td>
+<td>15.0</td>
 <td>50.0</td>
-<td>50.0</td>
-<td>19.0</td>
-<td>42.22</td>
-<td>40.0</td>
-<td>72.73</td>
-<td>14.14</td>
-<td>1.13</td>
+<td>30.0</td>
+<td>100.000</td>
+<td>82.222</td>
+<td>1.974</td>
+<td>0.667</td>
 </tr>
 <tr>
 <th>5</th>
 <td>6</td>
-<td>0.45</td>
-<td>0.50</td>
-<td>0.48</td>
-<td>5.0</td>
-<td>10.0</td>
-<td>5.0</td>
-<td>10.0</td>
-<td>5.5</td>
-<td>50.0</td>
-<td>36.0</td>
-<td>65.45</td>
+<td>0.164</td>
+<td>0.354</td>
+<td>0.239</td>
+<td>7.0</td>
+<td>0.0</td>
+<td>7.0</td>
+<td>3.0</td>
+<td>0.0</td>
+<td>0.000</td>
+<td>45.0</td>
+<td>60.000</td>
+<td>30.0</td>
+<td>100.000</td>
+<td>15.0</td>
+<td>33.333</td>
+<td>18.0</td>
 <td>60.0</td>
-<td>60.0</td>
-<td>24.0</td>
-<td>53.33</td>
-<td>50.0</td>
-<td>90.91</td>
-<td>12.12</td>
-<td>1.09</td>
+<td>30.0</td>
+<td>100.000</td>
+<td>66.667</td>
+<td>1.667</td>
+<td>0.000</td>
 </tr>
 <tr>
 <th>6</th>
 <td>7</td>
-<td>0.40</td>
-<td>0.44</td>
-<td>0.42</td>
-<td>4.0</td>
-<td>10.0</td>
-<td>6.0</td>
-<td>5.0</td>
-<td>5.5</td>
-<td>40.0</td>
-<td>40.0</td>
-<td>72.73</td>
-<td>70.0</td>
+<td>0.049</td>
+<td>0.149</td>
+<td>0.091</td>
+<td>8.0</td>
+<td>0.0</td>
+<td>8.0</td>
+<td>3.0</td>
+<td>0.0</td>
+<td>0.000</td>
+<td>53.0</td>
+<td>70.667</td>
+<td>30.0</td>
+<td>100.000</td>
+<td>23.0</td>
+<td>51.111</td>
+<td>21.0</td>
 <td>70.0</td>
 <td>30.0</td>
-<td>66.67</td>
-<td>55.0</td>
-<td>100.00</td>
-<td>6.06</td>
-<td>1.04</td>
+<td>100.000</td>
+<td>48.889</td>
+<td>1.415</td>
+<td>0.000</td>
 </tr>
 <tr>
 <th>7</th>
 <td>8</td>
-<td>0.37</td>
-<td>0.40</td>
-<td>0.39</td>
-<td>3.0</td>
-<td>10.0</td>
+<td>0.033</td>
+<td>0.048</td>
+<td>0.040</td>
 <td>7.0</td>
 <td>0.0</td>
-<td>5.5</td>
+<td>7.0</td>
+<td>3.0</td>
+<td>0.0</td>
+<td>0.000</td>
+<td>60.0</td>
+<td>80.000</td>
 <td>30.0</td>
-<td>43.0</td>
-<td>78.18</td>
+<td>100.000</td>
+<td>30.0</td>
+<td>66.667</td>
+<td>24.0</td>
 <td>80.0</td>
-<td>80.0</td>
-<td>37.0</td>
-<td>82.22</td>
-<td>55.0</td>
-<td>100.00</td>
-<td>-4.04</td>
-<td>0.98</td>
+<td>30.0</td>
+<td>100.000</td>
+<td>33.333</td>
+<td>1.250</td>
+<td>0.000</td>
 </tr>
 <tr>
 <th>8</th>
 <td>9</td>
-<td>0.32</td>
-<td>0.36</td>
-<td>0.34</td>
-<td>6.0</td>
-<td>10.0</td>
-<td>4.0</td>
+<td>0.019</td>
+<td>0.031</td>
+<td>0.026</td>
+<td>8.0</td>
 <td>0.0</td>
-<td>5.5</td>
-<td>60.0</td>
-<td>49.0</td>
-<td>89.09</td>
+<td>8.0</td>
+<td>3.0</td>
+<td>0.0</td>
+<td>0.000</td>
+<td>68.0</td>
+<td>90.667</td>
+<td>30.0</td>
+<td>100.000</td>
+<td>38.0</td>
+<td>84.444</td>
+<td>27.0</td>
 <td>90.0</td>
-<td>90.0</td>
-<td>41.0</td>
-<td>91.11</td>
-<td>55.0</td>
-<td>100.00</td>
-<td>-2.02</td>
-<td>0.99</td>
+<td>30.0</td>
+<td>100.000</td>
+<td>15.556</td>
+<td>1.103</td>
+<td>0.000</td>
 </tr>
 <tr>
 <th>9</th>
 <td>10</td>
-<td>0.17</td>
-<td>0.32</td>
-<td>0.28</td>
-<td>6.0</td>
-<td>10.0</td>
-<td>4.0</td>
+<td>0.007</td>
+<td>0.018</td>
+<td>0.014</td>
+<td>7.0</td>
 <td>0.0</td>
-<td>5.5</td>
-<td>60.0</td>
-<td>55.0</td>
-<td>100.00</td>
-<td>100.0</td>
-<td>100.0</td>
+<td>7.0</td>
+<td>3.0</td>
+<td>0.0</td>
+<td>0.000</td>
+<td>75.0</td>
+<td>100.000</td>
+<td>30.0</td>
+<td>100.000</td>
 <td>45.0</td>
-<td>100.00</td>
-<td>55.0</td>
-<td>100.00</td>
-<td>0.00</td>
-<td>1.00</td>
+<td>100.000</td>
+<td>30.0</td>
+<td>100.0</td>
+<td>30.0</td>
+<td>100.000</td>
+<td>0.000</td>
+<td>1.000</td>
+<td>0.000</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <br/>
-<br/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">35</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.kdsplot.html#scikitplot.snsx.kdsplot" title="scikitplot.snsx.kdsplot"><span class="n">sp</span><span class="o">.</span><span class="n">kdsplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s2">"lift"</span><span class="p">)</span>
+<br/><p>import scikitplot as sp
+sp.kds.decile_table(</p>
+<blockquote>
+<div><p>y_val, y_val_prob[:, 1]</p>
+</div></blockquote>
+<p>)</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">75</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.kdsplot.html#scikitplot.snsx.kdsplot" title="scikitplot.snsx.kdsplot"><span class="n">sp</span><span class="o">.</span><span class="n">kdsplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"cumulative_lift"</span><span class="p">,</span> <span class="n">n_deciles</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Lift Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_kdsplot_script_001.png" srcset="../../_images/sphx_glr_plot_kdsplot_script_001.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">38</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.kdsplot.html#scikitplot.snsx.kdsplot" title="scikitplot.snsx.kdsplot"><span class="n">sp</span><span class="o">.</span><span class="n">kdsplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s2">"lift_decile_wise"</span><span class="p">)</span>
+<img alt="Cumulative Lift Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_kdsplot_script_001.png" srcset="../../_images/sphx_glr_plot_kdsplot_script_001.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">78</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.kdsplot.html#scikitplot.snsx.kdsplot" title="scikitplot.snsx.kdsplot"><span class="n">sp</span><span class="o">.</span><span class="n">kdsplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"decile_wise_lift"</span><span class="p">,</span> <span class="n">n_deciles</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Lift Decile-wise Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_kdsplot_script_002.png" srcset="../../_images/sphx_glr_plot_kdsplot_script_002.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">41</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.kdsplot.html#scikitplot.snsx.kdsplot" title="scikitplot.snsx.kdsplot"><span class="n">sp</span><span class="o">.</span><span class="n">kdsplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s2">"cumulative_gain"</span><span class="p">)</span>
+<img alt="Decile-wise Lift Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_kdsplot_script_002.png" srcset="../../_images/sphx_glr_plot_kdsplot_script_002.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">81</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.kdsplot.html#scikitplot.snsx.kdsplot" title="scikitplot.snsx.kdsplot"><span class="n">sp</span><span class="o">.</span><span class="n">kdsplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"cumulative_gain"</span><span class="p">,</span> <span class="n">n_deciles</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Cumulative Gain Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_kdsplot_script_003.png" srcset="../../_images/sphx_glr_plot_kdsplot_script_003.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">44</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.kdsplot.html#scikitplot.snsx.kdsplot" title="scikitplot.snsx.kdsplot"><span class="n">sp</span><span class="o">.</span><span class="n">kdsplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s2">"ks_statistic"</span><span class="p">)</span>
+<img alt="Cumulative Gain Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_kdsplot_script_003.png" srcset="../../_images/sphx_glr_plot_kdsplot_script_003.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">84</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.kdsplot.html#scikitplot.snsx.kdsplot" title="scikitplot.snsx.kdsplot"><span class="n">sp</span><span class="o">.</span><span class="n">kdsplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"ks_statistic"</span><span class="p">,</span> <span class="n">n_deciles</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="KS Statistic" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_kdsplot_script_004.png" srcset="../../_images/sphx_glr_plot_kdsplot_script_004.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">47</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.kdsplot.html#scikitplot.snsx.kdsplot" title="scikitplot.snsx.kdsplot"><span class="n">sp</span><span class="o">.</span><span class="n">kdsplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s2">"report"</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<img alt="KS Statistic Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_kdsplot_script_004.png" srcset="../../_images/sphx_glr_plot_kdsplot_script_004.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">87</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="linenos">88</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.kdsplot.html#scikitplot.snsx.kdsplot" title="scikitplot.snsx.kdsplot"><span class="n">sp</span><span class="o">.</span><span class="n">kdsplot</span></a><span class="p">(</span>
+<span class="linenos">89</span>     <span class="n">df</span><span class="p">,</span>
+<span class="linenos">90</span>     <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span>
+<span class="linenos">91</span>     <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span>
+<span class="linenos">92</span>     <span class="n">kind</span><span class="o">=</span><span class="s2">"report"</span><span class="p">,</span>
+<span class="linenos">93</span>     <span class="n">n_deciles</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="linenos">94</span>     <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos">95</span> <span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Lift Curve, Lift Decile-wise Curve, Cumulative Gain Curve, KS Statistic" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_kdsplot_script_005.png" srcset="../../_images/sphx_glr_plot_kdsplot_script_005.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{
-  "decile": "Ranked group (1=highest probability). Why: shows model discrimination. Fatal if top deciles don't capture positives.",
-  "prob_min": "Lowest predicted probability in the decile. Why: signals calibration. Fatal if too close to prob_max (model not ranking well).",
-  "prob_max": "Highest predicted probability in the decile. Why: checks spread. Fatal if overlaps lower deciles (poor separation).",
-  "prob_avg": "Average predicted probability in the decile. Why: good for calibration curves. Fatal if averages do not increase with decile.",
-  "cnt_resp": "Number of true responders. Why: measures captured positives. Fatal if counts are flat across deciles (model useless).",
-  "cnt_resp_total": "Total samples in the decile. Why: denominator for rates. Fatal if deciles differ in size — signals incorrect binning.",
-  "cnt_resp_non": "Number of non-responders. Why: tracks negatives. Fatal if too high in top deciles (bad ranking).",
-  "cnt_resp_wiz": "Ideal responders if model was perfect (sorted by actuals). Why: sets maximum benchmark. Fatal if actual is far below this.",
-  "cnt_resp_rndm": "Expected responders if random. Why: baseline. Fatal if model only slightly above random.",
-  "rate_resp": "Response rate (cnt_resp / total). Why: decile quality. Fatal if early deciles do not outperform later ones.",
-  "cum_resp": "Cumulative responders up to decile. Why: shows capture rate. Fatal if curve is too shallow.",
-  "cum_resp_pct": "Cumulative responder percentage. Why: needed for lift/gain charts. Fatal if curve near random line.",
-  "cum_resp_total": "Cumulative samples. Why: population coverage. Fatal if distribution biased.",
-  "cum_resp_total_pct": "Cumulative population percentage. Why: axis for gain/ROC curves. Fatal if deciles unbalanced.",
-  "cum_resp_non": "Cumulative non-responders. Why: tracks negatives. Fatal if they dominate early deciles.",
-  "cum_resp_non_pct": "Cumulative non-responder %. Why: used in KS. Fatal if almost same as cum_resp_pct (model fails).",
-  "cum_resp_wiz": "Cumulative ideal responders. Why: theoretical max. Fatal gap means weak targeting.",
-  "cum_resp_wiz_pct": "Cumulative % ideal responders. Why: benchmark. Fatal if actual far below.",
-  "KS": "Kolmogorov-Smirnov statistic. Why: measures max separation. Fatal if very low (&lt;0.2). Strong models often 0.3-0.5.",
-  "lift": "Cumulative lift vs random. Why: shows model gain. Fatal if &lt;2 in top decile (weak business value)."
+<img alt="Cumulative Lift Curve, Decile-wise Lift Curve, Cumulative Gain Curve, KS Statistic Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_kdsplot_script_005.png" srcset="../../_images/sphx_glr_plot_kdsplot_script_005.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{
+  "decile": "Meaning: Ranked group (1 = highest predicted probability). Critical: Ensure sorted descending by model score. Fatal if top deciles don't capture positives.",
+  "prob_min": "Meaning: Lowest predicted probability in the decile. Critical: Signals model calibration. Fatal if too close to prob_max (poor ranking).",
+  "prob_max": "Meaning: Highest predicted probability in the decile. Critical: Checks separation. Fatal if overlaps lower deciles (poor discrimination).",
+  "prob_avg": "Meaning: Average predicted probability in the decile. Critical: Useful for calibration curves; should decrease monotonically across deciles.",
+  "cnt_resp_total": "Meaning: Total samples in the decile. Critical: Denominator for rate_resp and cumulative % calculations. Fatal if deciles uneven.",
+  "cnt_resp": "Meaning: Actual responders in the decile. Critical: Should never exceed cnt_resp_wiz. Flat counts across deciles indicate useless model.",
+  "cnt_resp_non": "Meaning: Non-responders in the decile. Critical: Used for KS/statistics. Too high in top deciles is a warning.",
+  "cnt_resp_rndm": "Meaning: Expected responders if randomly assigned. Critical: Baseline for comparison. Fatal if model only slightly above random.",
+  "cnt_resp_wiz": "Meaning: Ideal responders if model were perfect. Critical: Must be ≥ cnt_resp. Fatal if NaN or actual far below.",
+  "rate_resp": "Meaning: Response rate = cnt_resp / cnt_resp_total. Critical: Measures decile quality. Early deciles should outperform later ones.",
+  "cum_resp_total": "Meaning: Cumulative total samples. Critical: Tracks population coverage.",
+  "cum_resp_total_pct": "Meaning: % cumulative population. Critical: X-axis for lift/gain curves; check decile balance.",
+  "cum_resp": "Meaning: Cumulative responders up to this decile. Critical: Should increase; max = total responders. Flat curve = weak model.",
+  "cum_resp_pct": "Meaning: % cumulative responders = cum_resp / total_responders * 100. Critical: Wizard curve should be ≥ model; used in lift/gain charts.",
+  "cum_resp_non": "Meaning: Cumulative non-responders. Critical: Used in KS statistic; early dominance is bad.",
+  "cum_resp_non_pct": "Meaning: % cumulative non-responders. Critical: Should differ from cum_resp_pct; almost equal = model fails.",
+  "cum_resp_rndm": "Meaning: Cumulative expected responders if randomly assigned. Critical: Baseline for cumulative lift. Fatal if model ≈ random curve.",
+  "cum_resp_rndm_pct": "Meaning: % cumulative random responders = cum_resp_rndm / total_responders * 100. Critical: Random baseline curve (diagonal). Always linear from (0,0) to (100,100). Fatal if model curve is near or below it.",
+  "cum_resp_wiz": "Meaning: Cumulative ideal responders. Critical: Should always ≥ model; never NaN.",
+  "cum_resp_wiz_pct": "Meaning: % cumulative ideal responders. Critical: Wizard benchmark for lift/gain curves; gaps indicate model weakness.",
+  "KS": "Meaning: Kolmogorov-Smirnov statistic = cum_resp_pct - cum_resp_non_pct. Critical: Max separation shows discriminative power. Fatal if very low (&lt;0.2).",
+  "cumulative_lift": "Meaning: Cumulative lift = cum_resp_pct / cum_resp_total_pct. Critical: Shows model gain over random. Always cumulative. Fatal if &lt;1 or &lt;2 in top decile.",
+  "decile_wise_lift": "Meaning: Decile-wise lift = cnt_resp / cnt_resp_rndm. Critical: Measures decile-level improvement vs random. Fatal if &lt;1."
 }
-   decile  prob_min  prob_max  ...  cum_resp_wiz_pct         KS      lift
-0       1  0.757001  0.857472  ...               NaN  -2.020202  0.909091
-1       2  0.642088  0.731452  ...         18.181818   4.040404  1.090909
-2       3  0.602239  0.641672  ...         36.363636   6.060606  1.090909
-3       4  0.561119  0.601465  ...         54.545455  20.202020  1.227273
-4       5  0.504775  0.559401  ...         72.727273  14.141414  1.127273
-5       6  0.446901  0.502622  ...         90.909091  12.121212  1.090909
-6       7  0.400478  0.437957  ...        100.000000   6.060606  1.038961
-7       8  0.370816  0.398850  ...        100.000000  -4.040404  0.977273
-8       9  0.324031  0.363077  ...        100.000000  -2.020202  0.989899
-9      10  0.166490  0.316185  ...        100.000000   0.000000  1.000000
+   decile  prob_min  prob_max  ...         KS  cumulative_lift  decile_wise_lift
+0       1  0.881904  0.960293  ...  26.666667         2.500000          2.666667
+1       2  0.811319  0.880124  ...  50.000000         2.500000          2.333333
+2       3  0.710424  0.798758  ...  71.111111         2.391304          2.333333
+3       4  0.553361  0.708541  ...  88.888889         2.333333          2.000000
+4       5  0.354488  0.538963  ...  82.222222         1.973684          0.666667
+5       6  0.163644  0.354337  ...  66.666667         1.666667          0.000000
+6       7  0.049053  0.149029  ...  48.888889         1.415094          0.000000
+7       8  0.033382  0.048487  ...  33.333333         1.250000          0.000000
+8       9  0.018988  0.030934  ...  15.555556         1.102941          0.000000
+9      10  0.006876  0.017690  ...   0.000000         1.000000          0.000000
 
-[10 rows x 20 columns]
+[10 rows x 23 columns]
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.777 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.882 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.snsx.prplot function used by a scikit-learn regressor."><img alt="" src="../../_images/sphx_glr_plot_prplot_script_thumb.png"/>
@@ -808,12 +917,12 @@ used by a scikit-learn regressor.</p>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.snsx.rocplot function used by a scikit-learn regressor."><img alt="" src="../../_images/sphx_glr_plot_rocplot_script_thumb.png"/>
 <p><a class="reference internal" href="plot_rocplot_script.html#sphx-glr-auto-examples-snsx-plot-rocplot-script-py"><span class="std std-ref">plot_rocplot_script with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">plot_rocplot_script with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing Spam the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_conv_dense_thumb.png"/>
-<p><a class="reference internal" href="../visualkeras_ANN/plot_conv_dense.html#sphx-glr-auto-examples-visualkeras-ann-plot-conv-dense-py"><span class="std std-ref">Visualkeras: Spam Classification Conv1D Dense Example</span></a></p>
-<div class="sphx-glr-thumbnail-title">Visualkeras: Spam Classification Conv1D Dense Example</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_residuals_distribution function used by a scikit-learn regressor."><img alt="" src="../../_images/sphx_glr_plot_residuals_distribution_script_thumb.png"/>
-<p><a class="reference internal" href="../regression/plot_residuals_distribution_script.html#sphx-glr-auto-examples-regression-plot-residuals-distribution-script-py"><span class="std std-ref">plot_residuals_distribution with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">plot_residuals_distribution with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.kds.plot_cumulative_gain function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_cumulative_gain_script_thumb.png"/>
+<p><a class="reference internal" href="../kds/plot_cumulative_gain_script.html#sphx-glr-auto-examples-kds-plot-cumulative-gain-script-py"><span class="std std-ref">plot_cumulative_gain with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">plot_cumulative_gain with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.kds.plot_lift function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_lift_script_thumb.png"/>
+<p><a class="reference internal" href="../kds/plot_lift_script.html#sphx-glr-auto-examples-kds-plot-lift-script-py"><span class="std std-ref">plot_lift with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">plot_lift with examples</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </article>
@@ -864,7 +973,7 @@ used by a scikit-learn regressor.</p>
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250917.a67b890 2025-09-17T07:41Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250918.85f7a89 2025-09-18T18:03Z.
       <br/>
 </p>
 </div>
