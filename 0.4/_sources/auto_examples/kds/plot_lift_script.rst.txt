@@ -25,7 +25,7 @@ plot_lift with examples
 An example showing the :py:func:`~scikitplot.kds.plot_lift` function used
 by a scikit-learn classifier.
 
-.. GENERATED FROM PYTHON SOURCE LINES 9-49
+.. GENERATED FROM PYTHON SOURCE LINES 9-48
 
 .. code-block:: Python
    :lineno-start: 10
@@ -35,22 +35,21 @@ by a scikit-learn classifier.
     # SPDX-License-Identifier: BSD-3-Clause
 
     from sklearn.datasets import (
-        load_iris as data_3_classes,
+        load_breast_cancer as data_2_classes,
+        # load_iris as data_3_classes,
     )
     from sklearn.linear_model import LogisticRegression
     from sklearn.model_selection import train_test_split
 
-    import numpy as np
-
-    np.random.seed(0)  # reproducibility
     # importing pylab or pyplot
     import matplotlib.pyplot as plt
+    import numpy as np; np.random.seed(0)  # reproducibility
 
     # Import scikit-plot
     import scikitplot as sp
 
     # Load the data
-    X, y = data_3_classes(return_X_y=True, as_frame=False)
+    X, y = data_2_classes(return_X_y=True, as_frame=False)
     X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.5, random_state=0)
 
     # Create an instance of the LogisticRegression
@@ -82,7 +81,7 @@ by a scikit-learn classifier.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 50-59
+.. GENERATED FROM PYTHON SOURCE LINES 49-58
 
 .. tags::
 
@@ -97,7 +96,7 @@ by a scikit-learn classifier.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.274 seconds)
+   **Total running time of the script:** (0 minutes 0.559 seconds)
 
 
 .. _sphx_glr_download_auto_examples_kds_plot_lift_script.py:

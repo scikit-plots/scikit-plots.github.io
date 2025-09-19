@@ -375,6 +375,7 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">plot_cumulative_gain with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_ks_statistic_script.html">plot_ks_statistic with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_lift_script.html">plot_lift with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_report_script.html">plot_report with examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../modelplotpy/index.html">modelplotpy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -383,6 +384,11 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../regression/index.html">Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../regression/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../snsx/index.html">snsX (Seaborn eXtended)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../snsx/plot_aucplot_script.html">plot_aucplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../snsx/plot_kdsplot_script.html">plot_kdsplot_script with examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../stats/index.html">Stats</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -443,60 +449,62 @@
 by a scikit-learn classifier.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 9</span> <span class="c1"># Authors: The scikit-plots developers</span>
 <span class="linenos">10</span> <span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
-<span class="linenos">11</span>
-<span class="linenos">12</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-<span class="linenos">13</span>     <span class="n">load_iris</span> <span class="k">as</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris" title="sklearn.datasets.load_iris"><span class="n">data_3_classes</span></a><span class="p">,</span>
-<span class="linenos">14</span> <span class="p">)</span>
-<span class="linenos">15</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a>
-<span class="linenos">16</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
-<span class="linenos">17</span>
-<span class="linenos">18</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">13</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<span class="linenos">14</span>     <span class="n">load_breast_cancer</span> <span class="k">as</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer" title="sklearn.datasets.load_breast_cancer"><span class="n">data_2_classes</span></a><span class="p">,</span>
+<span class="linenos">15</span>     <span class="c1"># load_iris as data_3_classes,</span>
+<span class="linenos">16</span> <span class="p">)</span>
+<span class="linenos">17</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a>
+<span class="linenos">18</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
 <span class="linenos">19</span>
-<span class="linenos">20</span> <a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.seed.html#numpy.random.seed" title="numpy.random.seed"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># reproducibility</span>
-<span class="linenos">21</span> <span class="c1"># importing pylab or pyplot</span>
-<span class="linenos">22</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="linenos">23</span>
-<span class="linenos">24</span> <span class="c1"># Import scikit-plot</span>
-<span class="linenos">25</span> <span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
-<span class="linenos">26</span>
-<span class="linenos">27</span> <span class="c1"># Load the data</span>
-<span class="linenos">28</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris" title="sklearn.datasets.load_iris"><span class="n">data_3_classes</span></a><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="linenos">29</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="linenos">30</span>
-<span class="linenos">31</span> <span class="c1"># Create an instance of the LogisticRegression</span>
-<span class="linenos">32</span> <span class="n">model</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="mf">1e5</span><span class="p">),</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="linenos">33</span>
-<span class="linenos">34</span> <span class="c1"># Perform predictions</span>
-<span class="linenos">35</span> <span class="n">y_val_prob</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
-<span class="linenos">36</span>
-<span class="linenos">37</span> <span class="c1"># Plot!</span>
-<span class="linenos">38</span> <span class="n">ax</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-kds sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.kds.plot_cumulative_gain.html#scikitplot.kds.plot_cumulative_gain" title="scikitplot.kds.plot_cumulative_gain"><span class="n">sp</span><span class="o">.</span><span class="n">kds</span><span class="o">.</span><span class="n">plot_cumulative_gain</span></a><span class="p">(</span>
-<span class="linenos">39</span>     <span class="n">y_val</span><span class="p">,</span>
-<span class="linenos">40</span>     <span class="n">y_val_prob</span><span class="p">,</span>
-<span class="linenos">41</span>     <span class="n">save_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="linenos">42</span>     <span class="n">save_fig_filename</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span>
-<span class="linenos">43</span>     <span class="c1"># overwrite=True,</span>
-<span class="linenos">44</span>     <span class="n">add_timestamp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="linenos">45</span>     <span class="c1"># verbose=True,</span>
-<span class="linenos">46</span> <span class="p">)</span>
+<span class="linenos">20</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span> <a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.seed.html#numpy.random.seed" title="numpy.random.seed"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># reproducibility</span>
+<span class="linenos">23</span> <span class="c1"># importing pylab or pyplot</span>
+<span class="linenos">24</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="linenos">25</span>
+<span class="linenos">26</span> <span class="c1"># Import scikit-plot</span>
+<span class="linenos">27</span> <span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="linenos">28</span>
+<span class="linenos">29</span> <span class="c1"># Load the data</span>
+<span class="linenos">30</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer" title="sklearn.datasets.load_breast_cancer"><span class="n">data_2_classes</span></a><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="linenos">31</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">32</span>
+<span class="linenos">33</span> <span class="c1"># Create an instance of the LogisticRegression</span>
+<span class="linenos">34</span> <span class="n">model</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="mf">1e5</span><span class="p">),</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="linenos">35</span>
+<span class="linenos">36</span> <span class="c1"># Perform predictions</span>
+<span class="linenos">37</span> <span class="n">y_val_prob</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+<span class="linenos">38</span>
+<span class="linenos">39</span> <span class="c1"># Plot!</span>
+<span class="linenos">40</span> <span class="n">ax</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-kds sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.kds.plot_cumulative_gain.html#scikitplot.kds.plot_cumulative_gain" title="scikitplot.kds.plot_cumulative_gain"><span class="n">sp</span><span class="o">.</span><span class="n">kds</span><span class="o">.</span><span class="n">plot_cumulative_gain</span></a><span class="p">(</span>
+<span class="linenos">41</span>     <span class="n">y_val</span><span class="p">,</span>
+<span class="linenos">42</span>     <span class="n">y_val_prob</span><span class="p">,</span>
+<span class="linenos">43</span>     <span class="n">save_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos">44</span>     <span class="n">save_fig_filename</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span>
+<span class="linenos">45</span>     <span class="c1"># overwrite=True,</span>
+<span class="linenos">46</span>     <span class="n">add_timestamp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos">47</span>     <span class="c1"># verbose=True,</span>
+<span class="linenos">48</span> <span class="p">)</span>
 </pre></div>
 </div>
 <img alt="Cumulative Gain Plot" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_cumulative_gain_script_001.png" srcset="../../_images/sphx_glr_plot_cumulative_gain_script_001.png"/><p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-model-evaluation.html"><span class="doc">model-workflow: model evaluation</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-line.html"><span class="doc">plot-type: line</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-cum-gain-curve.html"><span class="doc">plot-type: cum-gain curve</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.285 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.557 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.kds.plot_lift function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_lift_script_thumb.png"/>
 <p><a class="reference internal" href="plot_lift_script.html#sphx-glr-auto-examples-kds-plot-lift-script-py"><span class="std std-ref">plot_lift with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">plot_lift with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.estimators.plot_elbow function used by a scikit-learn clusterer."><img alt="" src="../../_images/sphx_glr_plot_elbow_script_thumb.png"/>
-<p><a class="reference internal" href="../clustering/plot_elbow_script.html#sphx-glr-auto-examples-clustering-plot-elbow-script-py"><span class="std std-ref">plot_elbow with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">plot_elbow with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.estimators.plot_feature_importances function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_feature_importances_script_thumb.png"/>
-<p><a class="reference internal" href="../classification/plot_feature_importances_script.html#sphx-glr-auto-examples-classification-plot-feature-importances-script-py"><span class="std std-ref">plot_feature_importances with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">plot_feature_importances with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_silhouette function used by a scikit-learn clusterer."><img alt="" src="../../_images/sphx_glr_plot_silhouette_script_thumb.png"/>
-<p><a class="reference internal" href="../clustering/plot_silhouette_script.html#sphx-glr-auto-examples-clustering-plot-silhouette-script-py"><span class="std std-ref">plot_silhouette with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">plot_silhouette with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.kds.report function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_report_script_thumb.png"/>
+<p><a class="reference internal" href="plot_report_script.html#sphx-glr-auto-examples-kds-plot-report-script-py"><span class="std std-ref">plot_report with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">plot_report with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.kds.plot_ks_statistic function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_ks_statistic_script_thumb.png"/>
+<p><a class="reference internal" href="plot_ks_statistic_script.html#sphx-glr-auto-examples-kds-plot-ks-statistic-script-py"><span class="std std-ref">plot_ks_statistic with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">plot_ks_statistic with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_precision_recall function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_precision_recall_script_thumb.png"/>
+<p><a class="reference internal" href="../classification/plot_precision_recall_script.html#sphx-glr-auto-examples-classification-plot-precision-recall-script-py"><span class="std std-ref">plot_precision_recall with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">plot_precision_recall with examples</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </article>
@@ -547,7 +555,7 @@ by a scikit-learn classifier.</p>
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post2+git.20250815.8ddab79 2025-08-15T20:47Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post4+git.20250919.60797d0 2025-09-19T05:57Z.
       <br/>
 </p>
 </div>
