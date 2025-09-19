@@ -18,10 +18,10 @@
 .. _sphx_glr_auto_examples_kds_plot_report_script.py:
 
 
-plot_cumulative_gain with examples
+plot_report with examples
 ==================================
 
-An example showing the :py:func:`~scikitplot.kds.plot_cumulative_gain` function used
+An example showing the :py:func:`~scikitplot.kds.report` function used
 by a scikit-learn classifier.
 
 .. GENERATED FROM PYTHON SOURCE LINES 8-12
@@ -40,7 +40,7 @@ by a scikit-learn classifier.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 13-40
+.. GENERATED FROM PYTHON SOURCE LINES 13-38
 
 .. code-block:: Python
    :lineno-start: 13
@@ -52,11 +52,9 @@ by a scikit-learn classifier.
     from sklearn.linear_model import LogisticRegression
     from sklearn.model_selection import train_test_split
 
-    import numpy as np
-
-    np.random.seed(0)  # reproducibility
     # importing pylab or pyplot
     import matplotlib.pyplot as plt
+    import numpy as np; np.random.seed(0)  # reproducibility
 
     # Import scikit-plot
     import scikitplot as sp
@@ -79,10 +77,10 @@ by a scikit-learn classifier.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 41-53
+.. GENERATED FROM PYTHON SOURCE LINES 39-51
 
 .. code-block:: Python
-   :lineno-start: 41
+   :lineno-start: 39
 
     sp.kds.decile_table(
         y_val,
@@ -408,14 +406,14 @@ by a scikit-learn classifier.
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-55
+.. GENERATED FROM PYTHON SOURCE LINES 52-53
 
 Plot!
 
-.. GENERATED FROM PYTHON SOURCE LINES 55-66
+.. GENERATED FROM PYTHON SOURCE LINES 53-64
 
 .. code-block:: Python
-   :lineno-start: 55
+   :lineno-start: 53
 
     ax = sp.kds.report(
         y_val,
@@ -466,7 +464,7 @@ Plot!
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-75
+.. GENERATED FROM PYTHON SOURCE LINES 65-73
 
 .. tags::
 
@@ -480,7 +478,7 @@ Plot!
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 1.470 seconds)
+   **Total running time of the script:** (0 minutes 1.332 seconds)
 
 
 .. _sphx_glr_download_auto_examples_kds_plot_report_script.py:
