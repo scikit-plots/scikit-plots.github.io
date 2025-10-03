@@ -388,7 +388,8 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../snsx/index.html">snsX (Seaborn eXtended)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../snsx/plot_aucplot_script.html">plot_aucplot_script with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../snsx/plot_kdsplot_script.html">plot_kdsplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../snsx/plot_decileplot_script.html">plot_decileplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../snsx/plot_evalplot_script.html">plot_decileplot_script with examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../stats/index.html">Stats</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -533,7 +534,7 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <span class="linenos">92</span> <a class="sphx-glr-backref-module-PIL-ImageFont sphx-glr-backref-type-py-function" href="https://pillow.readthedocs.io/en/stable/reference/ImageFont.html#PIL.ImageFont.load_default" title="PIL.ImageFont.load_default"><span class="n">ImageFont</span><span class="o">.</span><span class="n">load_default</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;PIL.ImageFont.FreeTypeFont object at 0x7f55fc31cfd0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;PIL.ImageFont.FreeTypeFont object at 0x7f67003791d0&gt;
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 95</span> <span class="n">img_vgg16</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
@@ -545,9 +546,9 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <span class="linenos">101</span> <span class="p">)</span>
 </pre></div>
 </div>
-<img alt="plot custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_001.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_001.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2025-09-19 06:49:56.488869: W scikitplot 140009569573760 utils_pil.py:203:load_font] Error loading system font: cannot open resource
-2025-09-19 06:49:56.488958: W scikitplot 140009569573760 utils_pil.py:205:load_font] Falling back to PIL default font.
-2025-09-19 06:49:56.489093: W scikitplot 140009569573760 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
+<img alt="plot custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_001.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_001.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2025-10-03 11:30:50.925332: W scikitplot 140082733230976 utils_pil.py:203:load_font] Error loading system font: cannot open resource
+2025-10-03 11:30:50.925426: W scikitplot 140082733230976 utils_pil.py:205:load_font] Falling back to PIL default font.
+2025-10-03 11:30:50.925570: W scikitplot 140082733230976 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">104</span> <span class="n">img_vgg16_legend</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
@@ -566,11 +567,11 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <span class="linenos">117</span> <span class="n">img_vgg16_legend</span>
 </pre></div>
 </div>
-<img alt="plot custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_002.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_002.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2025-09-19 06:49:58.210654: W scikitplot 140009569573760 utils_pil.py:203:load_font] Error loading system font: cannot open resource
-2025-09-19 06:49:58.210739: W scikitplot 140009569573760 utils_pil.py:205:load_font] Falling back to PIL default font.
-2025-09-19 06:49:58.210876: W scikitplot 140009569573760 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
+<img alt="plot custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_002.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_002.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2025-10-03 11:30:52.576996: W scikitplot 140082733230976 utils_pil.py:203:load_font] Error loading system font: cannot open resource
+2025-10-03 11:30:52.577117: W scikitplot 140082733230976 utils_pil.py:205:load_font] Falling back to PIL default font.
+2025-10-03 11:30:52.577326: W scikitplot 140082733230976 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
 
-&lt;matplotlib.image.AxesImage object at 0x7f55dc75b0d0&gt;
+&lt;matplotlib.image.AxesImage object at 0x7f6700141850&gt;
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">120</span> <span class="n">img_vgg16_spacing_layers</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
@@ -584,11 +585,11 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <span class="linenos">128</span> <span class="n">img_vgg16_spacing_layers</span>
 </pre></div>
 </div>
-<img alt="plot custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_003.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_003.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2025-09-19 06:49:59.233348: W scikitplot 140009569573760 utils_pil.py:203:load_font] Error loading system font: cannot open resource
-2025-09-19 06:49:59.233519: W scikitplot 140009569573760 utils_pil.py:205:load_font] Falling back to PIL default font.
-2025-09-19 06:49:59.233739: W scikitplot 140009569573760 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
+<img alt="plot custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_003.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_003.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2025-10-03 11:30:53.713420: W scikitplot 140082733230976 utils_pil.py:203:load_font] Error loading system font: cannot open resource
+2025-10-03 11:30:53.713508: W scikitplot 140082733230976 utils_pil.py:205:load_font] Falling back to PIL default font.
+2025-10-03 11:30:53.713640: W scikitplot 140082733230976 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
 
-&lt;matplotlib.image.AxesImage object at 0x7f55dc7c2910&gt;
+&lt;matplotlib.image.AxesImage object at 0x7f6700183450&gt;
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">131</span> <span class="n">img_vgg16_type_ignore</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
@@ -606,11 +607,11 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <span class="linenos">143</span> <span class="n">img_vgg16_type_ignore</span>
 </pre></div>
 </div>
-<img alt="plot custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_004.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_004.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2025-09-19 06:50:00.067233: W scikitplot 140009569573760 utils_pil.py:203:load_font] Error loading system font: cannot open resource
-2025-09-19 06:50:00.067313: W scikitplot 140009569573760 utils_pil.py:205:load_font] Falling back to PIL default font.
-2025-09-19 06:50:00.067484: W scikitplot 140009569573760 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
+<img alt="plot custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_004.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_004.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2025-10-03 11:30:54.540257: W scikitplot 140082733230976 utils_pil.py:203:load_font] Error loading system font: cannot open resource
+2025-10-03 11:30:54.540326: W scikitplot 140082733230976 utils_pil.py:205:load_font] Falling back to PIL default font.
+2025-10-03 11:30:54.540448: W scikitplot 140082733230976 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
 
-&lt;matplotlib.image.AxesImage object at 0x7f55dc7de0d0&gt;
+&lt;matplotlib.image.AxesImage object at 0x7f67001ddf90&gt;
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">146</span> <span class="n">img_vgg16_color_map</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
@@ -624,11 +625,11 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <span class="linenos">154</span> <span class="n">img_vgg16_color_map</span>
 </pre></div>
 </div>
-<img alt="plot custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_005.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_005.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2025-09-19 06:50:00.749368: W scikitplot 140009569573760 utils_pil.py:203:load_font] Error loading system font: cannot open resource
-2025-09-19 06:50:00.749501: W scikitplot 140009569573760 utils_pil.py:205:load_font] Falling back to PIL default font.
-2025-09-19 06:50:00.749653: W scikitplot 140009569573760 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
+<img alt="plot custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_005.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_005.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2025-10-03 11:30:55.131099: W scikitplot 140082733230976 utils_pil.py:203:load_font] Error loading system font: cannot open resource
+2025-10-03 11:30:55.131167: W scikitplot 140082733230976 utils_pil.py:205:load_font] Falling back to PIL default font.
+2025-10-03 11:30:55.131286: W scikitplot 140082733230976 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
 
-&lt;matplotlib.image.AxesImage object at 0x7f55dc3afa10&gt;
+&lt;matplotlib.image.AxesImage object at 0x7f670009df90&gt;
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">157</span> <span class="n">img_vgg16_flat</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
@@ -642,11 +643,11 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <span class="linenos">165</span> <span class="n">img_vgg16_flat</span>
 </pre></div>
 </div>
-<img alt="plot custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_006.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_006.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2025-09-19 06:50:01.798237: W scikitplot 140009569573760 utils_pil.py:203:load_font] Error loading system font: cannot open resource
-2025-09-19 06:50:01.798310: W scikitplot 140009569573760 utils_pil.py:205:load_font] Falling back to PIL default font.
-2025-09-19 06:50:01.798504: W scikitplot 140009569573760 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
+<img alt="plot custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_006.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_006.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2025-10-03 11:30:55.996856: W scikitplot 140082733230976 utils_pil.py:203:load_font] Error loading system font: cannot open resource
+2025-10-03 11:30:55.996927: W scikitplot 140082733230976 utils_pil.py:205:load_font] Falling back to PIL default font.
+2025-10-03 11:30:55.997055: W scikitplot 140082733230976 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
 
-&lt;matplotlib.image.AxesImage object at 0x7f55dc218890&gt;
+&lt;matplotlib.image.AxesImage object at 0x7f66f071d510&gt;
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">168</span> <span class="n">img_vgg16_scaling</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
@@ -667,15 +668,15 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <span class="linenos">183</span> <span class="n">img_vgg16_scaling</span>
 </pre></div>
 </div>
-<img alt="plot custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_007.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_007.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2025-09-19 06:50:02.564170: W scikitplot 140009569573760 utils_pil.py:203:load_font] Error loading system font: cannot open resource
-2025-09-19 06:50:02.564246: W scikitplot 140009569573760 utils_pil.py:205:load_font] Falling back to PIL default font.
-2025-09-19 06:50:02.564413: W scikitplot 140009569573760 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
+<img alt="plot custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_007.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_007.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2025-10-03 11:30:56.655101: W scikitplot 140082733230976 utils_pil.py:203:load_font] Error loading system font: cannot open resource
+2025-10-03 11:30:56.655172: W scikitplot 140082733230976 utils_pil.py:205:load_font] Falling back to PIL default font.
+2025-10-03 11:30:56.655295: W scikitplot 140082733230976 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
 
-&lt;matplotlib.image.AxesImage object at 0x7f55dc2712d0&gt;
+&lt;matplotlib.image.AxesImage object at 0x7f66f0777250&gt;
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-model-building.html"><span class="doc">model-workflow: model building</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-visualkeras.html"><span class="doc">plot-type: visualkeras</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger reference internal" href="../../_tags/domain-neural-network.html"><span class="doc">domain: neural network</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-intermediate.html"><span class="doc">level: intermediate</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 25.893 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 25.363 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_thumb.png"/>
@@ -740,7 +741,7 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20250919.1249ff0 2025-09-19T06:49Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251003.3bac66d 2025-10-03T11:29Z.
       <br/>
 </p>
 </div>
