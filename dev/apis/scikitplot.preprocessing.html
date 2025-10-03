@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/apis/scikitplot.preprocessing.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="Methods for scaling, centering, normalization, binarization, and more. User guide. See the preprocessing-index section for further details. preprocessing:" />
+<meta property="og:description" content="Methods for scaling, centering, normalization, binarization, and more. User guide. See the preprocessing-index section for further details. Extended sklearn feature preprocessing.: Multi-column mul..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="Methods for scaling, centering, normalization, binarization, and more. User guide. See the preprocessing-index section for further details. preprocessing:" />
+<meta name="description" content="Methods for scaling, centering, normalization, binarization, and more. User guide. See the preprocessing-index section for further details. Extended sklearn feature preprocessing.: Multi-column mul..." />
 
     <title>scikitplot.preprocessing &#8212; scikit-plots 0.5.dev0 documentation</title>
   
@@ -621,6 +621,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.probplot.html">probplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.plot_pos.html">plot_pos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.fit_line.html">fit_line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._seaborn.html">_seaborn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.html">_sphinxext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.html">_tweedie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals.array_api_compat.html">array_api_compat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals.array_api_extra.html">array_api_extra</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.kds.html">scikitplot.kds</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -650,9 +655,10 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.snsx.html">scikitplot.snsx</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.snsx.aucplot.html">aucplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.snsx.evalplot.html">evalplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.snsx.decileplot.html">decileplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.snsx.print_labels.html">print_labels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.snsx.aucplot.html">aucplot</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.sp_logging.html">scikitplot.sp_logging</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -784,12 +790,23 @@
 <span id="scikitplot-preprocessing"></span><span id="preprocessing-ref"></span><h1>scikitplot.preprocessing<a class="headerlink" href="#module-scikitplot.preprocessing" title="Link to this heading">#</a></h1>
 <p>Methods for scaling, centering, normalization, binarization, and more.</p>
 <p><strong>User guide.</strong> See the <span class="xref std std-ref">preprocessing-index</span> section for further details.</p>
-<section id="preprocessing">
-<span id="preprocessing-ref-preprocessing"></span><h2>preprocessing<a class="headerlink" href="#preprocessing" title="Link to this heading">#</a></h2>
+<section id="module-scikitplot.preprocessing._get_dummies">
+<span id="extended-sklearn-feature-preprocessing"></span><span id="preprocessing-ref-extended-sklearn-feature-preprocessing"></span><h2>Extended sklearn feature preprocessing.<a class="headerlink" href="#module-scikitplot.preprocessing._get_dummies" title="Link to this heading">#</a></h2>
+<p>Multi-column multi-label string column one-hot encoder <a class="reference internal" href="#rdd51711a201f-1" id="id1">[1]</a>.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="rdd51711a201f-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://medium.com/&#64;celik-muhammed/how-to-converting-pandas-column-of-comma-separated-strings-into-dummy-variables-762c02282a6c">Çelik, M. (2023, December 9).
+“How to converting pandas column of comma-separated strings into dummy variables?.”
+Medium. https://medium.com/&#64;celik-muhammed/how-to-converting-pandas-column-of-comma-separated-strings-into-dummy-variables-762c02282a6c</a></p>
+</div>
+</div>
+<p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/preprocessing/index.html#get-dummies-index"><span class="std std-ref">References</span></a> section for further details.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.preprocessing.GetDummies.html#scikitplot.preprocessing.GetDummies" title="scikitplot.preprocessing.GetDummies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GetDummies</span></code></a></p></td>
-<td><p>Multi-column multi-label string column one-hot encoder.</p></td>
+<td><p>Multi-column multi-label string column one-hot encoder <a class="reference internal" href="../modules/generated/scikitplot.preprocessing.GetDummies.html#rbcee2ffc57f9-1" id="id2"><span>[Rbcee2ffc57f9-1]</span></a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -859,7 +876,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251003.3bac66d 2025-10-03T11:29Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251003.7c15aa2 2025-10-03T12:37Z.
       <br/>
     
   </p>
