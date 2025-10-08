@@ -624,6 +624,11 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.probplot.html">probplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.plot_pos.html">plot_pos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.fit_line.html">fit_line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._seaborn.html">_seaborn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.html">_sphinxext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.html">_tweedie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_compat.html">array_api_compat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_extra.html">array_api_extra</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.kds.html">scikitplot.kds</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -653,9 +658,10 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.snsx.html">scikitplot.snsx</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.snsx.print_labels.html">print_labels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.snsx.kdsplot.html">kdsplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.snsx.aucplot.html">aucplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.snsx.evalplot.html">evalplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.snsx.decileplot.html">decileplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.snsx.print_labels.html">print_labels</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.sp_logging.html">scikitplot.sp_logging</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -790,7 +796,7 @@
 <h1>cdf_from_intervals<a class="headerlink" href="#cdf-from-intervals" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cexternals._astropy.stats.cdf_from_intervals">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cexternals._astropy.stats.</span></span><span class="sig-name descname"><span class="pre">cdf_from_intervals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">breaks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">totals</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/60797d0/scikitplot/cexternals/_astropy/stats/funcs.py#L1597"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexternals._astropy.stats.cdf_from_intervals" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cexternals._astropy.stats.</span></span><span class="sig-name descname"><span class="pre">cdf_from_intervals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">breaks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">totals</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/162c9a4/scikitplot/cexternals/_astropy/stats/funcs.py#L1597"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexternals._astropy.stats.cdf_from_intervals" title="Link to this definition">#</a></dt>
 <dd><p>Construct a callable piecewise-linear CDF from a pair of arrays.</p>
 <p>Take a pair of arrays in the format returned by fold_intervals and
 make a callable cumulative distribution function on the interval
@@ -813,8 +819,8 @@ piecewise-constant probability distribution given by breaks, weights</p>
 </dd>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>breaks</strong> (<em>NDArray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>]</em>)</p></li>
-<li><p><strong>totals</strong> (<em>NDArray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>]</em>)</p></li>
+<li><p><strong>breaks</strong> (<em>NDArray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>]</em>)</p></li>
+<li><p><strong>totals</strong> (<em>NDArray</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>]</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -918,7 +924,7 @@ piecewise-constant probability distribution given by breaks, weights</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post4+git.20250919.60797d0 2025-09-19T05:57Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post5+git.20251008.162c9a4 2025-10-08T10:53Z.
       <br/>
     
   </p>

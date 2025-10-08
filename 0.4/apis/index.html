@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/apis/index.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="Scikit-plots APIs 0.4.0.post4+git.20250919.60797d0- September 19, 2025 05:57 UTC This is the class and function reference of scikit-plots. Please refer to the full user guide for further details, a..." />
+<meta property="og:description" content="Scikit-plots APIs 0.4.0.post5+git.20251008.162c9a4- October 08, 2025 10:53 UTC This is the class and function reference of scikit-plots. Please refer to the full user guide for further details, as ..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="Scikit-plots APIs 0.4.0.post4+git.20250919.60797d0- September 19, 2025 05:57 UTC This is the class and function reference of scikit-plots. Please refer to the full user guide for further details, a..." />
+<meta name="description" content="Scikit-plots APIs 0.4.0.post5+git.20251008.162c9a4- October 08, 2025 10:53 UTC This is the class and function reference of scikit-plots. Please refer to the full user guide for further details, as ..." />
 
     <title>APIs Reference &#8212; scikit-plots 0.4.0 documentation</title>
   
@@ -89,7 +89,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="scikitplot" href="scikitplot.html" />
-    <link rel="prev" title="Tweedie Family" href="../user_guide/externals/_tweedie/index.html" />
+    <link rel="prev" title="Python Data API Standards: array_api_extra (experimental)" href="../user_guide/externals/array_api_extra/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.4" />
@@ -626,6 +626,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.probplot.html">probplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.plot_pos.html">plot_pos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.fit_line.html">fit_line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._seaborn.html">_seaborn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.html">_sphinxext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.html">_tweedie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals.array_api_compat.html">array_api_compat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals.array_api_extra.html">array_api_extra</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.kds.html">scikitplot.kds</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -655,9 +660,10 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.snsx.html">scikitplot.snsx</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.snsx.print_labels.html">print_labels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.snsx.kdsplot.html">kdsplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.snsx.aucplot.html">aucplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.snsx.evalplot.html">evalplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.snsx.decileplot.html">decileplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.snsx.print_labels.html">print_labels</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.sp_logging.html">scikitplot.sp_logging</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -783,7 +789,7 @@
                 <article class="bd-article">
                   
   <span class="target" id="scikit-plots-apis"></span><p><span class="raw-html"><div style="text-align: center"><strong></span> Scikit-plots APIs
-<br/> 0.4.0.post4+git.20250919.60797d0 - September 19, 2025 05:57 UTC
+<br/> 0.4.0.post5+git.20251008.162c9a4 - October 08, 2025 10:53 UTC
 <span class="raw-html"></strong></div></span></p>
 <section id="apis-reference">
 <span id="apis-ref-index"></span><h1>APIs Reference<a class="headerlink" href="#apis-reference" title="Link to this heading">#</a></h1>
@@ -1275,7 +1281,51 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.kds.print_labels.html#scikitplot.kds.print_labels" title="scikitplot.kds.print_labels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_labels</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals._seaborn.html#module-scikitplot.externals._seaborn" title="scikitplot.externals._seaborn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_seaborn</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>seaborn: statistical data visualization</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.externals.html#module-scikitplot.externals" title="scikitplot.externals"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.html#module-scikitplot.externals._sphinxext" title="scikitplot.externals._sphinxext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_sphinxext</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>sphinxext.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.externals.html#module-scikitplot.externals" title="scikitplot.externals"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.html#module-scikitplot.externals._tweedie" title="scikitplot.externals._tweedie"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_tweedie</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.externals.html#module-scikitplot.externals" title="scikitplot.externals"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals.array_api_compat.html#module-scikitplot.externals.array_api_compat" title="scikitplot.externals.array_api_compat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">array_api_compat</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>NumPy Array API compatibility library</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.externals.html#module-scikitplot.externals" title="scikitplot.externals"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals.array_api_extra.html#module-scikitplot.externals.array_api_extra" title="scikitplot.externals.array_api_extra"><code class="xref py py-obj docutils literal notranslate"><span class="pre">array_api_extra</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Extra array functions built on top of the array API standard.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.externals.html#module-scikitplot.externals" title="scikitplot.externals"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.kds.print_labels.html#scikitplot.kds.print_labels" title="scikitplot.kds.print_labels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_labels</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>A legend for the abbreviations of decile table column names.</p>
 <div class="caption docutils">
@@ -1284,7 +1334,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.kds.decile_table.html#scikitplot.kds.decile_table" title="scikitplot.kds.decile_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decile_table</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.kds.decile_table.html#scikitplot.kds.decile_table" title="scikitplot.kds.decile_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decile_table</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Generates the Decile Table from labels and probabilities</p>
 <div class="caption docutils">
@@ -1293,7 +1343,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.kds.plot_cumulative_gain.html#scikitplot.kds.plot_cumulative_gain" title="scikitplot.kds.plot_cumulative_gain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_cumulative_gain</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.kds.plot_cumulative_gain.html#scikitplot.kds.plot_cumulative_gain" title="scikitplot.kds.plot_cumulative_gain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_cumulative_gain</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Generates the Decile-wise Lift Plot from labels and probabilities</p>
 <div class="caption docutils">
@@ -1302,7 +1352,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.kds.plot_lift.html#scikitplot.kds.plot_lift" title="scikitplot.kds.plot_lift"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_lift</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.kds.plot_lift.html#scikitplot.kds.plot_lift" title="scikitplot.kds.plot_lift"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_lift</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Generates the Decile based cumulative Lift Plot from labels and probabilities.</p>
 <div class="caption docutils">
@@ -1311,7 +1361,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.kds.plot_lift_decile_wise.html#scikitplot.kds.plot_lift_decile_wise" title="scikitplot.kds.plot_lift_decile_wise"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_lift_decile_wise</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.kds.plot_lift_decile_wise.html#scikitplot.kds.plot_lift_decile_wise" title="scikitplot.kds.plot_lift_decile_wise"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_lift_decile_wise</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Generates the Decile-wise Lift Plot from labels and probabilities</p>
 <div class="caption docutils">
@@ -1320,7 +1370,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.kds.plot_ks_statistic.html#scikitplot.kds.plot_ks_statistic" title="scikitplot.kds.plot_ks_statistic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_ks_statistic</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.kds.plot_ks_statistic.html#scikitplot.kds.plot_ks_statistic" title="scikitplot.kds.plot_ks_statistic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_ks_statistic</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Generates the KS Statistic Plot from labels and probabilities</p>
 <div class="caption docutils">
@@ -1329,7 +1379,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.kds.report.html#scikitplot.kds.report" title="scikitplot.kds.report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">report</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.kds.report.html#scikitplot.kds.report" title="scikitplot.kds.report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">report</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Generates a decile table and four plots:</p>
 <div class="caption docutils">
@@ -1338,7 +1388,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/modelplotpy-cls.html#scikitplot.modelplotpy.ModelPlotPy" title="scikitplot.modelplotpy.ModelPlotPy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotPy</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/modelplotpy-cls.html#scikitplot.modelplotpy.ModelPlotPy" title="scikitplot.modelplotpy.ModelPlotPy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotPy</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>ModelPlotPy decile analysis.</p>
 <div class="caption docutils">
@@ -1347,7 +1397,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_response.html#scikitplot.modelplotpy.plot_response" title="scikitplot.modelplotpy.plot_response"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_response</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_response.html#scikitplot.modelplotpy.plot_response" title="scikitplot.modelplotpy.plot_response"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_response</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Plotting response curve</p>
 <div class="caption docutils">
@@ -1356,7 +1406,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_cumresponse.html#scikitplot.modelplotpy.plot_cumresponse" title="scikitplot.modelplotpy.plot_cumresponse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_cumresponse</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_cumresponse.html#scikitplot.modelplotpy.plot_cumresponse" title="scikitplot.modelplotpy.plot_cumresponse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_cumresponse</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Plotting cumulative response curve</p>
 <div class="caption docutils">
@@ -1365,7 +1415,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_cumlift.html#scikitplot.modelplotpy.plot_cumlift" title="scikitplot.modelplotpy.plot_cumlift"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_cumlift</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_cumlift.html#scikitplot.modelplotpy.plot_cumlift" title="scikitplot.modelplotpy.plot_cumlift"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_cumlift</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Plotting cumulative lift curve</p>
 <div class="caption docutils">
@@ -1374,7 +1424,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_cumgains.html#scikitplot.modelplotpy.plot_cumgains" title="scikitplot.modelplotpy.plot_cumgains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_cumgains</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_cumgains.html#scikitplot.modelplotpy.plot_cumgains" title="scikitplot.modelplotpy.plot_cumgains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_cumgains</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Plotting cumulative gains curve</p>
 <div class="caption docutils">
@@ -1383,7 +1433,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_all.html#scikitplot.modelplotpy.plot_all" title="scikitplot.modelplotpy.plot_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_all</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_all.html#scikitplot.modelplotpy.plot_all" title="scikitplot.modelplotpy.plot_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_all</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Plotting cumulative gains curve</p>
 <div class="caption docutils">
@@ -1392,7 +1442,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_costsrevs.html#scikitplot.modelplotpy.plot_costsrevs" title="scikitplot.modelplotpy.plot_costsrevs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_costsrevs</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_costsrevs.html#scikitplot.modelplotpy.plot_costsrevs" title="scikitplot.modelplotpy.plot_costsrevs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_costsrevs</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Plotting costs / revenue curve</p>
 <div class="caption docutils">
@@ -1401,7 +1451,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_profit.html#scikitplot.modelplotpy.plot_profit" title="scikitplot.modelplotpy.plot_profit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_profit</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_profit.html#scikitplot.modelplotpy.plot_profit" title="scikitplot.modelplotpy.plot_profit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_profit</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Plotting profit curve</p>
 <div class="caption docutils">
@@ -1410,7 +1460,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_roi.html#scikitplot.modelplotpy.plot_roi" title="scikitplot.modelplotpy.plot_roi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_roi</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.modelplotpy.plot_roi.html#scikitplot.modelplotpy.plot_roi" title="scikitplot.modelplotpy.plot_roi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_roi</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Plotting ROI curve</p>
 <div class="caption docutils">
@@ -1419,36 +1469,45 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.preprocessing.GetDummies.html#scikitplot.preprocessing.GetDummies" title="scikitplot.preprocessing.GetDummies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GetDummies</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.preprocessing.GetDummies.html#scikitplot.preprocessing.GetDummies" title="scikitplot.preprocessing.GetDummies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GetDummies</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
-<p>Multi-column multi-label string column one-hot encoder.</p>
+<p>Multi-column multi-label string column one-hot encoder <a class="reference internal" href="../modules/generated/scikitplot.preprocessing.GetDummies.html#rbcee2ffc57f9-1" id="id1"><span>[Rbcee2ffc57f9-1]</span></a>.</p>
 <div class="caption docutils">
 <p><a class="reference internal" href="scikitplot.preprocessing.html#module-scikitplot.preprocessing" title="scikitplot.preprocessing"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.preprocessing</span></code></a></p>
 </div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.kds.print_labels.html#scikitplot.kds.print_labels" title="scikitplot.kds.print_labels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_labels</span></code></a></p></td>
-<td><div class="sk-apis-search-desc docutils">
-<p>Pretty-print the legend of decile table column names.</p>
-<div class="caption docutils">
-<p><a class="reference internal" href="scikitplot.snsx.html#module-scikitplot.snsx" title="scikitplot.snsx"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.snsx</span></code></a></p>
-</div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.snsx.kdsplot.html#scikitplot.snsx.kdsplot" title="scikitplot.snsx.kdsplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kdsplot</span></code></a></p></td>
-<td><div class="sk-apis-search-desc docutils">
-<p>Given binary labels y_true (0/1) and probabilities y_score 1d array, compute/plot a decile table.</p>
-<div class="caption docutils">
-<p><a class="reference internal" href="scikitplot.snsx.html#module-scikitplot.snsx" title="scikitplot.snsx"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.snsx</span></code></a></p>
-</div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.snsx.aucplot.html#scikitplot.snsx.aucplot" title="scikitplot.snsx.aucplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aucplot</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.snsx.aucplot.html#scikitplot.snsx.aucplot" title="scikitplot.snsx.aucplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aucplot</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>AUC curve plot, Seaborn-style.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.snsx.html#module-scikitplot.snsx" title="scikitplot.snsx"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.snsx</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.snsx.evalplot.html#scikitplot.snsx.evalplot" title="scikitplot.snsx.evalplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evalplot</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Visualization of the Confusion Matrix <a class="reference internal" href="../modules/generated/scikitplot.snsx.evalplot.html#r039b9d226f6e-1" id="id2"><span>[R039b9d226f6e-1]</span></a> alongside a text report showing key classification metrics.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.snsx.html#module-scikitplot.snsx" title="scikitplot.snsx"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.snsx</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.snsx.decileplot.html#scikitplot.snsx.decileplot" title="scikitplot.snsx.decileplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decileplot</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Given binary labels y_true (0/1) and probabilities y_score 1d array, compute/plot a decile <a class="reference internal" href="../modules/generated/scikitplot.snsx.decileplot.html#r9ce98ddf8b9b-2" id="id3"><span>[R9ce98ddf8b9b-2]</span></a> table.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.snsx.html#module-scikitplot.snsx" title="scikitplot.snsx"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.snsx</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.snsx.print_labels.html#scikitplot.snsx.print_labels" title="scikitplot.snsx.print_labels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_labels</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Pretty-print the legend of decile table column names.</p>
 <div class="caption docutils">
 <p><a class="reference internal" href="scikitplot.snsx.html#module-scikitplot.snsx" title="scikitplot.snsx"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.snsx</span></code></a></p>
 </div>
@@ -1529,7 +1588,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.AlwaysStdErrHandler.html#scikitplot.sp_logging.AlwaysStdErrHandler" title="scikitplot.sp_logging.AlwaysStdErrHandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AlwaysStdErrHandler</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
-<p>A custom logging handler inherited from <a class="reference external" href="https://docs.python.org/3/library/logging.handlers.html#logging.StreamHandler" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamHandler</span></code></a>.</p>
+<p>A custom logging handler inherited from <a class="reference external" href="https://docs.python.org/3/library/logging.handlers.html#logging.StreamHandler" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamHandler</span></code></a>.</p>
 <div class="caption docutils">
 <p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
 </div>
@@ -1538,7 +1597,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.GoogleLogFormatter.html#scikitplot.sp_logging.GoogleLogFormatter" title="scikitplot.sp_logging.GoogleLogFormatter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GoogleLogFormatter</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
-<p>A custom logging formatter inherited from <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Formatter" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formatter</span></code></a>.</p>
+<p>A custom logging formatter inherited from <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Formatter" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formatter</span></code></a>.</p>
 <div class="caption docutils">
 <p><a class="reference internal" href="scikitplot.sp_logging.html#module-scikitplot.sp_logging" title="scikitplot.sp_logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.sp_logging</span></code></a></p>
 </div>
@@ -1808,7 +1867,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.mad_std.html#scikitplot.cexternals._astropy.stats.mad_std" title="scikitplot.cexternals._astropy.stats.mad_std"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mad_std</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
-<p>Calculate a robust standard deviation using the <a href="#id1"><span class="problematic" id="id2">`</span></a>median absolute</p>
+<p>Calculate a robust standard deviation using the <a href="#id4"><span class="problematic" id="id5">`</span></a>median absolute</p>
 <div class="caption docutils">
 <p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
 </div>
@@ -2014,12 +2073,12 @@ reference on concepts repeated across the APIs, see <a class="reference internal
     <div class="footer-article-item">
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../user_guide/externals/_tweedie/index.html"
+       href="../user_guide/externals/array_api_extra/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Tweedie Family</p>
+        <p class="prev-next-title">Python Data API Standards: array_api_extra (experimental)</p>
       </div>
     </a>
     <a class="right-next"
@@ -2065,7 +2124,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post4+git.20250919.60797d0 2025-09-19T05:57Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post5+git.20251008.162c9a4 2025-10-08T10:53Z.
       <br/>
     
   </p>

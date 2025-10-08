@@ -607,6 +607,8 @@ span.prompt1:before {
 <span class="prompt1">conda<span class="w"> </span>activate<span class="w"> </span>py311</span>
 </pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (conda or mamba) Install scikit-plots (Upcoming)</span></span>
 <span class="prompt1">conda<span class="w"> </span>install<span class="w"> </span>--yes<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>scikit-plots</span>
+<span class="prompt1"><span class="c1"># Cause numpy&gt;=2.0.0 but support old numpy</span></span>
+<span class="prompt1"><span class="c1"># pip install numpy==1.26.4</span></span>
 </pre></div></div><p>In order to check your installation, you can use:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1"># conda list               # show all installed packages in the environment</span></span>
 <span class="prompt1">conda<span class="w"> </span>list<span class="w"> </span>scikit-plots<span class="w">    </span><span class="c1"># show scikit-plots version and location</span></span>
@@ -617,7 +619,6 @@ span.prompt1:before {
 <span class="prompt1"><span class="c1"># (Optionally) CLI Version Check</span></span>
 <span class="prompt1">scikitplot<span class="w"> </span>--version</span>
 <span class="prompt1">scikitplot<span class="w"> </span>-V</span>
-<span class="prompt1">scikitplot<span class="w"> </span>-v</span>
 </pre></div></div><p>(Optionally) Also available Nightly Version <strong>can be cause conflict</strong> required <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">Environment</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (Optionally) Install the lost packages &quot;Runtime dependencies&quot;</span></span>
 <span class="prompt1"><span class="c1">## wget https://raw.githubusercontent.com/scikit-plots/scikit-plots/main/requirements/default.txt</span></span>
@@ -627,6 +628,8 @@ span.prompt1:before {
 <span class="prompt1"><span class="c1">## Try After Ensure all &quot;Runtime dependencies&quot; installed</span></span>
 <span class="prompt1"><span class="c1"># pip install --extra-index-url https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple scikit-plots</span></span>
 <span class="prompt1">pip<span class="w"> </span>install<span class="w"> </span>-i<span class="w"> </span>https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple<span class="w"> </span>scikit-plots</span>
+<span class="prompt1"><span class="c1"># Cause numpy&gt;=2.0.0 but support old numpy</span></span>
+<span class="prompt1">pip<span class="w"> </span>install<span class="w"> </span><span class="nv">numpy</span><span class="o">==</span><span class="m">1</span>.26.4</span>
 </pre></div></div>
 
                 </article>
@@ -699,7 +702,7 @@ span.prompt1:before {
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post4+git.20250919.60797d0 2025-09-19T05:57Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post5+git.20251008.162c9a4 2025-10-08T10:53Z.
       <br/>
     
   </p>

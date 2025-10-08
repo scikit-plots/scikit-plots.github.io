@@ -84,7 +84,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="CRITICAL" href="../modules/generated/scikitplot.sp_logging.CRITICAL.html" />
-    <link rel="prev" title="aucplot" href="../modules/generated/scikitplot.snsx.aucplot.html" />
+    <link rel="prev" title="print_labels" href="../modules/generated/scikitplot.snsx.print_labels.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.4" />
@@ -621,6 +621,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.probplot.html">probplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.plot_pos.html">plot_pos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.fit_line.html">fit_line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._seaborn.html">_seaborn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.html">_sphinxext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.html">_tweedie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals.array_api_compat.html">array_api_compat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals.array_api_extra.html">array_api_extra</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.kds.html">scikitplot.kds</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -650,9 +655,10 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.snsx.html">scikitplot.snsx</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.snsx.print_labels.html">print_labels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.snsx.kdsplot.html">kdsplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.snsx.aucplot.html">aucplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.snsx.evalplot.html">evalplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.snsx.decileplot.html">decileplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.snsx.print_labels.html">print_labels</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">scikitplot.sp_logging</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -791,8 +797,17 @@ handlers, and thread-safety.</p>
 and flexibility for large-scale projects.</p>
 <p>Scikit-plots logging helpers, supports vendoring.</p>
 <p>Module Dependencies:
-- Python standard library: <a class="reference external" href="https://docs.python.org/3/library/logging.html#module-logging" title="(in Python v3.13)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">logging</span></code></a></p>
-<p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/sp_logging/index.html#sp-logging-index"><span class="std std-ref">Logging System</span></a> section for further details.</p>
+- Python standard library: <a class="reference external" href="https://docs.python.org/3/library/logging.html#module-logging" title="(in Python v3.14)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">logging</span></code></a></p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="rbb4534060262-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/platform/tf_logging.py#L94">Tensorflow contributors. (2025).
+“Tensorflow’s logging system”
+Tensorflow. https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/platform/tf_logging.py#L94</a></p>
+</div>
+</div>
+<p><strong>User guide.</strong> See the <span class="xref std std-ref">sp_logging-index</span> section for further details.</p>
 <section id="logging-levels">
 <span id="sp-logging-ref-logging-levels"></span><h2>Logging Levels<a class="headerlink" href="#logging-levels" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
@@ -830,10 +845,10 @@ and flexibility for large-scale projects.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.AlwaysStdErrHandler.html#scikitplot.sp_logging.AlwaysStdErrHandler" title="scikitplot.sp_logging.AlwaysStdErrHandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AlwaysStdErrHandler</span></code></a></p></td>
-<td><p>A custom logging handler inherited from <a class="reference external" href="https://docs.python.org/3/library/logging.handlers.html#logging.StreamHandler" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamHandler</span></code></a>.</p></td>
+<td><p>A custom logging handler inherited from <a class="reference external" href="https://docs.python.org/3/library/logging.handlers.html#logging.StreamHandler" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamHandler</span></code></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.sp_logging.GoogleLogFormatter.html#scikitplot.sp_logging.GoogleLogFormatter" title="scikitplot.sp_logging.GoogleLogFormatter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GoogleLogFormatter</span></code></a></p></td>
-<td><p>A custom logging formatter inherited from <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Formatter" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formatter</span></code></a>.</p></td>
+<td><p>A custom logging formatter inherited from <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Formatter" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formatter</span></code></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/critical-func.html#scikitplot.sp_logging.critical" title="scikitplot.sp_logging.critical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">critical</span></code></a></p></td>
 <td><p>Log a message at the CRITICAL log level.</p></td>
@@ -888,12 +903,12 @@ and flexibility for large-scale projects.</p>
     <div class="footer-article-item">
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../modules/generated/scikitplot.snsx.aucplot.html"
+       href="../modules/generated/scikitplot.snsx.print_labels.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">aucplot</p>
+        <p class="prev-next-title">print_labels</p>
       </div>
     </a>
     <a class="right-next"
@@ -939,7 +954,7 @@ and flexibility for large-scale projects.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post4+git.20250919.60797d0 2025-09-19T05:57Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post5+git.20251008.162c9a4 2025-10-08T10:53Z.
       <br/>
     
   </p>

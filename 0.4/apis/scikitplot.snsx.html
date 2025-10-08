@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/apis/scikitplot.snsx.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="Seaborn-style Plotting. User guide. See the snsx Seaborn eXtended (experimental) section for further details..kds to Seaborn:.api to Seaborn:" />
+<meta property="og:description" content="Seaborn-style scikit-plots Plotting. User guide. See the snsx-index section for further details..api.metrics to SeabornX:.kds to SeabornX: Decile-based[2] model evaluation module (Lift, Gains, KS s..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="Seaborn-style Plotting. User guide. See the snsx Seaborn eXtended (experimental) section for further details..kds to Seaborn:.api to Seaborn:" />
+<meta name="description" content="Seaborn-style scikit-plots Plotting. User guide. See the snsx-index section for further details..api.metrics to SeabornX:.kds to SeabornX: Decile-based[2] model evaluation module (Lift, Gains, KS s..." />
 
     <title>scikitplot.snsx &#8212; scikit-plots 0.4.0 documentation</title>
   
@@ -83,7 +83,7 @@
     <link rel="icon" href="../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="print_labels" href="../modules/generated/scikitplot.snsx.print_labels.html" />
+    <link rel="next" title="aucplot" href="../modules/generated/scikitplot.snsx.aucplot.html" />
     <link rel="prev" title="GetDummies" href="../modules/generated/scikitplot.preprocessing.GetDummies.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -621,6 +621,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.probplot.html">probplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.plot_pos.html">plot_pos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.fit_line.html">fit_line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._seaborn.html">_seaborn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.html">_sphinxext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.html">_tweedie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals.array_api_compat.html">array_api_compat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals.array_api_extra.html">array_api_extra</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.kds.html">scikitplot.kds</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -650,9 +655,10 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">scikitplot.snsx</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.snsx.print_labels.html">print_labels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.snsx.kdsplot.html">kdsplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.snsx.aucplot.html">aucplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.snsx.evalplot.html">evalplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.snsx.decileplot.html">decileplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.snsx.print_labels.html">print_labels</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.sp_logging.html">scikitplot.sp_logging</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -782,28 +788,55 @@
                   
   <section id="module-scikitplot.snsx">
 <span id="scikitplot-snsx"></span><span id="snsx-ref"></span><h1>scikitplot.snsx<a class="headerlink" href="#module-scikitplot.snsx" title="Link to this heading">#</a></h1>
-<p>Seaborn-style Plotting.</p>
-<p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/snsx/index.html#snsx-index"><span class="std std-ref">snsx Seaborn eXtended (experimental)</span></a> section for further details.</p>
-<section id="kds-to-seaborn">
-<span id="snsx-ref-kds-to-seaborn"></span><h2>.kds to Seaborn<a class="headerlink" href="#kds-to-seaborn" title="Link to this heading">#</a></h2>
+<p>Seaborn-style scikit-plots Plotting.</p>
+<p><strong>User guide.</strong> See the <span class="xref std std-ref">snsx-index</span> section for further details.</p>
+<section id="api-metrics-to-seabornx">
+<span id="snsx-ref-api-metrics-to-seabornx"></span><h2>.api.metrics to SeabornX<a class="headerlink" href="#api-metrics-to-seabornx" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.snsx.print_labels.html#scikitplot.snsx.print_labels" title="scikitplot.snsx.print_labels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_labels</span></code></a></p></td>
-<td><p>Pretty-print the legend of decile table column names.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.snsx.aucplot.html#scikitplot.snsx.aucplot" title="scikitplot.snsx.aucplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aucplot</span></code></a></p></td>
+<td><p>AUC curve plot, Seaborn-style.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.snsx.kdsplot.html#scikitplot.snsx.kdsplot" title="scikitplot.snsx.kdsplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kdsplot</span></code></a></p></td>
-<td><p>Given binary labels y_true (0/1) and probabilities y_score 1d array, compute/plot a decile table.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.snsx.evalplot.html#scikitplot.snsx.evalplot" title="scikitplot.snsx.evalplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evalplot</span></code></a></p></td>
+<td><p>Visualization of the Confusion Matrix <a class="reference internal" href="../modules/generated/scikitplot.snsx.evalplot.html#r039b9d226f6e-1" id="id1"><span>[R039b9d226f6e-1]</span></a> alongside a text report showing key classification metrics.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
-<section id="api-to-seaborn">
-<span id="snsx-ref-api-to-seaborn"></span><h2>.api to Seaborn<a class="headerlink" href="#api-to-seaborn" title="Link to this heading">#</a></h2>
+<section id="module-scikitplot.snsx._decile">
+<span id="kds-to-seabornx"></span><span id="snsx-ref-kds-to-seabornx"></span><h2>.kds to SeabornX<a class="headerlink" href="#module-scikitplot.snsx._decile" title="Link to this heading">#</a></h2>
+<p>Decile-based <a class="reference internal" href="#r4e4a81604649-2" id="id2">[2]</a> model evaluation module (Lift, Gains, KS statistics).</p>
+<p>The <a class="reference internal" href="#module-scikitplot.snsx._decile" title="scikitplot.snsx._decile"><code class="xref py py-mod docutils literal notranslate"><span class="pre">_decile</span></code></a> module includes plots for machine learning
+evaluation decile analysis e.g. Gain, Lift and Decile charts, etc.</p>
+<p>In descriptive statistics, a decile is any of the nine values that divide the sorted data
+into ten equal parts, so that each part represents 1/10 of the sample or population.
+A decile is one possible form of a quantile; others include the quartile and percentile.
+A decile rank arranges the data in order from lowest to highest and
+is done on a scale of one to ten where each successive number corresponds to
+an increase of 10 percentage points. See <a class="reference internal" href="#r4e4a81604649-2" id="id3">[2]</a> for model details.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r4e4a81604649-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p><a class="github reference external" href="https://github.com/tensorbored/kds/blob/master/kds/metrics.py">tensorbored/kds</a></p>
+</div>
+<div class="citation" id="r4e4a81604649-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id3">2</a>)</span>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Decile">Wikipedia contributors. (2024).
+“Decile”
+Wikipedia. https://en.wikipedia.org/wiki/Decile</a></p>
+</div>
+</div>
+<p><strong>User guide.</strong> See the <span class="xref std std-ref">decile-index</span> section for further details.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.snsx.aucplot.html#scikitplot.snsx.aucplot" title="scikitplot.snsx.aucplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aucplot</span></code></a></p></td>
-<td><p>AUC curve plot, Seaborn-style.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.snsx.decileplot.html#scikitplot.snsx.decileplot" title="scikitplot.snsx.decileplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decileplot</span></code></a></p></td>
+<td><p>Given binary labels y_true (0/1) and probabilities y_score 1d array, compute/plot a decile <a class="reference internal" href="../modules/generated/scikitplot.snsx.decileplot.html#r9ce98ddf8b9b-2" id="id4"><span>[R9ce98ddf8b9b-2]</span></a> table.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.snsx.print_labels.html#scikitplot.snsx.print_labels" title="scikitplot.snsx.print_labels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_labels</span></code></a></p></td>
+<td><p>Pretty-print the legend of decile table column names.</p></td>
 </tr>
 </tbody>
 </table>
@@ -831,11 +864,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="../modules/generated/scikitplot.snsx.print_labels.html"
+       href="../modules/generated/scikitplot.snsx.aucplot.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">print_labels</p>
+        <p class="prev-next-title">aucplot</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -873,7 +906,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post4+git.20250919.60797d0 2025-09-19T05:57Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post5+git.20251008.162c9a4 2025-10-08T10:53Z.
       <br/>
     
   </p>
