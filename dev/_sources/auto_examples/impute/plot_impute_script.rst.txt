@@ -21,14 +21,14 @@
 plot_impute with examples
 ==================================
 
-An example showing the :py:func:`~scikitplot.impute.report` function used
-by a scikit-learn classifier.
+Examples related to the :py:class:`~scikitplot.impute.AnnoyKNNImputer` class
+with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegression`) instance.
 
 .. seealso::
 
     * https://scikit-learn.org/stable/auto_examples/impute/plot_missing_values.html#sphx-glr-auto-examples-impute-plot-missing-values-py
 
-.. GENERATED FROM PYTHON SOURCE LINES 12-16
+.. GENERATED FROM PYTHON SOURCE LINES 12-17
 
 .. code-block:: Python
    :lineno-start: 13
@@ -44,13 +44,14 @@ by a scikit-learn classifier.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 17-42
+
+.. GENERATED FROM PYTHON SOURCE LINES 18-132
 
 .. code-block:: Python
-   :lineno-start: 17
+   :lineno-start: 18
 
     import time
-    import numpy as np
+    import numpy as np; np.random.seed(0)  # reproducibility
 
     from sklearn.datasets import make_classification, make_regression
     from sklearn.datasets import (
@@ -70,21 +71,116 @@ by a scikit-learn classifier.
     y_california = y_california[:300]
 
     # Generate a sample dataset
-    X, y = make_regression(n_samples=2500, n_features=20, n_informative=15,
-                           n_targets=1, bias=0, noise=0,
-                           shuffle=True, coef=False, random_state=0)
+    def make_realistic_regression(
+        n_samples=3000,
+        n_features=20,
+        n_informative=15,
+        noise=10.0,
+        bias=10.0,
+        corr_strength=0.15,
+        nonlinear_strength=0.5,
+        outlier_fraction=0.05,
+        missing_fraction=0.0,
+        categorical_features=6,
+        random_state=None,
+    ):
+        """
+        Generate a more realistic synthetic regression dataset.
+
+        Parameters
+        ----------
+        n_samples : int
+            Number of samples.
+        n_features : int
+            Number of numerical features.
+        n_informative : int
+            Number of informative (truly predictive) features.
+        noise : float
+            Standard deviation of Gaussian noise added to the target.
+        bias : float
+            Constant bias term in target generation.
+        corr_strength : float
+            Std. dev. of correlated noise added to create redundancy.
+        nonlinear_strength : float
+            Strength of nonlinear feature transformations (0 disables).
+        outlier_fraction : float
+            Fraction of samples with outlier targets.
+        missing_fraction : float
+            Fraction of missing entries (NaN) in X.
+        categorical_features : int
+            Number of discrete/categorical columns to append.
+        random_state : int or None
+            Random seed for reproducibility.
+        """
+
+        rng = np.random.default_rng(random_state)
+
+        # Step 1: Linear base dataset
+        X, y = make_regression(
+            n_samples=n_samples,
+            n_features=n_features,
+            n_informative=n_informative,
+            noise=noise,
+            bias=bias,
+            random_state=random_state,
+        )
+
+        # Step 2: Add nonlinear transformations
+        if nonlinear_strength > 0:
+            X_nl = X.copy()
+            X_nl[:, 0] = np.exp(nonlinear_strength * 0.01 * X[:, 0])
+            X_nl[:, 1] = np.sin(nonlinear_strength * X[:, 1])
+            X_nl[:, 2] = (X[:, 2] ** 2) * nonlinear_strength
+            X = np.hstack([X, X_nl])
+
+        # Step 3: Add correlated (redundant) features
+        if corr_strength > 0:
+            corr_features = X[:, :min(5, X.shape[1])] + rng.normal(
+                0, corr_strength, size=(n_samples, min(5, X.shape[1]))
+            )
+            X = np.hstack([X, corr_features])
+
+        # Step 4: Add outliers in target
+        if outlier_fraction > 0:
+            n_outliers = int(n_samples * outlier_fraction)
+            idx = rng.choice(n_samples, n_outliers, replace=False)
+            y[idx] += rng.normal(0, noise * 10, size=n_outliers)
+
+        # Step 5: Add missing values
+        if missing_fraction > 0:
+            missing_mask = rng.random(X.shape) < missing_fraction
+            X[missing_mask] = np.nan
+
+        # Step 6: Add categorical/discrete features
+        if categorical_features > 0:
+            cats = rng.integers(0, 3, size=(n_samples, categorical_features))
+            X = np.hstack([X, cats])
+
+        return X, y
+
+    X, y = make_realistic_regression(
+        random_state=0,
+    )
+    print(X.shape, np.isnan(X).mean(), y[:5])
 
 
 
 
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    (3000, 51) 0.0 [ -83.88958588  -78.63531234 -255.02104686 -373.91061369   51.92810122]
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 43-75
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 133-165
 
 .. code-block:: Python
-   :lineno-start: 43
+   :lineno-start: 133
 
     X_train, X_val, y_train, y_val = train_test_split(
         X, y, test_size=0.2, random_state=0
@@ -125,10 +221,10 @@ by a scikit-learn classifier.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 76-109
+.. GENERATED FROM PYTHON SOURCE LINES 166-200
 
 .. code-block:: Python
-   :lineno-start: 76
+   :lineno-start: 166
 
     from sklearn.ensemble import RandomForestRegressor
 
@@ -154,13 +250,14 @@ by a scikit-learn classifier.
 
     x_labels = []
 
-    mses_diabetes = np.zeros(7)
-    stds_diabetes = np.zeros(7)
-    mses_california = np.zeros(7)
-    stds_california = np.zeros(7)
-    mses_train = np.zeros(7)
-    stds_train = np.zeros(7)
-    time_data = np.zeros(7)
+    n_size = 7
+    mses_diabetes = np.zeros(n_size)
+    stds_diabetes = np.zeros(n_size)
+    mses_california = np.zeros(n_size)
+    stds_california = np.zeros(n_size)
+    mses_train = np.zeros(n_size)
+    stds_train = np.zeros(n_size)
+    time_data = np.zeros(n_size)
 
 
 
@@ -170,10 +267,10 @@ by a scikit-learn classifier.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 110-120
+.. GENERATED FROM PYTHON SOURCE LINES 201-211
 
 .. code-block:: Python
-   :lineno-start: 110
+   :lineno-start: 201
 
     t0 = time.time()
     mses_diabetes[0], stds_diabetes[0] = get_score(X_diabetes, y_diabetes)
@@ -193,15 +290,15 @@ by a scikit-learn classifier.
 
  .. code-block:: none
 
-    10.176164865493774
+    25.60783314704895
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 121-137
+.. GENERATED FROM PYTHON SOURCE LINES 212-229
 
 .. code-block:: Python
-   :lineno-start: 121
+   :lineno-start: 212
 
     t0 = time.time()
     imputer = SimpleImputer(strategy="constant", fill_value=0, add_indicator=True)
@@ -214,10 +311,11 @@ by a scikit-learn classifier.
     mses_train[1], stds_train[1] = get_score(
         X_miss_train, y_miss_train, imputer
     )
-    x_labels.append("Zero Imputation")
+    x_labels.append("Zero\nImputation\n(constant)")
     T = time.time() - t0
     print(T)
     time_data[1] = T
+
 
 
 
@@ -227,15 +325,15 @@ by a scikit-learn classifier.
 
  .. code-block:: none
 
-    11.004910707473755
+    27.146008253097534
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 138-154
+.. GENERATED FROM PYTHON SOURCE LINES 230-247
 
 .. code-block:: Python
-   :lineno-start: 138
+   :lineno-start: 230
 
     t0 = time.time()
     imputer = SimpleImputer(strategy="mean", add_indicator=True)
@@ -248,10 +346,11 @@ by a scikit-learn classifier.
     mses_train[2], stds_train[2] = get_score(
         X_miss_train, y_miss_train, imputer
     )
-    x_labels.append("Mean Imputation")
+    x_labels.append("Mean\nImputation")
     T = time.time() - t0
     print(T)
     time_data[2] = T
+
 
 
 
@@ -261,15 +360,15 @@ by a scikit-learn classifier.
 
  .. code-block:: none
 
-    11.405076503753662
+    27.219724893569946
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 155-171
+.. GENERATED FROM PYTHON SOURCE LINES 248-265
 
 .. code-block:: Python
-   :lineno-start: 155
+   :lineno-start: 248
 
     t0 = time.time()
     imputer = SimpleImputer(strategy="median", add_indicator=True)
@@ -282,10 +381,11 @@ by a scikit-learn classifier.
     mses_train[3], stds_train[3] = get_score(
         X_miss_train, y_miss_train, imputer
     )
-    x_labels.append("Median Imputation")
+    x_labels.append("Median\nImputation")
     T = time.time() - t0
     print(T)
     time_data[3] = T
+
 
 
 
@@ -295,19 +395,18 @@ by a scikit-learn classifier.
 
  .. code-block:: none
 
-    11.057794332504272
+    27.022822380065918
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 172-189
+.. GENERATED FROM PYTHON SOURCE LINES 266-283
 
 .. code-block:: Python
-   :lineno-start: 172
+   :lineno-start: 266
 
     t0 = time.time()
-    imputer = IterativeImputer(add_indicator=True)
-
+    imputer = KNNImputer(add_indicator=True)
     mses_diabetes[4], stds_diabetes[4] = get_score(
         X_miss_diabetes, y_miss_diabetes, imputer
     )
@@ -317,10 +416,11 @@ by a scikit-learn classifier.
     mses_train[4], stds_train[4] = get_score(
         X_miss_train, y_miss_train, make_pipeline(RobustScaler(), imputer)
     )
-    x_labels.append("Iterative Imputation")
+    x_labels.append("KNN\nImputation")
     T = time.time() - t0
     print(T)
     time_data[4] = T
+
 
 
 
@@ -330,18 +430,62 @@ by a scikit-learn classifier.
 
  .. code-block:: none
 
-    12.5659761428833
+    28.187212705612183
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 190-206
+.. GENERATED FROM PYTHON SOURCE LINES 284-288
 
 .. code-block:: Python
-   :lineno-start: 190
+   :lineno-start: 284
+
+    import scikitplot as sp
+    sp.__version__
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    '0.5.dev0+git.20251016.274425a'
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 289-293
+
+.. code-block:: Python
+   :lineno-start: 289
+
+    from scikitplot.impute import AnnoyKNNImputer
+    # print(AnnoyKNNImputer.__doc__)
+
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 294-317
+
+.. code-block:: Python
+   :lineno-start: 294
 
     t0 = time.time()
-    imputer = KNNImputer(add_indicator=True)
+    imputer = AnnoyKNNImputer(
+        add_indicator=True,
+        n_trees=5,
+        search_k=1000,
+        n_neighbors=5,
+        index_nan_strategy='mean',
+    )
     mses_diabetes[5], stds_diabetes[5] = get_score(
         X_miss_diabetes, y_miss_diabetes, imputer
     )
@@ -351,7 +495,7 @@ by a scikit-learn classifier.
     mses_train[5], stds_train[5] = get_score(
         X_miss_train, y_miss_train, make_pipeline(RobustScaler(), imputer)
     )
-    x_labels.append("KNN Imputation")
+    x_labels.append("AnnoyKNN\nImputation\n(Tree Based)")
     T = time.time() - t0
     print(T)
     time_data[5] = T
@@ -360,233 +504,34 @@ by a scikit-learn classifier.
 
 
 
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    11.872499465942383
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 207-210
-
-.. code-block:: Python
-   :lineno-start: 207
-
-    import scikitplot as sp
-    sp.__version__
-
-
-
-
 
 .. rst-class:: sphx-glr-script-out
 
  .. code-block:: none
 
-
-    '0.5.dev0+git.20251015.40231ba'
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 211-214
-
-.. code-block:: Python
-   :lineno-start: 211
-
-    from scikitplot.impute import AnnoyKNNImputer
-    print(AnnoyKNNImputer.__doc__)
+    28.35898518562317
 
 
 
 
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-
-        Fast approximate KNN-based imputation using Spotify's Annoy library.
-
-        This imputer replaces the exact neighbor search of
-        :class:`~sklearn.impute.KNNImputer` with a tree-based
-        approximate nearest neighbor index found via Annoy,
-        dramatically improving scalability on large datasets.
-
-        Supports both uniform and distance-based weighting schemes.
-
-        **Mathematical Formulation**
-
-        For each sample :math:`x_i` and feature :math:`j`:
-
-        .. math::
-
-            \hat{x}_{ij} =
-            \\frac{\\sum_{k \\in N_i} w_{ik} x_{kj}}
-                  {\\sum_{k \\in N_i} w_{ik}}
-
-        where:
-
-        - :math:`N_i` are the *K* nearest neighbors of :math:`x_i`
-          (found via Annoy's approximate search)
-        - :math:`w_{ik} = 1 / (1 + d(x_i, x_k))` are inverse-distance weights
-
-        Parameters
-        ----------
-        missing_values : int, float, str, np.nan or None, default=np.nan
-            The placeholder for the missing values. All occurrences of
-            `missing_values` will be imputed. For pandas' dataframes with
-            nullable integer dtypes with missing values, `missing_values`
-            should be set to np.nan, since `pd.NA` will be converted to np.nan.
-
-        n_trees : int, default=-1
-            Number of Annoy trees. -1 and positive integers.
-
-        n_neighbors : int, default=100
-            Number of neighboring samples to use for imputation.
-
-        weights : {'uniform', 'distance'} or callable, default='uniform'
-            Weight function used in prediction. Possible values:
-
-            - `'uniform'` : uniform weights. All points in each neighborhood are
-              weighted equally.
-            - `'distance'` : weight points by the inverse of their distance.
-              in this case, closer neighbors of a query point will have a
-              greater influence than neighbors which are further away.
-            - `callable` : a user-defined function which accepts an
-              array of distances, and returns an array of the same shape
-              containing the weights.
-
-        metric : {'angular', 'euclidean', 'manhattan', 'hamming', 'dot'}, default='euclidean'
-            Distance metric used for nearest neighbor search. Metric choices:
-
-            - `'angular'` → Cosine similarity (angle between vectors).
-            Measures *directional similarity* only — magnitude is ignored.
-            Useful for normalized embeddings (e.g., text, image features).
-
-            - `'euclidean'` → L2 distance, defined as √Σ(xᵢ - yᵢ)².
-            Standard geometric distance.
-            Penalizes large feature differences more strongly.
-            Recommended for continuous numeric data.
-            Sensitive to feature scale — normalize or standardize inputs before use.
-
-            - `'manhattan'` → L1 distance, defined as Σ|xᵢ - yᵢ|.
-            “City-block” distance; more robust to outliers than L2.
-            Still sensitive to feature scaling.
-            Good alternative when data contains noise or heavy-tailed distributions.
-
-            - `'hamming'` → Fraction or count of differing elements.
-            Suitable for binary or categorical integer-encoded data (e.g., 0/1).
-            Not meaningful for continuous numeric features.
-
-            - `'dot'` → Negative inner product (-x·y).
-            Considers both direction and magnitude of vectors.
-            Often used for dense, normalized embeddings where higher dot product
-            indicates greater similarity. Sensitive to scaling.
-
-        copy : bool, default=True
-            If True, a copy of X will be created. If False, imputation will
-            be done in-place whenever possible.
-
-        add_indicator : bool, default=False
-            If True, a :class:`MissingIndicator` transform will stack onto the
-            output of the imputer's transform. This allows a predictive estimator
-            to account for missingness despite imputation. If a feature has no
-            missing values at fit/train time, the feature won't appear on the
-            missing indicator even if there are missing values at transform/test
-            time.
-
-        keep_empty_features : bool, default=False
-            If True, features that consist exclusively of missing values when
-            `fit` is called are returned in results when `transform` is called.
-            The imputed value is always `0`.
-
-        search_k : int or None, default=None
-            Number of nodes to inspect during query.
-            Defaults to n_trees * n_neighbors.
-
-        include_distances : bool, default=True
-            If you set include_distances to True, it will return a 2 element tuple
-            with two lists in it: the second one containing all corresponding distances.
-
-        fill_value : {'mean', 'median'} or None, default=None
-            When building Annoy index ignores including None rows.
-            Strategy to fill temporary NaNs before building Annoy index building,
-            especially useful for small dataset.
-            If all neighbor distances are NaN for a feature, to support
-            a global mean or median can be use.
-
-        random_state : int or None, default=None
-            Seed for Annoy's random hyperplane generation.
-
-        Attributes
-        ----------
-        indicator_ : :class:`~sklearn.impute.MissingIndicator`
-            Indicator used to add binary indicators for missing values.
-            ``None`` if add_indicator is False.
-
-        n_features_in_ : int
-            Number of features seen during :term:`fit`.
-
-        feature_names_in_ : ndarray of shape (`n_features_in_`,)
-            Names of features seen during :term:`fit`. Defined only when `X`
-            has feature names that are all strings.
-
-        Notes
-        -----
-        - Annoy builds an approximate index, so imputations are not exact.
-        - After fitting, the Annoy index is kept in memory for fast queries.
-        - Annoy itself does not natively support a general `'minkowski'` metric,
-          but `'euclidean'` (p=2) and `'manhattan'` (p=1) are special cases of
-          the Minkowski distance.
-
-        See Also
-        --------
-        sklearn.impute.KNNImputer : Multivariate imputer that estimates missing features using
-            nearest samples.
-
-        References
-        ----------
-        .. [1] Bernhardsson Erik, "Annoy: Approximate Nearest Neighbors Oh Yeah"
-          (Spotify Engineering, 2013)
-          https://github.com/spotify/annoy
-
-        Examples
-        --------
-        >>> import numpy as np
-        >>> from scikitplot.impute import AnnoyKNNImputer
-        >>> X = np.array([[1, 2, np.nan], [3, 4, 3], [np.nan, 6, 5], [8, 8, 7]])
-        >>> imputer = AnnoyKNNImputer(n_trees=5, n_neighbors=5)
-        >>> imputer.fit_transform(X)
-        array([[1. , 2. , 4. ],
-               [3. , 4. , 3. ],
-               [5.5, 6. , 5. ],
-               [8. , 8. , 7. ]])
-    
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 215-233
+.. GENERATED FROM PYTHON SOURCE LINES 318-336
 
 .. code-block:: Python
-   :lineno-start: 215
+   :lineno-start: 318
 
     t0 = time.time()
-    imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, n_neighbors=5, search_k=50)
+    imputer = IterativeImputer(add_indicator=True)
+
     mses_diabetes[6], stds_diabetes[6] = get_score(
         X_miss_diabetes, y_miss_diabetes, imputer
     )
-    imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, n_neighbors=5, search_k=50)
     mses_california[6], stds_california[6] = get_score(
         X_miss_california, y_miss_california, make_pipeline(RobustScaler(), imputer)
     )
-    imputer = AnnoyKNNImputer(add_indicator=True, random_state=0)
     mses_train[6], stds_train[6] = get_score(
         X_miss_train, y_miss_train, make_pipeline(RobustScaler(), imputer)
     )
-    x_labels.append("AnnoyKNN Imputation")
+    x_labels.append("Iterative\nImputation\n(BayesianRidge)")
     T = time.time() - t0
     print(T)
     time_data[6] = T
@@ -595,42 +540,31 @@ by a scikit-learn classifier.
 
 
 
+
 .. rst-class:: sphx-glr-script-out
 
  .. code-block:: none
 
-    30.01114273071289
+    31.3128182888031
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 234-238
-
-.. code-block:: Python
-   :lineno-start: 234
-
-    mses_diabetes = mses_diabetes * -1
-    mses_california = mses_california * -1
-    mses_train = mses_train * -1
-
-
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 239-327
+.. GENERATED FROM PYTHON SOURCE LINES 337-429
 
 .. code-block:: Python
-   :lineno-start: 239
+   :lineno-start: 337
 
     import matplotlib.pyplot as plt
+
+    mses_diabetes = np.abs(mses_diabetes)  # * -1
+    mses_california = np.abs(mses_california)
+    mses_train = np.abs(mses_train)
 
     n_bars = len(mses_diabetes)
     xval = np.arange(n_bars)
 
-    colors = ["r", "g", "b", "orange", "k", "m", "c"]
+    colors = ["r", "g", "b", "m", "c", "orange", "olive", "gray"]
 
     # plot diabetes results
     plt.figure(figsize=(18, 6))
@@ -725,7 +659,7 @@ by a scikit-learn classifier.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 328-335
+.. GENERATED FROM PYTHON SOURCE LINES 430-437
 
 .. tags::
 
@@ -738,7 +672,7 @@ by a scikit-learn classifier.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 39.347 seconds)
+   **Total running time of the script:** (3 minutes 16.127 seconds)
 
 
 .. _sphx_glr_download_auto_examples_impute_plot_impute_script.py:

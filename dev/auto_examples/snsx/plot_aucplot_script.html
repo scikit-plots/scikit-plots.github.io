@@ -9,10 +9,10 @@
 <meta content="website" property="og:type"/>
 <meta content="https://scikit-plots.github.io/stable/auto_examples/snsx/plot_aucplot_script.html" property="og:url"/>
 <meta content="scikit-plots" property="og:site_name"/>
-<meta content="An example showing the aucplot function used by a scikit-learn regressor. Import scikit-plot Load the data X, y = data_3_classes(return_X_y=True, as_frame=False) X, y = data_2_classes(return_X_y=Tr..." property="og:description"/>
+<meta content="An example showing the aucplot function with a scikit-learn classifier (e.g., LogisticRegression) instance. Import scikit-plot Load the data X, y = data_3_classes(return_X_y=True, as_frame=False) X..." property="og:description"/>
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
-<meta content="An example showing the aucplot function used by a scikit-learn regressor. Import scikit-plot Load the data X, y = data_3_classes(return_X_y=True, as_frame=False) X, y = data_2_classes(return_X_y=Tr..." name="description"/>
+<meta content="An example showing the aucplot function with a scikit-learn classifier (e.g., LogisticRegression) instance. Import scikit-plot Load the data X, y = data_3_classes(return_X_y=True, as_frame=False) X..." name="description"/>
 <title>plot_aucplot_script with examples — scikit-plots 0.5.dev0 documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
@@ -74,7 +74,7 @@
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
 <link href="plot_decileplot_script.html" rel="next" title="plot_decileplot_script with examples"/>
-<link href="index.html" rel="prev" title="snsX (Seaborn eXtended)"/>
+<link href="index.html" rel="prev" title="SeabornX"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="en" name="docsearch:language"/>
 <meta content="0.5" name="docsearch:version"/>
@@ -353,7 +353,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_simple_script.html">annoy with examples</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../array_api/index.html">Array API support (experimental)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../array_api/index.html">Array API support</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../calibration/index.html">Calibration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../calibration/plot_calibration_script.html">plot_calibration with examples</a></li>
 </ul>
@@ -396,7 +396,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../regression/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">snsX (Seaborn eXtended)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">SeabornX</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">plot_aucplot_script with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_decileplot_script.html">plot_decileplot_script with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_evalplot_script.html">plot_evalplot_script with examples</a></li>
@@ -443,7 +443,7 @@
 </a>
 </li>
 <li class="breadcrumb-item"><a class="nav-link" href="../index.html">Examples</a></li>
-<li class="breadcrumb-item"><a class="nav-link" href="index.html">snsX (Seaborn eXtended)</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">SeabornX</a></li>
 <li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">plot_aucplot_script with examples</span></li>
 </ul>
 </nav>
@@ -457,7 +457,7 @@
 <section class="sphx-glr-example-title" id="plot-aucplot-script-with-examples">
 <span id="sphx-glr-auto-examples-snsx-plot-aucplot-script-py"></span><h1>plot_aucplot_script with examples<a class="headerlink" href="#plot-aucplot-script-with-examples" title="Link to this heading">#</a></h1>
 <p>An example showing the <a class="reference internal" href="../../modules/generated/scikitplot.snsx.aucplot.html#scikitplot.snsx.aucplot" title="scikitplot.snsx.aucplot"><code class="xref py py-func docutils literal notranslate"><span class="pre">aucplot</span></code></a> function
-used by a scikit-learn regressor.</p>
+with a scikit-learn classifier (e.g., <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a>) instance.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 9</span> <span class="c1"># Authors: The scikit-plots developers</span>
 <span class="linenos">10</span> <span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
 </pre></div>
@@ -696,19 +696,19 @@ X, y = data_2_classes(return_X_y=True, as_frame=False)</p>
 </pre></div>
 </div>
 <img alt="PR (Precision-Recall) Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_aucplot_script_006.png" srcset="../../_images/sphx_glr_plot_aucplot_script_006.png"/><p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-model-evaluation.html"><span class="doc">model-workflow: model evaluation</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-line.html"><span class="doc">plot-type: line</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-auc.html"><span class="doc">plot-type: auc</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.513 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.502 seconds)</p>
 
 <p class="rubric">Related examples</p>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.snsx.evalplot function used by a scikit-learn regressor."><img alt="" src="../../_images/sphx_glr_plot_evalplot_script_thumb.png"/>
-<p><a class="reference internal" href="plot_evalplot_script.html#sphx-glr-auto-examples-snsx-plot-evalplot-script-py"><span class="std std-ref">plot_evalplot_script with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">plot_evalplot_script with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.snsx.decileplot function used by a scikit-learn regressor."><img alt="" src="../../_images/sphx_glr_plot_decileplot_script_thumb.png"/>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.snsx.decileplot function with a scikit-learn classifier (e.g., :py~sklearn.linear_model.LogisticRegression) instance."><img alt="" src="../../_images/sphx_glr_plot_decileplot_script_thumb.png"/>
 <p><a class="reference internal" href="plot_decileplot_script.html#sphx-glr-auto-examples-snsx-plot-decileplot-script-py"><span class="std std-ref">plot_decileplot_script with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">plot_decileplot_script with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.snsx.evalplot function with a scikit-learn classifier (e.g., :py~sklearn.linear_model.LogisticRegression) instance."><img alt="" src="../../_images/sphx_glr_plot_evalplot_script_thumb.png"/>
+<p><a class="reference internal" href="plot_evalplot_script.html#sphx-glr-auto-examples-snsx-plot-evalplot-script-py"><span class="std std-ref">plot_evalplot_script with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">plot_evalplot_script with examples</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.cexternals.annoy function."><img alt="" src="../../_images/sphx_glr_plot_precision_script_thumb.png"/>
 <p><a class="reference internal" href="../annoy/plot_precision_script.html#sphx-glr-auto-examples-annoy-plot-precision-script-py"><span class="std std-ref">annoy with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">annoy with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.kds.report function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_report_script_thumb.png"/>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.kds.report function with a scikit-learn classifier (e.g., :py~sklearn.linear_model.LogisticRegression) instance."><img alt="" src="../../_images/sphx_glr_plot_report_script_thumb.png"/>
 <p><a class="reference internal" href="../kds/plot_report_script.html#sphx-glr-auto-examples-kds-plot-report-script-py"><span class="std std-ref">plot_report with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">plot_report with examples</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
@@ -722,7 +722,7 @@ X, y = data_2_classes(return_X_y=True, as_frame=False)</p>
 <i class="fa-solid fa-angle-left"></i>
 <div class="prev-next-info">
 <p class="prev-next-subtitle">previous</p>
-<p class="prev-next-title">snsX (Seaborn eXtended)</p>
+<p class="prev-next-title">SeabornX</p>
 </div>
 </a>
 <a class="right-next" href="plot_decileplot_script.html" title="next page">
@@ -761,7 +761,7 @@ X, y = data_2_classes(return_X_y=True, as_frame=False)</p>
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251015.40231ba 2025-10-15T06:12Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251016.274425a 2025-10-15T23:31Z.
       <br/>
 </p>
 </div>
