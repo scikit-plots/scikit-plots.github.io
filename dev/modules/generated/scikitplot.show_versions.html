@@ -600,6 +600,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.cexternals.html">scikitplot.cexternals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.html">stats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._f2py.get_include.html">get_include</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals.annoy.AnnoyIndex.html">AnnoyIndex</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -629,6 +630,10 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.html">_tweedie</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_compat.html">array_api_compat</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_extra.html">array_api_extra</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.impute.AnnoyKNNImputer.html">AnnoyKNNImputer</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.kds.html">scikitplot.kds</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -796,7 +801,7 @@
 <h1>show_versions<a class="headerlink" href="#show-versions" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.show_versions">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.</span></span><span class="sig-name descname"><span class="pre">show_versions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/92919f1/scikitplot/_utils/_show_versions.py#L82"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.show_versions" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.</span></span><span class="sig-name descname"><span class="pre">show_versions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/77d3a1a/scikitplot/_utils/_show_versions.py#L82"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.show_versions" title="Link to this definition">#</a></dt>
 <dd><p>Print useful debugging information</p>
 <p class="rubric">Examples</p>
 <div class="jupyter_cell jupyter_container docutils container">
@@ -812,19 +817,19 @@
 <div class="thebelab-output" data-output="true"><div class="docutils container">
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
 System:
-    python: 3.11.13 (main, Jun  4 2025, 17:06:21) [GCC 11.4.0]
-executable: /home/circleci/.pyenv/versions/3.11.13/bin/python3.11
+    python: 3.11.14 (main, Oct 10 2025, 16:22:04) [GCC 11.4.0]
+executable: /home/circleci/.pyenv/versions/3.11.14/bin/python3.11
    machine: Linux-6.8.0-1039-aws-x86_64-with-glibc2.35
 
 Python dependencies:
-   scikitplot: 0.5.dev0+git.20251005.92919f1
-          pip: 25.1.1
-   setuptools: 80.9.0
+   scikitplot: 0.5.dev0+git.20251015.77d3a1a
+          pip: 25.2
+   setuptools: 79.0.1
        Cython: 3.1.4
         numpy: 2.3.3
        pandas: 2.3.3
         scipy: 1.16.2
-   matplotlib: 3.10.6
+   matplotlib: 3.10.7
        joblib: 1.5.2
 threadpoolctl: 3.6.0
 
@@ -833,7 +838,7 @@ threadpoolctl info:
    internal_api: openblas
     num_threads: 36
          prefix: libscipy_openblas
-       filepath: /home/circleci/.pyenv/versions/3.11.13/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-8fb3d286.so
+       filepath: /home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-8fb3d286.so
         version: 0.3.30
 threading_layer: pthreads
    architecture: SkylakeX
@@ -842,7 +847,7 @@ threading_layer: pthreads
    internal_api: openblas
     num_threads: 36
          prefix: libscipy_openblas
-       filepath: /home/circleci/.pyenv/versions/3.11.13/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-b75cc656.so
+       filepath: /home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-b75cc656.so
         version: 0.3.29.dev
 threading_layer: pthreads
    architecture: SkylakeX
@@ -851,7 +856,7 @@ threading_layer: pthreads
    internal_api: openmp
     num_threads: 36
          prefix: libgomp
-       filepath: /home/circleci/.pyenv/versions/3.11.13/lib/python3.11/site-packages/scikit_learn.libs/libgomp-a34b3233.so.1.0.0
+       filepath: /home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-packages/scikit_learn.libs/libgomp-a34b3233.so.1.0.0
         version: None
 </pre></div>
 </div>
@@ -959,7 +964,7 @@ threading_layer: pthreads
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251005.92919f1 2025-10-04T21:31Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251015.77d3a1a 2025-10-15T05:18Z.
       <br/>
     
   </p>

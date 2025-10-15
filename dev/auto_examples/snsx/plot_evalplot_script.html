@@ -9,10 +9,10 @@
 <meta content="website" property="og:type"/>
 <meta content="https://scikit-plots.github.io/stable/auto_examples/snsx/plot_evalplot_script.html" property="og:url"/>
 <meta content="scikit-plots" property="og:site_name"/>
-<meta content="An example showing the evalplot function used by a scikit-learn regressor. Import scikit-plot Load the data X, y = data_3_classes(return_X_y=True, as_frame=False) Create an instance of the Logistic..." property="og:description"/>
+<meta content="An example showing the evalplot function used by a scikit-learn regressor. Import scikit-plot Load the data X, y = data_3_classes(return_X_y=True, as_frame=False) X, y = data_2_classes(return_X_y=T..." property="og:description"/>
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
-<meta content="An example showing the evalplot function used by a scikit-learn regressor. Import scikit-plot Load the data X, y = data_3_classes(return_X_y=True, as_frame=False) Create an instance of the Logistic..." name="description"/>
+<meta content="An example showing the evalplot function used by a scikit-learn regressor. Import scikit-plot Load the data X, y = data_3_classes(return_X_y=True, as_frame=False) X, y = data_2_classes(return_X_y=T..." name="description"/>
 <title>plot_evalplot_script with examples — scikit-plots 0.5.dev0 documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
@@ -460,115 +460,257 @@ used by a scikit-learn regressor.</p>
 <span class="linenos">19</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span><span class="p">;</span> <a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.seed.html#numpy.random.seed" title="numpy.random.seed"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># reproducibility</span>
 <span class="linenos">20</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="linenos">21</span>
-<span class="linenos">22</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-<span class="linenos">23</span>     <span class="n">load_breast_cancer</span> <span class="k">as</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer" title="sklearn.datasets.load_breast_cancer"><span class="n">data_2_classes</span></a><span class="p">,</span>
-<span class="linenos">24</span>     <span class="c1"># load_iris as data_3_classes,</span>
-<span class="linenos">25</span> <span class="p">)</span>
-<span class="linenos">26</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a>
-<span class="linenos">27</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
+<span class="linenos">22</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html#sklearn.datasets.make_classification" title="sklearn.datasets.make_classification"><span class="n">make_classification</span></a>
+<span class="linenos">23</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<span class="linenos">24</span>     <span class="n">load_breast_cancer</span> <span class="k">as</span> <span class="n">data_2_classes</span><span class="p">,</span>
+<span class="linenos">25</span>     <span class="n">load_iris</span> <span class="k">as</span> <span class="n">data_3_classes</span><span class="p">,</span>
+<span class="linenos">26</span>     <span class="n">load_digits</span> <span class="k">as</span> <span class="n">data_10_classes</span><span class="p">,</span>
+<span class="linenos">27</span> <span class="p">)</span>
+<span class="linenos">28</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a>
+<span class="linenos">29</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
+<span class="linenos">30</span>
+<span class="linenos">31</span> <span class="k">def</span><span class="w"> </span><span class="nf">logistic_scale</span><span class="p">(</span><span class="n">scores</span><span class="p">):</span>
+<span class="linenos">32</span><span class="w">     </span><span class="sd">"""Scale decision_function outputs to (0,1) using the logistic (sigmoid) function."""</span>
+<span class="linenos">33</span>     <span class="n">scores</span> <span class="o">=</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.asarray.html#numpy.asarray" title="numpy.asarray"><span class="n">np</span><span class="o">.</span><span class="n">asarray</span></a><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="linenos">34</span>     <span class="c1"># Clip to avoid overflow for large |x| before exp</span>
+<span class="linenos">35</span>     <span class="c1"># scores = np.clip(scores, -500, 500)</span>
+<span class="linenos">36</span>     <span class="k">return</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data" href="https://numpy.org/doc/stable/reference/generated/numpy.exp.html#numpy.exp" title="numpy.exp"><span class="n">np</span><span class="o">.</span><span class="n">exp</span></a><span class="p">(</span><span class="o">-</span><span class="n">scores</span><span class="p">))</span>
+<span class="linenos">37</span>
+<span class="linenos">38</span> <span class="k">def</span><span class="w"> </span><span class="nf">minmax_scale</span><span class="p">(</span><span class="n">scores</span><span class="p">):</span>
+<span class="linenos">39</span><span class="w">     </span><span class="sd">"""Linearly scale an array to [0,1]."""</span>
+<span class="linenos">40</span>     <span class="n">scores</span> <span class="o">=</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.asarray.html#numpy.asarray" title="numpy.asarray"><span class="n">np</span><span class="o">.</span><span class="n">asarray</span></a><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="linenos">41</span>     <span class="n">min_</span><span class="p">,</span> <span class="n">max_</span> <span class="o">=</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.min.html#numpy.min" title="numpy.min"><span class="n">np</span><span class="o">.</span><span class="n">min</span></a><span class="p">(</span><span class="n">scores</span><span class="p">),</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.max.html#numpy.max" title="numpy.max"><span class="n">np</span><span class="o">.</span><span class="n">max</span></a><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<span class="linenos">42</span>     <span class="k">if</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.isclose.html#numpy.isclose" title="numpy.isclose"><span class="n">np</span><span class="o">.</span><span class="n">isclose</span></a><span class="p">(</span><span class="n">min_</span><span class="p">,</span> <span class="n">max_</span><span class="p">):</span>
+<span class="linenos">43</span>         <span class="c1"># Avoid divide-by-zero when all values identical</span>
+<span class="linenos">44</span>         <span class="k">return</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.zeros_like.html#numpy.zeros_like" title="numpy.zeros_like"><span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span></a><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<span class="linenos">45</span>     <span class="k">return</span> <span class="p">(</span><span class="n">scores</span> <span class="o">-</span> <span class="n">min_</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">max_</span> <span class="o">-</span> <span class="n">min_</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Load the data
-X, y = data_3_classes(return_X_y=True, as_frame=False)</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">33</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer" title="sklearn.datasets.load_breast_cancer"><span class="n">data_2_classes</span></a><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="linenos">34</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="linenos">35</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.unique.html#numpy.unique" title="numpy.unique"><span class="n">np</span><span class="o">.</span><span class="n">unique</span></a><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+X, y = data_3_classes(return_X_y=True, as_frame=False)
+X, y = data_2_classes(return_X_y=True, as_frame=False)</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">53</span> <span class="c1"># Generate a sample dataset</span>
+<span class="linenos">54</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html#sklearn.datasets.make_classification" title="sklearn.datasets.make_classification"><span class="n">make_classification</span></a><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+<span class="linenos">55</span>                           <span class="n">n_redundant</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_repeated</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="linenos">56</span>                           <span class="n">class_sep</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">flip_y</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">],</span>
+<span class="linenos">57</span>                           <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">60</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a><span class="p">(</span>
+<span class="linenos">61</span>     <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span>
+<span class="linenos">62</span> <span class="p">)</span>
+<span class="linenos">63</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.unique.html#numpy.unique" title="numpy.unique"><span class="n">np</span><span class="o">.</span><span class="n">unique</span></a><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>array([0, 1])
 </pre></div>
 </div>
 <p>Create an instance of the LogisticRegression</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">39</span> <span class="n">model</span> <span class="o">=</span> <span class="p">(</span>
-<span class="linenos">40</span>     <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="mf">1e5</span><span class="p">),</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="linenos">41</span>     <span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="linenos">42</span> <span class="p">)</span>
-<span class="linenos">43</span> <span class="c1"># Perform predictions</span>
-<span class="linenos">44</span> <span class="n">y_val_prob</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
-<span class="linenos">45</span> <span class="c1"># Create a DataFrame with predictions</span>
-<span class="linenos">46</span> <span class="n">df</span> <span class="o">=</span> <a class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame"><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span></a><span class="p">({</span>
-<span class="linenos">47</span>     <span class="s2">"y_true"</span><span class="p">:</span> <span class="n">y_val</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># target class (0,1,2)</span>
-<span class="linenos">48</span>     <span class="s2">"y_score"</span><span class="p">:</span> <span class="n">y_val_prob</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>  <span class="c1"># target class (0,1,2)</span>
-<span class="linenos">49</span>     <span class="c1"># "y_true": np.random.normal(0.5, 0.1, 100).round(),</span>
-<span class="linenos">50</span>     <span class="c1"># "y_score": np.random.normal(0.5, 0.15, 100),</span>
-<span class="linenos">51</span>     <span class="c1"># "hue": np.random.normal(0.5, 0.4, 100).round(),</span>
-<span class="linenos">52</span> <span class="p">})</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">67</span> <span class="n">model</span> <span class="o">=</span> <span class="p">(</span>
+<span class="linenos">68</span>     <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a><span class="p">(</span>
+<span class="linenos">69</span>         <span class="c1"># max_iter=int(1e5),</span>
+<span class="linenos">70</span>         <span class="c1"># C=10,</span>
+<span class="linenos">71</span>         <span class="c1"># penalty='l1',</span>
+<span class="linenos">72</span>         <span class="c1"># solver='liblinear',</span>
+<span class="linenos">73</span>         <span class="n">class_weight</span><span class="o">=</span><span class="s1">'balanced'</span><span class="p">,</span>
+<span class="linenos">74</span>         <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span>
+<span class="linenos">75</span>     <span class="p">)</span>
+<span class="linenos">76</span>     <span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="linenos">77</span> <span class="p">)</span>
+<span class="linenos">78</span> <span class="c1"># Perform predictions</span>
+<span class="linenos">79</span> <span class="n">y_val_prob</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+<span class="linenos">80</span> <span class="c1"># Create a DataFrame with predictions</span>
+<span class="linenos">81</span> <span class="n">df</span> <span class="o">=</span> <a class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame"><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span></a><span class="p">({</span>
+<span class="linenos">82</span>     <span class="s2">"y_true"</span><span class="p">:</span> <span class="n">y_val</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># target class (0,1,2)</span>
+<span class="linenos">83</span>     <span class="s2">"y_score"</span><span class="p">:</span> <span class="n">y_val_prob</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>  <span class="c1"># target class (0,1,2)</span>
+<span class="linenos">84</span>     <span class="c1"># np.argmax</span>
+<span class="linenos">85</span>     <span class="s2">"y_pred"</span><span class="p">:</span> <span class="n">y_val_prob</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">,</span>  <span class="c1"># target class (0,1,2)</span>
+<span class="linenos">86</span>     <span class="c1"># "y_true": np.random.normal(0.5, 0.1, 100).round(),</span>
+<span class="linenos">87</span>     <span class="c1"># "y_score": np.random.normal(0.5, 0.15, 100),</span>
+<span class="linenos">88</span>     <span class="c1"># "hue": np.random.normal(0.5, 0.4, 100).round(),</span>
+<span class="linenos">89</span> <span class="p">})</span>
+<span class="linenos">90</span> <span class="n">df</span>
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">57</span> <span class="n">p</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">evalplot</span><span class="p">(</span>
-<span class="linenos">58</span>     <span class="n">df</span><span class="p">,</span>
-<span class="linenos">59</span>     <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span>
-<span class="linenos">60</span>     <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span>
-<span class="linenos">61</span>     <span class="n">kind</span><span class="o">=</span><span class="s2">"all"</span><span class="p">,</span>
-<span class="linenos">62</span> <span class="p">)</span>
-</pre></div>
-</div>
-<img alt="Classification Report, Confusion Matrix" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_evalplot_script_001.png" srcset="../../_images/sphx_glr_plot_evalplot_script_001.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">66</span> <span class="n">p</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">evalplot</span><span class="p">(</span>
-<span class="linenos">67</span>     <span class="n">df</span><span class="p">,</span>
-<span class="linenos">68</span>     <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span>
-<span class="linenos">69</span>     <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span>
-<span class="linenos">70</span>     <span class="n">kind</span><span class="o">=</span><span class="s2">"classification_report"</span><span class="p">,</span>
-<span class="linenos">71</span>     <span class="n">text_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">'fontsize'</span><span class="p">:</span> <span class="mi">16</span><span class="p">},</span>
-<span class="linenos">72</span> <span class="p">)</span>
-</pre></div>
-</div>
-<img alt="Classification Report" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_evalplot_script_002.png" srcset="../../_images/sphx_glr_plot_evalplot_script_002.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">75</span> <span class="n">p</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">evalplot</span><span class="p">(</span>
-<span class="linenos">76</span>     <span class="n">df</span><span class="p">,</span>
-<span class="linenos">77</span>     <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span>
-<span class="linenos">78</span>     <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span>
-<span class="linenos">79</span>     <span class="n">kind</span><span class="o">=</span><span class="s2">"confusion_matrix"</span><span class="p">,</span>
-<span class="linenos">80</span> <span class="p">)</span>
-</pre></div>
-</div>
-<img alt="Confusion Matrix" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_evalplot_script_003.png" srcset="../../_images/sphx_glr_plot_evalplot_script_003.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">83</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="linenos">84</span> <span class="n">p</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">evalplot</span><span class="p">(</span>
-<span class="linenos">85</span>     <span class="n">df</span><span class="p">,</span>
-<span class="linenos">86</span>     <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span>
-<span class="linenos">87</span>     <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span>
-<span class="linenos">88</span>     <span class="n">kind</span><span class="o">=</span><span class="s2">"all"</span><span class="p">,</span>
-<span class="linenos">89</span>     <span class="c1"># legend=True,</span>
-<span class="linenos">90</span> <span class="p">)</span>
-</pre></div>
-</div>
-<img alt="Classification Report, Confusion Matrix" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_evalplot_script_004.png" srcset="../../_images/sphx_glr_plot_evalplot_script_004.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">93</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="linenos">94</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="linenos">95</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html#sklearn.datasets.make_classification" title="sklearn.datasets.make_classification"><span class="n">make_classification</span></a>
-<span class="linenos">96</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a>
-<span class="linenos">97</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
-<span class="linenos">98</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html#sklearn.metrics.classification_report" title="sklearn.metrics.classification_report"><span class="n">classification_report</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html#sklearn.metrics.confusion_matrix" title="sklearn.metrics.confusion_matrix"><span class="n">confusion_matrix</span></a>
-</pre></div>
-</div>
-<p>Create a synthetic dataset with 15 classes</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">103</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html#sklearn.datasets.make_classification" title="sklearn.datasets.make_classification"><span class="n">make_classification</span></a><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-<span class="linenos">104</span>                            <span class="n">n_classes</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
-<span class="linenos">105</span>                            <span class="n">n_redundant</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="linenos">106</span>
-<span class="linenos">107</span> <span class="c1"># Convert to DataFrame for easier visualization (optional)</span>
-<span class="linenos">108</span> <span class="n">data</span> <span class="o">=</span> <a class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame"><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span></a><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="linenos">109</span> <span class="n">data</span><span class="p">[</span><span class="s1">'target'</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
-<span class="linenos">110</span>
-<span class="linenos">111</span> <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>          0         1         2  ...        18         19  target
-0 -3.249907 -7.609039  3.904290  ...  0.613949  -3.092426       7
-1 -1.653727  3.553595 -0.281940  ... -2.332832  -4.067393       3
-2 -1.057158  7.627822  0.181669  ...  0.713138   6.743130      11
-3  0.734427 -2.012334 -1.798327  ... -4.232499   1.357491      11
-4  6.516446 -8.325342 -1.350152  ...  1.410434  13.547467       1
+<div class="output_subarea output_html rendered_html output_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-[5 rows x 21 columns]
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>y_true</th>
+<th>y_score</th>
+<th>y_pred</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>False</td>
+<td>0.033725</td>
+<td>False</td>
+</tr>
+<tr>
+<th>1</th>
+<td>True</td>
+<td>0.860583</td>
+<td>True</td>
+</tr>
+<tr>
+<th>2</th>
+<td>False</td>
+<td>0.423101</td>
+<td>False</td>
+</tr>
+<tr>
+<th>3</th>
+<td>False</td>
+<td>0.137295</td>
+<td>False</td>
+</tr>
+<tr>
+<th>4</th>
+<td>False</td>
+<td>0.788645</td>
+<td>True</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>995</th>
+<td>False</td>
+<td>0.228034</td>
+<td>False</td>
+</tr>
+<tr>
+<th>996</th>
+<td>False</td>
+<td>0.017187</td>
+<td>False</td>
+</tr>
+<tr>
+<th>997</th>
+<td>True</td>
+<td>0.987892</td>
+<td>True</td>
+</tr>
+<tr>
+<th>998</th>
+<td>False</td>
+<td>0.931136</td>
+<td>True</td>
+</tr>
+<tr>
+<th>999</th>
+<td>False</td>
+<td>0.128248</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<p>1000 rows × 3 columns</p>
+</div>
+</div>
+<br/>
+<br/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 95</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.evalplot.html#scikitplot.snsx.evalplot" title="scikitplot.snsx.evalplot"><span class="n">sp</span><span class="o">.</span><span class="n">evalplot</span></a><span class="p">(</span>
+<span class="linenos"> 96</span>     <span class="n">df</span><span class="p">,</span>
+<span class="linenos"> 97</span>     <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span>
+<span class="linenos"> 98</span>     <span class="n">y</span><span class="o">=</span><span class="s2">"y_pred"</span><span class="p">,</span>
+<span class="linenos"> 99</span>     <span class="c1"># y="y_score",</span>
+<span class="linenos">100</span>     <span class="c1"># allow_probs=True,  # if y_score provided</span>
+<span class="linenos">101</span>     <span class="c1"># threshold=0.5,</span>
+<span class="linenos">102</span>     <span class="n">kind</span><span class="o">=</span><span class="s2">"all"</span><span class="p">,</span>
+<span class="linenos">103</span> <span class="p">)</span>
 </pre></div>
 </div>
-<p>Split the dataset into training and testing sets</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">115</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<img alt="Classification Report, Confusion Matrix" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_evalplot_script_001.png" srcset="../../_images/sphx_glr_plot_evalplot_script_001.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">107</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.evalplot.html#scikitplot.snsx.evalplot" title="scikitplot.snsx.evalplot"><span class="n">sp</span><span class="o">.</span><span class="n">evalplot</span></a><span class="p">(</span>
+<span class="linenos">108</span>     <span class="n">df</span><span class="p">,</span>
+<span class="linenos">109</span>     <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span>
+<span class="linenos">110</span>     <span class="n">y</span><span class="o">=</span><span class="s2">"y_pred"</span><span class="p">,</span>
+<span class="linenos">111</span>     <span class="n">kind</span><span class="o">=</span><span class="s2">"classification_report"</span><span class="p">,</span>
+<span class="linenos">112</span>     <span class="n">text_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">'fontsize'</span><span class="p">:</span> <span class="mi">16</span><span class="p">},</span>
+<span class="linenos">113</span> <span class="p">)</span>
+</pre></div>
+</div>
+<img alt="Classification Report" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_evalplot_script_002.png" srcset="../../_images/sphx_glr_plot_evalplot_script_002.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">116</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.evalplot.html#scikitplot.snsx.evalplot" title="scikitplot.snsx.evalplot"><span class="n">sp</span><span class="o">.</span><span class="n">evalplot</span></a><span class="p">(</span>
+<span class="linenos">117</span>     <span class="n">df</span><span class="p">,</span>
+<span class="linenos">118</span>     <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span>
+<span class="linenos">119</span>     <span class="n">y</span><span class="o">=</span><span class="s2">"y_pred"</span><span class="p">,</span>
+<span class="linenos">120</span>     <span class="n">kind</span><span class="o">=</span><span class="s2">"confusion_matrix"</span><span class="p">,</span>
+<span class="linenos">121</span> <span class="p">)</span>
+</pre></div>
+</div>
+<img alt="Confusion Matrix" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_evalplot_script_003.png" srcset="../../_images/sphx_glr_plot_evalplot_script_003.png"/><p>fig, ax = plt.subplots(figsize=(8, 6))</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">125</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.evalplot.html#scikitplot.snsx.evalplot" title="scikitplot.snsx.evalplot"><span class="n">sp</span><span class="o">.</span><span class="n">evalplot</span></a><span class="p">(</span>
+<span class="linenos">126</span>     <span class="n">df</span><span class="p">,</span>
+<span class="linenos">127</span>     <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span>
+<span class="linenos">128</span>     <span class="c1"># y="y_pred",</span>
+<span class="linenos">129</span>     <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span>
+<span class="linenos">130</span>     <span class="n">allow_probs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># if y_score provided</span>
+<span class="linenos">131</span>     <span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+<span class="linenos">132</span>     <span class="n">kind</span><span class="o">=</span><span class="s2">"all"</span><span class="p">,</span>
+<span class="linenos">133</span> <span class="p">)</span>
+</pre></div>
+</div>
+<img alt="Classification Report, Confusion Matrix" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_evalplot_script_004.png" srcset="../../_images/sphx_glr_plot_evalplot_script_004.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">136</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="linenos">137</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="linenos">138</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html#sklearn.datasets.make_classification" title="sklearn.datasets.make_classification"><span class="n">make_classification</span></a>
+<span class="linenos">139</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<span class="linenos">140</span>     <span class="n">load_breast_cancer</span> <span class="k">as</span> <span class="n">data_2_classes</span><span class="p">,</span>
+<span class="linenos">141</span>     <span class="n">load_iris</span> <span class="k">as</span> <span class="n">data_3_classes</span><span class="p">,</span>
+<span class="linenos">142</span>     <span class="n">load_digits</span> <span class="k">as</span> <span class="n">data_10_classes</span><span class="p">,</span>
+<span class="linenos">143</span> <span class="p">)</span>
+<span class="linenos">144</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a>
+<span class="linenos">145</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
+<span class="linenos">146</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html#sklearn.metrics.classification_report" title="sklearn.metrics.classification_report"><span class="n">classification_report</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html#sklearn.metrics.confusion_matrix" title="sklearn.metrics.confusion_matrix"><span class="n">confusion_matrix</span></a>
+</pre></div>
+</div>
+<p>Load the data
+X, y = data_3_classes(return_X_y=True, as_frame=False)
+X, y = data_2_classes(return_X_y=True, as_frame=False)</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">154</span> <span class="c1"># Generate a sample dataset</span>
+<span class="linenos">155</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html#sklearn.datasets.make_classification" title="sklearn.datasets.make_classification"><span class="n">make_classification</span></a><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+<span class="linenos">156</span>                           <span class="n">n_redundant</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_repeated</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="linenos">157</span>                           <span class="n">class_sep</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">flip_y</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.97</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">],</span>
+<span class="linenos">158</span>                           <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">161</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a><span class="p">(</span>
+<span class="linenos">162</span>     <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="linenos">163</span> <span class="p">)</span>
+<span class="linenos">164</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.unique.html#numpy.unique" title="numpy.unique"><span class="n">np</span><span class="o">.</span><span class="n">unique</span></a><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>array([0, 1])
 </pre></div>
 </div>
 <p>Initialize the Random Forest Classifier</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">119</span> <span class="n">rf_model</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="linenos">120</span>
-<span class="linenos">121</span> <span class="c1"># Train the model</span>
-<span class="linenos">122</span> <span class="n">rf_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">168</span> <span class="n">rf_model</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a><span class="p">(</span>
+<span class="linenos">169</span>     <span class="n">class_weight</span><span class="o">=</span><span class="s1">'balanced'</span><span class="p">,</span>
+<span class="linenos">170</span>     <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+<span class="linenos">171</span>     <span class="n">max_depth</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+<span class="linenos">172</span>     <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="linenos">173</span> <span class="p">)</span>
+<span class="linenos">174</span>
+<span class="linenos">175</span> <span class="c1"># Train the model</span>
+<span class="linenos">176</span> <span class="n">rf_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="output_subarea output_html rendered_html output_result">
@@ -1049,7 +1191,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
     height: 14px;
     cursor: pointer;
 }
-</style><body><div class="sk-top-container" id="sk-container-id-1"><div class="sk-text-repr-fallback"><pre>RandomForestClassifier(random_state=0)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br/>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input checked="" class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox"/><label class="sk-toggleable__label fitted sk-toggleable__label-arrow" for="sk-estimator-id-1"><div><div>RandomForestClassifier</div></div><div><a class="sk-estimator-doc-link fitted" href="https://scikit-learn.org/1.7/modules/generated/sklearn.ensemble.RandomForestClassifier.html" rel="noreferrer" target="_blank">?<span>Documentation for RandomForestClassifier</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
+</style><body><div class="sk-top-container" id="sk-container-id-1"><div class="sk-text-repr-fallback"><pre>RandomForestClassifier(class_weight='balanced', max_depth=6, random_state=0)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br/>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input checked="" class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox"/><label class="sk-toggleable__label fitted sk-toggleable__label-arrow" for="sk-estimator-id-1"><div><div>RandomForestClassifier</div></div><div><a class="sk-estimator-doc-link fitted" href="https://scikit-learn.org/1.7/modules/generated/sklearn.ensemble.RandomForestClassifier.html" rel="noreferrer" target="_blank">?<span>Documentation for RandomForestClassifier</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
 <div class="estimator-table">
 <details>
 <summary>Parameters</summary>
@@ -1067,11 +1209,11 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <td class="param">criterion </td>
 <td class="value">'gini'</td>
 </tr>
-<tr class="default">
+<tr class="user-set">
 <td><i class="copy-paste-icon" onclick="copyToClipboard('max_depth',
                           this.parentElement.nextElementSibling)"></i></td>
 <td class="param">max_depth </td>
-<td class="value">None</td>
+<td class="value">6</td>
 </tr>
 <tr class="default">
 <td><i class="copy-paste-icon" onclick="copyToClipboard('min_samples_split',
@@ -1145,11 +1287,11 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <td class="param">warm_start </td>
 <td class="value">False</td>
 </tr>
-<tr class="default">
+<tr class="user-set">
 <td><i class="copy-paste-icon" onclick="copyToClipboard('class_weight',
                           this.parentElement.nextElementSibling)"></i></td>
 <td class="param">class_weight </td>
-<td class="value">None</td>
+<td class="value">'balanced'</td>
 </tr>
 <tr class="default">
 <td><i class="copy-paste-icon" onclick="copyToClipboard('ccp_alpha',
@@ -1219,88 +1361,62 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 </div>
 <br/>
 <br/><p>Make predictions on the test set</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">126</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">rf_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">180</span> <span class="n">y_val_pred</span> <span class="o">=</span> <span class="n">rf_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+<span class="linenos">181</span> <span class="n">y_val_prob</span> <span class="o">=</span> <span class="n">rf_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">129</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="linenos">130</span> <span class="n">p</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">evalplot</span><span class="p">(</span>
-<span class="linenos">131</span>     <span class="n">x</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span>
-<span class="linenos">132</span>     <span class="n">y</span><span class="o">=</span><span class="n">y_pred</span><span class="p">,</span>
-<span class="linenos">133</span>     <span class="n">kind</span><span class="o">=</span><span class="s2">"all"</span><span class="p">,</span>
-<span class="linenos">134</span>     <span class="c1"># legend=True,</span>
-<span class="linenos">135</span> <span class="p">)</span>
+<p>fig, ax = plt.subplots(figsize=(8, 8))</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">185</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.evalplot.html#scikitplot.snsx.evalplot" title="scikitplot.snsx.evalplot"><span class="n">sp</span><span class="o">.</span><span class="n">evalplot</span></a><span class="p">(</span>
+<span class="linenos">186</span>     <span class="n">x</span><span class="o">=</span><span class="n">y_val</span><span class="p">,</span>
+<span class="linenos">187</span>     <span class="n">y</span><span class="o">=</span><span class="n">y_val_pred</span><span class="p">,</span>
+<span class="linenos">188</span>     <span class="n">kind</span><span class="o">=</span><span class="s2">"all"</span><span class="p">,</span>
+<span class="linenos">189</span> <span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Classification Report, Confusion Matrix" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_evalplot_script_005.png" srcset="../../_images/sphx_glr_plot_evalplot_script_005.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">138</span> <span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
-<span class="linenos">139</span>
-<span class="linenos">140</span> <span class="c1"># Save the combined figure as an image file</span>
-<span class="linenos">141</span> <span class="n">figs</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span>  <span class="c1"># experimental</span>
-<span class="linenos">142</span>     <span class="n">p</span><span class="o">.</span><span class="n">figure</span><span class="p">,</span>
-<span class="linenos">143</span>     <span class="n">p</span><span class="o">.</span><span class="n">figure</span><span class="p">,</span>
-<span class="linenos">144</span>     <span class="n">orient</span><span class="o">=</span><span class="s1">'x'</span><span class="p">,</span>
-<span class="linenos">145</span>     <span class="o">**</span><span class="p">{</span><span class="s1">'figsize'</span><span class="p">:</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">)}</span>
-<span class="linenos">146</span> <span class="p">)</span>
+<img alt="Classification Report, Confusion Matrix" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_evalplot_script_005.png" srcset="../../_images/sphx_glr_plot_evalplot_script_005.png"/><p>fig, ax = plt.subplots(figsize=(8, 8))</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">193</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.evalplot.html#scikitplot.snsx.evalplot" title="scikitplot.snsx.evalplot"><span class="n">sp</span><span class="o">.</span><span class="n">evalplot</span></a><span class="p">(</span>
+<span class="linenos">194</span>     <span class="n">x</span><span class="o">=</span><span class="n">y_val</span><span class="p">,</span>
+<span class="linenos">195</span>     <span class="c1"># y=y_pred,</span>
+<span class="linenos">196</span>     <span class="n">y</span><span class="o">=</span><span class="n">y_val_prob</span><span class="p">,</span>
+<span class="linenos">197</span>     <span class="n">allow_probs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># if y_score provided</span>
+<span class="linenos">198</span>     <span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+<span class="linenos">199</span>     <span class="n">kind</span><span class="o">=</span><span class="s2">"all"</span><span class="p">,</span>
+<span class="linenos">200</span> <span class="p">)</span>
 </pre></div>
 </div>
-<img alt="plot evalplot script" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_evalplot_script_006.png" srcset="../../_images/sphx_glr_plot_evalplot_script_006.png"/><p>Generate a classification report</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">150</span> <span class="nb">print</span><span class="p">(</span><a class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html#sklearn.metrics.classification_report" title="sklearn.metrics.classification_report"><span class="n">classification_report</span></a><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
-<span class="linenos">151</span>
-<span class="linenos">152</span> <span class="c1"># Generate a confusion matrix</span>
-<span class="linenos">153</span> <span class="n">conf_matrix</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html#sklearn.metrics.confusion_matrix" title="sklearn.metrics.confusion_matrix"><span class="n">confusion_matrix</span></a><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="linenos">154</span> <span class="nb">print</span><span class="p">(</span><span class="n">conf_matrix</span><span class="p">)</span>
+<img alt="Classification Report, Confusion Matrix" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_evalplot_script_006.png" srcset="../../_images/sphx_glr_plot_evalplot_script_006.png"/><p>Generate a classification report</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">204</span> <span class="nb">print</span><span class="p">(</span><a class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html#sklearn.metrics.classification_report" title="sklearn.metrics.classification_report"><span class="n">classification_report</span></a><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">y_val_pred</span><span class="p">))</span>
+<span class="linenos">205</span>
+<span class="linenos">206</span> <span class="c1"># Generate a confusion matrix</span>
+<span class="linenos">207</span> <span class="n">conf_matrix</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html#sklearn.metrics.confusion_matrix" title="sklearn.metrics.confusion_matrix"><span class="n">confusion_matrix</span></a><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">y_val_pred</span><span class="p">)</span>
+<span class="linenos">208</span> <span class="nb">print</span><span class="p">(</span><span class="n">conf_matrix</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
-           0       0.48      0.48      0.48        64
-           1       0.44      0.48      0.46        61
-           2       0.56      0.52      0.54        65
-           3       0.55      0.67      0.60        61
-           4       0.53      0.62      0.57        76
-           5       0.64      0.45      0.53        80
-           6       0.64      0.62      0.63        72
-           7       0.57      0.66      0.61        56
-           8       0.62      0.62      0.62        65
-           9       0.54      0.57      0.56        68
-          10       0.67      0.60      0.63        70
-          11       0.54      0.55      0.54        69
-          12       0.63      0.53      0.58        77
-          13       0.56      0.45      0.50        67
-          14       0.41      0.53      0.46        49
+           0       0.97      1.00      0.99       966
+           1       0.73      0.24      0.36        34
 
-    accuracy                           0.56      1000
-   macro avg       0.56      0.56      0.55      1000
-weighted avg       0.56      0.56      0.56      1000
+    accuracy                           0.97      1000
+   macro avg       0.85      0.62      0.67      1000
+weighted avg       0.97      0.97      0.96      1000
 
-[[31  2  3  3  2  3  3  2  2  4  1  3  0  1  4]
- [ 5 29  3  3  1  2  2  2  2  2  1  3  2  3  1]
- [ 0  2 34  3  3  1  0  3  2  1  3  1  5  2  5]
- [ 3  1  1 41  1  1  0  1  2  1  0  2  1  2  4]
- [ 5  4  1  3 47  1  1  2  2  2  1  2  3  2  0]
- [ 3  5  1  3  7 36  0  6  2  5  1  9  0  1  1]
- [ 0  1  2  3  7  1 45  2  0  1  0  4  2  1  3]
- [ 1  0  1  2  3  3  3 37  1  1  0  0  1  3  0]
- [ 6  3  0  3  1  1  2  1 40  4  0  2  1  0  1]
- [ 1  1  1  4  3  2  3  0  1 39  4  1  0  1  7]
- [ 1  1  7  1  4  0  3  0  1  2 42  1  3  2  2]
- [ 1  4  3  0  2  2  4  0  2  5  1 38  3  1  3]
- [ 1  5  1  1  3  2  1  2  2  2  6  5 41  3  2]
- [ 5  4  3  0  3  1  2  5  4  3  2  0  0 30  5]
- [ 2  4  0  5  2  0  1  2  1  0  1  0  3  2 26]]
+[[963   3]
+ [ 26   8]]
 </pre></div>
 </div>
 <p>import seaborn as sns</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">159</span> <span class="c1"># plt.figure(figsize=(12, 7))</span>
-<span class="linenos">160</span> <span class="c1"># sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues',</span>
-<span class="linenos">161</span> <span class="c1">#             xticklabels=np.arange(15), yticklabels=np.arange(15))</span>
-<span class="linenos">162</span> <span class="c1"># plt.ylabel('Actual')</span>
-<span class="linenos">163</span> <span class="c1"># plt.xlabel('Predicted')</span>
-<span class="linenos">164</span> <span class="c1"># plt.title('Confusion Matrix')</span>
-<span class="linenos">165</span> <span class="c1"># plt.show()</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">213</span> <span class="c1"># plt.figure(figsize=(12, 7))</span>
+<span class="linenos">214</span> <span class="c1"># sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues',</span>
+<span class="linenos">215</span> <span class="c1">#             xticklabels=np.arange(15), yticklabels=np.arange(15))</span>
+<span class="linenos">216</span> <span class="c1"># plt.ylabel('Actual')</span>
+<span class="linenos">217</span> <span class="c1"># plt.xlabel('Predicted')</span>
+<span class="linenos">218</span> <span class="c1"># plt.title('Confusion Matrix')</span>
+<span class="linenos">219</span> <span class="c1"># plt.show()</span>
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-model-evaluation.html"><span class="doc">model-workflow: model evaluation</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-line.html"><span class="doc">plot-type: line</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-eval.html"><span class="doc">plot-type: eval</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.563 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.374 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.snsx.decileplot function used by a scikit-learn regressor."><img alt="" src="../../_images/sphx_glr_plot_decileplot_script_thumb.png"/>
@@ -1365,7 +1481,7 @@ weighted avg       0.56      0.56      0.56      1000
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251005.92919f1 2025-10-04T21:31Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251015.77d3a1a 2025-10-15T05:18Z.
       <br/>
 </p>
 </div>

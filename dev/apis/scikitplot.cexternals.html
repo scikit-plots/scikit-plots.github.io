@@ -597,6 +597,7 @@
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">scikitplot.cexternals</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.html">stats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._f2py.get_include.html">get_include</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals.annoy.AnnoyIndex.html">AnnoyIndex</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -626,6 +627,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.html">_tweedie</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals.array_api_compat.html">array_api_compat</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals.array_api_extra.html">array_api_extra</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.impute.AnnoyKNNImputer.html">AnnoyKNNImputer</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.kds.html">scikitplot.kds</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -815,15 +820,57 @@ Copyright 2011 – present NumPy Developers.
 Permission to use, modify, and distribute this software is given under the terms
 of the NumPy License.</p>
 <p>NO WARRANTY IS EXPRESSED OR IMPLIED.  USE AT YOUR OWN RISK.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r7db1fe095752-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
 <p><a href="#id1"><span class="problematic" id="id2">`https://stdlib.fortran-lang.org/lists/modules.html`_</span></a></p>
+</div>
+<div class="citation" id="r7db1fe095752-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<p><a href="#id3"><span class="problematic" id="id4">`https://numpy.org/doc/stable/f2py/index.html`_</span></a></p>
+</div>
+<div class="citation" id="r7db1fe095752-3" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<p><a href="#id5"><span class="problematic" id="id6">`https://scipy.github.io/old-wiki/pages/Cookbook/f2py_and_NumPy.html`_</span></a></p>
+</div>
+<div class="citation" id="r7db1fe095752-4" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
+<p><a href="#id7"><span class="problematic" id="id8">`https://scipy-cookbook.readthedocs.io/items/F2Py.html`_</span></a></p>
+</div>
+<div class="citation" id="r7db1fe095752-5" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
+<p><a href="#id9"><span class="problematic" id="id10">`https://scipy-cookbook.readthedocs.io/items/idx_interfacing_with_other_languages.html`_</span></a></p>
+</div>
 </div>
 <p><strong>User guide.</strong> See the <span class="xref std std-ref">cexternals-index</span> section for further details.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cexternals._f2py.get_include.html#scikitplot.cexternals._f2py.get_include" title="scikitplot.cexternals._f2py.get_include"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_f2py.get_include</span></code></a></p></td>
 <td><p>Return the directory that contains the <code class="docutils literal notranslate"><span class="pre">fortranobject.c</span></code> and <code class="docutils literal notranslate"><span class="pre">.h</span></code> files.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="module-scikitplot.cexternals.annoy">
+<span id="spotify-annoy-as-submodule"></span><span id="cexternals-ref-spotify-annoy-as-submodule"></span><h2>Spotify annoy as submodule.<a class="headerlink" href="#module-scikitplot.cexternals.annoy" title="Link to this heading">#</a></h2>
+<p>Annoy (Approximate Nearest Neighbors Oh Yeah) is a C++ library with Python bindings
+to search for points in space that are close to a given query point.
+It also creates large read-only file-based data structures
+that are mmapped into memory so that many processes may share the same data.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r5f270860f2a1-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://pypi.org/project/annoy">https://pypi.org/project/annoy</a></p>
+</div>
+</div>
+<p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/cexternals/annoy/index.html#annoy-index"><span class="std std-ref">Annoy (experimental)</span></a> section for further details.</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cexternals.annoy.AnnoyIndex.html#scikitplot.cexternals.annoy.AnnoyIndex" title="scikitplot.cexternals.annoy.AnnoyIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">annoy.AnnoyIndex</span></code></a></p></td>
+<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">Annoy</span></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -893,7 +940,7 @@ of the NumPy License.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251005.92919f1 2025-10-04T21:31Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251015.77d3a1a 2025-10-15T05:18Z.
       <br/>
     
   </p>

@@ -696,7 +696,7 @@
 </div>
 <p>Matplotlib uses the <a href="#id4"><span class="problematic" id="id5">pytest_</span></a> framework.</p>
 <p>The tests are in <code class="file docutils literal notranslate"><span class="pre">lib/matplotlib/tests</span></code>, and customizations to the pytest
-testing infrastructure are in <a class="reference external" href="https://matplotlib.org/stable/api/testing_api.html#module-matplotlib.testing" title="(in Matplotlib v3.10.6)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">matplotlib.testing</span></code></a>.</p>
+testing infrastructure are in <a class="reference external" href="https://matplotlib.org/stable/api/testing_api.html#module-matplotlib.testing" title="(in Matplotlib v3.10.7)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">matplotlib.testing</span></code></a>.</p>
 <section id="requirements">
 <span id="testing-requirements"></span><h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h2>
 <p>To run the tests you will need to
@@ -743,14 +743,14 @@ installed, but Matplotlib should be):</p>
 <p>If you want to use <code class="docutils literal notranslate"><span class="pre">pytest</span></code> as a module (via <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pytest</span></code>), then you will need
 to avoid clashes between <code class="docutils literal notranslate"><span class="pre">pytest</span></code>’s import mode and Python’s search path:</p>
 <ul>
-<li><p>On more recent Python, you may <a class="reference external" href="https://docs.python.org/3/using/cmdline.html#cmdoption-P" title="(in Python v3.13)"><code class="xref std std-option docutils literal notranslate"><span class="pre">disable</span> <span class="pre">&quot;unsafe</span> <span class="pre">import</span>
+<li><p>On more recent Python, you may <a class="reference external" href="https://docs.python.org/3/using/cmdline.html#cmdoption-P" title="(in Python v3.14)"><code class="xref std std-option docutils literal notranslate"><span class="pre">disable</span> <span class="pre">&quot;unsafe</span> <span class="pre">import</span>
 <span class="pre">paths&quot;</span></code></a> (i.e., stop adding the current directory to the import path) with the
 <code class="docutils literal notranslate"><span class="pre">-P</span></code> argument:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">P</span> <span class="o">-</span><span class="n">m</span> <span class="n">pytest</span>
 </pre></div>
 </div>
 </li>
-<li><p>On older Python, you may enable <a class="reference external" href="https://docs.python.org/3/using/cmdline.html#cmdoption-I" title="(in Python v3.13)"><code class="xref std std-option docutils literal notranslate"><span class="pre">isolated</span> <span class="pre">mode</span></code></a>
+<li><p>On older Python, you may enable <a class="reference external" href="https://docs.python.org/3/using/cmdline.html#cmdoption-I" title="(in Python v3.14)"><code class="xref std std-option docutils literal notranslate"><span class="pre">isolated</span> <span class="pre">mode</span></code></a>
 (which stops adding the current directory to the import path, but has other
 repercussions):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">I</span> <span class="o">-</span><span class="n">m</span> <span class="n">pytest</span>
@@ -1106,7 +1106,7 @@ functions:</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251005.92919f1 2025-10-04T21:31Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251015.77d3a1a 2025-10-15T05:18Z.
       <br/>
     
   </p>

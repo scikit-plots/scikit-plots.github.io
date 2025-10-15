@@ -600,6 +600,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.cexternals.html">scikitplot.cexternals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.html">stats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._f2py.get_include.html">get_include</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals.annoy.AnnoyIndex.html">AnnoyIndex</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -629,6 +630,10 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.html">_tweedie</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_compat.html">array_api_compat</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_extra.html">array_api_extra</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.impute.AnnoyKNNImputer.html">AnnoyKNNImputer</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.kds.html">scikitplot.kds</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -796,7 +801,7 @@
 <h1>tweedie<a class="headerlink" href="#tweedie" title="Link to this heading">#</a></h1>
 <dl class="py data">
 <dt class="sig sig-object py" id="scikitplot.externals._tweedie.tweedie">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.externals._tweedie.</span></span><span class="sig-name descname"><span class="pre">tweedie</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;scikitplot.externals._tweedie._tweedie_dist.tweedie_gen</span> <span class="pre">object&gt;</span></em><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/92919f1/scikitplot/externals/_tweedie/_tweedie_dist.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.externals._tweedie.tweedie" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.externals._tweedie.</span></span><span class="sig-name descname"><span class="pre">tweedie</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;scikitplot.externals._tweedie._tweedie_dist.tweedie_gen</span> <span class="pre">object&gt;</span></em><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/77d3a1a/scikitplot/externals/_tweedie/_tweedie_dist.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.externals._tweedie.tweedie" title="Link to this definition">#</a></dt>
 <dd><p>An instance of <a class="reference internal" href="scikitplot.externals._tweedie.tweedie_gen.html#scikitplot.externals._tweedie.tweedie_gen" title="scikitplot.externals._tweedie.tweedie_gen"><code class="xref py py-class docutils literal notranslate"><span class="pre">tweedie_gen</span></code></a>, providing Tweedie distribution functionality.</p>
 <p>This instance provides:</p>
 <ul class="simple">
@@ -870,10 +875,10 @@ by a <code class="docutils literal notranslate"><span class="pre">p</span></code
 </div></div>
 <div class="cell_output docutils container">
 <div class="thebelab-output" data-output="true"><div class="docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([0.29192603, 0.12683262, 1.74955839, 2.44091718, 0.07852383,
-       1.50784695, 2.70932959, 0.64646309, 1.64868753, 0.91172245,
-       1.99425912, 0.72789854, 0.90696348, 0.89188635, 1.10979044,
-       0.89699385])
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([3.04484647, 2.96948968, 0.23502906, 1.27289492, 0.05131277,
+       0.46959232, 0.02265949, 1.56113312, 1.04542568, 3.35760179,
+       1.19368154, 1.65536467, 1.0106363 , 0.6774011 , 2.16373818,
+       0.68907677])
 </pre></div>
 </div>
 </div>
@@ -997,7 +1002,7 @@ by a <code class="docutils literal notranslate"><span class="pre">p</span></code
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251005.92919f1 2025-10-04T21:31Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251015.77d3a1a 2025-10-15T05:18Z.
       <br/>
     
   </p>

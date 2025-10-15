@@ -82,7 +82,7 @@
     <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="scikitplot.experimental" href="../../apis/scikitplot.experimental.html" />
+    <link rel="next" title="AnnoyIndex" href="scikitplot.cexternals.annoy.AnnoyIndex.html" />
     <link rel="prev" title="stats" href="scikitplot.cexternals._astropy.stats.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -600,6 +600,7 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../apis/scikitplot.cexternals.html">scikitplot.cexternals</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.html">stats</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">get_include</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals.annoy.AnnoyIndex.html">AnnoyIndex</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -629,6 +630,10 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.html">_tweedie</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_compat.html">array_api_compat</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_extra.html">array_api_extra</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.impute.AnnoyKNNImputer.html">AnnoyKNNImputer</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.kds.html">scikitplot.kds</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -796,7 +801,7 @@
 <h1>get_include<a class="headerlink" href="#get-include" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cexternals._f2py.get_include">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cexternals._f2py.</span></span><span class="sig-name descname"><span class="pre">get_include</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/92919f1/scikitplot/cexternals/_f2py/__init__.py#L34"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexternals._f2py.get_include" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cexternals._f2py.</span></span><span class="sig-name descname"><span class="pre">get_include</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/77d3a1a/scikitplot/cexternals/_f2py/__init__.py#L38"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexternals._f2py.get_include" title="Link to this definition">#</a></dt>
 <dd><p>Return the directory that contains the <code class="docutils literal notranslate"><span class="pre">fortranobject.c</span></code> and <code class="docutils literal notranslate"><span class="pre">.h</span></code> files.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -844,6 +849,29 @@ following source files:</p>
 </ul>
 </li>
 </ul>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r58e7d73fcf1e-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p><a href="#id6"><span class="problematic" id="id7">`https://stdlib.fortran-lang.org/lists/modules.html`_</span></a></p>
+</div>
+<div class="citation" id="r58e7d73fcf1e-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<p><a href="#id8"><span class="problematic" id="id9">`https://numpy.org/doc/stable/f2py/index.html`_</span></a></p>
+</div>
+<div class="citation" id="r58e7d73fcf1e-3" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<p><a href="#id10"><span class="problematic" id="id11">`https://scipy.github.io/old-wiki/pages/Cookbook/f2py_and_NumPy.html`_</span></a></p>
+</div>
+<div class="citation" id="r58e7d73fcf1e-4" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
+<p><a href="#id12"><span class="problematic" id="id13">`https://scipy-cookbook.readthedocs.io/items/F2Py.html`_</span></a></p>
+</div>
+<div class="citation" id="r58e7d73fcf1e-5" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
+<p><a href="#id14"><span class="problematic" id="id15">`https://scipy-cookbook.readthedocs.io/items/idx_interfacing_with_other_languages.html`_</span></a></p>
+</div>
+</div>
 </dd></dl>
 
 </section>
@@ -868,11 +896,11 @@ following source files:</p>
       </div>
     </a>
     <a class="right-next"
-       href="../../apis/scikitplot.experimental.html"
+       href="scikitplot.cexternals.annoy.AnnoyIndex.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">scikitplot.experimental</p>
+        <p class="prev-next-title">AnnoyIndex</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -941,7 +969,7 @@ following source files:</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251005.92919f1 2025-10-04T21:31Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251015.77d3a1a 2025-10-15T05:18Z.
       <br/>
     
   </p>

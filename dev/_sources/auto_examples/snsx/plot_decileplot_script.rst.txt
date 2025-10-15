@@ -59,7 +59,7 @@ Import scikit-plot
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 18-30
+.. GENERATED FROM PYTHON SOURCE LINES 18-32
 
 .. code-block:: Python
    :lineno-start: 18
@@ -68,9 +68,11 @@ Import scikit-plot
     import numpy as np; np.random.seed(0)  # reproducibility
     import pandas as pd
 
+    from sklearn.datasets import make_classification
     from sklearn.datasets import (
         load_breast_cancer as data_2_classes,
-        # load_iris as data_3_classes,
+        load_iris as data_3_classes,
+        load_digits as data_10_classes,
     )
     from sklearn.linear_model import LogisticRegression
     from sklearn.model_selection import train_test_split
@@ -83,18 +85,39 @@ Import scikit-plot
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 31-33
+.. GENERATED FROM PYTHON SOURCE LINES 33-36
 
 Load the data
 X, y = data_3_classes(return_X_y=True, as_frame=False)
+X, y = data_2_classes(return_X_y=True, as_frame=False)
 
-.. GENERATED FROM PYTHON SOURCE LINES 33-37
+.. GENERATED FROM PYTHON SOURCE LINES 36-43
 
 .. code-block:: Python
-   :lineno-start: 33
+   :lineno-start: 37
 
-    X, y = data_2_classes(return_X_y=True, as_frame=False)
-    X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.5, random_state=0)
+
+    # Generate a sample dataset
+    X, y = make_classification(n_samples=5000, n_features=20, n_informative=15,
+                              n_redundant=2, n_classes=2, n_repeated=0,
+                              class_sep=1.5, flip_y=0.01, weights=[0.85, 0.15],
+                              random_state=0)
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 44-49
+
+.. code-block:: Python
+   :lineno-start: 44
+
+    X_train, X_val, y_train, y_val = train_test_split(
+        X, y, stratify=y, test_size=0.2, random_state=0
+    )
     np.unique(y)
 
 
@@ -110,17 +133,24 @@ X, y = data_3_classes(return_X_y=True, as_frame=False)
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 38-39
+.. GENERATED FROM PYTHON SOURCE LINES 50-51
 
 Create an instance of the LogisticRegression
 
-.. GENERATED FROM PYTHON SOURCE LINES 39-56
+.. GENERATED FROM PYTHON SOURCE LINES 51-78
 
 .. code-block:: Python
-   :lineno-start: 39
+   :lineno-start: 51
 
     model = (
-        LogisticRegression(max_iter=int(1e5), random_state=0)
+        LogisticRegression(
+            # max_iter=int(1e5),
+            # C=10,
+            # penalty='l1',
+            # solver='liblinear',
+            class_weight='balanced',
+            random_state=0
+        )
         .fit(X_train, y_train)
     )
     # Perform predictions
@@ -129,10 +159,13 @@ Create an instance of the LogisticRegression
     df = pd.DataFrame({
         "y_true": y_val==1,  # target class (0,1,2)
         "y_score": y_val_prob[:, 1],  # target class (0,1,2)
+        # np.argmax
+        "y_pred": y_val_prob[:, 1] > 0.5,  # target class (0,1,2)
         # "y_true": np.random.normal(0.5, 0.1, 100).round(),
         # "y_score": np.random.normal(0.5, 0.15, 100),
         # "hue": np.random.normal(0.5, 0.4, 100).round(),
     })
+    df
 
 
 
@@ -141,12 +174,111 @@ Create an instance of the LogisticRegression
 
 
 
+.. raw:: html
 
+    <div class="output_subarea output_html rendered_html output_result">
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
 
-.. GENERATED FROM PYTHON SOURCE LINES 57-73
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>y_true</th>
+          <th>y_score</th>
+          <th>y_pred</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>0</th>
+          <td>False</td>
+          <td>0.033725</td>
+          <td>False</td>
+        </tr>
+        <tr>
+          <th>1</th>
+          <td>True</td>
+          <td>0.860583</td>
+          <td>True</td>
+        </tr>
+        <tr>
+          <th>2</th>
+          <td>False</td>
+          <td>0.423101</td>
+          <td>False</td>
+        </tr>
+        <tr>
+          <th>3</th>
+          <td>False</td>
+          <td>0.137295</td>
+          <td>False</td>
+        </tr>
+        <tr>
+          <th>4</th>
+          <td>False</td>
+          <td>0.788645</td>
+          <td>True</td>
+        </tr>
+        <tr>
+          <th>...</th>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+        </tr>
+        <tr>
+          <th>995</th>
+          <td>False</td>
+          <td>0.228034</td>
+          <td>False</td>
+        </tr>
+        <tr>
+          <th>996</th>
+          <td>False</td>
+          <td>0.017187</td>
+          <td>False</td>
+        </tr>
+        <tr>
+          <th>997</th>
+          <td>True</td>
+          <td>0.987892</td>
+          <td>True</td>
+        </tr>
+        <tr>
+          <th>998</th>
+          <td>False</td>
+          <td>0.931136</td>
+          <td>True</td>
+        </tr>
+        <tr>
+          <th>999</th>
+          <td>False</td>
+          <td>0.128248</td>
+          <td>False</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>1000 rows × 3 columns</p>
+    </div>
+    </div>
+    <br />
+    <br />
+
+.. GENERATED FROM PYTHON SOURCE LINES 79-95
 
 .. code-block:: Python
-   :lineno-start: 57
+   :lineno-start: 79
 
     p = sp.decileplot(
         df,
@@ -157,10 +289,10 @@ Create an instance of the LogisticRegression
         digits=4,
         verbose=True,
     )
-    p
+    p.T
     # p.columns.tolist()
     # p[["decile", "cnt_resp", "cnt_resp_wiz", "cum_resp_pct", "cum_resp_wiz_pct"]]
-    p.iloc[:, range(9, 23)]
+    # p.iloc[:, range(9, 23)]
     # p.iloc[:, [11, 12, 12, 14]]
 
 
@@ -173,29 +305,30 @@ Create an instance of the LogisticRegression
  .. code-block:: none
 
     {
-      "decile": "Meaning: Ranked group (1 = highest predicted probability). Critical: Ensure sorted descending by model score. Fatal if top deciles don't capture positives.Formula: rank by model score into k quantiles (e.g., 10 deciles). ",
-      "prob_min": "Meaning: Lowest predicted probability in the decile. Critical: Signals model calibration. Fatal if too close to prob_max (poor ranking).Formula: min(score in decile). ",
-      "prob_max": "Meaning: Highest predicted probability in the decile. Critical: Checks separation. Fatal if overlaps lower deciles (poor discrimination).Formula: max(score in decile). ",
-      "prob_avg": "Meaning: Average predicted probability in the decile. Critical: Useful for calibration curves; should decrease monotonically across deciles.Formula: mean(score in decile). ",
-      "cnt_resp_total": "Meaning: Total samples in the decile. Critical: Denominator for rate_resp and cumulative % calculations. Fatal if deciles uneven.Formula: count(samples in decile). ",
-      "cnt_resp": "Meaning: Actual responders in the decile (how many responders we captured). Critical: Should never exceed cnt_resp_wiz. Flat counts across deciles indicate useless model.Formula: sum(y_true=1 in decile). ",
-      "cnt_resp_non": "Meaning: Non-responders in the decile. Critical: Used for KS/statistics. Too high in top deciles is a warning.Formula: cnt_resp_total - cnt_resp. ",
-      "cnt_resp_rndm": "Meaning: Expected responders if randomly assigned. Critical: Baseline for comparison. Fatal if model only slightly above random.Formula: cnt_resp_total * (total_responders / total_samples). ",
-      "cnt_resp_wiz": "Meaning: Ideal responders if model were perfect. Critical: Must be ≥ cnt_resp. Fatal if NaN or actual far below.Formula: allocate top responders directly into highest deciles. ",
-      "rate_resp": "Meaning: Per-decile response rate (alias to decile_wise_response, decile_wise_gain). Critical: Measures decile quality. Early deciles should outperform later ones.Formula: rate_resp = decile_wise_response = cnt_resp / cnt_resp_total. ",
-      "cum_resp_total": "Meaning: Cumulative total samples. Critical: Tracks population coverage.Formula: Σ cnt_resp_total(≤ current decile). ",
-      "cum_resp_total_pct": "Meaning: % cumulative population. Critical: X-axis for lift/gain curves; check decile balance.Formula: cum_resp_total / total_samples * 100. ",
-      "cum_resp": "Meaning: Cumulative responders (alias to cumulative_gain) up to this decile so ML evaluation (how much `gain` vs random baseline). Critical: Should increase; max = total responders. Flat curve = weak model.Formula: cumulative_gain = cumulative_response = Σ cnt_resp(≤ current decile) = cum_resp_pct vs cum_resp_total_pct. ",
-      "cum_resp_pct": "Meaning: % cumulative responders = cum_resp / total_responders * 100. Critical: Wizard curve should be ≥ model; used in lift/gain charts.Formula: cum_resp / total_responders * 100. ",
-      "cum_resp_non": "Meaning: Cumulative non-responders. Critical: Used in KS statistic; early dominance is bad.Formula: Σ cnt_resp_non(≤ current decile). ",
-      "cum_resp_non_pct": "Meaning: % cumulative non-responders. Critical: Should differ from cum_resp_pct; almost equal = model fails.Formula: cum_resp_non / total_nonresponders * 100. ",
-      "cum_resp_rndm": "Meaning: Cumulative expected responders if randomly assigned. Critical: Baseline for cumulative lift. Fatal if model ≈ random curve.Formula: Σ cnt_resp_rndm(≤ current decile). ",
-      "cum_resp_rndm_pct": "Meaning: % cumulative random responders = cum_resp_rndm / total_responders * 100. Critical: Random baseline curve (diagonal). Always linear from (0,0) to (100,100). Fatal if model curve is near or below it.Formula: cum_resp_rndm / total_responders * 100. ",
-      "cum_resp_wiz": "Meaning: Cumulative ideal responders. Critical: Should always ≥ model; never NaN.Formula: Σ cnt_resp_wiz(≤ current decile). ",
-      "cum_resp_wiz_pct": "Meaning: % cumulative ideal responders. Critical: Wizard benchmark for lift/gain curves; gaps indicate model weakness.Formula: cum_resp_wiz / total_responders * 100. ",
-      "KS": "Meaning: KS Kolmogorov-Smirnov statistic. Range: 0-100 (percent scale) or 0-1 (fractional scale). Interpretation: - <20 → Poor discrimination (model barely better than random). - 20-40 → Fair. - 40-60 → Good. - ≥60 → Excellent. - ≥70 → Suspiciously high; likely overfitting or data leakage unless justified by very strong signal. Critical: Report max KS and check across train/validation/test. Fatal if KS is too low (<0.2) or unrealistically high (≥0.7 without strong justification).Formula: KS = max(cum_resp_pct - cum_resp_non_pct). ",
-      "cumulative_lift": "Meaning: Cumulative lift = cum_resp_pct / cum_resp_total_pct. Critical: Shows model gain over random. Always cumulative. Fatal if <1 or <2 in top decile.Formula: Lift@k = cum_resp_pct / cum_resp_total_pct. ",
-      "decile_wise_lift": "Meaning: Decile-wise lift = cnt_resp / cnt_resp_rndm. Critical: Measures decile-level improvement vs random. Fatal if <1.Formula: cnt_resp / cnt_resp_rndm. "
+      "decile": "Meaning: Ranked group based on predicted probabilities (1 = highest probability). Critical: Ensure data is sorted descending by model score; top deciles should capture the majority of positives. Formula: Assign samples to k quantiles (e.g., 10 deciles) based on model score.",
+      "prob_min": "Meaning: Minimum predicted probability within the decile. Critical: Indicates model calibration; values too close to prob_max suggest poor separation. Formula: min(score in decile).",
+      "prob_max": "Meaning: Maximum predicted probability within the decile. Critical: Checks separation; overlap with lower deciles indicates poor discrimination. Formula: max(score in decile).",
+      "prob_avg": "Meaning: Average predicted probability within the decile. Critical: Useful for calibration checks; should decrease monotonically across deciles. Formula: mean(score in decile).",
+      "cnt_resp_true": "Meaning: Actual positives/responders in the decile. Critical: Should never exceed cnt_resp_wiz_true; flat counts across deciles indicate a weak or non-discriminative model. Formula: sum(y_true = 1 in decile).",
+      "cnt_resp_false": "Meaning: Actual negatives/non-responders in the decile. Critical: Used in KS/statistical calculations; too many negatives in top deciles is a warning. Formula: cnt_resp_total - cnt_resp_true.",
+      "cnt_resp_total": "Meaning: Total samples in the decile (positives + negatives). Critical: Denominator for rate_resp and cumulative % calculations; decile imbalance can distort lift/gain. Formula: count(samples in decile).",
+      "cnt_resp_rndm_true": "Meaning: Expected positives in the decile under a random model. Critical: Baseline for lift/gain comparison; fatal if model barely exceeds random. Formula: total_positives / n_deciles.",
+      "cnt_resp_wiz_true": "Meaning: Ideal/maximum possible positives if the model were perfect. Critical: Must always be ≥ cnt_resp_true; NaN or extremely low values indicate data issues. Formula: allocate top positives directly to highest scoring deciles.",
+      "rate_resp": "Meaning: Decile-level response rate (alias: decile_wise_response, decile_wise_gain). Critical: Measures decile quality; early deciles should outperform later ones. Formula: rate_resp = cnt_resp_true / cnt_resp_total.",
+      "overall_rate": "Meaning: Overall response rate across the dataset; serves as the baseline probability of a positive. Critical: Used as the denominator in decile-wise lift; essential to assess improvement vs random. Formula: overall_rate = sum(cnt_resp_true) / sum(cnt_resp_total) (fraction or %).",
+      "cum_resp_true": "Meaning: Cumulative number of positives captured up to the current decile (alias: cumulative_gain). Critical: Should increase monotonically; maximum = total responders. Flat curve indicates weak model. Formula: Σ cnt_resp_true (≤ current decile).",
+      "cum_resp_true_pct": "Meaning: Cumulative % of positives captured = cum_resp_true / total_responders * 100. Critical: Used for lift/gain curves; should always be ≥ model baseline. Formula: cum_resp_true / total_responders * 100.",
+      "cum_resp_false": "Meaning: Cumulative number of negatives captured up to the current decile. Critical: Used for KS/statistical calculations; dominance in early deciles is undesirable. Formula: Σ cnt_resp_false (≤ current decile).",
+      "cum_resp_false_pct": "Meaning: Cumulative % of negatives captured = cum_resp_false / total_nonresponders * 100. Critical: Should differ from cum_resp_true_pct; nearly equal curves indicate model failure. Formula: cum_resp_false / total_nonresponders * 100.",
+      "cum_resp_total": "Meaning: Cumulative total samples up to the current decile. Critical: Tracks population coverage for lift/gain charts. Formula: Σ cnt_resp_total (≤ current decile).",
+      "cum_resp_total_pct": "Meaning: Cumulative % of total population covered. Critical: X-axis for lift/gain curves; check decile balance. Formula: cum_resp_total / total_samples * 100.",
+      "cum_resp_rndm_true": "Meaning: Cumulative expected positives if randomly assigned. Critical: Baseline for cumulative lift; fatal if model ≈ random curve. Formula: Σ cnt_resp_rndm_true (≤ current decile).",
+      "cum_resp_rndm_true_pct": "Meaning: Cumulative % of expected positives under random = cum_resp_rndm_true / total_responders * 100. Critical: Baseline curve is linear from (0,0) to (100,100); model curve must exceed this. Formula: cum_resp_rndm_true / total_responders * 100.",
+      "cum_resp_wiz_true": "Meaning: Cumulative ideal/maximum possible positives. Critical: Must always be ≥ model values; never NaN. Formula: Σ cnt_resp_wiz_true (≤ current decile).",
+      "cum_resp_wiz_true_pct": "Meaning: % cumulative ideal positives = cum_resp_wiz_true / total_responders * 100. Critical: Wizard benchmark for lift/gain curves; gaps indicate model weakness. Formula: cum_resp_wiz_true / total_responders * 100.",
+      "cumulative_lift": "Meaning: Empirical discriminative power; shows cumulative improvement vs random. Critical: Always cumulative; should exceed 1 (or ≥2 in top decile). Formula: cumulative_lift = cum_resp_true_pct / cum_resp_total_pct.",
+      "decile_wise_lift": "Meaning: Improvement factor for individual deciles; shows how much better each decile performs vs random. Critical: Fatal if <1. Early deciles should show highest lift. Formula: decile_wise_lift = cnt_resp_true / cnt_resp_rndm_true.",
+      "KS": "Meaning: Peak discriminative power (scalar) extracted from cumulative gain curves; maximum distance between cumulative distributions of positives and negatives. Range: 0-1 (fraction) or 0-100 (percent). Interpretation: - <0.2 → Poor discrimination - 0.2-0.4 → Fair - 0.4-0.6 → Good - ≥0.6 → Excellent - ≥0.7 → Suspiciously high (possible overfitting or leakage). Critical: Report across train/validation/test; ensure top deciles dominate appropriately. Formula: KS = max(cum_resp_true_pct - cum_resp_false_pct) (sorted descending by model score)."
     }
 
 
@@ -220,191 +353,368 @@ Create an instance of the LogisticRegression
       <thead>
         <tr style="text-align: right;">
           <th></th>
-          <th>rate_resp</th>
-          <th>cum_resp_total</th>
-          <th>cum_resp_total_pct</th>
-          <th>cum_resp</th>
-          <th>cum_resp_pct</th>
-          <th>cum_resp_non</th>
-          <th>cum_resp_non_pct</th>
-          <th>cum_resp_rndm</th>
-          <th>cum_resp_rndm_pct</th>
-          <th>cum_resp_wiz</th>
-          <th>cum_resp_wiz_pct</th>
-          <th>KS</th>
-          <th>cumulative_lift</th>
-          <th>decile_wise_lift</th>
+          <th>0</th>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+          <th>4</th>
+          <th>5</th>
+          <th>6</th>
+          <th>7</th>
+          <th>8</th>
+          <th>9</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th>0</th>
-          <td>100.0000</td>
-          <td>29.0</td>
-          <td>10.1754</td>
-          <td>29.0</td>
-          <td>15.7609</td>
-          <td>0.0</td>
-          <td>0.0000</td>
-          <td>18.4</td>
-          <td>10.0</td>
-          <td>29</td>
-          <td>15.7609</td>
-          <td>15.7609</td>
-          <td>1.5489</td>
-          <td>1.5761</td>
-        </tr>
-        <tr>
-          <th>1</th>
-          <td>100.0000</td>
-          <td>57.0</td>
-          <td>20.0000</td>
-          <td>57.0</td>
-          <td>30.9783</td>
-          <td>0.0</td>
-          <td>0.0000</td>
-          <td>36.8</td>
-          <td>20.0</td>
-          <td>57</td>
-          <td>30.9783</td>
-          <td>30.9783</td>
-          <td>1.5489</td>
-          <td>1.5217</td>
-        </tr>
-        <tr>
-          <th>2</th>
-          <td>100.0000</td>
-          <td>86.0</td>
-          <td>30.1754</td>
-          <td>86.0</td>
-          <td>46.7391</td>
-          <td>0.0</td>
-          <td>0.0000</td>
-          <td>55.2</td>
-          <td>30.0</td>
-          <td>86</td>
-          <td>46.7391</td>
-          <td>46.7391</td>
-          <td>1.5489</td>
-          <td>1.5761</td>
-        </tr>
-        <tr>
-          <th>3</th>
-          <td>100.0000</td>
-          <td>114.0</td>
-          <td>40.0000</td>
-          <td>114.0</td>
-          <td>61.9565</td>
-          <td>0.0</td>
-          <td>0.0000</td>
-          <td>73.6</td>
-          <td>40.0</td>
-          <td>114</td>
-          <td>61.9565</td>
-          <td>61.9565</td>
-          <td>1.5489</td>
-          <td>1.5217</td>
-        </tr>
-        <tr>
-          <th>4</th>
-          <td>100.0000</td>
-          <td>143.0</td>
-          <td>50.1754</td>
-          <td>143.0</td>
-          <td>77.7174</td>
-          <td>0.0</td>
-          <td>0.0000</td>
-          <td>92.0</td>
-          <td>50.0</td>
-          <td>143</td>
-          <td>77.7174</td>
-          <td>77.7174</td>
-          <td>1.5489</td>
-          <td>1.5761</td>
-        </tr>
-        <tr>
-          <th>5</th>
-          <td>89.2857</td>
-          <td>171.0</td>
-          <td>60.0000</td>
-          <td>168.0</td>
-          <td>91.3043</td>
-          <td>3.0</td>
-          <td>2.9703</td>
-          <td>110.4</td>
-          <td>60.0</td>
-          <td>171</td>
-          <td>92.9348</td>
-          <td>88.3341</td>
-          <td>1.5217</td>
-          <td>1.3587</td>
-        </tr>
-        <tr>
-          <th>6</th>
-          <td>55.1724</td>
-          <td>200.0</td>
-          <td>70.1754</td>
-          <td>184.0</td>
-          <td>100.0000</td>
-          <td>16.0</td>
-          <td>15.8416</td>
-          <td>128.8</td>
-          <td>70.0</td>
-          <td>184</td>
-          <td>100.0000</td>
-          <td>84.1584</td>
-          <td>1.4250</td>
-          <td>0.8696</td>
-        </tr>
-        <tr>
-          <th>7</th>
-          <td>0.0000</td>
-          <td>228.0</td>
-          <td>80.0000</td>
-          <td>184.0</td>
-          <td>100.0000</td>
-          <td>44.0</td>
-          <td>43.5644</td>
-          <td>147.2</td>
-          <td>80.0</td>
-          <td>184</td>
-          <td>100.0000</td>
-          <td>56.4356</td>
-          <td>1.2500</td>
-          <td>0.0000</td>
-        </tr>
-        <tr>
-          <th>8</th>
-          <td>0.0000</td>
-          <td>257.0</td>
-          <td>90.1754</td>
-          <td>184.0</td>
-          <td>100.0000</td>
-          <td>73.0</td>
-          <td>72.2772</td>
-          <td>165.6</td>
-          <td>90.0</td>
-          <td>184</td>
-          <td>100.0000</td>
-          <td>27.7228</td>
-          <td>1.1089</td>
-          <td>0.0000</td>
-        </tr>
-        <tr>
-          <th>9</th>
-          <td>0.0000</td>
-          <td>285.0</td>
-          <td>100.0000</td>
-          <td>184.0</td>
-          <td>100.0000</td>
-          <td>101.0</td>
-          <td>100.0000</td>
-          <td>184.0</td>
-          <td>100.0</td>
-          <td>184</td>
-          <td>100.0000</td>
-          <td>0.0000</td>
+          <th>decile</th>
           <td>1.0000</td>
+          <td>2.0000</td>
+          <td>3.0000</td>
+          <td>4.0000</td>
+          <td>5.0000</td>
+          <td>6.0000</td>
+          <td>7.0000</td>
+          <td>8.0000</td>
+          <td>9.0000</td>
+          <td>10.0000</td>
+        </tr>
+        <tr>
+          <th>prob_min</th>
+          <td>0.8478</td>
+          <td>0.5792</td>
+          <td>0.3837</td>
+          <td>0.2739</td>
+          <td>0.2044</td>
+          <td>0.1410</td>
+          <td>0.0984</td>
+          <td>0.0605</td>
+          <td>0.0344</td>
+          <td>0.0014</td>
+        </tr>
+        <tr>
+          <th>prob_max</th>
+          <td>0.9998</td>
+          <td>0.8416</td>
+          <td>0.5774</td>
+          <td>0.3827</td>
+          <td>0.2728</td>
+          <td>0.2040</td>
+          <td>0.1409</td>
+          <td>0.0978</td>
+          <td>0.0605</td>
+          <td>0.0343</td>
+        </tr>
+        <tr>
+          <th>prob_avg</th>
+          <td>0.9475</td>
+          <td>0.7061</td>
+          <td>0.4757</td>
+          <td>0.3250</td>
+          <td>0.2380</td>
+          <td>0.1702</td>
+          <td>0.1177</td>
+          <td>0.0774</td>
+          <td>0.0472</td>
+          <td>0.0183</td>
+        </tr>
+        <tr>
+          <th>cnt_resp_true</th>
+          <td>82.0000</td>
+          <td>30.0000</td>
+          <td>16.0000</td>
+          <td>5.0000</td>
+          <td>5.0000</td>
+          <td>6.0000</td>
+          <td>3.0000</td>
+          <td>4.0000</td>
+          <td>1.0000</td>
+          <td>1.0000</td>
+        </tr>
+        <tr>
+          <th>cnt_resp_false</th>
+          <td>18.0000</td>
+          <td>70.0000</td>
+          <td>84.0000</td>
+          <td>95.0000</td>
+          <td>95.0000</td>
+          <td>94.0000</td>
+          <td>97.0000</td>
+          <td>96.0000</td>
+          <td>99.0000</td>
+          <td>99.0000</td>
+        </tr>
+        <tr>
+          <th>cnt_resp_total</th>
+          <td>100.0000</td>
+          <td>100.0000</td>
+          <td>100.0000</td>
+          <td>100.0000</td>
+          <td>100.0000</td>
+          <td>100.0000</td>
+          <td>100.0000</td>
+          <td>100.0000</td>
+          <td>100.0000</td>
+          <td>100.0000</td>
+        </tr>
+        <tr>
+          <th>cnt_resp_rndm_true</th>
+          <td>15.3000</td>
+          <td>15.3000</td>
+          <td>15.3000</td>
+          <td>15.3000</td>
+          <td>15.3000</td>
+          <td>15.3000</td>
+          <td>15.3000</td>
+          <td>15.3000</td>
+          <td>15.3000</td>
+          <td>15.3000</td>
+        </tr>
+        <tr>
+          <th>cnt_resp_wiz_true</th>
+          <td>100.0000</td>
+          <td>53.0000</td>
+          <td>0.0000</td>
+          <td>0.0000</td>
+          <td>0.0000</td>
+          <td>0.0000</td>
+          <td>0.0000</td>
+          <td>0.0000</td>
+          <td>0.0000</td>
+          <td>0.0000</td>
+        </tr>
+        <tr>
+          <th>rate_resp</th>
+          <td>82.0000</td>
+          <td>30.0000</td>
+          <td>16.0000</td>
+          <td>5.0000</td>
+          <td>5.0000</td>
+          <td>6.0000</td>
+          <td>3.0000</td>
+          <td>4.0000</td>
+          <td>1.0000</td>
+          <td>1.0000</td>
+        </tr>
+        <tr>
+          <th>rate_resp_wiz</th>
+          <td>100.0000</td>
+          <td>53.0000</td>
+          <td>0.0000</td>
+          <td>0.0000</td>
+          <td>0.0000</td>
+          <td>0.0000</td>
+          <td>0.0000</td>
+          <td>0.0000</td>
+          <td>0.0000</td>
+          <td>0.0000</td>
+        </tr>
+        <tr>
+          <th>overall_rate</th>
+          <td>15.3000</td>
+          <td>15.3000</td>
+          <td>15.3000</td>
+          <td>15.3000</td>
+          <td>15.3000</td>
+          <td>15.3000</td>
+          <td>15.3000</td>
+          <td>15.3000</td>
+          <td>15.3000</td>
+          <td>15.3000</td>
+        </tr>
+        <tr>
+          <th>cum_resp_true</th>
+          <td>82.0000</td>
+          <td>112.0000</td>
+          <td>128.0000</td>
+          <td>133.0000</td>
+          <td>138.0000</td>
+          <td>144.0000</td>
+          <td>147.0000</td>
+          <td>151.0000</td>
+          <td>152.0000</td>
+          <td>153.0000</td>
+        </tr>
+        <tr>
+          <th>cum_resp_true_pct</th>
+          <td>53.5948</td>
+          <td>73.2026</td>
+          <td>83.6601</td>
+          <td>86.9281</td>
+          <td>90.1961</td>
+          <td>94.1176</td>
+          <td>96.0784</td>
+          <td>98.6928</td>
+          <td>99.3464</td>
+          <td>100.0000</td>
+        </tr>
+        <tr>
+          <th>cum_resp_false</th>
+          <td>18.0000</td>
+          <td>88.0000</td>
+          <td>172.0000</td>
+          <td>267.0000</td>
+          <td>362.0000</td>
+          <td>456.0000</td>
+          <td>553.0000</td>
+          <td>649.0000</td>
+          <td>748.0000</td>
+          <td>847.0000</td>
+        </tr>
+        <tr>
+          <th>cum_resp_false_pct</th>
+          <td>2.1251</td>
+          <td>10.3896</td>
+          <td>20.3070</td>
+          <td>31.5230</td>
+          <td>42.7391</td>
+          <td>53.8371</td>
+          <td>65.2893</td>
+          <td>76.6234</td>
+          <td>88.3117</td>
+          <td>100.0000</td>
+        </tr>
+        <tr>
+          <th>cum_resp_total</th>
+          <td>100.0000</td>
+          <td>200.0000</td>
+          <td>300.0000</td>
+          <td>400.0000</td>
+          <td>500.0000</td>
+          <td>600.0000</td>
+          <td>700.0000</td>
+          <td>800.0000</td>
+          <td>900.0000</td>
+          <td>1000.0000</td>
+        </tr>
+        <tr>
+          <th>cum_resp_total_pct</th>
+          <td>10.0000</td>
+          <td>20.0000</td>
+          <td>30.0000</td>
+          <td>40.0000</td>
+          <td>50.0000</td>
+          <td>60.0000</td>
+          <td>70.0000</td>
+          <td>80.0000</td>
+          <td>90.0000</td>
+          <td>100.0000</td>
+        </tr>
+        <tr>
+          <th>cum_resp_rndm_true</th>
+          <td>15.3000</td>
+          <td>30.6000</td>
+          <td>45.9000</td>
+          <td>61.2000</td>
+          <td>76.5000</td>
+          <td>91.8000</td>
+          <td>107.1000</td>
+          <td>122.4000</td>
+          <td>137.7000</td>
+          <td>153.0000</td>
+        </tr>
+        <tr>
+          <th>cum_resp_rndm_true_pct</th>
+          <td>10.0000</td>
+          <td>20.0000</td>
+          <td>30.0000</td>
+          <td>40.0000</td>
+          <td>50.0000</td>
+          <td>60.0000</td>
+          <td>70.0000</td>
+          <td>80.0000</td>
+          <td>90.0000</td>
+          <td>100.0000</td>
+        </tr>
+        <tr>
+          <th>cum_resp_wiz_true</th>
+          <td>100.0000</td>
+          <td>153.0000</td>
+          <td>153.0000</td>
+          <td>153.0000</td>
+          <td>153.0000</td>
+          <td>153.0000</td>
+          <td>153.0000</td>
+          <td>153.0000</td>
+          <td>153.0000</td>
+          <td>153.0000</td>
+        </tr>
+        <tr>
+          <th>cum_resp_wiz_true_pct</th>
+          <td>65.3595</td>
+          <td>100.0000</td>
+          <td>100.0000</td>
+          <td>100.0000</td>
+          <td>100.0000</td>
+          <td>100.0000</td>
+          <td>100.0000</td>
+          <td>100.0000</td>
+          <td>100.0000</td>
+          <td>100.0000</td>
+        </tr>
+        <tr>
+          <th>cumulative_lift</th>
+          <td>5.3595</td>
+          <td>3.6601</td>
+          <td>2.7887</td>
+          <td>2.1732</td>
+          <td>1.8039</td>
+          <td>1.5686</td>
+          <td>1.3725</td>
+          <td>1.2337</td>
+          <td>1.1038</td>
+          <td>1.0000</td>
+        </tr>
+        <tr>
+          <th>cumulative_lift_wiz</th>
+          <td>6.5359</td>
+          <td>5.0000</td>
+          <td>3.3333</td>
+          <td>2.5000</td>
+          <td>2.0000</td>
+          <td>1.6667</td>
+          <td>1.4286</td>
+          <td>1.2500</td>
+          <td>1.1111</td>
+          <td>1.0000</td>
+        </tr>
+        <tr>
+          <th>decile_wise_lift</th>
+          <td>5.3595</td>
+          <td>1.9608</td>
+          <td>1.0458</td>
+          <td>0.3268</td>
+          <td>0.3268</td>
+          <td>0.3922</td>
+          <td>0.1961</td>
+          <td>0.2614</td>
+          <td>0.0654</td>
+          <td>0.0654</td>
+        </tr>
+        <tr>
+          <th>decile_wise_lift_wiz</th>
+          <td>6.5359</td>
+          <td>3.4641</td>
+          <td>0.0000</td>
+          <td>0.0000</td>
+          <td>0.0000</td>
+          <td>0.0000</td>
+          <td>0.0000</td>
+          <td>0.0000</td>
+          <td>0.0000</td>
+          <td>0.0000</td>
+        </tr>
+        <tr>
+          <th>KS</th>
+          <td>51.4696</td>
+          <td>62.8130</td>
+          <td>63.3532</td>
+          <td>55.4051</td>
+          <td>47.4570</td>
+          <td>40.2806</td>
+          <td>30.7892</td>
+          <td>22.0694</td>
+          <td>11.0347</td>
           <td>0.0000</td>
         </tr>
       </tbody>
@@ -414,12 +724,12 @@ Create an instance of the LogisticRegression
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-76
+.. GENERATED FROM PYTHON SOURCE LINES 96-98
 
 .. code-block:: Python
-   :lineno-start: 74
+   :lineno-start: 96
 
-    p = sp.decileplot(df, x="y_true", y="y_score", kind="cumulative_lift", n_deciles=10)
+    p = sp.decileplot(df, x="y_true", y="y_score", kind="cumulative_lift", n_deciles=10, annot=True)
 
 
 
@@ -433,12 +743,12 @@ Create an instance of the LogisticRegression
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 77-79
+.. GENERATED FROM PYTHON SOURCE LINES 99-101
 
 .. code-block:: Python
-   :lineno-start: 77
+   :lineno-start: 99
 
-    p = sp.decileplot(df, x="y_true", y="y_score", kind="decile_wise_lift", n_deciles=10)
+    p = sp.decileplot(df, x="y_true", y="y_score", kind="decile_wise_lift", n_deciles=10, annot=True)
 
 
 
@@ -452,12 +762,12 @@ Create an instance of the LogisticRegression
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 80-82
+.. GENERATED FROM PYTHON SOURCE LINES 102-104
 
 .. code-block:: Python
-   :lineno-start: 80
+   :lineno-start: 102
 
-    p = sp.decileplot(df, x="y_true", y="y_score", kind="cumulative_gain", n_deciles=10)
+    p = sp.decileplot(df, x="y_true", y="y_score", kind="cumulative_gain", n_deciles=10, annot=True)
 
 
 
@@ -471,12 +781,12 @@ Create an instance of the LogisticRegression
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 83-85
+.. GENERATED FROM PYTHON SOURCE LINES 105-107
 
 .. code-block:: Python
-   :lineno-start: 83
+   :lineno-start: 105
 
-    p = sp.decileplot(df, x="y_true", y="y_score", kind="cumulative_response", n_deciles=10)
+    p = sp.decileplot(df, x="y_true", y="y_score", kind="cumulative_response", n_deciles=10, annot=True)
 
 
 
@@ -490,12 +800,12 @@ Create an instance of the LogisticRegression
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 86-88
+.. GENERATED FROM PYTHON SOURCE LINES 108-110
 
 .. code-block:: Python
-   :lineno-start: 86
+   :lineno-start: 108
 
-    p = sp.decileplot(df, x="y_true", y="y_score", kind="decile_wise_gain", n_deciles=10)
+    p = sp.decileplot(df, x="y_true", y="y_score", kind="decile_wise_gain", n_deciles=10, annot=True)
 
 
 
@@ -509,18 +819,18 @@ Create an instance of the LogisticRegression
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 89-91
+.. GENERATED FROM PYTHON SOURCE LINES 111-113
 
 .. code-block:: Python
-   :lineno-start: 89
+   :lineno-start: 111
 
-    p = sp.decileplot(df, x="y_true", y="y_score", kind="ks_statistic", n_deciles=10)
+    p = sp.decileplot(df, x="y_true", y="y_score", kind="ks_statistic", n_deciles=10, annot=True)
 
 
 
 
 .. image-sg:: /auto_examples/snsx/images/sphx_glr_plot_decileplot_script_006.png
-   :alt: KS Statistic Curve
+   :alt: Kolmogorov-Smirnov (KS) Statistic Curve
    :srcset: /auto_examples/snsx/images/sphx_glr_plot_decileplot_script_006.png
    :class: sphx-glr-single-img
 
@@ -528,28 +838,31 @@ Create an instance of the LogisticRegression
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 92-104
+.. GENERATED FROM PYTHON SOURCE LINES 114-115
+
+fig, ax = plt.subplots(figsize=(10, 10))
+
+.. GENERATED FROM PYTHON SOURCE LINES 115-126
 
 .. code-block:: Python
-   :lineno-start: 92
+   :lineno-start: 115
 
-    fig, ax = plt.subplots(figsize=(10, 10))
     p = sp.decileplot(
         df,
         x="y_true",
         y="y_score",
         kind="report",
         n_deciles=10,
-        digits=6,
+        digits=4,
+        annot=True,
         verbose=True,
     )
 
 
 
 
-
 .. image-sg:: /auto_examples/snsx/images/sphx_glr_plot_decileplot_script_007.png
-   :alt: Cumulative Lift Curve, Decile-wise Lift Curve, Cumulative Gain Curve, KS Statistic Curve
+   :alt: Cumulative Lift Curve, Decile-wise Lift Curve, Cumulative Gain Curve, Kolmogorov-Smirnov (KS) Statistic Curve
    :srcset: /auto_examples/snsx/images/sphx_glr_plot_decileplot_script_007.png
    :class: sphx-glr-single-img
 
@@ -559,48 +872,98 @@ Create an instance of the LogisticRegression
  .. code-block:: none
 
     {
-      "decile": "Meaning: Ranked group (1 = highest predicted probability). Critical: Ensure sorted descending by model score. Fatal if top deciles don't capture positives.Formula: rank by model score into k quantiles (e.g., 10 deciles). ",
-      "prob_min": "Meaning: Lowest predicted probability in the decile. Critical: Signals model calibration. Fatal if too close to prob_max (poor ranking).Formula: min(score in decile). ",
-      "prob_max": "Meaning: Highest predicted probability in the decile. Critical: Checks separation. Fatal if overlaps lower deciles (poor discrimination).Formula: max(score in decile). ",
-      "prob_avg": "Meaning: Average predicted probability in the decile. Critical: Useful for calibration curves; should decrease monotonically across deciles.Formula: mean(score in decile). ",
-      "cnt_resp_total": "Meaning: Total samples in the decile. Critical: Denominator for rate_resp and cumulative % calculations. Fatal if deciles uneven.Formula: count(samples in decile). ",
-      "cnt_resp": "Meaning: Actual responders in the decile (how many responders we captured). Critical: Should never exceed cnt_resp_wiz. Flat counts across deciles indicate useless model.Formula: sum(y_true=1 in decile). ",
-      "cnt_resp_non": "Meaning: Non-responders in the decile. Critical: Used for KS/statistics. Too high in top deciles is a warning.Formula: cnt_resp_total - cnt_resp. ",
-      "cnt_resp_rndm": "Meaning: Expected responders if randomly assigned. Critical: Baseline for comparison. Fatal if model only slightly above random.Formula: cnt_resp_total * (total_responders / total_samples). ",
-      "cnt_resp_wiz": "Meaning: Ideal responders if model were perfect. Critical: Must be ≥ cnt_resp. Fatal if NaN or actual far below.Formula: allocate top responders directly into highest deciles. ",
-      "rate_resp": "Meaning: Per-decile response rate (alias to decile_wise_response, decile_wise_gain). Critical: Measures decile quality. Early deciles should outperform later ones.Formula: rate_resp = decile_wise_response = cnt_resp / cnt_resp_total. ",
-      "cum_resp_total": "Meaning: Cumulative total samples. Critical: Tracks population coverage.Formula: Σ cnt_resp_total(≤ current decile). ",
-      "cum_resp_total_pct": "Meaning: % cumulative population. Critical: X-axis for lift/gain curves; check decile balance.Formula: cum_resp_total / total_samples * 100. ",
-      "cum_resp": "Meaning: Cumulative responders (alias to cumulative_gain) up to this decile so ML evaluation (how much `gain` vs random baseline). Critical: Should increase; max = total responders. Flat curve = weak model.Formula: cumulative_gain = cumulative_response = Σ cnt_resp(≤ current decile) = cum_resp_pct vs cum_resp_total_pct. ",
-      "cum_resp_pct": "Meaning: % cumulative responders = cum_resp / total_responders * 100. Critical: Wizard curve should be ≥ model; used in lift/gain charts.Formula: cum_resp / total_responders * 100. ",
-      "cum_resp_non": "Meaning: Cumulative non-responders. Critical: Used in KS statistic; early dominance is bad.Formula: Σ cnt_resp_non(≤ current decile). ",
-      "cum_resp_non_pct": "Meaning: % cumulative non-responders. Critical: Should differ from cum_resp_pct; almost equal = model fails.Formula: cum_resp_non / total_nonresponders * 100. ",
-      "cum_resp_rndm": "Meaning: Cumulative expected responders if randomly assigned. Critical: Baseline for cumulative lift. Fatal if model ≈ random curve.Formula: Σ cnt_resp_rndm(≤ current decile). ",
-      "cum_resp_rndm_pct": "Meaning: % cumulative random responders = cum_resp_rndm / total_responders * 100. Critical: Random baseline curve (diagonal). Always linear from (0,0) to (100,100). Fatal if model curve is near or below it.Formula: cum_resp_rndm / total_responders * 100. ",
-      "cum_resp_wiz": "Meaning: Cumulative ideal responders. Critical: Should always ≥ model; never NaN.Formula: Σ cnt_resp_wiz(≤ current decile). ",
-      "cum_resp_wiz_pct": "Meaning: % cumulative ideal responders. Critical: Wizard benchmark for lift/gain curves; gaps indicate model weakness.Formula: cum_resp_wiz / total_responders * 100. ",
-      "KS": "Meaning: KS Kolmogorov-Smirnov statistic. Range: 0-100 (percent scale) or 0-1 (fractional scale). Interpretation: - <20 → Poor discrimination (model barely better than random). - 20-40 → Fair. - 40-60 → Good. - ≥60 → Excellent. - ≥70 → Suspiciously high; likely overfitting or data leakage unless justified by very strong signal. Critical: Report max KS and check across train/validation/test. Fatal if KS is too low (<0.2) or unrealistically high (≥0.7 without strong justification).Formula: KS = max(cum_resp_pct - cum_resp_non_pct). ",
-      "cumulative_lift": "Meaning: Cumulative lift = cum_resp_pct / cum_resp_total_pct. Critical: Shows model gain over random. Always cumulative. Fatal if <1 or <2 in top decile.Formula: Lift@k = cum_resp_pct / cum_resp_total_pct. ",
-      "decile_wise_lift": "Meaning: Decile-wise lift = cnt_resp / cnt_resp_rndm. Critical: Measures decile-level improvement vs random. Fatal if <1.Formula: cnt_resp / cnt_resp_rndm. "
+      "decile": "Meaning: Ranked group based on predicted probabilities (1 = highest probability). Critical: Ensure data is sorted descending by model score; top deciles should capture the majority of positives. Formula: Assign samples to k quantiles (e.g., 10 deciles) based on model score.",
+      "prob_min": "Meaning: Minimum predicted probability within the decile. Critical: Indicates model calibration; values too close to prob_max suggest poor separation. Formula: min(score in decile).",
+      "prob_max": "Meaning: Maximum predicted probability within the decile. Critical: Checks separation; overlap with lower deciles indicates poor discrimination. Formula: max(score in decile).",
+      "prob_avg": "Meaning: Average predicted probability within the decile. Critical: Useful for calibration checks; should decrease monotonically across deciles. Formula: mean(score in decile).",
+      "cnt_resp_true": "Meaning: Actual positives/responders in the decile. Critical: Should never exceed cnt_resp_wiz_true; flat counts across deciles indicate a weak or non-discriminative model. Formula: sum(y_true = 1 in decile).",
+      "cnt_resp_false": "Meaning: Actual negatives/non-responders in the decile. Critical: Used in KS/statistical calculations; too many negatives in top deciles is a warning. Formula: cnt_resp_total - cnt_resp_true.",
+      "cnt_resp_total": "Meaning: Total samples in the decile (positives + negatives). Critical: Denominator for rate_resp and cumulative % calculations; decile imbalance can distort lift/gain. Formula: count(samples in decile).",
+      "cnt_resp_rndm_true": "Meaning: Expected positives in the decile under a random model. Critical: Baseline for lift/gain comparison; fatal if model barely exceeds random. Formula: total_positives / n_deciles.",
+      "cnt_resp_wiz_true": "Meaning: Ideal/maximum possible positives if the model were perfect. Critical: Must always be ≥ cnt_resp_true; NaN or extremely low values indicate data issues. Formula: allocate top positives directly to highest scoring deciles.",
+      "rate_resp": "Meaning: Decile-level response rate (alias: decile_wise_response, decile_wise_gain). Critical: Measures decile quality; early deciles should outperform later ones. Formula: rate_resp = cnt_resp_true / cnt_resp_total.",
+      "overall_rate": "Meaning: Overall response rate across the dataset; serves as the baseline probability of a positive. Critical: Used as the denominator in decile-wise lift; essential to assess improvement vs random. Formula: overall_rate = sum(cnt_resp_true) / sum(cnt_resp_total) (fraction or %).",
+      "cum_resp_true": "Meaning: Cumulative number of positives captured up to the current decile (alias: cumulative_gain). Critical: Should increase monotonically; maximum = total responders. Flat curve indicates weak model. Formula: Σ cnt_resp_true (≤ current decile).",
+      "cum_resp_true_pct": "Meaning: Cumulative % of positives captured = cum_resp_true / total_responders * 100. Critical: Used for lift/gain curves; should always be ≥ model baseline. Formula: cum_resp_true / total_responders * 100.",
+      "cum_resp_false": "Meaning: Cumulative number of negatives captured up to the current decile. Critical: Used for KS/statistical calculations; dominance in early deciles is undesirable. Formula: Σ cnt_resp_false (≤ current decile).",
+      "cum_resp_false_pct": "Meaning: Cumulative % of negatives captured = cum_resp_false / total_nonresponders * 100. Critical: Should differ from cum_resp_true_pct; nearly equal curves indicate model failure. Formula: cum_resp_false / total_nonresponders * 100.",
+      "cum_resp_total": "Meaning: Cumulative total samples up to the current decile. Critical: Tracks population coverage for lift/gain charts. Formula: Σ cnt_resp_total (≤ current decile).",
+      "cum_resp_total_pct": "Meaning: Cumulative % of total population covered. Critical: X-axis for lift/gain curves; check decile balance. Formula: cum_resp_total / total_samples * 100.",
+      "cum_resp_rndm_true": "Meaning: Cumulative expected positives if randomly assigned. Critical: Baseline for cumulative lift; fatal if model ≈ random curve. Formula: Σ cnt_resp_rndm_true (≤ current decile).",
+      "cum_resp_rndm_true_pct": "Meaning: Cumulative % of expected positives under random = cum_resp_rndm_true / total_responders * 100. Critical: Baseline curve is linear from (0,0) to (100,100); model curve must exceed this. Formula: cum_resp_rndm_true / total_responders * 100.",
+      "cum_resp_wiz_true": "Meaning: Cumulative ideal/maximum possible positives. Critical: Must always be ≥ model values; never NaN. Formula: Σ cnt_resp_wiz_true (≤ current decile).",
+      "cum_resp_wiz_true_pct": "Meaning: % cumulative ideal positives = cum_resp_wiz_true / total_responders * 100. Critical: Wizard benchmark for lift/gain curves; gaps indicate model weakness. Formula: cum_resp_wiz_true / total_responders * 100.",
+      "cumulative_lift": "Meaning: Empirical discriminative power; shows cumulative improvement vs random. Critical: Always cumulative; should exceed 1 (or ≥2 in top decile). Formula: cumulative_lift = cum_resp_true_pct / cum_resp_total_pct.",
+      "decile_wise_lift": "Meaning: Improvement factor for individual deciles; shows how much better each decile performs vs random. Critical: Fatal if <1. Early deciles should show highest lift. Formula: decile_wise_lift = cnt_resp_true / cnt_resp_rndm_true.",
+      "KS": "Meaning: Peak discriminative power (scalar) extracted from cumulative gain curves; maximum distance between cumulative distributions of positives and negatives. Range: 0-1 (fraction) or 0-100 (percent). Interpretation: - <0.2 → Poor discrimination - 0.2-0.4 → Fair - 0.4-0.6 → Good - ≥0.6 → Excellent - ≥0.7 → Suspiciously high (possible overfitting or leakage). Critical: Report across train/validation/test; ensure top deciles dominate appropriately. Formula: KS = max(cum_resp_true_pct - cum_resp_false_pct) (sorted descending by model score)."
     }
-       decile  prob_min  prob_max  ...         KS  cumulative_lift  decile_wise_lift
-    0       1  0.999898  0.999998  ...  15.760870         1.548913          1.576087
-    1       2  0.999395  0.999897  ...  30.978261         1.548913          1.521739
-    2       3  0.997622  0.999376  ...  46.739130         1.548913          1.576087
-    3       4  0.992830  0.997497  ...  61.956522         1.548913          1.521739
-    4       5  0.959560  0.992494  ...  77.717391         1.548913          1.576087
-    5       6  0.771810  0.955756  ...  88.334051         1.521739          1.358696
-    6       7  0.065823  0.769488  ...  84.158416         1.425000          0.869565
-    7       8  0.000369  0.048060  ...  56.435644         1.250000          0.000000
-    8       9  0.000001  0.000349  ...  27.722772         1.108949          0.000000
-    9      10  0.000000  0.000001  ...   0.000000         1.000000          0.000000
+       decile  prob_min  prob_max  ...  decile_wise_lift  decile_wise_lift_wiz       KS
+    0       1    0.8478    0.9998  ...            5.3595                6.5359  51.4696
+    1       2    0.5792    0.8416  ...            1.9608                3.4641  62.8130
+    2       3    0.3837    0.5774  ...            1.0458                0.0000  63.3532
+    3       4    0.2739    0.3827  ...            0.3268                0.0000  55.4051
+    4       5    0.2044    0.2728  ...            0.3268                0.0000  47.4570
+    5       6    0.1410    0.2040  ...            0.3922                0.0000  40.2806
+    6       7    0.0984    0.1409  ...            0.1961                0.0000  30.7892
+    7       8    0.0605    0.0978  ...            0.2614                0.0000  22.0694
+    8       9    0.0344    0.0605  ...            0.0654                0.0000  11.0347
+    9      10    0.0014    0.0343  ...            0.0654                0.0000   0.0000
 
-    [10 rows x 23 columns]
-
-
+    [10 rows x 27 columns]
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 105-113
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 127-128
+
+fig, ax = plt.subplots(figsize=(10, 10))
+
+.. GENERATED FROM PYTHON SOURCE LINES 128-138
+
+.. code-block:: Python
+   :lineno-start: 128
+
+    p = sp.decileplot(
+        df,
+        x="y_true",
+        y="y_score",
+        kind="report",
+        n_deciles=10,
+        digits=6,
+        fmt='.4g'
+    )
+
+
+
+
+.. image-sg:: /auto_examples/snsx/images/sphx_glr_plot_decileplot_script_008.png
+   :alt: Cumulative Lift Curve, Decile-wise Lift Curve, Cumulative Gain Curve, Kolmogorov-Smirnov (KS) Statistic Curve
+   :srcset: /auto_examples/snsx/images/sphx_glr_plot_decileplot_script_008.png
+   :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+       decile  prob_min  ...  decile_wise_lift_wiz         KS
+    0       1  0.847810  ...              6.535948  51.469624
+    1       2  0.579150  ...              3.464052  62.813004
+    2       3  0.383729  ...              0.000000  63.353165
+    3       4  0.273915  ...              0.000000  55.405082
+    4       5  0.204425  ...              0.000000  47.456999
+    5       6  0.141044  ...              0.000000  40.280575
+    6       7  0.098419  ...              0.000000  30.789175
+    7       8  0.060545  ...              0.000000  22.069434
+    8       9  0.034429  ...              0.000000  11.034717
+    9      10  0.001371  ...              0.000000   0.000000
+
+    [10 rows x 27 columns]
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 139-147
 
 .. tags::
 
@@ -614,7 +977,7 @@ Create an instance of the LogisticRegression
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 1.571 seconds)
+   **Total running time of the script:** (0 minutes 1.855 seconds)
 
 
 .. _sphx_glr_download_auto_examples_snsx_plot_decileplot_script.py:
