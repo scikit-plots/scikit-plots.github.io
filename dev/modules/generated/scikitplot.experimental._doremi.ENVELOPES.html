@@ -560,7 +560,6 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.get_config.html">get_config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.get_logger.html">get_logger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logger.html">logger</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.reset.html">reset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.set_config.html">set_config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.show_config.html">show_config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.show_versions.html">show_versions</a></li>
@@ -600,8 +599,18 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.cexternals.html">scikitplot.cexternals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.html">stats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._f2py.get_include.html">get_include</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._numcpp.get_include.html">get_include</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._numcpp.nc.html">scikitplot.cexternals._numcpp.nc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._numcpp.nc_develop.html">scikitplot.cexternals._numcpp.nc_develop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals.annoy.Annoy.html">Annoy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals.annoy.AnnoyIndex.html">AnnoyIndex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals.annoy.annoylib.html">annoylib</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.exceptions.html">scikitplot.exceptions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.ModuleDeprecationWarning.html">ModuleDeprecationWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.ScikitplotException.html">ScikitplotException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.VisibleDeprecationWarning.html">VisibleDeprecationWarning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../apis/scikitplot.experimental.html">scikitplot.experimental</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -619,6 +628,7 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._llm_provider.LLM_PROVIDER_ENV_CONNECTOR_MAP.html">LLM_PROVIDER_ENV_CONNECTOR_MAP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._llm_provider.get_response.html">get_response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._llm_provider.load_mlflow_gateway_config.html">load_mlflow_gateway_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental.pipeline.pipeline.html">pipeline</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.externals.html">scikitplot.externals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -633,10 +643,7 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_extra.html">array_api_extra</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.impute.AnnoyKNNImputer.html">AnnoyKNNImputer</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.kds.html">scikitplot.kds</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.kds.print_labels.html">print_labels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.kds.decile_table.html">decile_table</a></li>
@@ -802,7 +809,7 @@
 <h1>ENVELOPES<a class="headerlink" href="#envelopes" title="Link to this heading">#</a></h1>
 <dl class="py data">
 <dt class="sig sig-object py" id="scikitplot.experimental._doremi.ENVELOPES">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.experimental._doremi.</span></span><span class="sig-name descname"><span class="pre">ENVELOPES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'ad_envelope':</span> <span class="pre">&lt;function</span> <span class="pre">ad_envelope&gt;,</span> <span class="pre">'exponential_decay':</span> <span class="pre">&lt;function</span> <span class="pre">exponential_decay&gt;,</span> <span class="pre">'gaussian':</span> <span class="pre">&lt;function</span> <span class="pre">gaussian&gt;,</span> <span class="pre">'hann':</span> <span class="pre">&lt;function</span> <span class="pre">hann&gt;,</span> <span class="pre">'none':</span> <span class="pre">&lt;function</span> <span class="pre">&lt;lambda&gt;&gt;,</span> <span class="pre">'soft_sine':</span> <span class="pre">&lt;function</span> <span class="pre">soft&gt;,</span> <span class="pre">'triangular':</span> <span class="pre">&lt;function</span> <span class="pre">triangular&gt;}</span></em><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/274425a/scikitplot/experimental/_doremi/envelopes.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.experimental._doremi.ENVELOPES" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.experimental._doremi.</span></span><span class="sig-name descname"><span class="pre">ENVELOPES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'ad_envelope':</span> <span class="pre">&lt;function</span> <span class="pre">ad_envelope&gt;,</span> <span class="pre">'exponential_decay':</span> <span class="pre">&lt;function</span> <span class="pre">exponential_decay&gt;,</span> <span class="pre">'gaussian':</span> <span class="pre">&lt;function</span> <span class="pre">gaussian&gt;,</span> <span class="pre">'hann':</span> <span class="pre">&lt;function</span> <span class="pre">hann&gt;,</span> <span class="pre">'none':</span> <span class="pre">&lt;function</span> <span class="pre">&lt;lambda&gt;&gt;,</span> <span class="pre">'soft_sine':</span> <span class="pre">&lt;function</span> <span class="pre">soft&gt;,</span> <span class="pre">'triangular':</span> <span class="pre">&lt;function</span> <span class="pre">triangular&gt;}</span></em><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8cdf5ec/scikitplot/experimental/_doremi/envelopes.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.experimental._doremi.ENVELOPES" title="Link to this definition">#</a></dt>
 <dd><p>Mapping of envelope types to amplitude-modulation functions.</p>
 </dd></dl>
 
@@ -901,7 +908,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251016.274425a 2025-10-15T23:31Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251023.8cdf5ec 2025-10-23T01:19Z.
       <br/>
     
   </p>

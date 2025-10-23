@@ -18,7 +18,7 @@
 .. _sphx_glr_auto_examples_impute_plot_impute_script.py:
 
 
-plot_impute with examples
+annoy impute with examples
 ==================================
 
 Examples related to the :py:class:`~scikitplot.impute.AnnoyKNNImputer` class
@@ -31,7 +31,6 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 .. GENERATED FROM PYTHON SOURCE LINES 12-17
 
 .. code-block:: Python
-   :lineno-start: 13
 
 
     # Authors: The scikit-plots developers
@@ -48,7 +47,6 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 .. GENERATED FROM PYTHON SOURCE LINES 18-132
 
 .. code-block:: Python
-   :lineno-start: 18
 
     import time
     import numpy as np; np.random.seed(0)  # reproducibility
@@ -180,7 +178,6 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 .. GENERATED FROM PYTHON SOURCE LINES 133-165
 
 .. code-block:: Python
-   :lineno-start: 133
 
     X_train, X_val, y_train, y_val = train_test_split(
         X, y, test_size=0.2, random_state=0
@@ -221,10 +218,9 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 166-200
+.. GENERATED FROM PYTHON SOURCE LINES 166-199
 
 .. code-block:: Python
-   :lineno-start: 166
 
     from sklearn.ensemble import RandomForestRegressor
 
@@ -233,7 +229,7 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
     from sklearn.impute import IterativeImputer, KNNImputer, SimpleImputer
     from sklearn.model_selection import cross_val_score
     from sklearn.pipeline import make_pipeline
-    from sklearn.preprocessing import RobustScaler
+    from sklearn.preprocessing import MaxAbsScaler, RobustScaler
 
     N_SPLITS = 4
 
@@ -248,9 +244,8 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
         )
         return scores.mean(), scores.std()
 
-    x_labels = []
-
     n_size = 7
+    x_labels = np.zeros(n_size, dtype=object)
     mses_diabetes = np.zeros(n_size)
     stds_diabetes = np.zeros(n_size)
     mses_california = np.zeros(n_size)
@@ -267,16 +262,15 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 201-211
+.. GENERATED FROM PYTHON SOURCE LINES 200-210
 
 .. code-block:: Python
-   :lineno-start: 201
 
     t0 = time.time()
     mses_diabetes[0], stds_diabetes[0] = get_score(X_diabetes, y_diabetes)
     mses_california[0], stds_california[0] = get_score(X_california, y_california)
     mses_train[0], stds_train[0] = get_score(X_train, y_train)
-    x_labels.append("Full Data")
+    x_labels[0] = "Full Data"
     T = time.time() - t0
     print(T)
     time_data[0] = T
@@ -290,15 +284,14 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 
  .. code-block:: none
 
-    25.60783314704895
+    26.718082189559937
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 212-229
+.. GENERATED FROM PYTHON SOURCE LINES 211-228
 
 .. code-block:: Python
-   :lineno-start: 212
 
     t0 = time.time()
     imputer = SimpleImputer(strategy="constant", fill_value=0, add_indicator=True)
@@ -311,7 +304,7 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
     mses_train[1], stds_train[1] = get_score(
         X_miss_train, y_miss_train, imputer
     )
-    x_labels.append("Zero\nImputation\n(constant)")
+    x_labels[1] = "Zero\nImputation\n(constant)"
     T = time.time() - t0
     print(T)
     time_data[1] = T
@@ -325,15 +318,14 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 
  .. code-block:: none
 
-    27.146008253097534
+    28.217537879943848
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 230-247
+.. GENERATED FROM PYTHON SOURCE LINES 229-246
 
 .. code-block:: Python
-   :lineno-start: 230
 
     t0 = time.time()
     imputer = SimpleImputer(strategy="mean", add_indicator=True)
@@ -346,7 +338,7 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
     mses_train[2], stds_train[2] = get_score(
         X_miss_train, y_miss_train, imputer
     )
-    x_labels.append("Mean\nImputation")
+    x_labels[2] = "Mean\nImputation"
     T = time.time() - t0
     print(T)
     time_data[2] = T
@@ -360,15 +352,14 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 
  .. code-block:: none
 
-    27.219724893569946
+    27.603037118911743
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 248-265
+.. GENERATED FROM PYTHON SOURCE LINES 247-264
 
 .. code-block:: Python
-   :lineno-start: 248
 
     t0 = time.time()
     imputer = SimpleImputer(strategy="median", add_indicator=True)
@@ -381,7 +372,7 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
     mses_train[3], stds_train[3] = get_score(
         X_miss_train, y_miss_train, imputer
     )
-    x_labels.append("Median\nImputation")
+    x_labels[3] = "Median\nImputation"
     T = time.time() - t0
     print(T)
     time_data[3] = T
@@ -395,28 +386,27 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 
  .. code-block:: none
 
-    27.022822380065918
+    28.28212022781372
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 266-283
+.. GENERATED FROM PYTHON SOURCE LINES 265-282
 
 .. code-block:: Python
-   :lineno-start: 266
 
     t0 = time.time()
     imputer = KNNImputer(add_indicator=True)
     mses_diabetes[4], stds_diabetes[4] = get_score(
-        X_miss_diabetes, y_miss_diabetes, imputer
+        X_miss_diabetes, y_miss_diabetes, make_pipeline(RobustScaler(), MaxAbsScaler(), imputer)
     )
     mses_california[4], stds_california[4] = get_score(
-        X_miss_california, y_miss_california, make_pipeline(RobustScaler(), imputer)
+        X_miss_california, y_miss_california, make_pipeline(RobustScaler(), MaxAbsScaler(), imputer)
     )
     mses_train[4], stds_train[4] = get_score(
-        X_miss_train, y_miss_train, make_pipeline(RobustScaler(), imputer)
+        X_miss_train, y_miss_train, make_pipeline(RobustScaler(), MaxAbsScaler(), imputer)
     )
-    x_labels.append("KNN\nImputation")
+    x_labels[4] = "KNN\nImputation"
     T = time.time() - t0
     print(T)
     time_data[4] = T
@@ -430,15 +420,49 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 
  .. code-block:: none
 
-    28.187212705612183
+    30.0512912273407
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 284-288
+.. GENERATED FROM PYTHON SOURCE LINES 283-301
 
 .. code-block:: Python
-   :lineno-start: 284
+
+    t0 = time.time()
+    imputer = IterativeImputer(add_indicator=True)
+
+    mses_diabetes[5], stds_diabetes[5] = get_score(
+        X_miss_diabetes, y_miss_diabetes, make_pipeline(RobustScaler(), MaxAbsScaler(), imputer)
+    )
+    mses_california[5], stds_california[5] = get_score(
+        X_miss_california, y_miss_california, make_pipeline(RobustScaler(), MaxAbsScaler(), imputer)
+    )
+    mses_train[5], stds_train[5] = get_score(
+        X_miss_train, y_miss_train, make_pipeline(RobustScaler(), MaxAbsScaler(), imputer)
+    )
+    x_labels[5] = "Iterative\nImputation\n(BayesianRidge)"
+    T = time.time() - t0
+    print(T)
+    time_data[5] = T
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    34.66812825202942
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 302-306
+
+.. code-block:: Python
 
     import scikitplot as sp
     sp.__version__
@@ -453,15 +477,15 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
  .. code-block:: none
 
 
-    '0.5.dev0+git.20251016.274425a'
+    '0.5.dev0+git.20251023.8cdf5ec'
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 289-293
+.. GENERATED FROM PYTHON SOURCE LINES 307-312
 
 .. code-block:: Python
-   :lineno-start: 289
 
+    from scikitplot.experimental import enable_annoyknn_imputer
     from scikitplot.impute import AnnoyKNNImputer
     # print(AnnoyKNNImputer.__doc__)
 
@@ -473,65 +497,25 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 294-317
+.. GENERATED FROM PYTHON SOURCE LINES 313-333
 
 .. code-block:: Python
-   :lineno-start: 294
 
     t0 = time.time()
-    imputer = AnnoyKNNImputer(
-        add_indicator=True,
-        n_trees=5,
-        search_k=1000,
-        n_neighbors=5,
-        index_nan_strategy='mean',
-    )
-    mses_diabetes[5], stds_diabetes[5] = get_score(
-        X_miss_diabetes, y_miss_diabetes, imputer
-    )
-    mses_california[5], stds_california[5] = get_score(
-        X_miss_california, y_miss_california, make_pipeline(RobustScaler(), imputer)
-    )
-    mses_train[5], stds_train[5] = get_score(
-        X_miss_train, y_miss_train, make_pipeline(RobustScaler(), imputer)
-    )
-    x_labels.append("AnnoyKNN\nImputation\n(Tree Based)")
-    T = time.time() - t0
-    print(T)
-    time_data[5] = T
-
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    28.35898518562317
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 318-336
-
-.. code-block:: Python
-   :lineno-start: 318
-
-    t0 = time.time()
-    imputer = IterativeImputer(add_indicator=True)
-
+    # 'angular', 'euclidean', 'manhattan', 'hamming', 'dot'
+    imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, n_trees=5, metric='dot')
     mses_diabetes[6], stds_diabetes[6] = get_score(
-        X_miss_diabetes, y_miss_diabetes, imputer
+        X_miss_diabetes, y_miss_diabetes, make_pipeline(RobustScaler(), MaxAbsScaler(), imputer)
     )
+    imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, n_trees=10, metric='dot')
     mses_california[6], stds_california[6] = get_score(
-        X_miss_california, y_miss_california, make_pipeline(RobustScaler(), imputer)
+        X_miss_california, y_miss_california, make_pipeline(RobustScaler(), MaxAbsScaler(), imputer)
     )
+    imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, n_trees=20, metric='angular')
     mses_train[6], stds_train[6] = get_score(
-        X_miss_train, y_miss_train, make_pipeline(RobustScaler(), imputer)
+        X_miss_train, y_miss_train, make_pipeline(RobustScaler(), MaxAbsScaler(), imputer)
     )
-    x_labels.append("Iterative\nImputation\n(BayesianRidge)")
+    x_labels[6] = "AnnoyKNN\nImputation\n(Vector Based)"
     T = time.time() - t0
     print(T)
     time_data[6] = T
@@ -545,15 +529,14 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 
  .. code-block:: none
 
-    31.3128182888031
+    32.024739027023315
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 337-429
+.. GENERATED FROM PYTHON SOURCE LINES 334-426
 
 .. code-block:: Python
-   :lineno-start: 337
 
     import matplotlib.pyplot as plt
 
@@ -584,7 +567,7 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 
     # Add bar value labels
     for bar in bars1:
-        ax1.bar_label(bar, fmt="%.3f", label_type='center', padding=-20)
+        ax1.bar_label(bar, fmt="%.3f", label_type='center', padding=-45)
 
     ax1.set_title("Imputation Techniques with Diabetes Data")
     ax1.set_xlim(left=np.min(mses_diabetes) * 0.9, right=np.max(mses_diabetes) * 1.1)
@@ -610,7 +593,7 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 
     # Add bar value labels
     for bar in bars2:
-        ax2.bar_label(bar, fmt="%.3f", label_type='center', padding=-20)
+        ax2.bar_label(bar, fmt="%.3f", label_type='center', padding=-45)
 
     ax2.set_title("Imputation Techniques with California Data")
     ax2.set_yticks(xval)
@@ -635,7 +618,7 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 
     # Add bar value labels
     for bar in bars3:
-        ax3.bar_label(bar, fmt="%.3f", label_type='center', padding=-20)
+        ax3.bar_label(bar, fmt="%.3f", label_type='center', padding=-45)
 
     ax3.set_title("Imputation Techniques with Train Data")
     ax3.set_yticks(xval)
@@ -659,7 +642,14 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 430-437
+.. GENERATED FROM PYTHON SOURCE LINES 427-431
+
+AnnoyKNNImputer performance and accuracy are highly sensitive to both the
+selected distance metric and the number of trees used to build the Annoy index.
+An inappropriate metric or insufficient number of trees may lead to poor
+neighbor retrieval and degraded imputation quality.
+
+.. GENERATED FROM PYTHON SOURCE LINES 433-440
 
 .. tags::
 
@@ -672,7 +662,7 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (3 minutes 16.127 seconds)
+   **Total running time of the script:** (3 minutes 28.983 seconds)
 
 
 .. _sphx_glr_download_auto_examples_impute_plot_impute_script.py:

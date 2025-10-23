@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="annoy with examples" property="og:title"/>
+<meta content="annoy (mmap) with examples" property="og:title"/>
 <meta content="website" property="og:type"/>
 <meta content="https://scikit-plots.github.io/stable/auto_examples/annoy/plot_mmap_script.html" property="og:url"/>
 <meta content="scikit-plots" property="og:site_name"/>
@@ -13,7 +13,7 @@
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
 <meta content="An example showing the annoy function. from annoy import AnnoyIndex Tags: model-type: classification model-workflow: impute plot-type: bar level: beginner purpose: showcase Total running time of th..." name="description"/>
-<title>annoy with examples — scikit-plots 0.5.dev0 documentation</title>
+<title>annoy (mmap) with examples — scikit-plots 0.5.dev0 documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
@@ -73,7 +73,7 @@
 <link href="../../_static/scikit-plots-favicon.ico" rel="icon"/>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
-<link href="plot_precision_script.html" rel="next" title="annoy with examples"/>
+<link href="plot_precision_script.html" rel="next" title="annoy (precision) with examples"/>
 <link href="index.html" rel="prev" title="Annoy"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="en" name="docsearch:language"/>
@@ -348,9 +348,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../00-blogs/index.html">blog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../00-jupyter_notebooks/index.html">jupyter notebooks</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Annoy</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">annoy with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_precision_script.html">annoy with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_simple_script.html">annoy with examples</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">annoy (mmap) with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_precision_script.html">annoy (precision) with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_simple_script.html">annoy (simple) with examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../array_api/index.html">Array API support</a></li>
@@ -378,7 +378,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../impute/index.html">Impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../impute/plot_impute_script.html">plot_impute with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../impute/plot_impute_script.html">annoy impute with examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../kds/index.html">KeyToDataScience</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -444,7 +444,7 @@
 </li>
 <li class="breadcrumb-item"><a class="nav-link" href="../index.html">Examples</a></li>
 <li class="breadcrumb-item"><a class="nav-link" href="index.html">Annoy</a></li>
-<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">annoy with examples</span></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">annoy (mmap) with examples</span></li>
 </ul>
 </nav>
 </div>
@@ -454,37 +454,37 @@
 <div id="searchbox"></div>
 <article class="bd-article">
 
-<section class="sphx-glr-example-title" id="annoy-with-examples">
-<span id="sphx-glr-auto-examples-annoy-plot-mmap-script-py"></span><h1>annoy with examples<a class="headerlink" href="#annoy-with-examples" title="Link to this heading">#</a></h1>
+<section class="sphx-glr-example-title" id="annoy-mmap-with-examples">
+<span id="sphx-glr-auto-examples-annoy-plot-mmap-script-py"></span><h1>annoy (mmap) with examples<a class="headerlink" href="#annoy-mmap-with-examples" title="Link to this heading">#</a></h1>
 <p>An example showing the <a class="reference internal" href="../../apis/scikitplot.cexternals.html#module-scikitplot.cexternals.annoy" title="scikitplot.cexternals.annoy"><code class="xref py py-func docutils literal notranslate"><span class="pre">annoy</span></code></a> function.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">8</span> <span class="c1"># Authors: Spotify AB</span>
-<span class="linenos">9</span> <span class="c1"># SPDX-License-Identifier: Apache-2.0</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: Spotify AB</span>
+<span class="c1"># SPDX-License-Identifier: Apache-2.0</span>
 </pre></div>
 </div>
 <p>from annoy import AnnoyIndex</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">13</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.cexternals.annoy</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-scikitplot-cexternals-annoy sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.cexternals.annoy.AnnoyIndex.html#scikitplot.cexternals.annoy.AnnoyIndex" title="scikitplot.cexternals.annoy.AnnoyIndex"><span class="n">AnnoyIndex</span></a>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.cexternals.annoy</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-scikitplot-cexternals-annoy sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.cexternals.annoy.AnnoyIndex.html#scikitplot.cexternals.annoy.AnnoyIndex" title="scikitplot.cexternals.annoy.AnnoyIndex"><span class="n">AnnoyIndex</span></a>
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">16</span> <span class="n">a</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cexternals-annoy sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.cexternals.annoy.AnnoyIndex.html#scikitplot.cexternals.annoy.AnnoyIndex" title="scikitplot.cexternals.annoy.AnnoyIndex"><span class="n">AnnoyIndex</span></a><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">'angular'</span><span class="p">)</span>
-<span class="linenos">17</span> <span class="n">a</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="linenos">18</span> <span class="n">a</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="linenos">19</span> <span class="n">a</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="linenos">20</span> <span class="n">a</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="linenos">21</span> <span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'test.tree'</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">24</span> <span class="n">b</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cexternals-annoy sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.cexternals.annoy.AnnoyIndex.html#scikitplot.cexternals.annoy.AnnoyIndex" title="scikitplot.cexternals.annoy.AnnoyIndex"><span class="n">AnnoyIndex</span></a><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">'angular'</span><span class="p">)</span>
-<span class="linenos">25</span> <span class="n">b</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'test.tree'</span><span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cexternals-annoy sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.cexternals.annoy.AnnoyIndex.html#scikitplot.cexternals.annoy.AnnoyIndex" title="scikitplot.cexternals.annoy.AnnoyIndex"><span class="n">AnnoyIndex</span></a><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">'angular'</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">a</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">a</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">a</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'test.tree'</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">28</span> <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
-<span class="linenos">29</span> <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">get_nns_by_vector</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="mi">100</span><span class="p">))</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cexternals-annoy sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.cexternals.annoy.AnnoyIndex.html#scikitplot.cexternals.annoy.AnnoyIndex" title="scikitplot.cexternals.annoy.AnnoyIndex"><span class="n">AnnoyIndex</span></a><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">'angular'</span><span class="p">)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'test.tree'</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">get_nns_by_vector</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="mi">100</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[0, 1, 2]
@@ -492,21 +492,21 @@
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-impute.html"><span class="doc">model-workflow: impute</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-bar.html"><span class="doc">plot-type: bar</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.116 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.012 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.cexternals.annoy function."><img alt="" src="../../_images/sphx_glr_plot_simple_script_thumb.png"/>
-<p><a class="reference internal" href="plot_simple_script.html#sphx-glr-auto-examples-annoy-plot-simple-script-py"><span class="std std-ref">annoy with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">annoy with examples</div>
+<p><a class="reference internal" href="plot_simple_script.html#sphx-glr-auto-examples-annoy-plot-simple-script-py"><span class="std std-ref">annoy (simple) with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">annoy (simple) with examples</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.cexternals.annoy function."><img alt="" src="../../_images/sphx_glr_plot_precision_script_thumb.png"/>
-<p><a class="reference internal" href="plot_precision_script.html#sphx-glr-auto-examples-annoy-plot-precision-script-py"><span class="std std-ref">annoy with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">annoy with examples</div>
+<p><a class="reference internal" href="plot_precision_script.html#sphx-glr-auto-examples-annoy-plot-precision-script-py"><span class="std std-ref">annoy (precision) with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">annoy (precision) with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.impute.AnnoyKNNImputer class with a scikit-learn regressor (e.g., :py~sklearn.linear_model.LinearRegression) instance."><img alt="" src="../../_images/sphx_glr_plot_impute_script_thumb.png"/>
+<p><a class="reference internal" href="../impute/plot_impute_script.html#sphx-glr-auto-examples-impute-plot-impute-script-py"><span class="std std-ref">annoy impute with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">annoy impute with examples</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing Spam the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_conv_dense_thumb.png"/>
 <p><a class="reference internal" href="../visualkeras_ANN/plot_conv_dense.html#sphx-glr-auto-examples-visualkeras-ann-plot-conv-dense-py"><span class="std std-ref">Visualkeras: Spam Classification Conv1D Dense Example</span></a></p>
 <div class="sphx-glr-thumbnail-title">Visualkeras: Spam Classification Conv1D Dense Example</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_silhouette function used by a scikit-learn clusterer."><img alt="" src="../../_images/sphx_glr_plot_silhouette_script_thumb.png"/>
-<p><a class="reference internal" href="../clustering/plot_silhouette_script.html#sphx-glr-auto-examples-clustering-plot-silhouette-script-py"><span class="std std-ref">plot_silhouette with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">plot_silhouette with examples</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </article>
@@ -524,7 +524,7 @@
 <a class="right-next" href="plot_precision_script.html" title="next page">
 <div class="prev-next-info">
 <p class="prev-next-subtitle">next</p>
-<p class="prev-next-title">annoy with examples</p>
+<p class="prev-next-title">annoy (precision) with examples</p>
 </div>
 <i class="fa-solid fa-angle-right"></i>
 </a>
@@ -557,7 +557,7 @@
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251016.274425a 2025-10-15T23:31Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251023.8cdf5ec 2025-10-23T01:19Z.
       <br/>
 </p>
 </div>

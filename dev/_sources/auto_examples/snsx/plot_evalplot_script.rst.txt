@@ -27,7 +27,6 @@ with a scikit-learn classifier (e.g., :py:class:`~sklearn.linear_model.LogisticR
 .. GENERATED FROM PYTHON SOURCE LINES 8-12
 
 .. code-block:: Python
-   :lineno-start: 9
 
 
     # Authors: The scikit-plots developers
@@ -47,7 +46,6 @@ Import scikit-plot
 .. GENERATED FROM PYTHON SOURCE LINES 14-17
 
 .. code-block:: Python
-   :lineno-start: 14
 
     import scikitplot.snsx as sp
 
@@ -62,7 +60,6 @@ Import scikit-plot
 .. GENERATED FROM PYTHON SOURCE LINES 18-48
 
 .. code-block:: Python
-   :lineno-start: 18
 
     import matplotlib.pyplot as plt
     import numpy as np; np.random.seed(0)  # reproducibility
@@ -110,7 +107,6 @@ X, y = data_2_classes(return_X_y=True, as_frame=False)
 .. GENERATED FROM PYTHON SOURCE LINES 52-59
 
 .. code-block:: Python
-   :lineno-start: 53
 
 
     # Generate a sample dataset
@@ -129,7 +125,6 @@ X, y = data_2_classes(return_X_y=True, as_frame=False)
 .. GENERATED FROM PYTHON SOURCE LINES 60-65
 
 .. code-block:: Python
-   :lineno-start: 60
 
     X_train, X_val, y_train, y_val = train_test_split(
         X, y, stratify=y, test_size=0.2, random_state=0
@@ -156,7 +151,6 @@ Create an instance of the LogisticRegression
 .. GENERATED FROM PYTHON SOURCE LINES 67-94
 
 .. code-block:: Python
-   :lineno-start: 67
 
     model = (
         LogisticRegression(
@@ -294,7 +288,6 @@ Create an instance of the LogisticRegression
 .. GENERATED FROM PYTHON SOURCE LINES 95-106
 
 .. code-block:: Python
-   :lineno-start: 95
 
     p = sp.evalplot(
         df,
@@ -322,7 +315,6 @@ Create an instance of the LogisticRegression
 .. GENERATED FROM PYTHON SOURCE LINES 107-115
 
 .. code-block:: Python
-   :lineno-start: 107
 
     p = sp.evalplot(
         df,
@@ -347,7 +339,6 @@ Create an instance of the LogisticRegression
 .. GENERATED FROM PYTHON SOURCE LINES 116-123
 
 .. code-block:: Python
-   :lineno-start: 116
 
     p = sp.evalplot(
         df,
@@ -375,7 +366,6 @@ fig, ax = plt.subplots(figsize=(8, 6))
 .. GENERATED FROM PYTHON SOURCE LINES 125-135
 
 .. code-block:: Python
-   :lineno-start: 125
 
     p = sp.evalplot(
         df,
@@ -402,7 +392,6 @@ fig, ax = plt.subplots(figsize=(8, 6))
 .. GENERATED FROM PYTHON SOURCE LINES 136-149
 
 .. code-block:: Python
-   :lineno-start: 136
 
     import numpy as np
     import matplotlib.pyplot as plt
@@ -433,7 +422,6 @@ X, y = data_2_classes(return_X_y=True, as_frame=False)
 .. GENERATED FROM PYTHON SOURCE LINES 153-160
 
 .. code-block:: Python
-   :lineno-start: 154
 
 
     # Generate a sample dataset
@@ -452,7 +440,6 @@ X, y = data_2_classes(return_X_y=True, as_frame=False)
 .. GENERATED FROM PYTHON SOURCE LINES 161-166
 
 .. code-block:: Python
-   :lineno-start: 161
 
     X_train, X_val, y_train, y_val = train_test_split(
         X, y, stratify=y, test_size=0.2, random_state=0,
@@ -479,7 +466,6 @@ Initialize the Random Forest Classifier
 .. GENERATED FROM PYTHON SOURCE LINES 168-178
 
 .. code-block:: Python
-   :lineno-start: 168
 
     rf_model = RandomForestClassifier(
         class_weight='balanced',
@@ -1230,7 +1216,6 @@ Make predictions on the test set
 .. GENERATED FROM PYTHON SOURCE LINES 180-183
 
 .. code-block:: Python
-   :lineno-start: 180
 
     y_val_pred = rf_model.predict(X_val)
     y_val_prob = rf_model.predict_proba(X_val)[:, 1]
@@ -1249,7 +1234,6 @@ fig, ax = plt.subplots(figsize=(8, 8))
 .. GENERATED FROM PYTHON SOURCE LINES 185-191
 
 .. code-block:: Python
-   :lineno-start: 185
 
     p = sp.evalplot(
         x=y_val,
@@ -1276,7 +1260,6 @@ fig, ax = plt.subplots(figsize=(8, 8))
 .. GENERATED FROM PYTHON SOURCE LINES 193-202
 
 .. code-block:: Python
-   :lineno-start: 193
 
     p = sp.evalplot(
         x=y_val,
@@ -1306,7 +1289,6 @@ Generate a classification report
 .. GENERATED FROM PYTHON SOURCE LINES 204-210
 
 .. code-block:: Python
-   :lineno-start: 204
 
     print(classification_report(y_val, y_val_pred))
 
@@ -1344,7 +1326,6 @@ import seaborn as sns
 .. GENERATED FROM PYTHON SOURCE LINES 212-222
 
 .. code-block:: Python
-   :lineno-start: 213
 
 
     # plt.figure(figsize=(12, 7))
@@ -1377,7 +1358,7 @@ import seaborn as sns
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 1.402 seconds)
+   **Total running time of the script:** (0 minutes 1.708 seconds)
 
 
 .. _sphx_glr_download_auto_examples_snsx_plot_evalplot_script.py:

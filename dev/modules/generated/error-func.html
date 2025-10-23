@@ -560,7 +560,6 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.get_config.html">get_config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.get_logger.html">get_logger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logger.html">logger</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.reset.html">reset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.set_config.html">set_config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.show_config.html">show_config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.show_versions.html">show_versions</a></li>
@@ -600,8 +599,18 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.cexternals.html">scikitplot.cexternals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.html">stats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._f2py.get_include.html">get_include</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._numcpp.get_include.html">get_include</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._numcpp.nc.html">scikitplot.cexternals._numcpp.nc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._numcpp.nc_develop.html">scikitplot.cexternals._numcpp.nc_develop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals.annoy.Annoy.html">Annoy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals.annoy.AnnoyIndex.html">AnnoyIndex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals.annoy.annoylib.html">annoylib</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.exceptions.html">scikitplot.exceptions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.ModuleDeprecationWarning.html">ModuleDeprecationWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.ScikitplotException.html">ScikitplotException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.VisibleDeprecationWarning.html">VisibleDeprecationWarning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -619,6 +628,7 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._llm_provider.LLM_PROVIDER_ENV_CONNECTOR_MAP.html">LLM_PROVIDER_ENV_CONNECTOR_MAP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._llm_provider.get_response.html">get_response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._llm_provider.load_mlflow_gateway_config.html">load_mlflow_gateway_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental.pipeline.pipeline.html">pipeline</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.externals.html">scikitplot.externals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -633,10 +643,7 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_extra.html">array_api_extra</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.impute.AnnoyKNNImputer.html">AnnoyKNNImputer</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.kds.html">scikitplot.kds</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.kds.print_labels.html">print_labels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.kds.decile_table.html">decile_table</a></li>
@@ -802,7 +809,7 @@
 <h1>error<a class="headerlink" href="#error" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.sp_logging.error">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.sp_logging.</span></span><span class="sig-name descname"><span class="pre">error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/274425a/scikitplot/sp_logging.py#L1185"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.error" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.sp_logging.</span></span><span class="sig-name descname"><span class="pre">error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8cdf5ec/scikitplot/sp_logging.py#L1185"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.sp_logging.error" title="Link to this definition">#</a></dt>
 <dd><p>Log a message at the ERROR log level.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -913,7 +920,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251016.274425a 2025-10-15T23:31Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251023.8cdf5ec 2025-10-23T01:19Z.
       <br/>
     
   </p>

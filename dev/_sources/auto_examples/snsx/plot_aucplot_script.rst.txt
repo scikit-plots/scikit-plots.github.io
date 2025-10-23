@@ -27,7 +27,6 @@ with a scikit-learn classifier (e.g., :py:class:`~sklearn.linear_model.LogisticR
 .. GENERATED FROM PYTHON SOURCE LINES 8-12
 
 .. code-block:: Python
-   :lineno-start: 9
 
 
     # Authors: The scikit-plots developers
@@ -47,7 +46,6 @@ Import scikit-plot
 .. GENERATED FROM PYTHON SOURCE LINES 14-17
 
 .. code-block:: Python
-   :lineno-start: 14
 
     import scikitplot.snsx as sp
 
@@ -62,7 +60,6 @@ Import scikit-plot
 .. GENERATED FROM PYTHON SOURCE LINES 18-25
 
 .. code-block:: Python
-   :lineno-start: 18
 
     ax = sp.aucplot(
         x=[0, 1, 1, 0, 1, 1, 0, 1, 1, 0],
@@ -86,7 +83,6 @@ Import scikit-plot
 .. GENERATED FROM PYTHON SOURCE LINES 26-34
 
 .. code-block:: Python
-   :lineno-start: 26
 
     ax = sp.aucplot(
         x=[0, 1, 1, 0, 1, 1, 0, 1, 1, 0],
@@ -111,7 +107,6 @@ Import scikit-plot
 .. GENERATED FROM PYTHON SOURCE LINES 35-49
 
 .. code-block:: Python
-   :lineno-start: 35
 
     import matplotlib.pyplot as plt
     import numpy as np; np.random.seed(0)  # reproducibility
@@ -143,7 +138,6 @@ X, y = data_2_classes(return_X_y=True, as_frame=False)
 .. GENERATED FROM PYTHON SOURCE LINES 53-60
 
 .. code-block:: Python
-   :lineno-start: 54
 
 
     # Generate a sample dataset
@@ -162,7 +156,6 @@ X, y = data_2_classes(return_X_y=True, as_frame=False)
 .. GENERATED FROM PYTHON SOURCE LINES 61-66
 
 .. code-block:: Python
-   :lineno-start: 61
 
     X_train, X_val, y_train, y_val = train_test_split(
         X, y, stratify=y, test_size=0.2, random_state=0
@@ -189,7 +182,6 @@ Create an instance of the LogisticRegression
 .. GENERATED FROM PYTHON SOURCE LINES 68-94
 
 .. code-block:: Python
-   :lineno-start: 68
 
     model = (
         LogisticRegression(
@@ -326,7 +318,6 @@ Create an instance of the LogisticRegression
 .. GENERATED FROM PYTHON SOURCE LINES 95-98
 
 .. code-block:: Python
-   :lineno-start: 95
 
     ax = sp.aucplot(x=df.y_true, y=df.y_score)
 
@@ -346,7 +337,6 @@ Create an instance of the LogisticRegression
 .. GENERATED FROM PYTHON SOURCE LINES 99-109
 
 .. code-block:: Python
-   :lineno-start: 99
 
     ax = sp.aucplot(
         df,
@@ -373,7 +363,6 @@ Create an instance of the LogisticRegression
 .. GENERATED FROM PYTHON SOURCE LINES 110-127
 
 .. code-block:: Python
-   :lineno-start: 110
 
     for i in range(2):
         ax = sp.aucplot(
@@ -407,7 +396,6 @@ Create an instance of the LogisticRegression
 .. GENERATED FROM PYTHON SOURCE LINES 128-155
 
 .. code-block:: Python
-   :lineno-start: 128
 
     for i in range(2):
         ax = sp.aucplot(
@@ -462,7 +450,7 @@ Create an instance of the LogisticRegression
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.502 seconds)
+   **Total running time of the script:** (0 minutes 0.660 seconds)
 
 
 .. _sphx_glr_download_auto_examples_snsx_plot_aucplot_script.py:

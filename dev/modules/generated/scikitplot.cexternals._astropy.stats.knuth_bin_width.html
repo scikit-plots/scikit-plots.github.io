@@ -561,7 +561,6 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.get_config.html">get_config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.get_logger.html">get_logger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logger.html">logger</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.reset.html">reset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.set_config.html">set_config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.show_config.html">show_config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.show_versions.html">show_versions</a></li>
@@ -601,8 +600,18 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.cexternals.html">scikitplot.cexternals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.html">stats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._f2py.get_include.html">get_include</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._numcpp.get_include.html">get_include</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._numcpp.nc.html">scikitplot.cexternals._numcpp.nc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._numcpp.nc_develop.html">scikitplot.cexternals._numcpp.nc_develop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals.annoy.Annoy.html">Annoy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals.annoy.AnnoyIndex.html">AnnoyIndex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals.annoy.annoylib.html">annoylib</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.exceptions.html">scikitplot.exceptions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.ModuleDeprecationWarning.html">ModuleDeprecationWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.ScikitplotException.html">ScikitplotException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.VisibleDeprecationWarning.html">VisibleDeprecationWarning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -620,6 +629,7 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._llm_provider.LLM_PROVIDER_ENV_CONNECTOR_MAP.html">LLM_PROVIDER_ENV_CONNECTOR_MAP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._llm_provider.get_response.html">get_response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._llm_provider.load_mlflow_gateway_config.html">load_mlflow_gateway_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental.pipeline.pipeline.html">pipeline</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.externals.html">scikitplot.externals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -634,10 +644,7 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_extra.html">array_api_extra</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.impute.AnnoyKNNImputer.html">AnnoyKNNImputer</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.kds.html">scikitplot.kds</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.kds.print_labels.html">print_labels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.kds.decile_table.html">decile_table</a></li>
@@ -803,7 +810,7 @@
 <h1>knuth_bin_width<a class="headerlink" href="#knuth-bin-width" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cexternals._astropy.stats.knuth_bin_width">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cexternals._astropy.stats.</span></span><span class="sig-name descname"><span class="pre">knuth_bin_width</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/274425a/scikitplot/cexternals/_astropy/stats/histogram.py#L319"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexternals._astropy.stats.knuth_bin_width" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cexternals._astropy.stats.</span></span><span class="sig-name descname"><span class="pre">knuth_bin_width</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/8cdf5ec/scikitplot/cexternals/_astropy/stats/histogram.py#L313"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexternals._astropy.stats.knuth_bin_width" title="Link to this definition">#</a></dt>
 <dd><p>Return the optimal histogram bin width using Knuth’s rule.</p>
 <p>Knuth’s rule is a fixed-width, Bayesian approach to determining
 the optimal bin width of a histogram.</p>
@@ -828,13 +835,13 @@ the optimal bin width of a histogram.</p>
 </dd>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>ArrayLike</em>)</p></li>
+<li><p><strong>data</strong> (<em>_Buffer</em><em> | </em><em>_SupportsArray</em><em>[</em><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v2.3)"><em>dtype</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em><em>] </em><em>| </em><em>_NestedSequence</em><em>[</em><em>_SupportsArray</em><em>[</em><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v2.3)"><em>dtype</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em><em>]</em><em>] </em><em>| </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#complex" title="(in Python v3.14)"><em>complex</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><em>bytes</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>_NestedSequence</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#complex" title="(in Python v3.14)"><em>complex</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><em>bytes</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em>)</p></li>
 <li><p><strong>return_bins</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em> | </em><em>None</em>)</p></li>
 <li><p><strong>quiet</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em> | </em><em>None</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)">tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a>, NDArray]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)">tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a>, <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><em>ndarray</em></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)">tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>, …], <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v2.3)"><em>dtype</em></a>[<em>_ScalarT</em>]]]</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -961,7 +968,7 @@ arXiv:0605197, 2006</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251016.274425a 2025-10-15T23:31Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251023.8cdf5ec 2025-10-23T01:19Z.
       <br/>
     
   </p>

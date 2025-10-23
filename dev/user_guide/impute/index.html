@@ -598,6 +598,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../cexternals/annoy/index.html">Annoy (experimental)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cexternals/_astropy/index.html">Astropy (experimental)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cexternals/_lightnumpy/index.html">LightNumPy (experimental)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cexternals/_numcpp/index.html">NumCpp</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../experimental/index.html">Experimental (experimental)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -682,7 +683,78 @@ It also creates large read-only file-based data structures
 that are mmapped into memory so that many processes may share the same data.</p>
 <section id="annoyknnimputer">
 <span id="annoy-knn-imputer-index"></span><h2>AnnoyKNNImputer<a class="headerlink" href="#annoyknnimputer" title="Link to this heading">#</a></h2>
-<p>This module contains some functions related to <a class="reference internal" href="../../modules/generated/scikitplot.impute.AnnoyKNNImputer.html#scikitplot.impute.AnnoyKNNImputer" title="scikitplot.impute.AnnoyKNNImputer"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnoyKNNImputer</span></code></a>.</p>
+<p>This module contains some functions related to <code class="xref py py-class docutils literal notranslate"><span class="pre">AnnoyKNNImputer</span></code>.</p>
+<section id="tl-dr">
+<h3>TL;DR<a class="headerlink" href="#tl-dr" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Purpose: Approximate nearest-neighbors-based imputation</p></li>
+<li><p>Import path: <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">scikitplot.impute</span> <span class="pre">import</span> <span class="pre">AnnoyKNNImputer`</span></code></p></li>
+<li><p>Functionality: Replaces missing values using neighbors retrieved via Annoy</p></li>
+<li><p>Parameters: n_neighbors, n_trees, metric, optional search_k, etc.</p></li>
+</ul>
+</section>
+<section id="overview">
+<h3>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">AnnoyKNNImputer</span></code> (from <a class="reference internal" href="../../apis/scikitplot.impute.html#module-scikitplot.impute" title="scikitplot.impute"><code class="xref py py-mod docutils literal notranslate"><span class="pre">impute</span></code></a>) is an approximate nearest-neighbors
+imputer that uses Annoy to fill missing values in datasets. It replaces missing
+entries by querying the nearest neighbors of samples with missing values and
+computing imputations from those neighbors.</p>
+</section>
+<section id="motivation">
+<h3>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h3>
+<p>Unlike exact KNN imputation, using Annoy allows:
+- Faster neighbor retrieval in high-dimensional data
+- Memory-efficient indexing of large datasets
+- Sharing of prebuilt indexes across processes</p>
+<p>Example: Your exact NumPy array example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: "In ";
+}
+</style><span class="prompt1">import numpy as np</span>
+<span class="prompt1">from scikitplot.experimental import enable_annoyknn_imputer</span>
+<span class="prompt1">from scikitplot.impute import AnnoyKNNImputer</span>
+<span class="prompt1"></span>
+<span class="prompt1">X = np.array([[1, 2, np.nan],</span>
+<span class="prompt1">              [3, 4, 3],</span>
+<span class="prompt1">              [np.nan, 6, 5],</span>
+<span class="prompt1">              [8, 8, 7]])</span>
+<span class="prompt1"></span>
+<span class="prompt1">imputer = AnnoyKNNImputer(n_trees=5, n_neighbors=5)</span>
+<span class="prompt1">X_imputed = imputer.fit_transform(X)</span>
+<span class="prompt1"></span>
+<span class="prompt1">print(X_imputed)</span>
+<span class="prompt1"># Output:</span>
+<span class="prompt1"># array([[1., 2., 5.],</span>
+<span class="prompt1">#        [3., 4., 3.],</span>
+<span class="prompt1">#        [4., 6., 5.],</span>
+<span class="prompt1">#        [8., 8., 7.]])</span>
+</pre></div></div></section>
+<section id="mechanism">
+<h3>Mechanism<a class="headerlink" href="#mechanism" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Builds an Annoy index from complete samples</p></li>
+<li><p>Queries nearest neighbors for incomplete samples</p></li>
+<li><p>Imputes missing values based on neighbor vectors</p></li>
+<li><p>Integer identifiers are used internally; memory allocated to max(id)+1</p></li>
+</ul>
+</section>
+<section id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Memory-efficient and fast for large datasets</p></li>
+<li><p>Approximate neighbors; exact KNN may differ slightly</p></li>
+<li><p>Shares indexes across processes using mmap</p></li>
+<li><p>Behavior depends on <code class="docutils literal notranslate"><span class="pre">n_trees</span></code> and <code class="docutils literal notranslate"><span class="pre">search_k</span></code> parameters</p></li>
+</ul>
+</section>
+<section id="comparison">
+<h3>Comparison<a class="headerlink" href="#comparison" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Similar in usage to <code class="docutils literal notranslate"><span class="pre">sklearn.impute.KNNImputer</span></code>, but faster on large, high-dimensional datasets</p></li>
+<li><p>Provides a trade-off between accuracy and speed via Annoy parameters</p></li>
+</ul>
+</section>
 </section>
 </section>
 
@@ -737,7 +809,15 @@ that are mmapped into memory so that many processes may share the same data.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#annoyknnimputer">AnnoyKNNImputer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#annoyknnimputer">AnnoyKNNImputer</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr">TL;DR</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mechanism">Mechanism</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison">Comparison</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
@@ -775,7 +855,7 @@ that are mmapped into memory so that many processes may share the same data.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251016.274425a 2025-10-15T23:31Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251023.8cdf5ec 2025-10-23T01:19Z.
       <br/>
     
   </p>

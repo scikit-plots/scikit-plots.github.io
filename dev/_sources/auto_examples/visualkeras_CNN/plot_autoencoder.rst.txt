@@ -27,7 +27,6 @@ used by a :py:class:`~tensorflow.keras.Model` model.
 .. GENERATED FROM PYTHON SOURCE LINES 8-12
 
 .. code-block:: Python
-   :lineno-start: 9
 
 
     # Authors: The scikit-plots developers
@@ -47,7 +46,6 @@ pip install protobuf==5.29.4
 .. GENERATED FROM PYTHON SOURCE LINES 14-19
 
 .. code-block:: Python
-   :lineno-start: 14
 
     import tensorflow as tf
 
@@ -68,7 +66,6 @@ encoder Model
 .. GENERATED FROM PYTHON SOURCE LINES 21-40
 
 .. code-block:: Python
-   :lineno-start: 21
 
     encoder_input = tf.keras.Input(shape=(28, 28, 1), name="img")
     x = tf.keras.layers.Conv2D(16, 3, activation="relu")(encoder_input)
@@ -146,7 +143,6 @@ Build the model with an explicit input shape
 .. GENERATED FROM PYTHON SOURCE LINES 42-60
 
 .. code-block:: Python
-   :lineno-start: 42
 
     autoencoder.build(
         input_shape=(None, 28, 28, 1)
@@ -189,7 +185,6 @@ Build the model with an explicit input shape
 .. GENERATED FROM PYTHON SOURCE LINES 61-72
 
 .. code-block:: Python
-   :lineno-start: 61
 
     from scikitplot import visualkeras
 
@@ -215,18 +210,17 @@ Build the model with an explicit input shape
 
  .. code-block:: none
 
-    2025-10-15 23:35:44.415302: W scikitplot 139885737794432 utils_pil.py:203:load_font] Error loading system font: cannot open resource
-    2025-10-15 23:35:44.415385: W scikitplot 139885737794432 utils_pil.py:205:load_font] Falling back to PIL default font.
-    2025-10-15 23:35:44.415485: W scikitplot 139885737794432 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
+    2025-10-23 01:24:01.736813: W scikitplot 140209451662208 utils_pil.py:204:load_font] Error loading system font: cannot open resource
+    2025-10-23 01:24:01.736896: W scikitplot 140209451662208 utils_pil.py:206:load_font] Falling back to PIL default font.
+    2025-10-23 01:24:01.736998: W scikitplot 140209451662208 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
 
-    <matplotlib.image.AxesImage object at 0x7f39205fe950>
+    <matplotlib.image.AxesImage object at 0x7f8448772190>
 
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 73-81
 
 .. code-block:: Python
-   :lineno-start: 73
 
     img_autoencoder = visualkeras.layered_view(
         autoencoder,
@@ -249,18 +243,17 @@ Build the model with an explicit input shape
 
  .. code-block:: none
 
-    2025-10-15 23:35:44.589539: W scikitplot 139885737794432 utils_pil.py:203:load_font] Error loading system font: cannot open resource
-    2025-10-15 23:35:44.589620: W scikitplot 139885737794432 utils_pil.py:205:load_font] Falling back to PIL default font.
-    2025-10-15 23:35:44.589719: W scikitplot 139885737794432 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
+    2025-10-23 01:24:01.917124: W scikitplot 140209451662208 utils_pil.py:204:load_font] Error loading system font: cannot open resource
+    2025-10-23 01:24:01.917203: W scikitplot 140209451662208 utils_pil.py:206:load_font] Falling back to PIL default font.
+    2025-10-23 01:24:01.917300: W scikitplot 140209451662208 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
 
-    <matplotlib.image.AxesImage object at 0x7f38f019eb10>
+    <matplotlib.image.AxesImage object at 0x7f8428732350>
 
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 82-101
 
 .. code-block:: Python
-   :lineno-start: 82
 
     img_autoencoder_text = visualkeras.layered_view(
         autoencoder,
@@ -294,12 +287,12 @@ Build the model with an explicit input shape
 
  .. code-block:: none
 
-    2025-10-15 23:35:44.727864: W scikitplot 139885737794432 utils_pil.py:203:load_font] Error loading system font: cannot open resource
-    2025-10-15 23:35:44.727952: W scikitplot 139885737794432 utils_pil.py:205:load_font] Falling back to PIL default font.
-    2025-10-15 23:35:44.728057: W scikitplot 139885737794432 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
-    [INFO] Saving path to: /home/circleci/repo/galleries/examples/visualkeras_CNN/result_images/autoencoder_text_20251015_233544Z.png
+    2025-10-23 01:24:02.064565: W scikitplot 140209451662208 utils_pil.py:204:load_font] Error loading system font: cannot open resource
+    2025-10-23 01:24:02.064696: W scikitplot 140209451662208 utils_pil.py:206:load_font] Falling back to PIL default font.
+    2025-10-23 01:24:02.064803: W scikitplot 140209451662208 layered.py:203:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
+    [INFO] Saving path to: /home/circleci/repo/galleries/examples/visualkeras_CNN/result_images/autoencoder_text_20251023_012402Z.png
 
-    <matplotlib.image.AxesImage object at 0x7f38d4732ad0>
+    <matplotlib.image.AxesImage object at 0x7f8428337d10>
 
 
 
@@ -317,7 +310,7 @@ Build the model with an explicit input shape
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 3.897 seconds)
+   **Total running time of the script:** (0 minutes 3.514 seconds)
 
 
 .. _sphx_glr_download_auto_examples_visualkeras_CNN_plot_autoencoder.py:

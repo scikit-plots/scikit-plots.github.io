@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/user_guide/cexternals/annoy/index.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="This module contains some functions related to annoy under cexternals. Annoy (Approximate Nearest Neighbors Oh Yeah) is a C++ library with Python bindings to search for points in space that are clo..." />
+<meta property="og:description" content="This module contains some functions related to annoy under cexternals. TL;DR: What it is: C++ library with Python bindings, “Approximate Nearest Neighbors Oh Yeah”, Origin: Developed at Spotify, Pu..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="This module contains some functions related to annoy under cexternals. Annoy (Approximate Nearest Neighbors Oh Yeah) is a C++ library with Python bindings to search for points in space that are clo..." />
+<meta name="description" content="This module contains some functions related to annoy under cexternals. TL;DR: What it is: C++ library with Python bindings, “Approximate Nearest Neighbors Oh Yeah”, Origin: Developed at Spotify, Pu..." />
 
     <title>Annoy (experimental) &#8212; scikit-plots 0.5.dev0 documentation</title>
   
@@ -598,6 +598,7 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Annoy (experimental)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_astropy/index.html">Astropy (experimental)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_lightnumpy/index.html">LightNumPy (experimental)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_numcpp/index.html">NumCpp</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../experimental/index.html">Experimental (experimental)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -679,10 +680,132 @@
 <li><p><a class="reference external" href="https://pypi.org/project/annoy">https://pypi.org/project/annoy</a></p></li>
 </ul>
 </div>
+<section id="tl-dr">
+<h2>TL;DR<a class="headerlink" href="#tl-dr" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>What it is: C++ library with Python bindings, “Approximate Nearest Neighbors Oh Yeah”</p></li>
+<li><p>Origin: Developed at Spotify</p></li>
+<li><p>Purpose: Search for points in space close to a query point</p></li>
+<li><p>Index type: Forest of random projection trees</p></li>
+<li><p>Memory: Supports large read-only file-based indexes, memory-mapped to allow sharing across processes</p></li>
+<li><p>Installation: pip install –user annoy or clone C++ repo</p></li>
+<li><p>Use: Fast approximate nearest neighbor search, especially for high-dimensional vector spaces</p></li>
+<li><p>Example: Python snippet using AnnoyIndex from your provided info</p></li>
+<li><p>Distance metrics: Euclidean, Manhattan, cosine, Hamming, dot (inner product)</p></li>
+<li><p>Trade-offs / tuning: n_trees, search_k parameters for balancing speed vs. accuracy</p></li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>Annoy (Approximate Nearest Neighbors Oh Yeah) is a C++ library with Python bindings
-to search for points in space that are close to a given query point.
-It also creates large read-only file-based data structures
-that are mmapped into memory so that many processes may share the same data.</p>
+to search for points in space that are close to a given query point. It also creates
+large read-only file-based data structures that are memory-mapped (mmap) into memory,
+so that many processes may share the same data.</p>
+</section>
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Link to this heading">#</a></h2>
+<p>There are several libraries for nearest neighbor search. Annoy is almost as fast as
+the fastest libraries, but it has a distinctive feature: it can use static files as
+indexes. This allows indexes to be shared across processes. Index creation is
+decoupled from loading, so indexes can be passed as files and mapped into memory quickly.
+Annoy minimizes memory footprint, making indexes relatively small.</p>
+<p>Annoy was developed at Spotify for music recommendations. After matrix factorization,
+every user/item can be represented as a vector in f-dimensional space. Annoy helps
+search for similar users/items efficiently, even with millions of vectors in
+high-dimensional spaces. It was originally built by Erik Bernhardsson during Hack Week.</p>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<p>Python version:</p>
+<blockquote>
+<div><p>pip install –user annoy</p>
+</div></blockquote>
+<p>C++ version:</p>
+<blockquote>
+<div><p>Clone the repo and include:</p>
+<blockquote>
+<div><p>#include “annoylib.h”</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Distance metrics: Euclidean, Manhattan, cosine, Hamming, Dot (Inner) Product</p></li>
+<li><p>Cosine distance = Euclidean distance of normalized vectors: sqrt(2 - 2 * cos(u, v))</p></li>
+<li><p>Works best with &lt;100 dimensions but performs well up to ~1,000 dimensions</p></li>
+<li><p>Small memory usage</p></li>
+<li><p>Supports memory sharing across processes</p></li>
+<li><p>Index creation is separate from lookup; no additional items can be added after building</p></li>
+<li><p>Native Python support (tested with 2.7, 3.6, 3.7)</p></li>
+<li><p>On-disk index building for datasets too large to fit in RAM (contributed by Rene Hollander)</p></li>
+</ul>
+</section>
+<section id="python-example">
+<h2>Python Example<a class="headerlink" href="#python-example" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">AnnoyIndex</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="mi">40</span>  <span class="c1"># Length of item vector that will be indexed</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">AnnoyIndex</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;angular&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">f</span><span class="p">)]</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+
+<span class="n">t</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># 10 trees</span>
+<span class="n">t</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;test.ann&#39;</span><span class="p">)</span>
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">AnnoyIndex</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;angular&#39;</span><span class="p">)</span>
+<span class="n">u</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;test.ann&#39;</span><span class="p">)</span>  <span class="c1"># memory-mapped</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Accepts integer identifiers; memory allocated up to max(id)+1</p></li>
+<li><p>C++ API is similar: include “annoylib.h”</p></li>
+<li><p>No bounds checking is performed</p></li>
+<li><p>Angular distance = Euclidean distance of normalized vectors</p></li>
+<li><p>Hamming and Dot Product distances optimized with low-level implementations</p></li>
+</ul>
+</section>
+<section id="trade-offs">
+<h2>Trade-offs<a class="headerlink" href="#trade-offs" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n_trees</span></code> (build-time) affects index size and precision</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">search_k</span></code> (query-time) affects search accuracy vs speed</p></li>
+<li><p>Prefaulting pages affects load time and early query performance</p></li>
+</ul>
+</section>
+<section id="supported-platforms-and-bindings">
+<h2>Supported Platforms and Bindings<a class="headerlink" href="#supported-platforms-and-bindings" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Python, C++, R, Java (cosine only), Scala, Ruby, Go (experimental), Lua, Rust, .NET, Node</p></li>
+<li><p>Available via conda for Linux, OS X, and Windows</p></li>
+</ul>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Link to this heading">#</a></h2>
+<p>Run tests using:</p>
+<blockquote>
+<div><p>python setup.py nosetests</p>
+</div></blockquote>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/Nearest_neighbor_search#Approximate_nearest_neighbor">http://en.wikipedia.org/wiki/Nearest_neighbor_search#Approximate_nearest_neighbor</a></p>
+</aside>
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<p><a class="github reference external" href="https://github.com/spotify/annoy">spotify/annoy</a></p>
+</aside>
+</aside>
+</section>
 </section>
 
 
@@ -729,6 +852,28 @@ that are mmapped into memory so that many processes may share the same data.</p>
 
 
   <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr">TL;DR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features">Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-example">Python Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trade-offs">Trade-offs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-platforms-and-bindings">Supported Platforms and Bindings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -762,7 +907,7 @@ that are mmapped into memory so that many processes may share the same data.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251016.274425a 2025-10-15T23:31Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251023.8cdf5ec 2025-10-23T01:19Z.
       <br/>
     
   </p>

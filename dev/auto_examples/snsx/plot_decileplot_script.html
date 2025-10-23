@@ -348,9 +348,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../00-blogs/index.html">blog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../00-jupyter_notebooks/index.html">jupyter notebooks</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">Annoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_mmap_script.html">annoy with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_precision_script.html">annoy with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_simple_script.html">annoy with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_mmap_script.html">annoy (mmap) with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_precision_script.html">annoy (precision) with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_simple_script.html">annoy (simple) with examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../array_api/index.html">Array API support</a></li>
@@ -378,7 +378,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../impute/index.html">Impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../impute/plot_impute_script.html">plot_impute with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../impute/plot_impute_script.html">annoy impute with examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../kds/index.html">KeyToDataScience</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -458,72 +458,72 @@
 <span id="sphx-glr-auto-examples-snsx-plot-decileplot-script-py"></span><h1>plot_decileplot_script with examples<a class="headerlink" href="#plot-decileplot-script-with-examples" title="Link to this heading">#</a></h1>
 <p>An example showing the <a class="reference internal" href="../../modules/generated/scikitplot.snsx.decileplot.html#scikitplot.snsx.decileplot" title="scikitplot.snsx.decileplot"><code class="xref py py-func docutils literal notranslate"><span class="pre">decileplot</span></code></a> function
 with a scikit-learn classifier (e.g., <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a>) instance.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 9</span> <span class="c1"># Authors: The scikit-plots developers</span>
-<span class="linenos">10</span> <span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: The scikit-plots developers</span>
+<span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
 </pre></div>
 </div>
 <p>Import scikit-plot</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">14</span> <span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot.snsx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot.snsx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">18</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="linenos">19</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span><span class="p">;</span> <a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.seed.html#numpy.random.seed" title="numpy.random.seed"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># reproducibility</span>
-<span class="linenos">20</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="linenos">21</span>
-<span class="linenos">22</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html#sklearn.datasets.make_classification" title="sklearn.datasets.make_classification"><span class="n">make_classification</span></a>
-<span class="linenos">23</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-<span class="linenos">24</span>     <span class="n">load_breast_cancer</span> <span class="k">as</span> <span class="n">data_2_classes</span><span class="p">,</span>
-<span class="linenos">25</span>     <span class="n">load_iris</span> <span class="k">as</span> <span class="n">data_3_classes</span><span class="p">,</span>
-<span class="linenos">26</span>     <span class="n">load_digits</span> <span class="k">as</span> <span class="n">data_10_classes</span><span class="p">,</span>
-<span class="linenos">27</span> <span class="p">)</span>
-<span class="linenos">28</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a>
-<span class="linenos">29</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span><span class="p">;</span> <a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.seed.html#numpy.random.seed" title="numpy.random.seed"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># reproducibility</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html#sklearn.datasets.make_classification" title="sklearn.datasets.make_classification"><span class="n">make_classification</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">load_breast_cancer</span> <span class="k">as</span> <span class="n">data_2_classes</span><span class="p">,</span>
+    <span class="n">load_iris</span> <span class="k">as</span> <span class="n">data_3_classes</span><span class="p">,</span>
+    <span class="n">load_digits</span> <span class="k">as</span> <span class="n">data_10_classes</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
 </pre></div>
 </div>
 <p>Load the data
 X, y = data_3_classes(return_X_y=True, as_frame=False)
 X, y = data_2_classes(return_X_y=True, as_frame=False)</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">37</span> <span class="c1"># Generate a sample dataset</span>
-<span class="linenos">38</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html#sklearn.datasets.make_classification" title="sklearn.datasets.make_classification"><span class="n">make_classification</span></a><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
-<span class="linenos">39</span>                           <span class="n">n_redundant</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_repeated</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="linenos">40</span>                           <span class="n">class_sep</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">flip_y</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">],</span>
-<span class="linenos">41</span>                           <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate a sample dataset</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html#sklearn.datasets.make_classification" title="sklearn.datasets.make_classification"><span class="n">make_classification</span></a><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+                          <span class="n">n_redundant</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_repeated</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                          <span class="n">class_sep</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">flip_y</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">],</span>
+                          <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">44</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a><span class="p">(</span>
-<span class="linenos">45</span>     <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span>
-<span class="linenos">46</span> <span class="p">)</span>
-<span class="linenos">47</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.unique.html#numpy.unique" title="numpy.unique"><span class="n">np</span><span class="o">.</span><span class="n">unique</span></a><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+<a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.unique.html#numpy.unique" title="numpy.unique"><span class="n">np</span><span class="o">.</span><span class="n">unique</span></a><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>array([0, 1])
 </pre></div>
 </div>
 <p>Create an instance of the LogisticRegression</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">51</span> <span class="n">model</span> <span class="o">=</span> <span class="p">(</span>
-<span class="linenos">52</span>     <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a><span class="p">(</span>
-<span class="linenos">53</span>         <span class="c1"># max_iter=int(1e5),</span>
-<span class="linenos">54</span>         <span class="c1"># C=10,</span>
-<span class="linenos">55</span>         <span class="c1"># penalty='l1',</span>
-<span class="linenos">56</span>         <span class="c1"># solver='liblinear',</span>
-<span class="linenos">57</span>         <span class="n">class_weight</span><span class="o">=</span><span class="s1">'balanced'</span><span class="p">,</span>
-<span class="linenos">58</span>         <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span>
-<span class="linenos">59</span>     <span class="p">)</span>
-<span class="linenos">60</span>     <span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="linenos">61</span> <span class="p">)</span>
-<span class="linenos">62</span> <span class="c1"># Perform predictions</span>
-<span class="linenos">63</span> <span class="n">y_val_prob</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
-<span class="linenos">64</span> <span class="c1"># Create a DataFrame with predictions</span>
-<span class="linenos">65</span> <span class="n">df</span> <span class="o">=</span> <a class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame"><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span></a><span class="p">({</span>
-<span class="linenos">66</span>     <span class="s2">"y_true"</span><span class="p">:</span> <span class="n">y_val</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># target class (0,1,2)</span>
-<span class="linenos">67</span>     <span class="s2">"y_score"</span><span class="p">:</span> <span class="n">y_val_prob</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>  <span class="c1"># target class (0,1,2)</span>
-<span class="linenos">68</span>     <span class="c1"># np.argmax</span>
-<span class="linenos">69</span>     <span class="s2">"y_pred"</span><span class="p">:</span> <span class="n">y_val_prob</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">,</span>  <span class="c1"># target class (0,1,2)</span>
-<span class="linenos">70</span>     <span class="c1"># "y_true": np.random.normal(0.5, 0.1, 100).round(),</span>
-<span class="linenos">71</span>     <span class="c1"># "y_score": np.random.normal(0.5, 0.15, 100),</span>
-<span class="linenos">72</span>     <span class="c1"># "hue": np.random.normal(0.5, 0.4, 100).round(),</span>
-<span class="linenos">73</span> <span class="p">})</span>
-<span class="linenos">74</span> <span class="n">df</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="p">(</span>
+    <a class="sphx-glr-backref-module-sklearn-linear_model sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a><span class="p">(</span>
+        <span class="c1"># max_iter=int(1e5),</span>
+        <span class="c1"># C=10,</span>
+        <span class="c1"># penalty='l1',</span>
+        <span class="c1"># solver='liblinear',</span>
+        <span class="n">class_weight</span><span class="o">=</span><span class="s1">'balanced'</span><span class="p">,</span>
+        <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="c1"># Perform predictions</span>
+<span class="n">y_val_prob</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+<span class="c1"># Create a DataFrame with predictions</span>
+<span class="n">df</span> <span class="o">=</span> <a class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.DataFrame"><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span></a><span class="p">({</span>
+    <span class="s2">"y_true"</span><span class="p">:</span> <span class="n">y_val</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># target class (0,1,2)</span>
+    <span class="s2">"y_score"</span><span class="p">:</span> <span class="n">y_val_prob</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>  <span class="c1"># target class (0,1,2)</span>
+    <span class="c1"># np.argmax</span>
+    <span class="s2">"y_pred"</span><span class="p">:</span> <span class="n">y_val_prob</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">,</span>  <span class="c1"># target class (0,1,2)</span>
+    <span class="c1"># "y_true": np.random.normal(0.5, 0.1, 100).round(),</span>
+    <span class="c1"># "y_score": np.random.normal(0.5, 0.15, 100),</span>
+    <span class="c1"># "hue": np.random.normal(0.5, 0.4, 100).round(),</span>
+<span class="p">})</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 <div class="output_subarea output_html rendered_html output_result">
@@ -623,20 +623,20 @@ X, y = data_2_classes(return_X_y=True, as_frame=False)</p>
 </div>
 </div>
 <br/>
-<br/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">79</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.decileplot.html#scikitplot.snsx.decileplot" title="scikitplot.snsx.decileplot"><span class="n">sp</span><span class="o">.</span><span class="n">decileplot</span></a><span class="p">(</span>
-<span class="linenos">80</span>     <span class="n">df</span><span class="p">,</span>
-<span class="linenos">81</span>     <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span>
-<span class="linenos">82</span>     <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span>
-<span class="linenos">83</span>     <span class="n">kind</span><span class="o">=</span><span class="s2">"df"</span><span class="p">,</span>
-<span class="linenos">84</span>     <span class="n">n_deciles</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-<span class="linenos">85</span>     <span class="n">digits</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
-<span class="linenos">86</span>     <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="linenos">87</span> <span class="p">)</span>
-<span class="linenos">88</span> <span class="n">p</span><span class="o">.</span><span class="n">T</span>
-<span class="linenos">89</span> <span class="c1"># p.columns.tolist()</span>
-<span class="linenos">90</span> <span class="c1"># p[["decile", "cnt_resp", "cnt_resp_wiz", "cum_resp_pct", "cum_resp_wiz_pct"]]</span>
-<span class="linenos">91</span> <span class="c1"># p.iloc[:, range(9, 23)]</span>
-<span class="linenos">92</span> <span class="c1"># p.iloc[:, [11, 12, 12, 14]]</span>
+<br/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.decileplot.html#scikitplot.snsx.decileplot" title="scikitplot.snsx.decileplot"><span class="n">sp</span><span class="o">.</span><span class="n">decileplot</span></a><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">"df"</span><span class="p">,</span>
+    <span class="n">n_deciles</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">digits</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">T</span>
+<span class="c1"># p.columns.tolist()</span>
+<span class="c1"># p[["decile", "cnt_resp", "cnt_resp_wiz", "cum_resp_pct", "cum_resp_wiz_pct"]]</span>
+<span class="c1"># p.iloc[:, range(9, 23)]</span>
+<span class="c1"># p.iloc[:, [11, 12, 12, 14]]</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{
@@ -1055,35 +1055,35 @@ X, y = data_2_classes(return_X_y=True, as_frame=False)</p>
 </div>
 </div>
 <br/>
-<br/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">96</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.decileplot.html#scikitplot.snsx.decileplot" title="scikitplot.snsx.decileplot"><span class="n">sp</span><span class="o">.</span><span class="n">decileplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"cumulative_lift"</span><span class="p">,</span> <span class="n">n_deciles</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<br/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.decileplot.html#scikitplot.snsx.decileplot" title="scikitplot.snsx.decileplot"><span class="n">sp</span><span class="o">.</span><span class="n">decileplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"cumulative_lift"</span><span class="p">,</span> <span class="n">n_deciles</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Cumulative Lift Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_decileplot_script_001.png" srcset="../../_images/sphx_glr_plot_decileplot_script_001.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">99</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.decileplot.html#scikitplot.snsx.decileplot" title="scikitplot.snsx.decileplot"><span class="n">sp</span><span class="o">.</span><span class="n">decileplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"decile_wise_lift"</span><span class="p">,</span> <span class="n">n_deciles</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<img alt="Cumulative Lift Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_decileplot_script_001.png" srcset="../../_images/sphx_glr_plot_decileplot_script_001.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.decileplot.html#scikitplot.snsx.decileplot" title="scikitplot.snsx.decileplot"><span class="n">sp</span><span class="o">.</span><span class="n">decileplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"decile_wise_lift"</span><span class="p">,</span> <span class="n">n_deciles</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Decile-wise Lift Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_decileplot_script_002.png" srcset="../../_images/sphx_glr_plot_decileplot_script_002.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">102</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.decileplot.html#scikitplot.snsx.decileplot" title="scikitplot.snsx.decileplot"><span class="n">sp</span><span class="o">.</span><span class="n">decileplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"cumulative_gain"</span><span class="p">,</span> <span class="n">n_deciles</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<img alt="Decile-wise Lift Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_decileplot_script_002.png" srcset="../../_images/sphx_glr_plot_decileplot_script_002.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.decileplot.html#scikitplot.snsx.decileplot" title="scikitplot.snsx.decileplot"><span class="n">sp</span><span class="o">.</span><span class="n">decileplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"cumulative_gain"</span><span class="p">,</span> <span class="n">n_deciles</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Cumulative Gain Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_decileplot_script_003.png" srcset="../../_images/sphx_glr_plot_decileplot_script_003.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">105</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.decileplot.html#scikitplot.snsx.decileplot" title="scikitplot.snsx.decileplot"><span class="n">sp</span><span class="o">.</span><span class="n">decileplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"cumulative_response"</span><span class="p">,</span> <span class="n">n_deciles</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<img alt="Cumulative Gain Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_decileplot_script_003.png" srcset="../../_images/sphx_glr_plot_decileplot_script_003.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.decileplot.html#scikitplot.snsx.decileplot" title="scikitplot.snsx.decileplot"><span class="n">sp</span><span class="o">.</span><span class="n">decileplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"cumulative_response"</span><span class="p">,</span> <span class="n">n_deciles</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Cumulative Response Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_decileplot_script_004.png" srcset="../../_images/sphx_glr_plot_decileplot_script_004.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">108</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.decileplot.html#scikitplot.snsx.decileplot" title="scikitplot.snsx.decileplot"><span class="n">sp</span><span class="o">.</span><span class="n">decileplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"decile_wise_gain"</span><span class="p">,</span> <span class="n">n_deciles</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<img alt="Cumulative Response Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_decileplot_script_004.png" srcset="../../_images/sphx_glr_plot_decileplot_script_004.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.decileplot.html#scikitplot.snsx.decileplot" title="scikitplot.snsx.decileplot"><span class="n">sp</span><span class="o">.</span><span class="n">decileplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"decile_wise_gain"</span><span class="p">,</span> <span class="n">n_deciles</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Decile-wise Gain/Response Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_decileplot_script_005.png" srcset="../../_images/sphx_glr_plot_decileplot_script_005.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">111</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.decileplot.html#scikitplot.snsx.decileplot" title="scikitplot.snsx.decileplot"><span class="n">sp</span><span class="o">.</span><span class="n">decileplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"ks_statistic"</span><span class="p">,</span> <span class="n">n_deciles</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<img alt="Decile-wise Gain/Response Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_decileplot_script_005.png" srcset="../../_images/sphx_glr_plot_decileplot_script_005.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.decileplot.html#scikitplot.snsx.decileplot" title="scikitplot.snsx.decileplot"><span class="n">sp</span><span class="o">.</span><span class="n">decileplot</span></a><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"ks_statistic"</span><span class="p">,</span> <span class="n">n_deciles</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="Kolmogorov-Smirnov (KS) Statistic Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_decileplot_script_006.png" srcset="../../_images/sphx_glr_plot_decileplot_script_006.png"/><p>fig, ax = plt.subplots(figsize=(10, 10))</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">115</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.decileplot.html#scikitplot.snsx.decileplot" title="scikitplot.snsx.decileplot"><span class="n">sp</span><span class="o">.</span><span class="n">decileplot</span></a><span class="p">(</span>
-<span class="linenos">116</span>     <span class="n">df</span><span class="p">,</span>
-<span class="linenos">117</span>     <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span>
-<span class="linenos">118</span>     <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span>
-<span class="linenos">119</span>     <span class="n">kind</span><span class="o">=</span><span class="s2">"report"</span><span class="p">,</span>
-<span class="linenos">120</span>     <span class="n">n_deciles</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-<span class="linenos">121</span>     <span class="n">digits</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
-<span class="linenos">122</span>     <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="linenos">123</span>     <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="linenos">124</span> <span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.decileplot.html#scikitplot.snsx.decileplot" title="scikitplot.snsx.decileplot"><span class="n">sp</span><span class="o">.</span><span class="n">decileplot</span></a><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">"report"</span><span class="p">,</span>
+    <span class="n">n_deciles</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">digits</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 <img alt="Cumulative Lift Curve, Decile-wise Lift Curve, Cumulative Gain Curve, Kolmogorov-Smirnov (KS) Statistic Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_decileplot_script_007.png" srcset="../../_images/sphx_glr_plot_decileplot_script_007.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{
@@ -1128,15 +1128,15 @@ X, y = data_2_classes(return_X_y=True, as_frame=False)</p>
 </pre></div>
 </div>
 <p>fig, ax = plt.subplots(figsize=(10, 10))</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="linenos">128</span> <span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.decileplot.html#scikitplot.snsx.decileplot" title="scikitplot.snsx.decileplot"><span class="n">sp</span><span class="o">.</span><span class="n">decileplot</span></a><span class="p">(</span>
-<span class="linenos">129</span>     <span class="n">df</span><span class="p">,</span>
-<span class="linenos">130</span>     <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span>
-<span class="linenos">131</span>     <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span>
-<span class="linenos">132</span>     <span class="n">kind</span><span class="o">=</span><span class="s2">"report"</span><span class="p">,</span>
-<span class="linenos">133</span>     <span class="n">n_deciles</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-<span class="linenos">134</span>     <span class="n">digits</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
-<span class="linenos">135</span>     <span class="n">fmt</span><span class="o">=</span><span class="s1">'.4g'</span>
-<span class="linenos">136</span> <span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-snsx sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.snsx.decileplot.html#scikitplot.snsx.decileplot" title="scikitplot.snsx.decileplot"><span class="n">sp</span><span class="o">.</span><span class="n">decileplot</span></a><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">"y_true"</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">"y_score"</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">"report"</span><span class="p">,</span>
+    <span class="n">n_deciles</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">digits</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="n">fmt</span><span class="o">=</span><span class="s1">'.4g'</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 <img alt="Cumulative Lift Curve, Decile-wise Lift Curve, Cumulative Gain Curve, Kolmogorov-Smirnov (KS) Statistic Curve" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_decileplot_script_008.png" srcset="../../_images/sphx_glr_plot_decileplot_script_008.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>   decile  prob_min  ...  decile_wise_lift_wiz         KS
@@ -1155,7 +1155,7 @@ X, y = data_2_classes(return_X_y=True, as_frame=False)</p>
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-model-evaluation.html"><span class="doc">model-workflow: model evaluation</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-line.html"><span class="doc">plot-type: line</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-decile.html"><span class="doc">plot-type: decile</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.891 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.301 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.snsx.evalplot function with a scikit-learn classifier (e.g., :py~sklearn.linear_model.LogisticRegression) instance."><img alt="" src="../../_images/sphx_glr_plot_evalplot_script_thumb.png"/>
@@ -1220,7 +1220,7 @@ X, y = data_2_classes(return_X_y=True, as_frame=False)</p>
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251016.274425a 2025-10-15T23:31Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251023.8cdf5ec 2025-10-23T01:19Z.
       <br/>
 </p>
 </div>
