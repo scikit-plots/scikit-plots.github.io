@@ -7,16 +7,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="NumCpp C++ template array library (experimental)" />
+<meta property="og:title" content="NumCpp Header Only C++ (experimental)" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/user_guide/cexternals/_numcpp/index.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="This module contains some functions related to_numcpp under cexternals. NumCpp: A Templatized Header Only C++ Implementation of the Python NumPy Library C++ Standards: C++17 C++20 C++23 Compilers: ..." />
+<meta property="og:description" content="This module contains some functions related to_numcpp under cexternals. NumCpp: A Templatized Header Only C++ Library with Implementation of the Python NumPy-Compatible API. Author: David Pilger, L..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="This module contains some functions related to_numcpp under cexternals. NumCpp: A Templatized Header Only C++ Implementation of the Python NumPy Library C++ Standards: C++17 C++20 C++23 Compilers: ..." />
+<meta name="description" content="This module contains some functions related to_numcpp under cexternals. NumCpp: A Templatized Header Only C++ Library with Implementation of the Python NumPy-Compatible API. Author: David Pilger, L..." />
 
-    <title>NumCpp C++ template array library (experimental) &#8212; scikit-plots 0.5.dev0 documentation</title>
+    <title>NumCpp Header Only C++ (experimental) &#8212; scikit-plots 0.5.dev0 documentation</title>
   
   
   
@@ -586,7 +586,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../visualkeras/index.html">Visualkeras (experimental)</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../sp_logging/index.html">Logging System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../logging/index.html">Logging System</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../_lib/index.html">Array API support (experimental)</a></li>
@@ -654,7 +654,7 @@
     
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">C-Externals (experimental)</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">NumCpp C++ template array library (experimental)</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">NumCpp Header Only C++ (experimental)</span></li>
   </ul>
 </nav>
 </div>
@@ -671,24 +671,47 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="numcpp-c-template-array-library-experimental">
-<span id="numcpp-index"></span><h1>NumCpp C++ template array library (experimental)<a class="headerlink" href="#numcpp-c-template-array-library-experimental" title="Link to this heading">#</a></h1>
-<p>This module contains some functions related to <a class="reference internal" href="../../../apis/scikitplot.cexternals.html#module-scikitplot.cexternals._numcpp" title="scikitplot.cexternals._numcpp"><code class="xref py py-mod docutils literal notranslate"><span class="pre">_numcpp</span></code></a> under <a class="reference internal" href="../../../apis/scikitplot.cexternals.html#module-scikitplot.cexternals" title="scikitplot.cexternals"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cexternals</span></code></a>.</p>
+  <section id="numcpp-header-only-c-experimental">
+<span id="numcpp-index"></span><h1>NumCpp Header Only C++ (experimental)<a class="headerlink" href="#numcpp-header-only-c-experimental" title="Link to this heading">#</a></h1>
+<p>This module contains some functions related to <a class="reference internal" href="../../../modules/generated/scikitplot.cexternals._numcpp.html#module-scikitplot.cexternals._numcpp" title="scikitplot.cexternals._numcpp"><code class="xref py py-mod docutils literal notranslate"><span class="pre">_numcpp</span></code></a> under <a class="reference internal" href="../../../apis/scikitplot.cexternals.html#module-scikitplot.cexternals" title="scikitplot.cexternals"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cexternals</span></code></a>.</p>
+<p>NumCpp: A Templatized Header Only C++ Library with Implementation of the Python NumPy-Compatible API.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
 <li><p><a class="github reference external" href="https://github.com/dpilger26/NumCpp">dpilger26/NumCpp</a></p></li>
 </ul>
 </div>
-<p>NumCpp: A Templatized Header Only C++ Implementation of the Python NumPy Library</p>
-<p>C++ Standards:
-C++17 C++20 C++23</p>
+<ul class="simple">
+<li><p>Author: <a class="reference external" href="mailto:dpilger26&#37;&#52;&#48;gmail&#46;com">David Pilger</a></p></li>
+<li><p>License: MIT</p></li>
+</ul>
 <p>Compilers:
-Visual Studio: 2022
-GNU: 13.3, 14.2
-Clang: 18, 19</p>
-<p>Boost Versions:
-1.73+</p>
+- C++ Standards: C++17 C++20 C++23
+- MSVC Visual Studio: 2022
+- GCC GNU: 13.3, 14.2
+- Clang LLVM: 18, 19
+- Boost Versions: 1.73+</p>
+<p>NumCpp is a templatized, header-only C++ library that provides a NumPy-style
+interface for numerical computing. It features an <code class="docutils literal notranslate"><span class="pre">NdArray</span></code> class with full
+support for slicing, broadcasting, random generation, vectorization, and
+linear algebra, closely mirroring Python’s NumPy API.</p>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading">#</a></h2>
+<p>This library is header-only and requires no separate compilation. It is
+designed for high-performance numerical computing in C++ with a familiar
+NumPy-like syntax.</p>
+<p>Core Features:</p>
+<ul class="simple">
+<li><p>Array creation: <code class="docutils literal notranslate"><span class="pre">arange</span></code>, <code class="docutils literal notranslate"><span class="pre">linspace</span></code>, <code class="docutils literal notranslate"><span class="pre">zeros</span></code>, <code class="docutils literal notranslate"><span class="pre">ones</span></code>, <code class="docutils literal notranslate"><span class="pre">eye</span></code></p></li>
+<li><p>Broadcasting and slicing</p></li>
+<li><p>Mathematical and statistical functions</p></li>
+<li><p>Random number generation</p></li>
+<li><p>Linear algebra (<code class="docutils literal notranslate"><span class="pre">linalg</span></code> module)</p></li>
+<li><p>Comparison, logical, and reduction operations</p></li>
+<li><p>File I/O, printing, endian utilities</p></li>
+</ul>
+<p>Example Equivalents:</p>
+</section>
 </section>
 
 
@@ -735,6 +758,18 @@ Clang: 18, 19</p>
 
 
   <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -768,7 +803,7 @@ Clang: 18, 19</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251023.8cdf5ec 2025-10-23T01:19Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251025.44be888 2025-10-25T19:58Z.
       <br/>
     
   </p>

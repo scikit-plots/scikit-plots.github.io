@@ -284,7 +284,7 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 
  .. code-block:: none
 
-    26.718082189559937
+    25.78082585334778
 
 
 
@@ -318,7 +318,7 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 
  .. code-block:: none
 
-    28.217537879943848
+    27.081095933914185
 
 
 
@@ -352,7 +352,7 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 
  .. code-block:: none
 
-    27.603037118911743
+    27.742595672607422
 
 
 
@@ -386,7 +386,7 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 
  .. code-block:: none
 
-    28.28212022781372
+    28.394582986831665
 
 
 
@@ -420,7 +420,7 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 
  .. code-block:: none
 
-    30.0512912273407
+    29.042585849761963
 
 
 
@@ -455,7 +455,7 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 
  .. code-block:: none
 
-    34.66812825202942
+    32.180837869644165
 
 
 
@@ -477,7 +477,7 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
  .. code-block:: none
 
 
-    '0.5.dev0+git.20251023.8cdf5ec'
+    '0.5.dev0+git.20251025.44be888'
 
 
 
@@ -511,7 +511,7 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
     mses_california[6], stds_california[6] = get_score(
         X_miss_california, y_miss_california, make_pipeline(RobustScaler(), MaxAbsScaler(), imputer)
     )
-    imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, n_trees=20, metric='angular')
+    imputer = AnnoyKNNImputer(add_indicator=True, random_state=0)
     mses_train[6], stds_train[6] = get_score(
         X_miss_train, y_miss_train, make_pipeline(RobustScaler(), MaxAbsScaler(), imputer)
     )
@@ -529,7 +529,7 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 
  .. code-block:: none
 
-    32.024739027023315
+    28.667377471923828
 
 
 
@@ -662,7 +662,7 @@ neighbor retrieval and degraded imputation quality.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (3 minutes 28.983 seconds)
+   **Total running time of the script:** (3 minutes 20.152 seconds)
 
 
 .. _sphx_glr_download_auto_examples_impute_plot_impute_script.py:
