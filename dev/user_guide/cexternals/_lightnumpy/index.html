@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/user_guide/cexternals/_lightnumpy/index.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="A lightweight version of NumPy or Cupy (or similar functionality). See_numcpp. References: 1,`https://stdlib.fortran-lang.org/lists/modules.html`_ 2,`https://numpy.org/doc/stable/f2py/index.html`_ ..." />
+<meta property="og:description" content="A lightweight version of NumPy or Cupy (or similar functionality). See_numcpp. Why LightNumPy?: Performance-Driven: Optimized for both CPU and hardware accelerators (GPU/TPU). Focused: Includes ess..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="A lightweight version of NumPy or Cupy (or similar functionality). See_numcpp. References: 1,`https://stdlib.fortran-lang.org/lists/modules.html`_ 2,`https://numpy.org/doc/stable/f2py/index.html`_ ..." />
+<meta name="description" content="A lightweight version of NumPy or Cupy (or similar functionality). See_numcpp. Why LightNumPy?: Performance-Driven: Optimized for both CPU and hardware accelerators (GPU/TPU). Focused: Includes ess..." />
 
     <title>LightNumPy (experimental) &#8212; scikit-plots 0.5.dev0 documentation</title>
   
@@ -83,8 +83,8 @@
     <link rel="icon" href="../../../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="NumCpp Header Only C++ (experimental)" href="../_numcpp/index.html" />
-    <link rel="prev" title="Astropy (experimental)" href="../_astropy/index.html" />
+    <link rel="next" title="Experimental (experimental)" href="../../experimental/index.html" />
+    <link rel="prev" title="NumCpp Header Only C++ (experimental)" href="../_numcpp/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.5" />
@@ -597,8 +597,9 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">C-Externals (experimental)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../annoy/index.html">Annoy (experimental)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_astropy/index.html">Astropy (experimental)</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">LightNumPy (experimental)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_f2py/index.html">f2py (experimental)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_numcpp/index.html">NumCpp</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">LightNumPy (experimental)</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../experimental/index.html">Experimental (experimental)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -678,34 +679,8 @@
 <p class="admonition-title">See also</p>
 <ul class="simple">
 <li><p><a class="github reference external" href="https://github.com/scikit-plots/lightnumpy">scikit-plots/lightnumpy</a></p></li>
-<li><p><a class="github reference external" href="https://github.com/dpilger26/NumCpp">dpilger26/NumCpp</a></p></li>
 </ul>
 </div>
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id1" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
-<p><a href="#id6"><span class="problematic" id="id7">`https://stdlib.fortran-lang.org/lists/modules.html`_</span></a></p>
-</aside>
-<aside class="footnote brackets" id="id2" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
-<p><a href="#id8"><span class="problematic" id="id9">`https://numpy.org/doc/stable/f2py/index.html`_</span></a></p>
-</aside>
-<aside class="footnote brackets" id="id3" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
-<p><a href="#id10"><span class="problematic" id="id11">`https://scipy.github.io/old-wiki/pages/Cookbook/f2py_and_NumPy.html`_</span></a></p>
-</aside>
-<aside class="footnote brackets" id="id4" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
-<p><a href="#id12"><span class="problematic" id="id13">`https://scipy-cookbook.readthedocs.io/items/F2Py.html`_</span></a></p>
-</aside>
-<aside class="footnote brackets" id="id5" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
-<p><a href="#id14"><span class="problematic" id="id15">`https://scipy-cookbook.readthedocs.io/items/idx_interfacing_with_other_languages.html`_</span></a></p>
-</aside>
-</aside>
-</section>
 <section id="why-lightnumpy">
 <h2>Why LightNumPy?<a class="headerlink" href="#why-lightnumpy" title="Link to this heading">#</a></h2>
 <p>Performance-Driven: Optimized for both CPU and hardware accelerators (GPU/TPU).
@@ -713,36 +688,22 @@ Focused: Includes essential features without unnecessary overhead.
 Adaptable: Modular structure for customized extensions.
 Scalable: Ideal for IoT, embedded systems, and resource-limited devices.</p>
 <p>Get Header files location:</p>
-<div class="jupyter_cell jupyter_container docutils container">
-<div class="cell_input code_cell docutils container">
-<div class="thebelab-code" data-executable="true" data-language="ipython"><div class="docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">try</span><span class="p">:</span>
-<span class="o">&gt;&gt;&gt;</span>   <span class="c1"># pip install git+https://github.com/scikit-plots/lightnumpy.git@main</span>
-<span class="o">&gt;&gt;&gt;</span>   <span class="kn">import</span><span class="w"> </span><span class="nn">lightnumpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ln</span>
-<span class="o">&gt;&gt;&gt;</span>   <span class="c1"># Return the directory that contains the lightnumpy and NumCpp *.h header files.</span>
-<span class="o">&gt;&gt;&gt;</span>   <span class="n">inc_dir_lightnumpy</span> <span class="o">=</span> <span class="n">ln</span><span class="o">.</span><span class="n">get_include</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">except</span><span class="p">:</span> <span class="k">pass</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">else</span><span class="p">:</span>
-<span class="o">&gt;&gt;&gt;</span>   <span class="o">!</span>ls<span class="w"> </span><span class="nv">$inc_dir_lightnumpy</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; try:
+&gt;&gt;&gt;   # pip install git+https://github.com/scikit-plots/lightnumpy.git@main
+&gt;&gt;&gt;   import lightnumpy as ln
+&gt;&gt;&gt;   # Return the directory that contains the lightnumpy and NumCpp *.h header files.
+&gt;&gt;&gt;   inc_dir_lightnumpy = ln.get_include()
+&gt;&gt;&gt; except: pass
+&gt;&gt;&gt; else:
+&gt;&gt;&gt;   !ls $inc_dir_lightnumpy
 </pre></div>
-</div>
-</div>
-</div></div>
-<div class="cell_output docutils container">
-<div class="thebelab-output" data-output="true"><div class="docutils container">
-</div>
-</div></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">lightnumpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ln</span>
 </pre></div>
 </div>
 </section>
 </section>
-<button title="Make live" class="thebelab-button" id="thebelab-activate-button" onclick="initThebelab()">Make live</button>
-<script type="text/x-thebe-config">
-{"binderOptions": {"org": "scikit-plots", "repo": "scikit-plots", "branch": "main", "dependencies": "./binder/requirements.txt"}, "predefinedOutput": true, "requestKernel": true}
-</script>
-<script type="text/javascript" src="https://unpkg.com/thebelab@^0.4.0"></script>
+
 
                 </article>
               
@@ -754,20 +715,20 @@ Scalable: Ideal for IoT, embedded systems, and resource-limited devices.</p>
     <div class="footer-article-item">
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../_astropy/index.html"
+       href="../_numcpp/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Astropy (experimental)</p>
+        <p class="prev-next-title">NumCpp Header Only C++ (experimental)</p>
       </div>
     </a>
     <a class="right-next"
-       href="../_numcpp/index.html"
+       href="../../experimental/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">NumCpp Header Only C++ (experimental)</p>
+        <p class="prev-next-title">Experimental (experimental)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -794,7 +755,6 @@ Scalable: Ideal for IoT, embedded systems, and resource-limited devices.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-lightnumpy">Why LightNumPy?</a></li>
 </ul>
   </nav></div>
@@ -833,7 +793,7 @@ Scalable: Ideal for IoT, embedded systems, and resource-limited devices.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251025.44be888 2025-10-25T19:58Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251027.0d94fbf 2025-10-27T03:15Z.
       <br/>
     
   </p>

@@ -597,8 +597,9 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../cexternals/index.html">C-Externals (experimental)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../cexternals/annoy/index.html">Annoy (experimental)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cexternals/_astropy/index.html">Astropy (experimental)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cexternals/_lightnumpy/index.html">LightNumPy (experimental)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cexternals/_f2py/index.html">f2py (experimental)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cexternals/_numcpp/index.html">NumCpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cexternals/_lightnumpy/index.html">LightNumPy (experimental)</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../experimental/index.html">Experimental (experimental)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -668,8 +669,8 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <span class="target" id="impute-index"></span><section id="impute-experimental">
-<h1>Impute (experimental)<a class="headerlink" href="#impute-experimental" title="Link to this heading">#</a></h1>
+  <section id="impute-experimental">
+<span id="impute-index"></span><h1>Impute (experimental)<a class="headerlink" href="#impute-experimental" title="Link to this heading">#</a></h1>
 <p>This module contains some functions related to <a class="reference internal" href="../../apis/scikitplot.impute.html#module-scikitplot.impute" title="scikitplot.impute"><code class="xref py py-mod docutils literal notranslate"><span class="pre">impute</span></code></a>.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -709,26 +710,26 @@ computing imputations from those neighbors.</p>
 <p>Example: Your exact NumPy array example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
 span.prompt1:before {
-  content: "In ";
+  content: ">>> ";
 }
-</style><span class="prompt1">import numpy as np</span>
-<span class="prompt1">from scikitplot.experimental import enable_annoyknn_imputer</span>
-<span class="prompt1">from scikitplot.impute import AnnoyKNNImputer</span>
+</style><span class="prompt1"><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span></span>
+<span class="prompt1"><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.experimental</span><span class="w"> </span><span class="kn">import</span> <span class="n">enable_annoyknn_imputer</span></span>
+<span class="prompt1"><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.impute</span><span class="w"> </span><span class="kn">import</span> <span class="n">AnnoyKNNImputer</span></span>
 <span class="prompt1"></span>
-<span class="prompt1">X = np.array([[1, 2, np.nan],</span>
-<span class="prompt1">              [3, 4, 3],</span>
-<span class="prompt1">              [np.nan, 6, 5],</span>
-<span class="prompt1">              [8, 8, 7]])</span>
+<span class="prompt1"><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span></span>
+<span class="prompt1">              <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span></span>
+<span class="prompt1">              <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span></span>
+<span class="prompt1">              <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">]])</span></span>
 <span class="prompt1"></span>
-<span class="prompt1">imputer = AnnoyKNNImputer(n_trees=5, n_neighbors=5)</span>
-<span class="prompt1">X_imputed = imputer.fit_transform(X)</span>
+<span class="prompt1"><span class="n">imputer</span> <span class="o">=</span> <span class="n">AnnoyKNNImputer</span><span class="p">(</span><span class="n">n_trees</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span></span>
+<span class="prompt1"><span class="n">X_imputed</span> <span class="o">=</span> <span class="n">imputer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span></span>
 <span class="prompt1"></span>
-<span class="prompt1">print(X_imputed)</span>
-<span class="prompt1"># Output:</span>
-<span class="prompt1"># array([[1., 2., 5.],</span>
-<span class="prompt1">#        [3., 4., 3.],</span>
-<span class="prompt1">#        [4., 6., 5.],</span>
-<span class="prompt1">#        [8., 8., 7.]])</span>
+<span class="prompt1"><span class="nb">print</span><span class="p">(</span><span class="n">X_imputed</span><span class="p">)</span></span>
+<span class="prompt1"><span class="c1"># Output:</span></span>
+<span class="prompt1"><span class="c1"># array([[1., 2., 5.],</span></span>
+<span class="prompt1"><span class="c1">#        [3., 4., 3.],</span></span>
+<span class="prompt1"><span class="c1">#        [4., 6., 5.],</span></span>
+<span class="prompt1"><span class="c1">#        [8., 8., 7.]])</span></span>
 </pre></div></div></section>
 <section id="mechanism">
 <h3>Mechanism<a class="headerlink" href="#mechanism" title="Link to this heading">#</a></h3>
@@ -855,7 +856,7 @@ span.prompt1:before {
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251025.44be888 2025-10-25T19:58Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251027.0d94fbf 2025-10-27T03:15Z.
       <br/>
     
   </p>
