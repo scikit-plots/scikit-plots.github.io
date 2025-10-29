@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/auto_examples/regression/index.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="Examples related to the metrics module with e.g. LinearRegression instance. plot_residuals_distribution with examples" />
-<meta property="og:image" content="https://scikit-plots.github.io/stable/_images/sphx_glr_plot_residuals_distribution_script_thumb.png" />
+<meta property="og:description" content="Examples related to the metrics module with e.g., LinearRegression instance. plot_residuals_distribution with examples" />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_images/sphx_glr_plot_residuals_distribution_script_thumb1.png" />
 <meta property="og:image:alt" content="" />
-<meta name="description" content="Examples related to the metrics module with e.g. LinearRegression instance. plot_residuals_distribution with examples" />
+<meta name="description" content="Examples related to the metrics module with e.g., LinearRegression instance. plot_residuals_distribution with examples" />
 
     <title>Regression &#8212; scikit-plots 0.4.0 documentation</title>
   
@@ -554,7 +554,13 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00-blogs/index.html">blog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../00-jupyter_notebooks/index.html">jupyter notebooks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../array_api/index.html">Array API support (experimental)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">Annoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_mmap_script.html">annoy (mmap) with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_precision_script.html">annoy (precision) with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_simple_script.html">annoy (simple) with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../array_api/index.html">Array API support</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../calibration/index.html">Calibration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../calibration/plot_calibration_script.html">plot_calibration with examples</a></li>
 </ul>
@@ -578,6 +584,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_component_variance_script.html">plot_pca_component_variance with examples</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../impute/index.html">Impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../impute/plot_impute_script.html">annoy impute with examples</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../kds/index.html">KeyToDataScience</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../kds/plot_cumulative_gain_script.html">plot_cumulative_gain with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../kds/plot_ks_statistic_script.html">plot_ks_statistic with examples</a></li>
@@ -593,7 +603,7 @@
 <li class="toctree-l2"><a class="reference internal" href="plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../snsx/index.html">snsX (Seaborn eXtended)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../snsx/index.html">SeabornX</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../snsx/plot_aucplot_script.html">plot_aucplot_script with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../snsx/plot_decileplot_script.html">plot_decileplot_script with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../snsx/plot_evalplot_script.html">plot_evalplot_script with examples</a></li>
@@ -673,8 +683,8 @@
                   
   <section id="regression">
 <span id="regression-examples"></span><span id="sphx-glr-auto-examples-regression"></span><h1>Regression<a class="headerlink" href="#regression" title="Link to this heading">#</a></h1>
-<p>Examples related to the <a class="reference internal" href="../../apis/scikitplot.api.html#module-scikitplot.api.metrics" title="scikitplot.api.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">metrics</span></code></a> module with e.g. <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearRegression</span></code></a> instance.</p>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_residuals_distribution function used by a scikit-learn regressor."><img alt="" src="../../_images/sphx_glr_plot_residuals_distribution_script_thumb.png" />
+<p>Examples related to the <a class="reference internal" href="../../apis/scikitplot.api.html#module-scikitplot.api.metrics" title="scikitplot.api.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">metrics</span></code></a> module with e.g., <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearRegression</span></code></a> instance.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_residuals_distribution function with a scikit-learn regressor (e.g., :py~sklearn.linear_model.LinearRegression) instance."><img alt="" src="../../_images/sphx_glr_plot_residuals_distribution_script_thumb1.png" />
 <p><a class="reference internal" href="plot_residuals_distribution_script.html#sphx-glr-auto-examples-regression-plot-residuals-distribution-script-py"><span class="std std-ref">plot_residuals_distribution with examples</span></a></p>
   <div class="sphx-glr-thumbnail-title">plot_residuals_distribution with examples</div>
 </div></div><div class="toctree-wrapper compound">
@@ -743,7 +753,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post5+git.20251008.162c9a4 2025-10-08T10:53Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post6+git.20251029.adf0a55 2025-10-29T11:52Z.
       <br/>
     
   </p>

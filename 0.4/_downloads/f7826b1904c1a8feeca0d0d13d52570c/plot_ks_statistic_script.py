@@ -3,8 +3,8 @@
 plot_ks_statistic with examples
 ===============================
 
-An example showing the :py:func:`~scikitplot.kds.plot_ks_statistic` function used
-by a scikit-learn classifier.
+An example showing the :py:func:`~scikitplot.kds.plot_ks_statistic` function
+with a scikit-learn classifier (e.g., :py:class:`~sklearn.linear_model.LogisticRegression`) instance.
 """
 
 # Authors: The scikit-plots developers
@@ -58,6 +58,5 @@ ax = sp.kds.plot_ks_statistic(
 #    plot-type: line
 #    plot-type: decile
 #    domain: statistics
-#    domain: KS (kolmogorov-smirnov)
 #    level: beginner
 #    purpose: showcase

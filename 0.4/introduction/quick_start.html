@@ -646,7 +646,7 @@ Use <a class="reference external" href="https://scikit-learn.org/stable/modules/
 <li><p><strong>Plot the Confusion Matrix</strong>:
 Use <a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_classifier_eval.html#scikitplot.api.metrics.plot_classifier_eval" title="scikitplot.api.metrics.plot_classifier_eval"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_classifier_eval</span></code></a> to visualize the confusion matrix.</p></li>
 <li><p><strong>Display the Plot</strong>:
-Optionally, use <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v3.10.6)"><code class="xref py py-func docutils literal notranslate"><span class="pre">show</span></code></a> to display the plot.</p></li>
+Optionally, use <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v3.10.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">show</span></code></a> to display the plot.</p></li>
 </ol>
 <p>Here’s the code to illustrate the process:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># introduction/quick_start.py</span>
@@ -674,7 +674,7 @@ Optionally, use <a class="reference external" href="https://matplotlib.org/stabl
 <span class="c1"># Plot the data</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
 
-<span class="c1"># sp.get_logger().setLevel(sp.sp_logging.WARNING)</span>
+<span class="c1"># sp.get_logger().setLevel(sp.logging.WARNING)  # sp.logging == sp.logger</span>
 <span class="n">sp</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>  <span class="c1"># default WARNING</span>
 
 <span class="n">sp</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">plot_classifier_eval</span><span class="p">(</span>
@@ -705,7 +705,7 @@ Optionally, use <a class="reference external" href="https://matplotlib.org/stabl
 <p><strong>Maximum flexibility. Compatibility with non-scikit-learn objects.</strong></p>
 <p>Although Scikit-plot is loosely based around the scikit-learn interface, you don’t actually need Scikit-learn objects to use the available functions. As long as you provide the functions what they’re asking for, they’ll happily draw the plots for you.</p>
 <p>Try Deep Learning Models like <a class="reference external" href="https://www.tensorflow.org">Tensorflow</a> or <a class="reference external" href="https://pytorch.org">Pytorch</a> or  <a class="reference external" href="https://huggingface.co/docs/transformers/index">🤗 Transformers</a> etc.</p>
-<p>Here’s a quick example to generate the precision-recall curves of a <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/Model" title="(in TensorFlow v2.4)"><code class="docutils literal notranslate"><span class="pre">tf.keras.Model</span></code></a> or <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a> or <code class="xref py py-class docutils literal notranslate"><span class="pre">TFPreTrainedModel</span></code> model on a sample dataset.</p>
+<p>Here’s a quick example to generate the precision-recall curves of a <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/Model" title="(in TensorFlow v2.4)"><code class="docutils literal notranslate"><span class="pre">tf.keras.Model</span></code></a> or <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a> or <code class="xref py py-class docutils literal notranslate"><span class="pre">TFPreTrainedModel</span></code> model on a sample dataset.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># introduction/quick_start_tf.py</span>
 <span class="c1"># %run: Python scripts and shows any outputs directly in the notebook.</span>
 <span class="c1"># %run ../docs/source/introduction/quick_start_tf.py</span>
@@ -722,7 +722,7 @@ Optionally, use <a class="reference external" href="https://matplotlib.org/stabl
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
 
-<span class="c1"># sp.get_logger().setLevel(sp.sp_logging.WARNING)</span>
+<span class="c1"># sp.get_logger().setLevel(sp.logging.WARNING)  # sp.logging == sp.logger</span>
 <span class="n">sp</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>  <span class="c1"># default WARNING</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
@@ -889,7 +889,7 @@ in the correct format.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post5+git.20251008.162c9a4 2025-10-08T10:53Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post6+git.20251029.adf0a55 2025-10-29T11:52Z.
       <br/>
     
   </p>

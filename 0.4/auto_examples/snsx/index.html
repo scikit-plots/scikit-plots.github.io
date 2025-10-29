@@ -7,16 +7,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="snsX (Seaborn eXtended)" />
+<meta property="og:title" content="SeabornX" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/auto_examples/snsx/index.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="Examples related to the snsx module with e.g. LinearRegression instance. plot_aucplot_script with examples plot_decileplot_script with examples plot_evalplot_script with examples" />
+<meta property="og:description" content="Examples related to the snsx module with a scikit-learn regressor (e.g., LinearRegression) instance. plot_aucplot_script with examples plot_decileplot_script with examples plot_evalplot_script with..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_images/sphx_glr_plot_aucplot_script_thumb.png" />
 <meta property="og:image:alt" content="" />
-<meta name="description" content="Examples related to the snsx module with e.g. LinearRegression instance. plot_aucplot_script with examples plot_decileplot_script with examples plot_evalplot_script with examples" />
+<meta name="description" content="Examples related to the snsx module with a scikit-learn regressor (e.g., LinearRegression) instance. plot_aucplot_script with examples plot_decileplot_script with examples plot_evalplot_script with..." />
 
-    <title>snsX (Seaborn eXtended) &#8212; scikit-plots 0.4.0 documentation</title>
+    <title>SeabornX &#8212; scikit-plots 0.4.0 documentation</title>
   
   
   
@@ -554,7 +554,13 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00-blogs/index.html">blog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../00-jupyter_notebooks/index.html">jupyter notebooks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../array_api/index.html">Array API support (experimental)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">Annoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_mmap_script.html">annoy (mmap) with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_precision_script.html">annoy (precision) with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_simple_script.html">annoy (simple) with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../array_api/index.html">Array API support</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../calibration/index.html">Calibration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../calibration/plot_calibration_script.html">plot_calibration with examples</a></li>
 </ul>
@@ -578,6 +584,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_component_variance_script.html">plot_pca_component_variance with examples</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../impute/index.html">Impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../impute/plot_impute_script.html">annoy impute with examples</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../kds/index.html">KeyToDataScience</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../kds/plot_cumulative_gain_script.html">plot_cumulative_gain with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../kds/plot_ks_statistic_script.html">plot_ks_statistic with examples</a></li>
@@ -593,7 +603,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../regression/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">snsX (Seaborn eXtended)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">SeabornX</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="plot_aucplot_script.html">plot_aucplot_script with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_decileplot_script.html">plot_decileplot_script with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_evalplot_script.html">plot_evalplot_script with examples</a></li>
@@ -654,7 +664,7 @@
     
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Examples</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">snsX (Seaborn eXtended)</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">SeabornX</span></li>
   </ul>
 </nav>
 </div>
@@ -671,16 +681,17 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="snsx-seaborn-extended">
-<span id="snsx-examples"></span><span id="sphx-glr-auto-examples-snsx"></span><h1>snsX (Seaborn eXtended)<a class="headerlink" href="#snsx-seaborn-extended" title="Link to this heading">#</a></h1>
-<p>Examples related to the <a class="reference internal" href="../../apis/scikitplot.snsx.html#module-scikitplot.snsx" title="scikitplot.snsx"><code class="xref py py-mod docutils literal notranslate"><span class="pre">snsx</span></code></a> module with e.g. <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearRegression</span></code></a> instance.</p>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.snsx.aucplot function used by a scikit-learn regressor."><img alt="" src="../../_images/sphx_glr_plot_aucplot_script_thumb.png" />
+  <section id="seabornx">
+<span id="snsx-examples"></span><span id="sphx-glr-auto-examples-snsx"></span><h1>SeabornX<a class="headerlink" href="#seabornx" title="Link to this heading">#</a></h1>
+<p>Examples related to the <a class="reference internal" href="../../apis/scikitplot.snsx.html#module-scikitplot.snsx" title="scikitplot.snsx"><code class="xref py py-mod docutils literal notranslate"><span class="pre">snsx</span></code></a> module
+with a scikit-learn regressor (e.g., <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearRegression</span></code></a>) instance.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.snsx.aucplot function with a scikit-learn classifier (e.g., :py~sklearn.linear_model.LogisticRegression) instance."><img alt="" src="../../_images/sphx_glr_plot_aucplot_script_thumb.png" />
 <p><a class="reference internal" href="plot_aucplot_script.html#sphx-glr-auto-examples-snsx-plot-aucplot-script-py"><span class="std std-ref">plot_aucplot_script with examples</span></a></p>
   <div class="sphx-glr-thumbnail-title">plot_aucplot_script with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.snsx.decileplot function used by a scikit-learn regressor."><img alt="" src="../../_images/sphx_glr_plot_decileplot_script_thumb.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.snsx.decileplot function with a scikit-learn classifier (e.g., :py~sklearn.linear_model.LogisticRegression) instance."><img alt="" src="../../_images/sphx_glr_plot_decileplot_script_thumb.png" />
 <p><a class="reference internal" href="plot_decileplot_script.html#sphx-glr-auto-examples-snsx-plot-decileplot-script-py"><span class="std std-ref">plot_decileplot_script with examples</span></a></p>
   <div class="sphx-glr-thumbnail-title">plot_decileplot_script with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.snsx.evalplot function used by a scikit-learn regressor."><img alt="" src="../../_images/sphx_glr_plot_evalplot_script_thumb.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.snsx.evalplot function with a scikit-learn classifier (e.g., :py~sklearn.linear_model.LogisticRegression) instance."><img alt="" src="../../_images/sphx_glr_plot_evalplot_script_thumb.png" />
 <p><a class="reference internal" href="plot_evalplot_script.html#sphx-glr-auto-examples-snsx-plot-evalplot-script-py"><span class="std std-ref">plot_evalplot_script with examples</span></a></p>
   <div class="sphx-glr-thumbnail-title">plot_evalplot_script with examples</div>
 </div></div><div class="toctree-wrapper compound">
@@ -749,7 +760,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post5+git.20251008.162c9a4 2025-10-08T10:53Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post6+git.20251029.adf0a55 2025-10-29T11:52Z.
       <br/>
     
   </p>

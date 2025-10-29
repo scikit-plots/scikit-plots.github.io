@@ -22,12 +22,11 @@ plot_decileplot_script with examples
 ==========================================
 
 An example showing the :py:func:`~scikitplot.snsx.decileplot` function
-used by a scikit-learn regressor.
+with a scikit-learn classifier (e.g., :py:class:`~sklearn.linear_model.LogisticRegression`) instance.
 
 .. GENERATED FROM PYTHON SOURCE LINES 8-12
 
 .. code-block:: Python
-   :lineno-start: 9
 
 
     # Authors: The scikit-plots developers
@@ -47,7 +46,6 @@ Import scikit-plot
 .. GENERATED FROM PYTHON SOURCE LINES 14-17
 
 .. code-block:: Python
-   :lineno-start: 14
 
     import scikitplot.snsx as sp
 
@@ -62,7 +60,6 @@ Import scikit-plot
 .. GENERATED FROM PYTHON SOURCE LINES 18-32
 
 .. code-block:: Python
-   :lineno-start: 18
 
     import matplotlib.pyplot as plt
     import numpy as np; np.random.seed(0)  # reproducibility
@@ -94,7 +91,6 @@ X, y = data_2_classes(return_X_y=True, as_frame=False)
 .. GENERATED FROM PYTHON SOURCE LINES 36-43
 
 .. code-block:: Python
-   :lineno-start: 37
 
 
     # Generate a sample dataset
@@ -113,7 +109,6 @@ X, y = data_2_classes(return_X_y=True, as_frame=False)
 .. GENERATED FROM PYTHON SOURCE LINES 44-49
 
 .. code-block:: Python
-   :lineno-start: 44
 
     X_train, X_val, y_train, y_val = train_test_split(
         X, y, stratify=y, test_size=0.2, random_state=0
@@ -140,7 +135,6 @@ Create an instance of the LogisticRegression
 .. GENERATED FROM PYTHON SOURCE LINES 51-78
 
 .. code-block:: Python
-   :lineno-start: 51
 
     model = (
         LogisticRegression(
@@ -278,7 +272,6 @@ Create an instance of the LogisticRegression
 .. GENERATED FROM PYTHON SOURCE LINES 79-95
 
 .. code-block:: Python
-   :lineno-start: 79
 
     p = sp.decileplot(
         df,
@@ -727,7 +720,6 @@ Create an instance of the LogisticRegression
 .. GENERATED FROM PYTHON SOURCE LINES 96-98
 
 .. code-block:: Python
-   :lineno-start: 96
 
     p = sp.decileplot(df, x="y_true", y="y_score", kind="cumulative_lift", n_deciles=10, annot=True)
 
@@ -746,7 +738,6 @@ Create an instance of the LogisticRegression
 .. GENERATED FROM PYTHON SOURCE LINES 99-101
 
 .. code-block:: Python
-   :lineno-start: 99
 
     p = sp.decileplot(df, x="y_true", y="y_score", kind="decile_wise_lift", n_deciles=10, annot=True)
 
@@ -765,7 +756,6 @@ Create an instance of the LogisticRegression
 .. GENERATED FROM PYTHON SOURCE LINES 102-104
 
 .. code-block:: Python
-   :lineno-start: 102
 
     p = sp.decileplot(df, x="y_true", y="y_score", kind="cumulative_gain", n_deciles=10, annot=True)
 
@@ -784,7 +774,6 @@ Create an instance of the LogisticRegression
 .. GENERATED FROM PYTHON SOURCE LINES 105-107
 
 .. code-block:: Python
-   :lineno-start: 105
 
     p = sp.decileplot(df, x="y_true", y="y_score", kind="cumulative_response", n_deciles=10, annot=True)
 
@@ -803,7 +792,6 @@ Create an instance of the LogisticRegression
 .. GENERATED FROM PYTHON SOURCE LINES 108-110
 
 .. code-block:: Python
-   :lineno-start: 108
 
     p = sp.decileplot(df, x="y_true", y="y_score", kind="decile_wise_gain", n_deciles=10, annot=True)
 
@@ -822,7 +810,6 @@ Create an instance of the LogisticRegression
 .. GENERATED FROM PYTHON SOURCE LINES 111-113
 
 .. code-block:: Python
-   :lineno-start: 111
 
     p = sp.decileplot(df, x="y_true", y="y_score", kind="ks_statistic", n_deciles=10, annot=True)
 
@@ -845,7 +832,6 @@ fig, ax = plt.subplots(figsize=(10, 10))
 .. GENERATED FROM PYTHON SOURCE LINES 115-126
 
 .. code-block:: Python
-   :lineno-start: 115
 
     p = sp.decileplot(
         df,
@@ -921,7 +907,6 @@ fig, ax = plt.subplots(figsize=(10, 10))
 .. GENERATED FROM PYTHON SOURCE LINES 128-138
 
 .. code-block:: Python
-   :lineno-start: 128
 
     p = sp.decileplot(
         df,
@@ -977,7 +962,7 @@ fig, ax = plt.subplots(figsize=(10, 10))
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 1.954 seconds)
+   **Total running time of the script:** (0 minutes 2.090 seconds)
 
 
 .. _sphx_glr_download_auto_examples_snsx_plot_decileplot_script.py:

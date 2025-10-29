@@ -83,7 +83,7 @@
     <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Logging System" href="../sp_logging/index.html" />
+    <link rel="next" title="Array API support (experimental)" href="../_lib/index.html" />
     <link rel="prev" title="Stats (experimental)" href="../stats/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -556,13 +556,6 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../decile_wise_perf/index.html">Decile-Wise Performance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../decile_wise_perf/kds.html">KeyToDataScience</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../decile_wise_perf/modelplotpy.html">modelplotpy</a></li>
-</ul>
-</details></li>
-</ul>
-<ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../api/index.html">Metric Performance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../api/decomposition.html">Decomposition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/estimators.html">Estimators</a></li>
@@ -571,10 +564,26 @@
 </details></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../decile_wise_perf/index.html">Decile-Wise Performance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../decile_wise_perf/kds.html">KeyToDataScience</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile_wise_perf/modelplotpy.html">modelplotpy</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../impute/index.html">Impute (experimental)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../logging/index.html">Logging System</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nc/index.html">nc (NumCpp) (experimental)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../preprocessing/index.html">Preprocessing (experimental)</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../snsx/index.html">snsx Seaborn eXtended (experimental)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../snsx/index.html">SeabornX</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../stats/index.html">Stats (experimental)</a></li>
@@ -583,16 +592,16 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Visualkeras (experimental)</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../sp_logging/index.html">Logging System</a></li>
-</ul>
-<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../_lib/index.html">Array API support (experimental)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Development</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../cexperimental/index.html">C-Experimental (experimental)</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../cexternals/index.html">C-Externals (experimental)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cexternals/annoy/index.html">Annoy (experimental)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cexternals/_astropy/index.html">Astropy (experimental)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cexternals/_f2py/index.html">f2py (experimental)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cexternals/_numcpp/index.html">NumCpp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cexternals/_lightnumpy/index.html">LightNumPy (experimental)</a></li>
 </ul>
 </details></li>
@@ -663,8 +672,8 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <span class="target" id="visualkeras-index"></span><section id="visualkeras-experimental">
-<h1>Visualkeras (experimental)<a class="headerlink" href="#visualkeras-experimental" title="Link to this heading">#</a></h1>
+  <section id="visualkeras-experimental">
+<span id="visualkeras-index"></span><h1>Visualkeras (experimental)<a class="headerlink" href="#visualkeras-experimental" title="Link to this heading">#</a></h1>
 <p>This module contains functions related to <a class="reference internal" href="../../apis/scikitplot.visualkeras.html#module-scikitplot.visualkeras" title="scikitplot.visualkeras"><code class="xref py py-mod docutils literal notranslate"><span class="pre">visualkeras</span></code></a>.
 For visualkeras for Keras / TensorFlow Models <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/Model" title="(in TensorFlow v2.4)"><code class="docutils literal notranslate"><span class="pre">tf.keras.Model</span></code></a>.</p>
 <div class="admonition seealso">
@@ -728,11 +737,11 @@ including plain feed-forward networks.</p>
       </div>
     </a>
     <a class="right-next"
-       href="../sp_logging/index.html"
+       href="../_lib/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Logging System</p>
+        <p class="prev-next-title">Array API support (experimental)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -800,7 +809,7 @@ including plain feed-forward networks.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post5+git.20251008.162c9a4 2025-10-08T10:53Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post6+git.20251029.adf0a55 2025-10-29T11:52Z.
       <br/>
     
   </p>
