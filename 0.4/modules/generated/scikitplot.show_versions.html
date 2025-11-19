@@ -218,22 +218,15 @@
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-external" href="https://github.com/orgs/scikit-plots/discussions">
-    Community-G
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-external" href="https://zenodo.org/communities/scikit-plots">
-    Community-Z
-  </a>
-</li>
-
-
-<li class=" ">
   <a class="nav-link dropdown-item nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
     Developer's Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/community.html">
+    Community
   </a>
 </li>
 
@@ -247,7 +240,7 @@
 
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../project/governance.html">
-    Governance
+    Governance Process
   </a>
 </li>
 
@@ -261,7 +254,7 @@
 
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../project/index.html">
-    About us
+    About Us/Project
   </a>
 </li>
 
@@ -432,22 +425,15 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-external" href="https://github.com/orgs/scikit-plots/discussions">
-    Community-G
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-external" href="https://zenodo.org/communities/scikit-plots">
-    Community-Z
-  </a>
-</li>
-
-
-<li class="nav-item ">
   <a class="nav-link nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
     Developer's Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/community.html">
+    Community
   </a>
 </li>
 
@@ -461,7 +447,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../project/governance.html">
-    Governance
+    Governance Process
   </a>
 </li>
 
@@ -475,7 +461,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../project/index.html">
-    About us
+    About Us/Project
   </a>
 </li>
 
@@ -705,6 +691,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.preprocessing.html">scikitplot.preprocessing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.preprocessing.DummyCodeEncoder.html">DummyCodeEncoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.preprocessing.GetDummies.html">GetDummies</a></li>
 </ul>
 </details></li>
@@ -822,47 +809,130 @@
 <h1>show_versions<a class="headerlink" href="#show-versions" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.show_versions">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.</span></span><span class="sig-name descname"><span class="pre">show_versions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/adf0a55/scikitplot/_utils/_show_versions.py#L82"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.show_versions" title="Link to this definition">#</a></dt>
-<dd><p>Print useful debugging information</p>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.</span></span><span class="sig-name descname"><span class="pre">show_versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'stdout'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2dc7af/scikitplot/utils/_show_versions.py#L178"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.show_versions" title="Link to this definition">#</a></dt>
+<dd><p>Print or return debugging information about the system, Python, dependencies, and hardware.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>mode</strong><span class="classifier">{‘stdout’, ‘dict’, ‘yaml’, ‘rich’}, default=’stdout’</span></dt><dd><ul class="simple">
+<li><p>‘stdout’: prints information to console using <code class="docutils literal notranslate"><span class="pre">rich</span></code> (if available) or plain text.</p></li>
+<li><p>‘dict’: returns the information as a nested dictionary.</p></li>
+<li><p>‘yaml’: returns the information in YAML format (requires PyYAML).</p></li>
+<li><p>‘rich’: prints formatted output using rich library.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>version_data</strong><span class="classifier">str, dict or None</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">mode='dict'</span></code>, returns a dictionary of version information.
+If <code class="docutils literal notranslate"><span class="pre">mode='yaml'</span></code>, returns a string of version information.
+Otherwise, returns None.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Optional[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, any]]</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Useful for debugging and issue reporting.</p>
 <p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># !scikitplot show_versions -j</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">scikitplot</span><span class="o">.</span><span class="n">show_versions</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;dict&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scikitplot</span><span class="o">.</span><span class="n">show_versions</span><span class="p">()</span>
+</pre></div>
+</div>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="thebelab-code" data-executable="true" data-language="ipython"><div class="docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">scikitplot</span><span class="o">.</span><span class="n">show_versions</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="o">!</span>scikitplot<span class="w"> </span>show_versions<span class="w"> </span>-j<span class="w"> </span><span class="o">||</span><span class="w"> </span>true
 </pre></div>
 </div>
 </div>
 </div></div>
 <div class="cell_output docutils container">
 <div class="thebelab-output" data-output="true"><div class="docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
-System:
-    python: 3.11.14 (main, Oct 10 2025, 16:22:04) [GCC 11.4.0]
-executable: /home/circleci/.pyenv/versions/3.11.14/bin/python3.11
-   machine: Linux-6.8.0-1039-aws-x86_64-with-glibc2.35
-
-Python dependencies:
-   scikitplot: 0.4.0.post6
-          pip: 25.2
-   setuptools: 79.0.1
-       Cython: 3.1.6
-        numpy: 2.3.4
-       pandas: 2.3.3
-        scipy: 1.16.3
-   matplotlib: 3.10.7
-       joblib: 1.5.2
-threadpoolctl: 3.6.0
-
-threadpoolctl info:
-       user_api: blas
-   internal_api: openblas
-    num_threads: 36
-         prefix: libscipy_openblas
-       filepath: /home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-8fb3d286.so
-        version: 0.3.30
-threading_layer: pthreads
-   architecture: SkylakeX
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>[32m[1mChanged logging level: WARNING[0m
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>[97;40m{[0m[40m                                                                               [0m
+[97;40m  [0m[91;40m&quot;system&quot;[0m[97;40m:[0m[97;40m [0m[97;40m{[0m[40m                                                                   [0m
+[97;40m    [0m[91;40m&quot;python&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;3.11.14 (main, Oct 10 2025, 16:22:04) [GCC 11.4.0]&quot;[0m[97;40m,[0m[40m             [0m
+[97;40m    [0m[91;40m&quot;executable&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;/home/circleci/.pyenv/versions/3.11.14/bin/python3.11&quot;[0m[97;40m,[0m[40m      [0m
+[97;40m    [0m[91;40m&quot;CPU&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;x86_64&quot;[0m[97;40m,[0m[40m                                                            [0m
+[97;40m    [0m[91;40m&quot;cores&quot;[0m[97;40m:[0m[97;40m [0m[37;40m48[0m[97;40m,[0m[40m                                                                [0m
+[97;40m    [0m[91;40m&quot;architecture&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;x86_64&quot;[0m[97;40m,[0m[40m                                                   [0m
+[97;40m    [0m[91;40m&quot;OS&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;Linux-6.8.0-1040-aws-x86_64-with-glibc2.35&quot;[0m[97;40m,[0m[40m                         [0m
+[97;40m    [0m[91;40m&quot;ci&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;true&quot;[0m[40m                                                                [0m
+[97;40m  [0m[97;40m},[0m[40m                                                                            [0m
+[97;40m  [0m[91;40m&quot;dependencies&quot;[0m[97;40m:[0m[97;40m [0m[97;40m{[0m[40m                                                             [0m
+[97;40m    [0m[91;40m&quot;scikitplot&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;0.4.0.post7&quot;[0m[97;40m,[0m[40m                                                [0m
+[97;40m    [0m[91;40m&quot;pip&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;25.2&quot;[0m[97;40m,[0m[40m                                                              [0m
+[97;40m    [0m[91;40m&quot;setuptools&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;79.0.1&quot;[0m[97;40m,[0m[40m                                                     [0m
+[97;40m    [0m[91;40m&quot;cython&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;3.2.1&quot;[0m[97;40m,[0m[40m                                                          [0m
+[97;40m    [0m[91;40m&quot;numpy&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;2.3.5&quot;[0m[97;40m,[0m[40m                                                           [0m
+[97;40m    [0m[91;40m&quot;pandas&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;2.3.3&quot;[0m[97;40m,[0m[40m                                                          [0m
+[97;40m    [0m[91;40m&quot;scipy&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;1.16.3&quot;[0m[97;40m,[0m[40m                                                          [0m
+[97;40m    [0m[91;40m&quot;matplotlib&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;3.10.7&quot;[0m[97;40m,[0m[40m                                                     [0m
+[97;40m    [0m[91;40m&quot;joblib&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;1.5.2&quot;[0m[97;40m,[0m[40m                                                          [0m
+[97;40m    [0m[91;40m&quot;threadpoolctl&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;3.6.0&quot;[0m[97;40m,[0m[40m                                                   [0m
+[97;40m    [0m[91;40m&quot;sklearn&quot;[0m[97;40m:[0m[97;40m [0m[96;40mnull[0m[97;40m,[0m[40m                                                            [0m
+[97;40m    [0m[91;40m&quot;seaborn&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;0.13.2&quot;[0m[97;40m,[0m[40m                                                        [0m
+[97;40m    [0m[91;40m&quot;plotly&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;6.5.0&quot;[0m[97;40m,[0m[40m                                                          [0m
+[97;40m    [0m[91;40m&quot;aggdraw&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;1.3.19&quot;[0m[97;40m,[0m[40m                                                        [0m
+[97;40m    [0m[91;40m&quot;bokeh&quot;[0m[97;40m:[0m[97;40m [0m[96;40mnull[0m[97;40m,[0m[40m                                                              [0m
+[97;40m    [0m[91;40m&quot;gradio&quot;[0m[97;40m:[0m[97;40m [0m[96;40mnull[0m[97;40m,[0m[40m                                                             [0m
+[97;40m    [0m[91;40m&quot;streamlit&quot;[0m[97;40m:[0m[97;40m [0m[96;40mnull[0m[97;40m,[0m[40m                                                          [0m
+[97;40m    [0m[91;40m&quot;pyyaml&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;6.0.3&quot;[0m[40m                                                           [0m
+[97;40m  [0m[97;40m},[0m[40m                                                                            [0m
+[97;40m  [0m[91;40m&quot;environment&quot;[0m[97;40m:[0m[97;40m [0m[97;40m{[0m[40m                                                              [0m
+[97;40m    [0m[91;40m&quot;MKL_NUM_THREADS&quot;[0m[97;40m:[0m[97;40m [0m[96;40mnull[0m[97;40m,[0m[40m                                                    [0m
+[97;40m    [0m[91;40m&quot;OMP_NUM_THREADS&quot;[0m[97;40m:[0m[97;40m [0m[96;40mnull[0m[97;40m,[0m[40m                                                    [0m
+[97;40m    [0m[91;40m&quot;OPENBLAS_NUM_THREADS&quot;[0m[97;40m:[0m[97;40m [0m[96;40mnull[0m[40m                                                [0m
+[97;40m  [0m[97;40m},[0m[40m                                                                            [0m
+[97;40m  [0m[91;40m&quot;gpu&quot;[0m[97;40m:[0m[97;40m [0m[97;40m{[0m[40m                                                                      [0m
+[97;40m    [0m[91;40m&quot;cuda&quot;[0m[97;40m:[0m[97;40m [0m[96;40mnull[0m[97;40m,[0m[40m                                                               [0m
+[97;40m    [0m[91;40m&quot;gpu&quot;[0m[97;40m:[0m[97;40m [0m[96;40mnull[0m[97;40m,[0m[40m                                                                [0m
+[97;40m    [0m[91;40m&quot;mps&quot;[0m[97;40m:[0m[97;40m [0m[96;40mnull[0m[97;40m,[0m[40m                                                                [0m
+[97;40m    [0m[91;40m&quot;xla&quot;[0m[97;40m:[0m[97;40m [0m[96;40mnull[0m[97;40m,[0m[40m                                                                [0m
+[97;40m    [0m[91;40m&quot;xpu&quot;[0m[97;40m:[0m[97;40m [0m[96;40mnull[0m[40m                                                                 [0m
+[97;40m  [0m[97;40m},[0m[40m                                                                            [0m
+[97;40m  [0m[91;40m&quot;threadpoolctl&quot;[0m[97;40m:[0m[97;40m [0m[97;40m[[0m[40m                                                            [0m
+[97;40m    [0m[97;40m{[0m[40m                                                                           [0m
+[97;40m      [0m[91;40m&quot;user_api&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;blas&quot;[0m[97;40m,[0m[40m                                                       [0m
+[97;40m      [0m[91;40m&quot;internal_api&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;openblas&quot;[0m[97;40m,[0m[40m                                               [0m
+[97;40m      [0m[91;40m&quot;num_threads&quot;[0m[97;40m:[0m[97;40m [0m[37;40m48[0m[97;40m,[0m[40m                                                        [0m
+[97;40m      [0m[91;40m&quot;prefix&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;libscipy_openblas&quot;[0m[97;40m,[0m[40m                                            [0m
+[97;40m      [0m[91;40m&quot;filepath&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;/home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-pa[0m
+[97;40m      [0m[91;40m&quot;version&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;0.3.30&quot;[0m[97;40m,[0m[40m                                                      [0m
+[97;40m      [0m[91;40m&quot;threading_layer&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;pthreads&quot;[0m[97;40m,[0m[40m                                            [0m
+[97;40m      [0m[91;40m&quot;architecture&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;SkylakeX&quot;[0m[40m                                                [0m
+[97;40m    [0m[97;40m},[0m[40m                                                                          [0m
+[97;40m    [0m[97;40m{[0m[40m                                                                           [0m
+[97;40m      [0m[91;40m&quot;user_api&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;blas&quot;[0m[97;40m,[0m[40m                                                       [0m
+[97;40m      [0m[91;40m&quot;internal_api&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;openblas&quot;[0m[97;40m,[0m[40m                                               [0m
+[97;40m      [0m[91;40m&quot;num_threads&quot;[0m[97;40m:[0m[97;40m [0m[37;40m48[0m[97;40m,[0m[40m                                                        [0m
+[97;40m      [0m[91;40m&quot;prefix&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;libscipy_openblas&quot;[0m[97;40m,[0m[40m                                            [0m
+[97;40m      [0m[91;40m&quot;filepath&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;/home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-pa[0m
+[97;40m      [0m[91;40m&quot;version&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;0.3.29.dev&quot;[0m[97;40m,[0m[40m                                                  [0m
+[97;40m      [0m[91;40m&quot;threading_layer&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;pthreads&quot;[0m[97;40m,[0m[40m                                            [0m
+[97;40m      [0m[91;40m&quot;architecture&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;SkylakeX&quot;[0m[40m                                                [0m
+[97;40m    [0m[97;40m},[0m[40m                                                                          [0m
+[97;40m    [0m[97;40m{[0m[40m                                                                           [0m
+[97;40m      [0m[91;40m&quot;user_api&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;openmp&quot;[0m[97;40m,[0m[40m                                                     [0m
+[97;40m      [0m[91;40m&quot;internal_api&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;openmp&quot;[0m[97;40m,[0m[40m                                                 [0m
+[97;40m      [0m[91;40m&quot;num_threads&quot;[0m[97;40m:[0m[97;40m [0m[37;40m48[0m[97;40m,[0m[40m                                                        [0m
+[97;40m      [0m[91;40m&quot;prefix&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;libgomp&quot;[0m[97;40m,[0m[40m                                                      [0m
+[97;40m      [0m[91;40m&quot;filepath&quot;[0m[97;40m:[0m[97;40m [0m[93;40m&quot;/home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-pa[0m
+[97;40m      [0m[91;40m&quot;version&quot;[0m[97;40m:[0m[97;40m [0m[96;40mnull[0m[40m                                                           [0m
+[97;40m    [0m[97;40m}[0m[40m                                                                           [0m
+[97;40m  [0m[97;40m][0m[40m                                                                             [0m
+[97;40m}[0m[40m                                                                               [0m
 </pre></div>
 </div>
 </div>
@@ -969,7 +1039,7 @@ threading_layer: pthreads
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post6+git.20251029.adf0a55 2025-10-29T11:52Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post7+git.20251119.d2dc7af 2025-11-19T16:46Z.
       <br/>
     
   </p>

@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/apis/scikitplot.preprocessing.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="Methods for scaling, centering, normalization, binarization, and more. User guide. See the Preprocessing (experimental) section for further details. Extended sklearn feature preprocessing.: Multi-c..." />
+<meta property="og:description" content="Methods for scaling, centering, normalization, binarization, and more. User guide. See the Preprocessing (experimental) section for further details. Extended sklearn feature preprocessing.:" />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="Methods for scaling, centering, normalization, binarization, and more. User guide. See the Preprocessing (experimental) section for further details. Extended sklearn feature preprocessing.: Multi-c..." />
+<meta name="description" content="Methods for scaling, centering, normalization, binarization, and more. User guide. See the Preprocessing (experimental) section for further details. Extended sklearn feature preprocessing.:" />
 
     <title>scikitplot.preprocessing &#8212; scikit-plots 0.4.0 documentation</title>
   
@@ -83,7 +83,7 @@
     <link rel="icon" href="../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="GetDummies" href="../modules/generated/scikitplot.preprocessing.GetDummies.html" />
+    <link rel="next" title="DummyCodeEncoder" href="../modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html" />
     <link rel="prev" title="dot" href="../modules/generated/scikitplot.nc.dot.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -219,22 +219,15 @@
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-external" href="https://github.com/orgs/scikit-plots/discussions">
-    Community-G
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-external" href="https://zenodo.org/communities/scikit-plots">
-    Community-Z
-  </a>
-</li>
-
-
-<li class=" ">
   <a class="nav-link dropdown-item nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
     Developer's Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/community.html">
+    Community
   </a>
 </li>
 
@@ -248,7 +241,7 @@
 
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../project/governance.html">
-    Governance
+    Governance Process
   </a>
 </li>
 
@@ -262,7 +255,7 @@
 
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../project/index.html">
-    About us
+    About Us/Project
   </a>
 </li>
 
@@ -429,22 +422,15 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-external" href="https://github.com/orgs/scikit-plots/discussions">
-    Community-G
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-external" href="https://zenodo.org/communities/scikit-plots">
-    Community-Z
-  </a>
-</li>
-
-
-<li class="nav-item ">
   <a class="nav-link nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
     Developer's Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/community.html">
+    Community
   </a>
 </li>
 
@@ -458,7 +444,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../project/governance.html">
-    Governance
+    Governance Process
   </a>
 </li>
 
@@ -472,7 +458,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../project/index.html">
-    About us
+    About Us/Project
   </a>
 </li>
 
@@ -702,6 +688,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">scikitplot.preprocessing</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html">DummyCodeEncoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.preprocessing.GetDummies.html">GetDummies</a></li>
 </ul>
 </details></li>
@@ -816,23 +803,15 @@
 <span id="scikitplot-preprocessing"></span><span id="preprocessing-ref"></span><h1>scikitplot.preprocessing<a class="headerlink" href="#module-scikitplot.preprocessing" title="Link to this heading">#</a></h1>
 <p>Methods for scaling, centering, normalization, binarization, and more.</p>
 <p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/preprocessing/index.html#preprocessing-index"><span class="std std-ref">Preprocessing (experimental)</span></a> section for further details.</p>
-<section id="module-scikitplot.preprocessing._get_dummies">
-<span id="extended-sklearn-feature-preprocessing"></span><span id="preprocessing-ref-extended-sklearn-feature-preprocessing"></span><h2>Extended sklearn feature preprocessing.<a class="headerlink" href="#module-scikitplot.preprocessing._get_dummies" title="Link to this heading">#</a></h2>
-<p>Multi-column multi-label string column one-hot encoder <a class="reference internal" href="#rdd51711a201f-1" id="id1">[1]</a>.</p>
-<p class="rubric">References</p>
-<div role="list" class="citation-list">
-<div class="citation" id="rdd51711a201f-1" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p><a class="reference external" href="https://medium.com/&#64;celik-muhammed/how-to-converting-pandas-column-of-comma-separated-strings-into-dummy-variables-762c02282a6c">Çelik, M. (2023, December 9).
-“How to converting pandas column of comma-separated strings into dummy variables?.”
-Medium. https://medium.com/&#64;celik-muhammed/how-to-converting-pandas-column-of-comma-separated-strings-into-dummy-variables-762c02282a6c</a></p>
-</div>
-</div>
-<p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/preprocessing/index.html#get-dummies-index"><span class="std std-ref">GetDummies</span></a> section for further details.</p>
+<section id="extended-sklearn-feature-preprocessing">
+<span id="preprocessing-ref-extended-sklearn-feature-preprocessing"></span><h2>Extended sklearn feature preprocessing.<a class="headerlink" href="#extended-sklearn-feature-preprocessing" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.preprocessing.GetDummies.html#scikitplot.preprocessing.GetDummies" title="scikitplot.preprocessing.GetDummies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GetDummies</span></code></a></p></td>
-<td><p>Multi-column multi-label string column one-hot encoder <a class="reference internal" href="../modules/generated/scikitplot.preprocessing.GetDummies.html#rbcee2ffc57f9-1" id="id2"><span>[Rbcee2ffc57f9-1]</span></a>.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#scikitplot.preprocessing.DummyCodeEncoder" title="scikitplot.preprocessing.DummyCodeEncoder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DummyCodeEncoder</span></code></a></p></td>
+<td><p>Encode categorical features into dummy/indicator 0/1 variables.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.preprocessing.GetDummies.html#scikitplot.preprocessing.GetDummies" title="scikitplot.preprocessing.GetDummies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GetDummies</span></code></a></p></td>
+<td><p>Multi-column multi-label string column one-hot encoder <a class="reference internal" href="../modules/generated/scikitplot.preprocessing.GetDummies.html#rbcee2ffc57f9-1" id="id1"><span>[Rbcee2ffc57f9-1]</span></a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -860,11 +839,11 @@ Medium. https://medium.com/&#64;celik-muhammed/how-to-converting-pandas-column-o
       </div>
     </a>
     <a class="right-next"
-       href="../modules/generated/scikitplot.preprocessing.GetDummies.html"
+       href="../modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">GetDummies</p>
+        <p class="prev-next-title">DummyCodeEncoder</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -902,7 +881,7 @@ Medium. https://medium.com/&#64;celik-muhammed/how-to-converting-pandas-column-o
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post6+git.20251029.adf0a55 2025-10-29T11:52Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post7+git.20251119.d2dc7af 2025-11-19T16:46Z.
       <br/>
     
   </p>
