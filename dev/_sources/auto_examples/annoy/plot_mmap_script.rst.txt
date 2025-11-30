@@ -18,35 +18,23 @@
 .. _sphx_glr_auto_examples_annoy_plot_mmap_script.py:
 
 
-annoy (mmap) with examples
-==================================
+Mmap annoy.AnnoyIndex with examples
+=====================================
 
-An example showing the :py:func:`~scikitplot.cexternals.annoy` function.
+An example showing the :py:class:`~scikitplot.cexternals.annoy.AnnoyIndex` class.
 
-.. GENERATED FROM PYTHON SOURCE LINES 7-11
-
-.. code-block:: Python
-
-
-    # Authors: Spotify AB
-    # SPDX-License-Identifier: Apache-2.0
-
-
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 12-13
-
-from annoy import AnnoyIndex
-
-.. GENERATED FROM PYTHON SOURCE LINES 13-15
+.. GENERATED FROM PYTHON SOURCE LINES 12-21
 
 .. code-block:: Python
 
-    from scikitplot.cexternals.annoy import AnnoyIndex
+    from __future__ import print_function
+
+    import random; random.seed(0)
+    import time
+
+    # from annoy import AnnoyIndex
+    # from scikitplot.cexternals.annoy import AnnoyIndex
+    from scikitplot.cexternals.annoy import Index as AnnoyIndex
 
 
 
@@ -55,16 +43,19 @@ from annoy import AnnoyIndex
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 16-23
+.. GENERATED FROM PYTHON SOURCE LINES 22-32
 
 .. code-block:: Python
 
-    a = AnnoyIndex(3, 'angular')
+    a = AnnoyIndex(
+        f=3,
+        metric='angular',
+    )
     a.add_item(0, [1, 0, 0])
     a.add_item(1, [0, 1, 0])
     a.add_item(2, [0, 0, 1])
     a.build(-1)
-    a.save('test.tree')
+    a.save('test.annoy')
 
 
 
@@ -79,12 +70,15 @@ from annoy import AnnoyIndex
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 24-27
+.. GENERATED FROM PYTHON SOURCE LINES 33-39
 
 .. code-block:: Python
 
-    b = AnnoyIndex(3, 'angular')
-    b.load('test.tree')
+    b = AnnoyIndex(
+        f=3,
+        metric='angular',
+    )
+    b.load('test.annoy')
 
 
 
@@ -99,7 +93,7 @@ from annoy import AnnoyIndex
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 28-31
+.. GENERATED FROM PYTHON SOURCE LINES 40-43
 
 .. code-block:: Python
 
@@ -120,7 +114,7 @@ from annoy import AnnoyIndex
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 32-39
+.. GENERATED FROM PYTHON SOURCE LINES 44-51
 
 .. tags::
 
@@ -133,7 +127,7 @@ from annoy import AnnoyIndex
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.012 seconds)
+   **Total running time of the script:** (0 minutes 0.013 seconds)
 
 
 .. _sphx_glr_download_auto_examples_annoy_plot_mmap_script.py:

@@ -18,37 +18,26 @@
 .. _sphx_glr_auto_examples_annoy_plot_simple_script.py:
 
 
-annoy (simple) with examples
-==================================
+Simple annoy.AnnoyIndex with examples
+=======================================
 
-An example showing the :py:func:`~scikitplot.cexternals.annoy` function.
+An example showing the :py:class:`~scikitplot.cexternals.annoy.AnnoyIndex` class.
 
-.. GENERATED FROM PYTHON SOURCE LINES 7-11
-
-.. code-block:: Python
-
-
-    # Authors: Spotify AB
-    # SPDX-License-Identifier: Apache-2.0
-
-
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 12-13
+.. GENERATED FROM PYTHON SOURCE LINES 12-14
 
 from annoy import AnnoyIndex
+from scikitplot.cexternals.annoy import AnnoyIndex
 
-.. GENERATED FROM PYTHON SOURCE LINES 13-24
+.. GENERATED FROM PYTHON SOURCE LINES 14-28
 
 .. code-block:: Python
 
-    from scikitplot.cexternals.annoy import AnnoyIndex
+    from scikitplot.cexternals.annoy import Index as AnnoyIndex
 
-    a = AnnoyIndex(3, 'angular')
+    a = AnnoyIndex(
+        f=3,
+        metric='angular',
+    )
     a.add_item(0, [1, 0, 0])
     a.add_item(1, [0, 1, 0])
     a.add_item(2, [0, 0, 1])
@@ -71,7 +60,7 @@ from annoy import AnnoyIndex
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 25-32
+.. GENERATED FROM PYTHON SOURCE LINES 29-36
 
 .. tags::
 

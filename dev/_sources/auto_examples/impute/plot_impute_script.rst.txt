@@ -208,7 +208,7 @@ df.head()
 
  .. code-block:: none
 
-    26.227445125579834
+    18.953634023666382
 
 
 
@@ -243,7 +243,7 @@ df.head()
 
  .. code-block:: none
 
-    26.431903839111328
+    19.99095320701599
 
 
 
@@ -278,7 +278,7 @@ df.head()
 
  .. code-block:: none
 
-    26.83459758758545
+    21.925779819488525
 
 
 
@@ -313,7 +313,7 @@ df.head()
 
  .. code-block:: none
 
-    27.047451972961426
+    21.39891028404236
 
 
 
@@ -351,7 +351,7 @@ df.head()
 
  .. code-block:: none
 
-    70.33932614326477
+    53.10647940635681
 
 
 
@@ -390,16 +390,18 @@ df.head()
 
  .. code-block:: none
 
-    27.912201404571533
+    24.204904317855835
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 232-236
+.. GENERATED FROM PYTHON SOURCE LINES 232-238
 
 .. code-block:: Python
 
     import scikitplot as sp
+    # sp.get_logger().setLevel(sp.logging.WARNING)  # sp.logging == sp.logger
+    sp.logger.setLevel(sp.logger.INFO)  # default WARNING
     sp.__version__
 
 
@@ -412,11 +414,11 @@ df.head()
  .. code-block:: none
 
 
-    '0.5.dev0+git.20251120.53644d7'
+    '0.5.dev0+git.20251130.284e07e'
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 237-242
+.. GENERATED FROM PYTHON SOURCE LINES 239-244
 
 .. code-block:: Python
 
@@ -432,7 +434,7 @@ df.head()
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 243-268
+.. GENERATED FROM PYTHON SOURCE LINES 245-270
 
 .. code-block:: Python
 
@@ -469,12 +471,12 @@ df.head()
 
  .. code-block:: none
 
-    48.930564403533936
+    38.90331029891968
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 269-361
+.. GENERATED FROM PYTHON SOURCE LINES 271-363
 
 .. code-block:: Python
 
@@ -582,14 +584,14 @@ df.head()
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 362-366
+.. GENERATED FROM PYTHON SOURCE LINES 364-368
 
 AnnoyKNNImputer performance and accuracy are highly sensitive to both the
 selected distance metric and the number of trees used to build the Annoy index.
 An inappropriate metric or insufficient number of trees may lead to poor
 neighbor retrieval and degraded imputation quality.
 
-.. GENERATED FROM PYTHON SOURCE LINES 368-375
+.. GENERATED FROM PYTHON SOURCE LINES 370-377
 
 .. tags::
 
@@ -602,7 +604,7 @@ neighbor retrieval and degraded imputation quality.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (4 minutes 15.070 seconds)
+   **Total running time of the script:** (3 minutes 19.905 seconds)
 
 
 .. _sphx_glr_download_auto_examples_impute_plot_impute_script.py:

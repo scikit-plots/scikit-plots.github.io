@@ -607,6 +607,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals.annoy.html">annoy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals.annoy.Annoy.html">Annoy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals.annoy.AnnoyIndex.html">AnnoyIndex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals.annoy.Index.html">Index</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.html">_astropy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.html">stats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._f2py.html">_f2py</a></li>
@@ -758,6 +759,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.tweedie.html">tweedie</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.utils.html">scikitplot.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.utils._time.Timer.html">Timer</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.visualkeras.html">scikitplot.visualkeras</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.visualkeras.graph_view.html">graph_view</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.visualkeras.layered_view.html">layered_view</a></li>
@@ -835,13 +840,31 @@ availability across environments, without relying on separate system installs.</
 <p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/cexternals/index.html#cexternals-index"><span class="std std-ref">C-Externals (experimental)</span></a> section for further details.</p>
 <section id="module-scikitplot.cexternals.annoy">
 <span id="spotify-annoy-as-submodule"></span><span id="cexternals-ref-spotify-annoy-as-submodule"></span><h2>Spotify annoy as submodule.<a class="headerlink" href="#module-scikitplot.cexternals.annoy" title="Link to this heading">#</a></h2>
-<p>High-dimensional Approximate Nearest Neighbors (ANN) queries in C++/Python optimized
-for memory usage and loading/saving to disk.</p>
-<p>Python module (written in C++) for high-dimensional approximate nearest neigbor (ANN) queries.
-Spotify-Annoy (Approximate Nearest Neighbors Oh Yeah) is a C++ library with Python bindings
-to search for points in space that are close to a given query point.
-It also creates large read-only file-based data structures
-that are mmapped into memory so that many processes may share the same data.</p>
+<section id="spotify-annoy-approximate-nearest-neighbors-oh-yeah">
+<h3>Spotify Annoy (Approximate Nearest Neighbors Oh Yeah)<a class="headerlink" href="#spotify-annoy-approximate-nearest-neighbors-oh-yeah" title="Link to this heading">#</a></h3>
+<p>A high-dimensional Approximate Nearest Neighbors (ANN) library implemented in C++
+with Python bindings, optimized for memory usage, speed, and large-scale disk-based
+indices that can be shared across processes via memory mapping (mmap).</p>
+<p>Annoy is designed to find points in space that are closest to a given query point
+using different distance metrics. It is particularly efficient for high-dimensional
+vector data such as embeddings (word, image, or user vectors).</p>
+<p>Key Features:</p>
+<ul class="simple">
+<li><p>Build trees for high-dimensional data using multiple distance metrics.</p></li>
+<li><p>Serialize/deserialize indexes to bytes or disk for persistence.</p></li>
+<li><p>Support for memory-mapped indexes for read-only sharing across processes.</p></li>
+<li><p>Optional multi-threaded building for faster index construction.</p></li>
+<li><p>Provides approximate nearest neighbors with tunable accuracy vs speed tradeoff.</p></li>
+</ul>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">AnnoyIndex</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="mi">40</span>  <span class="c1"># vector dimensionality</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">AnnoyIndex</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;angular&#39;</span><span class="p">)</span>  <span class="c1"># Length of item vector and metric</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">f</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># Build 10 trees</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Find nearest neighbor</span>
+</pre></div>
+</div>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
 <div class="citation" id="r5f270860f2a1-1" role="doc-biblioentry">
@@ -851,17 +874,21 @@ that are mmapped into memory so that many processes may share the same data.</p>
 Github. https://pypi.org/project/annoy</a></p>
 </div>
 </div>
+</section>
 <p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/cexternals/annoy/index.html#annoy-index"><span class="std std-ref">Annoy (experimental)</span></a> section for further details.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cexternals.annoy.html#module-scikitplot.cexternals.annoy" title="scikitplot.cexternals.annoy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">annoy</span></code></a></p></td>
-<td><p>High-dimensional Approximate Nearest Neighbors (ANN) queries in C++/Python optimized for memory usage and loading/saving to disk.</p></td>
+<td><p>Spotify Annoy (Approximate Nearest Neighbors Oh Yeah)</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cexternals.annoy.Annoy.html#scikitplot.cexternals.annoy.Annoy" title="scikitplot.cexternals.annoy.Annoy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">annoy.Annoy</span></code></a></p></td>
 <td><p>Compiled on GCC.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cexternals.annoy.AnnoyIndex.html#scikitplot.cexternals.annoy.AnnoyIndex" title="scikitplot.cexternals.annoy.AnnoyIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">annoy.AnnoyIndex</span></code></a></p></td>
-<td><p>alias of <a class="reference internal" href="../modules/generated/scikitplot.cexternals.annoy.Annoy.html#scikitplot.cexternals.annoy.Annoy" title="annoy.Annoy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annoy</span></code></a></p></td>
+<td><p>alias of <a class="reference internal" href="../modules/generated/scikitplot.cexternals.annoy.Index.html#scikitplot.cexternals.annoy.Index" title="scikitplot.cexternals.annoy._index.Index"><code class="xref py py-class docutils literal notranslate"><span class="pre">Index</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cexternals.annoy.Index.html#scikitplot.cexternals.annoy.Index" title="scikitplot.cexternals.annoy.Index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">annoy.Index</span></code></a></p></td>
+<td><p>A robust, pickle-safe, MLOps-ready wrapper around <code class="docutils literal notranslate"><span class="pre">AnnoyIndex</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -995,7 +1022,7 @@ of the NumPy License.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251120.53644d7 2025-11-20T15:18Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251130.284e07e 2025-11-30T15:51Z.
       <br/>
     
   </p>

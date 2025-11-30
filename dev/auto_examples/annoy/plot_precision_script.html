@@ -5,15 +5,15 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="annoy (precision) with examples" property="og:title"/>
+<meta content="Precision annoy.AnnoyIndex with examples" property="og:title"/>
 <meta content="website" property="og:type"/>
 <meta content="https://scikit-plots.github.io/stable/auto_examples/annoy/plot_precision_script.html" property="og:url"/>
 <meta content="scikit-plots" property="og:site_name"/>
-<meta content="An example showing the annoy function. Tags: model-type: classification model-workflow: impute plot-type: bar level: beginner purpose: showcase Total running time of the script:(0 minutes 19.337 se..." property="og:description"/>
+<meta content="An example showing the AnnoyIndex class. n, f = 1_000_000, 100 # 100~2.5GB Tags: model-type: classification model-workflow: impute plot-type: bar level: beginner purpose: showcase Total running tim..." property="og:description"/>
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
-<meta content="An example showing the annoy function. Tags: model-type: classification model-workflow: impute plot-type: bar level: beginner purpose: showcase Total running time of the script:(0 minutes 19.337 se..." name="description"/>
-<title>annoy (precision) with examples — scikit-plots 0.5.dev0 documentation</title>
+<meta content="An example showing the AnnoyIndex class. n, f = 1_000_000, 100 # 100~2.5GB Tags: model-type: classification model-workflow: impute plot-type: bar level: beginner purpose: showcase Total running tim..." name="description"/>
+<title>Precision annoy.AnnoyIndex with examples — scikit-plots 0.5.dev0 documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
@@ -73,8 +73,8 @@
 <link href="../../_static/scikit-plots-favicon.ico" rel="icon"/>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
-<link href="plot_simple_script.html" rel="next" title="annoy (simple) with examples"/>
-<link href="plot_mmap_script.html" rel="prev" title="annoy (mmap) with examples"/>
+<link href="plot_s_compile_cpp.html" rel="next" title="&lt;no title&gt;"/>
+<link href="plot_mmap_script.html" rel="prev" title="Mmap annoy.AnnoyIndex with examples"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="en" name="docsearch:language"/>
 <meta content="0.5" name="docsearch:version"/>
@@ -346,9 +346,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../00-blogs/index.html">blog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../00-jupyter_notebooks/index.html">jupyter notebooks</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Annoy</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="plot_mmap_script.html">annoy (mmap) with examples</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">annoy (precision) with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_simple_script.html">annoy (simple) with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_mmap_script.html">Mmap annoy.AnnoyIndex with examples</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Precision annoy.AnnoyIndex with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_simple_script.html">Simple annoy.AnnoyIndex with examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../array_api/index.html">Array API support</a></li>
@@ -443,7 +443,7 @@
 </li>
 <li class="breadcrumb-item"><a class="nav-link" href="../index.html">Examples</a></li>
 <li class="breadcrumb-item"><a class="nav-link" href="index.html">Annoy</a></li>
-<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">annoy (precision) with examples</span></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">Precision annoy.AnnoyIndex with examples</span></li>
 </ul>
 </nav>
 </div>
@@ -453,84 +453,177 @@
 <div id="searchbox"></div>
 <article class="bd-article">
 
-<section class="sphx-glr-example-title" id="annoy-precision-with-examples">
-<span id="sphx-glr-auto-examples-annoy-plot-precision-script-py"></span><h1>annoy (precision) with examples<a class="headerlink" href="#annoy-precision-with-examples" title="Link to this heading">#</a></h1>
-<p>An example showing the <a class="reference internal" href="../../modules/generated/scikitplot.cexternals.annoy.html#module-scikitplot.cexternals.annoy" title="scikitplot.cexternals.annoy"><code class="xref py py-func docutils literal notranslate"><span class="pre">annoy</span></code></a> function.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: Spotify AB</span>
-<span class="c1"># SPDX-License-Identifier: Apache-2.0</span>
-</pre></div>
-</div>
+<section class="sphx-glr-example-title" id="precision-annoy-annoyindex-with-examples">
+<span id="sphx-glr-auto-examples-annoy-plot-precision-script-py"></span><h1>Precision annoy.AnnoyIndex with examples<a class="headerlink" href="#precision-annoy-annoyindex-with-examples" title="Link to this heading">#</a></h1>
+<p>An example showing the <a class="reference internal" href="../../modules/generated/scikitplot.cexternals.annoy.AnnoyIndex.html#scikitplot.cexternals.annoy.AnnoyIndex" title="scikitplot.cexternals.annoy.AnnoyIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnoyIndex</span></code></a> class.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">print_function</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">random</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span><span class="p">;</span> <a class="sphx-glr-backref-module-random sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/random.html#random.seed" title="random.seed"><span class="n">random</span><span class="o">.</span><span class="n">seed</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
 <span class="c1"># from annoy import AnnoyIndex</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.cexternals.annoy</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-scikitplot-cexternals-annoy sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.cexternals.annoy.AnnoyIndex.html#scikitplot.cexternals.annoy.AnnoyIndex" title="scikitplot.cexternals.annoy.AnnoyIndex"><span class="n">AnnoyIndex</span></a>
+<span class="c1"># from scikitplot.cexternals.annoy import AnnoyIndex</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.cexternals.annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Index</span> <span class="k">as</span> <a class="sphx-glr-backref-module-scikitplot-cexternals-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.cexternals.annoy.Index.html#scikitplot.cexternals.annoy.Index" title="scikitplot.cexternals.annoy.Index"><span class="n">AnnoyIndex</span></a>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="n">xrange</span>
-<span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
-    <span class="c1"># Python 3 compat</span>
-    <span class="n">xrange</span> <span class="o">=</span> <span class="nb">range</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">tqdm.auto</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span><span class="p">,</span> <span class="n">trange</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="c1"># Fallback: dummy versions that ignore all args/kwargs</span>
+    <span class="n">tqdm</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">iterable</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">iterable</span>
+    <span class="n">trange</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>n, f = 1_000_000, 100  # 100~2.5GB</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="mi">100_000</span><span class="p">,</span> <span class="mi">100</span>  <span class="c1"># 100~0.25GB 256~0.6GB</span>
 
-<span class="n">n</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="mi">100000</span><span class="p">,</span> <span class="mi">40</span>
 
-<span class="n">t</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cexternals-annoy sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.cexternals.annoy.AnnoyIndex.html#scikitplot.cexternals.annoy.AnnoyIndex" title="scikitplot.cexternals.annoy.AnnoyIndex"><span class="n">AnnoyIndex</span></a><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">'angular'</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">v</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
-        <span class="n">v</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><a class="sphx-glr-backref-module-random sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/random.html#random.gauss" title="random.gauss"><span class="n">random</span><span class="o">.</span><span class="n">gauss</span></a><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">t</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cexternals-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.cexternals.annoy.Index.html#scikitplot.cexternals.annoy.Index" title="scikitplot.cexternals.annoy.Index"><span class="n">AnnoyIndex</span></a><span class="p">(</span>
+    <span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">,</span>
+    <span class="n">metric</span><span class="o">=</span><span class="s1">'angular'</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">trange</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="p">(</span><span class="n">n</span><span class="o">//</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="mf">1.0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">n</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="c1"># v = []</span>
+    <span class="c1"># for z in range(f):</span>
+    <span class="c1">#     v.append(random.gauss(0, 1))</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><a class="sphx-glr-backref-module-random sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/random.html#random.gauss" title="random.gauss"><span class="n">random</span><span class="o">.</span><span class="n">gauss</span></a><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">f</span><span class="p">)]</span>
     <span class="n">t</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
 
 <span class="n">t</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">f</span><span class="p">)</span>
-<span class="n">t</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'test.tree'</span><span class="p">)</span>
-
-<span class="n">limits</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">]</span>
-<span class="n">k</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">prec_sum</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">prec_n</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">time_sum</span> <span class="o">=</span> <span class="p">{}</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="n">prec_n</span><span class="p">):</span>
-    <span class="n">j</span> <span class="o">=</span> <a class="sphx-glr-backref-module-random sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/random.html#random.randrange" title="random.randrange"><span class="n">random</span><span class="o">.</span><span class="n">randrange</span></a><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
-
-    <span class="n">closest</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">limit</span> <span class="ow">in</span> <span class="n">limits</span><span class="p">:</span>
-        <span class="n">t0</span> <span class="o">=</span> <a class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/time.html#time.time" title="time.time"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
-        <span class="n">toplist</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span>
-        <span class="n">T</span> <span class="o">=</span> <a class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/time.html#time.time" title="time.time"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
-
-        <span class="n">found</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">closest</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">toplist</span><span class="p">))</span>
-        <span class="n">hitrate</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">found</span> <span class="o">/</span> <span class="n">k</span>
-        <span class="n">prec_sum</span><span class="p">[</span><span class="n">limit</span><span class="p">]</span> <span class="o">=</span> <span class="n">prec_sum</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">+</span> <span class="n">hitrate</span>
-        <span class="n">time_sum</span><span class="p">[</span><span class="n">limit</span><span class="p">]</span> <span class="o">=</span> <span class="n">time_sum</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">+</span> <span class="n">T</span>
-
-<span class="k">for</span> <span class="n">limit</span> <span class="ow">in</span> <span class="n">limits</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">'limit: </span><span class="si">%-9d</span><span class="s1"> precision: </span><span class="si">%6.2f%%</span><span class="s1"> avg time: </span><span class="si">%.6f</span><span class="s1">s'</span>
-          <span class="o">%</span> <span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">prec_sum</span><span class="p">[</span><span class="n">limit</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
-             <span class="n">time_sum</span><span class="p">[</span><span class="n">limit</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="n">t</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'test.annoy'</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>limit: 10        precision:  13.68% avg time: 0.000065s
-limit: 100       precision:  21.01% avg time: 0.000065s
-limit: 1000      precision:  56.48% avg time: 0.000241s
-limit: 10000     precision:  97.04% avg time: 0.001613s
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/100000 [00:00&lt;?, ?it/s]0 / 100000 = 0.0
+
+  2%|▏         | 1691/100000 [00:00&lt;00:05, 16901.84it/s]
+  3%|▎         | 3382/100000 [00:00&lt;00:05, 16604.97it/s]
+  5%|▌         | 5043/100000 [00:00&lt;00:06, 15266.09it/s]
+  7%|▋         | 6751/100000 [00:00&lt;00:05, 15940.52it/s]
+  8%|▊         | 8394/100000 [00:00&lt;00:05, 16108.72it/s]10000 / 100000 = 0.1
+
+ 10%|█         | 10068/100000 [00:00&lt;00:05, 16315.00it/s]
+ 12%|█▏        | 11776/100000 [00:00&lt;00:05, 16558.14it/s]
+ 13%|█▎        | 13463/100000 [00:00&lt;00:05, 16655.52it/s]
+ 15%|█▌        | 15132/100000 [00:01&lt;00:06, 13141.17it/s]
+ 17%|█▋        | 16737/100000 [00:01&lt;00:05, 13891.83it/s]
+ 18%|█▊        | 18462/100000 [00:01&lt;00:05, 14796.96it/s]20000 / 100000 = 0.2
+
+ 20%|██        | 20180/100000 [00:01&lt;00:05, 15459.07it/s]
+ 22%|██▏       | 21843/100000 [00:01&lt;00:04, 15789.95it/s]
+ 24%|██▎       | 23560/100000 [00:01&lt;00:04, 16187.57it/s]
+ 25%|██▌       | 25281/100000 [00:01&lt;00:04, 16483.53it/s]
+ 27%|██▋       | 26958/100000 [00:01&lt;00:04, 16565.35it/s]
+ 29%|██▊       | 28677/100000 [00:01&lt;00:04, 16747.84it/s]30000 / 100000 = 0.3
+
+ 30%|███       | 30364/100000 [00:01&lt;00:04, 15157.76it/s]
+ 32%|███▏      | 32069/100000 [00:02&lt;00:04, 15680.44it/s]
+ 34%|███▍      | 33772/100000 [00:02&lt;00:04, 16062.56it/s]
+ 35%|███▌      | 35431/100000 [00:02&lt;00:03, 16212.38it/s]
+ 37%|███▋      | 37131/100000 [00:02&lt;00:03, 16440.27it/s]
+ 39%|███▉      | 38788/100000 [00:02&lt;00:03, 16474.02it/s]40000 / 100000 = 0.4
+
+ 40%|████      | 40445/100000 [00:02&lt;00:04, 14712.15it/s]
+ 42%|████▏     | 41957/100000 [00:02&lt;00:04, 14424.85it/s]
+ 44%|████▎     | 43670/100000 [00:02&lt;00:03, 15169.69it/s]
+ 45%|████▌     | 45327/100000 [00:02&lt;00:03, 15565.01it/s]
+ 47%|████▋     | 47039/100000 [00:02&lt;00:03, 16009.97it/s]
+ 49%|████▉     | 48758/100000 [00:03&lt;00:03, 16350.71it/s]50000 / 100000 = 0.5
+
+ 50%|█████     | 50472/100000 [00:03&lt;00:02, 16580.82it/s]
+ 52%|█████▏    | 52183/100000 [00:03&lt;00:02, 16735.14it/s]
+ 54%|█████▍    | 53909/100000 [00:03&lt;00:02, 16890.61it/s]
+ 56%|█████▌    | 55635/100000 [00:03&lt;00:02, 16999.09it/s]
+ 57%|█████▋    | 57358/100000 [00:03&lt;00:02, 17067.11it/s]
+ 59%|█████▉    | 59068/100000 [00:03&lt;00:02, 16830.76it/s]60000 / 100000 = 0.6
+
+ 61%|██████    | 60786/100000 [00:03&lt;00:02, 16932.84it/s]
+ 63%|██████▎   | 62514/100000 [00:03&lt;00:02, 17034.57it/s]
+ 64%|██████▍   | 64242/100000 [00:04&lt;00:02, 17105.33it/s]
+ 66%|██████▌   | 65971/100000 [00:04&lt;00:01, 17158.26it/s]
+ 68%|██████▊   | 67693/100000 [00:04&lt;00:01, 17175.07it/s]
+ 69%|██████▉   | 69420/100000 [00:04&lt;00:01, 17202.97it/s]70000 / 100000 = 0.7
+
+ 71%|███████   | 71145/100000 [00:04&lt;00:01, 17215.09it/s]
+ 73%|███████▎  | 72867/100000 [00:04&lt;00:01, 17195.07it/s]
+ 75%|███████▍  | 74587/100000 [00:04&lt;00:01, 17162.93it/s]
+ 76%|███████▋  | 76304/100000 [00:04&lt;00:01, 16786.38it/s]
+ 78%|███████▊  | 78025/100000 [00:04&lt;00:01, 16909.77it/s]
+ 80%|███████▉  | 79734/100000 [00:04&lt;00:01, 16960.90it/s]80000 / 100000 = 0.8
+
+ 81%|████████▏ | 81445/100000 [00:05&lt;00:01, 17005.06it/s]
+ 83%|████████▎ | 83170/100000 [00:05&lt;00:00, 17076.19it/s]
+ 85%|████████▍ | 84879/100000 [00:05&lt;00:00, 17058.23it/s]
+ 87%|████████▋ | 86586/100000 [00:05&lt;00:00, 17049.61it/s]
+ 88%|████████▊ | 88314/100000 [00:05&lt;00:00, 17116.69it/s]90000 / 100000 = 0.9
+
+ 90%|█████████ | 90026/100000 [00:05&lt;00:00, 17026.11it/s]
+ 92%|█████████▏| 91729/100000 [00:05&lt;00:00, 16882.98it/s]
+ 93%|█████████▎| 93453/100000 [00:05&lt;00:00, 16986.69it/s]
+ 95%|█████████▌| 95181/100000 [00:05&lt;00:00, 17072.75it/s]
+ 97%|█████████▋| 96889/100000 [00:05&lt;00:00, 16357.12it/s]
+ 99%|█████████▊| 98532/100000 [00:06&lt;00:00, 14686.86it/s]
+100%|██████████| 100000/100000 [00:06&lt;00:00, 16220.28it/s]
+
+True
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">precision</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
+  <span class="n">limits</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1_000</span><span class="p">,</span> <span class="mi">10_000</span><span class="p">]</span>
+  <span class="n">k</span> <span class="o">=</span> <span class="mi">10</span>
+  <span class="n">prec_n</span> <span class="o">=</span> <span class="mi">10</span>
+  <span class="n">prec_sum</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="n">time_sum</span> <span class="o">=</span> <span class="p">{}</span>
+
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">trange</span><span class="p">(</span><span class="n">prec_n</span><span class="p">):</span>
+      <span class="n">j</span> <span class="o">=</span> <a class="sphx-glr-backref-module-random sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/random.html#random.randrange" title="random.randrange"><span class="n">random</span><span class="o">.</span><span class="n">randrange</span></a><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+      <span class="n">closest</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+      <span class="k">for</span> <span class="n">limit</span> <span class="ow">in</span> <span class="n">limits</span><span class="p">:</span>
+          <span class="n">t0</span> <span class="o">=</span> <a class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/time.html#time.time" title="time.time"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
+          <span class="n">toplist</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span>
+          <span class="n">T</span> <span class="o">=</span> <a class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/time.html#time.time" title="time.time"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+
+          <span class="n">found</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">closest</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">toplist</span><span class="p">))</span>
+          <span class="n">hitrate</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">found</span> <span class="o">/</span> <span class="n">k</span>
+          <span class="n">prec_sum</span><span class="p">[</span><span class="n">limit</span><span class="p">]</span> <span class="o">=</span> <span class="n">prec_sum</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">+</span> <span class="n">hitrate</span>
+          <span class="n">time_sum</span><span class="p">[</span><span class="n">limit</span><span class="p">]</span> <span class="o">=</span> <span class="n">time_sum</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">+</span> <span class="n">T</span>
+
+  <span class="k">for</span> <span class="n">limit</span> <span class="ow">in</span> <span class="n">limits</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">'limit: </span><span class="si">%-9d</span><span class="s1"> precision: </span><span class="si">%6.2f%%</span><span class="s1"> avg time: </span><span class="si">%.6f</span><span class="s1">s'</span>
+      <span class="o">%</span> <span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">prec_sum</span><span class="p">[</span><span class="n">limit</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">time_sum</span><span class="p">[</span><span class="n">limit</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)))</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cexternals-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.cexternals.annoy.Index.html#scikitplot.cexternals.annoy.Index" title="scikitplot.cexternals.annoy.Index"><span class="n">AnnoyIndex</span></a><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">'angular'</span><span class="p">)</span>
+<span class="n">q</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">q</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'test.annoy'</span><span class="p">)</span>
+<span class="n">precision</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/10 [00:00&lt;?, ?it/s]
+ 70%|███████   | 7/10 [00:00&lt;00:00, 63.92it/s]
+100%|██████████| 10/10 [00:00&lt;00:00, 64.27it/s]
+limit: 10        precision:  12.00% avg time: 0.000142s
+limit: 100       precision:  12.00% avg time: 0.000101s
+limit: 1000      precision:  23.00% avg time: 0.000305s
+limit: 10000     precision:  75.00% avg time: 0.001956s
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-impute.html"><span class="doc">model-workflow: impute</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-bar.html"><span class="doc">plot-type: bar</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 19.337 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 16.309 seconds)</p>
 
 <p class="rubric">Related examples</p>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.cexternals.annoy function."><img alt="" src="../../_images/sphx_glr_plot_simple_script_thumb.png"/>
-<p><a class="reference internal" href="plot_simple_script.html#sphx-glr-auto-examples-annoy-plot-simple-script-py"><span class="std std-ref">annoy (simple) with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">annoy (simple) with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.cexternals.annoy function."><img alt="" src="../../_images/sphx_glr_plot_mmap_script_thumb.png"/>
-<p><a class="reference internal" href="plot_mmap_script.html#sphx-glr-auto-examples-annoy-plot-mmap-script-py"><span class="std std-ref">annoy (mmap) with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">annoy (mmap) with examples</div>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.cexternals.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_mmap_script_thumb.png"/>
+<p><a class="reference internal" href="plot_mmap_script.html#sphx-glr-auto-examples-annoy-plot-mmap-script-py"><span class="std std-ref">Mmap annoy.AnnoyIndex with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">Mmap annoy.AnnoyIndex with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.cexternals.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_simple_script_thumb.png"/>
+<p><a class="reference internal" href="plot_simple_script.html#sphx-glr-auto-examples-annoy-plot-simple-script-py"><span class="std std-ref">Simple annoy.AnnoyIndex with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">Simple annoy.AnnoyIndex with examples</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.snsx.aucplot function with a scikit-learn classifier (e.g., :py~sklearn.linear_model.LogisticRegression) instance."><img alt="" src="../../_images/sphx_glr_plot_aucplot_script_thumb.png"/>
 <p><a class="reference internal" href="../snsx/plot_aucplot_script.html#sphx-glr-auto-examples-snsx-plot-aucplot-script-py"><span class="std std-ref">plot_aucplot_script with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">plot_aucplot_script with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.impute.AnnoyKNNImputer class with a scikit-learn regressor (e.g., :py~sklearn.linear_model.LinearRegression) instance."><img alt="" src="../../_images/sphx_glr_plot_impute_script_thumb.png"/>
-<p><a class="reference internal" href="../impute/plot_impute_script.html#sphx-glr-auto-examples-impute-plot-impute-script-py"><span class="std std-ref">annoy impute with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">annoy impute with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Usage::"><img alt="" src="../../_images/sphx_glr_plot_s_compile_cpp_thumb.png"/>
+<p><span class="xref std std-ref">sphx_glr_auto_examples_annoy_plot_s_compile_cpp.py</span></p>
+<div class="sphx-glr-thumbnail-title">Compile and run the C++ Annoy precision example.</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </article>
@@ -542,13 +635,13 @@ limit: 10000     precision:  97.04% avg time: 0.001613s
 <i class="fa-solid fa-angle-left"></i>
 <div class="prev-next-info">
 <p class="prev-next-subtitle">previous</p>
-<p class="prev-next-title">annoy (mmap) with examples</p>
+<p class="prev-next-title">Mmap annoy.AnnoyIndex with examples</p>
 </div>
 </a>
-<a class="right-next" href="plot_simple_script.html" title="next page">
+<a class="right-next" href="plot_s_compile_cpp.html" title="next page">
 <div class="prev-next-info">
 <p class="prev-next-subtitle">next</p>
-<p class="prev-next-title">annoy (simple) with examples</p>
+<p class="prev-next-title">&lt;no title&gt;</p>
 </div>
 <i class="fa-solid fa-angle-right"></i>
 </a>
@@ -581,7 +674,7 @@ limit: 10000     precision:  97.04% avg time: 0.001613s
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251120.53644d7 2025-11-20T15:18Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251130.284e07e 2025-11-30T15:51Z.
       <br/>
 </p>
 </div>

@@ -18,77 +18,65 @@
 .. _sphx_glr_auto_examples_annoy_plot_precision_script.py:
 
 
-annoy (precision) with examples
-==================================
+Precision annoy.AnnoyIndex with examples
+==========================================
 
-An example showing the :py:func:`~scikitplot.cexternals.annoy` function.
+An example showing the :py:class:`~scikitplot.cexternals.annoy.AnnoyIndex` class.
 
-.. GENERATED FROM PYTHON SOURCE LINES 7-11
-
-.. code-block:: Python
-
-
-    # Authors: Spotify AB
-    # SPDX-License-Identifier: Apache-2.0
-
-
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 12-60
+.. GENERATED FROM PYTHON SOURCE LINES 12-28
 
 .. code-block:: Python
 
     from __future__ import print_function
-    import random, time
+
+    import random; random.seed(0)
+    import time
+
     # from annoy import AnnoyIndex
-    from scikitplot.cexternals.annoy import AnnoyIndex
+    # from scikitplot.cexternals.annoy import AnnoyIndex
+    from scikitplot.cexternals.annoy import Index as AnnoyIndex
 
     try:
-        xrange
-    except NameError:
-        # Python 3 compat
-        xrange = range
+        from tqdm.auto import tqdm, trange
+    except ImportError:
+        # Fallback: dummy versions that ignore all args/kwargs
+        tqdm = lambda iterable, *args, **kwargs: iterable
+        trange = lambda n, *args, **kwargs: range(n)
 
-    n, f = 100000, 40
 
-    t = AnnoyIndex(f, 'angular')
-    for i in xrange(n):
-        v = []
-        for z in xrange(f):
-            v.append(random.gauss(0, 1))
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 29-30
+
+n, f = 1_000_000, 100  # 100~2.5GB
+
+.. GENERATED FROM PYTHON SOURCE LINES 30-50
+
+.. code-block:: Python
+
+    n, f = 100_000, 100  # 100~0.25GB 256~0.6GB
+
+
+    t = AnnoyIndex(
+        f=f,
+        metric='angular',
+    )
+    t.set_seed(0)
+    for i in trange(n):
+        if(i % (n//10) == 0): print(f"{i} / {n} = {1.0 * i / n}")
+        # v = []
+        # for z in range(f):
+        #     v.append(random.gauss(0, 1))
+        v = [random.gauss(0, 1) for _ in range(f)]
         t.add_item(i, v)
 
     t.build(2 * f)
-    t.save('test.tree')
+    t.save('test.annoy')
 
-    limits = [10, 100, 1000, 10000]
-    k = 10
-    prec_sum = {}
-    prec_n = 1000
-    time_sum = {}
-
-    for i in xrange(prec_n):
-        j = random.randrange(0, n)
-
-        closest = set(t.get_nns_by_item(j, k, n))
-        for limit in limits:
-            t0 = time.time()
-            toplist = t.get_nns_by_item(j, k, limit)
-            T = time.time() - t0
-
-            found = len(closest.intersection(toplist))
-            hitrate = 1.0 * found / k
-            prec_sum[limit] = prec_sum.get(limit, 0.0) + hitrate
-            time_sum[limit] = time_sum.get(limit, 0.0) + T
-
-    for limit in limits:
-        print('limit: %-9d precision: %6.2f%% avg time: %.6fs'
-              % (limit, 100.0 * prec_sum[limit] / (i + 1),
-                 time_sum[limit] / (i + 1)))
 
 
 
@@ -98,15 +86,86 @@ An example showing the :py:func:`~scikitplot.cexternals.annoy` function.
 
  .. code-block:: none
 
-    limit: 10        precision:  13.68% avg time: 0.000065s
-    limit: 100       precision:  21.01% avg time: 0.000065s
-    limit: 1000      precision:  56.48% avg time: 0.000241s
-    limit: 10000     precision:  97.04% avg time: 0.001613s
+      0%|          | 0/100000 [00:00<?, ?it/s]0 / 100000 = 0.0
+      2%|▏         | 1691/100000 [00:00<00:05, 16901.84it/s]      3%|▎         | 3382/100000 [00:00<00:05, 16604.97it/s]      5%|▌         | 5043/100000 [00:00<00:06, 15266.09it/s]      7%|▋         | 6751/100000 [00:00<00:05, 15940.52it/s]      8%|▊         | 8394/100000 [00:00<00:05, 16108.72it/s]10000 / 100000 = 0.1
+     10%|█         | 10068/100000 [00:00<00:05, 16315.00it/s]     12%|█▏        | 11776/100000 [00:00<00:05, 16558.14it/s]     13%|█▎        | 13463/100000 [00:00<00:05, 16655.52it/s]     15%|█▌        | 15132/100000 [00:01<00:06, 13141.17it/s]     17%|█▋        | 16737/100000 [00:01<00:05, 13891.83it/s]     18%|█▊        | 18462/100000 [00:01<00:05, 14796.96it/s]20000 / 100000 = 0.2
+     20%|██        | 20180/100000 [00:01<00:05, 15459.07it/s]     22%|██▏       | 21843/100000 [00:01<00:04, 15789.95it/s]     24%|██▎       | 23560/100000 [00:01<00:04, 16187.57it/s]     25%|██▌       | 25281/100000 [00:01<00:04, 16483.53it/s]     27%|██▋       | 26958/100000 [00:01<00:04, 16565.35it/s]     29%|██▊       | 28677/100000 [00:01<00:04, 16747.84it/s]30000 / 100000 = 0.3
+     30%|███       | 30364/100000 [00:01<00:04, 15157.76it/s]     32%|███▏      | 32069/100000 [00:02<00:04, 15680.44it/s]     34%|███▍      | 33772/100000 [00:02<00:04, 16062.56it/s]     35%|███▌      | 35431/100000 [00:02<00:03, 16212.38it/s]     37%|███▋      | 37131/100000 [00:02<00:03, 16440.27it/s]     39%|███▉      | 38788/100000 [00:02<00:03, 16474.02it/s]40000 / 100000 = 0.4
+     40%|████      | 40445/100000 [00:02<00:04, 14712.15it/s]     42%|████▏     | 41957/100000 [00:02<00:04, 14424.85it/s]     44%|████▎     | 43670/100000 [00:02<00:03, 15169.69it/s]     45%|████▌     | 45327/100000 [00:02<00:03, 15565.01it/s]     47%|████▋     | 47039/100000 [00:02<00:03, 16009.97it/s]     49%|████▉     | 48758/100000 [00:03<00:03, 16350.71it/s]50000 / 100000 = 0.5
+     50%|█████     | 50472/100000 [00:03<00:02, 16580.82it/s]     52%|█████▏    | 52183/100000 [00:03<00:02, 16735.14it/s]     54%|█████▍    | 53909/100000 [00:03<00:02, 16890.61it/s]     56%|█████▌    | 55635/100000 [00:03<00:02, 16999.09it/s]     57%|█████▋    | 57358/100000 [00:03<00:02, 17067.11it/s]     59%|█████▉    | 59068/100000 [00:03<00:02, 16830.76it/s]60000 / 100000 = 0.6
+     61%|██████    | 60786/100000 [00:03<00:02, 16932.84it/s]     63%|██████▎   | 62514/100000 [00:03<00:02, 17034.57it/s]     64%|██████▍   | 64242/100000 [00:04<00:02, 17105.33it/s]     66%|██████▌   | 65971/100000 [00:04<00:01, 17158.26it/s]     68%|██████▊   | 67693/100000 [00:04<00:01, 17175.07it/s]     69%|██████▉   | 69420/100000 [00:04<00:01, 17202.97it/s]70000 / 100000 = 0.7
+     71%|███████   | 71145/100000 [00:04<00:01, 17215.09it/s]     73%|███████▎  | 72867/100000 [00:04<00:01, 17195.07it/s]     75%|███████▍  | 74587/100000 [00:04<00:01, 17162.93it/s]     76%|███████▋  | 76304/100000 [00:04<00:01, 16786.38it/s]     78%|███████▊  | 78025/100000 [00:04<00:01, 16909.77it/s]     80%|███████▉  | 79734/100000 [00:04<00:01, 16960.90it/s]80000 / 100000 = 0.8
+     81%|████████▏ | 81445/100000 [00:05<00:01, 17005.06it/s]     83%|████████▎ | 83170/100000 [00:05<00:00, 17076.19it/s]     85%|████████▍ | 84879/100000 [00:05<00:00, 17058.23it/s]     87%|████████▋ | 86586/100000 [00:05<00:00, 17049.61it/s]     88%|████████▊ | 88314/100000 [00:05<00:00, 17116.69it/s]90000 / 100000 = 0.9
+     90%|█████████ | 90026/100000 [00:05<00:00, 17026.11it/s]     92%|█████████▏| 91729/100000 [00:05<00:00, 16882.98it/s]     93%|█████████▎| 93453/100000 [00:05<00:00, 16986.69it/s]     95%|█████████▌| 95181/100000 [00:05<00:00, 17072.75it/s]     97%|█████████▋| 96889/100000 [00:05<00:00, 16357.12it/s]     99%|█████████▊| 98532/100000 [00:06<00:00, 14686.86it/s]    100%|██████████| 100000/100000 [00:06<00:00, 16220.28it/s]
+
+    True
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 51-76
+
+.. code-block:: Python
+
+    def precision(q):
+      limits = [10, 100, 1_000, 10_000]
+      k = 10
+      prec_n = 10
+      prec_sum = {}
+      time_sum = {}
+
+      for i in trange(prec_n):
+          j = random.randrange(0, n)
+          closest = set(q.get_nns_by_item(j, k, n))
+          for limit in limits:
+              t0 = time.time()
+              toplist = q.get_nns_by_item(j, k, limit)
+              T = time.time() - t0
+
+              found = len(closest.intersection(toplist))
+              hitrate = 1.0 * found / k
+              prec_sum[limit] = prec_sum.get(limit, 0.0) + hitrate
+              time_sum[limit] = time_sum.get(limit, 0.0) + T
+
+      for limit in limits:
+          print('limit: %-9d precision: %6.2f%% avg time: %.6fs'
+          % (limit, 100.0 * prec_sum[limit] / (i + 1), time_sum[limit] / (i + 1)))
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 61-68
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 77-83
+
+.. code-block:: Python
+
+    q = AnnoyIndex(f, 'angular')
+    q.set_seed(0)
+    q.load('test.annoy')
+    precision(q)
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+      0%|          | 0/10 [00:00<?, ?it/s]     70%|███████   | 7/10 [00:00<00:00, 63.92it/s]    100%|██████████| 10/10 [00:00<00:00, 64.27it/s]
+    limit: 10        precision:  12.00% avg time: 0.000142s
+    limit: 100       precision:  12.00% avg time: 0.000101s
+    limit: 1000      precision:  23.00% avg time: 0.000305s
+    limit: 10000     precision:  75.00% avg time: 0.001956s
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 84-91
 
 .. tags::
 
@@ -119,7 +178,7 @@ An example showing the :py:func:`~scikitplot.cexternals.annoy` function.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 19.337 seconds)
+   **Total running time of the script:** (0 minutes 16.309 seconds)
 
 
 .. _sphx_glr_download_auto_examples_annoy_plot_precision_script.py:

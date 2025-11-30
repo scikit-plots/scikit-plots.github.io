@@ -610,6 +610,7 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals.annoy.html">annoy</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Annoy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals.annoy.AnnoyIndex.html">AnnoyIndex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals.annoy.Index.html">Index</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.html">_astropy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.html">stats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._f2py.html">_f2py</a></li>
@@ -761,6 +762,10 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.tweedie.html">tweedie</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.utils.html">scikitplot.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.utils._time.Timer.html">Timer</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.visualkeras.html">scikitplot.visualkeras</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.visualkeras.graph_view.html">graph_view</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.visualkeras.layered_view.html">layered_view</a></li>
@@ -850,10 +855,16 @@
 no more items can be added. <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> specifies the number of threads used to build the trees. <code class="docutils literal notranslate"><span class="pre">n_jobs=-1</span></code> uses all available CPU cores.</p>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="scikitplot.cexternals.annoy.Annoy.deserialize">
+<span class="sig-name descname"><span class="pre">deserialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.cexternals.annoy.Annoy.deserialize" title="Link to this definition">#</a></dt>
+<dd><p>Deserializes the index from bytes.</p>
+</dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.cexternals.annoy.Annoy.f">
 <span class="sig-name descname"><span class="pre">f</span></span><a class="headerlink" href="#scikitplot.cexternals.annoy.Annoy.f" title="Link to this definition">#</a></dt>
-<dd><p>!! processed by numpydoc !!</p>
+<dd><p>dimension of vectors</p>
 </dd></dl>
 
 <dl class="py method">
@@ -926,6 +937,12 @@ The second list contains the corresponding distances.</p>
 <dd><p>Loads (mmaps) an index from disk.</p>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scikitplot.cexternals.annoy.Annoy.metric">
+<span class="sig-name descname"><span class="pre">metric</span></span><a class="headerlink" href="#scikitplot.cexternals.annoy.Annoy.metric" title="Link to this definition">#</a></dt>
+<dd><p>metric name</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cexternals.annoy.Annoy.on_disk_build">
 <span class="sig-name descname"><span class="pre">on_disk_build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.cexternals.annoy.Annoy.on_disk_build" title="Link to this definition">#</a></dt>
@@ -936,6 +953,12 @@ The second list contains the corresponding distances.</p>
 <dt class="sig sig-object py" id="scikitplot.cexternals.annoy.Annoy.save">
 <span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.cexternals.annoy.Annoy.save" title="Link to this definition">#</a></dt>
 <dd><p>Saves the index to disk.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scikitplot.cexternals.annoy.Annoy.serialize">
+<span class="sig-name descname"><span class="pre">serialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.cexternals.annoy.Annoy.serialize" title="Link to this definition">#</a></dt>
+<dd><p>Serializes the index to bytes.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1022,6 +1045,7 @@ run queries.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals.annoy.Annoy"><code class="docutils literal notranslate"><span class="pre">Annoy</span></code></a><ul class="nav section-nav flex-column visible">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals.annoy.Annoy.add_item"><code class="docutils literal notranslate"><span class="pre">add_item</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals.annoy.Annoy.build"><code class="docutils literal notranslate"><span class="pre">build</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals.annoy.Annoy.deserialize"><code class="docutils literal notranslate"><span class="pre">deserialize</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals.annoy.Annoy.f"><code class="docutils literal notranslate"><span class="pre">f</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals.annoy.Annoy.get_distance"><code class="docutils literal notranslate"><span class="pre">get_distance</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals.annoy.Annoy.get_item_vector"><code class="docutils literal notranslate"><span class="pre">get_item_vector</span></code></a></li>
@@ -1030,8 +1054,10 @@ run queries.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals.annoy.Annoy.get_nns_by_item"><code class="docutils literal notranslate"><span class="pre">get_nns_by_item</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals.annoy.Annoy.get_nns_by_vector"><code class="docutils literal notranslate"><span class="pre">get_nns_by_vector</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals.annoy.Annoy.load"><code class="docutils literal notranslate"><span class="pre">load</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals.annoy.Annoy.metric"><code class="docutils literal notranslate"><span class="pre">metric</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals.annoy.Annoy.on_disk_build"><code class="docutils literal notranslate"><span class="pre">on_disk_build</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals.annoy.Annoy.save"><code class="docutils literal notranslate"><span class="pre">save</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals.annoy.Annoy.serialize"><code class="docutils literal notranslate"><span class="pre">serialize</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals.annoy.Annoy.set_seed"><code class="docutils literal notranslate"><span class="pre">set_seed</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals.annoy.Annoy.unbuild"><code class="docutils literal notranslate"><span class="pre">unbuild</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals.annoy.Annoy.unload"><code class="docutils literal notranslate"><span class="pre">unload</span></code></a></li>
@@ -1078,7 +1104,7 @@ run queries.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251120.53644d7 2025-11-20T15:18Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251130.284e07e 2025-11-30T15:51Z.
       <br/>
     
   </p>
