@@ -83,7 +83,7 @@ from sklearn.experimental import enable_iterative_imputer  # noqa: F401
 from sklearn.impute import IterativeImputer, KNNImputer, SimpleImputer
 from sklearn.model_selection import cross_val_score
 from sklearn.pipeline import make_pipeline
-from sklearn.preprocessing import MaxAbsScaler, RobustScaler
+from sklearn.preprocessing import MaxAbsScaler, RobustScaler, StandardScaler
 
 N_SPLITS = 4
 
@@ -188,15 +188,15 @@ t0 = time.time()
 imputer = KNNImputer(add_indicator=True)
 mses_diabetes[4], stds_diabetes[4] = get_score(
     Xdi_train_miss, Xdi_val_miss, ydi_train_miss, ydi_val_miss,
-    make_pipeline(RobustScaler(), MaxAbsScaler(), imputer)
+    make_pipeline(MaxAbsScaler(), RobustScaler(), imputer)
 )
 mses_california[4], stds_california[4] = get_score(
     Xca_train_miss, Xca_val_miss, yca_train_miss, yca_val_miss,
-    make_pipeline(RobustScaler(), MaxAbsScaler(), imputer)
+    make_pipeline(MaxAbsScaler(), RobustScaler(), imputer)
 )
 mses_train[4], stds_train[4] = get_score(
     Xbc_train_miss, Xbc_val_miss, ybc_train_miss, ybc_val_miss,
-    make_pipeline(RobustScaler(), MaxAbsScaler(), imputer),
+    make_pipeline(MaxAbsScaler(), RobustScaler(), imputer),
     regresion=False
 )
 x_labels[4] = "KNN\nImputation"
@@ -211,15 +211,15 @@ imputer = IterativeImputer(add_indicator=True)
 
 mses_diabetes[5], stds_diabetes[5] = get_score(
     Xdi_train_miss, Xdi_val_miss, ydi_train_miss, ydi_val_miss,
-    make_pipeline(RobustScaler(), MaxAbsScaler(), imputer)
+    make_pipeline(MaxAbsScaler(), RobustScaler(), imputer)
 )
 mses_california[5], stds_california[5] = get_score(
     Xca_train_miss, Xca_val_miss, yca_train_miss, yca_val_miss,
-    make_pipeline(RobustScaler(), MaxAbsScaler(), imputer)
+    make_pipeline(MaxAbsScaler(), RobustScaler(), imputer)
 )
 mses_train[5], stds_train[5] = get_score(
     Xbc_train_miss, Xbc_val_miss, ybc_train_miss, ybc_val_miss,
-    make_pipeline(RobustScaler(), MaxAbsScaler(), imputer),
+    make_pipeline(MaxAbsScaler(), RobustScaler(), imputer),
     regresion=False
 )
 x_labels[5] = "Iterative\nImputation\n(BayesianRidge)"
@@ -230,6 +230,8 @@ time_data[5] = T
 
 # %%
 import scikitplot as sp
+# sp.get_logger().setLevel(sp.logging.WARNING)  # sp.logging == sp.logger
+sp.logger.setLevel(sp.logger.INFO)  # default WARNING
 sp.__version__
 
 
@@ -240,23 +242,25 @@ from scikitplot.impute import AnnoyKNNImputer
 
 
 # %%
+from sklearn.preprocessing import MaxAbsScaler, RobustScaler, StandardScaler
 t0 = time.time()
 # 'angular', 'euclidean', 'manhattan', 'hamming', 'dot'
-imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, weights="distance")
+imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, n_neighbors=1, metric='angular', n_trees=-1)
+# imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, weights="distance")
 mses_diabetes[6], stds_diabetes[6] = get_score(
     Xdi_train_miss, Xdi_val_miss, ydi_train_miss, ydi_val_miss,
-    make_pipeline(RobustScaler(), MaxAbsScaler(), imputer),
+    make_pipeline(MaxAbsScaler(), RobustScaler(), imputer),
 )
-# imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, weights="distance", initial_strategy="median", metric='euclidean', n_neighbors=430, n_trees=-1)
-imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, weights="distance", initial_strategy="median", metric='euclidean', n_neighbors=484)
+imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, n_neighbors=430, metric='euclidean', initial_strategy="median", weights="distance", n_trees=-1)
+# imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, n_neighbors=484, metric='euclidean', initial_strategy="median", weights="distance")
 mses_california[6], stds_california[6] = get_score(
     Xca_train_miss, Xca_val_miss, yca_train_miss, yca_val_miss,
-    make_pipeline(RobustScaler(), MaxAbsScaler(), imputer),
+    make_pipeline(MaxAbsScaler(), RobustScaler(), imputer),
 )
-imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, initial_strategy="median", metric='euclidean')
+imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, n_neighbors=1, metric='euclidean', initial_strategy="median", n_trees=-1)
 mses_train[6], stds_train[6] = get_score(
     Xbc_train_miss, Xbc_val_miss, ybc_train_miss, ybc_val_miss,
-    make_pipeline(RobustScaler(), MaxAbsScaler(), imputer),
+    make_pipeline(MaxAbsScaler(), RobustScaler(), imputer),
     regresion=False
 )
 x_labels[6] = "AnnoyKNN\nImputation\n(Vector Based)"
