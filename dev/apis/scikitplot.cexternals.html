@@ -320,8 +320,18 @@
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-custom fa-pypi fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">PyPI</span></a>
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Community" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Community"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/logos/python-logo.png" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -511,8 +521,18 @@
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-custom fa-pypi fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">PyPI</span></a>
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Community" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Community"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/logos/python-logo.png" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -555,9 +575,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.annoy.AnnoyIndex.html">AnnoyIndex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.annoy.Index.html">Index</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.annoy.ManifestMixin.html">ManifestMixin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.annoy.PickleMixin.html">PickleMixin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.annoy.PathAwareAnnoy.html">PathAwareAnnoy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.annoy.ObjectIOMixin.html">ObjectIOMixin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.annoy.PathAwareAnnoy.html">PathAwareAnnoy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.annoy.PickleMixin.html">PickleMixin</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.api.html">scikitplot.api</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -829,18 +849,26 @@ availability across environments, without relying on separate system installs.</
 <span id="spotify-annoy-as-submodule"></span><span id="cexternals-ref-spotify-annoy-as-submodule"></span><h2>Spotify ANNoy as submodule.<a class="headerlink" href="#module-scikitplot.cexternals._annoy" title="Link to this heading">#</a></h2>
 <p>High-level Python interface for the C++ Annoy backend.</p>
 <p>Spotify Annoy (Approximate Nearest Neighbors Oh Yeah).</p>
-<p>Exports:
-- Annoy      → low-level C-extension type (stable)
-- AnnoyBase  → alias of annoylib.Annoy Index
-- AnnoyIndex → alias of annoylib.Annoy Index</p>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">AnnoyIndex</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="mi">40</span>  <span class="c1"># vector dimensionality</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">AnnoyIndex</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;angular&#39;</span><span class="p">)</span>  <span class="c1"># Length of item vector and metric</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">f</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># Build 10 trees</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Find nearest neighbor</span>
-</pre></div>
+<p>Exports:</p>
+<ul class="simple">
+<li><p>Annoy      → low-level C-extension type (stable)</p></li>
+<li><p>AnnoyBase  → alias of annoylib.Annoy Index</p></li>
+<li><p>AnnoyIndex → alias of annoylib.Annoy Index</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../user_guide/annoy/index.html#annoy-index"><span class="std std-ref">ANNoy</span></a></p></li>
+<li><p><a class="github reference external" href="https://github.com/spotify/annoy">spotify/annoy</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/annoy">https://pypi.org/project/annoy</a></p></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.sandgarden.com/learn/faiss">https://www.sandgarden.com/learn/faiss</a></p></li>
+<li><p><a class="reference external" href="https://www.sandgarden.com/learn/annoy-approximate-nearest-neighbors-oh-yeah">https://www.sandgarden.com/learn/annoy-approximate-nearest-neighbors-oh-yeah</a></p></li>
+</ul>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -860,7 +888,17 @@ availability across environments, without relying on separate system installs.</
 Github. https://pypi.org/project/annoy</a></p>
 </div>
 </div>
-<p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/cexternals/_annoy/index.html#cex-annoy-index"><span class="std std-ref">ANNoy (experimental)</span></a> section for further details.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># from annoy import AnnoyIndex</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annoy</span><span class="p">,</span> <span class="n">AnnoyBase</span><span class="p">,</span> <span class="n">AnnoyIndex</span><span class="p">,</span> <span class="n">Index</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="mi">40</span>  <span class="c1"># vector dimensionality</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">AnnoyIndex</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">&quot;angular&quot;</span><span class="p">)</span>  <span class="c1"># Length of item vector and metric</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">f</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># Build 10 trees</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Find nearest neighbor</span>
+</pre></div>
+</div>
+<p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/cexternals/_annoy/index.html#cexternals-annoy-index"><span class="std std-ref">ANNoy (experimental)</span></a> section for further details.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cexternals._annoy.html#module-scikitplot.cexternals._annoy" title="scikitplot.cexternals._annoy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_annoy</span></code></a></p></td>
@@ -884,7 +922,7 @@ Python. It also provides an index for other astronomy packages and tools for
 managing them.</p>
 <p>Documentation is available in the docstrings and
 online at <a class="reference external" href="https://www.astropy.org/">https://www.astropy.org/</a>.</p>
-<p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/cexternals/_astropy/index.html#astropy-index"><span class="std std-ref">Astropy (experimental)</span></a> section for further details.</p>
+<p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/cexternals/_astropy/index.html#cexternals-astropy-index"><span class="std std-ref">Astropy (experimental)</span></a> section for further details.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.html#module-scikitplot.cexternals._astropy" title="scikitplot.cexternals._astropy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_astropy</span></code></a></p></td>
@@ -915,7 +953,7 @@ of the NumPy License.</p>
 <li><p><a class="reference external" href="https://scipy-cookbook.readthedocs.io/items/idx_interfacing_with_other_languages.html">https://scipy-cookbook.readthedocs.io/items/idx_interfacing_with_other_languages.html</a></p></li>
 </ul>
 </div>
-<p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/cexternals/index.html#cexternals-index"><span class="std std-ref">C-Externals (experimental)</span></a> section for further details.</p>
+<p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/cexternals/_f2py/index.html#cexternals-f2py-index"><span class="std std-ref">f2py (experimental)</span></a> section for further details.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cexternals._f2py.html#module-scikitplot.cexternals._f2py" title="scikitplot.cexternals._f2py"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_f2py</span></code></a></p></td>
@@ -949,7 +987,7 @@ of the NumPy License.</p>
 <li><p>Clang LLVM: 18, 19</p></li>
 <li><p>Boost Versions: 1.73+</p></li>
 </ul>
-<p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/cexternals/_numcpp/index.html#numcpp-index"><span class="std std-ref">NumCpp Header Only C++ (experimental)</span></a> section for further details.</p>
+<p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/cexternals/_numcpp/index.html#cexternals-numcpp-index"><span class="std std-ref">NumCpp Header Only C++ (experimental)</span></a> section for further details.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cexternals._numcpp.html#module-scikitplot.cexternals._numcpp" title="scikitplot.cexternals._numcpp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_numcpp</span></code></a></p></td>
@@ -1023,7 +1061,7 @@ of the NumPy License.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251207.39d21c9 2025-12-07T13:44Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251207.da99f06 2025-12-07T17:07Z.
       <br/>
     
   </p>

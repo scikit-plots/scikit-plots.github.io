@@ -320,8 +320,18 @@
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-custom fa-pypi fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">PyPI</span></a>
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Community" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Community"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/python-logo.png" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -515,8 +525,18 @@
           
           
           
-          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-custom fa-pypi fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">PyPI</span></a>
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Community" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Community"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/python-logo.png" class="icon-link-image" alt="PyPI"/></a>
         </li>
         <li class="nav-item">
           
@@ -595,6 +615,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../experimental/index.html">Experimental (experimental)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../experimental/pipeline/index.html">Pipeline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../experimental/_doremi/index.html">Do-Re-Mi</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../experimental/_llm_provider/index.html">LLM Provider (experimental)</a></li>
 </ul>
@@ -665,6 +686,21 @@
 <span id="annoy-index"></span><h1>ANNoy<a class="headerlink" href="#annoy" title="Link to this heading">#</a></h1>
 <p>Examples relevant to the <a class="reference internal" href="../../apis/scikitplot.annoy.html#module-scikitplot.annoy" title="scikitplot.annoy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">annoy</span></code></a> module with  <a class="reference internal" href="../../modules/generated/scikitplot.cexternals._annoy.html#module-scikitplot.cexternals._annoy" title="scikitplot.cexternals._annoy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">_annoy</span></code></a>.</p>
 <p><a class="reference internal" href="../../apis/scikitplot.annoy.html#module-scikitplot.annoy" title="scikitplot.annoy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">annoy</span></code></a> is a Python module that provides high-performance approximate nearest neighbor search in Python.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../cexternals/_annoy/index.html#cexternals-annoy-index"><span class="std std-ref">ANNoy (experimental)</span></a></p></li>
+<li><p><a class="github reference external" href="https://github.com/spotify/annoy">spotify/annoy</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/annoy">https://pypi.org/project/annoy</a></p></li>
+</ul>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index.from_low_level" title="scikitplot.annoy.Index.from_low_level"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_low_level</span></code></a></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/pickle.html#what-can-be-pickled-and-unpickled">https://docs.python.org/3/library/pickle.html#what-can-be-pickled-and-unpickled</a></p></li>
+</ul>
+</div>
 <section id="python-example">
 <h2>Python Example<a class="headerlink" href="#python-example" title="Link to this heading">#</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># from annoy import AnnoyIndex</span>
@@ -684,13 +720,6 @@
 <span class="n">u</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;test.ann&#39;</span><span class="p">)</span>  <span class="c1"># memory-mapped</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
 </pre></div>
-</div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="../cexternals/_annoy/index.html#cex-annoy-index"><span class="std std-ref">ANNoy (experimental)</span></a></p></li>
-<li><p><a class="reference external" href="https://pypi.org/project/annoy">https://pypi.org/project/annoy</a></p></li>
-</ul>
 </div>
 </section>
 </section>
@@ -784,7 +813,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251207.39d21c9 2025-12-07T13:44Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251207.da99f06 2025-12-07T17:07Z.
       <br/>
     
   </p>
