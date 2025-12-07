@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_impute_plot_impute_script.py>`
-        to download the full example code. or to run this example in your browser via JupyterLite or Binder
+        to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -147,7 +147,7 @@ df.head()
     from sklearn.impute import IterativeImputer, KNNImputer, SimpleImputer
     from sklearn.model_selection import cross_val_score
     from sklearn.pipeline import make_pipeline
-    from sklearn.preprocessing import MaxAbsScaler, RobustScaler
+    from sklearn.preprocessing import MaxAbsScaler, RobustScaler, StandardScaler
 
     N_SPLITS = 4
 
@@ -208,7 +208,7 @@ df.head()
 
  .. code-block:: none
 
-    18.953634023666382
+    19.02376627922058
 
 
 
@@ -243,7 +243,7 @@ df.head()
 
  .. code-block:: none
 
-    19.99095320701599
+    20.164179801940918
 
 
 
@@ -278,7 +278,7 @@ df.head()
 
  .. code-block:: none
 
-    21.925779819488525
+    21.698681592941284
 
 
 
@@ -313,7 +313,7 @@ df.head()
 
  .. code-block:: none
 
-    21.39891028404236
+    21.505497217178345
 
 
 
@@ -326,15 +326,15 @@ df.head()
     imputer = KNNImputer(add_indicator=True)
     mses_diabetes[4], stds_diabetes[4] = get_score(
         Xdi_train_miss, Xdi_val_miss, ydi_train_miss, ydi_val_miss,
-        make_pipeline(RobustScaler(), MaxAbsScaler(), imputer)
+        make_pipeline(MaxAbsScaler(), RobustScaler(), imputer)
     )
     mses_california[4], stds_california[4] = get_score(
         Xca_train_miss, Xca_val_miss, yca_train_miss, yca_val_miss,
-        make_pipeline(RobustScaler(), MaxAbsScaler(), imputer)
+        make_pipeline(MaxAbsScaler(), RobustScaler(), imputer)
     )
     mses_train[4], stds_train[4] = get_score(
         Xbc_train_miss, Xbc_val_miss, ybc_train_miss, ybc_val_miss,
-        make_pipeline(RobustScaler(), MaxAbsScaler(), imputer),
+        make_pipeline(MaxAbsScaler(), RobustScaler(), imputer),
         regresion=False
     )
     x_labels[4] = "KNN\nImputation"
@@ -351,7 +351,7 @@ df.head()
 
  .. code-block:: none
 
-    53.10647940635681
+    33.826576709747314
 
 
 
@@ -365,15 +365,15 @@ df.head()
 
     mses_diabetes[5], stds_diabetes[5] = get_score(
         Xdi_train_miss, Xdi_val_miss, ydi_train_miss, ydi_val_miss,
-        make_pipeline(RobustScaler(), MaxAbsScaler(), imputer)
+        make_pipeline(MaxAbsScaler(), RobustScaler(), imputer)
     )
     mses_california[5], stds_california[5] = get_score(
         Xca_train_miss, Xca_val_miss, yca_train_miss, yca_val_miss,
-        make_pipeline(RobustScaler(), MaxAbsScaler(), imputer)
+        make_pipeline(MaxAbsScaler(), RobustScaler(), imputer)
     )
     mses_train[5], stds_train[5] = get_score(
         Xbc_train_miss, Xbc_val_miss, ybc_train_miss, ybc_val_miss,
-        make_pipeline(RobustScaler(), MaxAbsScaler(), imputer),
+        make_pipeline(MaxAbsScaler(), RobustScaler(), imputer),
         regresion=False
     )
     x_labels[5] = "Iterative\nImputation\n(BayesianRidge)"
@@ -390,7 +390,7 @@ df.head()
 
  .. code-block:: none
 
-    24.204904317855835
+    22.015655517578125
 
 
 
@@ -414,7 +414,7 @@ df.head()
  .. code-block:: none
 
 
-    '0.5.dev0+git.20251130.284e07e'
+    '0.5.dev0+git.20251207.39d21c9'
 
 
 
@@ -434,27 +434,29 @@ df.head()
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 245-270
+.. GENERATED FROM PYTHON SOURCE LINES 245-272
 
 .. code-block:: Python
 
+    from sklearn.preprocessing import MaxAbsScaler, RobustScaler, StandardScaler
     t0 = time.time()
     # 'angular', 'euclidean', 'manhattan', 'hamming', 'dot'
-    imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, weights="distance")
+    imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, n_neighbors=1, metric='angular', n_trees=-1)
+    # imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, weights="distance")
     mses_diabetes[6], stds_diabetes[6] = get_score(
         Xdi_train_miss, Xdi_val_miss, ydi_train_miss, ydi_val_miss,
-        make_pipeline(RobustScaler(), MaxAbsScaler(), imputer),
+        make_pipeline(MaxAbsScaler(), RobustScaler(), imputer),
     )
-    # imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, weights="distance", initial_strategy="median", metric='euclidean', n_neighbors=430, n_trees=-1)
-    imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, weights="distance", initial_strategy="median", metric='euclidean', n_neighbors=484)
+    imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, n_neighbors=430, metric='euclidean', initial_strategy="median", weights="distance", n_trees=-1)
+    # imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, n_neighbors=484, metric='euclidean', initial_strategy="median", weights="distance")
     mses_california[6], stds_california[6] = get_score(
         Xca_train_miss, Xca_val_miss, yca_train_miss, yca_val_miss,
-        make_pipeline(RobustScaler(), MaxAbsScaler(), imputer),
+        make_pipeline(MaxAbsScaler(), RobustScaler(), imputer),
     )
-    imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, initial_strategy="median", metric='euclidean')
+    imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, n_neighbors=1, metric='euclidean', initial_strategy="median", n_trees=-1)
     mses_train[6], stds_train[6] = get_score(
         Xbc_train_miss, Xbc_val_miss, ybc_train_miss, ybc_val_miss,
-        make_pipeline(RobustScaler(), MaxAbsScaler(), imputer),
+        make_pipeline(MaxAbsScaler(), RobustScaler(), imputer),
         regresion=False
     )
     x_labels[6] = "AnnoyKNN\nImputation\n(Vector Based)"
@@ -471,12 +473,12 @@ df.head()
 
  .. code-block:: none
 
-    38.90331029891968
+    41.46034002304077
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 271-363
+.. GENERATED FROM PYTHON SOURCE LINES 273-365
 
 .. code-block:: Python
 
@@ -584,14 +586,14 @@ df.head()
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 364-368
+.. GENERATED FROM PYTHON SOURCE LINES 366-370
 
 AnnoyKNNImputer performance and accuracy are highly sensitive to both the
 selected distance metric and the number of trees used to build the Annoy index.
 An inappropriate metric or insufficient number of trees may lead to poor
 neighbor retrieval and degraded imputation quality.
 
-.. GENERATED FROM PYTHON SOURCE LINES 370-377
+.. GENERATED FROM PYTHON SOURCE LINES 372-379
 
 .. tags::
 
@@ -604,7 +606,7 @@ neighbor retrieval and degraded imputation quality.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (3 minutes 19.905 seconds)
+   **Total running time of the script:** (3 minutes 0.947 seconds)
 
 
 .. _sphx_glr_download_auto_examples_impute_plot_impute_script.py:

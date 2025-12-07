@@ -73,7 +73,7 @@
 <link href="../../_static/scikit-plots-favicon.ico" rel="icon"/>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
-<link href="plot_s_compile_cpp.html" rel="next" title="&lt;no title&gt;"/>
+<link href="plot_simple_script.html" rel="next" title="Simple annoy.AnnoyIndex with examples"/>
 <link href="plot_mmap_script.html" rel="prev" title="Mmap annoy.AnnoyIndex with examples"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="en" name="docsearch:language"/>
@@ -207,11 +207,7 @@
 </div></div>
 <div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links">
 <li class="nav-item">
-<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://anaconda.org/conda-forge/scikit-plots" rel="noopener" target="_blank" title="conda-forge"><i aria-hidden="true" class="fa-brands fa-cube fa-lg"></i>
-<span class="sr-only">conda-forge</span></a>
-</li>
-<li class="nav-item">
-<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><i aria-hidden="true" class="fa-brands fa-python fa-lg"></i>
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><i aria-hidden="true" class="fa-custom fa-pypi fa-lg"></i>
 <span class="sr-only">PyPI</span></a>
 </li>
 <li class="nav-item">
@@ -324,11 +320,7 @@
 </div></div>
 <div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links">
 <li class="nav-item">
-<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://anaconda.org/conda-forge/scikit-plots" rel="noopener" target="_blank" title="conda-forge"><i aria-hidden="true" class="fa-brands fa-cube fa-lg"></i>
-<span class="sr-only">conda-forge</span></a>
-</li>
-<li class="nav-item">
-<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><i aria-hidden="true" class="fa-brands fa-python fa-lg"></i>
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><i aria-hidden="true" class="fa-custom fa-pypi fa-lg"></i>
 <span class="sr-only">PyPI</span></a>
 </li>
 <li class="nav-item">
@@ -345,7 +337,9 @@
 <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00-blogs/index.html">blog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../00-jupyter_notebooks/index.html">jupyter notebooks</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Annoy</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">ANNoy</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plot_Annoy_legacy_c_api.html">annoy.Annoy legacy c-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_Annoy_python_api.html">annoy.Index python-api with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_mmap_script.html">Mmap annoy.AnnoyIndex with examples</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Precision annoy.AnnoyIndex with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_simple_script.html">Simple annoy.AnnoyIndex with examples</a></li>
@@ -442,7 +436,7 @@
 </a>
 </li>
 <li class="breadcrumb-item"><a class="nav-link" href="../index.html">Examples</a></li>
-<li class="breadcrumb-item"><a class="nav-link" href="index.html">Annoy</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">ANNoy</a></li>
 <li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">Precision annoy.AnnoyIndex with examples</span></li>
 </ul>
 </nav>
@@ -455,15 +449,15 @@
 
 <section class="sphx-glr-example-title" id="precision-annoy-annoyindex-with-examples">
 <span id="sphx-glr-auto-examples-annoy-plot-precision-script-py"></span><h1>Precision annoy.AnnoyIndex with examples<a class="headerlink" href="#precision-annoy-annoyindex-with-examples" title="Link to this heading">#</a></h1>
-<p>An example showing the <a class="reference internal" href="../../modules/generated/scikitplot.cexternals.annoy.AnnoyIndex.html#scikitplot.cexternals.annoy.AnnoyIndex" title="scikitplot.cexternals.annoy.AnnoyIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnoyIndex</span></code></a> class.</p>
+<p>An example showing the <a class="reference internal" href="../../modules/generated/scikitplot.annoy.AnnoyIndex.html#scikitplot.annoy.AnnoyIndex" title="scikitplot.annoy.AnnoyIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnoyIndex</span></code></a> class.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">print_function</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">random</span><span class="p">;</span> <a class="sphx-glr-backref-module-random sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/random.html#random.seed" title="random.seed"><span class="n">random</span><span class="o">.</span><span class="n">seed</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="c1"># from annoy import AnnoyIndex</span>
-<span class="c1"># from scikitplot.cexternals.annoy import AnnoyIndex</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.cexternals.annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Index</span> <span class="k">as</span> <a class="sphx-glr-backref-module-scikitplot-cexternals-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.cexternals.annoy.Index.html#scikitplot.cexternals.annoy.Index" title="scikitplot.cexternals.annoy.Index"><span class="n">AnnoyIndex</span></a>
+<span class="c1"># from scikitplot.annoy import AnnoyIndex</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Index</span> <span class="k">as</span> <a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">AnnoyIndex</span></a>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">tqdm.auto</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span><span class="p">,</span> <span class="n">trange</span>
@@ -477,7 +471,7 @@
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="mi">100_000</span><span class="p">,</span> <span class="mi">100</span>  <span class="c1"># 100~0.25GB 256~0.6GB</span>
 
 
-<span class="n">t</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cexternals-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.cexternals.annoy.Index.html#scikitplot.cexternals.annoy.Index" title="scikitplot.cexternals.annoy.Index"><span class="n">AnnoyIndex</span></a><span class="p">(</span>
+<span class="n">t</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">AnnoyIndex</span></a><span class="p">(</span>
     <span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">,</span>
     <span class="n">metric</span><span class="o">=</span><span class="s1">'angular'</span><span class="p">,</span>
 <span class="p">)</span>
@@ -496,74 +490,75 @@
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/100000 [00:00&lt;?, ?it/s]0 / 100000 = 0.0
 
-  2%|▏         | 1691/100000 [00:00&lt;00:05, 16901.84it/s]
-  3%|▎         | 3382/100000 [00:00&lt;00:05, 16604.97it/s]
-  5%|▌         | 5043/100000 [00:00&lt;00:06, 15266.09it/s]
-  7%|▋         | 6751/100000 [00:00&lt;00:05, 15940.52it/s]
-  8%|▊         | 8394/100000 [00:00&lt;00:05, 16108.72it/s]10000 / 100000 = 0.1
+  1%|▏         | 1482/100000 [00:00&lt;00:06, 14810.87it/s]
+  3%|▎         | 3058/100000 [00:00&lt;00:06, 15363.23it/s]
+  5%|▍         | 4595/100000 [00:00&lt;00:07, 12350.74it/s]
+  6%|▋         | 6299/100000 [00:00&lt;00:06, 13962.56it/s]
+  8%|▊         | 8001/100000 [00:00&lt;00:06, 14968.49it/s]
+ 10%|▉         | 9702/100000 [00:00&lt;00:05, 15620.51it/s]10000 / 100000 = 0.1
 
- 10%|█         | 10068/100000 [00:00&lt;00:05, 16315.00it/s]
- 12%|█▏        | 11776/100000 [00:00&lt;00:05, 16558.14it/s]
- 13%|█▎        | 13463/100000 [00:00&lt;00:05, 16655.52it/s]
- 15%|█▌        | 15132/100000 [00:01&lt;00:06, 13141.17it/s]
- 17%|█▋        | 16737/100000 [00:01&lt;00:05, 13891.83it/s]
- 18%|█▊        | 18462/100000 [00:01&lt;00:05, 14796.96it/s]20000 / 100000 = 0.2
+ 11%|█▏        | 11316/100000 [00:00&lt;00:05, 15781.63it/s]
+ 13%|█▎        | 12930/100000 [00:00&lt;00:05, 15891.91it/s]
+ 15%|█▍        | 14640/100000 [00:00&lt;00:05, 16259.67it/s]
+ 16%|█▋        | 16279/100000 [00:01&lt;00:05, 15974.88it/s]
+ 18%|█▊        | 17886/100000 [00:01&lt;00:05, 14096.09it/s]
+ 19%|█▉        | 19472/100000 [00:01&lt;00:05, 14576.78it/s]20000 / 100000 = 0.2
 
- 20%|██        | 20180/100000 [00:01&lt;00:05, 15459.07it/s]
- 22%|██▏       | 21843/100000 [00:01&lt;00:04, 15789.95it/s]
- 24%|██▎       | 23560/100000 [00:01&lt;00:04, 16187.57it/s]
- 25%|██▌       | 25281/100000 [00:01&lt;00:04, 16483.53it/s]
- 27%|██▋       | 26958/100000 [00:01&lt;00:04, 16565.35it/s]
- 29%|██▊       | 28677/100000 [00:01&lt;00:04, 16747.84it/s]30000 / 100000 = 0.3
+ 21%|██        | 21043/100000 [00:01&lt;00:05, 14893.62it/s]
+ 23%|██▎       | 22620/100000 [00:01&lt;00:05, 15143.60it/s]
+ 24%|██▍       | 24317/100000 [00:01&lt;00:04, 15670.65it/s]
+ 26%|██▌       | 26001/100000 [00:01&lt;00:04, 16012.95it/s]
+ 28%|██▊       | 27654/100000 [00:01&lt;00:04, 16163.19it/s]
+ 29%|██▉       | 29357/100000 [00:01&lt;00:04, 16420.09it/s]30000 / 100000 = 0.3
 
- 30%|███       | 30364/100000 [00:01&lt;00:04, 15157.76it/s]
- 32%|███▏      | 32069/100000 [00:02&lt;00:04, 15680.44it/s]
- 34%|███▍      | 33772/100000 [00:02&lt;00:04, 16062.56it/s]
- 35%|███▌      | 35431/100000 [00:02&lt;00:03, 16212.38it/s]
- 37%|███▋      | 37131/100000 [00:02&lt;00:03, 16440.27it/s]
- 39%|███▉      | 38788/100000 [00:02&lt;00:03, 16474.02it/s]40000 / 100000 = 0.4
+ 31%|███       | 31081/100000 [00:02&lt;00:04, 16662.00it/s]
+ 33%|███▎      | 32803/100000 [00:02&lt;00:03, 16826.66it/s]
+ 35%|███▍      | 34506/100000 [00:02&lt;00:03, 16886.66it/s]
+ 36%|███▌      | 36198/100000 [00:02&lt;00:03, 16724.11it/s]
+ 38%|███▊      | 37917/100000 [00:02&lt;00:03, 16860.74it/s]
+ 40%|███▉      | 39638/100000 [00:02&lt;00:03, 16961.89it/s]40000 / 100000 = 0.4
 
- 40%|████      | 40445/100000 [00:02&lt;00:04, 14712.15it/s]
- 42%|████▏     | 41957/100000 [00:02&lt;00:04, 14424.85it/s]
- 44%|████▎     | 43670/100000 [00:02&lt;00:03, 15169.69it/s]
- 45%|████▌     | 45327/100000 [00:02&lt;00:03, 15565.01it/s]
- 47%|████▋     | 47039/100000 [00:02&lt;00:03, 16009.97it/s]
- 49%|████▉     | 48758/100000 [00:03&lt;00:03, 16350.71it/s]50000 / 100000 = 0.5
+ 41%|████▏     | 41345/100000 [00:02&lt;00:03, 16994.05it/s]
+ 43%|████▎     | 43046/100000 [00:02&lt;00:03, 16984.62it/s]
+ 45%|████▍     | 44746/100000 [00:02&lt;00:03, 16979.07it/s]
+ 46%|████▋     | 46445/100000 [00:02&lt;00:03, 16794.67it/s]
+ 48%|████▊     | 48142/100000 [00:03&lt;00:03, 16844.12it/s]
+ 50%|████▉     | 49850/100000 [00:03&lt;00:02, 16914.12it/s]50000 / 100000 = 0.5
 
- 50%|█████     | 50472/100000 [00:03&lt;00:02, 16580.82it/s]
- 52%|█████▏    | 52183/100000 [00:03&lt;00:02, 16735.14it/s]
- 54%|█████▍    | 53909/100000 [00:03&lt;00:02, 16890.61it/s]
- 56%|█████▌    | 55635/100000 [00:03&lt;00:02, 16999.09it/s]
- 57%|█████▋    | 57358/100000 [00:03&lt;00:02, 17067.11it/s]
- 59%|█████▉    | 59068/100000 [00:03&lt;00:02, 16830.76it/s]60000 / 100000 = 0.6
+ 52%|█████▏    | 51574/100000 [00:03&lt;00:02, 17009.88it/s]
+ 53%|█████▎    | 53296/100000 [00:03&lt;00:02, 17071.34it/s]
+ 55%|█████▌    | 55024/100000 [00:03&lt;00:02, 17130.87it/s]
+ 57%|█████▋    | 56745/100000 [00:03&lt;00:02, 17154.20it/s]
+ 58%|█████▊    | 58461/100000 [00:03&lt;00:02, 16941.12it/s]60000 / 100000 = 0.6
 
- 61%|██████    | 60786/100000 [00:03&lt;00:02, 16932.84it/s]
- 63%|██████▎   | 62514/100000 [00:03&lt;00:02, 17034.57it/s]
- 64%|██████▍   | 64242/100000 [00:04&lt;00:02, 17105.33it/s]
- 66%|██████▌   | 65971/100000 [00:04&lt;00:01, 17158.26it/s]
- 68%|██████▊   | 67693/100000 [00:04&lt;00:01, 17175.07it/s]
- 69%|██████▉   | 69420/100000 [00:04&lt;00:01, 17202.97it/s]70000 / 100000 = 0.7
+ 60%|██████    | 60156/100000 [00:03&lt;00:02, 14742.59it/s]
+ 62%|██████▏   | 61876/100000 [00:03&lt;00:02, 15404.68it/s]
+ 64%|██████▎   | 63596/100000 [00:03&lt;00:02, 15902.79it/s]
+ 65%|██████▌   | 65309/100000 [00:04&lt;00:02, 16250.39it/s]
+ 67%|██████▋   | 67022/100000 [00:04&lt;00:01, 16503.87it/s]
+ 69%|██████▊   | 68740/100000 [00:04&lt;00:01, 16700.10it/s]70000 / 100000 = 0.7
 
- 71%|███████   | 71145/100000 [00:04&lt;00:01, 17215.09it/s]
- 73%|███████▎  | 72867/100000 [00:04&lt;00:01, 17195.07it/s]
- 75%|███████▍  | 74587/100000 [00:04&lt;00:01, 17162.93it/s]
- 76%|███████▋  | 76304/100000 [00:04&lt;00:01, 16786.38it/s]
- 78%|███████▊  | 78025/100000 [00:04&lt;00:01, 16909.77it/s]
- 80%|███████▉  | 79734/100000 [00:04&lt;00:01, 16960.90it/s]80000 / 100000 = 0.8
+ 70%|███████   | 70454/100000 [00:04&lt;00:01, 16828.37it/s]
+ 72%|███████▏  | 72170/100000 [00:04&lt;00:01, 16925.86it/s]
+ 74%|███████▍  | 73882/100000 [00:04&lt;00:01, 16981.95it/s]
+ 76%|███████▌  | 75596/100000 [00:04&lt;00:01, 17026.92it/s]
+ 77%|███████▋  | 77303/100000 [00:04&lt;00:01, 16651.32it/s]
+ 79%|███████▉  | 79015/100000 [00:04&lt;00:01, 16786.58it/s]80000 / 100000 = 0.8
 
- 81%|████████▏ | 81445/100000 [00:05&lt;00:01, 17005.06it/s]
- 83%|████████▎ | 83170/100000 [00:05&lt;00:00, 17076.19it/s]
- 85%|████████▍ | 84879/100000 [00:05&lt;00:00, 17058.23it/s]
- 87%|████████▋ | 86586/100000 [00:05&lt;00:00, 17049.61it/s]
- 88%|████████▊ | 88314/100000 [00:05&lt;00:00, 17116.69it/s]90000 / 100000 = 0.9
+ 81%|████████  | 80720/100000 [00:04&lt;00:01, 16862.42it/s]
+ 82%|████████▏ | 82435/100000 [00:05&lt;00:01, 16945.95it/s]
+ 84%|████████▍ | 84144/100000 [00:05&lt;00:00, 16987.01it/s]
+ 86%|████████▌ | 85844/100000 [00:05&lt;00:00, 16822.36it/s]
+ 88%|████████▊ | 87528/100000 [00:05&lt;00:00, 16821.13it/s]
+ 89%|████████▉ | 89246/100000 [00:05&lt;00:00, 16927.73it/s]90000 / 100000 = 0.9
 
- 90%|█████████ | 90026/100000 [00:05&lt;00:00, 17026.11it/s]
- 92%|█████████▏| 91729/100000 [00:05&lt;00:00, 16882.98it/s]
- 93%|█████████▎| 93453/100000 [00:05&lt;00:00, 16986.69it/s]
- 95%|█████████▌| 95181/100000 [00:05&lt;00:00, 17072.75it/s]
- 97%|█████████▋| 96889/100000 [00:05&lt;00:00, 16357.12it/s]
- 99%|█████████▊| 98532/100000 [00:06&lt;00:00, 14686.86it/s]
-100%|██████████| 100000/100000 [00:06&lt;00:00, 16220.28it/s]
+ 91%|█████████ | 90962/100000 [00:05&lt;00:00, 16994.33it/s]
+ 93%|█████████▎| 92680/100000 [00:05&lt;00:00, 17049.36it/s]
+ 94%|█████████▍| 94398/100000 [00:05&lt;00:00, 17086.60it/s]
+ 96%|█████████▌| 96114/100000 [00:05&lt;00:00, 17106.29it/s]
+ 98%|█████████▊| 97830/100000 [00:05&lt;00:00, 17120.23it/s]
+100%|█████████▉| 99543/100000 [00:06&lt;00:00, 16644.09it/s]
+100%|██████████| 100000/100000 [00:06&lt;00:00, 16348.35it/s]
 
 True
 </pre></div>
@@ -593,37 +588,37 @@ True
       <span class="o">%</span> <span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">prec_sum</span><span class="p">[</span><span class="n">limit</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">time_sum</span><span class="p">[</span><span class="n">limit</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)))</span>
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cexternals-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.cexternals.annoy.Index.html#scikitplot.cexternals.annoy.Index" title="scikitplot.cexternals.annoy.Index"><span class="n">AnnoyIndex</span></a><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">'angular'</span><span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">AnnoyIndex</span></a><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">'angular'</span><span class="p">)</span>
 <span class="n">q</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">q</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'test.annoy'</span><span class="p">)</span>
 <span class="n">precision</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/10 [00:00&lt;?, ?it/s]
- 70%|███████   | 7/10 [00:00&lt;00:00, 63.92it/s]
-100%|██████████| 10/10 [00:00&lt;00:00, 64.27it/s]
-limit: 10        precision:  12.00% avg time: 0.000142s
-limit: 100       precision:  12.00% avg time: 0.000101s
-limit: 1000      precision:  23.00% avg time: 0.000305s
-limit: 10000     precision:  75.00% avg time: 0.001956s
+ 70%|███████   | 7/10 [00:00&lt;00:00, 63.55it/s]
+100%|██████████| 10/10 [00:00&lt;00:00, 65.74it/s]
+limit: 10        precision:  12.00% avg time: 0.000125s
+limit: 100       precision:  12.00% avg time: 0.000100s
+limit: 1000      precision:  23.00% avg time: 0.000303s
+limit: 10000     precision:  75.00% avg time: 0.001868s
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-impute.html"><span class="doc">model-workflow: impute</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-bar.html"><span class="doc">plot-type: bar</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 16.309 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 15.990 seconds)</p>
 
 <p class="rubric">Related examples</p>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.cexternals.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_mmap_script_thumb.png"/>
-<p><a class="reference internal" href="plot_mmap_script.html#sphx-glr-auto-examples-annoy-plot-mmap-script-py"><span class="std std-ref">Mmap annoy.AnnoyIndex with examples</span></a></p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Index class."><img alt="" src="../../_images/sphx_glr_plot_Annoy_python_api_thumb.png"/>
+<p><a class="reference internal" href="plot_Annoy_python_api.html"><span class="doc">annoy.Index python-api with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">annoy.Index python-api with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.impute.AnnoyKNNImputer class with a scikit-learn regressor (e.g., :py~sklearn.linear_model.LinearRegression) instance."><img alt="" src="../../_images/sphx_glr_plot_impute_script_thumb.png"/>
+<p><a class="reference internal" href="../impute/plot_impute_script.html"><span class="doc">annoy impute with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">annoy impute with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Annoy class."><img alt="" src="../../_images/sphx_glr_plot_Annoy_legacy_c_api_thumb.png"/>
+<p><a class="reference internal" href="plot_Annoy_legacy_c_api.html"><span class="doc">annoy.Annoy legacy c-api with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">annoy.Annoy legacy c-api with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_mmap_script_thumb.png"/>
+<p><a class="reference internal" href="plot_mmap_script.html"><span class="doc">Mmap annoy.AnnoyIndex with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">Mmap annoy.AnnoyIndex with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.cexternals.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_simple_script_thumb.png"/>
-<p><a class="reference internal" href="plot_simple_script.html#sphx-glr-auto-examples-annoy-plot-simple-script-py"><span class="std std-ref">Simple annoy.AnnoyIndex with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">Simple annoy.AnnoyIndex with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.snsx.aucplot function with a scikit-learn classifier (e.g., :py~sklearn.linear_model.LogisticRegression) instance."><img alt="" src="../../_images/sphx_glr_plot_aucplot_script_thumb.png"/>
-<p><a class="reference internal" href="../snsx/plot_aucplot_script.html#sphx-glr-auto-examples-snsx-plot-aucplot-script-py"><span class="std std-ref">plot_aucplot_script with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">plot_aucplot_script with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Usage::"><img alt="" src="../../_images/sphx_glr_plot_s_compile_cpp_thumb.png"/>
-<p><span class="xref std std-ref">sphx_glr_auto_examples_annoy_plot_s_compile_cpp.py</span></p>
-<div class="sphx-glr-thumbnail-title">Compile and run the C++ Annoy precision example.</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </article>
@@ -638,10 +633,10 @@ limit: 10000     precision:  75.00% avg time: 0.001956s
 <p class="prev-next-title">Mmap annoy.AnnoyIndex with examples</p>
 </div>
 </a>
-<a class="right-next" href="plot_s_compile_cpp.html" title="next page">
+<a class="right-next" href="plot_simple_script.html" title="next page">
 <div class="prev-next-info">
 <p class="prev-next-subtitle">next</p>
-<p class="prev-next-title">&lt;no title&gt;</p>
+<p class="prev-next-title">Simple annoy.AnnoyIndex with examples</p>
 </div>
 <i class="fa-solid fa-angle-right"></i>
 </a>
@@ -674,7 +669,7 @@ limit: 10000     precision:  75.00% avg time: 0.001956s
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251130.284e07e 2025-11-30T15:51Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251207.39d21c9 2025-12-07T13:44Z.
       <br/>
 </p>
 </div>
