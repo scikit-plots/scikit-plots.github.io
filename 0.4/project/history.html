@@ -634,85 +634,197 @@
 <span id="project-history"></span><h1>History<a class="headerlink" href="#history" title="Link to this heading">#</a></h1>
 <p>This project was started in 2024.</p>
 <p>scikit-plots logo (2024 - ).</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Reserved…</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../user_guide/_logo.html#logo-index"><span class="std std-ref">Logo API</span></a></p>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.cm</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cm</span>
-
-<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12</span>
-<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.edgecolor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">colors</span> <span class="k">as</span> <span class="n">mcolors</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.lines</span><span class="w"> </span><span class="kn">import</span> <span class="n">Line2D</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.patches</span><span class="w"> </span><span class="kn">import</span> <span class="n">Circle</span><span class="p">,</span> <span class="n">FancyBboxPatch</span><span class="p">,</span> <span class="n">Wedge</span>
 
 
-<span class="n">axalpha</span> <span class="o">=</span> <span class="mf">0.05</span>
-<span class="n">figcolor</span> <span class="o">=</span> <span class="s1">&#39;white&#39;</span>
-<span class="n">dpi</span> <span class="o">=</span> <span class="mi">80</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="n">dpi</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_edgecolor</span><span class="p">(</span><span class="n">figcolor</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="n">figcolor</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_lerp_color</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="n">c1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mcolors</span><span class="o">.</span><span class="n">to_rgb</span><span class="p">(</span><span class="n">c1</span><span class="p">))</span>
+    <span class="n">c2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mcolors</span><span class="o">.</span><span class="n">to_rgb</span><span class="p">(</span><span class="n">c2</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">+</span> <span class="n">t</span> <span class="o">*</span> <span class="n">c2</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">add_math_background</span><span class="p">():</span>
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_scikit_plots_logo</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Scikit-plots-style brand logo drawn with Matplotlib primitives only.</span>
 
-    <span class="n">text</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-        <span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$W^{3\beta}_{\delta_1 \rho_1 \sigma_2} = &quot;</span>
-         <span class="sa">r</span><span class="s2">&quot;U^{3\beta}_{\delta_1 \rho_1} + \frac</span><span class="si">{1}</span><span class="s2">{8 \pi 2}&quot;</span>
-         <span class="sa">r</span><span class="s2">&quot;\int^{\alpha_2}_{\alpha_2} d \alpha^\prime_2 &quot;</span>
-         <span class="sa">r</span><span class="s2">&quot;\left[\frac{ U^{2\beta}_{\delta_1 \rho_1} - &quot;</span>
-         <span class="sa">r</span><span class="s2">&quot;\alpha^\prime_2U^{1\beta}_{\rho_1 \sigma_2} &quot;</span>
-         <span class="sa">r</span><span class="s2">&quot;}{U^{0\beta}_{\rho_1 \sigma_2}}\right]$&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span> <span class="mi">20</span><span class="p">))</span>
-    <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="sa">r</span><span class="s2">&quot;$\frac{d\rho}{d t} + \rho \vec</span><span class="si">{v}</span><span class="s2">\cdot\nabla\vec</span><span class="si">{v}</span><span class="s2"> &quot;</span>
-                 <span class="sa">r</span><span class="s2">&quot;= -\nabla p + \mu\nabla^2 \vec</span><span class="si">{v}</span><span class="s2"> + \rho \vec</span><span class="si">{g}</span><span class="s2">$&quot;</span><span class="p">,</span>
-                 <span class="p">(</span><span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">),</span> <span class="mi">20</span><span class="p">))</span>
-    <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="sa">r</span><span class="s2">&quot;$\int_{-\infty}^\infty e^{-x^2}dx=\sqrt{\pi}$&quot;</span><span class="p">,</span>
-                 <span class="p">(</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span> <span class="mi">25</span><span class="p">))</span>
-    <span class="n">text</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="sa">r</span><span class="s2">&quot;$F_G = G\frac</span><span class="si">{m_1m_2}</span><span class="s2">{r^2}$&quot;</span><span class="p">,</span>
-                 <span class="p">(</span><span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span> <span class="mi">30</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">eq</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">size</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
-         <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">eq</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#11557c&quot;</span><span class="p">,</span>
-                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">ax</span>
+<span class="sd">    No image reading, no external assets.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># --- Palette (tweak if you have official hex codes) ---</span>
+    <span class="n">NAVY</span> <span class="o">=</span> <span class="s2">&quot;#002030&quot;</span>  <span class="c1"># noqa: N806</span>
+    <span class="n">BLUE</span> <span class="o">=</span> <span class="s2">&quot;#2f7fa3&quot;</span>  <span class="c1"># noqa: N806</span>
+    <span class="n">BLUE_LIGHT</span> <span class="o">=</span> <span class="s2">&quot;#6fb7d2&quot;</span>  <span class="c1"># noqa: N806</span>
+    <span class="n">ORANGE</span> <span class="o">=</span> <span class="s2">&quot;#c85028&quot;</span>  <span class="c1"># noqa: N806</span>
+    <span class="n">ORANGE_LIGHT</span> <span class="o">=</span> <span class="s2">&quot;#e07b3a&quot;</span>  <span class="c1"># noqa: N806</span>
+    <span class="n">BG</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>  <span class="c1"># noqa: N806</span>
+
+    <span class="c1"># --- Canvas ---</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.05</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.05</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+
+    <span class="n">inner_r</span> <span class="o">=</span> <span class="mf">0.93</span>
+    <span class="n">inner_bg</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">inner_r</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">BG</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">inner_bg</span><span class="p">)</span>
+
+    <span class="c1"># Clip all interior elements to a clean inner circle</span>
+    <span class="n">clip</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">inner_r</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transData</span><span class="p">)</span>
+
+    <span class="c1"># --- Bottom bar chart (rounded, increasing) ---</span>
+    <span class="n">n_bars</span> <span class="o">=</span> <span class="mi">12</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">n_bars</span><span class="p">)</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="mf">0.095</span>
+    <span class="n">baseline</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.82</span>
+    <span class="n">heights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.18</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="n">n_bars</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">heights</span><span class="p">)):</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">i</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_bars</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">col</span> <span class="o">=</span> <span class="n">_lerp_color</span><span class="p">(</span><span class="n">BLUE</span><span class="p">,</span> <span class="n">BLUE_LIGHT</span><span class="p">,</span> <span class="mf">0.6</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+
+        <span class="n">bar</span> <span class="o">=</span> <span class="n">FancyBboxPatch</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">baseline</span><span class="p">),</span>
+            <span class="n">width</span><span class="p">,</span>
+            <span class="n">h</span><span class="p">,</span>
+            <span class="n">boxstyle</span><span class="o">=</span><span class="s2">&quot;round,pad=0.0,rounding_size=0.045&quot;</span><span class="p">,</span>
+            <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">facecolor</span><span class="o">=</span><span class="n">col</span><span class="p">,</span>
+            <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">bar</span><span class="o">.</span><span class="n">set_clip_path</span><span class="p">(</span><span class="n">clip</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">bar</span><span class="p">)</span>
+
+    <span class="c1"># --- Rising orange &quot;signal&quot; dots ---</span>
+    <span class="n">orange_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+    <span class="n">orange_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">orange_x</span><span class="p">,</span> <span class="n">orange_y</span><span class="p">)):</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">ORANGE</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span> <span class="k">else</span> <span class="n">ORANGE_LIGHT</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="mf">0.055</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span> <span class="k">else</span> <span class="mf">0.045</span>
+        <span class="n">dot</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">r</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">dot</span><span class="o">.</span><span class="n">set_clip_path</span><span class="p">(</span><span class="n">clip</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">dot</span><span class="p">)</span>
+
+    <span class="c1"># --- Pie chart (top-left) ---</span>
+    <span class="n">pie_center</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+    <span class="n">pie_r</span> <span class="o">=</span> <span class="mf">0.22</span>
+
+    <span class="n">w_orange</span> <span class="o">=</span> <span class="n">Wedge</span><span class="p">(</span><span class="n">pie_center</span><span class="p">,</span> <span class="n">pie_r</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">ORANGE</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">w_blue</span> <span class="o">=</span> <span class="n">Wedge</span><span class="p">(</span><span class="n">pie_center</span><span class="p">,</span> <span class="n">pie_r</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">BLUE</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">w_gap</span> <span class="o">=</span> <span class="n">Wedge</span><span class="p">(</span><span class="n">pie_center</span><span class="p">,</span> <span class="n">pie_r</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">BG</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="p">(</span><span class="n">w_orange</span><span class="p">,</span> <span class="n">w_blue</span><span class="p">,</span> <span class="n">w_gap</span><span class="p">):</span>
+        <span class="n">w</span><span class="o">.</span><span class="n">set_clip_path</span><span class="p">(</span><span class="n">clip</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+
+    <span class="c1"># --- Structured dot field (left-lower) ---</span>
+    <span class="n">grid_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.75</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.15</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">grid_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.15</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.55</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">gx</span> <span class="ow">in</span> <span class="n">grid_x</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">gy</span> <span class="ow">in</span> <span class="n">grid_y</span><span class="p">:</span>
+            <span class="n">col</span> <span class="o">=</span> <span class="n">NAVY</span> <span class="k">if</span> <span class="p">(</span><span class="nb">int</span><span class="p">((</span><span class="n">gx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="p">(</span><span class="n">gy</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)</span> <span class="k">else</span> <span class="n">BLUE_LIGHT</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">((</span><span class="n">gx</span><span class="p">,</span> <span class="n">gy</span><span class="p">),</span> <span class="mf">0.045</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+            <span class="n">d</span><span class="o">.</span><span class="n">set_clip_path</span><span class="p">(</span><span class="n">clip</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+    <span class="c1"># --- Light decorative dots across upper area (deterministic) ---</span>
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">pts</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">pts</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">*</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="n">inner_r</span> <span class="o">*</span> <span class="n">inner_r</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">0.2</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">:</span>  <span class="c1"># noqa: PLR2004</span>
+            <span class="k">continue</span>
+
+        <span class="n">col</span> <span class="o">=</span> <span class="n">NAVY</span> <span class="k">if</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.6</span> <span class="k">else</span> <span class="n">BLUE_LIGHT</span>  <span class="c1"># noqa: PLR2004</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.025</span><span class="p">,</span> <span class="mf">0.045</span><span class="p">)</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">r</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">d</span><span class="o">.</span><span class="n">set_clip_path</span><span class="p">(</span><span class="n">clip</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+    <span class="c1"># --- Trend line with hollow nodes ---</span>
+    <span class="n">line_pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.22</span><span class="p">]])</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">Line2D</span><span class="p">(</span>
+        <span class="n">line_pts</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="n">line_pts</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">NAVY</span><span class="p">,</span>
+        <span class="n">linewidth</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">solid_capstyle</span><span class="o">=</span><span class="s2">&quot;round&quot;</span><span class="p">,</span>
+        <span class="n">zorder</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">line</span><span class="o">.</span><span class="n">set_clip_path</span><span class="p">(</span><span class="n">clip</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_line</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="n">line_pts</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+        <span class="n">outer_node</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="mf">0.07</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">NAVY</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">inner_node</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="mf">0.035</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">BG</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">(</span><span class="n">outer_node</span><span class="p">,</span> <span class="n">inner_node</span><span class="p">):</span>
+            <span class="n">n</span><span class="o">.</span><span class="n">set_clip_path</span><span class="p">(</span><span class="n">clip</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="c1"># --- &quot;Spark&quot; icon near top (stylized) ---</span>
+    <span class="n">spark_center</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">)</span>
+    <span class="n">arms</span> <span class="o">=</span> <span class="mi">6</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">arms</span><span class="p">):</span>
+        <span class="n">ang</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">arms</span>
+        <span class="n">dx</span> <span class="o">=</span> <span class="mf">0.12</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">ang</span><span class="p">)</span>
+        <span class="n">dy</span> <span class="o">=</span> <span class="mf">0.12</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">ang</span><span class="p">)</span>
+
+        <span class="n">l</span> <span class="o">=</span> <span class="n">Line2D</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">spark_center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">dx</span><span class="p">,</span> <span class="n">spark_center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">dx</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">spark_center</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">dy</span><span class="p">,</span> <span class="n">spark_center</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dy</span><span class="p">],</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">NAVY</span><span class="p">,</span>
+            <span class="n">linewidth</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+            <span class="n">solid_capstyle</span><span class="o">=</span><span class="s2">&quot;round&quot;</span><span class="p">,</span>
+            <span class="n">zorder</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">l</span><span class="o">.</span><span class="n">set_clip_path</span><span class="p">(</span><span class="n">clip</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_line</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+
+    <span class="n">hole</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="n">spark_center</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">BG</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">hole</span><span class="o">.</span><span class="n">set_clip_path</span><span class="p">(</span><span class="n">clip</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">hole</span><span class="p">)</span>
+
+    <span class="c1"># --- Fixed accent dots (right-upper) ---</span>
+    <span class="n">accents</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">ORANGE</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">0.68</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="n">ORANGE_LIGHT</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="n">BLUE_LIGHT</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.60</span><span class="p">,</span> <span class="n">NAVY</span><span class="p">),</span>
+    <span class="p">]</span>
+    <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">accents</span><span class="p">:</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="mf">0.04</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">d</span><span class="o">.</span><span class="n">set_clip_path</span><span class="p">(</span><span class="n">clip</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+    <span class="c1"># --- Outer ring last ---</span>
+    <span class="n">outer</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="n">NAVY</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">outer</span><span class="p">)</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">add_matplotlib_text</span><span class="p">(</span><span class="n">ax</span><span class="p">):</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;matplotlib&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#11557c&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">65</span><span class="p">,</span>
-            <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">scikit_plots_logo</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>  <span class="c1"># noqa: D103</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="n">dpi</span><span class="p">)</span>
+    <span class="n">draw_scikit_plots_logo</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">add_polar_bar</span><span class="p">():</span>
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.025</span><span class="p">,</span> <span class="mf">0.075</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">],</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;polar&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">scikit_plots_logo</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
-    <span class="n">ax</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="n">axalpha</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">N</span> <span class="o">=</span> <span class="mi">7</span>
-    <span class="n">arc</span> <span class="o">=</span> <span class="mf">2.</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
-    <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">arc</span><span class="p">,</span> <span class="n">arc</span><span class="o">/</span><span class="n">N</span><span class="p">)</span>
-    <span class="n">radii</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])</span>
-    <span class="n">width</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span>
-    <span class="n">bars</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">radii</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">bar</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">radii</span><span class="p">,</span> <span class="n">bars</span><span class="p">):</span>
-        <span class="n">bar</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">(</span><span class="n">r</span><span class="o">/</span><span class="mf">10.</span><span class="p">))</span>
-        <span class="n">bar</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mf">0.6</span><span class="p">)</span>
+    <span class="c1"># Vector-first export</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;scikit-plots-logo-mpl.svg&quot;</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;scikit-plots-logo-mpl.png&quot;</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labeltop</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                   <span class="n">labelleft</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labelright</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">lw</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">)</span>
-
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_rmax</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
-
-
-<span class="n">main_axes</span> <span class="o">=</span> <span class="n">add_math_background</span><span class="p">()</span>
-<span class="n">add_polar_bar</span><span class="p">()</span>
-<span class="n">add_matplotlib_text</span><span class="p">(</span><span class="n">main_axes</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>(<a class="reference download internal" download="" href="../_downloads/d64789df6ecbbf132d14cbbee6227cec/history-1.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/f0b7c6f9dfe13c78d67922f3a80862d8/history-1.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>)</p>
@@ -798,7 +910,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post8+git.20251207.66570c2 2025-12-07T19:54Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post8+git.20251208.403cdf5 2025-12-08T16:09Z.
       <br/>
     
   </p>
