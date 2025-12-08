@@ -254,7 +254,7 @@
 
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../project/index.html">
-    About Us/Project
+    About Us | Project
   </a>
 </li>
 
@@ -471,7 +471,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../project/index.html">
-    About Us/Project
+    About Us | Project
   </a>
 </li>
 
@@ -577,10 +577,15 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.AnnoyBase.html">AnnoyBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.AnnoyIndex.html">AnnoyIndex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.Index.html">Index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.CompressMode.html">CompressMode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.ManifestMixin.html">ManifestMixin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.NDArrayExportMixin.html">NDArrayExportMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.ObjectIOMixin.html">ObjectIOMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PathAwareAnnoy.html">PathAwareAnnoy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PickleMixin.html">PickleMixin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PickleMode.html">PickleMode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.SerializerBackend.html">SerializerBackend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.VectorOpsMixin.html">VectorOpsMixin</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.api.html">scikitplot.api</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -845,7 +850,7 @@
 <h1>get_logger<a class="headerlink" href="#get-logger" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.get_logger">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.</span></span><span class="sig-name descname"><span class="pre">get_logger</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/da99f06/scikitplot/logging.py#L965"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.get_logger" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.</span></span><span class="sig-name descname"><span class="pre">get_logger</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/baf3b3c/scikitplot/logging.py#L965"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.get_logger" title="Link to this definition">#</a></dt>
 <dd><p>Return SP (scikitplot) logger instance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -923,10 +928,10 @@ WARN level log will not be emitted:</p>
 </div></div>
 <div class="cell_output docutils container">
 <div class="thebelab-output" data-output="true"><div class="docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-12-07 17:13:05.394446: I scikitplot 140021544315776 3536182465.py:3:&lt;module&gt;] This is a info message from the sp logger.
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-12-08 20:29:59.030284: I scikitplot 139699359013760 3536182465.py:3:&lt;module&gt;] This is a info message from the sp logger.
 </pre></div>
 </div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-12-07 17:13:05.395400: I scikitplot 140021544315776 3536182465.py:7:&lt;module&gt;] This is a info message from the sp logger.
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-12-08 20:29:59.031115: I scikitplot 139699359013760 3536182465.py:7:&lt;module&gt;] This is a info message from the sp logger.
 </pre></div>
 </div>
 </div>
@@ -945,7 +950,7 @@ WARN level log will not be emitted:</p>
 </div></div>
 <div class="cell_output docutils container">
 <div class="thebelab-output" data-output="true"><div class="docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-12-07 17:13:05.401424: I scikitplot 140021544315776 interactiveshell.py:3701:run_code] This is a info message from the sp logger.
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>2025-12-08 20:29:59.037741: I scikitplot 139699359013760 interactiveshell.py:3701:run_code] This is a info message from the sp logger.
 </pre></div>
 </div>
 </div>
@@ -1052,7 +1057,7 @@ WARN level log will not be emitted:</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251207.da99f06 2025-12-07T17:07Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251208.baf3b3c 2025-12-08T20:24Z.
       <br/>
     
   </p>

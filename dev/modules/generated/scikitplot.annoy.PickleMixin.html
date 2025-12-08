@@ -82,7 +82,7 @@
     <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="scikitplot.api" href="../../apis/scikitplot.api.html" />
+    <link rel="next" title="PickleMode" href="scikitplot.annoy.PickleMode.html" />
     <link rel="prev" title="PathAwareAnnoy" href="scikitplot.annoy.PathAwareAnnoy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -254,7 +254,7 @@
 
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../project/index.html">
-    About Us/Project
+    About Us | Project
   </a>
 </li>
 
@@ -471,7 +471,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../project/index.html">
-    About Us/Project
+    About Us | Project
   </a>
 </li>
 
@@ -577,10 +577,15 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.AnnoyBase.html">AnnoyBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.AnnoyIndex.html">AnnoyIndex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.Index.html">Index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.CompressMode.html">CompressMode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.ManifestMixin.html">ManifestMixin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.NDArrayExportMixin.html">NDArrayExportMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.ObjectIOMixin.html">ObjectIOMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PathAwareAnnoy.html">PathAwareAnnoy</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">PickleMixin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PickleMode.html">PickleMode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.SerializerBackend.html">SerializerBackend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.VectorOpsMixin.html">VectorOpsMixin</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.api.html">scikitplot.api</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -845,7 +850,7 @@
 <h1>PickleMixin<a class="headerlink" href="#picklemixin" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.annoy.PickleMixin">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">PickleMixin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'angular'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/da99f06/scikitplot/annoy/_mixins/_pickle.py#L55"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.PickleMixin" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">PickleMixin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'angular'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/baf3b3c/scikitplot/annoy/_mixins/_pickle.py#L55"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.PickleMixin" title="Link to this definition">#</a></dt>
 <dd><p>Adds strict persistence support.</p>
 <ul class="simple">
 <li><p>‘byte’ mode: stores serialized bytes, optionally compressed.</p></li>
@@ -1147,7 +1152,7 @@ inspect programmatically than the legacy multi-line string format.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.PickleMixin.load">
-<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/da99f06/scikitplot/annoy/_mixins/_pickle.py#L44"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.PickleMixin.load" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/baf3b3c/scikitplot/annoy/_mixins/_pickle.py#L44"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.PickleMixin.load" title="Link to this definition">#</a></dt>
 <dd><p>Load (mmap) an index from disk into the current object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1201,7 +1206,7 @@ support is unavailable, this is estimated via
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.PickleMixin.on_disk_build">
-<span class="sig-name descname"><span class="pre">on_disk_build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/da99f06/scikitplot/annoy/_mixins/_pickle.py#L39"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.PickleMixin.on_disk_build" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">on_disk_build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/baf3b3c/scikitplot/annoy/_mixins/_pickle.py#L39"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.PickleMixin.on_disk_build" title="Link to this definition">#</a></dt>
 <dd><p>Configure the index to build using an on-disk backing file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1246,7 +1251,7 @@ comfortably in RAM during construction.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.PickleMixin.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/da99f06/scikitplot/annoy/_mixins/_pickle.py#L49"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.PickleMixin.save" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/baf3b3c/scikitplot/annoy/_mixins/_pickle.py#L49"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.PickleMixin.save" title="Link to this definition">#</a></dt>
 <dd><p>Persist the index to a binary file on disk.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1407,11 +1412,11 @@ for future use)</p></li>
       </div>
     </a>
     <a class="right-next"
-       href="../../apis/scikitplot.api.html"
+       href="scikitplot.annoy.PickleMode.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">scikitplot.api</p>
+        <p class="prev-next-title">PickleMode</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1507,7 +1512,7 @@ for future use)</p></li>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251207.da99f06 2025-12-07T17:07Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251208.baf3b3c 2025-12-08T20:24Z.
       <br/>
     
   </p>
