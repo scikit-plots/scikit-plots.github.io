@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/apis/scikitplot.impute.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="Transformers for missing value imputation. User guide. See the Impute section for further details. Vector-based Knn imputation.: Annoy (Approximate Nearest Neighbors Oh Yeah) is a C++ library with ..." />
+<meta property="og:description" content="Transformers for missing value imputation. This submodule re-exports the standard scikit-learn imputers and exposes additional experimental imputers via the scikitplot.experimental namespace. In pa..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="Transformers for missing value imputation. User guide. See the Impute section for further details. Vector-based Knn imputation.: Annoy (Approximate Nearest Neighbors Oh Yeah) is a C++ library with ..." />
+<meta name="description" content="Transformers for missing value imputation. This submodule re-exports the standard scikit-learn imputers and exposes additional experimental imputers via the scikitplot.experimental namespace. In pa..." />
 
     <title>scikitplot.impute &#8212; scikit-plots 0.5.dev0 documentation</title>
   
@@ -83,7 +83,7 @@
     <link rel="icon" href="../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="AnnoyKNNImputer" href="../modules/generated/scikitplot.impute._annoy_knn.AnnoyKNNImputer.html" />
+    <link rel="next" title="ANNImputer" href="../modules/generated/scikitplot.impute._ann.ANNImputer.html" />
     <link rel="prev" title="array_api_extra" href="../modules/generated/scikitplot.externals.array_api_extra.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -638,7 +638,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental.enable_annoyknn_imputer.html">scikitplot.experimental.enable_annoyknn_imputer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental.enable_ann_imputer.html">scikitplot.experimental.enable_ann_imputer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental.pipeline.pipeline.html">pipeline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.ENVELOPES.html">ENVELOPES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.compose_as_waveform.html">compose_as_waveform</a></li>
@@ -669,7 +669,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">scikitplot.impute</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.impute._annoy_knn.AnnoyKNNImputer.html">AnnoyKNNImputer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.kds.html">scikitplot.kds</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -843,30 +843,43 @@
   <section id="module-scikitplot.impute">
 <span id="scikitplot-impute"></span><span id="impute-ref"></span><h1>scikitplot.impute<a class="headerlink" href="#module-scikitplot.impute" title="Link to this heading">#</a></h1>
 <p>Transformers for missing value imputation.</p>
+<p>This submodule re-exports the standard scikit-learn imputers and
+exposes additional experimental imputers via the
+<a class="reference internal" href="scikitplot.experimental.html#module-scikitplot.experimental" title="scikitplot.experimental"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.experimental</span></code></a> namespace.</p>
+<p>In particular, <a class="reference internal" href="../modules/generated/scikitplot.impute._ann.ANNImputer.html#scikitplot.impute._ann.ANNImputer" title="scikitplot.impute._ann.ANNImputer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ANNImputer</span></code></a> is an approximate
+nearest-neighbours based imputer built on top of the Spotify
+Annoy library. It is gated behind the experimental switch</p>
+<p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">scikitplot.experimental</span> <span class="pre">import</span> <span class="pre">enable_ann_imputer</span></code></p>
+<p>to follow scikit-learn’s experimental API conventions.</p>
 <p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/impute/index.html#impute-index"><span class="std std-ref">Impute</span></a> section for further details.</p>
-<section id="module-scikitplot.impute._annoy_knn">
-<span id="vector-based-knn-imputation"></span><span id="impute-ref-vector-based-knn-imputation"></span><h2>Vector-based Knn imputation.<a class="headerlink" href="#module-scikitplot.impute._annoy_knn" title="Link to this heading">#</a></h2>
+<section id="module-scikitplot.impute._ann">
+<span id="approximate-k-nearest-neighbours-knn-imputation"></span><span id="impute-ref-approximate-k-nearest-neighbours-knn-imputation"></span><h2>Approximate K-nearest-neighbours (KNN) imputation.<a class="headerlink" href="#module-scikitplot.impute._ann" title="Link to this heading">#</a></h2>
+<p>Vector-based Approximate K-Nearest Neighbors (KNN) imputation <a class="reference internal" href="../modules/generated/scikitplot.impute._ann.ANNImputer.html#scikitplot.impute._ann.ANNImputer" title="scikitplot.impute._ann.ANNImputer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ANNImputer</span></code></a>.</p>
 <p>Annoy (Approximate Nearest Neighbors Oh Yeah) is a C++ library with Python bindings
 to search for points in space that are close to a given query point.</p>
-<p>The originates from Spotify. It uses a forest of random projection trees.</p>
-<p>It also creates large read-only file-based data structures that are mmapped into memory
-so that many processes may share the same data.</p>
+<p>Voyager is an HNSW-based approximate nearest-neighbor index with a Python API.</p>
+<p>Both libraries create large read-only file-based data structures that can be
+memory-mapped so that many processes may share the same data.</p>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
-<div class="citation" id="r629b6dd1cafe-1" role="doc-biblioentry">
+<div class="citation" id="r6149389b6f12-1" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
 <p><a class="reference external" href="http://en.wikipedia.org/wiki/Nearest_neighbor_search#Approximate_nearest_neighbor">http://en.wikipedia.org/wiki/Nearest_neighbor_search#Approximate_nearest_neighbor</a></p>
 </div>
-<div class="citation" id="r629b6dd1cafe-2" role="doc-biblioentry">
+<div class="citation" id="r6149389b6f12-2" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
 <p><a class="github reference external" href="https://github.com/spotify/annoy">spotify/annoy</a></p>
 </div>
+<div class="citation" id="r6149389b6f12-3" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<p><a class="github reference external" href="https://github.com/spotify/voyager">spotify/voyager</a></p>
 </div>
-<p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/impute/index.html#annoy-knn-imputer-index"><span class="std std-ref">AnnoyKNNImputer</span></a> section for further details.</p>
+</div>
+<p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/impute/index.html#ann-imputer-index"><span class="std std-ref">ANNImputer</span></a> section for further details.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.impute._annoy_knn.AnnoyKNNImputer.html#scikitplot.impute._annoy_knn.AnnoyKNNImputer" title="scikitplot.impute._annoy_knn.AnnoyKNNImputer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_annoy_knn.AnnoyKNNImputer</span></code></a></p></td>
-<td><p>Fast approximate vector nearest-neighbors-based imputation using the Spotify Annoy library.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.impute._ann.ANNImputer.html#scikitplot.impute._ann.ANNImputer" title="scikitplot.impute._ann.ANNImputer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_ann.ANNImputer</span></code></a></p></td>
+<td><p>Approximate K-nearest-neighbours (KNN) imputer with pluggable ANN backends.</p></td>
 </tr>
 </tbody>
 </table>
@@ -894,11 +907,11 @@ so that many processes may share the same data.</p>
       </div>
     </a>
     <a class="right-next"
-       href="../modules/generated/scikitplot.impute._annoy_knn.AnnoyKNNImputer.html"
+       href="../modules/generated/scikitplot.impute._ann.ANNImputer.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">AnnoyKNNImputer</p>
+        <p class="prev-next-title">ANNImputer</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -936,7 +949,7 @@ so that many processes may share the same data.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251208.baf3b3c 2025-12-08T20:24Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251211.0bdf1bc 2025-12-11T19:18Z.
       <br/>
     
   </p>

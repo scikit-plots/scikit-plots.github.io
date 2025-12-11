@@ -641,7 +641,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental.enable_annoyknn_imputer.html">scikitplot.experimental.enable_annoyknn_imputer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental.enable_ann_imputer.html">scikitplot.experimental.enable_ann_imputer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental.pipeline.pipeline.html">pipeline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._doremi.ENVELOPES.html">ENVELOPES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._doremi.compose_as_waveform.html">compose_as_waveform</a></li>
@@ -672,7 +672,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.impute._annoy_knn.AnnoyKNNImputer.html">AnnoyKNNImputer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.kds.html">scikitplot.kds</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -850,7 +850,7 @@
 <h1>PathAwareAnnoy<a class="headerlink" href="#pathawareannoy" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.annoy.PathAwareAnnoy">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">PathAwareAnnoy</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/baf3b3c/scikitplot/annoy/_mixins/_pickle.py#L26"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.PathAwareAnnoy" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">PathAwareAnnoy</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0bdf1bc/scikitplot/annoy/_mixins/_pickle.py#L26"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.PathAwareAnnoy" title="Link to this definition">#</a></dt>
 <dd><p>Thin Python subclass that tracks the last known on-disk path.</p>
 <p>Pure metadata; core logic remains in the extension.</p>
 <div class="admonition seealso">
@@ -1130,7 +1130,7 @@ inspect programmatically than the legacy multi-line string format.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.PathAwareAnnoy.load">
-<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/baf3b3c/scikitplot/annoy/_mixins/_pickle.py#L44"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.PathAwareAnnoy.load" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0bdf1bc/scikitplot/annoy/_mixins/_pickle.py#L44"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.PathAwareAnnoy.load" title="Link to this definition">#</a></dt>
 <dd><p>Load (mmap) an index from disk into the current object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1179,12 +1179,39 @@ support is unavailable, this is estimated via
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.annoy.PathAwareAnnoy.metric">
 <span class="sig-name descname"><span class="pre">metric</span></span><a class="headerlink" href="#scikitplot.annoy.PathAwareAnnoy.metric" title="Link to this definition">#</a></dt>
-<dd><p>distance metric (angular, euclidean, manhattan, dot, hamming)</p>
+<dd><p>distance metric (angular, euclidean, manhattan, dot, hamming) mapped:
+.. note:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;angular&quot;</span><span class="p">,</span>   <span class="s2">&quot;angular&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;cosine&quot;</span><span class="p">,</span>    <span class="s2">&quot;angular&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;euclidean&quot;</span><span class="p">,</span> <span class="s2">&quot;euclidean&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;l2&quot;</span><span class="p">,</span>        <span class="s2">&quot;euclidean&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;lstsq&quot;</span><span class="p">,</span>        <span class="s2">&quot;euclidean&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;manhattan&quot;</span><span class="p">,</span> <span class="s2">&quot;manhattan&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;l1&quot;</span><span class="p">,</span>        <span class="s2">&quot;manhattan&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;cityblock&quot;</span><span class="p">,</span> <span class="s2">&quot;manhattan&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;taxicab&quot;</span><span class="p">,</span>   <span class="s2">&quot;manhattan&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;dot&quot;</span><span class="p">,</span>          <span class="s2">&quot;dot&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;@&quot;</span><span class="p">,</span>            <span class="s2">&quot;dot&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;.&quot;</span><span class="p">,</span>            <span class="s2">&quot;dot&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;dotproduct&quot;</span><span class="p">,</span>   <span class="s2">&quot;dot&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;inner&quot;</span><span class="p">,</span>        <span class="s2">&quot;dot&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;innerproduct&quot;</span><span class="p">,</span> <span class="s2">&quot;dot&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;hamming&quot;</span><span class="p">,</span> <span class="s2">&quot;hamming&quot;</span><span class="p">},</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">cosine</span></code>
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">euclidean</span></code>
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">cityblock</span></code>
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">dot</span></code>
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">hamming</span></code></p>
+</div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.PathAwareAnnoy.on_disk_build">
-<span class="sig-name descname"><span class="pre">on_disk_build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/baf3b3c/scikitplot/annoy/_mixins/_pickle.py#L39"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.PathAwareAnnoy.on_disk_build" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">on_disk_build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0bdf1bc/scikitplot/annoy/_mixins/_pickle.py#L39"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.PathAwareAnnoy.on_disk_build" title="Link to this definition">#</a></dt>
 <dd><p>Configure the index to build using an on-disk backing file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1211,7 +1238,7 @@ comfortably in RAM during construction.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.PathAwareAnnoy.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/baf3b3c/scikitplot/annoy/_mixins/_pickle.py#L49"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.PathAwareAnnoy.save" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0bdf1bc/scikitplot/annoy/_mixins/_pickle.py#L49"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.PathAwareAnnoy.save" title="Link to this definition">#</a></dt>
 <dd><p>Persist the index to a binary file on disk.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1468,7 +1495,7 @@ for future use)</p></li>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251208.baf3b3c 2025-12-08T20:24Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251211.0bdf1bc 2025-12-11T19:18Z.
       <br/>
     
   </p>

@@ -7,14 +7,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="AnnoyKNNImputer" />
+<meta property="og:title" content="ANNImputer" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://scikit-plots.github.io/stable/modules/generated/scikitplot.impute._annoy_knn.AnnoyKNNImputer.html" />
+<meta property="og:url" content="https://scikit-plots.github.io/stable/modules/generated/scikitplot.impute._ann.ANNImputer.html" />
 <meta property="og:site_name" content="scikit-plots" />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
 
-    <title>AnnoyKNNImputer &#8212; scikit-plots 0.5.dev0 documentation</title>
+    <title>ANNImputer &#8212; scikit-plots 0.5.dev0 documentation</title>
   
   
   
@@ -70,7 +70,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'modules/generated/scikitplot.impute._annoy_knn.AnnoyKNNImputer';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modules/generated/scikitplot.impute._ann.ANNImputer';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
@@ -642,7 +642,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental.enable_annoyknn_imputer.html">scikitplot.experimental.enable_annoyknn_imputer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental.enable_ann_imputer.html">scikitplot.experimental.enable_ann_imputer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental.pipeline.pipeline.html">pipeline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._doremi.ENVELOPES.html">ENVELOPES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._doremi.compose_as_waveform.html">compose_as_waveform</a></li>
@@ -673,7 +673,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">AnnoyKNNImputer</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">ANNImputer</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.kds.html">scikitplot.kds</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -830,7 +830,7 @@
     
     <li class="breadcrumb-item"><a href="../../apis/scikitplot.impute.html" class="nav-link">scikitplot.impute</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">AnnoyKNNImputer</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">ANNImputer</span></li>
   </ul>
 </nav>
 </div>
@@ -847,27 +847,29 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="annoyknnimputer">
-<h1>AnnoyKNNImputer<a class="headerlink" href="#annoyknnimputer" title="Link to this heading">#</a></h1>
+  <section id="annimputer">
+<h1>ANNImputer<a class="headerlink" href="#annimputer" title="Link to this heading">#</a></h1>
 <dl class="py class">
-<dt class="sig sig-object py" id="scikitplot.impute._annoy_knn.AnnoyKNNImputer">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.impute._annoy_knn.</span></span><span class="sig-name descname"><span class="pre">AnnoyKNNImputer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">nan</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_trees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'uniform'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'angular'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_strategy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_indicator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_empty_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/baf3b3c/scikitplot/impute/_annoy_knn.py#L67"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.impute._annoy_knn.AnnoyKNNImputer" title="Link to this definition">#</a></dt>
-<dd><p>Fast approximate vector nearest-neighbors-based imputation using the Spotify Annoy library.</p>
-<p>This imputer replaces the exact neighbor search of :class:`
-~sklearn.impute.KNNImputer` with a approximate nearest neighbor index (Annoy),
-providing significant scalability improvements on large datasets.</p>
-<p>Annoy (Approximate Nearest Neighbors Oh Yeah) is a C++ library with Python
-bindings designed to search for points in a vector space that are close to a
-given query point. It originates from Spotify and Index algorithm uses a
-forest of <code class="docutils literal notranslate"><span class="pre">random</span> <span class="pre">projection</span> <span class="pre">trees</span></code> to enable approximate nearest neighbor
-queries in high-dimensional spaces. All index must fit RAM.</p>
-<p>Annoy builds memory-mapped, read-only index files that can be shared across
-multiple processes without duplicating memory usage. Index construction is
-performed separately from querying, allowing the index to be built once,
-saved to disk, and loaded efficiently for fast lookups. This design is well
-suited for large-scale recommendation systems and imputation tasks where
-memory efficiency and scalability are critical.</p>
-<p>This imputer uses Annoy to identify approximate nearest neighbors for samples
+<dt class="sig sig-object py" id="scikitplot.impute._ann.ANNImputer">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.impute._ann.</span></span><span class="sig-name descname"><span class="pre">ANNImputer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">nan</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'annoy'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_access</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'external'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_store_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_base_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_disk_build</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_trees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'uniform'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'angular'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_strategy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_indicator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_empty_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0bdf1bc/scikitplot/impute/_ann.py#L89"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.impute._ann.ANNImputer" title="Link to this definition">#</a></dt>
+<dd><p>Approximate K-nearest-neighbours (KNN) imputer with pluggable ANN backends.</p>
+<p><a class="reference internal" href="#scikitplot.impute._ann.ANNImputer" title="scikitplot.impute._ann.ANNImputer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ANNImputer</span></code></a> performs vector-based imputation by querying an
+approximate nearest-neighbours (ANN) index instead of using exact
+brute-force distances as in <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.KNNImputer.html#sklearn.impute.KNNImputer" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">KNNImputer</span></code></a>.</p>
+<p>Two backends are currently supported:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">backend='annoy'</span></code> (default):
+uses the Spotify Annoy library and the in-tree
+<a class="reference internal" href="scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><code class="xref py py-class docutils literal notranslate"><span class="pre">Index</span></code></a> wrapper.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">backend='voyager'</span></code>:
+uses the optional <code class="xref py py-mod docutils literal notranslate"><span class="pre">voyager</span></code> package (HNSW-based index).</p></li>
+</ul>
+<p>All high-level imputation parameters (<code class="xref py py-attr docutils literal notranslate"><span class="pre">n_neighbors</span></code>,
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">weights</span></code>, <code class="xref py py-attr docutils literal notranslate"><span class="pre">metric</span></code>, <code class="xref py py-attr docutils literal notranslate"><span class="pre">index_access</span></code>,
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">index_store_path</span></code>, <code class="xref py py-attr docutils literal notranslate"><span class="pre">index_base_dir</span></code>) are shared across
+backends. Backend-specific details (such as the Annoy forest size)
+are handled internally.</p>
+<p>This imputer identifies approximate nearest neighbors for samples
 containing missing values and imputes those values using statistics computed
 from the retrieved neighbor vectors.</p>
 <dl class="field-list">
@@ -878,12 +880,73 @@ from the retrieved neighbor vectors.</p>
 nullable integer dtypes with missing values, <code class="docutils literal notranslate"><span class="pre">missing_values</span></code>
 should be set to np.nan, since <code class="docutils literal notranslate"><span class="pre">pd.NA</span></code> will be converted to np.nan.</p>
 </dd>
+<dt><strong>backend</strong><span class="classifier">{‘annoy’, ‘voyager’}, default=’annoy’</span></dt><dd><p>Name of the approximate nearest-neighbour backend to use.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'annoy'</span></code>: use the modified Spotify Annoy library (in-tree wrapper).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'voyager'</span></code>: use the optional <code class="xref py py-mod docutils literal notranslate"><span class="pre">voyager</span></code> package.</p></li>
+</ul>
+<p>When <code class="docutils literal notranslate"><span class="pre">backend='voyager'</span></code> the <code class="xref py py-mod docutils literal notranslate"><span class="pre">voyager</span></code> package must be
+installed. An <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ImportError" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImportError</span></code></a> is raised otherwise.</p>
+<p>Parameters <code class="xref py py-attr docutils literal notranslate"><span class="pre">index_access</span></code>, <code class="xref py py-attr docutils literal notranslate"><span class="pre">index_store_path</span></code> and
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">index_base_dir</span></code> behave identically for both backends.</p>
+</dd>
+<dt><strong>index_access</strong><span class="classifier">{‘public’, ‘private’, ‘external’}, default=’external’</span></dt><dd><p>Controls whether and how the fitted ANN index is exposed or stored.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'public'</span></code>: <a class="reference internal" href="#scikitplot.impute._ann.ANNImputer.train_index_" title="scikitplot.impute._ann.ANNImputer.train_index_"><code class="xref py py-attr docutils literal notranslate"><span class="pre">train_index_</span></code></a> returns the underlying
+ANN index instance (backwards compatible behaviour).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'private'</span></code>: Any attempt to access <a class="reference internal" href="#scikitplot.impute._ann.ANNImputer.train_index_" title="scikitplot.impute._ann.ANNImputer.train_index_"><code class="xref py py-attr docutils literal notranslate"><span class="pre">train_index_</span></code></a>
+raises <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AttributeError</span></code></a>. The index is still used
+internally during <a class="reference internal" href="#scikitplot.impute._ann.ANNImputer.transform" title="scikitplot.impute._ann.ANNImputer.transform"><code class="xref py py-meth docutils literal notranslate"><span class="pre">transform</span></code></a>, but is not directly
+exposed to user code.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'external'</span></code>: The fitted ANN index is persisted to disk using
+the backend index’s <code class="xref py py-meth docutils literal notranslate"><span class="pre">save</span></code> method
+(e.g. <code class="xref py py-meth docutils literal notranslate"><span class="pre">AnnoyIndex.save</span></code> or <code class="xref py py-meth docutils literal notranslate"><span class="pre">voyager.Index.save</span></code>) and
+only the file name (<code class="xref py py-attr docutils literal notranslate"><span class="pre">index_path_</span></code>) and metadata
+(<code class="xref py py-attr docutils literal notranslate"><span class="pre">index_created_at_</span></code>) are stored on the estimator.
+At runtime the index is reloaded from that file as needed.
+In this mode <a class="reference internal" href="#scikitplot.impute._ann.ANNImputer.train_index_" title="scikitplot.impute._ann.ANNImputer.train_index_"><code class="xref py py-attr docutils literal notranslate"><span class="pre">train_index_</span></code></a> is not available.</p></li>
+</ul>
+<p>For production and privacy-sensitive workloads, it is strongly
+recommended to keep the default <code class="docutils literal notranslate"><span class="pre">'external'</span></code> mode so that the
+underlying ANN index is not part of the public API by default.</p>
+</dd>
+<dt><strong>index_store_path</strong><span class="classifier">str or path-like, default=None</span></dt><dd><p>Target file path used when <code class="docutils literal notranslate"><span class="pre">index_access='external'</span></code>. The
+fitted ANN index is saved to this location via the backend index
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">save</span></code> method, and only the file name and metadata
+are stored in the estimator.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">index_access='external'</span></code> and this is <code class="docutils literal notranslate"><span class="pre">None</span></code>,
+<a class="reference internal" href="#scikitplot.impute._ann.ANNImputer.fit" title="scikitplot.impute._ann.ANNImputer.fit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fit</span></code></a> will automatically generate an OS-friendly unique
+file name of the form <code class="docutils literal notranslate"><span class="pre">&quot;&lt;unix-timestamp&gt;-&lt;uuid&gt;.&lt;ext&gt;&quot;</span></code> in
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">index_base_dir</span></code> (or the current working directory) and
+save the ANN index there.</p>
+</dd>
+<dt><strong>index_base_dir</strong><span class="classifier">str or path-like, default=None</span></dt><dd><p>Base directory used when automatically generating an index file
+name in <code class="docutils literal notranslate"><span class="pre">index_access='external'</span></code> mode or when building the
+index on disk (<code class="docutils literal notranslate"><span class="pre">on_disk_build=True</span></code>). If <code class="docutils literal notranslate"><span class="pre">None</span></code>, the current
+working directory is used.</p>
+<p>This parameter is backend-agnostic and is intended to be reused
+unchanged by other ANN-based imputers (for example Voyager or
+HNSW variants) so that all of them honour the same index storage
+configuration.</p>
+</dd>
+<dt><strong>on_disk_build</strong><span class="classifier">bool, default=False</span></dt><dd><p>Only used when <code class="docutils literal notranslate"><span class="pre">backend='annoy'</span></code>. Ignored for other backends.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the underlying Annoy index is built using
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">AnnoyIndex.on_disk_build</span></code>, which streams the index to a backing
+file during construction. This can significantly reduce peak RAM
+usage for very large datasets.</p>
+<p>This only affects how the index is <strong>built</strong>. How the index is
+stored and accessed at runtime is still controlled by
+<code class="docutils literal notranslate"><span class="pre">index_access</span></code> (<code class="docutils literal notranslate"><span class="pre">'public'</span></code>, <code class="docutils literal notranslate"><span class="pre">'private'</span></code>, <code class="docutils literal notranslate"><span class="pre">'external'</span></code>) and
+<code class="docutils literal notranslate"><span class="pre">index_store_path</span></code>.</p>
+</dd>
 <dt><strong>n_trees</strong><span class="classifier">int, default=-1</span></dt><dd><p>Number of trees in the Annoy forest. Increasing the number of trees
 generally improves nearest-neighbor accuracy but increases build time
 and memory usage.</p>
-<p>If set to <code class="docutils literal notranslate"><span class="pre">n_trees=-1</span></code>, annoy trees are built dynamically
+<p>If set to <code class="docutils literal notranslate"><span class="pre">-1</span></code>, the value is passed as-is to the backend index
+implementation, which may interpret it built dynamically
 until the index reaches approximately twice the number of items
-(heuristic: <code class="docutils literal notranslate"><span class="pre">_n_nodes</span> <span class="pre">&gt;=</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">n_items</span></code>).</p>
+If -1, defaults to <code class="docutils literal notranslate"><span class="pre">_n_nodes</span> <span class="pre">&gt;=</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">n_items</span></code>.
+This situation can lead to a stochastic result.</p>
 <p>Guidelines:</p>
 <ul class="simple">
 <li><p>Small datasets (&lt;10k samples): 10-20 trees.</p></li>
@@ -891,9 +954,14 @@ until the index reaches approximately twice the number of items
 <li><p>Large datasets (&gt;1M samples): 50-100+ trees.</p></li>
 </ul>
 </dd>
-<dt><strong>search_k</strong><span class="classifier">int or None, default=-1</span></dt><dd><p>Number of nodes inspected during neighbor search.
-Larger values yield more accurate but slower queries.
+<dt><strong>search_k</strong><span class="classifier">int, default=-1</span></dt><dd><p>Backend-specific search-depth parameter.</p>
+<p>For Annoy, this is passed as <code class="docutils literal notranslate"><span class="pre">search_k</span></code> to
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">AnnoyIndex.get_nns_by_vector</span></code>. Larger values inspect more
+nodes during search and are therefore slower but more accurate.
 If -1, defaults to <code class="docutils literal notranslate"><span class="pre">n_trees</span> <span class="pre">*</span> <span class="pre">n_neighbors</span></code>.</p>
+<p>In Voyager Index.query() passed to as query_ef - The depth of search
+to perform for this query. Up to query_ef candidates will be searched
+through to try to find up the k nearest neighbors per query vector.</p>
 </dd>
 <dt><strong>n_neighbors</strong><span class="classifier">int, default=5</span></dt><dd><p>Number of neighboring samples used for imputation.
 Higher values produce smoother imputations but may reduce locality.</p>
@@ -908,7 +976,13 @@ where closer neighbors contribute more
 and returning an array of weights.</p></li>
 </ul>
 </dd>
-<dt><strong>metric</strong><span class="classifier">{‘angular’, ‘euclidean’, ‘manhattan’, ‘hamming’, ‘dot’}, default=’angular’</span></dt><dd><p>Distance metric used for nearest-neighbor search:</p>
+<dt><strong>metric</strong><span class="classifier">{“angular”, “cosine”,</span></dt><dd><blockquote>
+<div><p>“euclidean”, “l2”, “lstsq”,
+“manhattan”, “l1”, “cityblock”, “taxicab”,
+“dot”, “&#64;”, “.”, “dotproduct”, “inner”, “innerproduct”,
+“hamming”}, optional, default=’angular’</p>
+</div></blockquote>
+<p>Distance metric used for nearest-neighbor search:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">'angular'</span></code> : Cosine similarity (angle only, ignores magnitude).
 Best for normalized embeddings (e.g., text embeddings, image features).</p></li>
@@ -921,9 +995,42 @@ Suitable for binary or categorical features (e.g., 0/1).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">'dot'</span></code> : Negative inner product (-x·y).
 Sensitive to both direction and magnitude of vectors.</p></li>
 </ul>
+<p>Aliases:</p>
+<ul class="simple">
+<li><p>cosine &lt;-&gt; angular</p></li>
+<li><p>euclidean &lt;- l2, lstsq</p></li>
+<li><p>manhattan &lt;- l1, cityblock, taxicab</p></li>
+<li><p>dot &lt;-&gt; innerproduct &lt;- &#64;, ., dotproduct, inner</p></li>
+</ul>
+<p>Note that when <code class="docutils literal notranslate"><span class="pre">backend='voyager'</span></code> not support all metrics
+(such as <code class="docutils literal notranslate"><span class="pre">&quot;manhattan&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;hamming&quot;</span></code>)
+with the voyager backend will raise <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ValueError</span></code></a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">cosine</span></code>
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">euclidean</span></code>
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">cityblock</span></code>
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">dot</span></code>
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">hamming</span></code></p>
+</div>
 </dd>
-<dt><strong>initial_strategy</strong><span class="classifier">{‘mean’, ‘median’, ‘most_frequent’, ‘constant’}, default=’mean’</span></dt><dd><p>Which strategy to use to initialize the missing values. Same as the
-<code class="docutils literal notranslate"><span class="pre">strategy</span></code> parameter in <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html#sklearn.impute.SimpleImputer" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimpleImputer</span></code></a>.</p>
+<dt><strong>initial_strategy</strong><span class="classifier">{‘mean’, ‘median’, ‘most_frequent’, ‘constant’}, default=’mean’</span></dt><dd><p>Which strategy to use to initialize the missing values when building
+the ANN index. This is analogous to the <code class="docutils literal notranslate"><span class="pre">strategy</span></code> parameter in
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html#sklearn.impute.SimpleImputer" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimpleImputer</span></code></a>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: use the column-wise mean (ignoring NaNs).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'median'</span></code>: use the column-wise median (ignoring NaNs).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'most_frequent'</span></code>: use the column-wise mode (most frequent value,
+ignoring NaNs; if a column has no observed values, it falls back
+to 0.0).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'constant'</span></code>: use <code class="xref py py-attr docutils literal notranslate"><span class="pre">fill_value</span></code> for all features. If
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">fill_value</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>, a default of <code class="docutils literal notranslate"><span class="pre">0.0</span></code> is used for
+numeric data.</p></li>
+</ul>
+<p>This strategy affects only the temporary fill vector used to build the
+ANN index and the global fallback used when no valid neighbor values
+are available. The main imputation logic is still k-nearest-neighbours
+based on the ANN index.</p>
 </dd>
 <dt><strong>fill_value</strong><span class="classifier">str or numerical value, default=None</span></dt><dd><p>When <code class="docutils literal notranslate"><span class="pre">strategy=&quot;constant&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">fill_value</span></code> is used to replace all
 occurrences of missing_values. For string or object data types,
@@ -945,16 +1052,29 @@ time.</p>
 <code class="docutils literal notranslate"><span class="pre">fit</span></code> is called are returned in results when <code class="docutils literal notranslate"><span class="pre">transform</span></code> is called.
 The imputed value is always <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
 </dd>
-<dt><strong>n_jobs</strong><span class="classifier">int or None, default=-1</span></dt><dd><p>Specifies the number of threads used to build the trees.
-<code class="docutils literal notranslate"><span class="pre">n_jobs=-1</span></code> uses all available CPU cores.</p>
+<dt><strong>n_jobs</strong><span class="classifier">int or None, default=-1</span></dt><dd><p>Parallelism level used in two places:</p>
+<ul class="simple">
+<li><p>during Annoy index construction, passed to
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">AnnoyIndex.build</span></code>,</p></li>
+<li><p>during Voyager query construction, passed to
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">Voyager.query</span></code>,</p></li>
+<li><p>during imputation, used as the number of worker threads in a
+<a class="reference external" href="https://joblib.readthedocs.io/en/latest/generated/joblib.Parallel.html#joblib.Parallel" title="(in joblib v1.6.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">joblib.Parallel</span></code></a> loop.</p></li>
+</ul>
+<p>A value of <code class="docutils literal notranslate"><span class="pre">-1</span></code> uses all available CPU cores. Using threads
+for the imputation step avoids spawning new Python processes and
+keeps this estimator compatible with editable installs and other
+environments where the package cannot be safely re-imported in
+child processes.</p>
 </dd>
-<dt><strong>random_state</strong><span class="classifier">int or None, default=None</span></dt><dd><p>Seed for Annoy’s random hyperplane generation.</p>
+<dt><strong>random_state</strong><span class="classifier">int or None, default=None</span></dt><dd><p>Seed for the backend index construction (e.g. Annoy hyperplanes,
+Voyager graph initialization).</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Attributes<span class="colon">:</span></dt>
 <dd class="field-even"><dl>
-<dt><strong>indicator_</strong><span class="classifier"><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.MissingIndicator.html#sklearn.impute.MissingIndicator" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MissingIndicator</span></code></a></span></dt><dd><p>Indicator used to add binary indicators for missing values.
+<dt><strong>indicator_</strong><span class="classifier"><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.MissingIndicator.html#sklearn.impute.MissingIndicator" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MissingIndicator</span></code></a></span></dt><dd><p>Indicator used to add binary indicators for missing values.
 <code class="docutils literal notranslate"><span class="pre">None</span></code> if add_indicator is False.</p>
 </dd>
 <dt><strong>n_features_in_</strong><span class="classifier">int</span></dt><dd><p>Number of features seen during <a class="reference internal" href="../../project/glossary/_glossary_sklearn.html#term-fit"><span class="xref std std-term">fit</span></a>.</p>
@@ -962,15 +1082,38 @@ The imputed value is always <code class="docutils literal notranslate"><span cla
 <dt><strong>feature_names_in_</strong><span class="classifier">ndarray of shape (<code class="docutils literal notranslate"><span class="pre">n_features_in_</span></code>,)</span></dt><dd><p>Names of features seen during <a class="reference internal" href="../../project/glossary/_glossary_sklearn.html#term-fit"><span class="xref std std-term">fit</span></a>. Defined only when <code class="docutils literal notranslate"><span class="pre">X</span></code>
 has feature names that are all strings.</p>
 </dd>
-<dt><strong>annoy_index_</strong><span class="classifier">Fitted Annoy Index.</span></dt><dd></dd>
-<dt><strong>fill_annoy_vector_</strong><span class="classifier">1d nanmean array for fill annoy vector.</span></dt><dd></dd>
+<dt><strong>temp_fill_vector_</strong><span class="classifier">ndarray of shape (<a href="#id2"><span class="problematic" id="id3">n_features_in_</span></a>,)</span></dt><dd><p>Per-feature statistics (e.g. mean or median) used to temporarily
+fill missing values when building the ANN index and as a
+fallback when neighbor information is not available.</p>
+</dd>
+<dt><strong>index_path_</strong><span class="classifier">str</span></dt><dd><p>File path of the persisted ANN index when
+<code class="docutils literal notranslate"><span class="pre">index_access='external'</span></code>. Only set after <a class="reference internal" href="#scikitplot.impute._ann.ANNImputer.fit" title="scikitplot.impute._ann.ANNImputer.fit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fit</span></code></a>.</p>
+</dd>
+<dt><strong>index_created_at_</strong><span class="classifier">str</span></dt><dd><p>UTC ISO 8601 timestamp recording when the ANN index was
+persisted to <code class="xref py py-attr docutils literal notranslate"><span class="pre">index_path_</span></code> in <code class="docutils literal notranslate"><span class="pre">index_access='external'</span></code>
+mode.</p>
+</dd>
+<dt><a class="reference internal" href="#scikitplot.impute._ann.ANNImputer.train_index_" title="scikitplot.impute._ann.ANNImputer.train_index_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">train_index_</span></code></a><span class="classifier">object or property</span></dt><dd><p>Optionally expose the fitted ANN index (Annoy or Voyager).</p>
+</dd>
+<dt><strong>.. warning::</strong></dt><dd><p><code class="docutils literal notranslate"><span class="pre">index_access='private'</span></code> or <code class="docutils literal notranslate"><span class="pre">index_access='external'</span></code>
+prevents access to the underlying ANN index
+through the public API (for example <a class="reference internal" href="#scikitplot.impute._ann.ANNImputer.train_index_" title="scikitplot.impute._ann.ANNImputer.train_index_"><code class="xref py py-attr docutils literal notranslate"><span class="pre">train_index_</span></code></a>). This protects
+against accidental leaks and misuse, but it is <strong>not</strong> a hard security
+boundary: any Python code running in the same process can still inspect
+the estimator using introspection facilities.</p>
+<p>If you need strong confidentiality for the training data or the ANN index,
+do <strong>not</strong> share the <a class="reference internal" href="#scikitplot.impute._ann.ANNImputer" title="scikitplot.impute._ann.ANNImputer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ANNImputer</span></code></a> instance with untrusted code.
+Instead, run it inside a separate process or service and expose only a
+high-level API (e.g. an <code class="docutils literal notranslate"><span class="pre">/impute</span></code> endpoint) rather than the Python
+object itself (model-as-a-service pattern).</p>
+</dd>
 </dl>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.KNNImputer.html#sklearn.impute.KNNImputer" title="(in scikit-learn v1.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sklearn.impute.KNNImputer</span></code></a></dt><dd><p>Multivariate imputer that estimates missing features using nearest samples. Exact KNN-based imputer using brute-force search.</p>
+<dt><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.KNNImputer.html#sklearn.impute.KNNImputer" title="(in scikit-learn v1.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sklearn.impute.KNNImputer</span></code></a></dt><dd><p>Multivariate imputer that estimates missing features using nearest samples. Exact KNN-based imputer using brute-force search.</p>
 </dd>
 <dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">sklearn_ann.kneighbors.annoy.AnnoyTransformer</span></code></dt><dd><p>Wrapper for using annoy.AnnoyIndex as sklearn’s KNeighborsTransformer <a class="reference external" href="https://sklearn-ann.readthedocs.io/en/latest/kneighbors.html#annoy">AnnoyTransformer</a></p>
 </dd>
@@ -984,10 +1127,13 @@ has feature names that are all strings.</p>
 and <span class="math notranslate nohighlight">\(w_{ik}\)</span> is the neighbor weight:</p>
 <p><span class="math notranslate nohighlight">\(w_{ik} = \\frac{1}{1 + d(x_i, x_k)}\)</span></p>
 <ul class="simple">
-<li><p>Annoy provides approximate neighbor search, so imputations are not exact.</p></li>
+<li><p>ANN provides approximate neighbor search, so imputations are not exact.</p></li>
 <li><p>Annoy uses random projections to split the vector space at each node in
 the tree, selecting a random hyperplane defined by two sampled points.</p></li>
-<li><p>The index remains in memory after fitting for efficient queries.</p></li>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">index_access='public'</span></code> or <code class="docutils literal notranslate"><span class="pre">'private'</span></code> mode the Annoy index
+is kept in memory after <a class="reference internal" href="#scikitplot.impute._ann.ANNImputer.fit" title="scikitplot.impute._ann.ANNImputer.fit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fit</span></code></a> for efficient queries.
+In <code class="docutils literal notranslate"><span class="pre">index_access='external'</span></code> mode the index is stored on disk
+and loaded on demand at transform-time.</p></li>
 <li><p>Index creation is separate from lookup. After calling <code class="docutils literal notranslate"><span class="pre">build()</span></code>,
 no additional vectors may be added.</p></li>
 <li><p>Index files created by Annoy are memory-mapped, allowing multiple processes
@@ -1000,18 +1146,19 @@ are special cases of the Minkowski distance.</p></li>
 </ul>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
-<div class="citation" id="r172c204a7fef-1" role="doc-biblioentry">
+<div class="citation" id="re68486411b47-1" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
-<p><a class="reference external" href="https://github.com/spotify/annoy">Bernhardsson, E. (2013). “Annoy: Approximate Nearest Neighbors Oh Yeah.”
+<p><a class="reference external" href="https://github.com/spotify/annoy">Bernhardsson, E. (2013). “ANNoy (Approximate Nearest Neighbors Oh Yeah).”
 Spotify AB. https://github.com/spotify/annoy</a></p>
 </div>
 </div>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.experimental</span><span class="w"> </span><span class="kn">import</span> <span class="n">enable_annoyknn_imputer</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.impute</span><span class="w"> </span><span class="kn">import</span> <span class="n">AnnoyKNNImputer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.experimental</span><span class="w"> </span><span class="kn">import</span> <span class="n">enable_aknn_imputer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.impute</span><span class="w"> </span><span class="kn">import</span> <span class="n">ANNImputer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">imputer</span> <span class="o">=</span> <span class="n">AnnoyKNNImputer</span><span class="p">(</span><span class="n">n_trees</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># imputer = ANNImputer(backend=&quot;voyager&quot;, n_neighbors=5, metric=&quot;euclidean&quot;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">imputer</span> <span class="o">=</span> <span class="n">ANNImputer</span><span class="p">(</span><span class="n">n_trees</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">imputer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="go">array([[1. , 2. , 5. ],</span>
 <span class="go">       [3. , 4. , 3. ],</span>
@@ -1020,14 +1167,34 @@ Spotify AB. https://github.com/spotify/annoy</a></p>
 </pre></div>
 </div>
 <dl class="py method">
-<dt class="sig sig-object py" id="scikitplot.impute._annoy_knn.AnnoyKNNImputer.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/baf3b3c/scikitplot/impute/_annoy_knn.py#L632"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.impute._annoy_knn.AnnoyKNNImputer.fit" title="Link to this definition">#</a></dt>
-<dd><p>Fit the imputer on X and build Annoy index.</p>
+<dt class="sig sig-object py" id="scikitplot.impute._ann.ANNImputer.delete_external_index">
+<span class="sig-name descname"><span class="pre">delete_external_index</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0bdf1bc/scikitplot/impute/_privacy.py#L304"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.impute._ann.ANNImputer.delete_external_index" title="Link to this definition">#</a></dt>
+<dd><p>Delete the external index file referenced by <code class="xref py py-attr docutils literal notranslate"><span class="pre">index_path_</span></code>.</p>
+<p>This helper removes the file on disk if <code class="xref py py-attr docutils literal notranslate"><span class="pre">index_path_</span></code> is
+set. It does <strong>not</strong> modify <code class="xref py py-attr docutils literal notranslate"><span class="pre">index_path_</span></code> itself, so
+subsequent calls that rely on the file (for example
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_index_for_runtime</span></code> in <code class="docutils literal notranslate"><span class="pre">index_access='external'</span></code>
+mode) will fail until the estimator is re-fitted.</p>
+<p>Any <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#OSError" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">OSError</span></code></a> raised by <a class="reference external" href="https://docs.python.org/3/library/os.html#os.remove" title="(in Python v3.14)"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.remove</span></code></a> will propagate
+to the caller.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="scikitplot.impute._annoy_knn.AnnoyKNNImputer.fit_transform">
-<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fit_params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/baf3b3c/scikitplot/../sklearn/base.py#L851"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.impute._annoy_knn.AnnoyKNNImputer.fit_transform" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="scikitplot.impute._ann.ANNImputer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0bdf1bc/scikitplot/impute/_ann.py#L988"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.impute._ann.ANNImputer.fit" title="Link to this definition">#</a></dt>
+<dd><p>Fit the imputer on X and build the underlying ANN index.</p>
+<p>This step:</p>
+<ul class="simple">
+<li><p>validates the input data,</p></li>
+<li><p>records which features are completely empty,</p></li>
+<li><p>builds the backend-specific ANN index, and</p></li>
+<li><p>fits the missing-value indicator (if enabled).</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scikitplot.impute._ann.ANNImputer.fit_transform">
+<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fit_params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0bdf1bc/scikitplot/../sklearn/base.py#L851"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.impute._ann.ANNImputer.fit_transform" title="Link to this definition">#</a></dt>
 <dd><p>Fit to data, then transform it.</p>
 <p>Fits transformer to <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> with optional parameters <code class="docutils literal notranslate"><span class="pre">fit_params</span></code>
 and returns a transformed version of <code class="docutils literal notranslate"><span class="pre">X</span></code>.</p>
@@ -1053,21 +1220,21 @@ Pass only if the estimator accepts additional params in its <code class="docutil
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="scikitplot.impute._annoy_knn.AnnoyKNNImputer.get_feature_names_out">
-<span class="sig-name descname"><span class="pre">get_feature_names_out</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/baf3b3c/scikitplot/impute/_annoy_knn.py#L731"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.impute._annoy_knn.AnnoyKNNImputer.get_feature_names_out" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="scikitplot.impute._ann.ANNImputer.get_feature_names_out">
+<span class="sig-name descname"><span class="pre">get_feature_names_out</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0bdf1bc/scikitplot/impute/_ann.py#L1620"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.impute._ann.ANNImputer.get_feature_names_out" title="Link to this definition">#</a></dt>
 <dd><p>Return output feature names, including indicator features if used.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="scikitplot.impute._annoy_knn.AnnoyKNNImputer.get_metadata_routing">
-<span class="sig-name descname"><span class="pre">get_metadata_routing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/baf3b3c/scikitplot/../sklearn/utils/_metadata_requests.py#L1550"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.impute._annoy_knn.AnnoyKNNImputer.get_metadata_routing" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="scikitplot.impute._ann.ANNImputer.get_metadata_routing">
+<span class="sig-name descname"><span class="pre">get_metadata_routing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0bdf1bc/scikitplot/../sklearn/utils/_metadata_requests.py#L1550"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.impute._ann.ANNImputer.get_metadata_routing" title="Link to this definition">#</a></dt>
 <dd><p>Get metadata routing of this object.</p>
-<p>Please check <a class="reference external" href="https://scikit-learn.org/stable/metadata_routing.html#metadata-routing" title="(in scikit-learn v1.7)"><span class="xref std std-ref">User Guide</span></a> on how the routing
+<p>Please check <a class="reference external" href="https://scikit-learn.org/stable/metadata_routing.html#metadata-routing" title="(in scikit-learn v1.8)"><span class="xref std std-ref">User Guide</span></a> on how the routing
 mechanism works.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>routing</strong><span class="classifier">MetadataRequest</span></dt><dd><p>A <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.metadata_routing.MetadataRequest.html#sklearn.utils.metadata_routing.MetadataRequest" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetadataRequest</span></code></a> encapsulating
+<dt><strong>routing</strong><span class="classifier">MetadataRequest</span></dt><dd><p>A <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.metadata_routing.MetadataRequest.html#sklearn.utils.metadata_routing.MetadataRequest" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetadataRequest</span></code></a> encapsulating
 routing information.</p>
 </dd>
 </dl>
@@ -1076,8 +1243,8 @@ routing information.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="scikitplot.impute._annoy_knn.AnnoyKNNImputer.get_params">
-<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/baf3b3c/scikitplot/../sklearn/base.py#L240"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.impute._annoy_knn.AnnoyKNNImputer.get_params" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="scikitplot.impute._ann.ANNImputer.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0bdf1bc/scikitplot/../sklearn/base.py#L240"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.impute._ann.ANNImputer.get_params" title="Link to this definition">#</a></dt>
 <dd><p>Get parameters for this estimator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1097,10 +1264,10 @@ contained subobjects that are estimators.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="scikitplot.impute._annoy_knn.AnnoyKNNImputer.set_output">
-<span class="sig-name descname"><span class="pre">set_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/baf3b3c/scikitplot/../sklearn/utils/_set_output.py#L389"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.impute._annoy_knn.AnnoyKNNImputer.set_output" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="scikitplot.impute._ann.ANNImputer.set_output">
+<span class="sig-name descname"><span class="pre">set_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0bdf1bc/scikitplot/../sklearn/utils/_set_output.py#L389"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.impute._ann.ANNImputer.set_output" title="Link to this definition">#</a></dt>
 <dd><p>Set output container.</p>
-<p>See <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/miscellaneous/plot_set_output.html#sphx-glr-auto-examples-miscellaneous-plot-set-output-py" title="(in scikit-learn v1.7)"><span>Introducing the set_output API</span></a>
+<p>See <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/miscellaneous/plot_set_output.html#sphx-glr-auto-examples-miscellaneous-plot-set-output-py" title="(in scikit-learn v1.8)"><span>Introducing the set_output API</span></a>
 for an example on how to use the API.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1128,11 +1295,11 @@ for an example on how to use the API.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="scikitplot.impute._annoy_knn.AnnoyKNNImputer.set_params">
-<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/baf3b3c/scikitplot/../sklearn/base.py#L338"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.impute._annoy_knn.AnnoyKNNImputer.set_params" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="scikitplot.impute._ann.ANNImputer.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0bdf1bc/scikitplot/../sklearn/base.py#L338"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.impute._ann.ANNImputer.set_params" title="Link to this definition">#</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
-(such as <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>). The latter have
+(such as <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>). The latter have
 parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
 possible to update each component of a nested object.</p>
 <dl class="field-list simple">
@@ -1151,9 +1318,18 @@ possible to update each component of a nested object.</p>
 </dl>
 </dd></dl>
 
+<dl class="py property">
+<dt class="sig sig-object py" id="scikitplot.impute._ann.ANNImputer.train_index_">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">train_index_</span></span><a class="headerlink" href="#scikitplot.impute._ann.ANNImputer.train_index_" title="Link to this definition">#</a></dt>
+<dd><p>Optionally expose the fitted ANN index (Annoy or Voyager).</p>
+<p>This attribute is only available when <code class="docutils literal notranslate"><span class="pre">index_access='public'</span></code>.
+For other values, <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AttributeError</span></code></a> is raised by
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">OutsourcedIndexMixin._get_index</span></code>.</p>
+</dd></dl>
+
 <dl class="py method">
-<dt class="sig sig-object py" id="scikitplot.impute._annoy_knn.AnnoyKNNImputer.transform">
-<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/baf3b3c/scikitplot/impute/_annoy_knn.py#L673"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.impute._annoy_knn.AnnoyKNNImputer.transform" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="scikitplot.impute._ann.ANNImputer.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0bdf1bc/scikitplot/impute/_ann.py#L1549"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.impute._ann.ANNImputer.transform" title="Link to this definition">#</a></dt>
 <dd><p>Impute missing values in X using approximate nearest neighbors.</p>
 </dd></dl>
 
@@ -1213,15 +1389,17 @@ possible to update each component of a nested object.</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     
 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.impute._annoy_knn.AnnoyKNNImputer"><code class="docutils literal notranslate"><span class="pre">AnnoyKNNImputer</span></code></a><ul class="nav section-nav flex-column visible">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.impute._annoy_knn.AnnoyKNNImputer.fit"><code class="docutils literal notranslate"><span class="pre">fit</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.impute._annoy_knn.AnnoyKNNImputer.fit_transform"><code class="docutils literal notranslate"><span class="pre">fit_transform</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.impute._annoy_knn.AnnoyKNNImputer.get_feature_names_out"><code class="docutils literal notranslate"><span class="pre">get_feature_names_out</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.impute._annoy_knn.AnnoyKNNImputer.get_metadata_routing"><code class="docutils literal notranslate"><span class="pre">get_metadata_routing</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.impute._annoy_knn.AnnoyKNNImputer.get_params"><code class="docutils literal notranslate"><span class="pre">get_params</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.impute._annoy_knn.AnnoyKNNImputer.set_output"><code class="docutils literal notranslate"><span class="pre">set_output</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.impute._annoy_knn.AnnoyKNNImputer.set_params"><code class="docutils literal notranslate"><span class="pre">set_params</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.impute._annoy_knn.AnnoyKNNImputer.transform"><code class="docutils literal notranslate"><span class="pre">transform</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.impute._ann.ANNImputer"><code class="docutils literal notranslate"><span class="pre">ANNImputer</span></code></a><ul class="nav section-nav flex-column visible">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.impute._ann.ANNImputer.delete_external_index"><code class="docutils literal notranslate"><span class="pre">delete_external_index</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.impute._ann.ANNImputer.fit"><code class="docutils literal notranslate"><span class="pre">fit</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.impute._ann.ANNImputer.fit_transform"><code class="docutils literal notranslate"><span class="pre">fit_transform</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.impute._ann.ANNImputer.get_feature_names_out"><code class="docutils literal notranslate"><span class="pre">get_feature_names_out</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.impute._ann.ANNImputer.get_metadata_routing"><code class="docutils literal notranslate"><span class="pre">get_metadata_routing</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.impute._ann.ANNImputer.get_params"><code class="docutils literal notranslate"><span class="pre">get_params</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.impute._ann.ANNImputer.set_output"><code class="docutils literal notranslate"><span class="pre">set_output</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.impute._ann.ANNImputer.set_params"><code class="docutils literal notranslate"><span class="pre">set_params</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.impute._ann.ANNImputer.train_index_"><code class="docutils literal notranslate"><span class="pre">train_index_</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.impute._ann.ANNImputer.transform"><code class="docutils literal notranslate"><span class="pre">transform</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -1234,7 +1412,7 @@ possible to update each component of a nested object.</p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../_sources/modules/generated/scikitplot.impute._annoy_knn.AnnoyKNNImputer.rst.txt"
+      <li><a href="../../_sources/modules/generated/scikitplot.impute._ann.ANNImputer.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div></div>
@@ -1264,7 +1442,7 @@ possible to update each component of a nested object.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251208.baf3b3c 2025-12-08T20:24Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251211.0bdf1bc 2025-12-11T19:18Z.
       <br/>
     
   </p>

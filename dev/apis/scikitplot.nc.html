@@ -638,7 +638,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental.enable_annoyknn_imputer.html">scikitplot.experimental.enable_annoyknn_imputer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental.enable_ann_imputer.html">scikitplot.experimental.enable_ann_imputer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental.pipeline.pipeline.html">pipeline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.ENVELOPES.html">ENVELOPES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.compose_as_waveform.html">compose_as_waveform</a></li>
@@ -669,7 +669,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.impute._annoy_knn.AnnoyKNNImputer.html">AnnoyKNNImputer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.kds.html">scikitplot.kds</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -843,12 +843,6 @@
   <section id="module-scikitplot.nc">
 <span id="scikitplot-nc"></span><span id="nc-ref"></span><h1>scikitplot.nc<a class="headerlink" href="#module-scikitplot.nc" title="Link to this heading">#</a></h1>
 <p>NumCpp: A Templatized Header Only C++ Library with Implementation of the Python NumPy-Compatible API.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<ul class="simple">
-<li><p><a class="github reference external" href="https://github.com/dpilger26/NumCpp">dpilger26/NumCpp</a></p></li>
-</ul>
-</div>
 <ul class="simple">
 <li><p>Author: <a class="reference external" href="mailto:dpilger26&#37;&#52;&#48;gmail&#46;com">David Pilger</a></p></li>
 <li><p>License: MIT</p></li>
@@ -861,6 +855,12 @@
 <li><p>Clang LLVM: 18, 19</p></li>
 <li><p>Boost Versions: 1.73+</p></li>
 </ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="github reference external" href="https://github.com/dpilger26/NumCpp">dpilger26/NumCpp</a></p></li>
+</ul>
+</div>
 <p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/nc/index.html#nc-index"><span class="std std-ref">nc (NumCpp)</span></a> section for further details.</p>
 <section id="numcpp-library-header">
 <span id="nc-ref-numcpp-library-header"></span><h2>NumCpp Library Header<a class="headerlink" href="#numcpp-library-header" title="Link to this heading">#</a></h2>
@@ -878,7 +878,7 @@
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.nc.dot.html#scikitplot.nc.dot" title="scikitplot.nc.dot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dot</span></code></a></p></td>
-<td><p>dot(a: typing.Annotated[numpy.typing.ArrayLike, numpy.float64], b: typing.Annotated[numpy.typing.ArrayLike, numpy.float64]) -&gt; numpy.typing.NDArray[numpy.float64]</p></td>
+<td><p>dot(a: numpy.ndarray, b: numpy.ndarray) -&gt; numpy.ndarray</p></td>
 </tr>
 </tbody>
 </table>
@@ -948,7 +948,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251208.baf3b3c 2025-12-08T20:24Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251211.0bdf1bc 2025-12-11T19:18Z.
       <br/>
     
   </p>

@@ -641,7 +641,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental.enable_annoyknn_imputer.html">scikitplot.experimental.enable_annoyknn_imputer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental.enable_ann_imputer.html">scikitplot.experimental.enable_ann_imputer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental.pipeline.pipeline.html">pipeline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._doremi.ENVELOPES.html">ENVELOPES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._doremi.compose_as_waveform.html">compose_as_waveform</a></li>
@@ -672,7 +672,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.impute._annoy_knn.AnnoyKNNImputer.html">AnnoyKNNImputer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.kds.html">scikitplot.kds</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -1172,7 +1172,34 @@ support is unavailable, this is estimated via
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.cexternals._annoy.Annoy.metric">
 <span class="sig-name descname"><span class="pre">metric</span></span><a class="headerlink" href="#scikitplot.cexternals._annoy.Annoy.metric" title="Link to this definition">#</a></dt>
-<dd><p>distance metric (angular, euclidean, manhattan, dot, hamming)</p>
+<dd><p>distance metric (angular, euclidean, manhattan, dot, hamming) mapped:
+.. note:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;angular&quot;</span><span class="p">,</span>   <span class="s2">&quot;angular&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;cosine&quot;</span><span class="p">,</span>    <span class="s2">&quot;angular&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;euclidean&quot;</span><span class="p">,</span> <span class="s2">&quot;euclidean&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;l2&quot;</span><span class="p">,</span>        <span class="s2">&quot;euclidean&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;lstsq&quot;</span><span class="p">,</span>        <span class="s2">&quot;euclidean&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;manhattan&quot;</span><span class="p">,</span> <span class="s2">&quot;manhattan&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;l1&quot;</span><span class="p">,</span>        <span class="s2">&quot;manhattan&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;cityblock&quot;</span><span class="p">,</span> <span class="s2">&quot;manhattan&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;taxicab&quot;</span><span class="p">,</span>   <span class="s2">&quot;manhattan&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;dot&quot;</span><span class="p">,</span>          <span class="s2">&quot;dot&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;@&quot;</span><span class="p">,</span>            <span class="s2">&quot;dot&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;.&quot;</span><span class="p">,</span>            <span class="s2">&quot;dot&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;dotproduct&quot;</span><span class="p">,</span>   <span class="s2">&quot;dot&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;inner&quot;</span><span class="p">,</span>        <span class="s2">&quot;dot&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;innerproduct&quot;</span><span class="p">,</span> <span class="s2">&quot;dot&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="s2">&quot;hamming&quot;</span><span class="p">,</span> <span class="s2">&quot;hamming&quot;</span><span class="p">},</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">cosine</span></code>
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">euclidean</span></code>
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">cityblock</span></code>
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">dot</span></code>
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">hamming</span></code></p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -1452,7 +1479,7 @@ for future use)</p></li>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251208.baf3b3c 2025-12-08T20:24Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251211.0bdf1bc 2025-12-11T19:18Z.
       <br/>
     
   </p>
