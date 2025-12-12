@@ -9,10 +9,10 @@
 <meta content="website" property="og:type"/>
 <meta content="https://scikit-plots.github.io/stable/auto_examples/visualkeras_CNN/plot_custom_vgg16_show_dimension.html" property="og:url"/>
 <meta content="scikit-plots" property="og:site_name"/>
-<meta content="An example showing the visualkeras function used by a tf.keras.Model model. pip install protobuf==5.29.4 create VGG16 Now visualize the model! Tags: model-type: classification model-workflow: model..." property="og:description"/>
+<meta content="An example showing the visualkeras function used by a tf.keras.Model model. create VGG16 Now visualize the model! Tags: model-type: classification model-workflow: model building plot-type: visualke..." property="og:description"/>
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
-<meta content="An example showing the visualkeras function used by a tf.keras.Model model. pip install protobuf==5.29.4 create VGG16 Now visualize the model! Tags: model-type: classification model-workflow: model..." name="description"/>
+<meta content="An example showing the visualkeras function used by a tf.keras.Model model. create VGG16 Now visualize the model! Tags: model-type: classification model-workflow: model building plot-type: visualke..." name="description"/>
 <title>visualkeras: custom vgg16 show dimension example — scikit-plots 0.5.dev0 documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
@@ -464,8 +464,15 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
 </pre></div>
 </div>
-<p>pip install protobuf==5.29.4</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># visualkeras Need aggdraw tensorflow</span>
+<span class="c1"># !pip install scikitplot[core, cpu]</span>
+
+<span class="c1"># or</span>
+<span class="c1"># !pip install aggdraw</span>
+<span class="c1"># !pip install tensorflow</span>
+
+<span class="c1"># pip install protobuf==5.29.4</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
 
 <span class="c1"># Clear any session to reset the state of TensorFlow/Keras</span>
 <a class="sphx-glr-backref-module-tensorflow-keras-backend sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/backend/clear_session" title="tensorflow.keras.backend.clear_session"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">clear_session</span></a><span class="p">()</span>
@@ -546,7 +553,7 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <a class="sphx-glr-backref-module-PIL-ImageFont sphx-glr-backref-type-py-function" href="https://pillow.readthedocs.io/en/stable/reference/ImageFont.html#PIL.ImageFont.load_default" title="PIL.ImageFont.load_default"><span class="n">ImageFont</span><span class="o">.</span><span class="n">load_default</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;PIL.ImageFont.FreeTypeFont object at 0x7fda34270b90&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;PIL.ImageFont.FreeTypeFont object at 0x7fb6181bab50&gt;
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">img_vgg16_show_dimension</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
@@ -566,7 +573,7 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <span class="n">img_vgg16_show_dimension</span>
 </pre></div>
 </div>
-<img alt="plot custom vgg16 show dimension" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_001.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_001.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage object at 0x7fda340ac890&gt;
+<img alt="plot custom vgg16 show dimension" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_001.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_001.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage object at 0x7fb6181ff410&gt;
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">img_vgg16_legend_show_dimension</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
@@ -586,7 +593,7 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <span class="n">img_vgg16_legend_show_dimension</span>
 </pre></div>
 </div>
-<img alt="plot custom vgg16 show dimension" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_002.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_002.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage object at 0x7fda1c71d410&gt;
+<img alt="plot custom vgg16 show dimension" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_002.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_002.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage object at 0x7fb6180549d0&gt;
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">img_vgg16_spacing_layers_show_dimension</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
@@ -607,7 +614,7 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <span class="n">img_vgg16_spacing_layers_show_dimension</span>
 </pre></div>
 </div>
-<img alt="plot custom vgg16 show dimension" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_003.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_003.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage object at 0x7fda1c78c5d0&gt;
+<img alt="plot custom vgg16 show dimension" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_003.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_003.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage object at 0x7fb5f83d75d0&gt;
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">img_vgg16_type_ignore_show_dimension</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
@@ -632,7 +639,7 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <span class="n">img_vgg16_type_ignore_show_dimension</span>
 </pre></div>
 </div>
-<img alt="plot custom vgg16 show dimension" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_004.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_004.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage object at 0x7fda1c7ee3d0&gt;
+<img alt="plot custom vgg16 show dimension" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_004.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_004.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage object at 0x7fb5f82afa50&gt;
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">img_vgg16_color_map_show_dimension</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
@@ -653,7 +660,7 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <span class="n">img_vgg16_color_map_show_dimension</span>
 </pre></div>
 </div>
-<img alt="plot custom vgg16 show dimension" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_005.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_005.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage object at 0x7fda1c33fb50&gt;
+<img alt="plot custom vgg16 show dimension" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_005.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_005.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage object at 0x7fb5f81132d0&gt;
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">img_vgg16_flat_show_dimension</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
@@ -674,7 +681,7 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <span class="n">img_vgg16_flat_show_dimension</span>
 </pre></div>
 </div>
-<img alt="plot custom vgg16 show dimension" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_006.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_006.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage object at 0x7fda1c3ac890&gt;
+<img alt="plot custom vgg16 show dimension" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_006.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_006.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage object at 0x7fb5f8180d90&gt;
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">img_vgg16_scaling_show_dimension</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
@@ -696,11 +703,11 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <span class="n">img_vgg16_scaling_show_dimension</span>
 </pre></div>
 </div>
-<img alt="plot custom vgg16 show dimension" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_007.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_007.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage object at 0x7fda1c238d50&gt;
+<img alt="plot custom vgg16 show dimension" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_007.png" srcset="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_007.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage object at 0x7fb5f81f2990&gt;
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-model-building.html"><span class="doc">model-workflow: model building</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-visualkeras.html"><span class="doc">plot-type: visualkeras</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger reference internal" href="../../_tags/domain-neural-network.html"><span class="doc">domain: neural network</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-intermediate.html"><span class="doc">level: intermediate</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 15.073 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 15.762 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_custom_vgg16_thumb.png"/>
@@ -765,7 +772,7 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251211.0bdf1bc 2025-12-11T19:18Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251212.264c795 2025-12-12T21:10Z.
       <br/>
 </p>
 </div>
