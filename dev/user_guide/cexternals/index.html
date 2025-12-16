@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/user_guide/cexternals/index.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="ANNoy Nearest Neighbor ANNoy (experimental)- TL;DR, Introduction, Background, Installation, Features, Python Example, Notes, Trade-offs, Supported Platforms and Bindings, Testing, References.. astr..." />
+<meta property="og:description" content="ANNoy Nearest Neighbor spotify/ANNoy (experimental)- TL;DR, Quick start, Workflow- Important rules., Persistence and sharing- Save and load, Prefault (optional)., On-disk build (large datasets)- Wo..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="ANNoy Nearest Neighbor ANNoy (experimental)- TL;DR, Introduction, Background, Installation, Features, Python Example, Notes, Trade-offs, Supported Platforms and Bindings, Testing, References.. astr..." />
+<meta name="description" content="ANNoy Nearest Neighbor spotify/ANNoy (experimental)- TL;DR, Quick start, Workflow- Important rules., Persistence and sharing- Save and load, Prefault (optional)., On-disk build (large datasets)- Wo..." />
 
     <title>C-Externals (experimental) &#8212; scikit-plots 0.5.dev0 documentation</title>
   
@@ -83,7 +83,7 @@
     <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="ANNoy (experimental)" href="_annoy/index.html" />
+    <link rel="next" title="spotify/ANNoy (experimental)" href="_annoy/index.html" />
     <link rel="prev" title="C-Experimental (experimental)" href="../cexperimental/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -610,7 +610,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../cexperimental/index.html">C-Experimental (experimental)</a></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">C-Externals (experimental)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="_annoy/index.html">ANNoy (experimental)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_annoy/index.html">spotify/ANNoy (experimental)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_astropy/index.html">Astropy (experimental)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_f2py/index.html">f2py (experimental)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_numcpp/index.html">NumCpp</a></li>
@@ -697,17 +697,32 @@
 <div class="sd-card-body docutils">
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="_annoy/index.html">ANNoy (experimental)</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="_annoy/index.html">spotify/ANNoy (experimental)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="_annoy/index.html#tl-dr">TL;DR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_annoy/index.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_annoy/index.html#background">Background</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_annoy/index.html#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_annoy/index.html#features">Features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_annoy/index.html#python-example">Python Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_annoy/index.html#notes">Notes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_annoy/index.html#trade-offs">Trade-offs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_annoy/index.html#supported-platforms-and-bindings">Supported Platforms and Bindings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_annoy/index.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_annoy/index.html#quick-start">Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_annoy/index.html#workflow">Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_annoy/index.html#important-rules">Important rules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="_annoy/index.html#persistence-and-sharing">Persistence and sharing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_annoy/index.html#save-and-load">Save and load</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_annoy/index.html#prefault-optional">Prefault (optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="_annoy/index.html#on-disk-build-large-datasets">On-disk build (large datasets)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_annoy/index.html#id19">Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_annoy/index.html#id22">Important rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_annoy/index.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="_annoy/index.html#tuning">Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_annoy/index.html#practical-tips">Practical tips</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_annoy/index.html#choose-stable-item-ids">Choose stable item ids</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_annoy/index.html#multi-process-serving">Multi-process serving</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="_annoy/index.html#developer-notes-c">Developer notes (C++)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_annoy/index.html#see-also">See also</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_annoy/index.html#references">References</a></li>
 </ul>
 </li>
@@ -806,7 +821,7 @@
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">ANNoy (experimental)</p>
+        <p class="prev-next-title">spotify/ANNoy (experimental)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -859,7 +874,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251216.acb8da7 2025-12-16T09:34Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251216.291bf90 2025-12-16T13:13Z.
       <br/>
     
   </p>

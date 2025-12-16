@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/user_guide/annoy/index.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="Examples relevant to the annoy module with_annoy. annoy is a Python module that provides high-performance approximate nearest neighbor search in Python. Python Example:" />
+<meta property="og:description" content="This page documents the Annoy 0 integration shipped with scikit-plots. High-level API: annoy, Low-level bindings:_annoy. High-level Python interface for the C++ Annoy backend. This page documents a..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="Examples relevant to the annoy module with_annoy. annoy is a Python module that provides high-performance approximate nearest neighbor search in Python. Python Example:" />
+<meta name="description" content="This page documents the Annoy 0 integration shipped with scikit-plots. High-level API: annoy, Low-level bindings:_annoy. High-level Python interface for the C++ Annoy backend. This page documents a..." />
 
     <title>ANNoy &#8212; scikit-plots 0.5.dev0 documentation</title>
   
@@ -610,7 +610,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../cexperimental/index.html">C-Experimental (experimental)</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../cexternals/index.html">C-Externals (experimental)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cexternals/_annoy/index.html">ANNoy (experimental)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cexternals/_annoy/index.html">spotify/ANNoy (experimental)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cexternals/_astropy/index.html">Astropy (experimental)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cexternals/_f2py/index.html">f2py (experimental)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cexternals/_numcpp/index.html">NumCpp</a></li>
@@ -687,29 +687,42 @@
                   
   <section id="annoy">
 <span id="annoy-index"></span><h1>ANNoy<a class="headerlink" href="#annoy" title="Link to this heading">#</a></h1>
-<p>Examples relevant to the <a class="reference internal" href="../../apis/scikitplot.annoy.html#module-scikitplot.annoy" title="scikitplot.annoy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">annoy</span></code></a> module with  <a class="reference internal" href="../../modules/generated/scikitplot.cexternals._annoy.html#module-scikitplot.cexternals._annoy" title="scikitplot.cexternals._annoy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">_annoy</span></code></a>.</p>
-<p><a class="reference internal" href="../../apis/scikitplot.annoy.html#module-scikitplot.annoy" title="scikitplot.annoy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">annoy</span></code></a> is a Python module that provides high-performance approximate nearest neighbor search in Python.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
+<p>This page documents the Annoy <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>0<span class="fn-bracket">]</span></a> integration shipped with scikit-plots.</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/spotify/annoy">github: ANNoy based on random projection (hyperplane) trees</a></p></li>
-<li><p><a class="reference external" href="https://pypi.org/project/annoy">pypi: ANNoy based on random projection (hyperplane) method</a></p></li>
-<li><p><a class="reference external" href="https://github.com/spotify/voyager">github: Voyager based on HNSW algorithm (hnswlib)</a></p></li>
-<li><p><a class="reference external" href="https://pypi.org/project/voyager">pypi: Voyager based on HNSW algorithm (hnswlib)</a></p></li>
-<li><p><a class="reference external" href="https://github.com/nmslib/hnswlib">github: HNSW implementation Header-only C++/python</a></p></li>
-<li><p><a class="reference external" href="https://pypi.org/project/hnswlib">pypi: HNSW implementation Header-only C++/python</a></p></li>
+<li><p>High-level API: <a class="reference internal" href="../../apis/scikitplot.annoy.html#module-scikitplot.annoy" title="scikitplot.annoy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">annoy</span></code></a></p></li>
+<li><p>Low-level bindings: <a class="reference internal" href="../../modules/generated/scikitplot.cexternals._annoy.html#module-scikitplot.cexternals._annoy" title="scikitplot.cexternals._annoy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">_annoy</span></code></a></p></li>
 </ul>
+<p>High-level Python interface for the C++ Annoy backend.</p>
+<p>This page documents <a class="reference internal" href="../../apis/scikitplot.annoy.html#module-scikitplot.annoy" title="scikitplot.annoy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">annoy</span></code></a>. It provides a stable import path
+and a small, user-facing API built on the low-level bindings in
+<a class="reference internal" href="../../modules/generated/scikitplot.cexternals._annoy.html#module-scikitplot.cexternals._annoy" title="scikitplot.cexternals._annoy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">_annoy</span></code></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For backend and C-extension details, see <a class="reference internal" href="../cexternals/_annoy/index.html#cexternals-annoy-index"><span class="std std-ref">spotify/ANNoy (experimental)</span></a>.</p>
 </div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
+<section id="exports">
+<h2>Exports<a class="headerlink" href="#exports" title="Link to this heading">#</a></h2>
+<p>This module exports:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="../cexternals/_annoy/index.html#cexternals-annoy-index"><span class="std std-ref">ANNoy (experimental)</span></a></p></li>
-<li><p><a class="reference internal" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index.from_low_level" title="scikitplot.annoy.Index.from_low_level"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_low_level</span></code></a></p></li>
-<li><p><a class="reference external" href="https://docs.python.org/3/library/pickle.html#what-can-be-pickled-and-unpickled">https://docs.python.org/3/library/pickle.html#what-can-be-pickled-and-unpickled</a></p></li>
+<li><p><a class="reference internal" href="../../modules/generated/scikitplot.annoy.Annoy.html#scikitplot.annoy.Annoy" title="scikitplot.annoy.Annoy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annoy</span></code></a>:
+Low-level C-extension type (stable).</p></li>
+<li><p><a class="reference internal" href="../../modules/generated/scikitplot.annoy.AnnoyIndex.html#scikitplot.annoy.AnnoyIndex" title="scikitplot.annoy.AnnoyIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnoyIndex</span></code></a>:
+Public alias of the Annoy index.</p></li>
+<li><p><a class="reference internal" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><code class="xref py py-class docutils literal notranslate"><span class="pre">Index</span></code></a>:
+High-level Python wrapper subclass (picklable).</p></li>
 </ul>
-</div>
-<section id="python-example">
-<h2>Python Example<a class="headerlink" href="#python-example" title="Link to this heading">#</a></h2>
+</section>
+<section id="workflow">
+<h2>Workflow<a class="headerlink" href="#workflow" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Create an <a class="reference internal" href="../../modules/generated/scikitplot.annoy.AnnoyIndex.html#scikitplot.annoy.AnnoyIndex" title="scikitplot.annoy.AnnoyIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnoyIndex</span></code></a> with a fixed vector length <code class="docutils literal notranslate"><span class="pre">f</span></code> and a metric.</p></li>
+<li><p>Add items with <code class="xref py py-meth docutils literal notranslate"><span class="pre">add_item</span></code>.</p></li>
+<li><p>Build the forest with <code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code>.</p></li>
+<li><p>Save and load with <code class="xref py py-meth docutils literal notranslate"><span class="pre">save</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">load</span></code>.</p></li>
+</ol>
+</section>
+<section id="quick-start">
+<h2>Quick start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span><span class="p">;</span> <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="c1"># from annoy import Annoy, AnnoyIndex</span>
 <span class="c1"># from scikitplot.cexternals._annoy import Annoy, AnnoyIndex</span>
@@ -717,6 +730,7 @@
 
 <span class="n">f</span> <span class="o">=</span> <span class="mi">40</span>  <span class="c1"># Length of item vector that will be indexed</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">AnnoyIndex</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;angular&#39;</span><span class="p">)</span>
+
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
     <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">f</span><span class="p">)]</span>
     <span class="n">t</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
@@ -726,9 +740,88 @@
 
 <span class="n">u</span> <span class="o">=</span> <span class="n">AnnoyIndex</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;angular&#39;</span><span class="p">)</span>
 <span class="n">u</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;test.ann&#39;</span><span class="p">)</span>  <span class="c1"># memory-mapped</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
 </pre></div>
 </div>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Every added vector must have length <code class="docutils literal notranslate"><span class="pre">f</span></code>.</p></li>
+<li><p>Add items before calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code>.</p></li>
+<li><p>Item ids are integers. Storage is allocated up to <code class="docutils literal notranslate"><span class="pre">max(id)</span> <span class="pre">+</span> <span class="pre">1</span></code>.</p></li>
+</ul>
+</section>
+<section id="high-level-wrapper-index">
+<h2>High-level wrapper: <a class="reference internal" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><code class="xref py py-class docutils literal notranslate"><span class="pre">Index</span></code></a><a class="headerlink" href="#high-level-wrapper-index" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><code class="xref py py-class docutils literal notranslate"><span class="pre">Index</span></code></a> is a Pythonic wrapper for Annoy-like objects.</p>
+<p>It is designed for higher-level workflows where you want a Python object that is
+safe to serialize and move between processes.</p>
+</section>
+<section id="mixins-used-by-the-high-level-wrapper">
+<h2>Mixins used by the high-level wrapper<a class="headerlink" href="#mixins-used-by-the-high-level-wrapper" title="Link to this heading">#</a></h2>
+<p>The wrapper uses mixins to keep features separate and explicit.</p>
+</section>
+<section id="annoy-index-mixins">
+<h2>ANNoy Index Mixins<a class="headerlink" href="#annoy-index-mixins" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CompressMode</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ManifestMixin</span></code>: Export/import metadata only.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NDArrayExportMixin</span></code>: Export mixin for Annoy-like classes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ObjectIOMixin</span></code>: Persistence for the Python object (Index/Annoy alias),
+not the raw Annoy index file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PathAwareAnnoy</span></code>: Thin Python subclass that tracks the last known on-disk path.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PickleMixin</span></code>: Adds strict persistence support.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PickleMode</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SerializerBackend</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VectorOpsMixin</span></code>: High-level vector operations for Annoy-like objects.</p></li>
+</ul>
+</section>
+<section id="further-reading">
+<h2>Further reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#annoy-index"><span class="std std-ref">ANNoy</span></a></p></li>
+<li><p><a class="reference internal" href="../cexternals/_annoy/index.html#cexternals-annoy-index"><span class="std std-ref">cexternals/ANNoy (experimental)</span></a></p></li>
+<li><p><a class="github reference external" href="https://github.com/spotify/annoy">spotify/annoy</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/annoy">https://pypi.org/project/annoy</a></p></li>
+</ul>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/spotify/annoy">github: ANNoy based on random projection (hyperplane) trees</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/annoy">pypi: ANNoy based on random projection (hyperplane) method</a></p></li>
+<li><p><a class="reference external" href="https://github.com/spotify/voyager">github: Voyager based on HNSW algorithm (hnswlib)</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/voyager">pypi: Voyager based on HNSW algorithm (hnswlib)</a></p></li>
+<li><p><a class="reference external" href="https://github.com/nmslib/hnswlib">github: HNSW implementation Header-only C++/python</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/hnswlib">pypi: HNSW implementation Header-only C++/python</a></p></li>
+<li><p>Python pickling: <a class="reference external" href="https://docs.python.org/3/library/pickle.html#what-can-be-pickled-and-unpickled">https://docs.python.org/3/library/pickle.html#what-can-be-pickled-and-unpickled</a></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/pickle.html#what-can-be-pickled-and-unpickled">https://docs.python.org/3/library/pickle.html#what-can-be-pickled-and-unpickled</a></p></li>
+</ul>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p>Nearest neighbor search (background): <a class="reference external" href="https://en.wikipedia.org/wiki/Nearest_neighbor_search">https://en.wikipedia.org/wiki/Nearest_neighbor_search</a></p></li>
+<li><p><a class="reference external" href="https://www.researchgate.net/publication/386374637_Optimizing_Domain-Specific_Image_Retrieval_A_Benchmark_of_FAISS_and_Annoy_with_Fine-Tuned_Features">https://www.researchgate.net/publication/386374637_Optimizing_Domain-Specific_Image_Retrieval_A_Benchmark_of_FAISS_and_Annoy_with_Fine-Tuned_Features</a></p></li>
+<li><p><a class="reference external" href="https://www.researchgate.net/publication/363234433_Analysis_of_Image_Similarity_Using_CNN_and_ANNOY">https://www.researchgate.net/publication/363234433_Analysis_of_Image_Similarity_Using_CNN_and_ANNOY</a></p></li>
+<li><p><a class="reference external" href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/XboxInnerProduct.pdf">https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/XboxInnerProduct.pdf</a></p></li>
+<li><p><a class="reference external" href="https://link.springer.com/chapter/10.1007/978-981-97-7831-7_2">https://link.springer.com/chapter/10.1007/978-981-97-7831-7_2</a></p></li>
+</ul>
+</div>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">0</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://pypi.org/project/annoy">Spotify AB. (2013, Feb 20). “Approximate Nearest Neighbors Oh Yeah”
+Github. https://pypi.org/project/annoy</a></p>
+</aside>
+</aside>
 </section>
 </section>
 
@@ -783,7 +876,15 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-example">Python Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exports">Exports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow">Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick start</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#high-level-wrapper-index">High-level wrapper: <code class="xref py py-class docutils literal notranslate"><span class="pre">Index</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixins-used-by-the-high-level-wrapper">Mixins used by the high-level wrapper</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#annoy-index-mixins">ANNoy Index Mixins</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
 
@@ -821,7 +922,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251216.acb8da7 2025-12-16T09:34Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251216.291bf90 2025-12-16T13:13Z.
       <br/>
     
   </p>
