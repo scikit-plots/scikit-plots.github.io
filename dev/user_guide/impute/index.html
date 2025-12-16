@@ -688,6 +688,13 @@
   <section id="impute">
 <span id="impute-index"></span><h1>Impute<a class="headerlink" href="#impute" title="Link to this heading">#</a></h1>
 <p>This module contains some functions related to <a class="reference internal" href="../../apis/scikitplot.impute.html#module-scikitplot.impute" title="scikitplot.impute"><code class="xref py py-mod docutils literal notranslate"><span class="pre">impute</span></code></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Annoy</span> <span class="pre">(Approximate</span> <span class="pre">Nearest</span> <span class="pre">Neighbors</span> <span class="pre">Oh</span> <span class="pre">Yeah)</span></code> is a C++ library with Python bindings
+to search for points in space that are close to a given query point.
+It also creates large read-only file-based data structures
+that are mmapped into memory so that many processes may share the same data.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Voyager</span></code> is optimized for modern nearest-neighbor search.</p>
+<p><code class="docutils literal notranslate"><span class="pre">HNSW</span> <span class="pre">(Hierarchical</span> <span class="pre">Navigable</span> <span class="pre">Small</span> <span class="pre">World)</span></code> provides better accuracy and speed,
+outperforming Annoy in most use cases, especially when precision is important.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
@@ -699,13 +706,6 @@
 <li><p><a class="reference external" href="https://pypi.org/project/hnswlib">pypi: HNSW implementation Header-only C++/python</a></p></li>
 </ul>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">Annoy</span> <span class="pre">(Approximate</span> <span class="pre">Nearest</span> <span class="pre">Neighbors</span> <span class="pre">Oh</span> <span class="pre">Yeah)</span></code> is a C++ library with Python bindings
-to search for points in space that are close to a given query point.
-It also creates large read-only file-based data structures
-that are mmapped into memory so that many processes may share the same data.</p>
-<p><code class="docutils literal notranslate"><span class="pre">Voyager</span></code> is optimized for modern nearest-neighbor search.</p>
-<p><code class="docutils literal notranslate"><span class="pre">HNSW</span> <span class="pre">(Hierarchical</span> <span class="pre">Navigable</span> <span class="pre">Small</span> <span class="pre">World)</span></code> provides better accuracy and speed,
-outperforming Annoy in most use cases, especially when precision is important.</p>
 <section id="annimputer">
 <span id="ann-imputer-index"></span><h2>ANNImputer<a class="headerlink" href="#annimputer" title="Link to this heading">#</a></h2>
 <p>This module contains some functions related to <a class="reference internal" href="../../modules/generated/scikitplot.impute._ann.ANNImputer.html#scikitplot.impute._ann.ANNImputer" title="scikitplot.impute._ann.ANNImputer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ANNImputer</span></code></a>.</p>
@@ -880,7 +880,7 @@ span.prompt1:before {
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251212.264c795 2025-12-12T21:10Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251216.acb8da7 2025-12-16T09:34Z.
       <br/>
     
   </p>

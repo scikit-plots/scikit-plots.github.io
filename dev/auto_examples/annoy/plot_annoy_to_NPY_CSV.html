@@ -469,9 +469,9 @@
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span><span class="p">;</span> <a class="sphx-glr-backref-module-random sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/random.html#random.seed" title="random.seed"><span class="n">random</span><span class="o">.</span><span class="n">seed</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># from annoy import Annoy, AnnoyIndex</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annoy</span><span class="p">,</span> <a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.annoy.AnnoyIndex.html#scikitplot.annoy.AnnoyIndex" title="scikitplot.annoy.AnnoyIndex"><span class="n">AnnoyIndex</span></a><span class="p">,</span> <span class="n">Index</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annoy</span><span class="p">,</span> <span class="n">AnnoyIndex</span><span class="p">,</span> <a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">Index</span></a>
 
-<span class="nb">print</span><span class="p">(</span><a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.annoy.AnnoyIndex.html#scikitplot.annoy.AnnoyIndex" title="scikitplot.annoy.AnnoyIndex"><span class="n">AnnoyIndex</span></a><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">Index</span></a><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>High-level Pythonic Annoy wrapper with picklable (or pickle-able).
@@ -493,7 +493,7 @@ Minimal modify spotify/annoy low-level C-API to extend Python API.
 
 <span class="n">f</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">idx</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.annoy.AnnoyIndex.html#scikitplot.annoy.AnnoyIndex" title="scikitplot.annoy.AnnoyIndex"><span class="n">AnnoyIndex</span></a><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">"angular"</span><span class="p">)</span>
+<span class="n">idx</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">Index</span></a><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">"angular"</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="n">idx</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="p">[</span><a class="sphx-glr-backref-module-random sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/random.html#random.gauss" title="random.gauss"><span class="n">random</span><span class="o">.</span><span class="n">gauss</span></a><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">f</span><span class="p">)])</span>
 
@@ -972,21 +972,21 @@ Exports items [0, n_items) into a memmapped .npy</p>
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.103 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.079 seconds)</p>
 
 <p class="rubric">Related examples</p>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Index class."><img alt="" src="../../_images/sphx_glr_plot_Annoy_python_api_thumb.png"/>
-<p><a class="reference internal" href="plot_Annoy_python_api.html"><span class="doc">annoy.Index python-api with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">annoy.Index python-api with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Annoy class."><img alt="" src="../../_images/sphx_glr_plot_Annoy_legacy_c_api_thumb.png"/>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Annoy, :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_Annoy_legacy_c_api_thumb.png"/>
 <p><a class="reference internal" href="plot_Annoy_legacy_c_api.html"><span class="doc">annoy.Annoy legacy c-api with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">annoy.Annoy legacy c-api with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Index class."><img alt="" src="../../_images/sphx_glr_plot_Annoy_python_api_thumb.png"/>
+<p><a class="reference internal" href="plot_Annoy_python_api.html"><span class="doc">annoy.Index python-api with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">annoy.Index python-api with examples</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.snsx.aucplot function with a scikit-learn classifier (e.g., :py~sklearn.linear_model.LogisticRegression) instance."><img alt="" src="../../_images/sphx_glr_plot_aucplot_script_thumb.png"/>
 <p><a class="reference internal" href="../snsx/plot_aucplot_script.html"><span class="doc">plot_aucplot_script with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">plot_aucplot_script with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_mmap_script_thumb.png"/>
-<p><a class="reference internal" href="plot_mmap_script.html"><span class="doc">Mmap annoy.AnnoyIndex with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">Mmap annoy.AnnoyIndex with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Usage::"><img alt="" src="../../_images/sphx_glr_s_compile_cpp_thumb.png"/>
+<p><a class="reference internal" href="s_compile_cpp.html"><span class="doc">&lt;no title&gt;</span></a></p>
+<div class="sphx-glr-thumbnail-title">Compile and run the C++ Annoy precision example.</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </article>
@@ -1037,7 +1037,7 @@ Exports items [0, n_items) into a memmapped .npy</p>
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251212.264c795 2025-12-12T21:10Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251216.acb8da7 2025-12-16T09:34Z.
       <br/>
 </p>
 </div>

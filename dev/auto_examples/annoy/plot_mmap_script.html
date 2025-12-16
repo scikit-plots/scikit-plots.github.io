@@ -9,10 +9,10 @@
 <meta content="website" property="og:type"/>
 <meta content="https://scikit-plots.github.io/stable/auto_examples/annoy/plot_mmap_script.html" property="og:url"/>
 <meta content="scikit-plots" property="og:site_name"/>
-<meta content="An example showing the AnnoyIndex class. Tags: model-type: classification model-workflow: impute plot-type: bar level: beginner purpose: showcase Total running time of the script:(0 minutes 0.003 s..." property="og:description"/>
+<meta content="An example showing the AnnoyIndex class. Tags: model-type: classification model-workflow: impute plot-type: bar level: beginner purpose: showcase Total running time of the script:(0 minutes 0.004 s..." property="og:description"/>
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
-<meta content="An example showing the AnnoyIndex class. Tags: model-type: classification model-workflow: impute plot-type: bar level: beginner purpose: showcase Total running time of the script:(0 minutes 0.003 s..." name="description"/>
+<meta content="An example showing the AnnoyIndex class. Tags: model-type: classification model-workflow: impute plot-type: bar level: beginner purpose: showcase Total running time of the script:(0 minutes 0.004 s..." name="description"/>
 <title>Mmap annoy.AnnoyIndex with examples — scikit-plots 0.5.dev0 documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
@@ -480,7 +480,7 @@
 <span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'test.annoy'</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Annoy(f=3, metric='angular', n_items=3, n_trees=5, on_disk_path=test.annoy)
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">AnnoyIndex</span></a><span class="p">(</span>
@@ -490,7 +490,7 @@
 <span class="n">b</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'test.annoy'</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>True
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Annoy(f=3, metric='angular', n_items=3, n_trees=5, on_disk_path=test.annoy)
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
@@ -502,7 +502,7 @@
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-impute.html"><span class="doc">model-workflow: impute</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-bar.html"><span class="doc">plot-type: bar</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.003 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.004 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_simple_script_thumb.png"/>
@@ -511,12 +511,12 @@
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Index class."><img alt="" src="../../_images/sphx_glr_plot_Annoy_python_api_thumb.png"/>
 <p><a class="reference internal" href="plot_Annoy_python_api.html"><span class="doc">annoy.Index python-api with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">annoy.Index python-api with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Annoy, :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_Annoy_legacy_c_api_thumb.png"/>
+<p><a class="reference internal" href="plot_Annoy_legacy_c_api.html"><span class="doc">annoy.Annoy legacy c-api with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">annoy.Annoy legacy c-api with examples</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_precision_script_thumb.png"/>
 <p><a class="reference internal" href="plot_precision_script.html"><span class="doc">Precision annoy.AnnoyIndex with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">Precision annoy.AnnoyIndex with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Annoy class."><img alt="" src="../../_images/sphx_glr_plot_Annoy_legacy_c_api_thumb.png"/>
-<p><a class="reference internal" href="plot_Annoy_legacy_c_api.html"><span class="doc">annoy.Annoy legacy c-api with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">annoy.Annoy legacy c-api with examples</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </article>
@@ -567,7 +567,7 @@
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251212.264c795 2025-12-12T21:10Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251216.acb8da7 2025-12-16T09:34Z.
       <br/>
 </p>
 </div>

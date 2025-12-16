@@ -695,14 +695,18 @@
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="../../annoy/index.html#annoy-index"><span class="std std-ref">ANNoy</span></a></p></li>
-<li><p><a class="github reference external" href="https://github.com/spotify/annoy">spotify/annoy</a></p></li>
-<li><p><a class="reference external" href="https://pypi.org/project/annoy">https://pypi.org/project/annoy</a></p></li>
+<li><p><a class="reference external" href="https://github.com/spotify/annoy">github: ANNoy based on random projection (hyperplane) trees</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/annoy">pypi: ANNoy based on random projection (hyperplane) method</a></p></li>
+<li><p><a class="reference external" href="https://github.com/spotify/voyager">github: Voyager based on HNSW algorithm (hnswlib)</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/voyager">pypi: Voyager based on HNSW algorithm (hnswlib)</a></p></li>
+<li><p><a class="reference external" href="https://github.com/nmslib/hnswlib">github: HNSW implementation Header-only C++/python</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/hnswlib">pypi: HNSW implementation Header-only C++/python</a></p></li>
 </ul>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
+<li><p><a class="reference internal" href="../../annoy/index.html#annoy-index"><span class="std std-ref">ANNoy</span></a></p></li>
 <li><p><a class="reference internal" href="../../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index.from_low_level" title="scikitplot.annoy.Index.from_low_level"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_low_level</span></code></a></p></li>
 <li><p><a class="reference external" href="https://docs.python.org/3/library/pickle.html#what-can-be-pickled-and-unpickled">https://docs.python.org/3/library/pickle.html#what-can-be-pickled-and-unpickled</a></p></li>
 </ul>
@@ -770,9 +774,10 @@ high-dimensional spaces. It was originally built by Erik Bernhardsson during Hac
 </section>
 <section id="python-example">
 <h2>Python Example<a class="headerlink" href="#python-example" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># from annoy import AnnoyIndex</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annoy</span><span class="p">,</span> <span class="n">AnnoyBase</span><span class="p">,</span> <span class="n">AnnoyIndex</span><span class="p">,</span> <span class="n">Index</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span><span class="p">;</span> <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># from annoy import Annoy, AnnoyIndex</span>
+<span class="c1"># from scikitplot.cexternals._annoy import Annoy, AnnoyIndex</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annoy</span><span class="p">,</span> <span class="n">AnnoyIndex</span><span class="p">,</span> <span class="n">Index</span>
 
 <span class="n">f</span> <span class="o">=</span> <span class="mi">40</span>  <span class="c1"># Length of item vector that will be indexed</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">AnnoyIndex</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;angular&#39;</span><span class="p">)</span>
@@ -931,7 +936,7 @@ high-dimensional spaces. It was originally built by Erik Bernhardsson during Hac
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251212.264c795 2025-12-12T21:10Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251216.acb8da7 2025-12-16T09:34Z.
       <br/>
     
   </p>

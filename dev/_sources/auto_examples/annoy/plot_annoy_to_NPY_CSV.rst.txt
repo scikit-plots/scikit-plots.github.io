@@ -36,7 +36,7 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
     # from annoy import Annoy, AnnoyIndex
     from scikitplot.annoy import Annoy, AnnoyIndex, Index
 
-    print(AnnoyIndex.__doc__)
+    print(Index.__doc__)
 
 
 
@@ -74,7 +74,7 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
 
     f = 10
     n = 1000
-    idx = AnnoyIndex(f, "angular")
+    idx = Index(f, "angular")
     for i in range(n):
         idx.add_item(i, [random.gauss(0, 1) for _ in range(f)])
 
@@ -682,7 +682,7 @@ Range-only export (strict, sized)
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.103 seconds)
+   **Total running time of the script:** (0 minutes 0.079 seconds)
 
 
 .. _sphx_glr_download_auto_examples_annoy_plot_annoy_to_NPY_CSV.py:

@@ -30,7 +30,7 @@ Designed so Sphinx can execute it directly using::
 
     >>> python plot_s_compile_cpp.py 10 1000 123
 
-.. GENERATED FROM PYTHON SOURCE LINES 15-115
+.. GENERATED FROM PYTHON SOURCE LINES 17-120
 
 .. code-block:: Python
 
@@ -89,7 +89,8 @@ Designed so Sphinx can execute it directly using::
             cxx,
             str(CPP_FILE),
             "-DANNOYLIB_MULTITHREADED_BUILD",
-            "-std=c++14",
+            # "-std=c++17",
+            "-std=c++14",  # non-copyable (because of std::atomic)
             "-pthread",
             "-o",
             str(BIN_FILE)
@@ -132,8 +133,10 @@ Designed so Sphinx can execute it directly using::
 
 
     if __name__ == "__main__":
-        with contextlib.suppress(Exception, NameError, TypeError, ValueError):
-            main()
+        # with contextlib.suppress(Exception, NameError, TypeError, ValueError):
+        #     main()
+        pass
+
 
 
 .. _sphx_glr_download_auto_examples_annoy_s_compile_cpp.py:

@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/apis/scikitplot.annoy.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="High-level Python interface for the C++ Annoy backend. Spotify ANNoy (Approximate Nearest Neighbors Oh Yeah). Exports: Annoy → low-level C-extension type (stable), AnnoyBase → alias of annoylib.Ann..." />
+<meta property="og:description" content="High-level Python interface for the C++ Annoy backend. Spotify ANNoy (Approximate Nearest Neighbors Oh Yeah). Exports: Annoy → low-level C-extension type (stable), AnnoyIndex → public aliases of An..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="High-level Python interface for the C++ Annoy backend. Spotify ANNoy (Approximate Nearest Neighbors Oh Yeah). Exports: Annoy → low-level C-extension type (stable), AnnoyBase → alias of annoylib.Ann..." />
+<meta name="description" content="High-level Python interface for the C++ Annoy backend. Spotify ANNoy (Approximate Nearest Neighbors Oh Yeah). Exports: Annoy → low-level C-extension type (stable), AnnoyIndex → public aliases of An..." />
 
     <title>scikitplot.annoy &#8212; scikit-plots 0.5.dev0 documentation</title>
   
@@ -571,7 +571,6 @@
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">scikitplot.annoy</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.annoy.Annoy.html">Annoy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.annoy.AnnoyBase.html">AnnoyBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.annoy.AnnoyIndex.html">AnnoyIndex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.annoy.Index.html">Index</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.annoy.CompressMode.html">CompressMode</a></li>
@@ -618,7 +617,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.cexternals.html">scikitplot.cexternals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._annoy.html">_annoy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._annoy.Annoy.html">Annoy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._annoy.AnnoyBase.html">AnnoyBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._annoy.AnnoyIndex.html">AnnoyIndex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.html">_astropy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.html">stats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._f2py.html">_f2py</a></li>
@@ -846,10 +845,9 @@
 <p>Spotify ANNoy (Approximate Nearest Neighbors Oh Yeah).</p>
 <p>Exports:</p>
 <ul class="simple">
-<li><p>Annoy      → low-level C-extension type (stable)</p></li>
-<li><p>AnnoyBase  → alias of annoylib.Annoy Index</p></li>
-<li><p>Index      → high-level Python subclass (picklable)</p></li>
-<li><p>AnnoyIndex → public aliases of Annoy Index</p></li>
+<li><p>Annoy       → low-level C-extension type (stable)</p></li>
+<li><p>AnnoyIndex  → public aliases of Annoy Index</p></li>
+<li><p>Index       → high-level Python wrapper subclass (picklable)</p></li>
 </ul>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -885,9 +883,15 @@ Github. https://pypi.org/project/annoy</a></p>
 </div>
 </div>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># from annoy import AnnoyIndex</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annoy</span><span class="p">,</span> <span class="n">AnnoyBase</span><span class="p">,</span> <span class="n">AnnoyIndex</span><span class="p">,</span> <span class="n">Index</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="mi">40</span>  <span class="c1"># vector dimensionality</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="gp">...</span>
+<span class="gp">... </span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># from annoy import AnnoyIndex</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.cexternals._annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annoy</span><span class="p">,</span> <span class="n">AnnoyIndex</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annoy</span><span class="p">,</span> <span class="n">AnnoyIndex</span><span class="p">,</span> <span class="n">Index</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="mi">40</span>  <span class="c1"># vector dimensionality</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">AnnoyIndex</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">&quot;angular&quot;</span><span class="p">)</span>  <span class="c1"># Length of item vector and metric</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">f</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># Build 10 trees</span>
@@ -902,21 +906,18 @@ Github. https://pypi.org/project/annoy</a></p>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.annoy.Annoy.html#scikitplot.annoy.Annoy" title="scikitplot.annoy.Annoy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Annoy</span></code></a></p></td>
 <td><p>Compiled with GCC/Clang.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.annoy.AnnoyBase.html#scikitplot.annoy.AnnoyBase" title="scikitplot.annoy.AnnoyBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnnoyBase</span></code></a></p></td>
-<td><p>alias of <a class="reference internal" href="../modules/generated/scikitplot.cexternals._annoy.Annoy.html#scikitplot.cexternals._annoy.Annoy" title="annoy.Annoy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annoy</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.annoy.AnnoyIndex.html#scikitplot.annoy.AnnoyIndex" title="scikitplot.annoy.AnnoyIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnnoyIndex</span></code></a></p></td>
+<td><p>alias of <a class="reference internal" href="../modules/generated/scikitplot.cexternals._annoy.Annoy.html#scikitplot.cexternals._annoy.Annoy" title="scikitplot.cexternals._annoy.Annoy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annoy</span></code></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.annoy.AnnoyIndex.html#scikitplot.annoy.AnnoyIndex" title="scikitplot.annoy.AnnoyIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnnoyIndex</span></code></a></p></td>
-<td><p>alias of <a class="reference internal" href="../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy._base.Index"><code class="xref py py-class docutils literal notranslate"><span class="pre">Index</span></code></a></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Index</span></code></a></p></td>
 <td><p>High-level Pythonic Annoy wrapper with picklable (or pickle-able).</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
-<section id="annoy-mixins">
-<span id="annoy-ref-annoy-mixins"></span><h2>ANNoy Mixins<a class="headerlink" href="#annoy-mixins" title="Link to this heading">#</a></h2>
+<section id="annoy-index-mixins">
+<span id="annoy-ref-annoy-index-mixins"></span><h2>ANNoy <code class="docutils literal notranslate"><span class="pre">Index</span></code> Mixins<a class="headerlink" href="#annoy-index-mixins" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.annoy.CompressMode.html#scikitplot.annoy.CompressMode" title="scikitplot.annoy.CompressMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompressMode</span></code></a></p></td>
@@ -1014,7 +1015,7 @@ Github. https://pypi.org/project/annoy</a></p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251212.264c795 2025-12-12T21:10Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251216.acb8da7 2025-12-16T09:34Z.
       <br/>
     
   </p>
