@@ -9,10 +9,10 @@
 <meta content="website" property="og:type"/>
 <meta content="https://scikit-plots.github.io/stable/auto_examples/annoy/plot_Annoy_python_api.html" property="og:url"/>
 <meta content="scikit-plots" property="og:site_name"/>
-<meta content="An example showing the Index class. Tags: level: beginner purpose: showcase Total running time of the script:(0 minutes 0.166 seconds) Launch binder Launch JupyterLite Download Jupyter notebook: pl..." property="og:description"/>
+<meta content="An example showing the Index class. Tags: level: beginner purpose: showcase Total running time of the script:(0 minutes 0.262 seconds) Launch binder Launch JupyterLite Download Jupyter notebook: pl..." property="og:description"/>
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
-<meta content="An example showing the Index class. Tags: level: beginner purpose: showcase Total running time of the script:(0 minutes 0.166 seconds) Launch binder Launch JupyterLite Download Jupyter notebook: pl..." name="description"/>
+<meta content="An example showing the Index class. Tags: level: beginner purpose: showcase Total running time of the script:(0 minutes 0.262 seconds) Launch binder Launch JupyterLite Download Jupyter notebook: pl..." name="description"/>
 <title>annoy.Index python-api with examples — scikit-plots 0.5.dev0 documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
@@ -474,16 +474,67 @@
 <span class="c1"># from scikitplot.cexternals._annoy import Annoy, AnnoyIndex</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annoy</span><span class="p">,</span> <span class="n">AnnoyIndex</span><span class="p">,</span> <a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">Index</span></a>
 
+<span class="nb">print</span><span class="p">(</span><span class="n">Annoy</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">Index</span></a><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>High-level Pythonic Annoy wrapper with picklable (or pickle-able).
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Compiled with GCC/Clang. Using 512-bit AVX instructions.
 
-Minimal modify spotify/annoy low-level C-API to extend Python API.
+Annoy(f=None, metric=None)
 
-.. seealso::
-    * :py:obj:`~scikitplot.annoy.Index.from_low_level`
-    * https://docs.python.org/3/library/pickle.html#what-can-be-pickled-and-unpickled
+Approximate Nearest Neighbors index (Annoy) with a small, lazy C-extension wrapper.
+
+Parameters
+----------
+f : int or None, optional
+    Vector dimension. If ``0`` or ``None``, dimension may be inferred from the
+    first vector passed to ``add_item`` (lazy mode).
+metric : str or None, optional
+    Distance metric (one of 'angular', 'euclidean', 'manhattan', 'dot', 'hamming').
+    If omitted and ``f &gt; 0``, defaults to ``'angular'`` (cosine-like).
+    If omitted and ``f == 0``, metric may be set later before construction.
+
+Attributes
+----------
+f : int
+    Vector dimension. ``0`` means "unknown / lazy".
+metric : {'angular', 'euclidean', 'manhattan', 'dot', 'hamming'} or None
+    Canonical metric name, or None if not configured yet (lazy).
+on_disk_path : str or None
+    Path for on-disk build/load. None if not configured.
+
+Notes
+-----
+- The underlying C++ index is created lazily when enough information exists.
+  The index is created when both ``f &gt; 0`` and ``metric`` are known, or on first
+  operation that requires it.
+- Once the C++ index is created, ``f`` and ``metric`` become immutable to keep
+  the object consistent and avoid undefined behavior.
+- This wrapper stores user configuration (seed/verbose) even before the C++ index
+  exists and applies it deterministically upon construction.
+
+Developer Notes:
+
+- Source of truth:
+  * ``f`` (int) and ``metric_id`` (enum) describe configuration.
+  * ``ptr`` is NULL when index is not constructed.
+- Invariant:
+  * ``ptr != NULL`` implies ``f &gt; 0`` and ``metric_id != METRIC_UNKNOWN``.
+
+Examples
+--------
+&gt;&gt;&gt; from annoy import Annoy, AnnoyIndex
+&gt;&gt;&gt; from scikitplot.cexternals._annoy import Annoy, AnnoyIndex
+&gt;&gt;&gt; from scikitplot.annoy import Annoy, AnnoyIndex, Index
+
+
+    High-level Pythonic Annoy wrapper with picklable (or pickle-able).
+
+    Minimal modify spotify/annoy low-level C-API to extend Python API.
+
+    .. seealso::
+        * :py:obj:`~scikitplot.annoy.Index.from_low_level`
+        * https://docs.python.org/3/library/pickle.html#what-can-be-pickled-and-unpickled
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-scikitplot sphx-glr-backref-type-py-module" href="../../apis/scikitplot.annoy.html#module-scikitplot.annoy" title="scikitplot.annoy"><span class="n">annoy</span></a>
@@ -491,13 +542,14 @@ Minimal modify spotify/annoy low-level C-API to extend Python API.
 <a class="sphx-glr-backref-module-scikitplot sphx-glr-backref-type-py-module" href="../../apis/scikitplot.annoy.html#module-scikitplot.annoy" title="scikitplot.annoy"><span class="n">annoy</span></a><span class="o">.</span><span class="n">__version__</span><span class="p">,</span> <span class="nb">dir</span><span class="p">(</span><a class="sphx-glr-backref-module-scikitplot sphx-glr-backref-type-py-module" href="../../apis/scikitplot.annoy.html#module-scikitplot.annoy" title="scikitplot.annoy"><span class="n">annoy</span></a><span class="p">),</span> <span class="nb">dir</span><span class="p">(</span><a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Annoy.html#scikitplot.annoy.Annoy" title="scikitplot.annoy.Annoy"><span class="n">annoy</span><span class="o">.</span><span class="n">Annoy</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>('2.0.0+git.20251130.8a7e82cb537053926b0ac6ec132b9ccc875af40c', ['Annoy', 'AnnoyIndex', 'CompressMode', 'Index', 'ManifestMixin', 'NDArrayExportMixin', 'ObjectIOMixin', 'PathAwareAnnoy', 'PickleMixin', 'PickleMode', 'SerializerBackend', 'VectorOpsMixin', '__all__', '__author__', '__author_email__', '__builtins__', '__cached__', '__doc__', '__file__', '__git_hash__', '__loader__', '__name__', '__package__', '__path__', '__spec__', '__version__', '_base', '_mixins', 'annotations', 'annoylib'], ['__class__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__len__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setstate__', '__sizeof__', '__str__', '__subclasshook__', 'add_item', 'build', 'deserialize', 'f', 'get_distance', 'get_item_vector', 'get_n_items', 'get_n_trees', 'get_nns_by_item', 'get_nns_by_vector', 'info', 'load', 'memory_usage', 'metric', 'on_disk_build', 'save', 'serialize', 'set_seed', 'unbuild', 'unload', 'verbose'])
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>('2.0.0+git.20251130.8a7e82cb537053926b0ac6ec132b9ccc875af40c', ['Annoy', 'AnnoyIndex', 'CompressMode', 'Index', 'ManifestMixin', 'NDArrayExportMixin', 'ObjectIOMixin', 'PathAwareAnnoy', 'PickleMixin', 'PickleMode', 'SerializerBackend', 'VectorOpsMixin', '__all__', '__author__', '__author_email__', '__builtins__', '__cached__', '__doc__', '__file__', '__git_hash__', '__loader__', '__name__', '__package__', '__path__', '__spec__', '__version__', '_base', '_mixins', 'annotations', 'annoylib'], ['__class__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__len__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setstate__', '__sizeof__', '__str__', '__subclasshook__', '_f', '_metric_id', '_on_disk_path', 'add_item', 'build', 'deserialize', 'f', 'get_distance', 'get_item_vector', 'get_n_items', 'get_n_trees', 'get_nns_by_item', 'get_nns_by_vector', 'info', 'load', 'memory_usage', 'metric', 'on_disk_build', 'on_disk_path', 'save', 'serialize', 'set_seed', 'unbuild', 'unload', 'verbose'])
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># =============================================================</span>
 <span class="c1"># 1. Construction</span>
 <span class="c1"># =============================================================</span>
-<span class="n">idx</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">Index</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">idx</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">Index</span></a><span class="p">()</span>
+<span class="n">idx</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">Index</span></a><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Index dimension:"</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="n">f</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Metric         :"</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="n">metric</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
@@ -507,9 +559,56 @@ Minimal modify spotify/annoy low-level C-API to extend Python API.
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Index dimension: 0
-Metric         : angular
-Annoy(f=0, metric='angular', n_items=0, n_trees=0, on_disk_path=None)
-{'dimension': 0, 'metric': 'angular', 'n_items': 0, 'n_trees': 0, 'memory_usage_byte': 0, 'memory_usage_mib': 0.0, 'on_disk_path': None}
+Metric         : None
+Annoy(f=0, metric='unknown', n_items=0, n_trees=0, on_disk_path=None)
+{'f': 0, 'metric': None, 'n_items': 0, 'n_trees': 0, 'memory_usage_byte': 0, 'memory_usage_mib': 0.0, 'on_disk_path': None}
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">dir</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>['__annotations__', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__len__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setstate__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_compress_mode', '_detect_self_candidate_id', '_f', '_filter_ids', '_lock', '_metric_id', '_neighbor_ids_by_item', '_neighbor_ids_by_vector', '_normalize_ids', '_normalize_range', '_on_disk_path', '_pickle_mode', '_prefault', '_rebuild', '_require_numpy', '_require_pandas', '_vectors_equal_strict', 'add_item', 'build', 'compress_mode', 'deserialize', 'dump_binary', 'f', 'from_json', 'from_low_level', 'from_manifest', 'from_yaml', 'get_distance', 'get_item_vector', 'get_n_items', 'get_n_trees', 'get_neighbor_ids_by_item', 'get_neighbor_ids_by_vector', 'get_neighbor_vectors_by_item', 'get_neighbor_vectors_by_vector', 'get_nns_by_item', 'get_nns_by_vector', 'info', 'iter_item_vectors', 'iter_neighbor_vectors_by_item', 'iter_neighbor_vectors_by_vector', 'load', 'load_binary', 'load_from_file', 'memory_usage', 'metric', 'on_disk_build', 'on_disk_path', 'partition_existing_ids', 'pickle_mode', 'prefault', 'save', 'save_to_file', 'save_vectors_npy', 'serialize', 'set_seed', 'to_csv', 'to_dataframe', 'to_json', 'to_manifest', 'to_numpy', 'to_yaml', 'unbuild', 'unload', 'verbose']
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># AttributeError: readonly attribute</span>
+<span class="c1"># idx._metric_id = 1</span>
+<span class="n">idx</span><span class="o">.</span><span class="n">_f</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="n">_metric_id</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="n">_on_disk_path</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(0, 0, None)
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="n">metric</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="n">on_disk_path</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(0, None, None)
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span><span class="o">.</span><span class="n">metric</span> <span class="o">=</span> <span class="s2">"dot"</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="n">metric</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="n">on_disk_path</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(0, 'dot', None)
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># =============================================================</span>
+<span class="c1"># 1. Construction</span>
+<span class="c1"># =============================================================</span>
+<span class="c1"># idx = Index(f=3)</span>
+<span class="n">idx</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Index dimension:"</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="n">f</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Metric         :"</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="n">metric</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Index dimension: 3
+Metric         : dot
+Annoy(f=3, metric='dot', n_items=1, n_trees=0, on_disk_path=None)
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-scikitplot sphx-glr-backref-type-py-module" href="../../apis/scikitplot.annoy.html#module-scikitplot.annoy" title="scikitplot.annoy"><span class="n">annoy</span></a> <span class="k">as</span> <a class="sphx-glr-backref-module-scikitplot sphx-glr-backref-type-py-module" href="../../apis/scikitplot.annoy.html#module-scikitplot.annoy" title="scikitplot.annoy"><span class="n">a</span></a>
@@ -536,20 +635,6 @@ True
 &lt;class 'scikitplot.annoy._base.Index'&gt;
 scikitplot.annoy._base
 (&lt;class 'scikitplot.annoy._base.Index'&gt;, &lt;class 'scikitplot.annoy._mixins._vectors.VectorOpsMixin'&gt;, &lt;class 'scikitplot.annoy._mixins._ndarray.NDArrayExportMixin'&gt;, &lt;class 'scikitplot.annoy._mixins._io.ObjectIOMixin'&gt;, &lt;class 'scikitplot.annoy._mixins._manifest.ManifestMixin'&gt;, &lt;class 'scikitplot.annoy._mixins._pickle.PickleMixin'&gt;, &lt;class 'scikitplot.annoy._mixins._pickle.PathAwareAnnoy'&gt;, &lt;class 'scikitplot.cexternals._annoy.Annoy'&gt;, &lt;class 'object'&gt;)
-</pre></div>
-</div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># =============================================================</span>
-<span class="c1"># 1. Construction</span>
-<span class="c1"># =============================================================</span>
-<span class="n">idx</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">Index</span></a><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Index dimension:"</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="n">f</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Metric         :"</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="n">metric</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Index dimension: 3
-Metric         : angular
-Annoy(f=3, metric='angular', n_items=0, n_trees=0, on_disk_path=None)
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># =============================================================</span>
@@ -587,14 +672,14 @@ Metric         : angular
 <span class="n">idx</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">Index</span></a><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">"angular"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Index dimension:"</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="n">f</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Metric         :"</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="n">metric</span><span class="p">)</span>
-<span class="n">idx</span><span class="o">.</span><span class="n">on_disk_build</span><span class="p">(</span><span class="s2">"annoy_test2.annoy"</span><span class="p">)</span>
+<span class="n">idx</span><span class="o">.</span><span class="n">on_disk_build</span><span class="p">(</span><span class="s2">"annoy_test_2.annoy"</span><span class="p">)</span>
 <span class="c1"># help(idx.on_disk_build)</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Index dimension: 100
 Metric         : angular
 
-Annoy(f=100, metric='angular', n_items=0, n_trees=0, on_disk_path=annoy_test2.annoy)
+Annoy(f=100, metric='angular', n_items=0, n_trees=0, on_disk_path='annoy_test_2.annoy')
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># =============================================================</span>
@@ -629,7 +714,7 @@ Annoy(f=100, metric='angular', n_items=0, n_trees=0, on_disk_path=annoy_test2.an
 Number of items: 1000
 Index dimension: 100
 Metric         : angular
-Annoy(f=100, metric='angular', n_items=1000, n_trees=0, on_disk_path=annoy_test2.annoy)
+Annoy(f=100, metric='angular', n_items=1000, n_trees=0, on_disk_path='annoy_test_2.annoy')
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># =============================================================</span>
@@ -645,22 +730,22 @@ Annoy(f=100, metric='angular', n_items=1000, n_trees=0, on_disk_path=annoy_test2
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Trees: 10
 Memory usage: 543076 bytes
-Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path=annoy_test2.annoy)
-{'dimension': 100, 'metric': 'angular', 'n_items': 1000, 'n_trees': 10, 'memory_usage_byte': 543076, 'memory_usage_mib': 0.5179176330566406, 'on_disk_path': 'annoy_test2.annoy'}
+Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path='annoy_test_2.annoy')
+{'f': 100, 'metric': 'angular', 'n_items': 1000, 'n_trees': 10, 'memory_usage_byte': 543076, 'memory_usage_mib': 0.5179176330566406, 'on_disk_path': 'annoy_test_2.annoy'}
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span><span class="o">.</span><span class="n">unbuild</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Annoy(f=100, metric='angular', n_items=1000, n_trees=0, on_disk_path=annoy_test2.annoy)
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Annoy(f=100, metric='angular', n_items=1000, n_trees=0, on_disk_path='annoy_test_2.annoy')
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path=annoy_test2.annoy)
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path='annoy_test_2.annoy')
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># =============================================================</span>
@@ -724,7 +809,7 @@ Annoy(f=100, metric='angular', n_items=1000, n_trees=0, on_disk_path=None)
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Trees: 10
 Memory usage: 611056 bytes
 Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path=None)
-{'dimension': 100, 'metric': 'angular', 'n_items': 1000, 'n_trees': 10, 'memory_usage_byte': 611056, 'memory_usage_mib': 0.5827484130859375, 'on_disk_path': None}
+{'f': 100, 'metric': 'angular', 'n_items': 1000, 'n_trees': 10, 'memory_usage_byte': 611056, 'memory_usage_mib': 0.5827484130859375, 'on_disk_path': None}
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># =============================================================</span>
@@ -776,19 +861,19 @@ Low-level tuple return: [0, 762] [0.0, 1.2786411046981812]
 <span class="c1"># =============================================================</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">=== Saving with binary annoy ==="</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
-<span class="n">idx</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"annoy_test2.annoy"</span><span class="p">)</span>
+<span class="n">idx</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"annoy_test_2.annoy"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Loading..."</span><span class="p">)</span>
-<span class="n">idx2</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">Index</span></a><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">'angular'</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">"annoy_test2.annoy"</span><span class="p">)</span>
+<span class="n">idx2</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">Index</span></a><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">'angular'</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">"annoy_test_2.annoy"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Loaded index:"</span><span class="p">,</span> <span class="n">idx2</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>=== Saving with binary annoy ===
 Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path=None)
-Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path=annoy_test2.annoy)
+Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path='annoy_test_2.annoy')
 Loading...
-Loaded index: Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path=annoy_test2.annoy)
+Loaded index: Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path='annoy_test_2.annoy')
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
@@ -798,13 +883,13 @@ Loaded index: Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_p
 <a class="sphx-glr-backref-module-scikitplot sphx-glr-backref-type-py-module" href="../../apis/scikitplot.annoy.html#module-scikitplot.annoy" title="scikitplot.annoy"><span class="n">a</span></a>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path=annoy_test2.annoy)
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path='annoy_test_2.annoy')
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a class="sphx-glr-backref-module-scikitplot sphx-glr-backref-type-py-module" href="../../apis/scikitplot.annoy.html#module-scikitplot.annoy" title="scikitplot.annoy"><span class="n">a</span></a><span class="o">.</span><span class="n">info</span><span class="p">(),</span> <a class="sphx-glr-backref-module-scikitplot sphx-glr-backref-type-py-module" href="../../apis/scikitplot.annoy.html#module-scikitplot.annoy" title="scikitplot.annoy"><span class="n">a</span></a><span class="o">.</span><span class="n">get_n_items</span><span class="p">(),</span> <a class="sphx-glr-backref-module-scikitplot sphx-glr-backref-type-py-module" href="../../apis/scikitplot.annoy.html#module-scikitplot.annoy" title="scikitplot.annoy"><span class="n">a</span></a><span class="o">.</span><span class="n">get_n_trees</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>({'dimension': 100, 'metric': 'angular', 'n_items': 1000, 'n_trees': 10, 'memory_usage_byte': 543076, 'memory_usage_mib': 0.5179176330566406, 'on_disk_path': 'annoy_test2.annoy'}, 1000, 10)
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>({'f': 100, 'metric': 'angular', 'n_items': 1000, 'n_trees': 10, 'memory_usage_byte': 543076, 'memory_usage_mib': 0.5179176330566406, 'on_disk_path': 'annoy_test_2.annoy'}, 1000, 10)
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.array_equal.html#numpy.array_equal" title="numpy.array_equal"><span class="n">np</span><span class="o">.</span><span class="n">array_equal</span></a><span class="p">(</span><a class="sphx-glr-backref-module-scikitplot sphx-glr-backref-type-py-module" href="../../apis/scikitplot.annoy.html#module-scikitplot.annoy" title="scikitplot.annoy"><span class="n">a</span></a><span class="o">.</span><span class="n">get_item_vector</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">idx2</span><span class="o">.</span><span class="n">get_item_vector</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
@@ -833,7 +918,7 @@ Loaded index: Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_p
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>=== Raw serialize ===
 Deserialized index n_items: 1000
-Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path=annoy_test2.annoy)
+Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path='annoy_test_2.annoy')
 Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path=None)
 </pre></div>
 </div>
@@ -845,12 +930,12 @@ Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path=None)
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># idx.build(10)</span>
-<span class="n">idx</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">"annoy_test2.annoy"</span><span class="p">)</span>
+<span class="n">idx</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">"annoy_test_2.annoy"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path=annoy_test2.annoy)
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path='annoy_test_2.annoy')
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># joblib</span>
@@ -859,7 +944,7 @@ Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path=None)
 <a class="sphx-glr-backref-module-joblib sphx-glr-backref-type-py-function" href="https://joblib.readthedocs.io/en/latest/generated/joblib.dump.html#joblib.dump" title="joblib.dump"><span class="n">joblib</span><span class="o">.</span><span class="n">dump</span></a><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="s2">"test.joblib"</span><span class="p">),</span> <a class="sphx-glr-backref-module-joblib sphx-glr-backref-type-py-function" href="https://joblib.readthedocs.io/en/latest/generated/joblib.load.html#joblib.load" title="joblib.load"><span class="n">joblib</span><span class="o">.</span><span class="n">load</span></a><span class="p">(</span><span class="s2">"test.joblib"</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(['test.joblib'], Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path=annoy_test2.annoy))
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(['test.joblib'], Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path='annoy_test_2.annoy'))
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-scikitplot sphx-glr-backref-type-py-module" href="../../apis/scikitplot.annoy.html#module-scikitplot.annoy" title="scikitplot.annoy"><span class="n">annoy</span></a> <span class="k">as</span> <a class="sphx-glr-backref-module-scikitplot sphx-glr-backref-type-py-module" href="../../apis/scikitplot.annoy.html#module-scikitplot.annoy" title="scikitplot.annoy"><span class="n">a</span></a>
@@ -887,7 +972,7 @@ Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path=None)
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{'dimension': 10, 'metric': 'angular', 'n_items': 20, 'n_trees': 10, 'memory_usage_byte': 4220, 'memory_usage_mib': 0.004024505615234375, 'on_disk_path': None}
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{'f': 10, 'metric': 'angular', 'n_items': 20, 'n_trees': 10, 'memory_usage_byte': 4220, 'memory_usage_mib': 0.004024505615234375, 'on_disk_path': None}
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">idx</span><span class="o">.</span><span class="n">get_item_vector</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
@@ -897,7 +982,7 @@ Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path=None)
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.166 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.262 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Annoy, :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_Annoy_legacy_c_api_thumb.png"/>
@@ -962,7 +1047,7 @@ Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path=None)
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251216.291bf90 2025-12-16T13:13Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251217.ab6d95b 2025-12-17T20:53Z.
       <br/>
 </p>
 </div>

@@ -52,21 +52,58 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
 
     Compiled with GCC/Clang. Using 512-bit AVX instructions.
 
-    High-performance approximate nearest neighbours (Annoy) C++ core.
+    Annoy(f=None, metric=None)
 
-    This module is a low-level backend (``annoylib``). It exposes the
-    C++-powered :class:`~.Annoy` type. For day-to-day work, prefer the
-    high-level Python API in :mod:`~scikitplot.annoy`::
+    Approximate Nearest Neighbors index (Annoy) with a small, lazy C-extension wrapper.
 
-        >>> from annoy import Annoy, AnnoyIndex
-        >>> from scikitplot.cexternals._annoy import Annoy, AnnoyIndex
-        >>> from scikitplot.annoy import Annoy, AnnoyIndex, Index
+    Parameters
+    ----------
+    f : int or None, optional
+        Vector dimension. If ``0`` or ``None``, dimension may be inferred from the
+        first vector passed to ``add_item`` (lazy mode).
+    metric : str or None, optional
+        Distance metric (one of 'angular', 'euclidean', 'manhattan', 'dot', 'hamming').
+        If omitted and ``f > 0``, defaults to ``'angular'`` (cosine-like).
+        If omitted and ``f == 0``, metric may be set later before construction.
+
+    Attributes
+    ----------
+    f : int
+        Vector dimension. ``0`` means "unknown / lazy".
+    metric : {'angular', 'euclidean', 'manhattan', 'dot', 'hamming'} or None
+        Canonical metric name, or None if not configured yet (lazy).
+    on_disk_path : str or None
+        Path for on-disk build/load. None if not configured.
+
+    Notes
+    -----
+    - The underlying C++ index is created lazily when enough information exists.
+      The index is created when both ``f > 0`` and ``metric`` are known, or on first
+      operation that requires it.
+    - Once the C++ index is created, ``f`` and ``metric`` become immutable to keep
+      the object consistent and avoid undefined behavior.
+    - This wrapper stores user configuration (seed/verbose) even before the C++ index
+      exists and applies it deterministically upon construction.
+
+    Developer Notes:
+
+    - Source of truth:
+      * ``f`` (int) and ``metric_id`` (enum) describe configuration.
+      * ``ptr`` is NULL when index is not constructed.
+    - Invariant:
+      * ``ptr != NULL`` implies ``f > 0`` and ``metric_id != METRIC_UNKNOWN``.
+
+    Examples
+    --------
+    >>> from annoy import Annoy, AnnoyIndex
+    >>> from scikitplot.cexternals._annoy import Annoy, AnnoyIndex
+    >>> from scikitplot.annoy import Annoy, AnnoyIndex, Index
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 28-41
+.. GENERATED FROM PYTHON SOURCE LINES 28-42
 
 .. code-block:: Python
 
@@ -74,7 +111,8 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
     # =============================================================
     # 1. Construction
     # =============================================================
-    idx = AnnoyIndex(0)
+    idx = AnnoyIndex()
+    idx = AnnoyIndex(None, None)
     print("Index dimension:", idx.f)
     print("Metric         :", idx.metric)
     print(idx)
@@ -94,12 +132,122 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
     Index dimension: 0
     Metric         : None
     Annoy(f=0, metric='unknown', n_items=0, n_trees=0, on_disk_path=None)
-    {'dimension': 0, 'metric': '', 'n_items': 0, 'n_trees': 0, 'memory_usage_byte': 0, 'memory_usage_mib': 0.0, 'on_disk_path': None}
+    {'f': 0, 'metric': None, 'n_items': 0, 'n_trees': 0, 'memory_usage_byte': 0, 'memory_usage_mib': 0.0, 'on_disk_path': None}
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 42-53
+.. GENERATED FROM PYTHON SOURCE LINES 43-46
+
+.. code-block:: Python
+
+
+    dir(idx)
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    ['__class__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__len__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setstate__', '__sizeof__', '__str__', '__subclasshook__', '_f', '_metric_id', '_on_disk_path', 'add_item', 'build', 'deserialize', 'f', 'get_distance', 'get_item_vector', 'get_n_items', 'get_n_trees', 'get_nns_by_item', 'get_nns_by_vector', 'info', 'load', 'memory_usage', 'metric', 'on_disk_build', 'on_disk_path', 'save', 'serialize', 'set_seed', 'unbuild', 'unload', 'verbose']
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 47-52
+
+.. code-block:: Python
+
+
+    # AttributeError: readonly attribute
+    # idx._metric_id = 1
+    idx._f, idx._metric_id, idx._on_disk_path
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    (0, 0, None)
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 53-56
+
+.. code-block:: Python
+
+
+    idx.f, idx.metric, idx.on_disk_path
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    (0, None, None)
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 57-60
+
+.. code-block:: Python
+
+
+    idx.metric = "dot"
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 61-64
+
+.. code-block:: Python
+
+
+    idx.f, idx.metric, idx.on_disk_path
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    (0, 'dot', None)
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 65-68
+
+.. code-block:: Python
+
+
+    type(idx)
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 69-81
 
 .. code-block:: Python
 
@@ -107,7 +255,8 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
     # =============================================================
     # 1. Construction
     # =============================================================
-    idx = AnnoyIndex(f=3)
+    # idx = AnnoyIndex(f=3)
+    idx.add_item(0, [1, 0, 0])
     print("Index dimension:", idx.f)
     print("Metric         :", idx.metric)
     print(idx)
@@ -122,18 +271,14 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
 
  .. code-block:: none
 
-    /home/circleci/repo/galleries/examples/annoy/plot_Annoy_legacy_c_api.py:46: FutureWarning:
-
-    The default argument for metric will be removed in a future version of Annoy. Please pass metric='angular' explicitly.
-
     Index dimension: 3
-    Metric         : angular
-    Annoy(f=3, metric='angular', n_items=0, n_trees=0, on_disk_path=None)
+    Metric         : dot
+    Annoy(f=3, metric='dot', n_items=1, n_trees=0, on_disk_path=None)
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-63
+.. GENERATED FROM PYTHON SOURCE LINES 82-92
 
 .. code-block:: Python
 
@@ -144,6 +289,7 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
     idx = AnnoyIndex(f=3, metric="angular")
     print("Index dimension:", idx.f)
     print("Metric         :", idx.metric)
+    print(idx)
 
 
 
@@ -156,11 +302,12 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
 
     Index dimension: 3
     Metric         : angular
+    Annoy(f=3, metric='angular', n_items=0, n_trees=0, on_disk_path=None)
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-77
+.. GENERATED FROM PYTHON SOURCE LINES 93-106
 
 .. code-block:: Python
 
@@ -193,7 +340,7 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 78-88
+.. GENERATED FROM PYTHON SOURCE LINES 107-117
 
 .. code-block:: Python
 
@@ -204,7 +351,7 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
     idx = AnnoyIndex(100, metric="angular")
     print("Index dimension:", idx.f)
     print("Metric         :", idx.metric)
-    idx.on_disk_build("annoy_test1.annoy"), idx#.on_disk_path
+    idx.on_disk_build("annoy_test_1.annoy"), idx#.on_disk_path
     # help(idx.on_disk_build)
 
 
@@ -218,11 +365,11 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
     Index dimension: 100
     Metric         : angular
 
-    (Annoy(f=100, metric='angular', n_items=0, n_trees=0, on_disk_path=annoy_test1.annoy), Annoy(f=100, metric='angular', n_items=0, n_trees=0, on_disk_path=annoy_test1.annoy))
+    (Annoy(f=100, metric='angular', n_items=0, n_trees=0, on_disk_path='annoy_test_1.annoy'), Annoy(f=100, metric='angular', n_items=0, n_trees=0, on_disk_path='annoy_test_1.annoy'))
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 89-109
+.. GENERATED FROM PYTHON SOURCE LINES 118-138
 
 .. code-block:: Python
 
@@ -267,12 +414,12 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
     Number of items: 1000
     Index dimension: 100
     Metric         : angular
-    Annoy(f=100, metric='angular', n_items=1000, n_trees=0, on_disk_path=annoy_test1.annoy)
+    Annoy(f=100, metric='angular', n_items=1000, n_trees=0, on_disk_path='annoy_test_1.annoy')
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 110-121
+.. GENERATED FROM PYTHON SOURCE LINES 139-150
 
 .. code-block:: Python
 
@@ -297,13 +444,13 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
 
     Trees: 10
     Memory usage: 543076 bytes
-    Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path=annoy_test1.annoy)
-    {'dimension': 100, 'metric': 'angular', 'n_items': 1000, 'n_trees': 10, 'memory_usage_byte': 543076, 'memory_usage_mib': 0.5179176330566406, 'on_disk_path': 'annoy_test1.annoy'}
+    Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path='annoy_test_1.annoy')
+    {'f': 100, 'metric': 'angular', 'n_items': 1000, 'n_trees': 10, 'memory_usage_byte': 543076, 'memory_usage_mib': 0.5179176330566406, 'on_disk_path': 'annoy_test_1.annoy'}
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 122-126
+.. GENERATED FROM PYTHON SOURCE LINES 151-155
 
 .. code-block:: Python
 
@@ -319,12 +466,12 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
 
  .. code-block:: none
 
-    Annoy(f=100, metric='angular', n_items=1000, n_trees=0, on_disk_path=annoy_test1.annoy)
+    Annoy(f=100, metric='angular', n_items=1000, n_trees=0, on_disk_path='annoy_test_1.annoy')
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 127-132
+.. GENERATED FROM PYTHON SOURCE LINES 156-161
 
 .. code-block:: Python
 
@@ -341,12 +488,12 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
 
  .. code-block:: none
 
-    Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path=annoy_test1.annoy)
+    Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path='annoy_test_1.annoy')
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 133-142
+.. GENERATED FROM PYTHON SOURCE LINES 162-171
 
 .. code-block:: Python
 
@@ -373,7 +520,7 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 143-163
+.. GENERATED FROM PYTHON SOURCE LINES 172-192
 
 .. code-block:: Python
 
@@ -423,7 +570,7 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 164-176
+.. GENERATED FROM PYTHON SOURCE LINES 193-205
 
 .. code-block:: Python
 
@@ -450,12 +597,12 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
     Trees: 10
     Memory usage: 611056 bytes
     Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path=None)
-    {'dimension': 100, 'metric': 'angular', 'n_items': 1000, 'n_trees': 10, 'memory_usage_byte': 611056, 'memory_usage_mib': 0.5827484130859375, 'on_disk_path': None}
+    {'f': 100, 'metric': 'angular', 'n_items': 1000, 'n_trees': 10, 'memory_usage_byte': 611056, 'memory_usage_mib': 0.5827484130859375, 'on_disk_path': None}
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 177-191
+.. GENERATED FROM PYTHON SOURCE LINES 206-220
 
 .. code-block:: Python
 
@@ -486,7 +633,7 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 192-204
+.. GENERATED FROM PYTHON SOURCE LINES 221-233
 
 .. code-block:: Python
 
@@ -516,7 +663,7 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 205-216
+.. GENERATED FROM PYTHON SOURCE LINES 234-245
 
 .. code-block:: Python
 
@@ -546,7 +693,7 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 217-231
+.. GENERATED FROM PYTHON SOURCE LINES 246-260
 
 .. code-block:: Python
 
@@ -556,11 +703,11 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
     # =============================================================
     print("\n=== Saving with binary annoy ===")
     print(idx)
-    idx.save("annoy_test1.annoy")
+    idx.save("annoy_test_1.annoy")
     print(idx)
 
     print("Loading...")
-    idx2 = AnnoyIndex(100, metric='angular').load("annoy_test1.annoy")
+    idx2 = AnnoyIndex(100, metric='angular').load("annoy_test_1.annoy")
     print("Loaded index:", idx2)
 
 
@@ -575,14 +722,14 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
 
     === Saving with binary annoy ===
     Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path=None)
-    Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path=annoy_test1.annoy)
+    Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path='annoy_test_1.annoy')
     Loading...
-    Loaded index: Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path=annoy_test1.annoy)
+    Loaded index: Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path='annoy_test_1.annoy')
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 232-239
+.. GENERATED FROM PYTHON SOURCE LINES 261-268
 
 .. code-block:: Python
 
@@ -602,11 +749,11 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
  .. code-block:: none
 
 
-    Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path=annoy_test1.annoy)
+    Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path='annoy_test_2.annoy')
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 240-243
+.. GENERATED FROM PYTHON SOURCE LINES 269-272
 
 .. code-block:: Python
 
@@ -622,11 +769,11 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
  .. code-block:: none
 
 
-    ({'dimension': 100, 'metric': 'angular', 'n_items': 1000, 'n_trees': 10, 'memory_usage_byte': 543076, 'memory_usage_mib': 0.5179176330566406, 'on_disk_path': 'annoy_test1.annoy'}, 1000, 10)
+    ({'f': 100, 'metric': 'angular', 'n_items': 1000, 'n_trees': 10, 'memory_usage_byte': 543076, 'memory_usage_mib': 0.5179176330566406, 'on_disk_path': 'annoy_test_2.annoy'}, 1000, 10)
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 244-247
+.. GENERATED FROM PYTHON SOURCE LINES 273-276
 
 .. code-block:: Python
 
@@ -646,7 +793,7 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 248-251
+.. GENERATED FROM PYTHON SOURCE LINES 277-280
 
 .. code-block:: Python
 
@@ -666,7 +813,7 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 252-265
+.. GENERATED FROM PYTHON SOURCE LINES 281-294
 
 .. code-block:: Python
 
@@ -694,13 +841,13 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
 
     === Raw serialize ===
     Deserialized index n_items: 1000
-    Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path=annoy_test1.annoy)
+    Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path='annoy_test_1.annoy')
     Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path=None)
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 266-271
+.. GENERATED FROM PYTHON SOURCE LINES 295-300
 
 .. code-block:: Python
 
@@ -722,13 +869,13 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 272-277
+.. GENERATED FROM PYTHON SOURCE LINES 301-306
 
 .. code-block:: Python
 
 
     # idx.build(10)
-    idx.load("annoy_test1.annoy")
+    idx.load("annoy_test_1.annoy")
     print(idx)
 
 
@@ -739,12 +886,12 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
 
  .. code-block:: none
 
-    Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path=annoy_test1.annoy)
+    Annoy(f=100, metric='angular', n_items=1000, n_trees=10, on_disk_path='annoy_test_1.annoy')
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 278-281
+.. GENERATED FROM PYTHON SOURCE LINES 307-310
 
 .. code-block:: Python
 
@@ -760,11 +907,11 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
  .. code-block:: none
 
 
-    {'dimension': 100, 'metric': 'angular', 'n_items': 1000, 'n_trees': 10, 'memory_usage_byte': 543076, 'memory_usage_mib': 0.5179176330566406, 'on_disk_path': 'annoy_test1.annoy'}
+    {'f': 100, 'metric': 'angular', 'n_items': 1000, 'n_trees': 10, 'memory_usage_byte': 543076, 'memory_usage_mib': 0.5179176330566406, 'on_disk_path': 'annoy_test_1.annoy'}
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 282-285
+.. GENERATED FROM PYTHON SOURCE LINES 311-314
 
 .. code-block:: Python
 
@@ -784,7 +931,7 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 286-290
+.. GENERATED FROM PYTHON SOURCE LINES 315-319
 
 .. tags::
 
@@ -794,7 +941,7 @@ An example showing the :py:class:`~scikitplot.annoy.Annoy`, :py:class:`~scikitpl
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.159 seconds)
+   **Total running time of the script:** (0 minutes 0.272 seconds)
 
 
 .. _sphx_glr_download_auto_examples_annoy_plot_Annoy_legacy_c_api.py:

@@ -851,13 +851,53 @@
 <h1>Annoy<a class="headerlink" href="#annoy" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.annoy.Annoy">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">Annoy</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/291bf90/scikitplot/cexternals/_annoy/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Annoy" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">Annoy</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ab6d95b/scikitplot/cexternals/_annoy/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Annoy" title="Link to this definition">#</a></dt>
 <dd><p>Compiled with GCC/Clang. Using 512-bit AVX instructions.</p>
-<p>High-performance approximate nearest neighbours (Annoy) C++ core.</p>
-<p>This module is a low-level backend (<code class="docutils literal notranslate"><span class="pre">annoylib</span></code>). It exposes the
-C++-powered <a class="reference internal" href="#scikitplot.annoy.Annoy" title="scikitplot.annoy.Annoy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annoy</span></code></a> type. For day-to-day work, prefer the
-high-level Python API in <a class="reference internal" href="../../apis/scikitplot.annoy.html#module-scikitplot.annoy" title="scikitplot.annoy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">annoy</span></code></a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annoy</span><span class="p">,</span> <span class="n">AnnoyIndex</span>
+<p>Annoy(f=None, metric=None)</p>
+<p>Approximate Nearest Neighbors index (Annoy) with a small, lazy C-extension wrapper.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>f</strong><span class="classifier">int or None, optional</span></dt><dd><p>Vector dimension. If <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">None</span></code>, dimension may be inferred from the
+first vector passed to <code class="docutils literal notranslate"><span class="pre">add_item</span></code> (lazy mode).</p>
+</dd>
+<dt><strong>metric</strong><span class="classifier">str or None, optional</span></dt><dd><p>Distance metric (one of ‘angular’, ‘euclidean’, ‘manhattan’, ‘dot’, ‘hamming’).
+If omitted and <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>, defaults to <code class="docutils literal notranslate"><span class="pre">'angular'</span></code> (cosine-like).
+If omitted and <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">==</span> <span class="pre">0</span></code>, metric may be set later before construction.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.f" title="scikitplot.annoy.Annoy.f"><code class="xref py py-obj docutils literal notranslate"><span class="pre">f</span></code></a><span class="classifier">int</span></dt><dd><p>Vector dimension.</p>
+</dd>
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.metric" title="scikitplot.annoy.Annoy.metric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metric</span></code></a><span class="classifier">{‘angular’, ‘euclidean’, ‘manhattan’, ‘dot’, ‘hamming’} or None</span></dt><dd><p>Distance metric for the index.</p>
+</dd>
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.on_disk_path" title="scikitplot.annoy.Annoy.on_disk_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_disk_path</span></code></a><span class="classifier">str or None</span></dt><dd><p>Path for on-disk build/load.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The underlying C++ index is created lazily when enough information exists.
+The index is created when both <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">metric</span></code> are known, or on first
+operation that requires it.</p></li>
+<li><p>Once the C++ index is created, <code class="docutils literal notranslate"><span class="pre">f</span></code> and <code class="docutils literal notranslate"><span class="pre">metric</span></code> become immutable to keep
+the object consistent and avoid undefined behavior.</p></li>
+<li><p>This wrapper stores user configuration (seed/verbose) even before the C++ index
+exists and applies it deterministically upon construction.</p></li>
+</ul>
+<p>Developer Notes:</p>
+<ul class="simple">
+<li><p>Source of truth:
+* <code class="docutils literal notranslate"><span class="pre">f</span></code> (int) and <code class="docutils literal notranslate"><span class="pre">metric_id</span></code> (enum) describe configuration.
+* <code class="docutils literal notranslate"><span class="pre">ptr</span></code> is NULL when index is not constructed.</p></li>
+<li><p>Invariant:
+* <code class="docutils literal notranslate"><span class="pre">ptr</span> <span class="pre">!=</span> <span class="pre">NULL</span></code> implies <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">metric_id</span> <span class="pre">!=</span> <span class="pre">METRIC_UNKNOWN</span></code>.</p></li>
+</ul>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annoy</span><span class="p">,</span> <span class="n">AnnoyIndex</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.cexternals._annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annoy</span><span class="p">,</span> <span class="n">AnnoyIndex</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annoy</span><span class="p">,</span> <span class="n">AnnoyIndex</span><span class="p">,</span> <span class="n">Index</span>
 </pre></div>
@@ -958,7 +998,20 @@ To add more items, call <a class="reference internal" href="#scikitplot.annoy.An
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.annoy.Annoy.f">
 <span class="sig-name descname"><span class="pre">f</span></span><a class="headerlink" href="#scikitplot.annoy.Annoy.f" title="Link to this definition">#</a></dt>
-<dd><p>number of features (vector dimension)</p>
+<dd><p>Vector dimension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>int</dt><dd><p>Dimension of each item vector. <code class="docutils literal notranslate"><span class="pre">0</span></code> means unknown / lazy.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">f</span></code> may be set only before the underlying C++ index is created.</p></li>
+<li><p>After construction, attempting to change <code class="docutils literal notranslate"><span class="pre">f</span></code> raises AttributeError.</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py method">
@@ -1229,26 +1282,35 @@ index is not initialized.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.annoy.Annoy.metric">
 <span class="sig-name descname"><span class="pre">metric</span></span><a class="headerlink" href="#scikitplot.annoy.Annoy.metric" title="Link to this definition">#</a></dt>
-<dd><p>distance metric (angular, euclidean, manhattan, dot, hamming) mapped alias as note.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>{“angular”,   “angular”},
-{“cosine”,    “angular”},
-{“euclidean”, “euclidean”},
-{“l2”,        “euclidean”},
-{“lstsq”,        “euclidean”},
-{“manhattan”, “manhattan”},
-{“l1”,        “manhattan”},
-{“cityblock”, “manhattan”},
-{“taxicab”,   “manhattan”},
-{“dot”,          “dot”},
-{“&#64;”,            “dot”},
-{“.”,            “dot”},
-{“dotproduct”,   “dot”},
-{“inner”,        “dot”},
-{“innerproduct”, “dot”},
-{“hamming”, “hamming”},</p>
-</div>
+<dd><p>Distance metric for the index. Valid values:</p>
+<ul class="simple">
+<li><p>‘angular’ -&gt; Cosine-like distance on normalized vectors.</p></li>
+<li><p>‘euclidean’ -&gt; L2 distance.</p></li>
+<li><p>‘manhattan’ -&gt; L1 distance.</p></li>
+<li><p>‘dot’ -&gt; Negative dot-product distance (inner product).</p></li>
+<li><p>‘hamming’ -&gt; Hamming distance for binary vectors.</p></li>
+</ul>
+<p>Aliases (case-insensitive):</p>
+<ul class="simple">
+<li><p>angular : cosine</p></li>
+<li><p>euclidean : l2, lstsq</p></li>
+<li><p>manhattan : l1, cityblock, taxicab</p></li>
+<li><p>dot : &#64;, ., dotproduct, inner, innerproduct</p></li>
+<li><p>hamming : hamming</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>str or None</dt><dd><p>Canonical metric name, or None if not configured yet.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The metric may be set only before the underlying C++ index is created.</p></li>
+<li><p>After construction, attempting to change <code class="docutils literal notranslate"><span class="pre">metric</span></code> raises AttributeError.</p></li>
+</ul>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
@@ -1283,6 +1345,25 @@ The file is created or overwritten as needed.</p>
 <p class="rubric">Notes</p>
 <p>This mode is useful for very large datasets that do not fit
 comfortably in RAM during construction.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scikitplot.annoy.Annoy.on_disk_path">
+<span class="sig-name descname"><span class="pre">on_disk_path</span></span><a class="headerlink" href="#scikitplot.annoy.Annoy.on_disk_path" title="Link to this definition">#</a></dt>
+<dd><p>Path for on-disk build/load.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>str or None</dt><dd><p>Filesystem path used for on-disk operations, or None if not configured.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>Clearing/changing this while an on-disk index is active is disallowed.
+Call <code class="docutils literal notranslate"><span class="pre">unload()</span></code> first.</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py method">
@@ -1512,6 +1593,7 @@ Logging level inspired by gradient-boosting libraries:</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.memory_usage"><code class="docutils literal notranslate"><span class="pre">memory_usage</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.metric"><code class="docutils literal notranslate"><span class="pre">metric</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.on_disk_build"><code class="docutils literal notranslate"><span class="pre">on_disk_build</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.on_disk_path"><code class="docutils literal notranslate"><span class="pre">on_disk_path</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.save"><code class="docutils literal notranslate"><span class="pre">save</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.serialize"><code class="docutils literal notranslate"><span class="pre">serialize</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.set_seed"><code class="docutils literal notranslate"><span class="pre">set_seed</span></code></a></li>
@@ -1561,7 +1643,7 @@ Logging level inspired by gradient-boosting libraries:</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251216.291bf90 2025-12-16T13:13Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251217.ab6d95b 2025-12-17T20:53Z.
       <br/>
     
   </p>

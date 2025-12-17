@@ -849,7 +849,7 @@
 <h1>PathAwareAnnoy<a class="headerlink" href="#pathawareannoy" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.annoy.PathAwareAnnoy">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">PathAwareAnnoy</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/291bf90/scikitplot/annoy/_mixins/_pickle.py#L26"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.PathAwareAnnoy" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">PathAwareAnnoy</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ab6d95b/scikitplot/annoy/_mixins/_pickle.py#L26"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.PathAwareAnnoy" title="Link to this definition">#</a></dt>
 <dd><p>Thin Python subclass that tracks the last known on-disk path.</p>
 <p>Pure metadata; core logic remains in the extension.</p>
 <div class="admonition seealso">
@@ -955,7 +955,20 @@ To add more items, call <a class="reference internal" href="#scikitplot.annoy.Pa
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.annoy.PathAwareAnnoy.f">
 <span class="sig-name descname"><span class="pre">f</span></span><a class="headerlink" href="#scikitplot.annoy.PathAwareAnnoy.f" title="Link to this definition">#</a></dt>
-<dd><p>number of features (vector dimension)</p>
+<dd><p>Vector dimension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>int</dt><dd><p>Dimension of each item vector. <code class="docutils literal notranslate"><span class="pre">0</span></code> means unknown / lazy.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">f</span></code> may be set only before the underlying C++ index is created.</p></li>
+<li><p>After construction, attempting to change <code class="docutils literal notranslate"><span class="pre">f</span></code> raises AttributeError.</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py method">
@@ -1170,7 +1183,7 @@ inspect programmatically than the legacy multi-line string format.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.PathAwareAnnoy.load">
-<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/291bf90/scikitplot/annoy/_mixins/_pickle.py#L44"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.PathAwareAnnoy.load" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ab6d95b/scikitplot/annoy/_mixins/_pickle.py#L44"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.PathAwareAnnoy.load" title="Link to this definition">#</a></dt>
 <dd><p>Load (mmap) an index from disk into the current object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1232,26 +1245,35 @@ index is not initialized.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.annoy.PathAwareAnnoy.metric">
 <span class="sig-name descname"><span class="pre">metric</span></span><a class="headerlink" href="#scikitplot.annoy.PathAwareAnnoy.metric" title="Link to this definition">#</a></dt>
-<dd><p>distance metric (angular, euclidean, manhattan, dot, hamming) mapped alias as note.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>{“angular”,   “angular”},
-{“cosine”,    “angular”},
-{“euclidean”, “euclidean”},
-{“l2”,        “euclidean”},
-{“lstsq”,        “euclidean”},
-{“manhattan”, “manhattan”},
-{“l1”,        “manhattan”},
-{“cityblock”, “manhattan”},
-{“taxicab”,   “manhattan”},
-{“dot”,          “dot”},
-{“&#64;”,            “dot”},
-{“.”,            “dot”},
-{“dotproduct”,   “dot”},
-{“inner”,        “dot”},
-{“innerproduct”, “dot”},
-{“hamming”, “hamming”},</p>
-</div>
+<dd><p>Distance metric for the index. Valid values:</p>
+<ul class="simple">
+<li><p>‘angular’ -&gt; Cosine-like distance on normalized vectors.</p></li>
+<li><p>‘euclidean’ -&gt; L2 distance.</p></li>
+<li><p>‘manhattan’ -&gt; L1 distance.</p></li>
+<li><p>‘dot’ -&gt; Negative dot-product distance (inner product).</p></li>
+<li><p>‘hamming’ -&gt; Hamming distance for binary vectors.</p></li>
+</ul>
+<p>Aliases (case-insensitive):</p>
+<ul class="simple">
+<li><p>angular : cosine</p></li>
+<li><p>euclidean : l2, lstsq</p></li>
+<li><p>manhattan : l1, cityblock, taxicab</p></li>
+<li><p>dot : &#64;, ., dotproduct, inner, innerproduct</p></li>
+<li><p>hamming : hamming</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>str or None</dt><dd><p>Canonical metric name, or None if not configured yet.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The metric may be set only before the underlying C++ index is created.</p></li>
+<li><p>After construction, attempting to change <code class="docutils literal notranslate"><span class="pre">metric</span></code> raises AttributeError.</p></li>
+</ul>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
@@ -1266,7 +1288,7 @@ index is not initialized.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.PathAwareAnnoy.on_disk_build">
-<span class="sig-name descname"><span class="pre">on_disk_build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/291bf90/scikitplot/annoy/_mixins/_pickle.py#L39"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.PathAwareAnnoy.on_disk_build" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">on_disk_build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ab6d95b/scikitplot/annoy/_mixins/_pickle.py#L39"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.PathAwareAnnoy.on_disk_build" title="Link to this definition">#</a></dt>
 <dd><p>Configure the index to build using an on-disk backing file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1291,9 +1313,28 @@ The file is created or overwritten as needed.</p>
 comfortably in RAM during construction.</p>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scikitplot.annoy.PathAwareAnnoy.on_disk_path">
+<span class="sig-name descname"><span class="pre">on_disk_path</span></span><a class="headerlink" href="#scikitplot.annoy.PathAwareAnnoy.on_disk_path" title="Link to this definition">#</a></dt>
+<dd><p>Path for on-disk build/load.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>str or None</dt><dd><p>Filesystem path used for on-disk operations, or None if not configured.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>Clearing/changing this while an on-disk index is active is disallowed.
+Call <code class="docutils literal notranslate"><span class="pre">unload()</span></code> first.</p></li>
+</ul>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.PathAwareAnnoy.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/291bf90/scikitplot/annoy/_mixins/_pickle.py#L49"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.PathAwareAnnoy.save" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ab6d95b/scikitplot/annoy/_mixins/_pickle.py#L49"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.PathAwareAnnoy.save" title="Link to this definition">#</a></dt>
 <dd><p>Persist the index to a binary file on disk.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1515,6 +1556,7 @@ Logging level inspired by gradient-boosting libraries:</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.PathAwareAnnoy.memory_usage"><code class="docutils literal notranslate"><span class="pre">memory_usage</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.PathAwareAnnoy.metric"><code class="docutils literal notranslate"><span class="pre">metric</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.PathAwareAnnoy.on_disk_build"><code class="docutils literal notranslate"><span class="pre">on_disk_build</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.PathAwareAnnoy.on_disk_path"><code class="docutils literal notranslate"><span class="pre">on_disk_path</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.PathAwareAnnoy.save"><code class="docutils literal notranslate"><span class="pre">save</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.PathAwareAnnoy.serialize"><code class="docutils literal notranslate"><span class="pre">serialize</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.PathAwareAnnoy.set_seed"><code class="docutils literal notranslate"><span class="pre">set_seed</span></code></a></li>
@@ -1563,7 +1605,7 @@ Logging level inspired by gradient-boosting libraries:</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251216.291bf90 2025-12-16T13:13Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251217.ab6d95b 2025-12-17T20:53Z.
       <br/>
     
   </p>
