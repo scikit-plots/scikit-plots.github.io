@@ -83,7 +83,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="NDArrayExportMixin" href="scikitplot.annoy.NDArrayExportMixin.html" />
-    <link rel="prev" title="CompressMode" href="scikitplot.annoy.CompressMode.html" />
+    <link rel="prev" title="IndexIOMixin" href="scikitplot.annoy.IndexIOMixin.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.5" />
@@ -319,7 +319,7 @@
           
           
           
-          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Community" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Community"/></a>
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
         </li>
         <li class="nav-item">
           
@@ -524,7 +524,7 @@
           
           
           
-          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Community" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Community"/></a>
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
         </li>
         <li class="nav-item">
           
@@ -577,13 +577,13 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.AnnoyIndex.html">AnnoyIndex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.Index.html">Index</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.CompressMode.html">CompressMode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.IndexIOMixin.html">IndexIOMixin</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">ManifestMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.NDArrayExportMixin.html">NDArrayExportMixin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.ObjectIOMixin.html">ObjectIOMixin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PathAwareAnnoy.html">PathAwareAnnoy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PickleIOMixin.html">PickleIOMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PickleMixin.html">PickleMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PickleMode.html">PickleMode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.SerializerBackend.html">SerializerBackend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PlottingMixin.html">PlottingMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.VectorOpsMixin.html">VectorOpsMixin</a></li>
 </ul>
 </details></li>
@@ -619,6 +619,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.cexternals.html">scikitplot.cexternals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._annoy.html">_annoy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._annoy.annoylib.html">annoylib</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._annoy.Annoy.html">Annoy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._annoy.AnnoyIndex.html">AnnoyIndex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.html">_astropy</a></li>
@@ -849,45 +850,126 @@
 <h1>ManifestMixin<a class="headerlink" href="#manifestmixin" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.annoy.ManifestMixin">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">ManifestMixin</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ab6d95b/scikitplot/annoy/_mixins/_manifest.py#L7"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.ManifestMixin" title="Link to this definition">#</a></dt>
-<dd><p>Export/import <em>metadata</em> only.</p>
-<p>Safe for huge indexes.</p>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">ManifestMixin</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f1498f7/scikitplot/annoy/_mixins/_manifest.py#L84"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.ManifestMixin" title="Link to this definition">#</a></dt>
+<dd><p>Export/import a small <em>manifest</em> describing an index.</p>
+<p>This mixin is designed to layer cleanly on top of the low-level Annoy wrapper.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">scikitplot.cexternals._annoy.annoylib.Annoy.info</span></code></dt><dd><p>Structured, JSON-like summary used as the primary source of truth.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#scikitplot.annoy.ManifestMixin.to_manifest" title="scikitplot.annoy.ManifestMixin.to_manifest"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_manifest</span></code></a> never serializes the full in-memory forest; it exports
+metadata only.</p></li>
+<li><p><a class="reference internal" href="#scikitplot.annoy.ManifestMixin.from_manifest" title="scikitplot.annoy.ManifestMixin.from_manifest"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_manifest</span></code></a> can <em>optionally</em> load (mmap) an index from
+<code class="docutils literal notranslate"><span class="pre">on_disk_path</span></code> when <code class="docutils literal notranslate"><span class="pre">load=True</span></code> and the concrete class provides
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">load</span></code>.</p></li>
+</ul>
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.ManifestMixin.from_json">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ab6d95b/scikitplot/annoy/_mixins/_manifest.py#L52"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.ManifestMixin.from_json" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">load</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f1498f7/scikitplot/annoy/_mixins/_manifest.py#L432"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.ManifestMixin.from_json" title="Link to this definition">#</a></dt>
+<dd><p>Load a manifest from a JSON file and construct an instance.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/os.html#os.PathLike" title="(in Python v3.14)"><em>PathLike</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em>)</p></li>
+<li><p><strong>load</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Self" title="(in Python v3.14)"><em>Self</em></a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.ManifestMixin.from_manifest">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_manifest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manifest</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ab6d95b/scikitplot/annoy/_mixins/_manifest.py#L31"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.ManifestMixin.from_manifest" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_manifest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manifest</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">load</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f1498f7/scikitplot/annoy/_mixins/_manifest.py#L280"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.ManifestMixin.from_manifest" title="Link to this definition">#</a></dt>
+<dd><p>Construct an instance from a manifest.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>manifest</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>)</p>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>manifest</strong><span class="classifier">mapping</span></dt><dd><p>A manifest previously produced by <a class="reference internal" href="#scikitplot.annoy.ManifestMixin.to_manifest" title="scikitplot.annoy.ManifestMixin.to_manifest"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_manifest</span></code></a>.</p>
+</dd>
+<dt><strong>load</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True and the manifest contains <code class="docutils literal notranslate"><span class="pre">on_disk_path</span></code>, attempt to call
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">load</span></code> on the created object (when available).</p>
 </dd>
 </dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>obj</dt><dd><p>A new instance of <code class="docutils literal notranslate"><span class="pre">cls</span></code> configured according to the manifest.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>TypeError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">manifest</span></code> is not a mapping.</p>
+</dd>
+<dt>ValueError</dt><dd><p>If required keys are missing or the manifest format version is unsupported.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>manifest</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Mapping" title="(in Python v3.14)"><em>Mapping</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>)</p></li>
+<li><p><strong>load</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Self" title="(in Python v3.14)"><em>Self</em></a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The manifest format version is stored under <code class="docutils literal notranslate"><span class="pre">manifest_schema_version</span></code>.
+Older manifests that lack this key are treated as version 0.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.ManifestMixin.from_yaml">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_yaml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ab6d95b/scikitplot/annoy/_mixins/_manifest.py#L64"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.ManifestMixin.from_yaml" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_yaml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">load</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f1498f7/scikitplot/annoy/_mixins/_manifest.py#L467"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.ManifestMixin.from_yaml" title="Link to this definition">#</a></dt>
+<dd><p>Load a manifest from a YAML file and construct an instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ImportError</dt><dd><p>If PyYAML is not installed.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/os.html#os.PathLike" title="(in Python v3.14)"><em>PathLike</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em>)</p></li>
+<li><p><strong>load</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Self" title="(in Python v3.14)"><em>Self</em></a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.ManifestMixin.to_json">
-<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ab6d95b/scikitplot/annoy/_mixins/_manifest.py#L24"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.ManifestMixin.to_json" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f1498f7/scikitplot/annoy/_mixins/_manifest.py#L234"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.ManifestMixin.to_json" title="Link to this definition">#</a></dt>
+<dd><p>Serialize the manifest to JSON.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str or os.PathLike or None, default=None</span></dt><dd><p>If provided, write the JSON payload to this path.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>json_str</strong><span class="classifier">str</span></dt><dd><p>JSON representation of the manifest.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/os.html#os.PathLike" title="(in Python v3.14)"><em>PathLike</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>] </em><em>| </em><em>None</em>)</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
@@ -897,20 +979,58 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.ManifestMixin.to_manifest">
-<span class="sig-name descname"><span class="pre">to_manifest</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ab6d95b/scikitplot/annoy/_mixins/_manifest.py#L14"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.ManifestMixin.to_manifest" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>]</p>
+<span class="sig-name descname"><span class="pre">to_manifest</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f1498f7/scikitplot/annoy/_mixins/_manifest.py#L139"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.ManifestMixin.to_manifest" title="Link to this definition">#</a></dt>
+<dd><p>Return a JSON-serializable manifest describing this index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>manifest</strong><span class="classifier">Manifest</span></dt><dd><p>JSON-serializable dictionary describing configuration and optional
+persistence knobs.</p>
 </dd>
 </dl>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ValueError</dt><dd><p>If the index dimension (<code class="docutils literal notranslate"><span class="pre">f</span></code>) cannot be determined.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Manifest</em></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The manifest includes:</p>
+<ul class="simple">
+<li><p><strong>Annoy configuration</strong>: <code class="docutils literal notranslate"><span class="pre">f</span></code>, <code class="docutils literal notranslate"><span class="pre">metric</span></code>, <code class="docutils literal notranslate"><span class="pre">on_disk_path</span></code>, <code class="docutils literal notranslate"><span class="pre">prefault</span></code>,
+<code class="docutils literal notranslate"><span class="pre">schema_version</span></code>, <code class="docutils literal notranslate"><span class="pre">seed</span></code>, <code class="docutils literal notranslate"><span class="pre">verbose</span></code>.</p></li>
+<li><p><strong>Manifest format</strong>: <code class="docutils literal notranslate"><span class="pre">manifest_schema_version</span></code> (this mixin).</p></li>
+<li><p>Optional summary fields from <code class="xref py py-meth docutils literal notranslate"><span class="pre">info</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">n_items</span></code>, <code class="docutils literal notranslate"><span class="pre">n_trees</span></code>,
+memory usage), plus optional high-level knobs if exposed by the concrete
+class.</p></li>
+</ul>
+<p>The manifest does <strong>not</strong> include the full index data.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.ManifestMixin.to_yaml">
-<span class="sig-name descname"><span class="pre">to_yaml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ab6d95b/scikitplot/annoy/_mixins/_manifest.py#L58"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.ManifestMixin.to_yaml" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
+<span class="sig-name descname"><span class="pre">to_yaml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f1498f7/scikitplot/annoy/_mixins/_manifest.py#L443"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.ManifestMixin.to_yaml" title="Link to this definition">#</a></dt>
+<dd><p>Write the manifest as YAML.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str or os.PathLike</span></dt><dd><p>Output YAML file path.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ImportError</dt><dd><p>If PyYAML is not installed.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/os.html#os.PathLike" title="(in Python v3.14)"><em>PathLike</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em>)</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
@@ -933,12 +1053,12 @@
     <div class="footer-article-item">
 <div class="prev-next-area">
     <a class="left-prev"
-       href="scikitplot.annoy.CompressMode.html"
+       href="scikitplot.annoy.IndexIOMixin.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">CompressMode</p>
+        <p class="prev-next-title">IndexIOMixin</p>
       </div>
     </a>
     <a class="right-next"
@@ -1023,7 +1143,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251217.ab6d95b 2025-12-17T20:53Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251223.f1498f7 2025-12-23T00:53Z.
       <br/>
     
   </p>

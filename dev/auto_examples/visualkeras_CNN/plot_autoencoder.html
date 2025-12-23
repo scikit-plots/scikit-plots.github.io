@@ -207,7 +207,7 @@
 </div></div>
 <div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links">
 <li class="nav-item">
-<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://scikit-plots.github.io/dev/project/community.html" rel="noopener" target="_blank" title="Community"><img alt="Community" class="icon-link-image" src="../../_static/logos/scikit-plots-logo.svg"/></a>
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://scikit-plots.github.io/dev/project/community.html" rel="noopener" target="_blank" title="Social Media Platforms"><img alt="Social Media Platforms" class="icon-link-image" src="../../_static/logos/scikit-plots-logo.svg"/></a>
 </li>
 <li class="nav-item">
 <a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><img alt="PyPI" class="icon-link-image" src="../../_static/logos/python-logo.png"/></a>
@@ -322,7 +322,7 @@
 </div></div>
 <div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links">
 <li class="nav-item">
-<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://scikit-plots.github.io/dev/project/community.html" rel="noopener" target="_blank" title="Community"><img alt="Community" class="icon-link-image" src="../../_static/logos/scikit-plots-logo.svg"/></a>
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://scikit-plots.github.io/dev/project/community.html" rel="noopener" target="_blank" title="Social Media Platforms"><img alt="Social Media Platforms" class="icon-link-image" src="../../_static/logos/scikit-plots-logo.svg"/></a>
 </li>
 <li class="nav-item">
 <a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><img alt="PyPI" class="icon-link-image" src="../../_static/logos/python-logo.png"/></a>
@@ -479,6 +479,11 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <a class="sphx-glr-backref-module-tensorflow-keras-backend sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/backend/clear_session" title="tensorflow.keras.backend.clear_session"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">clear_session</span></a><span class="p">()</span>
 </pre></div>
 </div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-packages/keras/src/export/tf2onnx_lib.py:8: FutureWarning:
+
+In the future `np.object` will be defined as the corresponding NumPy scalar.
+</pre></div>
+</div>
 <p>encoder Model</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">encoder_input</span> <span class="o">=</span> <a class="sphx-glr-backref-module-tensorflow-keras sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/Input" title="tensorflow.keras.Input"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Input</span></a><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">"img"</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <a class="sphx-glr-backref-module-tensorflow-keras-layers sphx-glr-backref-type-py-function" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Conv2D" title="tensorflow.keras.layers.Conv2D"><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span></a><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">)(</span><span class="n">encoder_input</span><span class="p">)</span>
@@ -582,11 +587,11 @@ global_max_pooling2d shape: (None, 16)
 <span class="n">img_encoder</span>
 </pre></div>
 </div>
-<img alt="plot autoencoder" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_autoencoder_001.png" srcset="../../_images/sphx_glr_plot_autoencoder_001.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2025-12-17 20:59:03.484055: W scikitplot 139807014529920 utils_pil.py:204:load_font] Error loading system font: cannot open resource
-2025-12-17 20:59:03.484143: W scikitplot 139807014529920 utils_pil.py:206:load_font] Falling back to PIL default font.
-2025-12-17 20:59:03.484254: W scikitplot 139807014529920 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
+<img alt="plot autoencoder" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_autoencoder_001.png" srcset="../../_images/sphx_glr_plot_autoencoder_001.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2025-12-23 01:00:23.953168: W scikitplot 140561485269888 utils_pil.py:204:load_font] Error loading system font: cannot open resource
+2025-12-23 01:00:23.953249: W scikitplot 140561485269888 utils_pil.py:206:load_font] Falling back to PIL default font.
+2025-12-23 01:00:23.953348: W scikitplot 140561485269888 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
 
-&lt;matplotlib.image.AxesImage object at 0x7f26a42666d0&gt;
+&lt;matplotlib.image.AxesImage object at 0x7fd668652dd0&gt;
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">img_autoencoder</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
@@ -598,11 +603,11 @@ global_max_pooling2d shape: (None, 16)
 <span class="n">img_autoencoder</span>
 </pre></div>
 </div>
-<img alt="plot autoencoder" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_autoencoder_002.png" srcset="../../_images/sphx_glr_plot_autoencoder_002.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2025-12-17 20:59:03.698331: W scikitplot 139807014529920 utils_pil.py:204:load_font] Error loading system font: cannot open resource
-2025-12-17 20:59:03.698441: W scikitplot 139807014529920 utils_pil.py:206:load_font] Falling back to PIL default font.
-2025-12-17 20:59:03.698596: W scikitplot 139807014529920 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
+<img alt="plot autoencoder" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_autoencoder_002.png" srcset="../../_images/sphx_glr_plot_autoencoder_002.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2025-12-23 01:00:24.134805: W scikitplot 140561485269888 utils_pil.py:204:load_font] Error loading system font: cannot open resource
+2025-12-23 01:00:24.134891: W scikitplot 140561485269888 utils_pil.py:206:load_font] Falling back to PIL default font.
+2025-12-23 01:00:24.135044: W scikitplot 140561485269888 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
 
-&lt;matplotlib.image.AxesImage object at 0x7f26a4322110&gt;
+&lt;matplotlib.image.AxesImage object at 0x7fd668175690&gt;
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">img_autoencoder_text</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
@@ -625,16 +630,16 @@ global_max_pooling2d shape: (None, 16)
 <span class="n">img_autoencoder_text</span>
 </pre></div>
 </div>
-<img alt="plot autoencoder" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_autoencoder_003.png" srcset="../../_images/sphx_glr_plot_autoencoder_003.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2025-12-17 20:59:03.869156: W scikitplot 139807014529920 utils_pil.py:204:load_font] Error loading system font: cannot open resource
-2025-12-17 20:59:03.869255: W scikitplot 139807014529920 utils_pil.py:206:load_font] Falling back to PIL default font.
-2025-12-17 20:59:03.869373: W scikitplot 139807014529920 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
-[INFO] Saving path to: /home/circleci/repo/galleries/examples/visualkeras_CNN/result_images/autoencoder_text_20251217_205903Z.png
+<img alt="plot autoencoder" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_autoencoder_003.png" srcset="../../_images/sphx_glr_plot_autoencoder_003.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2025-12-23 01:00:24.310088: W scikitplot 140561485269888 utils_pil.py:204:load_font] Error loading system font: cannot open resource
+2025-12-23 01:00:24.310251: W scikitplot 140561485269888 utils_pil.py:206:load_font] Falling back to PIL default font.
+2025-12-23 01:00:24.310461: W scikitplot 140561485269888 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
+[INFO] Saving path to: /home/circleci/repo/galleries/examples/visualkeras_CNN/result_images/autoencoder_text_20251223_010024Z.png
 
-&lt;matplotlib.image.AxesImage object at 0x7f26a40f9cd0&gt;
+&lt;matplotlib.image.AxesImage object at 0x7fd6681685d0&gt;
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-model-building.html"><span class="doc">model-workflow: model building</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-visualkeras.html"><span class="doc">plot-type: visualkeras</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger reference internal" href="../../_tags/domain-neural-network.html"><span class="doc">domain: neural network</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.892 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 4.197 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing Spam the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_conv_dense_thumb.png"/>
@@ -643,12 +648,12 @@ global_max_pooling2d shape: (None, 16)
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_vgg_thumb.png"/>
 <p><a class="reference internal" href="plot_vgg.html"><span class="doc">visualkeras: custom VGG example</span></a></p>
 <div class="sphx-glr-thumbnail-title">visualkeras: custom VGG example</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_resnetv2_thumb.png"/>
-<p><a class="reference internal" href="plot_resnetv2.html"><span class="doc">visualkeras: ResNetV2 example</span></a></p>
-<div class="sphx-glr-thumbnail-title">visualkeras: ResNetV2 example</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_custom_vgg16_show_dimension_thumb.png"/>
 <p><a class="reference internal" href="plot_custom_vgg16_show_dimension.html"><span class="doc">visualkeras: custom vgg16 show dimension example</span></a></p>
 <div class="sphx-glr-thumbnail-title">visualkeras: custom vgg16 show dimension example</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_custom_vgg16_thumb.png"/>
+<p><a class="reference internal" href="plot_custom_vgg16.html"><span class="doc">visualkeras: custom vgg16 example</span></a></p>
+<div class="sphx-glr-thumbnail-title">visualkeras: custom vgg16 example</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </article>
@@ -699,7 +704,7 @@ global_max_pooling2d shape: (None, 16)
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251217.ab6d95b 2025-12-17T20:53Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251223.f1498f7 2025-12-23T00:53Z.
       <br/>
 </p>
 </div>

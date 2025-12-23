@@ -47,19 +47,54 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
  .. code-block:: none
 
 
-        High-level Pythonic Annoy wrapper with picklable (or pickle-able).
+        High-level Annoy index composed from mixins.
 
-        Minimal modify spotify/annoy low-level C-API to extend Python API.
+        Parameters
+        ----------
+        f : int, default=0
+            Vector dimension. If ``0``, Annoy can infer dimensionality lazily from
+            the first added vector.
+        metric : str or None, default=None
+            Metric name (e.g. ``"angular"``, ``"euclidean"``, ``"manhattan"``,
+            ``"dot"``, ``"hamming"``).
+            If None, defaults to ``"angular"``.
+        on_disk_path : str or os.PathLike or None, default=None
+            Optional backing path used by Annoy's on-disk build and mmap load.
+        prefault : bool, default=False
+            Annoy prefault behavior (passed to low-level setter).
+        schema_version : int or None, default=None
+            Optional low-level schema marker (exposed by Annoy as ``schema_version``).
+        seed : int or None, default=None
+            Optional low-level seed.
+        verbose : int or None, default=None
+            Optional low-level verbosity level.
+        pickle_mode : {"auto", "disk", "byte"}, default="auto"
+            Pickle strategy used by :class:`~scikitplot.annoy._mixins._pickle.PickleMixin`.
+        compress_mode : {"zlib", "gzip"} or None, default=None
+            Optional compression used for ``pickle_mode="byte"``.
 
-        .. seealso::
-            * :py:obj:`~scikitplot.annoy.Index.from_low_level`
-            * https://docs.python.org/3/library/pickle.html#what-can-be-pickled-and-unpickled
+        Notes
+        -----
+        This class initializes the C-extension backend explicitly (``Annoy.__init__``)
+        and then initializes mixin configuration explicitly. It does **not** rely on
+        cooperative ``super().__init__`` across mixins.
+
+        See Also
+        --------
+        Annoy
+            Low-level backend type (this class subclasses it).
+        ManifestMixin.to_manifest
+            Construct a versioned manifest for reconstruction.
+        IndexIOMixin.save_index
+            Persist the index using Annoy's native format.
+        PickleMixin.__getstate__
+            Pickle contract for the high-level index.
     
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 24-44
+.. GENERATED FROM PYTHON SOURCE LINES 24-39
 
 .. code-block:: Python
 
@@ -78,7 +113,66 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
     for i in range(n):
         idx.add_item(i, [random.gauss(0, 1) for _ in range(f)])
 
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 40-71
+
+.. code-block:: Python
+
+
+    def plot(idx, y=None, **kwargs):
+        import numpy as np
+        import matplotlib.pyplot as plt
+        import scikitplot.cexternals._annoy._plotting as utils
+
+        single = np.zeros(idx.get_n_items(), dtype=int)
+        if y is None:
+            double = np.random.uniform(0, 1, idx.get_n_items()).round()
+
+        # single vs double
+        fig, ax = plt.subplots(ncols=2, figsize=(12, 5))
+        alpha = kwargs.pop("alpha", 0.8)
+        y2 = utils.plot_annoy_index(
+            idx,
+            dims = list(range(idx.f)),
+            plot_kwargs={"draw_legend": False},
+            ax=ax[0],
+        )[0]
+        utils.plot_annoy_knn_edges(
+            idx,
+            y2,
+            k=1,
+            line_kwargs={"alpha": alpha},
+            ax=ax[1],
+        )
+
+    idx.unbuild()
     idx.build(10)
+    plot(idx)
+
+
+
+
+.. image-sg:: /auto_examples/annoy/images/sphx_glr_plot_annoy_to_NPY_CSV_001.png
+   :alt: plot annoy to NPY CSV
+   :srcset: /auto_examples/annoy/images/sphx_glr_plot_annoy_to_NPY_CSV_001.png
+   :class: sphx-glr-single-img
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 72-78
+
+.. code-block:: Python
+
+
+    # idx.build(10)
     idx.save(str(OUT))
     print("Wrote", OUT)
     idx
@@ -93,15 +187,76 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
 
     Wrote /home/circleci/repo/galleries/examples/annoy/../../../scikitplot/annoy/tests/test_v2.tree
 
-    Annoy(f=10, metric='angular', n_items=1000, n_trees=10, on_disk_path='/home/circleci/repo/galleries/examples/annoy/../../../scikitplot/annoy/tests/test_v2.tree')
 
+.. raw:: html
 
+    <div class="output_subarea output_html rendered_html output_result">
+    <div id="annoy-repr-0x7fbd61648de8-18" class="annoy-repr"><style>
+    #annoy-repr-0x7fbd61648de8-18 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
+    #annoy-repr-0x7fbd61648de8-18 details{margin:0;padding:0;}
+    #annoy-repr-0x7fbd61648de8-18 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7fbd61648de8-18 summary::-webkit-details-marker{display:none;}
+    #annoy-repr-0x7fbd61648de8-18 .annoy-title{font-weight:600;}
+    #annoy-repr-0x7fbd61648de8-18 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
+    #annoy-repr-0x7fbd61648de8-18 .annoy-links a{color:#0969da;text-decoration:none;}
+    #annoy-repr-0x7fbd61648de8-18 .annoy-links a:hover{text-decoration:underline;}
+    #annoy-repr-0x7fbd61648de8-18 .annoy-sep{color:#57606a;}
+    #annoy-repr-0x7fbd61648de8-18 .annoy-subtitle{font-weight:600;}
+    #annoy-repr-0x7fbd61648de8-18 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
+    #annoy-repr-0x7fbd61648de8-18 details[open] > summary .annoy-arrow::before{content:'\25BC';}
+    #annoy-repr-0x7fbd61648de8-18 .annoy-body{padding:0 10px 10px 10px;}
+    #annoy-repr-0x7fbd61648de8-18 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7fbd61648de8-18 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
+    #annoy-repr-0x7fbd61648de8-18 .annoy-table th{font-weight:600;}
+    #annoy-repr-0x7fbd61648de8-18 .annoy-td-btn{width:64px;}
+    #annoy-repr-0x7fbd61648de8-18 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
+    #annoy-repr-0x7fbd61648de8-18 .annoy-copy:active{transform:translateY(1px);}
+    #annoy-repr-0x7fbd61648de8-18 .annoy-key{white-space:nowrap;}
+    #annoy-repr-0x7fbd61648de8-18 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+    </style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.5/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (installed)">0.5</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">10</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">&#x27;angular&#x27;</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">&#x27;/home/circleci/repo/galleries/examples/annoy/../../../scikitplot/annoy/tests/test_v2.tree&#x27;</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr></tbody></table></details></div></details></div><script>
+    (function(){
+      var root=document.getElementById('annoy-repr-0x7fbd61648de8-18');
+      if(!root)return;
+      var btns=root.querySelectorAll('button.annoy-copy');
+      for(var i=0;i<btns.length;i++){
+        btns[i].addEventListener('click',function(e){
+          e.preventDefault();
+          var tr=this.closest('tr'); if(!tr) return;
+          var val=tr.querySelector('.annoy-value'); if(!val) return;
+          var txt=val.textContent || ''; if(!txt) return;
 
-.. GENERATED FROM PYTHON SOURCE LINES 45-46
+          function done(btn){
+            var old=btn.textContent;
+            btn.textContent='✔︎ Copied';
+            setTimeout(function(){btn.textContent=old;},800);
+          }
+
+          if(navigator.clipboard && navigator.clipboard.writeText){
+            navigator.clipboard.writeText(txt).then(done.bind(null,this),function(){done(this);}.bind(this));
+          } else {
+            var ta=document.createElement('textarea');
+            ta.value=txt;
+            ta.style.position='fixed';
+            ta.style.left='-9999px';
+            document.body.appendChild(ta);
+            ta.select();
+            try{document.execCommand('copy');}catch(_e){}
+            document.body.removeChild(ta);
+            done(this);
+          }
+        });
+      }
+    })();
+    </script></div>
+    </div>
+    <br />
+    <br />
+
+.. GENERATED FROM PYTHON SOURCE LINES 79-80
 
 Small subset → DataFrame/CSV
 
-.. GENERATED FROM PYTHON SOURCE LINES 46-49
+.. GENERATED FROM PYTHON SOURCE LINES 80-83
 
 .. code-block:: Python
 
@@ -115,7 +270,7 @@ Small subset → DataFrame/CSV
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 50-54
+.. GENERATED FROM PYTHON SOURCE LINES 84-88
 
 .. code-block:: Python
 
@@ -325,11 +480,11 @@ Small subset → DataFrame/CSV
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 55-56
+.. GENERATED FROM PYTHON SOURCE LINES 89-90
 
 Streaming CSV (warning: huge)
 
-.. GENERATED FROM PYTHON SOURCE LINES 56-58
+.. GENERATED FROM PYTHON SOURCE LINES 90-92
 
 .. code-block:: Python
 
@@ -344,11 +499,11 @@ Streaming CSV (warning: huge)
  .. code-block:: none
 
 
-    'annoy_vectors.csv'
+    '/home/circleci/repo/galleries/examples/annoy/annoy_vectors.csv'
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 59-63
+.. GENERATED FROM PYTHON SOURCE LINES 93-97
 
 .. code-block:: Python
 
@@ -558,12 +713,12 @@ Streaming CSV (warning: huge)
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-66
+.. GENERATED FROM PYTHON SOURCE LINES 98-100
 
 Large export → memory-safe .npy
 Exports items [0, n_items) into a memmapped .npy
 
-.. GENERATED FROM PYTHON SOURCE LINES 66-68
+.. GENERATED FROM PYTHON SOURCE LINES 100-102
 
 .. code-block:: Python
 
@@ -578,11 +733,11 @@ Exports items [0, n_items) into a memmapped .npy
  .. code-block:: none
 
 
-    'annoy_vectors.npy'
+    '/home/circleci/repo/galleries/examples/annoy/annoy_vectors.npy'
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 69-73
+.. GENERATED FROM PYTHON SOURCE LINES 103-107
 
 .. code-block:: Python
 
@@ -615,11 +770,11 @@ Exports items [0, n_items) into a memmapped .npy
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-75
+.. GENERATED FROM PYTHON SOURCE LINES 108-109
 
 Range-only export (strict, sized)
 
-.. GENERATED FROM PYTHON SOURCE LINES 75-77
+.. GENERATED FROM PYTHON SOURCE LINES 109-111
 
 .. code-block:: Python
 
@@ -634,11 +789,11 @@ Range-only export (strict, sized)
  .. code-block:: none
 
 
-    'chunk_0_1m.npy'
+    '/home/circleci/repo/galleries/examples/annoy/chunk_0_1m.npy'
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 78-83
+.. GENERATED FROM PYTHON SOURCE LINES 112-117
 
 .. code-block:: Python
 
@@ -672,7 +827,7 @@ Range-only export (strict, sized)
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 84-88
+.. GENERATED FROM PYTHON SOURCE LINES 118-122
 
 .. tags::
 
@@ -682,7 +837,7 @@ Range-only export (strict, sized)
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.072 seconds)
+   **Total running time of the script:** (0 minutes 0.452 seconds)
 
 
 .. _sphx_glr_download_auto_examples_annoy_plot_annoy_to_NPY_CSV.py:

@@ -83,7 +83,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="scikitplot.api" href="../../apis/scikitplot.api.html" />
-    <link rel="prev" title="SerializerBackend" href="scikitplot.annoy.SerializerBackend.html" />
+    <link rel="prev" title="PlottingMixin" href="scikitplot.annoy.PlottingMixin.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.5" />
@@ -319,7 +319,7 @@
           
           
           
-          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Community" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Community"/></a>
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
         </li>
         <li class="nav-item">
           
@@ -524,7 +524,7 @@
           
           
           
-          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Community" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Community"/></a>
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
         </li>
         <li class="nav-item">
           
@@ -577,13 +577,13 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.AnnoyIndex.html">AnnoyIndex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.Index.html">Index</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.CompressMode.html">CompressMode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.IndexIOMixin.html">IndexIOMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.ManifestMixin.html">ManifestMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.NDArrayExportMixin.html">NDArrayExportMixin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.ObjectIOMixin.html">ObjectIOMixin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PathAwareAnnoy.html">PathAwareAnnoy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PickleIOMixin.html">PickleIOMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PickleMixin.html">PickleMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PickleMode.html">PickleMode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.SerializerBackend.html">SerializerBackend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PlottingMixin.html">PlottingMixin</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">VectorOpsMixin</a></li>
 </ul>
 </details></li>
@@ -619,6 +619,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.cexternals.html">scikitplot.cexternals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._annoy.html">_annoy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._annoy.annoylib.html">annoylib</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._annoy.Annoy.html">Annoy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._annoy.AnnoyIndex.html">AnnoyIndex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.html">_astropy</a></li>
@@ -849,26 +850,51 @@
 <h1>VectorOpsMixin<a class="headerlink" href="#vectoropsmixin" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.annoy.VectorOpsMixin">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">VectorOpsMixin</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ab6d95b/scikitplot/annoy/_mixins/_vectors.py#L49"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">VectorOpsMixin</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f1498f7/scikitplot/annoy/_mixins/_vectors.py#L74"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin" title="Link to this definition">#</a></dt>
 <dd><p>High-level vector operations for Annoy-like objects.</p>
-<p>A class mixing this in MUST provide:
-- get_nns_by_item(item: int, n: int, <a href="#id1"><span class="problematic" id="id2">*</span></a>, search_k: int = -1,</p>
-<blockquote>
-<div><p>include_distances: bool = False)</p>
-</div></blockquote>
-<ul class="simple">
-<li><dl class="simple">
-<dt>get_nns_by_vector(vector: Sequence[float], n: int, <a href="#id3"><span class="problematic" id="id4">*</span></a>, search_k: int = -1,</dt><dd><p>include_distances: bool = False)</p>
+<p>This mixin provides a consistent, user-friendly API around the core Annoy
+neighbor query primitives.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">scikitplot.cexternals._annoy.annoylib.Annoy.get_nns_by_item</span></code></dt><dd></dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">scikitplot.cexternals._annoy.annoylib.Annoy.get_nns_by_vector</span></code></dt><dd></dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">scikitplot.cexternals._annoy.annoylib.Annoy.get_item_vector</span></code></dt><dd><p>The required low-level methods provided by the Annoy C-extension wrapper.</p>
 </dd>
 </dl>
-</li>
-<li><p>get_item_vector(item: int) -&gt; Sequence[float]</p></li>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>All methods here are deterministic wrappers around the low-level API.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">include_self</span></code> is implemented in Python by filtering ids.</p></li>
+<li><p>For by-vector queries, “self” is defined as a <em>stored vector that is
+strictly element-wise equal</em> to the query vector (no tolerance).</p></li>
 </ul>
-<p>This mixin does not assume any extra C-API features.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.VectorOpsMixin.get_neighbor_ids_by_item">
-<span class="sig-name descname"><span class="pre">get_neighbor_ids_by_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ab6d95b/scikitplot/annoy/_mixins/_vectors.py#L219"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin.get_neighbor_ids_by_item" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
+<span class="sig-name descname"><span class="pre">get_neighbor_ids_by_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f1498f7/scikitplot/annoy/_mixins/_vectors.py#L250"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin.get_neighbor_ids_by_item" title="Link to this definition">#</a></dt>
+<dd><p>Return neighbor ids for a stored item id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>item</strong><span class="classifier">int</span></dt><dd><p>Stored item id.</p>
+</dd>
+<dt><strong>n</strong><span class="classifier">int</span></dt><dd><p>Number of neighbors to return (after applying <code class="docutils literal notranslate"><span class="pre">include_self</span></code>).</p>
+</dd>
+<dt><strong>search_k</strong><span class="classifier">int, default=-1</span></dt><dd><p>Forwarded to the underlying Annoy query.</p>
+</dd>
+<dt><strong>include_self</strong><span class="classifier">bool, default=False</span></dt><dd><p>If False (default), filter <code class="docutils literal notranslate"><span class="pre">item</span></code> out if it appears in the result.</p>
+</dd>
+<dt><strong>include_distances</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, return <code class="docutils literal notranslate"><span class="pre">(ids,</span> <span class="pre">distances)</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>ids</strong><span class="classifier">list[int] or (list[int], list[float])</span></dt><dd><p>Neighbor ids, optionally with distances.</p>
+</dd>
+</dl>
+</dd>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>item</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
@@ -882,12 +908,49 @@
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)">int</a>] | <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.14)"><em>Tuple</em></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)">int</a>], <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a>]]</p>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.get_neighbor_ids_by_vector" title="scikitplot.annoy.VectorOpsMixin.get_neighbor_ids_by_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_neighbor_ids_by_vector</span></code></a></dt><dd><p>Same semantics for by-vector queries.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">scikitplot.cexternals._annoy.annoylib.Annoy.get_nns_by_item</span></code></dt><dd><p>Low-level Annoy query primitive.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>This method is deterministic given the underlying Annoy index.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.VectorOpsMixin.get_neighbor_ids_by_vector">
-<span class="sig-name descname"><span class="pre">get_neighbor_ids_by_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ab6d95b/scikitplot/annoy/_mixins/_vectors.py#L400"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin.get_neighbor_ids_by_vector" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
+<span class="sig-name descname"><span class="pre">get_neighbor_ids_by_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f1498f7/scikitplot/annoy/_mixins/_vectors.py#L497"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin.get_neighbor_ids_by_vector" title="Link to this definition">#</a></dt>
+<dd><p>Return neighbor ids for a query vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>vector</strong><span class="classifier">Sequence[float]</span></dt><dd><p>Query vector (same dimension as the index).</p>
+</dd>
+<dt><strong>n</strong><span class="classifier">int</span></dt><dd><p>Number of neighbors to return (after filtering).</p>
+</dd>
+<dt><strong>search_k</strong><span class="classifier">int, default=-1</span></dt><dd><p>Forwarded to the underlying Annoy query.</p>
+</dd>
+<dt><strong>include_distances</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, return <code class="docutils literal notranslate"><span class="pre">(ids,</span> <span class="pre">distances)</span></code>.</p>
+</dd>
+<dt><strong>include_self</strong><span class="classifier">bool, default=False</span></dt><dd><p>If False (default), attempt to exclude an exact-match stored vector.</p>
+</dd>
+<dt><strong>exclude_item</strong><span class="classifier">int, optional</span></dt><dd><p>Explicit stored id to exclude when <code class="docutils literal notranslate"><span class="pre">include_self=False</span></code>.
+Use this when you know the corresponding id of the query vector.</p>
+</dd>
+<dt><strong>exclude_item_ids</strong><span class="classifier">Iterable[int], optional</span></dt><dd><p>Additional ids to exclude.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>ids</strong><span class="classifier">list[int] or (list[int], list[float])</span></dt><dd><p>Neighbor ids, optionally with distances.</p>
+</dd>
+</dl>
+</dd>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>vector</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>]</em>)</p></li>
@@ -903,14 +966,56 @@
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)">int</a>] | <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.14)"><em>Tuple</em></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)">int</a>], <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a>]]</p>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.get_neighbor_vectors_by_vector" title="scikitplot.annoy.VectorOpsMixin.get_neighbor_vectors_by_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_neighbor_vectors_by_vector</span></code></a></dt><dd><p>Convenience method returning vectors instead of ids.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">scikitplot.cexternals._annoy.annoylib.Annoy.get_nns_by_vector</span></code></dt><dd><p>Low-level Annoy query primitive.</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.VectorOpsMixin.get_neighbor_vectors_by_item">
-<span class="sig-name descname"><span class="pre">get_neighbor_vectors_by_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_numpy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float32'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ab6d95b/scikitplot/annoy/_mixins/_vectors.py#L237"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin.get_neighbor_vectors_by_item" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
+<span class="sig-name descname"><span class="pre">get_neighbor_vectors_by_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_numpy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float32'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f1498f7/scikitplot/annoy/_mixins/_vectors.py#L299"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin.get_neighbor_vectors_by_item" title="Link to this definition">#</a></dt>
+<dd><p>Return neighbor vectors for a stored item id.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
+<dd class="field-odd"><dl class="simple">
+<dt><strong>item</strong><span class="classifier">int</span></dt><dd><p>Stored item id.</p>
+</dd>
+<dt><strong>n</strong><span class="classifier">int</span></dt><dd><p>Number of neighbors to return (after filtering).</p>
+</dd>
+<dt><strong>search_k</strong><span class="classifier">int, default=-1</span></dt><dd><p>Forwarded to the underlying Annoy query.</p>
+</dd>
+<dt><strong>include_self</strong><span class="classifier">bool, default=False</span></dt><dd><p>If False (default), filter <code class="docutils literal notranslate"><span class="pre">item</span></code> out if it appears in the result.</p>
+</dd>
+<dt><strong>include_distances</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, return <code class="docutils literal notranslate"><span class="pre">(vectors,</span> <span class="pre">distances)</span></code>.</p>
+</dd>
+<dt><strong>as_numpy</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, return a NumPy array. Requires NumPy to be installed.</p>
+</dd>
+<dt><strong>dtype</strong><span class="classifier">str, default=”float32”</span></dt><dd><p>NumPy dtype used when <code class="docutils literal notranslate"><span class="pre">as_numpy=True</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>vectors</strong><span class="classifier">list[Sequence[float]] or numpy.ndarray</span></dt><dd><p>Matrix of vectors (row-major).</p>
+</dd>
+<dt><strong>(vectors, distances)</strong><span class="classifier">tuple</span></dt><dd><p>When <code class="docutils literal notranslate"><span class="pre">include_distances=True</span></code>, returns <code class="docutils literal notranslate"><span class="pre">(vectors,</span> <span class="pre">distances)</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ImportError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">as_numpy=True</span></code> but NumPy is not installed.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
 <li><p><strong>item</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
 <li><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
 <li><p><strong>search_k</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
@@ -920,16 +1025,54 @@
 <li><p><strong>dtype</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a>]] | <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><em>ndarray</em></a> | <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.14)"><em>Tuple</em></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a>]] | <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><em>ndarray</em></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a>]]</p>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a>]] | <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>ndarray</em></a> | <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.14)"><em>Tuple</em></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a>]] | <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>ndarray</em></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a>]]</p>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.iter_neighbor_vectors_by_item" title="scikitplot.annoy.VectorOpsMixin.iter_neighbor_vectors_by_item"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iter_neighbor_vectors_by_item</span></code></a></dt><dd><p>Streaming interface for neighbor vectors.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">scikitplot.cexternals._annoy.annoylib.Annoy.get_item_vector</span></code></dt><dd><p>Low-level vector access primitive.</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.VectorOpsMixin.get_neighbor_vectors_by_vector">
-<span class="sig-name descname"><span class="pre">get_neighbor_vectors_by_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_numpy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float32'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ab6d95b/scikitplot/annoy/_mixins/_vectors.py#L422"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin.get_neighbor_vectors_by_vector" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
+<span class="sig-name descname"><span class="pre">get_neighbor_vectors_by_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_numpy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float32'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f1498f7/scikitplot/annoy/_mixins/_vectors.py#L551"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin.get_neighbor_vectors_by_vector" title="Link to this definition">#</a></dt>
+<dd><p>Return neighbor vectors for a query vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>vector</strong><span class="classifier">Sequence[float]</span></dt><dd><p>Query vector.</p>
+</dd>
+<dt><strong>n</strong><span class="classifier">int</span></dt><dd><p>Number of neighbors to return (after filtering).</p>
+</dd>
+<dt><strong>search_k</strong><span class="classifier">int, default=-1</span></dt><dd><p>Forwarded to the underlying Annoy query.</p>
+</dd>
+<dt><strong>include_distances</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, return <code class="docutils literal notranslate"><span class="pre">(vectors,</span> <span class="pre">distances)</span></code>.</p>
+</dd>
+<dt><strong>include_self</strong><span class="classifier">bool, default=False</span></dt><dd><p>If False (default), attempt to exclude an exact-match stored vector.</p>
+</dd>
+<dt><strong>exclude_item</strong><span class="classifier">int, optional</span></dt><dd><p>Explicit stored id to exclude when <code class="docutils literal notranslate"><span class="pre">include_self=False</span></code>.</p>
+</dd>
+<dt><strong>exclude_item_ids</strong><span class="classifier">Iterable[int], optional</span></dt><dd><p>Additional ids to exclude.</p>
+</dd>
+<dt><strong>as_numpy</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, return a NumPy array. Requires NumPy.</p>
+</dd>
+<dt><strong>dtype</strong><span class="classifier">str, default=”float32”</span></dt><dd><p>NumPy dtype used when <code class="docutils literal notranslate"><span class="pre">as_numpy=True</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ImportError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">as_numpy=True</span></code> but NumPy is not installed.</p>
+</dd>
+</dl>
+</dd>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>vector</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>]</em>)</p></li>
@@ -944,15 +1087,27 @@
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a>]] | <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><em>ndarray</em></a> | <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.14)"><em>Tuple</em></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a>]] | <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.3)"><em>ndarray</em></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a>]]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a>]] | <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>ndarray</em></a> | <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.14)"><em>Tuple</em></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a>]] | <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>ndarray</em></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><em>List</em></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a>]]</p>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.get_neighbor_ids_by_vector" title="scikitplot.annoy.VectorOpsMixin.get_neighbor_ids_by_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_neighbor_ids_by_vector</span></code></a></dt><dd><p>Same query returning ids.</p>
+</dd>
+<dt><a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.iter_neighbor_vectors_by_vector" title="scikitplot.annoy.VectorOpsMixin.iter_neighbor_vectors_by_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iter_neighbor_vectors_by_vector</span></code></a></dt><dd><p>Streaming interface.</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.VectorOpsMixin.iter_neighbor_vectors_by_item">
-<span class="sig-name descname"><span class="pre">iter_neighbor_vectors_by_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ab6d95b/scikitplot/annoy/_mixins/_vectors.py#L276"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin.iter_neighbor_vectors_by_item" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
+<span class="sig-name descname"><span class="pre">iter_neighbor_vectors_by_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f1498f7/scikitplot/annoy/_mixins/_vectors.py#L374"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin.iter_neighbor_vectors_by_item" title="Link to this definition">#</a></dt>
+<dd><p>Yield neighbor vectors for a stored item id (streaming).</p>
+<p class="rubric">Notes</p>
+<p>This avoids materializing all vectors at once.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>item</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
@@ -960,14 +1115,18 @@
 <li><p><strong>search_k</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
 <li><p><strong>include_self</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterator" title="(in Python v3.14)"><em>Iterator</em></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a>]]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.VectorOpsMixin.iter_neighbor_vectors_by_vector">
-<span class="sig-name descname"><span class="pre">iter_neighbor_vectors_by_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ab6d95b/scikitplot/annoy/_mixins/_vectors.py#L467"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin.iter_neighbor_vectors_by_vector" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
+<span class="sig-name descname"><span class="pre">iter_neighbor_vectors_by_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f1498f7/scikitplot/annoy/_mixins/_vectors.py#L628"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin.iter_neighbor_vectors_by_vector" title="Link to this definition">#</a></dt>
+<dd><p>Yield neighbor vectors for a query vector (streaming).</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>vector</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>]</em>)</p></li>
@@ -977,6 +1136,9 @@
 <li><p><strong>exclude_item</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>)</p></li>
 <li><p><strong>exclude_item_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterable" title="(in Python v3.14)"><em>Iterable</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterator" title="(in Python v3.14)"><em>Iterator</em></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><em>Sequence</em></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a>]]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -996,12 +1158,12 @@
     <div class="footer-article-item">
 <div class="prev-next-area">
     <a class="left-prev"
-       href="scikitplot.annoy.SerializerBackend.html"
+       href="scikitplot.annoy.PlottingMixin.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">SerializerBackend</p>
+        <p class="prev-next-title">PlottingMixin</p>
       </div>
     </a>
     <a class="right-next"
@@ -1086,7 +1248,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251217.ab6d95b 2025-12-17T20:53Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251223.f1498f7 2025-12-23T00:53Z.
       <br/>
     
   </p>

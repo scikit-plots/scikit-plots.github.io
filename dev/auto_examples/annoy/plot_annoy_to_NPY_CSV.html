@@ -207,7 +207,7 @@
 </div></div>
 <div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links">
 <li class="nav-item">
-<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://scikit-plots.github.io/dev/project/community.html" rel="noopener" target="_blank" title="Community"><img alt="Community" class="icon-link-image" src="../../_static/logos/scikit-plots-logo.svg"/></a>
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://scikit-plots.github.io/dev/project/community.html" rel="noopener" target="_blank" title="Social Media Platforms"><img alt="Social Media Platforms" class="icon-link-image" src="../../_static/logos/scikit-plots-logo.svg"/></a>
 </li>
 <li class="nav-item">
 <a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><img alt="PyPI" class="icon-link-image" src="../../_static/logos/python-logo.png"/></a>
@@ -322,7 +322,7 @@
 </div></div>
 <div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links">
 <li class="nav-item">
-<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://scikit-plots.github.io/dev/project/community.html" rel="noopener" target="_blank" title="Community"><img alt="Community" class="icon-link-image" src="../../_static/logos/scikit-plots-logo.svg"/></a>
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://scikit-plots.github.io/dev/project/community.html" rel="noopener" target="_blank" title="Social Media Platforms"><img alt="Social Media Platforms" class="icon-link-image" src="../../_static/logos/scikit-plots-logo.svg"/></a>
 </li>
 <li class="nav-item">
 <a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><img alt="PyPI" class="icon-link-image" src="../../_static/logos/python-logo.png"/></a>
@@ -475,13 +475,48 @@
 <span class="nb">print</span><span class="p">(</span><a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">Index</span></a><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>High-level Pythonic Annoy wrapper with picklable (or pickle-able).
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>High-level Annoy index composed from mixins.
 
-Minimal modify spotify/annoy low-level C-API to extend Python API.
+Parameters
+----------
+f : int, default=0
+    Vector dimension. If ``0``, Annoy can infer dimensionality lazily from
+    the first added vector.
+metric : str or None, default=None
+    Metric name (e.g. ``"angular"``, ``"euclidean"``, ``"manhattan"``,
+    ``"dot"``, ``"hamming"``).
+    If None, defaults to ``"angular"``.
+on_disk_path : str or os.PathLike or None, default=None
+    Optional backing path used by Annoy's on-disk build and mmap load.
+prefault : bool, default=False
+    Annoy prefault behavior (passed to low-level setter).
+schema_version : int or None, default=None
+    Optional low-level schema marker (exposed by Annoy as ``schema_version``).
+seed : int or None, default=None
+    Optional low-level seed.
+verbose : int or None, default=None
+    Optional low-level verbosity level.
+pickle_mode : {"auto", "disk", "byte"}, default="auto"
+    Pickle strategy used by :class:`~scikitplot.annoy._mixins._pickle.PickleMixin`.
+compress_mode : {"zlib", "gzip"} or None, default=None
+    Optional compression used for ``pickle_mode="byte"``.
 
-.. seealso::
-    * :py:obj:`~scikitplot.annoy.Index.from_low_level`
-    * https://docs.python.org/3/library/pickle.html#what-can-be-pickled-and-unpickled
+Notes
+-----
+This class initializes the C-extension backend explicitly (``Annoy.__init__``)
+and then initializes mixin configuration explicitly. It does **not** rely on
+cooperative ``super().__init__`` across mixins.
+
+See Also
+--------
+Annoy
+    Low-level backend type (this class subclasses it).
+ManifestMixin.to_manifest
+    Construct a versioned manifest for reconstruction.
+IndexIOMixin.save_index
+    Persist the index using Annoy's native format.
+PickleMixin.__getstate__
+    Pickle contract for the high-level index.
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
@@ -497,19 +532,109 @@ Minimal modify spotify/annoy low-level C-API to extend Python API.
 <span class="n">idx</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">Index</span></a><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">"angular"</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="n">idx</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="p">[</span><a class="sphx-glr-backref-module-random sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/random.html#random.gauss" title="random.gauss"><span class="n">random</span><span class="o">.</span><span class="n">gauss</span></a><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">f</span><span class="p">)])</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot.cexternals._annoy._plotting</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">utils</span>
 
+    <span class="n">single</span> <span class="o">=</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.zeros.html#numpy.zeros" title="numpy.zeros"><span class="n">np</span><span class="o">.</span><span class="n">zeros</span></a><span class="p">(</span><span class="n">idx</span><span class="o">.</span><span class="n">get_n_items</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">double</span> <span class="o">=</span> <a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.uniform.html#numpy.random.uniform" title="numpy.random.uniform"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span></a><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="n">get_n_items</span><span class="p">())</span><span class="o">.</span><span class="n">round</span><span class="p">()</span>
+
+    <span class="c1"># single vs double</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">"alpha"</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
+    <span class="n">y2</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">plot_annoy_index</span><span class="p">(</span>
+        <span class="n">idx</span><span class="p">,</span>
+        <span class="n">dims</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">idx</span><span class="o">.</span><span class="n">f</span><span class="p">)),</span>
+        <span class="n">plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">"draw_legend"</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">utils</span><span class="o">.</span><span class="n">plot_annoy_knn_edges</span><span class="p">(</span>
+        <span class="n">idx</span><span class="p">,</span>
+        <span class="n">y2</span><span class="p">,</span>
+        <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">line_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">"alpha"</span><span class="p">:</span> <span class="n">alpha</span><span class="p">},</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="p">)</span>
+
+<span class="n">idx</span><span class="o">.</span><span class="n">unbuild</span><span class="p">()</span>
 <span class="n">idx</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="plot annoy to NPY CSV" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_annoy_to_NPY_CSV_001.png" srcset="../../_images/sphx_glr_plot_annoy_to_NPY_CSV_001.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># idx.build(10)</span>
 <span class="n">idx</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">OUT</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Wrote"</span><span class="p">,</span> <span class="n">OUT</span><span class="p">)</span>
 <span class="n">idx</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Wrote /home/circleci/repo/galleries/examples/annoy/../../../scikitplot/annoy/tests/test_v2.tree
-
-Annoy(f=10, metric='angular', n_items=1000, n_trees=10, on_disk_path='/home/circleci/repo/galleries/examples/annoy/../../../scikitplot/annoy/tests/test_v2.tree')
 </pre></div>
 </div>
-<p>Small subset → DataFrame/CSV</p>
+<div class="output_subarea output_html rendered_html output_result">
+<div class="annoy-repr" id="annoy-repr-0x7fbd61648de8-18"><style>
+#annoy-repr-0x7fbd61648de8-18 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
+#annoy-repr-0x7fbd61648de8-18 details{margin:0;padding:0;}
+#annoy-repr-0x7fbd61648de8-18 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+#annoy-repr-0x7fbd61648de8-18 summary::-webkit-details-marker{display:none;}
+#annoy-repr-0x7fbd61648de8-18 .annoy-title{font-weight:600;}
+#annoy-repr-0x7fbd61648de8-18 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
+#annoy-repr-0x7fbd61648de8-18 .annoy-links a{color:#0969da;text-decoration:none;}
+#annoy-repr-0x7fbd61648de8-18 .annoy-links a:hover{text-decoration:underline;}
+#annoy-repr-0x7fbd61648de8-18 .annoy-sep{color:#57606a;}
+#annoy-repr-0x7fbd61648de8-18 .annoy-subtitle{font-weight:600;}
+#annoy-repr-0x7fbd61648de8-18 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
+#annoy-repr-0x7fbd61648de8-18 details[open] > summary .annoy-arrow::before{content:'\25BC';}
+#annoy-repr-0x7fbd61648de8-18 .annoy-body{padding:0 10px 10px 10px;}
+#annoy-repr-0x7fbd61648de8-18 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+#annoy-repr-0x7fbd61648de8-18 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
+#annoy-repr-0x7fbd61648de8-18 .annoy-table th{font-weight:600;}
+#annoy-repr-0x7fbd61648de8-18 .annoy-td-btn{width:64px;}
+#annoy-repr-0x7fbd61648de8-18 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
+#annoy-repr-0x7fbd61648de8-18 .annoy-copy:active{transform:translateY(1px);}
+#annoy-repr-0x7fbd61648de8-18 .annoy-key{white-space:nowrap;}
+#annoy-repr-0x7fbd61648de8-18 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+</style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" rel="noopener noreferrer" target="_blank" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.5/modules/generated/scikitplot.cexternals._annoy.Annoy.html" rel="noopener noreferrer" target="_blank" title="Annoy docs (installed)">0.5</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">10</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">'angular'</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">'/home/circleci/repo/galleries/examples/annoy/../../../scikitplot/annoy/tests/test_v2.tree'</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr></tbody></table></details></div></details></div><script>
+(function(){
+  var root=document.getElementById('annoy-repr-0x7fbd61648de8-18');
+  if(!root)return;
+  var btns=root.querySelectorAll('button.annoy-copy');
+  for(var i=0;i<btns.length;i++){
+    btns[i].addEventListener('click',function(e){
+      e.preventDefault();
+      var tr=this.closest('tr'); if(!tr) return;
+      var val=tr.querySelector('.annoy-value'); if(!val) return;
+      var txt=val.textContent || ''; if(!txt) return;
+
+      function done(btn){
+        var old=btn.textContent;
+        btn.textContent='✔︎ Copied';
+        setTimeout(function(){btn.textContent=old;},800);
+      }
+
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(txt).then(done.bind(null,this),function(){done(this);}.bind(this));
+      } else {
+        var ta=document.createElement('textarea');
+        ta.value=txt;
+        ta.style.position='fixed';
+        ta.style.left='-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        try{document.execCommand('copy');}catch(_e){}
+        document.body.removeChild(ta);
+        done(this);
+      }
+    });
+  }
+})();
+</script></div>
+</div>
+<br/>
+<br/><p>Small subset → DataFrame/CSV</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">"sample.csv"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
@@ -716,7 +841,7 @@ Annoy(f=10, metric='angular', n_items=1000, n_trees=10, on_disk_path='/home/circ
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">"annoy_vectors.csv"</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">100_000</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>'annoy_vectors.csv'
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>'/home/circleci/repo/galleries/examples/annoy/annoy_vectors.csv'
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -922,7 +1047,7 @@ Exports items [0, n_items) into a memmapped .npy</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span><span class="o">.</span><span class="n">save_vectors_npy</span><span class="p">(</span><span class="s2">"annoy_vectors.npy"</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>'annoy_vectors.npy'
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>'/home/circleci/repo/galleries/examples/annoy/annoy_vectors.npy'
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -949,7 +1074,7 @@ Exports items [0, n_items) into a memmapped .npy</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span><span class="o">.</span><span class="n">save_vectors_npy</span><span class="p">(</span><span class="s2">"chunk_0_1m.npy"</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">1_000_000</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>'chunk_0_1m.npy'
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>'/home/circleci/repo/galleries/examples/annoy/chunk_0_1m.npy'
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -973,21 +1098,21 @@ Exports items [0, n_items) into a memmapped .npy</p>
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.072 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.452 seconds)</p>
 
 <p class="rubric">Related examples</p>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Annoy, :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_Annoy_legacy_c_api_thumb.png"/>
-<p><a class="reference internal" href="plot_Annoy_legacy_c_api.html"><span class="doc">annoy.Annoy legacy c-api with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">annoy.Annoy legacy c-api with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Index class."><img alt="" src="../../_images/sphx_glr_plot_Annoy_python_api_thumb.png"/>
-<p><a class="reference internal" href="plot_Annoy_python_api.html"><span class="doc">annoy.Index python-api with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">annoy.Index python-api with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.snsx.aucplot function with a scikit-learn classifier (e.g., :py~sklearn.linear_model.LogisticRegression) instance."><img alt="" src="../../_images/sphx_glr_plot_aucplot_script_thumb.png"/>
-<p><a class="reference internal" href="../snsx/plot_aucplot_script.html"><span class="doc">plot_aucplot_script with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">plot_aucplot_script with examples</div>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_simple_script_thumb.png"/>
+<p><a class="reference internal" href="plot_simple_script.html"><span class="doc">Simple annoy.AnnoyIndex with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">Simple annoy.AnnoyIndex with examples</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_mmap_script_thumb.png"/>
 <p><a class="reference internal" href="plot_mmap_script.html"><span class="doc">Mmap annoy.AnnoyIndex with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">Mmap annoy.AnnoyIndex with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Annoy, :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_Annoy_legacy_c_api_thumb.png"/>
+<p><a class="reference internal" href="plot_Annoy_legacy_c_api.html"><span class="doc">annoy.Annoy legacy c-api with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">annoy.Annoy legacy c-api with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_precision_script_thumb.png"/>
+<p><a class="reference internal" href="plot_precision_script.html"><span class="doc">Precision annoy.AnnoyIndex with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">Precision annoy.AnnoyIndex with examples</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </article>
@@ -1038,7 +1163,7 @@ Exports items [0, n_items) into a memmapped .npy</p>
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251217.ab6d95b 2025-12-17T20:53Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251223.f1498f7 2025-12-23T00:53Z.
       <br/>
 </p>
 </div>

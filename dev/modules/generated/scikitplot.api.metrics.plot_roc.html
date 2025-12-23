@@ -319,7 +319,7 @@
           
           
           
-          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Community" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Community"/></a>
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
         </li>
         <li class="nav-item">
           
@@ -524,7 +524,7 @@
           
           
           
-          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Community" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Community"/></a>
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
         </li>
         <li class="nav-item">
           
@@ -577,13 +577,13 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.AnnoyIndex.html">AnnoyIndex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.Index.html">Index</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.CompressMode.html">CompressMode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.IndexIOMixin.html">IndexIOMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.ManifestMixin.html">ManifestMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.NDArrayExportMixin.html">NDArrayExportMixin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.ObjectIOMixin.html">ObjectIOMixin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PathAwareAnnoy.html">PathAwareAnnoy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PickleIOMixin.html">PickleIOMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PickleMixin.html">PickleMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PickleMode.html">PickleMode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.SerializerBackend.html">SerializerBackend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PlottingMixin.html">PlottingMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.VectorOpsMixin.html">VectorOpsMixin</a></li>
 </ul>
 </details></li>
@@ -619,6 +619,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.cexternals.html">scikitplot.cexternals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._annoy.html">_annoy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._annoy.annoylib.html">annoylib</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._annoy.Annoy.html">Annoy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._annoy.AnnoyIndex.html">AnnoyIndex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.html">_astropy</a></li>
@@ -849,7 +850,7 @@
 <h1>plot_roc<a class="headerlink" href="#plot-roc" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.api.metrics.plot_roc">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.api.metrics.</span></span><span class="sig-name descname"><span class="pre">plot_roc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_probas</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multi_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_plot_class_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ROC</span> <span class="pre">AUC</span> <span class="pre">Curves'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'large'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'medium'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_micro</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_macro</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ab6d95b/scikitplot/api/metrics/_classification/_roc_curve.py#L216"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.api.metrics.plot_roc" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.api.metrics.</span></span><span class="sig-name descname"><span class="pre">plot_roc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_probas</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multi_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_plot_class_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ROC</span> <span class="pre">AUC</span> <span class="pre">Curves'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'large'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'medium'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_micro</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_macro</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f1498f7/scikitplot/api/metrics/_classification/_roc_curve.py#L216"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.api.metrics.plot_roc" title="Link to this definition">#</a></dt>
 <dd><p>Generates the ROC AUC curves from labels and predicted scores/probabilities.</p>
 <p>ROC (Receiver Operating Characteristic) curve plots the true positive rate
 against the false positive rate at various threshold settings. The AUC (Area Under
@@ -1124,7 +1125,7 @@ the plot focuses on the specified class (<code class="docutils literal notransla
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251217.ab6d95b 2025-12-17T20:53Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251223.f1498f7 2025-12-23T00:53Z.
       <br/>
     
   </p>
