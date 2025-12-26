@@ -82,7 +82,7 @@
     <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="ManifestMixin" href="scikitplot.annoy.ManifestMixin.html" />
+    <link rel="next" title="MetaMixin" href="scikitplot.annoy.MetaMixin.html" />
     <link rel="prev" title="CompressMode" href="scikitplot.annoy.CompressMode.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -578,9 +578,8 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.Index.html">Index</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.CompressMode.html">CompressMode</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">IndexIOMixin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.ManifestMixin.html">ManifestMixin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.MetaMixin.html">MetaMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.NDArrayExportMixin.html">NDArrayExportMixin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PickleIOMixin.html">PickleIOMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PickleMixin.html">PickleMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PickleMode.html">PickleMode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PlottingMixin.html">PlottingMixin</a></li>
@@ -850,51 +849,101 @@
 <h1>IndexIOMixin<a class="headerlink" href="#indexiomixin" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.annoy.IndexIOMixin">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">IndexIOMixin</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f1498f7/scikitplot/annoy/_mixins/_io.py#L78"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.IndexIOMixin" title="Link to this definition">#</a></dt>
-<dd><p>Mixin adding explicit Annoy-native index file persistence.</p>
-<p>The concrete class must provide low-level Annoy <code class="docutils literal notranslate"><span class="pre">save</span></code>/<code class="docutils literal notranslate"><span class="pre">load</span></code> methods.
-This is satisfied either by:</p>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">IndexIOMixin</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/01641d8/scikitplot/annoy/_mixins/_io.py#L75"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.IndexIOMixin" title="Link to this definition">#</a></dt>
+<dd><p>Mixin adding explicit Annoy-native persistence helpers.</p>
+<p>The concrete class must provide low-level Annoy methods, typically from the
+C-extension backend:</p>
 <ul class="simple">
-<li><p>inheritance style: the class subclasses <code class="docutils literal notranslate"><span class="pre">Annoy</span></code> (<code class="docutils literal notranslate"><span class="pre">save</span></code>/<code class="docutils literal notranslate"><span class="pre">load</span></code> on <code class="docutils literal notranslate"><span class="pre">self</span></code>)</p></li>
-<li><p>composition style: the class stores a low-level Annoy instance on <code class="docutils literal notranslate"><span class="pre">self._annoy</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">save(path,</span> <span class="pre">prefault=...)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">load(path,</span> <span class="pre">prefault=...)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">serialize()</span> <span class="pre">-&gt;</span> <span class="pre">bytes</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">deserialize(data:</span> <span class="pre">bytes,</span> <span class="pre">prefault=...)</span></code></p></li>
 </ul>
 <p class="rubric">Notes</p>
-<p>This mixin never pickles the Python object. It delegates persistence to
-Annoy’s native binary index format.</p>
+<ul class="simple">
+<li><p>Methods in this mixin acquire a per-instance lock if one is available.</p></li>
+<li><p><a class="reference internal" href="#scikitplot.annoy.IndexIOMixin.save_index" title="scikitplot.annoy.IndexIOMixin.save_index"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_index</span></code></a> defaults to atomic writes (write temp + <a class="reference external" href="https://docs.python.org/3/library/os.html#os.replace" title="(in Python v3.14)"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.replace</span></code></a>)
+to reduce the risk of partial/corrupt files on failure.</p></li>
+<li><p><a class="reference internal" href="#scikitplot.annoy.IndexIOMixin.save_bundle" title="scikitplot.annoy.IndexIOMixin.save_bundle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_bundle</span></code></a> / <a class="reference internal" href="#scikitplot.annoy.IndexIOMixin.load_bundle" title="scikitplot.annoy.IndexIOMixin.load_bundle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_bundle</span></code></a> require <code class="xref py py-meth docutils literal notranslate"><span class="pre">to_json</span></code> /
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">from_json</span></code> (compose with <a class="reference internal" href="scikitplot.annoy.MetaMixin.html#scikitplot.annoy.MetaMixin" title="scikitplot.annoy._mixins._meta.MetaMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaMixin</span></code></a>).</p></li>
+</ul>
 <dl class="py method">
-<dt class="sig sig-object py" id="scikitplot.annoy.IndexIOMixin.load_bundle">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_bundle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'index.ann'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'manifest.json'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f1498f7/scikitplot/annoy/_mixins/_io.py#L249"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.IndexIOMixin.load_bundle" title="Link to this definition">#</a></dt>
-<dd><p>Load a directory bundle produced by <a class="reference internal" href="#scikitplot.annoy.IndexIOMixin.save_bundle" title="scikitplot.annoy.IndexIOMixin.save_bundle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_bundle</span></code></a>.</p>
+<dt class="sig sig-object py" id="scikitplot.annoy.IndexIOMixin.from_bytes">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/01641d8/scikitplot/annoy/_mixins/_io.py#L227"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.IndexIOMixin.from_bytes" title="Link to this definition">#</a></dt>
+<dd><p>Construct a new index and load it from serialized bytes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>directory</strong><span class="classifier">str or os.PathLike</span></dt><dd><p>Bundle directory containing <code class="docutils literal notranslate"><span class="pre">manifest_filename</span></code> and
-<code class="docutils literal notranslate"><span class="pre">index_filename</span></code>.</p>
+<dt><strong>data</strong></dt><dd><p>Bytes produced by <a class="reference internal" href="#scikitplot.annoy.IndexIOMixin.to_bytes" title="scikitplot.annoy.IndexIOMixin.to_bytes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_bytes</span></code></a> (backend <code class="docutils literal notranslate"><span class="pre">serialize</span></code>).</p>
 </dd>
-<dt><strong>index_filename</strong><span class="classifier">str, default=”index.ann”</span></dt><dd><p>Index filename inside <code class="docutils literal notranslate"><span class="pre">directory</span></code>.</p>
+<dt><strong>f</strong></dt><dd><p>Vector dimension for construction.</p>
 </dd>
-<dt><strong>manifest_filename</strong><span class="classifier">str, default=”manifest.json”</span></dt><dd><p>Manifest filename inside <code class="docutils literal notranslate"><span class="pre">directory</span></code>.</p>
+<dt><strong>metric</strong></dt><dd><p>Metric name for construction.</p>
 </dd>
-<dt><strong>prefault</strong><span class="classifier">bool or None, default=None</span></dt><dd><p>Passed through to <a class="reference internal" href="#scikitplot.annoy.IndexIOMixin.load_index" title="scikitplot.annoy.IndexIOMixin.load_index"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_index</span></code></a>.</p>
+<dt><strong>prefault</strong></dt><dd><p>Forwarded to the backend <code class="docutils literal notranslate"><span class="pre">deserialize</span></code> if supported.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>obj</strong><span class="classifier">Self</span></dt><dd><p>A newly constructed object with the index loaded.</p>
+<dt>index</dt><dd><p>Newly constructed index with the data loaded.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>AttributeError</dt><dd><p>If the class does not provide <code class="xref py py-meth docutils literal notranslate"><span class="pre">from_json</span></code> (from
-<a class="reference internal" href="scikitplot.annoy.ManifestMixin.html#scikitplot.annoy.ManifestMixin" title="scikitplot.annoy._mixins._manifest.ManifestMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">ManifestMixin</span></code></a>).</p>
+<dt>TypeError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">data</span></code> is not bytes-like.</p>
 </dd>
-<dt>FileNotFoundError</dt><dd><p>If either file is missing.</p>
+<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">f</span></code> or <code class="docutils literal notranslate"><span class="pre">metric</span></code> is invalid.</p>
 </dd>
-<dt>OSError</dt><dd><p>If files cannot be read or mapped.</p>
+<dt>AttributeError</dt><dd><p>If the backend does not provide <code class="docutils literal notranslate"><span class="pre">deserialize</span></code>.</p>
 </dd>
-<dt>RuntimeError</dt><dd><p>If the index is incompatible.</p>
+</dl>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><em>bytes</em></a>)</p></li>
+<li><p><strong>f</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>metric</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>prefault</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Self" title="(in Python v3.14)"><em>Self</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scikitplot.annoy.IndexIOMixin.load_bundle">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_bundle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'index.ann'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'manifest.json'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/01641d8/scikitplot/annoy/_mixins/_io.py#L341"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.IndexIOMixin.load_bundle" title="Link to this definition">#</a></dt>
+<dd><p>Load a directory bundle created by <a class="reference internal" href="#scikitplot.annoy.IndexIOMixin.save_bundle" title="scikitplot.annoy.IndexIOMixin.save_bundle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_bundle</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>directory</strong></dt><dd><p>Bundle directory.</p>
+</dd>
+<dt><strong>index_filename</strong></dt><dd><p>Filename for the Annoy index inside the directory.</p>
+</dd>
+<dt><strong>manifest_filename</strong></dt><dd><p>Filename for the metadata manifest inside the directory.</p>
+</dd>
+<dt><strong>prefault</strong></dt><dd><p>Forwarded to <a class="reference internal" href="#scikitplot.annoy.IndexIOMixin.load_index" title="scikitplot.annoy.IndexIOMixin.load_index"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_index</span></code></a>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>index</dt><dd><p>Newly constructed index.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>AttributeError</dt><dd><p>If <code class="xref py py-meth docutils literal notranslate"><span class="pre">from_json</span></code> is not available (compose with <a class="reference internal" href="scikitplot.annoy.MetaMixin.html#scikitplot.annoy.MetaMixin" title="scikitplot.annoy._mixins._meta.MetaMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaMixin</span></code></a>).</p>
+</dd>
+<dt>TypeError</dt><dd><p>If <code class="xref py py-meth docutils literal notranslate"><span class="pre">from_json</span></code> returns an unexpected type.</p>
+</dd>
+<dt>OSError</dt><dd><p>On filesystem failures.</p>
 </dd>
 </dl>
 </dd>
@@ -910,36 +959,27 @@ Annoy’s native binary index format.</p>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Self" title="(in Python v3.14)"><em>Self</em></a></p>
 </dd>
 </dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><a class="reference internal" href="#scikitplot.annoy.IndexIOMixin.save_bundle" title="scikitplot.annoy.IndexIOMixin.save_bundle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_bundle</span></code></a></dt><dd></dd>
-</dl>
-</div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.IndexIOMixin.load_index">
-<span class="sig-name descname"><span class="pre">load_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f1498f7/scikitplot/annoy/_mixins/_io.py#L147"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.IndexIOMixin.load_index" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">load_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/01641d8/scikitplot/annoy/_mixins/_io.py#L152"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.IndexIOMixin.load_index" title="Link to this definition">#</a></dt>
 <dd><p>Load (mmap) an Annoy index file into this object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>path</strong><span class="classifier">str or os.PathLike</span></dt><dd><p>Path to a file previously created by <a class="reference internal" href="#scikitplot.annoy.IndexIOMixin.save_index" title="scikitplot.annoy.IndexIOMixin.save_index"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_index</span></code></a> or the
-low-level <a class="reference internal" href="scikitplot.annoy.Annoy.html#scikitplot.annoy.Annoy.save" title="scikitplot.annoy.Annoy.save"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Annoy.save</span></code></a>.</p>
+backend <code class="docutils literal notranslate"><span class="pre">save</span></code>.</p>
 </dd>
-<dt><strong>prefault</strong><span class="classifier">bool or None, default=None</span></dt><dd><p>If None, defer to the low-level object’s configured prefault
-behavior.</p>
+<dt><strong>prefault</strong></dt><dd><p>Forwarded to the backend. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, the backend default is used.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>FileNotFoundError</dt><dd><p>If the file does not exist.</p>
+<dt>AttributeError</dt><dd><p>If the backend does not provide <code class="docutils literal notranslate"><span class="pre">load(path,</span> <span class="pre">prefault=...)</span></code>.</p>
 </dd>
-<dt>OSError</dt><dd><p>If the file cannot be opened or mapped.</p>
-</dd>
-<dt>RuntimeError</dt><dd><p>If the index is incompatible with the current object.</p>
+<dt>OSError</dt><dd><p>If loading fails (backend or filesystem).</p>
 </dd>
 </dl>
 </dd>
@@ -953,36 +993,33 @@ behavior.</p>
 <dd class="field-even"><p>None</p>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
-<p>Annoy requires that the in-memory object is compatible with the file
-being loaded (dimension and metric).</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.IndexIOMixin.save_bundle">
-<span class="sig-name descname"><span class="pre">save_bundle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'index.ann'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'manifest.json'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f1498f7/scikitplot/annoy/_mixins/_io.py#L186"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.IndexIOMixin.save_bundle" title="Link to this definition">#</a></dt>
-<dd><p>Save a directory bundle containing both manifest and index file.</p>
-<p>This is a convenience for packaging a self-describing Annoy index
-artifact.</p>
+<span class="sig-name descname"><span class="pre">save_bundle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'index.ann'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'manifest.json'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/01641d8/scikitplot/annoy/_mixins/_io.py#L290"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.IndexIOMixin.save_bundle" title="Link to this definition">#</a></dt>
+<dd><p>Save a <em>directory bundle</em> containing metadata + the index file.</p>
+<p>The bundle contains:
+- <code class="docutils literal notranslate"><span class="pre">manifest.json</span></code>: metadata payload produced by <code class="xref py py-meth docutils literal notranslate"><span class="pre">to_json</span></code>
+- <code class="docutils literal notranslate"><span class="pre">index.ann</span></code>: Annoy index produced by <a class="reference internal" href="#scikitplot.annoy.IndexIOMixin.save_index" title="scikitplot.annoy.IndexIOMixin.save_index"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_index</span></code></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>directory</strong><span class="classifier">str or os.PathLike</span></dt><dd><p>Destination directory. Created if it does not exist.</p>
+<dt><strong>directory</strong></dt><dd><p>Destination directory (created if missing).</p>
 </dd>
-<dt><strong>index_filename</strong><span class="classifier">str, default=”index.ann”</span></dt><dd><p>Filename for the Annoy index file inside <code class="docutils literal notranslate"><span class="pre">directory</span></code>.</p>
+<dt><strong>index_filename</strong></dt><dd><p>Filename for the Annoy index inside the directory.</p>
 </dd>
-<dt><strong>manifest_filename</strong><span class="classifier">str, default=”manifest.json”</span></dt><dd><p>Filename for the manifest JSON inside <code class="docutils literal notranslate"><span class="pre">directory</span></code>.</p>
+<dt><strong>manifest_filename</strong></dt><dd><p>Filename for the metadata manifest inside the directory.</p>
 </dd>
-<dt><strong>prefault</strong><span class="classifier">bool or None, default=None</span></dt><dd><p>Passed through to <a class="reference internal" href="#scikitplot.annoy.IndexIOMixin.save_index" title="scikitplot.annoy.IndexIOMixin.save_index"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_index</span></code></a>.</p>
+<dt><strong>prefault</strong></dt><dd><p>Forwarded to <a class="reference internal" href="#scikitplot.annoy.IndexIOMixin.save_index" title="scikitplot.annoy.IndexIOMixin.save_index"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_index</span></code></a>.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>AttributeError</dt><dd><p>If the object does not provide <code class="xref py py-meth docutils literal notranslate"><span class="pre">to_json</span></code> (from
-<a class="reference internal" href="scikitplot.annoy.ManifestMixin.html#scikitplot.annoy.ManifestMixin" title="scikitplot.annoy._mixins._manifest.ManifestMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">ManifestMixin</span></code></a>).</p>
+<dt>AttributeError</dt><dd><p>If <code class="xref py py-meth docutils literal notranslate"><span class="pre">to_json</span></code> is not available (compose with <a class="reference internal" href="scikitplot.annoy.MetaMixin.html#scikitplot.annoy.MetaMixin" title="scikitplot.annoy._mixins._meta.MetaMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaMixin</span></code></a>).</p>
 </dd>
-<dt>OSError</dt><dd><p>If files cannot be written.</p>
+<dt>OSError</dt><dd><p>On filesystem failures.</p>
 </dd>
 </dl>
 </dd>
@@ -998,30 +1035,28 @@ artifact.</p>
 <dd class="field-even"><p>None</p>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
-<p>The manifest is written using an atomic replace (write temp + rename)
-to avoid partial writes.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.IndexIOMixin.save_index">
-<span class="sig-name descname"><span class="pre">save_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f1498f7/scikitplot/annoy/_mixins/_io.py#L112"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.IndexIOMixin.save_index" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">save_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atomic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/01641d8/scikitplot/annoy/_mixins/_io.py#L99"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.IndexIOMixin.save_index" title="Link to this definition">#</a></dt>
 <dd><p>Persist the Annoy index to disk.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>path</strong><span class="classifier">str or os.PathLike</span></dt><dd><p>Destination path for the Annoy index file.</p>
 </dd>
-<dt><strong>prefault</strong><span class="classifier">bool or None, default=None</span></dt><dd><p>If None, defer to the low-level object’s configured prefault
-behavior.</p>
+<dt><strong>prefault</strong></dt><dd><p>Forwarded to the backend. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, the backend default is used.</p>
+</dd>
+<dt><strong>atomic</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, write to a unique temporary file and replace into place.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>OSError</dt><dd><p>If the index file cannot be written.</p>
+<dt>AttributeError</dt><dd><p>If the backend does not provide <code class="docutils literal notranslate"><span class="pre">save(path,</span> <span class="pre">prefault=...)</span></code>.</p>
 </dd>
-<dt>RuntimeError</dt><dd><p>If the low-level index is not initialized or saving fails.</p>
+<dt>OSError</dt><dd><p>For filesystem-level failures.</p>
 </dd>
 </dl>
 </dd>
@@ -1029,18 +1064,40 @@ behavior.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/os.html#os.PathLike" title="(in Python v3.14)"><em>PathLike</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em>)</p></li>
 <li><p><strong>prefault</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>atomic</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
 </dd>
 </dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><a class="reference internal" href="#scikitplot.annoy.IndexIOMixin.load_index" title="scikitplot.annoy.IndexIOMixin.load_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_index</span></code></a></dt><dd></dd>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scikitplot.annoy.IndexIOMixin.to_bytes">
+<span class="sig-name descname"><span class="pre">to_bytes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/01641d8/scikitplot/annoy/_mixins/_io.py#L197"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.IndexIOMixin.to_bytes" title="Link to this definition">#</a></dt>
+<dd><p>Serialize the built index to bytes (backend <code class="docutils literal notranslate"><span class="pre">serialize</span></code>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>data</dt><dd><p>Serialized index bytes.</p>
+</dd>
 </dl>
-</div>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>AttributeError</dt><dd><p>If the backend does not provide <code class="docutils literal notranslate"><span class="pre">serialize</span></code>.</p>
+</dd>
+<dt>RuntimeError</dt><dd><p>If serialization fails.</p>
+</dd>
+<dt>TypeError</dt><dd><p>If the backend returns non-bytes data.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)">bytes</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1067,11 +1124,11 @@ behavior.</p>
       </div>
     </a>
     <a class="right-next"
-       href="scikitplot.annoy.ManifestMixin.html"
+       href="scikitplot.annoy.MetaMixin.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">ManifestMixin</p>
+        <p class="prev-next-title">MetaMixin</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1100,10 +1157,12 @@ behavior.</p>
     
 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.IndexIOMixin"><code class="docutils literal notranslate"><span class="pre">IndexIOMixin</span></code></a><ul class="nav section-nav flex-column visible">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.IndexIOMixin.from_bytes"><code class="docutils literal notranslate"><span class="pre">from_bytes</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.IndexIOMixin.load_bundle"><code class="docutils literal notranslate"><span class="pre">load_bundle</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.IndexIOMixin.load_index"><code class="docutils literal notranslate"><span class="pre">load_index</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.IndexIOMixin.save_bundle"><code class="docutils literal notranslate"><span class="pre">save_bundle</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.IndexIOMixin.save_index"><code class="docutils literal notranslate"><span class="pre">save_index</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.IndexIOMixin.to_bytes"><code class="docutils literal notranslate"><span class="pre">to_bytes</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -1146,7 +1205,7 @@ behavior.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251223.f1498f7 2025-12-23T00:53Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251226.01641d8 2025-12-26T16:03Z.
       <br/>
     
   </p>

@@ -463,7 +463,7 @@
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index.from_low_level" title="scikitplot.annoy.Index.from_low_level"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_low_level</span></code></a></p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_low_level</span></code></p></li>
 <li><p><a class="reference external" href="https://docs.python.org/3/library/pickle.html#what-can-be-pickled-and-unpickled">https://docs.python.org/3/library/pickle.html#what-can-be-pickled-and-unpickled</a></p></li>
 </ul>
 </div>
@@ -475,48 +475,48 @@
 <span class="nb">print</span><span class="p">(</span><a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">Index</span></a><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>High-level Annoy index composed from mixins.
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>High-level ANNoy index composed from mixins.
 
 Parameters
 ----------
-f : int, default=0
-    Vector dimension. If ``0``, Annoy can infer dimensionality lazily from
-    the first added vector.
-metric : str or None, default=None
-    Metric name (e.g. ``"angular"``, ``"euclidean"``, ``"manhattan"``,
-    ``"dot"``, ``"hamming"``).
-    If None, defaults to ``"angular"``.
+f : int or None, optional, default=None
+    Vector dimensionality passed to the backend. If ``0`` or ``None``, the backend may
+    infer dimensionality lazily from the first added vector.
+metric : str or None, optional, default=None
+    Metric name passed to the backend. Common values include
+    ``"angular"``, ``"euclidean"``, ``"manhattan"``, ``"dot"``, and
+    ``"hamming"`` (synonyms may also be accepted by the backend).
+    If None, defaults to the backend default (typically ``"angular"``).
 on_disk_path : str or os.PathLike or None, default=None
-    Optional backing path used by Annoy's on-disk build and mmap load.
+    Optional backing path used by on-disk build and mmap load (backend-defined).
 prefault : bool, default=False
     Annoy prefault behavior (passed to low-level setter).
 schema_version : int or None, default=None
-    Optional low-level schema marker (exposed by Annoy as ``schema_version``).
+    Optional schema marker, when supported by the backend.
 seed : int or None, default=None
-    Optional low-level seed.
+    Optional seed controlling backend randomness, when supported.
 verbose : int or None, default=None
-    Optional low-level verbosity level.
-pickle_mode : {"auto", "disk", "byte"}, default="auto"
+    Optional verbosity level, when supported.
+
+Attributes
+----------
+pickle_mode : PickleMode
     Pickle strategy used by :class:`~scikitplot.annoy._mixins._pickle.PickleMixin`.
-compress_mode : {"zlib", "gzip"} or None, default=None
-    Optional compression used for ``pickle_mode="byte"``.
+compress_mode : CompressMode or None
+    Optional compression used by :class:`~scikitplot.annoy._mixins._pickle.PickleMixin`
+    when serializing to bytes.
 
 Notes
 -----
-This class initializes the C-extension backend explicitly (``Annoy.__init__``)
-and then initializes mixin configuration explicitly. It does **not** rely on
-cooperative ``super().__init__`` across mixins.
+This class is a direct subclass of the C-extension backend. It does not
+override ``__new__`` and does not rely on cooperative initialization across
+mixins. Mixins must be written so that their methods work even if they
+define no ``__init__`` at all.
 
 See Also
 --------
-Annoy
-    Low-level backend type (this class subclasses it).
-ManifestMixin.to_manifest
-    Construct a versioned manifest for reconstruction.
-IndexIOMixin.save_index
-    Persist the index using Annoy's native format.
-PickleMixin.__getstate__
-    Pickle contract for the high-level index.
+scikitplot.cexternals._annoy.Annoy
+Index.from_low_level
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
@@ -575,31 +575,31 @@ PickleMixin.__getstate__
 </pre></div>
 </div>
 <div class="output_subarea output_html rendered_html output_result">
-<div class="annoy-repr" id="annoy-repr-0x7fbd61648de8-18"><style>
-#annoy-repr-0x7fbd61648de8-18 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
-#annoy-repr-0x7fbd61648de8-18 details{margin:0;padding:0;}
-#annoy-repr-0x7fbd61648de8-18 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-#annoy-repr-0x7fbd61648de8-18 summary::-webkit-details-marker{display:none;}
-#annoy-repr-0x7fbd61648de8-18 .annoy-title{font-weight:600;}
-#annoy-repr-0x7fbd61648de8-18 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
-#annoy-repr-0x7fbd61648de8-18 .annoy-links a{color:#0969da;text-decoration:none;}
-#annoy-repr-0x7fbd61648de8-18 .annoy-links a:hover{text-decoration:underline;}
-#annoy-repr-0x7fbd61648de8-18 .annoy-sep{color:#57606a;}
-#annoy-repr-0x7fbd61648de8-18 .annoy-subtitle{font-weight:600;}
-#annoy-repr-0x7fbd61648de8-18 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
-#annoy-repr-0x7fbd61648de8-18 details[open] > summary .annoy-arrow::before{content:'\25BC';}
-#annoy-repr-0x7fbd61648de8-18 .annoy-body{padding:0 10px 10px 10px;}
-#annoy-repr-0x7fbd61648de8-18 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-#annoy-repr-0x7fbd61648de8-18 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
-#annoy-repr-0x7fbd61648de8-18 .annoy-table th{font-weight:600;}
-#annoy-repr-0x7fbd61648de8-18 .annoy-td-btn{width:64px;}
-#annoy-repr-0x7fbd61648de8-18 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
-#annoy-repr-0x7fbd61648de8-18 .annoy-copy:active{transform:translateY(1px);}
-#annoy-repr-0x7fbd61648de8-18 .annoy-key{white-space:nowrap;}
-#annoy-repr-0x7fbd61648de8-18 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+<div class="annoy-repr" id="annoy-repr-0x7ffa52a32208-18"><style>
+#annoy-repr-0x7ffa52a32208-18 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
+#annoy-repr-0x7ffa52a32208-18 details{margin:0;padding:0;}
+#annoy-repr-0x7ffa52a32208-18 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+#annoy-repr-0x7ffa52a32208-18 summary::-webkit-details-marker{display:none;}
+#annoy-repr-0x7ffa52a32208-18 .annoy-title{font-weight:600;}
+#annoy-repr-0x7ffa52a32208-18 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
+#annoy-repr-0x7ffa52a32208-18 .annoy-links a{color:#0969da;text-decoration:none;}
+#annoy-repr-0x7ffa52a32208-18 .annoy-links a:hover{text-decoration:underline;}
+#annoy-repr-0x7ffa52a32208-18 .annoy-sep{color:#57606a;}
+#annoy-repr-0x7ffa52a32208-18 .annoy-subtitle{font-weight:600;}
+#annoy-repr-0x7ffa52a32208-18 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
+#annoy-repr-0x7ffa52a32208-18 details[open] > summary .annoy-arrow::before{content:'\25BC';}
+#annoy-repr-0x7ffa52a32208-18 .annoy-body{padding:0 10px 10px 10px;}
+#annoy-repr-0x7ffa52a32208-18 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+#annoy-repr-0x7ffa52a32208-18 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
+#annoy-repr-0x7ffa52a32208-18 .annoy-table th{font-weight:600;}
+#annoy-repr-0x7ffa52a32208-18 .annoy-td-btn{width:72px;}
+#annoy-repr-0x7ffa52a32208-18 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
+#annoy-repr-0x7ffa52a32208-18 .annoy-copy:active{transform:translateY(1px);}
+#annoy-repr-0x7ffa52a32208-18 .annoy-key{white-space:nowrap;}
+#annoy-repr-0x7ffa52a32208-18 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
 </style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" rel="noopener noreferrer" target="_blank" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.5/modules/generated/scikitplot.cexternals._annoy.Annoy.html" rel="noopener noreferrer" target="_blank" title="Annoy docs (installed)">0.5</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">10</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">'angular'</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">'/home/circleci/repo/galleries/examples/annoy/../../../scikitplot/annoy/tests/test_v2.tree'</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr></tbody></table></details></div></details></div><script>
 (function(){
-  var root=document.getElementById('annoy-repr-0x7fbd61648de8-18');
+  var root=document.getElementById('annoy-repr-0x7ffa52a32208-18');
   if(!root)return;
   var btns=root.querySelectorAll('button.annoy-copy');
   for(var i=0;i<btns.length;i++){
@@ -613,11 +613,11 @@ PickleMixin.__getstate__
         var old=btn.textContent;
         btn.textContent='✔︎ Copied';
         setTimeout(function(){btn.textContent=old;},800);
-      }
+    }
 
       if(navigator.clipboard && navigator.clipboard.writeText){
         navigator.clipboard.writeText(txt).then(done.bind(null,this),function(){done(this);}.bind(this));
-      } else {
+    } else {
         var ta=document.createElement('textarea');
         ta.value=txt;
         ta.style.position='fixed';
@@ -627,7 +627,7 @@ PickleMixin.__getstate__
         try{document.execCommand('copy');}catch(_e){}
         document.body.removeChild(ta);
         done(this);
-      }
+    }
     });
   }
 })();
@@ -1098,7 +1098,7 @@ Exports items [0, n_items) into a memmapped .npy</p>
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.452 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.460 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_simple_script_thumb.png"/>
@@ -1163,7 +1163,7 @@ Exports items [0, n_items) into a memmapped .npy</p>
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251223.f1498f7 2025-12-23T00:53Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251226.01641d8 2025-12-26T16:03Z.
       <br/>
 </p>
 </div>

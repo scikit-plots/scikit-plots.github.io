@@ -580,9 +580,8 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.Index.html">Index</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.CompressMode.html">CompressMode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.IndexIOMixin.html">IndexIOMixin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.ManifestMixin.html">ManifestMixin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.MetaMixin.html">MetaMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.NDArrayExportMixin.html">NDArrayExportMixin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PickleIOMixin.html">PickleIOMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PickleMixin.html">PickleMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PickleMode.html">PickleMode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PlottingMixin.html">PlottingMixin</a></li>
@@ -852,7 +851,7 @@
 <h1>Annoy<a class="headerlink" href="#annoy" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.annoy.Annoy">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">Annoy</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f1498f7/scikitplot/cexternals/_annoy/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Annoy" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">Annoy</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/01641d8/scikitplot/cexternals/_annoy/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Annoy" title="Link to this definition">#</a></dt>
 <dd><p>Compiled with GCC/Clang. Using 512-bit AVX instructions.</p>
 <p>Approximate Nearest Neighbors index (Annoy) with a small, lazy C-extension wrapper.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Annoy</span><span class="p">(</span>
@@ -880,21 +879,45 @@ If None, treated as <code class="docutils literal notranslate"><span class="pre"
 <p>Distance metric (one of ‘angular’, ‘euclidean’, ‘manhattan’, ‘dot’, ‘hamming’).
 If omitted and <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>, defaults to <code class="docutils literal notranslate"><span class="pre">'angular'</span></code> (cosine-like).
 If omitted and <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">==</span> <span class="pre">0</span></code>, metric may be set later before construction.
-If None, treated as <code class="docutils literal notranslate"><span class="pre">'angular'</span></code> (reset to default).</p>
+If None, behavior depends on <code class="docutils literal notranslate"><span class="pre">f</span></code>:</p>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>: defaults to <code class="docutils literal notranslate"><span class="pre">'angular'</span></code> (legacy behavior; may emit a
+<a class="reference external" href="https://docs.python.org/3/library/exceptions.html#FutureWarning" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">FutureWarning</span></code></a>).</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">==</span> <span class="pre">0</span></code>: leaves the metric unset (lazy). You may set
+<a class="reference internal" href="#scikitplot.annoy.Annoy.metric" title="scikitplot.annoy.Annoy.metric"><code class="xref py py-attr docutils literal notranslate"><span class="pre">metric</span></code></a> later before construction, or it will default to
+<code class="docutils literal notranslate"><span class="pre">'angular'</span></code> on first <a class="reference internal" href="#scikitplot.annoy.Annoy.add_item" title="scikitplot.annoy.Annoy.add_item"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_item</span></code></a>.</p></li>
+</ul>
 </dd>
-<dt><strong>on_disk_path</strong><span class="classifier">str or None, optional, default=None</span></dt><dd><p>Path for on-disk build/load. None if not configured.</p>
+<dt><strong>on_disk_path</strong><span class="classifier">str or None, optional, default=None</span></dt><dd><p>If provided, configures the path for on-disk building. When the underlying
+index exists, this enables on-disk build mode (equivalent to calling
+<a class="reference internal" href="#scikitplot.annoy.Annoy.on_disk_build" title="scikitplot.annoy.Annoy.on_disk_build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">on_disk_build</span></code></a> with the same filename).</p>
+<p>Safety: Annoy core truncates the target file when enabling on-disk build.
+Therefore, if the path already exists, it is <strong>not</strong> truncated implicitly.
+Call <a class="reference internal" href="#scikitplot.annoy.Annoy.on_disk_build" title="scikitplot.annoy.Annoy.on_disk_build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">on_disk_build</span></code></a> explicitly to overwrite.</p>
+<p>In lazy mode (<code class="docutils literal notranslate"><span class="pre">f==0</span></code> and/or <code class="docutils literal notranslate"><span class="pre">metric</span> <span class="pre">is</span> <span class="pre">None</span></code>), activation occurs once
+the underlying C++ index is created.</p>
 </dd>
 <dt><strong>prefault</strong><span class="classifier">bool or None, optional, default=None</span></dt><dd><p>If True, request page-faulting index pages into memory when loading
 (when supported by the underlying platform/backing).
 If None, treated as <code class="docutils literal notranslate"><span class="pre">False</span></code> (reset to default).</p>
 </dd>
-<dt><strong>schema_version</strong><span class="classifier">int, optional, default=None</span></dt><dd><p>Reserved for future schema/version tracking. Currently stored on the
-object and reported by <a class="reference internal" href="#scikitplot.annoy.Annoy.info" title="scikitplot.annoy.Annoy.info"><code class="xref py py-meth docutils literal notranslate"><span class="pre">info</span></code></a>, but does not change the
-on-disk format.
-If None, treated as <code class="docutils literal notranslate"><span class="pre">0</span></code> (reset to default).</p>
+<dt><strong>schema_version</strong><span class="classifier">int, optional, default=None</span></dt><dd><p>Serialization/compatibility strategy marker.</p>
+<p>This does not change the Annoy on-disk format, but it <em>does</em> control
+how the index is snapshotted in pickles.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code>: pickle stores a <code class="docutils literal notranslate"><span class="pre">portable-v1</span></code> snapshot (fast restore,
+ABI-checked).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span></code>: pickle stores <code class="docutils literal notranslate"><span class="pre">canonical-v1</span></code> (portable across ABIs; restores by
+rebuilding deterministically).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;=3</span></code>: pickle stores both portable and canonical (canonical is used as
+a fallback if the ABI check fails).</p></li>
+</ul>
+<p>If None, treated as <code class="docutils literal notranslate"><span class="pre">0</span></code> (reset to default).</p>
 </dd>
 <dt><strong>seed</strong><span class="classifier">int or None, optional, default=None</span></dt><dd><p>Non-negative integer seed. If set before the index is constructed,
-the seed is stored and applied when the C++ index is created.</p>
+the seed is stored and applied when the C++ index is created.
+Seed value <code class="docutils literal notranslate"><span class="pre">0</span></code> is treated as &quot;use Annoy’s deterministic default seed&quot;
+(a <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#UserWarning" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserWarning</span></code></a> is emitted when <code class="docutils literal notranslate"><span class="pre">0</span></code> is explicitly provided).</p>
 </dd>
 <dt><strong>verbose</strong><span class="classifier">int or None, optional, default=None</span></dt><dd><p>Verbosity level. Values are clamped to the range <code class="docutils literal notranslate"><span class="pre">[-2,</span> <span class="pre">2]</span></code>.
 <code class="docutils literal notranslate"><span class="pre">level</span> <span class="pre">&gt;=</span> <span class="pre">1</span></code> enables Annoy’s verbose logging; <code class="docutils literal notranslate"><span class="pre">level</span> <span class="pre">&lt;=</span> <span class="pre">0</span></code> disables it.
@@ -909,15 +932,15 @@ Logging level inspired by gradient-boosting libraries:</p>
 </dd>
 <dt class="field-even">Attributes<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.f" title="scikitplot.annoy.Annoy.f"><code class="xref py py-obj docutils literal notranslate"><span class="pre">f</span></code></a><span class="classifier">int</span></dt><dd><p>Vector dimension.</p>
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.f" title="scikitplot.annoy.Annoy.f"><code class="xref py py-obj docutils literal notranslate"><span class="pre">f</span></code></a><span class="classifier">int, default=0</span></dt><dd><p>Vector dimension.</p>
 </dd>
-<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.metric" title="scikitplot.annoy.Annoy.metric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metric</span></code></a><span class="classifier">{‘angular’, ‘euclidean’, ‘manhattan’, ‘dot’, ‘hamming’} or None</span></dt><dd><p>Distance metric for the index.</p>
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.metric" title="scikitplot.annoy.Annoy.metric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metric</span></code></a><span class="classifier">{‘angular’, ‘euclidean’, ‘manhattan’, ‘dot’, ‘hamming’}, default=”angular”</span></dt><dd><p>Distance metric for the index.</p>
 </dd>
-<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.on_disk_path" title="scikitplot.annoy.Annoy.on_disk_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_disk_path</span></code></a><span class="classifier">str or None</span></dt><dd><p>Path for on-disk build/load.</p>
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.on_disk_path" title="scikitplot.annoy.Annoy.on_disk_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_disk_path</span></code></a><span class="classifier">str or None, optional, default=None</span></dt><dd><p>Path used for on-disk build/load/save operations.</p>
 </dd>
 <dt><a class="reference internal" href="#scikitplot.annoy.Annoy.prefault" title="scikitplot.annoy.Annoy.prefault"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prefault</span></code></a><span class="classifier">bool, default=False</span></dt><dd><p>Default prefault flag stored on the object.</p>
 </dd>
-<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.schema_version" title="scikitplot.annoy.Annoy.schema_version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">schema_version</span></code></a><span class="classifier">int, default=0</span></dt><dd><p>Schema/version marker stored on the object.</p>
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.schema_version" title="scikitplot.annoy.Annoy.schema_version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">schema_version</span></code></a><span class="classifier">int, default=0</span></dt><dd><p>Serialization/compatibility strategy marker sentinel value.</p>
 </dd>
 </dl>
 </dd>
@@ -927,7 +950,7 @@ Logging level inspired by gradient-boosting libraries:</p>
 <dl class="simple">
 <dt><a class="reference internal" href="#scikitplot.annoy.Annoy.add_item" title="scikitplot.annoy.Annoy.add_item"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_item</span></code></a></dt><dd><p>Add a vector to the index.</p>
 </dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code></dt><dd><p>Build the forest after adding items.</p>
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.build" title="scikitplot.annoy.Annoy.build"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code></a></dt><dd><p>Build the forest after adding items.</p>
 </dd>
 <dt><a class="reference internal" href="#scikitplot.annoy.Annoy.unbuild" title="scikitplot.annoy.Annoy.unbuild"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unbuild</span></code></a></dt><dd><p>Remove trees to allow adding more items.</p>
 </dd>
@@ -954,12 +977,14 @@ when both <code class="docutils literal notranslate"><span class="pre">f</span> 
 requires the index is first executed.</p></li>
 <li><p>If <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">==</span> <span class="pre">0</span></code>, the dimensionality is inferred from the first non-empty vector
 passed to <a class="reference internal" href="#scikitplot.annoy.Annoy.add_item" title="scikitplot.annoy.Annoy.add_item"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_item</span></code></a> and is then fixed for the lifetime of the index.</p></li>
+<li><p>Assigning <code class="docutils literal notranslate"><span class="pre">None</span></code> to <a class="reference internal" href="#scikitplot.annoy.Annoy.f" title="scikitplot.annoy.Annoy.f"><code class="xref py py-attr docutils literal notranslate"><span class="pre">f</span></code></a> is not supported. Use <code class="docutils literal notranslate"><span class="pre">0</span></code> for lazy
+inference (this matches <code class="docutils literal notranslate"><span class="pre">Annoy(f=None,</span> <span class="pre">...)</span></code> at construction time).</p></li>
 <li><p>If <code class="docutils literal notranslate"><span class="pre">metric</span></code> is omitted while <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>, the current behavior defaults to
 <code class="docutils literal notranslate"><span class="pre">'angular'</span></code> and may emit a <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#FutureWarning" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">FutureWarning</span></code></a>. To avoid warnings and
 future behavior changes, always pass <code class="docutils literal notranslate"><span class="pre">metric=...</span></code> explicitly.</p></li>
-<li><p>Items must be added <em>before</em> calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code>. After <code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code>, the
+<li><p>Items must be added <em>before</em> calling <a class="reference internal" href="#scikitplot.annoy.Annoy.build" title="scikitplot.annoy.Annoy.build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code></a>. After <a class="reference internal" href="#scikitplot.annoy.Annoy.build" title="scikitplot.annoy.Annoy.build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code></a>, the
 index becomes read-only; to add more items, call <a class="reference internal" href="#scikitplot.annoy.Annoy.unbuild" title="scikitplot.annoy.Annoy.unbuild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">unbuild</span></code></a>, add items
-again with <a class="reference internal" href="#scikitplot.annoy.Annoy.add_item" title="scikitplot.annoy.Annoy.add_item"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_item</span></code></a>, then call <code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code> again.</p></li>
+again with <a class="reference internal" href="#scikitplot.annoy.Annoy.add_item" title="scikitplot.annoy.Annoy.add_item"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_item</span></code></a>, then call <a class="reference internal" href="#scikitplot.annoy.Annoy.build" title="scikitplot.annoy.Annoy.build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code></a> again.</p></li>
 <li><p>Very large indexes can be built directly on disk with <a class="reference internal" href="#scikitplot.annoy.Annoy.on_disk_build" title="scikitplot.annoy.Annoy.on_disk_build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">on_disk_build</span></code></a>
 and then memory-mapped with <a class="reference internal" href="#scikitplot.annoy.Annoy.load" title="scikitplot.annoy.Annoy.load"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load</span></code></a>.</p></li>
 <li><p><a class="reference internal" href="#scikitplot.annoy.Annoy.info" title="scikitplot.annoy.Annoy.info"><code class="xref py py-meth docutils literal notranslate"><span class="pre">info</span></code></a> returns a structured summary (dimension, metric, counts, and
@@ -1020,14 +1045,14 @@ call to <a class="reference internal" href="#scikitplot.annoy.Annoy.add_item" ti
 <ol class="arabic simple" start="3">
 <li><p><strong>Build the forest</strong></p></li>
 </ol>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">n_trees</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">n_trees</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span><span class="o">.</span><span class="n">get_n_trees</span><span class="p">()</span>
 <span class="go">10</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span><span class="o">.</span><span class="n">memory_usage</span><span class="p">()</span>  <span class="c1"># byte</span>
 <span class="go">543076</span>
 </pre></div>
 </div>
-<p>After <code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code> the index becomes read-only.  You can still
+<p>After <a class="reference internal" href="#scikitplot.annoy.Annoy.build" title="scikitplot.annoy.Annoy.build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code></a> the index becomes read-only.  You can still
 query, save, load and serialize it.</p>
 <ol class="arabic simple" start="4">
 <li><p><strong>Query neighbours</strong></p></li>
@@ -1094,7 +1119,7 @@ If <code class="docutils literal notranslate"><span class="pre">f</span> <span c
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code></dt><dd><p>Build the forest after adding items.</p>
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.build" title="scikitplot.annoy.Annoy.build"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code></a></dt><dd><p>Build the forest after adding items.</p>
 </dd>
 <dt><a class="reference internal" href="#scikitplot.annoy.Annoy.unbuild" title="scikitplot.annoy.Annoy.unbuild"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unbuild</span></code></a></dt><dd><p>Remove trees to allow adding more items.</p>
 </dd>
@@ -1103,12 +1128,89 @@ If <code class="docutils literal notranslate"><span class="pre">f</span> <span c
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>Items must be added <em>before</em> calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code>. After building
+<p>Items must be added <em>before</em> calling <a class="reference internal" href="#scikitplot.annoy.Annoy.build" title="scikitplot.annoy.Annoy.build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code></a>. After building
 the forest, further calls to <a class="reference internal" href="#scikitplot.annoy.Annoy.add_item" title="scikitplot.annoy.Annoy.add_item"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_item</span></code></a> are not supported.</p>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">index</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">index</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.cexternals._annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annoy</span><span class="p">,</span> <span class="n">AnnoyIndex</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">=</span><span class="mi">100</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span><span class="o">=</span><span class="mi">1000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span> <span class="o">=</span> <span class="n">AnnoyIndex</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;l2&#39;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="gp">... </span>   <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">f</span><span class="p">)]</span>
+<span class="gp">... </span>   <span class="n">idx</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scikitplot.annoy.Annoy.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_trees</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.annoy.Annoy.build" title="Link to this definition">#</a></dt>
+<dd><p>Build a forest of random projection trees.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>n_trees</strong><span class="classifier">int</span></dt><dd><p>Number of trees in the forest. Larger values typically improve recall
+at the cost of slower build time and higher memory usage.</p>
+<p>If set to <code class="docutils literal notranslate"><span class="pre">n_trees=-1</span></code>, trees are built dynamically until
+the index reaches approximately twice the number of items
+<code class="docutils literal notranslate"><span class="pre">_n_nodes</span> <span class="pre">&gt;=</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">n_items</span></code>.</p>
+<p>Guidelines:</p>
+<ul class="simple">
+<li><p>Small datasets (&lt;10k samples): 10-20 trees.</p></li>
+<li><p>Medium datasets (10k-1M samples): 20-50 trees.</p></li>
+<li><p>Large datasets (&gt;1M samples): 50-100+ trees.</p></li>
+</ul>
+</dd>
+<dt><strong>n_jobs</strong><span class="classifier">int, optional, default=-1</span></dt><dd><p>Number of threads to use while building. <code class="docutils literal notranslate"><span class="pre">-1</span></code> means “auto” (use
+the implementation’s default, typically all available CPU cores).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy" title="scikitplot.annoy.Annoy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annoy</span></code></a></dt><dd><p>This instance (self), enabling method chaining.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.add_item" title="scikitplot.annoy.Annoy.add_item"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_item</span></code></a></dt><dd><p>Add vectors before building.</p>
+</dd>
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.unbuild" title="scikitplot.annoy.Annoy.unbuild"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unbuild</span></code></a></dt><dd><p>Drop trees to add more items.</p>
+</dd>
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.get_nns_by_item" title="scikitplot.annoy.Annoy.get_nns_by_item"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_nns_by_item</span></code></a>, <a class="reference internal" href="#scikitplot.annoy.Annoy.get_nns_by_vector" title="scikitplot.annoy.Annoy.get_nns_by_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_nns_by_vector</span></code></a></dt><dd><p>Query nearest neighbours.</p>
+</dd>
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.save" title="scikitplot.annoy.Annoy.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></a>, <a class="reference internal" href="#scikitplot.annoy.Annoy.load" title="scikitplot.annoy.Annoy.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code></a></dt><dd><p>Persist the index to/from disk.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>After <a class="reference internal" href="#scikitplot.annoy.Annoy.build" title="scikitplot.annoy.Annoy.build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code></a> completes, the index becomes read-only for queries.
+To add more items, call <a class="reference internal" href="#scikitplot.annoy.Annoy.unbuild" title="scikitplot.annoy.Annoy.unbuild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">unbuild</span></code></a>, add items, and then rebuild.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r23b353db21cb-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p>Erik Bernhardsson, “Annoy: Approximate Nearest Neighbours in C++/Python”.</p>
+</div>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.cexternals._annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annoy</span><span class="p">,</span> <span class="n">AnnoyIndex</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">=</span><span class="mi">100</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span><span class="o">=</span><span class="mi">1000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span> <span class="o">=</span> <span class="n">AnnoyIndex</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;l2&#39;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="gp">... </span>   <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">f</span><span class="p">)]</span>
+<span class="gp">... </span>   <span class="n">idx</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1120,11 +1222,14 @@ the forest, further calls to <a class="reference internal" href="#scikitplot.ann
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>byte</strong><span class="classifier">bytes</span></dt><dd><p>Byte string produced by <a class="reference internal" href="#scikitplot.annoy.Annoy.serialize" title="scikitplot.annoy.Annoy.serialize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">serialize</span></code></a>.</p>
+<dt><strong>byte</strong><span class="classifier">bytes</span></dt><dd><p>Byte string produced by <a class="reference internal" href="#scikitplot.annoy.Annoy.serialize" title="scikitplot.annoy.Annoy.serialize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">serialize</span></code></a>. Both native (legacy)
+blobs and portable blobs (created with <code class="docutils literal notranslate"><span class="pre">serialize(format='portable')</span></code>)
+are accepted; portable and canonical blobs are auto-detected.
+Canonical blobs restore by rebuilding the index deterministically.</p>
 </dd>
-<dt><strong>prefault</strong><span class="classifier">bool or None, optional, default=None</span></dt><dd><p>If True, fault pages into memory while restoring.
-If None, use the stored <a class="reference internal" href="#scikitplot.annoy.Annoy.prefault" title="scikitplot.annoy.Annoy.prefault"><code class="xref py py-attr docutils literal notranslate"><span class="pre">prefault</span></code></a> value.
-Primarily useful on some platforms for very large indexes.</p>
+<dt><strong>prefault</strong><span class="classifier">bool or None, optional, default=None</span></dt><dd><p>Accepted for API symmetry with <a class="reference internal" href="#scikitplot.annoy.Annoy.load" title="scikitplot.annoy.Annoy.load"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load</span></code></a>. If None, the stored
+Ignored for canonical blobs.
+<a class="reference internal" href="#scikitplot.annoy.Annoy.prefault" title="scikitplot.annoy.Annoy.prefault"><code class="xref py py-attr docutils literal notranslate"><span class="pre">prefault</span></code></a> value is used.</p>
 </dd>
 </dl>
 </dd>
@@ -1143,6 +1248,10 @@ Primarily useful on some platforms for very large indexes.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Portable blobs add a small header (version, ABI sizes, endianness, metric, f)
+to ensure incompatible binaries fail loudly and safely. They are not a
+cross-architecture wire format; the payload remains Annoy’s native snapshot.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -1159,9 +1268,126 @@ Primarily useful on some platforms for very large indexes.</p>
 </dl>
 <p class="rubric">Notes</p>
 <ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Annoy(f=None,</span> <span class="pre">...)</span></code> is supported at construction time and is treated as <code class="docutils literal notranslate"><span class="pre">f=0</span></code>.
+After construction, assigning <code class="docutils literal notranslate"><span class="pre">None</span></code> to <a class="reference internal" href="#scikitplot.annoy.Annoy.f" title="scikitplot.annoy.Annoy.f"><code class="xref py py-attr docutils literal notranslate"><span class="pre">f</span></code></a> is not supported; use <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">f</span></code> may be set only before the underlying C++ index is created.</p></li>
 <li><p>After construction, attempting to change <code class="docutils literal notranslate"><span class="pre">f</span></code> raises AttributeError.</p></li>
 </ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scikitplot.annoy.Annoy.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_trees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.annoy.Annoy.fit" title="Link to this definition">#</a></dt>
+<dd><p>Fit the Annoy index (scikit-learn compatible).</p>
+<p>This method supports two deterministic workflows:</p>
+<ol class="arabic simple">
+<li><p>Manual add/build:
+If X is None and y is None, fit() builds the forest using items
+previously added via add_item().</p></li>
+<li><p>Array-like X:
+If X is provided (2D array-like), fit() optionally resets or appends,
+adds all rows as items, then builds the forest.</p></li>
+</ol>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_samples, n_features), default=None</span></dt><dd><p>Vectors to add to the index. If None (and y is None), fit() only builds.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,), default=None</span></dt><dd><p>Optional labels associated with X. Stored as <a href="#id2"><span class="problematic" id="id3">y_</span></a> after successful build.</p>
+</dd>
+<dt><strong>n_trees</strong><span class="classifier">int, default=-1</span></dt><dd><p>Number of trees to build. Use -1 for Annoy’s internal default.</p>
+</dd>
+<dt><strong>n_jobs</strong><span class="classifier">int, default=-1</span></dt><dd><p>Number of threads to use during build (-1 means “auto”).</p>
+</dd>
+<dt><strong>reset</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, clear existing items before adding X. If False, append.</p>
+</dd>
+<dt><strong>start_index</strong><span class="classifier">int or None, default=None</span></dt><dd><p>Item id for the first row of X. If None, uses 0 when reset=True,
+otherwise uses current n_items when reset=False.</p>
+</dd>
+<dt><strong>missing_value</strong><span class="classifier">float or None, default=None</span></dt><dd><p>If not None, imputes missing entries in X.</p>
+<ul class="simple">
+<li><p>Dense rows: replaces None elements with missing_value.</p></li>
+<li><p>Dict rows: fills missing keys (and None values) with missing_value.</p></li>
+</ul>
+<p>If None, missing entries raise an error (strict mode).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy" title="scikitplot.annoy.Annoy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annoy</span></code></a></dt><dd><p>This instance (self), enabling method chaining.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.add_item" title="scikitplot.annoy.Annoy.add_item"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_item</span></code></a></dt><dd><p>Add one item at a time.</p>
+</dd>
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.build" title="scikitplot.annoy.Annoy.build"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code></a></dt><dd><p>Build the forest after manual calls to add_item.</p>
+</dd>
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.unbuild" title="scikitplot.annoy.Annoy.unbuild"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unbuild</span></code></a></dt><dd><p>Remove trees so items can be appended.</p>
+</dd>
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.y_" title="scikitplot.annoy.Annoy.y_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">y_</span></code></a></dt><dd><p>Stored labels (if provided).</p>
+</dd>
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.get_params" title="scikitplot.annoy.Annoy.get_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_params</span></code></a>, <a class="reference internal" href="#scikitplot.annoy.Annoy.set_params" title="scikitplot.annoy.Annoy.set_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_params</span></code></a></dt><dd><p>Estimator parameter API.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.cexternals._annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annoy</span><span class="p">,</span> <span class="n">AnnoyIndex</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="mi">10_000</span><span class="p">,</span> <span class="mi">1_000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">f</span><span class="p">)]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="p">[[</span><span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">f</span><span class="p">)]]</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;angular&#39;</span><span class="p">,</span> <span class="s1">&#39;l1&#39;</span><span class="p">,</span> <span class="s1">&#39;l2&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;hamming&#39;</span><span class="p">]:</span>
+<span class="gp">... </span>    <span class="n">idx</span> <span class="o">=</span> <span class="n">AnnoyIndex</span><span class="p">()</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">metric</span><span class="o">=</span><span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span> <span class="o">=</span> <span class="n">AnnoyIndex</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;angular&#39;</span><span class="p">,</span> <span class="s1">&#39;l1&#39;</span><span class="p">,</span> <span class="s1">&#39;l2&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;hamming&#39;</span><span class="p">]:</span>
+<span class="gp">... </span>    <span class="n">idx_m</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">rebuild</span><span class="p">(</span><span class="n">metric</span><span class="o">=</span><span class="n">m</span><span class="p">)</span>  <span class="c1"># rebuild-from-index</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">idx_m</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>  <span class="c1"># no .fit(X) here</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scikitplot.annoy.Annoy.fit_transform">
+<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_trees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_fill_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.annoy.Annoy.fit_transform" title="Link to this definition">#</a></dt>
+<dd><p>Fit the index and transform X in a single deterministic call.</p>
+<dl>
+<dt>This is equivalent to:</dt><dd><p>self.fit(X, y=y, n_trees=…, n_jobs=…, reset=…, start_index=…, missing_value=…)
+self.transform(X, n_neighbors=…, search_k=…, include_distances=…, return_labels=…,</p>
+<blockquote>
+<div><p>y_fill_value=…, missing_value=…)</p>
+</div></blockquote>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.fit" title="scikitplot.annoy.Annoy.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a></dt><dd><p>Build the index.</p>
+</dd>
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.transform" title="scikitplot.annoy.Annoy.transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transform</span></code></a></dt><dd><p>Query the built index.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.cexternals._annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annoy</span><span class="p">,</span> <span class="n">AnnoyIndex</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="mi">10_000</span><span class="p">,</span> <span class="mi">1_000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">f</span><span class="p">)]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="p">[[</span><span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">f</span><span class="p">)]]</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;angular&#39;</span><span class="p">,</span> <span class="s1">&#39;l1&#39;</span><span class="p">,</span> <span class="s1">&#39;l2&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;hamming&#39;</span><span class="p">]:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">AnnoyIndex</span><span class="p">()</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">metric</span><span class="o">=</span><span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -1351,6 +1577,39 @@ If <code class="docutils literal notranslate"><span class="pre">include_distance
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="scikitplot.annoy.Annoy.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a></span></span><a class="headerlink" href="#scikitplot.annoy.Annoy.get_params" title="Link to this definition">#</a></dt>
+<dd><p>Return estimator-style parameters (scikit-learn compatibility).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>deep</strong><span class="classifier">bool, optional, default=True</span></dt><dd><p>Included for scikit-learn API compatibility. Ignored because Annoy
+does not contain nested estimators.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">dict</span></dt><dd><p>Dictionary of stable, user-facing parameters.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.set_params" title="scikitplot.annoy.Annoy.set_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_params</span></code></a></dt><dd><p>Set estimator-style parameters.</p>
+</dd>
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.schema_version" title="scikitplot.annoy.Annoy.schema_version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">schema_version</span></code></a></dt><dd><p>Controls pickle / snapshot strategy.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>This is intended to make Annoy behave like a scikit-learn estimator for
+tools such as <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.clone.html#sklearn.base.clone" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sklearn.base.clone</span></code></a> and parameter grids.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Annoy.info">
 <span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include_n_items</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_n_trees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_memory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a></span></span><a class="headerlink" href="#scikitplot.annoy.Annoy.info" title="Link to this definition">#</a></dt>
 <dd><p>Return a structured summary of the index.</p>
@@ -1369,7 +1628,7 @@ inspect programmatically than the legacy multi-line string format.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">True</span></code>: include memory usage if available (built).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">False</span></code>: omit memory usage fields.</p></li>
 </ul>
-<p>Memory usage is computed after <code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code> and may be expensive for
+<p>Memory usage is computed after <a class="reference internal" href="#scikitplot.annoy.Annoy.build" title="scikitplot.annoy.Annoy.build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code></a> and may be expensive for
 very large indexes.</p>
 </dd>
 </dl>
@@ -1377,50 +1636,6 @@ very large indexes.</p>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>info</strong><span class="classifier">dict</span></dt><dd><p>Dictionary describing the current index state.</p>
-</dd>
-<dt>Notes</dt><dd></dd>
-</dl>
-<blockquote>
-<div></div></blockquote>
-<ul class="simple">
-<li><dl class="simple">
-<dt>Some keys are optional depending on include_* flags.</dt><dd></dd>
-</dl>
-</li>
-</ul>
-<dl class="simple">
-<dt>Keys:</dt><dd></dd>
-<dt><strong>* f</strong><span class="classifier">int, default=0</span></dt><dd><p>Dimensionality of the index.</p>
-</dd>
-<dt><strong>* metric</strong><span class="classifier">str, default=’angular’</span></dt><dd><p>Distance metric name.</p>
-</dd>
-<dt><strong>* on_disk_path</strong><span class="classifier">str, default=’’</span></dt><dd><p>Path used for on-disk build, if configured.</p>
-</dd>
-<dt><strong>* prefault</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, aggressively fault pages into memory during save.
-Primarily useful on some platforms for very large indexes.</p>
-</dd>
-<dt><strong>* schema_version</strong><span class="classifier">int, default=0</span></dt><dd><p>Stored schema/version marker on this object (reserved for future use).</p>
-</dd>
-<dt><strong>* seed</strong><span class="classifier">int or None, optional, default=None</span></dt><dd><p>Non-negative integer seed. If called before the index is constructed,
-the seed is stored and applied when the C++ index is created.</p>
-</dd>
-<dt><strong>* verbose</strong><span class="classifier">int or None, optional, default=None</span></dt><dd><p>Verbosity level. Values are clamped to the range <code class="docutils literal notranslate"><span class="pre">[-2,</span> <span class="pre">2]</span></code>.
-<code class="docutils literal notranslate"><span class="pre">level</span> <span class="pre">&gt;=</span> <span class="pre">1</span></code> enables Annoy’s verbose logging; <code class="docutils literal notranslate"><span class="pre">level</span> <span class="pre">&lt;=</span> <span class="pre">0</span></code> disables it.
-Logging level inspired by gradient-boosting libraries:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span> <span class="pre">0</span></code> : quiet (warnings only)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code>    : info (Annoy’s <code class="docutils literal notranslate"><span class="pre">verbose=True</span></code>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span> <span class="pre">2</span></code> : debug (currently same as info, reserved for future use)</p></li>
-</ul>
-</dd>
-<dt>Optional Keys:</dt><dd></dd>
-<dt><strong>* n_items</strong><span class="classifier">int</span></dt><dd><p>Number of items currently stored.</p>
-</dd>
-<dt><strong>* n_trees</strong><span class="classifier">int</span></dt><dd><p>Number of built trees in the forest.</p>
-</dd>
-<dt><strong>* memory_usage_byte</strong><span class="classifier">int</span></dt><dd><p>Approximate memory usage in bytes. Present only when requested and available.</p>
-</dd>
-<dt><strong>* memory_usage_mib</strong><span class="classifier">float</span></dt><dd><p>Approximate memory usage in MiB. Present only when requested and available.</p>
 </dd>
 </dl>
 </dd>
@@ -1438,6 +1653,80 @@ Logging level inspired by gradient-boosting libraries:</p>
 </dd>
 </dl>
 </div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>Some keys are optional depending on include_* flags.</p></li>
+</ul>
+<p>Keys:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>f<span class="classifier">int, default=0</span></dt><dd><p>Dimensionality of the index.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>metric<span class="classifier">str, default=’angular’</span></dt><dd><p>Distance metric name.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>on_disk_path<span class="classifier">str, default=’’</span></dt><dd><p>Path used for on-disk build, if configured.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>prefault<span class="classifier">bool, default=False</span></dt><dd><p>If True, aggressively fault pages into memory during save.
+Primarily useful on some platforms for very large indexes.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>schema_version<span class="classifier">int, default=0</span></dt><dd><p>Stored schema/version marker on this object (reserved for future use).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>seed<span class="classifier">int or None, optional, default=None</span></dt><dd><p>Non-negative integer seed. If called before the index is constructed,
+the seed is stored and applied when the C++ index is created.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>verbose<span class="classifier">int or None, optional, default=None</span></dt><dd><p>Verbosity level. Values are clamped to the range <code class="docutils literal notranslate"><span class="pre">[-2,</span> <span class="pre">2]</span></code>.
+<code class="docutils literal notranslate"><span class="pre">level</span> <span class="pre">&gt;=</span> <span class="pre">1</span></code> enables Annoy’s verbose logging; <code class="docutils literal notranslate"><span class="pre">level</span> <span class="pre">&lt;=</span> <span class="pre">0</span></code> disables it.
+Logging level inspired by gradient-boosting libraries:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span> <span class="pre">0</span></code> : quiet (warnings only)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code>    : info (Annoy’s <code class="docutils literal notranslate"><span class="pre">verbose=True</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span> <span class="pre">2</span></code> : debug (currently same as info, reserved for future use)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Optional Keys:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>n_items<span class="classifier">int</span></dt><dd><p>Number of items currently stored.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>n_trees<span class="classifier">int</span></dt><dd><p>Number of built trees in the forest.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>memory_usage_byte<span class="classifier">int</span></dt><dd><p>Approximate memory usage in bytes. Present only when requested and available.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>memory_usage_mib<span class="classifier">float</span></dt><dd><p>Approximate memory usage in MiB. Present only when requested and available.</p>
+</dd>
+</dl>
+</li>
+</ul>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">info</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;f&#39;</span><span class="p">]</span>
@@ -1544,10 +1833,13 @@ index is not initialized or the forest has not been built yet.</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<ul class="simple">
-<li><p>The metric may be set only before the underlying C++ index is created.</p></li>
-<li><p>After construction, attempting to change <code class="docutils literal notranslate"><span class="pre">metric</span></code> raises AttributeError.</p></li>
-</ul>
+<p>Changing <code class="docutils literal notranslate"><span class="pre">metric</span></code> after the index has been initialized (items added and/or
+trees built) is a <em>structural</em> change: the forest and all distances depend on
+the distance function.</p>
+<p>For scikit-learn compatibility, setting a different metric on an already
+initialized index will deterministically <strong>reset</strong> the index (drop all items,
+trees, and <a class="reference internal" href="#scikitplot.annoy.Annoy.y_" title="scikitplot.annoy.Annoy.y_"><code class="xref py py-attr docutils literal notranslate"><span class="pre">y_</span></code></a>). You must call <a class="reference internal" href="#scikitplot.annoy.Annoy.fit" title="scikitplot.annoy.Annoy.fit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fit</span></code></a> (or <a class="reference internal" href="#scikitplot.annoy.Annoy.add_item" title="scikitplot.annoy.Annoy.add_item"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_item</span></code></a> +
+<a class="reference internal" href="#scikitplot.annoy.Annoy.build" title="scikitplot.annoy.Annoy.build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code></a>) again before querying.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
@@ -1558,6 +1850,24 @@ index is not initialized or the forest has not been built yet.</p>
 <li><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">hamming</span></code></p></li>
 </ul>
 </div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scikitplot.annoy.Annoy.n_features">
+<span class="sig-name descname"><span class="pre">n_features</span></span><a class="headerlink" href="#scikitplot.annoy.Annoy.n_features" title="Link to this definition">#</a></dt>
+<dd><p>Alias of <code class="docutils literal notranslate"><span class="pre">f</span></code> (dimension), provided for scikit-learn naming parity.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scikitplot.annoy.Annoy.n_features_">
+<span class="sig-name descname"><span class="pre">n_features_</span></span><a class="headerlink" href="#scikitplot.annoy.Annoy.n_features_" title="Link to this definition">#</a></dt>
+<dd><p>Read-only alias of <code class="docutils literal notranslate"><span class="pre">n_features_in_</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scikitplot.annoy.Annoy.n_features_in_">
+<span class="sig-name descname"><span class="pre">n_features_in_</span></span><a class="headerlink" href="#scikitplot.annoy.Annoy.n_features_in_" title="Link to this definition">#</a></dt>
+<dd><p>Number of features seen during fit (scikit-learn compatible). Alias of <code class="docutils literal notranslate"><span class="pre">f</span></code> when available.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1582,7 +1892,7 @@ The file is created or overwritten as needed.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code></dt><dd><p>Build trees after adding items (on-disk backed).</p>
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.build" title="scikitplot.annoy.Annoy.build"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code></a></dt><dd><p>Build trees after adding items (on-disk backed).</p>
 </dd>
 <dt><a class="reference internal" href="#scikitplot.annoy.Annoy.load" title="scikitplot.annoy.Annoy.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code></a></dt><dd><p>Memory-map the built index.</p>
 </dd>
@@ -1598,7 +1908,7 @@ comfortably in RAM during construction.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.annoy.Annoy.on_disk_path">
 <span class="sig-name descname"><span class="pre">on_disk_path</span></span><a class="headerlink" href="#scikitplot.annoy.Annoy.on_disk_path" title="Link to this definition">#</a></dt>
-<dd><p>Path for on-disk build/load.</p>
+<dd><p>Path used for on-disk build/load/save operations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -1609,18 +1919,33 @@ comfortably in RAM during construction.</p>
 </dl>
 <p class="rubric">Notes</p>
 <ul class="simple">
+<li><p>Assigning a string/PathLike to <code class="docutils literal notranslate"><span class="pre">on_disk_path</span></code> configures on-disk build mode
+(equivalent to calling <a class="reference internal" href="#scikitplot.annoy.Annoy.on_disk_build" title="scikitplot.annoy.Annoy.on_disk_build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">on_disk_build</span></code></a> with the same filename).</p></li>
+<li><p>Safety: Annoy core truncates the target file when enabling on-disk build.
+Therefore, an existing file is never truncated implicitly when setting this
+attribute. Call <a class="reference internal" href="#scikitplot.annoy.Annoy.on_disk_build" title="scikitplot.annoy.Annoy.on_disk_build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">on_disk_build</span></code></a> explicitly to overwrite.</p></li>
+<li><p>Assigning <code class="docutils literal notranslate"><span class="pre">None</span></code> (or an empty string) clears the configured path, but only
+when no disk-backed index is currently active.</p></li>
 <li><p>Clearing/changing this while an on-disk index is active is disallowed.
-Call <code class="docutils literal notranslate"><span class="pre">unload()</span></code> first.</p></li>
+Call <a class="reference internal" href="#scikitplot.annoy.Annoy.unload" title="scikitplot.annoy.Annoy.unload"><code class="xref py py-meth docutils literal notranslate"><span class="pre">unload</span></code></a> first.</p></li>
 </ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#scikitplot.annoy.Annoy.on_disk_build" title="scikitplot.annoy.Annoy.on_disk_build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">on_disk_build</span></code></a></p></li>
+<li><p><a class="reference internal" href="#scikitplot.annoy.Annoy.load" title="scikitplot.annoy.Annoy.load"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load</span></code></a></p></li>
+<li><p><a class="reference internal" href="#scikitplot.annoy.Annoy.unload" title="scikitplot.annoy.Annoy.unload"><code class="xref py py-meth docutils literal notranslate"><span class="pre">unload</span></code></a></p></li>
+</ul>
+</div>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.annoy.Annoy.prefault">
 <span class="sig-name descname"><span class="pre">prefault</span></span><a class="headerlink" href="#scikitplot.annoy.Annoy.prefault" title="Link to this definition">#</a></dt>
 <dd><p>Default prefault flag stored on the object.</p>
-<p>This setting is currently informational and may be used by future versions
-as a default for on-disk operations. Today, methods like <a class="reference internal" href="#scikitplot.annoy.Annoy.load" title="scikitplot.annoy.Annoy.load"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load</span></code></a>,
-<a class="reference internal" href="#scikitplot.annoy.Annoy.save" title="scikitplot.annoy.Annoy.save"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save</span></code></a>, and <a class="reference internal" href="#scikitplot.annoy.Annoy.deserialize" title="scikitplot.annoy.Annoy.deserialize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserialize</span></code></a> accept a per-call <code class="docutils literal notranslate"><span class="pre">prefault</span></code> argument.</p>
+<p>This setting is used as the default for per-call <code class="docutils literal notranslate"><span class="pre">prefault</span></code> arguments when
+<code class="docutils literal notranslate"><span class="pre">prefault</span></code> is omitted or set to <code class="docutils literal notranslate"><span class="pre">None</span></code> in methods like <a class="reference internal" href="#scikitplot.annoy.Annoy.load" title="scikitplot.annoy.Annoy.load"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load</span></code></a> and
+<a class="reference internal" href="#scikitplot.annoy.Annoy.save" title="scikitplot.annoy.Annoy.save"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -1635,13 +1960,75 @@ as a default for on-disk operations. Today, methods like <a class="reference int
 </ul>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scikitplot.annoy.Annoy.random_state">
+<span class="sig-name descname"><span class="pre">random_state</span></span><a class="headerlink" href="#scikitplot.annoy.Annoy.random_state" title="Link to this definition">#</a></dt>
+<dd><p>Alias of <code class="docutils literal notranslate"><span class="pre">seed</span></code> (scikit-learn convention).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scikitplot.annoy.Annoy.rebuild">
+<span class="sig-name descname"><span class="pre">rebuild</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_disk_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_trees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#scikitplot.annoy.Annoy" title="scikitplot.annoy.Annoy"><span class="pre">Annoy</span></a></span></span><a class="headerlink" href="#scikitplot.annoy.Annoy.rebuild" title="Link to this definition">#</a></dt>
+<dd><p>Return a new Annoy index rebuilt from the current index contents.</p>
+<p>This helper is intended for deterministic, explicit rebuilds when changing
+structural constraints such as the metric (Annoy uses metric-specific C++
+index types). The source index is not mutated.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>metric</strong><span class="classifier">{‘angular’, ‘euclidean’, ‘manhattan’, ‘dot’, ‘hamming’} or None, optional</span></dt><dd><p>Metric for the new index. If None, reuse the current metric.</p>
+</dd>
+<dt><strong>on_disk_path</strong><span class="classifier">path-like or None, optional</span></dt><dd><p>Optional on-disk build path for the new index.</p>
+<p>Safety: the source object’s on_disk_path is never carried over implicitly.
+If on_disk_path is provided and is string-equal to the source’s configured
+path, it is ignored to avoid accidental overwrite/truncation hazards.</p>
+</dd>
+<dt><strong>n_trees</strong><span class="classifier">int or None, optional</span></dt><dd><p>If provided, build the new index with this number of trees (or -1 for
+Annoy’s internal auto mode). If None, reuse the source’s tree count only
+when the source index is already built; otherwise do not build.</p>
+</dd>
+<dt><strong>n_jobs</strong><span class="classifier">int, optional, default=-1</span></dt><dd><p>Number of threads to use while building (-1 means “auto”).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy" title="scikitplot.annoy.Annoy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annoy</span></code></a></dt><dd><p>A new Annoy instance containing the same items (and <a href="#id4"><span class="problematic" id="id5">y_</span></a> metadata if present).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.get_params" title="scikitplot.annoy.Annoy.get_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_params</span></code></a></dt><dd><p>Read constructor parameters.</p>
+</dd>
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.set_params" title="scikitplot.annoy.Annoy.set_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_params</span></code></a></dt><dd><p>Update estimator parameters (use with <code class="docutils literal notranslate"><span class="pre">fit(X)</span></code> when refitting from data).</p>
+</dd>
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.fit" title="scikitplot.annoy.Annoy.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a></dt><dd><p>Build the index from <code class="docutils literal notranslate"><span class="pre">X</span></code> (preferred if you already have <code class="docutils literal notranslate"><span class="pre">X</span></code> available).</p>
+</dd>
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.serialize" title="scikitplot.annoy.Annoy.serialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serialize</span></code></a>, <a class="reference internal" href="#scikitplot.annoy.Annoy.deserialize" title="scikitplot.annoy.Annoy.deserialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deserialize</span></code></a></dt><dd><p>Persist / restore indexes; canonical restores rebuild deterministically.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">__sklearn_clone__</span></code></dt><dd><p>Unfitted clone hook (no fitted state).</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p><code class="docutils literal notranslate"><span class="pre">rebuild(metric=...)</span></code> is deterministic and preserves item ids (0..n_items-1).
+by copying item vectors from the current fitted index into a new instance
+and rebuilding trees.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">rebuild()</span></code> when you want to change <code class="docutils literal notranslate"><span class="pre">metric</span></code> while <em>reusing the already-stored
+vectors</em> (e.g., you do not want to re-read or re-materialize <code class="docutils literal notranslate"><span class="pre">X</span></code>, or you loaded an
+index from disk and only have access to its stored vectors).</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Annoy.repr_info">
 <span class="sig-name descname"><span class="pre">repr_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include_n_items</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_n_trees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_memory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#scikitplot.annoy.Annoy.repr_info" title="Link to this definition">#</a></dt>
 <dd><p>Return a dict-like string representation with optional extra fields.</p>
 <p>Unlike <code class="docutils literal notranslate"><span class="pre">__repr__</span></code>, this method can include additional fields on demand.
 Note that <code class="docutils literal notranslate"><span class="pre">include_memory=True</span></code> may be expensive for large indexes.
-Memory is calculated after <code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code>.</p>
+Memory is calculated after <a class="reference internal" href="#scikitplot.annoy.Annoy.build" title="scikitplot.annoy.Annoy.build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1691,9 +2078,9 @@ Use prefault=None to fall back to the stored <a class="reference internal" href=
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.annoy.Annoy.schema_version">
 <span class="sig-name descname"><span class="pre">schema_version</span></span><a class="headerlink" href="#scikitplot.annoy.Annoy.schema_version" title="Link to this definition">#</a></dt>
-<dd><p>Schema/version marker stored on the object.</p>
-<p>This value is reserved for future compatibility work and does not currently
-change the Annoy on-disk format.</p>
+<dd><p>Serialization/compatibility strategy marker sentinel value.</p>
+<p>This does not change the Annoy on-disk format, but it controls how the index
+is snapshotted in pickles.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -1704,24 +2091,50 @@ change the Annoy on-disk format.</p>
 </dl>
 <p class="rubric">Notes</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> is the default sentinel value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code>: pickle stores a <code class="docutils literal notranslate"><span class="pre">portable-v1</span></code> snapshot (fast restore, ABI-checked).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span></code>: pickle stores <code class="docutils literal notranslate"><span class="pre">canonical-v1</span></code> (portable; restores by rebuilding deterministically).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;=3</span></code>: pickle stores both portable and canonical; canonical is used as a fallback.</p></li>
 </ul>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scikitplot.annoy.Annoy.seed">
+<span class="sig-name descname"><span class="pre">seed</span></span><a class="headerlink" href="#scikitplot.annoy.Annoy.seed" title="Link to this definition">#</a></dt>
+<dd><p>Random seed override (scikit-learn compatible). None means use Annoy default seed.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Annoy.serialize">
-<span class="sig-name descname"><span class="pre">serialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><span class="pre">bytes</span></a></span></span><a class="headerlink" href="#scikitplot.annoy.Annoy.serialize" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">serialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><span class="pre">bytes</span></a></span></span><a class="headerlink" href="#scikitplot.annoy.Annoy.serialize" title="Link to this definition">#</a></dt>
 <dd><p>Serialize the built in-memory index into a byte string.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
+<dt><strong>format</strong><span class="classifier">{“native”, “portable”, “canonical”} or None, optional, default=None</span></dt><dd><p>Serialization format.</p>
+<ul class="simple">
+<li><p>“native” (legacy): raw Annoy memory snapshot. Fastest, but
+only compatible when the ABI matches exactly.</p></li>
+<li><p>“portable”: prepend a small compatibility header (version,
+endianness, sizeof checks, metric, f) so deserialization fails
+loudly on mismatches.</p></li>
+<li><p>“canonical”: rebuildable wire format storing item vectors + build
+parameters. Portable across ABIs (within IEEE-754 float32) and
+restores by rebuilding trees deterministically.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
 <dt><strong>data</strong><span class="classifier">bytes</span></dt><dd><p>Opaque binary blob containing the Annoy index.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
 <dt>RuntimeError</dt><dd><p>If the index is not initialized or serialization fails.</p>
+</dd>
+<dt>OverflowError</dt><dd><p>If the serialized payload is too large to fit in a Python bytes object.</p>
 </dd>
 </dl>
 </dd>
@@ -1734,19 +2147,69 @@ change the Annoy on-disk format.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>The serialized form is a snapshot of the internal C++ data structures.
-It can be stored, transmitted, or used with joblib without rebuilding trees.</p>
+<p>“Portable” blobs are the native snapshot with additional compatibility guards.
+They are not a cross-architecture wire format.</p>
+<p>“Canonical” blobs trade load time for portability: deserialization rebuilds
+the index with <code class="docutils literal notranslate"><span class="pre">n_jobs=1</span></code> for deterministic reconstruction.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scikitplot.annoy.Annoy.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#scikitplot.annoy.Annoy" title="scikitplot.annoy.Annoy"><span class="pre">Annoy</span></a></span></span><a class="headerlink" href="#scikitplot.annoy.Annoy.set_params" title="Link to this definition">#</a></dt>
+<dd><p>Set estimator-style parameters (scikit-learn compatibility).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>**params</strong></dt><dd><p>Keyword parameters to set. Unknown keys raise <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy" title="scikitplot.annoy.Annoy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annoy</span></code></a></dt><dd><p>This instance (self), enabling method chaining.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ValueError</dt><dd><p>If an unknown parameter name is provided.</p>
+</dd>
+<dt>TypeError</dt><dd><p>If parameter names are not strings or types are invalid.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.get_params" title="scikitplot.annoy.Annoy.get_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_params</span></code></a></dt><dd><p>Return estimator-style parameters.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Changing structural parameters (notably <code class="docutils literal notranslate"><span class="pre">metric</span></code>) on an already
+initialized index resets the index deterministically (drops all items,
+trees, and <a class="reference internal" href="#scikitplot.annoy.Annoy.y_" title="scikitplot.annoy.Annoy.y_"><code class="xref py py-attr docutils literal notranslate"><span class="pre">y_</span></code></a>). Refit/rebuild is required before querying.</p>
+<p>This behavior matches scikit-learn expectations: <code class="docutils literal notranslate"><span class="pre">set_params</span></code> may be
+called at any time, but parameter changes that affect learned state
+invalidate the fitted model.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Annoy.set_seed">
-<span class="sig-name descname"><span class="pre">set_seed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.annoy.Annoy.set_seed" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_seed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.annoy.Annoy.set_seed" title="Link to this definition">#</a></dt>
 <dd><p>Set the random seed used for tree construction.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>seed</strong><span class="classifier">int, optional</span></dt><dd><p>Non-negative integer seed. If called before the index is constructed,
-the seed is stored and applied when the C++ index is created.</p>
+<dt><strong>seed</strong><span class="classifier">int or None, optional, default=None</span></dt><dd><p>Non-negative integer seed. If called before the index is constructed,
+the seed is stored and applied when the C++ index is created.
+Seed value <code class="docutils literal notranslate"><span class="pre">0</span></code> resets to Annoy’s core default seed (with a <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#UserWarning" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserWarning</span></code></a>).</p>
+<ul class="simple">
+<li><p>If omitted (or None, NULL), the seed is set to Annoy’s default seed.</p></li>
+<li><p>If 0, clear any pending override and reset to Annoy’s default seed
+(a <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#UserWarning" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserWarning</span></code></a> is emitted).</p></li>
+</ul>
 </dd>
 </dl>
 </dd>
@@ -1760,6 +2223,109 @@ the seed is stored and applied when the C++ index is created.</p>
 <p class="rubric">Notes</p>
 <p>Annoy is deterministic by default. Setting an explicit seed is useful for
 reproducible experiments and debugging.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scikitplot.annoy.Annoy.set_verbose">
+<span class="sig-name descname"><span class="pre">set_verbose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.annoy.Annoy.set_verbose" title="Link to this definition">#</a></dt>
+<dd><p>Set the verbosity level (callable setter).</p>
+<p>This method exists to preserve a callable interface while keeping the
+parameter name <code class="docutils literal notranslate"><span class="pre">verbose</span></code> available as an attribute for scikit-learn
+compatibility.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>level</strong><span class="classifier">int, optional, default=1</span></dt><dd><p>Verbosity level. Values are clamped to the range <code class="docutils literal notranslate"><span class="pre">[-2,</span> <span class="pre">2]</span></code>.
+<code class="docutils literal notranslate"><span class="pre">level</span> <span class="pre">&gt;=</span> <span class="pre">1</span></code> enables Annoy’s verbose logging; <code class="docutils literal notranslate"><span class="pre">level</span> <span class="pre">&lt;=</span> <span class="pre">0</span></code> disables it.
+Logging level inspired by gradient-boosting libraries:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span> <span class="pre">0</span></code> : quiet (warnings only)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code>    : info (Annoy’s <code class="docutils literal notranslate"><span class="pre">verbose=True</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span> <span class="pre">2</span></code> : debug (currently same as info, reserved for future use)</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy" title="scikitplot.annoy.Annoy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annoy</span></code></a></dt><dd><p>This instance (self), enabling method chaining.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.set_verbosity" title="scikitplot.annoy.Annoy.set_verbosity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_verbosity</span></code></a></dt><dd><p>Alias of <a class="reference internal" href="#scikitplot.annoy.Annoy.set_verbose" title="scikitplot.annoy.Annoy.set_verbose"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_verbose</span></code></a>.</p>
+</dd>
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.verbose" title="scikitplot.annoy.Annoy.verbose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">verbose</span></code></a></dt><dd><p>Parameter attribute (int | None).</p>
+</dd>
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.get_params" title="scikitplot.annoy.Annoy.get_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_params</span></code></a>, <a class="reference internal" href="#scikitplot.annoy.Annoy.set_params" title="scikitplot.annoy.Annoy.set_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_params</span></code></a></dt><dd><p>Estimator parameter API.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scikitplot.annoy.Annoy.set_verbosity">
+<span class="sig-name descname"><span class="pre">set_verbosity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.annoy.Annoy.set_verbosity" title="Link to this definition">#</a></dt>
+<dd><p>Alias of <a class="reference internal" href="#scikitplot.annoy.Annoy.set_verbose" title="scikitplot.annoy.Annoy.set_verbose"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_verbose</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scikitplot.annoy.Annoy.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_fill_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'vector'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.annoy.Annoy.transform" title="Link to this definition">#</a></dt>
+<dd><p>Transform queries into nearest-neighbor ids (and optional distances / labels).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like</span></dt><dd><p>Query inputs. The expected shape/type depends on <code class="docutils literal notranslate"><span class="pre">input_type</span></code>:</p>
+<ul class="simple">
+<li><p>input_type=’vector’: X must be a 2D array-like of shape (n_queries, f).</p></li>
+<li><p>input_type=’item’:   X must be a 1D sequence of item ids.</p></li>
+</ul>
+</dd>
+<dt><strong>n_neighbors</strong><span class="classifier">int, default=10</span></dt><dd><p>Number of neighbors to retrieve for each query.</p>
+</dd>
+<dt><strong>search_k</strong><span class="classifier">int, default=-1</span></dt><dd><p>Search parameter passed to Annoy (-1 uses Annoy’s default).</p>
+</dd>
+<dt><strong>include_distances</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, also return per-neighbor distances.</p>
+</dd>
+<dt><strong>return_labels</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, also return per-neighbor labels resolved from <a href="#id6"><span class="problematic" id="id7">y_</span></a>.</p>
+</dd>
+<dt><strong>y_fill_value</strong><span class="classifier">object, default=None</span></dt><dd><p>Value used when <a href="#id8"><span class="problematic" id="id9">y_</span></a> is unset or missing an entry for a neighbor id.</p>
+</dd>
+<dt><strong>input_type</strong><span class="classifier">{‘vector’, ‘item’}, default=’vector’</span></dt><dd><p>Controls how X is interpreted.</p>
+</dd>
+<dt><strong>missing_value</strong><span class="classifier">float or None, default=None</span></dt><dd><p>If not None, imputes missing entries in X (None values in dense rows;
+missing keys / None values in dict rows). If None, missing entries raise.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>indices</strong><span class="classifier">list of list of int</span></dt><dd><p>Neighbor ids for each query.</p>
+</dd>
+<dt><strong>(indices, distances)</strong><span class="classifier">tuple</span></dt><dd><p>Returned when include_distances=True.</p>
+</dd>
+<dt><strong>(indices, labels)</strong><span class="classifier">tuple</span></dt><dd><p>Returned when return_labels=True.</p>
+</dd>
+<dt><strong>(indices, distances, labels)</strong><span class="classifier">tuple</span></dt><dd><p>Returned when include_distances=True and return_labels=True.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.get_nns_by_vector" title="scikitplot.annoy.Annoy.get_nns_by_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_nns_by_vector</span></code></a>, <a class="reference internal" href="#scikitplot.annoy.Annoy.get_nns_by_item" title="scikitplot.annoy.Annoy.get_nns_by_item"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_nns_by_item</span></code></a></dt><dd><p>Low-level query methods.</p>
+</dd>
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.fit" title="scikitplot.annoy.Annoy.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>, <a class="reference internal" href="#scikitplot.annoy.Annoy.fit_transform" title="scikitplot.annoy.Annoy.fit_transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit_transform</span></code></a></dt><dd><p>Estimator-style APIs.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>transform() requires a built index; call fit() or build() first.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1777,14 +2343,14 @@ reproducible experiments and debugging.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code></dt><dd><p>Rebuild the forest after adding new items.</p>
+<dt><a class="reference internal" href="#scikitplot.annoy.Annoy.build" title="scikitplot.annoy.Annoy.build"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code></a></dt><dd><p>Rebuild the forest after adding new items.</p>
 </dd>
 <dt><a class="reference internal" href="#scikitplot.annoy.Annoy.add_item" title="scikitplot.annoy.Annoy.add_item"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_item</span></code></a></dt><dd><p>Add items (only valid when no trees are built).</p>
 </dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>After calling <a class="reference internal" href="#scikitplot.annoy.Annoy.unbuild" title="scikitplot.annoy.Annoy.unbuild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">unbuild</span></code></a>, you must call <code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code>
+<p>After calling <a class="reference internal" href="#scikitplot.annoy.Annoy.unbuild" title="scikitplot.annoy.Annoy.unbuild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">unbuild</span></code></a>, you must call <a class="reference internal" href="#scikitplot.annoy.Annoy.build" title="scikitplot.annoy.Annoy.build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code></a>
 again before running nearest-neighbour queries.</p>
 </dd></dl>
 
@@ -1814,31 +2380,31 @@ again before running nearest-neighbour queries.</p>
 but keeps the Python object alive.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.annoy.Annoy.verbose">
-<span class="sig-name descname"><span class="pre">verbose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.annoy.Annoy.verbose" title="Link to this definition">#</a></dt>
-<dd><p>Control verbosity of the underlying C++ index.</p>
+<span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#scikitplot.annoy.Annoy.verbose" title="Link to this definition">#</a></dt>
+<dd><p>set_verbose().</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>level</strong><span class="classifier">int, optional, default=1</span></dt><dd><p>Verbosity level. Values are clamped to the range <code class="docutils literal notranslate"><span class="pre">[-2,</span> <span class="pre">2]</span></code>.
-<code class="docutils literal notranslate"><span class="pre">level</span> <span class="pre">&gt;=</span> <span class="pre">1</span></code> enables Annoy’s verbose logging; <code class="docutils literal notranslate"><span class="pre">level</span> <span class="pre">&lt;=</span> <span class="pre">0</span></code> disables it.
-Logging level inspired by gradient-boosting libraries:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span> <span class="pre">0</span></code> : quiet (warnings only)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code>    : info (Annoy’s <code class="docutils literal notranslate"><span class="pre">verbose=True</span></code>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span> <span class="pre">2</span></code> : debug (currently same as info, reserved for future use)</p></li>
-</ul>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Verbosity level in [-2, 2] or None (unset). Callable setter</p>
 </dd>
 </dl>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt><a class="reference internal" href="#scikitplot.annoy.Annoy" title="scikitplot.annoy.Annoy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annoy</span></code></a></dt><dd><p>This instance (self), enabling method chaining.</p>
-</dd>
-</dl>
-</dd>
-</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scikitplot.annoy.Annoy.y">
+<span class="sig-name descname"><span class="pre">y</span></span><a class="headerlink" href="#scikitplot.annoy.Annoy.y" title="Link to this definition">#</a></dt>
+<dd><p>Alias for <a href="#id10"><span class="problematic" id="id11">y_</span></a>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scikitplot.annoy.Annoy.y_">
+<span class="sig-name descname"><span class="pre">y_</span></span><a class="headerlink" href="#scikitplot.annoy.Annoy.y_" title="Link to this definition">#</a></dt>
+<dd><p>Labels / targets associated with the index items.</p>
+<p class="rubric">Notes</p>
+<p>If provided to fit(X, y), labels are stored here after a successful build.
+You may also set this property manually. When possible, the setter enforces
+that len(<a href="#id12"><span class="problematic" id="id13">y_</span></a>) matches the current number of items (n_items).</p>
 </dd></dl>
 
 </dd></dl>
@@ -1908,29 +2474,45 @@ Logging level inspired by gradient-boosting libraries:</p>
 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy"><code class="docutils literal notranslate"><span class="pre">Annoy</span></code></a><ul class="nav section-nav flex-column visible">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.add_item"><code class="docutils literal notranslate"><span class="pre">add_item</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.build"><code class="docutils literal notranslate"><span class="pre">build</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.deserialize"><code class="docutils literal notranslate"><span class="pre">deserialize</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.f"><code class="docutils literal notranslate"><span class="pre">f</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.fit"><code class="docutils literal notranslate"><span class="pre">fit</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.fit_transform"><code class="docutils literal notranslate"><span class="pre">fit_transform</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.get_distance"><code class="docutils literal notranslate"><span class="pre">get_distance</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.get_item_vector"><code class="docutils literal notranslate"><span class="pre">get_item_vector</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.get_n_items"><code class="docutils literal notranslate"><span class="pre">get_n_items</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.get_n_trees"><code class="docutils literal notranslate"><span class="pre">get_n_trees</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.get_nns_by_item"><code class="docutils literal notranslate"><span class="pre">get_nns_by_item</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.get_nns_by_vector"><code class="docutils literal notranslate"><span class="pre">get_nns_by_vector</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.get_params"><code class="docutils literal notranslate"><span class="pre">get_params</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.info"><code class="docutils literal notranslate"><span class="pre">info</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.load"><code class="docutils literal notranslate"><span class="pre">load</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.memory_usage"><code class="docutils literal notranslate"><span class="pre">memory_usage</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.metric"><code class="docutils literal notranslate"><span class="pre">metric</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.n_features"><code class="docutils literal notranslate"><span class="pre">n_features</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.n_features_"><code class="docutils literal notranslate"><span class="pre">n_features_</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.n_features_in_"><code class="docutils literal notranslate"><span class="pre">n_features_in_</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.on_disk_build"><code class="docutils literal notranslate"><span class="pre">on_disk_build</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.on_disk_path"><code class="docutils literal notranslate"><span class="pre">on_disk_path</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.prefault"><code class="docutils literal notranslate"><span class="pre">prefault</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.random_state"><code class="docutils literal notranslate"><span class="pre">random_state</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.rebuild"><code class="docutils literal notranslate"><span class="pre">rebuild</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.repr_info"><code class="docutils literal notranslate"><span class="pre">repr_info</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.save"><code class="docutils literal notranslate"><span class="pre">save</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.schema_version"><code class="docutils literal notranslate"><span class="pre">schema_version</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.seed"><code class="docutils literal notranslate"><span class="pre">seed</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.serialize"><code class="docutils literal notranslate"><span class="pre">serialize</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.set_params"><code class="docutils literal notranslate"><span class="pre">set_params</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.set_seed"><code class="docutils literal notranslate"><span class="pre">set_seed</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.set_verbose"><code class="docutils literal notranslate"><span class="pre">set_verbose</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.set_verbosity"><code class="docutils literal notranslate"><span class="pre">set_verbosity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.transform"><code class="docutils literal notranslate"><span class="pre">transform</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.unbuild"><code class="docutils literal notranslate"><span class="pre">unbuild</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.unload"><code class="docutils literal notranslate"><span class="pre">unload</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.verbose"><code class="docutils literal notranslate"><span class="pre">verbose</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.y"><code class="docutils literal notranslate"><span class="pre">y</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.annoy.Annoy.y_"><code class="docutils literal notranslate"><span class="pre">y_</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gallery-examples">Gallery examples</a></li>
@@ -1974,7 +2556,7 @@ Logging level inspired by gradient-boosting libraries:</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251223.f1498f7 2025-12-23T00:53Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251226.01641d8 2025-12-26T16:03Z.
       <br/>
     
   </p>

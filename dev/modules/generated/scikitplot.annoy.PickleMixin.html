@@ -83,7 +83,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="PickleMode" href="scikitplot.annoy.PickleMode.html" />
-    <link rel="prev" title="PickleIOMixin" href="scikitplot.annoy.PickleIOMixin.html" />
+    <link rel="prev" title="NDArrayExportMixin" href="scikitplot.annoy.NDArrayExportMixin.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.5" />
@@ -578,9 +578,8 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.Index.html">Index</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.CompressMode.html">CompressMode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.IndexIOMixin.html">IndexIOMixin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.ManifestMixin.html">ManifestMixin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.MetaMixin.html">MetaMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.NDArrayExportMixin.html">NDArrayExportMixin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PickleIOMixin.html">PickleIOMixin</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">PickleMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PickleMode.html">PickleMode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PlottingMixin.html">PlottingMixin</a></li>
@@ -850,32 +849,28 @@
 <h1>PickleMixin<a class="headerlink" href="#picklemixin" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.annoy.PickleMixin">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">PickleMixin</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f1498f7/scikitplot/annoy/_mixins/_pickle.py#L104"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.PickleMixin" title="Link to this definition">#</a></dt>
-<dd><p>Mixin implementing an Annoy-aware pickle contract.</p>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">PickleMixin</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/01641d8/scikitplot/annoy/_mixins/_pickle.py#L159"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.PickleMixin" title="Link to this definition">#</a></dt>
+<dd><p>Mixin adding deterministic pickle support.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>f</strong><span class="classifier">int, default=0</span></dt><dd><p>Vector dimension. Provided for compatibility with inheritance-style
-wrappers. Composition-style wrappers may ignore this parameter and
-configure the low-level object elsewhere.</p>
+<dt><strong>f</strong><span class="classifier">int, default=0</span></dt><dd><p>Vector dimension (constructor argument for wrapper classes).</p>
 </dd>
-<dt><strong>metric</strong><span class="classifier">str, default=”angular”</span></dt><dd><p>Distance metric. Provided for compatibility with inheritance-style
-wrappers.</p>
+<dt><strong>metric</strong><span class="classifier">str, default=”angular”</span></dt><dd><p>Distance metric (constructor argument for wrapper classes).</p>
 </dd>
-<dt><strong>prefault</strong><span class="classifier">bool, default=False</span></dt><dd><p>Default prefault behavior used during reconstruction.</p>
-</dd>
-<dt><strong>pickle_mode</strong><span class="classifier">{“auto”, “disk”, “byte”}, default=”auto”</span></dt><dd><p>Pickle strategy. See <a class="reference internal" href="scikitplot.annoy.PickleMode.html#scikitplot.annoy.PickleMode" title="scikitplot.annoy.PickleMode"><code class="xref py py-data docutils literal notranslate"><span class="pre">PickleMode</span></code></a>.</p>
+<dt><strong>prefault</strong><span class="classifier">bool, default=False</span></dt><dd><p>Default prefault flag used during reconstruction.</p>
 </dd>
 <dt><strong>compress_mode</strong><span class="classifier">{None, “zlib”, “gzip”}, default=None</span></dt><dd><p>Optional compression for <code class="docutils literal notranslate"><span class="pre">&quot;byte&quot;</span></code> mode.</p>
+</dd>
+<dt><strong>pickle_mode</strong><span class="classifier">{“auto”, “disk”, “byte”}, default=”auto”</span></dt><dd><p>Pickle strategy.</p>
 </dd>
 </dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;byte&quot;</span></code> mode requires a built index (<code class="docutils literal notranslate"><span class="pre">get_n_trees()</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>) because it
-embeds <code class="docutils literal notranslate"><span class="pre">serialize()</span></code> bytes in the pickle.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;disk&quot;</span></code> mode requires a known backing path (<code class="docutils literal notranslate"><span class="pre">on_disk_path</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;byte&quot;</span></code> mode requires a built index (<code class="docutils literal notranslate"><span class="pre">get_n_trees()</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;disk&quot;</span></code> mode requires an on-disk path (<code class="docutils literal notranslate"><span class="pre">on_disk_path</span></code> or <code class="docutils literal notranslate"><span class="pre">_on_disk_path</span></code>).</p></li>
 </ul>
 <dl class="py property">
 <dt class="sig sig-object py" id="scikitplot.annoy.PickleMixin.compress_mode">
@@ -904,12 +899,12 @@ embeds <code class="docutils literal notranslate"><span class="pre">serialize()<
     <div class="footer-article-item">
 <div class="prev-next-area">
     <a class="left-prev"
-       href="scikitplot.annoy.PickleIOMixin.html"
+       href="scikitplot.annoy.NDArrayExportMixin.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">PickleIOMixin</p>
+        <p class="prev-next-title">NDArrayExportMixin</p>
       </div>
     </a>
     <a class="right-next"
@@ -990,7 +985,7 @@ embeds <code class="docutils literal notranslate"><span class="pre">serialize()<
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251223.f1498f7 2025-12-23T00:53Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251226.01641d8 2025-12-26T16:03Z.
       <br/>
     
   </p>
