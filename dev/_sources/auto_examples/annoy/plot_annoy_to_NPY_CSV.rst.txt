@@ -94,7 +94,7 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 24-39
+.. GENERATED FROM PYTHON SOURCE LINES 24-40
 
 .. code-block:: Python
 
@@ -111,7 +111,8 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
     n = 1000
     idx = Index(f, "angular")
     for i in range(n):
-        idx.add_item(i, [random.gauss(0, 1) for _ in range(f)])
+        v = [random.gauss(0, 1) for _ in range(f)]
+        idx.add_item(i, v)
 
 
 
@@ -120,7 +121,7 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-71
+.. GENERATED FROM PYTHON SOURCE LINES 41-72
 
 .. code-block:: Python
 
@@ -167,7 +168,7 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 72-78
+.. GENERATED FROM PYTHON SOURCE LINES 73-79
 
 .. code-block:: Python
 
@@ -191,31 +192,31 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
 .. raw:: html
 
     <div class="output_subarea output_html rendered_html output_result">
-    <div id="annoy-repr-0x7ffa52a32208-18" class="annoy-repr"><style>
-    #annoy-repr-0x7ffa52a32208-18 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
-    #annoy-repr-0x7ffa52a32208-18 details{margin:0;padding:0;}
-    #annoy-repr-0x7ffa52a32208-18 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7ffa52a32208-18 summary::-webkit-details-marker{display:none;}
-    #annoy-repr-0x7ffa52a32208-18 .annoy-title{font-weight:600;}
-    #annoy-repr-0x7ffa52a32208-18 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
-    #annoy-repr-0x7ffa52a32208-18 .annoy-links a{color:#0969da;text-decoration:none;}
-    #annoy-repr-0x7ffa52a32208-18 .annoy-links a:hover{text-decoration:underline;}
-    #annoy-repr-0x7ffa52a32208-18 .annoy-sep{color:#57606a;}
-    #annoy-repr-0x7ffa52a32208-18 .annoy-subtitle{font-weight:600;}
-    #annoy-repr-0x7ffa52a32208-18 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
-    #annoy-repr-0x7ffa52a32208-18 details[open] > summary .annoy-arrow::before{content:'\25BC';}
-    #annoy-repr-0x7ffa52a32208-18 .annoy-body{padding:0 10px 10px 10px;}
-    #annoy-repr-0x7ffa52a32208-18 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7ffa52a32208-18 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
-    #annoy-repr-0x7ffa52a32208-18 .annoy-table th{font-weight:600;}
-    #annoy-repr-0x7ffa52a32208-18 .annoy-td-btn{width:72px;}
-    #annoy-repr-0x7ffa52a32208-18 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
-    #annoy-repr-0x7ffa52a32208-18 .annoy-copy:active{transform:translateY(1px);}
-    #annoy-repr-0x7ffa52a32208-18 .annoy-key{white-space:nowrap;}
-    #annoy-repr-0x7ffa52a32208-18 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+    <div id="annoy-repr-0x7fec97fbe208-18" class="annoy-repr"><style>
+    #annoy-repr-0x7fec97fbe208-18 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
+    #annoy-repr-0x7fec97fbe208-18 details{margin:0;padding:0;}
+    #annoy-repr-0x7fec97fbe208-18 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7fec97fbe208-18 summary::-webkit-details-marker{display:none;}
+    #annoy-repr-0x7fec97fbe208-18 .annoy-title{font-weight:600;}
+    #annoy-repr-0x7fec97fbe208-18 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
+    #annoy-repr-0x7fec97fbe208-18 .annoy-links a{color:#0969da;text-decoration:none;}
+    #annoy-repr-0x7fec97fbe208-18 .annoy-links a:hover{text-decoration:underline;}
+    #annoy-repr-0x7fec97fbe208-18 .annoy-sep{color:#57606a;}
+    #annoy-repr-0x7fec97fbe208-18 .annoy-subtitle{font-weight:600;}
+    #annoy-repr-0x7fec97fbe208-18 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
+    #annoy-repr-0x7fec97fbe208-18 details[open] > summary .annoy-arrow::before{content:'\25BC';}
+    #annoy-repr-0x7fec97fbe208-18 .annoy-body{padding:0 10px 10px 10px;}
+    #annoy-repr-0x7fec97fbe208-18 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7fec97fbe208-18 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
+    #annoy-repr-0x7fec97fbe208-18 .annoy-table th{font-weight:600;}
+    #annoy-repr-0x7fec97fbe208-18 .annoy-td-btn{width:72px;}
+    #annoy-repr-0x7fec97fbe208-18 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
+    #annoy-repr-0x7fec97fbe208-18 .annoy-copy:active{transform:translateY(1px);}
+    #annoy-repr-0x7fec97fbe208-18 .annoy-key{white-space:nowrap;}
+    #annoy-repr-0x7fec97fbe208-18 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
     </style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.5/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (installed)">0.5</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">10</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">&#x27;angular&#x27;</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">&#x27;/home/circleci/repo/galleries/examples/annoy/../../../scikitplot/annoy/tests/test_v2.tree&#x27;</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr></tbody></table></details></div></details></div><script>
     (function(){
-      var root=document.getElementById('annoy-repr-0x7ffa52a32208-18');
+      var root=document.getElementById('annoy-repr-0x7fec97fbe208-18');
       if(!root)return;
       var btns=root.querySelectorAll('button.annoy-copy');
       for(var i=0;i<btns.length;i++){
@@ -252,15 +253,314 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 79-80
-
-Small subset → DataFrame/CSV
-
-.. GENERATED FROM PYTHON SOURCE LINES 80-83
+.. GENERATED FROM PYTHON SOURCE LINES 80-87
 
 .. code-block:: Python
 
-    df = idx.to_dataframe(start=0, stop=1000)
+
+    import numpy as np
+
+    arr = idx.to_numpy()
+    arr
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    array([[ 0.9417154 , -1.3965781 , -0.67971444, ..., -0.8310992 ,
+            -1.3090373 ,  0.19388774],
+           [ 0.9932497 , -0.64698166, -0.333668  , ..., -1.5310826 ,
+             0.7964658 , -2.0036485 ],
+           [-0.59696275,  1.5036808 ,  1.2214364 , ...,  0.55222   ,
+             2.2275772 , -1.3552415 ],
+           ...,
+           [ 1.5097532 ,  0.8778289 , -0.6042179 , ..., -1.1957974 ,
+             0.0848854 , -0.64491284],
+           [-0.47995627, -0.31443435,  2.3843286 , ...,  0.30755976,
+            -0.23433805, -0.7430332 ],
+           [ 1.7978611 ,  0.53560704,  0.37112716, ..., -0.8411868 ,
+            -0.9770226 , -0.90564495]], shape=(1000, 10), dtype=float32)
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 88-93
+
+.. code-block:: Python
+
+
+    # save, savez
+    np.save("annoy_vectors.npy", arr)
+    np.load("annoy_vectors.npy")
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    array([[ 0.9417154 , -1.3965781 , -0.67971444, ..., -0.8310992 ,
+            -1.3090373 ,  0.19388774],
+           [ 0.9932497 , -0.64698166, -0.333668  , ..., -1.5310826 ,
+             0.7964658 , -2.0036485 ],
+           [-0.59696275,  1.5036808 ,  1.2214364 , ...,  0.55222   ,
+             2.2275772 , -1.3552415 ],
+           ...,
+           [ 1.5097532 ,  0.8778289 , -0.6042179 , ..., -1.1957974 ,
+             0.0848854 , -0.64491284],
+           [-0.47995627, -0.31443435,  2.3843286 , ...,  0.30755976,
+            -0.23433805, -0.7430332 ],
+           [ 1.7978611 ,  0.53560704,  0.37112716, ..., -0.8411868 ,
+            -0.9770226 , -0.90564495]], shape=(1000, 10), dtype=float32)
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 94-97
+
+.. code-block:: Python
+
+
+    idx.to_scipy_csr()
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    <Compressed Sparse Row sparse matrix of dtype 'float32'
+    	with 10000 stored elements and shape (1000, 10)>
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 98-101
+
+.. code-block:: Python
+
+
+    idx.to_pandas(id_location="index")
+
+
+
+
+
+
+.. raw:: html
+
+    <div class="output_subarea output_html rendered_html output_result">
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>feature_0</th>
+          <th>feature_1</th>
+          <th>feature_2</th>
+          <th>feature_3</th>
+          <th>feature_4</th>
+          <th>feature_5</th>
+          <th>feature_6</th>
+          <th>feature_7</th>
+          <th>feature_8</th>
+          <th>feature_9</th>
+        </tr>
+        <tr>
+          <th>id</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>0</th>
+          <td>0.941715</td>
+          <td>-1.396578</td>
+          <td>-0.679714</td>
+          <td>0.370504</td>
+          <td>-1.016349</td>
+          <td>-0.072120</td>
+          <td>0.179196</td>
+          <td>-0.831099</td>
+          <td>-1.309037</td>
+          <td>0.193888</td>
+        </tr>
+        <tr>
+          <th>1</th>
+          <td>0.993250</td>
+          <td>-0.646982</td>
+          <td>-0.333668</td>
+          <td>1.645672</td>
+          <td>-0.558890</td>
+          <td>-0.514157</td>
+          <td>2.404119</td>
+          <td>-1.531083</td>
+          <td>0.796466</td>
+          <td>-2.003649</td>
+        </tr>
+        <tr>
+          <th>2</th>
+          <td>-0.596963</td>
+          <td>1.503681</td>
+          <td>1.221436</td>
+          <td>-0.901120</td>
+          <td>-0.453699</td>
+          <td>0.080233</td>
+          <td>-1.258103</td>
+          <td>0.552220</td>
+          <td>2.227577</td>
+          <td>-1.355242</td>
+        </tr>
+        <tr>
+          <th>3</th>
+          <td>-1.981533</td>
+          <td>0.288244</td>
+          <td>-0.119123</td>
+          <td>1.804330</td>
+          <td>-0.160362</td>
+          <td>-0.050660</td>
+          <td>-0.190874</td>
+          <td>-0.990606</td>
+          <td>0.673030</td>
+          <td>-1.324082</td>
+        </tr>
+        <tr>
+          <th>4</th>
+          <td>1.166490</td>
+          <td>0.008376</td>
+          <td>0.503630</td>
+          <td>-0.552765</td>
+          <td>-0.920194</td>
+          <td>1.800263</td>
+          <td>0.468550</td>
+          <td>1.207003</td>
+          <td>0.187123</td>
+          <td>2.611608</td>
+        </tr>
+        <tr>
+          <th>...</th>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+        </tr>
+        <tr>
+          <th>995</th>
+          <td>-0.764022</td>
+          <td>0.174524</td>
+          <td>-0.816212</td>
+          <td>0.623093</td>
+          <td>-0.395465</td>
+          <td>0.193787</td>
+          <td>-0.769984</td>
+          <td>-0.147106</td>
+          <td>0.377592</td>
+          <td>-0.230512</td>
+        </tr>
+        <tr>
+          <th>996</th>
+          <td>0.812510</td>
+          <td>-1.125429</td>
+          <td>-0.725055</td>
+          <td>1.007468</td>
+          <td>-1.236580</td>
+          <td>-0.339250</td>
+          <td>0.958843</td>
+          <td>-0.857817</td>
+          <td>1.487129</td>
+          <td>0.667198</td>
+        </tr>
+        <tr>
+          <th>997</th>
+          <td>1.509753</td>
+          <td>0.877829</td>
+          <td>-0.604218</td>
+          <td>0.013888</td>
+          <td>-0.597203</td>
+          <td>1.374362</td>
+          <td>0.723732</td>
+          <td>-1.195797</td>
+          <td>0.084885</td>
+          <td>-0.644913</td>
+        </tr>
+        <tr>
+          <th>998</th>
+          <td>-0.479956</td>
+          <td>-0.314434</td>
+          <td>2.384329</td>
+          <td>-1.387915</td>
+          <td>1.522265</td>
+          <td>0.047036</td>
+          <td>0.547916</td>
+          <td>0.307560</td>
+          <td>-0.234338</td>
+          <td>-0.743033</td>
+        </tr>
+        <tr>
+          <th>999</th>
+          <td>1.797861</td>
+          <td>0.535607</td>
+          <td>0.371127</td>
+          <td>0.373999</td>
+          <td>1.999118</td>
+          <td>-1.771545</td>
+          <td>-0.133898</td>
+          <td>-0.841187</td>
+          <td>-0.977023</td>
+          <td>-0.905645</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>1000 rows × 10 columns</p>
+    </div>
+    </div>
+    <br />
+    <br />
+
+.. GENERATED FROM PYTHON SOURCE LINES 102-107
+
+.. code-block:: Python
+
+
+    # Small subset → DataFrame/CSV
+    df = idx.to_pandas()
     df.to_csv("sample.csv", index=False)
 
 
@@ -270,7 +570,7 @@ Small subset → DataFrame/CSV
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 84-88
+.. GENERATED FROM PYTHON SOURCE LINES 108-112
 
 .. code-block:: Python
 
@@ -304,7 +604,6 @@ Small subset → DataFrame/CSV
       <thead>
         <tr style="text-align: right;">
           <th></th>
-          <th>id</th>
           <th>feature_0</th>
           <th>feature_1</th>
           <th>feature_2</th>
@@ -320,7 +619,6 @@ Small subset → DataFrame/CSV
       <tbody>
         <tr>
           <th>0</th>
-          <td>0</td>
           <td>0.941715</td>
           <td>-1.396578</td>
           <td>-0.679714</td>
@@ -334,7 +632,6 @@ Small subset → DataFrame/CSV
         </tr>
         <tr>
           <th>1</th>
-          <td>1</td>
           <td>0.993250</td>
           <td>-0.646982</td>
           <td>-0.333668</td>
@@ -348,7 +645,6 @@ Small subset → DataFrame/CSV
         </tr>
         <tr>
           <th>2</th>
-          <td>2</td>
           <td>-0.596963</td>
           <td>1.503681</td>
           <td>1.221436</td>
@@ -362,7 +658,6 @@ Small subset → DataFrame/CSV
         </tr>
         <tr>
           <th>3</th>
-          <td>3</td>
           <td>-1.981533</td>
           <td>0.288244</td>
           <td>-0.119123</td>
@@ -376,7 +671,6 @@ Small subset → DataFrame/CSV
         </tr>
         <tr>
           <th>4</th>
-          <td>4</td>
           <td>1.166490</td>
           <td>0.008376</td>
           <td>0.503630</td>
@@ -400,11 +694,9 @@ Small subset → DataFrame/CSV
           <td>...</td>
           <td>...</td>
           <td>...</td>
-          <td>...</td>
         </tr>
         <tr>
           <th>995</th>
-          <td>995</td>
           <td>-0.764022</td>
           <td>0.174524</td>
           <td>-0.816212</td>
@@ -418,7 +710,6 @@ Small subset → DataFrame/CSV
         </tr>
         <tr>
           <th>996</th>
-          <td>996</td>
           <td>0.812510</td>
           <td>-1.125429</td>
           <td>-0.725055</td>
@@ -432,7 +723,6 @@ Small subset → DataFrame/CSV
         </tr>
         <tr>
           <th>997</th>
-          <td>997</td>
           <td>1.509753</td>
           <td>0.877829</td>
           <td>-0.604218</td>
@@ -446,7 +736,6 @@ Small subset → DataFrame/CSV
         </tr>
         <tr>
           <th>998</th>
-          <td>998</td>
           <td>-0.479956</td>
           <td>-0.314434</td>
           <td>2.384329</td>
@@ -460,7 +749,6 @@ Small subset → DataFrame/CSV
         </tr>
         <tr>
           <th>999</th>
-          <td>999</td>
           <td>1.797861</td>
           <td>0.535607</td>
           <td>0.371127</td>
@@ -474,21 +762,18 @@ Small subset → DataFrame/CSV
         </tr>
       </tbody>
     </table>
-    <p>1000 rows × 11 columns</p>
+    <p>1000 rows × 10 columns</p>
     </div>
     </div>
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 89-90
-
-Streaming CSV (warning: huge)
-
-.. GENERATED FROM PYTHON SOURCE LINES 90-92
+.. GENERATED FROM PYTHON SOURCE LINES 113-116
 
 .. code-block:: Python
 
-    idx.to_csv("annoy_vectors.csv", start=0, stop=100_000)
+
+    idx.query_by_item(item=999, n_neighbors=10, include_distances=True)
 
 
 
@@ -499,230 +784,18 @@ Streaming CSV (warning: huge)
  .. code-block:: none
 
 
-    '/home/circleci/repo/galleries/examples/annoy/annoy_vectors.csv'
+    (array([ 11, 601, 750, 337, 672,  98, 411,  49, 496, 835]), array([0.60789573, 0.62330794, 0.6259439 , 0.6828902 , 0.6929481 ,
+           0.7479852 , 0.74852514, 0.76272124, 0.76463056, 0.7769581 ],
+          dtype=float32))
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 93-97
-
-.. code-block:: Python
-
-    import pandas as pd
-
-    pd.read_csv("annoy_vectors.csv")
-
-
-
-
-
-
-.. raw:: html
-
-    <div class="output_subarea output_html rendered_html output_result">
-    <div>
-    <style scoped>
-        .dataframe tbody tr th:only-of-type {
-            vertical-align: middle;
-        }
-
-        .dataframe tbody tr th {
-            vertical-align: top;
-        }
-
-        .dataframe thead th {
-            text-align: right;
-        }
-    </style>
-    <table border="1" class="dataframe">
-      <thead>
-        <tr style="text-align: right;">
-          <th></th>
-          <th>id</th>
-          <th>feature_0</th>
-          <th>feature_1</th>
-          <th>feature_2</th>
-          <th>feature_3</th>
-          <th>feature_4</th>
-          <th>feature_5</th>
-          <th>feature_6</th>
-          <th>feature_7</th>
-          <th>feature_8</th>
-          <th>feature_9</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th>0</th>
-          <td>0</td>
-          <td>0.941715</td>
-          <td>-1.396578</td>
-          <td>-0.679714</td>
-          <td>0.370504</td>
-          <td>-1.016349</td>
-          <td>-0.072120</td>
-          <td>0.179196</td>
-          <td>-0.831099</td>
-          <td>-1.309037</td>
-          <td>0.193888</td>
-        </tr>
-        <tr>
-          <th>1</th>
-          <td>1</td>
-          <td>0.993250</td>
-          <td>-0.646982</td>
-          <td>-0.333668</td>
-          <td>1.645672</td>
-          <td>-0.558890</td>
-          <td>-0.514157</td>
-          <td>2.404119</td>
-          <td>-1.531083</td>
-          <td>0.796466</td>
-          <td>-2.003649</td>
-        </tr>
-        <tr>
-          <th>2</th>
-          <td>2</td>
-          <td>-0.596963</td>
-          <td>1.503681</td>
-          <td>1.221436</td>
-          <td>-0.901120</td>
-          <td>-0.453699</td>
-          <td>0.080233</td>
-          <td>-1.258103</td>
-          <td>0.552220</td>
-          <td>2.227577</td>
-          <td>-1.355242</td>
-        </tr>
-        <tr>
-          <th>3</th>
-          <td>3</td>
-          <td>-1.981533</td>
-          <td>0.288244</td>
-          <td>-0.119123</td>
-          <td>1.804330</td>
-          <td>-0.160362</td>
-          <td>-0.050660</td>
-          <td>-0.190874</td>
-          <td>-0.990606</td>
-          <td>0.673030</td>
-          <td>-1.324082</td>
-        </tr>
-        <tr>
-          <th>4</th>
-          <td>4</td>
-          <td>1.166490</td>
-          <td>0.008376</td>
-          <td>0.503630</td>
-          <td>-0.552765</td>
-          <td>-0.920194</td>
-          <td>1.800263</td>
-          <td>0.468550</td>
-          <td>1.207003</td>
-          <td>0.187123</td>
-          <td>2.611608</td>
-        </tr>
-        <tr>
-          <th>...</th>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-        </tr>
-        <tr>
-          <th>995</th>
-          <td>995</td>
-          <td>-0.764022</td>
-          <td>0.174524</td>
-          <td>-0.816212</td>
-          <td>0.623093</td>
-          <td>-0.395465</td>
-          <td>0.193787</td>
-          <td>-0.769984</td>
-          <td>-0.147106</td>
-          <td>0.377592</td>
-          <td>-0.230512</td>
-        </tr>
-        <tr>
-          <th>996</th>
-          <td>996</td>
-          <td>0.812510</td>
-          <td>-1.125429</td>
-          <td>-0.725055</td>
-          <td>1.007468</td>
-          <td>-1.236580</td>
-          <td>-0.339250</td>
-          <td>0.958843</td>
-          <td>-0.857817</td>
-          <td>1.487129</td>
-          <td>0.667198</td>
-        </tr>
-        <tr>
-          <th>997</th>
-          <td>997</td>
-          <td>1.509753</td>
-          <td>0.877829</td>
-          <td>-0.604218</td>
-          <td>0.013888</td>
-          <td>-0.597203</td>
-          <td>1.374362</td>
-          <td>0.723732</td>
-          <td>-1.195797</td>
-          <td>0.084885</td>
-          <td>-0.644913</td>
-        </tr>
-        <tr>
-          <th>998</th>
-          <td>998</td>
-          <td>-0.479956</td>
-          <td>-0.314434</td>
-          <td>2.384329</td>
-          <td>-1.387915</td>
-          <td>1.522265</td>
-          <td>0.047036</td>
-          <td>0.547916</td>
-          <td>0.307560</td>
-          <td>-0.234338</td>
-          <td>-0.743033</td>
-        </tr>
-        <tr>
-          <th>999</th>
-          <td>999</td>
-          <td>1.797861</td>
-          <td>0.535607</td>
-          <td>0.371127</td>
-          <td>0.373999</td>
-          <td>1.999118</td>
-          <td>-1.771545</td>
-          <td>-0.133898</td>
-          <td>-0.841187</td>
-          <td>-0.977023</td>
-          <td>-0.905645</td>
-        </tr>
-      </tbody>
-    </table>
-    <p>1000 rows × 11 columns</p>
-    </div>
-    </div>
-    <br />
-    <br />
-
-.. GENERATED FROM PYTHON SOURCE LINES 98-100
-
-Large export → memory-safe .npy
-Exports items [0, n_items) into a memmapped .npy
-
-.. GENERATED FROM PYTHON SOURCE LINES 100-102
+.. GENERATED FROM PYTHON SOURCE LINES 117-120
 
 .. code-block:: Python
 
-    idx.save_vectors_npy("annoy_vectors.npy")
+
+    idx.query_by_vector(v, n_neighbors=10, include_distances=True)
 
 
 
@@ -733,17 +806,18 @@ Exports items [0, n_items) into a memmapped .npy
  .. code-block:: none
 
 
-    '/home/circleci/repo/galleries/examples/annoy/annoy_vectors.npy'
+    (array([ 11, 601, 750, 337, 672,  98, 411,  49, 496, 835]), array([0.60789573, 0.62330794, 0.6259439 , 0.6828902 , 0.6929481 ,
+           0.7479852 , 0.74852514, 0.76272124, 0.76463056, 0.7769581 ],
+          dtype=float32))
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 103-107
+.. GENERATED FROM PYTHON SOURCE LINES 121-124
 
 .. code-block:: Python
 
-    import numpy as np
 
-    np.load("annoy_vectors.npy")
+    idx.kneighbors(v, n_neighbors=10, include_distances=True)
 
 
 
@@ -754,31 +828,18 @@ Exports items [0, n_items) into a memmapped .npy
  .. code-block:: none
 
 
-    array([[ 0.9417154 , -1.3965781 , -0.67971444, ..., -0.8310992 ,
-            -1.3090373 ,  0.19388774],
-           [ 0.9932497 , -0.64698166, -0.333668  , ..., -1.5310826 ,
-             0.7964658 , -2.0036485 ],
-           [-0.59696275,  1.5036808 ,  1.2214364 , ...,  0.55222   ,
-             2.2275772 , -1.3552415 ],
-           ...,
-           [ 1.5097532 ,  0.8778289 , -0.6042179 , ..., -1.1957974 ,
-             0.0848854 , -0.64491284],
-           [-0.47995627, -0.31443435,  2.3843286 , ...,  0.30755976,
-            -0.23433805, -0.7430332 ],
-           [ 1.7978611 ,  0.53560704,  0.37112716, ..., -0.8411868 ,
-            -0.9770226 , -0.90564495]], shape=(1000, 10), dtype=float32)
+    (array([[ 11, 601, 750, 337, 672,  98, 411,  49, 496, 835]]), array([[0.60789573, 0.62330794, 0.6259439 , 0.6828902 , 0.6929481 ,
+            0.7479852 , 0.74852514, 0.76272124, 0.76463056, 0.7769581 ]],
+          dtype=float32))
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 108-109
-
-Range-only export (strict, sized)
-
-.. GENERATED FROM PYTHON SOURCE LINES 109-111
+.. GENERATED FROM PYTHON SOURCE LINES 125-128
 
 .. code-block:: Python
 
-    idx.save_vectors_npy("chunk_0_1m.npy", start=0, stop=1_000_000)
+
+    idx.kneighbors_graph(v, n_neighbors=10)
 
 
 
@@ -789,18 +850,17 @@ Range-only export (strict, sized)
  .. code-block:: none
 
 
-    '/home/circleci/repo/galleries/examples/annoy/chunk_0_1m.npy'
+    <Compressed Sparse Row sparse matrix of dtype 'float32'
+    	with 10 stored elements and shape (1, 1000)>
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 112-117
+.. GENERATED FROM PYTHON SOURCE LINES 129-132
 
 .. code-block:: Python
 
-    import numpy as np
 
-    np.load("chunk_0_1m.npy")
-
+    idx.kneighbors_graph(v, n_neighbors=10).toarray()
 
 
 
@@ -811,23 +871,73 @@ Range-only export (strict, sized)
  .. code-block:: none
 
 
-    array([[ 0.9417154 , -1.3965781 , -0.67971444, ..., -0.8310992 ,
-            -1.3090373 ,  0.19388774],
-           [ 0.9932497 , -0.64698166, -0.333668  , ..., -1.5310826 ,
-             0.7964658 , -2.0036485 ],
-           [-0.59696275,  1.5036808 ,  1.2214364 , ...,  0.55222   ,
-             2.2275772 , -1.3552415 ],
-           ...,
-           [ 1.5097532 ,  0.8778289 , -0.6042179 , ..., -1.1957974 ,
-             0.0848854 , -0.64491284],
-           [-0.47995627, -0.31443435,  2.3843286 , ...,  0.30755976,
-            -0.23433805, -0.7430332 ],
-           [ 1.7978611 ,  0.53560704,  0.37112716, ..., -0.8411868 ,
-            -0.9770226 , -0.90564495]], shape=(1000, 10), dtype=float32)
+    array([[0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+            0., 0., 0., 0., 0., 0., 0., 0.]], dtype=float32)
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 118-122
+.. GENERATED FROM PYTHON SOURCE LINES 133-137
 
 .. tags::
 
@@ -837,7 +947,7 @@ Range-only export (strict, sized)
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.460 seconds)
+   **Total running time of the script:** (0 minutes 0.528 seconds)
 
 
 .. _sphx_glr_download_auto_examples_annoy_plot_annoy_to_NPY_CSV.py:

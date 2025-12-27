@@ -9,10 +9,10 @@
 <meta content="website" property="og:type"/>
 <meta content="https://scikit-plots.github.io/stable/auto_examples/annoy/plot_annoy_to_NPY_CSV.html" property="og:url"/>
 <meta content="scikit-plots" property="og:site_name"/>
-<meta content="An example showing the Index class. Small subset → DataFrame/CSV Streaming CSV (warning: huge) Large export → memory-safe .npy Exports items [0, n_items) into a memmapped .npy Range-only export (st..." property="og:description"/>
+<meta content="An example showing the Index class. Tags: level: beginner purpose: showcase Total running time of the script:(0 minutes 0.528 seconds) Launch binder Launch JupyterLite Download Jupyter notebook: pl..." property="og:description"/>
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
-<meta content="An example showing the Index class. Small subset → DataFrame/CSV Streaming CSV (warning: huge) Large export → memory-safe .npy Exports items [0, n_items) into a memmapped .npy Range-only export (st..." name="description"/>
+<meta content="An example showing the Index class. Tags: level: beginner purpose: showcase Total running time of the script:(0 minutes 0.528 seconds) Launch binder Launch JupyterLite Download Jupyter notebook: pl..." name="description"/>
 <title>annoy.Index to NPY or CSV with examples — scikit-plots 0.5.dev0 documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
@@ -531,7 +531,8 @@ Index.from_low_level
 <span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">idx</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">Index</span></a><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">"angular"</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">idx</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="p">[</span><a class="sphx-glr-backref-module-random sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/random.html#random.gauss" title="random.gauss"><span class="n">random</span><span class="o">.</span><span class="n">gauss</span></a><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">f</span><span class="p">)])</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><a class="sphx-glr-backref-module-random sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/random.html#random.gauss" title="random.gauss"><span class="n">random</span><span class="o">.</span><span class="n">gauss</span></a><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">f</span><span class="p">)]</span>
+    <span class="n">idx</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -575,31 +576,31 @@ Index.from_low_level
 </pre></div>
 </div>
 <div class="output_subarea output_html rendered_html output_result">
-<div class="annoy-repr" id="annoy-repr-0x7ffa52a32208-18"><style>
-#annoy-repr-0x7ffa52a32208-18 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
-#annoy-repr-0x7ffa52a32208-18 details{margin:0;padding:0;}
-#annoy-repr-0x7ffa52a32208-18 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-#annoy-repr-0x7ffa52a32208-18 summary::-webkit-details-marker{display:none;}
-#annoy-repr-0x7ffa52a32208-18 .annoy-title{font-weight:600;}
-#annoy-repr-0x7ffa52a32208-18 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
-#annoy-repr-0x7ffa52a32208-18 .annoy-links a{color:#0969da;text-decoration:none;}
-#annoy-repr-0x7ffa52a32208-18 .annoy-links a:hover{text-decoration:underline;}
-#annoy-repr-0x7ffa52a32208-18 .annoy-sep{color:#57606a;}
-#annoy-repr-0x7ffa52a32208-18 .annoy-subtitle{font-weight:600;}
-#annoy-repr-0x7ffa52a32208-18 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
-#annoy-repr-0x7ffa52a32208-18 details[open] > summary .annoy-arrow::before{content:'\25BC';}
-#annoy-repr-0x7ffa52a32208-18 .annoy-body{padding:0 10px 10px 10px;}
-#annoy-repr-0x7ffa52a32208-18 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-#annoy-repr-0x7ffa52a32208-18 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
-#annoy-repr-0x7ffa52a32208-18 .annoy-table th{font-weight:600;}
-#annoy-repr-0x7ffa52a32208-18 .annoy-td-btn{width:72px;}
-#annoy-repr-0x7ffa52a32208-18 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
-#annoy-repr-0x7ffa52a32208-18 .annoy-copy:active{transform:translateY(1px);}
-#annoy-repr-0x7ffa52a32208-18 .annoy-key{white-space:nowrap;}
-#annoy-repr-0x7ffa52a32208-18 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+<div class="annoy-repr" id="annoy-repr-0x7fec97fbe208-18"><style>
+#annoy-repr-0x7fec97fbe208-18 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
+#annoy-repr-0x7fec97fbe208-18 details{margin:0;padding:0;}
+#annoy-repr-0x7fec97fbe208-18 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+#annoy-repr-0x7fec97fbe208-18 summary::-webkit-details-marker{display:none;}
+#annoy-repr-0x7fec97fbe208-18 .annoy-title{font-weight:600;}
+#annoy-repr-0x7fec97fbe208-18 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
+#annoy-repr-0x7fec97fbe208-18 .annoy-links a{color:#0969da;text-decoration:none;}
+#annoy-repr-0x7fec97fbe208-18 .annoy-links a:hover{text-decoration:underline;}
+#annoy-repr-0x7fec97fbe208-18 .annoy-sep{color:#57606a;}
+#annoy-repr-0x7fec97fbe208-18 .annoy-subtitle{font-weight:600;}
+#annoy-repr-0x7fec97fbe208-18 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
+#annoy-repr-0x7fec97fbe208-18 details[open] > summary .annoy-arrow::before{content:'\25BC';}
+#annoy-repr-0x7fec97fbe208-18 .annoy-body{padding:0 10px 10px 10px;}
+#annoy-repr-0x7fec97fbe208-18 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+#annoy-repr-0x7fec97fbe208-18 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
+#annoy-repr-0x7fec97fbe208-18 .annoy-table th{font-weight:600;}
+#annoy-repr-0x7fec97fbe208-18 .annoy-td-btn{width:72px;}
+#annoy-repr-0x7fec97fbe208-18 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
+#annoy-repr-0x7fec97fbe208-18 .annoy-copy:active{transform:translateY(1px);}
+#annoy-repr-0x7fec97fbe208-18 .annoy-key{white-space:nowrap;}
+#annoy-repr-0x7fec97fbe208-18 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
 </style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" rel="noopener noreferrer" target="_blank" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.5/modules/generated/scikitplot.cexternals._annoy.Annoy.html" rel="noopener noreferrer" target="_blank" title="Annoy docs (installed)">0.5</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">10</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">'angular'</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">'/home/circleci/repo/galleries/examples/annoy/../../../scikitplot/annoy/tests/test_v2.tree'</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr></tbody></table></details></div></details></div><script>
 (function(){
-  var root=document.getElementById('annoy-repr-0x7ffa52a32208-18');
+  var root=document.getElementById('annoy-repr-0x7fec97fbe208-18');
   if(!root)return;
   var btns=root.querySelectorAll('button.annoy-copy');
   for(var i=0;i<btns.length;i++){
@@ -634,8 +635,253 @@ Index.from_low_level
 </script></div>
 </div>
 <br/>
-<br/><p>Small subset → DataFrame/CSV</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<br/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">arr</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">arr</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>array([[ 0.9417154 , -1.3965781 , -0.67971444, ..., -0.8310992 ,
+        -1.3090373 ,  0.19388774],
+       [ 0.9932497 , -0.64698166, -0.333668  , ..., -1.5310826 ,
+         0.7964658 , -2.0036485 ],
+       [-0.59696275,  1.5036808 ,  1.2214364 , ...,  0.55222   ,
+         2.2275772 , -1.3552415 ],
+       ...,
+       [ 1.5097532 ,  0.8778289 , -0.6042179 , ..., -1.1957974 ,
+         0.0848854 , -0.64491284],
+       [-0.47995627, -0.31443435,  2.3843286 , ...,  0.30755976,
+        -0.23433805, -0.7430332 ],
+       [ 1.7978611 ,  0.53560704,  0.37112716, ..., -0.8411868 ,
+        -0.9770226 , -0.90564495]], shape=(1000, 10), dtype=float32)
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># save, savez</span>
+<a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.save.html#numpy.save" title="numpy.save"><span class="n">np</span><span class="o">.</span><span class="n">save</span></a><span class="p">(</span><span class="s2">"annoy_vectors.npy"</span><span class="p">,</span> <span class="n">arr</span><span class="p">)</span>
+<a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.load.html#numpy.load" title="numpy.load"><span class="n">np</span><span class="o">.</span><span class="n">load</span></a><span class="p">(</span><span class="s2">"annoy_vectors.npy"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>array([[ 0.9417154 , -1.3965781 , -0.67971444, ..., -0.8310992 ,
+        -1.3090373 ,  0.19388774],
+       [ 0.9932497 , -0.64698166, -0.333668  , ..., -1.5310826 ,
+         0.7964658 , -2.0036485 ],
+       [-0.59696275,  1.5036808 ,  1.2214364 , ...,  0.55222   ,
+         2.2275772 , -1.3552415 ],
+       ...,
+       [ 1.5097532 ,  0.8778289 , -0.6042179 , ..., -1.1957974 ,
+         0.0848854 , -0.64491284],
+       [-0.47995627, -0.31443435,  2.3843286 , ...,  0.30755976,
+        -0.23433805, -0.7430332 ],
+       [ 1.7978611 ,  0.53560704,  0.37112716, ..., -0.8411868 ,
+        -0.9770226 , -0.90564495]], shape=(1000, 10), dtype=float32)
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span><span class="o">.</span><span class="n">to_scipy_csr</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Compressed Sparse Row sparse matrix of dtype 'float32'
+    with 10000 stored elements and shape (1000, 10)&gt;
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">(</span><span class="n">id_location</span><span class="o">=</span><span class="s2">"index"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="output_subarea output_html rendered_html output_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>feature_0</th>
+<th>feature_1</th>
+<th>feature_2</th>
+<th>feature_3</th>
+<th>feature_4</th>
+<th>feature_5</th>
+<th>feature_6</th>
+<th>feature_7</th>
+<th>feature_8</th>
+<th>feature_9</th>
+</tr>
+<tr>
+<th>id</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>0.941715</td>
+<td>-1.396578</td>
+<td>-0.679714</td>
+<td>0.370504</td>
+<td>-1.016349</td>
+<td>-0.072120</td>
+<td>0.179196</td>
+<td>-0.831099</td>
+<td>-1.309037</td>
+<td>0.193888</td>
+</tr>
+<tr>
+<th>1</th>
+<td>0.993250</td>
+<td>-0.646982</td>
+<td>-0.333668</td>
+<td>1.645672</td>
+<td>-0.558890</td>
+<td>-0.514157</td>
+<td>2.404119</td>
+<td>-1.531083</td>
+<td>0.796466</td>
+<td>-2.003649</td>
+</tr>
+<tr>
+<th>2</th>
+<td>-0.596963</td>
+<td>1.503681</td>
+<td>1.221436</td>
+<td>-0.901120</td>
+<td>-0.453699</td>
+<td>0.080233</td>
+<td>-1.258103</td>
+<td>0.552220</td>
+<td>2.227577</td>
+<td>-1.355242</td>
+</tr>
+<tr>
+<th>3</th>
+<td>-1.981533</td>
+<td>0.288244</td>
+<td>-0.119123</td>
+<td>1.804330</td>
+<td>-0.160362</td>
+<td>-0.050660</td>
+<td>-0.190874</td>
+<td>-0.990606</td>
+<td>0.673030</td>
+<td>-1.324082</td>
+</tr>
+<tr>
+<th>4</th>
+<td>1.166490</td>
+<td>0.008376</td>
+<td>0.503630</td>
+<td>-0.552765</td>
+<td>-0.920194</td>
+<td>1.800263</td>
+<td>0.468550</td>
+<td>1.207003</td>
+<td>0.187123</td>
+<td>2.611608</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>995</th>
+<td>-0.764022</td>
+<td>0.174524</td>
+<td>-0.816212</td>
+<td>0.623093</td>
+<td>-0.395465</td>
+<td>0.193787</td>
+<td>-0.769984</td>
+<td>-0.147106</td>
+<td>0.377592</td>
+<td>-0.230512</td>
+</tr>
+<tr>
+<th>996</th>
+<td>0.812510</td>
+<td>-1.125429</td>
+<td>-0.725055</td>
+<td>1.007468</td>
+<td>-1.236580</td>
+<td>-0.339250</td>
+<td>0.958843</td>
+<td>-0.857817</td>
+<td>1.487129</td>
+<td>0.667198</td>
+</tr>
+<tr>
+<th>997</th>
+<td>1.509753</td>
+<td>0.877829</td>
+<td>-0.604218</td>
+<td>0.013888</td>
+<td>-0.597203</td>
+<td>1.374362</td>
+<td>0.723732</td>
+<td>-1.195797</td>
+<td>0.084885</td>
+<td>-0.644913</td>
+</tr>
+<tr>
+<th>998</th>
+<td>-0.479956</td>
+<td>-0.314434</td>
+<td>2.384329</td>
+<td>-1.387915</td>
+<td>1.522265</td>
+<td>0.047036</td>
+<td>0.547916</td>
+<td>0.307560</td>
+<td>-0.234338</td>
+<td>-0.743033</td>
+</tr>
+<tr>
+<th>999</th>
+<td>1.797861</td>
+<td>0.535607</td>
+<td>0.371127</td>
+<td>0.373999</td>
+<td>1.999118</td>
+<td>-1.771545</td>
+<td>-0.133898</td>
+<td>-0.841187</td>
+<td>-0.977023</td>
+<td>-0.905645</td>
+</tr>
+</tbody>
+</table>
+<p>1000 rows × 10 columns</p>
+</div>
+</div>
+<br/>
+<br/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Small subset → DataFrame/CSV</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
 <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">"sample.csv"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -663,7 +909,6 @@ Index.from_low_level
 <thead>
 <tr style="text-align: right;">
 <th></th>
-<th>id</th>
 <th>feature_0</th>
 <th>feature_1</th>
 <th>feature_2</th>
@@ -679,7 +924,6 @@ Index.from_low_level
 <tbody>
 <tr>
 <th>0</th>
-<td>0</td>
 <td>0.941715</td>
 <td>-1.396578</td>
 <td>-0.679714</td>
@@ -693,7 +937,6 @@ Index.from_low_level
 </tr>
 <tr>
 <th>1</th>
-<td>1</td>
 <td>0.993250</td>
 <td>-0.646982</td>
 <td>-0.333668</td>
@@ -707,7 +950,6 @@ Index.from_low_level
 </tr>
 <tr>
 <th>2</th>
-<td>2</td>
 <td>-0.596963</td>
 <td>1.503681</td>
 <td>1.221436</td>
@@ -721,7 +963,6 @@ Index.from_low_level
 </tr>
 <tr>
 <th>3</th>
-<td>3</td>
 <td>-1.981533</td>
 <td>0.288244</td>
 <td>-0.119123</td>
@@ -735,7 +976,6 @@ Index.from_low_level
 </tr>
 <tr>
 <th>4</th>
-<td>4</td>
 <td>1.166490</td>
 <td>0.008376</td>
 <td>0.503630</td>
@@ -759,11 +999,9 @@ Index.from_low_level
 <td>...</td>
 <td>...</td>
 <td>...</td>
-<td>...</td>
 </tr>
 <tr>
 <th>995</th>
-<td>995</td>
 <td>-0.764022</td>
 <td>0.174524</td>
 <td>-0.816212</td>
@@ -777,7 +1015,6 @@ Index.from_low_level
 </tr>
 <tr>
 <th>996</th>
-<td>996</td>
 <td>0.812510</td>
 <td>-1.125429</td>
 <td>-0.725055</td>
@@ -791,7 +1028,6 @@ Index.from_low_level
 </tr>
 <tr>
 <th>997</th>
-<td>997</td>
 <td>1.509753</td>
 <td>0.877829</td>
 <td>-0.604218</td>
@@ -805,7 +1041,6 @@ Index.from_low_level
 </tr>
 <tr>
 <th>998</th>
-<td>998</td>
 <td>-0.479956</td>
 <td>-0.314434</td>
 <td>2.384329</td>
@@ -819,7 +1054,6 @@ Index.from_low_level
 </tr>
 <tr>
 <th>999</th>
-<td>999</td>
 <td>1.797861</td>
 <td>0.535607</td>
 <td>0.371127</td>
@@ -833,272 +1067,111 @@ Index.from_low_level
 </tr>
 </tbody>
 </table>
-<p>1000 rows × 11 columns</p>
+<p>1000 rows × 10 columns</p>
 </div>
 </div>
 <br/>
-<br/><p>Streaming CSV (warning: huge)</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">"annoy_vectors.csv"</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">100_000</span><span class="p">)</span>
+<br/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span><span class="o">.</span><span class="n">query_by_item</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="mi">999</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">include_distances</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>'/home/circleci/repo/galleries/examples/annoy/annoy_vectors.csv'
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(array([ 11, 601, 750, 337, 672,  98, 411,  49, 496, 835]), array([0.60789573, 0.62330794, 0.6259439 , 0.6828902 , 0.6929481 ,
+       0.7479852 , 0.74852514, 0.76272124, 0.76463056, 0.7769581 ],
+      dtype=float32))
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-
-<a class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-function" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html#pandas.read_csv" title="pandas.read_csv"><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span></a><span class="p">(</span><span class="s2">"annoy_vectors.csv"</span><span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span><span class="o">.</span><span class="n">query_by_vector</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">include_distances</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="output_subarea output_html rendered_html output_result">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>id</th>
-<th>feature_0</th>
-<th>feature_1</th>
-<th>feature_2</th>
-<th>feature_3</th>
-<th>feature_4</th>
-<th>feature_5</th>
-<th>feature_6</th>
-<th>feature_7</th>
-<th>feature_8</th>
-<th>feature_9</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>0</td>
-<td>0.941715</td>
-<td>-1.396578</td>
-<td>-0.679714</td>
-<td>0.370504</td>
-<td>-1.016349</td>
-<td>-0.072120</td>
-<td>0.179196</td>
-<td>-0.831099</td>
-<td>-1.309037</td>
-<td>0.193888</td>
-</tr>
-<tr>
-<th>1</th>
-<td>1</td>
-<td>0.993250</td>
-<td>-0.646982</td>
-<td>-0.333668</td>
-<td>1.645672</td>
-<td>-0.558890</td>
-<td>-0.514157</td>
-<td>2.404119</td>
-<td>-1.531083</td>
-<td>0.796466</td>
-<td>-2.003649</td>
-</tr>
-<tr>
-<th>2</th>
-<td>2</td>
-<td>-0.596963</td>
-<td>1.503681</td>
-<td>1.221436</td>
-<td>-0.901120</td>
-<td>-0.453699</td>
-<td>0.080233</td>
-<td>-1.258103</td>
-<td>0.552220</td>
-<td>2.227577</td>
-<td>-1.355242</td>
-</tr>
-<tr>
-<th>3</th>
-<td>3</td>
-<td>-1.981533</td>
-<td>0.288244</td>
-<td>-0.119123</td>
-<td>1.804330</td>
-<td>-0.160362</td>
-<td>-0.050660</td>
-<td>-0.190874</td>
-<td>-0.990606</td>
-<td>0.673030</td>
-<td>-1.324082</td>
-</tr>
-<tr>
-<th>4</th>
-<td>4</td>
-<td>1.166490</td>
-<td>0.008376</td>
-<td>0.503630</td>
-<td>-0.552765</td>
-<td>-0.920194</td>
-<td>1.800263</td>
-<td>0.468550</td>
-<td>1.207003</td>
-<td>0.187123</td>
-<td>2.611608</td>
-</tr>
-<tr>
-<th>...</th>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr>
-<th>995</th>
-<td>995</td>
-<td>-0.764022</td>
-<td>0.174524</td>
-<td>-0.816212</td>
-<td>0.623093</td>
-<td>-0.395465</td>
-<td>0.193787</td>
-<td>-0.769984</td>
-<td>-0.147106</td>
-<td>0.377592</td>
-<td>-0.230512</td>
-</tr>
-<tr>
-<th>996</th>
-<td>996</td>
-<td>0.812510</td>
-<td>-1.125429</td>
-<td>-0.725055</td>
-<td>1.007468</td>
-<td>-1.236580</td>
-<td>-0.339250</td>
-<td>0.958843</td>
-<td>-0.857817</td>
-<td>1.487129</td>
-<td>0.667198</td>
-</tr>
-<tr>
-<th>997</th>
-<td>997</td>
-<td>1.509753</td>
-<td>0.877829</td>
-<td>-0.604218</td>
-<td>0.013888</td>
-<td>-0.597203</td>
-<td>1.374362</td>
-<td>0.723732</td>
-<td>-1.195797</td>
-<td>0.084885</td>
-<td>-0.644913</td>
-</tr>
-<tr>
-<th>998</th>
-<td>998</td>
-<td>-0.479956</td>
-<td>-0.314434</td>
-<td>2.384329</td>
-<td>-1.387915</td>
-<td>1.522265</td>
-<td>0.047036</td>
-<td>0.547916</td>
-<td>0.307560</td>
-<td>-0.234338</td>
-<td>-0.743033</td>
-</tr>
-<tr>
-<th>999</th>
-<td>999</td>
-<td>1.797861</td>
-<td>0.535607</td>
-<td>0.371127</td>
-<td>0.373999</td>
-<td>1.999118</td>
-<td>-1.771545</td>
-<td>-0.133898</td>
-<td>-0.841187</td>
-<td>-0.977023</td>
-<td>-0.905645</td>
-</tr>
-</tbody>
-</table>
-<p>1000 rows × 11 columns</p>
-</div>
-</div>
-<br/>
-<br/><p>Large export → memory-safe .npy
-Exports items [0, n_items) into a memmapped .npy</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span><span class="o">.</span><span class="n">save_vectors_npy</span><span class="p">(</span><span class="s2">"annoy_vectors.npy"</span><span class="p">)</span>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(array([ 11, 601, 750, 337, 672,  98, 411,  49, 496, 835]), array([0.60789573, 0.62330794, 0.6259439 , 0.6828902 , 0.6929481 ,
+       0.7479852 , 0.74852514, 0.76272124, 0.76463056, 0.7769581 ],
+      dtype=float32))
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>'/home/circleci/repo/galleries/examples/annoy/annoy_vectors.npy'
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">include_distances</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-<a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.load.html#numpy.load" title="numpy.load"><span class="n">np</span><span class="o">.</span><span class="n">load</span></a><span class="p">(</span><span class="s2">"annoy_vectors.npy"</span><span class="p">)</span>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(array([[ 11, 601, 750, 337, 672,  98, 411,  49, 496, 835]]), array([[0.60789573, 0.62330794, 0.6259439 , 0.6828902 , 0.6929481 ,
+        0.7479852 , 0.74852514, 0.76272124, 0.76463056, 0.7769581 ]],
+      dtype=float32))
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>array([[ 0.9417154 , -1.3965781 , -0.67971444, ..., -0.8310992 ,
-        -1.3090373 ,  0.19388774],
-       [ 0.9932497 , -0.64698166, -0.333668  , ..., -1.5310826 ,
-         0.7964658 , -2.0036485 ],
-       [-0.59696275,  1.5036808 ,  1.2214364 , ...,  0.55222   ,
-         2.2275772 , -1.3552415 ],
-       ...,
-       [ 1.5097532 ,  0.8778289 , -0.6042179 , ..., -1.1957974 ,
-         0.0848854 , -0.64491284],
-       [-0.47995627, -0.31443435,  2.3843286 , ...,  0.30755976,
-        -0.23433805, -0.7430332 ],
-       [ 1.7978611 ,  0.53560704,  0.37112716, ..., -0.8411868 ,
-        -0.9770226 , -0.90564495]], shape=(1000, 10), dtype=float32)
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span><span class="o">.</span><span class="n">kneighbors_graph</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Range-only export (strict, sized)</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span><span class="o">.</span><span class="n">save_vectors_npy</span><span class="p">(</span><span class="s2">"chunk_0_1m.npy"</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">1_000_000</span><span class="p">)</span>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Compressed Sparse Row sparse matrix of dtype 'float32'
+    with 10 stored elements and shape (1, 1000)&gt;
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>'/home/circleci/repo/galleries/examples/annoy/chunk_0_1m.npy'
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span><span class="o">.</span><span class="n">kneighbors_graph</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-<a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.load.html#numpy.load" title="numpy.load"><span class="n">np</span><span class="o">.</span><span class="n">load</span></a><span class="p">(</span><span class="s2">"chunk_0_1m.npy"</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>array([[ 0.9417154 , -1.3965781 , -0.67971444, ..., -0.8310992 ,
-        -1.3090373 ,  0.19388774],
-       [ 0.9932497 , -0.64698166, -0.333668  , ..., -1.5310826 ,
-         0.7964658 , -2.0036485 ],
-       [-0.59696275,  1.5036808 ,  1.2214364 , ...,  0.55222   ,
-         2.2275772 , -1.3552415 ],
-       ...,
-       [ 1.5097532 ,  0.8778289 , -0.6042179 , ..., -1.1957974 ,
-         0.0848854 , -0.64491284],
-       [-0.47995627, -0.31443435,  2.3843286 , ...,  0.30755976,
-        -0.23433805, -0.7430332 ],
-       [ 1.7978611 ,  0.53560704,  0.37112716, ..., -0.8411868 ,
-        -0.9770226 , -0.90564495]], shape=(1000, 10), dtype=float32)
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>array([[0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0.]], dtype=float32)
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.460 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.528 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_simple_script_thumb.png"/>
@@ -1163,7 +1236,7 @@ Exports items [0, n_items) into a memmapped .npy</p>
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251226.01641d8 2025-12-26T16:03Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251227.f00af69 2025-12-27T12:48Z.
       <br/>
 </p>
 </div>

@@ -100,21 +100,8 @@ safe to serialize and move between processes.
 Mixins used by the high-level wrapper
 -------------------------------------
 
-The wrapper uses mixins to keep features separate and explicit.
-
-ANNoy Index Mixins
-------------------
-
-- ``CompressMode``
-- ``ManifestMixin``: Export/import metadata only.
-- ``NDArrayExportMixin``: Export mixin for Annoy-like classes.
-- ``ObjectIOMixin``: Persistence for the Python object (Index/Annoy alias),
-  not the raw Annoy index file.
-- ``PathAwareAnnoy``: Thin Python subclass that tracks the last known on-disk path.
-- ``PickleMixin``: Adds strict persistence support.
-- ``PickleMode``
-- ``SerializerBackend``
-- ``VectorOpsMixin``: High-level vector operations for Annoy-like objects.
+The wrapper uses mixins :py:mod:`~scikitplot.annoy._mixins`
+to keep features separate and explicit.
 
 Further reading
 ---------------

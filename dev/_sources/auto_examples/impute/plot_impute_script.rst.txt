@@ -79,13 +79,13 @@ df.head()
 .. code-block:: Python
 
     Xdi_train, Xdi_val, ydi_train, ydi_val = train_test_split(
-        *load_diabetes(return_X_y=True), test_size=0.25, random_state=0
+        *load_diabetes(return_X_y=True), test_size=0.25, random_state=42
     )
     Xca_train, Xca_val, yca_train, yca_val = train_test_split(
-        *fetch_california_housing(return_X_y=True), test_size=0.25, random_state=0
+        *fetch_california_housing(return_X_y=True), test_size=0.25, random_state=42
     )
     Xbc_train, Xbc_val, ybc_train, ybc_val = train_test_split(
-        *data_2_classes(return_X_y=True), test_size=0.25, random_state=0,
+        *data_2_classes(return_X_y=True), test_size=0.25, random_state=42,
         stratify=data_2_classes(return_X_y=True)[1]
     )
 
@@ -152,10 +152,10 @@ df.head()
 
     def get_score(Xt, Xv, yt, yv, imputer=None, regresion=True):
         if regresion:
-            estimator = RandomForestRegressor(random_state=0)
+            estimator = RandomForestRegressor(random_state=42)
             scoring="neg_mean_squared_error"
         else:
-            estimator = RandomForestClassifier(random_state=0, max_depth=6, class_weight='balanced')
+            estimator = RandomForestClassifier(random_state=42, max_depth=6, class_weight='balanced')
             scoring="neg_log_loss"
         if imputer is not None:
             Xt = imputer.fit_transform(Xt, yt)
@@ -207,7 +207,7 @@ df.head()
 
  .. code-block:: none
 
-    19.655235528945923
+    19.50866985321045
 
 
 
@@ -242,7 +242,7 @@ df.head()
 
  .. code-block:: none
 
-    20.98550271987915
+    20.56322956085205
 
 
 
@@ -277,7 +277,7 @@ df.head()
 
  .. code-block:: none
 
-    21.587095022201538
+    21.740806579589844
 
 
 
@@ -312,7 +312,7 @@ df.head()
 
  .. code-block:: none
 
-    21.772113800048828
+    21.98249363899231
 
 
 
@@ -350,7 +350,7 @@ df.head()
 
  .. code-block:: none
 
-    43.89314651489258
+    59.317017555236816
 
 
 
@@ -389,7 +389,7 @@ df.head()
 
  .. code-block:: none
 
-    23.208913803100586
+    22.400686502456665
 
 
 
@@ -413,7 +413,7 @@ df.head()
  .. code-block:: none
 
 
-    '0.5.dev0+git.20251226.01641d8'
+    '0.5.dev0+git.20251227.f00af69'
 
 
 
@@ -440,7 +440,7 @@ df.head()
 
 
     t0 = time.time()
-    imputer = ANNImputer(add_indicator=True, random_state=0, backend="voyager")
+    imputer = ANNImputer(add_indicator=True, random_state=42, backend="voyager")
     mses_diabetes[6], stds_diabetes[6] = get_score(
         Xdi_train_miss, Xdi_val_miss, ydi_train_miss, ydi_val_miss,
         make_pipeline(MaxAbsScaler(), RobustScaler(), imputer),
@@ -468,31 +468,29 @@ df.head()
 
  .. code-block:: none
 
-    25.840972423553467
+    25.273980140686035
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 268-295
+.. GENERATED FROM PYTHON SOURCE LINES 268-293
 
 .. code-block:: Python
 
 
     t0 = time.time()
-    imputer = ANNImputer(add_indicator=True, random_state=0, n_neighbors=1, metric='angular')
+    imputer = ANNImputer(add_indicator=True, random_state=42,)
     mses_diabetes[7], stds_diabetes[7] = get_score(
         Xdi_train_miss, Xdi_val_miss, ydi_train_miss, ydi_val_miss,
         make_pipeline(MaxAbsScaler(), RobustScaler(), imputer),
     )
-    imputer = ANNImputer(add_indicator=True, random_state=0,
-                         n_neighbors=430, metric='euclidean', initial_strategy="median", weights="distance")
-                        #  n_neighbors=484, metric='euclidean', initial_strategy="median", weights="distance", n_trees=10)
+    #  n_neighbors=430, metric='euclidean', initial_strategy="median", weights="distance")
+    #  n_neighbors=484, metric='euclidean', initial_strategy="median", weights="distance", n_trees=10)
     mses_california[7], stds_california[7] = get_score(
         Xca_train_miss, Xca_val_miss, yca_train_miss, yca_val_miss,
         make_pipeline(MaxAbsScaler(), RobustScaler(), imputer),
     )
-    imputer = ANNImputer(add_indicator=True, random_state=0,
-                         n_neighbors=1, metric='euclidean', initial_strategy="median")
+    #  n_neighbors=1, metric='euclidean', initial_strategy="median")
     mses_train[7], stds_train[7] = get_score(
         Xbc_train_miss, Xbc_val_miss, ybc_train_miss, ybc_val_miss,
         make_pipeline(MaxAbsScaler(), RobustScaler(), imputer),
@@ -512,24 +510,12 @@ df.head()
 
  .. code-block:: none
 
-    /home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-packages/scikitplot/impute/_ann.py:890: UserWarning:
-
-    seed=0 resets to Annoy's default seed
-
-    /home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-packages/scikitplot/impute/_ann.py:890: UserWarning:
-
-    seed=0 resets to Annoy's default seed
-
-    /home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-packages/scikitplot/impute/_ann.py:890: UserWarning:
-
-    seed=0 resets to Annoy's default seed
-
-    46.12210178375244
+    27.094292402267456
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 296-388
+.. GENERATED FROM PYTHON SOURCE LINES 294-386
 
 .. code-block:: Python
 
@@ -637,14 +623,14 @@ df.head()
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 389-393
+.. GENERATED FROM PYTHON SOURCE LINES 387-391
 
 ANNImputer performance and accuracy are highly sensitive to both the
 selected distance metric and the number of trees used to build the Annoy index.
 An inappropriate metric or insufficient number of trees may lead to poor
 neighbor retrieval and degraded imputation quality.
 
-.. GENERATED FROM PYTHON SOURCE LINES 395-402
+.. GENERATED FROM PYTHON SOURCE LINES 393-400
 
 .. tags::
 
@@ -657,7 +643,7 @@ neighbor retrieval and degraded imputation quality.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (3 minutes 44.412 seconds)
+   **Total running time of the script:** (3 minutes 39.199 seconds)
 
 
 .. _sphx_glr_download_auto_examples_impute_plot_impute_script.py:

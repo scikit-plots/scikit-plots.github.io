@@ -82,7 +82,7 @@
     <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="NDArrayExportMixin" href="scikitplot.annoy.NDArrayExportMixin.html" />
+    <link rel="next" title="NDArrayMixin" href="scikitplot.annoy.NDArrayMixin.html" />
     <link rel="prev" title="IndexIOMixin" href="scikitplot.annoy.IndexIOMixin.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -579,7 +579,7 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.CompressMode.html">CompressMode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.IndexIOMixin.html">IndexIOMixin</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">MetaMixin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.NDArrayExportMixin.html">NDArrayExportMixin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.NDArrayMixin.html">NDArrayMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PickleMixin.html">PickleMixin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PickleMode.html">PickleMode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.annoy.PlottingMixin.html">PlottingMixin</a></li>
@@ -849,7 +849,7 @@
 <h1>MetaMixin<a class="headerlink" href="#metamixin" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.annoy.MetaMixin">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">MetaMixin</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/01641d8/scikitplot/annoy/_mixins/_meta.py#L62"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.MetaMixin" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">MetaMixin</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f00af69/scikitplot/annoy/_mixins/_meta.py#L59"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.MetaMixin" title="Link to this definition">#</a></dt>
 <dd><p>Mixin that exports and restores index metadata.</p>
 <p>The concrete class (or its backend) must implement:</p>
 <ul class="simple">
@@ -870,7 +870,7 @@ the <code class="docutils literal notranslate"><span class="pre">params</span></
 behavior controlled only by explicit fields.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.MetaMixin.from_json">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">load</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/01641d8/scikitplot/annoy/_mixins/_meta.py#L300"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.MetaMixin.from_json" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">load</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f00af69/scikitplot/annoy/_mixins/_meta.py#L333"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.MetaMixin.from_json" title="Link to this definition">#</a></dt>
 <dd><p>Load metadata from JSON and construct an index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -887,7 +887,7 @@ behavior controlled only by explicit fields.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.MetaMixin.from_metadata">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">load</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/01641d8/scikitplot/annoy/_mixins/_meta.py#L209"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.MetaMixin.from_metadata" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">load</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f00af69/scikitplot/annoy/_mixins/_meta.py#L222"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.MetaMixin.from_metadata" title="Link to this definition">#</a></dt>
 <dd><p>Construct an index from a metadata payload.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -929,7 +929,7 @@ index into the returned object via backend <code class="docutils literal notrans
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.MetaMixin.from_yaml">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_yaml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">load</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/01641d8/scikitplot/annoy/_mixins/_meta.py#L331"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.MetaMixin.from_yaml" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_yaml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">load</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f00af69/scikitplot/annoy/_mixins/_meta.py#L364"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.MetaMixin.from_yaml" title="Link to this definition">#</a></dt>
 <dd><p>Load metadata from YAML and construct an index (requires PyYAML).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -946,7 +946,7 @@ index into the returned object via backend <code class="docutils literal notrans
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.MetaMixin.to_json">
-<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_ascii</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/01641d8/scikitplot/annoy/_mixins/_meta.py#L165"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.MetaMixin.to_json" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_ascii</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f00af69/scikitplot/annoy/_mixins/_meta.py#L178"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.MetaMixin.to_json" title="Link to this definition">#</a></dt>
 <dd><p>Serialize <a class="reference internal" href="#scikitplot.annoy.MetaMixin.to_metadata" title="scikitplot.annoy.MetaMixin.to_metadata"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_metadata</span></code></a> to JSON.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -994,14 +994,14 @@ index into the returned object via backend <code class="docutils literal notrans
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.MetaMixin.to_metadata">
-<span class="sig-name descname"><span class="pre">to_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/01641d8/scikitplot/annoy/_mixins/_meta.py#L88"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.MetaMixin.to_metadata" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f00af69/scikitplot/annoy/_mixins/_meta.py#L85"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.MetaMixin.to_metadata" title="Link to this definition">#</a></dt>
 <dd><p>Export a serializable metadata payload.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>include_info</strong></dt><dd><p>If True, include a backend-provided <code class="docutils literal notranslate"><span class="pre">info()</span></code> mapping when available.</p>
+<dt><strong>include_info</strong></dt><dd><p>If True, include an <code class="docutils literal notranslate"><span class="pre">info()</span></code> mapping when available.</p>
 </dd>
-<dt><strong>strict</strong></dt><dd><p>If True, backend failures in optional <code class="docutils literal notranslate"><span class="pre">info()</span></code> propagation raise.</p>
+<dt><strong>strict</strong></dt><dd><p>If True, failures in optional <code class="docutils literal notranslate"><span class="pre">info()</span></code> propagation raise.</p>
 </dd>
 </dl>
 </dd>
@@ -1016,9 +1016,9 @@ and optional info.</p>
 <dd class="field-odd"><dl class="simple">
 <dt>RuntimeError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">_META_SCHEMA_VERSION</span></code> is missing on the concrete class.</p>
 </dd>
-<dt>TypeError</dt><dd><p>If backend <code class="docutils literal notranslate"><span class="pre">get_params</span></code> does not return a mapping.</p>
+<dt>TypeError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">get_params</span></code> does not return a mapping.</p>
 </dd>
-<dt>AttributeError</dt><dd><p>If the backend does not implement <code class="docutils literal notranslate"><span class="pre">get_params</span></code>.</p>
+<dt>AttributeError</dt><dd><p>If neither the instance nor the backend implements <code class="docutils literal notranslate"><span class="pre">get_params</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -1036,7 +1036,7 @@ and optional info.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.MetaMixin.to_yaml">
-<span class="sig-name descname"><span class="pre">to_yaml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/01641d8/scikitplot/annoy/_mixins/_meta.py#L310"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.MetaMixin.to_yaml" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_yaml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f00af69/scikitplot/annoy/_mixins/_meta.py#L343"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.MetaMixin.to_yaml" title="Link to this definition">#</a></dt>
 <dd><p>Serialize <a class="reference internal" href="#scikitplot.annoy.MetaMixin.to_metadata" title="scikitplot.annoy.MetaMixin.to_metadata"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_metadata</span></code></a> to YAML (requires PyYAML).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1076,11 +1076,11 @@ and optional info.</p>
       </div>
     </a>
     <a class="right-next"
-       href="scikitplot.annoy.NDArrayExportMixin.html"
+       href="scikitplot.annoy.NDArrayMixin.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">NDArrayExportMixin</p>
+        <p class="prev-next-title">NDArrayMixin</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1157,7 +1157,7 @@ and optional info.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251226.01641d8 2025-12-26T16:03Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251227.f00af69 2025-12-27T12:48Z.
       <br/>
     
   </p>
