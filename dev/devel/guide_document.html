@@ -1,0 +1,868 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Documentation Guidelines" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://scikit-plots.github.io/stable/devel/guide_document.html" />
+<meta property="og:site_name" content="scikit-plots" />
+<meta property="og:description" content="High-quality, consistent documentation for astronomy code is one of the major goals of the Astropy Project. We encourage you to help us improve the documentation, and you do not have to be an exper..." />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
+<meta property="og:image:alt" content="scikit-plots" />
+<meta name="description" content="High-quality, consistent documentation for astronomy code is one of the major goals of the Astropy Project. We encourage you to help us improve the documentation, and you do not have to be an exper..." />
+
+    <title>Documentation Guidelines &#8212; scikit-plots 0.5.dev0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=14208072" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=e4cb1417" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=de0fc20e"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=e93d8674"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'devel/guide_document';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <script src="../_static/scripts/dropdown.js?v=e2048168"></script>
+    <script src="../_static/scripts/version-switcher.js?v=9bbada16"></script>
+    <link rel="icon" href="../_static/scikit-plots-favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.5" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/scikit-plots-logo-small.png" class="logo__image only-light" alt="scikit-plots homepage"/>
+    <img src="../_static/scikit-plots-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-plots homepage"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../whats_new/index.html">
+    Release History
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/governance.html">
+    Governance Process
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/index.html">
+    About Us | Project
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/logos/python-logo.png" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../whats_new/index.html">
+    Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/governance.html">
+    Governance Process
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/index.html">
+    About Us | Project
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/logos/python-logo.png" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Documentation Guidelines</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="documentation-guidelines">
+<span id="id1"></span><h1>Documentation Guidelines<a class="headerlink" href="#documentation-guidelines" title="Link to this heading">#</a></h1>
+<p>High-quality, consistent documentation for astronomy code is one of the major goals of
+the Astropy Project. We encourage you to help us improve the documentation, and you
+do not have to be an expert on <code class="docutils literal notranslate"><span class="pre">astropy</span></code> to do so!  If something in the docs does not
+make sense to you, updating the relevant section after you figure it out is a great way
+to contribute to Astropy and help others in the future.</p>
+<p>In this section we describe our documentation procedures and rules that apply to the
+<code class="docutils literal notranslate"><span class="pre">astropy</span></code> core package and coordinated packages. We encourage affiliated packages to
+do the same.</p>
+<section id="astropy-documentation-overview">
+<h2>Astropy Documentation Overview<a class="headerlink" href="#astropy-documentation-overview" title="Link to this heading">#</a></h2>
+<p>The documentation is written in <strong>reStructuredText</strong>, which is almost like writing in
+plain English, and built using <a class="reference external" href="http://www.sphinx-doc.org">Sphinx</a>. The
+Sphinx Documentation has an excellent <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html">introduction to reST</a> that you should read.</p>
+<p>The Astropy documentation consists of two parts. The code docstrings provide a clear
+explanation of the usage of individual functions, classes and modules. These are
+collected by Sphinx into the API documentation. The narrative documentation is contained
+in the source code <code class="docutils literal notranslate"><span class="pre">docs</span></code> directory and provides a more tutorial-like overview of each
+sub-package together with other topical information like What’s New, Installation,
+Developer documentation, etc.</p>
+<p>The <a href="#id5"><span class="problematic" id="id6">|OpenAstronomy Packaging Guide|</span></a> provides a recommended general structure for
+documentation.</p>
+</section>
+<section id="astropy-documentation-guidelines">
+<h2>Astropy Documentation Guidelines<a class="headerlink" href="#astropy-documentation-guidelines" title="Link to this heading">#</a></h2>
+<p>This section describes the standards for documentation that any contribution
+being considered for integration into the core package should follow, as well as
+the standard Astropy docstring format.</p>
+<ul class="simple">
+<li><p>Documentation text should follow the <span class="xref std std-ref">astropy-style-guide</span>.</p></li>
+<li><p>Docstrings must be provided for all public classes, methods, and functions, and be
+written using the <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">numpydoc format</a>.</p></li>
+<li><p>References in docstrings, <strong>including internal Astropy links</strong>, should use the
+<a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html">intersphinx format</a>.
+For example a link to the Astropy section on unit equivalencies would be
+<code class="docutils literal notranslate"><span class="pre">:ref:`astropy:unit_equivalencies`</span></code>.
+When built in Astropy, links starting with ‘astropy’ resolve to the current
+build. In affiliated packages using the <code class="docutils literal notranslate"><span class="pre">sphinx-astropy</span></code> intersphinx mapping,
+the links resolve to the stable version of Astropy. For linking to the
+development version, use direct URL linking.</p></li>
+<li><p>Examples and/or tutorials are strongly encouraged for typical use-cases of a
+particular module or class.</p></li>
+<li><p>Optional package dependencies should be documented where feasible.</p></li>
+<li><p>Configuration options using the <a class="reference external" href="https://docs.astropy.org/en/stable/config/ref_api.html#module-astropy.config" title="(in Astropy v7.2)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">astropy.config</span></code></a> mechanisms must be
+explicitly mentioned in the documentation.</p></li>
+</ul>
+</section>
+<section id="building-the-documentation-from-source">
+<span id="builddocs"></span><h2>Building the Documentation from Source<a class="headerlink" href="#building-the-documentation-from-source" title="Link to this heading">#</a></h2>
+<p>There are two ways to build the Astropy documentation. The first way is to
+execute the following <code class="docutils literal notranslate"><span class="pre">tox</span></code> command from within the <code class="docutils literal notranslate"><span class="pre">astropy</span></code> source directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tox</span> <span class="o">-</span><span class="n">e</span> <span class="n">build_docs</span>
+</pre></div>
+</div>
+<p>With this method you do not need to install any of the documentation dependencies. The
+documentation will be built in the <code class="docutils literal notranslate"><span class="pre">docs/_build/html</span></code> directory, and can be read by
+pointing a web browser to <code class="docutils literal notranslate"><span class="pre">docs/_build/html/index.html</span></code>.</p>
+<p>The second method is to build the documentation manually. This requires that you are
+working in an isolated development environment as described in <a class="reference internal" href="guide_qu_contribute.html#contributing-environment"><span class="std std-ref">Creating a development environment</span></a>. The benefit of this method is that often you can
+rebuild the docs fairly quickly after making changes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">docs</span>
+<span class="n">make</span> <span class="n">html</span>
+</pre></div>
+</div>
+<p>The documentation will be generated in the same location. In some cases if you make
+changes they will not be reflected in the build output and you need to start over after
+running <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean</span></code>.</p>
+<p>To use multiple cores for building faster, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SPHINXOPTS</span><span class="o">=</span><span class="s2">&quot;-j auto&quot;</span> <span class="n">make</span> <span class="n">html</span>
+</pre></div>
+</div>
+<section id="dependencies">
+<h3>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading">#</a></h3>
+<p>Here we describe the key dependencies for building the documentation. These are
+provided by the <code class="docutils literal notranslate"><span class="pre">docs</span></code> optional dependencies in the <code class="docutils literal notranslate"><span class="pre">astropy</span></code> package (see
+the <code class="docutils literal notranslate"><span class="pre">[docs]</span></code> list in <code class="docutils literal notranslate"><span class="pre">[project.optional-dependencies]</span></code> in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>).</p>
+<p>The <a class="reference external" href="https://github.com/astropy/sphinx-astropy">sphinx-astropy</a> package provides
+configuration common to packages in the Astropy ecosystem and serves as a way to
+automatically get the other main dependencies, including:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.sphinx-doc.org">Sphinx</a> - the main package we use to build
+the documentation</p></li>
+<li><p><a class="reference external" href="https://github.com/astropy/astropy-sphinx-theme">astropy-sphinx-theme</a> -
+the default ‘bootstrap’ theme used by <code class="docutils literal notranslate"><span class="pre">astropy</span></code> and a number of affiliated
+packages</p></li>
+<li><p><a class="reference external" href="https://github.com/astropy/sphinx-automodapi">sphinx-automodapi</a> - an extension
+that makes it easy to automatically generate API documentation</p></li>
+<li><p><a href="#id7"><span class="problematic" id="id8">|numpydoc|</span></a> - an extension to parse
+docstrings in NumPyDoc format</p></li>
+<li><p><a class="reference external" href="http://www.graphviz.org">Graphviz</a> - generate inheritance graphs (available
+as a conda package or a system install but not in pip)</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Both of the <code class="docutils literal notranslate"><span class="pre">pip</span></code> install methods above do not include <a class="reference external" href="http://www.graphviz.org">Graphviz</a>.  If you do not install this package separately
+then the documentation build process will produce a very large number of
+lengthy warnings (which can obscure bona fide warnings) and also not
+generate inheritance graphs.</p>
+</div>
+</section>
+<section id="reporting-issues-requesting-features">
+<h3>Reporting Issues/Requesting Features<a class="headerlink" href="#reporting-issues-requesting-features" title="Link to this heading">#</a></h3>
+<p>As mentioned above, building the documentation depends on a number of Sphinx
+extensions and other packages. Since it is not always possible to know which
+package is causing issues or would need to have a new feature implemented, you
+can open an issue in the <a class="reference external" href="https://github.com/astropy/astropy/issues">core astropy package issue
+tracker</a>. However, if you wish, you
+can also open issues in the repositories for some of the dependencies:</p>
+<ul class="simple">
+<li><p>For requests/issues related to the appearance of the docs (e.g. related to
+the CSS), you can open an issue in the <a class="reference external" href="https://github.com/astropy/astropy-sphinx-theme/issues">astropy-sphinx-theme issue tracker</a>.</p></li>
+<li><p>For requests/issues related to the auto-generated API docs which appear to
+be general issues rather than an issue with a specific docstring, you can use
+the <a class="reference external" href="https://github.com/astropy/sphinx-automodapi/issues">sphinx-automodapi issue tracker</a>.</p></li>
+<li><p>For issues related to the default configuration (e.g which extensions are
+enabled by default), you can use the <a class="reference external" href="https://github.com/astropy/sphinx-astropy/issues">sphinx-astropy issue tracker</a>.</p></li>
+</ul>
+</section>
+</section>
+<section id="details-for-package-maintainers">
+<h2>Details for Package Maintainers<a class="headerlink" href="#details-for-package-maintainers" title="Link to this heading">#</a></h2>
+<p>Following is useful information for package maintainers who are using the Astropy
+documentation infrastructure and may want to customize it for their package.</p>
+<section id="sphinx-documentation-themes">
+<h3>Sphinx Documentation Themes<a class="headerlink" href="#sphinx-documentation-themes" title="Link to this heading">#</a></h3>
+<p>An Astropy Project Sphinx HTML theme is included in the <a class="reference external" href="https://github.com/astropy/astropy-sphinx-theme">astropy-sphinx-theme</a>
+package. This allows the theme to be used by both Astropy and affiliated
+packages. The theme is activated by setting the theme in the global Astropy
+sphinx configuration in <a class="reference external" href="https://github.com/astropy/sphinx-astropy">sphinx-astropy</a>, which is imported in the sphinx
+configuration of both Astropy and affiliated packages.</p>
+<p>A different theme can be used by overriding a few sphinx
+configuration variables set in the global configuration.</p>
+<ul class="simple">
+<li><p>To use a different theme, set <code class="docutils literal notranslate"><span class="pre">html_theme</span></code> to the name of a desired
+builtin Sphinx theme or a custom theme in <code class="docutils literal notranslate"><span class="pre">package-name/docs/conf.py</span></code>
+(where <code class="docutils literal notranslate"><span class="pre">'package-name'</span></code> is “astropy” or the name of the affiliated
+package).</p></li>
+<li><p>To use a custom theme, additionally: place the theme in
+<code class="docutils literal notranslate"><span class="pre">package-name/docs/_themes</span></code> and add <code class="docutils literal notranslate"><span class="pre">'_themes'</span></code> to the
+<code class="docutils literal notranslate"><span class="pre">html_theme_path</span></code> variable. See the Sphinx documentation for more
+details on theming.</p></li>
+</ul>
+</section>
+<section id="sphinx-extensions">
+<h3>Sphinx extensions<a class="headerlink" href="#sphinx-extensions" title="Link to this heading">#</a></h3>
+<p>The documentation build process for Astropy uses a number of sphinx extensions
+which are all installed automatically when installing <a class="reference external" href="https://github.com/astropy/sphinx-astropy">sphinx-astropy</a>. These
+facilitate easily documenting code in a homogeneous and readable way.</p>
+<p>The main extensions used are:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/astropy/sphinx-automodapi">sphinx-automodapi</a> - an extension that makes it easy to automatically
+generate API documentation.</p></li>
+<li><p><a href="#id9"><span class="problematic" id="id10">|numpydoc|</span></a> - an extension to parse docstrings in NumpyDoc format</p></li>
+</ul>
+<p>In addition, the <a class="reference external" href="https://github.com/astropy/sphinx-astropy">sphinx-astropy</a> includes a few small extensions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sphinx_astropy.ext.edit_on_github</span></code> - an extension to add ‘Edit on GitHub’
+links to documentation pages.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sphinx_astropy.ext.changelog_links</span></code> - an extension to add links to
+pull requests when rendering the changelog.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sphinx_astropy.ext.doctest</span></code> - an extension that makes it possible to
+add metadata about doctests inside <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item">
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+                </footer>
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astropy-documentation-overview">Astropy Documentation Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astropy-documentation-guidelines">Astropy Documentation Guidelines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-the-documentation-from-source">Building the Documentation from Source</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dependencies">Dependencies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reporting-issues-requesting-features">Reporting Issues/Requesting Features</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#details-for-package-maintainers">Details for Package Maintainers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sphinx-documentation-themes">Sphinx Documentation Themes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sphinx-extensions">Sphinx extensions</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/devel/guide_document.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251230.17fc253 2025-12-30T02:34Z.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

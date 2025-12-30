@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/user_guide/cexternals/_lightnumpy/index.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="A lightweight version of NumPy or Cupy (or similar functionality). See_numcpp. Why LightNumPy?: Performance-Driven: Optimized for both CPU and hardware accelerators (GPU/TPU). Focused: Includes ess..." />
+<meta property="og:description" content="A lightweight version of NumPy or Cupy (or similar functionality). See_numcpp and nc." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="A lightweight version of NumPy or Cupy (or similar functionality). See_numcpp. Why LightNumPy?: Performance-Driven: Optimized for both CPU and hardware accelerators (GPU/TPU). Focused: Includes ess..." />
+<meta name="description" content="A lightweight version of NumPy or Cupy (or similar functionality). See_numcpp and nc." />
 
     <title>LightNumPy (experimental) &#8212; scikit-plots 0.5.dev0 documentation</title>
   
@@ -592,7 +592,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../preprocessing/index.html">Preprocessing</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../snsx/index.html">SeabornX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../snsx/index.html">snsx Seaborn eXtended (experimental)</a></li>
+
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../stats/index.html">Stats</a></li>
@@ -690,35 +691,25 @@
                   
   <section id="lightnumpy-experimental">
 <span id="cexternals-lightnumpy-index"></span><h1>LightNumPy (experimental)<a class="headerlink" href="#lightnumpy-experimental" title="Link to this heading">#</a></h1>
-<p>A lightweight version of NumPy or Cupy (or similar functionality). See <a class="reference internal" href="../../../modules/generated/scikitplot.cexternals._numcpp.html#module-scikitplot.cexternals._numcpp" title="scikitplot.cexternals._numcpp"><code class="xref py py-mod docutils literal notranslate"><span class="pre">_numcpp</span></code></a>.</p>
+<p>A lightweight version of NumPy or Cupy (or similar functionality).
+See <a class="reference internal" href="../../../modules/generated/scikitplot.cexternals._numcpp.html#module-scikitplot.cexternals._numcpp" title="scikitplot.cexternals._numcpp"><code class="xref py py-mod docutils literal notranslate"><span class="pre">_numcpp</span></code></a> and <a class="reference internal" href="../../../apis/scikitplot.nc.html#module-scikitplot.nc" title="scikitplot.nc"><code class="xref py py-mod docutils literal notranslate"><span class="pre">nc</span></code></a>.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
 <li><p><a class="github reference external" href="https://github.com/scikit-plots/lightnumpy">scikit-plots/lightnumpy</a></p></li>
 </ul>
 </div>
-<section id="why-lightnumpy">
-<h2>Why LightNumPy?<a class="headerlink" href="#why-lightnumpy" title="Link to this heading">#</a></h2>
-<p>Performance-Driven: Optimized for both CPU and hardware accelerators (GPU/TPU).
-Focused: Includes essential features without unnecessary overhead.
-Adaptable: Modular structure for customized extensions.
-Scalable: Ideal for IoT, embedded systems, and resource-limited devices.</p>
-<p>Get Header files location:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; try:
-&gt;&gt;&gt;   # pip install git+https://github.com/scikit-plots/lightnumpy.git@main
-&gt;&gt;&gt;   import lightnumpy as ln
-&gt;&gt;&gt;   # Return the directory that contains the lightnumpy and NumCpp *.h header files.
-&gt;&gt;&gt;   inc_dir_lightnumpy = ln.get_include()
-&gt;&gt;&gt; except: pass
-&gt;&gt;&gt; else:
-&gt;&gt;&gt;   !ls $inc_dir_lightnumpy
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">lightnumpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ln</span>
-</pre></div>
-</div>
-</section>
-</section>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: ">>> ";
+}
+</style><span class="prompt1"><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">nc</span></span>
+<span class="prompt1"><span class="n">nc</span><span class="o">.</span><span class="n">get_include</span><span class="p">()</span></span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">nc</span></span>
+<span class="prompt1"><span class="nb">print</span><span class="p">(</span><span class="n">nc</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="nb">print</span><span class="p">(</span><span class="n">nc</span><span class="o">.</span><span class="n">dot</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span></span>
+</pre></div></div></section>
 
 
                 </article>
@@ -764,18 +755,6 @@ Scalable: Ideal for IoT, embedded systems, and resource-limited devices.</p>
 
 
   <div class="sidebar-secondary-item">
-<div
-    id="pst-page-navigation-heading-2"
-    class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-  </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-lightnumpy">Why LightNumPy?</a></li>
-</ul>
-  </nav></div>
-
-  <div class="sidebar-secondary-item">
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -809,7 +788,7 @@ Scalable: Ideal for IoT, embedded systems, and resource-limited devices.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251227.f00af69 2025-12-27T12:48Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251230.17fc253 2025-12-30T02:34Z.
       <br/>
     
   </p>

@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/user_guide/cexternals/_astropy/index.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="This module contains some functions related to_astropy under stats. Documentation is available in the docstrings and online at https://www.astropy.org/." />
+<meta property="og:description" content="This module contains some functions related to_astropy under stats." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="This module contains some functions related to_astropy under stats. Documentation is available in the docstrings and online at https://www.astropy.org/." />
+<meta name="description" content="This module contains some functions related to_astropy under stats." />
 
     <title>Astropy (experimental) &#8212; scikit-plots 0.5.dev0 documentation</title>
   
@@ -592,7 +592,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../preprocessing/index.html">Preprocessing</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../snsx/index.html">SeabornX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../snsx/index.html">snsx Seaborn eXtended (experimental)</a></li>
+
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../stats/index.html">Stats</a></li>
@@ -690,36 +691,35 @@
                   
   <section id="astropy-experimental">
 <span id="cexternals-astropy-index"></span><h1>Astropy (experimental)<a class="headerlink" href="#astropy-experimental" title="Link to this heading">#</a></h1>
-<p>This module contains some functions related to <a class="reference internal" href="../../../modules/generated/scikitplot.cexternals._astropy.html#module-scikitplot.cexternals._astropy" title="scikitplot.cexternals._astropy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">_astropy</span></code></a> under <a class="reference internal" href="../../../modules/generated/scikitplot.cexternals._astropy.stats.html#module-scikitplot.cexternals._astropy.stats" title="scikitplot.cexternals._astropy.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">stats</span></code></a>.</p>
+<p>This module contains some functions related to <a class="reference internal" href="../../../modules/generated/scikitplot.cexternals._astropy.html#module-scikitplot.cexternals._astropy" title="scikitplot.cexternals._astropy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">_astropy</span></code></a> under <a class="reference internal" href="../../../apis/scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">stats</span></code></a>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Module also available under <a class="reference internal" href="../../../apis/scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">stats</span></code></a> library.
+User guide for more <a class="reference internal" href="../../stats/index.html#astrostatistics-index"><span class="std std-ref">Astrostatistics Tools (experimental)</span></a>.</p>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
 <li><p><a class="github reference external" href="https://github.com/astropy/astropy">astropy/astropy</a></p></li>
 <li><p><a class="reference external" href="https://docs.astropy.org/en/stable/visualization/histogram.html">https://docs.astropy.org/en/stable/visualization/histogram.html</a></p></li>
 <li><p><a class="reference external" href="https://docs.astropy.org/en/stable/stats/ref_api.html#module-astropy.stats">https://docs.astropy.org/en/stable/stats/ref_api.html#module-astropy.stats</a></p></li>
+<li><p>Documentation is available in the docstrings and online at <a class="reference external" href="https://www.astropy.org/">https://www.astropy.org/</a>.</p></li>
 </ul>
-</div>
-<p>Documentation is available in the docstrings and
-online at <a class="reference external" href="https://www.astropy.org/">https://www.astropy.org/</a>.</p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>Module also available under <a class="reference internal" href="../../../modules/generated/scikitplot.cexternals._astropy.stats.html#module-scikitplot.cexternals._astropy.stats" title="scikitplot.cexternals._astropy.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">stats</span></code></a> library.
-User guide for more <a class="reference internal" href="../../stats/index.html#astrostatistics-index"><span class="std std-ref">Astrostatistics Tools (experimental)</span></a>.</p>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
 span.prompt1:before {
   content: ">>> ";
 }
-</style><span class=""><span class="c1"># (recommended)</span>
-from<span class="w"> </span>astropy<span class="w"> </span>import<span class="w"> </span>stats
-
-<span class="c1"># (optionally) scikit-plots stats also include astropy stats</span>
-import<span class="w"> </span>scikitplot.stats<span class="w"> </span>as<span class="w"> </span>stats
-from<span class="w"> </span>scikitplot<span class="w"> </span>import<span class="w"> </span>stats
-
-<span class="c1"># (optionally) Only astropy stats</span>
-import<span class="w"> </span>scikitplot.cexternals._astropy.stats<span class="w"> </span>as<span class="w"> </span>stats
-from<span class="w"> </span>scikitplot.cexternals._astropy<span class="w"> </span>import<span class="w"> </span>stats</span>
+</style><span class="prompt1"><span class="c1"># (recommended)</span></span>
+<span class="prompt1"><span class="kn">from</span><span class="w"> </span><span class="nn">astropy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="c1"># (optionally) scikit-plots stats also include astropy stats</span></span>
+<span class="prompt1"><span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot.stats</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">stats</span></span>
+<span class="prompt1"><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="c1"># (optionally) Only astropy stats</span></span>
+<span class="prompt1"><span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot.cexternals._astropy.stats</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">stats</span></span>
+<span class="prompt1"><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.cexternals._astropy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span></span>
 </pre></div></div></section>
 
 
@@ -799,7 +799,7 @@ from<span class="w"> </span>scikitplot.cexternals._astropy<span class="w"> </spa
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251227.f00af69 2025-12-27T12:48Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251230.17fc253 2025-12-30T02:34Z.
       <br/>
     
   </p>

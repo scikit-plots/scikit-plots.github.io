@@ -592,7 +592,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../preprocessing/index.html">Preprocessing</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../snsx/index.html">SeabornX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../snsx/index.html">snsx Seaborn eXtended (experimental)</a></li>
+
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../stats/index.html">Stats</a></li>
@@ -711,45 +712,47 @@ for approximate nearest-neighbor search in high-dimensional vector spaces. <a cl
 </section>
 <section id="quick-start">
 <h2>Quick start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
-<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># from annoy import AnnoyIndex</span>
-<span class="c1"># from scikitplot.cexternals._annoy import AnnoyIndex</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">AnnoyIndex</span>
-
-<span class="n">f</span> <span class="o">=</span> <span class="mi">40</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">AnnoyIndex</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">&quot;angular&quot;</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
-    <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">f</span><span class="p">)]</span>
-    <span class="n">t</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-
-<span class="n">t</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>            <span class="c1"># n_trees</span>
-<span class="n">t</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;test.ann&quot;</span><span class="p">)</span>
-
-<span class="n">u</span> <span class="o">=</span> <span class="n">AnnoyIndex</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">&quot;angular&quot;</span><span class="p">)</span>
-<span class="n">u</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;test.ann&quot;</span><span class="p">)</span>     <span class="c1"># memory-mapped (mmap)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-</pre></div>
-</div>
-</section>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: ">>> ";
+}
+</style><span class="prompt1"><span class="kn">import</span><span class="w"> </span><span class="nn">random</span></span>
+<span class="prompt1"><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="c1"># from annoy import AnnoyIndex</span></span>
+<span class="prompt1"><span class="c1"># from scikitplot.cexternals._annoy import AnnoyIndex</span></span>
+<span class="prompt1"><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">AnnoyIndex</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="n">f</span> <span class="o">=</span> <span class="mi">40</span></span>
+<span class="prompt1"><span class="n">t</span> <span class="o">=</span> <span class="n">AnnoyIndex</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">&quot;angular&quot;</span><span class="p">)</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span></span>
+<span class="prompt1">    <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">f</span><span class="p">)]</span></span>
+<span class="prompt1">    <span class="n">t</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="n">t</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>            <span class="c1"># n_trees</span></span>
+<span class="prompt1"><span class="n">t</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;test.ann&quot;</span><span class="p">)</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="n">u</span> <span class="o">=</span> <span class="n">AnnoyIndex</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">&quot;angular&quot;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="n">u</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;test.ann&quot;</span><span class="p">)</span>     <span class="c1"># memory-mapped (mmap)</span></span>
+<span class="prompt1"><span class="nb">print</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span></span>
+</pre></div></div></section>
 <section id="workflow">
 <h2>Workflow<a class="headerlink" href="#workflow" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Create an <code class="xref py py-class docutils literal notranslate"><span class="pre">AnnoyIndex</span></code> with vector length <code class="docutils literal notranslate"><span class="pre">f</span></code> and a metric. <a class="footnote-reference brackets" href="#id31" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
-<li><p>Add items with <code class="xref py py-meth docutils literal notranslate"><span class="pre">add_item</span></code>. <a class="footnote-reference brackets" href="#id31" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
-<li><p>Build the forest with <code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code>. <a class="footnote-reference brackets" href="#id31" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
-<li><p>Query with <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_nns_by_item</span></code> or <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_nns_by_vector</span></code>. <a class="footnote-reference brackets" href="#id31" id="id13" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
-<li><p>Persist with <code class="xref py py-meth docutils literal notranslate"><span class="pre">save</span></code> and load with <code class="xref py py-meth docutils literal notranslate"><span class="pre">load</span></code>. <a class="footnote-reference brackets" href="#id31" id="id14" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
+<li><p>Add items with <code class="xref py py-obj docutils literal notranslate"><span class="pre">add_item</span></code>. <a class="footnote-reference brackets" href="#id31" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
+<li><p>Build the forest with <code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code>. <a class="footnote-reference brackets" href="#id31" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
+<li><p>Query with <code class="xref py py-obj docutils literal notranslate"><span class="pre">get_nns_by_item</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">get_nns_by_vector</span></code>. <a class="footnote-reference brackets" href="#id31" id="id13" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
+<li><p>Persist with <code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code> and load with <code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code>. <a class="footnote-reference brackets" href="#id31" id="id14" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
 </ol>
 <section id="important-rules">
 <h3>Important rules<a class="headerlink" href="#important-rules" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Every added vector must have length <code class="docutils literal notranslate"><span class="pre">f</span></code>.</p></li>
-<li><p>Add items before calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code>. <a class="footnote-reference brackets" href="#id31" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
-<li><p>After <code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code>, the index is used for queries. To add more items,
-discard the forest with <code class="xref py py-meth docutils literal notranslate"><span class="pre">unbuild</span></code>, add items, and build again.</p></li>
+<li><p>Add items before calling <code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code>. <a class="footnote-reference brackets" href="#id31" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
+<li><p>After <code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code>, the index is used for queries. To add more items,
+discard the forest with <code class="xref py py-obj docutils literal notranslate"><span class="pre">unbuild</span></code>, add items, and build again.</p></li>
 </ul>
 </section>
 </section>
@@ -758,14 +761,14 @@ discard the forest with <code class="xref py py-meth docutils literal notranslat
 <section id="save-and-load">
 <h3>Save and load<a class="headerlink" href="#save-and-load" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">save</span></code> writes the index to a file.</p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">load</span></code> memory-maps (mmap) the file for fast loading and sharing
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code> writes the index to a file.</p></li>
+<li><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code> memory-maps (mmap) the file for fast loading and sharing
 across processes. <a class="footnote-reference brackets" href="#id31" id="id16" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
 </ul>
 </section>
 <section id="prefault-optional">
 <h3>Prefault (optional)<a class="headerlink" href="#prefault-optional" title="Link to this heading">#</a></h3>
-<p>Some builds expose a <code class="docutils literal notranslate"><span class="pre">prefault</span></code> option for <code class="xref py py-meth docutils literal notranslate"><span class="pre">load</span></code>. When enabled,
+<p>Some builds expose a <code class="docutils literal notranslate"><span class="pre">prefault</span></code> option for <code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code>. When enabled,
 the loader may aggressively fault pages into memory. This is platform dependent. <a class="footnote-reference brackets" href="#id31" id="id17" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 </section>
 </section>
@@ -777,17 +780,17 @@ that are too large to fit into memory during index construction. <a class="footn
 <h3>Workflow<a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Create the index.</p></li>
-<li><p>Call <code class="xref py py-meth docutils literal notranslate"><span class="pre">on_disk_build</span></code> <strong>before</strong> adding any items. <a class="footnote-reference brackets" href="#id31" id="id20" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
+<li><p>Call <code class="xref py py-obj docutils literal notranslate"><span class="pre">on_disk_build</span></code> <strong>before</strong> adding any items. <a class="footnote-reference brackets" href="#id31" id="id20" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
 <li><p>Add items.</p></li>
-<li><p>Call <code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code>.</p></li>
-<li><p>Query the index, or load it from other processes with <code class="xref py py-meth docutils literal notranslate"><span class="pre">load</span></code>. <a class="footnote-reference brackets" href="#id31" id="id21" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
+<li><p>Call <code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code>.</p></li>
+<li><p>Query the index, or load it from other processes with <code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code>. <a class="footnote-reference brackets" href="#id31" id="id21" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
 </ol>
 </section>
 <section id="id22">
 <h3>Important rules<a class="headerlink" href="#id22" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Call <code class="xref py py-meth docutils literal notranslate"><span class="pre">on_disk_build</span></code> <strong>before</strong> <code class="xref py py-meth docutils literal notranslate"><span class="pre">add_item</span></code>. <a class="footnote-reference brackets" href="#id31" id="id23" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
-<li><p>After building in this mode, there is no need to call <code class="xref py py-meth docutils literal notranslate"><span class="pre">save</span></code>
+<li><p>Call <code class="xref py py-obj docutils literal notranslate"><span class="pre">on_disk_build</span></code> <strong>before</strong> <code class="xref py py-obj docutils literal notranslate"><span class="pre">add_item</span></code>. <a class="footnote-reference brackets" href="#id31" id="id23" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
+<li><p>After building in this mode, there is no need to call <code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code>
 because the file is already the backing store. <a class="footnote-reference brackets" href="#id31" id="id24" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
 </ul>
 </section>
@@ -839,7 +842,7 @@ If your external ids are sparse or non-numeric, keep a separate mapping to compa
 <p>A common serving pattern is:</p>
 <ol class="arabic simple">
 <li><p>Build once and write an index file.</p></li>
-<li><p>In each worker process, load the same file with <code class="xref py py-meth docutils literal notranslate"><span class="pre">load</span></code> (mmap) and query. <a class="footnote-reference brackets" href="#id31" id="id29" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
+<li><p>In each worker process, load the same file with <code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code> (mmap) and query. <a class="footnote-reference brackets" href="#id31" id="id29" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
 </ol>
 </section>
 </section>
@@ -867,7 +870,7 @@ initialization from temporaries. Prefer direct initialization:</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_low_level</span></code></p></li>
+<li><p><a class="reference internal" href="../../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index.from_low_level" title="scikitplot.annoy.Index.from_low_level"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_low_level</span></code></a></p></li>
 <li><p><a class="reference external" href="https://docs.python.org/3/library/pickle.html#module-pickle" title="(in Python v3.14)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pickle</span></code></a> (Python standard library)</p></li>
 <li><p>Alternative ANN libraries:
 - <a class="github reference external" href="https://github.com/nmslib/hnswlib">nmslib/hnswlib</a>
@@ -1014,7 +1017,7 @@ Github. https://pypi.org/project/annoy</a></p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251227.f00af69 2025-12-27T12:48Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251230.17fc253 2025-12-30T02:34Z.
       <br/>
     
   </p>

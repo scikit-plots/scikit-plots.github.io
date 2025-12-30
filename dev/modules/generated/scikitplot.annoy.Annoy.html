@@ -851,7 +851,7 @@
 <h1>Annoy<a class="headerlink" href="#annoy" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.annoy.Annoy">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">Annoy</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f00af69/scikitplot/cexternals/_annoy/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Annoy" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">Annoy</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/17fc253/scikitplot/cexternals/_annoy/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Annoy" title="Link to this definition">#</a></dt>
 <dd><p>Compiled with GCC/Clang. Using 512-bit AVX instructions.</p>
 <p>Approximate Nearest Neighbors index (Annoy) with a small, lazy C-extension wrapper.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Annoy</span><span class="p">(</span>
@@ -994,17 +994,17 @@ C++ index exists and applies it deterministically upon construction.</p></li>
 </ul>
 <p>Developer Notes:</p>
 <ul class="simple">
-<li><p>Source of truth:</p></li>
-</ul>
-<ul class="simple">
+<li><p>Source of truth:</p>
+<ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">f</span></code> (int) and <code class="docutils literal notranslate"><span class="pre">metric_id</span></code> (enum) describe configuration.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ptr</span></code> is NULL when index is not constructed.</p></li>
 </ul>
-<ul class="simple">
-<li><p>Invariant:</p></li>
-</ul>
-<ul class="simple">
+</li>
+<li><p>Invariant:</p>
+<ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">ptr</span> <span class="pre">!=</span> <span class="pre">NULL</span></code> implies <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">metric_id</span> <span class="pre">!=</span> <span class="pre">METRIC_UNKNOWN</span></code>.</p></li>
+</ul>
+</li>
 </ul>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annoy</span><span class="p">,</span> <span class="n">AnnoyIndex</span>
@@ -2556,7 +2556,7 @@ that len(<a href="#id12"><span class="problematic" id="id13">y_</span></a>) matc
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251227.f00af69 2025-12-27T12:48Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251230.17fc253 2025-12-30T02:34Z.
       <br/>
     
   </p>
