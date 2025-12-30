@@ -595,7 +595,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../preprocessing/index.html">Preprocessing</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../snsx/index.html">snsx Seaborn eXtended (experimental)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../snsx/index.html">Seaborn eXtended</a></li>
+
+
 
 </ul>
 <ul class="nav bd-sidenav">
@@ -730,63 +732,43 @@ The best way to truly understand …</p>
 <li><p><a class="reference external" href="https://numpy.org/devdocs/reference/c-api/index.html">https://numpy.org/devdocs/reference/c-api/index.html</a></p></li>
 </ul>
 </div>
-<div class="jupyter_cell jupyter_container docutils container">
-<div class="cell_input code_cell docutils container">
-<div class="thebelab-code" data-executable="true" data-language="ipython"><div class="docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="c1"># Return the directory that contains the NumPy *.h header files.</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">get_include</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div></div>
-<div class="cell_output docutils container">
-<div class="thebelab-output" data-output="true"><div class="docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;/home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-packages/numpy/_core/include&#39;
-</pre></div>
-</div>
-</div>
-</div></div>
-</div>
-</section>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: ">>> ";
+}
+</style><span class="prompt1"><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="c1"># Return the directory that contains the NumPy *.h header files.</span></span>
+<span class="prompt1"><span class="n">np</span><span class="o">.</span><span class="n">get_include</span><span class="p">()</span></span>
+</pre></div></div></section>
 <section id="lightnumpy-c-cpp-api-headers">
 <h3>LightNumPy C/Cpp-API Headers<a class="headerlink" href="#lightnumpy-c-cpp-api-headers" title="Link to this heading">#</a></h3>
 <p>A lightweight version of NumPy (or similar functionality).</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
-<li><p><a class="github reference external" href="https://github.com/scikit-plots/lightnumpy">scikit-plots/lightnumpy</a></p></li>
 <li><p><a class="github reference external" href="https://github.com/dpilger26/NumCpp">dpilger26/NumCpp</a></p></li>
+<li><p><a class="github reference external" href="https://github.com/scikit-plots/lightnumpy">scikit-plots/lightnumpy</a></p></li>
 </ul>
 </div>
-<div class="jupyter_cell jupyter_container docutils container">
-<div class="cell_input code_cell docutils container">
-<div class="thebelab-code" data-executable="true" data-language="ipython"><div class="docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">try</span><span class="p">:</span>
-<span class="o">&gt;&gt;&gt;</span>   <span class="c1"># pip install git+https://github.com/scikit-plots/lightnumpy.git@main</span>
-<span class="o">&gt;&gt;&gt;</span>   <span class="kn">import</span><span class="w"> </span><span class="nn">lightnumpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">lp</span>
-<span class="o">&gt;&gt;&gt;</span>   <span class="c1"># Return the directory that contains the NumCpp *.h header files.</span>
-<span class="o">&gt;&gt;&gt;</span>   <span class="n">inc_dir_lightnumpy</span> <span class="o">=</span> <span class="n">lp</span><span class="o">.</span><span class="n">get_include</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">except</span><span class="p">:</span> <span class="k">pass</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">else</span><span class="p">:</span>
-<span class="o">&gt;&gt;&gt;</span>   <span class="o">!</span>ls<span class="w"> </span><span class="nv">$inc_dir_lightnumpy</span>
-</pre></div>
-</div>
-</div>
-</div></div>
-<div class="cell_output docutils container">
-<div class="thebelab-output" data-output="true"><div class="docutils container">
-</div>
-</div></div>
-</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="k">try</span><span class="p">:</span></span>
+<span class="prompt1">  <span class="c1"># pip install git+https://github.com/scikit-plots/lightnumpy.git@main</span></span>
+<span class="prompt1">  <span class="kn">import</span><span class="w"> </span><span class="nn">lightnumpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">lp</span></span>
+<span class="prompt1">  <span class="c1"># Return the directory that contains the NumCpp *.h header files.</span></span>
+<span class="prompt1">  <span class="n">inc_dir_lightnumpy</span> <span class="o">=</span> <span class="n">lp</span><span class="o">.</span><span class="n">get_include</span><span class="p">()</span></span>
+<span class="prompt1"><span class="k">except</span><span class="p">:</span> <span class="k">pass</span></span>
+<span class="prompt1"><span class="k">else</span><span class="p">:</span></span>
+<span class="prompt1">  <span class="err">!</span><span class="n">ls</span> <span class="err">$</span><span class="n">inc_dir_lightnumpy</span></span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">nc</span></span>
+<span class="prompt1"><span class="n">nc</span><span class="o">.</span><span class="n">get_include</span><span class="p">()</span></span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">nc</span></span>
+<span class="prompt1"><span class="nb">print</span><span class="p">(</span><span class="n">nc</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="nb">print</span><span class="p">(</span><span class="n">nc</span><span class="o">.</span><span class="n">dot</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span></span>
+</pre></div></div></section>
 </section>
 </section>
-</section>
-<button title="Make live" class="thebelab-button" id="thebelab-activate-button" onclick="initThebelab()">Make live</button>
-<script type="text/x-thebe-config">
-{"binderOptions": {"org": "scikit-plots", "repo": "scikit-plots", "branch": "main", "dependencies": "./binder/requirements.txt"}, "predefinedOutput": true, "requestKernel": true}
-</script>
-<script type="text/javascript" src="https://unpkg.com/thebelab@^0.4.0"></script>
+
 
                 </article>
               
@@ -882,7 +864,7 @@ The best way to truly understand …</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251230.a092dc8 2025-12-30T08:54Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251230.c6c6f1b 2025-12-30T12:25Z.
       <br/>
     
   </p>

@@ -595,7 +595,9 @@
 <li class="toctree-l1"><a class="reference internal" href="preprocessing/index.html">Preprocessing</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="snsx/index.html">snsx Seaborn eXtended (experimental)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="snsx/index.html">Seaborn eXtended</a></li>
+
+
 
 </ul>
 <ul class="nav bd-sidenav">
@@ -710,22 +712,24 @@ The internal implementation may live in <code class="xref py py-mod docutils lit
 </div>
 <section id="quickstart">
 <h2>Quickstart<a class="headerlink" href="#quickstart" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
-
-<span class="c1"># Show primary icon</span>
-<span class="n">sp</span><span class="o">.</span><span class="n">_logo</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="c1"># Save a single icon</span>
-<span class="n">sp</span><span class="o">.</span><span class="n">_logo</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;scikit-plots.svg&quot;</span><span class="p">)</span>
-
-<span class="c1"># Save multiple variants using a template</span>
-<span class="n">sp</span><span class="o">.</span><span class="n">_logo</span><span class="o">.</span><span class="n">save</span><span class="p">(</span>
-    <span class="s2">&quot;assets/scikit-plots-</span><span class="si">{variant}</span><span class="s2">.svg&quot;</span><span class="p">,</span>
-    <span class="n">variants</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">_logo</span><span class="o">.</span><span class="n">list_variants</span><span class="p">()</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</section>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: ">>> ";
+}
+</style><span class="prompt1"><span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="c1"># Show primary icon</span></span>
+<span class="prompt1"><span class="n">sp</span><span class="o">.</span><span class="n">_logo</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="c1"># Save a single icon</span></span>
+<span class="prompt1"><span class="n">sp</span><span class="o">.</span><span class="n">_logo</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;scikit-plots.svg&quot;</span><span class="p">)</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="c1"># Save multiple variants using a template</span></span>
+<span class="prompt1"><span class="n">sp</span><span class="o">.</span><span class="n">_logo</span><span class="o">.</span><span class="n">save</span><span class="p">(</span></span>
+<span class="prompt1">    <span class="s2">&quot;assets/scikit-plots-</span><span class="si">{variant}</span><span class="s2">.svg&quot;</span><span class="p">,</span></span>
+<span class="prompt1">    <span class="n">variants</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">_logo</span><span class="o">.</span><span class="n">list_variants</span><span class="p">()</span></span>
+<span class="prompt1"><span class="p">)</span></span>
+</pre></div></div></section>
 <section id="variants">
 <h2>Variants<a class="headerlink" href="#variants" title="Link to this heading">#</a></h2>
 <p>Scikit-plots provides several icon variants tuned for different contexts:</p>
@@ -957,7 +961,7 @@ compare <strong>normalized</strong> SVG output rather than byte-for-byte equalit
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251230.a092dc8 2025-12-30T08:54Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251230.c6c6f1b 2025-12-30T12:25Z.
       <br/>
     
   </p>

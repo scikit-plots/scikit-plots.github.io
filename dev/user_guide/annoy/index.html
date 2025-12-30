@@ -595,7 +595,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../preprocessing/index.html">Preprocessing</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../snsx/index.html">snsx Seaborn eXtended (experimental)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../snsx/index.html">Seaborn eXtended</a></li>
+
+
 
 </ul>
 <ul class="nav bd-sidenav">
@@ -750,28 +752,30 @@ High-level Python wrapper subclass (picklable).</p></li>
 </section>
 <section id="quick-start">
 <h2>Quick start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span><span class="p">;</span> <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="c1"># from annoy import Annoy, AnnoyIndex</span>
-<span class="c1"># from scikitplot.cexternals._annoy import Annoy, AnnoyIndex</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annoy</span><span class="p">,</span> <span class="n">AnnoyIndex</span><span class="p">,</span> <span class="n">Index</span>
-
-<span class="n">f</span> <span class="o">=</span> <span class="mi">40</span>  <span class="c1"># Length of item vector that will be indexed</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">AnnoyIndex</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;angular&#39;</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
-    <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">f</span><span class="p">)]</span>
-    <span class="n">t</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-
-<span class="n">t</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># 10 trees</span>
-<span class="n">t</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;test.ann&#39;</span><span class="p">)</span>
-
-<span class="n">u</span> <span class="o">=</span> <span class="n">AnnoyIndex</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;angular&#39;</span><span class="p">)</span>
-<span class="n">u</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;test.ann&#39;</span><span class="p">)</span>  <span class="c1"># memory-mapped</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
-</pre></div>
-</div>
-</section>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: ">>> ";
+}
+</style><span class="prompt1"><span class="kn">import</span><span class="w"> </span><span class="nn">random</span><span class="p">;</span> <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span></span>
+<span class="prompt1"><span class="c1"># from annoy import Annoy, AnnoyIndex</span></span>
+<span class="prompt1"><span class="c1"># from scikitplot.cexternals._annoy import Annoy, AnnoyIndex</span></span>
+<span class="prompt1"><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annoy</span><span class="p">,</span> <span class="n">AnnoyIndex</span><span class="p">,</span> <span class="n">Index</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="n">f</span> <span class="o">=</span> <span class="mi">40</span>  <span class="c1"># Length of item vector that will be indexed</span></span>
+<span class="prompt1"><span class="n">t</span> <span class="o">=</span> <span class="n">AnnoyIndex</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;angular&#39;</span><span class="p">)</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span></span>
+<span class="prompt1">    <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">f</span><span class="p">)]</span></span>
+<span class="prompt1">    <span class="n">t</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="n">t</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># 10 trees</span></span>
+<span class="prompt1"><span class="n">t</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;test.ann&#39;</span><span class="p">)</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="n">u</span> <span class="o">=</span> <span class="n">AnnoyIndex</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;angular&#39;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="n">u</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;test.ann&#39;</span><span class="p">)</span>  <span class="c1"># memory-mapped</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="nb">print</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span></span>
+</pre></div></div></section>
 <section id="notes">
 <h2>Notes<a class="headerlink" href="#notes" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -934,7 +938,7 @@ Github. https://pypi.org/project/annoy</a></p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251230.a092dc8 2025-12-30T08:54Z.
+      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251230.c6c6f1b 2025-12-30T12:25Z.
       <br/>
     
   </p>
