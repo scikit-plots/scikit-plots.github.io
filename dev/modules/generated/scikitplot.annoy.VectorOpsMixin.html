@@ -775,6 +775,8 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.utils.html">scikitplot.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.utils._time.Timer.html">Timer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.utils._path.PathNamer.html">PathNamer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.utils._path.make_path.html">make_path</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.visualkeras.html">scikitplot.visualkeras</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -849,14 +851,21 @@
 <h1>VectorOpsMixin<a class="headerlink" href="#vectoropsmixin" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.annoy.VectorOpsMixin">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">VectorOpsMixin</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_vectors.py#L73"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">VectorOpsMixin</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_vectors.py#L272"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin" title="Link to this definition">#</a></dt>
 <dd><p>User-facing neighbor queries for Annoy-like backends.</p>
+<p>This mixin exposes explicit per-query helpers (<a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.query_by_item" title="scikitplot.annoy.VectorOpsMixin.query_by_item"><code class="xref py py-meth docutils literal notranslate"><span class="pre">query_by_item</span></code></a>,
+<a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.query_by_vector" title="scikitplot.annoy.VectorOpsMixin.query_by_vector"><code class="xref py py-meth docutils literal notranslate"><span class="pre">query_by_vector</span></code></a>) and scikit-learn style batch helpers
+(<a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.kneighbors" title="scikitplot.annoy.VectorOpsMixin.kneighbors"><code class="xref py py-meth docutils literal notranslate"><span class="pre">kneighbors</span></code></a>, <a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.kneighbors_graph" title="scikitplot.annoy.VectorOpsMixin.kneighbors_graph"><code class="xref py py-meth docutils literal notranslate"><span class="pre">kneighbors_graph</span></code></a>).</p>
+<p class="rubric">Notes</p>
+<p>Output ordering for <a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.kneighbors" title="scikitplot.annoy.VectorOpsMixin.kneighbors"><code class="xref py py-meth docutils literal notranslate"><span class="pre">kneighbors</span></code></a> is <code class="docutils literal notranslate"><span class="pre">(neighbors,</span> <span class="pre">distances)</span></code> when
+<code class="docutils literal notranslate"><span class="pre">include_distances=True</span></code> (neighbors first). This is <em>not</em> the same as
+<code class="docutils literal notranslate"><span class="pre">sklearn.neighbors.NearestNeighbors.kneighbors</span></code> (which returns distances
+first). The order is intentional and documented.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.VectorOpsMixin.kneighbors">
-<span class="sig-name descname"><span class="pre">kneighbors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_all_finite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_vectors.py#L612"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin.kneighbors" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">kneighbors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_all_finite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'vector'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_vectors.py#L661"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin.kneighbors" title="Link to this definition">#</a></dt>
 <dd><p>Find k nearest neighbors for one or more query vectors.</p>
-<p>This is a scikit-learn compatible convenience wrapper that returns
-rectangular (2D) arrays.</p>
+<p>This is a sklearn-like convenience wrapper that returns rectangular arrays.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -866,18 +875,25 @@ rectangular (2D) arrays.</p>
 </dd>
 <dt><strong>search_k</strong><span class="classifier">int, default=-1</span></dt><dd><p>Search parameter forwarded to the backend.</p>
 </dd>
-<dt><strong>include_distances</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, return <code class="docutils literal notranslate"><span class="pre">(indices,</span> <span class="pre">distances)</span></code>. Otherwise return indices.</p>
+<dt><strong>include_distances</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, return <code class="docutils literal notranslate"><span class="pre">(neighbors,</span> <span class="pre">distances)</span></code>. Otherwise return neighbors.</p>
 </dd>
-<dt><strong>exclude_self</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True (default), apply the same deterministic self-exclusion rule as
+<dt><strong>exclude_self</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, apply the same deterministic self-exclusion rule as
 <a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.query_by_vector" title="scikitplot.annoy.VectorOpsMixin.query_by_vector"><code class="xref py py-meth docutils literal notranslate"><span class="pre">query_by_vector</span></code></a> for each query row.</p>
 </dd>
 <dt><strong>exclude_item_ids</strong><span class="classifier">iterable of int, optional</span></dt><dd><p>Exclude these ids for every query.</p>
+</dd>
+<dt><strong>ensure_all_finite</strong><span class="classifier">bool or ‘allow-nan’, default=True</span></dt><dd><p>Input validation option forwarded to scikit-learn.</p>
+</dd>
+<dt><strong>copy</strong><span class="classifier">bool, default=False</span></dt><dd><p>Input validation option forwarded to scikit-learn.</p>
+</dd>
+<dt><strong>return_type</strong><span class="classifier">{‘id’, ‘vector’}, default=’vector’</span></dt><dd><p>If ‘id’, return neighbor ids. If ‘vector’, return neighbor vectors.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>indices</strong><span class="classifier">numpy.ndarray of shape (n_queries, n_neighbors)</span></dt><dd><p>Neighbor ids.</p>
+<dt><strong>neighbors</strong><span class="classifier">numpy.ndarray</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">return_type='id'</span></code>, shape is <code class="docutils literal notranslate"><span class="pre">(n_queries,</span> <span class="pre">n_neighbors)</span></code>.
+If <code class="docutils literal notranslate"><span class="pre">return_type='vector'</span></code>, shape is <code class="docutils literal notranslate"><span class="pre">(n_queries,</span> <span class="pre">n_neighbors,</span> <span class="pre">f)</span></code>.</p>
 </dd>
 <dt><strong>distances</strong><span class="classifier">numpy.ndarray of shape (n_queries, n_neighbors)</span></dt><dd><p>Neighbor distances. Returned when <code class="docutils literal notranslate"><span class="pre">include_distances=True</span></code>.</p>
 </dd>
@@ -885,9 +901,9 @@ rectangular (2D) arrays.</p>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>sklearn.exceptions.NotFittedError</dt><dd><p>If the index appears to be unbuilt.</p>
+<dt>sklearn.exceptions.NotFittedError</dt><dd><p>If the backend reports that the index is unbuilt.</p>
 </dd>
-<dt>ValueError</dt><dd><p>If any query returns fewer than <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> neighbors.</p>
+<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">n_neighbors</span> <span class="pre">&lt;=</span> <span class="pre">0</span></code> or any query yields too few neighbors after exclusions.</p>
 </dd>
 </dl>
 </dd>
@@ -901,6 +917,7 @@ rectangular (2D) arrays.</p>
 <li><p><strong>exclude_item_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable" title="(in Python v3.14)"><em>Iterable</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
 <li><p><strong>ensure_all_finite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.14)"><em>Literal</em></a><em>[</em><em>'allow-nan'</em><em>]</em>)</p></li>
 <li><p><strong>copy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+<li><p><strong>return_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.14)"><em>Literal</em></a><em>[</em><em>'id'</em><em>, </em><em>'vector'</em><em>]</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -920,7 +937,7 @@ rectangular (2D) arrays.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.VectorOpsMixin.kneighbors_graph">
-<span class="sig-name descname"><span class="pre">kneighbors_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'connectivity'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_all_finite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_vectors.py#L725"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin.kneighbors_graph" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">kneighbors_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'connectivity'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_all_finite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'id'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_vectors.py#L769"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin.kneighbors_graph" title="Link to this definition">#</a></dt>
 <dd><p>Compute the k-neighbors graph (CSR) for query vectors.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -934,7 +951,7 @@ rectangular (2D) arrays.</p>
 <dt><strong>mode</strong><span class="classifier">{‘connectivity’, ‘distance’}, default=’connectivity’</span></dt><dd><p>If ‘connectivity’, graph entries are 1. If ‘distance’, entries are
 backend distances.</p>
 </dd>
-<dt><strong>exclude_self</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True (default), apply the same deterministic self-exclusion rule as
+<dt><strong>exclude_self</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, apply the same deterministic self-exclusion rule as
 <a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.kneighbors" title="scikitplot.annoy.VectorOpsMixin.kneighbors"><code class="xref py py-meth docutils literal notranslate"><span class="pre">kneighbors</span></code></a> for each query row.</p>
 </dd>
 <dt><strong>exclude_item_ids</strong><span class="classifier">iterable of int, optional</span></dt><dd><p>Exclude these ids for every query.</p>
@@ -943,11 +960,13 @@ backend distances.</p>
 </dd>
 <dt><strong>copy</strong><span class="classifier">bool, default=False</span></dt><dd><p>Input validation option forwarded to scikit-learn.</p>
 </dd>
+<dt><strong>return_type</strong><span class="classifier">{‘id’}, default=’id’</span></dt><dd><p>Must be ‘id’ for CSR construction.</p>
+</dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>graph</strong><span class="classifier">scipy.sparse.csr_matrix</span></dt><dd><p>CSR matrix of shape (n_queries, n_items).</p>
+<dt><strong>graph</strong><span class="classifier">scipy.sparse.csr_matrix</span></dt><dd><p>CSR matrix of shape <code class="docutils literal notranslate"><span class="pre">(n_queries,</span> <span class="pre">n_items)</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -955,7 +974,9 @@ backend distances.</p>
 <dd class="field-odd"><dl class="simple">
 <dt>ImportError</dt><dd><p>If SciPy is not installed.</p>
 </dd>
-<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">mode</span></code> is invalid.</p>
+<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">mode</span></code> is invalid or <code class="docutils literal notranslate"><span class="pre">return_type</span> <span class="pre">!=</span> <span class="pre">'id'</span></code>.</p>
+</dd>
+<dt>RuntimeError</dt><dd><p>If the backend returns an out-of-range neighbor id.</p>
 </dd>
 </dl>
 </dd>
@@ -969,6 +990,7 @@ backend distances.</p>
 <li><p><strong>exclude_item_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable" title="(in Python v3.14)"><em>Iterable</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
 <li><p><strong>ensure_all_finite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.14)"><em>Literal</em></a><em>[</em><em>'allow-nan'</em><em>]</em>)</p></li>
 <li><p><strong>copy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+<li><p><strong>return_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.14)"><em>Literal</em></a><em>[</em><em>'id'</em><em>, </em><em>'vector'</em><em>]</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -986,7 +1008,7 @@ backend distances.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.VectorOpsMixin.query_by_item">
-<span class="sig-name descname"><span class="pre">query_by_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_vectors.py#L293"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin.query_by_item" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">query_by_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_all_finite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_vectors.py#L291"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin.query_by_item" title="Link to this definition">#</a></dt>
 <dd><p>Query neighbors by stored item id.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -999,10 +1021,13 @@ backend distances.</p>
 </dd>
 <dt><strong>include_distances</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, also return distances.</p>
 </dd>
-<dt><strong>exclude_self</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True (default), apply the same deterministic self-exclusion rule as
-<a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.kneighbors" title="scikitplot.annoy.VectorOpsMixin.kneighbors"><code class="xref py py-meth docutils literal notranslate"><span class="pre">kneighbors</span></code></a> for each query row.</p>
+<dt><strong>exclude_self</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, exclude <code class="docutils literal notranslate"><span class="pre">item</span></code> from the returned neighbors.</p>
 </dd>
 <dt><strong>exclude_item_ids</strong><span class="classifier">iterable of int, optional</span></dt><dd><p>Additional item ids to exclude.</p>
+</dd>
+<dt><strong>ensure_all_finite</strong><span class="classifier">bool or ‘allow-nan’, default=True</span></dt><dd><p>Input validation option forwarded to scikit-learn.</p>
+</dd>
+<dt><strong>copy</strong><span class="classifier">bool, default=False</span></dt><dd><p>Input validation option forwarded to scikit-learn.</p>
 </dd>
 </dl>
 </dd>
@@ -1016,9 +1041,9 @@ backend distances.</p>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>sklearn.exceptions.NotFittedError</dt><dd><p>If the index appears to be unbuilt.</p>
+<dt>sklearn.exceptions.NotFittedError</dt><dd><p>If the backend reports that the index is unbuilt.</p>
 </dd>
-<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">n_neighbors</span> <span class="pre">&lt;=</span> <span class="pre">0</span></code>.</p>
+<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">n_neighbors</span> <span class="pre">&lt;=</span> <span class="pre">0</span></code> or not enough neighbors remain after exclusions.</p>
 </dd>
 </dl>
 </dd>
@@ -1030,6 +1055,8 @@ backend distances.</p>
 <li><p><strong>include_distances</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
 <li><p><strong>exclude_self</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
 <li><p><strong>exclude_item_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable" title="(in Python v3.14)"><em>Iterable</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>ensure_all_finite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.14)"><em>Literal</em></a><em>[</em><em>'allow-nan'</em><em>]</em>)</p></li>
+<li><p><strong>copy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
 </ul>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -1041,17 +1068,17 @@ backend distances.</p>
 <dl class="simple">
 <dt><a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.query_by_vector" title="scikitplot.annoy.VectorOpsMixin.query_by_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_by_vector</span></code></a></dt><dd><p>Query neighbors by an explicit vector.</p>
 </dd>
-<dt><a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.kneighbors" title="scikitplot.annoy.VectorOpsMixin.kneighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kneighbors</span></code></a></dt><dd><p>scikit-learn style batch query.</p>
+<dt><a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.kneighbors" title="scikitplot.annoy.VectorOpsMixin.kneighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kneighbors</span></code></a></dt><dd><p>Batch neighbor queries (sklearn-like).</p>
 </dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>This method is deterministic given the underlying backend.</p>
+<p>Exclusions are applied deterministically in the order returned by the backend.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.VectorOpsMixin.query_by_vector">
-<span class="sig-name descname"><span class="pre">query_by_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_all_finite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_vectors.py#L383"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin.query_by_vector" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">query_by_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_all_finite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_vectors.py#L472"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin.query_by_vector" title="Link to this definition">#</a></dt>
 <dd><p>Query neighbors by an explicit vector.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1064,10 +1091,15 @@ backend distances.</p>
 </dd>
 <dt><strong>include_distances</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, also return distances.</p>
 </dd>
-<dt><strong>exclude_self</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True (default), exclude the first returned candidate whose distance is exactly <code class="docutils literal notranslate"><span class="pre">0.0</span></code>.
-This is intended for queries where <code class="docutils literal notranslate"><span class="pre">vector</span></code> comes from the index itself.</p>
+<dt><strong>exclude_self</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, exclude the first returned candidate whose distance
+is exactly <code class="docutils literal notranslate"><span class="pre">0.0</span></code>. This is intended for queries where <code class="docutils literal notranslate"><span class="pre">vector</span></code> comes
+from the index itself.</p>
 </dd>
 <dt><strong>exclude_item_ids</strong><span class="classifier">iterable of int, optional</span></dt><dd><p>Additional item ids to exclude.</p>
+</dd>
+<dt><strong>ensure_all_finite</strong><span class="classifier">bool or ‘allow-nan’, default=True</span></dt><dd><p>Input validation option forwarded to scikit-learn.</p>
+</dd>
+<dt><strong>copy</strong><span class="classifier">bool, default=False</span></dt><dd><p>Input validation option forwarded to scikit-learn.</p>
 </dd>
 </dl>
 </dd>
@@ -1081,9 +1113,10 @@ This is intended for queries where <code class="docutils literal notranslate"><s
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>sklearn.exceptions.NotFittedError</dt><dd><p>If the index appears to be unbuilt.</p>
+<dt>sklearn.exceptions.NotFittedError</dt><dd><p>If the backend reports that the index is unbuilt.</p>
 </dd>
-<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">n_neighbors</span> <span class="pre">&lt;=</span> <span class="pre">0</span></code> or the vector dimension mismatches <code class="docutils literal notranslate"><span class="pre">f</span></code>.</p>
+<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">n_neighbors</span> <span class="pre">&lt;=</span> <span class="pre">0</span></code>, vector dimension mismatches <code class="docutils literal notranslate"><span class="pre">f</span></code>, or not
+enough neighbors remain after exclusions.</p>
 </dd>
 </dl>
 </dd>
@@ -1108,23 +1141,19 @@ This is intended for queries where <code class="docutils literal notranslate"><s
 <dl class="simple">
 <dt><a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.query_by_item" title="scikitplot.annoy.VectorOpsMixin.query_by_item"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_by_item</span></code></a></dt><dd><p>Query neighbors by stored item id.</p>
 </dd>
-<dt><a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.kneighbors" title="scikitplot.annoy.VectorOpsMixin.kneighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kneighbors</span></code></a></dt><dd><p>scikit-learn style batch query.</p>
+<dt><a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.kneighbors" title="scikitplot.annoy.VectorOpsMixin.kneighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kneighbors</span></code></a></dt><dd><p>Batch neighbor queries (sklearn-like).</p>
 </dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>This API is <strong>explicit</strong>.</p>
-<ul class="simple">
-<li><p>For strict exclusion by id, pass <code class="docutils literal notranslate"><span class="pre">exclude_item_ids</span></code>.</p></li>
-<li><p>If <code class="docutils literal notranslate"><span class="pre">exclude_self=True</span></code> and no explicit id is provided, the method performs a
-deterministic, exact check against the <em>first</em> returned candidate: if that
-candidate has distance exactly <code class="docutils literal notranslate"><span class="pre">0.0</span></code>, it is excluded.</p></li>
-</ul>
+<p>Exclusions are applied deterministically in the order returned by the backend.
+If <code class="docutils literal notranslate"><span class="pre">exclude_self=True</span></code> and no exact <code class="docutils literal notranslate"><span class="pre">0.0</span></code> distance candidate is returned
+in the first position, no additional self-exclusion is applied.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.VectorOpsMixin.query_vectors_by_item">
-<span class="sig-name descname"><span class="pre">query_vectors_by_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k=-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_self=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_vectors.py#L487"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin.query_vectors_by_item" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">query_vectors_by_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k=-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_self=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_all_finite=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type='vector'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_vectors.py#L400"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin.query_vectors_by_item" title="Link to this definition">#</a></dt>
 <dd><p>Query neighbor vectors by stored item id.</p>
 <p>This is a convenience wrapper over <a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.query_by_item" title="scikitplot.annoy.VectorOpsMixin.query_by_item"><code class="xref py py-meth docutils literal notranslate"><span class="pre">query_by_item</span></code></a> that materializes
 vectors using the backend’s <code class="docutils literal notranslate"><span class="pre">get_item_vector</span></code>.</p>
@@ -1133,7 +1162,11 @@ vectors using the backend’s <code class="docutils literal notranslate"><span c
 <dd class="field-odd"><dl class="simple">
 <dt><strong>item, n_neighbors, search_k, include_distances, exclude_self, exclude_item_ids</strong></dt><dd><p>See <a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.query_by_item" title="scikitplot.annoy.VectorOpsMixin.query_by_item"><code class="xref py py-meth docutils literal notranslate"><span class="pre">query_by_item</span></code></a>.</p>
 </dd>
-<dt><strong>dtype</strong><span class="classifier">numpy dtype, default=numpy.float32</span></dt><dd><p>Output dtype.</p>
+<dt><strong>ensure_all_finite, copy</strong></dt><dd><p>See <a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.query_by_vector" title="scikitplot.annoy.VectorOpsMixin.query_by_vector"><code class="xref py py-meth docutils literal notranslate"><span class="pre">query_by_vector</span></code></a>.</p>
+</dd>
+<dt><strong>dtype</strong><span class="classifier">numpy dtype, default=numpy.float32</span></dt><dd><p>Output dtype for the returned vectors.</p>
+</dd>
+<dt><strong>return_type</strong><span class="classifier">{‘id’, ‘vector’}, default=’vector’</span></dt><dd><p>If ‘vector’, return neighbor vectors. If ‘id’, return neighbor ids.</p>
 </dd>
 </dl>
 </dd>
@@ -1153,7 +1186,10 @@ vectors using the backend’s <code class="docutils literal notranslate"><span c
 <li><p><strong>include_distances</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
 <li><p><strong>exclude_self</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
 <li><p><strong>exclude_item_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable" title="(in Python v3.14)"><em>Iterable</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>ensure_all_finite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.14)"><em>Literal</em></a><em>[</em><em>'allow-nan'</em><em>]</em>)</p></li>
+<li><p><strong>copy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
 <li><p><strong>dtype</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>)</p></li>
+<li><p><strong>return_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.14)"><em>Literal</em></a><em>[</em><em>'id'</em><em>, </em><em>'vector'</em><em>]</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -1163,7 +1199,7 @@ vectors using the backend’s <code class="docutils literal notranslate"><span c
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.query_vectors_by_vector" title="scikitplot.annoy.VectorOpsMixin.query_vectors_by_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_vectors_by_vector</span></code></a></dt><dd><p>Vector query returning vectors.</p>
+<dt><a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.query_vectors_by_vector" title="scikitplot.annoy.VectorOpsMixin.query_vectors_by_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_vectors_by_vector</span></code></a></dt><dd><p>Vector query returning vectors (or ids).</p>
 </dd>
 </dl>
 </div>
@@ -1171,24 +1207,29 @@ vectors using the backend’s <code class="docutils literal notranslate"><span c
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.VectorOpsMixin.query_vectors_by_vector">
-<span class="sig-name descname"><span class="pre">query_vectors_by_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k=-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_self=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_all_finite=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_vectors.py#L545"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin.query_vectors_by_vector" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">query_vectors_by_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k=-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_self=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_all_finite=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type='vector'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_vectors.py#L583"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.VectorOpsMixin.query_vectors_by_vector" title="Link to this definition">#</a></dt>
 <dd><p>Query neighbor vectors by an explicit vector.</p>
-<p>Convenience wrapper over <a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.query_by_vector" title="scikitplot.annoy.VectorOpsMixin.query_by_vector"><code class="xref py py-meth docutils literal notranslate"><span class="pre">query_by_vector</span></code></a>.</p>
+<p>Convenience wrapper over <a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.query_by_vector" title="scikitplot.annoy.VectorOpsMixin.query_by_vector"><code class="xref py py-meth docutils literal notranslate"><span class="pre">query_by_vector</span></code></a>. By default it returns
+vectors; set <code class="docutils literal notranslate"><span class="pre">return_type='id'</span></code> to return neighbor ids instead.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>vector, n_neighbors, search_k, include_distances, exclude_self, exclude_item_ids,</strong></dt><dd></dd>
+<dt><strong>vector, n_neighbors, search_k, include_distances, exclude_self, exclude_item_ids,</strong></dt><dd><p>See <a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.query_by_item" title="scikitplot.annoy.VectorOpsMixin.query_by_item"><code class="xref py py-meth docutils literal notranslate"><span class="pre">query_by_item</span></code></a>.</p>
+</dd>
 <dt><strong>ensure_all_finite, copy</strong></dt><dd><p>See <a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.query_by_vector" title="scikitplot.annoy.VectorOpsMixin.query_by_vector"><code class="xref py py-meth docutils literal notranslate"><span class="pre">query_by_vector</span></code></a>.</p>
 </dd>
-<dt><strong>dtype</strong><span class="classifier">numpy dtype, default=numpy.float32</span></dt><dd><p>Output dtype.</p>
+<dt><strong>dtype</strong><span class="classifier">numpy dtype, default=numpy.float32</span></dt><dd><p>Output dtype for the returned vectors.</p>
+</dd>
+<dt><strong>return_type</strong><span class="classifier">{‘id’, ‘vector’}, default=’vector’</span></dt><dd><p>If ‘vector’, return neighbor vectors. If ‘id’, return neighbor ids.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>vectors</strong><span class="classifier">numpy.ndarray of shape (n_neighbors, f)</span></dt><dd><p>Neighbor vectors.</p>
+<dt><strong>neighbors</strong><span class="classifier">numpy.ndarray</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">return_type='vector'</span></code>, an array of shape <code class="docutils literal notranslate"><span class="pre">(n_neighbors,</span> <span class="pre">f)</span></code>.
+If <code class="docutils literal notranslate"><span class="pre">return_type='id'</span></code>, an array of shape <code class="docutils literal notranslate"><span class="pre">(n_neighbors,)</span></code>.</p>
 </dd>
-<dt><strong>(vectors, distances)</strong><span class="classifier">tuple</span></dt><dd><p>Returned when <code class="docutils literal notranslate"><span class="pre">include_distances=True</span></code>.</p>
+<dt><strong>(neighbors, distances)</strong><span class="classifier">tuple</span></dt><dd><p>Returned when <code class="docutils literal notranslate"><span class="pre">include_distances=True</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -1203,6 +1244,7 @@ vectors using the backend’s <code class="docutils literal notranslate"><span c
 <li><p><strong>ensure_all_finite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.14)"><em>Literal</em></a><em>[</em><em>'allow-nan'</em><em>]</em>)</p></li>
 <li><p><strong>copy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
 <li><p><strong>dtype</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>)</p></li>
+<li><p><strong>return_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.14)"><em>Literal</em></a><em>[</em><em>'id'</em><em>, </em><em>'vector'</em><em>]</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -1213,6 +1255,8 @@ vectors using the backend’s <code class="docutils literal notranslate"><span c
 <p class="admonition-title">See also</p>
 <dl class="simple">
 <dt><a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.query_vectors_by_item" title="scikitplot.annoy.VectorOpsMixin.query_vectors_by_item"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_vectors_by_item</span></code></a></dt><dd><p>Item id query returning vectors.</p>
+</dd>
+<dt><a class="reference internal" href="#scikitplot.annoy.VectorOpsMixin.query_by_vector" title="scikitplot.annoy.VectorOpsMixin.query_by_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_by_vector</span></code></a></dt><dd><p>Per-query id interface.</p>
 </dd>
 </dl>
 </div>
@@ -1323,7 +1367,7 @@ vectors using the backend’s <code class="docutils literal notranslate"><span c
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251230.c6c6f1b 2025-12-30T12:25Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260101.9437780 2026-01-01T06:22Z.
       <br/>
     
   </p>

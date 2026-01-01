@@ -772,6 +772,8 @@
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">scikitplot.utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.utils._time.Timer.html">Timer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.utils._path.PathNamer.html">PathNamer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.utils._path.make_path.html">make_path</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.visualkeras.html">scikitplot.visualkeras</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -855,6 +857,34 @@
 </table>
 </div>
 </section>
+<section id="module-scikitplot.utils._path">
+<span id="file-folder-utilities"></span><span id="utils-ref-file-folder-utilities"></span><h2>File/Folder Utilities<a class="headerlink" href="#module-scikitplot.utils._path" title="Link to this heading">#</a></h2>
+<p>Path and filename utilities.</p>
+<p>This module provides small, robust helpers for generating portable and
+collision-resistant file and folder names. The default format is designed to be:</p>
+<ul class="simple">
+<li><p>lexicographically sortable by timestamp (UTC)</p></li>
+<li><p>safe across Windows/macOS/Linux filesystems</p></li>
+<li><p>collision-resistant across threads/processes/machines</p></li>
+</ul>
+<p>The core building block is <code class="docutils literal notranslate"><span class="pre">PathNamer</span></code>, plus a zero-argument convenience wrapper
+<code class="docutils literal notranslate"><span class="pre">make_path</span></code>.</p>
+<p>Filename format:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">{prefix}-{YYYYMMDDTHHMMSSmmmZ}-{counter:06d}-{uuid4hex}[</span> <span class="pre">-{secret}</span> <span class="pre">].{ext}</span></code></p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.utils._path.PathNamer.html#scikitplot.utils._path.PathNamer" title="scikitplot.utils._path.PathNamer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_path.PathNamer</span></code></a></p></td>
+<td><p>Generate portable, collision-resistant filenames and paths.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.utils._path.make_path.html#scikitplot.utils._path.make_path" title="scikitplot.utils._path.make_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_path.make_path</span></code></a></p></td>
+<td><p>Make Convenience wrapper to build a unique path (callable with zero args).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 </section>
 
 
@@ -919,7 +949,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251230.c6c6f1b 2025-12-30T12:25Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260101.9437780 2026-01-01T06:22Z.
       <br/>
     
   </p>

@@ -777,6 +777,8 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.utils.html">scikitplot.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.utils._time.Timer.html">Timer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.utils._path.PathNamer.html">PathNamer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.utils._path.make_path.html">make_path</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.visualkeras.html">scikitplot.visualkeras</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -851,7 +853,7 @@
 <h1>Annoy<a class="headerlink" href="#annoy" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.cexternals._annoy.Annoy">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.cexternals._annoy.</span></span><span class="sig-name descname"><span class="pre">Annoy</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/cexternals/_annoy/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexternals._annoy.Annoy" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.cexternals._annoy.</span></span><span class="sig-name descname"><span class="pre">Annoy</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/cexternals/_annoy/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexternals._annoy.Annoy" title="Link to this definition">#</a></dt>
 <dd><p>Compiled with GCC/Clang. Using 512-bit AVX instructions.</p>
 <p>Approximate Nearest Neighbors index (Annoy) with a small, lazy C-extension wrapper.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Annoy</span><span class="p">(</span>
@@ -1267,11 +1269,17 @@ cross-architecture wire format; the payload remains Annoy’s native snapshot.</
 </dl>
 <p class="rubric">Notes</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Annoy(f=None,</span> <span class="pre">...)</span></code> is supported at construction time and is treated as <code class="docutils literal notranslate"><span class="pre">f=0</span></code>.
-After construction, assigning <code class="docutils literal notranslate"><span class="pre">None</span></code> to <a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.f" title="scikitplot.cexternals._annoy.Annoy.f"><code class="xref py py-attr docutils literal notranslate"><span class="pre">f</span></code></a> is not supported; use <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">f</span></code> may be set only before the underlying C++ index is created.</p></li>
-<li><p>After construction, attempting to change <code class="docutils literal notranslate"><span class="pre">f</span></code> raises AttributeError.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Annoy(f=None,</span> <span class="pre">...)</span></code> is supported at construction time and is treated as <code class="docutils literal notranslate"><span class="pre">f=0</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> (or <code class="docutils literal notranslate"><span class="pre">None</span></code>) means “unknown / lazy”: the first call to <a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.add_item" title="scikitplot.cexternals._annoy.Annoy.add_item"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_item</span></code></a>
+will infer <code class="docutils literal notranslate"><span class="pre">f</span></code> from the input vector length and then fix it.</p></li>
 </ul>
+<p>Changing <code class="docutils literal notranslate"><span class="pre">f</span></code> after the index has been initialized (items added and/or
+trees built) is a <em>structural</em> change: the stored items and all tree splits
+depend on the vector dimension.</p>
+<p>For scikit-learn compatibility, assigning a different <code class="docutils literal notranslate"><span class="pre">f</span></code> (or <code class="docutils literal notranslate"><span class="pre">None</span></code>) on
+an already initialized index will deterministically <strong>reset</strong> the index (drop
+all items, trees, and <a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.y" title="scikitplot.cexternals._annoy.Annoy.y"><code class="xref py py-attr docutils literal notranslate"><span class="pre">y</span></code></a>). You must call <a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.fit" title="scikitplot.cexternals._annoy.Annoy.fit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fit</span></code></a> (or
+<a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.add_item" title="scikitplot.cexternals._annoy.Annoy.add_item"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_item</span></code></a> + <a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.build" title="scikitplot.cexternals._annoy.Annoy.build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code></a>) again before querying.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -2543,7 +2551,7 @@ that len(y) matches the current number of items (n_items).</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251230.c6c6f1b 2025-12-30T12:25Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260101.9437780 2026-01-01T06:22Z.
       <br/>
     
   </p>

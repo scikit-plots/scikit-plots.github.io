@@ -777,6 +777,8 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.utils.html">scikitplot.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.utils._time.Timer.html">Timer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.utils._path.PathNamer.html">PathNamer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.utils._path.make_path.html">make_path</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.visualkeras.html">scikitplot.visualkeras</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -851,7 +853,7 @@
 <h1>Index<a class="headerlink" href="#index" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">Index</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_base.py#L68"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">Index</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_base.py#L68"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index" title="Link to this definition">#</a></dt>
 <dd><p>High-level ANNoy index composed from mixins.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -966,7 +968,7 @@ the forest, further calls to <a class="reference internal" href="#scikitplot.ann
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.add_items">
-<span class="sig-name descname"><span class="pre">add_items</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_id=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accept_sparse='error'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_all_finite=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order='C'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_unique_ids=True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_ndarray.py#L376"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.add_items" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">add_items</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_id=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accept_sparse='error'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_all_finite=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order='C'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_unique_ids=True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_ndarray.py#L376"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.add_items" title="Link to this definition">#</a></dt>
 <dd><p>Add many vectors to the index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1185,11 +1187,17 @@ cross-architecture wire format; the payload remains Annoy’s native snapshot.</
 </dl>
 <p class="rubric">Notes</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Annoy(f=None,</span> <span class="pre">...)</span></code> is supported at construction time and is treated as <code class="docutils literal notranslate"><span class="pre">f=0</span></code>.
-After construction, assigning <code class="docutils literal notranslate"><span class="pre">None</span></code> to <a class="reference internal" href="#scikitplot.annoy.Index.f" title="scikitplot.annoy.Index.f"><code class="xref py py-attr docutils literal notranslate"><span class="pre">f</span></code></a> is not supported; use <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">f</span></code> may be set only before the underlying C++ index is created.</p></li>
-<li><p>After construction, attempting to change <code class="docutils literal notranslate"><span class="pre">f</span></code> raises AttributeError.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Annoy(f=None,</span> <span class="pre">...)</span></code> is supported at construction time and is treated as <code class="docutils literal notranslate"><span class="pre">f=0</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> (or <code class="docutils literal notranslate"><span class="pre">None</span></code>) means “unknown / lazy”: the first call to <a class="reference internal" href="#scikitplot.annoy.Index.add_item" title="scikitplot.annoy.Index.add_item"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_item</span></code></a>
+will infer <code class="docutils literal notranslate"><span class="pre">f</span></code> from the input vector length and then fix it.</p></li>
 </ul>
+<p>Changing <code class="docutils literal notranslate"><span class="pre">f</span></code> after the index has been initialized (items added and/or
+trees built) is a <em>structural</em> change: the stored items and all tree splits
+depend on the vector dimension.</p>
+<p>For scikit-learn compatibility, assigning a different <code class="docutils literal notranslate"><span class="pre">f</span></code> (or <code class="docutils literal notranslate"><span class="pre">None</span></code>) on
+an already initialized index will deterministically <strong>reset</strong> the index (drop
+all items, trees, and <a class="reference internal" href="#scikitplot.annoy.Index.y" title="scikitplot.annoy.Index.y"><code class="xref py py-attr docutils literal notranslate"><span class="pre">y</span></code></a>). You must call <a class="reference internal" href="#scikitplot.annoy.Index.fit" title="scikitplot.annoy.Index.fit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fit</span></code></a> (or
+<a class="reference internal" href="#scikitplot.annoy.Index.add_item" title="scikitplot.annoy.Index.add_item"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_item</span></code></a> + <a class="reference internal" href="#scikitplot.annoy.Index.build" title="scikitplot.annoy.Index.build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code></a>) again before querying.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1307,7 +1315,7 @@ y_fill_value=…, missing_value=…)</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.from_bytes">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_io.py#L228"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.from_bytes" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_io.py#L313"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.from_bytes" title="Link to this definition">#</a></dt>
 <dd><p>Construct a new index and load it from serialized bytes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1341,8 +1349,8 @@ y_fill_value=…, missing_value=…)</p>
 <dt class="field-even">Parameters<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><em>bytes</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytearray" title="(in Python v3.14)"><em>bytearray</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#memoryview" title="(in Python v3.14)"><em>memoryview</em></a>)</p></li>
-<li><p><strong>f</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
-<li><p><strong>metric</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>f</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>metric</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
 <li><p><strong>prefault</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em> | </em><em>None</em>)</p></li>
 </ul>
 </dd>
@@ -1350,11 +1358,17 @@ y_fill_value=…, missing_value=…)</p>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Self" title="(in Python v3.14)"><em>Self</em></a></p>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Portable blobs add a small header (version, ABI sizes, endianness, metric, f)
+to ensure incompatible binaries fail loudly and safely. They are not a
+cross-architecture wire format; the payload remains Annoy’s native snapshot.</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">data</span></code> if fed <code class="xref py py-meth docutils literal notranslate"><span class="pre">to_bytes(format='native')</span> <span class="pre">required</span> <span class="pre">params</span>
+<span class="pre">``f`</span></code>, <code class="docutils literal notranslate"><span class="pre">metric</span></code>.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.from_json">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">load</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_meta.py#L424"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.from_json" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">load</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_meta.py#L421"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.from_json" title="Link to this definition">#</a></dt>
 <dd><p>Load metadata from JSON and construct an index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1371,7 +1385,7 @@ y_fill_value=…, missing_value=…)</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.from_low_level">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_low_level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_base.py#L206"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.from_low_level" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_low_level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_base.py#L206"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.from_low_level" title="Link to this definition">#</a></dt>
 <dd><p>Create a new <a class="reference internal" href="#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><code class="xref py py-class docutils literal notranslate"><span class="pre">Index</span></code></a> from a low-level instance.</p>
 <p>The new object is rebuilt by round-tripping through Annoy’s native
 <code class="docutils literal notranslate"><span class="pre">serialize</span></code> / <code class="docutils literal notranslate"><span class="pre">deserialize</span></code> to avoid sharing low-level state between
@@ -1430,7 +1444,7 @@ serialized payload; it does not share low-level state between objects.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.from_metadata">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">load</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_meta.py#L301"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.from_metadata" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">load</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_meta.py#L252"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.from_metadata" title="Link to this definition">#</a></dt>
 <dd><p>Construct an index from a metadata payload.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1482,7 +1496,7 @@ index into the returned object via backend <code class="docutils literal notrans
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.from_yaml">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_yaml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">load</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_meta.py#L458"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.from_yaml" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_yaml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">load</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_meta.py#L455"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.from_yaml" title="Link to this definition">#</a></dt>
 <dd><p>Load metadata from YAML and construct an index (requires PyYAML).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1555,7 +1569,7 @@ index into the returned object via backend <code class="docutils literal notrans
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.get_item_vectors">
-<span class="sig-name descname"><span class="pre">get_item_vectors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ids=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_rows=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_ids=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate_vector_len=True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_ndarray.py#L509"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.get_item_vectors" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_item_vectors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ids=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_rows=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_ids=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate_vector_len=True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_ndarray.py#L509"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.get_item_vectors" title="Link to this definition">#</a></dt>
 <dd><p>Fetch many vectors as a dense NumPy array.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1909,7 +1923,7 @@ Logging level inspired by gradient-boosting libraries:</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.iter_item_vectors">
-<span class="sig-name descname"><span class="pre">iter_item_vectors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_ndarray.py#L605"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.iter_item_vectors" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">iter_item_vectors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_ndarray.py#L605"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.iter_item_vectors" title="Link to this definition">#</a></dt>
 <dd><p>Iterate vectors without allocating a dense matrix.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1952,10 +1966,9 @@ Logging level inspired by gradient-boosting libraries:</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.kneighbors">
-<span class="sig-name descname"><span class="pre">kneighbors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_all_finite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_vectors.py#L612"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.kneighbors" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">kneighbors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_all_finite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'vector'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_vectors.py#L661"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.kneighbors" title="Link to this definition">#</a></dt>
 <dd><p>Find k nearest neighbors for one or more query vectors.</p>
-<p>This is a scikit-learn compatible convenience wrapper that returns
-rectangular (2D) arrays.</p>
+<p>This is a sklearn-like convenience wrapper that returns rectangular arrays.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -1965,18 +1978,25 @@ rectangular (2D) arrays.</p>
 </dd>
 <dt><strong>search_k</strong><span class="classifier">int, default=-1</span></dt><dd><p>Search parameter forwarded to the backend.</p>
 </dd>
-<dt><strong>include_distances</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, return <code class="docutils literal notranslate"><span class="pre">(indices,</span> <span class="pre">distances)</span></code>. Otherwise return indices.</p>
+<dt><strong>include_distances</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, return <code class="docutils literal notranslate"><span class="pre">(neighbors,</span> <span class="pre">distances)</span></code>. Otherwise return neighbors.</p>
 </dd>
-<dt><strong>exclude_self</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True (default), apply the same deterministic self-exclusion rule as
+<dt><strong>exclude_self</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, apply the same deterministic self-exclusion rule as
 <a class="reference internal" href="#scikitplot.annoy.Index.query_by_vector" title="scikitplot.annoy.Index.query_by_vector"><code class="xref py py-meth docutils literal notranslate"><span class="pre">query_by_vector</span></code></a> for each query row.</p>
 </dd>
 <dt><strong>exclude_item_ids</strong><span class="classifier">iterable of int, optional</span></dt><dd><p>Exclude these ids for every query.</p>
+</dd>
+<dt><strong>ensure_all_finite</strong><span class="classifier">bool or ‘allow-nan’, default=True</span></dt><dd><p>Input validation option forwarded to scikit-learn.</p>
+</dd>
+<dt><strong>copy</strong><span class="classifier">bool, default=False</span></dt><dd><p>Input validation option forwarded to scikit-learn.</p>
+</dd>
+<dt><strong>return_type</strong><span class="classifier">{‘id’, ‘vector’}, default=’vector’</span></dt><dd><p>If ‘id’, return neighbor ids. If ‘vector’, return neighbor vectors.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>indices</strong><span class="classifier">numpy.ndarray of shape (n_queries, n_neighbors)</span></dt><dd><p>Neighbor ids.</p>
+<dt><strong>neighbors</strong><span class="classifier">numpy.ndarray</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">return_type='id'</span></code>, shape is <code class="docutils literal notranslate"><span class="pre">(n_queries,</span> <span class="pre">n_neighbors)</span></code>.
+If <code class="docutils literal notranslate"><span class="pre">return_type='vector'</span></code>, shape is <code class="docutils literal notranslate"><span class="pre">(n_queries,</span> <span class="pre">n_neighbors,</span> <span class="pre">f)</span></code>.</p>
 </dd>
 <dt><strong>distances</strong><span class="classifier">numpy.ndarray of shape (n_queries, n_neighbors)</span></dt><dd><p>Neighbor distances. Returned when <code class="docutils literal notranslate"><span class="pre">include_distances=True</span></code>.</p>
 </dd>
@@ -1984,9 +2004,9 @@ rectangular (2D) arrays.</p>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>sklearn.exceptions.NotFittedError</dt><dd><p>If the index appears to be unbuilt.</p>
+<dt>sklearn.exceptions.NotFittedError</dt><dd><p>If the backend reports that the index is unbuilt.</p>
 </dd>
-<dt>ValueError</dt><dd><p>If any query returns fewer than <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> neighbors.</p>
+<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">n_neighbors</span> <span class="pre">&lt;=</span> <span class="pre">0</span></code> or any query yields too few neighbors after exclusions.</p>
 </dd>
 </dl>
 </dd>
@@ -2000,6 +2020,7 @@ rectangular (2D) arrays.</p>
 <li><p><strong>exclude_item_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable" title="(in Python v3.14)"><em>Iterable</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
 <li><p><strong>ensure_all_finite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.14)"><em>Literal</em></a><em>[</em><em>'allow-nan'</em><em>]</em>)</p></li>
 <li><p><strong>copy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+<li><p><strong>return_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.14)"><em>Literal</em></a><em>[</em><em>'id'</em><em>, </em><em>'vector'</em><em>]</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -2019,7 +2040,7 @@ rectangular (2D) arrays.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.kneighbors_graph">
-<span class="sig-name descname"><span class="pre">kneighbors_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'connectivity'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_all_finite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_vectors.py#L725"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.kneighbors_graph" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">kneighbors_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'connectivity'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_all_finite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'id'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_vectors.py#L769"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.kneighbors_graph" title="Link to this definition">#</a></dt>
 <dd><p>Compute the k-neighbors graph (CSR) for query vectors.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2033,7 +2054,7 @@ rectangular (2D) arrays.</p>
 <dt><strong>mode</strong><span class="classifier">{‘connectivity’, ‘distance’}, default=’connectivity’</span></dt><dd><p>If ‘connectivity’, graph entries are 1. If ‘distance’, entries are
 backend distances.</p>
 </dd>
-<dt><strong>exclude_self</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True (default), apply the same deterministic self-exclusion rule as
+<dt><strong>exclude_self</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, apply the same deterministic self-exclusion rule as
 <a class="reference internal" href="#scikitplot.annoy.Index.kneighbors" title="scikitplot.annoy.Index.kneighbors"><code class="xref py py-meth docutils literal notranslate"><span class="pre">kneighbors</span></code></a> for each query row.</p>
 </dd>
 <dt><strong>exclude_item_ids</strong><span class="classifier">iterable of int, optional</span></dt><dd><p>Exclude these ids for every query.</p>
@@ -2042,11 +2063,13 @@ backend distances.</p>
 </dd>
 <dt><strong>copy</strong><span class="classifier">bool, default=False</span></dt><dd><p>Input validation option forwarded to scikit-learn.</p>
 </dd>
+<dt><strong>return_type</strong><span class="classifier">{‘id’}, default=’id’</span></dt><dd><p>Must be ‘id’ for CSR construction.</p>
+</dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>graph</strong><span class="classifier">scipy.sparse.csr_matrix</span></dt><dd><p>CSR matrix of shape (n_queries, n_items).</p>
+<dt><strong>graph</strong><span class="classifier">scipy.sparse.csr_matrix</span></dt><dd><p>CSR matrix of shape <code class="docutils literal notranslate"><span class="pre">(n_queries,</span> <span class="pre">n_items)</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -2054,7 +2077,9 @@ backend distances.</p>
 <dd class="field-odd"><dl class="simple">
 <dt>ImportError</dt><dd><p>If SciPy is not installed.</p>
 </dd>
-<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">mode</span></code> is invalid.</p>
+<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">mode</span></code> is invalid or <code class="docutils literal notranslate"><span class="pre">return_type</span> <span class="pre">!=</span> <span class="pre">'id'</span></code>.</p>
+</dd>
+<dt>RuntimeError</dt><dd><p>If the backend returns an out-of-range neighbor id.</p>
 </dd>
 </dl>
 </dd>
@@ -2068,6 +2093,7 @@ backend distances.</p>
 <li><p><strong>exclude_item_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable" title="(in Python v3.14)"><em>Iterable</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
 <li><p><strong>ensure_all_finite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.14)"><em>Literal</em></a><em>[</em><em>'allow-nan'</em><em>]</em>)</p></li>
 <li><p><strong>copy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+<li><p><strong>return_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.14)"><em>Literal</em></a><em>[</em><em>'id'</em><em>, </em><em>'vector'</em><em>]</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -2132,16 +2158,14 @@ and metric as the on-disk file.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.load_bundle">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_bundle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'index.ann'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'manifest.json'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_io.py#L344"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.load_bundle" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_bundle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manifest_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'manifest.json'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'index.ann'</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_io.py#L206"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.load_bundle" title="Link to this definition">#</a></dt>
 <dd><p>Load a directory bundle created by <a class="reference internal" href="#scikitplot.annoy.Index.save_bundle" title="scikitplot.annoy.Index.save_bundle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_bundle</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>directory</strong></dt><dd><p>Bundle directory.</p>
+<dt><strong>manifest_filename</strong></dt><dd><p>Filename for the metadata manifest inside the directory.</p>
 </dd>
 <dt><strong>index_filename</strong></dt><dd><p>Filename for the Annoy index inside the directory.</p>
-</dd>
-<dt><strong>manifest_filename</strong></dt><dd><p>Filename for the metadata manifest inside the directory.</p>
 </dd>
 <dt><strong>prefault</strong></dt><dd><p>Forwarded to <a class="reference internal" href="#scikitplot.annoy.Index.load_index" title="scikitplot.annoy.Index.load_index"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_index</span></code></a>.</p>
 </dd>
@@ -2165,9 +2189,8 @@ and metric as the on-disk file.</p>
 </dd>
 <dt class="field-even">Parameters<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>directory</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/os.html#os.PathLike" title="(in Python v3.14)"><em>PathLike</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em>)</p></li>
-<li><p><strong>index_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
 <li><p><strong>manifest_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>index_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
 <li><p><strong>prefault</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em> | </em><em>None</em>)</p></li>
 </ul>
 </dd>
@@ -2179,11 +2202,15 @@ and metric as the on-disk file.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.load_index">
-<span class="sig-name descname"><span class="pre">load_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_io.py#L153"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.load_index" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_io.py#L104"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.load_index" title="Link to this definition">#</a></dt>
 <dd><p>Load (mmap) an Annoy index file into this object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
+<dt><strong>f</strong></dt><dd><p>Vector dimension for construction.</p>
+</dd>
+<dt><strong>metric</strong></dt><dd><p>Metric name for construction.</p>
+</dd>
 <dt><strong>path</strong><span class="classifier">str or os.PathLike</span></dt><dd><p>Path to a file previously created by <a class="reference internal" href="#scikitplot.annoy.Index.save_index" title="scikitplot.annoy.Index.save_index"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_index</span></code></a> or the
 backend <code class="docutils literal notranslate"><span class="pre">save</span></code>.</p>
 </dd>
@@ -2201,12 +2228,14 @@ backend <code class="docutils literal notranslate"><span class="pre">save</span>
 </dd>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><strong>f</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>metric</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
 <li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/os.html#os.PathLike" title="(in Python v3.14)"><em>PathLike</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em>)</p></li>
 <li><p><strong>prefault</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em> | </em><em>None</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Self" title="(in Python v3.14)"><em>Self</em></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2374,7 +2403,7 @@ Call <a class="reference internal" href="#scikitplot.annoy.Index.unload" title="
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.plot_index">
-<span class="sig-name descname"><span class="pre">plot_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projection='pca'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dims=(0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxabs=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l2_normalize=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_kwargs=None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_plotting.py#L231"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.plot_index" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">plot_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projection='pca'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dims=(0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxabs=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l2_normalize=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_kwargs=None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_plotting.py#L231"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.plot_index" title="Link to this definition">#</a></dt>
 <dd><p>Plot this index as a 2D scatter plot.</p>
 <p>This is a thin wrapper around <code class="xref py py-func docutils literal notranslate"><span class="pre">plot_annoy_index</span></code> that uses
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">_plotting_backend</span></code>.</p>
@@ -2440,7 +2469,7 @@ required when this method is called.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.plot_knn_edges">
-<span class="sig-name descname"><span class="pre">plot_knn_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y2</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">undirected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_plotting.py#L304"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.plot_knn_edges" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">plot_knn_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y2</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">undirected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_plotting.py#L304"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.plot_knn_edges" title="Link to this definition">#</a></dt>
 <dd><p>Overlay kNN edges onto an existing 2D index plot.</p>
 <p>This is a thin wrapper around <code class="xref py py-func docutils literal notranslate"><span class="pre">plot_annoy_knn_edges</span></code> that uses
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">_plotting_backend</span></code>.</p>
@@ -2518,7 +2547,7 @@ queries to draw edges.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.query_by_item">
-<span class="sig-name descname"><span class="pre">query_by_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_vectors.py#L293"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.query_by_item" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">query_by_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_all_finite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_vectors.py#L291"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.query_by_item" title="Link to this definition">#</a></dt>
 <dd><p>Query neighbors by stored item id.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2531,10 +2560,13 @@ queries to draw edges.</p></li>
 </dd>
 <dt><strong>include_distances</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, also return distances.</p>
 </dd>
-<dt><strong>exclude_self</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True (default), apply the same deterministic self-exclusion rule as
-<a class="reference internal" href="#scikitplot.annoy.Index.kneighbors" title="scikitplot.annoy.Index.kneighbors"><code class="xref py py-meth docutils literal notranslate"><span class="pre">kneighbors</span></code></a> for each query row.</p>
+<dt><strong>exclude_self</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, exclude <code class="docutils literal notranslate"><span class="pre">item</span></code> from the returned neighbors.</p>
 </dd>
 <dt><strong>exclude_item_ids</strong><span class="classifier">iterable of int, optional</span></dt><dd><p>Additional item ids to exclude.</p>
+</dd>
+<dt><strong>ensure_all_finite</strong><span class="classifier">bool or ‘allow-nan’, default=True</span></dt><dd><p>Input validation option forwarded to scikit-learn.</p>
+</dd>
+<dt><strong>copy</strong><span class="classifier">bool, default=False</span></dt><dd><p>Input validation option forwarded to scikit-learn.</p>
 </dd>
 </dl>
 </dd>
@@ -2548,9 +2580,9 @@ queries to draw edges.</p></li>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>sklearn.exceptions.NotFittedError</dt><dd><p>If the index appears to be unbuilt.</p>
+<dt>sklearn.exceptions.NotFittedError</dt><dd><p>If the backend reports that the index is unbuilt.</p>
 </dd>
-<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">n_neighbors</span> <span class="pre">&lt;=</span> <span class="pre">0</span></code>.</p>
+<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">n_neighbors</span> <span class="pre">&lt;=</span> <span class="pre">0</span></code> or not enough neighbors remain after exclusions.</p>
 </dd>
 </dl>
 </dd>
@@ -2562,6 +2594,8 @@ queries to draw edges.</p></li>
 <li><p><strong>include_distances</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
 <li><p><strong>exclude_self</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
 <li><p><strong>exclude_item_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable" title="(in Python v3.14)"><em>Iterable</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>ensure_all_finite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.14)"><em>Literal</em></a><em>[</em><em>'allow-nan'</em><em>]</em>)</p></li>
+<li><p><strong>copy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
 </ul>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -2573,17 +2607,17 @@ queries to draw edges.</p></li>
 <dl class="simple">
 <dt><a class="reference internal" href="#scikitplot.annoy.Index.query_by_vector" title="scikitplot.annoy.Index.query_by_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_by_vector</span></code></a></dt><dd><p>Query neighbors by an explicit vector.</p>
 </dd>
-<dt><a class="reference internal" href="#scikitplot.annoy.Index.kneighbors" title="scikitplot.annoy.Index.kneighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kneighbors</span></code></a></dt><dd><p>scikit-learn style batch query.</p>
+<dt><a class="reference internal" href="#scikitplot.annoy.Index.kneighbors" title="scikitplot.annoy.Index.kneighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kneighbors</span></code></a></dt><dd><p>Batch neighbor queries (sklearn-like).</p>
 </dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>This method is deterministic given the underlying backend.</p>
+<p>Exclusions are applied deterministically in the order returned by the backend.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.query_by_vector">
-<span class="sig-name descname"><span class="pre">query_by_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_all_finite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_vectors.py#L383"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.query_by_vector" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">query_by_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_all_finite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_vectors.py#L472"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.query_by_vector" title="Link to this definition">#</a></dt>
 <dd><p>Query neighbors by an explicit vector.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2596,10 +2630,15 @@ queries to draw edges.</p></li>
 </dd>
 <dt><strong>include_distances</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, also return distances.</p>
 </dd>
-<dt><strong>exclude_self</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True (default), exclude the first returned candidate whose distance is exactly <code class="docutils literal notranslate"><span class="pre">0.0</span></code>.
-This is intended for queries where <code class="docutils literal notranslate"><span class="pre">vector</span></code> comes from the index itself.</p>
+<dt><strong>exclude_self</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, exclude the first returned candidate whose distance
+is exactly <code class="docutils literal notranslate"><span class="pre">0.0</span></code>. This is intended for queries where <code class="docutils literal notranslate"><span class="pre">vector</span></code> comes
+from the index itself.</p>
 </dd>
 <dt><strong>exclude_item_ids</strong><span class="classifier">iterable of int, optional</span></dt><dd><p>Additional item ids to exclude.</p>
+</dd>
+<dt><strong>ensure_all_finite</strong><span class="classifier">bool or ‘allow-nan’, default=True</span></dt><dd><p>Input validation option forwarded to scikit-learn.</p>
+</dd>
+<dt><strong>copy</strong><span class="classifier">bool, default=False</span></dt><dd><p>Input validation option forwarded to scikit-learn.</p>
 </dd>
 </dl>
 </dd>
@@ -2613,9 +2652,10 @@ This is intended for queries where <code class="docutils literal notranslate"><s
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>sklearn.exceptions.NotFittedError</dt><dd><p>If the index appears to be unbuilt.</p>
+<dt>sklearn.exceptions.NotFittedError</dt><dd><p>If the backend reports that the index is unbuilt.</p>
 </dd>
-<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">n_neighbors</span> <span class="pre">&lt;=</span> <span class="pre">0</span></code> or the vector dimension mismatches <code class="docutils literal notranslate"><span class="pre">f</span></code>.</p>
+<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">n_neighbors</span> <span class="pre">&lt;=</span> <span class="pre">0</span></code>, vector dimension mismatches <code class="docutils literal notranslate"><span class="pre">f</span></code>, or not
+enough neighbors remain after exclusions.</p>
 </dd>
 </dl>
 </dd>
@@ -2640,23 +2680,19 @@ This is intended for queries where <code class="docutils literal notranslate"><s
 <dl class="simple">
 <dt><a class="reference internal" href="#scikitplot.annoy.Index.query_by_item" title="scikitplot.annoy.Index.query_by_item"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_by_item</span></code></a></dt><dd><p>Query neighbors by stored item id.</p>
 </dd>
-<dt><a class="reference internal" href="#scikitplot.annoy.Index.kneighbors" title="scikitplot.annoy.Index.kneighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kneighbors</span></code></a></dt><dd><p>scikit-learn style batch query.</p>
+<dt><a class="reference internal" href="#scikitplot.annoy.Index.kneighbors" title="scikitplot.annoy.Index.kneighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kneighbors</span></code></a></dt><dd><p>Batch neighbor queries (sklearn-like).</p>
 </dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>This API is <strong>explicit</strong>.</p>
-<ul class="simple">
-<li><p>For strict exclusion by id, pass <code class="docutils literal notranslate"><span class="pre">exclude_item_ids</span></code>.</p></li>
-<li><p>If <code class="docutils literal notranslate"><span class="pre">exclude_self=True</span></code> and no explicit id is provided, the method performs a
-deterministic, exact check against the <em>first</em> returned candidate: if that
-candidate has distance exactly <code class="docutils literal notranslate"><span class="pre">0.0</span></code>, it is excluded.</p></li>
-</ul>
+<p>Exclusions are applied deterministically in the order returned by the backend.
+If <code class="docutils literal notranslate"><span class="pre">exclude_self=True</span></code> and no exact <code class="docutils literal notranslate"><span class="pre">0.0</span></code> distance candidate is returned
+in the first position, no additional self-exclusion is applied.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.query_vectors_by_item">
-<span class="sig-name descname"><span class="pre">query_vectors_by_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k=-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_self=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_vectors.py#L487"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.query_vectors_by_item" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">query_vectors_by_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k=-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_self=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_all_finite=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type='vector'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_vectors.py#L400"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.query_vectors_by_item" title="Link to this definition">#</a></dt>
 <dd><p>Query neighbor vectors by stored item id.</p>
 <p>This is a convenience wrapper over <a class="reference internal" href="#scikitplot.annoy.Index.query_by_item" title="scikitplot.annoy.Index.query_by_item"><code class="xref py py-meth docutils literal notranslate"><span class="pre">query_by_item</span></code></a> that materializes
 vectors using the backend’s <code class="docutils literal notranslate"><span class="pre">get_item_vector</span></code>.</p>
@@ -2665,7 +2701,11 @@ vectors using the backend’s <code class="docutils literal notranslate"><span c
 <dd class="field-odd"><dl class="simple">
 <dt><strong>item, n_neighbors, search_k, include_distances, exclude_self, exclude_item_ids</strong></dt><dd><p>See <a class="reference internal" href="#scikitplot.annoy.Index.query_by_item" title="scikitplot.annoy.Index.query_by_item"><code class="xref py py-meth docutils literal notranslate"><span class="pre">query_by_item</span></code></a>.</p>
 </dd>
-<dt><strong>dtype</strong><span class="classifier">numpy dtype, default=numpy.float32</span></dt><dd><p>Output dtype.</p>
+<dt><strong>ensure_all_finite, copy</strong></dt><dd><p>See <a class="reference internal" href="#scikitplot.annoy.Index.query_by_vector" title="scikitplot.annoy.Index.query_by_vector"><code class="xref py py-meth docutils literal notranslate"><span class="pre">query_by_vector</span></code></a>.</p>
+</dd>
+<dt><strong>dtype</strong><span class="classifier">numpy dtype, default=numpy.float32</span></dt><dd><p>Output dtype for the returned vectors.</p>
+</dd>
+<dt><strong>return_type</strong><span class="classifier">{‘id’, ‘vector’}, default=’vector’</span></dt><dd><p>If ‘vector’, return neighbor vectors. If ‘id’, return neighbor ids.</p>
 </dd>
 </dl>
 </dd>
@@ -2685,7 +2725,10 @@ vectors using the backend’s <code class="docutils literal notranslate"><span c
 <li><p><strong>include_distances</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
 <li><p><strong>exclude_self</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
 <li><p><strong>exclude_item_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable" title="(in Python v3.14)"><em>Iterable</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>ensure_all_finite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.14)"><em>Literal</em></a><em>[</em><em>'allow-nan'</em><em>]</em>)</p></li>
+<li><p><strong>copy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
 <li><p><strong>dtype</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>)</p></li>
+<li><p><strong>return_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.14)"><em>Literal</em></a><em>[</em><em>'id'</em><em>, </em><em>'vector'</em><em>]</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -2695,7 +2738,7 @@ vectors using the backend’s <code class="docutils literal notranslate"><span c
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="#scikitplot.annoy.Index.query_vectors_by_vector" title="scikitplot.annoy.Index.query_vectors_by_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_vectors_by_vector</span></code></a></dt><dd><p>Vector query returning vectors.</p>
+<dt><a class="reference internal" href="#scikitplot.annoy.Index.query_vectors_by_vector" title="scikitplot.annoy.Index.query_vectors_by_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_vectors_by_vector</span></code></a></dt><dd><p>Vector query returning vectors (or ids).</p>
 </dd>
 </dl>
 </div>
@@ -2703,24 +2746,29 @@ vectors using the backend’s <code class="docutils literal notranslate"><span c
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.query_vectors_by_vector">
-<span class="sig-name descname"><span class="pre">query_vectors_by_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k=-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_self=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_all_finite=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_vectors.py#L545"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.query_vectors_by_vector" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">query_vectors_by_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k=-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_self=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_item_ids=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_all_finite=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type='vector'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_vectors.py#L583"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.query_vectors_by_vector" title="Link to this definition">#</a></dt>
 <dd><p>Query neighbor vectors by an explicit vector.</p>
-<p>Convenience wrapper over <a class="reference internal" href="#scikitplot.annoy.Index.query_by_vector" title="scikitplot.annoy.Index.query_by_vector"><code class="xref py py-meth docutils literal notranslate"><span class="pre">query_by_vector</span></code></a>.</p>
+<p>Convenience wrapper over <a class="reference internal" href="#scikitplot.annoy.Index.query_by_vector" title="scikitplot.annoy.Index.query_by_vector"><code class="xref py py-meth docutils literal notranslate"><span class="pre">query_by_vector</span></code></a>. By default it returns
+vectors; set <code class="docutils literal notranslate"><span class="pre">return_type='id'</span></code> to return neighbor ids instead.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>vector, n_neighbors, search_k, include_distances, exclude_self, exclude_item_ids,</strong></dt><dd></dd>
+<dt><strong>vector, n_neighbors, search_k, include_distances, exclude_self, exclude_item_ids,</strong></dt><dd><p>See <a class="reference internal" href="#scikitplot.annoy.Index.query_by_item" title="scikitplot.annoy.Index.query_by_item"><code class="xref py py-meth docutils literal notranslate"><span class="pre">query_by_item</span></code></a>.</p>
+</dd>
 <dt><strong>ensure_all_finite, copy</strong></dt><dd><p>See <a class="reference internal" href="#scikitplot.annoy.Index.query_by_vector" title="scikitplot.annoy.Index.query_by_vector"><code class="xref py py-meth docutils literal notranslate"><span class="pre">query_by_vector</span></code></a>.</p>
 </dd>
-<dt><strong>dtype</strong><span class="classifier">numpy dtype, default=numpy.float32</span></dt><dd><p>Output dtype.</p>
+<dt><strong>dtype</strong><span class="classifier">numpy dtype, default=numpy.float32</span></dt><dd><p>Output dtype for the returned vectors.</p>
+</dd>
+<dt><strong>return_type</strong><span class="classifier">{‘id’, ‘vector’}, default=’vector’</span></dt><dd><p>If ‘vector’, return neighbor vectors. If ‘id’, return neighbor ids.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>vectors</strong><span class="classifier">numpy.ndarray of shape (n_neighbors, f)</span></dt><dd><p>Neighbor vectors.</p>
+<dt><strong>neighbors</strong><span class="classifier">numpy.ndarray</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">return_type='vector'</span></code>, an array of shape <code class="docutils literal notranslate"><span class="pre">(n_neighbors,</span> <span class="pre">f)</span></code>.
+If <code class="docutils literal notranslate"><span class="pre">return_type='id'</span></code>, an array of shape <code class="docutils literal notranslate"><span class="pre">(n_neighbors,)</span></code>.</p>
 </dd>
-<dt><strong>(vectors, distances)</strong><span class="classifier">tuple</span></dt><dd><p>Returned when <code class="docutils literal notranslate"><span class="pre">include_distances=True</span></code>.</p>
+<dt><strong>(neighbors, distances)</strong><span class="classifier">tuple</span></dt><dd><p>Returned when <code class="docutils literal notranslate"><span class="pre">include_distances=True</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -2735,6 +2783,7 @@ vectors using the backend’s <code class="docutils literal notranslate"><span c
 <li><p><strong>ensure_all_finite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.14)"><em>Literal</em></a><em>[</em><em>'allow-nan'</em><em>]</em>)</p></li>
 <li><p><strong>copy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
 <li><p><strong>dtype</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>)</p></li>
+<li><p><strong>return_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.14)"><em>Literal</em></a><em>[</em><em>'id'</em><em>, </em><em>'vector'</em><em>]</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -2745,6 +2794,8 @@ vectors using the backend’s <code class="docutils literal notranslate"><span c
 <p class="admonition-title">See also</p>
 <dl class="simple">
 <dt><a class="reference internal" href="#scikitplot.annoy.Index.query_vectors_by_item" title="scikitplot.annoy.Index.query_vectors_by_item"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_vectors_by_item</span></code></a></dt><dd><p>Item id query returning vectors.</p>
+</dd>
+<dt><a class="reference internal" href="#scikitplot.annoy.Index.query_by_vector" title="scikitplot.annoy.Index.query_by_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query_by_vector</span></code></a></dt><dd><p>Per-query id interface.</p>
 </dd>
 </dl>
 </div>
@@ -2867,7 +2918,7 @@ Use prefault=None to fall back to the stored <a class="reference internal" href=
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.save_bundle">
-<span class="sig-name descname"><span class="pre">save_bundle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'index.ann'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'manifest.json'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_io.py#L291"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.save_bundle" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">save_bundle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manifest_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'manifest.json'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'index.ann'</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_io.py#L159"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.save_bundle" title="Link to this definition">#</a></dt>
 <dd><p>Save a <em>directory bundle</em> containing metadata + the index file.</p>
 <p>The bundle contains:
 - <code class="docutils literal notranslate"><span class="pre">manifest.json</span></code>: metadata payload produced by <a class="reference internal" href="#scikitplot.annoy.Index.to_json" title="scikitplot.annoy.Index.to_json"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_json</span></code></a>
@@ -2875,11 +2926,9 @@ Use prefault=None to fall back to the stored <a class="reference internal" href=
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>directory</strong></dt><dd><p>Destination directory (created if missing).</p>
+<dt><strong>manifest_filename</strong></dt><dd><p>Filename for the metadata manifest inside the directory.</p>
 </dd>
 <dt><strong>index_filename</strong></dt><dd><p>Filename for the Annoy index inside the directory.</p>
-</dd>
-<dt><strong>manifest_filename</strong></dt><dd><p>Filename for the metadata manifest inside the directory.</p>
 </dd>
 <dt><strong>prefault</strong></dt><dd><p>Forwarded to <a class="reference internal" href="#scikitplot.annoy.Index.save_index" title="scikitplot.annoy.Index.save_index"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_index</span></code></a>.</p>
 </dd>
@@ -2895,21 +2944,20 @@ Use prefault=None to fall back to the stored <a class="reference internal" href=
 </dd>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>directory</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/os.html#os.PathLike" title="(in Python v3.14)"><em>PathLike</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em>)</p></li>
-<li><p><strong>index_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
 <li><p><strong>manifest_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>index_filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
 <li><p><strong>prefault</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em> | </em><em>None</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.save_index">
-<span class="sig-name descname"><span class="pre">save_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atomic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_io.py#L100"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.save_index" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">save_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefault</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_io.py#L65"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.save_index" title="Link to this definition">#</a></dt>
 <dd><p>Persist the Annoy index to disk.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2917,8 +2965,6 @@ Use prefault=None to fall back to the stored <a class="reference internal" href=
 <dt><strong>path</strong><span class="classifier">str or os.PathLike</span></dt><dd><p>Destination path for the Annoy index file.</p>
 </dd>
 <dt><strong>prefault</strong></dt><dd><p>Forwarded to the backend. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, the backend default is used.</p>
-</dd>
-<dt><strong>atomic</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, write to a unique temporary file and replace into place.</p>
 </dd>
 </dl>
 </dd>
@@ -2934,11 +2980,10 @@ Use prefault=None to fall back to the stored <a class="reference internal" href=
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/os.html#os.PathLike" title="(in Python v3.14)"><em>PathLike</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em>)</p></li>
 <li><p><strong>prefault</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em> | </em><em>None</em>)</p></li>
-<li><p><strong>atomic</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Self" title="(in Python v3.14)"><em>Self</em></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -3142,17 +3187,33 @@ Logging level inspired by gradient-boosting libraries:</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.to_bytes">
-<span class="sig-name descname"><span class="pre">to_bytes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_io.py#L198"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.to_bytes" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_io.py#L258"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.to_bytes" title="Link to this definition">#</a></dt>
 <dd><p>Serialize the built index to bytes (backend <code class="docutils literal notranslate"><span class="pre">serialize</span></code>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
+<dt><strong>format</strong><span class="classifier">{“native”, “portable”, “canonical”} or None, optional, default=None</span></dt><dd><p>Serialization format. If <code class="docutils literal notranslate"><span class="pre">None</span></code> used <code class="docutils literal notranslate"><span class="pre">&quot;canonical&quot;</span></code></p>
+<ul class="simple">
+<li><p>“native” (legacy): raw Annoy memory snapshot. Fastest, but
+only compatible when the ABI matches exactly.</p></li>
+<li><p>“portable”: prepend a small compatibility header (version,
+endianness, sizeof checks, metric, f) so deserialization fails
+loudly on mismatches.</p></li>
+<li><p>“canonical”: rebuildable wire format storing item vectors + build
+parameters. Portable across ABIs (within IEEE-754 float32) and
+restores by rebuilding trees deterministically.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
 <dt>data</dt><dd><p>Serialized index bytes.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
 <dt>AttributeError</dt><dd><p>If the backend does not provide <code class="docutils literal notranslate"><span class="pre">serialize</span></code>.</p>
 </dd>
 <dt>RuntimeError</dt><dd><p>If serialization fails.</p>
@@ -3161,15 +3222,20 @@ Logging level inspired by gradient-boosting libraries:</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)">bytes</a></p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)">bytes</a></p>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>“Portable” blobs are the native snapshot with additional compatibility guards.
+They are not a cross-architecture wire format.</p>
+<p>“Canonical” blobs trade load time for portability: deserialization rebuilds
+the index with <code class="docutils literal notranslate"><span class="pre">n_jobs=1</span></code> for deterministic reconstruction.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.to_json">
-<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_ascii</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_meta.py#L252"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.to_json" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_ascii</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_meta.py#L372"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.to_json" title="Link to this definition">#</a></dt>
 <dd><p>Serialize <a class="reference internal" href="#scikitplot.annoy.Index.to_metadata" title="scikitplot.annoy.Index.to_metadata"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_metadata</span></code></a> to JSON.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -3223,7 +3289,7 @@ Logging level inspired by gradient-boosting libraries:</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.to_metadata">
-<span class="sig-name descname"><span class="pre">to_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_meta.py#L149"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.to_metadata" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_meta.py#L149"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.to_metadata" title="Link to this definition">#</a></dt>
 <dd><p>Export a serializable metadata payload.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -3274,7 +3340,7 @@ and optional info.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.to_numpy">
-<span class="sig-name descname"><span class="pre">to_numpy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ids=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_rows=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate_vector_len=True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_ndarray.py#L571"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.to_numpy" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_numpy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ids=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_rows=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate_vector_len=True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_ndarray.py#L571"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.to_numpy" title="Link to this definition">#</a></dt>
 <dd><p>Export vectors to a dense NumPy array.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -3310,7 +3376,7 @@ and optional info.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.to_pandas">
-<span class="sig-name descname"><span class="pre">to_pandas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ids=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_rows=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_location='index'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_name='id'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate_vector_len=True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_ndarray.py#L681"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.to_pandas" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_pandas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ids=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_rows=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_location='index'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_name='id'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate_vector_len=True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_ndarray.py#L681"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.to_pandas" title="Link to this definition">#</a></dt>
 <dd><p>Export vectors to a pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -3375,7 +3441,7 @@ when present and length matches <code class="docutils literal notranslate"><span
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.to_scipy_csr">
-<span class="sig-name descname"><span class="pre">to_scipy_csr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ids=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_rows=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate_vector_len=True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_ndarray.py#L642"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.to_scipy_csr" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_scipy_csr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ids=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_rows=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate_vector_len=True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_ndarray.py#L642"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.to_scipy_csr" title="Link to this definition">#</a></dt>
 <dd><p>Export vectors as a SciPy CSR matrix.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -3417,7 +3483,7 @@ when present and length matches <code class="docutils literal notranslate"><span
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Index.to_yaml">
-<span class="sig-name descname"><span class="pre">to_yaml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c6c6f1b/scikitplot/annoy/_mixins/_meta.py#L437"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.to_yaml" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_yaml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/annoy/_mixins/_meta.py#L434"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Index.to_yaml" title="Link to this definition">#</a></dt>
 <dd><p>Serialize <a class="reference internal" href="#scikitplot.annoy.Index.to_metadata" title="scikitplot.annoy.Index.to_metadata"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_metadata</span></code></a> to YAML (requires PyYAML).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -3752,7 +3818,7 @@ that len(y) matches the current number of items (n_items).</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20251230.c6c6f1b 2025-12-30T12:25Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260101.9437780 2026-01-01T06:22Z.
       <br/>
     
   </p>
