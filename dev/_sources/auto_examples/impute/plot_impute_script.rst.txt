@@ -273,7 +273,7 @@ First, we want to estimate the score on the original data:
 
  .. code-block:: none
 
-    18.581578254699707
+    19.64219641685486
 
 
 
@@ -318,7 +318,7 @@ replaced by 0:
 
  .. code-block:: none
 
-    20.573596000671387
+    20.447302103042603
 
 
 
@@ -360,7 +360,7 @@ Impute missing values with mean
 
  .. code-block:: none
 
-    22.089597702026367
+    22.07401728630066
 
 
 
@@ -405,7 +405,7 @@ results (otherwise known as a 'long tail').
 
  .. code-block:: none
 
-    21.76183581352234
+    23.095402479171753
 
 
 
@@ -455,7 +455,7 @@ consider re-scaling them to potentially improve performance.
 
  .. code-block:: none
 
-    45.625704765319824
+    71.23788356781006
 
 
 
@@ -509,7 +509,7 @@ so we re-scale the features in the California housing dataset.
 
  .. code-block:: none
 
-    24.05582594871521
+    23.15973973274231
 
 
 
@@ -545,7 +545,7 @@ ANN-imputation of the missing values
 
  .. code-block:: none
 
-    0.5.dev0+git.20260101.9437780
+    0.5.dev0+git.20260106.d7922e6
 
 
 
@@ -584,26 +584,28 @@ ANN-imputation of the missing values
 
  .. code-block:: none
 
-    28.914105653762817
+    27.125759840011597
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 333-360
+.. GENERATED FROM PYTHON SOURCE LINES 333-362
 
 .. code-block:: Python
 
 
     t0 = time.time()
     # ⚠️ Reproducibility for Annoy required both random_state and n_trees
-    imputer = ANNImputer(add_indicator=True, random_state=42, n_trees=5)
+    imputer = ANNImputer(add_indicator=True, random_state=42, n_trees=5,
+        index_access="private", on_disk_build=True, index_store_path=None,)
     mses_diabetes[7], stds_diabetes[7] = get_score(
         Xdi_train_miss, Xdi_val_miss, ydi_train_miss, ydi_val_miss,
         make_pipeline(MaxAbsScaler(), RobustScaler(), imputer),
     )
-    imputer = ANNImputer(add_indicator=True, random_state=42, n_trees=10)
-    # metric='euclidean', initial_strategy="median", weights="distance", n_neighbors=430,)
-    # metric='euclidean', initial_strategy="median", weights="distance", n_neighbors=484, n_trees=10)
+    imputer = ANNImputer(add_indicator=True, random_state=42, n_trees=10,
+        # metric='euclidean', initial_strategy="median", weights="distance", n_neighbors=430,)
+        # metric='euclidean', initial_strategy="median", weights="distance", n_neighbors=484, n_trees=10
+        index_access="public", on_disk_build=True, index_store_path=None,)
     mses_california[7], stds_california[7] = get_score(
         Xca_train_miss, Xca_val_miss, yca_train_miss, yca_val_miss,
         make_pipeline(MaxAbsScaler(), RobustScaler(), imputer),
@@ -628,12 +630,12 @@ ANN-imputation of the missing values
 
  .. code-block:: none
 
-    30.81533908843994
+    27.355143547058105
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 361-366
+.. GENERATED FROM PYTHON SOURCE LINES 363-368
 
 Plot the results
 ################
@@ -641,7 +643,7 @@ Plot the results
 Finally we are going to visualize the score:
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 366-459
+.. GENERATED FROM PYTHON SOURCE LINES 368-461
 
 .. code-block:: Python
 
@@ -750,14 +752,14 @@ Finally we are going to visualize the score:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 460-464
+.. GENERATED FROM PYTHON SOURCE LINES 462-466
 
 ANNImputer performance and accuracy are highly sensitive to both the
 selected distance metric and the number of trees used to build the Annoy index.
 An inappropriate metric or insufficient number of trees may lead to poor
 neighbor retrieval and degraded imputation quality.
 
-.. GENERATED FROM PYTHON SOURCE LINES 466-473
+.. GENERATED FROM PYTHON SOURCE LINES 468-475
 
 .. tags::
 
@@ -770,7 +772,7 @@ neighbor retrieval and degraded imputation quality.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (3 minutes 32.900 seconds)
+   **Total running time of the script:** (3 minutes 54.724 seconds)
 
 
 .. _sphx_glr_download_auto_examples_impute_plot_impute_script.py:

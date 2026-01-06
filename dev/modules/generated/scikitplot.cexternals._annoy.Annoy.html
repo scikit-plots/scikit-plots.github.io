@@ -853,18 +853,19 @@
 <h1>Annoy<a class="headerlink" href="#annoy" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.cexternals._annoy.Annoy">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.cexternals._annoy.</span></span><span class="sig-name descname"><span class="pre">Annoy</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/9437780/scikitplot/cexternals/_annoy/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexternals._annoy.Annoy" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scikitplot.cexternals._annoy.</span></span><span class="sig-name descname"><span class="pre">Annoy</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d7922e6/scikitplot/cexternals/_annoy/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexternals._annoy.Annoy" title="Link to this definition">#</a></dt>
 <dd><p>Compiled with GCC/Clang. Using 512-bit AVX instructions.</p>
 <p>Approximate Nearest Neighbors index (Annoy) with a small, lazy C-extension wrapper.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Annoy</span><span class="p">(</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">f</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">metric</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="o">*</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">on_disk_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">prefault</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">schema_version</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">verbose</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">schema_version</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
 </pre></div>
 </div>
@@ -887,31 +888,20 @@ If None, behavior depends on <code class="docutils literal notranslate"><span cl
 <code class="docutils literal notranslate"><span class="pre">'angular'</span></code> on first <a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.add_item" title="scikitplot.cexternals._annoy.Annoy.add_item"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_item</span></code></a>.</p></li>
 </ul>
 </dd>
+<dt><strong>n_neighbors</strong><span class="classifier">int, default=5</span></dt><dd><p>Non-negative integer Number of neighbors to retrieve for each query.</p>
+</dd>
 <dt><strong>on_disk_path</strong><span class="classifier">str or None, optional, default=None</span></dt><dd><p>If provided, configures the path for on-disk building. When the underlying
 index exists, this enables on-disk build mode (equivalent to calling
 <a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.on_disk_build" title="scikitplot.cexternals._annoy.Annoy.on_disk_build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">on_disk_build</span></code></a> with the same filename).</p>
-<p>Safety: Annoy core truncates the target file when enabling on-disk build.
-Therefore, if the path already exists, it is <strong>not</strong> truncated implicitly.
-Call <a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.on_disk_build" title="scikitplot.cexternals._annoy.Annoy.on_disk_build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">on_disk_build</span></code></a> explicitly to overwrite.</p>
+<p>Note: Annoy core truncates the target file when enabling on-disk build.
+This wrapper treats <code class="docutils literal notranslate"><span class="pre">on_disk_path</span></code> as strictly equivalent to calling
+<a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.on_disk_build" title="scikitplot.cexternals._annoy.Annoy.on_disk_build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">on_disk_build</span></code></a> with the same filename (truncate allowed).</p>
 <p>In lazy mode (<code class="docutils literal notranslate"><span class="pre">f==0</span></code> and/or <code class="docutils literal notranslate"><span class="pre">metric</span> <span class="pre">is</span> <span class="pre">None</span></code>), activation occurs once
 the underlying C++ index is created.</p>
 </dd>
 <dt><strong>prefault</strong><span class="classifier">bool or None, optional, default=None</span></dt><dd><p>If True, request page-faulting index pages into memory when loading
 (when supported by the underlying platform/backing).
 If None, treated as <code class="docutils literal notranslate"><span class="pre">False</span></code> (reset to default).</p>
-</dd>
-<dt><strong>schema_version</strong><span class="classifier">int, optional, default=None</span></dt><dd><p>Serialization/compatibility strategy marker.</p>
-<p>This does not change the Annoy on-disk format, but it <em>does</em> control
-how the index is snapshotted in pickles.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code>: pickle stores a <code class="docutils literal notranslate"><span class="pre">portable-v1</span></code> snapshot (fast restore,
-ABI-checked).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">2</span></code>: pickle stores <code class="docutils literal notranslate"><span class="pre">canonical-v1</span></code> (portable across ABIs; restores by
-rebuilding deterministically).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&gt;=3</span></code>: pickle stores both portable and canonical (canonical is used as
-a fallback if the ABI check fails).</p></li>
-</ul>
-<p>If None, treated as <code class="docutils literal notranslate"><span class="pre">0</span></code> (reset to default).</p>
 </dd>
 <dt><strong>seed</strong><span class="classifier">int or None, optional, default=None</span></dt><dd><p>Non-negative integer seed. If set before the index is constructed,
 the seed is stored and applied when the C++ index is created.
@@ -927,6 +917,19 @@ Logging level inspired by gradient-boosting libraries:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span> <span class="pre">2</span></code> : debug (currently same as info, reserved for future use)</p></li>
 </ul>
 </dd>
+<dt><strong>schema_version</strong><span class="classifier">int, optional, default=None</span></dt><dd><p>Serialization/compatibility strategy marker.</p>
+<p>This does not change the Annoy on-disk format, but it <em>does</em> control
+how the index is snapshotted in pickles.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code>: pickle stores a <code class="docutils literal notranslate"><span class="pre">portable-v1</span></code> snapshot (fast restore,
+ABI-checked).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span></code>: pickle stores <code class="docutils literal notranslate"><span class="pre">canonical-v1</span></code> (portable across ABIs; restores by
+rebuilding deterministically).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;=3</span></code>: pickle stores both portable and canonical (canonical is used as
+a fallback if the ABI check fails).</p></li>
+</ul>
+<p>If None, treated as <code class="docutils literal notranslate"><span class="pre">0</span></code> (reset to default).</p>
+</dd>
 </dl>
 </dd>
 <dt class="field-even">Attributes<span class="colon">:</span></dt>
@@ -935,11 +938,23 @@ Logging level inspired by gradient-boosting libraries:</p>
 </dd>
 <dt><a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.metric" title="scikitplot.cexternals._annoy.Annoy.metric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metric</span></code></a><span class="classifier">{‘angular’, ‘euclidean’, ‘manhattan’, ‘dot’, ‘hamming’}, default=”angular”</span></dt><dd><p>Distance metric for the index.</p>
 </dd>
+<dt><a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.n_neighbors" title="scikitplot.cexternals._annoy.Annoy.n_neighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">n_neighbors</span></code></a><span class="classifier">int, default=5</span></dt><dd><p>Number of neighbors returned by transform/fit_transform (SLEP013; strict schema).</p>
+</dd>
 <dt><a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.on_disk_path" title="scikitplot.cexternals._annoy.Annoy.on_disk_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">on_disk_path</span></code></a><span class="classifier">str or None, optional, default=None</span></dt><dd><p>Path used for on-disk build/load/save operations.</p>
+</dd>
+<dt><strong>seed, random_state</strong><span class="classifier">int or None, optional, default=None</span></dt><dd><p>Non-negative integer seed.</p>
+</dd>
+<dt><a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.verbose" title="scikitplot.cexternals._annoy.Annoy.verbose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">verbose</span></code></a><span class="classifier">int or None, optional, default=None</span></dt><dd><p>Verbosity level in [-2, 2] or None (unset).</p>
 </dd>
 <dt><a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.prefault" title="scikitplot.cexternals._annoy.Annoy.prefault"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prefault</span></code></a><span class="classifier">bool, default=False</span></dt><dd><p>Default prefault flag stored on the object.</p>
 </dd>
 <dt><a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.schema_version" title="scikitplot.cexternals._annoy.Annoy.schema_version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">schema_version</span></code></a><span class="classifier">int, default=0</span></dt><dd><p>Serialization/compatibility strategy marker sentinel value.</p>
+</dd>
+<dt><strong>n_features, n_features_, n_features_in_</strong><span class="classifier">int</span></dt><dd><p>Alias of <code class="docutils literal notranslate"><span class="pre">f</span></code> (dimension), provided for scikit-learn naming parity.</p>
+</dd>
+<dt><a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.n_features_out_" title="scikitplot.cexternals._annoy.Annoy.n_features_out_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">n_features_out_</span></code></a><span class="classifier">int</span></dt><dd><p>Number of output features produced by transform (SLEP013).</p>
+</dd>
+<dt><a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.feature_names_in_" title="scikitplot.cexternals._annoy.Annoy.feature_names_in_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">feature_names_in_</span></code></a><span class="classifier">list-like</span></dt><dd><p>Input feature names seen during fit (SLEP007).</p>
 </dd>
 <dt><a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.y" title="scikitplot.cexternals._annoy.Annoy.y"><code class="xref py py-obj docutils literal notranslate"><span class="pre">y</span></code></a><span class="classifier">dict | None, optional, default=None</span></dt><dd><p>Labels / targets associated with the index items.</p>
 </dd>
@@ -1282,9 +1297,15 @@ all items, trees, and <a class="reference internal" href="#scikitplot.cexternals
 <a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.add_item" title="scikitplot.cexternals._annoy.Annoy.add_item"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_item</span></code></a> + <a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.build" title="scikitplot.cexternals._annoy.Annoy.build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code></a>) again before querying.</p>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scikitplot.cexternals._annoy.Annoy.feature_names_in_">
+<span class="sig-name descname"><span class="pre">feature_names_in_</span></span><a class="headerlink" href="#scikitplot.cexternals._annoy.Annoy.feature_names_in_" title="Link to this definition">#</a></dt>
+<dd><p>Input feature names seen during fit (SLEP007). Set only when explicitly provided via fit(…, feature_names=…).</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cexternals._annoy.Annoy.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_trees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.cexternals._annoy.Annoy.fit" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_trees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.cexternals._annoy.Annoy.fit" title="Link to this definition">#</a></dt>
 <dd><p>Fit the Annoy index (scikit-learn compatible).</p>
 <p>This method supports two deterministic workflows:</p>
 <ol class="arabic simple">
@@ -1364,7 +1385,7 @@ otherwise uses current n_items when reset=False.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cexternals._annoy.Annoy.fit_transform">
-<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_trees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_fill_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.cexternals._annoy.Annoy.fit_transform" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_trees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_fill_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.cexternals._annoy.Annoy.fit_transform" title="Link to this definition">#</a></dt>
 <dd><p>Fit the index and transform X in a single deterministic call.</p>
 <dl class="simple">
 <dt>This is equivalent to:</dt><dd><p>self.fit(X, y=y, n_trees=…, n_jobs=…, reset=…, start_index=…, missing_value=…)
@@ -1417,6 +1438,37 @@ y_fill_value=…, missing_value=…)</p>
 <dt>RuntimeError</dt><dd><p>If the index is not initialized.</p>
 </dd>
 <dt>IndexError</dt><dd><p>If either index is out of range.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scikitplot.cexternals._annoy.Annoy.get_feature_names_out">
+<span class="sig-name descname"><span class="pre">get_feature_names_out</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.cexternals._annoy.Annoy.get_feature_names_out" title="Link to this definition">#</a></dt>
+<dd><p>Get output feature names for the transformer-style API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>input_features</strong><span class="classifier">sequence of str or None, optional, default=None</span></dt><dd><p>If provided, validated deterministically against the fitted input
+feature names (if available) and the expected input dimensionality.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>tuple of str</dt><dd><p>Output feature names: <code class="docutils literal notranslate"><span class="pre">('neighbor_0',</span> <span class="pre">...,</span> <span class="pre">'neighbor_{k-1}')</span></code> where
+<code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">==</span> <span class="pre">n_neighbors</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>AttributeError</dt><dd><p>If called before <a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.fit" title="scikitplot.cexternals._annoy.Annoy.fit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fit</span></code></a>/<code class="docutils literal notranslate"><span class="pre">build</span></code>.</p>
+</dd>
+<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">input_features</span></code> is provided but does not match
+<a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.feature_names_in_" title="scikitplot.cexternals._annoy.Annoy.feature_names_in_"><code class="xref py py-attr docutils literal notranslate"><span class="pre">feature_names_in_</span></code></a>.</p>
 </dd>
 </dl>
 </dd>
@@ -1841,7 +1893,7 @@ index is not initialized or the forest has not been built yet.</p>
 <li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.cosine.html#scipy.spatial.distance.cosine" title="(in SciPy v1.16.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">cosine</span></code></a></p></li>
 <li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.euclidean.html#scipy.spatial.distance.euclidean" title="(in SciPy v1.16.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">euclidean</span></code></a></p></li>
 <li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.cityblock.html#scipy.spatial.distance.cityblock" title="(in SciPy v1.16.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">cityblock</span></code></a></p></li>
-<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">dot</span></code></p></li>
+<li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.coo_array.dot.html#scipy.sparse.coo_array.dot" title="(in SciPy v1.16.2)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dot</span></code></a></p></li>
 <li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.hamming.html#scipy.spatial.distance.hamming" title="(in SciPy v1.16.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">hamming</span></code></a></p></li>
 </ul>
 </div>
@@ -1873,6 +1925,18 @@ trees, and <a class="reference internal" href="#scikitplot.cexternals._annoy.Ann
 <dt class="sig sig-object py" id="scikitplot.cexternals._annoy.Annoy.n_features_in_">
 <span class="sig-name descname"><span class="pre">n_features_in_</span></span><a class="headerlink" href="#scikitplot.cexternals._annoy.Annoy.n_features_in_" title="Link to this definition">#</a></dt>
 <dd><p>Number of features seen during fit (scikit-learn compatible). Alias of <code class="docutils literal notranslate"><span class="pre">f</span></code> when available.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scikitplot.cexternals._annoy.Annoy.n_features_out_">
+<span class="sig-name descname"><span class="pre">n_features_out_</span></span><a class="headerlink" href="#scikitplot.cexternals._annoy.Annoy.n_features_out_" title="Link to this definition">#</a></dt>
+<dd><p>Number of output features produced by transform (SLEP013). Equals n_neighbors once fitted.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scikitplot.cexternals._annoy.Annoy.n_neighbors">
+<span class="sig-name descname"><span class="pre">n_neighbors</span></span><a class="headerlink" href="#scikitplot.cexternals._annoy.Annoy.n_neighbors" title="Link to this definition">#</a></dt>
+<dd><p>Number of neighbors returned by transform/fit_transform (SLEP013; strict schema).</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1934,9 +1998,9 @@ comfortably in RAM during construction.</p>
 <ul class="simple">
 <li><p>Assigning a string/PathLike to <code class="docutils literal notranslate"><span class="pre">on_disk_path</span></code> configures on-disk build mode
 (equivalent to calling <a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.on_disk_build" title="scikitplot.cexternals._annoy.Annoy.on_disk_build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">on_disk_build</span></code></a> with the same filename).</p></li>
-<li><p>Safety: Annoy core truncates the target file when enabling on-disk build.
-Therefore, an existing file is never truncated implicitly when setting this
-attribute. Call <a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.on_disk_build" title="scikitplot.cexternals._annoy.Annoy.on_disk_build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">on_disk_build</span></code></a> explicitly to overwrite.</p></li>
+<li><p>Note: Annoy core truncates the target file when enabling on-disk build.
+<code class="docutils literal notranslate"><span class="pre">on_disk_path</span></code> is strictly equivalent to calling <a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.on_disk_build" title="scikitplot.cexternals._annoy.Annoy.on_disk_build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">on_disk_build</span></code></a>
+with the same filename (truncate allowed).</p></li>
 <li><p>Assigning <code class="docutils literal notranslate"><span class="pre">None</span></code> (or an empty string) clears the configured path, but only
 when no disk-backed index is currently active.</p></li>
 <li><p>Clearing/changing this while an on-disk index is active is disallowed.
@@ -2279,28 +2343,39 @@ Logging level inspired by gradient-boosting libraries:</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cexternals._annoy.Annoy.transform">
-<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_fill_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'vector'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.cexternals._annoy.Annoy.transform" title="Link to this definition">#</a></dt>
-<dd><p>Transform queries into nearest-neighbor ids (and optional distances / labels).</p>
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_distances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_fill_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'vector'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'vector'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_items</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.cexternals._annoy.Annoy.transform" title="Link to this definition">#</a></dt>
+<dd><p>Transform queries into nearest-neighbor results (ids or vectors; optional distances / labels).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>X</strong><span class="classifier">array-like</span></dt><dd><p>Query inputs. The expected shape/type depends on <code class="docutils literal notranslate"><span class="pre">input_type</span></code>:</p>
 <ul class="simple">
+<li><p>input_type=’item’  : X must be a 1D sequence of item ids.</p></li>
 <li><p>input_type=’vector’: X must be a 2D array-like of shape (n_queries, f).</p></li>
-<li><p>input_type=’item’:   X must be a 1D sequence of item ids.</p></li>
 </ul>
 </dd>
-<dt><strong>n_neighbors</strong><span class="classifier">int, default=5</span></dt><dd><p>Number of neighbors to retrieve for each query.</p>
+<dt><strong>n_neighbors</strong><span class="classifier">int or None, default=5</span></dt><dd><p>Number of neighbors to retrieve for each query. For backwards compatibility
+this keyword is accepted, but it must match the estimator parameter
+<code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> (STRICT schema).</p>
 </dd>
 <dt><strong>search_k</strong><span class="classifier">int, default=-1</span></dt><dd><p>Search parameter passed to Annoy (-1 uses Annoy’s default).</p>
 </dd>
 <dt><strong>include_distances</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, also return per-neighbor distances.</p>
 </dd>
-<dt><strong>return_labels</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, also return per-neighbor labels resolved from <a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.y" title="scikitplot.cexternals._annoy.Annoy.y"><code class="xref py py-attr docutils literal notranslate"><span class="pre">y</span></code></a>.</p>
+<dt><strong>return_labels</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, also return per-neighbor labels resolved from <a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.y" title="scikitplot.cexternals._annoy.Annoy.y"><code class="xref py py-attr docutils literal notranslate"><span class="pre">y</span></code></a> (as set via <a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.fit" title="scikitplot.cexternals._annoy.Annoy.fit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fit</span></code></a>).</p>
 </dd>
 <dt><strong>y_fill_value</strong><span class="classifier">object, default=None</span></dt><dd><p>Value used when <a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.y" title="scikitplot.cexternals._annoy.Annoy.y"><code class="xref py py-attr docutils literal notranslate"><span class="pre">y</span></code></a> is unset or missing an entry for a neighbor id.</p>
 </dd>
 <dt><strong>input_type</strong><span class="classifier">{‘vector’, ‘item’}, default=’vector’</span></dt><dd><p>Controls how X is interpreted.</p>
+</dd>
+<dt><strong>output_type</strong><span class="classifier">{‘vector’, ‘item’}, default=’vector’</span></dt><dd><p>Controls what neighbors are returned.
+- output_type=’item’:   return neighbor ids.
+- output_type=’vector’: return neighbor vectors.</p>
+</dd>
+<dt><strong>exclude_self</strong><span class="classifier">bool, default=False</span></dt><dd><p>If True, exclude the query item id from results. Only valid when
+input_type=’item’.</p>
+</dd>
+<dt><strong>exclude_items</strong><span class="classifier">sequence of int or None, default=None</span></dt><dd><p>Explicit neighbor ids to exclude from results.</p>
 </dd>
 <dt><strong>missing_value</strong><span class="classifier">float or None, default=None</span></dt><dd><p>If not None, imputes missing entries in X (None values in dense rows;
 missing keys / None values in dict rows). If None, missing entries raise.</p>
@@ -2309,13 +2384,15 @@ missing keys / None values in dict rows). If None, missing entries raise.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>indices</strong><span class="classifier">list of list of int</span></dt><dd><p>Neighbor ids for each query.</p>
+<dt><strong>neighbors</strong><span class="classifier">list</span></dt><dd><p>Neighbor results for each query.
+- output_type=’item’  : list of list of int
+- output_type=’vector’: list of list of list of float</p>
 </dd>
-<dt><strong>(indices, distances)</strong><span class="classifier">tuple</span></dt><dd><p>Returned when include_distances=True.</p>
+<dt><strong>(neighbors, distances)</strong><span class="classifier">tuple</span></dt><dd><p>Returned when include_distances=True.</p>
 </dd>
-<dt><strong>(indices, labels)</strong><span class="classifier">tuple</span></dt><dd><p>Returned when return_labels=True.</p>
+<dt><strong>(neighbors, labels)</strong><span class="classifier">tuple</span></dt><dd><p>Returned when return_labels=True.</p>
 </dd>
-<dt><strong>(indices, distances, labels)</strong><span class="classifier">tuple</span></dt><dd><p>Returned when include_distances=True and return_labels=True.</p>
+<dt><strong>(neighbors, distances, labels)</strong><span class="classifier">tuple</span></dt><dd><p>Returned when include_distances=True and return_labels=True.</p>
 </dd>
 </dl>
 </dd>
@@ -2323,14 +2400,33 @@ missing keys / None values in dict rows). If None, missing entries raise.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.get_nns_by_vector" title="scikitplot.cexternals._annoy.Annoy.get_nns_by_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_nns_by_vector</span></code></a>, <a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.get_nns_by_item" title="scikitplot.cexternals._annoy.Annoy.get_nns_by_item"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_nns_by_item</span></code></a></dt><dd><p>Low-level query methods.</p>
+<dt><a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.get_nns_by_item" title="scikitplot.cexternals._annoy.Annoy.get_nns_by_item"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_nns_by_item</span></code></a></dt><dd><p>Neighbor search by item id.</p>
+</dd>
+<dt><a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.get_nns_by_vector" title="scikitplot.cexternals._annoy.Annoy.get_nns_by_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_nns_by_vector</span></code></a></dt><dd><p>Neighbor search by query vector.</p>
 </dd>
 <dt><a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.fit" title="scikitplot.cexternals._annoy.Annoy.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>, <a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.fit_transform" title="scikitplot.cexternals._annoy.Annoy.fit_transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit_transform</span></code></a></dt><dd><p>Estimator-style APIs.</p>
 </dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>transform() requires a built index; call fit() or build() first.</p>
+<ul class="simple">
+<li><p>Excluding self is performed by matching neighbor ids to the query id (not by checking distance values).</p></li>
+<li><p>For input_type=’vector’, exclude_self=True is an error; use exclude_items for explicit, deterministic filtering.</p></li>
+<li><p>If exclusions prevent returning exactly <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> results, this method raises ValueError.</p></li>
+</ul>
+<p class="rubric">Examples</p>
+<p>Item queries (exclude the query id itself):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span><span class="o">.</span><span class="n">transform</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="n">input_type</span><span class="o">=</span><span class="s1">&#39;item&#39;</span><span class="p">,</span> <span class="n">output_type</span><span class="o">=</span><span class="s1">&#39;item&#39;</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">exclude_self</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Vector queries (exclude explicit ids):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_query</span><span class="p">,</span> <span class="n">input_type</span><span class="o">=</span><span class="s1">&#39;vector&#39;</span><span class="p">,</span> <span class="n">output_type</span><span class="o">=</span><span class="s1">&#39;item&#39;</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">exclude_items</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Return neighbor vectors:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span><span class="o">.</span><span class="n">transform</span><span class="p">([</span><span class="mi">10</span><span class="p">],</span> <span class="n">input_type</span><span class="o">=</span><span class="s1">&#39;item&#39;</span><span class="p">,</span> <span class="n">output_type</span><span class="o">=</span><span class="s1">&#39;vector&#39;</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">exclude_self</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -2473,9 +2569,11 @@ that len(y) matches the current number of items (n_items).</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.build"><code class="docutils literal notranslate"><span class="pre">build</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.deserialize"><code class="docutils literal notranslate"><span class="pre">deserialize</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.f"><code class="docutils literal notranslate"><span class="pre">f</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.feature_names_in_"><code class="docutils literal notranslate"><span class="pre">feature_names_in_</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.fit"><code class="docutils literal notranslate"><span class="pre">fit</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.fit_transform"><code class="docutils literal notranslate"><span class="pre">fit_transform</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.get_distance"><code class="docutils literal notranslate"><span class="pre">get_distance</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.get_feature_names_out"><code class="docutils literal notranslate"><span class="pre">get_feature_names_out</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.get_item_vector"><code class="docutils literal notranslate"><span class="pre">get_item_vector</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.get_n_items"><code class="docutils literal notranslate"><span class="pre">get_n_items</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.get_n_trees"><code class="docutils literal notranslate"><span class="pre">get_n_trees</span></code></a></li>
@@ -2489,6 +2587,8 @@ that len(y) matches the current number of items (n_items).</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.n_features"><code class="docutils literal notranslate"><span class="pre">n_features</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.n_features_"><code class="docutils literal notranslate"><span class="pre">n_features_</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.n_features_in_"><code class="docutils literal notranslate"><span class="pre">n_features_in_</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.n_features_out_"><code class="docutils literal notranslate"><span class="pre">n_features_out_</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.n_neighbors"><code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.on_disk_build"><code class="docutils literal notranslate"><span class="pre">on_disk_build</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.on_disk_path"><code class="docutils literal notranslate"><span class="pre">on_disk_path</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.prefault"><code class="docutils literal notranslate"><span class="pre">prefault</span></code></a></li>
@@ -2551,7 +2651,7 @@ that len(y) matches the current number of items (n_items).</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260101.9437780 2026-01-01T06:22Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260106.d7922e6 2026-01-06T15:36Z.
       <br/>
     
   </p>
