@@ -255,7 +255,7 @@
 
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../project/index.html">
-    About Us/Project
+    About Us | Project
   </a>
 </li>
 
@@ -320,7 +320,7 @@
           
           
           
-          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Community" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Community"/></a>
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
         </li>
         <li class="nav-item">
           
@@ -472,7 +472,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../project/index.html">
-    About Us/Project
+    About Us | Project
   </a>
 </li>
 
@@ -525,7 +525,7 @@
           
           
           
-          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Community" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Community"/></a>
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
         </li>
         <li class="nav-item">
           
@@ -562,7 +562,10 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="annoy/index.html">ANNoy</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="annoy/index.html">ANNoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="annoy/annoy_index_inheritance_diagrams.html">Index Architecture</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="api/index.html">Metric Performance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -592,7 +595,10 @@
 <li class="toctree-l1"><a class="reference internal" href="preprocessing/index.html">Preprocessing</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="snsx/index.html">SeabornX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="snsx/index.html">Seaborn eXtended</a></li>
+
+
+
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="stats/index.html">Stats</a></li>
@@ -610,7 +616,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="cexperimental/index.html">C-Experimental (experimental)</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="cexternals/index.html">C-Externals (experimental)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="cexternals/_annoy/index.html">ANNoy (experimental)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cexternals/_annoy/index.html">spotify/ANNoy (experimental)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cexternals/_astropy/index.html">Astropy (experimental)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cexternals/_f2py/index.html">f2py (experimental)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cexternals/_numcpp/index.html">NumCpp</a></li>
@@ -706,22 +712,24 @@ The internal implementation may live in <code class="xref py py-mod docutils lit
 </div>
 <section id="quickstart">
 <h2>Quickstart<a class="headerlink" href="#quickstart" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
-
-<span class="c1"># Show primary icon</span>
-<span class="n">sp</span><span class="o">.</span><span class="n">_logo</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="c1"># Save a single icon</span>
-<span class="n">sp</span><span class="o">.</span><span class="n">_logo</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;scikit-plots.svg&quot;</span><span class="p">)</span>
-
-<span class="c1"># Save multiple variants using a template</span>
-<span class="n">sp</span><span class="o">.</span><span class="n">_logo</span><span class="o">.</span><span class="n">save</span><span class="p">(</span>
-    <span class="s2">&quot;assets/scikit-plots-</span><span class="si">{variant}</span><span class="s2">.svg&quot;</span><span class="p">,</span>
-    <span class="n">variants</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">_logo</span><span class="o">.</span><span class="n">list_variants</span><span class="p">()</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</section>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: ">>> ";
+}
+</style><span class="prompt1"><span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="c1"># Show primary icon</span></span>
+<span class="prompt1"><span class="n">sp</span><span class="o">.</span><span class="n">_logo</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="c1"># Save a single icon</span></span>
+<span class="prompt1"><span class="n">sp</span><span class="o">.</span><span class="n">_logo</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;scikit-plots.svg&quot;</span><span class="p">)</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="c1"># Save multiple variants using a template</span></span>
+<span class="prompt1"><span class="n">sp</span><span class="o">.</span><span class="n">_logo</span><span class="o">.</span><span class="n">save</span><span class="p">(</span></span>
+<span class="prompt1">    <span class="s2">&quot;assets/scikit-plots-</span><span class="si">{variant}</span><span class="s2">.svg&quot;</span><span class="p">,</span></span>
+<span class="prompt1">    <span class="n">variants</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">_logo</span><span class="o">.</span><span class="n">list_variants</span><span class="p">()</span></span>
+<span class="prompt1"><span class="p">)</span></span>
+</pre></div></div></section>
 <section id="variants">
 <h2>Variants<a class="headerlink" href="#variants" title="Link to this heading">#</a></h2>
 <p>Scikit-plots provides several icon variants tuned for different contexts:</p>
@@ -846,10 +854,12 @@ python<span class="w"> </span>-m<span class="w"> </span>scikitplot._logo<span cl
 compare <strong>normalized</strong> SVG output rather than byte-for-byte equality.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.savefig.html#matplotlib.figure.Figure.savefig" title="(in Matplotlib v3.10.7)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">matplotlib.figure.Figure.savefig</span></code></a>
-<code class="xref py py-func docutils literal notranslate"><span class="pre">scikitplot._logo.create</span></code>
-<code class="xref py py-func docutils literal notranslate"><span class="pre">scikitplot._logo.save</span></code>
-<code class="xref py py-func docutils literal notranslate"><span class="pre">scikitplot._logo.list_variants</span></code></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.savefig.html#matplotlib.figure.Figure.savefig" title="(in Matplotlib v3.10.8)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">matplotlib.figure.Figure.savefig</span></code></a></p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">scikitplot._logo.create</span></code></p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">scikitplot._logo.save</span></code></p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">scikitplot._logo.list_variants</span></code></p></li>
+</ul>
 </div>
 </section>
 </section>
@@ -951,7 +961,7 @@ compare <strong>normalized</strong> SVG output rather than byte-for-byte equalit
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post8+git.20251208.403cdf5 2025-12-08T16:09Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.4.0.post9+git.20260106.726934a 2026-01-06T16:48Z.
       <br/>
     
   </p>

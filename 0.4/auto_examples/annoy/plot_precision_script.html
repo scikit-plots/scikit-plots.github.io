@@ -173,7 +173,7 @@
 </li>
 <li class="">
 <a class="nav-link dropdown-item nav-internal" href="../../project/index.html">
-    About Us/Project
+    About Us | Project
   </a>
 </li>
 </ul>
@@ -207,7 +207,7 @@
 </div></div>
 <div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links">
 <li class="nav-item">
-<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://scikit-plots.github.io/dev/project/community.html" rel="noopener" target="_blank" title="Community"><img alt="Community" class="icon-link-image" src="../../_static/logos/scikit-plots-logo.svg"/></a>
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://scikit-plots.github.io/dev/project/community.html" rel="noopener" target="_blank" title="Social Media Platforms"><img alt="Social Media Platforms" class="icon-link-image" src="../../_static/logos/scikit-plots-logo.svg"/></a>
 </li>
 <li class="nav-item">
 <a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><img alt="PyPI" class="icon-link-image" src="../../_static/logos/python-logo.png"/></a>
@@ -297,7 +297,7 @@
 </li>
 <li class="nav-item">
 <a class="nav-link nav-internal" href="../../project/index.html">
-    About Us/Project
+    About Us | Project
   </a>
 </li>
 </ul>
@@ -322,7 +322,7 @@
 </div></div>
 <div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links">
 <li class="nav-item">
-<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://scikit-plots.github.io/dev/project/community.html" rel="noopener" target="_blank" title="Community"><img alt="Community" class="icon-link-image" src="../../_static/logos/scikit-plots-logo.svg"/></a>
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://scikit-plots.github.io/dev/project/community.html" rel="noopener" target="_blank" title="Social Media Platforms"><img alt="Social Media Platforms" class="icon-link-image" src="../../_static/logos/scikit-plots-logo.svg"/></a>
 </li>
 <li class="nav-item">
 <a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><img alt="PyPI" class="icon-link-image" src="../../_static/logos/python-logo.png"/></a>
@@ -348,6 +348,7 @@
 <li class="toctree-l2"><a class="reference internal" href="plot_mmap_script.html">Mmap annoy.AnnoyIndex with examples</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Precision annoy.AnnoyIndex with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_simple_script.html">Simple annoy.AnnoyIndex with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s_compile_cpp.html">Compile and run the C++ Annoy with examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../array_api/index.html">Array API support</a></li>
@@ -387,6 +388,10 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../modelplotpy/index.html">modelplotpy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../modelplotpy/plot_modelplotpy_script.html">Introduction to modelplotpy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nc/index.html">nc (NumCpp)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../nc/plot_nc_test.html">nc with examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../preprocessing/index.html">Preprocessing</a></li>
@@ -476,98 +481,253 @@
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="mi">100_000</span><span class="p">,</span> <span class="mi">100</span>  <span class="c1"># 100~0.25GB 256~0.6GB</span>
 
 
-<span class="n">t</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">AnnoyIndex</span></a><span class="p">(</span>
+<span class="n">idx</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">AnnoyIndex</span></a><span class="p">(</span>
     <span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">,</span>
     <span class="n">metric</span><span class="o">=</span><span class="s1">'angular'</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">t</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">idx</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">trange</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="p">(</span><span class="n">n</span><span class="o">//</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="mf">1.0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">n</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="c1"># v = []</span>
     <span class="c1"># for z in range(f):</span>
     <span class="c1">#     v.append(random.gauss(0, 1))</span>
     <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><a class="sphx-glr-backref-module-random sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/random.html#random.gauss" title="random.gauss"><span class="n">random</span><span class="o">.</span><span class="n">gauss</span></a><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">f</span><span class="p">)]</span>
-    <span class="n">t</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    <span class="n">idx</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
 
-<span class="n">t</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">f</span><span class="p">)</span>
-<span class="n">t</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'test.annoy'</span><span class="p">)</span>
+<span class="n">idx</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">idx</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'test.annoy'</span><span class="p">)</span>
+<span class="n">idx</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/100000 [00:00&lt;?, ?it/s]0 / 100000 = 0.0
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/repo/galleries/examples/annoy/plot_precision_script.py:37: UserWarning:
 
-  2%|▏         | 1655/100000 [00:00&lt;00:05, 16548.48it/s]
-  3%|▎         | 3398/100000 [00:00&lt;00:05, 17065.69it/s]
-  5%|▌         | 5157/100000 [00:00&lt;00:05, 17304.17it/s]
-  7%|▋         | 6916/100000 [00:00&lt;00:05, 17413.36it/s]
-  9%|▊         | 8658/100000 [00:00&lt;00:05, 17273.16it/s]10000 / 100000 = 0.1
+seed=0 resets to Annoy's default seed
 
- 10%|█         | 10407/100000 [00:00&lt;00:05, 17343.80it/s]
- 12%|█▏        | 12146/100000 [00:00&lt;00:05, 17358.32it/s]
- 14%|█▍        | 13906/100000 [00:00&lt;00:04, 17433.68it/s]
- 16%|█▌        | 15668/100000 [00:00&lt;00:04, 17491.25it/s]
- 17%|█▋        | 17418/100000 [00:01&lt;00:04, 17450.21it/s]
- 19%|█▉        | 19164/100000 [00:01&lt;00:04, 17360.80it/s]20000 / 100000 = 0.2
 
- 21%|██        | 20901/100000 [00:01&lt;00:04, 16993.81it/s]
- 23%|██▎       | 22602/100000 [00:01&lt;00:04, 16927.74it/s]
- 24%|██▍       | 24298/100000 [00:01&lt;00:04, 16936.77it/s]
- 26%|██▌       | 25993/100000 [00:01&lt;00:04, 16732.66it/s]
- 28%|██▊       | 27668/100000 [00:01&lt;00:04, 16546.62it/s]
- 29%|██▉       | 29347/100000 [00:01&lt;00:04, 16618.09it/s]30000 / 100000 = 0.3
+  0%|          | 0/100000 [00:00&lt;?, ?it/s]0 / 100000 = 0.0
 
- 31%|███       | 31010/100000 [00:01&lt;00:04, 16551.85it/s]
- 33%|███▎      | 32754/100000 [00:01&lt;00:03, 16813.80it/s]
- 34%|███▍      | 34437/100000 [00:02&lt;00:03, 16620.09it/s]
- 36%|███▌      | 36130/100000 [00:02&lt;00:03, 16711.33it/s]
- 38%|███▊      | 37876/100000 [00:02&lt;00:03, 16933.12it/s]
- 40%|███▉      | 39622/100000 [00:02&lt;00:03, 17088.20it/s]40000 / 100000 = 0.4
+  1%|          | 503/100000 [00:00&lt;00:19, 5027.12it/s]
+  1%|          | 1149/100000 [00:00&lt;00:16, 5869.57it/s]
+  2%|▏         | 1736/100000 [00:00&lt;00:17, 5641.63it/s]
+  2%|▏         | 2445/100000 [00:00&lt;00:15, 6198.49it/s]
+  3%|▎         | 3067/100000 [00:00&lt;00:18, 5321.97it/s]
+  4%|▎         | 3618/100000 [00:00&lt;00:20, 4663.33it/s]
+  4%|▍         | 4106/100000 [00:00&lt;00:20, 4653.67it/s]
+  5%|▍         | 4715/100000 [00:00&lt;00:18, 5051.20it/s]
+  5%|▌         | 5236/100000 [00:01&lt;00:20, 4534.43it/s]
+  6%|▌         | 5708/100000 [00:01&lt;00:20, 4504.18it/s]
+  6%|▌         | 6171/100000 [00:01&lt;00:22, 4183.01it/s]
+  7%|▋         | 6657/100000 [00:01&lt;00:21, 4360.45it/s]
+  7%|▋         | 7479/100000 [00:01&lt;00:17, 5413.78it/s]
+  8%|▊         | 8039/100000 [00:01&lt;00:17, 5350.19it/s]
+  9%|▊         | 8587/100000 [00:01&lt;00:19, 4697.45it/s]
+  9%|▉         | 9079/100000 [00:01&lt;00:19, 4670.65it/s]
+ 10%|▉         | 9561/100000 [00:02&lt;00:21, 4214.71it/s]
+ 10%|▉         | 9999/100000 [00:02&lt;00:21, 4139.86it/s]10000 / 100000 = 0.1
 
- 41%|████▏     | 41363/100000 [00:02&lt;00:03, 17182.08it/s]
- 43%|████▎     | 43101/100000 [00:02&lt;00:03, 17237.51it/s]
- 45%|████▍     | 44839/100000 [00:02&lt;00:03, 17278.80it/s]
- 47%|████▋     | 46568/100000 [00:02&lt;00:03, 17057.82it/s]
- 48%|████▊     | 48302/100000 [00:02&lt;00:03, 17140.55it/s]50000 / 100000 = 0.5
+ 10%|█         | 10473/100000 [00:02&lt;00:22, 3960.04it/s]
+ 11%|█         | 11086/100000 [00:02&lt;00:19, 4511.69it/s]
+ 12%|█▏        | 11553/100000 [00:02&lt;00:20, 4389.46it/s]
+ 12%|█▏        | 12003/100000 [00:02&lt;00:21, 4004.09it/s]
+ 12%|█▏        | 12416/100000 [00:02&lt;00:21, 3990.90it/s]
+ 13%|█▎        | 12824/100000 [00:02&lt;00:21, 3995.23it/s]
+ 13%|█▎        | 13230/100000 [00:02&lt;00:21, 3983.62it/s]
+ 14%|█▍        | 13947/100000 [00:03&lt;00:17, 4878.17it/s]
+ 15%|█▍        | 14738/100000 [00:03&lt;00:14, 5745.99it/s]
+ 15%|█▌        | 15323/100000 [00:03&lt;00:18, 4621.49it/s]
+ 16%|█▌        | 15944/100000 [00:03&lt;00:16, 5016.37it/s]
+ 16%|█▋        | 16483/100000 [00:03&lt;00:17, 4911.60it/s]
+ 17%|█▋        | 17000/100000 [00:03&lt;00:16, 4949.81it/s]
+ 18%|█▊        | 17514/100000 [00:03&lt;00:18, 4534.24it/s]
+ 18%|█▊        | 17986/100000 [00:03&lt;00:17, 4560.39it/s]
+ 19%|█▊        | 18549/100000 [00:03&lt;00:16, 4849.02it/s]
+ 19%|█▉        | 19047/100000 [00:04&lt;00:18, 4340.35it/s]
+ 19%|█▉        | 19498/100000 [00:04&lt;00:19, 4202.06it/s]
+ 20%|█▉        | 19930/100000 [00:04&lt;00:22, 3508.01it/s]20000 / 100000 = 0.2
 
- 50%|█████     | 50059/100000 [00:02&lt;00:02, 17267.80it/s]
- 52%|█████▏    | 51796/100000 [00:03&lt;00:02, 17297.66it/s]
- 54%|█████▎    | 53535/100000 [00:03&lt;00:02, 17324.94it/s]
- 55%|█████▌    | 55268/100000 [00:03&lt;00:02, 16683.53it/s]
- 57%|█████▋    | 57026/100000 [00:03&lt;00:02, 16944.61it/s]
- 59%|█████▊    | 58725/100000 [00:03&lt;00:02, 16859.67it/s]60000 / 100000 = 0.6
+ 20%|██        | 20305/100000 [00:04&lt;00:23, 3458.09it/s]
+ 21%|██        | 20667/100000 [00:04&lt;00:23, 3423.71it/s]
+ 21%|██        | 21021/100000 [00:04&lt;00:22, 3441.34it/s]
+ 21%|██▏       | 21388/100000 [00:04&lt;00:22, 3502.18it/s]
+ 22%|██▏       | 21891/100000 [00:04&lt;00:21, 3615.56it/s]
+ 23%|██▎       | 22769/100000 [00:05&lt;00:15, 4994.29it/s]
+ 23%|██▎       | 23354/100000 [00:05&lt;00:14, 5230.21it/s]
+ 24%|██▍       | 23893/100000 [00:05&lt;00:16, 4664.14it/s]
+ 25%|██▍       | 24502/100000 [00:05&lt;00:14, 5039.34it/s]
+ 25%|██▌       | 25026/100000 [00:05&lt;00:14, 5085.23it/s]
+ 26%|██▌       | 25565/100000 [00:05&lt;00:14, 5169.34it/s]
+ 26%|██▌       | 26093/100000 [00:05&lt;00:14, 5047.35it/s]
+ 27%|██▋       | 26606/100000 [00:05&lt;00:14, 5022.75it/s]
+ 27%|██▋       | 27114/100000 [00:05&lt;00:14, 4993.78it/s]
+ 28%|██▊       | 27618/100000 [00:06&lt;00:17, 4024.93it/s]
+ 28%|██▊       | 28053/100000 [00:06&lt;00:17, 4082.34it/s]
+ 28%|██▊       | 28485/100000 [00:06&lt;00:17, 4096.02it/s]
+ 29%|██▉       | 28911/100000 [00:06&lt;00:17, 4076.90it/s]
+ 29%|██▉       | 29368/100000 [00:06&lt;00:16, 4211.84it/s]
+ 30%|██▉       | 29841/100000 [00:06&lt;00:16, 4357.48it/s]30000 / 100000 = 0.3
 
- 60%|██████    | 60466/100000 [00:03&lt;00:02, 17019.80it/s]
- 62%|██████▏   | 62235/100000 [00:03&lt;00:02, 17216.44it/s]
- 64%|██████▍   | 63997/100000 [00:03&lt;00:02, 17333.79it/s]
- 66%|██████▌   | 65732/100000 [00:03&lt;00:01, 17338.23it/s]
- 67%|██████▋   | 67467/100000 [00:03&lt;00:02, 16164.14it/s]
- 69%|██████▉   | 69100/100000 [00:04&lt;00:01, 16064.19it/s]70000 / 100000 = 0.7
+ 30%|███       | 30285/100000 [00:06&lt;00:17, 3924.44it/s]
+ 31%|███       | 30690/100000 [00:06&lt;00:17, 3931.27it/s]
+ 31%|███       | 31092/100000 [00:06&lt;00:19, 3536.59it/s]
+ 31%|███▏      | 31458/100000 [00:07&lt;00:19, 3567.43it/s]
+ 32%|███▏      | 31893/100000 [00:07&lt;00:18, 3778.69it/s]
+ 32%|███▏      | 32280/100000 [00:07&lt;00:18, 3746.72it/s]
+ 33%|███▎      | 32661/100000 [00:07&lt;00:18, 3697.95it/s]
+ 33%|███▎      | 33035/100000 [00:07&lt;00:18, 3671.56it/s]
+ 34%|███▍      | 34028/100000 [00:07&lt;00:12, 5461.06it/s]
+ 35%|███▍      | 34585/100000 [00:07&lt;00:11, 5490.08it/s]
+ 35%|███▌      | 35142/100000 [00:07&lt;00:14, 4357.69it/s]
+ 36%|███▌      | 35622/100000 [00:08&lt;00:14, 4466.75it/s]
+ 36%|███▌      | 36100/100000 [00:08&lt;00:14, 4498.28it/s]
+ 37%|███▋      | 36613/100000 [00:08&lt;00:13, 4668.89it/s]
+ 37%|███▋      | 37098/100000 [00:08&lt;00:13, 4670.96it/s]
+ 38%|███▊      | 37578/100000 [00:08&lt;00:15, 4136.65it/s]
+ 38%|███▊      | 38011/100000 [00:08&lt;00:16, 3780.40it/s]
+ 38%|███▊      | 38406/100000 [00:08&lt;00:16, 3798.77it/s]
+ 39%|███▉      | 38853/100000 [00:08&lt;00:15, 3974.93it/s]
+ 39%|███▉      | 39468/100000 [00:08&lt;00:13, 4569.05it/s]40000 / 100000 = 0.4
 
- 71%|███████   | 70857/100000 [00:04&lt;00:01, 16495.32it/s]
- 73%|███████▎  | 72517/100000 [00:04&lt;00:01, 15959.40it/s]
- 74%|███████▍  | 74123/100000 [00:04&lt;00:01, 15612.09it/s]
- 76%|███████▌  | 75695/100000 [00:04&lt;00:01, 15641.02it/s]
- 77%|███████▋  | 77265/100000 [00:04&lt;00:01, 15178.40it/s]
- 79%|███████▉  | 78789/100000 [00:04&lt;00:01, 15138.24it/s]80000 / 100000 = 0.8
+ 41%|████      | 40830/100000 [00:09&lt;00:08, 7111.59it/s]
+ 43%|████▎     | 42519/100000 [00:09&lt;00:05, 9910.69it/s]
+ 44%|████▎     | 43542/100000 [00:09&lt;00:06, 8808.77it/s]
+ 44%|████▍     | 44468/100000 [00:09&lt;00:08, 6353.51it/s]
+ 45%|████▌     | 45226/100000 [00:09&lt;00:10, 5421.05it/s]
+ 46%|████▌     | 45869/100000 [00:09&lt;00:10, 5160.34it/s]
+ 46%|████▋     | 46453/100000 [00:10&lt;00:11, 4759.15it/s]
+ 47%|████▋     | 46975/100000 [00:10&lt;00:12, 4391.43it/s]
+ 47%|████▋     | 47445/100000 [00:10&lt;00:13, 4040.47it/s]
+ 48%|████▊     | 47869/100000 [00:10&lt;00:12, 4069.59it/s]
+ 49%|████▊     | 48646/100000 [00:10&lt;00:10, 4941.32it/s]
+ 49%|████▉     | 49175/100000 [00:10&lt;00:11, 4458.98it/s]
+ 50%|████▉     | 49650/100000 [00:10&lt;00:12, 4117.93it/s]50000 / 100000 = 0.5
 
- 80%|████████  | 80443/100000 [00:04&lt;00:01, 15543.42it/s]
- 82%|████████▏ | 82178/100000 [00:04&lt;00:01, 16069.59it/s]
- 84%|████████▍ | 83938/100000 [00:05&lt;00:00, 16519.81it/s]
- 86%|████████▌ | 85594/100000 [00:05&lt;00:00, 16384.68it/s]
- 87%|████████▋ | 87349/100000 [00:05&lt;00:00, 16727.26it/s]
- 89%|████████▉ | 89085/100000 [00:05&lt;00:00, 16913.53it/s]90000 / 100000 = 0.9
+ 50%|█████     | 50084/100000 [00:10&lt;00:12, 4080.24it/s]
+ 51%|█████     | 50507/100000 [00:11&lt;00:12, 4087.37it/s]
+ 51%|█████     | 50926/100000 [00:11&lt;00:13, 3706.27it/s]
+ 51%|█████▏    | 51308/100000 [00:11&lt;00:13, 3686.60it/s]
+ 52%|█████▏    | 51849/100000 [00:11&lt;00:11, 4138.23it/s]
+ 52%|█████▏    | 52288/100000 [00:11&lt;00:11, 4206.26it/s]
+ 53%|█████▎    | 52721/100000 [00:11&lt;00:11, 4240.65it/s]
+ 53%|█████▎    | 53152/100000 [00:11&lt;00:12, 3757.05it/s]
+ 54%|█████▎    | 53686/100000 [00:11&lt;00:11, 4175.90it/s]
+ 54%|█████▍    | 54119/100000 [00:11&lt;00:10, 4206.18it/s]
+ 55%|█████▍    | 54551/100000 [00:12&lt;00:11, 4096.38it/s]
+ 55%|█████▍    | 54969/100000 [00:12&lt;00:12, 3693.25it/s]
+ 55%|█████▌    | 55382/100000 [00:12&lt;00:11, 3807.59it/s]
+ 56%|█████▌    | 55784/100000 [00:12&lt;00:11, 3865.01it/s]
+ 56%|█████▌    | 56178/100000 [00:12&lt;00:12, 3496.48it/s]
+ 57%|█████▋    | 56569/100000 [00:12&lt;00:12, 3605.36it/s]
+ 57%|█████▋    | 56939/100000 [00:12&lt;00:12, 3560.42it/s]
+ 57%|█████▋    | 57343/100000 [00:12&lt;00:11, 3693.63it/s]
+ 58%|█████▊    | 57744/100000 [00:12&lt;00:11, 3782.87it/s]
+ 58%|█████▊    | 58347/100000 [00:13&lt;00:09, 4431.03it/s]
+ 59%|█████▉    | 58932/100000 [00:13&lt;00:08, 4845.04it/s]
+ 59%|█████▉    | 59422/100000 [00:13&lt;00:09, 4280.54it/s]
+ 60%|█████▉    | 59866/100000 [00:13&lt;00:09, 4257.97it/s]60000 / 100000 = 0.6
 
- 91%|█████████ | 90847/100000 [00:05&lt;00:00, 17123.09it/s]
- 93%|█████████▎| 92606/100000 [00:05&lt;00:00, 17261.34it/s]
- 94%|█████████▍| 94369/100000 [00:05&lt;00:00, 17370.27it/s]
- 96%|█████████▌| 96124/100000 [00:05&lt;00:00, 17421.30it/s]
- 98%|█████████▊| 97867/100000 [00:05&lt;00:00, 17300.86it/s]
-100%|█████████▉| 99598/100000 [00:05&lt;00:00, 16710.91it/s]
-100%|██████████| 100000/100000 [00:05&lt;00:00, 16812.66it/s]
+ 60%|██████    | 60303/100000 [00:13&lt;00:09, 4209.88it/s]
+ 61%|██████    | 60871/100000 [00:13&lt;00:09, 4265.99it/s]
+ 61%|██████▏   | 61303/100000 [00:13&lt;00:09, 4255.74it/s]
+ 62%|██████▏   | 61732/100000 [00:13&lt;00:09, 4203.73it/s]
+ 62%|██████▏   | 62155/100000 [00:13&lt;00:09, 4194.10it/s]
+ 63%|██████▎   | 62576/100000 [00:14&lt;00:08, 4190.77it/s]
+ 63%|██████▎   | 62996/100000 [00:14&lt;00:09, 4095.48it/s]
+ 63%|██████▎   | 63407/100000 [00:14&lt;00:09, 3697.93it/s]
+ 64%|██████▍   | 63806/100000 [00:14&lt;00:09, 3776.16it/s]
+ 64%|██████▍   | 64190/100000 [00:14&lt;00:09, 3731.75it/s]
+ 65%|██████▍   | 64568/100000 [00:14&lt;00:09, 3715.75it/s]
+ 65%|██████▍   | 64943/100000 [00:14&lt;00:10, 3341.19it/s]
+ 65%|██████▌   | 65411/100000 [00:14&lt;00:09, 3698.96it/s]
+ 66%|██████▌   | 65873/100000 [00:14&lt;00:08, 3952.58it/s]
+ 66%|██████▋   | 66278/100000 [00:15&lt;00:08, 3959.34it/s]
+ 67%|██████▋   | 66681/100000 [00:15&lt;00:08, 3967.76it/s]
+ 67%|██████▋   | 67158/100000 [00:15&lt;00:07, 4199.78it/s]
+ 68%|██████▊   | 67647/100000 [00:15&lt;00:07, 4401.30it/s]
+ 68%|██████▊   | 68091/100000 [00:15&lt;00:07, 4356.84it/s]
+ 69%|██████▊   | 68630/100000 [00:15&lt;00:06, 4660.02it/s]
+ 69%|██████▉   | 69199/100000 [00:15&lt;00:06, 4963.64it/s]70000 / 100000 = 0.7
 
-True
+ 70%|███████   | 70317/100000 [00:15&lt;00:04, 6808.32it/s]
+ 71%|███████   | 71002/100000 [00:15&lt;00:04, 6616.43it/s]
+ 72%|███████▏  | 71669/100000 [00:15&lt;00:04, 6067.57it/s]
+ 72%|███████▏  | 72329/100000 [00:16&lt;00:04, 6214.50it/s]
+ 73%|███████▎  | 73036/100000 [00:16&lt;00:04, 6455.21it/s]
+ 74%|███████▎  | 73694/100000 [00:16&lt;00:04, 6490.97it/s]
+ 74%|███████▍  | 74385/100000 [00:16&lt;00:03, 6612.96it/s]
+ 75%|███████▌  | 75144/100000 [00:16&lt;00:03, 6899.78it/s]
+ 76%|███████▌  | 76097/100000 [00:16&lt;00:03, 7483.65it/s]
+ 78%|███████▊  | 77811/100000 [00:16&lt;00:02, 10299.13it/s]
+ 79%|███████▉  | 78876/100000 [00:16&lt;00:02, 10401.46it/s]
+ 80%|███████▉  | 79922/100000 [00:16&lt;00:02, 9224.59it/s] 80000 / 100000 = 0.8
+
+ 81%|████████  | 80873/100000 [00:17&lt;00:02, 9219.64it/s]
+ 82%|████████▏ | 81815/100000 [00:17&lt;00:02, 8087.70it/s]
+ 83%|████████▎ | 82660/100000 [00:17&lt;00:02, 7972.63it/s]
+ 83%|████████▎ | 83481/100000 [00:17&lt;00:02, 7331.44it/s]
+ 84%|████████▍ | 84237/100000 [00:17&lt;00:02, 6624.72it/s]
+ 85%|████████▍ | 84922/100000 [00:17&lt;00:02, 6594.71it/s]
+ 86%|████████▌ | 85597/100000 [00:17&lt;00:02, 6526.32it/s]
+ 86%|████████▋ | 86361/100000 [00:17&lt;00:01, 6822.54it/s]
+ 87%|████████▋ | 87054/100000 [00:17&lt;00:02, 6230.19it/s]
+ 88%|████████▊ | 87692/100000 [00:18&lt;00:01, 6218.65it/s]
+ 88%|████████▊ | 88324/100000 [00:18&lt;00:01, 6112.17it/s]
+ 89%|████████▉ | 88942/100000 [00:18&lt;00:02, 5317.80it/s]
+ 89%|████████▉ | 89494/100000 [00:18&lt;00:02, 4882.48it/s]
+ 90%|█████████ | 90000/100000 [00:18&lt;00:02, 4871.48it/s]90000 / 100000 = 0.9
+
+ 91%|█████████ | 90594/100000 [00:18&lt;00:01, 5148.85it/s]
+ 91%|█████████ | 91125/100000 [00:18&lt;00:01, 4671.47it/s]
+ 92%|█████████▏| 91843/100000 [00:18&lt;00:01, 5312.08it/s]
+ 93%|█████████▎| 92752/100000 [00:19&lt;00:01, 6327.93it/s]
+ 93%|█████████▎| 93411/100000 [00:19&lt;00:01, 6383.66it/s]
+ 94%|█████████▍| 94068/100000 [00:19&lt;00:00, 6305.94it/s]
+ 95%|█████████▍| 94712/100000 [00:19&lt;00:00, 6186.43it/s]
+ 95%|█████████▌| 95340/100000 [00:19&lt;00:00, 5011.57it/s]
+ 96%|█████████▌| 95883/100000 [00:19&lt;00:00, 5114.46it/s]
+ 96%|█████████▋| 96425/100000 [00:19&lt;00:00, 4987.85it/s]
+ 97%|█████████▋| 96945/100000 [00:19&lt;00:00, 4094.37it/s]
+ 97%|█████████▋| 97483/100000 [00:20&lt;00:00, 4394.88it/s]
+ 98%|█████████▊| 98062/100000 [00:20&lt;00:00, 4743.37it/s]
+ 99%|█████████▊| 98568/100000 [00:20&lt;00:00, 4810.63it/s]
+ 99%|█████████▉| 99083/100000 [00:20&lt;00:00, 4902.56it/s]
+100%|█████████▉| 99619/100000 [00:20&lt;00:00, 5030.14it/s]
+100%|██████████| 100000/100000 [00:20&lt;00:00, 4865.89it/s]
+
+{'f': 100, 'metric': 'angular', 'n_neighbors': 5, 'on_disk_path': 'test.annoy', 'prefault': False, 'seed': None, 'verbose': None, 'schema_version': 0, 'n_items': 100000, 'n_trees': 200, 'memory_usage_byte': 270573580, 'memory_usage_mib': 258.0390739440918}
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">precision</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot.cexternals._annoy._plotting</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">utils</span>
+
+    <span class="n">single</span> <span class="o">=</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.zeros.html#numpy.zeros" title="numpy.zeros"><span class="n">np</span><span class="o">.</span><span class="n">zeros</span></a><span class="p">(</span><span class="n">idx</span><span class="o">.</span><span class="n">get_n_items</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">double</span> <span class="o">=</span> <a class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.uniform.html#numpy.random.uniform" title="numpy.random.uniform"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span></a><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="n">get_n_items</span><span class="p">())</span><span class="o">.</span><span class="n">round</span><span class="p">()</span>
+
+    <span class="c1"># single vs double</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">"alpha"</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
+    <span class="n">y2</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">plot_annoy_index</span><span class="p">(</span>
+        <span class="n">idx</span><span class="p">,</span>
+        <span class="n">dims</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">idx</span><span class="o">.</span><span class="n">f</span><span class="p">)),</span>
+        <span class="n">plot_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">"draw_legend"</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">utils</span><span class="o">.</span><span class="n">plot_annoy_knn_edges</span><span class="p">(</span>
+        <span class="n">idx</span><span class="p">,</span>
+        <span class="n">y2</span><span class="p">,</span>
+        <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">line_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">"alpha"</span><span class="p">:</span> <span class="n">alpha</span><span class="p">},</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="p">)</span>
+
+<span class="c1"># idx.unbuild()</span>
+<span class="c1"># idx.build(10)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="plot precision script" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_precision_script_001.png" srcset="../../_images/sphx_glr_plot_precision_script_001.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">precision</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
   <span class="n">limits</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1_000</span><span class="p">,</span> <span class="mi">10_000</span><span class="p">]</span>
   <span class="n">k</span> <span class="o">=</span> <span class="mi">10</span>
   <span class="n">prec_n</span> <span class="o">=</span> <span class="mi">10</span>
@@ -598,31 +758,36 @@ True
 <span class="n">precision</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/10 [00:00&lt;?, ?it/s]
- 60%|██████    | 6/10 [00:00&lt;00:00, 54.79it/s]
-100%|██████████| 10/10 [00:00&lt;00:00, 60.33it/s]
-limit: 10        precision:  12.00% avg time: 0.000138s
-limit: 100       precision:  12.00% avg time: 0.000113s
-limit: 1000      precision:  23.00% avg time: 0.000332s
-limit: 10000     precision:  75.00% avg time: 0.001995s
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/repo/galleries/examples/annoy/plot_precision_script.py:111: UserWarning:
+
+seed=0 resets to Annoy's default seed
+
+
+  0%|          | 0/10 [00:00&lt;?, ?it/s]
+ 70%|███████   | 7/10 [00:00&lt;00:00, 67.03it/s]
+100%|██████████| 10/10 [00:00&lt;00:00, 68.22it/s]
+limit: 10        precision:  13.00% avg time: 0.000159s
+limit: 100       precision:  16.00% avg time: 0.000101s
+limit: 1000      precision:  25.00% avg time: 0.000302s
+limit: 10000     precision:  82.00% avg time: 0.001917s
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-impute.html"><span class="doc">model-workflow: impute</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-bar.html"><span class="doc">plot-type: bar</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 15.577 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (2 minutes 55.349 seconds)</p>
 
 <p class="rubric">Related examples</p>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Index class."><img alt="" src="../../_images/sphx_glr_plot_Annoy_python_api_thumb.png"/>
-<p><a class="reference internal" href="plot_Annoy_python_api.html"><span class="doc">annoy.Index python-api with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">annoy.Index python-api with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.impute.AnnoyKNNImputer class with a scikit-learn regressor (e.g., :py~sklearn.linear_model.LinearRegression) instance."><img alt="" src="../../_images/sphx_glr_plot_impute_script_thumb.png"/>
-<p><a class="reference internal" href="../impute/plot_impute_script.html"><span class="doc">annoy impute with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">annoy impute with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Annoy class."><img alt="" src="../../_images/sphx_glr_plot_Annoy_legacy_c_api_thumb.png"/>
-<p><a class="reference internal" href="plot_Annoy_legacy_c_api.html"><span class="doc">annoy.Annoy legacy c-api with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">annoy.Annoy legacy c-api with examples</div>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Index class."><img alt="" src="../../_images/sphx_glr_plot_annoy_to_NPY_CSV_thumb.png"/>
+<p><a class="reference internal" href="plot_annoy_to_NPY_CSV.html"><span class="doc">annoy.Index to NPY or CSV with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">annoy.Index to NPY or CSV with examples</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_mmap_script_thumb.png"/>
 <p><a class="reference internal" href="plot_mmap_script.html"><span class="doc">Mmap annoy.AnnoyIndex with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">Mmap annoy.AnnoyIndex with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_simple_script_thumb.png"/>
+<p><a class="reference internal" href="plot_simple_script.html"><span class="doc">Simple annoy.AnnoyIndex with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">Simple annoy.AnnoyIndex with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Annoy, :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_Annoy_legacy_c_api_thumb.png"/>
+<p><a class="reference internal" href="plot_Annoy_legacy_c_api.html"><span class="doc">annoy.Annoy legacy c-api with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">annoy.Annoy legacy c-api with examples</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </article>
@@ -673,7 +838,7 @@ limit: 10000     precision:  75.00% avg time: 0.001995s
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post8+git.20251208.403cdf5 2025-12-08T16:09Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.4.0.post9+git.20260106.726934a 2026-01-06T16:48Z.
       <br/>
 </p>
 </div>

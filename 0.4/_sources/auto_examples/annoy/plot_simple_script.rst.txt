@@ -28,23 +28,24 @@ An example showing the :py:class:`~scikitplot.annoy.AnnoyIndex` class.
 from annoy import AnnoyIndex
 from scikitplot.annoy import AnnoyIndex
 
-.. GENERATED FROM PYTHON SOURCE LINES 14-28
+.. GENERATED FROM PYTHON SOURCE LINES 14-29
 
 .. code-block:: Python
 
     from scikitplot.annoy import Index as AnnoyIndex
 
-    a = AnnoyIndex(
+    idx = AnnoyIndex(
         f=3,
         metric='angular',
     )
-    a.add_item(0, [1, 0, 0])
-    a.add_item(1, [0, 1, 0])
-    a.add_item(2, [0, 0, 1])
-    a.build(-1)
+    idx.add_item(0, [1, 0, 0])
+    idx.add_item(1, [0, 1, 0])
+    idx.add_item(2, [0, 0, 1])
+    idx.build(-1)
 
-    print(a.get_nns_by_item(0, 100))
-    print(a.get_nns_by_vector([1.0, 0.5, 0.5], 100))
+    print(idx.get_nns_by_item(0, 100))
+    print(idx.get_nns_by_vector([1.0, 0.5, 0.5], 100))
+    idx.info()
 
 
 
@@ -57,10 +58,58 @@ from scikitplot.annoy import AnnoyIndex
     [0, 1, 2]
     [0, 1, 2]
 
+    {'f': 3, 'metric': 'angular', 'n_neighbors': 5, 'on_disk_path': None, 'prefault': False, 'seed': None, 'verbose': None, 'schema_version': 0, 'n_items': 3, 'n_trees': 3, 'memory_usage_byte': 272, 'memory_usage_mib': 0.0002593994140625}
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 29-36
+.. GENERATED FROM PYTHON SOURCE LINES 30-61
+
+.. code-block:: Python
+
+
+    def plot(idx, y=None, **kwargs):
+        import numpy as np
+        import matplotlib.pyplot as plt
+        import scikitplot.cexternals._annoy._plotting as utils
+
+        single = np.zeros(idx.get_n_items(), dtype=int)
+        if y is None:
+            double = np.random.uniform(0, 1, idx.get_n_items()).round()
+
+        # single vs double
+        fig, ax = plt.subplots(ncols=2, figsize=(12, 5))
+        alpha = kwargs.pop("alpha", 0.8)
+        y2 = utils.plot_annoy_index(
+            idx,
+            dims = list(range(idx.f)),
+            plot_kwargs={"draw_legend": False},
+            ax=ax[0],
+        )[0]
+        utils.plot_annoy_knn_edges(
+            idx,
+            y2,
+            k=1,
+            line_kwargs={"alpha": alpha},
+            ax=ax[1],
+        )
+
+    # idx.unbuild()
+    # idx.build(10)
+    plot(idx)
+
+
+
+
+.. image-sg:: /auto_examples/annoy/images/sphx_glr_plot_simple_script_001.png
+   :alt: plot simple script
+   :srcset: /auto_examples/annoy/images/sphx_glr_plot_simple_script_001.png
+   :class: sphx-glr-single-img
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 62-69
 
 .. tags::
 
@@ -73,7 +122,7 @@ from scikitplot.annoy import AnnoyIndex
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.002 seconds)
+   **Total running time of the script:** (0 minutes 0.054 seconds)
 
 
 .. _sphx_glr_download_auto_examples_annoy_plot_simple_script.py:

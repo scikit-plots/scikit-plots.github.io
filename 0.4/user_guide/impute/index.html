@@ -255,7 +255,7 @@
 
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../project/index.html">
-    About Us/Project
+    About Us | Project
   </a>
 </li>
 
@@ -320,7 +320,7 @@
           
           
           
-          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Community" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Community"/></a>
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
         </li>
         <li class="nav-item">
           
@@ -472,7 +472,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../project/index.html">
-    About Us/Project
+    About Us | Project
   </a>
 </li>
 
@@ -525,7 +525,7 @@
           
           
           
-          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Community" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Community"/></a>
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
         </li>
         <li class="nav-item">
           
@@ -562,7 +562,10 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../annoy/index.html">ANNoy</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">ANNoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/annoy_index_inheritance_diagrams.html">Index Architecture</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../api/index.html">Metric Performance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -592,7 +595,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../preprocessing/index.html">Preprocessing</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../snsx/index.html">SeabornX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../snsx/index.html">Seaborn eXtended</a></li>
+
+
+
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../stats/index.html">Stats</a></li>
@@ -610,7 +616,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../cexperimental/index.html">C-Experimental (experimental)</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../cexternals/index.html">C-Externals (experimental)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cexternals/_annoy/index.html">ANNoy (experimental)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cexternals/_annoy/index.html">spotify/ANNoy (experimental)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cexternals/_astropy/index.html">Astropy (experimental)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cexternals/_f2py/index.html">f2py (experimental)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cexternals/_numcpp/index.html">NumCpp</a></li>
@@ -688,38 +694,46 @@
   <section id="impute">
 <span id="impute-index"></span><h1>Impute<a class="headerlink" href="#impute" title="Link to this heading">#</a></h1>
 <p>This module contains some functions related to <a class="reference internal" href="../../apis/scikitplot.impute.html#module-scikitplot.impute" title="scikitplot.impute"><code class="xref py py-mod docutils literal notranslate"><span class="pre">impute</span></code></a>.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://pypi.org/project/annoy">https://pypi.org/project/annoy</a></p></li>
-</ul>
-</div>
 <p><code class="docutils literal notranslate"><span class="pre">Annoy</span> <span class="pre">(Approximate</span> <span class="pre">Nearest</span> <span class="pre">Neighbors</span> <span class="pre">Oh</span> <span class="pre">Yeah)</span></code> is a C++ library with Python bindings
 to search for points in space that are close to a given query point.
 It also creates large read-only file-based data structures
 that are mmapped into memory so that many processes may share the same data.</p>
-<section id="annoyknnimputer">
-<span id="annoy-knn-imputer-index"></span><h2>AnnoyKNNImputer<a class="headerlink" href="#annoyknnimputer" title="Link to this heading">#</a></h2>
-<p>This module contains some functions related to <a class="reference internal" href="../../modules/generated/scikitplot.impute._annoy_knn.AnnoyKNNImputer.html#scikitplot.impute._annoy_knn.AnnoyKNNImputer" title="scikitplot.impute._annoy_knn.AnnoyKNNImputer"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnoyKNNImputer</span></code></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Voyager</span></code> is optimized for modern nearest-neighbor search.</p>
+<p><code class="docutils literal notranslate"><span class="pre">HNSW</span> <span class="pre">(Hierarchical</span> <span class="pre">Navigable</span> <span class="pre">Small</span> <span class="pre">World)</span></code> provides better accuracy and speed,
+outperforming Annoy in most use cases, especially when precision is important.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/spotify/annoy">github: ANNoy based on random projection (hyperplane) trees</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/annoy">pypi: ANNoy based on random projection (hyperplane) method</a></p></li>
+<li><p><a class="reference external" href="https://github.com/spotify/voyager">github: Voyager based on HNSW algorithm (hnswlib)</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/voyager">pypi: Voyager based on HNSW algorithm (hnswlib)</a></p></li>
+<li><p><a class="reference external" href="https://github.com/nmslib/hnswlib">github: HNSW implementation Header-only C++/python</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/hnswlib">pypi: HNSW implementation Header-only C++/python</a></p></li>
+</ul>
+</div>
+<section id="annimputer">
+<span id="ann-imputer-index"></span><h2>ANNImputer<a class="headerlink" href="#annimputer" title="Link to this heading">#</a></h2>
+<p>This module contains some functions related to <a class="reference internal" href="../../modules/generated/scikitplot.impute._ann.ANNImputer.html#scikitplot.impute._ann.ANNImputer" title="scikitplot.impute._ann.ANNImputer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ANNImputer</span></code></a>.</p>
 <section id="tl-dr">
 <h3>TL;DR<a class="headerlink" href="#tl-dr" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Purpose: Approximate nearest-neighbors-based imputation</p></li>
-<li><p>Import path: <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">scikitplot.impute</span> <span class="pre">import</span> <span class="pre">AnnoyKNNImputer</span></code></p></li>
+<li><p>Purpose: Approximate k-nearest-neighbors (KNN) imputation</p></li>
+<li><p>Import path: <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">scikitplot.impute</span> <span class="pre">import</span> <span class="pre">ANNImputer</span></code></p></li>
 <li><p>Functionality: Replaces missing values using neighbors retrieved via Annoy</p></li>
 <li><p>Parameters: n_neighbors, n_trees, metric, optional search_k, etc.</p></li>
 </ul>
 </section>
 <section id="overview">
 <h3>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">AnnoyKNNImputer</span></code> (from <a class="reference internal" href="../../apis/scikitplot.impute.html#module-scikitplot.impute" title="scikitplot.impute"><code class="xref py py-mod docutils literal notranslate"><span class="pre">impute</span></code></a>) is an approximate nearest-neighbors
+<p><a class="reference internal" href="../../modules/generated/scikitplot.impute._ann.ANNImputer.html#scikitplot.impute._ann.ANNImputer" title="scikitplot.impute._ann.ANNImputer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ANNImputer</span></code></a> (from <a class="reference internal" href="../../apis/scikitplot.impute.html#module-scikitplot.impute" title="scikitplot.impute"><code class="xref py py-mod docutils literal notranslate"><span class="pre">impute</span></code></a>) is an approximate nearest-neighbors
 imputer that uses Annoy to fill missing values in datasets. It replaces missing
 entries by querying the nearest neighbors of samples with missing values and
 computing imputations from those neighbors.</p>
 </section>
 <section id="motivation">
 <h3>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h3>
-<p>Unlike exact KNN imputation, using Annoy allows:
+<p>Unlike exact KNN imputation <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.KNNImputer.html#sklearn.impute.KNNImputer" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">KNNImputer</span></code></a>, using Annoy allows:
 - Faster neighbor retrieval in high-dimensional data
 - Memory-efficient indexing of large datasets
 - Sharing of prebuilt indexes across processes</p>
@@ -729,15 +743,15 @@ span.prompt1:before {
   content: ">>> ";
 }
 </style><span class="prompt1"><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span></span>
-<span class="prompt1"><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.experimental</span><span class="w"> </span><span class="kn">import</span> <span class="n">enable_annoyknn_imputer</span></span>
-<span class="prompt1"><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.impute</span><span class="w"> </span><span class="kn">import</span> <span class="n">AnnoyKNNImputer</span></span>
+<span class="prompt1"><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.experimental</span><span class="w"> </span><span class="kn">import</span> <span class="n">enable_ann_imputer</span></span>
+<span class="prompt1"><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.impute</span><span class="w"> </span><span class="kn">import</span> <span class="n">ANNImputer</span></span>
 <span class="prompt1"></span>
 <span class="prompt1"><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span></span>
 <span class="prompt1">              <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span></span>
 <span class="prompt1">              <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span></span>
 <span class="prompt1">              <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">]])</span></span>
 <span class="prompt1"></span>
-<span class="prompt1"><span class="n">imputer</span> <span class="o">=</span> <span class="n">AnnoyKNNImputer</span><span class="p">(</span><span class="n">n_trees</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span></span>
+<span class="prompt1"><span class="n">imputer</span> <span class="o">=</span> <span class="n">ANNImputer</span><span class="p">(</span><span class="n">n_trees</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span></span>
 <span class="prompt1"><span class="n">X_imputed</span> <span class="o">=</span> <span class="n">imputer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span></span>
 <span class="prompt1"></span>
 <span class="prompt1"><span class="nb">print</span><span class="p">(</span><span class="n">X_imputed</span><span class="p">)</span></span>
@@ -768,7 +782,7 @@ span.prompt1:before {
 <section id="comparison">
 <h3>Comparison<a class="headerlink" href="#comparison" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Similar in usage to <code class="docutils literal notranslate"><span class="pre">sklearn.impute.KNNImputer</span></code>, but faster on large, high-dimensional datasets</p></li>
+<li><p>Similar in usage to <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.KNNImputer.html#sklearn.impute.KNNImputer" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">KNNImputer</span></code></a>, but faster on large, high-dimensional datasets</p></li>
 <li><p>Provides a trade-off between accuracy and speed via Annoy parameters</p></li>
 </ul>
 </section>
@@ -826,7 +840,7 @@ span.prompt1:before {
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#annoyknnimputer">AnnoyKNNImputer</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#annimputer">ANNImputer</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr">TL;DR</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
@@ -872,7 +886,7 @@ span.prompt1:before {
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post8+git.20251208.403cdf5 2025-12-08T16:09Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.4.0.post9+git.20260106.726934a 2026-01-06T16:48Z.
       <br/>
     
   </p>

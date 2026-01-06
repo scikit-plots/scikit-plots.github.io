@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
+
+# Authors: Spotify AB
+# SPDX-License-Identifier: Apache-2.0
+
 """
+Compile and run the C++ Annoy with examples
+===========================================
+
 Compile and run the C++ Annoy precision example.
 
 Usage::
@@ -12,6 +19,8 @@ Designed so Sphinx can execute it directly using::
 
     >>> python plot_s_compile_cpp.py 10 1000 123
 """
+
+# %%
 
 import contextlib
 import subprocess
@@ -67,7 +76,8 @@ def compile_cpp():
         cxx,
         str(CPP_FILE),
         "-DANNOYLIB_MULTITHREADED_BUILD",
-        "-std=c++14",
+        # "-std=c++17",
+        "-std=c++14",  # non-copyable (because of std::atomic)
         "-pthread",
         "-o",
         str(BIN_FILE)
@@ -110,5 +120,8 @@ def main():
 
 
 if __name__ == "__main__":
-    with contextlib.suppress(Exception, NameError, TypeError, ValueError):
-        main()
+    # with contextlib.suppress(Exception, NameError, TypeError, ValueError):
+    #     main()
+    pass
+
+# %%

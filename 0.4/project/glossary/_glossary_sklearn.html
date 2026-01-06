@@ -83,7 +83,7 @@
     <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Frequently Asked Questions" href="../faq.html" />
+    <link rel="next" title="Cheatsheet" href="../../cheatsheet/index.html" />
     <link rel="prev" title="scikit-plots Glossary" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -255,7 +255,7 @@
 
 <li class=" current active">
   <a class="nav-link dropdown-item nav-internal" href="../index.html">
-    About Us/Project
+    About Us | Project
   </a>
 </li>
 
@@ -320,7 +320,7 @@
           
           
           
-          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Community" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Community"/></a>
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
         </li>
         <li class="nav-item">
           
@@ -472,7 +472,7 @@
 
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="../index.html">
-    About Us/Project
+    About Us | Project
   </a>
 </li>
 
@@ -525,7 +525,7 @@
           
           
           
-          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Community" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Community"/></a>
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
         </li>
         <li class="nav-item">
           
@@ -574,6 +574,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../funding.html">Funding</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Glossary</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">1. scikit-learn Glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../cheatsheet/index.html">Cheatsheet</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cheatsheet/cheatsheet_md.html">Md Cheatsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cheatsheet/cheatsheet_rst.html">RST Cheatsheet</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
@@ -657,7 +662,7 @@ Often represents a matrix.</p>
 </dd>
 <dt id="term-API">API<a class="headerlink" href="#term-API" title="Link to this term">#</a></dt><dd><p>Refers to both the <em>specific</em> interfaces for estimators implemented in
 Scikit-learn and the <em>generalized</em> conventions across types of
-estimators as described in this glossary and <a class="reference external" href="https://scikit-learn.org/stable/developers/develop.html#api-overview" title="(in scikit-learn v1.7)"><span class="xref std std-ref">overviewed in the
+estimators as described in this glossary and <a class="reference external" href="https://scikit-learn.org/stable/developers/develop.html#api-overview" title="(in scikit-learn v1.8)"><span class="xref std std-ref">overviewed in the
 contributor documentation</span></a>.</p>
 <p>The specific interfaces that constitute Scikit-learn’s public API are
 largely documented in <a class="reference internal" href="../../apis/scikitplot.api.html#api-ref"><span class="std std-ref">scikitplot.api</span></a>. However, we less formally consider
@@ -669,7 +674,7 @@ are not assured to be stable.</p>
 </dd>
 <dt id="term-array-like">array-like<a class="headerlink" href="#term-array-like" title="Link to this term">#</a></dt><dd><p>The most common data format for <em>input</em> to Scikit-learn estimators and
 functions, array-like is any type object for which
-<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.asarray.html#numpy.asarray" title="(in NumPy v2.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.asarray</span></code></a> will produce an array of appropriate shape
+<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.asarray.html#numpy.asarray" title="(in NumPy v2.4)"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.asarray</span></code></a> will produce an array of appropriate shape
 (usually 1 or 2-dimensional) of appropriate dtype (usually numeric).</p>
 <p>This includes:</p>
 <ul class="simple">
@@ -688,7 +693,7 @@ functions, array-like is any type object for which
 </ul>
 <p>Note that <em>output</em> from scikit-learn estimators and functions (e.g.
 predictions) should generally be arrays or sparse matrices, or lists
-thereof (as in multi-output <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tree.DecisionTreeClassifier</span></code></a>’s
+thereof (as in multi-output <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tree.DecisionTreeClassifier</span></code></a>’s
 <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code>). An estimator where <code class="docutils literal notranslate"><span class="pre">predict()</span></code> returns a list or
 a <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> is not valid.</p>
 </dd>
@@ -706,7 +711,7 @@ Common attributes are listed <a class="reference internal" href="#glossary-attri
 <p>A public attribute may have the same name as a constructor
 <a class="reference internal" href="#term-parameter"><span class="xref std std-term">parameter</span></a>, with a <code class="docutils literal notranslate"><span class="pre">_</span></code> appended.  This is used to store a
 validated or estimated version of the user’s input. For example,
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">decomposition.PCA</span></code></a> is constructed with an <code class="docutils literal notranslate"><span class="pre">n_components</span></code>
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">decomposition.PCA</span></code></a> is constructed with an <code class="docutils literal notranslate"><span class="pre">n_components</span></code>
 parameter. From this, together with other parameters and the data,
 PCA estimates the attribute <code class="docutils literal notranslate"><span class="pre">n_components_</span></code>.</p>
 <p>Further private attributes used in prediction/transformation/etc. may
@@ -747,9 +752,9 @@ attempt to note it clearly in the changelog.</p>
 will allow it to be unpickled to an equivalent model in the
 subsequent version.  (For estimators in the sklearn package, we
 issue a warning when this unpickling is attempted, even if it may
-happen to work.)  See <a class="reference external" href="https://scikit-learn.org/stable/model_persistence.html#persistence-limitations" title="(in scikit-learn v1.7)"><span>Security &amp; Maintainability Limitations</span></a>.</p>
+happen to work.)  See <a class="reference external" href="https://scikit-learn.org/stable/model_persistence.html#persistence-limitations" title="(in scikit-learn v1.8)"><span>Security &amp; Maintainability Limitations</span></a>.</p>
 </dd>
-<dt><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.estimator_checks.check_estimator.html#sklearn.utils.estimator_checks.check_estimator" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">utils.estimator_checks.check_estimator</span></code></a></dt><dd><p>We provide limited backwards compatibility assurances for the
+<dt><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.estimator_checks.check_estimator.html#sklearn.utils.estimator_checks.check_estimator" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">utils.estimator_checks.check_estimator</span></code></a></dt><dd><p>We provide limited backwards compatibility assurances for the
 estimator checks: we may add extra requirements on estimators
 tested with this function, usually when these were informally
 assumed but not formally tested.</p>
@@ -773,33 +778,33 @@ variables should be one-hot encoded. Notable exceptions include
 tree-based models such as random forests and gradient boosting
 models that often work better and faster with integer-coded
 categorical variables.
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html#sklearn.preprocessing.OrdinalEncoder" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">OrdinalEncoder</span></code></a> helps encoding
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html#sklearn.preprocessing.OrdinalEncoder" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">OrdinalEncoder</span></code></a> helps encoding
 string-valued categorical features as ordinal integers, and
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneHotEncoder</span></code></a> can be used to
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneHotEncoder</span></code></a> can be used to
 one-hot encode categorical features.
-See also <a class="reference external" href="https://scikit-learn.org/stable/modules/preprocessing.html#preprocessing-categorical-features" title="(in scikit-learn v1.7)"><span>Encoding categorical features</span></a> and the
+See also <a class="reference external" href="https://scikit-learn.org/stable/modules/preprocessing.html#preprocessing-categorical-features" title="(in scikit-learn v1.8)"><span>Encoding categorical features</span></a> and the
 <a class="reference external" href="https://github.com/scikit-learn-contrib/category_encoders">categorical-encoding</a>
 package for tools related to encoding categorical features.</p>
 </dd>
 <dt id="term-clone">clone<a class="headerlink" href="#term-clone" title="Link to this term">#</a></dt><dt id="term-cloned">cloned<a class="headerlink" href="#term-cloned" title="Link to this term">#</a></dt><dd><p>To copy an <a class="reference internal" href="#term-estimator-instance"><span class="xref std std-term">estimator instance</span></a> and create a new one with
 identical <a class="reference internal" href="#term-parameters"><span class="xref std std-term">parameters</span></a>, but without any fitted
-<a class="reference internal" href="#term-attributes"><span class="xref std std-term">attributes</span></a>, using <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.clone.html#sklearn.base.clone" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">clone</span></code></a>.</p>
+<a class="reference internal" href="#term-attributes"><span class="xref std std-term">attributes</span></a>, using <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.clone.html#sklearn.base.clone" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">clone</span></code></a>.</p>
 <p>When <code class="docutils literal notranslate"><span class="pre">fit</span></code> is called, a <a class="reference internal" href="#term-meta-estimator"><span class="xref std std-term">meta-estimator</span></a> usually clones
 a wrapped estimator instance before fitting the cloned instance.
 (Exceptions, for legacy reasons, include
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a> and
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.FeatureUnion.html#sklearn.pipeline.FeatureUnion" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureUnion</span></code></a>.)</p>
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a> and
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.FeatureUnion.html#sklearn.pipeline.FeatureUnion" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureUnion</span></code></a>.)</p>
 <p>If the estimator’s <code class="docutils literal notranslate"><span class="pre">random_state</span></code> parameter is an integer (or if the
 estimator doesn’t have a <code class="docutils literal notranslate"><span class="pre">random_state</span></code> parameter), an <em>exact clone</em>
 is returned: the clone and the original estimator will give the exact
 same results. Otherwise, <em>statistical clone</em> is returned: the clone
 might yield different results from the original estimator. More
-details can be found in <a class="reference external" href="https://scikit-learn.org/stable/common_pitfalls.html#randomness" title="(in scikit-learn v1.7)"><span>Controlling randomness</span></a>.</p>
+details can be found in <a class="reference external" href="https://scikit-learn.org/stable/common_pitfalls.html#randomness" title="(in scikit-learn v1.8)"><span>Controlling randomness</span></a>.</p>
 </dd>
 <dt id="term-common-tests">common tests<a class="headerlink" href="#term-common-tests" title="Link to this term">#</a></dt><dd><p>This refers to the tests run on almost every estimator class in
 Scikit-learn to check they comply with basic API conventions.  They are
 available for external use through
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.estimator_checks.check_estimator.html#sklearn.utils.estimator_checks.check_estimator" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">utils.estimator_checks.check_estimator</span></code></a>, with most of the
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.estimator_checks.check_estimator.html#sklearn.utils.estimator_checks.check_estimator" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">utils.estimator_checks.check_estimator</span></code></a>, with most of the
 implementation in <code class="docutils literal notranslate"><span class="pre">sklearn/utils/estimator_checks.py</span></code>.</p>
 <p>Note: Some exceptions to the common testing regime are currently
 hard-coded into the library, but we hope to replace this by marking
@@ -813,17 +818,17 @@ computed on data not seen during training. The computed data is then
 used in the second stage. The objective is to avoid having any
 overfitting in the first stage introduce bias into the input data
 distribution of the second stage.
-For examples of its use, see: <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.TargetEncoder.html#sklearn.preprocessing.TargetEncoder" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">TargetEncoder</span></code></a>,
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.StackingClassifier.html#sklearn.ensemble.StackingClassifier" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">StackingClassifier</span></code></a>,
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.StackingRegressor.html#sklearn.ensemble.StackingRegressor" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">StackingRegressor</span></code></a> and
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.calibration.CalibratedClassifierCV.html#sklearn.calibration.CalibratedClassifierCV" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">CalibratedClassifierCV</span></code></a>.</p>
+For examples of its use, see: <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.TargetEncoder.html#sklearn.preprocessing.TargetEncoder" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">TargetEncoder</span></code></a>,
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.StackingClassifier.html#sklearn.ensemble.StackingClassifier" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">StackingClassifier</span></code></a>,
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.StackingRegressor.html#sklearn.ensemble.StackingRegressor" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">StackingRegressor</span></code></a> and
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.calibration.CalibratedClassifierCV.html#sklearn.calibration.CalibratedClassifierCV" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">CalibratedClassifierCV</span></code></a>.</p>
 </dd>
 <dt id="term-cross-validation">cross-validation<a class="headerlink" href="#term-cross-validation" title="Link to this term">#</a></dt><dt id="term-1">cross validation<a class="headerlink" href="#term-1" title="Link to this term">#</a></dt><dd><p>A resampling method that iteratively partitions data into mutually
 exclusive ‘train’ and ‘test’ subsets so model performance can be
 evaluated on unseen data. This conserves data as avoids the need to hold
 out a ‘validation’ dataset and accounts for variability as multiple
 rounds of cross validation are generally performed.
-See <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation" title="(in scikit-learn v1.7)"><span class="xref std std-ref">User Guide</span></a> for more details.</p>
+See <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation" title="(in scikit-learn v1.8)"><span class="xref std std-ref">User Guide</span></a> for more details.</p>
 </dd>
 <dt id="term-deprecation">deprecation<a class="headerlink" href="#term-deprecation" title="Link to this term">#</a></dt><dd><p>We use deprecation to slowly violate our <a class="reference internal" href="#term-backwards-compatibility"><span class="xref std std-term">backwards
 compatibility</span></a> assurances, usually to:</p>
@@ -836,7 +841,7 @@ although there may be limitations to this.  For instance, we will raise
 a warning when someone sets a parameter that has been deprecated, but
 may not when they access that parameter’s attribute on the estimator
 instance.</p>
-<p>See the <a class="reference external" href="https://scikit-learn.org/stable/developers/contributing.html#contributing-deprecation" title="(in scikit-learn v1.7)"><span class="xref std std-ref">Contributors’ Guide</span></a>.</p>
+<p>See the <a class="reference external" href="https://scikit-learn.org/stable/developers/contributing.html#contributing-deprecation" title="(in scikit-learn v1.8)"><span class="xref std std-ref">Contributors’ Guide</span></a>.</p>
 </dd>
 <dt id="term-dimensionality">dimensionality<a class="headerlink" href="#term-dimensionality" title="Link to this term">#</a></dt><dd><p>May be used to refer to the number of <a class="reference internal" href="#term-features"><span class="xref std std-term">features</span></a> (i.e.
 <a class="reference internal" href="#term-n_features"><span class="xref std std-term">n_features</span></a>), or columns in a 2d feature matrix.
@@ -853,8 +858,8 @@ conventions</a>.</p>
 used to separate between parent and child in some contexts. The most
 common use is when setting parameters through a meta-estimator with
 <a class="reference internal" href="#term-set_params"><span class="xref std std-term">set_params</span></a> and hence in specifying a search grid in
-<a class="reference external" href="https://scikit-learn.org/stable/modules/grid_search.html#grid-search" title="(in scikit-learn v1.7)"><span class="xref std std-ref">parameter search</span></a>. See <a class="reference internal" href="#term-parameter"><span class="xref std std-term">parameter</span></a>.
-It is also used in <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline.fit" title="(in scikit-learn v1.7)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pipeline.Pipeline.fit</span></code></a> for passing
+<a class="reference external" href="https://scikit-learn.org/stable/modules/grid_search.html#grid-search" title="(in scikit-learn v1.8)"><span class="xref std std-ref">parameter search</span></a>. See <a class="reference internal" href="#term-parameter"><span class="xref std std-term">parameter</span></a>.
+It is also used in <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline.fit" title="(in scikit-learn v1.8)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pipeline.Pipeline.fit</span></code></a> for passing
 <a class="reference internal" href="#term-sample-properties"><span class="xref std std-term">sample properties</span></a> to the <code class="docutils literal notranslate"><span class="pre">fit</span></code> methods of estimators in
 the pipeline.</p>
 </dd>
@@ -948,12 +953,12 @@ classes in the API:</p>
 <ul class="simple">
 <li><p>as doctests in their docstrings (i.e. within the <code class="docutils literal notranslate"><span class="pre">sklearn/</span></code> library
 code itself).</p></li>
-<li><p>as examples in the <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/index.html#general-examples" title="(in scikit-learn v1.7)"><span class="xref std std-ref">example gallery</span></a>
+<li><p>as examples in the <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/index.html#general-examples" title="(in scikit-learn v1.8)"><span class="xref std std-ref">example gallery</span></a>
 rendered (using <a class="reference external" href="https://sphinx-gallery.readthedocs.io/">sphinx-gallery</a>) from scripts in the
 <code class="docutils literal notranslate"><span class="pre">examples/</span></code> directory, exemplifying key features or parameters
 of the estimator/function.  These should also be referenced from the
 User Guide.</p></li>
-<li><p>sometimes in the <a class="reference external" href="https://scikit-learn.org/stable/user_guide.html#user-guide" title="(in scikit-learn v1.7)"><span class="xref std std-ref">User Guide</span></a> (built from <code class="docutils literal notranslate"><span class="pre">doc/</span></code>)
+<li><p>sometimes in the <a class="reference external" href="https://scikit-learn.org/stable/user_guide.html#user-guide" title="(in scikit-learn v1.8)"><span class="xref std std-ref">User Guide</span></a> (built from <code class="docutils literal notranslate"><span class="pre">doc/</span></code>)
 alongside a technical description of the estimator.</p></li>
 </ul>
 </dd>
@@ -963,10 +968,10 @@ change in future versions without the usual <a class="reference internal" href="
 warning policy.</p>
 </dd>
 <dt id="term-evaluation-metric">evaluation metric<a class="headerlink" href="#term-evaluation-metric" title="Link to this term">#</a></dt><dt id="term-evaluation-metrics">evaluation metrics<a class="headerlink" href="#term-evaluation-metrics" title="Link to this term">#</a></dt><dd><p>Evaluation metrics give a measure of how well a model performs.  We may
-use this term specifically to refer to the functions in <a class="reference external" href="https://scikit-learn.org/stable/api/sklearn.metrics.html#module-sklearn.metrics" title="(in scikit-learn v1.7)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">metrics</span></code></a>
-(disregarding <a class="reference external" href="https://scikit-learn.org/stable/api/sklearn.metrics.html#module-sklearn.metrics.pairwise" title="(in scikit-learn v1.7)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pairwise</span></code></a>), as distinct from the
+use this term specifically to refer to the functions in <a class="reference external" href="https://scikit-learn.org/stable/api/sklearn.metrics.html#module-sklearn.metrics" title="(in scikit-learn v1.8)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">metrics</span></code></a>
+(disregarding <a class="reference external" href="https://scikit-learn.org/stable/api/sklearn.metrics.html#module-sklearn.metrics.pairwise" title="(in scikit-learn v1.8)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pairwise</span></code></a>), as distinct from the
 <a class="reference internal" href="#term-score"><span class="xref std std-term">score</span></a> method and the <a class="reference internal" href="#term-scoring"><span class="xref std std-term">scoring</span></a> API used in cross
-validation. See <a class="reference external" href="https://scikit-learn.org/stable/modules/model_evaluation.html#model-evaluation" title="(in scikit-learn v1.7)"><span>Metrics and scoring: quantifying the quality of predictions</span></a>.</p>
+validation. See <a class="reference external" href="https://scikit-learn.org/stable/modules/model_evaluation.html#model-evaluation" title="(in scikit-learn v1.8)"><span>Metrics and scoring: quantifying the quality of predictions</span></a>.</p>
 <p>These functions usually accept a ground truth (or the raw data
 where the metric evaluates clustering without a ground truth) and a
 prediction, be it the output of <a class="reference internal" href="#term-predict"><span class="xref std std-term">predict</span></a> (<code class="docutils literal notranslate"><span class="pre">y_pred</span></code>),
@@ -977,7 +982,7 @@ score indicates a better model, and <code class="docutils literal notranslate"><
 indicates a better model.  This diversity of interface motivates
 the scoring API.</p>
 <p>Note that some estimators can calculate metrics that are not included
-in <a class="reference external" href="https://scikit-learn.org/stable/api/sklearn.metrics.html#module-sklearn.metrics" title="(in scikit-learn v1.7)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">metrics</span></code></a> and are estimator-specific, notably model
+in <a class="reference external" href="https://scikit-learn.org/stable/api/sklearn.metrics.html#module-sklearn.metrics" title="(in scikit-learn v1.8)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">metrics</span></code></a> and are estimator-specific, notably model
 likelihoods.</p>
 </dd>
 <dt id="term-estimator-tags">estimator tags<a class="headerlink" href="#term-estimator-tags" title="Link to this term">#</a></dt><dd><p>Estimator tags describe certain capabilities of an estimator.  This would
@@ -990,12 +995,12 @@ some special attributes on estimator objects:</p>
 <dl class="simple glossary">
 <dt id="term-_estimator_type"><code class="docutils literal notranslate"><span class="pre">_estimator_type</span></code><a class="headerlink" href="#term-_estimator_type" title="Link to this term">#</a></dt><dd><p>This string-valued attribute identifies an estimator as being a
 classifier, regressor, etc. It is set by mixins such as
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.ClassifierMixin.html#sklearn.base.ClassifierMixin" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.ClassifierMixin</span></code></a>, but needs to be more explicitly
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.ClassifierMixin.html#sklearn.base.ClassifierMixin" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.ClassifierMixin</span></code></a>, but needs to be more explicitly
 adopted on a <a class="reference internal" href="#term-meta-estimator"><span class="xref std std-term">meta-estimator</span></a>.  Its value should usually be
-checked by way of a helper such as <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.is_classifier.html#sklearn.base.is_classifier" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">base.is_classifier</span></code></a>.</p>
+checked by way of a helper such as <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.is_classifier.html#sklearn.base.is_classifier" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">base.is_classifier</span></code></a>.</p>
 </dd>
 </dl>
-<p>For more detailed info, see <a class="reference external" href="https://scikit-learn.org/stable/developers/develop.html#estimator-tags" title="(in scikit-learn v1.7)"><span>Estimator Tags</span></a>.</p>
+<p>For more detailed info, see <a class="reference external" href="https://scikit-learn.org/stable/developers/develop.html#estimator-tags" title="(in scikit-learn v1.8)"><span>Estimator Tags</span></a>.</p>
 </dd>
 <dt id="term-feature">feature<a class="headerlink" href="#term-feature" title="Link to this term">#</a></dt><dt id="term-features">features<a class="headerlink" href="#term-features" title="Link to this term">#</a></dt><dt id="term-feature-vector">feature vector<a class="headerlink" href="#term-feature-vector" title="Link to this term">#</a></dt><dd><p>In the abstract, a feature is a function (in its mathematical sense)
 mapping a sampled object to a numeric or categorical quantity.
@@ -1019,9 +1024,9 @@ etc.) on an estimator.</p>
 <p>There is no conventional procedure for checking if an estimator
 is fitted.  However, an estimator that is not fitted:</p>
 <ul class="simple">
-<li><p>should raise <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">exceptions.NotFittedError</span></code></a> when a prediction
+<li><p>should raise <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">exceptions.NotFittedError</span></code></a> when a prediction
 method (<a class="reference internal" href="#term-predict"><span class="xref std std-term">predict</span></a>, <a class="reference internal" href="#term-transform"><span class="xref std std-term">transform</span></a>, etc.) is called.
-(<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.validation.check_is_fitted.html#sklearn.utils.validation.check_is_fitted" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">utils.validation.check_is_fitted</span></code></a> is used internally
+(<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.validation.check_is_fitted.html#sklearn.utils.validation.check_is_fitted" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">utils.validation.check_is_fitted</span></code></a> is used internally
 for this purpose.)</p></li>
 <li><p>should not have any <a class="reference internal" href="#term-attributes"><span class="xref std std-term">attributes</span></a> beginning with an alphabetic
 character and ending with an underscore. (Note that a descriptor for
@@ -1033,12 +1038,12 @@ return False)</p></li>
 <a class="reference internal" href="#term-estimator"><span class="xref std std-term">estimator</span></a> classes provide a more consistent interface.</p>
 <p>In particular, Scikit-learn may provide a function interface that fits
 a model to some data and returns the learnt model parameters, as in
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.enet_path.html#sklearn.linear_model.enet_path" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">linear_model.enet_path</span></code></a>.  For transductive models, this also
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.enet_path.html#sklearn.linear_model.enet_path" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">linear_model.enet_path</span></code></a>.  For transductive models, this also
 returns the embedding or cluster labels, as in
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.manifold.spectral_embedding.html#sklearn.manifold.spectral_embedding" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">manifold.spectral_embedding</span></code></a> or <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/dbscan-function.html#sklearn.cluster.dbscan" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">cluster.dbscan</span></code></a>.  Many
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.manifold.spectral_embedding.html#sklearn.manifold.spectral_embedding" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">manifold.spectral_embedding</span></code></a> or <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/dbscan-function.html#sklearn.cluster.dbscan" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">cluster.dbscan</span></code></a>.  Many
 preprocessing transformers also provide a function interface, akin to
 calling <a class="reference internal" href="#term-fit_transform"><span class="xref std std-term">fit_transform</span></a>, as in
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.maxabs_scale.html#sklearn.preprocessing.maxabs_scale" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">preprocessing.maxabs_scale</span></code></a>.  Users should be careful to avoid
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.maxabs_scale.html#sklearn.preprocessing.maxabs_scale" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">preprocessing.maxabs_scale</span></code></a>.  Users should be careful to avoid
 <a class="reference internal" href="#term-data-leakage"><span class="xref std std-term">data leakage</span></a> when making use of these
 <code class="docutils literal notranslate"><span class="pre">fit_transform</span></code>-equivalent functions.</p>
 <p>We do not have a strict policy about when to or when not to provide
@@ -1067,7 +1072,7 @@ and/or <a class="reference internal" href="#term-transform"><span class="xref st
 <dt id="term-joblib">joblib<a class="headerlink" href="#term-joblib" title="Link to this term">#</a></dt><dd><p>A Python library (<a class="reference external" href="https://joblib.readthedocs.io">https://joblib.readthedocs.io</a>) used in Scikit-learn to
 facilite simple parallelism and caching.  Joblib is oriented towards
 efficiently working with numpy arrays, such as through use of
-<a class="reference internal" href="#term-memory-mapping"><span class="xref std std-term">memory mapping</span></a>. See <a class="reference external" href="https://scikit-learn.org/stable/computing/parallelism.html#parallelism" title="(in scikit-learn v1.7)"><span>Parallelism</span></a> for more
+<a class="reference internal" href="#term-memory-mapping"><span class="xref std std-term">memory mapping</span></a>. See <a class="reference external" href="https://scikit-learn.org/stable/computing/parallelism.html#parallelism" title="(in scikit-learn v1.8)"><span>Parallelism</span></a> for more
 information.</p>
 </dd>
 <dt id="term-label-indicator-matrix">label indicator matrix<a class="headerlink" href="#term-label-indicator-matrix" title="Link to this term">#</a></dt><dt id="term-multilabel-indicator-matrix">multilabel indicator matrix<a class="headerlink" href="#term-multilabel-indicator-matrix" title="Link to this term">#</a></dt><dt id="term-multilabel-indicator-matrices">multilabel indicator matrices<a class="headerlink" href="#term-multilabel-indicator-matrices" title="Link to this term">#</a></dt><dd><p>The format used to represent multilabel data, where each row of a 2d
@@ -1080,18 +1085,18 @@ over-estimated since knowledge of the test data was inadvertently
 included in training a model.  This is a risk, for instance, when
 applying a <a class="reference internal" href="#term-transformer"><span class="xref std std-term">transformer</span></a> to the entirety of a dataset rather
 than each training portion in a cross validation split.</p>
-<p>We aim to provide interfaces (such as <a class="reference external" href="https://scikit-learn.org/stable/api/sklearn.pipeline.html#module-sklearn.pipeline" title="(in scikit-learn v1.7)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pipeline</span></code></a> and
-<a class="reference external" href="https://scikit-learn.org/stable/api/sklearn.model_selection.html#module-sklearn.model_selection" title="(in scikit-learn v1.7)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">model_selection</span></code></a>) that shield the user from data leakage.</p>
+<p>We aim to provide interfaces (such as <a class="reference external" href="https://scikit-learn.org/stable/api/sklearn.pipeline.html#module-sklearn.pipeline" title="(in scikit-learn v1.8)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pipeline</span></code></a> and
+<a class="reference external" href="https://scikit-learn.org/stable/api/sklearn.model_selection.html#module-sklearn.model_selection" title="(in scikit-learn v1.8)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">model_selection</span></code></a>) that shield the user from data leakage.</p>
 </dd>
 <dt id="term-memmapping">memmapping<a class="headerlink" href="#term-memmapping" title="Link to this term">#</a></dt><dt id="term-memory-map">memory map<a class="headerlink" href="#term-memory-map" title="Link to this term">#</a></dt><dt id="term-memory-mapping">memory mapping<a class="headerlink" href="#term-memory-mapping" title="Link to this term">#</a></dt><dd><p>A memory efficiency strategy that keeps data on disk rather than
 copying it into main memory.  Memory maps can be created for arrays
-that can be read, written, or both, using <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.memmap.html#numpy.memmap" title="(in NumPy v2.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.memmap</span></code></a>. When
+that can be read, written, or both, using <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.memmap.html#numpy.memmap" title="(in NumPy v2.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.memmap</span></code></a>. When
 using <a class="reference internal" href="#term-joblib"><span class="xref std std-term">joblib</span></a> to parallelize operations in Scikit-learn, it
 may automatically memmap large arrays to reduce memory duplication
 overhead in multiprocessing.</p>
 </dd>
 <dt id="term-missing-values">missing values<a class="headerlink" href="#term-missing-values" title="Link to this term">#</a></dt><dd><p>Most Scikit-learn estimators do not work with missing values. When they
-do (e.g. in <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html#sklearn.impute.SimpleImputer" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">impute.SimpleImputer</span></code></a>), NaN is the preferred
+do (e.g. in <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html#sklearn.impute.SimpleImputer" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">impute.SimpleImputer</span></code></a>), NaN is the preferred
 representation of missing values in float arrays.  If the array has
 integer dtype, NaN cannot be represented. For this reason, we support
 specifying another <code class="docutils literal notranslate"><span class="pre">missing_values</span></code> value when <a class="reference internal" href="#term-imputation"><span class="xref std std-term">imputation</span></a> or
@@ -1107,7 +1112,7 @@ values in the <a class="reference internal" href="#term-target"><span class="xre
 </dd>
 <dt id="term-n_targets"><code class="docutils literal notranslate"><span class="pre">n_targets</span></code><a class="headerlink" href="#term-n_targets" title="Link to this term">#</a></dt><dd><p>Synonym for <a class="reference internal" href="#term-n_outputs"><span class="xref std std-term">n_outputs</span></a>.</p>
 </dd>
-<dt id="term-narrative-docs">narrative docs<a class="headerlink" href="#term-narrative-docs" title="Link to this term">#</a></dt><dt id="term-narrative-documentation">narrative documentation<a class="headerlink" href="#term-narrative-documentation" title="Link to this term">#</a></dt><dd><p>An alias for <a class="reference external" href="https://scikit-learn.org/stable/user_guide.html#user-guide" title="(in scikit-learn v1.7)"><span class="xref std std-ref">User Guide</span></a>, i.e. documentation written
+<dt id="term-narrative-docs">narrative docs<a class="headerlink" href="#term-narrative-docs" title="Link to this term">#</a></dt><dt id="term-narrative-documentation">narrative documentation<a class="headerlink" href="#term-narrative-documentation" title="Link to this term">#</a></dt><dd><p>An alias for <a class="reference external" href="https://scikit-learn.org/stable/user_guide.html#user-guide" title="(in scikit-learn v1.8)"><span class="xref std std-ref">User Guide</span></a>, i.e. documentation written
 in <code class="docutils literal notranslate"><span class="pre">doc/modules/</span></code>. Unlike the <a class="reference internal" href="../../apis/scikitplot.api.html#api-ref"><span class="std std-ref">API reference</span></a> provided
 through docstrings, the User Guide aims to:</p>
 <ul class="simple">
@@ -1144,7 +1149,7 @@ See <a class="reference internal" href="#term-multiclass-multioutput"><span clas
 </dd>
 <dt id="term-parameter">parameter<a class="headerlink" href="#term-parameter" title="Link to this term">#</a></dt><dt id="term-parameters">parameters<a class="headerlink" href="#term-parameters" title="Link to this term">#</a></dt><dt id="term-param">param<a class="headerlink" href="#term-param" title="Link to this term">#</a></dt><dt id="term-params">params<a class="headerlink" href="#term-params" title="Link to this term">#</a></dt><dd><p>We mostly use <em>parameter</em> to refer to the aspects of an estimator that
 can be specified in its construction. For example, <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> and
-<code class="docutils literal notranslate"><span class="pre">random_state</span></code> are parameters of <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></a>.
+<code class="docutils literal notranslate"><span class="pre">random_state</span></code> are parameters of <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></a>.
 Parameters to an estimator’s constructor are stored unmodified as
 attributes on the estimator instance, and conventionally start with an
 alphabetic character and end with an alphanumeric character.  Each
@@ -1179,14 +1184,14 @@ called.</p>
 similarity or dissimilarity between two samples (with each ordinarily
 represented as a <a class="reference internal" href="#term-feature-vector"><span class="xref std std-term">feature vector</span></a>).  We particularly provide
 implementations of distance metrics (as well as improper metrics like
-Cosine Distance) through <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise_distances.html#sklearn.metrics.pairwise_distances" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">metrics.pairwise_distances</span></code></a>, and of
+Cosine Distance) through <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise_distances.html#sklearn.metrics.pairwise_distances" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">metrics.pairwise_distances</span></code></a>, and of
 kernel functions (a constrained class of similarity functions) in
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_kernels.html#sklearn.metrics.pairwise.pairwise_kernels" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">metrics.pairwise.pairwise_kernels</span></code></a>.  These can compute pairwise distance
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_kernels.html#sklearn.metrics.pairwise.pairwise_kernels" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">metrics.pairwise.pairwise_kernels</span></code></a>.  These can compute pairwise distance
 matrices that are symmetric and hence store data redundantly.</p>
 <p>See also <a class="reference internal" href="#term-precomputed"><span class="xref std std-term">precomputed</span></a> and <a class="reference internal" href="#term-metric"><span class="xref std std-term">metric</span></a>.</p>
 <p>Note that for most distance metrics, we rely on implementations from
 <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/spatial.distance.html#module-scipy.spatial.distance" title="(in SciPy v1.16.2)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy.spatial.distance</span></code></a>, but may reimplement for efficiency in
-our context. The <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.DistanceMetric.html#sklearn.metrics.DistanceMetric" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">metrics.DistanceMetric</span></code></a> interface is used to implement
+our context. The <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.DistanceMetric.html#sklearn.metrics.DistanceMetric" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">metrics.DistanceMetric</span></code></a> interface is used to implement
 distance metrics for integration with efficient neighbors search.</p>
 </dd>
 <dt id="term-pd">pd<a class="headerlink" href="#term-pd" title="Link to this term">#</a></dt><dd><p>A shorthand for <a class="reference external" href="https://pandas.pydata.org">Pandas</a> due to the
@@ -1236,8 +1241,8 @@ but not maintained by the core developer team.
 See <a class="reference external" href="https://scikit-learn-contrib.github.io">https://scikit-learn-contrib.github.io</a>.</p>
 </dd>
 <dt id="term-scikit-learn-enhancement-proposals">scikit-learn enhancement proposals<a class="headerlink" href="#term-scikit-learn-enhancement-proposals" title="Link to this term">#</a></dt><dt id="term-SLEP">SLEP<a class="headerlink" href="#term-SLEP" title="Link to this term">#</a></dt><dt id="term-SLEPs">SLEPs<a class="headerlink" href="#term-SLEPs" title="Link to this term">#</a></dt><dd><p>Changes to the API principles and changes to dependencies or supported
-versions happen via a <a class="reference external" href="https://scikit-learn.org/stable/governance.html#slep" title="(in scikit-learn v1.7)"><span class="xref std std-ref">SLEP</span></a> and follows the
-decision-making process outlined in <a class="reference external" href="https://scikit-learn.org/stable/governance.html#governance" title="(in scikit-learn v1.7)"><span>Scikit-learn governance and decision-making</span></a>.
+versions happen via a <a class="reference external" href="https://scikit-learn.org/stable/governance.html#slep" title="(in scikit-learn v1.8)"><span class="xref std std-ref">SLEP</span></a> and follows the
+decision-making process outlined in <a class="reference external" href="https://scikit-learn.org/stable/governance.html#governance" title="(in scikit-learn v1.8)"><span>Scikit-learn governance and decision-making</span></a>.
 For all votes, a proposal must have been made public and discussed before the
 vote. Such a proposal must be a consolidated document, in the form of a
 “Scikit-Learn Enhancement Proposal” (SLEP), rather than a long discussion on an
@@ -1276,7 +1281,7 @@ or absent value, such as the absence of an edge between two
 vertices of a graph, where an explicit value indicates an edge’s
 weight. This interpretation is adopted to represent connectivity
 in clustering, in representations of nearest neighborhoods
-(e.g. <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.kneighbors_graph.html#sklearn.neighbors.kneighbors_graph" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">neighbors.kneighbors_graph</span></code></a>), and for precomputed
+(e.g. <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.kneighbors_graph.html#sklearn.neighbors.kneighbors_graph" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">neighbors.kneighbors_graph</span></code></a>), and for precomputed
 distance representation where only distances in the neighborhood
 of each point are required.</p>
 </dd>
@@ -1310,9 +1315,9 @@ numbers. See <a class="reference internal" href="#glossary-target-types"><span c
 </dd>
 <dt id="term-transduction">transduction<a class="headerlink" href="#term-transduction" title="Link to this term">#</a></dt><dt id="term-transductive">transductive<a class="headerlink" href="#term-transductive" title="Link to this term">#</a></dt><dd><p>A transductive (contrasted with <a class="reference internal" href="#term-inductive"><span class="xref std std-term">inductive</span></a>) machine learning
 method is designed to model a specific dataset, but not to apply that
-model to unseen data.  Examples include <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html#sklearn.manifold.TSNE" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">manifold.TSNE</span></code></a>,
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.AgglomerativeClustering.html#sklearn.cluster.AgglomerativeClustering" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">cluster.AgglomerativeClustering</span></code></a> and
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.LocalOutlierFactor.html#sklearn.neighbors.LocalOutlierFactor" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">neighbors.LocalOutlierFactor</span></code></a>.</p>
+model to unseen data.  Examples include <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html#sklearn.manifold.TSNE" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">manifold.TSNE</span></code></a>,
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.AgglomerativeClustering.html#sklearn.cluster.AgglomerativeClustering" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">cluster.AgglomerativeClustering</span></code></a> and
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.LocalOutlierFactor.html#sklearn.neighbors.LocalOutlierFactor" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">neighbors.LocalOutlierFactor</span></code></a>.</p>
 </dd>
 <dt id="term-unlabeled">unlabeled<a class="headerlink" href="#term-unlabeled" title="Link to this term">#</a></dt><dt id="term-unlabeled-data">unlabeled data<a class="headerlink" href="#term-unlabeled-data" title="Link to this term">#</a></dt><dd><p>Samples with an unknown ground truth when fitting; equivalently,
 <a class="reference internal" href="#term-missing-values"><span class="xref std std-term">missing values</span></a> in the <a class="reference internal" href="#term-target"><span class="xref std std-term">target</span></a>.  See also
@@ -1336,10 +1341,10 @@ multioutput</span></a> targets.  Within scikit-learn, all classifiers support
 multi-class classification, defaulting to using a one-vs-rest
 strategy over the binary classification problem.</p>
 <p>Classifiers must store a <a class="reference internal" href="#term-classes_"><span class="xref std std-term">classes_</span></a> attribute after fitting,
-and usually inherit from <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.ClassifierMixin.html#sklearn.base.ClassifierMixin" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.ClassifierMixin</span></code></a>, which sets
+and usually inherit from <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.ClassifierMixin.html#sklearn.base.ClassifierMixin" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.ClassifierMixin</span></code></a>, which sets
 their <a class="reference internal" href="#term-_estimator_type"><span class="xref std std-term">_estimator_type</span></a> attribute.</p>
 <p>A classifier can be distinguished from other estimators with
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.is_classifier.html#sklearn.base.is_classifier" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">is_classifier</span></code></a>.</p>
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.is_classifier.html#sklearn.base.is_classifier" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">is_classifier</span></code></a>.</p>
 <p>A classifier must implement:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#term-fit"><span class="xref std std-term">fit</span></a></p></li>
@@ -1363,9 +1368,9 @@ so if it is <a class="reference internal" href="#term-transductive"><span class=
 <dt id="term-density-estimator">density estimator<a class="headerlink" href="#term-density-estimator" title="Link to this term">#</a></dt><dd><p>An <a class="reference internal" href="#term-unsupervised"><span class="xref std std-term">unsupervised</span></a> estimation of input probability density
 function. Commonly used techniques are:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/density.html#kernel-density" title="(in scikit-learn v1.7)"><span>Kernel Density Estimation</span></a> - uses a kernel function, controlled by the
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/density.html#kernel-density" title="(in scikit-learn v1.8)"><span>Kernel Density Estimation</span></a> - uses a kernel function, controlled by the
 bandwidth parameter to represent density;</p></li>
-<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/mixture.html#mixture" title="(in scikit-learn v1.7)"><span class="xref std std-ref">Gaussian mixture</span></a> - uses mixture of Gaussian models
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/mixture.html#mixture" title="(in scikit-learn v1.8)"><span class="xref std std-ref">Gaussian mixture</span></a> - uses mixture of Gaussian models
 to represent density.</p></li>
 </ul>
 </dd>
@@ -1374,7 +1379,7 @@ model is estimated as a deterministic function of:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#term-parameters"><span class="xref std std-term">parameters</span></a> provided in object construction or with
 <a class="reference internal" href="#term-set_params"><span class="xref std std-term">set_params</span></a>;</p></li>
-<li><p>the global <a class="reference external" href="https://numpy.org/doc/stable/reference/random/index.html#module-numpy.random" title="(in NumPy v2.3)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">numpy.random</span></code></a> random state if the estimator’s
+<li><p>the global <a class="reference external" href="https://numpy.org/doc/stable/reference/random/index.html#module-numpy.random" title="(in NumPy v2.4)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">numpy.random</span></code></a> random state if the estimator’s
 <a class="reference internal" href="#term-random_state"><span class="xref std std-term">random_state</span></a> parameter is set to None; and</p></li>
 <li><p>any data or <a class="reference internal" href="#term-sample-properties"><span class="xref std std-term">sample properties</span></a> passed to the most recent
 call to <a class="reference internal" href="#term-fit"><span class="xref std std-term">fit</span></a>, <a class="reference internal" href="#term-fit_transform"><span class="xref std std-term">fit_transform</span></a> or <a class="reference internal" href="#term-fit_predict"><span class="xref std std-term">fit_predict</span></a>,
@@ -1386,7 +1391,7 @@ on the estimator instance, facilitating decoding through prediction
 and transformation methods.</p>
 <p>Estimators must provide a <a class="reference internal" href="#term-fit"><span class="xref std std-term">fit</span></a> method, and should provide
 <a class="reference internal" href="#term-set_params"><span class="xref std std-term">set_params</span></a> and <a class="reference internal" href="#term-get_params"><span class="xref std std-term">get_params</span></a>, although these are usually
-provided by inheritance from <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.BaseEstimator</span></code></a>.</p>
+provided by inheritance from <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.BaseEstimator</span></code></a>.</p>
 <p>The core functionality of some estimators may also be available as a
 <a class="reference internal" href="#term-function"><span class="xref std std-term">function</span></a>.</p>
 </dd>
@@ -1404,16 +1409,16 @@ into <a class="reference internal" href="#term-rectangular"><span class="xref st
 </ul>
 </dd>
 <dt id="term-meta-estimator">meta-estimator<a class="headerlink" href="#term-meta-estimator" title="Link to this term">#</a></dt><dt id="term-meta-estimators">meta-estimators<a class="headerlink" href="#term-meta-estimators" title="Link to this term">#</a></dt><dt id="term-metaestimator">metaestimator<a class="headerlink" href="#term-metaestimator" title="Link to this term">#</a></dt><dt id="term-metaestimators">metaestimators<a class="headerlink" href="#term-metaestimators" title="Link to this term">#</a></dt><dd><p>An <a class="reference internal" href="#term-estimator"><span class="xref std std-term">estimator</span></a> which takes another estimator as a parameter.
-Examples include <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pipeline.Pipeline</span></code></a>,
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">model_selection.GridSearchCV</span></code></a>,
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectFromModel.html#sklearn.feature_selection.SelectFromModel" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">feature_selection.SelectFromModel</span></code></a> and
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.BaggingClassifier.html#sklearn.ensemble.BaggingClassifier" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ensemble.BaggingClassifier</span></code></a>.</p>
+Examples include <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pipeline.Pipeline</span></code></a>,
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">model_selection.GridSearchCV</span></code></a>,
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectFromModel.html#sklearn.feature_selection.SelectFromModel" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">feature_selection.SelectFromModel</span></code></a> and
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.BaggingClassifier.html#sklearn.ensemble.BaggingClassifier" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ensemble.BaggingClassifier</span></code></a>.</p>
 <p>In a meta-estimator’s <a class="reference internal" href="#term-fit"><span class="xref std std-term">fit</span></a> method, any contained estimators
 should be <a class="reference internal" href="#term-cloned"><span class="xref std std-term">cloned</span></a> before they are fit (although FIXME: Pipeline
 and FeatureUnion do not do this currently). An exception to this is
 that an estimator may explicitly document that it accepts a pre-fitted
 estimator (e.g. using <code class="docutils literal notranslate"><span class="pre">prefit=True</span></code> in
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectFromModel.html#sklearn.feature_selection.SelectFromModel" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">feature_selection.SelectFromModel</span></code></a>). One known issue with this
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectFromModel.html#sklearn.feature_selection.SelectFromModel" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">feature_selection.SelectFromModel</span></code></a>). One known issue with this
 is that the pre-fitted estimator will lose its model if the
 meta-estimator is cloned.  A meta-estimator should have <code class="docutils literal notranslate"><span class="pre">fit</span></code> called
 before prediction, even if all contained estimators are pre-fitted.</p>
@@ -1425,7 +1430,7 @@ standard methods provided by the base estimator.  It may not be
 possible to identify which methods are provided by the underlying
 estimator until the meta-estimator has been <a class="reference internal" href="#term-fitted"><span class="xref std std-term">fitted</span></a> (see also
 <a class="reference internal" href="#term-duck-typing"><span class="xref std std-term">duck typing</span></a>), for which
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.metaestimators.available_if.html#sklearn.utils.metaestimators.available_if" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">utils.metaestimators.available_if</span></code></a> may help.  It
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.metaestimators.available_if.html#sklearn.utils.metaestimators.available_if" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">utils.metaestimators.available_if</span></code></a> may help.  It
 should also provide (or modify) the <a class="reference internal" href="#term-estimator-tags"><span class="xref std std-term">estimator tags</span></a> and
 <a class="reference internal" href="#term-classes_"><span class="xref std std-term">classes_</span></a> attribute provided by the base estimator.</p>
 <p>Meta-estimators should be careful to validate data as minimally as
@@ -1453,10 +1458,10 @@ unnormalized score per sample.</p>
 </dd>
 <dt id="term-regressor">regressor<a class="headerlink" href="#term-regressor" title="Link to this term">#</a></dt><dt id="term-regressors">regressors<a class="headerlink" href="#term-regressors" title="Link to this term">#</a></dt><dd><p>A <a class="reference internal" href="#term-supervised"><span class="xref std std-term">supervised</span></a> (or <a class="reference internal" href="#term-semi-supervised"><span class="xref std std-term">semi-supervised</span></a>) <a class="reference internal" href="#term-predictor"><span class="xref std std-term">predictor</span></a>
 with <a class="reference internal" href="#term-continuous"><span class="xref std std-term">continuous</span></a> output values.</p>
-<p>Regressors usually inherit from <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.RegressorMixin.html#sklearn.base.RegressorMixin" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.RegressorMixin</span></code></a>, which
+<p>Regressors usually inherit from <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.RegressorMixin.html#sklearn.base.RegressorMixin" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.RegressorMixin</span></code></a>, which
 sets their <a class="reference internal" href="#term-_estimator_type"><span class="xref std std-term">_estimator_type</span></a> attribute.</p>
 <p>A regressor can be distinguished from other estimators with
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.is_regressor.html#sklearn.base.is_regressor" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">is_regressor</span></code></a>.</p>
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.is_regressor.html#sklearn.base.is_regressor" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">is_regressor</span></code></a>.</p>
 <p>A regressor must implement:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#term-fit"><span class="xref std std-term">fit</span></a></p></li>
@@ -1466,7 +1471,7 @@ sets their <a class="reference internal" href="#term-_estimator_type"><span clas
 </dd>
 <dt id="term-transformer">transformer<a class="headerlink" href="#term-transformer" title="Link to this term">#</a></dt><dt id="term-transformers">transformers<a class="headerlink" href="#term-transformers" title="Link to this term">#</a></dt><dd><p>An estimator supporting <a class="reference internal" href="#term-transform"><span class="xref std std-term">transform</span></a> and/or <a class="reference internal" href="#term-fit_transform"><span class="xref std std-term">fit_transform</span></a>.
 A purely <a class="reference internal" href="#term-transductive"><span class="xref std std-term">transductive</span></a> transformer, such as
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html#sklearn.manifold.TSNE" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">manifold.TSNE</span></code></a>, may not implement <code class="docutils literal notranslate"><span class="pre">transform</span></code>.</p>
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html#sklearn.manifold.TSNE" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">manifold.TSNE</span></code></a>, may not implement <code class="docutils literal notranslate"><span class="pre">transform</span></code>.</p>
 </dd>
 <dt id="term-vectorizer">vectorizer<a class="headerlink" href="#term-vectorizer" title="Link to this term">#</a></dt><dt id="term-vectorizers">vectorizers<a class="headerlink" href="#term-vectorizers" title="Link to this term">#</a></dt><dd><p>See <a class="reference internal" href="#term-feature-extractor"><span class="xref std std-term">feature extractor</span></a>.</p>
 </dd>
@@ -1475,40 +1480,40 @@ A purely <a class="reference internal" href="#term-transductive"><span class="xr
 such as:</p>
 <dl class="simple glossary">
 <dt id="term-cross-validation-splitter">cross-validation splitter<a class="headerlink" href="#term-cross-validation-splitter" title="Link to this term">#</a></dt><dt id="term-CV-splitter">CV splitter<a class="headerlink" href="#term-CV-splitter" title="Link to this term">#</a></dt><dt id="term-cross-validation-generator">cross-validation generator<a class="headerlink" href="#term-cross-validation-generator" title="Link to this term">#</a></dt><dd><p>A non-estimator family of classes used to split a dataset into a
-sequence of train and test portions (see <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation" title="(in scikit-learn v1.7)"><span>Cross-validation: evaluating estimator performance</span></a>),
+sequence of train and test portions (see <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation" title="(in scikit-learn v1.8)"><span>Cross-validation: evaluating estimator performance</span></a>),
 by providing <a class="reference internal" href="#term-split"><span class="xref std std-term">split</span></a> and <a class="reference internal" href="#term-get_n_splits"><span class="xref std std-term">get_n_splits</span></a> methods.
 Note that unlike estimators, these do not have <a class="reference internal" href="#term-fit"><span class="xref std std-term">fit</span></a> methods
 and do not provide <a class="reference internal" href="#term-set_params"><span class="xref std std-term">set_params</span></a> or <a class="reference internal" href="#term-get_params"><span class="xref std std-term">get_params</span></a>.
 Parameter validation may be performed in <code class="docutils literal notranslate"><span class="pre">__init__</span></code>.</p>
 </dd>
 <dt id="term-cross-validation-estimator">cross-validation estimator<a class="headerlink" href="#term-cross-validation-estimator" title="Link to this term">#</a></dt><dd><p>An estimator that has built-in cross-validation capabilities to
-automatically select the best hyper-parameters (see the <a class="reference external" href="https://scikit-learn.org/stable/modules/grid_search.html#grid-search" title="(in scikit-learn v1.7)"><span class="xref std std-ref">User
+automatically select the best hyper-parameters (see the <a class="reference external" href="https://scikit-learn.org/stable/modules/grid_search.html#grid-search" title="(in scikit-learn v1.8)"><span class="xref std std-ref">User
 Guide</span></a>). Some example of cross-validation estimators
-are <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNetCV.html#sklearn.linear_model.ElasticNetCV" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ElasticNetCV</span></code></a> and
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegressionCV.html#sklearn.linear_model.LogisticRegressionCV" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogisticRegressionCV</span></code></a>.
+are <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNetCV.html#sklearn.linear_model.ElasticNetCV" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ElasticNetCV</span></code></a> and
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegressionCV.html#sklearn.linear_model.LogisticRegressionCV" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogisticRegressionCV</span></code></a>.
 Cross-validation estimators are named <code class="docutils literal notranslate"><span class="pre">EstimatorCV</span></code> and tend to be
 roughly equivalent to <code class="docutils literal notranslate"><span class="pre">GridSearchCV(Estimator(),</span> <span class="pre">...)</span></code>. The
 advantage of using a cross-validation estimator over the canonical
-<a class="reference internal" href="#term-estimator"><span class="xref std std-term">estimator</span></a> class along with <a class="reference external" href="https://scikit-learn.org/stable/modules/grid_search.html#grid-search" title="(in scikit-learn v1.7)"><span class="xref std std-ref">grid search</span></a> is
+<a class="reference internal" href="#term-estimator"><span class="xref std std-term">estimator</span></a> class along with <a class="reference external" href="https://scikit-learn.org/stable/modules/grid_search.html#grid-search" title="(in scikit-learn v1.8)"><span class="xref std std-ref">grid search</span></a> is
 that they can take advantage of warm-starting by reusing precomputed
 results in the previous steps of the cross-validation process. This
 generally leads to speed improvements. An exception is the
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeCV.html#sklearn.linear_model.RidgeCV" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RidgeCV</span></code></a> class, which can instead
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeCV.html#sklearn.linear_model.RidgeCV" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RidgeCV</span></code></a> class, which can instead
 perform efficient Leave-One-Out (LOO) CV. By default, all these
-estimators, apart from <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeCV.html#sklearn.linear_model.RidgeCV" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RidgeCV</span></code></a> with an
+estimators, apart from <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeCV.html#sklearn.linear_model.RidgeCV" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RidgeCV</span></code></a> with an
 LOO-CV, will be refitted on the full training dataset after finding the
 best combination of hyper-parameters.</p>
 </dd>
 <dt id="term-scorer">scorer<a class="headerlink" href="#term-scorer" title="Link to this term">#</a></dt><dd><p>A non-estimator callable object which evaluates an estimator on given
 test data, returning a number. Unlike <a class="reference internal" href="#term-evaluation-metrics"><span class="xref std std-term">evaluation metrics</span></a>,
 a greater returned number must correspond with a <em>better</em> score.
-See <a class="reference external" href="https://scikit-learn.org/stable/modules/model_evaluation.html#scoring-parameter" title="(in scikit-learn v1.7)"><span>The scoring parameter: defining model evaluation rules</span></a>.</p>
+See <a class="reference external" href="https://scikit-learn.org/stable/modules/model_evaluation.html#scoring-parameter" title="(in scikit-learn v1.8)"><span>The scoring parameter: defining model evaluation rules</span></a>.</p>
 </dd>
 </dl>
 <p>Further examples:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.DistanceMetric.html#sklearn.metrics.DistanceMetric" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">metrics.DistanceMetric</span></code></a></p></li>
-<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.gaussian_process.kernels.Kernel.html#sklearn.gaussian_process.kernels.Kernel" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">gaussian_process.kernels.Kernel</span></code></a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.DistanceMetric.html#sklearn.metrics.DistanceMetric" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">metrics.DistanceMetric</span></code></a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.gaussian_process.kernels.Kernel.html#sklearn.gaussian_process.kernels.Kernel" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">gaussian_process.kernels.Kernel</span></code></a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">tree.Criterion</span></code></p></li>
 </ul>
 </section>
@@ -1529,13 +1534,13 @@ e.g. to a <a class="reference internal" href="#term-scorer"><span class="xref st
 </dd>
 <dt id="term-router">router<a class="headerlink" href="#term-router" title="Link to this term">#</a></dt><dd><p>An object which routes metadata to <a class="reference internal" href="#term-consumer"><span class="xref std std-term">consumers</span></a>. This
 object is usually a <a class="reference internal" href="#term-meta-estimator"><span class="xref std std-term">meta-estimator</span></a>, e.g.
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a> or <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">GridSearchCV</span></code></a>.
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a> or <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">GridSearchCV</span></code></a>.
 Some routers can also be a consumer. This happens for example when a
 meta-estimator uses the given <a class="reference internal" href="#term-groups"><span class="xref std std-term">groups</span></a>, and it also passes it
 along to some of its sub-objects, such as a <a class="reference internal" href="#term-CV-splitter"><span class="xref std std-term">CV splitter</span></a>.</p>
 </dd>
 </dl>
-<p>Please refer to <a class="reference external" href="https://scikit-learn.org/stable/metadata_routing.html#metadata-routing" title="(in scikit-learn v1.7)"><span class="xref std std-ref">Metadata Routing User Guide</span></a> for more
+<p>Please refer to <a class="reference external" href="https://scikit-learn.org/stable/metadata_routing.html#metadata-routing" title="(in scikit-learn v1.8)"><span class="xref std std-ref">Metadata Routing User Guide</span></a> for more
 information.</p>
 </section>
 <section id="target-types">
@@ -1554,13 +1559,13 @@ class; of [‘no’, ‘yes’], ‘yes’ is the positive class; of [‘no’, 
 <a class="reference internal" href="#term-decision_function"><span class="xref std std-term">decision_function</span></a>, for instance.</p>
 <p>Note that a dataset sampled from a multiclass <code class="docutils literal notranslate"><span class="pre">y</span></code> or a continuous
 <code class="docutils literal notranslate"><span class="pre">y</span></code> may appear to be binary.</p>
-<p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">type_of_target</span></code></a> will return ‘binary’ for
+<p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">type_of_target</span></code></a> will return ‘binary’ for
 binary input, or a similar array with only a single class present.</p>
 </dd>
 <dt id="term-continuous">continuous<a class="headerlink" href="#term-continuous" title="Link to this term">#</a></dt><dd><p>A regression problem where each sample’s target is a finite floating
 point number represented as a 1-dimensional array of floats (or
 sometimes ints).</p>
-<p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">type_of_target</span></code></a> will return ‘continuous’ for
+<p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">type_of_target</span></code></a> will return ‘continuous’ for
 continuous input, but if the data is all integers, it will be
 identified as ‘multiclass’.</p>
 </dd>
@@ -1570,7 +1575,7 @@ fixed int <code class="docutils literal notranslate"><span class="pre">n_outputs
 <p>Continuous multioutput targets are represented as multiple
 <a class="reference internal" href="#term-continuous"><span class="xref std std-term">continuous</span></a> targets, horizontally stacked into an array
 of shape <code class="docutils literal notranslate"><span class="pre">(n_samples,</span> <span class="pre">n_outputs)</span></code>.</p>
-<p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">type_of_target</span></code></a> will return
+<p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">type_of_target</span></code></a> will return
 ‘continuous-multioutput’ for continuous multioutput input, but if the
 data is all integers, it will be identified as
 ‘multiclass-multioutput’.</p>
@@ -1586,9 +1591,9 @@ targets of such type.</p>
 have the special label -1 in <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
 <p>Within scikit-learn, all estimators supporting binary classification
 also support multiclass classification, using One-vs-Rest by default.</p>
-<p>A <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html#sklearn.preprocessing.LabelEncoder" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">preprocessing.LabelEncoder</span></code></a> helps to canonicalize multiclass
+<p>A <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html#sklearn.preprocessing.LabelEncoder" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">preprocessing.LabelEncoder</span></code></a> helps to canonicalize multiclass
 targets as integers.</p>
-<p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">type_of_target</span></code></a> will return ‘multiclass’ for
+<p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">type_of_target</span></code></a> will return ‘multiclass’ for
 multiclass input. The user may also want to handle ‘binary’ input
 identically to ‘multiclass’.</p>
 </dd>
@@ -1604,12 +1609,12 @@ the case where all outputs are binary, the target is
 of shape <code class="docutils literal notranslate"><span class="pre">(n_samples,</span> <span class="pre">n_outputs)</span></code>.</p>
 <p>XXX: For simplicity, we may not always support string class labels
 for multiclass multioutput, and integer class labels should be used.</p>
-<p><a class="reference external" href="https://scikit-learn.org/stable/api/sklearn.multioutput.html#module-sklearn.multioutput" title="(in scikit-learn v1.7)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">multioutput</span></code></a> provides estimators which estimate multi-output
+<p><a class="reference external" href="https://scikit-learn.org/stable/api/sklearn.multioutput.html#module-sklearn.multioutput" title="(in scikit-learn v1.8)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">multioutput</span></code></a> provides estimators which estimate multi-output
 problems using multiple single-output estimators.  This may not fully
 account for dependencies among the different outputs, which methods
 natively handling the multioutput case (e.g. decision trees, nearest
 neighbors, neural networks) may do better.</p>
-<p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">type_of_target</span></code></a> will return
+<p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">type_of_target</span></code></a> will return
 ‘multiclass-multioutput’ for multiclass multioutput input.</p>
 </dd>
 <dt id="term-multilabel">multilabel<a class="headerlink" href="#term-multilabel" title="Link to this term">#</a></dt><dt id="term-multi-label">multi-label<a class="headerlink" href="#term-multi-label" title="Link to this term">#</a></dt><dd><p>A <a class="reference internal" href="#term-multiclass-multioutput"><span class="xref std std-term">multiclass multioutput</span></a> target where each output is
@@ -1620,12 +1625,12 @@ are usually -1 or 0.  Sparse multilabel targets are not supported
 everywhere that dense multilabel targets are supported.</p>
 <p>Semantically, a multilabel target can be thought of as a set of labels
 for each sample.  While not used internally,
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MultiLabelBinarizer.html#sklearn.preprocessing.MultiLabelBinarizer" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">preprocessing.MultiLabelBinarizer</span></code></a> is provided as a utility to
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MultiLabelBinarizer.html#sklearn.preprocessing.MultiLabelBinarizer" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">preprocessing.MultiLabelBinarizer</span></code></a> is provided as a utility to
 convert from a list of sets representation to a 2d array or sparse
 matrix. One-hot encoding a multiclass target with
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelBinarizer.html#sklearn.preprocessing.LabelBinarizer" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">preprocessing.LabelBinarizer</span></code></a> turns it into a multilabel
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelBinarizer.html#sklearn.preprocessing.LabelBinarizer" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">preprocessing.LabelBinarizer</span></code></a> turns it into a multilabel
 problem.</p>
-<p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">type_of_target</span></code></a> will return
+<p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">type_of_target</span></code></a> will return
 ‘multilabel-indicator’ for multilabel input, whether sparse or dense.</p>
 </dd>
 <dt id="term-multioutput">multioutput<a class="headerlink" href="#term-multioutput" title="Link to this term">#</a></dt><dt id="term-multi-output">multi-output<a class="headerlink" href="#term-multi-output" title="Link to this term">#</a></dt><dd><p>A target where each sample has multiple classification/regression
@@ -1643,7 +1648,7 @@ classification and regression targets.</p>
 “hard” categorical prediction produced by <a class="reference internal" href="#term-predict"><span class="xref std std-term">predict</span></a>.  Its input
 is usually only some observed data, <a class="reference internal" href="#term-X"><span class="xref std std-term">X</span></a>.</p>
 <p>If the estimator was not already <a class="reference internal" href="#term-fitted"><span class="xref std std-term">fitted</span></a>, calling this method
-should raise a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">exceptions.NotFittedError</span></code></a>.</p>
+should raise a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">exceptions.NotFittedError</span></code></a>.</p>
 <p>Output conventions:</p>
 <dl class="simple">
 <dt>binary classification</dt><dd><p>A 1-dimensional array, where values strictly greater than zero
@@ -1711,7 +1716,7 @@ such cases should be clearly documented).
 <code class="docutils literal notranslate"><span class="pre">fit_transform</span></code> but not <a class="reference internal" href="#term-transform"><span class="xref std std-term">transform</span></a>.</p>
 <p>One reason to implement <code class="docutils literal notranslate"><span class="pre">fit_transform</span></code> is that performing <code class="docutils literal notranslate"><span class="pre">fit</span></code>
 and <code class="docutils literal notranslate"><span class="pre">transform</span></code> separately would be less efficient than together.
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html#sklearn.base.TransformerMixin" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.TransformerMixin</span></code></a> provides a default implementation,
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html#sklearn.base.TransformerMixin" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.TransformerMixin</span></code></a> provides a default implementation,
 providing a consistent interface across transformers where
 <code class="docutils literal notranslate"><span class="pre">fit_transform</span></code> is or is not specialized.</p>
 <p>In <a class="reference internal" href="#term-inductive"><span class="xref std std-term">inductive</span></a> learning – where the goal is to learn a
@@ -1739,9 +1744,9 @@ split.</p>
 <a class="reference internal" href="#term-set_params"><span class="xref std std-term">set_params</span></a>.  A parameter <code class="docutils literal notranslate"><span class="pre">deep</span></code> can be used, when set to
 False to only return those parameters not including <code class="docutils literal notranslate"><span class="pre">__</span></code>, i.e.  not
 due to indirection via contained estimators.</p>
-<p>Most estimators adopt the definition from <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.BaseEstimator</span></code></a>,
+<p>Most estimators adopt the definition from <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.BaseEstimator</span></code></a>,
 which simply adopts the parameters defined for <code class="docutils literal notranslate"><span class="pre">__init__</span></code>.
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pipeline.Pipeline</span></code></a>, among others, reimplements <code class="docutils literal notranslate"><span class="pre">get_params</span></code>
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pipeline.Pipeline</span></code></a>, among others, reimplements <code class="docutils literal notranslate"><span class="pre">get_params</span></code>
 to declare the estimators named in its <code class="docutils literal notranslate"><span class="pre">steps</span></code> parameters as
 themselves being parameters.</p>
 </dd>
@@ -1755,7 +1760,7 @@ estimators, <code class="docutils literal notranslate"><span class="pre">partial
 although usually limited to the case where learning can be performed
 online, i.e. the model is usable after each <code class="docutils literal notranslate"><span class="pre">partial_fit</span></code> and there
 is no separate processing needed to finalize the model.
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.Birch.html#sklearn.cluster.Birch" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">cluster.Birch</span></code></a> introduces the convention that calling
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.Birch.html#sklearn.cluster.Birch" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">cluster.Birch</span></code></a> introduces the convention that calling
 <code class="docutils literal notranslate"><span class="pre">partial_fit(X)</span></code> will produce a model that is not finalized, but the
 model can be finalized by calling <code class="docutils literal notranslate"><span class="pre">partial_fit()</span></code> i.e. without
 passing a further mini-batch.</p>
@@ -1766,7 +1771,7 @@ is used to repeatedly fit the same estimator with the same data
 but varying parameters.</p>
 <p>Like <code class="docutils literal notranslate"><span class="pre">fit</span></code>, <code class="docutils literal notranslate"><span class="pre">partial_fit</span></code> should return the estimator object.</p>
 <p>To clear the model, a new estimator should be constructed, for instance
-with <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.clone.html#sklearn.base.clone" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">base.clone</span></code></a>.</p>
+with <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.clone.html#sklearn.base.clone" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">base.clone</span></code></a>.</p>
 <p>NOTE: Using <code class="docutils literal notranslate"><span class="pre">partial_fit</span></code> after <code class="docutils literal notranslate"><span class="pre">fit</span></code> results in undefined behavior.</p>
 </dd>
 <dt id="term-predict"><code class="docutils literal notranslate"><span class="pre">predict</span></code><a class="headerlink" href="#term-predict" title="Link to this term">#</a></dt><dd><p>Makes a prediction for each sample, usually only taking <a class="reference internal" href="#term-X"><span class="xref std std-term">X</span></a> as
@@ -1779,7 +1784,7 @@ output of <code class="docutils literal notranslate"><span class="pre">predict</
 <a class="reference internal" href="#term-clusterer"><span class="xref std std-term">clusterer</span></a> or <a class="reference internal" href="#term-outlier-detector"><span class="xref std std-term">outlier detector</span></a> the prediction is an
 integer.</p>
 <p>If the estimator was not already <a class="reference internal" href="#term-fitted"><span class="xref std std-term">fitted</span></a>, calling this method
-should raise a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">exceptions.NotFittedError</span></code></a>.</p>
+should raise a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">exceptions.NotFittedError</span></code></a>.</p>
 <p>Output conventions:</p>
 <dl class="simple">
 <dt>classifier</dt><dd><p>An array of shape <code class="docutils literal notranslate"><span class="pre">(n_samples,)</span></code> <code class="docutils literal notranslate"><span class="pre">(n_samples,</span> <span class="pre">n_outputs)</span></code>.
@@ -1791,7 +1796,7 @@ attribute.</p>
 <dt>clusterer</dt><dd><p>An array of shape <code class="docutils literal notranslate"><span class="pre">(n_samples,)</span></code> where each value is from 0 to
 <code class="docutils literal notranslate"><span class="pre">n_clusters</span> <span class="pre">-</span> <span class="pre">1</span></code> if the corresponding sample is clustered,
 and -1 if the sample is not clustered, as in
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/dbscan-function.html#sklearn.cluster.dbscan" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">cluster.dbscan</span></code></a>.</p>
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/dbscan-function.html#sklearn.cluster.dbscan" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">cluster.dbscan</span></code></a>.</p>
 </dd>
 <dt>outlier detector</dt><dd><p>An array of shape <code class="docutils literal notranslate"><span class="pre">(n_samples,)</span></code> where each value is -1 for an
 outlier and 1 otherwise.</p>
@@ -1812,7 +1817,7 @@ to facilitate numerical stability.</p>
 return probability estimates for each class/cluster.  Its input is
 usually only some observed data, <a class="reference internal" href="#term-X"><span class="xref std std-term">X</span></a>.</p>
 <p>If the estimator was not already <a class="reference internal" href="#term-fitted"><span class="xref std std-term">fitted</span></a>, calling this method
-should raise a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">exceptions.NotFittedError</span></code></a>.</p>
+should raise a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">exceptions.NotFittedError</span></code></a>.</p>
 <p>Output conventions are like those for <a class="reference internal" href="#term-decision_function"><span class="xref std std-term">decision_function</span></a> except
 in the <a class="reference internal" href="#term-binary"><span class="xref std std-term">binary</span></a> classification case, where one column is output
 for each class (while <code class="docutils literal notranslate"><span class="pre">decision_function</span></code> outputs a 1d array). For
@@ -1820,8 +1825,8 @@ binary and multiclass predictions, each row should add to 1.</p>
 <p>Like other methods, <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> should only be present when the
 estimator can make probabilistic predictions (see <a class="reference internal" href="#term-duck-typing"><span class="xref std std-term">duck typing</span></a>).
 This means that the presence of the method may depend on estimator
-parameters (e.g. in <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">linear_model.SGDClassifier</span></code></a>) or training
-data (e.g. in <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">model_selection.GridSearchCV</span></code></a>) and may only
+parameters (e.g. in <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">linear_model.SGDClassifier</span></code></a>) or training
+data (e.g. in <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">model_selection.GridSearchCV</span></code></a>) and may only
 appear after fitting.</p>
 </dd>
 <dt id="term-score"><code class="docutils literal notranslate"><span class="pre">score</span></code><a class="headerlink" href="#term-score" title="Link to this term">#</a></dt><dd><p>A method on an estimator, usually a <a class="reference internal" href="#term-predictor"><span class="xref std std-term">predictor</span></a>, which evaluates
@@ -1829,7 +1834,7 @@ its predictions on a given dataset, and returns a single numerical
 score.  A greater return value should indicate better predictions;
 accuracy is used for classifiers and R^2 for regressors by default.</p>
 <p>If the estimator was not already <a class="reference internal" href="#term-fitted"><span class="xref std std-term">fitted</span></a>, calling this method
-should raise a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">exceptions.NotFittedError</span></code></a>.</p>
+should raise a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">exceptions.NotFittedError</span></code></a>.</p>
 <p>Some estimators implement a custom, estimator-specific score function,
 often the likelihood of the data under the model.</p>
 </dd>
@@ -1839,15 +1844,15 @@ density estimation, it can be the log density model on the data, and in
 the case of outlier detection, it can be the opposite of the outlier
 factor of the data.</p>
 <p>If the estimator was not already <a class="reference internal" href="#term-fitted"><span class="xref std std-term">fitted</span></a>, calling this method
-should raise a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">exceptions.NotFittedError</span></code></a>.</p>
+should raise a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">exceptions.NotFittedError</span></code></a>.</p>
 </dd>
 <dt id="term-set_params"><code class="docutils literal notranslate"><span class="pre">set_params</span></code><a class="headerlink" href="#term-set_params" title="Link to this term">#</a></dt><dd><p>Available in any estimator, takes keyword arguments corresponding to
 keys in <a class="reference internal" href="#term-get_params"><span class="xref std std-term">get_params</span></a>.  Each is provided a new value to assign
 such that calling <code class="docutils literal notranslate"><span class="pre">get_params</span></code> after <code class="docutils literal notranslate"><span class="pre">set_params</span></code> will reflect the
 changed <a class="reference internal" href="#term-parameters"><span class="xref std std-term">parameters</span></a>.  Most estimators use the implementation in
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.BaseEstimator</span></code></a>, which handles nested parameters and
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.BaseEstimator</span></code></a>, which handles nested parameters and
 otherwise sets the parameter as an attribute on the estimator.
-The method is overridden in <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pipeline.Pipeline</span></code></a> and related
+The method is overridden in <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pipeline.Pipeline</span></code></a> and related
 estimators.</p>
 </dd>
 <dt id="term-split"><code class="docutils literal notranslate"><span class="pre">split</span></code><a class="headerlink" href="#term-split" title="Link to this term">#</a></dt><dd><p>On a <a class="reference internal" href="#term-CV-splitter"><span class="xref std std-term">CV splitter</span></a> (not an estimator), this method accepts
@@ -1862,7 +1867,7 @@ into some transformed space (conventionally notated as <a class="reference inter
 Output is an array or sparse matrix of length <a class="reference internal" href="#term-n_samples"><span class="xref std std-term">n_samples</span></a> and
 with the number of columns fixed after <a class="reference internal" href="#term-fitting"><span class="xref std std-term">fitting</span></a>.</p>
 <p>If the estimator was not already <a class="reference internal" href="#term-fitted"><span class="xref std std-term">fitted</span></a>, calling this method
-should raise a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">exceptions.NotFittedError</span></code></a>.</p>
+should raise a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">exceptions.NotFittedError</span></code></a>.</p>
 </dd>
 </dl>
 </section>
@@ -1901,44 +1906,44 @@ weights for each output. For example, for four-class multilabel
 classification weights should be <code class="docutils literal notranslate"><span class="pre">[{0:</span> <span class="pre">1,</span> <span class="pre">1:</span> <span class="pre">1},</span> <span class="pre">{0:</span> <span class="pre">1,</span> <span class="pre">1:</span> <span class="pre">5},</span> <span class="pre">{0:</span> <span class="pre">1,</span>
 <span class="pre">1:</span> <span class="pre">1},</span> <span class="pre">{0:</span> <span class="pre">1,</span> <span class="pre">1:</span> <span class="pre">1}]</span></code> instead of <code class="docutils literal notranslate"><span class="pre">[{1:1},</span> <span class="pre">{2:5},</span> <span class="pre">{3:1},</span> <span class="pre">{4:1}]</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">class_weight</span></code> parameter is validated and interpreted with
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.class_weight.compute_class_weight.html#sklearn.utils.class_weight.compute_class_weight" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">utils.class_weight.compute_class_weight</span></code></a>.</p>
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.class_weight.compute_class_weight.html#sklearn.utils.class_weight.compute_class_weight" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">utils.class_weight.compute_class_weight</span></code></a>.</p>
 </dd>
 <dt id="term-cv"><code class="docutils literal notranslate"><span class="pre">cv</span></code><a class="headerlink" href="#term-cv" title="Link to this term">#</a></dt><dd><p>Determines a cross validation splitting strategy, as used in
 cross-validation based routines. <code class="docutils literal notranslate"><span class="pre">cv</span></code> is also available in estimators
-such as <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.multioutput.ClassifierChain.html#sklearn.multioutput.ClassifierChain" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">multioutput.ClassifierChain</span></code></a> or
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.calibration.CalibratedClassifierCV.html#sklearn.calibration.CalibratedClassifierCV" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">calibration.CalibratedClassifierCV</span></code></a> which use the predictions
+such as <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.multioutput.ClassifierChain.html#sklearn.multioutput.ClassifierChain" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">multioutput.ClassifierChain</span></code></a> or
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.calibration.CalibratedClassifierCV.html#sklearn.calibration.CalibratedClassifierCV" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">calibration.CalibratedClassifierCV</span></code></a> which use the predictions
 of one estimator as training data for another, to not overfit the
 training supervision.</p>
 <p>Possible inputs for <code class="docutils literal notranslate"><span class="pre">cv</span></code> are usually:</p>
 <ul class="simple">
 <li><p>An integer, specifying the number of folds in K-fold cross
 validation. K-fold will be stratified over classes if the estimator
-is a classifier (determined by <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.is_classifier.html#sklearn.base.is_classifier" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">base.is_classifier</span></code></a>) and the
+is a classifier (determined by <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.is_classifier.html#sklearn.base.is_classifier" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">base.is_classifier</span></code></a>) and the
 <a class="reference internal" href="#term-targets"><span class="xref std std-term">targets</span></a> may represent a binary or multiclass (but not
 multioutput) classification problem (determined by
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">utils.multiclass.type_of_target</span></code></a>).</p></li>
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">utils.multiclass.type_of_target</span></code></a>).</p></li>
 <li><p>A <a class="reference internal" href="#term-cross-validation-splitter"><span class="xref std std-term">cross-validation splitter</span></a> instance. Refer to the
-<a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation" title="(in scikit-learn v1.7)"><span class="xref std std-ref">User Guide</span></a> for splitters available
+<a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation" title="(in scikit-learn v1.8)"><span class="xref std std-ref">User Guide</span></a> for splitters available
 within Scikit-learn.</p></li>
 <li><p>An iterable yielding train/test splits.</p></li>
 </ul>
 <p>With some exceptions (especially where not using cross validation at
 all is an option), the default is 5-fold.</p>
 <p><code class="docutils literal notranslate"><span class="pre">cv</span></code> values are validated and interpreted with
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.check_cv.html#sklearn.model_selection.check_cv" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">model_selection.check_cv</span></code></a>.</p>
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.check_cv.html#sklearn.model_selection.check_cv" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">model_selection.check_cv</span></code></a>.</p>
 </dd>
 <dt id="term-kernel"><code class="docutils literal notranslate"><span class="pre">kernel</span></code><a class="headerlink" href="#term-kernel" title="Link to this term">#</a></dt><dd><p>Specifies the kernel function to be used by Kernel Method algorithms.
-For example, the estimators <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">svm.SVC</span></code></a> and
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.gaussian_process.GaussianProcessClassifier.html#sklearn.gaussian_process.GaussianProcessClassifier" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">gaussian_process.GaussianProcessClassifier</span></code></a> both have a
+For example, the estimators <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">svm.SVC</span></code></a> and
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.gaussian_process.GaussianProcessClassifier.html#sklearn.gaussian_process.GaussianProcessClassifier" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">gaussian_process.GaussianProcessClassifier</span></code></a> both have a
 <code class="docutils literal notranslate"><span class="pre">kernel</span></code> parameter that takes the name of the kernel to use as string
 or a callable kernel function used to compute the kernel matrix. For
-more reference, see the <a class="reference external" href="https://scikit-learn.org/stable/modules/kernel_approximation.html#kernel-approximation" title="(in scikit-learn v1.7)"><span>Kernel Approximation</span></a> and the
-<a class="reference external" href="https://scikit-learn.org/stable/modules/gaussian_process.html#gaussian-process" title="(in scikit-learn v1.7)"><span>Gaussian Processes</span></a> user guides.</p>
+more reference, see the <a class="reference external" href="https://scikit-learn.org/stable/modules/kernel_approximation.html#kernel-approximation" title="(in scikit-learn v1.8)"><span>Kernel Approximation</span></a> and the
+<a class="reference external" href="https://scikit-learn.org/stable/modules/gaussian_process.html#gaussian-process" title="(in scikit-learn v1.8)"><span>Gaussian Processes</span></a> user guides.</p>
 </dd>
 <dt id="term-max_iter"><code class="docutils literal notranslate"><span class="pre">max_iter</span></code><a class="headerlink" href="#term-max_iter" title="Link to this term">#</a></dt><dd><p>For estimators involving iterative optimization, this determines the
 maximum number of iterations to be performed in <a class="reference internal" href="#term-fit"><span class="xref std std-term">fit</span></a>.  If
 <code class="docutils literal notranslate"><span class="pre">max_iter</span></code> iterations are run without convergence, a
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.exceptions.ConvergenceWarning.html#sklearn.exceptions.ConvergenceWarning" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">exceptions.ConvergenceWarning</span></code></a> should be raised.  Note that the
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.exceptions.ConvergenceWarning.html#sklearn.exceptions.ConvergenceWarning" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">exceptions.ConvergenceWarning</span></code></a> should be raised.  Note that the
 interpretation of “a single iteration” is inconsistent across
 estimators: some, but not all, use it to mean a single epoch (i.e. a
 pass over every sample in the data).</p>
@@ -1952,10 +1957,10 @@ again, those partial solutions have been memoized and can be reused.</p>
 directory, or a <a class="reference external" href="https://joblib.readthedocs.io/en/latest/generated/joblib.Memory.html#joblib.Memory" title="(in joblib v1.6.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">joblib.Memory</span></code></a> instance (or an object with a
 similar interface, i.e. a <code class="docutils literal notranslate"><span class="pre">cache</span></code> method) can be used.</p>
 <p><code class="docutils literal notranslate"><span class="pre">memory</span></code> values are validated and interpreted with
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.validation.check_memory.html#sklearn.utils.validation.check_memory" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">utils.validation.check_memory</span></code></a>.</p>
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.validation.check_memory.html#sklearn.utils.validation.check_memory" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">utils.validation.check_memory</span></code></a>.</p>
 </dd>
 <dt id="term-metric"><code class="docutils literal notranslate"><span class="pre">metric</span></code><a class="headerlink" href="#term-metric" title="Link to this term">#</a></dt><dd><p>As a parameter, this is the scheme for determining the distance between
-two data points.  See <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise_distances.html#sklearn.metrics.pairwise_distances" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">metrics.pairwise_distances</span></code></a>.  In practice,
+two data points.  See <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise_distances.html#sklearn.metrics.pairwise_distances" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">metrics.pairwise_distances</span></code></a>.  In practice,
 for some algorithms, an improper distance metric (one that does not
 obey the triangle inequality, such as Cosine Distance) may be used.</p>
 <p>XXX: hierarchical clustering uses <code class="docutils literal notranslate"><span class="pre">affinity</span></code> with this meaning.</p>
@@ -1985,7 +1990,7 @@ generally be interpreted as <code class="docutils literal notranslate"><span cla
 <p>Note that even if <code class="docutils literal notranslate"><span class="pre">n_jobs=1</span></code>, low-level parallelism (via Numpy and OpenMP)
 might be used in some configuration.</p>
 <p>For more details on the use of <code class="docutils literal notranslate"><span class="pre">joblib</span></code> and its interactions with
-scikit-learn, please refer to our <a class="reference external" href="https://scikit-learn.org/stable/computing/parallelism.html#parallelism" title="(in scikit-learn v1.7)"><span class="xref std std-ref">parallelism notes</span></a>.</p>
+scikit-learn, please refer to our <a class="reference external" href="https://scikit-learn.org/stable/computing/parallelism.html#parallelism" title="(in scikit-learn v1.8)"><span class="xref std std-ref">parallelism notes</span></a>.</p>
 </dd>
 <dt id="term-pos_label"><code class="docutils literal notranslate"><span class="pre">pos_label</span></code><a class="headerlink" href="#term-pos_label" title="Link to this term">#</a></dt><dd><p>Value with which positive labels must be encoded in binary
 classification problems in which the positive class is not assumed.
@@ -1999,10 +2004,10 @@ mean that randomization is always used, as it may be dependent on
 another parameter, e.g. <code class="docutils literal notranslate"><span class="pre">shuffle</span></code>, being set.</p>
 <p>The passed value will have an effect on the reproducibility of the
 results returned by the function (<a class="reference internal" href="#term-fit"><span class="xref std std-term">fit</span></a>, <a class="reference internal" href="#term-split"><span class="xref std std-term">split</span></a>, or any
-other function like <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.k_means.html#sklearn.cluster.k_means" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">k_means</span></code></a>). <code class="docutils literal notranslate"><span class="pre">random_state</span></code>’s
+other function like <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.k_means.html#sklearn.cluster.k_means" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">k_means</span></code></a>). <code class="docutils literal notranslate"><span class="pre">random_state</span></code>’s
 value may be:</p>
 <dl class="simple">
-<dt>None (default)</dt><dd><p>Use the global random state instance from <a class="reference external" href="https://numpy.org/doc/stable/reference/random/index.html#module-numpy.random" title="(in NumPy v2.3)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">numpy.random</span></code></a>.
+<dt>None (default)</dt><dd><p>Use the global random state instance from <a class="reference external" href="https://numpy.org/doc/stable/reference/random/index.html#module-numpy.random" title="(in NumPy v2.4)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">numpy.random</span></code></a>.
 Calling the function multiple times will reuse
 the same instance, and will produce different results.</p>
 </dd>
@@ -2014,25 +2019,25 @@ number of different distinct random seeds. Popular integer
 random seeds are 0 and <a class="reference external" href="https://en.wikipedia.org/wiki/Answer_to_the_Ultimate_Question_of_Life%2C_the_Universe%2C_and_Everything">42</a>.
 Integer values must be in the range <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">2**32</span> <span class="pre">-</span> <span class="pre">1]</span></code>.</p>
 </dd>
-<dt>A <a class="reference external" href="https://numpy.org/doc/stable/reference/random/legacy.html#numpy.random.RandomState" title="(in NumPy v2.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.random.RandomState</span></code></a> instance</dt><dd><p>Use the provided random state, only affecting other users
+<dt>A <a class="reference external" href="https://numpy.org/doc/stable/reference/random/legacy.html#numpy.random.RandomState" title="(in NumPy v2.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.random.RandomState</span></code></a> instance</dt><dd><p>Use the provided random state, only affecting other users
 of that same random state instance. Calling the function
 multiple times will reuse the same instance, and
 will produce different results.</p>
 </dd>
 </dl>
-<p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.check_random_state.html#sklearn.utils.check_random_state" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">utils.check_random_state</span></code></a> is used internally to validate the
-input <code class="docutils literal notranslate"><span class="pre">random_state</span></code> and return a <a class="reference external" href="https://numpy.org/doc/stable/reference/random/legacy.html#numpy.random.RandomState" title="(in NumPy v2.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomState</span></code></a>
+<p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.check_random_state.html#sklearn.utils.check_random_state" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">utils.check_random_state</span></code></a> is used internally to validate the
+input <code class="docutils literal notranslate"><span class="pre">random_state</span></code> and return a <a class="reference external" href="https://numpy.org/doc/stable/reference/random/legacy.html#numpy.random.RandomState" title="(in NumPy v2.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomState</span></code></a>
 instance.</p>
 <p>For more details on how to control the randomness of scikit-learn
-objects and avoid common pitfalls, you may refer to <a class="reference external" href="https://scikit-learn.org/stable/common_pitfalls.html#randomness" title="(in scikit-learn v1.7)"><span>Controlling randomness</span></a>.</p>
+objects and avoid common pitfalls, you may refer to <a class="reference external" href="https://scikit-learn.org/stable/common_pitfalls.html#randomness" title="(in scikit-learn v1.8)"><span>Controlling randomness</span></a>.</p>
 </dd>
-<dt id="term-scoring"><code class="docutils literal notranslate"><span class="pre">scoring</span></code><a class="headerlink" href="#term-scoring" title="Link to this term">#</a></dt><dd><p>Specifies the score function to be maximized (usually by <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation" title="(in scikit-learn v1.7)"><span class="xref std std-ref">cross
+<dt id="term-scoring"><code class="docutils literal notranslate"><span class="pre">scoring</span></code><a class="headerlink" href="#term-scoring" title="Link to this term">#</a></dt><dd><p>Specifies the score function to be maximized (usually by <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation" title="(in scikit-learn v1.8)"><span class="xref std std-ref">cross
 validation</span></a>), or – in some cases – multiple score
 functions to be reported. The score function can be a string accepted
-by <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.get_scorer.html#sklearn.metrics.get_scorer" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">metrics.get_scorer</span></code></a> or a callable <a class="reference internal" href="#term-scorer"><span class="xref std std-term">scorer</span></a>, not to be
+by <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.get_scorer.html#sklearn.metrics.get_scorer" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">metrics.get_scorer</span></code></a> or a callable <a class="reference internal" href="#term-scorer"><span class="xref std std-term">scorer</span></a>, not to be
 confused with an <a class="reference internal" href="#term-evaluation-metric"><span class="xref std std-term">evaluation metric</span></a>, as the latter have a more
 diverse API.  <code class="docutils literal notranslate"><span class="pre">scoring</span></code> may also be set to None, in which case the
-estimator’s <a class="reference internal" href="#term-score"><span class="xref std std-term">score</span></a> method is used.  See <a class="reference external" href="https://scikit-learn.org/stable/modules/model_evaluation.html#scoring-parameter" title="(in scikit-learn v1.7)"><span>The scoring parameter: defining model evaluation rules</span></a>
+estimator’s <a class="reference internal" href="#term-score"><span class="xref std std-term">score</span></a> method is used.  See <a class="reference external" href="https://scikit-learn.org/stable/modules/model_evaluation.html#scoring-parameter" title="(in scikit-learn v1.8)"><span>The scoring parameter: defining model evaluation rules</span></a>
 in the User Guide.</p>
 <p>Where multiple metrics can be evaluated, <code class="docutils literal notranslate"><span class="pre">scoring</span></code> may be given
 either as a list of unique strings, a dictionary with names as keys and
@@ -2040,7 +2045,7 @@ callables as values or a callable that returns a dictionary. Note that
 this does <em>not</em> specify which score function is to be maximized, and
 another parameter such as <code class="docutils literal notranslate"><span class="pre">refit</span></code> maybe used for this purpose.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">scoring</span></code> parameter is validated and interpreted using
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.check_scoring.html#sklearn.metrics.check_scoring" title="(in scikit-learn v1.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">metrics.check_scoring</span></code></a>.</p>
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.check_scoring.html#sklearn.metrics.check_scoring" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">metrics.check_scoring</span></code></a>.</p>
 </dd>
 <dt id="term-verbose"><code class="docutils literal notranslate"><span class="pre">verbose</span></code><a class="headerlink" href="#term-verbose" title="Link to this term">#</a></dt><dd><p>Logging is not handled very consistently in Scikit-learn at present,
 but when it is provided as an option, the <code class="docutils literal notranslate"><span class="pre">verbose</span></code> parameter is
@@ -2053,7 +2058,7 @@ default <code class="docutils literal notranslate"><span class="pre">verbose</sp
 </dd>
 <dt id="term-warm_start"><code class="docutils literal notranslate"><span class="pre">warm_start</span></code><a class="headerlink" href="#term-warm_start" title="Link to this term">#</a></dt><dd><p>When fitting an estimator repeatedly on the same dataset, but for
 multiple parameter values (such as to find the value maximizing
-performance as in <a class="reference external" href="https://scikit-learn.org/stable/modules/grid_search.html#grid-search" title="(in scikit-learn v1.7)"><span class="xref std std-ref">grid search</span></a>), it may be possible
+performance as in <a class="reference external" href="https://scikit-learn.org/stable/modules/grid_search.html#grid-search" title="(in scikit-learn v1.8)"><span class="xref std std-ref">grid search</span></a>), it may be possible
 to reuse aspects of the model learned from the previous parameter value,
 saving time.  When <code class="docutils literal notranslate"><span class="pre">warm_start</span></code> is true, the existing <a class="reference internal" href="#term-fitted"><span class="xref std std-term">fitted</span></a>
 model <a class="reference internal" href="#term-attributes"><span class="xref std std-term">attributes</span></a> are used to initialize the new model
@@ -2062,7 +2067,7 @@ in a subsequent call to <a class="reference internal" href="#term-fit"><span cla
 parameters, and even some orders of parameter values. In general, there
 is an interaction between <code class="docutils literal notranslate"><span class="pre">warm_start</span></code> and the parameter controlling
 the number of iterations of the estimator.</p>
-<p>For estimators imported from <a class="reference external" href="https://scikit-learn.org/stable/api/sklearn.ensemble.html#module-sklearn.ensemble" title="(in scikit-learn v1.7)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ensemble</span></code></a>,
+<p>For estimators imported from <a class="reference external" href="https://scikit-learn.org/stable/api/sklearn.ensemble.html#module-sklearn.ensemble" title="(in scikit-learn v1.8)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ensemble</span></code></a>,
 <code class="docutils literal notranslate"><span class="pre">warm_start</span></code> will interact with <code class="docutils literal notranslate"><span class="pre">n_estimators</span></code> or <code class="docutils literal notranslate"><span class="pre">max_iter</span></code>.
 For these models, the number of iterations, reported via
 <code class="docutils literal notranslate"><span class="pre">len(estimators_)</span></code> or <code class="docutils literal notranslate"><span class="pre">n_iter_</span></code>, corresponds the total number of
@@ -2099,7 +2104,7 @@ aligned with <code class="docutils literal notranslate"><span class="pre">classe
 each output.  For each output, the classes should be sorted
 (numerically, or lexicographically for strings).</p>
 <p><code class="docutils literal notranslate"><span class="pre">classes_</span></code> and the mapping to indices is often managed with
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html#sklearn.preprocessing.LabelEncoder" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">preprocessing.LabelEncoder</span></code></a>.</p>
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html#sklearn.preprocessing.LabelEncoder" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">preprocessing.LabelEncoder</span></code></a>.</p>
 </dd>
 <dt id="term-components_"><code class="docutils literal notranslate"><span class="pre">components_</span></code><a class="headerlink" href="#term-components_" title="Link to this term">#</a></dt><dd><p>An affine transformation matrix of shape <code class="docutils literal notranslate"><span class="pre">(n_components,</span> <span class="pre">n_features)</span></code>
 used in many linear <a class="reference internal" href="#term-transformers"><span class="xref std std-term">transformers</span></a> where <a class="reference internal" href="#term-n_components"><span class="xref std std-term">n_components</span></a> is
@@ -2120,7 +2125,7 @@ well, but can be calculated as the  norm of each feature’s entry in
 <p>See also <a class="reference internal" href="#term-components_"><span class="xref std std-term">components_</span></a> which is a similar attribute for linear
 transformers.</p>
 </dd>
-<dt id="term-embedding_"><code class="docutils literal notranslate"><span class="pre">embedding_</span></code><a class="headerlink" href="#term-embedding_" title="Link to this term">#</a></dt><dd><p>An embedding of the training data in <a class="reference external" href="https://scikit-learn.org/stable/modules/manifold.html#manifold" title="(in scikit-learn v1.7)"><span class="xref std std-ref">manifold learning</span></a> estimators, with shape <code class="docutils literal notranslate"><span class="pre">(n_samples,</span> <span class="pre">n_components)</span></code>,
+<dt id="term-embedding_"><code class="docutils literal notranslate"><span class="pre">embedding_</span></code><a class="headerlink" href="#term-embedding_" title="Link to this term">#</a></dt><dd><p>An embedding of the training data in <a class="reference external" href="https://scikit-learn.org/stable/modules/manifold.html#manifold" title="(in scikit-learn v1.8)"><span class="xref std std-ref">manifold learning</span></a> estimators, with shape <code class="docutils literal notranslate"><span class="pre">(n_samples,</span> <span class="pre">n_components)</span></code>,
 identical to the output of <a class="reference internal" href="#term-fit_transform"><span class="xref std std-term">fit_transform</span></a>.  See also
 <a class="reference internal" href="#term-labels_"><span class="xref std std-term">labels_</span></a>.</p>
 </dd>
@@ -2145,7 +2150,7 @@ data in <a class="reference internal" href="#term-clusterers"><span class="xref 
 Each value is an identifier such that, in a supporting
 <a class="reference internal" href="#term-CV-splitter"><span class="xref std std-term">CV splitter</span></a>, samples from some <code class="docutils literal notranslate"><span class="pre">groups</span></code> value may not
 appear in both a training set and its corresponding test set.
-See <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html#group-cv" title="(in scikit-learn v1.7)"><span>Cross-validation iterators for grouped data</span></a>.</p>
+See <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html#group-cv" title="(in scikit-learn v1.8)"><span>Cross-validation iterators for grouped data</span></a>.</p>
 </dd>
 <dt id="term-sample_weight"><code class="docutils literal notranslate"><span class="pre">sample_weight</span></code><a class="headerlink" href="#term-sample_weight" title="Link to this term">#</a></dt><dd><p>A relative weight for each sample.  Intuitively, if all weights are
 integers, a weighted model or score should be equivalent to that
@@ -2159,7 +2164,7 @@ FIXME: This feature or its absence may not be tested or documented in
 many estimators.</p>
 <p>This is not entirely the case where other parameters of the model
 consider the number of samples in a region, as with <code class="docutils literal notranslate"><span class="pre">min_samples</span></code> in
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html#sklearn.cluster.DBSCAN" title="(in scikit-learn v1.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">cluster.DBSCAN</span></code></a>.  In this case, a count of samples becomes
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html#sklearn.cluster.DBSCAN" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">cluster.DBSCAN</span></code></a>.  In this case, a count of samples becomes
 to a sum of their weights.</p>
 <p>In classification, sample weights can also be specified as a function
 of class with the <a class="reference internal" href="#term-class_weight"><span class="xref std std-term">class_weight</span></a> estimator <a class="reference internal" href="#term-parameter"><span class="xref std std-term">parameter</span></a>.</p>
@@ -2206,11 +2211,11 @@ and sometimes do so even when multiple outputs are assumed.</p>
       </div>
     </a>
     <a class="right-next"
-       href="../faq.html"
+       href="../../cheatsheet/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Frequently Asked Questions</p>
+        <p class="prev-next-title">Cheatsheet</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2282,7 +2287,7 @@ and sometimes do so even when multiple outputs are assumed.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2025 scikit-plots developers (BSD-3 Clause License) 0.4.0.post8+git.20251208.403cdf5 2025-12-08T16:09Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.4.0.post9+git.20260106.726934a 2026-01-06T16:48Z.
       <br/>
     
   </p>

@@ -21,14 +21,13 @@
 annoy impute with examples
 ==================================
 
-Examples related to the :py:class:`~scikitplot.impute.AnnoyKNNImputer` class
+Examples related to the :py:class:`~scikitplot.impute.ANNImputer` class
 with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegression`) instance.
 
 .. seealso::
-
     * https://scikit-learn.org/stable/auto_examples/impute/plot_missing_values.html#sphx-glr-auto-examples-impute-plot-missing-values-py
 
-.. GENERATED FROM PYTHON SOURCE LINES 12-17
+.. GENERATED FROM PYTHON SOURCE LINES 11-15
 
 .. code-block:: Python
 
@@ -43,10 +42,26 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 
 
 
+.. GENERATED FROM PYTHON SOURCE LINES 16-29
 
-.. GENERATED FROM PYTHON SOURCE LINES 18-31
+Download the data and make missing values sets
+##############################################
+
+First we download the two datasets. Diabetes dataset is shipped with
+scikit-learn. It has 442 entries, each with 10 features. California housing
+dataset is much larger with 20640 entries and 8 features. It needs to be
+downloaded. We will only use the first 300 entries for the sake of speeding
+up the calculations but feel free to use the whole dataset.
+
+https://www.geeksforgeeks.org/machine-learning/ml-credit-card-fraud-detection/
+https://media.geeksforgeeks.org/wp-content/uploads/20240904104950/creditcard.csv
+df = pd.read_csv("https://media.geeksforgeeks.org/wp-content/uploads/20240904104950/creditcard.csv")
+df.head()
+
+.. GENERATED FROM PYTHON SOURCE LINES 29-51
 
 .. code-block:: Python
+
 
     import time
     import numpy as np; np.random.seed(0)  # reproducibility
@@ -60,6 +75,14 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
     )
     from sklearn.datasets import fetch_california_housing, load_diabetes
     from sklearn.model_selection import train_test_split
+    from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
+
+    # To use the experimental IterativeImputer, we need to explicitly ask for it:
+    from sklearn.experimental import enable_iterative_imputer  # noqa: F401
+    from sklearn.impute import IterativeImputer, KNNImputer, SimpleImputer
+    from sklearn.model_selection import cross_val_score
+    from sklearn.pipeline import make_pipeline
+    from sklearn.preprocessing import MaxAbsScaler, RobustScaler, StandardScaler
 
 
 
@@ -68,39 +91,45 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 32-36
+.. GENERATED FROM PYTHON SOURCE LINES 52-58
 
-https://www.geeksforgeeks.org/machine-learning/ml-credit-card-fraud-detection/
-https://media.geeksforgeeks.org/wp-content/uploads/20240904104950/creditcard.csv
-df = pd.read_csv("https://media.geeksforgeeks.org/wp-content/uploads/20240904104950/creditcard.csv")
-df.head()
+.. code-block:: Python
 
-.. GENERATED FROM PYTHON SOURCE LINES 38-50
+
+    import joblib
+
+    # joblib.dump(fetch_california_housing(return_X_y=True), "fetch_california_housing.joblib")
+    joblib.load("fetch_california_housing.joblib")
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    (array([[   8.3252    ,   41.        ,    6.98412698, ...,    2.55555556,
+              37.88      , -122.23      ],
+           [   8.3014    ,   21.        ,    6.23813708, ...,    2.10984183,
+              37.86      , -122.22      ],
+           [   7.2574    ,   52.        ,    8.28813559, ...,    2.80225989,
+              37.85      , -122.24      ],
+           ...,
+           [   1.7       ,   17.        ,    5.20554273, ...,    2.3256351 ,
+              39.43      , -121.22      ],
+           [   1.8672    ,   18.        ,    5.32951289, ...,    2.12320917,
+              39.43      , -121.32      ],
+           [   2.3886    ,   16.        ,    5.25471698, ...,    2.61698113,
+              39.37      , -121.24      ]], shape=(20640, 8)), array([4.526, 3.585, 3.521, ..., 0.923, 0.847, 0.894], shape=(20640,)))
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 59-77
 
 .. code-block:: Python
 
-    Xdi_train, Xdi_val, ydi_train, ydi_val = train_test_split(
-        *load_diabetes(return_X_y=True), test_size=0.25, random_state=0
-    )
-    Xca_train, Xca_val, yca_train, yca_val = train_test_split(
-        *fetch_california_housing(return_X_y=True), test_size=0.25, random_state=0
-    )
-    Xbc_train, Xbc_val, ybc_train, ybc_val = train_test_split(
-        *data_2_classes(return_X_y=True), test_size=0.25, random_state=0,
-        stratify=data_2_classes(return_X_y=True)[1]
-    )
-
-
-
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 51-78
-
-.. code-block:: Python
 
     def add_missing_values(X_full, y_full, rng=np.random.RandomState(0)):
         n_samples, n_features = X_full.shape
@@ -117,8 +146,46 @@ df.head()
         X_missing = X_full.copy()
         X_missing[missing_samples, missing_features] = np.nan
         y_missing = y_full.copy()
-
         return X_missing, y_missing
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 78-94
+
+.. code-block:: Python
+
+
+    Xdi_train, Xdi_val, ydi_train, ydi_val = train_test_split(
+        *load_diabetes(return_X_y=True),
+        test_size=0.25, random_state=42
+    )
+    Xca_train, Xca_val, yca_train, yca_val = train_test_split(
+        # *fetch_california_housing(return_X_y=True),
+        *joblib.load("fetch_california_housing.joblib"),
+        test_size=0.25, random_state=42
+    )
+    Xbc_train, Xbc_val, ybc_train, ybc_val = train_test_split(
+        *data_2_classes(return_X_y=True),
+        test_size=0.25, random_state=42,
+        stratify=data_2_classes(return_X_y=True)[1]  # (data, target)
+    )
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 95-104
+
+.. code-block:: Python
+
 
     Xdi_train_miss, ydi_train_miss = add_missing_values(Xdi_train, ydi_train)
     Xca_train_miss, yca_train_miss = add_missing_values(Xca_train, yca_train)
@@ -135,28 +202,19 @@ df.head()
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 79-118
+.. GENERATED FROM PYTHON SOURCE LINES 105-135
 
 .. code-block:: Python
 
-    from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
-
-    # To use the experimental IterativeImputer, we need to explicitly ask for it:
-    from sklearn.experimental import enable_iterative_imputer  # noqa: F401
-    from sklearn.impute import IterativeImputer, KNNImputer, SimpleImputer
-    from sklearn.model_selection import cross_val_score
-    from sklearn.pipeline import make_pipeline
-    from sklearn.preprocessing import MaxAbsScaler, RobustScaler, StandardScaler
 
     N_SPLITS = 4
 
     def get_score(Xt, Xv, yt, yv, imputer=None, regresion=True):
         if regresion:
-            estimator = RandomForestRegressor(random_state=0)
+            estimator = RandomForestRegressor(random_state=42)
             scoring="neg_mean_squared_error"
         else:
-            estimator = RandomForestClassifier(random_state=0, max_depth=6, class_weight='balanced')
+            estimator = RandomForestClassifier(random_state=42, max_depth=6, class_weight='balanced')
             scoring="neg_log_loss"
         if imputer is not None:
             Xt = imputer.fit_transform(Xt, yt)
@@ -168,7 +226,7 @@ df.head()
         )
         return scores.mean(), scores.std()
 
-    n_size = 7
+    n_size = 8
     x_labels = np.zeros(n_size, dtype=object)
     mses_diabetes = np.zeros(n_size)
     stds_diabetes = np.zeros(n_size)
@@ -185,10 +243,17 @@ df.head()
 
 
 
+.. GENERATED FROM PYTHON SOURCE LINES 136-140
 
-.. GENERATED FROM PYTHON SOURCE LINES 119-129
+Estimate the score
+------------------
+First, we want to estimate the score on the original data:
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 140-151
 
 .. code-block:: Python
+
 
     t0 = time.time()
     mses_diabetes[0], stds_diabetes[0] = get_score(Xdi_train, Xdi_val, ydi_train, ydi_val)
@@ -208,14 +273,24 @@ df.head()
 
  .. code-block:: none
 
-    20.587483882904053
+    19.130059242248535
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 130-148
+.. GENERATED FROM PYTHON SOURCE LINES 152-158
+
+Replace missing values by 0
+---------------------------
+
+Now we will estimate the score on the data where the missing values are
+replaced by 0:
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 158-177
 
 .. code-block:: Python
+
 
     t0 = time.time()
     imputer = SimpleImputer(strategy="constant", fill_value=0, add_indicator=True)
@@ -243,14 +318,21 @@ df.head()
 
  .. code-block:: none
 
-    21.927181243896484
+    20.49448561668396
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 149-167
+.. GENERATED FROM PYTHON SOURCE LINES 178-181
+
+Impute missing values with mean
+-------------------------------
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 181-200
 
 .. code-block:: Python
+
 
     t0 = time.time()
     imputer = SimpleImputer(strategy="mean", add_indicator=True)
@@ -278,14 +360,24 @@ df.head()
 
  .. code-block:: none
 
-    21.62741231918335
+    21.74126148223877
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 168-186
+.. GENERATED FROM PYTHON SOURCE LINES 201-207
+
+Impute missing values with median
+---------------------------------
+
+The median is a more
+robust estimator for data with high magnitude variables which could dominate
+results (otherwise known as a 'long tail').
+
+.. GENERATED FROM PYTHON SOURCE LINES 207-226
 
 .. code-block:: Python
+
 
     t0 = time.time()
     imputer = SimpleImputer(strategy="median", add_indicator=True)
@@ -313,14 +405,26 @@ df.head()
 
  .. code-block:: none
 
-    21.658815383911133
+    21.54109525680542
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 187-208
+.. GENERATED FROM PYTHON SOURCE LINES 227-235
+
+kNN-imputation of the missing values
+------------------------------------
+
+:class:`~sklearn.impute.KNNImputer` imputes missing values using the weighted
+or unweighted mean of the desired number of nearest neighbors. If your features
+have vastly different scales (as in the California housing dataset),
+consider re-scaling them to potentially improve performance.
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 235-257
 
 .. code-block:: Python
+
 
     t0 = time.time()
     imputer = KNNImputer(add_indicator=True)
@@ -351,14 +455,29 @@ df.head()
 
  .. code-block:: none
 
-    72.96574211120605
+    54.47114896774292
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 209-231
+.. GENERATED FROM PYTHON SOURCE LINES 258-269
+
+Iterative imputation of the missing values
+------------------------------------------
+
+Another option is the :class:`~sklearn.impute.IterativeImputer`. This uses
+round-robin regression, modeling each feature with missing values as a
+function of other features, in turn. We use the class's default choice
+of the regressor model (:class:`~sklearn.linear_model.BayesianRidge`)
+to predict missing feature values. The performance of the predictor
+may be negatively affected by vastly different scales of the features,
+so we re-scale the features in the California housing dataset.
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 269-292
 
 .. code-block:: Python
+
 
     t0 = time.time()
     imputer = IterativeImputer(add_indicator=True)
@@ -390,19 +509,32 @@ df.head()
 
  .. code-block:: none
 
-    22.32276678085327
+    24.222107887268066
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 232-238
+.. GENERATED FROM PYTHON SOURCE LINES 293-297
+
+ANN-imputation of the missing values
+------------------------------------
+
+:class:`~scikitplot.impute.ANNImputer`
+
+.. GENERATED FROM PYTHON SOURCE LINES 297-309
 
 .. code-block:: Python
+
 
     import scikitplot as sp
     # sp.get_logger().setLevel(sp.logging.WARNING)  # sp.logging == sp.logger
     sp.logger.setLevel(sp.logger.INFO)  # default WARNING
-    sp.__version__
+    print(sp.__version__)
+
+    from scikitplot.experimental import enable_ann_imputer
+    from scikitplot.impute import ANNImputer
+    # 'angular', 'euclidean', 'manhattan', 'hamming', 'dot'
+    # print(ANNImputer.__doc__)
 
 
 
@@ -413,53 +545,32 @@ df.head()
 
  .. code-block:: none
 
-
-    '0.4.0.post8'
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 239-244
-
-.. code-block:: Python
-
-    from scikitplot.experimental import enable_annoyknn_imputer
-    from scikitplot.impute import AnnoyKNNImputer
-    # print(AnnoyKNNImputer.__doc__)
+    0.4.0.post9
 
 
 
 
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 245-272
+.. GENERATED FROM PYTHON SOURCE LINES 310-332
 
 .. code-block:: Python
 
-    from sklearn.preprocessing import MaxAbsScaler, RobustScaler, StandardScaler
+
     t0 = time.time()
-    # 'angular', 'euclidean', 'manhattan', 'hamming', 'dot'
-    imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, n_neighbors=1, metric='angular', n_trees=-1)
-    # imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, weights="distance")
+    imputer = ANNImputer(add_indicator=True, random_state=42, backend="voyager")
     mses_diabetes[6], stds_diabetes[6] = get_score(
         Xdi_train_miss, Xdi_val_miss, ydi_train_miss, ydi_val_miss,
         make_pipeline(MaxAbsScaler(), RobustScaler(), imputer),
     )
-    imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, n_neighbors=430, metric='euclidean', initial_strategy="median", weights="distance", n_trees=-1)
-    # imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, n_neighbors=484, metric='euclidean', initial_strategy="median", weights="distance")
     mses_california[6], stds_california[6] = get_score(
         Xca_train_miss, Xca_val_miss, yca_train_miss, yca_val_miss,
         make_pipeline(MaxAbsScaler(), RobustScaler(), imputer),
     )
-    imputer = AnnoyKNNImputer(add_indicator=True, random_state=0, n_neighbors=1, metric='euclidean', initial_strategy="median", n_trees=-1)
     mses_train[6], stds_train[6] = get_score(
         Xbc_train_miss, Xbc_val_miss, ybc_train_miss, ybc_val_miss,
         make_pipeline(MaxAbsScaler(), RobustScaler(), imputer),
         regresion=False
     )
-    x_labels[6] = "AnnoyKNN\nImputation\n(Vector Based)"
+    x_labels[6] = "ANN\nImputation\n(voyager)"
     T = time.time() - t0
     print(T)
     time_data[6] = T
@@ -473,14 +584,69 @@ df.head()
 
  .. code-block:: none
 
-    46.10819435119629
+    27.928369522094727
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 273-365
+.. GENERATED FROM PYTHON SOURCE LINES 333-362
 
 .. code-block:: Python
+
+
+    t0 = time.time()
+    # ⚠️ Reproducibility for Annoy required both random_state and n_trees
+    imputer = ANNImputer(add_indicator=True, random_state=42, n_trees=5,
+        index_access="private", on_disk_build=True, index_store_path=None,)
+    mses_diabetes[7], stds_diabetes[7] = get_score(
+        Xdi_train_miss, Xdi_val_miss, ydi_train_miss, ydi_val_miss,
+        make_pipeline(MaxAbsScaler(), RobustScaler(), imputer),
+    )
+    imputer = ANNImputer(add_indicator=True, random_state=42, n_trees=10,
+        # metric='euclidean', initial_strategy="median", weights="distance", n_neighbors=430,)
+        # metric='euclidean', initial_strategy="median", weights="distance", n_neighbors=484, n_trees=10
+        index_access="public", on_disk_build=True, index_store_path=None,)
+    mses_california[7], stds_california[7] = get_score(
+        Xca_train_miss, Xca_val_miss, yca_train_miss, yca_val_miss,
+        make_pipeline(MaxAbsScaler(), RobustScaler(), imputer),
+    )
+    imputer = ANNImputer(add_indicator=True, random_state=42, n_trees=10)
+    mses_train[7], stds_train[7] = get_score(
+        Xbc_train_miss, Xbc_val_miss, ybc_train_miss, ybc_val_miss,
+        make_pipeline(MaxAbsScaler(), RobustScaler(), imputer),
+        regresion=False
+    )
+    x_labels[7] = "ANN\nImputation\n(annoy)"
+    T = time.time() - t0
+    print(T)
+    time_data[7] = T
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    28.756412982940674
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 363-368
+
+Plot the results
+################
+
+Finally we are going to visualize the score:
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 368-461
+
+.. code-block:: Python
+
 
     import matplotlib.pyplot as plt
 
@@ -586,14 +752,14 @@ df.head()
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 366-370
+.. GENERATED FROM PYTHON SOURCE LINES 462-466
 
-AnnoyKNNImputer performance and accuracy are highly sensitive to both the
+ANNImputer performance and accuracy are highly sensitive to both the
 selected distance metric and the number of trees used to build the Annoy index.
 An inappropriate metric or insufficient number of trees may lead to poor
 neighbor retrieval and degraded imputation quality.
 
-.. GENERATED FROM PYTHON SOURCE LINES 372-379
+.. GENERATED FROM PYTHON SOURCE LINES 468-475
 
 .. tags::
 
@@ -606,7 +772,7 @@ neighbor retrieval and degraded imputation quality.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (3 minutes 48.551 seconds)
+   **Total running time of the script:** (3 minutes 38.839 seconds)
 
 
 .. _sphx_glr_download_auto_examples_impute_plot_impute_script.py:
