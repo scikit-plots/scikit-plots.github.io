@@ -7,16 +7,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="ANNoy" />
+<meta property="og:title" content="ANNoy Vector Database (Approximate Nearest Neighbors)" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/user_guide/annoy/index.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="This page documents the Annoy 0 integration shipped with scikit-plots. High-level API: annoy, Low-level bindings:_annoy. High-level Python interface for the C++ Annoy backend. This page documents a..." />
+<meta property="og:description" content="ANNoy helps you find similar items fast. You give your data as vectors(arrays of numbers). Then you can search for the nearest neighbors(the most similar vectors). This page documents the Annoy 1 u..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="This page documents the Annoy 0 integration shipped with scikit-plots. High-level API: annoy, Low-level bindings:_annoy. High-level Python interface for the C++ Annoy backend. This page documents a..." />
+<meta name="description" content="ANNoy helps you find similar items fast. You give your data as vectors(arrays of numbers). Then you can search for the nearest neighbors(the most similar vectors). This page documents the Annoy 1 u..." />
 
-    <title>ANNoy &#8212; scikit-plots 0.5.dev0 documentation</title>
+    <title>ANNoy Vector Database (Approximate Nearest Neighbors) &#8212; scikit-plots 0.5.dev0 documentation</title>
   
   
   
@@ -61,8 +61,8 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../_static/documentation_options.js?v=de0fc20e"></script>
-    <script src="../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=e93d8674"></script>
     <script src="../../_static/thebelab-helper.js"></script>
@@ -83,7 +83,7 @@
     <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Annoy Index Architecture (Inheritance Diagrams)" href="annoy_index_inheritance_diagrams.html" />
+    <link rel="next" title="Vector Similarity Search and Vector Database" href="annoy_index_vector_database.html" />
     <link rel="prev" title="User Guide" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -562,8 +562,9 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">ANNoy</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="annoy_index_inheritance_diagrams.html">Index Architecture</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">ANNoy Vector Index DB</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="annoy_index_vector_database.html">Vector Similarity Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annoy_index_inheritance_diagrams.html">Index Inheritance</a></li>
 </ul>
 </details></li>
 </ul>
@@ -576,9 +577,9 @@
 </details></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../decile_wise_perf/index.html">Decile-Wise Performance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../decile_wise_perf/kds.html">KeyToDataScience</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../decile_wise_perf/modelplotpy.html">modelplotpy</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../decile/index.html">Decile-Wise Performance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../decile/kds.html">KeyToDataScience</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/modelplotpy.html">modelplotpy</a></li>
 </ul>
 </details></li>
 </ul>
@@ -595,10 +596,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../preprocessing/index.html">Preprocessing</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../snsx/index.html">Seaborn eXtended</a></li>
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="../seaborn/index.html">seaborn</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../stats/index.html">Stats</a></li>
@@ -612,11 +610,11 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../_logo.html">Logo API</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Development</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">development</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../cexperimental/index.html">C-Experimental (experimental)</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../cexternals/index.html">C-Externals (experimental)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cexternals/_annoy/index.html">spotify/ANNoy (experimental)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cexternals/_annoy/index.html">spotify/ANNoy Vector Index DB</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cexternals/_astropy/index.html">Astropy (experimental)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cexternals/_f2py/index.html">f2py (experimental)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cexternals/_numcpp/index.html">NumCpp</a></li>
@@ -674,7 +672,7 @@
     
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">User Guide</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">ANNoy</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">ANNoy Vector Database (Approximate Nearest Neighbors)</span></li>
   </ul>
 </nav>
 </div>
@@ -691,46 +689,52 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="annoy">
-<span id="annoy-index"></span><h1>ANNoy<a class="headerlink" href="#annoy" title="Link to this heading">#</a></h1>
-<p>This page documents the Annoy <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>0<span class="fn-bracket">]</span></a> integration shipped with scikit-plots.</p>
+  <section id="annoy-vector-database-approximate-nearest-neighbors">
+<span id="annoy-index"></span><h1>ANNoy Vector Database (Approximate Nearest Neighbors)<a class="headerlink" href="#annoy-vector-database-approximate-nearest-neighbors" title="Link to this heading">#</a></h1>
+<p>ANNoy helps you find <em>similar items</em> fast.</p>
+<p>You give your data as <strong>vectors</strong> (arrays of numbers). Then you can search for
+the <strong>nearest neighbors</strong> (the most similar vectors).</p>
+<p>This page documents the Annoy <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> user guide integration shipped with scikit-plots.</p>
 <ul class="simple">
-<li><p>High-level API: <a class="reference internal" href="../../apis/scikitplot.annoy.html#module-scikitplot.annoy" title="scikitplot.annoy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">annoy</span></code></a></p></li>
-<li><p>Low-level bindings: <a class="reference internal" href="../../modules/generated/scikitplot.cexternals._annoy.html#module-scikitplot.cexternals._annoy" title="scikitplot.cexternals._annoy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">_annoy</span></code></a></p></li>
-</ul>
-<p>High-level Python interface for the C++ Annoy backend.</p>
-<p>This page documents <a class="reference internal" href="../../apis/scikitplot.annoy.html#module-scikitplot.annoy" title="scikitplot.annoy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">annoy</span></code></a>. It provides a stable import path
-and a small, user-facing API built on the low-level bindings in
-<a class="reference internal" href="../../modules/generated/scikitplot.cexternals._annoy.html#module-scikitplot.cexternals._annoy" title="scikitplot.cexternals._annoy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">_annoy</span></code></a>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For backend and C-extension details, see <a class="reference internal" href="../cexternals/_annoy/index.html#cexternals-annoy-index"><span class="std std-ref">spotify/ANNoy (experimental)</span></a>.</p>
-</div>
-<section id="exports">
-<h2>Exports<a class="headerlink" href="#exports" title="Link to this heading">#</a></h2>
-<p>This module exports:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="../../modules/generated/scikitplot.annoy.Annoy.html#scikitplot.annoy.Annoy" title="scikitplot.annoy.Annoy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annoy</span></code></a>:
-Low-level C-extension type (stable).</p></li>
-<li><p><a class="reference internal" href="../../modules/generated/scikitplot.annoy.AnnoyIndex.html#scikitplot.annoy.AnnoyIndex" title="scikitplot.annoy.AnnoyIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnoyIndex</span></code></a>:
-Public alias of the Annoy index.</p></li>
-<li><p><a class="reference internal" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><code class="xref py py-class docutils literal notranslate"><span class="pre">Index</span></code></a>:
-High-level Python wrapper subclass (picklable).</p></li>
+<li><p>Low-level bindings C-API: <a class="reference internal" href="../../modules/generated/scikitplot.cexternals._annoy.html#module-scikitplot.cexternals._annoy" title="scikitplot.cexternals._annoy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">_annoy</span></code></a></p></li>
+<li><p>High-level Python-API: <a class="reference internal" href="../../apis/scikitplot.annoy.html#module-scikitplot.annoy" title="scikitplot.annoy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">annoy</span></code></a></p></li>
 </ul>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
 <div class="sd-col sd-d-flex-row sd-p-2 docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
-<p class="sd-card-text"><strong>architecture</strong></p>
+<p class="sd-card-text"><strong>VectorDB</strong></p>
 </div>
 <div class="sd-card-body docutils">
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="annoy_index_inheritance_diagrams.html">Index Architecture</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="annoy_index_inheritance_diagrams.html#index-backend-mixins-public-view">Index + backend + mixins (public view)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="annoy_index_vector_database.html">Vector Similarity Search</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="annoy_index_vector_database.html#vector-similarity-search">Vector similarity search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annoy_index_vector_database.html#vector-database-vs-vector-index-library">Vector database vs “vector index library”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annoy_index_vector_database.html#pros-and-cons-of-vector-search">Pros and cons of vector search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annoy_index_vector_database.html#practical-tips">5 practical tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annoy_index_vector_database.html#open-source-options">Open source options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annoy_index_vector_database.html#how-to-choose-simple-rules">How to choose (simple rules)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-p-2 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>Architecture</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="annoy_index_inheritance_diagrams.html">Index Inheritance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="annoy_index_inheritance_diagrams.html#index-mixins">Index + mixins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="annoy_index_inheritance_diagrams.html#mixins-only-independence-mro-scan">Mixins only (independence + MRO scan)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="annoy_index_inheritance_diagrams.html#notes-and-limitations">Notes and limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annoy_index_inheritance_diagrams.html#notes-and-limitations">Notes and Limitations</a></li>
 </ul>
 </li>
 </ul>
@@ -740,6 +744,25 @@ High-level Python wrapper subclass (picklable).</p></li>
 </div>
 </div>
 </div>
+<section id="public-python-api">
+<h2>Public Python API<a class="headerlink" href="#public-python-api" title="Link to this heading">#</a></h2>
+<p>This module exports:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../modules/generated/scikitplot.annoy.Annoy.html#scikitplot.annoy.Annoy" title="scikitplot.annoy.Annoy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annoy</span></code></a>:
+Low-level C-extension type (stable, picklable).</p></li>
+<li><p><a class="reference internal" href="../../modules/generated/scikitplot.annoy.AnnoyIndex.html#scikitplot.annoy.AnnoyIndex" title="scikitplot.annoy.AnnoyIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnoyIndex</span></code></a>:
+Public alias of the Low-level <a class="reference internal" href="../../modules/generated/scikitplot.annoy.Annoy.html#scikitplot.annoy.Annoy" title="scikitplot.annoy.Annoy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annoy</span></code></a> index.</p></li>
+<li><p><a class="reference internal" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><code class="xref py py-class docutils literal notranslate"><span class="pre">Index</span></code></a>:
+High-level Python wrapper subclass (stable, picklable).</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For backend and C-extension details, see <a class="reference internal" href="../cexternals/_annoy/index.html#cexternals-annoy-index"><span class="std std-ref">spotify/ANNoy Vector Database (Approximate Nearest Neighbors)</span></a>.</p>
+</div>
+<p>High-level Python interface for the C++ Annoy backend.</p>
+<p>This page documents <a class="reference internal" href="../../apis/scikitplot.annoy.html#module-scikitplot.annoy" title="scikitplot.annoy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">annoy</span></code></a>. It provides a stable import path
+and a small, user-facing API built on the low-level bindings in
+<a class="reference internal" href="../../modules/generated/scikitplot.cexternals._annoy.html#module-scikitplot.cexternals._annoy" title="scikitplot.cexternals._annoy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">_annoy</span></code></a>.</p>
 </section>
 <section id="workflow">
 <h2>Workflow<a class="headerlink" href="#workflow" title="Link to this heading">#</a></h2>
@@ -834,7 +857,7 @@ to keep features separate and explicit.</p>
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="id2" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">0</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p><a class="reference external" href="https://pypi.org/project/annoy">Spotify AB. (2013, Feb 20). “Approximate Nearest Neighbors Oh Yeah”
 Github. https://pypi.org/project/annoy</a></p>
 </aside>
@@ -862,11 +885,11 @@ Github. https://pypi.org/project/annoy</a></p>
       </div>
     </a>
     <a class="right-next"
-       href="annoy_index_inheritance_diagrams.html"
+       href="annoy_index_vector_database.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Annoy Index Architecture (Inheritance Diagrams)</p>
+        <p class="prev-next-title">Vector Similarity Search and Vector Database</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -893,7 +916,7 @@ Github. https://pypi.org/project/annoy</a></p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exports">Exports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#public-python-api">Public Python API</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow">Workflow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick start</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
@@ -938,7 +961,7 @@ Github. https://pypi.org/project/annoy</a></p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260106.d7922e6 2026-01-06T15:36Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260123.ef5c603 2026-01-23T10:56Z.
       <br/>
     
   </p>

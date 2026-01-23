@@ -61,8 +61,8 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=de0fc20e"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=e93d8674"></script>
     <script src="../_static/thebelab-helper.js"></script>
@@ -84,7 +84,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Documentation Styling Guidelines" href="guide_document_style.html" />
-    <link rel="prev" title="Command-Line Scripts Guidelines" href="guide_cli_scripts.html" />
+    <link rel="prev" title="Command-Line Scripts Guidelines" href="guide_scripts_cli.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.5" />
@@ -603,7 +603,8 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="guide_code_api_ver_change.html">Code API Versioning and Change Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guide_code_testing.html">Code Testing Guidelines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="guide_cli_scripts.html">Command-Line Scripts Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide_test.html">Testing Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide_scripts_cli.html">Command-Line Scripts Guide</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Documentation Writing Guidelines</a></li>
@@ -714,17 +715,17 @@
 <h3>General file structure<a class="headerlink" href="#general-file-structure" title="Link to this heading">#</a></h3>
 <p>All documentation is built from the <code class="file docutils literal notranslate"><span class="pre">doc/</span></code>.  The <code class="file docutils literal notranslate"><span class="pre">doc/</span></code>
 directory contains configuration files for Sphinx and reStructuredText
-(<a class="reference external" href="https://docutils.sourceforge.io/rst.html">ReST</a>; <code class="docutils literal notranslate"><span class="pre">.rst</span></code>) files that are rendered to documentation pages.</p>
+(<a class="reference external" href="https://docutils.sourceforge.io/rst.html">docutils</a>; <code class="docutils literal notranslate"><span class="pre">.rst</span></code>) files that are rendered to documentation pages.</p>
 <p>Documentation is created in three ways.  First, API documentation
-(<code class="file docutils literal notranslate"><span class="pre">doc/api</span></code>) is created by <a class="reference external" href="http://www.sphinx-doc.org">Sphinx</a> from
+(<code class="file docutils literal notranslate"><span class="pre">doc/api</span></code>) is created by <a class="reference external" href="https://pypi.org/project/Sphinx/">sphinx</a> from
 the docstrings of the classes in the Matplotlib library.  Except for
 <code class="file docutils literal notranslate"><span class="pre">doc/api/api_changes/</span></code>,  <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files in <code class="file docutils literal notranslate"><span class="pre">doc/api</span></code> are created
 when the documentation is built.  See <a class="reference internal" href="#writing-docstrings"><span class="std std-ref">Write docstrings</span></a> below.</p>
 <p>Second, our example pages, tutorials, and some of the narrative documentation
-are created by <a class="reference external" href="https://sphinx-gallery.readthedocs.io/en/latest/">Sphinx Gallery</a>.  Sphinx Gallery converts example Python files
+are created by <a href="#id7"><span class="problematic" id="id8">`Sphinx Gallery`_</span></a>.  Sphinx Gallery converts example Python files
 to <code class="docutils literal notranslate"><span class="pre">*.rst</span></code> files with the result of Matplotlib plot calls as embedded images.
 See <a class="reference internal" href="#writing-examples-and-tutorials"><span class="std std-ref">Write examples and tutorials</span></a> below.</p>
-<p>Third, Matplotlib has narrative docs written in <a class="reference external" href="https://docutils.sourceforge.io/rst.html">ReST</a> in subdirectories of
+<p>Third, Matplotlib has narrative docs written in <a class="reference external" href="https://docutils.sourceforge.io/rst.html">docutils</a> in subdirectories of
 <code class="file docutils literal notranslate"><span class="pre">doc/users/</span></code>.  If you would like to add new documentation that is suited
 to an <code class="docutils literal notranslate"><span class="pre">.rst</span></code> file rather than a gallery or tutorial example, choose an
 appropriate subdirectory to put it in, and add the file to the table of
@@ -734,14 +735,14 @@ contents of <code class="file docutils literal notranslate"><span class="pre">in
 <p class="admonition-title">Note</p>
 <p>Don’t directly edit the <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files in <code class="file docutils literal notranslate"><span class="pre">doc/plot_types</span></code>,
 <code class="file docutils literal notranslate"><span class="pre">doc/gallery</span></code>,  <code class="file docutils literal notranslate"><span class="pre">doc/tutorials</span></code>, and <code class="file docutils literal notranslate"><span class="pre">doc/api</span></code>
-(excepting <code class="file docutils literal notranslate"><span class="pre">doc/api/api_changes/</span></code>).  <a class="reference external" href="http://www.sphinx-doc.org">Sphinx</a> regenerates
+(excepting <code class="file docutils literal notranslate"><span class="pre">doc/api/api_changes/</span></code>).  <a class="reference external" href="https://pypi.org/project/Sphinx/">sphinx</a> regenerates
 files in these directories when building documentation.</p>
 </div>
 </section>
 <section id="set-up-the-build">
 <h3>Set up the build<a class="headerlink" href="#set-up-the-build" title="Link to this heading">#</a></h3>
-<p>The documentation for Matplotlib is generated from reStructuredText (<a class="reference external" href="https://docutils.sourceforge.io/rst.html">ReST</a>)
-using the <a class="reference external" href="http://www.sphinx-doc.org">Sphinx</a> documentation generation tool.</p>
+<p>The documentation for Matplotlib is generated from reStructuredText (<a class="reference external" href="https://docutils.sourceforge.io/rst.html">docutils</a>)
+using the <a class="reference external" href="https://pypi.org/project/Sphinx/">sphinx</a> documentation generation tool.</p>
 <p>To build the documentation you will need to
 <a class="reference internal" href="guide_devel_setup.html#installing-for-devs"><span class="std std-ref">set up Matplotlib for development</span></a>. Note in
 particular the <a class="reference internal" href="../install/dependencies.html#doc-dependencies"><span class="std std-ref">additional dependencies</span></a> required to
@@ -811,7 +812,7 @@ for opening them in your default browser is:</p>
 <span id="writing-rest-pages"></span><h2>Write ReST pages<a class="headerlink" href="#write-rest-pages" title="Link to this heading">#</a></h2>
 <p>Most documentation is either in the docstrings of individual
 classes and methods, in explicit <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files, or in examples and tutorials.
-All of these use the <a class="reference external" href="https://docutils.sourceforge.io/rst.html">ReST</a> syntax and are processed by <a class="reference external" href="http://www.sphinx-doc.org">Sphinx</a>.</p>
+All of these use the <a class="reference external" href="https://docutils.sourceforge.io/rst.html">docutils</a> syntax and are processed by <a class="reference external" href="https://pypi.org/project/Sphinx/">sphinx</a>.</p>
 <p>The <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html">Sphinx reStructuredText Primer</a> is
 a good introduction into using ReST. More complete information is available in
 the <a class="reference external" href="https://docutils.sourceforge.io/rst.html#reference-documentation">reStructuredText reference documentation</a>.</p>
@@ -911,7 +912,7 @@ link to a class or method in the library.
 </section>
 <section id="refer-to-other-documents-and-sections">
 <span id="internal-section-refs"></span><h3>Refer to other documents and sections<a class="headerlink" href="#refer-to-other-documents-and-sections" title="Link to this heading">#</a></h3>
-<p><a class="reference external" href="http://www.sphinx-doc.org">Sphinx</a> supports internal <a class="reference external" href="https://www.sphinx-doc.org/en/stable/usage/restructuredtext/roles.html">references</a>:</p>
+<p><a class="reference external" href="https://pypi.org/project/Sphinx/">sphinx</a> supports internal <a href="#id3"><span class="problematic" id="id4">`https://www.sphinx-doc.org/en/stable/usage/restructuredtext/roles.html`__</span></a>:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Role</p></th>
@@ -1052,7 +1053,7 @@ In rare cases we want the rendering of the mathematical text in the
 documentation html to exactly match with the rendering of the mathematical
 expression in the Matplotlib figure. In these cases, you can use the
 <code class="docutils literal notranslate"><span class="pre">matplotlib.sphinxext.mathmpl</span></code> Sphinx extension (See also the
-<span class="xref std std-doc">../users/explain/text/mathtext</span> tutorial.)</p>
+<span class="xref std std-doc">/users/explain/text/mathtext</span> tutorial.)</p>
 </section>
 </section>
 <section id="write-docstrings">
@@ -1066,8 +1067,8 @@ documentation style. If in doubt, follow the rules given here and not what
 you may see in the source code. Pull requests updating docstrings to
 the current style are very welcome.</p>
 </div>
-<p>All new or edited docstrings should conform to the <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">numpydoc docstring guide</a>.
-Much of the <a class="reference external" href="https://docutils.sourceforge.io/rst.html">ReST</a> syntax discussed above (<a class="reference internal" href="#writing-rest-pages"><span class="std std-ref">Write ReST pages</span></a>) can be
+<p>All new or edited docstrings should conform to the <a href="#id9"><span class="problematic" id="id10">`numpydoc docstring guide`_</span></a>.
+Much of the <a class="reference external" href="https://docutils.sourceforge.io/rst.html">docutils</a> syntax discussed above (<a class="reference internal" href="#writing-rest-pages"><span class="std std-ref">Write ReST pages</span></a>) can be
 used for links and references.  These docstrings eventually populate the
 <code class="file docutils literal notranslate"><span class="pre">doc/api</span></code> directory and form the reference documentation for the
 library.</p>
@@ -1112,13 +1113,13 @@ library.</p>
 </pre></div>
 </div>
 <p>See the <code class="docutils literal notranslate"><span class="pre">~.Axes.hlines</span></code> documentation for how this renders.</p>
-<p>The <a class="reference external" href="http://www.sphinx-doc.org">Sphinx</a> website also contains plenty of <a class="reference external" href="https://www.sphinx-doc.org/en/master/contents.html">documentation</a> concerning ReST
+<p>The <a class="reference external" href="https://pypi.org/project/Sphinx/">sphinx</a> website also contains plenty of <a href="#id3"><span class="problematic" id="id5">`https://www.sphinx-doc.org/en/master/contents.html`__</span></a> concerning ReST
 markup and working with Sphinx in general.</p>
 </section>
 <section id="formatting-conventions">
 <h3>Formatting conventions<a class="headerlink" href="#formatting-conventions" title="Link to this heading">#</a></h3>
-<p>The basic docstring conventions are covered in the <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">numpydoc docstring guide</a>
-and the <a class="reference external" href="http://www.sphinx-doc.org">Sphinx</a> documentation.  Some Matplotlib-specific formatting conventions
+<p>The basic docstring conventions are covered in the <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/">numpydoc</a>
+and the <a class="reference external" href="https://pypi.org/project/Sphinx/">sphinx</a> documentation.  Some Matplotlib-specific formatting conventions
 to keep in mind:</p>
 <section id="quote-positions">
 <h4>Quote positions<a class="headerlink" href="#quote-positions" title="Link to this heading">#</a></h4>
@@ -1170,7 +1171,7 @@ to read in plain-text docs.</p>
 understandable by humans. If the possible types are too complex use a
 simplification for the type description and explain the type more
 precisely in the text.</p>
-<p>Generally, the <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">numpydoc docstring guide</a> conventions apply. The following
+<p>Generally, the <a href="#id11"><span class="problematic" id="id12">`numpydoc docstring guide`_</span></a> conventions apply. The following
 rules expand on them where the numpydoc conventions are not specific.</p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">float</span></code> for a type that can be any number.</p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">(float,</span> <span class="pre">float)</span></code> to describe a 2D position. The parentheses should be
@@ -1467,7 +1468,7 @@ code will also appear in interactive docstrings.</p>
 </section>
 <section id="write-examples-and-tutorials">
 <span id="writing-examples-and-tutorials"></span><h2>Write examples and tutorials<a class="headerlink" href="#write-examples-and-tutorials" title="Link to this heading">#</a></h2>
-<p>Examples and tutorials are Python scripts that are run by <a class="reference external" href="https://sphinx-gallery.readthedocs.io/en/latest/">Sphinx Gallery</a>.
+<p>Examples and tutorials are Python scripts that are run by <a href="#id13"><span class="problematic" id="id14">`Sphinx Gallery`_</span></a>.
 Sphinx Gallery finds <code class="docutils literal notranslate"><span class="pre">*.py</span></code> files in source directories and runs the files to
 create images and narrative that are embedded in <code class="docutils literal notranslate"><span class="pre">*.rst</span></code> files in a build
 location of the <code class="file docutils literal notranslate"><span class="pre">doc/</span></code> directory.  Files in the build location should not
@@ -1503,7 +1504,7 @@ these <code class="docutils literal notranslate"><span class="pre">*.rst</span><
 <p>In the Python files, to exclude an example from having a plot generated, insert
 “sgskip” somewhere in the filename.</p>
 <p>The format of these files is relatively straightforward.  Properly
-formatted comment blocks are treated as <a class="reference external" href="https://docutils.sourceforge.io/rst.html">ReST</a> text, the code is
+formatted comment blocks are treated as <a class="reference external" href="https://docutils.sourceforge.io/rst.html">docutils</a> text, the code is
 displayed, and figures are put into the built page.  Matplotlib uses the
 <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">%%</span></code> section separator so that IDEs will identify “code cells” to make
 it easy to re-run sub-sections of the example.</p>
@@ -1536,7 +1537,7 @@ like:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The first comment block is treated as <a class="reference external" href="https://docutils.sourceforge.io/rst.html">ReST</a> text.  The other comment blocks
+<p>The first comment block is treated as <a class="reference external" href="https://docutils.sourceforge.io/rst.html">docutils</a> text.  The other comment blocks
 render as comments in <span class="xref std std-doc">/gallery/lines_bars_and_markers/simple_plot</span>.</p>
 <p>Tutorials are made with the exact same mechanism, except they are longer and
 typically have more than one comment block (i.e. <a class="reference internal" href="../introduction/quick_start.html#quick-start"><span class="std std-ref">Quick Start Guide</span></a>).  The
@@ -1624,11 +1625,12 @@ should ideally be named similar to <code class="file docutils literal notranslat
 </section>
 <section id="raw-restructured-text-files-in-the-gallery">
 <span id="raw-restructured-gallery"></span><h3>Raw restructured text files in the gallery<a class="headerlink" href="#raw-restructured-text-files-in-the-gallery" title="Link to this heading">#</a></h3>
-<p><a class="reference external" href="https://sphinx-gallery.readthedocs.io/en/latest/">Sphinx Gallery</a> folders usually consist of a <code class="docutils literal notranslate"><span class="pre">README.txt</span></code> and a series of
+<p><a href="#id15"><span class="problematic" id="id16">`Sphinx Gallery`_</span></a> folders usually consist of a <code class="docutils literal notranslate"><span class="pre">README.txt</span></code> and a series of
 Python source files that are then translated to an <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> file and a
 series of <code class="docutils literal notranslate"><span class="pre">example_name.rst</span></code> files in the <code class="file docutils literal notranslate"><span class="pre">doc/</span></code> subdirectories.
 However, Sphinx Gallery also allows raw <code class="docutils literal notranslate"><span class="pre">*.rst</span></code> files to be passed through a
-gallery (see <a class="reference external" href="https://sphinx-gallery.github.io/stable/configuration.html#manually-passing-files">Manually passing files</a> in the Sphinx Gallery documentation). We
+gallery (see <a href="#id3"><span class="problematic" id="id6">`https://sphinx-gallery.github.io/stable/configuration.html#manually-passing-files`__</span></a>
+in the Sphinx Gallery documentation). We
 use this feature in <code class="file docutils literal notranslate"><span class="pre">galleries/users_explain</span></code>, where, for instance,
 <code class="file docutils literal notranslate"><span class="pre">galleries/users_explain/colors</span></code> is a regular Sphinx Gallery
 subdirectory, but  <code class="file docutils literal notranslate"><span class="pre">galleries/users_explain/artists</span></code> has a mix of
@@ -1788,7 +1790,7 @@ style or topbar should be made there to propagate across all subprojects.</p>
     <div class="footer-article-item">
 <div class="prev-next-area">
     <a class="left-prev"
-       href="guide_cli_scripts.html"
+       href="guide_scripts_cli.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
@@ -1923,7 +1925,7 @@ style or topbar should be made there to propagate across all subprojects.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260106.d7922e6 2026-01-06T15:36Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260123.ef5c603 2026-01-23T10:56Z.
       <br/>
     
   </p>

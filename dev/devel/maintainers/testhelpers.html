@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/devel/maintainers/testhelpers.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="This section is primarily a reference for developers that want to understand or add to the Astropy testing machinery. See/development/testguide for an overview of running or writing the tests. Deta..." />
+<meta property="og:description" content="This section is primarily a reference for developers that want to understand or add to the Astropy testing machinery. See Testing Guidelines for an overview of running or writing the tests. Details..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="This section is primarily a reference for developers that want to understand or add to the Astropy testing machinery. See/development/testguide for an overview of running or writing the tests. Deta..." />
+<meta name="description" content="This section is primarily a reference for developers that want to understand or add to the Astropy testing machinery. See Testing Guidelines for an overview of running or writing the tests. Details..." />
 
     <title>Astropy Testing Tools &#8212; scikit-plots 0.5.dev0 documentation</title>
   
@@ -61,8 +61,8 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../_static/documentation_options.js?v=de0fc20e"></script>
-    <script src="../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=e93d8674"></script>
     <script src="../../_static/thebelab-helper.js"></script>
@@ -611,12 +611,12 @@
   <section id="astropy-testing-tools">
 <span id="testhelpers"></span><h1>Astropy Testing Tools<a class="headerlink" href="#astropy-testing-tools" title="Link to this heading">#</a></h1>
 <p>This section is primarily a reference for developers that want to understand or
-add to the Astropy testing machinery. See <span class="xref std std-doc">/development/testguide</span> for an
+add to the Astropy testing machinery. See <a class="reference internal" href="../guide_test.html"><span class="doc">Testing Guidelines</span></a> for an
 overview of running or writing the tests.</p>
 <section id="details">
 <h2>Details<a class="headerlink" href="#details" title="Link to this heading">#</a></h2>
 <p>The dependencies used by the Astropy test suite are provided by a separate
-package called <a href="#id2"><span class="problematic" id="id3">|pytest-astropy|</span></a>. This package provides the <code class="docutils literal notranslate"><span class="pre">pytest</span></code>
+package called <a class="reference external" href="https://pypi.org/project/pytest-astropy/">pytest-astropy</a>. This package provides the <code class="docutils literal notranslate"><span class="pre">pytest</span></code>
 dependency itself, in addition to several <code class="docutils literal notranslate"><span class="pre">pytest</span></code> plugins that are used by
 Astropy, and will also be of general use to other packages.</p>
 <p>Since the testing dependencies are not actually required to install or use
@@ -681,8 +681,15 @@ The following table maps them to what you should use instead.</p>
 </table>
 </div>
 </section>
-<section id="module-astropy.tests.helper">
-<span id="reference-api"></span><h3>Reference/API<a class="headerlink" href="#module-astropy.tests.helper" title="Link to this heading">#</a></h3>
+<section id="reference-api">
+<h3>Reference/API<a class="headerlink" href="#reference-api" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">module</span><span class="p">::</span> <span class="n">astropy</span><span class="o">.</span><span class="n">tests</span><span class="o">.</span><span class="n">helper</span>
+
+<span class="o">..</span> <span class="n">automodapi</span><span class="p">::</span> <span class="n">astropy</span><span class="o">.</span><span class="n">tests</span><span class="o">.</span><span class="n">helper</span>
+    <span class="p">:</span><span class="n">no</span><span class="o">-</span><span class="n">main</span><span class="o">-</span><span class="n">docstr</span><span class="p">:</span>
+    <span class="p">:</span><span class="n">no</span><span class="o">-</span><span class="n">inheritance</span><span class="o">-</span><span class="n">diagram</span><span class="p">:</span>
+</pre></div>
+</div>
 </section>
 </section>
 <section id="astropy-test-runner">
@@ -711,7 +718,13 @@ whole new set of arguments by subclassing from
 <code class="docutils literal notranslate"><span class="pre">~astropy.tests.runner.TestRunnerBase</span></code>.</p>
 <section id="id1">
 <h3>Reference/API<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<span class="target" id="module-astropy.tests.runner"></span></section>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">module</span><span class="p">::</span> <span class="n">astropy</span><span class="o">.</span><span class="n">tests</span><span class="o">.</span><span class="n">runner</span>
+
+<span class="o">..</span> <span class="n">automodapi</span><span class="p">::</span> <span class="n">astropy</span><span class="o">.</span><span class="n">tests</span><span class="o">.</span><span class="n">runner</span>
+    <span class="p">:</span><span class="n">no</span><span class="o">-</span><span class="n">main</span><span class="o">-</span><span class="n">docstr</span><span class="p">:</span>
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
@@ -751,7 +764,7 @@ whole new set of arguments by subclassing from
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#details">Details</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astropy-tests-helper-module"><code class="docutils literal notranslate"><span class="pre">astropy.tests.helper</span></code> Module</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-guide">Conversion Guide</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-astropy.tests.helper">Reference/API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-api">Reference/API</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astropy-test-runner">Astropy Test Runner</a><ul class="nav section-nav flex-column">
@@ -795,7 +808,7 @@ whole new set of arguments by subclassing from
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260106.d7922e6 2026-01-06T15:36Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260123.ef5c603 2026-01-23T10:56Z.
       <br/>
     
   </p>

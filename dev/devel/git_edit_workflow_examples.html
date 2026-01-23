@@ -61,8 +61,8 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=de0fc20e"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=e93d8674"></script>
     <script src="../_static/thebelab-helper.js"></script>
@@ -603,7 +603,8 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="guide_code_api_ver_change.html">Code API Versioning and Change Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guide_code_testing.html">Code Testing Guidelines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="guide_cli_scripts.html">Command-Line Scripts Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide_test.html">Testing Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide_scripts_cli.html">Command-Line Scripts Guide</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="guide_document_write.html">Documentation Writing Guidelines</a></li>
@@ -753,7 +754,7 @@ sure that your Python environment is set up properly.</p>
 <p>The first challenge is figuring out where to look for relevant tests. <a class="reference external" href="https://github.com/astropy/astropy/issues/1761">Issue
 1761</a> is a problem in the <code class="docutils literal notranslate"><span class="pre">~astropy.coordinates</span></code> package, so the tests for
 it are in <code class="docutils literal notranslate"><span class="pre">astropy/coordinates/tests</span></code>. The rest of <code class="docutils literal notranslate"><span class="pre">astropy</span></code> has a similar
-layout, as described at <a class="reference external" href="https://numpy.org/doc/stable/reference/testing.html#testing-guidelines" title="(in NumPy v2.4)"><span>Testing guidelines</span></a>.</p>
+layout, as described at <a class="reference internal" href="guide_test.html#testing-guidelines"><span class="std std-ref">Testing Guidelines</span></a>.</p>
 <p>Run the current tests in that directory with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pytest</span> <span class="n">astropy</span><span class="o">/</span><span class="n">coordinates</span><span class="o">/</span><span class="n">tests</span>
 </pre></div>
@@ -773,7 +774,7 @@ test_arrays.py
 </div>
 <p><a class="reference external" href="https://github.com/astropy/astropy/issues/1761">Issue 1761</a> affects arrays of coordinates, so it seems sensible to put the
 new test in <code class="docutils literal notranslate"><span class="pre">test_arrays.py</span></code>. As with all of the steps, when in doubt,
-please ask on the <a href="#id2"><span class="problematic" id="id3">|astropy-dev mailing list|</span></a>.</p>
+please ask on the <a class="reference external" href="https://github.com/astropy/astropy">astropy-dev mailing list</a>.</p>
 <p>The goal at this point may be a little counter-intuitive: write a test that we
 know will fail with the current code. This test allows <code class="docutils literal notranslate"><span class="pre">astropy</span></code> to check,
 in an automated way, whether our fix actually works and to prevent
@@ -815,7 +816,7 @@ an excerpt from the output is:</p>
 we just wrote is one logical change, so we will commit it. You could, if you
 prefer, wait and commit this test along with your fix.</p>
 <p>For this tutorial, we will commit the test separately. If you are not sure what to
-do, ask on <a href="#id4"><span class="problematic" id="id5">|astropy-dev mailing list|</span></a>.</p>
+do, ask on <a class="reference external" href="https://github.com/astropy/astropy">astropy-dev mailing list</a>.</p>
 <section id="check-what-was-changed">
 <h3>Check what was changed<a class="headerlink" href="#check-what-was-changed" title="Link to this heading">#</a></h3>
 <p>We can see what has changed with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>:</p>
@@ -958,7 +959,7 @@ Success again!</p></li>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Tests that are skipped or xfailed are fine. A fail or an error is not
-fine. If you get stuck, ask on <a href="#id6"><span class="problematic" id="id7">|astropy-dev mailing list|</span></a> for help!</p>
+fine. If you get stuck, ask on <a class="reference external" href="https://github.com/astropy/astropy">astropy-dev mailing list</a> for help!</p>
 </div>
 </section>
 <section id="stage-and-commit-your-change">
@@ -1009,7 +1010,7 @@ snippet below accomplishes that in bash (and similar shells):</p>
 </div>
 <p>If the commit message does not look right, run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">--amend</span></code>.
 If you still run into problems, please ask about fixing it at
-<a href="#id8"><span class="problematic" id="id9">|astropy-dev mailing list|</span></a>.</p>
+<a class="reference external" href="https://github.com/astropy/astropy">astropy-dev mailing list</a>.</p>
 <p>At this point, none of the Astropy maintainers know anything about
 your changes.</p>
 <p>We will take care of that in a moment with a “pull request”, but first,
@@ -1280,7 +1281,7 @@ to GitHub. GitHub will automatically update your pull request.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260106.d7922e6 2026-01-06T15:36Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260123.ef5c603 2026-01-23T10:56Z.
       <br/>
     
   </p>

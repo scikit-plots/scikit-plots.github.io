@@ -7,16 +7,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="Annoy Index Architecture (Inheritance Diagrams)" />
+<meta property="og:title" content="Annoy Index class Inheritance Diagrams (MRO)" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/user_guide/annoy/annoy_index_inheritance_diagrams.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="This page shows the class inheritance structure for the Annoy backend and the high-level Index facade, using Sphinx’s built-in inheritance diagram support (the same approach used in Matplotlib’s do..." />
+<meta property="og:description" content="This page shows the class inheritance structure for the Annoy backend and the high-level Index facade class, using Sphinx’s built-in inheritance diagram support (the same approach used in Matplotli..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="This page shows the class inheritance structure for the Annoy backend and the high-level Index facade, using Sphinx’s built-in inheritance diagram support (the same approach used in Matplotlib’s do..." />
+<meta name="description" content="This page shows the class inheritance structure for the Annoy backend and the high-level Index facade class, using Sphinx’s built-in inheritance diagram support (the same approach used in Matplotli..." />
 
-    <title>Annoy Index Architecture (Inheritance Diagrams) &#8212; scikit-plots 0.5.dev0 documentation</title>
+    <title>Annoy Index class Inheritance Diagrams (MRO) &#8212; scikit-plots 0.5.dev0 documentation</title>
   
   
   
@@ -61,8 +61,8 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../_static/documentation_options.js?v=de0fc20e"></script>
-    <script src="../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=e93d8674"></script>
     <script src="../../_static/thebelab-helper.js"></script>
@@ -84,7 +84,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Metric Performance" href="../api/index.html" />
-    <link rel="prev" title="ANNoy" href="index.html" />
+    <link rel="prev" title="Vector Similarity Search and Vector Database" href="annoy_index_vector_database.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.5" />
@@ -562,8 +562,9 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">ANNoy</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Index Architecture</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">ANNoy Vector Index DB</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="annoy_index_vector_database.html">Vector Similarity Search</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Index Inheritance</a></li>
 </ul>
 </details></li>
 </ul>
@@ -576,9 +577,9 @@
 </details></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../decile_wise_perf/index.html">Decile-Wise Performance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../decile_wise_perf/kds.html">KeyToDataScience</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../decile_wise_perf/modelplotpy.html">modelplotpy</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../decile/index.html">Decile-Wise Performance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../decile/kds.html">KeyToDataScience</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/modelplotpy.html">modelplotpy</a></li>
 </ul>
 </details></li>
 </ul>
@@ -595,10 +596,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../preprocessing/index.html">Preprocessing</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../snsx/index.html">Seaborn eXtended</a></li>
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="../seaborn/index.html">seaborn</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../stats/index.html">Stats</a></li>
@@ -612,11 +610,11 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../_logo.html">Logo API</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Development</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">development</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../cexperimental/index.html">C-Experimental (experimental)</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../cexternals/index.html">C-Externals (experimental)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cexternals/_annoy/index.html">spotify/ANNoy (experimental)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cexternals/_annoy/index.html">spotify/ANNoy Vector Index DB</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cexternals/_astropy/index.html">Astropy (experimental)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cexternals/_f2py/index.html">f2py (experimental)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cexternals/_numcpp/index.html">NumCpp</a></li>
@@ -675,9 +673,9 @@
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">User Guide</a></li>
     
     
-    <li class="breadcrumb-item"><a href="index.html" class="nav-link">ANNoy</a></li>
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">ANNoy Vector Database (Approximate Nearest Neighbors)</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Annoy Index Architecture (Inheritance Diagrams)</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Annoy <code class="xref py py-class docutils literal notranslate"><span class="pre">Index</span></code> class Inheritance Diagrams (MRO)</span></li>
   </ul>
 </nav>
 </div>
@@ -694,29 +692,20 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="annoy-index-architecture-inheritance-diagrams">
-<span id="annoy-index-inheritance-diagrams"></span><h1>Annoy Index Architecture (Inheritance Diagrams)<a class="headerlink" href="#annoy-index-architecture-inheritance-diagrams" title="Link to this heading">#</a></h1>
+  <section id="annoy-index-class-inheritance-diagrams-mro">
+<span id="annoy-index-inheritance-diagrams"></span><h1>Annoy <a class="reference internal" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><code class="xref py py-class docutils literal notranslate"><span class="pre">Index</span></code></a> class Inheritance Diagrams (MRO)<a class="headerlink" href="#annoy-index-class-inheritance-diagrams-mro" title="Link to this heading">#</a></h1>
 <p>This page shows the <strong>class inheritance structure</strong> for the Annoy backend and the
-high-level <a class="reference internal" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><code class="xref py py-class docutils literal notranslate"><span class="pre">Index</span></code></a> facade, using Sphinx’s built-in
+high-level <a class="reference internal" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><code class="xref py py-class docutils literal notranslate"><span class="pre">Index</span></code></a> facade class, using Sphinx’s built-in
 inheritance diagram support (the same approach used in Matplotlib’s docs).</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Enable the extension and ensure Graphviz is available:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;sphinx.ext.inheritance_diagram&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>The directive renders via Graphviz (<code class="docutils literal notranslate"><span class="pre">dot</span></code>). Install Graphviz in your build
-environment if it is missing.</p>
-</div>
-<section id="index-backend-mixins-public-view">
-<h2>Index + backend + mixins (public view)<a class="headerlink" href="#index-backend-mixins-public-view" title="Link to this heading">#</a></h2>
-<div class="graphviz"><img src="../../_images/inheritance-f4eadc828239a553411d3388bc01c2c80890b78b.png" alt="Inheritance diagram of scikitplot.cexternals._annoy.Annoy, scikitplot.annoy.Index, scikitplot.annoy._mixins._meta.MetaMixin, scikitplot.annoy._mixins._io.IndexIOMixin, scikitplot.annoy._mixins._pickle.PickleMixin, scikitplot.annoy._mixins._vectors.VectorOpsMixin, scikitplot.annoy._mixins._ndarray.NDArrayMixin, scikitplot.annoy._mixins._plotting.PlottingMixin" usemap="#inheritance91ce29bca0" class="inheritance graphviz" /></div>
-<map id="inheritance91ce29bca0" name="inheritance91ce29bca0">
+<section id="index-mixins">
+<h2>Index + mixins<a class="headerlink" href="#index-mixins" title="Link to this heading">#</a></h2>
+<div class="graphviz"><img src="../../_images/inheritance-76d3b2547a20a4ce0ad38ddaa272372e1f5ba4df.png" alt="Inheritance diagram of scikitplot.cexternals._annoy.Annoy, scikitplot.annoy._mixins._meta.MetaMixin, scikitplot.annoy._mixins._io.IndexIOMixin, scikitplot.annoy._mixins._pickle.PickleMixin, scikitplot.annoy._mixins._vectors.VectorOpsMixin, scikitplot.annoy._mixins._ndarray.NDArrayMixin, scikitplot.annoy._mixins._plotting.PlottingMixin, scikitplot.annoy.Index" usemap="#inheritance136750c831" class="inheritance graphviz" /></div>
+<map id="inheritance136750c831" name="inheritance136750c831">
 <area shape="rect" id="node1" href="../../modules/generated/scikitplot.cexternals._annoy.Annoy.html#scikitplot.cexternals._annoy.Annoy" target="_top" title="Compiled with GCC/Clang. Using 512&#45;bit AVX instructions." alt="" coords="31,5,103,31"/>
 <area shape="rect" id="node2" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" target="_top" title="High&#45;level ANNoy index composed from mixins." alt="" coords="177,153,249,179"/>
 <area shape="rect" id="node3" href="../../modules/generated/scikitplot.annoy.MetaMixin.html#scikitplot.annoy.MetaMixin" target="_top" title="Mixin that exports and restores index metadata." alt="" coords="22,55,113,80"/>
 <area shape="rect" id="node4" href="../../modules/generated/scikitplot.annoy.IndexIOMixin.html#scikitplot.annoy.IndexIOMixin" target="_top" title="Mixin adding explicit Annoy&#45;native persistence helpers." alt="" coords="13,104,121,129"/>
-<area shape="rect" id="node5" href="../../modules/generated/scikitplot.annoy.PickleMixin.html#scikitplot.annoy.PickleMixin" target="_top" title="Mixin adding deterministic pickle support." alt="" coords="19,153,116,179"/>
+<area shape="rect" id="node5" href="../../modules/generated/scikitplot.annoy.PickleMixin.html#scikitplot.annoy.PickleMixin" target="_top" title="Mixin adding pickle support." alt="" coords="19,153,116,179"/>
 <area shape="rect" id="node6" href="../../modules/generated/scikitplot.annoy.VectorOpsMixin.html#scikitplot.annoy.VectorOpsMixin" target="_top" title="User&#45;facing neighbor queries for Annoy&#45;like backends." alt="" coords="5,203,129,228"/>
 <area shape="rect" id="node7" href="../../modules/generated/scikitplot.annoy.NDArrayMixin.html#scikitplot.annoy.NDArrayMixin" target="_top" title="NumPy / SciPy / pandas interoperability for Annoy&#45;like indexes." alt="" coords="11,252,124,277"/>
 <area shape="rect" id="node8" href="../../modules/generated/scikitplot.annoy.PlottingMixin.html#scikitplot.annoy.PlottingMixin" target="_top" title="Mixin that adds convenient plotting methods to high&#45;level Annoy wrappers." alt="" coords="13,301,121,327"/>
@@ -732,25 +721,39 @@ and composes behavior using independent mixins.</p></li>
 <h2>Mixins only (independence + MRO scan)<a class="headerlink" href="#mixins-only-independence-mro-scan" title="Link to this heading">#</a></h2>
 <p>This diagram focuses only on the mixins so you can quickly confirm there is no
 unexpected inheritance between mixins (they should be <strong>independent</strong>).</p>
-<div class="graphviz"><img src="../../_images/inheritance-55d0f3bf4dd7b17b1af3ecf59883de147ff4e71f.png" alt="Inheritance diagram of scikitplot.annoy._mixins._meta.MetaMixin, scikitplot.annoy._mixins._io.IndexIOMixin, scikitplot.annoy._mixins._pickle.PickleMixin, scikitplot.annoy._mixins._vectors.VectorOpsMixin, scikitplot.annoy._mixins._ndarray.NDArrayMixin, scikitplot.annoy._mixins._plotting.PlottingMixin" usemap="#inheritance9d9daa37dd" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="../../_images/inheritance-8b6a8d23e3f56df7196139006b7529f45bde30af.png" alt="Inheritance diagram of scikitplot.annoy._mixins._meta.MetaMixin, scikitplot.annoy._mixins._io.IndexIOMixin, scikitplot.annoy._mixins._pickle.PickleMixin, scikitplot.annoy._mixins._vectors.VectorOpsMixin, scikitplot.annoy._mixins._ndarray.NDArrayMixin, scikitplot.annoy._mixins._plotting.PlottingMixin" usemap="#inheritance9d9daa37dd" class="inheritance graphviz" /></div>
 <map id="inheritance9d9daa37dd" name="inheritance9d9daa37dd">
 <area shape="rect" id="node1" href="../../modules/generated/scikitplot.annoy.IndexIOMixin.html#scikitplot.annoy.IndexIOMixin" target="_top" title="Mixin adding explicit Annoy&#45;native persistence helpers." alt="" coords="13,252,121,277"/>
 <area shape="rect" id="node2" href="../../modules/generated/scikitplot.annoy.MetaMixin.html#scikitplot.annoy.MetaMixin" target="_top" title="Mixin that exports and restores index metadata." alt="" coords="22,203,113,228"/>
 <area shape="rect" id="node3" href="../../modules/generated/scikitplot.annoy.NDArrayMixin.html#scikitplot.annoy.NDArrayMixin" target="_top" title="NumPy / SciPy / pandas interoperability for Annoy&#45;like indexes." alt="" coords="11,153,124,179"/>
-<area shape="rect" id="node4" href="../../modules/generated/scikitplot.annoy.PickleMixin.html#scikitplot.annoy.PickleMixin" target="_top" title="Mixin adding deterministic pickle support." alt="" coords="19,104,116,129"/>
+<area shape="rect" id="node4" href="../../modules/generated/scikitplot.annoy.PickleMixin.html#scikitplot.annoy.PickleMixin" target="_top" title="Mixin adding pickle support." alt="" coords="19,104,116,129"/>
 <area shape="rect" id="node5" href="../../modules/generated/scikitplot.annoy.PlottingMixin.html#scikitplot.annoy.PlottingMixin" target="_top" title="Mixin that adds convenient plotting methods to high&#45;level Annoy wrappers." alt="" coords="13,55,121,80"/>
 <area shape="rect" id="node6" href="../../modules/generated/scikitplot.annoy.VectorOpsMixin.html#scikitplot.annoy.VectorOpsMixin" target="_top" title="User&#45;facing neighbor queries for Annoy&#45;like backends." alt="" coords="5,5,129,31"/>
 </map></section>
 <section id="notes-and-limitations">
-<h2>Notes and limitations<a class="headerlink" href="#notes-and-limitations" title="Link to this heading">#</a></h2>
+<h2>Notes and Limitations<a class="headerlink" href="#notes-and-limitations" title="Link to this heading">#</a></h2>
 <p>Inheritance diagrams show <strong>class derivation</strong>, but they do not show <strong>composition</strong>
 relationships (e.g., an optional <code class="docutils literal notranslate"><span class="pre">self._annoy</span></code> backend attribute). For composition
 support, refer to the “glue” helpers documented elsewhere (e.g., <code class="docutils literal notranslate"><span class="pre">backend_for(self)</span></code>,
 <code class="docutils literal notranslate"><span class="pre">lock_for(self)</span></code>).</p>
+<ul class="simple">
+<li><p>An inheritance diagram shows “parent → child” class relationships.</p></li>
+<li><p>It helps you understand which class extends another class.</p></li>
+</ul>
+<p>Sphinx can render inheritance diagrams using the built-in extension
+<code class="docutils literal notranslate"><span class="pre">sphinx.ext.inheritance_diagram</span></code>. The diagram is rendered using Graphviz
+(the <code class="docutils literal notranslate"><span class="pre">dot</span></code> tool), so Graphviz must be available in your build environment.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In your <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;sphinx.ext.inheritance_diagram&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
 <section id="see-also">
 <h3>See Also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">sphinx.ext.inheritance_diagram</span></code></p></li>
+<li><p><a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/inheritance.html#module-sphinx.ext.inheritance_diagram" title="(in Sphinx v9.1.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sphinx.ext.inheritance_diagram</span></code></a></p></li>
 <li><p>Graphviz (<code class="docutils literal notranslate"><span class="pre">dot</span></code>) documentation</p></li>
 </ul>
 </section>
@@ -768,12 +771,12 @@ support, refer to the “glue” helpers documented elsewhere (e.g., <code class
     <div class="footer-article-item">
 <div class="prev-next-area">
     <a class="left-prev"
-       href="index.html"
+       href="annoy_index_vector_database.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">ANNoy</p>
+        <p class="prev-next-title">Vector Similarity Search and Vector Database</p>
       </div>
     </a>
     <a class="right-next"
@@ -808,9 +811,9 @@ support, refer to the “glue” helpers documented elsewhere (e.g., <code class
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#index-backend-mixins-public-view">Index + backend + mixins (public view)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#index-mixins">Index + mixins</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixins-only-independence-mro-scan">Mixins only (independence + MRO scan)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes-and-limitations">Notes and limitations</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes-and-limitations">Notes and Limitations</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -851,7 +854,7 @@ support, refer to the “glue” helpers documented elsewhere (e.g., <code class
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260106.d7922e6 2026-01-06T15:36Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260123.ef5c603 2026-01-23T10:56Z.
       <br/>
     
   </p>

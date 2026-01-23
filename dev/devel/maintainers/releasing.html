@@ -61,8 +61,8 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../_static/documentation_options.js?v=de0fc20e"></script>
-    <script src="../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=e93d8674"></script>
     <script src="../../_static/thebelab-helper.js"></script>
@@ -635,7 +635,7 @@ chronologically.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You may need to replace <code class="docutils literal notranslate"><span class="pre">upstream</span></code> on this page with <code class="docutils literal notranslate"><span class="pre">astropy</span></code> or
-whatever remote name you use for the <a class="reference external" href="https://github.com/astropy/astropy">astropy core repository</a>.</p>
+whatever remote name you use for the <a class="reference external" href="https://github.com/astropy/astropy">astropy</a>.</p>
 </div>
 <section id="start-of-a-new-release-cycle-feature-freeze-and-branching">
 <span id="release-procedure-new-major"></span><h2>Start of a new release cycle - feature freeze and branching<a class="headerlink" href="#start-of-a-new-release-cycle-feature-freeze-and-branching" title="Link to this heading">#</a></h2>
@@ -838,7 +838,7 @@ the release branch.</p>
 <section id="ensure-continuous-integration-and-intensive-tests-pass">
 <span id="release-procedure-check-ci"></span><h3>Ensure continuous integration and intensive tests pass<a class="headerlink" href="#ensure-continuous-integration-and-intensive-tests-pass" title="Link to this heading">#</a></h3>
 <p>Make sure that the continuous integration services (e.g., GitHub Actions or CircleCI) are passing
-for the <a class="reference external" href="https://github.com/astropy/astropy">astropy core repository</a> branch you are going to release.
+for the <a class="reference external" href="https://github.com/astropy/astropy">astropy</a> branch you are going to release.
 Also make sure that the ReadTheDocs build is passing for the release branch.</p>
 <p>One of the continuous integration tasks that should be run periodically is the updates to the
 IERS tables in <code class="docutils literal notranslate"><span class="pre">astropy.utils.iers</span></code>, so check that the last run from this has been
@@ -873,7 +873,7 @@ suffix, e.g.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git tag -s v6.0.0rc1 -m &quot;Tagging v6.0.0rc1&quot;
 </pre></div>
 </div>
-<p>Push up the tag to the <a class="reference external" href="https://github.com/astropy/astropy">astropy core repository</a>, e.g.:</p>
+<p>Push up the tag to the <a class="reference external" href="https://github.com/astropy/astropy">astropy</a>, e.g.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git push upstream v6.0.0rc1
 </pre></div>
 </div>
@@ -1082,7 +1082,7 @@ latest commit with the <code class="docutils literal notranslate"><span class="p
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git tag -s v6.0.1 -m &quot;Tagging v6.0.1&quot;
 </pre></div>
 </div>
-<p>Push up the tag to the <a class="reference external" href="https://github.com/astropy/astropy">astropy core repository</a>, e.g.:</p>
+<p>Push up the tag to the <a class="reference external" href="https://github.com/astropy/astropy">astropy</a>, e.g.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git push upstream v6.0.1
 </pre></div>
 </div>
@@ -1136,8 +1136,8 @@ will need to be backported manually. This is done using the <code class="docutil
 command, which applies the diff from a single commit like a patch.  For the sake
 of example, say the current bug fix branch is ‘v6.0.x’, and that a bug was fixed
 in main in a commit <code class="docutils literal notranslate"><span class="pre">abcd1234</span></code>.  In order to backport the fix, checkout the
-v6.0.x branch (it’s also good to make sure it’s in sync with the <a class="reference external" href="https://github.com/astropy/astropy">astropy core
-repository</a>) and cherry-pick the appropriate commit:</p>
+v6.0.x branch (it’s also good to make sure it’s in sync with the <a class="reference external" href="https://github.com/astropy/astropy">astropy</a>)
+and cherry-pick the appropriate commit:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout v6.0.x
 $ git pull upstream v6.0.x
 $ git cherry-pick abcd1234
@@ -1280,7 +1280,7 @@ it’s harder for commits that need to be backported from getting lost.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260106.d7922e6 2026-01-06T15:36Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260123.ef5c603 2026-01-23T10:56Z.
       <br/>
     
   </p>

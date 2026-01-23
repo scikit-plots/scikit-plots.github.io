@@ -1,7 +1,8 @@
 import numpy as np
+np.random.seed(0)
+
 import matplotlib.pyplot as plt
 from matplotlib import cbook
-np.random.seed(0)
 
 fig, ax = plt.subplots(figsize=(4, 6))
 ax.set_yscale('log')

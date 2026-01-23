@@ -61,8 +61,8 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=de0fc20e"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=e93d8674"></script>
     <script src="../_static/thebelab-helper.js"></script>
@@ -603,7 +603,8 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="guide_code_api_ver_change.html">Code API Versioning and Change Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guide_code_testing.html">Code Testing Guidelines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="guide_cli_scripts.html">Command-Line Scripts Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide_test.html">Testing Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide_scripts_cli.html">Command-Line Scripts Guide</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="guide_document_write.html">Documentation Writing Guidelines</a></li>
@@ -698,7 +699,7 @@
 <p>This document contains somewhat-independent sections that provide details on
 topics covered in the <a class="reference internal" href="guide_qu_contribute.html#quickstart-contributing"><span class="std std-ref">Quickstart Contributing Guidelines</span></a> guide.</p>
 <section id="pre-commit">
-<span id="id1"></span><h2>Pre-commit<a class="headerlink" href="#pre-commit" title="Link to this heading">#</a></h2>
+<span id="id2"></span><h2>Pre-commit<a class="headerlink" href="#pre-commit" title="Link to this heading">#</a></h2>
 <p>All of the coding style checks described in <a class="reference internal" href="guide_code_style_write.html#code-style"><span class="std std-ref">PEP8, as enforced by flake8</span></a> can be performed automatically
 when you make a git commit using our provided <a class="reference external" href="https://pre-commit.com/">pre-commit hook</a>
 for git, for more information see
@@ -772,7 +773,7 @@ a different bug while implementing your fix, implement the fix to that new
 bug as a different set of changes.</p></li>
 <li><p>Test that your changes do not lead to <em>regressions</em>, i.e. that your
 changes do not break existing code, by running the Astropy tests
-as described in <a class="reference external" href="https://numpy.org/doc/stable/reference/testing.html#testing-guidelines" title="(in NumPy v2.4)"><span>Testing guidelines</span></a>.</p></li>
+as described in <a class="reference internal" href="guide_test.html#testing-guidelines"><span class="std std-ref">Testing Guidelines</span></a>.</p></li>
 <li><p>Make sure your code includes appropriate docstrings, in the
 <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">Numpydoc format</a>.
 If appropriate, as when you are adding a new feature,
@@ -790,7 +791,7 @@ any warnings.  (For more details, see <a class="reference internal" href="guide_
 </li>
 <li><p>Add tests of your new code, if appropriate. Some changes (e.g. to
 documentation) do not need tests. Detailed instructions are at
-<a class="reference external" href="https://docs.python.org/3/library/test.html#writing-tests" title="(in Python v3.14)"><span>Writing Unit Tests for the test package</span></a>, but if you have no experience writing tests or
+<a class="reference internal" href="guide_test.html#writing-tests"><span class="std std-ref">Writing tests</span></a>, but if you have no experience writing tests or
 with the <a class="reference external" href="https://docs.pytest.org/en/stable/">pytest</a> testing framework submit your changes without adding
 tests, but mention in the pull request that you have not written tests.
 An example of writing a test is in
@@ -942,7 +943,7 @@ rebase</a>.</p>
 </section>
 </section>
 <section id="squash-if-necessary">
-<span id="id2"></span><h2>Squash if necessary<a class="headerlink" href="#squash-if-necessary" title="Link to this heading">#</a></h2>
+<span id="id3"></span><h2>Squash if necessary<a class="headerlink" href="#squash-if-necessary" title="Link to this heading">#</a></h2>
 <p>Squashing refers to combining multiple commits into a single commit. This can be done
 using the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rebase</span></code> command or via <a class="reference internal" href="maintainers/maintainer_workflow.html#github-squash-and-merge"><span class="std std-ref">Github ‘Squash and merge’</span></a>.</p>
 <p>An Astropy maintainer will be happy to guide you through this process.</p>
@@ -1010,7 +1011,7 @@ can delete any backup branches that may have been created:</p>
 <p>This is necessary for use with CentOS7.</p>
 </section>
 <section id="external-c-libraries">
-<span id="id3"></span><h2>External C Libraries<a class="headerlink" href="#external-c-libraries" title="Link to this heading">#</a></h2>
+<span id="id4"></span><h2>External C Libraries<a class="headerlink" href="#external-c-libraries" title="Link to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">astropy</span></code> source ships with the C source code of a number of
 libraries. By default, these internal copies are used to build
 <code class="docutils literal notranslate"><span class="pre">astropy</span></code>. However, if you wish to use the system-wide installation of
@@ -1146,7 +1147,7 @@ bundled version. To use the system version, set <code class="docutils literal no
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260106.d7922e6 2026-01-06T15:36Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260123.ef5c603 2026-01-23T10:56Z.
       <br/>
     
   </p>

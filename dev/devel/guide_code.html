@@ -61,8 +61,8 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=de0fc20e"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=e93d8674"></script>
     <script src="../_static/thebelab-helper.js"></script>
@@ -603,7 +603,8 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="guide_code_api_ver_change.html">Code API Versioning and Change Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guide_code_testing.html">Code Testing Guidelines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="guide_cli_scripts.html">Command-Line Scripts Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide_test.html">Testing Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide_scripts_cli.html">Command-Line Scripts Guide</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="guide_document_write.html">Documentation Writing Guidelines</a></li>
@@ -707,8 +708,8 @@ core package.</p></li>
 <li><p>The core package should be importable with no
 dependencies other than components already in the Astropy core, the
 <a class="reference external" href="https://docs.python.org/3/library/index.html">Python Standard Library</a>,
-and <a class="reference external" href="https://numpy.org/">NumPy</a> <a href="#id5"><span class="problematic" id="id6">|minimum_numpy_version|</span></a> or later.</p></li>
-<li><p>Additional dependencies - such as <a href="#id9"><span class="problematic" id="id10">`SciPy`_</span></a>, <a class="reference external" href="https://matplotlib.org/">Matplotlib</a>, or other
+and <a class="reference external" href="https://numpy.org/">NumPy</a> <a class="reference external" href="1.20">minimum_numpy_version</a> or later.</p></li>
+<li><p>Additional dependencies - such as <a class="reference external" href="https://scipy.org/">SciPy</a>, <a class="reference external" href="https://matplotlib.org/">Matplotlib</a>, or other
 third-party packages - are allowed for sub-modules or in function
 calls, but they must be noted in the package documentation and
 should only affect the relevant component.  In functions and
@@ -742,14 +743,14 @@ re-implementing it in <code class="docutils literal notranslate"><span class="pr
 <h2>Documentation and Testing<a class="headerlink" href="#documentation-and-testing" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Docstrings must be present for all public classes/methods/functions, and
-must follow the form outlined in the <span class="xref std std-doc">docguide</span> document.</p></li>
+must follow the form outlined in the <a class="reference internal" href="guide_document.html"><span class="doc">Documentation Guidelines</span></a> document.</p></li>
 <li><p>Write usage examples in the docstrings of all classes and functions whenever
 possible. These examples should be short and simple to reproduce–users
 should be able to copy them verbatim and run them. These examples should,
-whenever possible, be in the <span class="xref std std-ref">doctest</span> format and will be
+whenever possible, be in the <a class="reference internal" href="guide_test.html#doctests"><span class="std std-ref">doctest</span></a> format and will be
 executed as part of the test suite.</p></li>
 <li><p>Unit tests should be provided for as many public methods and functions as
-possible, and should adhere to the standards set in the <span class="xref std std-doc">testguide</span>
+possible, and should adhere to the standards set in the <a class="reference internal" href="#"><span class="doc">Coding Guidelines</span></a>
 document.</p></li>
 </ul>
 </section>
@@ -808,7 +809,7 @@ module. The logger can be imported using:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">astropy</span></code> itself enforces this style guide using the
 <a class="reference external" href="https://docs.astral.sh/ruff/formatter/">ruff format</a> code formatter, which closely follows the
 <a class="reference external" href="https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html">The Black Code Style</a>.</p></li>
-<li><p>In the rare cases that <a class="reference external" href="https://docs.astral.sh/ruff/">ruff</a> formatting is undesirable, it is possible to
+<li><p>In the rare cases that <a class="reference external" href="https://docs.astral.sh/ruff/">Ruff</a> formatting is undesirable, it is possible to
 <a class="reference external" href="https://docs.astral.sh/ruff/formatter/#format-suppression">disable formatting locally</a>.</p>
 <blockquote>
 <div><div class="admonition note">
@@ -817,7 +818,7 @@ module. The logger can be imported using:</p>
 achieved by using the
 <a class="reference external" href="https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html#the-magic-trailing-comma">magic trailing comma</a>.
 This is frequently sufficient for keeping matrices formatted as one row
-per line while still allowing <a class="reference external" href="https://docs.astral.sh/ruff/">ruff</a> to check the code:</p>
+per line while still allowing <a class="reference external" href="https://docs.astral.sh/ruff/">Ruff</a> to check the code:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
     <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>  <span class="c1"># notice the trailing comma.</span>
@@ -831,19 +832,19 @@ per line while still allowing <a class="reference external" href="https://docs.a
 </li>
 <li><p>Our testing infrastructure currently enforces a subset of the <a class="reference external" href="https://peps.python.org/pep-0008/">PEP8</a> style guide. In
 addition, these checks also enforce <a class="reference external" href="https://pycqa.github.io/isort/">isort</a> to sort
-the module imports and a large set of style-checks supported by <a class="reference external" href="https://docs.astral.sh/ruff/">ruff</a>.</p>
+the module imports and a large set of style-checks supported by <a class="reference external" href="https://docs.astral.sh/ruff/">Ruff</a>.</p>
 <ul class="simple">
 <li><p>We provide a <a class="reference external" href="https://pre-commit.com/">pre-commit</a> configuration which
 automatically enforces and fixes (whenever possible) the coding style, see
 <a class="reference internal" href="guide_devel_details.html#pre-commit"><span class="std std-ref">Pre-commit</span></a> for details on how to set up and use this. We note that the
 particular set of <a class="reference external" href="https://peps.python.org/pep-0008/">PEP8</a> and style-related checks that are used in Astropy do not
-need to be used in affiliated packages. In particular, the set of <a class="reference external" href="https://docs.astral.sh/ruff/">ruff</a> checks is
+need to be used in affiliated packages. In particular, the set of <a class="reference external" href="https://docs.astral.sh/ruff/">Ruff</a> checks is
 not required for affiliated packages.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>There are multiple options for testing PEP8 compliance of code,
-see <span class="xref std std-doc">testguide</span> for more information.</p>
+see <a class="reference internal" href="#"><span class="doc">Coding Guidelines</span></a> for more information.</p>
 </div>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">astropy</span></code> source code should contain a comment at the beginning of the file
@@ -878,7 +879,7 @@ organizing the module layout, however (e.g. <code class="docutils literal notran
 in accord with the guideline above). If a module is small enough that
 it fits in one file, it should simply be a single file, rather than a
 directory with an <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file.</p></li>
-<li><p>Command-line scripts should follow the form outlined in the <span class="xref std std-doc">scripts</span>
+<li><p>Command-line scripts should follow the form outlined in the <a class="reference internal" href="guide_scripts_cli.html"><span class="doc">Command-Line Scripts Guidelines</span></a>
 document.</p></li>
 </ul>
 </section>
@@ -1092,9 +1093,7 @@ the hierarchy.</p>
 <a class="reference external" href="https://rhettinger.wordpress.com/2011/05/26/super-considered-super/">https://rhettinger.wordpress.com/2011/05/26/super-considered-super/</a></p>
 </div>
 <blockquote>
-<div><p>See the <a href="#id11"><span class="problematic" id="id12">`matplotlib documentation`_</span></a> for more info.
-.. _matplotlib documentation: <a class="reference external" href="https://matplotlib.org/">https://matplotlib.org/</a></p>
-</div></blockquote>
+<div></div></blockquote>
 </section>
 </section>
 </section>
@@ -1200,7 +1199,7 @@ the hierarchy.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260106.d7922e6 2026-01-06T15:36Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260123.ef5c603 2026-01-23T10:56Z.
       <br/>
     
   </p>
