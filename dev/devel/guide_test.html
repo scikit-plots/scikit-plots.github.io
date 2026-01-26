@@ -762,7 +762,7 @@ targeting the relevant sub-package or test file.</p>
 <span id="id4"></span><h3>pytest<a class="headerlink" href="#running-pytest" title="Link to this heading">#</a></h3>
 <p>The test suite can also be run directly from the native <code class="docutils literal notranslate"><span class="pre">pytest</span></code> command, which is
 much faster than using <code class="docutils literal notranslate"><span class="pre">tox</span></code> for iterative development.  This assumes you are working
-in an <span class="xref std std-ref">isolated development environment</span>.</p>
+in an <a class="reference external" href="https://docs.astropy.org/en/latest/development/quickstart.html#create-isolated-env" title="(in Astropy v8.0)"><span class="xref std std-ref">isolated development environment</span></a>.</p>
 <p>In the uncommon situation that one or more compiled extensions have changed, you will
 need to rebuild them by re-running the usual editable install command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">editable</span> <span class="s1">&#39;.[dev_all]&#39;</span>
@@ -985,7 +985,7 @@ a context manager within a test to temporarily set the cache to a custom
 location, or as a <em>decorator</em> that takes effect for an entire test function
 (not including setup or teardown, which would have to be decorated separately).</p>
 <p>Furthermore, it is possible to change the location of the cache directory
-for the duration of the test run via <a class="reference external" href="https://docs.astropy.org/en/stable/environment_variables.html#environment-variables" title="(in Astropy v7.2)"><span>Environment variables</span></a>.</p>
+for the duration of the test run via <a class="reference external" href="https://docs.astropy.org/en/latest/environment_variables.html#environment-variables" title="(in Astropy v8.0)"><span>Environment variables</span></a>.</p>
 </section>
 </section>
 <section id="tests-that-create-files">
@@ -1296,7 +1296,7 @@ block:</p>
 <p>We make use of the <a class="reference external" href="https://pypi.org/project/pytest-mpl">pytest-mpl</a>
 plugin to write tests where we can compare the output of plotting commands
 with reference files on a pixel-by-pixel basis (this is used for instance in
-<a class="reference external" href="https://docs.astropy.org/en/stable/visualization/wcsaxes/index.html#wcsaxes" title="(in Astropy v7.2)"><span class="xref std std-ref">astropy.visualization.wcsaxes</span></a>). We use the <a class="reference external" href="https://pytest-mpl.readthedocs.io/en/latest/hybrid_mode.html">hybrid mode</a> with
+<a class="reference external" href="https://docs.astropy.org/en/latest/visualization/wcsaxes/index.html#wcsaxes" title="(in Astropy v8.0)"><span class="xref std std-ref">astropy.visualization.wcsaxes</span></a>). We use the <a class="reference external" href="https://pytest-mpl.readthedocs.io/en/latest/hybrid_mode.html">hybrid mode</a> with
 hashes and images.</p>
 <p>To run the Astropy tests with the image comparison, use e.g.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tox</span> <span class="o">-</span><span class="n">e</span> <span class="n">py311</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">image</span><span class="o">-</span><span class="n">mpl380</span><span class="o">-</span><span class="n">cov</span>
@@ -1722,7 +1722,7 @@ idea of the performance impact of a pull request.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260123.ef5c603 2026-01-23T10:56Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260126.729947e 2026-01-26T19:33Z.
       <br/>
     
   </p>

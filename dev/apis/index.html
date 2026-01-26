@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/apis/index.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="Scikit-plots APIs 0.5.dev0+git.20260123.ef5c603- January 23, 2026 10:56 UTC This is the class and function reference of scikit-plots. Please refer to the full user guide for further details, as the..." />
+<meta property="og:description" content="Scikit-plots APIs 0.5.dev0+git.20260126.729947e- January 26, 2026 19:33 UTC This is the class and function reference of scikit-plots. Please refer to the full user guide for further details, as the..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="Scikit-plots APIs 0.5.dev0+git.20260123.ef5c603- January 23, 2026 10:56 UTC This is the class and function reference of scikit-plots. Please refer to the full user guide for further details, as the..." />
+<meta name="description" content="Scikit-plots APIs 0.5.dev0+git.20260126.729947e- January 26, 2026 19:33 UTC This is the class and function reference of scikit-plots. Please refer to the full user guide for further details, as the..." />
 
     <title>APIs Reference &#8212; scikit-plots 0.5.dev0 documentation</title>
   
@@ -89,7 +89,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="scikitplot" href="scikitplot.html" />
-    <link rel="prev" title="Python Data API Standards: array_api_extra (experimental)" href="../user_guide/externals/array_api_extra/index.html" />
+    <link rel="prev" title="Tweedie Family" href="../user_guide/externals/_tweedie/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.5" />
@@ -564,6 +564,8 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.html">scikitplot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.__version__.html">__version__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.__version_iso_8601__.html">__version_iso_8601__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.config_context.html">config_context</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.get_config.html">get_config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.get_logger.html">get_logger</a></li>
@@ -643,6 +645,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.decile.kds.plot_lift_decile_wise.html">plot_lift_decile_wise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.decile.kds.plot_ks_statistic.html">plot_ks_statistic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.decile.kds.report.html">report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.decile.modelplotpy.ModelPlotPy.html">ModelPlotPy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.decile.ModelPlotPy.html">ModelPlotPy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.decile.plot_response.html">plot_response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.decile.plot_cumresponse.html">plot_cumresponse</a></li>
@@ -680,15 +683,22 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.externals.html">scikitplot.externals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals.array_api_compat.html">array_api_compat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals.array_api_extra.html">array_api_extra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.ProbScale.html">ProbScale</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.probplot.html">probplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.plot_pos.html">plot_pos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.fit_line.html">fit_line</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._seaborn.html">_seaborn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.html">_sphinxext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.figmpl_directive.html">scikitplot.externals._sphinxext.figmpl_directive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.mathmpl.html">scikitplot.externals._sphinxext.mathmpl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.plot_directive.html">scikitplot.externals._sphinxext.plot_directive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.roles.html">roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.sphinx_tabs_patch.html">sphinx_tabs_patch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.html">_tweedie</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals.array_api_compat.html">array_api_compat</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals.array_api_extra.html">array_api_extra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.tweedie.html">tweedie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.tweedie_gen.html">tweedie_gen</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -841,7 +851,7 @@
                 <article class="bd-article">
                   
   <span class="target" id="scikit-plots-apis"></span><p><span class="raw-html"><div style="text-align: center"><strong></span> Scikit-plots APIs
-<br/> 0.5.dev0+git.20260123.ef5c603 - January 23, 2026 10:56 UTC
+<br/> 0.5.dev0+git.20260126.729947e - January 26, 2026 19:33 UTC
 <span class="raw-html"></strong></div></span></p>
 <section id="apis-reference">
 <span id="apis-ref-index"></span><h1>APIs Reference<a class="headerlink" href="#apis-reference" title="Link to this heading">#</a></h1>
@@ -858,6 +868,24 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </tr>
 </thead>
 <tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.__version__.html#scikitplot.__version__" title="scikitplot.__version__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__version__</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>str(object=’’) -&gt; str</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.html#module-scikitplot" title="scikitplot"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.__version_iso_8601__.html#scikitplot.__version_iso_8601__" title="scikitplot.__version_iso_8601__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__version_iso_8601__</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>str(object=’’) -&gt; str</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.html#module-scikitplot" title="scikitplot"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.config_context.html#scikitplot.config_context" title="scikitplot.config_context"><code class="xref py py-obj docutils literal notranslate"><span class="pre">config_context</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Context manager for global scikit-plots configuration.</p>
@@ -1406,7 +1434,16 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.decile.ModelPlotPy.html#scikitplot.decile.ModelPlotPy" title="scikitplot.decile.ModelPlotPy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotPy</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.decile.modelplotpy.ModelPlotPy.html#scikitplot.decile.modelplotpy.ModelPlotPy" title="scikitplot.decile.modelplotpy.ModelPlotPy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotPy</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>ModelPlotPy decile analysis.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.decile.html#module-scikitplot.decile.modelplotpy" title="scikitplot.decile.modelplotpy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.decile.modelplotpy</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.decile.modelplotpy.ModelPlotPy.html#scikitplot.decile.modelplotpy.ModelPlotPy" title="scikitplot.decile.modelplotpy.ModelPlotPy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelPlotPy</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Decile/ntile analysis for sklearn classifiers.</p>
 <div class="caption docutils">
@@ -1415,7 +1452,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.decile.plot_response.html#scikitplot.decile.plot_response" title="scikitplot.decile.plot_response"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_response</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.decile.plot_response.html#scikitplot.decile.plot_response" title="scikitplot.decile.plot_response"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_response</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Plot response curve.</p>
 <div class="caption docutils">
@@ -1424,7 +1461,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.decile.plot_cumresponse.html#scikitplot.decile.plot_cumresponse" title="scikitplot.decile.plot_cumresponse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_cumresponse</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.decile.plot_cumresponse.html#scikitplot.decile.plot_cumresponse" title="scikitplot.decile.plot_cumresponse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_cumresponse</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Plot cumulative response curve.</p>
 <div class="caption docutils">
@@ -1433,7 +1470,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.decile.plot_cumlift.html#scikitplot.decile.plot_cumlift" title="scikitplot.decile.plot_cumlift"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_cumlift</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.decile.plot_cumlift.html#scikitplot.decile.plot_cumlift" title="scikitplot.decile.plot_cumlift"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_cumlift</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Plot cumulative lift curve.</p>
 <div class="caption docutils">
@@ -1442,7 +1479,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.decile.plot_cumgains.html#scikitplot.decile.plot_cumgains" title="scikitplot.decile.plot_cumgains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_cumgains</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.decile.plot_cumgains.html#scikitplot.decile.plot_cumgains" title="scikitplot.decile.plot_cumgains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_cumgains</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Plot cumulative gains curve.</p>
 <div class="caption docutils">
@@ -1451,7 +1488,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.decile.plot_all.html#scikitplot.decile.plot_all" title="scikitplot.decile.plot_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_all</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.decile.plot_all.html#scikitplot.decile.plot_all" title="scikitplot.decile.plot_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_all</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Plot response, cumulative response, cumulative lift, and cumulative gains as a 2x2 panel.</p>
 <div class="caption docutils">
@@ -1460,7 +1497,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.decile.plot_costsrevs.html#scikitplot.decile.plot_costsrevs" title="scikitplot.decile.plot_costsrevs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_costsrevs</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.decile.plot_costsrevs.html#scikitplot.decile.plot_costsrevs" title="scikitplot.decile.plot_costsrevs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_costsrevs</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Plot costs and revenues curves.</p>
 <div class="caption docutils">
@@ -1469,7 +1506,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.decile.plot_profit.html#scikitplot.decile.plot_profit" title="scikitplot.decile.plot_profit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_profit</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.decile.plot_profit.html#scikitplot.decile.plot_profit" title="scikitplot.decile.plot_profit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_profit</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Plot profit curve.</p>
 <div class="caption docutils">
@@ -1478,7 +1515,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.decile.plot_roi.html#scikitplot.decile.plot_roi" title="scikitplot.decile.plot_roi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_roi</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.decile.plot_roi.html#scikitplot.decile.plot_roi" title="scikitplot.decile.plot_roi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_roi</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Plot ROI (return on investment) curve.</p>
 <div class="caption docutils">
@@ -1487,7 +1524,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ModuleDeprecationWarning.html#scikitplot.exceptions.ModuleDeprecationWarning" title="scikitplot.exceptions.ModuleDeprecationWarning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModuleDeprecationWarning</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ModuleDeprecationWarning.html#scikitplot.exceptions.ModuleDeprecationWarning" title="scikitplot.exceptions.ModuleDeprecationWarning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModuleDeprecationWarning</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Module deprecation warning.</p>
 <div class="caption docutils">
@@ -1496,7 +1533,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ScikitplotException.html#scikitplot.exceptions.ScikitplotException" title="scikitplot.exceptions.ScikitplotException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScikitplotException</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ScikitplotException.html#scikitplot.exceptions.ScikitplotException" title="scikitplot.exceptions.ScikitplotException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScikitplotException</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Generic exception thrown to surface failure information about external-facing operations.</p>
 <div class="caption docutils">
@@ -1505,7 +1542,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.exceptions.VisibleDeprecationWarning.html#scikitplot.exceptions.VisibleDeprecationWarning" title="scikitplot.exceptions.VisibleDeprecationWarning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VisibleDeprecationWarning</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.exceptions.VisibleDeprecationWarning.html#scikitplot.exceptions.VisibleDeprecationWarning" title="scikitplot.exceptions.VisibleDeprecationWarning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VisibleDeprecationWarning</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Visible deprecation warning.</p>
 <div class="caption docutils">
@@ -1514,7 +1551,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental.enable_ann_imputer.html#module-scikitplot.experimental.enable_ann_imputer" title="scikitplot.experimental.enable_ann_imputer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable_ann_imputer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental.enable_ann_imputer.html#module-scikitplot.experimental.enable_ann_imputer" title="scikitplot.experimental.enable_ann_imputer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable_ann_imputer</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Enables ANNImputer</p>
 <div class="caption docutils">
@@ -1523,7 +1560,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental.pipeline.pipeline.html#module-scikitplot.experimental.pipeline.pipeline" title="scikitplot.experimental.pipeline.pipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pipeline</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental.pipeline.pipeline.html#module-scikitplot.experimental.pipeline.pipeline" title="scikitplot.experimental.pipeline.pipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pipeline</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>pipeline.py.</p>
 <div class="caption docutils">
@@ -1532,7 +1569,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.ENVELOPES.html#scikitplot.experimental._doremi.ENVELOPES" title="scikitplot.experimental._doremi.ENVELOPES"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ENVELOPES</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.ENVELOPES.html#scikitplot.experimental._doremi.ENVELOPES" title="scikitplot.experimental._doremi.ENVELOPES"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ENVELOPES</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Mapping of envelope types to amplitude-modulation functions.</p>
 <div class="caption docutils">
@@ -1541,7 +1578,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.compose_as_waveform.html#scikitplot.experimental._doremi.compose_as_waveform" title="scikitplot.experimental._doremi.compose_as_waveform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compose_as_waveform</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.compose_as_waveform.html#scikitplot.experimental._doremi.compose_as_waveform" title="scikitplot.experimental._doremi.compose_as_waveform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compose_as_waveform</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Generate a concatenated waveform from a musical composition input.</p>
 <div class="caption docutils">
@@ -1550,7 +1587,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.play_waveform.html#scikitplot.experimental._doremi.play_waveform" title="scikitplot.experimental._doremi.play_waveform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">play_waveform</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.play_waveform.html#scikitplot.experimental._doremi.play_waveform" title="scikitplot.experimental._doremi.play_waveform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">play_waveform</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Play audio from a NumPy array using either IPython (for Jupyter) or sounddevice.</p>
 <div class="caption docutils">
@@ -1559,7 +1596,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.plot_waveform.html#scikitplot.experimental._doremi.plot_waveform" title="scikitplot.experimental._doremi.plot_waveform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_waveform</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.plot_waveform.html#scikitplot.experimental._doremi.plot_waveform" title="scikitplot.experimental._doremi.plot_waveform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_waveform</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Plot the waveform of mono or multi-channel audio data.</p>
 <div class="caption docutils">
@@ -1568,7 +1605,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.save_waveform.html#scikitplot.experimental._doremi.save_waveform" title="scikitplot.experimental._doremi.save_waveform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_waveform</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.save_waveform.html#scikitplot.experimental._doremi.save_waveform" title="scikitplot.experimental._doremi.save_waveform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_waveform</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Save waveform to an audio file using specified or auto-selected backend.</p>
 <div class="caption docutils">
@@ -1577,7 +1614,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.save_waveform_as_mp3.html#scikitplot.experimental._doremi.save_waveform_as_mp3" title="scikitplot.experimental._doremi.save_waveform_as_mp3"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_waveform_as_mp3</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.save_waveform_as_mp3.html#scikitplot.experimental._doremi.save_waveform_as_mp3" title="scikitplot.experimental._doremi.save_waveform_as_mp3"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_waveform_as_mp3</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Save waveform as an MP3 file using pydub and ffmpeg, with support for mono or stereo.</p>
 <div class="caption docutils">
@@ -1586,7 +1623,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.sheet_to_note.html#scikitplot.experimental._doremi.sheet_to_note" title="scikitplot.experimental._doremi.sheet_to_note"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sheet_to_note</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.sheet_to_note.html#scikitplot.experimental._doremi.sheet_to_note" title="scikitplot.experimental._doremi.sheet_to_note"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sheet_to_note</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Convert input sheet (str/list/dict) to a list of (note, octave, duration).</p>
 <div class="caption docutils">
@@ -1595,7 +1632,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.sheet_converter.html#scikitplot.experimental._doremi.sheet_converter" title="scikitplot.experimental._doremi.sheet_converter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sheet_converter</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.sheet_converter.html#scikitplot.experimental._doremi.sheet_converter" title="scikitplot.experimental._doremi.sheet_converter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sheet_converter</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Display parsed notes or note frequencies from a musical sheet.</p>
 <div class="caption docutils">
@@ -1604,7 +1641,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.serialize_sheet.html#scikitplot.experimental._doremi.serialize_sheet" title="scikitplot.experimental._doremi.serialize_sheet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serialize_sheet</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.serialize_sheet.html#scikitplot.experimental._doremi.serialize_sheet" title="scikitplot.experimental._doremi.serialize_sheet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serialize_sheet</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Serialize sheet notes to JSON or YAML string.</p>
 <div class="caption docutils">
@@ -1613,7 +1650,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.export_sheet.html#scikitplot.experimental._doremi.export_sheet" title="scikitplot.experimental._doremi.export_sheet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">export_sheet</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.export_sheet.html#scikitplot.experimental._doremi.export_sheet" title="scikitplot.experimental._doremi.export_sheet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">export_sheet</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Enable serialization of compositions or note sheets.</p>
 <div class="caption docutils">
@@ -1622,7 +1659,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._llm_provider.LLM_PROVIDER_CONFIG_MAP.html#scikitplot.experimental._llm_provider.LLM_PROVIDER_CONFIG_MAP" title="scikitplot.experimental._llm_provider.LLM_PROVIDER_CONFIG_MAP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LLM_PROVIDER_CONFIG_MAP</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._llm_provider.LLM_PROVIDER_CONFIG_MAP.html#scikitplot.experimental._llm_provider.LLM_PROVIDER_CONFIG_MAP" title="scikitplot.experimental._llm_provider.LLM_PROVIDER_CONFIG_MAP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LLM_PROVIDER_CONFIG_MAP</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <div class="caption docutils">
 <p><a class="reference internal" href="scikitplot.experimental.html#module-scikitplot.experimental._llm_provider" title="scikitplot.experimental._llm_provider"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.experimental._llm_provider</span></code></a></p>
@@ -1630,7 +1667,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._llm_provider.LLM_PROVIDER_ENV_CONNECTOR_MAP.html#scikitplot.experimental._llm_provider.LLM_PROVIDER_ENV_CONNECTOR_MAP" title="scikitplot.experimental._llm_provider.LLM_PROVIDER_ENV_CONNECTOR_MAP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LLM_PROVIDER_ENV_CONNECTOR_MAP</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._llm_provider.LLM_PROVIDER_ENV_CONNECTOR_MAP.html#scikitplot.experimental._llm_provider.LLM_PROVIDER_ENV_CONNECTOR_MAP" title="scikitplot.experimental._llm_provider.LLM_PROVIDER_ENV_CONNECTOR_MAP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LLM_PROVIDER_ENV_CONNECTOR_MAP</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <div class="caption docutils">
 <p><a class="reference internal" href="scikitplot.experimental.html#module-scikitplot.experimental._llm_provider" title="scikitplot.experimental._llm_provider"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.experimental._llm_provider</span></code></a></p>
@@ -1638,7 +1675,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._llm_provider.get_response.html#scikitplot.experimental._llm_provider.get_response" title="scikitplot.experimental._llm_provider.get_response"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_response</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._llm_provider.get_response.html#scikitplot.experimental._llm_provider.get_response" title="scikitplot.experimental._llm_provider.get_response"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_response</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Get response from LLM provider.</p>
 <div class="caption docutils">
@@ -1647,73 +1684,11 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._llm_provider.load_mlflow_gateway_config.html#scikitplot.experimental._llm_provider.load_mlflow_gateway_config" title="scikitplot.experimental._llm_provider.load_mlflow_gateway_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_mlflow_gateway_config</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.experimental._llm_provider.load_mlflow_gateway_config.html#scikitplot.experimental._llm_provider.load_mlflow_gateway_config" title="scikitplot.experimental._llm_provider.load_mlflow_gateway_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_mlflow_gateway_config</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
 <p>Load MLflow Gateway model configuration from a YAML file.</p>
 <div class="caption docutils">
 <p><a class="reference internal" href="scikitplot.experimental.html#module-scikitplot.experimental._llm_provider" title="scikitplot.experimental._llm_provider"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.experimental._llm_provider</span></code></a></p>
-</div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.ProbScale.html#scikitplot.externals._probscale.ProbScale" title="scikitplot.externals._probscale.ProbScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProbScale</span></code></a></p></td>
-<td><div class="sk-apis-search-desc docutils">
-<p>A probability scale for matplotlib Axes.</p>
-<div class="caption docutils">
-<p><a class="reference internal" href="scikitplot.externals.html#module-scikitplot.externals._probscale" title="scikitplot.externals._probscale"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals._probscale</span></code></a></p>
-</div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.probplot.html#scikitplot.externals._probscale.probplot" title="scikitplot.externals._probscale.probplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">probplot</span></code></a></p></td>
-<td><div class="sk-apis-search-desc docutils">
-<p>Probability, percentile, and quantile plots.</p>
-<div class="caption docutils">
-<p><a class="reference internal" href="scikitplot.externals.html#module-scikitplot.externals._probscale" title="scikitplot.externals._probscale"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals._probscale</span></code></a></p>
-</div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.plot_pos.html#scikitplot.externals._probscale.plot_pos" title="scikitplot.externals._probscale.plot_pos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_pos</span></code></a></p></td>
-<td><div class="sk-apis-search-desc docutils">
-<p>Compute the plotting positions for a dataset. Heavily borrows from</p>
-<div class="caption docutils">
-<p><a class="reference internal" href="scikitplot.externals.html#module-scikitplot.externals._probscale" title="scikitplot.externals._probscale"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals._probscale</span></code></a></p>
-</div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.fit_line.html#scikitplot.externals._probscale.fit_line" title="scikitplot.externals._probscale.fit_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit_line</span></code></a></p></td>
-<td><div class="sk-apis-search-desc docutils">
-<p>Fits a line to x-y data in various forms (linear, log, prob scales).</p>
-<div class="caption docutils">
-<p><a class="reference internal" href="scikitplot.externals.html#module-scikitplot.externals._probscale" title="scikitplot.externals._probscale"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals._probscale</span></code></a></p>
-</div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals._seaborn.html#module-scikitplot.externals._seaborn" title="scikitplot.externals._seaborn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_seaborn</span></code></a></p></td>
-<td><div class="sk-apis-search-desc docutils">
-<div class="caption docutils">
-<p><a class="reference internal" href="scikitplot.externals.html#module-scikitplot.externals" title="scikitplot.externals"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals</span></code></a></p>
-</div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.html#module-scikitplot.externals._sphinxext" title="scikitplot.externals._sphinxext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_sphinxext</span></code></a></p></td>
-<td><div class="sk-apis-search-desc docutils">
-<p>sphinxext <a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.html#re5cdbaea14da-1" id="id1"><span>[Re5cdbaea14da-1]</span></a>.</p>
-<div class="caption docutils">
-<p><a class="reference internal" href="scikitplot.externals.html#module-scikitplot.externals" title="scikitplot.externals"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals</span></code></a></p>
-</div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.html#module-scikitplot.externals._tweedie" title="scikitplot.externals._tweedie"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_tweedie</span></code></a></p></td>
-<td><div class="sk-apis-search-desc docutils">
-<p>Tweedie Distribution Module.</p>
-<div class="caption docutils">
-<p><a class="reference internal" href="scikitplot.externals.html#module-scikitplot.externals" title="scikitplot.externals"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals</span></code></a></p>
 </div>
 </div>
 </td>
@@ -1732,6 +1707,131 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 <p>Extra array functions built on top of the array API standard.</p>
 <div class="caption docutils">
 <p><a class="reference internal" href="scikitplot.externals.html#module-scikitplot.externals" title="scikitplot.externals"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.ProbScale.html#scikitplot.externals._probscale.ProbScale" title="scikitplot.externals._probscale.ProbScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProbScale</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>A probability scale for matplotlib Axes.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.externals.html#module-scikitplot.externals._probscale" title="scikitplot.externals._probscale"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals._probscale</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.probplot.html#scikitplot.externals._probscale.probplot" title="scikitplot.externals._probscale.probplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">probplot</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Probability, percentile, and quantile plots.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.externals.html#module-scikitplot.externals._probscale" title="scikitplot.externals._probscale"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals._probscale</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.plot_pos.html#scikitplot.externals._probscale.plot_pos" title="scikitplot.externals._probscale.plot_pos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_pos</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Compute the plotting positions for a dataset. Heavily borrows from</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.externals.html#module-scikitplot.externals._probscale" title="scikitplot.externals._probscale"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals._probscale</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.fit_line.html#scikitplot.externals._probscale.fit_line" title="scikitplot.externals._probscale.fit_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit_line</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Fits a line to x-y data in various forms (linear, log, prob scales).</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.externals.html#module-scikitplot.externals._probscale" title="scikitplot.externals._probscale"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals._probscale</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals._seaborn.html#module-scikitplot.externals._seaborn" title="scikitplot.externals._seaborn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_seaborn</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.externals.html#module-scikitplot.externals" title="scikitplot.externals"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.html#module-scikitplot.externals._sphinxext" title="scikitplot.externals._sphinxext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_sphinxext</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>sphinxext.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.externals.html#module-scikitplot.externals" title="scikitplot.externals"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.figmpl_directive.html#module-scikitplot.externals._sphinxext.figmpl_directive" title="scikitplot.externals._sphinxext.figmpl_directive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">figmpl_directive</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Add a <code class="docutils literal notranslate"><span class="pre">figure-mpl</span></code> directive that is a responsive version of <code class="docutils literal notranslate"><span class="pre">figure</span></code>.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.html#module-scikitplot.externals._sphinxext" title="scikitplot.externals._sphinxext"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals._sphinxext</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.mathmpl.html#module-scikitplot.externals._sphinxext.mathmpl" title="scikitplot.externals._sphinxext.mathmpl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mathmpl</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>A role and directive to display mathtext in Sphinx.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.html#module-scikitplot.externals._sphinxext" title="scikitplot.externals._sphinxext"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals._sphinxext</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.plot_directive.html#module-scikitplot.externals._sphinxext.plot_directive" title="scikitplot.externals._sphinxext.plot_directive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_directive</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>A directive for including a Matplotlib plot in a Sphinx document.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.html#module-scikitplot.externals._sphinxext" title="scikitplot.externals._sphinxext"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals._sphinxext</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.roles.html#module-scikitplot.externals._sphinxext.roles" title="scikitplot.externals._sphinxext.roles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">roles</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Custom roles for the Matplotlib documentation.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.html#module-scikitplot.externals._sphinxext" title="scikitplot.externals._sphinxext"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals._sphinxext</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.sphinx_tabs_patch.html#module-scikitplot.externals._sphinxext.sphinx_tabs_patch" title="scikitplot.externals._sphinxext.sphinx_tabs_patch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sphinx_tabs_patch</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Sphinx compatibility shim for docutils <code class="docutils literal notranslate"><span class="pre">backrefs</span></code>.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.html#module-scikitplot.externals._sphinxext" title="scikitplot.externals._sphinxext"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals._sphinxext</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.html#module-scikitplot.externals._tweedie" title="scikitplot.externals._tweedie"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_tweedie</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>Tweedie Distribution Module.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="scikitplot.externals.html#module-scikitplot.externals" title="scikitplot.externals"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.tweedie.html#scikitplot.externals._tweedie.tweedie" title="scikitplot.externals._tweedie.tweedie"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tweedie</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>An instance of <a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.tweedie_gen.html#scikitplot.externals._tweedie.tweedie_gen" title="scikitplot.externals._tweedie.tweedie_gen"><code class="xref py py-class docutils literal notranslate"><span class="pre">tweedie_gen</span></code></a>, providing Tweedie distribution functionality.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.html#module-scikitplot.externals._tweedie" title="scikitplot.externals._tweedie"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals._tweedie</span></code></a></p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.tweedie_gen.html#scikitplot.externals._tweedie.tweedie_gen" title="scikitplot.externals._tweedie.tweedie_gen"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tweedie_gen</span></code></a></p></td>
+<td><div class="sk-apis-search-desc docutils">
+<p>A Tweedie continuous random variable inherited <a class="reference external" href="https://scipy.github.io/devdocs/reference/generated/scipy.stats.rv_continuous.html#scipy.stats.rv_continuous" title="(in SciPy v1.18.0.dev)"><code class="xref py py-class docutils literal notranslate"><span class="pre">scipy.stats.rv_continuous</span></code></a>.</p>
+<div class="caption docutils">
+<p><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.html#module-scikitplot.externals._tweedie" title="scikitplot.externals._tweedie"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.externals._tweedie</span></code></a></p>
 </div>
 </div>
 </td>
@@ -1972,7 +2072,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.preprocessing.GetDummies.html#scikitplot.preprocessing.GetDummies" title="scikitplot.preprocessing.GetDummies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GetDummies</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
-<p>Multi-column multi-label string column one-hot encoder <a class="reference internal" href="../modules/generated/scikitplot.preprocessing.GetDummies.html#rbcee2ffc57f9-1" id="id2"><span>[Rbcee2ffc57f9-1]</span></a>.</p>
+<p>Multi-column multi-label string column one-hot encoder <a class="reference internal" href="../modules/generated/scikitplot.preprocessing.GetDummies.html#rbcee2ffc57f9-1" id="id1"><span>[Rbcee2ffc57f9-1]</span></a>.</p>
 <div class="caption docutils">
 <p><a class="reference internal" href="scikitplot.preprocessing.html#module-scikitplot.preprocessing" title="scikitplot.preprocessing"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.preprocessing</span></code></a></p>
 </div>
@@ -1990,7 +2090,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.seaborn.evalplot.html#scikitplot.seaborn.evalplot" title="scikitplot.seaborn.evalplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evalplot</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
-<p>Visualization of the Confusion Matrix <a class="reference internal" href="../modules/generated/scikitplot.seaborn.evalplot.html#ra7e29df24177-1" id="id3"><span>[Ra7e29df24177-1]</span></a> alongside a text report showing key classification metrics.</p>
+<p>Visualization of the Confusion Matrix <a class="reference internal" href="../modules/generated/scikitplot.seaborn.evalplot.html#ra7e29df24177-1" id="id2"><span>[Ra7e29df24177-1]</span></a> alongside a text report showing key classification metrics.</p>
 <div class="caption docutils">
 <p><a class="reference internal" href="scikitplot.seaborn.html#module-scikitplot.seaborn" title="scikitplot.seaborn"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.seaborn</span></code></a></p>
 </div>
@@ -1999,7 +2099,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.seaborn.decileplot.html#scikitplot.seaborn.decileplot" title="scikitplot.seaborn.decileplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decileplot</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
-<p>Given binary labels y_true (0/1) and probabilities y_score 1d array, compute/plot a decile <a class="reference internal" href="../modules/generated/scikitplot.seaborn.decileplot.html#rd1ed195c7ca1-2" id="id4"><span>[Rd1ed195c7ca1-2]</span></a> table.</p>
+<p>Given binary labels y_true (0/1) and probabilities y_score 1d array, compute/plot a decile <a class="reference internal" href="../modules/generated/scikitplot.seaborn.decileplot.html#rd1ed195c7ca1-2" id="id3"><span>[Rd1ed195c7ca1-2]</span></a> table.</p>
 <div class="caption docutils">
 <p><a class="reference internal" href="scikitplot.seaborn.html#module-scikitplot.seaborn" title="scikitplot.seaborn"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.seaborn</span></code></a></p>
 </div>
@@ -2287,7 +2387,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.tweedie_gen.html#scikitplot.externals._tweedie.tweedie_gen" title="scikitplot.externals._tweedie.tweedie_gen"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tweedie_gen</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
-<p>A Tweedie continuous random variable inherited <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_continuous.html#scipy.stats.rv_continuous" title="(in SciPy v1.17.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">scipy.stats.rv_continuous</span></code></a>.</p>
+<p>A Tweedie continuous random variable inherited <a class="reference external" href="https://scipy.github.io/devdocs/reference/generated/scipy.stats.rv_continuous.html#scipy.stats.rv_continuous" title="(in SciPy v1.18.0.dev)"><code class="xref py py-class docutils literal notranslate"><span class="pre">scipy.stats.rv_continuous</span></code></a>.</p>
 <div class="caption docutils">
 <p><a class="reference internal" href="scikitplot.stats.html#module-scikitplot.stats" title="scikitplot.stats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.stats</span></code></a></p>
 </div>
@@ -2305,7 +2405,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.utils._time.Timer.html#scikitplot.utils._time.Timer" title="scikitplot.utils._time.Timer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Timer</span></code></a></p></td>
 <td><div class="sk-apis-search-desc docutils">
-<p>Lightweight timing context manager with <a class="reference internal" href="../modules/generated/scikitplot.logger.html#module-scikitplot.logger" title="scikitplot.logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logger</span></code></a> support.</p>
+<p>Lightweight ⏱ timing context manager with <a class="reference internal" href="../modules/generated/scikitplot.logger.html#module-scikitplot.logger" title="scikitplot.logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logger</span></code></a> support.</p>
 <div class="caption docutils">
 <p><a class="reference internal" href="scikitplot.utils.html#module-scikitplot.utils._time" title="scikitplot.utils._time"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.utils._time</span></code></a></p>
 </div>
@@ -2403,12 +2503,12 @@ reference on concepts repeated across the APIs, see <a class="reference internal
     <div class="footer-article-item">
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../user_guide/externals/array_api_extra/index.html"
+       href="../user_guide/externals/_tweedie/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Python Data API Standards: array_api_extra (experimental)</p>
+        <p class="prev-next-title">Tweedie Family</p>
       </div>
     </a>
     <a class="right-next"
@@ -2454,7 +2554,7 @@ reference on concepts repeated across the APIs, see <a class="reference internal
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260123.ef5c603 2026-01-23T10:56Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260126.729947e 2026-01-26T19:33Z.
       <br/>
     
   </p>

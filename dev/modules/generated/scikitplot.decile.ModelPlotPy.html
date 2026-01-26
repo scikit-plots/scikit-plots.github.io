@@ -85,7 +85,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="plot_response" href="scikitplot.decile.plot_response.html" />
-    <link rel="prev" title="report" href="scikitplot.decile.kds.report.html" />
+    <link rel="prev" title="ModelPlotPy" href="scikitplot.decile.modelplotpy.ModelPlotPy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.5" />
@@ -564,6 +564,8 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.html">scikitplot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.__version__.html">__version__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.__version_iso_8601__.html">__version_iso_8601__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.config_context.html">config_context</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.get_config.html">get_config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.get_logger.html">get_logger</a></li>
@@ -643,6 +645,7 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.kds.plot_lift_decile_wise.html">plot_lift_decile_wise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.kds.plot_ks_statistic.html">plot_ks_statistic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.kds.report.html">report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.modelplotpy.ModelPlotPy.html">ModelPlotPy</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">ModelPlotPy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.plot_response.html">plot_response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.plot_cumresponse.html">plot_cumresponse</a></li>
@@ -680,15 +683,22 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.externals.html">scikitplot.externals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_compat.html">array_api_compat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_extra.html">array_api_extra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.ProbScale.html">ProbScale</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.probplot.html">probplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.plot_pos.html">plot_pos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.fit_line.html">fit_line</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._seaborn.html">_seaborn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.html">_sphinxext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.figmpl_directive.html">scikitplot.externals._sphinxext.figmpl_directive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.mathmpl.html">scikitplot.externals._sphinxext.mathmpl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.plot_directive.html">scikitplot.externals._sphinxext.plot_directive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.roles.html">roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.sphinx_tabs_patch.html">sphinx_tabs_patch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.html">_tweedie</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_compat.html">array_api_compat</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_extra.html">array_api_extra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.tweedie.html">tweedie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.tweedie_gen.html">tweedie_gen</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -850,7 +860,7 @@
 <h1>ModelPlotPy<a class="headerlink" href="#modelplotpy" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.decile.ModelPlotPy">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.decile.</span></span><span class="sig-name descname"><span class="pre">ModelPlotPy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">models</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ntiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ef5c603/scikitplot/decile/_decile_modelplotpy.py#L362"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.decile.</span></span><span class="sig-name descname"><span class="pre">ModelPlotPy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">models</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ntiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/729947e/scikitplot/decile/_decile_modelplotpy.py#L362"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy" title="Link to this definition">#</a></dt>
 <dd><p>Decile/ntile analysis for sklearn classifiers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -900,7 +910,7 @@
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.base.ClassifierMixin.html#sklearn.base.ClassifierMixin" title="(in scikit-learn v1.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sklearn.base.ClassifierMixin</span></code></a></dt><dd></dd>
+<dt><a class="reference external" href="https://scikit-learn.org/dev/modules/generated/sklearn.base.ClassifierMixin.html#sklearn.base.ClassifierMixin" title="(in scikit-learn v1.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sklearn.base.ClassifierMixin</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
@@ -930,7 +940,7 @@
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.decile.ModelPlotPy.aggregate_over_ntiles">
-<span class="sig-name descname"><span class="pre">aggregate_over_ntiles</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ef5c603/scikitplot/decile/_decile_modelplotpy.py#L722"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy.aggregate_over_ntiles" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">aggregate_over_ntiles</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/729947e/scikitplot/decile/_decile_modelplotpy.py#L722"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy.aggregate_over_ntiles" title="Link to this definition">#</a></dt>
 <dd><p>Aggregate counts and lift/gain metrics per ntile.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -953,7 +963,7 @@ by the existing plot functions.</p>
 </dl>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.0)"><em>DataFrame</em></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.0+35.gf8214bd1dd)"><em>DataFrame</em></a></p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -973,7 +983,7 @@ dataframe during loops (the legacy code writes <code class="docutils literal not
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.decile.ModelPlotPy.get_params">
-<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ef5c603/scikitplot/decile/_decile_modelplotpy.py#L527"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy.get_params" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/729947e/scikitplot/decile/_decile_modelplotpy.py#L527"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy.get_params" title="Link to this definition">#</a></dt>
 <dd><p>Get parameters (sklearn-style API).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1013,7 +1023,7 @@ them in-place if they want stable behavior.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.decile.ModelPlotPy.plotting_scope">
-<span class="sig-name descname"><span class="pre">plotting_scope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scope</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_model_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_dataset_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_targetclass</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_smallest_targetclass</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ef5c603/scikitplot/decile/_decile_modelplotpy.py#L861"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy.plotting_scope" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">plotting_scope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scope</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_model_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_dataset_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_targetclass</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_smallest_targetclass</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/729947e/scikitplot/decile/_decile_modelplotpy.py#L861"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy.plotting_scope" title="Link to this definition">#</a></dt>
 <dd><p>Build <code class="docutils literal notranslate"><span class="pre">plot_input</span></code> subset according to a strict scope contract.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1058,7 +1068,7 @@ is ambiguous under the strict contract.</p>
 </ul>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.0)"><em>DataFrame</em></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.0+35.gf8214bd1dd)"><em>DataFrame</em></a></p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1112,7 +1122,7 @@ ambiguous and a ValueError is raised.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.decile.ModelPlotPy.prepare_scores_and_ntiles">
-<span class="sig-name descname"><span class="pre">prepare_scores_and_ntiles</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ef5c603/scikitplot/decile/_decile_modelplotpy.py#L639"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy.prepare_scores_and_ntiles" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">prepare_scores_and_ntiles</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/729947e/scikitplot/decile/_decile_modelplotpy.py#L639"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy.prepare_scores_and_ntiles" title="Link to this definition">#</a></dt>
 <dd><p>Compute per-row class probabilities and deterministic ntiles.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1140,7 +1150,7 @@ fewer rows than <code class="docutils literal notranslate"><span class="pre">nti
 </dl>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.0)"><em>DataFrame</em></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.0+35.gf8214bd1dd)"><em>DataFrame</em></a></p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1151,7 +1161,7 @@ fewer rows than <code class="docutils literal notranslate"><span class="pre">nti
 </div>
 <p class="rubric">Notes</p>
 <p>This replaces the legacy approach that added random noise and used
-<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.qcut.html#pandas.qcut" title="(in pandas v3.0.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.qcut</span></code></a> for binning.</p>
+<a class="reference external" href="https://pandas.pydata.org/docs/dev/reference/api/pandas.qcut.html#pandas.qcut" title="(in pandas v3.0.0+35.gf8214bd1dd)"><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.qcut</span></code></a> for binning.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># scores = mp.prepare_scores_and_ntiles()</span>
 </pre></div>
@@ -1160,7 +1170,7 @@ fewer rows than <code class="docutils literal notranslate"><span class="pre">nti
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.decile.ModelPlotPy.reset_params">
-<span class="sig-name descname"><span class="pre">reset_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ef5c603/scikitplot/decile/_decile_modelplotpy.py#L603"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy.reset_params" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">reset_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/729947e/scikitplot/decile/_decile_modelplotpy.py#L603"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy.reset_params" title="Link to this definition">#</a></dt>
 <dd><p>Reset all parameters to a default empty state.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1198,7 +1208,7 @@ fewer rows than <code class="docutils literal notranslate"><span class="pre">nti
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.decile.ModelPlotPy.set_params">
-<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ef5c603/scikitplot/decile/_decile_modelplotpy.py#L567"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy.set_params" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/729947e/scikitplot/decile/_decile_modelplotpy.py#L567"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy.set_params" title="Link to this definition">#</a></dt>
 <dd><p>Set parameters (sklearn-style API) and re-validate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1260,12 +1270,12 @@ fewer rows than <code class="docutils literal notranslate"><span class="pre">nti
     <div class="footer-article-item">
 <div class="prev-next-area">
     <a class="left-prev"
-       href="scikitplot.decile.kds.report.html"
+       href="scikitplot.decile.modelplotpy.ModelPlotPy.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">report</p>
+        <p class="prev-next-title">ModelPlotPy</p>
       </div>
     </a>
     <a class="right-next"
@@ -1351,7 +1361,7 @@ fewer rows than <code class="docutils literal notranslate"><span class="pre">nti
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260123.ef5c603 2026-01-23T10:56Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260126.729947e 2026-01-26T19:33Z.
       <br/>
     
   </p>

@@ -157,10 +157,17 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
     feature_names_in_ : list-like
         Input feature names seen during fit.
         Set only when explicitly provided via fit(..., feature_names=...).
-    y : dict | None, optional, default=None
-        If provided to fit(X, y), labels are stored here after a successful build.
-        You may also set this property manually. When possible, the setter enforces
-        that len(y) matches the current number of items (n_items).
+    y : list-like | None, optional, default=None
+        Dense label cache aligned to item ids (``0 .. n_items-1``). This is a
+        convenience view for scikit-learn style APIs and may be derived from
+        ``y_map`` lazily.
+        The setter accepts sequences only (a dict is not allowed); when possible it
+        validates that ``len(y) == n_items`` and updates ``y_map`` deterministically.
+    y_map : dict | None, optional, default=None
+        Canonical sparse mapping ``{item_id -> label}``. Keys must be non-negative
+        integers and (when an index exists) strictly less than ``n_items``.
+        Setting this property invalidates the dense ``y`` cache; ``y`` is
+        materialized lazily (missing keys become ``None``).
 
     See Also
     --------
@@ -446,7 +453,7 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
  .. code-block:: none
 
 
-    ('2.0.0+git.20251130.8a7e82cb537053926b0ac6ec132b9ccc875af40c', ['Annoy', 'AnnoyIndex', 'CompressMode', 'Index', 'IndexIOMixin', 'MetaMixin', 'NDArrayMixin', 'PickleMixin', 'PickleMode', 'PlottingMixin', 'VectorOpsMixin', '__all__', '__author__', '__author_email__', '__builtins__', '__cached__', '__doc__', '__file__', '__git_hash__', '__loader__', '__name__', '__package__', '__path__', '__spec__', '__version__', '_base', '_metadata', '_mixins', '_utils', 'annotations', 'annoylib'], ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__len__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setstate__', '__sizeof__', '__sklearn_clone__', '__sklearn_is_fitted__', '__sklearn_tags__', '__str__', '__subclasshook__', '_f', '_metric_id', '_on_disk_path', '_prefault', '_repr_html_', '_schema_version', '_y', 'add_item', 'build', 'deserialize', 'f', 'feature_names_in_', 'fit', 'fit_transform', 'get_distance', 'get_feature_names_out', 'get_item_vector', 'get_n_items', 'get_n_trees', 'get_nns_by_item', 'get_nns_by_vector', 'get_params', 'info', 'load', 'memory_usage', 'metric', 'n_features', 'n_features_', 'n_features_in_', 'n_features_out_', 'n_neighbors', 'on_disk_build', 'on_disk_path', 'prefault', 'random_state', 'rebuild', 'repr_info', 'save', 'schema_version', 'seed', 'serialize', 'set_params', 'set_seed', 'set_verbose', 'set_verbosity', 'transform', 'unbuild', 'unload', 'verbose', 'y'])
+    ('2.0.0+git.20251130.8a7e82cb537053926b0ac6ec132b9ccc875af40c', ['Annoy', 'AnnoyIndex', 'CompressMode', 'Index', 'IndexIOMixin', 'MetaMixin', 'NDArrayMixin', 'PickleMixin', 'PickleMode', 'PlottingMixin', 'VectorOpsMixin', '__all__', '__author__', '__author_email__', '__builtins__', '__cached__', '__doc__', '__file__', '__git_hash__', '__loader__', '__name__', '__package__', '__path__', '__spec__', '__version__', '_base', '_metadata', '_mixins', '_utils', 'annotations', 'annoylib'], ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__len__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setstate__', '__sizeof__', '__sklearn_clone__', '__sklearn_is_fitted__', '__sklearn_tags__', '__str__', '__subclasshook__', '_f', '_metric_id', '_on_disk_path', '_prefault', '_repr_html_', '_schema_version', '_y', '_y_map', 'add_item', 'build', 'deserialize', 'f', 'feature_names_in_', 'fit', 'fit_transform', 'get_distance', 'get_feature_names_out', 'get_item_vector', 'get_n_items', 'get_n_trees', 'get_nns_by_item', 'get_nns_by_vector', 'get_params', 'info', 'load', 'memory_usage', 'metric', 'n_features', 'n_features_', 'n_features_in_', 'n_features_out_', 'n_neighbors', 'on_disk_build', 'on_disk_path', 'prefault', 'random_state', 'rebuild', 'repr_info', 'save', 'schema_version', 'seed', 'serialize', 'set_params', 'set_seed', 'set_verbose', 'set_verbosity', 'transform', 'unbuild', 'unload', 'verbose', 'y', 'y_map'])
 
 
 
@@ -552,31 +559,31 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
 .. raw:: html
 
     <div class="output_subarea output_html rendered_html output_result">
-    <div id="annoy-repr-0x7f1bc2eb5308-1" class="annoy-repr"><style>
-    #annoy-repr-0x7f1bc2eb5308-1 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
-    #annoy-repr-0x7f1bc2eb5308-1 details{margin:0;padding:0;}
-    #annoy-repr-0x7f1bc2eb5308-1 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-1 summary::-webkit-details-marker{display:none;}
-    #annoy-repr-0x7f1bc2eb5308-1 .annoy-title{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-1 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
-    #annoy-repr-0x7f1bc2eb5308-1 .annoy-links a{color:#0969da;text-decoration:none;}
-    #annoy-repr-0x7f1bc2eb5308-1 .annoy-links a:hover{text-decoration:underline;}
-    #annoy-repr-0x7f1bc2eb5308-1 .annoy-sep{color:#57606a;}
-    #annoy-repr-0x7f1bc2eb5308-1 .annoy-subtitle{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-1 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
-    #annoy-repr-0x7f1bc2eb5308-1 details[open] > summary .annoy-arrow::before{content:'\25BC';}
-    #annoy-repr-0x7f1bc2eb5308-1 .annoy-body{padding:0 10px 10px 10px;}
-    #annoy-repr-0x7f1bc2eb5308-1 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-1 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
-    #annoy-repr-0x7f1bc2eb5308-1 .annoy-table th{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-1 .annoy-td-btn{width:72px;}
-    #annoy-repr-0x7f1bc2eb5308-1 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
-    #annoy-repr-0x7f1bc2eb5308-1 .annoy-copy:active{transform:translateY(1px);}
-    #annoy-repr-0x7f1bc2eb5308-1 .annoy-key{white-space:nowrap;}
-    #annoy-repr-0x7f1bc2eb5308-1 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+    <div id="annoy-repr-0x7f82a11d4348-1" class="annoy-repr"><style>
+    #annoy-repr-0x7f82a11d4348-1 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
+    #annoy-repr-0x7f82a11d4348-1 details{margin:0;padding:0;}
+    #annoy-repr-0x7f82a11d4348-1 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-1 summary::-webkit-details-marker{display:none;}
+    #annoy-repr-0x7f82a11d4348-1 .annoy-title{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-1 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
+    #annoy-repr-0x7f82a11d4348-1 .annoy-links a{color:#0969da;text-decoration:none;}
+    #annoy-repr-0x7f82a11d4348-1 .annoy-links a:hover{text-decoration:underline;}
+    #annoy-repr-0x7f82a11d4348-1 .annoy-sep{color:#57606a;}
+    #annoy-repr-0x7f82a11d4348-1 .annoy-subtitle{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-1 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
+    #annoy-repr-0x7f82a11d4348-1 details[open] > summary .annoy-arrow::before{content:'\25BC';}
+    #annoy-repr-0x7f82a11d4348-1 .annoy-body{padding:0 10px 10px 10px;}
+    #annoy-repr-0x7f82a11d4348-1 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-1 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
+    #annoy-repr-0x7f82a11d4348-1 .annoy-table th{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-1 .annoy-td-btn{width:72px;}
+    #annoy-repr-0x7f82a11d4348-1 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
+    #annoy-repr-0x7f82a11d4348-1 .annoy-copy:active{transform:translateY(1px);}
+    #annoy-repr-0x7f82a11d4348-1 .annoy-key{white-space:nowrap;}
+    #annoy-repr-0x7f82a11d4348-1 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
     </style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.5/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (installed)">0.5</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">0</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">n_neighbors</td><td class="annoy-value">5</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr></tbody></table></details></div></details></div><script>
     (function(){
-      var root=document.getElementById('annoy-repr-0x7f1bc2eb5308-1');
+      var root=document.getElementById('annoy-repr-0x7f82a11d4348-1');
       if(!root)return;
       var btns=root.querySelectorAll('button.annoy-copy');
       for(var i=0;i<btns.length;i++){
@@ -628,31 +635,31 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
 .. raw:: html
 
     <div class="output_subarea output_html rendered_html output_result">
-    <div id="annoy-repr-0x7f1bc2eb5308-2" class="annoy-repr"><style>
-    #annoy-repr-0x7f1bc2eb5308-2 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
-    #annoy-repr-0x7f1bc2eb5308-2 details{margin:0;padding:0;}
-    #annoy-repr-0x7f1bc2eb5308-2 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-2 summary::-webkit-details-marker{display:none;}
-    #annoy-repr-0x7f1bc2eb5308-2 .annoy-title{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-2 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
-    #annoy-repr-0x7f1bc2eb5308-2 .annoy-links a{color:#0969da;text-decoration:none;}
-    #annoy-repr-0x7f1bc2eb5308-2 .annoy-links a:hover{text-decoration:underline;}
-    #annoy-repr-0x7f1bc2eb5308-2 .annoy-sep{color:#57606a;}
-    #annoy-repr-0x7f1bc2eb5308-2 .annoy-subtitle{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-2 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
-    #annoy-repr-0x7f1bc2eb5308-2 details[open] > summary .annoy-arrow::before{content:'\25BC';}
-    #annoy-repr-0x7f1bc2eb5308-2 .annoy-body{padding:0 10px 10px 10px;}
-    #annoy-repr-0x7f1bc2eb5308-2 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-2 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
-    #annoy-repr-0x7f1bc2eb5308-2 .annoy-table th{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-2 .annoy-td-btn{width:72px;}
-    #annoy-repr-0x7f1bc2eb5308-2 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
-    #annoy-repr-0x7f1bc2eb5308-2 .annoy-copy:active{transform:translateY(1px);}
-    #annoy-repr-0x7f1bc2eb5308-2 .annoy-key{white-space:nowrap;}
-    #annoy-repr-0x7f1bc2eb5308-2 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+    <div id="annoy-repr-0x7f82a11d4348-2" class="annoy-repr"><style>
+    #annoy-repr-0x7f82a11d4348-2 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
+    #annoy-repr-0x7f82a11d4348-2 details{margin:0;padding:0;}
+    #annoy-repr-0x7f82a11d4348-2 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-2 summary::-webkit-details-marker{display:none;}
+    #annoy-repr-0x7f82a11d4348-2 .annoy-title{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-2 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
+    #annoy-repr-0x7f82a11d4348-2 .annoy-links a{color:#0969da;text-decoration:none;}
+    #annoy-repr-0x7f82a11d4348-2 .annoy-links a:hover{text-decoration:underline;}
+    #annoy-repr-0x7f82a11d4348-2 .annoy-sep{color:#57606a;}
+    #annoy-repr-0x7f82a11d4348-2 .annoy-subtitle{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-2 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
+    #annoy-repr-0x7f82a11d4348-2 details[open] > summary .annoy-arrow::before{content:'\25BC';}
+    #annoy-repr-0x7f82a11d4348-2 .annoy-body{padding:0 10px 10px 10px;}
+    #annoy-repr-0x7f82a11d4348-2 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-2 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
+    #annoy-repr-0x7f82a11d4348-2 .annoy-table th{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-2 .annoy-td-btn{width:72px;}
+    #annoy-repr-0x7f82a11d4348-2 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
+    #annoy-repr-0x7f82a11d4348-2 .annoy-copy:active{transform:translateY(1px);}
+    #annoy-repr-0x7f82a11d4348-2 .annoy-key{white-space:nowrap;}
+    #annoy-repr-0x7f82a11d4348-2 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
     </style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.5/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (installed)">0.5</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">0</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">n_neighbors</td><td class="annoy-value">5</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr></tbody></table></details></div></details></div><script>
     (function(){
-      var root=document.getElementById('annoy-repr-0x7f1bc2eb5308-2');
+      var root=document.getElementById('annoy-repr-0x7f82a11d4348-2');
       if(!root)return;
       var btns=root.querySelectorAll('button.annoy-copy');
       for(var i=0;i<btns.length;i++){
@@ -726,31 +733,31 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
 .. raw:: html
 
     <div class="output_subarea output_html rendered_html output_result">
-    <div id="annoy-repr-0x7f1bc2eb5308-3" class="annoy-repr"><style>
-    #annoy-repr-0x7f1bc2eb5308-3 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
-    #annoy-repr-0x7f1bc2eb5308-3 details{margin:0;padding:0;}
-    #annoy-repr-0x7f1bc2eb5308-3 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-3 summary::-webkit-details-marker{display:none;}
-    #annoy-repr-0x7f1bc2eb5308-3 .annoy-title{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-3 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
-    #annoy-repr-0x7f1bc2eb5308-3 .annoy-links a{color:#0969da;text-decoration:none;}
-    #annoy-repr-0x7f1bc2eb5308-3 .annoy-links a:hover{text-decoration:underline;}
-    #annoy-repr-0x7f1bc2eb5308-3 .annoy-sep{color:#57606a;}
-    #annoy-repr-0x7f1bc2eb5308-3 .annoy-subtitle{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-3 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
-    #annoy-repr-0x7f1bc2eb5308-3 details[open] > summary .annoy-arrow::before{content:'\25BC';}
-    #annoy-repr-0x7f1bc2eb5308-3 .annoy-body{padding:0 10px 10px 10px;}
-    #annoy-repr-0x7f1bc2eb5308-3 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-3 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
-    #annoy-repr-0x7f1bc2eb5308-3 .annoy-table th{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-3 .annoy-td-btn{width:72px;}
-    #annoy-repr-0x7f1bc2eb5308-3 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
-    #annoy-repr-0x7f1bc2eb5308-3 .annoy-copy:active{transform:translateY(1px);}
-    #annoy-repr-0x7f1bc2eb5308-3 .annoy-key{white-space:nowrap;}
-    #annoy-repr-0x7f1bc2eb5308-3 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+    <div id="annoy-repr-0x7f82a11d4348-3" class="annoy-repr"><style>
+    #annoy-repr-0x7f82a11d4348-3 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
+    #annoy-repr-0x7f82a11d4348-3 details{margin:0;padding:0;}
+    #annoy-repr-0x7f82a11d4348-3 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-3 summary::-webkit-details-marker{display:none;}
+    #annoy-repr-0x7f82a11d4348-3 .annoy-title{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-3 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
+    #annoy-repr-0x7f82a11d4348-3 .annoy-links a{color:#0969da;text-decoration:none;}
+    #annoy-repr-0x7f82a11d4348-3 .annoy-links a:hover{text-decoration:underline;}
+    #annoy-repr-0x7f82a11d4348-3 .annoy-sep{color:#57606a;}
+    #annoy-repr-0x7f82a11d4348-3 .annoy-subtitle{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-3 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
+    #annoy-repr-0x7f82a11d4348-3 details[open] > summary .annoy-arrow::before{content:'\25BC';}
+    #annoy-repr-0x7f82a11d4348-3 .annoy-body{padding:0 10px 10px 10px;}
+    #annoy-repr-0x7f82a11d4348-3 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-3 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
+    #annoy-repr-0x7f82a11d4348-3 .annoy-table th{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-3 .annoy-td-btn{width:72px;}
+    #annoy-repr-0x7f82a11d4348-3 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
+    #annoy-repr-0x7f82a11d4348-3 .annoy-copy:active{transform:translateY(1px);}
+    #annoy-repr-0x7f82a11d4348-3 .annoy-key{white-space:nowrap;}
+    #annoy-repr-0x7f82a11d4348-3 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
     </style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.5/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (installed)">0.5</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">0</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">n_neighbors</td><td class="annoy-value">5</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr></tbody></table></details></div></details></div><script>
     (function(){
-      var root=document.getElementById('annoy-repr-0x7f1bc2eb5308-3');
+      var root=document.getElementById('annoy-repr-0x7f82a11d4348-3');
       if(!root)return;
       var btns=root.querySelectorAll('button.annoy-copy');
       for(var i=0;i<btns.length;i++){
@@ -803,7 +810,7 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
  .. code-block:: none
 
 
-    ['_META_SCHEMA_VERSION', '_PICKLE_STATE_VERSION', '__annotations__', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__len__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setstate__', '__sizeof__', '__sklearn_clone__', '__sklearn_is_fitted__', '__sklearn_tags__', '__str__', '__subclasshook__', '__weakref__', '_as_2d_coords', '_backend', '_compress_mode', '_f', '_get_lock', '_lock', '_metric_id', '_ndarray_expected_rows', '_ndarray_infer_f', '_ndarray_iter_ids', '_ndarray_materialize_dense', '_ndarray_require_unbuilt', '_on_disk_path', '_pickle_mode', '_plotting_backend', '_prefault', '_rebuild', '_repr_html_', '_schema_version', '_y', 'add_item', 'add_items', 'backend', 'build', 'compress_mode', 'deserialize', 'f', 'feature_names_in_', 'fit', 'fit_transform', 'from_bytes', 'from_json', 'from_low_level', 'from_metadata', 'from_yaml', 'get_distance', 'get_feature_names_out', 'get_item_vector', 'get_item_vectors', 'get_n_items', 'get_n_trees', 'get_nns_by_item', 'get_nns_by_vector', 'get_params', 'info', 'iter_item_vectors', 'kneighbors', 'kneighbors_graph', 'load', 'load_bundle', 'load_index', 'memory_usage', 'metric', 'n_features', 'n_features_', 'n_features_in_', 'n_features_out_', 'n_neighbors', 'on_disk_build', 'on_disk_path', 'pickle_mode', 'plot_index', 'plot_knn_edges', 'prefault', 'query_by_item', 'query_by_vector', 'query_vectors_by_item', 'query_vectors_by_vector', 'random_state', 'rebuild', 'repr_info', 'save', 'save_bundle', 'save_index', 'schema_version', 'seed', 'serialize', 'set_params', 'set_seed', 'set_verbose', 'set_verbosity', 'to_bytes', 'to_json', 'to_metadata', 'to_numpy', 'to_pandas', 'to_scipy_csr', 'to_yaml', 'transform', 'unbuild', 'unload', 'verbose', 'y']
+    ['_META_SCHEMA_VERSION', '_PICKLE_STATE_VERSION', '__annotations__', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__len__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setstate__', '__sizeof__', '__sklearn_clone__', '__sklearn_is_fitted__', '__sklearn_tags__', '__str__', '__subclasshook__', '__weakref__', '_as_2d_coords', '_backend', '_compress_mode', '_f', '_get_lock', '_lock', '_metric_id', '_ndarray_expected_rows', '_ndarray_infer_f', '_ndarray_iter_ids', '_ndarray_materialize_dense', '_ndarray_require_unbuilt', '_on_disk_path', '_pickle_mode', '_plotting_backend', '_prefault', '_rebuild', '_repr_html_', '_schema_version', '_y', '_y_map', 'add_item', 'add_items', 'backend', 'build', 'compress_mode', 'deserialize', 'f', 'feature_names_in_', 'fit', 'fit_transform', 'from_bytes', 'from_json', 'from_low_level', 'from_metadata', 'from_yaml', 'get_distance', 'get_feature_names_out', 'get_item_vector', 'get_item_vectors', 'get_n_items', 'get_n_trees', 'get_nns_by_item', 'get_nns_by_vector', 'get_params', 'info', 'iter_item_vectors', 'kneighbors', 'kneighbors_graph', 'load', 'load_bundle', 'load_index', 'memory_usage', 'metric', 'n_features', 'n_features_', 'n_features_in_', 'n_features_out_', 'n_neighbors', 'on_disk_build', 'on_disk_path', 'pickle_mode', 'plot_index', 'plot_knn_edges', 'prefault', 'query_by_item', 'query_by_vector', 'query_vectors_by_item', 'query_vectors_by_vector', 'random_state', 'rebuild', 'repr_info', 'save', 'save_bundle', 'save_index', 'schema_version', 'seed', 'serialize', 'set_params', 'set_seed', 'set_verbose', 'set_verbosity', 'to_bytes', 'to_json', 'to_metadata', 'to_numpy', 'to_pandas', 'to_scipy_csr', 'to_yaml', 'transform', 'unbuild', 'unload', 'verbose', 'y', 'y_map']
 
 
 
@@ -865,31 +872,31 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
 .. raw:: html
 
     <div class="output_subarea output_html rendered_html output_result">
-    <div id="annoy-repr-0x7f1bc2eb5308-4" class="annoy-repr"><style>
-    #annoy-repr-0x7f1bc2eb5308-4 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
-    #annoy-repr-0x7f1bc2eb5308-4 details{margin:0;padding:0;}
-    #annoy-repr-0x7f1bc2eb5308-4 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-4 summary::-webkit-details-marker{display:none;}
-    #annoy-repr-0x7f1bc2eb5308-4 .annoy-title{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-4 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
-    #annoy-repr-0x7f1bc2eb5308-4 .annoy-links a{color:#0969da;text-decoration:none;}
-    #annoy-repr-0x7f1bc2eb5308-4 .annoy-links a:hover{text-decoration:underline;}
-    #annoy-repr-0x7f1bc2eb5308-4 .annoy-sep{color:#57606a;}
-    #annoy-repr-0x7f1bc2eb5308-4 .annoy-subtitle{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-4 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
-    #annoy-repr-0x7f1bc2eb5308-4 details[open] > summary .annoy-arrow::before{content:'\25BC';}
-    #annoy-repr-0x7f1bc2eb5308-4 .annoy-body{padding:0 10px 10px 10px;}
-    #annoy-repr-0x7f1bc2eb5308-4 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-4 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
-    #annoy-repr-0x7f1bc2eb5308-4 .annoy-table th{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-4 .annoy-td-btn{width:72px;}
-    #annoy-repr-0x7f1bc2eb5308-4 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
-    #annoy-repr-0x7f1bc2eb5308-4 .annoy-copy:active{transform:translateY(1px);}
-    #annoy-repr-0x7f1bc2eb5308-4 .annoy-key{white-space:nowrap;}
-    #annoy-repr-0x7f1bc2eb5308-4 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+    <div id="annoy-repr-0x7f82a11d4348-4" class="annoy-repr"><style>
+    #annoy-repr-0x7f82a11d4348-4 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
+    #annoy-repr-0x7f82a11d4348-4 details{margin:0;padding:0;}
+    #annoy-repr-0x7f82a11d4348-4 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-4 summary::-webkit-details-marker{display:none;}
+    #annoy-repr-0x7f82a11d4348-4 .annoy-title{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-4 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
+    #annoy-repr-0x7f82a11d4348-4 .annoy-links a{color:#0969da;text-decoration:none;}
+    #annoy-repr-0x7f82a11d4348-4 .annoy-links a:hover{text-decoration:underline;}
+    #annoy-repr-0x7f82a11d4348-4 .annoy-sep{color:#57606a;}
+    #annoy-repr-0x7f82a11d4348-4 .annoy-subtitle{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-4 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
+    #annoy-repr-0x7f82a11d4348-4 details[open] > summary .annoy-arrow::before{content:'\25BC';}
+    #annoy-repr-0x7f82a11d4348-4 .annoy-body{padding:0 10px 10px 10px;}
+    #annoy-repr-0x7f82a11d4348-4 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-4 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
+    #annoy-repr-0x7f82a11d4348-4 .annoy-table th{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-4 .annoy-td-btn{width:72px;}
+    #annoy-repr-0x7f82a11d4348-4 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
+    #annoy-repr-0x7f82a11d4348-4 .annoy-copy:active{transform:translateY(1px);}
+    #annoy-repr-0x7f82a11d4348-4 .annoy-key{white-space:nowrap;}
+    #annoy-repr-0x7f82a11d4348-4 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
     </style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.5/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (installed)">0.5</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">0</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">&#x27;dot&#x27;</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">n_neighbors</td><td class="annoy-value">5</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr></tbody></table></details></div></details></div><script>
     (function(){
-      var root=document.getElementById('annoy-repr-0x7f1bc2eb5308-4');
+      var root=document.getElementById('annoy-repr-0x7f82a11d4348-4');
       if(!root)return;
       var btns=root.querySelectorAll('button.annoy-copy');
       for(var i=0;i<btns.length;i++){
@@ -994,31 +1001,31 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
 .. raw:: html
 
     <div class="output_subarea output_html rendered_html output_result">
-    <div id="annoy-repr-0x7f1bc2eb5308-5" class="annoy-repr"><style>
-    #annoy-repr-0x7f1bc2eb5308-5 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
-    #annoy-repr-0x7f1bc2eb5308-5 details{margin:0;padding:0;}
-    #annoy-repr-0x7f1bc2eb5308-5 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-5 summary::-webkit-details-marker{display:none;}
-    #annoy-repr-0x7f1bc2eb5308-5 .annoy-title{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-5 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
-    #annoy-repr-0x7f1bc2eb5308-5 .annoy-links a{color:#0969da;text-decoration:none;}
-    #annoy-repr-0x7f1bc2eb5308-5 .annoy-links a:hover{text-decoration:underline;}
-    #annoy-repr-0x7f1bc2eb5308-5 .annoy-sep{color:#57606a;}
-    #annoy-repr-0x7f1bc2eb5308-5 .annoy-subtitle{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-5 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
-    #annoy-repr-0x7f1bc2eb5308-5 details[open] > summary .annoy-arrow::before{content:'\25BC';}
-    #annoy-repr-0x7f1bc2eb5308-5 .annoy-body{padding:0 10px 10px 10px;}
-    #annoy-repr-0x7f1bc2eb5308-5 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-5 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
-    #annoy-repr-0x7f1bc2eb5308-5 .annoy-table th{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-5 .annoy-td-btn{width:72px;}
-    #annoy-repr-0x7f1bc2eb5308-5 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
-    #annoy-repr-0x7f1bc2eb5308-5 .annoy-copy:active{transform:translateY(1px);}
-    #annoy-repr-0x7f1bc2eb5308-5 .annoy-key{white-space:nowrap;}
-    #annoy-repr-0x7f1bc2eb5308-5 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+    <div id="annoy-repr-0x7f82a11d4348-5" class="annoy-repr"><style>
+    #annoy-repr-0x7f82a11d4348-5 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
+    #annoy-repr-0x7f82a11d4348-5 details{margin:0;padding:0;}
+    #annoy-repr-0x7f82a11d4348-5 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-5 summary::-webkit-details-marker{display:none;}
+    #annoy-repr-0x7f82a11d4348-5 .annoy-title{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-5 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
+    #annoy-repr-0x7f82a11d4348-5 .annoy-links a{color:#0969da;text-decoration:none;}
+    #annoy-repr-0x7f82a11d4348-5 .annoy-links a:hover{text-decoration:underline;}
+    #annoy-repr-0x7f82a11d4348-5 .annoy-sep{color:#57606a;}
+    #annoy-repr-0x7f82a11d4348-5 .annoy-subtitle{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-5 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
+    #annoy-repr-0x7f82a11d4348-5 details[open] > summary .annoy-arrow::before{content:'\25BC';}
+    #annoy-repr-0x7f82a11d4348-5 .annoy-body{padding:0 10px 10px 10px;}
+    #annoy-repr-0x7f82a11d4348-5 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-5 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
+    #annoy-repr-0x7f82a11d4348-5 .annoy-table th{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-5 .annoy-td-btn{width:72px;}
+    #annoy-repr-0x7f82a11d4348-5 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
+    #annoy-repr-0x7f82a11d4348-5 .annoy-copy:active{transform:translateY(1px);}
+    #annoy-repr-0x7f82a11d4348-5 .annoy-key{white-space:nowrap;}
+    #annoy-repr-0x7f82a11d4348-5 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
     </style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.5/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (installed)">0.5</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">3</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">&#x27;angular&#x27;</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">n_neighbors</td><td class="annoy-value">5</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr></tbody></table></details></div></details></div><script>
     (function(){
-      var root=document.getElementById('annoy-repr-0x7f1bc2eb5308-5');
+      var root=document.getElementById('annoy-repr-0x7f82a11d4348-5');
       if(!root)return;
       var btns=root.querySelectorAll('button.annoy-copy');
       for(var i=0;i<btns.length;i++){
@@ -1110,31 +1117,31 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
 .. raw:: html
 
     <div class="output_subarea output_html rendered_html output_result">
-    <div id="annoy-repr-0x7f1bc2eb5308-6" class="annoy-repr"><style>
-    #annoy-repr-0x7f1bc2eb5308-6 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
-    #annoy-repr-0x7f1bc2eb5308-6 details{margin:0;padding:0;}
-    #annoy-repr-0x7f1bc2eb5308-6 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-6 summary::-webkit-details-marker{display:none;}
-    #annoy-repr-0x7f1bc2eb5308-6 .annoy-title{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-6 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
-    #annoy-repr-0x7f1bc2eb5308-6 .annoy-links a{color:#0969da;text-decoration:none;}
-    #annoy-repr-0x7f1bc2eb5308-6 .annoy-links a:hover{text-decoration:underline;}
-    #annoy-repr-0x7f1bc2eb5308-6 .annoy-sep{color:#57606a;}
-    #annoy-repr-0x7f1bc2eb5308-6 .annoy-subtitle{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-6 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
-    #annoy-repr-0x7f1bc2eb5308-6 details[open] > summary .annoy-arrow::before{content:'\25BC';}
-    #annoy-repr-0x7f1bc2eb5308-6 .annoy-body{padding:0 10px 10px 10px;}
-    #annoy-repr-0x7f1bc2eb5308-6 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-6 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
-    #annoy-repr-0x7f1bc2eb5308-6 .annoy-table th{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-6 .annoy-td-btn{width:72px;}
-    #annoy-repr-0x7f1bc2eb5308-6 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
-    #annoy-repr-0x7f1bc2eb5308-6 .annoy-copy:active{transform:translateY(1px);}
-    #annoy-repr-0x7f1bc2eb5308-6 .annoy-key{white-space:nowrap;}
-    #annoy-repr-0x7f1bc2eb5308-6 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+    <div id="annoy-repr-0x7f82a11d4348-6" class="annoy-repr"><style>
+    #annoy-repr-0x7f82a11d4348-6 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
+    #annoy-repr-0x7f82a11d4348-6 details{margin:0;padding:0;}
+    #annoy-repr-0x7f82a11d4348-6 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-6 summary::-webkit-details-marker{display:none;}
+    #annoy-repr-0x7f82a11d4348-6 .annoy-title{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-6 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
+    #annoy-repr-0x7f82a11d4348-6 .annoy-links a{color:#0969da;text-decoration:none;}
+    #annoy-repr-0x7f82a11d4348-6 .annoy-links a:hover{text-decoration:underline;}
+    #annoy-repr-0x7f82a11d4348-6 .annoy-sep{color:#57606a;}
+    #annoy-repr-0x7f82a11d4348-6 .annoy-subtitle{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-6 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
+    #annoy-repr-0x7f82a11d4348-6 details[open] > summary .annoy-arrow::before{content:'\25BC';}
+    #annoy-repr-0x7f82a11d4348-6 .annoy-body{padding:0 10px 10px 10px;}
+    #annoy-repr-0x7f82a11d4348-6 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-6 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
+    #annoy-repr-0x7f82a11d4348-6 .annoy-table th{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-6 .annoy-td-btn{width:72px;}
+    #annoy-repr-0x7f82a11d4348-6 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
+    #annoy-repr-0x7f82a11d4348-6 .annoy-copy:active{transform:translateY(1px);}
+    #annoy-repr-0x7f82a11d4348-6 .annoy-key{white-space:nowrap;}
+    #annoy-repr-0x7f82a11d4348-6 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
     </style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.5/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (installed)">0.5</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">3</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">&#x27;angular&#x27;</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">n_neighbors</td><td class="annoy-value">5</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr></tbody></table></details></div></details></div><script>
     (function(){
-      var root=document.getElementById('annoy-repr-0x7f1bc2eb5308-6');
+      var root=document.getElementById('annoy-repr-0x7f82a11d4348-6');
       if(!root)return;
       var btns=root.querySelectorAll('button.annoy-copy');
       for(var i=0;i<btns.length;i++){
@@ -1291,31 +1298,31 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
 .. raw:: html
 
     <div class="output_subarea output_html rendered_html output_result">
-    <div id="annoy-repr-0x7f1bc2eb5308-7" class="annoy-repr"><style>
-    #annoy-repr-0x7f1bc2eb5308-7 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
-    #annoy-repr-0x7f1bc2eb5308-7 details{margin:0;padding:0;}
-    #annoy-repr-0x7f1bc2eb5308-7 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-7 summary::-webkit-details-marker{display:none;}
-    #annoy-repr-0x7f1bc2eb5308-7 .annoy-title{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-7 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
-    #annoy-repr-0x7f1bc2eb5308-7 .annoy-links a{color:#0969da;text-decoration:none;}
-    #annoy-repr-0x7f1bc2eb5308-7 .annoy-links a:hover{text-decoration:underline;}
-    #annoy-repr-0x7f1bc2eb5308-7 .annoy-sep{color:#57606a;}
-    #annoy-repr-0x7f1bc2eb5308-7 .annoy-subtitle{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-7 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
-    #annoy-repr-0x7f1bc2eb5308-7 details[open] > summary .annoy-arrow::before{content:'\25BC';}
-    #annoy-repr-0x7f1bc2eb5308-7 .annoy-body{padding:0 10px 10px 10px;}
-    #annoy-repr-0x7f1bc2eb5308-7 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-7 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
-    #annoy-repr-0x7f1bc2eb5308-7 .annoy-table th{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-7 .annoy-td-btn{width:72px;}
-    #annoy-repr-0x7f1bc2eb5308-7 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
-    #annoy-repr-0x7f1bc2eb5308-7 .annoy-copy:active{transform:translateY(1px);}
-    #annoy-repr-0x7f1bc2eb5308-7 .annoy-key{white-space:nowrap;}
-    #annoy-repr-0x7f1bc2eb5308-7 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+    <div id="annoy-repr-0x7f82a11d4348-7" class="annoy-repr"><style>
+    #annoy-repr-0x7f82a11d4348-7 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
+    #annoy-repr-0x7f82a11d4348-7 details{margin:0;padding:0;}
+    #annoy-repr-0x7f82a11d4348-7 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-7 summary::-webkit-details-marker{display:none;}
+    #annoy-repr-0x7f82a11d4348-7 .annoy-title{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-7 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
+    #annoy-repr-0x7f82a11d4348-7 .annoy-links a{color:#0969da;text-decoration:none;}
+    #annoy-repr-0x7f82a11d4348-7 .annoy-links a:hover{text-decoration:underline;}
+    #annoy-repr-0x7f82a11d4348-7 .annoy-sep{color:#57606a;}
+    #annoy-repr-0x7f82a11d4348-7 .annoy-subtitle{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-7 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
+    #annoy-repr-0x7f82a11d4348-7 details[open] > summary .annoy-arrow::before{content:'\25BC';}
+    #annoy-repr-0x7f82a11d4348-7 .annoy-body{padding:0 10px 10px 10px;}
+    #annoy-repr-0x7f82a11d4348-7 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-7 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
+    #annoy-repr-0x7f82a11d4348-7 .annoy-table th{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-7 .annoy-td-btn{width:72px;}
+    #annoy-repr-0x7f82a11d4348-7 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
+    #annoy-repr-0x7f82a11d4348-7 .annoy-copy:active{transform:translateY(1px);}
+    #annoy-repr-0x7f82a11d4348-7 .annoy-key{white-space:nowrap;}
+    #annoy-repr-0x7f82a11d4348-7 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
     </style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.5/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (installed)">0.5</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">3</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">&#x27;angular&#x27;</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">n_neighbors</td><td class="annoy-value">5</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr></tbody></table></details></div></details></div><script>
     (function(){
-      var root=document.getElementById('annoy-repr-0x7f1bc2eb5308-7');
+      var root=document.getElementById('annoy-repr-0x7f82a11d4348-7');
       if(!root)return;
       var btns=root.querySelectorAll('button.annoy-copy');
       for(var i=0;i<btns.length;i++){
@@ -1412,31 +1419,31 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
 .. raw:: html
 
     <div class="output_subarea output_html rendered_html output_result">
-    <div id="annoy-repr-0x7f1bc2eb5308-8" class="annoy-repr"><style>
-    #annoy-repr-0x7f1bc2eb5308-8 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
-    #annoy-repr-0x7f1bc2eb5308-8 details{margin:0;padding:0;}
-    #annoy-repr-0x7f1bc2eb5308-8 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-8 summary::-webkit-details-marker{display:none;}
-    #annoy-repr-0x7f1bc2eb5308-8 .annoy-title{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-8 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
-    #annoy-repr-0x7f1bc2eb5308-8 .annoy-links a{color:#0969da;text-decoration:none;}
-    #annoy-repr-0x7f1bc2eb5308-8 .annoy-links a:hover{text-decoration:underline;}
-    #annoy-repr-0x7f1bc2eb5308-8 .annoy-sep{color:#57606a;}
-    #annoy-repr-0x7f1bc2eb5308-8 .annoy-subtitle{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-8 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
-    #annoy-repr-0x7f1bc2eb5308-8 details[open] > summary .annoy-arrow::before{content:'\25BC';}
-    #annoy-repr-0x7f1bc2eb5308-8 .annoy-body{padding:0 10px 10px 10px;}
-    #annoy-repr-0x7f1bc2eb5308-8 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-8 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
-    #annoy-repr-0x7f1bc2eb5308-8 .annoy-table th{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-8 .annoy-td-btn{width:72px;}
-    #annoy-repr-0x7f1bc2eb5308-8 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
-    #annoy-repr-0x7f1bc2eb5308-8 .annoy-copy:active{transform:translateY(1px);}
-    #annoy-repr-0x7f1bc2eb5308-8 .annoy-key{white-space:nowrap;}
-    #annoy-repr-0x7f1bc2eb5308-8 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+    <div id="annoy-repr-0x7f82a11d4348-8" class="annoy-repr"><style>
+    #annoy-repr-0x7f82a11d4348-8 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
+    #annoy-repr-0x7f82a11d4348-8 details{margin:0;padding:0;}
+    #annoy-repr-0x7f82a11d4348-8 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-8 summary::-webkit-details-marker{display:none;}
+    #annoy-repr-0x7f82a11d4348-8 .annoy-title{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-8 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
+    #annoy-repr-0x7f82a11d4348-8 .annoy-links a{color:#0969da;text-decoration:none;}
+    #annoy-repr-0x7f82a11d4348-8 .annoy-links a:hover{text-decoration:underline;}
+    #annoy-repr-0x7f82a11d4348-8 .annoy-sep{color:#57606a;}
+    #annoy-repr-0x7f82a11d4348-8 .annoy-subtitle{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-8 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
+    #annoy-repr-0x7f82a11d4348-8 details[open] > summary .annoy-arrow::before{content:'\25BC';}
+    #annoy-repr-0x7f82a11d4348-8 .annoy-body{padding:0 10px 10px 10px;}
+    #annoy-repr-0x7f82a11d4348-8 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-8 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
+    #annoy-repr-0x7f82a11d4348-8 .annoy-table th{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-8 .annoy-td-btn{width:72px;}
+    #annoy-repr-0x7f82a11d4348-8 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
+    #annoy-repr-0x7f82a11d4348-8 .annoy-copy:active{transform:translateY(1px);}
+    #annoy-repr-0x7f82a11d4348-8 .annoy-key{white-space:nowrap;}
+    #annoy-repr-0x7f82a11d4348-8 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
     </style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.5/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (installed)">0.5</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">100</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">&#x27;angular&#x27;</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">n_neighbors</td><td class="annoy-value">5</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">&#x27;annoy_test_2.annoy&#x27;</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr></tbody></table></details></div></details></div><script>
     (function(){
-      var root=document.getElementById('annoy-repr-0x7f1bc2eb5308-8');
+      var root=document.getElementById('annoy-repr-0x7f82a11d4348-8');
       if(!root)return;
       var btns=root.querySelectorAll('button.annoy-copy');
       for(var i=0;i<btns.length;i++){
@@ -1556,31 +1563,31 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
 .. raw:: html
 
     <div class="output_subarea output_html rendered_html output_result">
-    <div id="annoy-repr-0x7f1bc2eb5308-9" class="annoy-repr"><style>
-    #annoy-repr-0x7f1bc2eb5308-9 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
-    #annoy-repr-0x7f1bc2eb5308-9 details{margin:0;padding:0;}
-    #annoy-repr-0x7f1bc2eb5308-9 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-9 summary::-webkit-details-marker{display:none;}
-    #annoy-repr-0x7f1bc2eb5308-9 .annoy-title{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-9 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
-    #annoy-repr-0x7f1bc2eb5308-9 .annoy-links a{color:#0969da;text-decoration:none;}
-    #annoy-repr-0x7f1bc2eb5308-9 .annoy-links a:hover{text-decoration:underline;}
-    #annoy-repr-0x7f1bc2eb5308-9 .annoy-sep{color:#57606a;}
-    #annoy-repr-0x7f1bc2eb5308-9 .annoy-subtitle{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-9 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
-    #annoy-repr-0x7f1bc2eb5308-9 details[open] > summary .annoy-arrow::before{content:'\25BC';}
-    #annoy-repr-0x7f1bc2eb5308-9 .annoy-body{padding:0 10px 10px 10px;}
-    #annoy-repr-0x7f1bc2eb5308-9 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-9 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
-    #annoy-repr-0x7f1bc2eb5308-9 .annoy-table th{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-9 .annoy-td-btn{width:72px;}
-    #annoy-repr-0x7f1bc2eb5308-9 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
-    #annoy-repr-0x7f1bc2eb5308-9 .annoy-copy:active{transform:translateY(1px);}
-    #annoy-repr-0x7f1bc2eb5308-9 .annoy-key{white-space:nowrap;}
-    #annoy-repr-0x7f1bc2eb5308-9 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+    <div id="annoy-repr-0x7f82a11d4348-9" class="annoy-repr"><style>
+    #annoy-repr-0x7f82a11d4348-9 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
+    #annoy-repr-0x7f82a11d4348-9 details{margin:0;padding:0;}
+    #annoy-repr-0x7f82a11d4348-9 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-9 summary::-webkit-details-marker{display:none;}
+    #annoy-repr-0x7f82a11d4348-9 .annoy-title{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-9 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
+    #annoy-repr-0x7f82a11d4348-9 .annoy-links a{color:#0969da;text-decoration:none;}
+    #annoy-repr-0x7f82a11d4348-9 .annoy-links a:hover{text-decoration:underline;}
+    #annoy-repr-0x7f82a11d4348-9 .annoy-sep{color:#57606a;}
+    #annoy-repr-0x7f82a11d4348-9 .annoy-subtitle{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-9 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
+    #annoy-repr-0x7f82a11d4348-9 details[open] > summary .annoy-arrow::before{content:'\25BC';}
+    #annoy-repr-0x7f82a11d4348-9 .annoy-body{padding:0 10px 10px 10px;}
+    #annoy-repr-0x7f82a11d4348-9 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-9 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
+    #annoy-repr-0x7f82a11d4348-9 .annoy-table th{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-9 .annoy-td-btn{width:72px;}
+    #annoy-repr-0x7f82a11d4348-9 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
+    #annoy-repr-0x7f82a11d4348-9 .annoy-copy:active{transform:translateY(1px);}
+    #annoy-repr-0x7f82a11d4348-9 .annoy-key{white-space:nowrap;}
+    #annoy-repr-0x7f82a11d4348-9 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
     </style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.5/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (installed)">0.5</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">100</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">&#x27;angular&#x27;</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">n_neighbors</td><td class="annoy-value">5</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">&#x27;annoy_test_2.annoy&#x27;</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr></tbody></table></details></div></details></div><script>
     (function(){
-      var root=document.getElementById('annoy-repr-0x7f1bc2eb5308-9');
+      var root=document.getElementById('annoy-repr-0x7f82a11d4348-9');
       if(!root)return;
       var btns=root.querySelectorAll('button.annoy-copy');
       for(var i=0;i<btns.length;i++){
@@ -1642,31 +1649,31 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
 .. raw:: html
 
     <div class="output_subarea output_html rendered_html output_result">
-    <div id="annoy-repr-0x7f1bc2eb5308-10" class="annoy-repr"><style>
-    #annoy-repr-0x7f1bc2eb5308-10 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
-    #annoy-repr-0x7f1bc2eb5308-10 details{margin:0;padding:0;}
-    #annoy-repr-0x7f1bc2eb5308-10 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-10 summary::-webkit-details-marker{display:none;}
-    #annoy-repr-0x7f1bc2eb5308-10 .annoy-title{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-10 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
-    #annoy-repr-0x7f1bc2eb5308-10 .annoy-links a{color:#0969da;text-decoration:none;}
-    #annoy-repr-0x7f1bc2eb5308-10 .annoy-links a:hover{text-decoration:underline;}
-    #annoy-repr-0x7f1bc2eb5308-10 .annoy-sep{color:#57606a;}
-    #annoy-repr-0x7f1bc2eb5308-10 .annoy-subtitle{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-10 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
-    #annoy-repr-0x7f1bc2eb5308-10 details[open] > summary .annoy-arrow::before{content:'\25BC';}
-    #annoy-repr-0x7f1bc2eb5308-10 .annoy-body{padding:0 10px 10px 10px;}
-    #annoy-repr-0x7f1bc2eb5308-10 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-10 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
-    #annoy-repr-0x7f1bc2eb5308-10 .annoy-table th{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-10 .annoy-td-btn{width:72px;}
-    #annoy-repr-0x7f1bc2eb5308-10 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
-    #annoy-repr-0x7f1bc2eb5308-10 .annoy-copy:active{transform:translateY(1px);}
-    #annoy-repr-0x7f1bc2eb5308-10 .annoy-key{white-space:nowrap;}
-    #annoy-repr-0x7f1bc2eb5308-10 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+    <div id="annoy-repr-0x7f82a11d4348-10" class="annoy-repr"><style>
+    #annoy-repr-0x7f82a11d4348-10 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
+    #annoy-repr-0x7f82a11d4348-10 details{margin:0;padding:0;}
+    #annoy-repr-0x7f82a11d4348-10 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-10 summary::-webkit-details-marker{display:none;}
+    #annoy-repr-0x7f82a11d4348-10 .annoy-title{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-10 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
+    #annoy-repr-0x7f82a11d4348-10 .annoy-links a{color:#0969da;text-decoration:none;}
+    #annoy-repr-0x7f82a11d4348-10 .annoy-links a:hover{text-decoration:underline;}
+    #annoy-repr-0x7f82a11d4348-10 .annoy-sep{color:#57606a;}
+    #annoy-repr-0x7f82a11d4348-10 .annoy-subtitle{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-10 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
+    #annoy-repr-0x7f82a11d4348-10 details[open] > summary .annoy-arrow::before{content:'\25BC';}
+    #annoy-repr-0x7f82a11d4348-10 .annoy-body{padding:0 10px 10px 10px;}
+    #annoy-repr-0x7f82a11d4348-10 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-10 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
+    #annoy-repr-0x7f82a11d4348-10 .annoy-table th{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-10 .annoy-td-btn{width:72px;}
+    #annoy-repr-0x7f82a11d4348-10 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
+    #annoy-repr-0x7f82a11d4348-10 .annoy-copy:active{transform:translateY(1px);}
+    #annoy-repr-0x7f82a11d4348-10 .annoy-key{white-space:nowrap;}
+    #annoy-repr-0x7f82a11d4348-10 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
     </style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.5/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (installed)">0.5</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">100</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">&#x27;angular&#x27;</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">n_neighbors</td><td class="annoy-value">5</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">&#x27;annoy_test_2.annoy&#x27;</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr></tbody></table></details></div></details></div><script>
     (function(){
-      var root=document.getElementById('annoy-repr-0x7f1bc2eb5308-10');
+      var root=document.getElementById('annoy-repr-0x7f82a11d4348-10');
       if(!root)return;
       var btns=root.querySelectorAll('button.annoy-copy');
       for(var i=0;i<btns.length;i++){
@@ -1729,31 +1736,31 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
 .. raw:: html
 
     <div class="output_subarea output_html rendered_html output_result">
-    <div id="annoy-repr-0x7f1bc2eb5308-11" class="annoy-repr"><style>
-    #annoy-repr-0x7f1bc2eb5308-11 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
-    #annoy-repr-0x7f1bc2eb5308-11 details{margin:0;padding:0;}
-    #annoy-repr-0x7f1bc2eb5308-11 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-11 summary::-webkit-details-marker{display:none;}
-    #annoy-repr-0x7f1bc2eb5308-11 .annoy-title{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-11 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
-    #annoy-repr-0x7f1bc2eb5308-11 .annoy-links a{color:#0969da;text-decoration:none;}
-    #annoy-repr-0x7f1bc2eb5308-11 .annoy-links a:hover{text-decoration:underline;}
-    #annoy-repr-0x7f1bc2eb5308-11 .annoy-sep{color:#57606a;}
-    #annoy-repr-0x7f1bc2eb5308-11 .annoy-subtitle{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-11 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
-    #annoy-repr-0x7f1bc2eb5308-11 details[open] > summary .annoy-arrow::before{content:'\25BC';}
-    #annoy-repr-0x7f1bc2eb5308-11 .annoy-body{padding:0 10px 10px 10px;}
-    #annoy-repr-0x7f1bc2eb5308-11 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-11 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
-    #annoy-repr-0x7f1bc2eb5308-11 .annoy-table th{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-11 .annoy-td-btn{width:72px;}
-    #annoy-repr-0x7f1bc2eb5308-11 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
-    #annoy-repr-0x7f1bc2eb5308-11 .annoy-copy:active{transform:translateY(1px);}
-    #annoy-repr-0x7f1bc2eb5308-11 .annoy-key{white-space:nowrap;}
-    #annoy-repr-0x7f1bc2eb5308-11 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+    <div id="annoy-repr-0x7f82a11d4348-11" class="annoy-repr"><style>
+    #annoy-repr-0x7f82a11d4348-11 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
+    #annoy-repr-0x7f82a11d4348-11 details{margin:0;padding:0;}
+    #annoy-repr-0x7f82a11d4348-11 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-11 summary::-webkit-details-marker{display:none;}
+    #annoy-repr-0x7f82a11d4348-11 .annoy-title{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-11 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
+    #annoy-repr-0x7f82a11d4348-11 .annoy-links a{color:#0969da;text-decoration:none;}
+    #annoy-repr-0x7f82a11d4348-11 .annoy-links a:hover{text-decoration:underline;}
+    #annoy-repr-0x7f82a11d4348-11 .annoy-sep{color:#57606a;}
+    #annoy-repr-0x7f82a11d4348-11 .annoy-subtitle{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-11 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
+    #annoy-repr-0x7f82a11d4348-11 details[open] > summary .annoy-arrow::before{content:'\25BC';}
+    #annoy-repr-0x7f82a11d4348-11 .annoy-body{padding:0 10px 10px 10px;}
+    #annoy-repr-0x7f82a11d4348-11 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-11 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
+    #annoy-repr-0x7f82a11d4348-11 .annoy-table th{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-11 .annoy-td-btn{width:72px;}
+    #annoy-repr-0x7f82a11d4348-11 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
+    #annoy-repr-0x7f82a11d4348-11 .annoy-copy:active{transform:translateY(1px);}
+    #annoy-repr-0x7f82a11d4348-11 .annoy-key{white-space:nowrap;}
+    #annoy-repr-0x7f82a11d4348-11 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
     </style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.5/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (installed)">0.5</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">100</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">&#x27;angular&#x27;</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">n_neighbors</td><td class="annoy-value">5</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">&#x27;annoy_test_2.annoy&#x27;</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr></tbody></table></details></div></details></div><script>
     (function(){
-      var root=document.getElementById('annoy-repr-0x7f1bc2eb5308-11');
+      var root=document.getElementById('annoy-repr-0x7f82a11d4348-11');
       if(!root)return;
       var btns=root.querySelectorAll('button.annoy-copy');
       for(var i=0;i<btns.length;i++){
@@ -1822,31 +1829,31 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
 .. raw:: html
 
     <div class="output_subarea output_html rendered_html output_result">
-    <div id="annoy-repr-0x7f1bc2eb5308-12" class="annoy-repr"><style>
-    #annoy-repr-0x7f1bc2eb5308-12 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
-    #annoy-repr-0x7f1bc2eb5308-12 details{margin:0;padding:0;}
-    #annoy-repr-0x7f1bc2eb5308-12 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-12 summary::-webkit-details-marker{display:none;}
-    #annoy-repr-0x7f1bc2eb5308-12 .annoy-title{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-12 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
-    #annoy-repr-0x7f1bc2eb5308-12 .annoy-links a{color:#0969da;text-decoration:none;}
-    #annoy-repr-0x7f1bc2eb5308-12 .annoy-links a:hover{text-decoration:underline;}
-    #annoy-repr-0x7f1bc2eb5308-12 .annoy-sep{color:#57606a;}
-    #annoy-repr-0x7f1bc2eb5308-12 .annoy-subtitle{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-12 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
-    #annoy-repr-0x7f1bc2eb5308-12 details[open] > summary .annoy-arrow::before{content:'\25BC';}
-    #annoy-repr-0x7f1bc2eb5308-12 .annoy-body{padding:0 10px 10px 10px;}
-    #annoy-repr-0x7f1bc2eb5308-12 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-12 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
-    #annoy-repr-0x7f1bc2eb5308-12 .annoy-table th{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-12 .annoy-td-btn{width:72px;}
-    #annoy-repr-0x7f1bc2eb5308-12 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
-    #annoy-repr-0x7f1bc2eb5308-12 .annoy-copy:active{transform:translateY(1px);}
-    #annoy-repr-0x7f1bc2eb5308-12 .annoy-key{white-space:nowrap;}
-    #annoy-repr-0x7f1bc2eb5308-12 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+    <div id="annoy-repr-0x7f82a11d4348-12" class="annoy-repr"><style>
+    #annoy-repr-0x7f82a11d4348-12 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
+    #annoy-repr-0x7f82a11d4348-12 details{margin:0;padding:0;}
+    #annoy-repr-0x7f82a11d4348-12 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-12 summary::-webkit-details-marker{display:none;}
+    #annoy-repr-0x7f82a11d4348-12 .annoy-title{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-12 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
+    #annoy-repr-0x7f82a11d4348-12 .annoy-links a{color:#0969da;text-decoration:none;}
+    #annoy-repr-0x7f82a11d4348-12 .annoy-links a:hover{text-decoration:underline;}
+    #annoy-repr-0x7f82a11d4348-12 .annoy-sep{color:#57606a;}
+    #annoy-repr-0x7f82a11d4348-12 .annoy-subtitle{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-12 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
+    #annoy-repr-0x7f82a11d4348-12 details[open] > summary .annoy-arrow::before{content:'\25BC';}
+    #annoy-repr-0x7f82a11d4348-12 .annoy-body{padding:0 10px 10px 10px;}
+    #annoy-repr-0x7f82a11d4348-12 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-12 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
+    #annoy-repr-0x7f82a11d4348-12 .annoy-table th{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-12 .annoy-td-btn{width:72px;}
+    #annoy-repr-0x7f82a11d4348-12 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
+    #annoy-repr-0x7f82a11d4348-12 .annoy-copy:active{transform:translateY(1px);}
+    #annoy-repr-0x7f82a11d4348-12 .annoy-key{white-space:nowrap;}
+    #annoy-repr-0x7f82a11d4348-12 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
     </style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.5/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (installed)">0.5</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">0</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">&#x27;angular&#x27;</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">n_neighbors</td><td class="annoy-value">5</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr></tbody></table></details></div></details></div><script>
     (function(){
-      var root=document.getElementById('annoy-repr-0x7f1bc2eb5308-12');
+      var root=document.getElementById('annoy-repr-0x7f82a11d4348-12');
       if(!root)return;
       var btns=root.querySelectorAll('button.annoy-copy');
       for(var i=0;i<btns.length;i++){
@@ -1967,31 +1974,31 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
 .. raw:: html
 
     <div class="output_subarea output_html rendered_html output_result">
-    <div id="annoy-repr-0x7f1bc2eb5308-13" class="annoy-repr"><style>
-    #annoy-repr-0x7f1bc2eb5308-13 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
-    #annoy-repr-0x7f1bc2eb5308-13 details{margin:0;padding:0;}
-    #annoy-repr-0x7f1bc2eb5308-13 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-13 summary::-webkit-details-marker{display:none;}
-    #annoy-repr-0x7f1bc2eb5308-13 .annoy-title{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-13 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
-    #annoy-repr-0x7f1bc2eb5308-13 .annoy-links a{color:#0969da;text-decoration:none;}
-    #annoy-repr-0x7f1bc2eb5308-13 .annoy-links a:hover{text-decoration:underline;}
-    #annoy-repr-0x7f1bc2eb5308-13 .annoy-sep{color:#57606a;}
-    #annoy-repr-0x7f1bc2eb5308-13 .annoy-subtitle{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-13 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
-    #annoy-repr-0x7f1bc2eb5308-13 details[open] > summary .annoy-arrow::before{content:'\25BC';}
-    #annoy-repr-0x7f1bc2eb5308-13 .annoy-body{padding:0 10px 10px 10px;}
-    #annoy-repr-0x7f1bc2eb5308-13 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-13 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
-    #annoy-repr-0x7f1bc2eb5308-13 .annoy-table th{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-13 .annoy-td-btn{width:72px;}
-    #annoy-repr-0x7f1bc2eb5308-13 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
-    #annoy-repr-0x7f1bc2eb5308-13 .annoy-copy:active{transform:translateY(1px);}
-    #annoy-repr-0x7f1bc2eb5308-13 .annoy-key{white-space:nowrap;}
-    #annoy-repr-0x7f1bc2eb5308-13 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+    <div id="annoy-repr-0x7f82a11d4348-13" class="annoy-repr"><style>
+    #annoy-repr-0x7f82a11d4348-13 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
+    #annoy-repr-0x7f82a11d4348-13 details{margin:0;padding:0;}
+    #annoy-repr-0x7f82a11d4348-13 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-13 summary::-webkit-details-marker{display:none;}
+    #annoy-repr-0x7f82a11d4348-13 .annoy-title{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-13 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
+    #annoy-repr-0x7f82a11d4348-13 .annoy-links a{color:#0969da;text-decoration:none;}
+    #annoy-repr-0x7f82a11d4348-13 .annoy-links a:hover{text-decoration:underline;}
+    #annoy-repr-0x7f82a11d4348-13 .annoy-sep{color:#57606a;}
+    #annoy-repr-0x7f82a11d4348-13 .annoy-subtitle{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-13 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
+    #annoy-repr-0x7f82a11d4348-13 details[open] > summary .annoy-arrow::before{content:'\25BC';}
+    #annoy-repr-0x7f82a11d4348-13 .annoy-body{padding:0 10px 10px 10px;}
+    #annoy-repr-0x7f82a11d4348-13 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-13 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
+    #annoy-repr-0x7f82a11d4348-13 .annoy-table th{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-13 .annoy-td-btn{width:72px;}
+    #annoy-repr-0x7f82a11d4348-13 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
+    #annoy-repr-0x7f82a11d4348-13 .annoy-copy:active{transform:translateY(1px);}
+    #annoy-repr-0x7f82a11d4348-13 .annoy-key{white-space:nowrap;}
+    #annoy-repr-0x7f82a11d4348-13 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
     </style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.5/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (installed)">0.5</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">100</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">&#x27;angular&#x27;</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">n_neighbors</td><td class="annoy-value">5</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr></tbody></table></details></div></details></div><script>
     (function(){
-      var root=document.getElementById('annoy-repr-0x7f1bc2eb5308-13');
+      var root=document.getElementById('annoy-repr-0x7f82a11d4348-13');
       if(!root)return;
       var btns=root.querySelectorAll('button.annoy-copy');
       for(var i=0;i<btns.length;i++){
@@ -2179,31 +2186,31 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
 .. raw:: html
 
     <div class="output_subarea output_html rendered_html output_result">
-    <div id="annoy-repr-0x7f1bc2eb5308-14" class="annoy-repr"><style>
-    #annoy-repr-0x7f1bc2eb5308-14 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
-    #annoy-repr-0x7f1bc2eb5308-14 details{margin:0;padding:0;}
-    #annoy-repr-0x7f1bc2eb5308-14 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-14 summary::-webkit-details-marker{display:none;}
-    #annoy-repr-0x7f1bc2eb5308-14 .annoy-title{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-14 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
-    #annoy-repr-0x7f1bc2eb5308-14 .annoy-links a{color:#0969da;text-decoration:none;}
-    #annoy-repr-0x7f1bc2eb5308-14 .annoy-links a:hover{text-decoration:underline;}
-    #annoy-repr-0x7f1bc2eb5308-14 .annoy-sep{color:#57606a;}
-    #annoy-repr-0x7f1bc2eb5308-14 .annoy-subtitle{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-14 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
-    #annoy-repr-0x7f1bc2eb5308-14 details[open] > summary .annoy-arrow::before{content:'\25BC';}
-    #annoy-repr-0x7f1bc2eb5308-14 .annoy-body{padding:0 10px 10px 10px;}
-    #annoy-repr-0x7f1bc2eb5308-14 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-14 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
-    #annoy-repr-0x7f1bc2eb5308-14 .annoy-table th{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-14 .annoy-td-btn{width:72px;}
-    #annoy-repr-0x7f1bc2eb5308-14 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
-    #annoy-repr-0x7f1bc2eb5308-14 .annoy-copy:active{transform:translateY(1px);}
-    #annoy-repr-0x7f1bc2eb5308-14 .annoy-key{white-space:nowrap;}
-    #annoy-repr-0x7f1bc2eb5308-14 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+    <div id="annoy-repr-0x7f82a11d4348-14" class="annoy-repr"><style>
+    #annoy-repr-0x7f82a11d4348-14 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
+    #annoy-repr-0x7f82a11d4348-14 details{margin:0;padding:0;}
+    #annoy-repr-0x7f82a11d4348-14 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-14 summary::-webkit-details-marker{display:none;}
+    #annoy-repr-0x7f82a11d4348-14 .annoy-title{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-14 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
+    #annoy-repr-0x7f82a11d4348-14 .annoy-links a{color:#0969da;text-decoration:none;}
+    #annoy-repr-0x7f82a11d4348-14 .annoy-links a:hover{text-decoration:underline;}
+    #annoy-repr-0x7f82a11d4348-14 .annoy-sep{color:#57606a;}
+    #annoy-repr-0x7f82a11d4348-14 .annoy-subtitle{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-14 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
+    #annoy-repr-0x7f82a11d4348-14 details[open] > summary .annoy-arrow::before{content:'\25BC';}
+    #annoy-repr-0x7f82a11d4348-14 .annoy-body{padding:0 10px 10px 10px;}
+    #annoy-repr-0x7f82a11d4348-14 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-14 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
+    #annoy-repr-0x7f82a11d4348-14 .annoy-table th{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-14 .annoy-td-btn{width:72px;}
+    #annoy-repr-0x7f82a11d4348-14 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
+    #annoy-repr-0x7f82a11d4348-14 .annoy-copy:active{transform:translateY(1px);}
+    #annoy-repr-0x7f82a11d4348-14 .annoy-key{white-space:nowrap;}
+    #annoy-repr-0x7f82a11d4348-14 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
     </style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.5/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (installed)">0.5</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">100</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">&#x27;angular&#x27;</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">n_neighbors</td><td class="annoy-value">5</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">&#x27;annoy_test_2.annoy&#x27;</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr></tbody></table></details></div></details></div><script>
     (function(){
-      var root=document.getElementById('annoy-repr-0x7f1bc2eb5308-14');
+      var root=document.getElementById('annoy-repr-0x7f82a11d4348-14');
       if(!root)return;
       var btns=root.querySelectorAll('button.annoy-copy');
       for(var i=0;i<btns.length;i++){
@@ -2336,31 +2343,31 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
 .. raw:: html
 
     <div class="output_subarea output_html rendered_html output_result">
-    <div id="annoy-repr-0x7f1bc2eb5308-15" class="annoy-repr"><style>
-    #annoy-repr-0x7f1bc2eb5308-15 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
-    #annoy-repr-0x7f1bc2eb5308-15 details{margin:0;padding:0;}
-    #annoy-repr-0x7f1bc2eb5308-15 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-15 summary::-webkit-details-marker{display:none;}
-    #annoy-repr-0x7f1bc2eb5308-15 .annoy-title{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-15 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
-    #annoy-repr-0x7f1bc2eb5308-15 .annoy-links a{color:#0969da;text-decoration:none;}
-    #annoy-repr-0x7f1bc2eb5308-15 .annoy-links a:hover{text-decoration:underline;}
-    #annoy-repr-0x7f1bc2eb5308-15 .annoy-sep{color:#57606a;}
-    #annoy-repr-0x7f1bc2eb5308-15 .annoy-subtitle{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-15 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
-    #annoy-repr-0x7f1bc2eb5308-15 details[open] > summary .annoy-arrow::before{content:'\25BC';}
-    #annoy-repr-0x7f1bc2eb5308-15 .annoy-body{padding:0 10px 10px 10px;}
-    #annoy-repr-0x7f1bc2eb5308-15 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-15 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
-    #annoy-repr-0x7f1bc2eb5308-15 .annoy-table th{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-15 .annoy-td-btn{width:72px;}
-    #annoy-repr-0x7f1bc2eb5308-15 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
-    #annoy-repr-0x7f1bc2eb5308-15 .annoy-copy:active{transform:translateY(1px);}
-    #annoy-repr-0x7f1bc2eb5308-15 .annoy-key{white-space:nowrap;}
-    #annoy-repr-0x7f1bc2eb5308-15 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+    <div id="annoy-repr-0x7f82a11d4348-15" class="annoy-repr"><style>
+    #annoy-repr-0x7f82a11d4348-15 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
+    #annoy-repr-0x7f82a11d4348-15 details{margin:0;padding:0;}
+    #annoy-repr-0x7f82a11d4348-15 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-15 summary::-webkit-details-marker{display:none;}
+    #annoy-repr-0x7f82a11d4348-15 .annoy-title{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-15 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
+    #annoy-repr-0x7f82a11d4348-15 .annoy-links a{color:#0969da;text-decoration:none;}
+    #annoy-repr-0x7f82a11d4348-15 .annoy-links a:hover{text-decoration:underline;}
+    #annoy-repr-0x7f82a11d4348-15 .annoy-sep{color:#57606a;}
+    #annoy-repr-0x7f82a11d4348-15 .annoy-subtitle{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-15 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
+    #annoy-repr-0x7f82a11d4348-15 details[open] > summary .annoy-arrow::before{content:'\25BC';}
+    #annoy-repr-0x7f82a11d4348-15 .annoy-body{padding:0 10px 10px 10px;}
+    #annoy-repr-0x7f82a11d4348-15 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-15 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
+    #annoy-repr-0x7f82a11d4348-15 .annoy-table th{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-15 .annoy-td-btn{width:72px;}
+    #annoy-repr-0x7f82a11d4348-15 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
+    #annoy-repr-0x7f82a11d4348-15 .annoy-copy:active{transform:translateY(1px);}
+    #annoy-repr-0x7f82a11d4348-15 .annoy-key{white-space:nowrap;}
+    #annoy-repr-0x7f82a11d4348-15 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
     </style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.5/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (installed)">0.5</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">100</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">&#x27;angular&#x27;</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">n_neighbors</td><td class="annoy-value">5</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">&#x27;annoy_test_2.annoy&#x27;</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr></tbody></table></details></div></details></div><script>
     (function(){
-      var root=document.getElementById('annoy-repr-0x7f1bc2eb5308-15');
+      var root=document.getElementById('annoy-repr-0x7f82a11d4348-15');
       if(!root)return;
       var btns=root.querySelectorAll('button.annoy-copy');
       for(var i=0;i<btns.length;i++){
@@ -2423,31 +2430,31 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
 .. raw:: html
 
     <div class="output_subarea output_html rendered_html output_result">
-    <div id="annoy-repr-0x7f1bc2eb5308-16" class="annoy-repr"><style>
-    #annoy-repr-0x7f1bc2eb5308-16 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
-    #annoy-repr-0x7f1bc2eb5308-16 details{margin:0;padding:0;}
-    #annoy-repr-0x7f1bc2eb5308-16 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-16 summary::-webkit-details-marker{display:none;}
-    #annoy-repr-0x7f1bc2eb5308-16 .annoy-title{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-16 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
-    #annoy-repr-0x7f1bc2eb5308-16 .annoy-links a{color:#0969da;text-decoration:none;}
-    #annoy-repr-0x7f1bc2eb5308-16 .annoy-links a:hover{text-decoration:underline;}
-    #annoy-repr-0x7f1bc2eb5308-16 .annoy-sep{color:#57606a;}
-    #annoy-repr-0x7f1bc2eb5308-16 .annoy-subtitle{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-16 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
-    #annoy-repr-0x7f1bc2eb5308-16 details[open] > summary .annoy-arrow::before{content:'\25BC';}
-    #annoy-repr-0x7f1bc2eb5308-16 .annoy-body{padding:0 10px 10px 10px;}
-    #annoy-repr-0x7f1bc2eb5308-16 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-16 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
-    #annoy-repr-0x7f1bc2eb5308-16 .annoy-table th{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-16 .annoy-td-btn{width:72px;}
-    #annoy-repr-0x7f1bc2eb5308-16 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
-    #annoy-repr-0x7f1bc2eb5308-16 .annoy-copy:active{transform:translateY(1px);}
-    #annoy-repr-0x7f1bc2eb5308-16 .annoy-key{white-space:nowrap;}
-    #annoy-repr-0x7f1bc2eb5308-16 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+    <div id="annoy-repr-0x7f82a11d4348-16" class="annoy-repr"><style>
+    #annoy-repr-0x7f82a11d4348-16 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
+    #annoy-repr-0x7f82a11d4348-16 details{margin:0;padding:0;}
+    #annoy-repr-0x7f82a11d4348-16 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-16 summary::-webkit-details-marker{display:none;}
+    #annoy-repr-0x7f82a11d4348-16 .annoy-title{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-16 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
+    #annoy-repr-0x7f82a11d4348-16 .annoy-links a{color:#0969da;text-decoration:none;}
+    #annoy-repr-0x7f82a11d4348-16 .annoy-links a:hover{text-decoration:underline;}
+    #annoy-repr-0x7f82a11d4348-16 .annoy-sep{color:#57606a;}
+    #annoy-repr-0x7f82a11d4348-16 .annoy-subtitle{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-16 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
+    #annoy-repr-0x7f82a11d4348-16 details[open] > summary .annoy-arrow::before{content:'\25BC';}
+    #annoy-repr-0x7f82a11d4348-16 .annoy-body{padding:0 10px 10px 10px;}
+    #annoy-repr-0x7f82a11d4348-16 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-16 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
+    #annoy-repr-0x7f82a11d4348-16 .annoy-table th{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-16 .annoy-td-btn{width:72px;}
+    #annoy-repr-0x7f82a11d4348-16 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
+    #annoy-repr-0x7f82a11d4348-16 .annoy-copy:active{transform:translateY(1px);}
+    #annoy-repr-0x7f82a11d4348-16 .annoy-key{white-space:nowrap;}
+    #annoy-repr-0x7f82a11d4348-16 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
     </style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.5/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (installed)">0.5</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">100</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">&#x27;angular&#x27;</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">n_neighbors</td><td class="annoy-value">5</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr></tbody></table></details></div></details></div><script>
     (function(){
-      var root=document.getElementById('annoy-repr-0x7f1bc2eb5308-16');
+      var root=document.getElementById('annoy-repr-0x7f82a11d4348-16');
       if(!root)return;
       var btns=root.querySelectorAll('button.annoy-copy');
       for(var i=0;i<btns.length;i++){
@@ -2599,31 +2606,31 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
 .. raw:: html
 
     <div class="output_subarea output_html rendered_html output_result">
-    <div id="annoy-repr-0x7f1bc2eb5308-17" class="annoy-repr"><style>
-    #annoy-repr-0x7f1bc2eb5308-17 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
-    #annoy-repr-0x7f1bc2eb5308-17 details{margin:0;padding:0;}
-    #annoy-repr-0x7f1bc2eb5308-17 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-17 summary::-webkit-details-marker{display:none;}
-    #annoy-repr-0x7f1bc2eb5308-17 .annoy-title{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-17 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
-    #annoy-repr-0x7f1bc2eb5308-17 .annoy-links a{color:#0969da;text-decoration:none;}
-    #annoy-repr-0x7f1bc2eb5308-17 .annoy-links a:hover{text-decoration:underline;}
-    #annoy-repr-0x7f1bc2eb5308-17 .annoy-sep{color:#57606a;}
-    #annoy-repr-0x7f1bc2eb5308-17 .annoy-subtitle{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-17 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
-    #annoy-repr-0x7f1bc2eb5308-17 details[open] > summary .annoy-arrow::before{content:'\25BC';}
-    #annoy-repr-0x7f1bc2eb5308-17 .annoy-body{padding:0 10px 10px 10px;}
-    #annoy-repr-0x7f1bc2eb5308-17 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-17 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
-    #annoy-repr-0x7f1bc2eb5308-17 .annoy-table th{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-17 .annoy-td-btn{width:72px;}
-    #annoy-repr-0x7f1bc2eb5308-17 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
-    #annoy-repr-0x7f1bc2eb5308-17 .annoy-copy:active{transform:translateY(1px);}
-    #annoy-repr-0x7f1bc2eb5308-17 .annoy-key{white-space:nowrap;}
-    #annoy-repr-0x7f1bc2eb5308-17 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+    <div id="annoy-repr-0x7f82a11d4348-17" class="annoy-repr"><style>
+    #annoy-repr-0x7f82a11d4348-17 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
+    #annoy-repr-0x7f82a11d4348-17 details{margin:0;padding:0;}
+    #annoy-repr-0x7f82a11d4348-17 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-17 summary::-webkit-details-marker{display:none;}
+    #annoy-repr-0x7f82a11d4348-17 .annoy-title{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-17 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
+    #annoy-repr-0x7f82a11d4348-17 .annoy-links a{color:#0969da;text-decoration:none;}
+    #annoy-repr-0x7f82a11d4348-17 .annoy-links a:hover{text-decoration:underline;}
+    #annoy-repr-0x7f82a11d4348-17 .annoy-sep{color:#57606a;}
+    #annoy-repr-0x7f82a11d4348-17 .annoy-subtitle{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-17 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
+    #annoy-repr-0x7f82a11d4348-17 details[open] > summary .annoy-arrow::before{content:'\25BC';}
+    #annoy-repr-0x7f82a11d4348-17 .annoy-body{padding:0 10px 10px 10px;}
+    #annoy-repr-0x7f82a11d4348-17 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-17 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
+    #annoy-repr-0x7f82a11d4348-17 .annoy-table th{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-17 .annoy-td-btn{width:72px;}
+    #annoy-repr-0x7f82a11d4348-17 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
+    #annoy-repr-0x7f82a11d4348-17 .annoy-copy:active{transform:translateY(1px);}
+    #annoy-repr-0x7f82a11d4348-17 .annoy-key{white-space:nowrap;}
+    #annoy-repr-0x7f82a11d4348-17 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
     </style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.5/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (installed)">0.5</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">10</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">&#x27;angular&#x27;</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">n_neighbors</td><td class="annoy-value">5</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr></tbody></table></details></div></details></div><script>
     (function(){
-      var root=document.getElementById('annoy-repr-0x7f1bc2eb5308-17');
+      var root=document.getElementById('annoy-repr-0x7f82a11d4348-17');
       if(!root)return;
       var btns=root.querySelectorAll('button.annoy-copy');
       for(var i=0;i<btns.length;i++){
@@ -2716,31 +2723,31 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
 .. raw:: html
 
     <div class="output_subarea output_html rendered_html output_result">
-    <div id="annoy-repr-0x7f1bc2eb5308-18" class="annoy-repr"><style>
-    #annoy-repr-0x7f1bc2eb5308-18 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
-    #annoy-repr-0x7f1bc2eb5308-18 details{margin:0;padding:0;}
-    #annoy-repr-0x7f1bc2eb5308-18 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-18 summary::-webkit-details-marker{display:none;}
-    #annoy-repr-0x7f1bc2eb5308-18 .annoy-title{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-18 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
-    #annoy-repr-0x7f1bc2eb5308-18 .annoy-links a{color:#0969da;text-decoration:none;}
-    #annoy-repr-0x7f1bc2eb5308-18 .annoy-links a:hover{text-decoration:underline;}
-    #annoy-repr-0x7f1bc2eb5308-18 .annoy-sep{color:#57606a;}
-    #annoy-repr-0x7f1bc2eb5308-18 .annoy-subtitle{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-18 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
-    #annoy-repr-0x7f1bc2eb5308-18 details[open] > summary .annoy-arrow::before{content:'\25BC';}
-    #annoy-repr-0x7f1bc2eb5308-18 .annoy-body{padding:0 10px 10px 10px;}
-    #annoy-repr-0x7f1bc2eb5308-18 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-    #annoy-repr-0x7f1bc2eb5308-18 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
-    #annoy-repr-0x7f1bc2eb5308-18 .annoy-table th{font-weight:600;}
-    #annoy-repr-0x7f1bc2eb5308-18 .annoy-td-btn{width:72px;}
-    #annoy-repr-0x7f1bc2eb5308-18 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
-    #annoy-repr-0x7f1bc2eb5308-18 .annoy-copy:active{transform:translateY(1px);}
-    #annoy-repr-0x7f1bc2eb5308-18 .annoy-key{white-space:nowrap;}
-    #annoy-repr-0x7f1bc2eb5308-18 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+    <div id="annoy-repr-0x7f82a11d4348-18" class="annoy-repr"><style>
+    #annoy-repr-0x7f82a11d4348-18 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
+    #annoy-repr-0x7f82a11d4348-18 details{margin:0;padding:0;}
+    #annoy-repr-0x7f82a11d4348-18 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-18 summary::-webkit-details-marker{display:none;}
+    #annoy-repr-0x7f82a11d4348-18 .annoy-title{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-18 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
+    #annoy-repr-0x7f82a11d4348-18 .annoy-links a{color:#0969da;text-decoration:none;}
+    #annoy-repr-0x7f82a11d4348-18 .annoy-links a:hover{text-decoration:underline;}
+    #annoy-repr-0x7f82a11d4348-18 .annoy-sep{color:#57606a;}
+    #annoy-repr-0x7f82a11d4348-18 .annoy-subtitle{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-18 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
+    #annoy-repr-0x7f82a11d4348-18 details[open] > summary .annoy-arrow::before{content:'\25BC';}
+    #annoy-repr-0x7f82a11d4348-18 .annoy-body{padding:0 10px 10px 10px;}
+    #annoy-repr-0x7f82a11d4348-18 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    #annoy-repr-0x7f82a11d4348-18 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
+    #annoy-repr-0x7f82a11d4348-18 .annoy-table th{font-weight:600;}
+    #annoy-repr-0x7f82a11d4348-18 .annoy-td-btn{width:72px;}
+    #annoy-repr-0x7f82a11d4348-18 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
+    #annoy-repr-0x7f82a11d4348-18 .annoy-copy:active{transform:translateY(1px);}
+    #annoy-repr-0x7f82a11d4348-18 .annoy-key{white-space:nowrap;}
+    #annoy-repr-0x7f82a11d4348-18 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
     </style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.5/modules/generated/scikitplot.cexternals._annoy.Annoy.html" target="_blank" rel="noopener noreferrer" title="Annoy docs (installed)">0.5</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">10</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">&#x27;angular&#x27;</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">n_neighbors</td><td class="annoy-value">5</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button type="button" class="annoy-copy" title="Copy value" aria-label="Copy value">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr></tbody></table></details></div></details></div><script>
     (function(){
-      var root=document.getElementById('annoy-repr-0x7f1bc2eb5308-18');
+      var root=document.getElementById('annoy-repr-0x7f82a11d4348-18');
       if(!root)return;
       var btns=root.querySelectorAll('button.annoy-copy');
       for(var i=0;i<btns.length;i++){
@@ -2884,7 +2891,7 @@ An example showing the :py:class:`~scikitplot.annoy.Index` class.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 54.092 seconds)
+   **Total running time of the script:** (2 minutes 5.798 seconds)
 
 
 .. _sphx_glr_download_auto_examples_annoy_plot_Annoy_python_api.py:

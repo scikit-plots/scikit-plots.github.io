@@ -374,7 +374,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../decile/plot_cumulative_gain_script.html">plot_cumulative_gain with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../decile/plot_ks_statistic_script.html">plot_ks_statistic with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../decile/plot_lift_script.html">plot_lift with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_legacy_script.html">Introduction to modelplotpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_legacy_script.html">Introduction to modelplotpy (legacy)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_script.html">Introduction to modelplotpy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../decile/plot_report_script.html">plot_report with examples</a></li>
 </ul>
@@ -407,21 +407,18 @@
 <li class="toctree-l2"><a class="reference internal" href="../stats/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../visualkeras_ANN/index.html">Visualkeras ANN</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_ANN/plot_conv_dense.html">Visualkeras: Spam Classification Conv1D Dense Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_ANN/plot_dense.html">visualkeras: Spam Dense example</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../visualkeras/index.html">Visualkeras</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_ann_conv_dense.html">Visualkeras: Spam Classification Conv1D Dense Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_ann_dense.html">visualkeras: Spam Dense example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_autoencoder.html">visualkeras: autoencoder example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_custom_vgg16.html">visualkeras: custom vgg16 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_custom_vgg16_show_dimension.html">visualkeras: custom vgg16 show dimension example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_efficientnetv2.html">visualkeras: EfficientNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_resnetv2.html">visualkeras: ResNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_vgg.html">visualkeras: custom VGG example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_nlp_vector_index_db.html">visualkeras: Vector Index DB</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../visualkeras_CNN/index.html">Visualkeras CNN</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_autoencoder.html">visualkeras: autoencoder example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_custom_vgg16.html">visualkeras: custom vgg16 example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_custom_vgg16_show_dimension.html">visualkeras: custom vgg16 show dimension example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_efficientnetv2.html">visualkeras: EfficientNetV2 example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_resnetv2.html">visualkeras: ResNetV2 example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_vgg.html">visualkeras: custom VGG example</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1"><a class="reference internal" href="../visualkeras_NLP/index.html">Visualkeras NLP</a></li>
 </ul>
 </div>
 </nav></div>
@@ -504,144 +501,146 @@ seed=0 resets to Annoy's default seed
 
   0%|          | 0/100000 [00:00&lt;?, ?it/s]0 / 100000 = 0.0
 
-  1%|          | 842/100000 [00:00&lt;00:16, 5923.53it/s]
-  2%|▏         | 1524/100000 [00:00&lt;00:15, 6370.57it/s]
-  2%|▏         | 2178/100000 [00:00&lt;00:15, 6440.45it/s]
-  3%|▎         | 2850/100000 [00:00&lt;00:14, 6541.09it/s]
-  4%|▎         | 3536/100000 [00:00&lt;00:14, 6651.39it/s]
-  4%|▍         | 4204/100000 [00:00&lt;00:14, 6649.19it/s]
-  5%|▍         | 4871/100000 [00:00&lt;00:14, 6545.73it/s]
-  6%|▌         | 5566/100000 [00:00&lt;00:14, 6671.08it/s]
-  6%|▌         | 6235/100000 [00:00&lt;00:14, 6645.32it/s]
-  7%|▋         | 6901/100000 [00:01&lt;00:14, 6564.52it/s]
-  8%|▊         | 7853/100000 [00:01&lt;00:12, 7451.04it/s]
-  9%|▊         | 8601/100000 [00:01&lt;00:13, 6957.07it/s]
-  9%|▉         | 9309/100000 [00:01&lt;00:12, 6991.37it/s]10000 / 100000 = 0.1
+  0%|          | 365/100000 [00:00&lt;00:27, 3647.77it/s]
+  1%|          | 743/100000 [00:00&lt;00:26, 3724.93it/s]
+  1%|          | 1140/100000 [00:00&lt;00:25, 3836.19it/s]
+  2%|▏         | 1547/100000 [00:00&lt;00:25, 3927.11it/s]
+  2%|▏         | 1940/100000 [00:00&lt;00:25, 3919.54it/s]
+  2%|▏         | 2332/100000 [00:00&lt;00:24, 3915.02it/s]
+  3%|▎         | 2724/100000 [00:00&lt;00:24, 3897.24it/s]
+  3%|▎         | 3114/100000 [00:00&lt;00:30, 3189.18it/s]
+  4%|▍         | 3953/100000 [00:00&lt;00:20, 4594.08it/s]
+  5%|▍         | 4539/100000 [00:01&lt;00:19, 4946.12it/s]
+  5%|▌         | 5205/100000 [00:01&lt;00:17, 5433.00it/s]
+  6%|▌         | 5873/100000 [00:01&lt;00:16, 5793.12it/s]
+  7%|▋         | 6589/100000 [00:01&lt;00:15, 6191.55it/s]
+  7%|▋         | 7223/100000 [00:01&lt;00:14, 6196.71it/s]
+  8%|▊         | 7853/100000 [00:01&lt;00:14, 6206.63it/s]
+  9%|▊         | 8569/100000 [00:01&lt;00:14, 6487.50it/s]
+  9%|▉         | 9253/100000 [00:01&lt;00:13, 6591.64it/s]
+ 10%|▉         | 9917/100000 [00:01&lt;00:13, 6548.43it/s]10000 / 100000 = 0.1
 
- 10%|█         | 10014/100000 [00:01&lt;00:13, 6779.79it/s]
- 11%|█         | 10702/100000 [00:01&lt;00:13, 6807.44it/s]
- 11%|█▏        | 11387/100000 [00:01&lt;00:13, 6712.06it/s]
- 12%|█▏        | 12061/100000 [00:01&lt;00:13, 6701.27it/s]
- 13%|█▎        | 12733/100000 [00:01&lt;00:14, 5905.64it/s]
- 13%|█▎        | 13341/100000 [00:02&lt;00:14, 5912.35it/s]
- 14%|█▍        | 13951/100000 [00:02&lt;00:14, 5963.32it/s]
- 15%|█▍        | 14642/100000 [00:02&lt;00:13, 6230.29it/s]
- 15%|█▌        | 15291/100000 [00:02&lt;00:13, 6304.64it/s]
- 16%|█▌        | 15944/100000 [00:02&lt;00:13, 6369.95it/s]
- 17%|█▋        | 16669/100000 [00:02&lt;00:12, 6627.55it/s]
- 17%|█▋        | 17499/100000 [00:02&lt;00:11, 7121.18it/s]
- 18%|█▊        | 18215/100000 [00:02&lt;00:11, 7106.12it/s]
- 19%|█▉        | 18928/100000 [00:02&lt;00:11, 7087.38it/s]
- 20%|█▉        | 19639/100000 [00:02&lt;00:11, 7032.92it/s]20000 / 100000 = 0.2
+ 11%|█         | 10633/100000 [00:01&lt;00:13, 6729.70it/s]
+ 11%|█▏        | 11319/100000 [00:02&lt;00:13, 6768.08it/s]
+ 12%|█▏        | 12024/100000 [00:02&lt;00:12, 6851.57it/s]
+ 13%|█▎        | 12989/100000 [00:02&lt;00:11, 7687.23it/s]
+ 14%|█▍        | 13759/100000 [00:02&lt;00:11, 7551.69it/s]
+ 15%|█▍        | 14516/100000 [00:02&lt;00:11, 7271.26it/s]
+ 15%|█▌        | 15246/100000 [00:02&lt;00:11, 7232.09it/s]
+ 16%|█▌        | 15972/100000 [00:02&lt;00:13, 6328.81it/s]
+ 17%|█▋        | 16699/100000 [00:02&lt;00:12, 6578.78it/s]
+ 17%|█▋        | 17377/100000 [00:02&lt;00:12, 6634.07it/s]
+ 18%|█▊        | 18084/100000 [00:03&lt;00:12, 6756.75it/s]
+ 19%|█▉        | 18777/100000 [00:03&lt;00:11, 6805.40it/s]
+ 19%|█▉        | 19465/100000 [00:03&lt;00:11, 6822.87it/s]20000 / 100000 = 0.2
 
- 20%|██        | 20344/100000 [00:03&lt;00:11, 7020.03it/s]
- 21%|██        | 21047/100000 [00:03&lt;00:12, 6482.84it/s]
- 22%|██▏       | 21723/100000 [00:03&lt;00:11, 6559.81it/s]
- 22%|██▏       | 22415/100000 [00:03&lt;00:11, 6662.67it/s]
- 23%|██▎       | 23110/100000 [00:03&lt;00:11, 6745.07it/s]
- 24%|██▍       | 23804/100000 [00:03&lt;00:11, 6802.13it/s]
- 24%|██▍       | 24487/100000 [00:03&lt;00:11, 6728.01it/s]
- 25%|██▌       | 25177/100000 [00:03&lt;00:11, 6778.25it/s]
- 26%|██▌       | 25864/100000 [00:03&lt;00:10, 6805.11it/s]
- 27%|██▋       | 26546/100000 [00:03&lt;00:11, 6632.72it/s]
- 27%|██▋       | 27211/100000 [00:04&lt;00:12, 5720.96it/s]
- 28%|██▊       | 27868/100000 [00:04&lt;00:12, 5945.21it/s]
- 29%|██▊       | 28558/100000 [00:04&lt;00:11, 6206.56it/s]
- 29%|██▉       | 29243/100000 [00:04&lt;00:11, 6387.38it/s]
- 30%|██▉       | 29970/100000 [00:04&lt;00:10, 6639.51it/s]30000 / 100000 = 0.3
+ 20%|██        | 20174/100000 [00:03&lt;00:11, 6900.28it/s]
+ 21%|██        | 20880/100000 [00:03&lt;00:11, 6947.42it/s]
+ 22%|██▏       | 21578/100000 [00:03&lt;00:11, 6878.25it/s]
+ 22%|██▏       | 22286/100000 [00:03&lt;00:11, 6937.70it/s]
+ 23%|██▎       | 22996/100000 [00:03&lt;00:11, 6985.52it/s]
+ 24%|██▎       | 23696/100000 [00:03&lt;00:10, 6957.24it/s]
+ 25%|██▍       | 24796/100000 [00:03&lt;00:09, 8158.85it/s]
+ 26%|██▌       | 25614/100000 [00:04&lt;00:09, 7678.03it/s]
+ 26%|██▋       | 26389/100000 [00:04&lt;00:09, 7661.59it/s]
+ 27%|██▋       | 27160/100000 [00:04&lt;00:11, 6344.65it/s]
+ 28%|██▊       | 27857/100000 [00:04&lt;00:11, 6503.53it/s]
+ 29%|██▊       | 28538/100000 [00:04&lt;00:10, 6572.90it/s]
+ 29%|██▉       | 29218/100000 [00:04&lt;00:11, 5992.44it/s]
+ 30%|██▉       | 29841/100000 [00:04&lt;00:13, 5248.32it/s]30000 / 100000 = 0.3
 
- 31%|███       | 31079/100000 [00:04&lt;00:08, 7932.22it/s]
- 32%|███▏      | 31884/100000 [00:04&lt;00:09, 7183.97it/s]
- 33%|███▎      | 32623/100000 [00:04&lt;00:09, 7096.92it/s]
- 33%|███▎      | 33347/100000 [00:05&lt;00:09, 6982.51it/s]
- 34%|███▍      | 34055/100000 [00:05&lt;00:10, 6206.65it/s]
- 35%|███▍      | 34696/100000 [00:05&lt;00:11, 5822.77it/s]
- 35%|███▌      | 35305/100000 [00:05&lt;00:10, 5890.05it/s]
- 36%|███▌      | 35913/100000 [00:05&lt;00:10, 5939.36it/s]
- 37%|███▋      | 37423/100000 [00:05&lt;00:07, 8480.55it/s]
- 39%|███▉      | 39186/100000 [00:05&lt;00:05, 11076.68it/s]40000 / 100000 = 0.4
+ 30%|███       | 30395/100000 [00:04&lt;00:14, 4782.56it/s]
+ 31%|███       | 30897/100000 [00:05&lt;00:16, 4083.75it/s]
+ 32%|███▏      | 31584/100000 [00:05&lt;00:14, 4707.67it/s]
+ 32%|███▏      | 32275/100000 [00:05&lt;00:12, 5241.10it/s]
+ 33%|███▎      | 32948/100000 [00:05&lt;00:11, 5623.49it/s]
+ 34%|███▎      | 33717/100000 [00:05&lt;00:10, 6177.87it/s]
+ 34%|███▍      | 34378/100000 [00:05&lt;00:10, 6297.24it/s]
+ 35%|███▌      | 35055/100000 [00:05&lt;00:10, 6430.63it/s]
+ 36%|███▌      | 35715/100000 [00:05&lt;00:09, 6460.91it/s]
+ 36%|███▋      | 36373/100000 [00:05&lt;00:10, 6346.27it/s]
+ 37%|███▋      | 37017/100000 [00:06&lt;00:10, 6207.34it/s]
+ 38%|███▊      | 37645/100000 [00:06&lt;00:10, 5763.69it/s]
+ 39%|███▊      | 38655/100000 [00:06&lt;00:09, 6432.86it/s]
+ 39%|███▉      | 39395/100000 [00:06&lt;00:09, 6686.29it/s]40000 / 100000 = 0.4
 
- 40%|████      | 40328/100000 [00:05&lt;00:05, 10472.05it/s]
- 41%|████▏     | 41405/100000 [00:05&lt;00:06, 9108.54it/s]
- 42%|████▏     | 42365/100000 [00:06&lt;00:06, 8506.74it/s]
- 43%|████▎     | 43253/100000 [00:06&lt;00:06, 8343.80it/s]
- 44%|████▍     | 44112/100000 [00:06&lt;00:07, 7017.80it/s]
- 45%|████▍     | 44859/100000 [00:06&lt;00:07, 7073.92it/s]
- 46%|████▌     | 45600/100000 [00:06&lt;00:07, 7048.62it/s]
- 46%|████▋     | 46328/100000 [00:06&lt;00:07, 6970.46it/s]
- 47%|████▋     | 47253/100000 [00:06&lt;00:06, 7579.32it/s]
- 48%|████▊     | 48029/100000 [00:06&lt;00:06, 7510.06it/s]
- 49%|████▉     | 48793/100000 [00:07&lt;00:06, 7444.77it/s]
- 50%|████▉     | 49546/100000 [00:07&lt;00:07, 6712.87it/s]50000 / 100000 = 0.5
+ 40%|████      | 40068/100000 [00:06&lt;00:08, 6667.01it/s]
+ 41%|████      | 40738/100000 [00:06&lt;00:09, 6273.19it/s]
+ 41%|████▏     | 41371/100000 [00:06&lt;00:09, 6039.07it/s]
+ 42%|████▏     | 42186/100000 [00:06&lt;00:08, 6615.24it/s]
+ 43%|████▎     | 43329/100000 [00:06&lt;00:07, 7967.27it/s]
+ 44%|████▍     | 44480/100000 [00:07&lt;00:06, 8981.39it/s]
+ 46%|████▌     | 45521/100000 [00:07&lt;00:05, 9394.03it/s]
+ 47%|████▋     | 46924/100000 [00:07&lt;00:04, 10750.43it/s]
+ 48%|████▊     | 48158/100000 [00:07&lt;00:04, 11218.23it/s]
+ 50%|████▉     | 49802/100000 [00:07&lt;00:03, 12765.83it/s]50000 / 100000 = 0.5
 
- 50%|█████     | 50235/100000 [00:07&lt;00:07, 6741.09it/s]
- 51%|█████     | 50942/100000 [00:07&lt;00:07, 6830.84it/s]
- 52%|█████▏    | 51635/100000 [00:07&lt;00:07, 6308.98it/s]
- 52%|█████▏    | 52341/100000 [00:07&lt;00:07, 6511.33it/s]
- 53%|█████▎    | 53343/100000 [00:07&lt;00:06, 7488.15it/s]
- 54%|█████▍    | 54108/100000 [00:07&lt;00:06, 7388.69it/s]
- 55%|█████▍    | 54858/100000 [00:07&lt;00:06, 7329.94it/s]
- 56%|█████▌    | 55599/100000 [00:07&lt;00:06, 7250.03it/s]
- 56%|█████▋    | 56330/100000 [00:08&lt;00:06, 7242.55it/s]
- 57%|█████▋    | 57058/100000 [00:08&lt;00:05, 7183.53it/s]
- 58%|█████▊    | 57779/100000 [00:08&lt;00:05, 7057.92it/s]
- 58%|█████▊    | 58487/100000 [00:08&lt;00:06, 6372.03it/s]
- 59%|█████▉    | 59137/100000 [00:08&lt;00:06, 6319.12it/s]
- 60%|█████▉    | 59805/100000 [00:08&lt;00:06, 6418.72it/s]60000 / 100000 = 0.6
+ 51%|█████     | 51087/100000 [00:07&lt;00:03, 12616.62it/s]
+ 53%|█████▎    | 52868/100000 [00:07&lt;00:03, 14150.12it/s]
+ 55%|█████▍    | 54655/100000 [00:07&lt;00:02, 15251.42it/s]
+ 56%|█████▌    | 56186/100000 [00:07&lt;00:03, 12092.82it/s]
+ 58%|█████▊    | 57502/100000 [00:08&lt;00:04, 10074.62it/s]
+ 59%|█████▊    | 58631/100000 [00:08&lt;00:04, 8765.52it/s]
+ 60%|█████▉    | 59610/100000 [00:08&lt;00:04, 8384.79it/s]60000 / 100000 = 0.6
 
- 60%|██████    | 60480/100000 [00:08&lt;00:06, 6512.35it/s]
- 61%|██████    | 61179/100000 [00:08&lt;00:05, 6649.09it/s]
- 62%|██████▏   | 61983/100000 [00:08&lt;00:05, 7054.16it/s]
- 63%|██████▎   | 63028/100000 [00:09&lt;00:04, 8052.83it/s]
- 64%|██████▍   | 63839/100000 [00:09&lt;00:04, 7318.62it/s]
- 65%|██████▍   | 64587/100000 [00:09&lt;00:04, 7325.36it/s]
- 65%|██████▌   | 65331/100000 [00:09&lt;00:04, 7208.49it/s]
- 66%|██████▌   | 66060/100000 [00:09&lt;00:04, 6909.78it/s]
- 67%|██████▋   | 66769/100000 [00:09&lt;00:04, 6959.48it/s]
- 67%|██████▋   | 67477/100000 [00:09&lt;00:04, 6993.55it/s]
- 68%|██████▊   | 68181/100000 [00:09&lt;00:05, 6349.83it/s]
- 69%|██████▉   | 68885/100000 [00:09&lt;00:04, 6537.42it/s]
- 70%|██████▉   | 69550/100000 [00:10&lt;00:04, 6496.92it/s]70000 / 100000 = 0.7
+ 61%|██████    | 60516/100000 [00:08&lt;00:04, 8291.96it/s]
+ 61%|██████▏   | 61390/100000 [00:08&lt;00:05, 7415.08it/s]
+ 62%|██████▏   | 62170/100000 [00:08&lt;00:05, 7082.53it/s]
+ 63%|██████▎   | 62902/100000 [00:08&lt;00:05, 6927.41it/s]
+ 64%|██████▎   | 63609/100000 [00:09&lt;00:05, 6862.50it/s]
+ 64%|██████▍   | 64304/100000 [00:09&lt;00:06, 5486.61it/s]
+ 65%|██████▍   | 64896/100000 [00:09&lt;00:07, 4645.78it/s]
+ 66%|██████▌   | 65624/100000 [00:09&lt;00:06, 5205.29it/s]
+ 66%|██████▋   | 66302/100000 [00:09&lt;00:06, 5571.09it/s]
+ 67%|██████▋   | 66980/100000 [00:09&lt;00:05, 5872.23it/s]
+ 68%|██████▊   | 67691/100000 [00:09&lt;00:05, 6196.99it/s]
+ 68%|██████▊   | 68404/100000 [00:09&lt;00:04, 6450.82it/s]
+ 69%|██████▉   | 69075/100000 [00:10&lt;00:04, 6470.91it/s]70000 / 100000 = 0.7
 
- 70%|███████   | 70208/100000 [00:10&lt;00:04, 6037.64it/s]
- 71%|███████   | 70912/100000 [00:10&lt;00:04, 6310.86it/s]
- 72%|███████▏  | 71600/100000 [00:10&lt;00:04, 6468.70it/s]
- 72%|███████▏  | 72255/100000 [00:10&lt;00:04, 6481.59it/s]
- 73%|███████▎  | 72970/100000 [00:10&lt;00:04, 6674.73it/s]
- 74%|███████▍  | 74157/100000 [00:10&lt;00:03, 8193.82it/s]
- 75%|███████▍  | 74984/100000 [00:10&lt;00:03, 7986.31it/s]
- 76%|███████▌  | 75789/100000 [00:10&lt;00:03, 7884.86it/s]
- 77%|███████▋  | 76582/100000 [00:11&lt;00:03, 7606.91it/s]
- 77%|███████▋  | 77348/100000 [00:11&lt;00:03, 6858.26it/s]
- 78%|███████▊  | 78049/100000 [00:11&lt;00:03, 6838.02it/s]
- 79%|███████▊  | 78744/100000 [00:11&lt;00:03, 6844.65it/s]80000 / 100000 = 0.8
+ 70%|███████   | 70045/100000 [00:10&lt;00:04, 7389.23it/s]
+ 71%|███████   | 70802/100000 [00:10&lt;00:03, 7365.61it/s]
+ 72%|███████▏  | 71551/100000 [00:10&lt;00:03, 7334.26it/s]
+ 72%|███████▏  | 72293/100000 [00:10&lt;00:03, 7340.75it/s]
+ 73%|███████▎  | 73034/100000 [00:10&lt;00:04, 6002.54it/s]
+ 74%|███████▎  | 73678/100000 [00:10&lt;00:04, 5811.46it/s]
+ 74%|███████▍  | 74289/100000 [00:10&lt;00:05, 5134.91it/s]
+ 75%|███████▍  | 74998/100000 [00:11&lt;00:04, 5608.32it/s]
+ 76%|███████▌  | 75709/100000 [00:11&lt;00:04, 5994.28it/s]
+ 76%|███████▋  | 76338/100000 [00:11&lt;00:03, 6049.42it/s]
+ 77%|███████▋  | 77012/100000 [00:11&lt;00:03, 6239.37it/s]
+ 78%|███████▊  | 77705/100000 [00:11&lt;00:03, 6434.45it/s]
+ 78%|███████▊  | 78413/100000 [00:11&lt;00:03, 6313.93it/s]
+ 79%|███████▉  | 79055/100000 [00:11&lt;00:03, 6254.59it/s]
+ 80%|███████▉  | 79688/100000 [00:11&lt;00:03, 6074.15it/s]80000 / 100000 = 0.8
 
- 80%|████████  | 80022/100000 [00:11&lt;00:02, 8515.74it/s]
- 82%|████████▏ | 81767/100000 [00:11&lt;00:01, 11077.50it/s]
- 83%|████████▎ | 82898/100000 [00:11&lt;00:01, 10921.70it/s]
- 84%|████████▍ | 84007/100000 [00:11&lt;00:01, 8671.33it/s]
- 85%|████████▍ | 84957/100000 [00:11&lt;00:01, 8813.13it/s]
- 86%|████████▌ | 85899/100000 [00:12&lt;00:01, 8284.46it/s]
- 87%|████████▋ | 86773/100000 [00:12&lt;00:01, 8182.31it/s]
- 88%|████████▊ | 87622/100000 [00:12&lt;00:01, 7261.56it/s]
- 88%|████████▊ | 88383/100000 [00:12&lt;00:01, 7296.58it/s]
- 89%|████████▉ | 89138/100000 [00:12&lt;00:01, 7220.16it/s]90000 / 100000 = 0.9
+ 80%|████████  | 80301/100000 [00:11&lt;00:04, 4897.18it/s]
+ 81%|████████  | 80901/100000 [00:12&lt;00:03, 5166.89it/s]
+ 82%|████████▏ | 81543/100000 [00:12&lt;00:03, 5491.40it/s]
+ 82%|████████▏ | 82171/100000 [00:12&lt;00:03, 5703.99it/s]
+ 83%|████████▎ | 82859/100000 [00:12&lt;00:02, 6031.25it/s]
+ 84%|████████▎ | 83543/100000 [00:12&lt;00:02, 6261.19it/s]
+ 84%|████████▍ | 84216/100000 [00:12&lt;00:02, 6396.35it/s]
+ 85%|████████▍ | 84926/100000 [00:12&lt;00:02, 6601.75it/s]
+ 86%|████████▌ | 85597/100000 [00:12&lt;00:02, 6633.15it/s]
+ 86%|████████▋ | 86296/100000 [00:12&lt;00:02, 6738.19it/s]
+ 87%|████████▋ | 86974/100000 [00:12&lt;00:01, 6620.53it/s]
+ 88%|████████▊ | 87647/100000 [00:13&lt;00:01, 6652.47it/s]
+ 88%|████████▊ | 88315/100000 [00:13&lt;00:01, 6652.22it/s]
+ 89%|████████▉ | 88982/100000 [00:13&lt;00:01, 6625.61it/s]
+ 90%|████████▉ | 89649/100000 [00:13&lt;00:01, 6638.20it/s]90000 / 100000 = 0.9
 
- 90%|█████████ | 90045/100000 [00:12&lt;00:01, 7712.69it/s]
- 91%|█████████ | 90835/100000 [00:12&lt;00:01, 7152.01it/s]
- 92%|█████████▏| 91569/100000 [00:12&lt;00:01, 7061.49it/s]
- 92%|█████████▏| 92288/100000 [00:12&lt;00:01, 7083.20it/s]
- 93%|█████████▎| 93005/100000 [00:13&lt;00:01, 6220.21it/s]
- 94%|█████████▎| 93650/100000 [00:13&lt;00:01, 6249.79it/s]
- 94%|█████████▍| 94291/100000 [00:13&lt;00:00, 6273.65it/s]
- 95%|█████████▌| 95005/100000 [00:13&lt;00:00, 6513.38it/s]
- 96%|█████████▌| 95837/100000 [00:13&lt;00:00, 7024.43it/s]
- 97%|█████████▋| 96652/100000 [00:13&lt;00:00, 7347.88it/s]
- 97%|█████████▋| 97396/100000 [00:13&lt;00:00, 7245.95it/s]
- 98%|█████████▊| 98127/100000 [00:13&lt;00:00, 7234.06it/s]
- 99%|█████████▉| 98855/100000 [00:13&lt;00:00, 6851.43it/s]
-100%|█████████▉| 99547/100000 [00:14&lt;00:00, 6757.84it/s]
-100%|██████████| 100000/100000 [00:14&lt;00:00, 7065.13it/s]
+ 90%|█████████ | 90359/100000 [00:13&lt;00:01, 6774.72it/s]
+ 91%|█████████ | 91038/100000 [00:13&lt;00:01, 6776.75it/s]
+ 92%|█████████▏| 91717/100000 [00:13&lt;00:01, 6396.38it/s]
+ 92%|█████████▏| 92448/100000 [00:13&lt;00:01, 6658.20it/s]
+ 94%|█████████▍| 93881/100000 [00:13&lt;00:00, 7845.43it/s]
+ 95%|█████████▍| 94646/100000 [00:14&lt;00:00, 7658.40it/s]
+ 95%|█████████▌| 95397/100000 [00:14&lt;00:00, 7246.19it/s]
+ 96%|█████████▌| 96112/100000 [00:14&lt;00:00, 7192.32it/s]
+ 97%|█████████▋| 96915/100000 [00:14&lt;00:00, 7425.12it/s]
+ 98%|█████████▊| 97819/100000 [00:14&lt;00:00, 7884.28it/s]
+ 99%|█████████▉| 98946/100000 [00:14&lt;00:00, 8860.50it/s]
+100%|██████████| 100000/100000 [00:14&lt;00:00, 6832.22it/s]
 
 {'f': 100, 'metric': 'angular', 'n_neighbors': 5, 'on_disk_path': 'test.annoy', 'prefault': False, 'seed': None, 'verbose': None, 'schema_version': 0, 'n_items': 100000, 'n_trees': 200, 'memory_usage_byte': 270573580, 'memory_usage_mib': 258.0390739440918}
 </pre></div>
@@ -714,16 +713,16 @@ seed=0 resets to Annoy's default seed
 
 
   0%|          | 0/10 [00:00&lt;?, ?it/s]
- 80%|████████  | 8/10 [00:00&lt;00:00, 71.79it/s]
-100%|██████████| 10/10 [00:00&lt;00:00, 72.50it/s]
-limit: 10        precision:  13.00% avg time: 0.000127s
-limit: 100       precision:  16.00% avg time: 0.000093s
-limit: 1000      precision:  25.00% avg time: 0.000272s
-limit: 10000     precision:  82.00% avg time: 0.001696s
+ 80%|████████  | 8/10 [00:00&lt;00:00, 71.07it/s]
+100%|██████████| 10/10 [00:00&lt;00:00, 72.01it/s]
+limit: 10        precision:  13.00% avg time: 0.000137s
+limit: 100       precision:  16.00% avg time: 0.000092s
+limit: 1000      precision:  25.00% avg time: 0.000279s
+limit: 10000     precision:  82.00% avg time: 0.001733s
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-impute.html"><span class="doc">model-workflow: impute</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-bar.html"><span class="doc">plot-type: bar</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (2 minutes 28.402 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (2 minutes 34.861 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Index class."><img alt="" src="../../_images/sphx_glr_plot_annoy_to_NPY_CSV_thumb.png"/>
@@ -788,7 +787,7 @@ limit: 10000     precision:  82.00% avg time: 0.001696s
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260123.ef5c603 2026-01-23T10:56Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260126.729947e 2026-01-26T19:33Z.
       <br/>
 </p>
 </div>

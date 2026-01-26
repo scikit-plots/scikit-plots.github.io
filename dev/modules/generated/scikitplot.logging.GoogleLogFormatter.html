@@ -562,6 +562,8 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.html">scikitplot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.__version__.html">__version__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.__version_iso_8601__.html">__version_iso_8601__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.config_context.html">config_context</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.get_config.html">get_config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.get_logger.html">get_logger</a></li>
@@ -641,6 +643,7 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.kds.plot_lift_decile_wise.html">plot_lift_decile_wise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.kds.plot_ks_statistic.html">plot_ks_statistic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.kds.report.html">report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.modelplotpy.ModelPlotPy.html">ModelPlotPy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.ModelPlotPy.html">ModelPlotPy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.plot_response.html">plot_response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.plot_cumresponse.html">plot_cumresponse</a></li>
@@ -678,15 +681,22 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.externals.html">scikitplot.externals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_compat.html">array_api_compat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_extra.html">array_api_extra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.ProbScale.html">ProbScale</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.probplot.html">probplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.plot_pos.html">plot_pos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.fit_line.html">fit_line</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._seaborn.html">_seaborn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.html">_sphinxext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.figmpl_directive.html">scikitplot.externals._sphinxext.figmpl_directive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.mathmpl.html">scikitplot.externals._sphinxext.mathmpl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.plot_directive.html">scikitplot.externals._sphinxext.plot_directive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.roles.html">roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.sphinx_tabs_patch.html">sphinx_tabs_patch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.html">_tweedie</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_compat.html">array_api_compat</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_extra.html">array_api_extra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.tweedie.html">tweedie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.tweedie_gen.html">tweedie_gen</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -848,11 +858,11 @@
 <h1>GoogleLogFormatter<a class="headerlink" href="#googlelogformatter" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.logging.GoogleLogFormatter">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.logging.</span></span><span class="sig-name descname"><span class="pre">GoogleLogFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datefmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%Y-%m-%d</span> <span class="pre">%H:%M:%S'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_time_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%Y-%m-%d</span> <span class="pre">%H:%M:%S'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_msec_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%s,%03d'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_datetime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_utc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ef5c603/scikitplot/logging.py#L665"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.logging.GoogleLogFormatter" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.logging.</span></span><span class="sig-name descname"><span class="pre">GoogleLogFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datefmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%Y-%m-%d</span> <span class="pre">%H:%M:%S'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_time_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%Y-%m-%d</span> <span class="pre">%H:%M:%S'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_msec_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%s,%03d'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_datetime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_utc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/729947e/scikitplot/logging.py#L665"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.logging.GoogleLogFormatter" title="Link to this definition">#</a></dt>
 <dd><p>A custom logging formatter inherited from <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Formatter" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formatter</span></code></a>.</p>
 <p>That formats log messages in a Google-style format:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; # Google-style format
-&gt;&gt;&gt; `YYYY-MM-DD HH:MM:SS.mmmmmm logger_name log_level message`
+&gt;&gt;&gt; `YYYY-MM-DD HH:MM:SS.mmmmmm logger_name logging_level message`
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -911,7 +921,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.logging.GoogleLogFormatter.format">
-<span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ef5c603/scikitplot/logging.py#L763"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.logging.GoogleLogFormatter.format" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/729947e/scikitplot/logging.py#L763"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.logging.GoogleLogFormatter.format" title="Link to this definition">#</a></dt>
 <dd><p>Format the log record into a JSON string or a pretty-printed dictionary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -937,7 +947,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.logging.GoogleLogFormatter.formatException">
-<span class="sig-name descname"><span class="pre">formatException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ei</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ef5c603/scikitplot/../../logging/__init__.py#L633"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.logging.GoogleLogFormatter.formatException" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">formatException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ei</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/729947e/scikitplot/../../logging/__init__.py#L633"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.logging.GoogleLogFormatter.formatException" title="Link to this definition">#</a></dt>
 <dd><p>Format and return the specified exception information as a string.</p>
 <p>This default implementation just uses
 traceback.print_exception()</p>
@@ -945,12 +955,12 @@ traceback.print_exception()</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.logging.GoogleLogFormatter.formatMessage">
-<span class="sig-name descname"><span class="pre">formatMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ef5c603/scikitplot/../../logging/__init__.py#L658"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.logging.GoogleLogFormatter.formatMessage" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">formatMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/729947e/scikitplot/../../logging/__init__.py#L658"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.logging.GoogleLogFormatter.formatMessage" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.logging.GoogleLogFormatter.formatStack">
-<span class="sig-name descname"><span class="pre">formatStack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stack_info</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ef5c603/scikitplot/../../logging/__init__.py#L661"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.logging.GoogleLogFormatter.formatStack" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">formatStack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stack_info</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/729947e/scikitplot/../../logging/__init__.py#L661"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.logging.GoogleLogFormatter.formatStack" title="Link to this definition">#</a></dt>
 <dd><p>This method is provided as an extension point for specialized
 formatting of stack information.</p>
 <p>The input data is a string as returned from a call to
@@ -961,7 +971,7 @@ removed.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.logging.GoogleLogFormatter.formatTime">
-<span class="sig-name descname"><span class="pre">formatTime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datefmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ef5c603/scikitplot/logging.py#L742"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.logging.GoogleLogFormatter.formatTime" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">formatTime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datefmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/729947e/scikitplot/logging.py#L742"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.logging.GoogleLogFormatter.formatTime" title="Link to this definition">#</a></dt>
 <dd><p>Format time.</p>
 <p><a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Formatter.formatTime">https://docs.python.org/3/library/logging.html#logging.Formatter.formatTime</a></p>
 <dl class="field-list simple">
@@ -979,7 +989,7 @@ removed.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.logging.GoogleLogFormatter.usesTime">
-<span class="sig-name descname"><span class="pre">usesTime</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ef5c603/scikitplot/../../logging/__init__.py#L652"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.logging.GoogleLogFormatter.usesTime" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">usesTime</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/729947e/scikitplot/../../logging/__init__.py#L652"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.logging.GoogleLogFormatter.usesTime" title="Link to this definition">#</a></dt>
 <dd><p>Check if the format uses the creation time of the record.</p>
 </dd></dl>
 
@@ -1090,7 +1100,7 @@ removed.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260123.ef5c603 2026-01-23T10:56Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260126.729947e 2026-01-26T19:33Z.
       <br/>
     
   </p>

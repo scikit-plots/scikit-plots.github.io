@@ -374,7 +374,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../decile/plot_cumulative_gain_script.html">plot_cumulative_gain with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../decile/plot_ks_statistic_script.html">plot_ks_statistic with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../decile/plot_lift_script.html">plot_lift with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_legacy_script.html">Introduction to modelplotpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_legacy_script.html">Introduction to modelplotpy (legacy)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_script.html">Introduction to modelplotpy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../decile/plot_report_script.html">plot_report with examples</a></li>
 </ul>
@@ -407,21 +407,18 @@
 <li class="toctree-l2"><a class="reference internal" href="../stats/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../visualkeras_ANN/index.html">Visualkeras ANN</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_ANN/plot_conv_dense.html">Visualkeras: Spam Classification Conv1D Dense Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_ANN/plot_dense.html">visualkeras: Spam Dense example</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../visualkeras/index.html">Visualkeras</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_ann_conv_dense.html">Visualkeras: Spam Classification Conv1D Dense Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_ann_dense.html">visualkeras: Spam Dense example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_autoencoder.html">visualkeras: autoencoder example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_custom_vgg16.html">visualkeras: custom vgg16 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_custom_vgg16_show_dimension.html">visualkeras: custom vgg16 show dimension example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_efficientnetv2.html">visualkeras: EfficientNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_resnetv2.html">visualkeras: ResNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_vgg.html">visualkeras: custom VGG example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_nlp_vector_index_db.html">visualkeras: Vector Index DB</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../visualkeras_CNN/index.html">Visualkeras CNN</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_autoencoder.html">visualkeras: autoencoder example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_custom_vgg16.html">visualkeras: custom vgg16 example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_custom_vgg16_show_dimension.html">visualkeras: custom vgg16 show dimension example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_efficientnetv2.html">visualkeras: EfficientNetV2 example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_resnetv2.html">visualkeras: ResNetV2 example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualkeras_CNN/plot_vgg.html">visualkeras: custom VGG example</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1"><a class="reference internal" href="../visualkeras_NLP/index.html">Visualkeras NLP</a></li>
 </ul>
 </div>
 </nav></div>
@@ -466,10 +463,10 @@ used by a scikit-learn classifier.</p>
 <section id="import-scikit-plots">
 <h2>Import scikit-plots<a class="headerlink" href="#import-scikit-plots" title="Link to this heading">#</a></h2>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">load_iris</span> <span class="k">as</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris" title="sklearn.datasets.load_iris"><span class="n">data_3_classes</span></a><span class="p">,</span>
+    <span class="n">load_iris</span> <span class="k">as</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/dev/modules/generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris" title="sklearn.datasets.load_iris"><span class="n">data_3_classes</span></a><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/dev/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
@@ -485,15 +482,15 @@ used by a scikit-learn classifier.</p>
 <section id="loading-the-dataset">
 <h2>Loading the dataset<a class="headerlink" href="#loading-the-dataset" title="Link to this heading">#</a></h2>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the data</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris" title="sklearn.datasets.load_iris"><span class="n">data_3_classes</span></a><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/dev/modules/generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris" title="sklearn.datasets.load_iris"><span class="n">data_3_classes</span></a><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function" href="https://scikit-learn.org/dev/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="model-training">
 <h2>Model Training<a class="headerlink" href="#model-training" title="Link to this heading">#</a></h2>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an instance of the LogisticRegression</span>
-<span class="n">model</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -520,7 +517,7 @@ in this example:</p>
 </ul>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-model-evaluation.html"><span class="doc">model-workflow: model evaluation</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-bar.html"><span class="doc">plot-type: bar</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-eval.html"><span class="doc">plot-type: eval</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.432 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.447 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_silhouette function used by a scikit-learn clusterer."><img alt="" src="../../_images/sphx_glr_plot_silhouette_script_thumb.png"/>
@@ -598,7 +595,7 @@ in this example:</p>
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260123.ef5c603 2026-01-23T10:56Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260126.729947e 2026-01-26T19:33Z.
       <br/>
 </p>
 </div>

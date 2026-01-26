@@ -562,6 +562,8 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.html">scikitplot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.__version__.html">__version__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.__version_iso_8601__.html">__version_iso_8601__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.config_context.html">config_context</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.get_config.html">get_config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.get_logger.html">get_logger</a></li>
@@ -641,6 +643,7 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.kds.plot_lift_decile_wise.html">plot_lift_decile_wise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.kds.plot_ks_statistic.html">plot_ks_statistic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.kds.report.html">report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.modelplotpy.ModelPlotPy.html">ModelPlotPy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.ModelPlotPy.html">ModelPlotPy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.plot_response.html">plot_response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.plot_cumresponse.html">plot_cumresponse</a></li>
@@ -678,15 +681,22 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.externals.html">scikitplot.externals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_compat.html">array_api_compat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_extra.html">array_api_extra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.ProbScale.html">ProbScale</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.probplot.html">probplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.plot_pos.html">plot_pos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.fit_line.html">fit_line</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._seaborn.html">_seaborn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.html">_sphinxext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.figmpl_directive.html">scikitplot.externals._sphinxext.figmpl_directive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.mathmpl.html">scikitplot.externals._sphinxext.mathmpl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.plot_directive.html">scikitplot.externals._sphinxext.plot_directive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.roles.html">roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.sphinx_tabs_patch.html">sphinx_tabs_patch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.html">_tweedie</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_compat.html">array_api_compat</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_extra.html">array_api_extra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.tweedie.html">tweedie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.tweedie_gen.html">tweedie_gen</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -848,7 +858,7 @@
 <h1>DummyCodeEncoder<a class="headerlink" href="#dummycodeencoder" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.preprocessing.DummyCodeEncoder">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.preprocessing.</span></span><span class="sig-name descname"><span class="pre">DummyCodeEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'|'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix_sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'_'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dummy_na</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categories</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sparse_output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;class</span> <span class="pre">'numpy.float64'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handle_unknown</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_frequency</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_categories</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_name_combiner</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'concat'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ef5c603/scikitplot/preprocessing/_encoders.py#L813"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.preprocessing.DummyCodeEncoder" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.preprocessing.</span></span><span class="sig-name descname"><span class="pre">DummyCodeEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'|'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix_sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'_'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dummy_na</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categories</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sparse_output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;class</span> <span class="pre">'numpy.float64'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handle_unknown</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_frequency</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_categories</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_name_combiner</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'concat'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/729947e/scikitplot/preprocessing/_encoders.py#L813"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.preprocessing.DummyCodeEncoder" title="Link to this definition">#</a></dt>
 <dd><p>Encode categorical features into dummy/indicator 0/1 variables.</p>
 <p>Each string in Series is split by <code class="docutils literal notranslate"><span class="pre">sep</span></code> and returned as a DataFrame
 of dummy/indicator 0/1 variables.</p>
@@ -863,15 +873,15 @@ returns a sparse matrix or dense array (depending on the <code class="docutils l
 parameter).</p>
 <p>By default, the encoder derives the categories based on the unique values
 in each feature that contain multiple string labels separated by <code class="docutils literal notranslate"><span class="pre">sep</span></code>
-into one-hot encoded columns by <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.get_dummies.html#pandas.get_dummies" title="(in pandas v3.0.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.get_dummies</span></code></a>.
+into one-hot encoded columns by <a class="reference external" href="https://pandas.pydata.org/docs/dev/reference/api/pandas.get_dummies.html#pandas.get_dummies" title="(in pandas v3.0.0+35.gf8214bd1dd)"><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.get_dummies</span></code></a>.
 Alternatively, you can also specify the <code class="docutils literal notranslate"><span class="pre">categories</span></code> manually.</p>
 <p>This encoding is needed for feeding categorical data to many scikit-learn
 estimators, notably linear models and SVMs with the standard kernels.</p>
 <p>Compatible with sklearn pipelines, <code class="docutils literal notranslate"><span class="pre">set_output</span></code> API, and supports both
 dense and sparse output.</p>
-<p>Read more in the <a class="reference external" href="https://scikit-learn.org/stable/modules/preprocessing.html#preprocessing-categorical-features" title="(in scikit-learn v1.8)"><span class="xref std std-ref">User Guide</span></a>.
+<p>Read more in the <a class="reference external" href="https://scikit-learn.org/dev/modules/preprocessing.html#preprocessing-categorical-features" title="(in scikit-learn v1.9)"><span class="xref std std-ref">User Guide</span></a>.
 For a comparison of different encoders, refer to:
-<a class="reference external" href="https://scikit-learn.org/stable/auto_examples/preprocessing/plot_target_encoder.html#sphx-glr-auto-examples-preprocessing-plot-target-encoder-py" title="(in scikit-learn v1.8)"><span>Comparing Target Encoder with Other Encoders</span></a>.</p>
+<a class="reference external" href="https://scikit-learn.org/dev/auto_examples/preprocessing/plot_target_encoder.html#sphx-glr-auto-examples-preprocessing-plot-target-encoder-py" title="(in scikit-learn v1.9)"><span>Comparing Target Encoder with Other Encoders</span></a>.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>⚠️ These parameters are reserved for future use;
@@ -945,7 +955,7 @@ should be dropped.</p></li>
 infrequent categories, the dropping behavior is handled after the
 grouping.</p>
 </dd>
-<dt><strong>sparse_output</strong><span class="classifier">bool, default=True</span></dt><dd><p>When <code class="docutils literal notranslate"><span class="pre">True</span></code>, it returns a <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csr_matrix.html#scipy.sparse.csr_matrix" title="(in SciPy v1.17.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">scipy.sparse.csr_matrix</span></code></a>,
+<dt><strong>sparse_output</strong><span class="classifier">bool, default=True</span></dt><dd><p>When <code class="docutils literal notranslate"><span class="pre">True</span></code>, it returns a <a class="reference external" href="https://scipy.github.io/devdocs/reference/generated/scipy.sparse.csr_matrix.html#scipy.sparse.csr_matrix" title="(in SciPy v1.18.0.dev)"><code class="xref py py-class docutils literal notranslate"><span class="pre">scipy.sparse.csr_matrix</span></code></a>,
 i.e. a sparse matrix in “Compressed Sparse Row” (CSR) format.</p>
 </dd>
 <dt><strong>dtype</strong><span class="classifier">number type, default=np.float64</span></dt><dd><p>Desired dtype of output.</p>
@@ -967,7 +977,7 @@ mapped to the category denoted <code class="docutils literal notranslate"><span 
 <a class="reference internal" href="#scikitplot.preprocessing.DummyCodeEncoder.inverse_transform" title="scikitplot.preprocessing.DummyCodeEncoder.inverse_transform"><code class="xref py py-meth docutils literal notranslate"><span class="pre">inverse_transform</span></code></a> will handle an unknown category as with
 <code class="docutils literal notranslate"><span class="pre">handle_unknown='ignore'</span></code>. Infrequent categories exist based on
 <code class="docutils literal notranslate"><span class="pre">min_frequency</span></code> and <code class="docutils literal notranslate"><span class="pre">max_categories</span></code>. Read more in the
-<a class="reference external" href="https://scikit-learn.org/stable/modules/preprocessing.html#encoder-infrequent-categories" title="(in scikit-learn v1.8)"><span class="xref std std-ref">User Guide</span></a>.</p></li>
+<a class="reference external" href="https://scikit-learn.org/dev/modules/preprocessing.html#encoder-infrequent-categories" title="(in scikit-learn v1.9)"><span class="xref std std-ref">User Guide</span></a>.</p></li>
 <li><p>‘warn’ : When an unknown category is encountered during transform
 a warning is issued, and the encoding then proceeds as described for
 <code class="docutils literal notranslate"><span class="pre">handle_unknown=&quot;infrequent_if_exist&quot;</span></code>.</p></li>
@@ -982,7 +992,7 @@ infrequent.</p></li>
 <code class="docutils literal notranslate"><span class="pre">min_frequency</span> <span class="pre">*</span> <span class="pre">n_samples</span></code>  will be considered infrequent.</p></li>
 </ul>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 1.1: </span>Read more in the <a class="reference external" href="https://scikit-learn.org/stable/modules/preprocessing.html#encoder-infrequent-categories" title="(in scikit-learn v1.8)"><span class="xref std std-ref">User Guide</span></a>.</p>
+<p><span class="versionmodified added">Added in version 1.1: </span>Read more in the <a class="reference external" href="https://scikit-learn.org/dev/modules/preprocessing.html#encoder-infrequent-categories" title="(in scikit-learn v1.9)"><span class="xref std std-ref">User Guide</span></a>.</p>
 </div>
 </dd>
 <dt><strong>max_categories</strong><span class="classifier">int, default=None</span></dt><dd><p>Specifies an upper limit to the number of output features for each input
@@ -991,7 +1001,7 @@ categories, <code class="docutils literal notranslate"><span class="pre">max_cat
 infrequent categories along with the frequent categories. If <code class="docutils literal notranslate"><span class="pre">None</span></code>,
 there is no limit to the number of output features.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 1.1: </span>Read more in the <a class="reference external" href="https://scikit-learn.org/stable/modules/preprocessing.html#encoder-infrequent-categories" title="(in scikit-learn v1.8)"><span class="xref std std-ref">User Guide</span></a>.</p>
+<p><span class="versionmodified added">Added in version 1.1: </span>Read more in the <a class="reference external" href="https://scikit-learn.org/dev/modules/preprocessing.html#encoder-infrequent-categories" title="(in scikit-learn v1.9)"><span class="xref std std-ref">User Guide</span></a>.</p>
 </div>
 </dd>
 <dt><strong>feature_name_combiner</strong><span class="classifier">“concat” or callable, default=”concat”</span></dt><dd><p>Callable with signature <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">callable(input_feature,</span> <span class="pre">category)</span></code> that returns a
@@ -1062,21 +1072,21 @@ string. This is used to create feature names to be returned by
 <dl class="simple">
 <dt><a class="reference internal" href="scikitplot.preprocessing.GetDummies.html#scikitplot.preprocessing.GetDummies" title="scikitplot.preprocessing.GetDummies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GetDummies</span></code></a></dt><dd><p>Same but more limited and pandas based convert to dummy codes.</p>
 </dd>
-<dt><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.str.get_dummies.html#pandas.Series.str.get_dummies" title="(in pandas v3.0.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pandas.Series.str.get_dummies</span></code></a></dt><dd><p>Convert Series of strings to dummy codes.</p>
+<dt><a class="reference external" href="https://pandas.pydata.org/docs/dev/reference/api/pandas.Series.str.get_dummies.html#pandas.Series.str.get_dummies" title="(in pandas v3.0.0+35.gf8214bd1dd)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pandas.Series.str.get_dummies</span></code></a></dt><dd><p>Convert Series of strings to dummy codes.</p>
 </dd>
-<dt><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.from_dummies.html#pandas.from_dummies" title="(in pandas v3.0.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pandas.from_dummies</span></code></a></dt><dd><p>Convert dummy codes back to categorical DataFrame.</p>
+<dt><a class="reference external" href="https://pandas.pydata.org/docs/dev/reference/api/pandas.from_dummies.html#pandas.from_dummies" title="(in pandas v3.0.0+35.gf8214bd1dd)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pandas.from_dummies</span></code></a></dt><dd><p>Convert dummy codes back to categorical DataFrame.</p>
 </dd>
-<dt><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html#sklearn.preprocessing.OrdinalEncoder" title="(in scikit-learn v1.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sklearn.preprocessing.OrdinalEncoder</span></code></a></dt><dd><p>Performs an ordinal (integer) encoding of the categorical features.</p>
+<dt><a class="reference external" href="https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.OrdinalEncoder.html#sklearn.preprocessing.OrdinalEncoder" title="(in scikit-learn v1.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sklearn.preprocessing.OrdinalEncoder</span></code></a></dt><dd><p>Performs an ordinal (integer) encoding of the categorical features.</p>
 </dd>
-<dt><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.TargetEncoder.html#sklearn.preprocessing.TargetEncoder" title="(in scikit-learn v1.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sklearn.preprocessing.TargetEncoder</span></code></a></dt><dd><p>Encodes categorical features using the target.</p>
+<dt><a class="reference external" href="https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.TargetEncoder.html#sklearn.preprocessing.TargetEncoder" title="(in scikit-learn v1.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sklearn.preprocessing.TargetEncoder</span></code></a></dt><dd><p>Encodes categorical features using the target.</p>
 </dd>
-<dt><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.DictVectorizer.html#sklearn.feature_extraction.DictVectorizer" title="(in scikit-learn v1.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sklearn.feature_extraction.DictVectorizer</span></code></a></dt><dd><p>Performs a one-hot encoding of dictionary items (also handles string-valued features).</p>
+<dt><a class="reference external" href="https://scikit-learn.org/dev/modules/generated/sklearn.feature_extraction.DictVectorizer.html#sklearn.feature_extraction.DictVectorizer" title="(in scikit-learn v1.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sklearn.feature_extraction.DictVectorizer</span></code></a></dt><dd><p>Performs a one-hot encoding of dictionary items (also handles string-valued features).</p>
 </dd>
-<dt><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.FeatureHasher.html#sklearn.feature_extraction.FeatureHasher" title="(in scikit-learn v1.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sklearn.feature_extraction.FeatureHasher</span></code></a></dt><dd><p>Performs an approximate one-hot encoding of dictionary items or strings.</p>
+<dt><a class="reference external" href="https://scikit-learn.org/dev/modules/generated/sklearn.feature_extraction.FeatureHasher.html#sklearn.feature_extraction.FeatureHasher" title="(in scikit-learn v1.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sklearn.feature_extraction.FeatureHasher</span></code></a></dt><dd><p>Performs an approximate one-hot encoding of dictionary items or strings.</p>
 </dd>
-<dt><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelBinarizer.html#sklearn.preprocessing.LabelBinarizer" title="(in scikit-learn v1.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sklearn.preprocessing.LabelBinarizer</span></code></a></dt><dd><p>Binarizes labels in a one-vs-all fashion.</p>
+<dt><a class="reference external" href="https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.LabelBinarizer.html#sklearn.preprocessing.LabelBinarizer" title="(in scikit-learn v1.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sklearn.preprocessing.LabelBinarizer</span></code></a></dt><dd><p>Binarizes labels in a one-vs-all fashion.</p>
 </dd>
-<dt><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MultiLabelBinarizer.html#sklearn.preprocessing.MultiLabelBinarizer" title="(in scikit-learn v1.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sklearn.preprocessing.MultiLabelBinarizer</span></code></a></dt><dd><p>Transforms between iterable of iterables and a multilabel format, e.g. a (samples x classes) binary matrix indicating the presence of a class label.</p>
+<dt><a class="reference external" href="https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.MultiLabelBinarizer.html#sklearn.preprocessing.MultiLabelBinarizer" title="(in scikit-learn v1.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sklearn.preprocessing.MultiLabelBinarizer</span></code></a></dt><dd><p>Transforms between iterable of iterables and a multilabel format, e.g. a (samples x classes) binary matrix indicating the presence of a class label.</p>
 </dd>
 </dl>
 </div>
@@ -1155,7 +1165,7 @@ values per feature and transform the data to a binary one-hot dummy encoding.</p
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.preprocessing.DummyCodeEncoder.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ef5c603/scikitplot/preprocessing/_encoders.py#L1556"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.preprocessing.DummyCodeEncoder.fit" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/729947e/scikitplot/preprocessing/_encoders.py#L1556"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.preprocessing.DummyCodeEncoder.fit" title="Link to this definition">#</a></dt>
 <dd><p>Fit OneHotEncoder to X.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1163,7 +1173,7 @@ values per feature and transform the data to a binary one-hot dummy encoding.</p
 <dt><strong>X</strong><span class="classifier">array-like of shape (n_samples, n_features)</span></dt><dd><p>The data to determine the categories of each feature.</p>
 </dd>
 <dt><strong>y</strong><span class="classifier">None</span></dt><dd><p>Ignored. This parameter exists only for compatibility with
-<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>.</p>
+<a class="reference external" href="https://scikit-learn.org/dev/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v1.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>.</p>
 </dd>
 </dl>
 </dd>
@@ -1178,7 +1188,7 @@ values per feature and transform the data to a binary one-hot dummy encoding.</p
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.preprocessing.DummyCodeEncoder.fit_transform">
-<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fit_params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ef5c603/scikitplot/../sklearn/base.py#L851"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.preprocessing.DummyCodeEncoder.fit_transform" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fit_params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/729947e/scikitplot/../sklearn/base.py#L851"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.preprocessing.DummyCodeEncoder.fit_transform" title="Link to this definition">#</a></dt>
 <dd><p>Fit to data, then transform it.</p>
 <p>Fits transformer to <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> with optional parameters <code class="docutils literal notranslate"><span class="pre">fit_params</span></code>
 and returns a transformed version of <code class="docutils literal notranslate"><span class="pre">X</span></code>.</p>
@@ -1205,7 +1215,7 @@ Pass only if the estimator accepts additional params in its <code class="docutil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.preprocessing.DummyCodeEncoder.get_feature_names_out">
-<span class="sig-name descname"><span class="pre">get_feature_names_out</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ef5c603/scikitplot/preprocessing/_encoders.py#L2006"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.preprocessing.DummyCodeEncoder.get_feature_names_out" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_feature_names_out</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/729947e/scikitplot/preprocessing/_encoders.py#L2006"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.preprocessing.DummyCodeEncoder.get_feature_names_out" title="Link to this definition">#</a></dt>
 <dd><p>Get output feature names for transformation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1233,14 +1243,14 @@ match <code class="docutils literal notranslate"><span class="pre">feature_names
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.preprocessing.DummyCodeEncoder.get_metadata_routing">
-<span class="sig-name descname"><span class="pre">get_metadata_routing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ef5c603/scikitplot/../sklearn/utils/_metadata_requests.py#L1550"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.preprocessing.DummyCodeEncoder.get_metadata_routing" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_metadata_routing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/729947e/scikitplot/../sklearn/utils/_metadata_requests.py#L1550"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.preprocessing.DummyCodeEncoder.get_metadata_routing" title="Link to this definition">#</a></dt>
 <dd><p>Get metadata routing of this object.</p>
-<p>Please check <a class="reference external" href="https://scikit-learn.org/stable/metadata_routing.html#metadata-routing" title="(in scikit-learn v1.8)"><span class="xref std std-ref">User Guide</span></a> on how the routing
+<p>Please check <a class="reference external" href="https://scikit-learn.org/dev/metadata_routing.html#metadata-routing" title="(in scikit-learn v1.9)"><span class="xref std std-ref">User Guide</span></a> on how the routing
 mechanism works.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>routing</strong><span class="classifier">MetadataRequest</span></dt><dd><p>A <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.metadata_routing.MetadataRequest.html#sklearn.utils.metadata_routing.MetadataRequest" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetadataRequest</span></code></a> encapsulating
+<dt><strong>routing</strong><span class="classifier">MetadataRequest</span></dt><dd><p>A <a class="reference external" href="https://scikit-learn.org/dev/modules/generated/sklearn.utils.metadata_routing.MetadataRequest.html#sklearn.utils.metadata_routing.MetadataRequest" title="(in scikit-learn v1.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetadataRequest</span></code></a> encapsulating
 routing information.</p>
 </dd>
 </dl>
@@ -1250,7 +1260,7 @@ routing information.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.preprocessing.DummyCodeEncoder.get_params">
-<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ef5c603/scikitplot/../sklearn/base.py#L240"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.preprocessing.DummyCodeEncoder.get_params" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/729947e/scikitplot/../sklearn/base.py#L240"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.preprocessing.DummyCodeEncoder.get_params" title="Link to this definition">#</a></dt>
 <dd><p>Get parameters for this estimator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1277,7 +1287,7 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.preprocessing.DummyCodeEncoder.inverse_transform">
-<span class="sig-name descname"><span class="pre">inverse_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ef5c603/scikitplot/preprocessing/_encoders.py#L1871"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.preprocessing.DummyCodeEncoder.inverse_transform" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">inverse_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/729947e/scikitplot/preprocessing/_encoders.py#L1871"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.preprocessing.DummyCodeEncoder.inverse_transform" title="Link to this definition">#</a></dt>
 <dd><p>Convert the data back to the original representation.</p>
 <p>When unknown categories are encountered (all zeros in the
 one-hot encoding), <code class="docutils literal notranslate"><span class="pre">None</span></code> is used to represent this category. If the
@@ -1303,9 +1313,9 @@ category will be its inverse.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.preprocessing.DummyCodeEncoder.set_output">
-<span class="sig-name descname"><span class="pre">set_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ef5c603/scikitplot/../sklearn/utils/_set_output.py#L389"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.preprocessing.DummyCodeEncoder.set_output" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/729947e/scikitplot/../sklearn/utils/_set_output.py#L389"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.preprocessing.DummyCodeEncoder.set_output" title="Link to this definition">#</a></dt>
 <dd><p>Set output container.</p>
-<p>See <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/miscellaneous/plot_set_output.html#sphx-glr-auto-examples-miscellaneous-plot-set-output-py" title="(in scikit-learn v1.8)"><span>Introducing the set_output API</span></a>
+<p>See <a class="reference external" href="https://scikit-learn.org/dev/auto_examples/miscellaneous/plot_set_output.html#sphx-glr-auto-examples-miscellaneous-plot-set-output-py" title="(in scikit-learn v1.9)"><span>Introducing the set_output API</span></a>
 for an example on how to use the API.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1334,10 +1344,10 @@ for an example on how to use the API.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.preprocessing.DummyCodeEncoder.set_params">
-<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ef5c603/scikitplot/../sklearn/base.py#L338"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.preprocessing.DummyCodeEncoder.set_params" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/729947e/scikitplot/../sklearn/base.py#L338"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.preprocessing.DummyCodeEncoder.set_params" title="Link to this definition">#</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
-(such as <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>). The latter have
+(such as <a class="reference external" href="https://scikit-learn.org/dev/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v1.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>). The latter have
 parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
 possible to update each component of a nested object.</p>
 <dl class="field-list simple">
@@ -1358,10 +1368,10 @@ possible to update each component of a nested object.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.preprocessing.DummyCodeEncoder.transform">
-<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ef5c603/scikitplot/preprocessing/_encoders.py#L1693"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.preprocessing.DummyCodeEncoder.transform" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/729947e/scikitplot/preprocessing/_encoders.py#L1693"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.preprocessing.DummyCodeEncoder.transform" title="Link to this definition">#</a></dt>
 <dd><p>Transform X using one-hot encoding.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">sparse_output=True</span></code> (default), it returns an instance of
-<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csr_matrix.html#scipy.sparse.csr_matrix" title="(in SciPy v1.17.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">scipy.sparse._csr.csr_matrix</span></code></a> (CSR format).</p>
+<a class="reference external" href="https://scipy.github.io/devdocs/reference/generated/scipy.sparse.csr_matrix.html#scipy.sparse.csr_matrix" title="(in SciPy v1.18.0.dev)"><code class="xref py py-class docutils literal notranslate"><span class="pre">scipy.sparse._csr.csr_matrix</span></code></a> (CSR format).</p>
 <p>If there are infrequent categories for a feature, set by specifying
 <code class="docutils literal notranslate"><span class="pre">max_categories</span></code> or <code class="docutils literal notranslate"><span class="pre">min_frequency</span></code>, the infrequent categories are
 grouped into a single category.</p>
@@ -1491,7 +1501,7 @@ returned.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260123.ef5c603 2026-01-23T10:56Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260126.729947e 2026-01-26T19:33Z.
       <br/>
     
   </p>

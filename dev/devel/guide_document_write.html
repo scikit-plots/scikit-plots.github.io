@@ -722,7 +722,7 @@ the docstrings of the classes in the Matplotlib library.  Except for
 <code class="file docutils literal notranslate"><span class="pre">doc/api/api_changes/</span></code>,  <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files in <code class="file docutils literal notranslate"><span class="pre">doc/api</span></code> are created
 when the documentation is built.  See <a class="reference internal" href="#writing-docstrings"><span class="std std-ref">Write docstrings</span></a> below.</p>
 <p>Second, our example pages, tutorials, and some of the narrative documentation
-are created by <a href="#id7"><span class="problematic" id="id8">`Sphinx Gallery`_</span></a>.  Sphinx Gallery converts example Python files
+are created by <a class="reference external" href="https://sphinx-gallery.readthedocs.io/en/latest/">sphinx-gallery</a>.  Sphinx Gallery converts example Python files
 to <code class="docutils literal notranslate"><span class="pre">*.rst</span></code> files with the result of Matplotlib plot calls as embedded images.
 See <a class="reference internal" href="#writing-examples-and-tutorials"><span class="std std-ref">Write examples and tutorials</span></a> below.</p>
 <p>Third, Matplotlib has narrative docs written in <a class="reference external" href="https://docutils.sourceforge.io/rst.html">docutils</a> in subdirectories of
@@ -944,7 +944,7 @@ See the example <span class="na">:doc:</span><span class="nv">`/gallery/lines_ba
 <blockquote>
 <div><p>See the <a class="reference internal" href="../install/index.html"><span class="doc">Installation</span></a></p>
 <p>See the tutorial <a class="reference internal" href="../introduction/quick_start.html#quick-start"><span class="std std-ref">Quick Start Guide</span></a></p>
-<p>See the example <span class="xref std std-doc">/gallery/lines_bars_and_markers/simple_plot</span></p>
+<p>See the example <a class="reference external" href="https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/simple_plot.html" title="(in Matplotlib v3.11.0.dev1710+g83c3cbc06)"><span>Line plot</span></a></p>
 </div></blockquote>
 <p>Sections can also be given reference labels.  For instance from the
 <a class="reference internal" href="../install/index.html"><span class="doc">Installation</span></a> link:</p>
@@ -1053,7 +1053,7 @@ In rare cases we want the rendering of the mathematical text in the
 documentation html to exactly match with the rendering of the mathematical
 expression in the Matplotlib figure. In these cases, you can use the
 <code class="docutils literal notranslate"><span class="pre">matplotlib.sphinxext.mathmpl</span></code> Sphinx extension (See also the
-<span class="xref std std-doc">/users/explain/text/mathtext</span> tutorial.)</p>
+<a class="reference external" href="https://matplotlib.org/devdocs/users/explain/text/mathtext.html" title="(in Matplotlib v3.11.0.dev1710+g83c3cbc06)"><span>Writing mathematical expressions</span></a> tutorial.)</p>
 </section>
 </section>
 <section id="write-docstrings">
@@ -1067,7 +1067,7 @@ documentation style. If in doubt, follow the rules given here and not what
 you may see in the source code. Pull requests updating docstrings to
 the current style are very welcome.</p>
 </div>
-<p>All new or edited docstrings should conform to the <a href="#id9"><span class="problematic" id="id10">`numpydoc docstring guide`_</span></a>.
+<p>All new or edited docstrings should conform to the <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/">numpydoc</a>.
 Much of the <a class="reference external" href="https://docutils.sourceforge.io/rst.html">docutils</a> syntax discussed above (<a class="reference internal" href="#writing-rest-pages"><span class="std std-ref">Write ReST pages</span></a>) can be
 used for links and references.  These docstrings eventually populate the
 <code class="file docutils literal notranslate"><span class="pre">doc/api</span></code> directory and form the reference documentation for the
@@ -1171,7 +1171,7 @@ to read in plain-text docs.</p>
 understandable by humans. If the possible types are too complex use a
 simplification for the type description and explain the type more
 precisely in the text.</p>
-<p>Generally, the <a href="#id11"><span class="problematic" id="id12">`numpydoc docstring guide`_</span></a> conventions apply. The following
+<p>Generally, the <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/">numpydoc</a> conventions apply. The following
 rules expand on them where the numpydoc conventions are not specific.</p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">float</span></code> for a type that can be any number.</p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">(float,</span> <span class="pre">float)</span></code> to describe a 2D position. The parentheses should be
@@ -1448,17 +1448,17 @@ the file <code class="file docutils literal notranslate"><span class="pre">examp
 <code class="docutils literal notranslate"><span class="pre">gallery/text_labels_and_annotations/legend.py</span></code>, a redirection that may be
 fixed in future re-organization of the docs.</p>
 <p>Plots can also be directly placed inside docstrings.  Details are in
-<span class="xref std std-doc">/api/sphinxext_plot_directive_api</span>.  A short example is:</p>
+<a class="reference external" href="https://matplotlib.org/devdocs/api/sphinxext_plot_directive_api.html" title="(in Matplotlib v3.11.0.dev1710+g83c3cbc06)"><span>matplotlib.sphinxext.plot_directive</span></a>.  A short example is:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">...</span>
 
 <span class="sd">Examples</span>
 <span class="sd">--------</span>
-
 <span class="sd">.. plot::</span>
-<span class="sd">   import matplotlib.image as mpimg</span>
-<span class="sd">   img = mpimg.imread(&#39;_static/stinkbug.png&#39;)</span>
-<span class="sd">   imgplot = plt.imshow(img)</span>
+
+<span class="sd">  import matplotlib.image as mpimg</span>
+<span class="sd">  img = mpimg.imread(&#39;_static/stinkbug.png&#39;)</span>
+<span class="sd">  imgplot = plt.imshow(img)</span>
 <span class="sd">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
@@ -1468,7 +1468,7 @@ code will also appear in interactive docstrings.</p>
 </section>
 <section id="write-examples-and-tutorials">
 <span id="writing-examples-and-tutorials"></span><h2>Write examples and tutorials<a class="headerlink" href="#write-examples-and-tutorials" title="Link to this heading">#</a></h2>
-<p>Examples and tutorials are Python scripts that are run by <a href="#id13"><span class="problematic" id="id14">`Sphinx Gallery`_</span></a>.
+<p>Examples and tutorials are Python scripts that are run by <a class="reference external" href="https://sphinx-gallery.readthedocs.io/en/latest/">sphinx-gallery</a>.
 Sphinx Gallery finds <code class="docutils literal notranslate"><span class="pre">*.py</span></code> files in source directories and runs the files to
 create images and narrative that are embedded in <code class="docutils literal notranslate"><span class="pre">*.rst</span></code> files in a build
 location of the <code class="file docutils literal notranslate"><span class="pre">doc/</span></code> directory.  Files in the build location should not
@@ -1508,7 +1508,7 @@ formatted comment blocks are treated as <a class="reference external" href="http
 displayed, and figures are put into the built page.  Matplotlib uses the
 <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">%%</span></code> section separator so that IDEs will identify “code cells” to make
 it easy to re-run sub-sections of the example.</p>
-<p>For instance the example <span class="xref std std-doc">/gallery/lines_bars_and_markers/simple_plot</span>
+<p>For instance the example <a class="reference external" href="https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/simple_plot.html" title="(in Matplotlib v3.11.0.dev1710+g83c3cbc06)"><span>Line plot</span></a>
 example is generated from
 <code class="file docutils literal notranslate"><span class="pre">/galleries/examples/lines_bars_and_markers/simple_plot.py</span></code>, which looks
 like:</p>
@@ -1538,7 +1538,7 @@ like:</p>
 </pre></div>
 </div>
 <p>The first comment block is treated as <a class="reference external" href="https://docutils.sourceforge.io/rst.html">docutils</a> text.  The other comment blocks
-render as comments in <span class="xref std std-doc">/gallery/lines_bars_and_markers/simple_plot</span>.</p>
+render as comments in <a class="reference external" href="https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/simple_plot.html" title="(in Matplotlib v3.11.0.dev1710+g83c3cbc06)"><span>Line plot</span></a>.</p>
 <p>Tutorials are made with the exact same mechanism, except they are longer and
 typically have more than one comment block (i.e. <a class="reference internal" href="../introduction/quick_start.html#quick-start"><span class="std std-ref">Quick Start Guide</span></a>).  The
 first comment block can be the same as the example above.  Subsequent blocks of
@@ -1604,7 +1604,7 @@ reference should always be the second to mention; see the example above.</p>
 </section>
 <section id="order-examples">
 <h3>Order examples<a class="headerlink" href="#order-examples" title="Link to this heading">#</a></h3>
-<p>The order of the sections of the <a class="reference external" href="https://matplotlib.org/stable/tutorials/index.html#tutorials" title="(in Matplotlib v3.10.8)"><span>Tutorials</span></a> and the <a class="reference external" href="https://matplotlib.org/stable/gallery/index.html#gallery" title="(in Matplotlib v3.10.8)"><span>Examples</span></a>, as
+<p>The order of the sections of the <a class="reference external" href="https://matplotlib.org/devdocs/tutorials/index.html#tutorials" title="(in Matplotlib v3.11.0.dev1710+g83c3cbc06)"><span>Tutorials</span></a> and the <a class="reference external" href="https://matplotlib.org/devdocs/gallery/index.html#gallery" title="(in Matplotlib v3.11.0.dev1710+g83c3cbc06)"><span>Examples</span></a>, as
 well as the order of the examples within each section are determined in a
 two step process from within the <code class="file docutils literal notranslate"><span class="pre">/doc/sphinxext/gallery_order.py</span></code>:</p>
 <ul class="simple">
@@ -1625,7 +1625,7 @@ should ideally be named similar to <code class="file docutils literal notranslat
 </section>
 <section id="raw-restructured-text-files-in-the-gallery">
 <span id="raw-restructured-gallery"></span><h3>Raw restructured text files in the gallery<a class="headerlink" href="#raw-restructured-text-files-in-the-gallery" title="Link to this heading">#</a></h3>
-<p><a href="#id15"><span class="problematic" id="id16">`Sphinx Gallery`_</span></a> folders usually consist of a <code class="docutils literal notranslate"><span class="pre">README.txt</span></code> and a series of
+<p><a class="reference external" href="https://sphinx-gallery.readthedocs.io/en/latest/">sphinx-gallery</a> folders usually consist of a <code class="docutils literal notranslate"><span class="pre">README.txt</span></code> and a series of
 Python source files that are then translated to an <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> file and a
 series of <code class="docutils literal notranslate"><span class="pre">example_name.rst</span></code> files in the <code class="file docutils literal notranslate"><span class="pre">doc/</span></code> subdirectories.
 However, Sphinx Gallery also allows raw <code class="docutils literal notranslate"><span class="pre">*.rst</span></code> files to be passed through a
@@ -1680,13 +1680,13 @@ doing. When more context or explanation is required, add a text paragraph before
 the code example.</p>
 </dd>
 </dl>
-<p><span class="xref std std-doc">/gallery/misc/bbox_intersect</span> demonstrates the point of visual examples.
+<p><a class="reference external" href="https://matplotlib.org/devdocs/gallery/misc/bbox_intersect.html" title="(in Matplotlib v3.11.0.dev1710+g83c3cbc06)"><span>Identify whether artists intersect</span></a> demonstrates the point of visual examples.
 This example is “messy” in that it’s hard to categorize, but the gallery is the right
 spot for it because it makes sense to find it by visual search</p>
-<p><span class="xref std std-doc">/gallery/images_contours_and_fields/colormap_interactive_adjustment</span> is an
+<p><a class="reference external" href="https://matplotlib.org/devdocs/gallery/images_contours_and_fields/colormap_interactive_adjustment.html" title="(in Matplotlib v3.11.0.dev1710+g83c3cbc06)"><span>Interactive adjustment of colormap range</span></a> is an
 example of a good descriptive title that briefly summarizes how the showcased
 library features are used to implement the demonstrated visualization technique.</p>
-<p><span class="xref std std-doc">/gallery/lines_bars_and_markers/lines_with_ticks_demo</span> is an example of having a
+<p><a class="reference external" href="https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/lines_with_ticks_demo.html" title="(in Matplotlib v3.11.0.dev1710+g83c3cbc06)"><span>Lines with a ticked patheffect</span></a> is an example of having a
 minimal amount of code necessary to showcase the feature. The lack of extraneous code
 makes it easier for the reader to map which parts of code correspond to which parts of
 the plot.</p>
@@ -1738,36 +1738,36 @@ For clarity, do not use relative links.</p>
    <span class="nc">:parts:</span> 2
 </pre></div>
 </div>
-<div class="graphviz"><img src="../_images/inheritance-3aadb8e1f709c048340fd732875e34e615729448.png" alt="Inheritance diagram of matplotlib.patches, matplotlib.lines, matplotlib.text" usemap="#inheritance03ab0131b5" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="../_images/inheritance-fe6ef169627e25167421f365df81cd12e098f8ff.png" alt="Inheritance diagram of matplotlib.patches, matplotlib.lines, matplotlib.text" usemap="#inheritance03ab0131b5" class="inheritance graphviz" /></div>
 <map id="inheritance03ab0131b5" name="inheritance03ab0131b5">
-<area shape="rect" id="node1" href="https://matplotlib.org/stable/api/artist_api.html#matplotlib.artist.Artist" target="_top" title="Abstract base class for objects that render into a FigureCanvas." alt="" coords="46,282,135,305"/>
-<area shape="rect" id="node3" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.lines.Line2D.html#matplotlib.lines.Line2D" target="_top" title="A line &#45; the line can have both a solid linestyle connecting all" alt="" coords="225,121,321,145"/>
-<area shape="rect" id="node6" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Patch.html#matplotlib.patches.Patch" target="_top" title="A patch is a 2D artist with a face color and an edge color." alt="" coords="221,282,325,305"/>
-<area shape="rect" id="node27" href="https://matplotlib.org/stable/api/text_api.html#matplotlib.text.Text" target="_top" title="Handle storing and drawing of text in window or data coordinates." alt="" coords="236,443,310,466"/>
-<area shape="rect" id="node2" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.lines.AxLine.html#matplotlib.lines.AxLine" target="_top" title="A helper class that implements `~.Axes.axline`, by recomputing the artist" alt="" coords="410,5,505,29"/>
-<area shape="rect" id="node4" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.lines.VertexSelector.html#matplotlib.lines.VertexSelector" target="_top" title="Manage the callbacks to maintain a list of selected vertices for `.Line2D`." alt="" coords="19,236,161,259"/>
-<area shape="rect" id="node5" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Annulus.html#matplotlib.patches.Annulus" target="_top" title="An elliptical annulus." alt="" coords="397,51,518,75"/>
-<area shape="rect" id="node8" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Ellipse.html#matplotlib.patches.Ellipse" target="_top" title="A scale&#45;free ellipse." alt="" coords="401,97,514,121"/>
-<area shape="rect" id="node9" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Arrow.html#matplotlib.patches.Arrow" target="_top" title="An arrow patch." alt="" coords="404,143,511,167"/>
-<area shape="rect" id="node14" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.RegularPolygon.html#matplotlib.patches.RegularPolygon" target="_top" title="A regular polygon patch." alt="" coords="374,190,541,213"/>
-<area shape="rect" id="node16" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.FancyArrowPatch.html#matplotlib.patches.FancyArrowPatch" target="_top" title="A fancy arrow patch." alt="" coords="370,236,545,259"/>
-<area shape="rect" id="node19" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Polygon.html#matplotlib.patches.Polygon" target="_top" title="A general polygon patch." alt="" coords="397,282,518,305"/>
-<area shape="rect" id="node20" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.FancyBboxPatch.html#matplotlib.patches.FancyBboxPatch" target="_top" title="A fancy box around a rectangle with lower left at *xy* = (*x*, *y*)" alt="" coords="372,328,543,352"/>
-<area shape="rect" id="node21" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.PathPatch.html#matplotlib.patches.PathPatch" target="_top" title="A general polycurve path patch." alt="" coords="392,374,523,398"/>
-<area shape="rect" id="node22" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Rectangle.html#matplotlib.patches.Rectangle" target="_top" title="A rectangle defined via an anchor point *xy* and its *width* and *height*." alt="" coords="391,420,524,444"/>
-<area shape="rect" id="node23" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Shadow.html#matplotlib.patches.Shadow" target="_top" title="patches.Shadow" alt="" coords="398,466,517,490"/>
-<area shape="rect" id="node25" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Wedge.html#matplotlib.patches.Wedge" target="_top" title="Wedge shaped patch." alt="" coords="401,512,514,536"/>
-<area shape="rect" id="node7" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Arc.html#matplotlib.patches.Arc" target="_top" title="An elliptical arc, i.e. a segment of an ellipse." alt="" coords="630,75,722,98"/>
-<area shape="rect" id="node12" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Circle.html#matplotlib.patches.Circle" target="_top" title="A circle patch." alt="" coords="623,121,730,145"/>
-<area shape="rect" id="node10" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.ArrowStyle.html#matplotlib.patches.ArrowStyle" target="_top" title="`ArrowStyle` is a container class which defines several" alt="" coords="21,190,160,213"/>
-<area shape="rect" id="node11" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.BoxStyle.html#matplotlib.patches.BoxStyle" target="_top" title="`BoxStyle` is a container class which defines several" alt="" coords="27,143,153,167"/>
-<area shape="rect" id="node13" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.CirclePolygon.html#matplotlib.patches.CirclePolygon" target="_top" title="A polygon&#45;approximation of a circle patch." alt="" coords="598,190,754,213"/>
-<area shape="rect" id="node15" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.ConnectionPatch.html#matplotlib.patches.ConnectionPatch" target="_top" title="A patch that connects two points (possibly in different Axes)." alt="" coords="590,236,763,259"/>
-<area shape="rect" id="node17" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.ConnectionStyle.html#matplotlib.patches.ConnectionStyle" target="_top" title="`ConnectionStyle` is a container class which defines" alt="" coords="5,97,176,121"/>
-<area shape="rect" id="node18" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.FancyArrow.html#matplotlib.patches.FancyArrow" target="_top" title="Like Arrow, but lets you set head width and head height independently." alt="" coords="605,282,747,305"/>
-<area shape="rect" id="node24" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.StepPatch.html#matplotlib.patches.StepPatch" target="_top" title="A path patch describing a stepwise constant function." alt="" coords="610,374,742,398"/>
-<area shape="rect" id="node26" href="https://matplotlib.org/stable/api/text_api.html#matplotlib.text.Annotation" target="_top" title="An `.Annotation` is a `.Text` that can refer to a specific position *xy*." alt="" coords="400,559,515,582"/>
-<area shape="rect" id="node28" href="https://matplotlib.org/stable/api/text_api.html#matplotlib.text.OffsetFrom" target="_top" title="Callable helper class for working with `Annotation`." alt="" coords="32,51,148,75"/>
+<area shape="rect" id="node1" href="https://matplotlib.org/devdocs/api/artist_api.html#matplotlib.artist.Artist" target="_top" title="Abstract base class for objects that render into a FigureCanvas." alt="" coords="46,282,135,305"/>
+<area shape="rect" id="node3" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.lines.Line2D.html#matplotlib.lines.Line2D" target="_top" title="A line &#45; the line can have both a solid linestyle connecting all" alt="" coords="225,121,321,145"/>
+<area shape="rect" id="node6" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.patches.Patch.html#matplotlib.patches.Patch" target="_top" title="A patch is a 2D artist with a face color and an edge color." alt="" coords="221,282,325,305"/>
+<area shape="rect" id="node27" href="https://matplotlib.org/devdocs/api/text_api.html#matplotlib.text.Text" target="_top" title="Handle storing and drawing of text in window or data coordinates." alt="" coords="236,443,310,466"/>
+<area shape="rect" id="node2" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.lines.AxLine.html#matplotlib.lines.AxLine" target="_top" title="A helper class that implements `~.Axes.axline`, by recomputing the artist" alt="" coords="410,5,505,29"/>
+<area shape="rect" id="node4" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.lines.VertexSelector.html#matplotlib.lines.VertexSelector" target="_top" title="Manage the callbacks to maintain a list of selected vertices for `.Line2D`." alt="" coords="19,236,161,259"/>
+<area shape="rect" id="node5" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.patches.Annulus.html#matplotlib.patches.Annulus" target="_top" title="An elliptical annulus." alt="" coords="397,51,518,75"/>
+<area shape="rect" id="node8" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.patches.Ellipse.html#matplotlib.patches.Ellipse" target="_top" title="A scale&#45;free ellipse." alt="" coords="401,97,514,121"/>
+<area shape="rect" id="node9" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.patches.Arrow.html#matplotlib.patches.Arrow" target="_top" title="An arrow patch." alt="" coords="404,143,511,167"/>
+<area shape="rect" id="node14" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.patches.RegularPolygon.html#matplotlib.patches.RegularPolygon" target="_top" title="A regular polygon patch." alt="" coords="374,190,541,213"/>
+<area shape="rect" id="node16" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.patches.FancyArrowPatch.html#matplotlib.patches.FancyArrowPatch" target="_top" title="A fancy arrow patch." alt="" coords="370,236,545,259"/>
+<area shape="rect" id="node19" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.patches.Polygon.html#matplotlib.patches.Polygon" target="_top" title="A general polygon patch." alt="" coords="397,282,518,305"/>
+<area shape="rect" id="node20" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.patches.FancyBboxPatch.html#matplotlib.patches.FancyBboxPatch" target="_top" title="A fancy box around a rectangle with lower left at *xy* = (*x*, *y*)" alt="" coords="372,328,543,352"/>
+<area shape="rect" id="node21" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.patches.PathPatch.html#matplotlib.patches.PathPatch" target="_top" title="A general polycurve path patch." alt="" coords="392,374,523,398"/>
+<area shape="rect" id="node22" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.patches.Rectangle.html#matplotlib.patches.Rectangle" target="_top" title="A rectangle defined via an anchor point *xy* and its *width* and *height*." alt="" coords="391,420,524,444"/>
+<area shape="rect" id="node23" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.patches.Shadow.html#matplotlib.patches.Shadow" target="_top" title="patches.Shadow" alt="" coords="398,466,517,490"/>
+<area shape="rect" id="node25" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.patches.Wedge.html#matplotlib.patches.Wedge" target="_top" title="Wedge shaped patch." alt="" coords="401,512,514,536"/>
+<area shape="rect" id="node7" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.patches.Arc.html#matplotlib.patches.Arc" target="_top" title="An elliptical arc, i.e. a segment of an ellipse." alt="" coords="630,75,722,98"/>
+<area shape="rect" id="node12" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.patches.Circle.html#matplotlib.patches.Circle" target="_top" title="A circle patch." alt="" coords="623,121,730,145"/>
+<area shape="rect" id="node10" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.patches.ArrowStyle.html#matplotlib.patches.ArrowStyle" target="_top" title="`ArrowStyle` is a container class which defines several" alt="" coords="21,190,160,213"/>
+<area shape="rect" id="node11" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.patches.BoxStyle.html#matplotlib.patches.BoxStyle" target="_top" title="`BoxStyle` is a container class which defines several" alt="" coords="27,143,153,167"/>
+<area shape="rect" id="node13" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.patches.CirclePolygon.html#matplotlib.patches.CirclePolygon" target="_top" title="A polygon&#45;approximation of a circle patch." alt="" coords="598,190,754,213"/>
+<area shape="rect" id="node15" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.patches.ConnectionPatch.html#matplotlib.patches.ConnectionPatch" target="_top" title="A patch that connects two points (possibly in different Axes)." alt="" coords="590,236,763,259"/>
+<area shape="rect" id="node17" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.patches.ConnectionStyle.html#matplotlib.patches.ConnectionStyle" target="_top" title="`ConnectionStyle` is a container class which defines" alt="" coords="5,97,176,121"/>
+<area shape="rect" id="node18" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.patches.FancyArrow.html#matplotlib.patches.FancyArrow" target="_top" title="Like Arrow, but lets you set head width and head height independently." alt="" coords="605,282,747,305"/>
+<area shape="rect" id="node24" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.patches.StepPatch.html#matplotlib.patches.StepPatch" target="_top" title="A path patch describing a stepwise constant function." alt="" coords="610,374,742,398"/>
+<area shape="rect" id="node26" href="https://matplotlib.org/devdocs/api/text_api.html#matplotlib.text.Annotation" target="_top" title="An `.Annotation` is a `.Text` that can refer to a specific position *xy*." alt="" coords="400,559,515,582"/>
+<area shape="rect" id="node28" href="https://matplotlib.org/devdocs/api/text_api.html#matplotlib.text.OffsetFrom" target="_top" title="Callable helper class for working with `Annotation`." alt="" coords="32,51,148,75"/>
 </map></section>
 <section id="navbar-and-style">
 <h3>Navbar and style<a class="headerlink" href="#navbar-and-style" title="Link to this heading">#</a></h3>
@@ -1925,7 +1925,7 @@ style or topbar should be made there to propagate across all subprojects.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260123.ef5c603 2026-01-23T10:56Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260126.729947e 2026-01-26T19:33Z.
       <br/>
     
   </p>

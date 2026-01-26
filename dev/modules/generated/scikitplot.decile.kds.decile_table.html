@@ -564,6 +564,8 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.html">scikitplot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.__version__.html">__version__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.__version_iso_8601__.html">__version_iso_8601__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.config_context.html">config_context</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.get_config.html">get_config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.get_logger.html">get_logger</a></li>
@@ -643,6 +645,7 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.kds.plot_lift_decile_wise.html">plot_lift_decile_wise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.kds.plot_ks_statistic.html">plot_ks_statistic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.kds.report.html">report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.modelplotpy.ModelPlotPy.html">ModelPlotPy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.ModelPlotPy.html">ModelPlotPy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.plot_response.html">plot_response</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.decile.plot_cumresponse.html">plot_cumresponse</a></li>
@@ -680,15 +683,22 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.externals.html">scikitplot.externals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_compat.html">array_api_compat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_extra.html">array_api_extra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.ProbScale.html">ProbScale</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.probplot.html">probplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.plot_pos.html">plot_pos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.fit_line.html">fit_line</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._seaborn.html">_seaborn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.html">_sphinxext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.figmpl_directive.html">scikitplot.externals._sphinxext.figmpl_directive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.mathmpl.html">scikitplot.externals._sphinxext.mathmpl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.plot_directive.html">scikitplot.externals._sphinxext.plot_directive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.roles.html">roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.sphinx_tabs_patch.html">sphinx_tabs_patch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.html">_tweedie</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_compat.html">array_api_compat</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals.array_api_extra.html">array_api_extra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.tweedie.html">tweedie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.tweedie_gen.html">tweedie_gen</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -850,35 +860,42 @@
 <h1>decile_table<a class="headerlink" href="#decile-table" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.decile.kds.decile_table">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.decile.kds.</span></span><span class="sig-name descname"><span class="pre">decile_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_score</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">change_deciles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_infos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ef5c603/scikitplot/decile/kds/_kds.py#L115"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.kds.decile_table" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.decile.kds.</span></span><span class="sig-name descname"><span class="pre">decile_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_score</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">change_deciles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_infos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/729947e/scikitplot/decile/kds/_kds.py#L114"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.kds.decile_table" title="Link to this definition">#</a></dt>
 <dd><p>Generate the Decile Table from labels and probabilities.</p>
 <p>The Decile Table is creared by first sorting the customers by their predicted
 probabilities, in decreasing order from highest (closest to one) to
 lowest (closest to zero). Splitting the customers into equally sized segments,
 we create groups containing the same numbers of customers, for example, 10 decile
 groups each containing 10% of the customer base.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">Added in version 0.3.9.</span></p>
-</div>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>y_true</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd></dd>
-<dt><strong>True binary labels. If labels are not either {-1, 1} or {0, 1}, then pos_label should be explicitly given.</strong></dt><dd></dd>
-<dt><strong>y_score</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd></dd>
-<dt><strong>Target scores, can either be probability estimates of the positive class, confidence values, or non-thresholded measure of decisions (as returned by “decision_function” on some classifiers). For decision_function scores, values greater than or equal to zero should indicate the positive class.</strong></dt><dd></dd>
-<dt><strong>pos_label</strong><span class="classifier">int, float, bool or str, default=None</span></dt><dd></dd>
-<dt><strong>The label of the positive class. When pos_label=None, if y_true is in {-1, 1} or {0, 1}, pos_label is set to 1, otherwise an error will be raised.</strong></dt><dd></dd>
+<dt><strong>y_true</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>True binary labels. If labels are not either {-1, 1} or {0, 1},
+then pos_label should be explicitly given.</p>
+</dd>
+<dt><strong>y_score</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>Target scores, can either be probability estimates of the positive class,
+confidence values, or non-thresholded measure of decisions
+(as returned by “decision_function” on some classifiers).
+For decision_function scores, values greater than or equal to zero
+should indicate the positive class.</p>
+</dd>
+<dt><strong>pos_label</strong><span class="classifier">int, float, bool or str, default=None</span></dt><dd><p>The label of the positive class. When pos_label=None,
+if y_true is in {-1, 1} or {0, 1}, pos_label is set to 1,
+otherwise an error will be raised.</p>
+</dd>
 <dt><strong>class_index</strong><span class="classifier">int, optional</span></dt><dd><p>Index of the class for which to extract probabilities in multi-class case.
 If None, returns all class probabilities in the 2D case. Ignored if y_score is 1D.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.3.9.</span></p>
 </div>
 </dd>
-<dt><strong>labels</strong><span class="classifier">array-like of shape (n_classes,), default=None</span></dt><dd></dd>
-<dt><strong>List of labels to index the matrix. This may be used to reorder or select a subset of labels. If None is given, those that appear at least once in y_true or y_pred are used in sorted order.</strong></dt><dd></dd>
-<dt><strong>sample_weightarray-like of shape (n_samples,), default=None</strong></dt><dd></dd>
-<dt><strong>Sample weights.</strong></dt><dd></dd>
+<dt><strong>labels</strong><span class="classifier">array-like of shape (n_classes,), default=None</span></dt><dd><p>List of labels to index the matrix.
+This may be used to reorder or select a subset of labels.
+If None is given, those that appear at least once in y_true or
+y_pred are used in sorted order.</p>
+</dd>
+<dt><strong>sample_weightarray-like of shape (n_samples,), default=None</strong></dt><dd><p>Sample weights.</p>
+</dd>
 <dt><strong>change_deciles</strong><span class="classifier">int, optional, default=10</span></dt><dd><p>The number of partitions for creating the table. Defaults to 10 for deciles.</p>
 </dd>
 <dt><strong>digits</strong><span class="classifier">int, optional, default=6</span></dt><dd><p>The decimal precision for the result.</p>
@@ -1333,7 +1350,7 @@ If None, returns all class probabilities in the 2D case. Ignored if y_score is 1
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260123.ef5c603 2026-01-23T10:56Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260126.729947e 2026-01-26T19:33Z.
       <br/>
     
   </p>
