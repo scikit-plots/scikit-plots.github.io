@@ -21,6 +21,8 @@
 Introduction to modelplotpy (legacy)
 ====================================
 
+.. currentmodule:: scikitplot.decile
+
 To install the latest version (with pip)::
 
     >>> pip install scikit-learn scikit-plots --upgrade
@@ -64,7 +66,7 @@ Here's a short description on the data we use:
 
 Let's load the data and have a quick look at it:
 
-.. GENERATED FROM PYTHON SOURCE LINES 48-53
+.. GENERATED FROM PYTHON SOURCE LINES 50-55
 
 .. code-block:: Python
 
@@ -80,12 +82,12 @@ Let's load the data and have a quick look at it:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-56
+.. GENERATED FROM PYTHON SOURCE LINES 56-58
 
 Loading the dataset
 ------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 56-100
+.. GENERATED FROM PYTHON SOURCE LINES 58-102
 
 .. code-block:: Python
 
@@ -152,7 +154,7 @@ Loading the dataset
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 101-107
+.. GENERATED FROM PYTHON SOURCE LINES 103-109
 
 Train models on the bank dataset
 ------------------------------------------------
@@ -161,7 +163,7 @@ This well known module is a wrapper for many predictive modeling techniques,
 such as logistic regression, random forest and many, many others.
 Lets train a few models to evaluate with our plots.
 
-.. GENERATED FROM PYTHON SOURCE LINES 107-130
+.. GENERATED FROM PYTHON SOURCE LINES 109-132
 
 .. code-block:: Python
 
@@ -195,14 +197,14 @@ Lets train a few models to evaluate with our plots.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 131-135
+.. GENERATED FROM PYTHON SOURCE LINES 133-137
 
 Plotting partial dependence for two features
 ------------------------------------------------
 For now, we focus on explaining to our marketing colleagues how good our predictive model
 can help them select customers for their term deposit campaign.
 
-.. GENERATED FROM PYTHON SOURCE LINES 135-154
+.. GENERATED FROM PYTHON SOURCE LINES 137-156
 
 .. code-block:: Python
 
@@ -234,13 +236,13 @@ can help them select customers for their term deposit campaign.
  .. code-block:: none
 
     Default scope value no_comparison selected, single evaluation line will be plotted.
-    The label with smallest class is yes
-    Target class yes, dataset test_data and model random_forest.
+    The label with smallest class is term deposit
+    Target class term deposit, dataset test_data and model random_forest.
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 155-180
+.. GENERATED FROM PYTHON SOURCE LINES 157-182
 
 What just happened? In the modelplotpy a class is instantiated and the plotting_scope function specifies
 the scope of the plots you want to show. In general, there are 3 methods (functions) that can be applied to
@@ -268,7 +270,7 @@ to focus on the random forest model on the test data. The default value for the 
 ``term deposit`` since we want to focus on customers that do take term deposits,
 this default is perfect.
 
-.. GENERATED FROM PYTHON SOURCE LINES 183-191
+.. GENERATED FROM PYTHON SOURCE LINES 185-193
 
 Let's introduce the Gains, Lift and (cumulative) Response plots.
 --------------------------------------------------------------------
@@ -279,7 +281,7 @@ from a different angle, they all use the same data:
 - Equally sized groups based on this predicted probability
 - Actual number of observed target class observations in these groups
 
-.. GENERATED FROM PYTHON SOURCE LINES 194-200
+.. GENERATED FROM PYTHON SOURCE LINES 196-202
 
 1. Cumulative gains plot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -288,7 +290,7 @@ The cumulative gains plot - often named 'gains plot' - helps you answer the ques
 When we apply the model and select the best X deciles,
 what % of the actual target class observations can we expect to target?
 
-.. GENERATED FROM PYTHON SOURCE LINES 200-204
+.. GENERATED FROM PYTHON SOURCE LINES 202-206
 
 .. code-block:: Python
 
@@ -300,7 +302,7 @@ what % of the actual target class observations can we expect to target?
 
 
 .. image-sg:: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_001.png
-   :alt: Cumulative gains, model: random_forest & dataset: test_data & target class: yes
+   :alt: Cumulative gains, model: random_forest & dataset: test_data & target class: term deposit
    :srcset: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_001.png
    :class: sphx-glr-single-img
 
@@ -310,12 +312,12 @@ what % of the actual target class observations can we expect to target?
  .. code-block:: none
 
     When we select 30 with the highest probability according to model random_forest, this selection holds 93% of
-    all yes cases in dataset test_data.
+    all term deposit cases in dataset test_data.
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 205-213
+.. GENERATED FROM PYTHON SOURCE LINES 207-215
 
 .. tags::
 
@@ -326,7 +328,7 @@ what % of the actual target class observations can we expect to target?
    level: beginner
    purpose: showcase
 
-.. GENERATED FROM PYTHON SOURCE LINES 217-223
+.. GENERATED FROM PYTHON SOURCE LINES 219-225
 
 2. Cumulative lift plot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -335,7 +337,7 @@ The cumulative lift plot, often referred to as lift plot or index plot, helps yo
 When we apply the model and select the best X deciles,
 how many times better is that than using no model at all?
 
-.. GENERATED FROM PYTHON SOURCE LINES 223-227
+.. GENERATED FROM PYTHON SOURCE LINES 225-229
 
 .. code-block:: Python
 
@@ -347,7 +349,7 @@ how many times better is that than using no model at all?
 
 
 .. image-sg:: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_002.png
-   :alt: Cumulative lift, model: random_forest & dataset: test_data & target class: yes
+   :alt: Cumulative lift, model: random_forest & dataset: test_data & target class: term deposit
    :srcset: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_002.png
    :class: sphx-glr-single-img
 
@@ -357,12 +359,12 @@ how many times better is that than using no model at all?
  .. code-block:: none
 
     When we select 30 with the highest probability according to model random_forest in dataset test_data,
-    this selection for target class yes is 3.13 times than selecting without a model.
+    this selection for target class term deposit is 3.13 times than selecting without a model.
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 228-237
+.. GENERATED FROM PYTHON SOURCE LINES 230-239
 
 .. tags::
 
@@ -374,7 +376,7 @@ how many times better is that than using no model at all?
    level: beginner
    purpose: showcase
 
-.. GENERATED FROM PYTHON SOURCE LINES 241-249
+.. GENERATED FROM PYTHON SOURCE LINES 243-251
 
 3. Response plot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -385,7 +387,7 @@ It can be used to answer the following business question:
 When we apply the model and select decile X,
 what is the expected % of target class observations in that decile?
 
-.. GENERATED FROM PYTHON SOURCE LINES 249-254
+.. GENERATED FROM PYTHON SOURCE LINES 251-256
 
 .. code-block:: Python
 
@@ -398,7 +400,7 @@ what is the expected % of target class observations in that decile?
 
 
 .. image-sg:: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_003.png
-   :alt: Response, model: random_forest & dataset: test_data & target class: yes
+   :alt: Response, model: random_forest & dataset: test_data & target class: term deposit
    :srcset: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_003.png
    :class: sphx-glr-single-img
 
@@ -407,12 +409,12 @@ what is the expected % of target class observations in that decile?
 
  .. code-block:: none
 
-    When we select decile 3 from model random_forest in dataset test_data the percentage of yes cases in the selection is 13% .
+    When we select decile 3 from model random_forest in dataset test_data the percentage of term deposit cases in the selection is 13% .
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 255-262
+.. GENERATED FROM PYTHON SOURCE LINES 257-264
 
 4. Cumulative response plot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -422,7 +424,7 @@ It answers the question burning on each business reps lips:
 When we apply the model and select up until decile X,
 what is the expected % of target class observations in the selection?
 
-.. GENERATED FROM PYTHON SOURCE LINES 262-267
+.. GENERATED FROM PYTHON SOURCE LINES 264-269
 
 .. code-block:: Python
 
@@ -435,7 +437,7 @@ what is the expected % of target class observations in the selection?
 
 
 .. image-sg:: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_004.png
-   :alt: Cumulative response, model: random_forest & dataset: test_data & target class: yes
+   :alt: Cumulative response, model: random_forest & dataset: test_data & target class: term deposit
    :srcset: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_004.png
    :class: sphx-glr-single-img
 
@@ -444,19 +446,19 @@ what is the expected % of target class observations in the selection?
 
  .. code-block:: none
 
-    When we select decile 3 from model random_forest in dataset test_data the percentage of yes cases in the selection is 35% .
+    When we select decile 3 from model random_forest in dataset test_data the percentage of term deposit cases in the selection is 35% .
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 268-272
+.. GENERATED FROM PYTHON SOURCE LINES 270-274
 
 All four plots together
 --------------------------------------------------------------------
 With the function call plot_all we get all four plots on one grid.
 We can easily save it to a file to include it in a presentation or share it with colleagues.
 
-.. GENERATED FROM PYTHON SOURCE LINES 272-283
+.. GENERATED FROM PYTHON SOURCE LINES 274-285
 
 .. code-block:: Python
 
@@ -475,7 +477,7 @@ We can easily save it to a file to include it in a presentation or share it with
 
 
 .. image-sg:: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_005.png
-   :alt: model: random_forest & dataset: test_data & target class: yes, Cumulative gains, Cumulative lift, Response, Cumulative response
+   :alt: model: random_forest & dataset: test_data & target class: term deposit, Cumulative gains, Cumulative lift, Response, Cumulative response
    :srcset: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_005.png
    :class: sphx-glr-single-img
 
@@ -483,7 +485,7 @@ We can easily save it to a file to include it in a presentation or share it with
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 284-297
+.. GENERATED FROM PYTHON SOURCE LINES 286-299
 
 Financial Implications
 --------------------------------------------------------------------
@@ -499,7 +501,7 @@ For financial plots, three extra parameters need to be provided:
 | variable_costs_per_unit	| Numeric. Specifying the variable costs per selected unit for a selection based on the model. These costs vary with selection size (ntiles). |
 | profit_per_unit	| Numeric. Specifying the profit per unit in case the selected unit converts / responds positively. |
 
-.. GENERATED FROM PYTHON SOURCE LINES 300-308
+.. GENERATED FROM PYTHON SOURCE LINES 302-310
 
 1. Return on investment plot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -510,7 +512,7 @@ It can be used to answer the following business question:
 When we apply the model and select up until decile X,
 what is the expected % return on investment of the campaign?
 
-.. GENERATED FROM PYTHON SOURCE LINES 308-320
+.. GENERATED FROM PYTHON SOURCE LINES 310-322
 
 .. code-block:: Python
 
@@ -530,7 +532,7 @@ what is the expected % return on investment of the campaign?
 
 
 .. image-sg:: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_006.png
-   :alt: Return on Investment (ROI), model: random_forest & dataset: test_data & target class: yes
+   :alt: Return on Investment (ROI), model: random_forest & dataset: test_data & target class: term deposit
    :srcset: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_006.png
    :class: sphx-glr-single-img
 
@@ -539,12 +541,12 @@ what is the expected % return on investment of the campaign?
 
  .. code-block:: none
 
-    When we select decile 1 until 3 from model random_forest in dataset test_data the percentage of yes cases in the expected roi is 70.
+    When we select decile 1 until 3 from model random_forest in dataset test_data the percentage of term deposit cases in the expected roi is 70.
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 321-329
+.. GENERATED FROM PYTHON SOURCE LINES 323-331
 
 2. Costs & Revenues plot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -555,7 +557,7 @@ It can be used to answer the following business question:
 When we apply the model and select up until decile X,
 what are the expected revenues and investments of the campaign?
 
-.. GENERATED FROM PYTHON SOURCE LINES 329-342
+.. GENERATED FROM PYTHON SOURCE LINES 331-344
 
 .. code-block:: Python
 
@@ -576,7 +578,7 @@ what are the expected revenues and investments of the campaign?
 
 
 .. image-sg:: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_007.png
-   :alt: Costs / Revenues, model: random_forest & dataset: test_data & target class: yes
+   :alt: Costs / Revenues, model: random_forest & dataset: test_data & target class: term deposit
    :srcset: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_007.png
    :class: sphx-glr-single-img
 
@@ -585,12 +587,12 @@ what are the expected revenues and investments of the campaign?
 
  .. code-block:: none
 
-    When we select decile 1 until 3 from model random_forest in dataset test_data the percentage of yes cases in the revenue is 64950.
+    When we select decile 1 until 3 from model random_forest in dataset test_data the percentage of term deposit cases in the revenue is 64950.
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 343-351
+.. GENERATED FROM PYTHON SOURCE LINES 345-353
 
 3. Profit plot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -601,7 +603,7 @@ It can be used to answer the following business question:
 When we apply the model and select up until decile X,
 what is the expected profit of the campaign?
 
-.. GENERATED FROM PYTHON SOURCE LINES 351-363
+.. GENERATED FROM PYTHON SOURCE LINES 353-365
 
 .. code-block:: Python
 
@@ -621,7 +623,7 @@ what is the expected profit of the campaign?
 
 
 .. image-sg:: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_008.png
-   :alt: Profit, model: random_forest & dataset: test_data & target class: yes
+   :alt: Profit, model: random_forest & dataset: test_data & target class: term deposit
    :srcset: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_008.png
    :class: sphx-glr-single-img
 
@@ -630,12 +632,12 @@ what is the expected profit of the campaign?
 
  .. code-block:: none
 
-    When we select decile 1 until 3 from model random_forest in dataset test_data the percentage of yes cases in the expected profit is 26880.
+    When we select decile 1 until 3 from model random_forest in dataset test_data the percentage of term deposit cases in the expected profit is 26880.
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 364-370
+.. GENERATED FROM PYTHON SOURCE LINES 366-372
 
 Get more out of modelplotpy: using different scopes
 --------------------------------------------------------------------
@@ -644,14 +646,14 @@ using the scope parameter. Comparisons between different models, between differe
 and (in case of a multiclass target) between different target classes. Curious?
 Please have a look at the package documentation or read our other posts on modelplot.
 
-.. GENERATED FROM PYTHON SOURCE LINES 372-376
+.. GENERATED FROM PYTHON SOURCE LINES 374-378
 
 1. compare_models
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 However, to give one example, we could compare whether random forest
 was indeed the best choice to select the top-30% customers for a term deposit offer:
 
-.. GENERATED FROM PYTHON SOURCE LINES 376-382
+.. GENERATED FROM PYTHON SOURCE LINES 378-384
 
 .. code-block:: Python
 
@@ -665,7 +667,7 @@ was indeed the best choice to select the top-30% customers for a term deposit of
 
 
 .. image-sg:: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_009.png
-   :alt: Cumulative response, Scope: comparing models & dataset: test_data & target class: yes
+   :alt: Cumulative response, Scope: comparing models & dataset: test_data & target class: term deposit
    :srcset: /auto_examples/decile/images/sphx_glr_plot_modelplotpy_legacy_script_009.png
    :class: sphx-glr-single-img
 
@@ -675,14 +677,14 @@ was indeed the best choice to select the top-30% customers for a term deposit of
  .. code-block:: none
 
     compare models
-    The label with smallest class is ['yes']
-    When we select decile 3 from model multinomial_logit in dataset test_data the percentage of yes cases in the selection is 33% .
-    When we select decile 3 from model random_forest in dataset test_data the percentage of yes cases in the selection is 35% .
+    The label with smallest class is ['term deposit']
+    When we select decile 3 from model multinomial_logit in dataset test_data the percentage of term deposit cases in the selection is 33% .
+    When we select decile 3 from model random_forest in dataset test_data the percentage of term deposit cases in the selection is 35% .
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 383-388
+.. GENERATED FROM PYTHON SOURCE LINES 385-390
 
 .. code-block:: Python
 
@@ -698,7 +700,7 @@ was indeed the best choice to select the top-30% customers for a term deposit of
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 389-400
+.. GENERATED FROM PYTHON SOURCE LINES 391-402
 
 Seems like the algorithm used will not make a big difference in this case.
 Hopefully you agree by now that using these plots really can make a difference in explaining
@@ -715,7 +717,7 @@ Happy modelplotting!
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 7.975 seconds)
+   **Total running time of the script:** (0 minutes 8.306 seconds)
 
 
 .. _sphx_glr_download_auto_examples_decile_plot_modelplotpy_legacy_script.py:

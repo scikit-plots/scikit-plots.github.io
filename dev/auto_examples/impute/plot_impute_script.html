@@ -73,7 +73,7 @@
 <link href="../../_static/scikit-plots-favicon.ico" rel="icon"/>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
-<link href="../nc/index.html" rel="next" title="nc (NumCpp)"/>
+<link href="../mlflow/index.html" rel="next" title="MLflow"/>
 <link href="index.html" rel="prev" title="Impute"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="en" name="docsearch:language"/>
@@ -388,11 +388,18 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">annoy impute with examples</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../nc/index.html">nc (NumCpp)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../mlflow/index.html">MLflow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mlflow/plot_mlflow.html">MLflow</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nc/index.html">Nc (NumCpp)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../nc/plot_nc_test.html">nc with examples</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../preprocessing/index.html">Preprocessing</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../preprocessing/index.html">Preprocessing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preprocessing/plot_dummy_code_encoder.html">Comparing DummyCode Encoder with Other Encoders</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../regression/index.html">Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../regression/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
 </ul>
@@ -606,7 +613,7 @@ df.head()</p>
 <span class="n">time_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">T</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>18.843860864639282
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>20.282107830047607
 </pre></div>
 </div>
 </section>
@@ -632,7 +639,7 @@ replaced by 0:</p>
 <span class="n">time_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">T</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>19.767157793045044
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>21.603069305419922
 </pre></div>
 </div>
 </section>
@@ -656,7 +663,7 @@ replaced by 0:</p>
 <span class="n">time_data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">T</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>21.305075645446777
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>22.93610143661499
 </pre></div>
 </div>
 </section>
@@ -683,7 +690,7 @@ results (otherwise known as a ‘long tail’).</p>
 <span class="n">time_data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">T</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>22.039872646331787
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>22.716754913330078
 </pre></div>
 </div>
 </section>
@@ -714,7 +721,7 @@ consider re-scaling them to potentially improve performance.</p>
 <span class="n">time_data</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">T</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>37.89361333847046
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>90.42242240905762
 </pre></div>
 </div>
 </section>
@@ -749,7 +756,7 @@ so we re-scale the features in the California housing dataset.</p>
 <span class="n">time_data</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">T</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>23.973368167877197
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>23.7593092918396
 </pre></div>
 </div>
 </section>
@@ -767,7 +774,7 @@ so we re-scale the features in the California housing dataset.</p>
 <span class="c1"># print(ANNImputer.__doc__)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0.5.dev0+git.20260126.729947e
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0.5.dev0+git.20260129.86bdfc1
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">t0</span> <span class="o">=</span> <a class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/time.html#time.time" title="time.time"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
@@ -791,7 +798,7 @@ so we re-scale the features in the California housing dataset.</p>
 <span class="n">time_data</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">T</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>27.021024703979492
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>25.92217707633972
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">t0</span> <span class="o">=</span> <a class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/time.html#time.time" title="time.time"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
@@ -822,7 +829,7 @@ so we re-scale the features in the California housing dataset.</p>
 <span class="n">time_data</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="n">T</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>25.310813426971436
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>25.700446605682373
 </pre></div>
 </div>
 </section>
@@ -928,21 +935,21 @@ selected distance metric and the number of trees used to build the Annoy index.
 An inappropriate metric or insufficient number of trees may lead to poor
 neighbor retrieval and degraded imputation quality.</p>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-impute.html"><span class="doc">model-workflow: impute</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-bar.html"><span class="doc">plot-type: bar</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (3 minutes 16.645 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (4 minutes 13.821 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_precision_script_thumb.png"/>
 <p><a class="reference internal" href="../annoy/plot_precision_script.html"><span class="doc">Precision annoy.AnnoyIndex with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">Precision annoy.AnnoyIndex with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="The DummyCodeEncoder to encode each categorical features into dummy/indicator 0/1 variables. In this example, we will compare various different approaches for handling categorical features: GetDummies, TargetEncoder, OrdinalEncoder, OneHotEncoder, and dropping the category."><img alt="" src="../../_images/sphx_glr_plot_dummy_code_encoder_thumb.png"/>
+<p><a class="reference internal" href="../preprocessing/plot_dummy_code_encoder.html"><span class="doc">Comparing DummyCode Encoder with Other Encoders</span></a></p>
+<div class="sphx-glr-thumbnail-title">Comparing DummyCode Encoder with Other Encoders</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.estimators.plot_feature_importances function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_feature_importances_script_thumb.png"/>
 <p><a class="reference internal" href="../classification/plot_feature_importances_script.html"><span class="doc">plot_feature_importances with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">plot_feature_importances with examples</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_simple_script_thumb.png"/>
 <p><a class="reference internal" href="../annoy/plot_simple_script.html"><span class="doc">Simple annoy.AnnoyIndex with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">Simple annoy.AnnoyIndex with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_mmap_script_thumb.png"/>
-<p><a class="reference internal" href="../annoy/plot_mmap_script.html"><span class="doc">Mmap annoy.AnnoyIndex with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">Mmap annoy.AnnoyIndex with examples</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </section>
@@ -958,10 +965,10 @@ neighbor retrieval and degraded imputation quality.</p>
 <p class="prev-next-title">Impute</p>
 </div>
 </a>
-<a class="right-next" href="../nc/index.html" title="next page">
+<a class="right-next" href="../mlflow/index.html" title="next page">
 <div class="prev-next-info">
 <p class="prev-next-subtitle">next</p>
-<p class="prev-next-title">nc (NumCpp)</p>
+<p class="prev-next-title">MLflow</p>
 </div>
 <i class="fa-solid fa-angle-right"></i>
 </a>
@@ -1013,7 +1020,7 @@ neighbor retrieval and degraded imputation quality.</p>
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260126.729947e 2026-01-26T19:33Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260129.86bdfc1 2026-01-29T08:02Z.
       <br/>
 </p>
 </div>

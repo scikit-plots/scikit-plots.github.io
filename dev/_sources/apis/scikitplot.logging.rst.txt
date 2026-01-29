@@ -28,10 +28,10 @@ Logging Levels
   WARN
   WARNING
 
-.. _logging_ref-functional-interface---get-logger:
+.. _logging_ref-logging-helpers:
 
-Functional Interface - get_logger
----------------------------------
+Logging Helpers
+---------------
 
 .. autosummary::
   :nosignatures:
@@ -40,15 +40,36 @@ Functional Interface - get_logger
   
   AlwaysStdErrHandler
   GoogleLogFormatter
-  critical
-  debug
-  error
-  error_log
-  fatal
   getEffectiveLevel
   get_logger
-  log_if
+  get_verbosity
   setLevel
+  set_verbosity
+
+.. _logging_ref-log-the-message:
+
+Log the Message
+---------------
+
+Log the message at a predefined logging level.
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  log
+  log_every_n
+  log_first_n
+  log_if
   vlog
-  warn
+  debug
+  info
   warning
+  warn
+  error
+  error_log
+  exception
+  TaskLevelStatusMessage
+  critical
+  fatal

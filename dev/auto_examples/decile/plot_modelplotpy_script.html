@@ -388,11 +388,18 @@
 <li class="toctree-l2"><a class="reference internal" href="../impute/plot_impute_script.html">annoy impute with examples</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../nc/index.html">nc (NumCpp)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../mlflow/index.html">MLflow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mlflow/plot_mlflow.html">MLflow</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nc/index.html">Nc (NumCpp)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../nc/plot_nc_test.html">nc with examples</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../preprocessing/index.html">Preprocessing</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../preprocessing/index.html">Preprocessing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preprocessing/plot_dummy_code_encoder.html">Comparing DummyCode Encoder with Other Encoders</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../regression/index.html">Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../regression/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
 </ul>
@@ -582,7 +589,7 @@ not how to build a perfect model, we’ll use six of these columns in our exampl
 <a class="sphx-glr-backref-module-scikitplot sphx-glr-backref-type-py-data" href="../../modules/generated/scikitplot.__version__.html#scikitplot.__version__" title="scikitplot.__version__"><span class="n">sp</span><span class="o">.</span><span class="n">__version__</span></a>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>'0.5.dev0+git.20260126.729947e'
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>'0.5.dev0+git.20260129.86bdfc1'
 </pre></div>
 </div>
 </section>
@@ -658,12 +665,12 @@ Lets train a few models to evaluate with our plots.</p>
 [300]   validation_0-logloss:0.19339
 [400]   validation_0-logloss:0.19815
 [499]   validation_0-logloss:0.20117
-0:      learn: 0.4927453        test: 0.4923715 best: 0.4923715 (0)     total: 51.3ms   remaining: 25.6s
-100:    learn: 0.1676717        test: 0.1816126 best: 0.1815845 (99)    total: 428ms    remaining: 1.69s
-200:    learn: 0.1558113        test: 0.1821743 best: 0.1810643 (134)   total: 837ms    remaining: 1.24s
-300:    learn: 0.1470072        test: 0.1834927 best: 0.1810643 (134)   total: 1.25s    remaining: 824ms
-400:    learn: 0.1397645        test: 0.1855101 best: 0.1810643 (134)   total: 1.68s    remaining: 415ms
-499:    learn: 0.1339617        test: 0.1875986 best: 0.1810643 (134)   total: 2.09s    remaining: 0us
+0:      learn: 0.4927453        test: 0.4923715 best: 0.4923715 (0)     total: 51.8ms   remaining: 25.9s
+100:    learn: 0.1676717        test: 0.1816126 best: 0.1815845 (99)    total: 458ms    remaining: 1.81s
+200:    learn: 0.1558113        test: 0.1821743 best: 0.1810643 (134)   total: 879ms    remaining: 1.31s
+300:    learn: 0.1470072        test: 0.1834927 best: 0.1810643 (134)   total: 1.37s    remaining: 908ms
+400:    learn: 0.1397645        test: 0.1855101 best: 0.1810643 (134)   total: 1.81s    remaining: 446ms
+499:    learn: 0.1339617        test: 0.1875986 best: 0.1810643 (134)   total: 2.22s    remaining: 0us
 
 bestTest = 0.1810643099
 bestIteration = 134
@@ -758,7 +765,7 @@ Length: 12357, dtype: int64], 'dataset_labels': ['train data', 'test data'], 'mo
               max_cat_to_onehot=None, max_delta_step=None, max_depth=6,
               max_leaves=None, min_child_weight=None, missing=nan,
               monotone_constraints=None, multi_strategy=None, n_estimators=500,
-              n_jobs=None, num_parallel_tree=None, ...), &lt;catboost.core.CatBoostClassifier object at 0x7f829e8aacd0&gt;], 'model_labels': ['random forest', 'multinomial logit', 'XGBClassifier', 'CatBoostClassifier'], 'ntiles': 10, 'seed': 0}
+              n_jobs=None, num_parallel_tree=None, ...), &lt;catboost.core.CatBoostClassifier object at 0x7fc961a0e010&gt;], 'model_labels': ['random forest', 'multinomial logit', 'XGBClassifier', 'CatBoostClassifier'], 'ntiles': 10, 'seed': 0}
 </pre></div>
 </div>
 <p>What just happened? In the modelplotpy a class is instantiated and the plotting_scope function specifies
@@ -1408,21 +1415,21 @@ Any other feedback or suggestions, please let us know
 via <a class="reference external" href="mailto:pb.marcus%40hotmail.com">pb<span>.</span>marcus</a>
 or <a class="reference external" href="mailto:jurriaan.nagelkerke%40gmail.com">jurriaan<span>.</span>nagelkerke</a>.</p>
 <p>Happy modelplotting!</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 15.720 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 16.758 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="To install the latest version (with pip)::"><img alt="" src="../../_images/sphx_glr_plot_modelplotpy_legacy_script_thumb.png"/>
 <p><a class="reference internal" href="plot_modelplotpy_legacy_script.html"><span class="doc">Introduction to modelplotpy (legacy)</span></a></p>
 <div class="sphx-glr-thumbnail-title">Introduction to modelplotpy (legacy)</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_residuals_distribution function used by a scikit-learn regressor."><img alt="" src="../../_images/sphx_glr_plot_residuals_distribution_script_thumb.png"/>
-<p><a class="reference internal" href="../stats/plot_residuals_distribution_script.html"><span class="doc">plot_residuals_distribution with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">plot_residuals_distribution with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.estimators.plot_feature_importances function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_feature_importances_script_thumb.png"/>
-<p><a class="reference internal" href="../classification/plot_feature_importances_script.html"><span class="doc">plot_feature_importances with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">plot_feature_importances with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="The DummyCodeEncoder to encode each categorical features into dummy/indicator 0/1 variables. In this example, we will compare various different approaches for handling categorical features: GetDummies, TargetEncoder, OrdinalEncoder, OneHotEncoder, and dropping the category."><img alt="" src="../../_images/sphx_glr_plot_dummy_code_encoder_thumb.png"/>
+<p><a class="reference internal" href="../preprocessing/plot_dummy_code_encoder.html"><span class="doc">Comparing DummyCode Encoder with Other Encoders</span></a></p>
+<div class="sphx-glr-thumbnail-title">Comparing DummyCode Encoder with Other Encoders</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_calibration function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_calibration_script_thumb.png"/>
 <p><a class="reference internal" href="../calibration/plot_calibration_script.html"><span class="doc">plot_calibration with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">plot_calibration with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_residuals_distribution function used by a scikit-learn regressor."><img alt="" src="../../_images/sphx_glr_plot_residuals_distribution_script_thumb.png"/>
+<p><a class="reference internal" href="../stats/plot_residuals_distribution_script.html"><span class="doc">plot_residuals_distribution with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">plot_residuals_distribution with examples</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </section>
@@ -1505,7 +1512,7 @@ or <a class="reference external" href="mailto:jurriaan.nagelkerke%40gmail.com">j
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260126.729947e 2026-01-26T19:33Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260129.86bdfc1 2026-01-29T08:02Z.
       <br/>
 </p>
 </div>

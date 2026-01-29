@@ -669,7 +669,45 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
     </div>
 
 
-nc (NumCpp)
+MLflow
+----------------------------------------------------------------------
+
+Examples related to the :py:mod:`~scikitplot.mlflow` submodule
+with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegression`) instance.
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.mlflow submodule..">
+
+.. only:: html
+
+  .. image:: /auto_examples/mlflow/images/thumb/sphx_glr_plot_mlflow_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/mlflow/plot_mlflow`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">MLflow</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+Nc (NumCpp)
 ----------------------------------------------------------------------
 
 Examples related to the :py:mod:`~scikitplot.nc` submodule.
@@ -723,6 +761,23 @@ e.g., :py:class:`~scikitplot.preprocessing.DummyCodeEncoder`,
     <div class="sphx-glr-thumbnails">
 
 .. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The DummyCodeEncoder to encode each categorical features into dummy/indicator 0/1 variables. In this example, we will compare various different approaches for handling categorical features: GetDummies, TargetEncoder, OrdinalEncoder, OneHotEncoder, and dropping the category.">
+
+.. only:: html
+
+  .. image:: /auto_examples/preprocessing/images/thumb/sphx_glr_plot_dummy_code_encoder_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/preprocessing/plot_dummy_code_encoder`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Comparing DummyCode Encoder with Other Encoders</div>
+    </div>
+
 
 .. thumbnail-parent-div-close
 
@@ -898,14 +953,15 @@ e.g. a DL (ANN, CNN, NLP) :py:class:`~tensorflow.keras.Model` model instance.
     # visualkeras Need aggdraw tensorflow
     pip install scikitplot[core, cpu]
 
-    python -c "import tensorflow as tf, google.protobuf as pb; print('tf', tf.__version__); print('protobuf', pb.__version__)"
-    python -m pip check
-
     # or
     # !pip install aggdraw
     # !pip install tensorflow
 
-    pip install -U "protobuf<6"
+    python -c "import tensorflow as tf, google.protobuf as pb; print('tf', tf.__version__); print('protobuf', pb.__version__)"
+    python -m pip check
+
+    # If Needed
+    # pip install -U "protobuf<6"
     # pip install protobuf==5.29.4
     import tensorflow as tf
 
@@ -1092,6 +1148,7 @@ e.g. a DL (ANN, CNN, NLP) :py:class:`~tensorflow.keras.Model` model instance.
    /auto_examples/decile/index.rst
    /auto_examples/decomposition/index.rst
    /auto_examples/impute/index.rst
+   /auto_examples/mlflow/index.rst
    /auto_examples/nc/index.rst
    /auto_examples/preprocessing/index.rst
    /auto_examples/regression/index.rst

@@ -21,6 +21,8 @@
 Introduction to modelplotpy
 ================================
 
+.. currentmodule:: scikitplot.decile
+
 To install the latest version (with pip)::
 
     >>> pip install scikit-learn scikit-plots --upgrade
@@ -64,7 +66,7 @@ Here's a short description on the data we use:
 
 Let's load the data and have a quick look at it:
 
-.. GENERATED FROM PYTHON SOURCE LINES 48-53
+.. GENERATED FROM PYTHON SOURCE LINES 50-55
 
 .. code-block:: Python
 
@@ -80,12 +82,12 @@ Let's load the data and have a quick look at it:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-56
+.. GENERATED FROM PYTHON SOURCE LINES 56-58
 
 Loading the dataset
 ------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 56-100
+.. GENERATED FROM PYTHON SOURCE LINES 58-102
 
 .. code-block:: Python
 
@@ -152,13 +154,13 @@ Loading the dataset
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 101-104
+.. GENERATED FROM PYTHON SOURCE LINES 103-106
 
 Import Models
 -------------
 !pip install catboost -Uq
 
-.. GENERATED FROM PYTHON SOURCE LINES 104-110
+.. GENERATED FROM PYTHON SOURCE LINES 106-112
 
 .. code-block:: Python
 
@@ -181,7 +183,7 @@ Import Models
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 111-117
+.. GENERATED FROM PYTHON SOURCE LINES 113-119
 
 .. code-block:: Python
 
@@ -198,7 +200,7 @@ Import Models
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 118-126
+.. GENERATED FROM PYTHON SOURCE LINES 120-128
 
 .. code-block:: Python
 
@@ -217,7 +219,7 @@ Import Models
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 127-134
+.. GENERATED FROM PYTHON SOURCE LINES 129-136
 
 .. code-block:: Python
 
@@ -237,11 +239,11 @@ Import Models
  .. code-block:: none
 
 
-    '0.5.dev0+git.20260126.729947e'
+    '0.5.dev0+git.20260129.86bdfc1'
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 135-141
+.. GENERATED FROM PYTHON SOURCE LINES 137-143
 
 Train models on the bank dataset
 ------------------------------------------------
@@ -250,7 +252,7 @@ This well known module is a wrapper for many predictive modeling techniques,
 such as logistic regression, random forest and many, many others.
 Lets train a few models to evaluate with our plots.
 
-.. GENERATED FROM PYTHON SOURCE LINES 141-202
+.. GENERATED FROM PYTHON SOURCE LINES 143-204
 
 .. code-block:: Python
 
@@ -329,12 +331,12 @@ Lets train a few models to evaluate with our plots.
     [300]   validation_0-logloss:0.19339
     [400]   validation_0-logloss:0.19815
     [499]   validation_0-logloss:0.20117
-    0:      learn: 0.4927453        test: 0.4923715 best: 0.4923715 (0)     total: 51.3ms   remaining: 25.6s
-    100:    learn: 0.1676717        test: 0.1816126 best: 0.1815845 (99)    total: 428ms    remaining: 1.69s
-    200:    learn: 0.1558113        test: 0.1821743 best: 0.1810643 (134)   total: 837ms    remaining: 1.24s
-    300:    learn: 0.1470072        test: 0.1834927 best: 0.1810643 (134)   total: 1.25s    remaining: 824ms
-    400:    learn: 0.1397645        test: 0.1855101 best: 0.1810643 (134)   total: 1.68s    remaining: 415ms
-    499:    learn: 0.1339617        test: 0.1875986 best: 0.1810643 (134)   total: 2.09s    remaining: 0us
+    0:      learn: 0.4927453        test: 0.4923715 best: 0.4923715 (0)     total: 51.8ms   remaining: 25.9s
+    100:    learn: 0.1676717        test: 0.1816126 best: 0.1815845 (99)    total: 458ms    remaining: 1.81s
+    200:    learn: 0.1558113        test: 0.1821743 best: 0.1810643 (134)   total: 879ms    remaining: 1.31s
+    300:    learn: 0.1470072        test: 0.1834927 best: 0.1810643 (134)   total: 1.37s    remaining: 908ms
+    400:    learn: 0.1397645        test: 0.1855101 best: 0.1810643 (134)   total: 1.81s    remaining: 446ms
+    499:    learn: 0.1339617        test: 0.1875986 best: 0.1810643 (134)   total: 2.22s    remaining: 0us
 
     bestTest = 0.1810643099
     bestIteration = 134
@@ -344,14 +346,14 @@ Lets train a few models to evaluate with our plots.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 203-207
+.. GENERATED FROM PYTHON SOURCE LINES 205-209
 
 Plotting partial dependence for two features
 ------------------------------------------------
 For now, we focus on explaining to our marketing colleagues how good our predictive model
 can help them select customers for their term deposit campaign.
 
-.. GENERATED FROM PYTHON SOURCE LINES 207-232
+.. GENERATED FROM PYTHON SOURCE LINES 209-234
 
 .. code-block:: Python
 
@@ -447,11 +449,11 @@ can help them select customers for their term deposit campaign.
                   max_cat_to_onehot=None, max_delta_step=None, max_depth=6,
                   max_leaves=None, min_child_weight=None, missing=nan,
                   monotone_constraints=None, multi_strategy=None, n_estimators=500,
-                  n_jobs=None, num_parallel_tree=None, ...), <catboost.core.CatBoostClassifier object at 0x7f829e8aacd0>], 'model_labels': ['random forest', 'multinomial logit', 'XGBClassifier', 'CatBoostClassifier'], 'ntiles': 10, 'seed': 0}
+                  n_jobs=None, num_parallel_tree=None, ...), <catboost.core.CatBoostClassifier object at 0x7fc961a0e010>], 'model_labels': ['random forest', 'multinomial logit', 'XGBClassifier', 'CatBoostClassifier'], 'ntiles': 10, 'seed': 0}
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 233-258
+.. GENERATED FROM PYTHON SOURCE LINES 235-260
 
 What just happened? In the modelplotpy a class is instantiated and the plotting_scope function specifies
 the scope of the plots you want to show. In general, there are 3 methods (functions) that can be applied to
@@ -479,7 +481,7 @@ to focus on the random forest model on the test data. The default value for the 
 ``term deposit`` since we want to focus on customers that do take term deposits,
 this default is perfect.
 
-.. GENERATED FROM PYTHON SOURCE LINES 261-269
+.. GENERATED FROM PYTHON SOURCE LINES 263-271
 
 Let's introduce the Gains, Lift and (cumulative) Response plots.
 --------------------------------------------------------------------
@@ -490,7 +492,7 @@ from a different angle, they all use the same data:
 - Equally sized groups based on this predicted probability
 - Actual number of observed target class observations in these groups
 
-.. GENERATED FROM PYTHON SOURCE LINES 272-278
+.. GENERATED FROM PYTHON SOURCE LINES 274-280
 
 1. Cumulative gains plot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -499,7 +501,7 @@ The cumulative gains plot - often named 'gains plot' - helps you answer the ques
 When we apply the model and select the best X deciles,
 what % of the actual target class observations can we expect to target?
 
-.. GENERATED FROM PYTHON SOURCE LINES 278-286
+.. GENERATED FROM PYTHON SOURCE LINES 280-288
 
 .. code-block:: Python
 
@@ -536,7 +538,7 @@ what % of the actual target class observations can we expect to target?
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 287-295
+.. GENERATED FROM PYTHON SOURCE LINES 289-297
 
 .. tags::
 
@@ -547,7 +549,7 @@ what % of the actual target class observations can we expect to target?
    level: beginner
    purpose: showcase
 
-.. GENERATED FROM PYTHON SOURCE LINES 299-305
+.. GENERATED FROM PYTHON SOURCE LINES 301-307
 
 2. Cumulative lift plot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -556,7 +558,7 @@ The cumulative lift plot, often referred to as lift plot or index plot, helps yo
 When we apply the model and select the best X deciles,
 how many times better is that than using no model at all?
 
-.. GENERATED FROM PYTHON SOURCE LINES 305-312
+.. GENERATED FROM PYTHON SOURCE LINES 307-314
 
 .. code-block:: Python
 
@@ -592,7 +594,7 @@ how many times better is that than using no model at all?
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 313-322
+.. GENERATED FROM PYTHON SOURCE LINES 315-324
 
 .. tags::
 
@@ -604,7 +606,7 @@ how many times better is that than using no model at all?
    level: beginner
    purpose: showcase
 
-.. GENERATED FROM PYTHON SOURCE LINES 326-334
+.. GENERATED FROM PYTHON SOURCE LINES 328-336
 
 3. Response plot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -615,7 +617,7 @@ It can be used to answer the following business question:
 When we apply the model and select decile X,
 what is the expected % of target class observations in that decile?
 
-.. GENERATED FROM PYTHON SOURCE LINES 334-345
+.. GENERATED FROM PYTHON SOURCE LINES 336-347
 
 .. code-block:: Python
 
@@ -655,7 +657,7 @@ what is the expected % of target class observations in that decile?
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 346-353
+.. GENERATED FROM PYTHON SOURCE LINES 348-355
 
 4. Cumulative response plot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -665,7 +667,7 @@ It answers the question burning on each business reps lips:
 When we apply the model and select up until decile X,
 what is the expected % of target class observations in the selection?
 
-.. GENERATED FROM PYTHON SOURCE LINES 353-358
+.. GENERATED FROM PYTHON SOURCE LINES 355-360
 
 .. code-block:: Python
 
@@ -699,14 +701,14 @@ what is the expected % of target class observations in the selection?
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 359-363
+.. GENERATED FROM PYTHON SOURCE LINES 361-365
 
 All four plots together
 --------------------------------------------------------------------
 With the function call plot_all we get all four plots on one grid.
 We can easily save it to a file to include it in a presentation or share it with colleagues.
 
-.. GENERATED FROM PYTHON SOURCE LINES 363-374
+.. GENERATED FROM PYTHON SOURCE LINES 365-376
 
 .. code-block:: Python
 
@@ -802,7 +804,7 @@ We can easily save it to a file to include it in a presentation or share it with
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 375-378
+.. GENERATED FROM PYTHON SOURCE LINES 377-380
 
 .. code-block:: Python
 
@@ -917,7 +919,7 @@ We can easily save it to a file to include it in a presentation or share it with
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 379-383
+.. GENERATED FROM PYTHON SOURCE LINES 381-385
 
 .. code-block:: Python
 
@@ -1033,7 +1035,7 @@ We can easily save it to a file to include it in a presentation or share it with
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 384-390
+.. GENERATED FROM PYTHON SOURCE LINES 386-392
 
 Get more out of modelplotpy: using different scopes
 --------------------------------------------------------------------
@@ -1042,14 +1044,14 @@ using the scope parameter. Comparisons between different models, between differe
 and (in case of a multiclass target) between different target classes. Curious?
 Please have a look at the package documentation or read our other posts on modelplot.
 
-.. GENERATED FROM PYTHON SOURCE LINES 392-396
+.. GENERATED FROM PYTHON SOURCE LINES 394-398
 
 1. compare_models
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 However, to give one example, we could compare whether random forest
 was indeed the best choice to select the top-30% customers for a term deposit offer:
 
-.. GENERATED FROM PYTHON SOURCE LINES 396-403
+.. GENERATED FROM PYTHON SOURCE LINES 398-405
 
 .. code-block:: Python
 
@@ -1085,7 +1087,7 @@ was indeed the best choice to select the top-30% customers for a term deposit of
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 404-417
+.. GENERATED FROM PYTHON SOURCE LINES 406-419
 
 Financial Implications
 --------------------------------------------------------------------
@@ -1101,7 +1103,7 @@ For financial plots, three extra parameters need to be provided:
 | variable_costs_per_unit	| Numeric. Specifying the variable costs per selected unit for a selection based on the model. These costs vary with selection size (ntiles). |
 | profit_per_unit	| Numeric. Specifying the profit per unit in case the selected unit converts / responds positively. |
 
-.. GENERATED FROM PYTHON SOURCE LINES 420-428
+.. GENERATED FROM PYTHON SOURCE LINES 422-430
 
 1. Return on investment plot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1112,7 +1114,7 @@ It can be used to answer the following business question:
 When we apply the model and select up until decile X,
 what is the expected % return on investment of the campaign?
 
-.. GENERATED FROM PYTHON SOURCE LINES 428-440
+.. GENERATED FROM PYTHON SOURCE LINES 430-442
 
 .. code-block:: Python
 
@@ -1153,7 +1155,7 @@ what is the expected % return on investment of the campaign?
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 441-449
+.. GENERATED FROM PYTHON SOURCE LINES 443-451
 
 2. Costs & Revenues plot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1164,7 +1166,7 @@ It can be used to answer the following business question:
 When we apply the model and select up until decile X,
 what are the expected revenues and investments of the campaign?
 
-.. GENERATED FROM PYTHON SOURCE LINES 449-462
+.. GENERATED FROM PYTHON SOURCE LINES 451-464
 
 .. code-block:: Python
 
@@ -1206,7 +1208,7 @@ what are the expected revenues and investments of the campaign?
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 463-471
+.. GENERATED FROM PYTHON SOURCE LINES 465-473
 
 3. Profit plot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1217,7 +1219,7 @@ It can be used to answer the following business question:
 When we apply the model and select up until decile X,
 what is the expected profit of the campaign?
 
-.. GENERATED FROM PYTHON SOURCE LINES 471-484
+.. GENERATED FROM PYTHON SOURCE LINES 473-486
 
 .. code-block:: Python
 
@@ -1259,14 +1261,14 @@ what is the expected profit of the campaign?
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 485-489
+.. GENERATED FROM PYTHON SOURCE LINES 487-491
 
 All four plots together
 --------------------------------------------------------------------
 With the function call plot_all we get all four plots on one grid.
 We can easily save it to a file to include it in a presentation or share it with colleagues.
 
-.. GENERATED FROM PYTHON SOURCE LINES 489-502
+.. GENERATED FROM PYTHON SOURCE LINES 491-504
 
 .. code-block:: Python
 
@@ -1364,7 +1366,7 @@ We can easily save it to a file to include it in a presentation or share it with
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 503-508
+.. GENERATED FROM PYTHON SOURCE LINES 505-510
 
 .. code-block:: Python
 
@@ -1380,7 +1382,7 @@ We can easily save it to a file to include it in a presentation or share it with
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 509-520
+.. GENERATED FROM PYTHON SOURCE LINES 511-522
 
 Seems like the algorithm used will not make a big difference in this case.
 Hopefully you agree by now that using these plots really can make a difference in explaining
@@ -1397,7 +1399,7 @@ Happy modelplotting!
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 15.720 seconds)
+   **Total running time of the script:** (0 minutes 16.758 seconds)
 
 
 .. _sphx_glr_download_auto_examples_decile_plot_modelplotpy_script.py:
