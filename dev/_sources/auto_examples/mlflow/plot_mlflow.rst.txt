@@ -105,19 +105,72 @@ regardless of current working directory.
 
 .. GENERATED FROM PYTHON SOURCE LINES 27-30
 
-💡 Quiskstart: Beginner workflow demo
---------------------------------------
-Demo save config from default settings then custamize.
+.. code-block:: Python
 
-.. GENERATED FROM PYTHON SOURCE LINES 30-39
+
+    print(sp.mlflow.DEFAULT_PROJECT_MARKERS)
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    ('.git', 'configs', 'configs/mlflow.toml', 'Makefile', 'pyproject.toml', 'README', 'README.txt', 'README.md', 'README.rst')
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 31-35
+
+Environment (best for CI)
+-------------------------
+Default marker file-folder for auto detection
+Walk upward from `start` until a directory containing any marker is found.
+
+.. GENERATED FROM PYTHON SOURCE LINES 35-44
+
+.. code-block:: Python
+
+
+    import os
+
+    # export SCIKITPLOT_PROJECT_MARKERS='[".git","pyproject.toml","README.txt","configs/mlflow.toml"]'
+    os.environ["SCIKITPLOT_PROJECT_MARKERS"]='[".git","pyproject.toml","README.txt","configs/mlflow.toml"]'
+
+    # Check ROOT or base_dir is requested
+    sp.mlflow.find_project_root()
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    PosixPath('/home/circleci/repo/galleries/examples/mlflow')
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 45-48
+
+💡 Quiskstart Template: Beginner workflow demo
+-----------------------------------------------
+Demo save config from default settings then customize.
+
+.. GENERATED FROM PYTHON SOURCE LINES 48-57
 
 .. code-block:: Python
 
 
     sp.mlflow.workflow(
         profile="local",
-        open_ui_seconds=60,
-        experiment_name="my-first-project",
+        open_ui_seconds=5,
+        experiment_name="my-first-project",  # "scikitplot-project"
         fmt="toml",
         overwrite=True,  # Config already exists: ./configs/mlflow.toml (use overwrite=True).
     )
@@ -130,22 +183,23 @@ Demo save config from default settings then custamize.
 
  .. code-block:: none
 
-    2026/01/29 08:10:56 INFO mlflow.tracking.fluent: Experiment with name 'my-first-project' does not exist. Creating a new experiment.
-    🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/d0852321451040e0ab1cbe55dbd676ea
+    2026/02/01 06:38:25 INFO mlflow.tracking.fluent: Experiment with name 'my-first-project' does not exist. Creating a new experiment.
+    🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/b63ae1eeaf734339a8aa94e2676deddc
     🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
     🌐 Open MLflow UI: http://127.0.0.1:8891
-    🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/bee658a28c40445bacc0bf5ee0943e89
+    🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/659c6baef44649a9bbd3631cdde7ba6f
     🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
 
+    WorkflowPaths(_project_root=PosixPath('/home/circleci/repo/galleries/examples/mlflow'), _config_dir=PosixPath('/home/circleci/repo/galleries/examples/mlflow/configs'), _toml_path=PosixPath('/home/circleci/repo/galleries/examples/mlflow/configs/mlflow.toml'), _yaml_path=PosixPath('/home/circleci/repo/galleries/examples/mlflow/configs/mlflow.yaml'))
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-42
+.. GENERATED FROM PYTHON SOURCE LINES 58-60
 
 🛠️ How to use customized settings?
 ----------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 42-68
+.. GENERATED FROM PYTHON SOURCE LINES 60-88
 
 .. code-block:: Python
 
@@ -155,6 +209,7 @@ Demo save config from default settings then custamize.
 
 
     ROOT = sp.mlflow.find_project_root(config_path=None)
+
     with sp.mlflow.session_from_file(ROOT / "configs/mlflow.toml", profile="local") as mlflow:
         with mlflow.start_run():  # default_run_name + default tags apply automatically
             mlflow.log_param("phase", "train")
@@ -163,7 +218,8 @@ Demo save config from default settings then custamize.
         sp.mlflow.dump_project_config_yaml(source_config_path=None)
 
 
-    ROOT = sp.mlflow.find_project_root(config_path=None)
+    # ROOT = sp.mlflow.find_project_root(config_path=None)
+
     with sp.mlflow.session_from_file(ROOT / "configs/mlflow.yaml", profile="local") as mlflow:
         print("Open MLflow UI:", mlflow.ui_url)
         # do something
@@ -183,16 +239,16 @@ Demo save config from default settings then custamize.
 
  .. code-block:: none
 
-    🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/4db8ac6f468d46f887b2590fb609e3ab
+    🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/2f7c12b49cc440ff87b204b80a0ca820
     🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
     Open MLflow UI: http://127.0.0.1:8891
-    🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/d36c2b42e7854bd483c6e5b874fe53d4
+    🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/e0075fe29e2f412caf2f7c6c8b483e45
     🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 69-77
+.. GENERATED FROM PYTHON SOURCE LINES 89-97
 
 .. tags::
 
@@ -206,7 +262,7 @@ Demo save config from default settings then custamize.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 43.320 seconds)
+   **Total running time of the script:** (0 minutes 57.996 seconds)
 
 
 .. _sphx_glr_download_auto_examples_mlflow_plot_mlflow.py:

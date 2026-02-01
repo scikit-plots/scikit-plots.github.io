@@ -589,6 +589,20 @@
 <li class="toctree-l2"><a class="reference internal" href="clustering/plot_silhouette_script.html">plot_silhouette with examples</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="cython/index.html">Cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="cython/plot_00_quickstart_compile_and_load.html">Cython quickstart: compile_and_load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cython/plot_01_browse_and_compile_templates.html">Browse and compile templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cython/plot_02_build_profiles.html">Build profiles: fast-debug, release, annotate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cython/plot_03_cache_and_restart_reuse.html">Cache and restart reuse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cython/plot_04_pin_alias.html">Pin/Alias: stable handles for cached builds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cython/plot_05_package_examples_multimodule.html">Multi-module package builds (5 package examples)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cython/plot_06_multifile_support_files.html">Multi-file builds: .pxi includes and external headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cython/plot_07_cpp_mode_basics.html">C++ mode basics: cppclass and libcpp containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cython/plot_08_vector_ops_without_numpy.html">Vector ops without NumPy: array(‘d’) + memoryviews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cython/plot_09_workflow_templates_cli.html">Workflow templates (train / hpo / predict) + CLI entry template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cython/plot_cython_template.html">Cython: Realtime compile_and_load (.pyx)</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="decile/index.html">Decile</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="decile/plot_cumulative_gain_script.html">plot_cumulative_gain with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="decile/plot_ks_statistic_script.html">plot_ks_statistic with examples</a></li>
@@ -789,6 +803,52 @@ and source code.</p>
 <p><a class="reference internal" href="clustering/plot_silhouette_script.html"><span class="doc">plot_silhouette with examples</span></a></p>
   <div class="sphx-glr-thumbnail-title">plot_silhouette with examples</div>
 </div></div></section>
+<section id="id1">
+<h2>Cython<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Examples related to the <a class="reference internal" href="../apis/scikitplot.cython.html#module-scikitplot.cython" title="scikitplot.cython"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cython</span></code></a> submodule.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: "$ ";
+}
+</style><span class="prompt1"><span class="c1"># 💡cython Need cython and setuptools</span></span>
+<span class="prompt1">pip<span class="w"> </span>install<span class="w"> </span>scikitplot<span class="o">[</span>build<span class="o">]</span><span class="w"> </span>setuptools</span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="c1"># (Recommended)</span></span>
+<span class="prompt1"><span class="c1"># !pip install cython setuptools</span></span>
+</pre></div></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example shows the minimal workflow:"><img alt="" src="../_images/sphx_glr_plot_00_quickstart_compile_and_load_thumb.png" />
+<p><a class="reference internal" href="cython/plot_00_quickstart_compile_and_load.html"><span class="doc">Cython quickstart: compile_and_load</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Cython quickstart: compile_and_load</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to:"><img alt="" src="../_images/sphx_glr_plot_01_browse_and_compile_templates_thumb.png" />
+<p><a class="reference internal" href="cython/plot_01_browse_and_compile_templates.html"><span class="doc">Browse and compile templates</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Browse and compile templates</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Profiles provide canonical preset build options, while keeping explicit user-provided arguments authoritative."><img alt="" src="../_images/sphx_glr_plot_02_build_profiles_thumb.png" />
+<p><a class="reference internal" href="cython/plot_02_build_profiles.html"><span class="doc">Build profiles: fast-debug, release, annotate</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Build profiles: fast-debug, release, annotate</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Compiled artifacts are cached on disk. After a Python kernel restart, you can import the cached module again without recompiling (as long as the runtime fingerprint matches)."><img alt="" src="../_images/sphx_glr_plot_03_cache_and_restart_reuse_thumb.png" />
+<p><a class="reference internal" href="cython/plot_03_cache_and_restart_reuse.html"><span class="doc">Cache and restart reuse</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Cache and restart reuse</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Pins provide a human-friendly alias for a cached build key:"><img alt="" src="../_images/sphx_glr_plot_04_pin_alias_thumb.png" />
+<p><a class="reference internal" href="cython/plot_04_pin_alias.html"><span class="doc">Pin/Alias: stable handles for cached builds</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Pin/Alias: stable handles for cached builds</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to build a small compiled package consisting of multiple Cython extension modules in one build directory."><img alt="" src="../_images/sphx_glr_plot_05_package_examples_multimodule_thumb.png" />
+<p><a class="reference internal" href="cython/plot_05_package_examples_multimodule.html"><span class="doc">Multi-module package builds (5 package examples)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Multi-module package builds (5 package examples)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Real projects often split Cython code across multiple files:"><img alt="" src="../_images/sphx_glr_plot_06_multifile_support_files_thumb.png" />
+<p><a class="reference internal" href="cython/plot_06_multifile_support_files.html"><span class="doc">Multi-file builds: .pxi includes and external headers</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Multi-file builds: .pxi includes and external headers</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates a minimal C++-mode build using:"><img alt="" src="../_images/sphx_glr_plot_07_cpp_mode_basics_thumb.png" />
+<p><a class="reference internal" href="cython/plot_07_cpp_mode_basics.html"><span class="doc">C++ mode basics: cppclass and libcpp containers</span></a></p>
+  <div class="sphx-glr-thumbnail-title">C++ mode basics: cppclass and libcpp containers</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="You can write fast numeric code without NumPy using Python&#x27;s array module and typed memoryviews."><img alt="" src="../_images/sphx_glr_plot_08_vector_ops_without_numpy_thumb.png" />
+<p><a class="reference internal" href="cython/plot_08_vector_ops_without_numpy.html"><span class="doc">Vector ops without NumPy: array(‘d’) + memoryviews</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Vector ops without NumPy: array('d') + memoryviews</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Workflow templates are shipped as package data under _templates/workflow/. They are designed to be copied into any project directory and executed directly."><img alt="" src="../_images/sphx_glr_plot_09_workflow_templates_cli_thumb.png" />
+<p><a class="reference internal" href="cython/plot_09_workflow_templates_cli.html"><span class="doc">Workflow templates (train / hpo / predict) + CLI entry template</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Workflow templates (train / hpo / predict) + CLI entry template</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.cython submodule.."><img alt="" src="../_images/sphx_glr_plot_cython_template_thumb.png" />
+<p><a class="reference internal" href="cython/plot_cython_template.html"><span class="doc">Cython: Realtime compile_and_load (.pyx)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Cython: Realtime compile_and_load (.pyx)</div>
+</div></div></section>
 <section id="decile">
 <h2>Decile<a class="headerlink" href="#decile" title="Link to this heading">#</a></h2>
 <p>Examples related to the <a class="reference internal" href="../apis/scikitplot.decile.html#module-scikitplot.decile" title="scikitplot.decile"><code class="xref py py-mod docutils literal notranslate"><span class="pre">decile</span></code></a> submodule with e.g. <a class="reference external" href="https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="(in scikit-learn v1.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a> instance.</p>
@@ -837,15 +897,25 @@ with a scikit-learn regressor (e.g., <a class="reference external" href="https:/
 <li><p><a class="reference external" href="https://www.kaggle.com/code/clkmuhammed/houses-prices-tree-based-models">Houses Prices Tree Based Models (pickling ANNImputer)</a></p></li>
 </ul>
 </div>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.impute._ann.ANNImputer class with a scikit-learn regressor (e.g., :py~sklearn.linear_model.LinearRegression) instance."><img alt="" src="../_images/sphx_glr_plot_impute_script_thumb.png" />
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1"># 💡impute may need voyager</span></span>
+<span class="prompt1">pip<span class="w"> </span>install<span class="w"> </span>scikitplot<span class="o">[</span>core<span class="o">]</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="c1"># (Optionally)</span></span>
+<span class="prompt1"><span class="c1"># !pip install voyager</span></span>
+</pre></div></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.impute._ann.ANNImputer class with a scikit-learn regressor (e.g., :py~sklearn.linear_model.LinearRegression) instance."><img alt="" src="../_images/sphx_glr_plot_impute_script_thumb.png" />
 <p><a class="reference internal" href="impute/plot_impute_script.html"><span class="doc">annoy impute with examples</span></a></p>
   <div class="sphx-glr-thumbnail-title">annoy impute with examples</div>
 </div></div></section>
-<section id="id2">
-<h2>MLflow<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h2>MLflow<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>Examples related to the <a class="reference internal" href="../apis/scikitplot.mlflow.html#module-scikitplot.mlflow" title="scikitplot.mlflow"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mlflow</span></code></a> submodule
 with a scikit-learn regressor (e.g., <a class="reference external" href="https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression" title="(in scikit-learn v1.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearRegression</span></code></a>) instance.</p>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.mlflow submodule.."><img alt="" src="../_images/sphx_glr_plot_mlflow_thumb.png" />
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1"># 💡mlflow Need mlflow</span></span>
+<span class="prompt1">pip<span class="w"> </span>install<span class="w"> </span>scikitplot<span class="o">[</span>mlflow<span class="o">]</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="c1"># (Recommended)</span></span>
+<span class="prompt1"><span class="c1"># !pip install mlflow</span></span>
+</pre></div></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.mlflow submodule.."><img alt="" src="../_images/sphx_glr_plot_mlflow_thumb.png" />
 <p><a class="reference internal" href="mlflow/plot_mlflow.html"><span class="doc">MLflow</span></a></p>
   <div class="sphx-glr-thumbnail-title">MLflow</div>
 </div></div></section>
@@ -878,8 +948,8 @@ e.g., <a class="reference internal" href="../modules/generated/scikitplot.prepro
 <p><a class="reference internal" href="regression/plot_residuals_distribution_script.html"><span class="doc">plot_residuals_distribution with examples</span></a></p>
   <div class="sphx-glr-thumbnail-title">plot_residuals_distribution with examples</div>
 </div></div></section>
-<section id="id3">
-<h2>Seaborn<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h2>Seaborn<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>Examples related to the <a class="reference internal" href="../apis/scikitplot.seaborn.html#module-scikitplot.seaborn" title="scikitplot.seaborn"><code class="xref py py-mod docutils literal notranslate"><span class="pre">seaborn</span></code></a> submodule
 with a scikit-learn regressor (e.g., <a class="reference external" href="https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression" title="(in scikit-learn v1.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearRegression</span></code></a>) instance.</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.seaborn.aucplot function with a scikit-learn classifier (e.g., :py~sklearn.linear_model.LogisticRegression) instance."><img alt="" src="../_images/sphx_glr_plot_aucplot_script_thumb.png" />
@@ -910,14 +980,10 @@ e.g. a DL (ANN, CNN, NLP) <a class="reference external" href="https://www.tensor
 <li><p><a class="reference external" href="https://www.linkedin.com/feed/update/urn:li:activity:7338966863403528192/">🚫 transformers deprecated models</a>.</p></li>
 </ul>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
-span.prompt1:before {
-  content: "$ ";
-}
-</style><span class="prompt1"><span class="c1"># visualkeras Need aggdraw tensorflow</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1"># 💡visualkeras Need aggdraw tensorflow or tensorflow-cpu</span></span>
 <span class="prompt1">pip<span class="w"> </span>install<span class="w"> </span>scikitplot<span class="o">[</span>core,<span class="w"> </span>cpu<span class="o">]</span></span>
 <span class="prompt1"></span>
-<span class="prompt1"><span class="c1"># or</span></span>
+<span class="prompt1"><span class="c1"># (Recommended)</span></span>
 <span class="prompt1"><span class="c1"># !pip install aggdraw</span></span>
 <span class="prompt1"><span class="c1"># !pip install tensorflow</span></span>
 <span class="prompt1"></span>
@@ -1031,7 +1097,7 @@ span.prompt1:before {
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260129.86bdfc1 2026-01-29T08:02Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260201.e33c76c 2026-02-01T06:29Z.
       <br/>
     
   </p>

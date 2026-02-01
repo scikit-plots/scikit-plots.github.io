@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/user_guide/mlflow/index.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="Examples relevant to the mlflow module." />
+<meta property="og:description" content="Examples relevant to the mlflow module. Adds a project-level configuration mechanism so multiple scripts (e.g., train.py, hpo.py, predict.py) share the exact same MLflow settings, regardless of cur..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="Examples relevant to the mlflow module." />
+<meta name="description" content="Examples relevant to the mlflow module. Adds a project-level configuration mechanism so multiple scripts (e.g., train.py, hpo.py, predict.py) share the exact same MLflow settings, regardless of cur..." />
 
     <title>MLflow Workflow Automation &#8212; scikit-plots 0.5.dev0 documentation</title>
   
@@ -577,6 +577,12 @@
 </details></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cython/index.html">Cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cython/_templates/templates_index.html">Cython templates</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../decile/index.html">Decile-Wise Performance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../decile/kds.html">KeyToDataScience</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../decile/modelplotpy.html">ModelPlotPy</a></li>
@@ -587,13 +593,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../impute/index.html">Impute</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../logging/index.html">Logging System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../logging/index.html">Logging</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">MLflow</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../nc/index.html">Nc (NumCpp)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nc/index.html">Nc</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../preprocessing/index.html">Preprocessing</a></li>
@@ -695,20 +701,35 @@
   <section id="mlflow-workflow-automation">
 <span id="mlflow-index"></span><h1>MLflow Workflow Automation<a class="headerlink" href="#mlflow-workflow-automation" title="Link to this heading">#</a></h1>
 <p>Examples relevant to the <a class="reference internal" href="../../apis/scikitplot.mlflow.html#module-scikitplot.mlflow" title="scikitplot.mlflow"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mlflow</span></code></a> module.</p>
+<p>Adds a <strong>project-level configuration</strong> mechanism so multiple scripts
+(e.g., <code class="docutils literal notranslate"><span class="pre">train.py</span></code>, <code class="docutils literal notranslate"><span class="pre">hpo.py</span></code>, <code class="docutils literal notranslate"><span class="pre">predict.py</span></code>) share the exact same MLflow settings,
+regardless of current working directory.</p>
+<p class="rubric">Quiskstart Template: Beginner workflow demo</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
 span.prompt1:before {
   content: ">>> ";
 }
-</style><span class="prompt1"><span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span></span>
+</style><span class="prompt1"><span class="kn">import</span><span class="w"> </span><span class="nn">os</span></span>
+<span class="prompt1"><span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="c1"># print(sp.mlflow.DEFAULT_PROJECT_MARKERS)</span></span>
+<span class="prompt1"><span class="c1"># Walk upward from `start` until a directory containing any marker is found.</span></span>
+<span class="prompt1"><span class="c1"># export SCIKITPLOT_PROJECT_MARKERS=&#39;[&quot;.git&quot;,&quot;pyproject.toml&quot;,&quot;README.txt&quot;,&quot;configs/mlflow.toml&quot;]&#39;</span></span>
+<span class="prompt1"><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;SCIKITPLOT_PROJECT_MARKERS&quot;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;[&quot;.git&quot;,&quot;pyproject.toml&quot;,&quot;README.txt&quot;,&quot;configs/mlflow.toml&quot;]&#39;</span></span>
 <span class="prompt1"></span>
 <span class="prompt1"><span class="n">sp</span><span class="o">.</span><span class="n">mlflow</span><span class="o">.</span><span class="n">workflow</span><span class="p">(</span></span>
 <span class="prompt1">    <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;local&quot;</span><span class="p">,</span></span>
 <span class="prompt1">    <span class="n">open_ui_seconds</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span></span>
 <span class="prompt1">    <span class="n">experiment_name</span><span class="o">=</span><span class="s2">&quot;my-first-project&quot;</span><span class="p">,</span></span>
 <span class="prompt1">    <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;toml&quot;</span><span class="p">,</span></span>
-<span class="prompt1">    <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># Config already exists: ./configs/mlflow.toml (use overwrite=True).</span></span>
+<span class="prompt1">    <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># If config already exists: ./configs/mlflow.toml (use overwrite=True).</span></span>
 <span class="prompt1"><span class="p">)</span></span>
-</pre></div></div></section>
+</pre></div></div><p class="rubric">Examples</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../auto_examples/mlflow/plot_mlflow.html#sphx-glr-auto-examples-mlflow-plot-mlflow-py"><span class="std std-ref">MLflow</span></a>: Example usage of
+<a class="reference internal" href="../../modules/generated/scikitplot.mlflow.workflow.html#scikitplot.mlflow.workflow" title="scikitplot.mlflow.workflow"><code class="xref py py-func docutils literal notranslate"><span class="pre">workflow</span></code></a> using template.</p></li>
+</ul>
+</section>
 
 
                 </article>
@@ -787,7 +808,7 @@ span.prompt1:before {
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260129.86bdfc1 2026-01-29T08:02Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260201.e33c76c 2026-02-01T06:29Z.
       <br/>
     
   </p>

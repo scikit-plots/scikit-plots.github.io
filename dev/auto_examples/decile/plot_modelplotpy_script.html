@@ -370,6 +370,20 @@
 <li class="toctree-l2"><a class="reference internal" href="../clustering/plot_silhouette_script.html">plot_silhouette with examples</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cython/index.html">Cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_00_quickstart_compile_and_load.html">Cython quickstart: compile_and_load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_01_browse_and_compile_templates.html">Browse and compile templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_02_build_profiles.html">Build profiles: fast-debug, release, annotate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_03_cache_and_restart_reuse.html">Cache and restart reuse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_04_pin_alias.html">Pin/Alias: stable handles for cached builds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_05_package_examples_multimodule.html">Multi-module package builds (5 package examples)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_06_multifile_support_files.html">Multi-file builds: .pxi includes and external headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_07_cpp_mode_basics.html">C++ mode basics: cppclass and libcpp containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_08_vector_ops_without_numpy.html">Vector ops without NumPy: array(‘d’) + memoryviews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_09_workflow_templates_cli.html">Workflow templates (train / hpo / predict) + CLI entry template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_cython_template.html">Cython: Realtime compile_and_load (.pyx)</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Decile</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="plot_cumulative_gain_script.html">plot_cumulative_gain with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_ks_statistic_script.html">plot_ks_statistic with examples</a></li>
@@ -589,7 +603,7 @@ not how to build a perfect model, we’ll use six of these columns in our exampl
 <a class="sphx-glr-backref-module-scikitplot sphx-glr-backref-type-py-data" href="../../modules/generated/scikitplot.__version__.html#scikitplot.__version__" title="scikitplot.__version__"><span class="n">sp</span><span class="o">.</span><span class="n">__version__</span></a>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>'0.5.dev0+git.20260129.86bdfc1'
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>'0.5.dev0+git.20260201.e33c76c'
 </pre></div>
 </div>
 </section>
@@ -665,12 +679,12 @@ Lets train a few models to evaluate with our plots.</p>
 [300]   validation_0-logloss:0.19339
 [400]   validation_0-logloss:0.19815
 [499]   validation_0-logloss:0.20117
-0:      learn: 0.4927453        test: 0.4923715 best: 0.4923715 (0)     total: 51.8ms   remaining: 25.9s
-100:    learn: 0.1676717        test: 0.1816126 best: 0.1815845 (99)    total: 458ms    remaining: 1.81s
-200:    learn: 0.1558113        test: 0.1821743 best: 0.1810643 (134)   total: 879ms    remaining: 1.31s
-300:    learn: 0.1470072        test: 0.1834927 best: 0.1810643 (134)   total: 1.37s    remaining: 908ms
-400:    learn: 0.1397645        test: 0.1855101 best: 0.1810643 (134)   total: 1.81s    remaining: 446ms
-499:    learn: 0.1339617        test: 0.1875986 best: 0.1810643 (134)   total: 2.22s    remaining: 0us
+0:      learn: 0.4927453        test: 0.4923715 best: 0.4923715 (0)     total: 52.4ms   remaining: 26.1s
+100:    learn: 0.1676717        test: 0.1816126 best: 0.1815845 (99)    total: 484ms    remaining: 1.91s
+200:    learn: 0.1558113        test: 0.1821743 best: 0.1810643 (134)   total: 956ms    remaining: 1.42s
+300:    learn: 0.1470072        test: 0.1834927 best: 0.1810643 (134)   total: 1.39s    remaining: 921ms
+400:    learn: 0.1397645        test: 0.1855101 best: 0.1810643 (134)   total: 1.86s    remaining: 460ms
+499:    learn: 0.1339617        test: 0.1875986 best: 0.1810643 (134)   total: 2.34s    remaining: 0us
 
 bestTest = 0.1810643099
 bestIteration = 134
@@ -765,7 +779,7 @@ Length: 12357, dtype: int64], 'dataset_labels': ['train data', 'test data'], 'mo
               max_cat_to_onehot=None, max_delta_step=None, max_depth=6,
               max_leaves=None, min_child_weight=None, missing=nan,
               monotone_constraints=None, multi_strategy=None, n_estimators=500,
-              n_jobs=None, num_parallel_tree=None, ...), &lt;catboost.core.CatBoostClassifier object at 0x7fc961a0e010&gt;], 'model_labels': ['random forest', 'multinomial logit', 'XGBClassifier', 'CatBoostClassifier'], 'ntiles': 10, 'seed': 0}
+              n_jobs=None, num_parallel_tree=None, ...), &lt;catboost.core.CatBoostClassifier object at 0x7f930efea810&gt;], 'model_labels': ['random forest', 'multinomial logit', 'XGBClassifier', 'CatBoostClassifier'], 'ntiles': 10, 'seed': 0}
 </pre></div>
 </div>
 <p>What just happened? In the modelplotpy a class is instantiated and the plotting_scope function specifies
@@ -1415,7 +1429,7 @@ Any other feedback or suggestions, please let us know
 via <a class="reference external" href="mailto:pb.marcus%40hotmail.com">pb<span>.</span>marcus</a>
 or <a class="reference external" href="mailto:jurriaan.nagelkerke%40gmail.com">jurriaan<span>.</span>nagelkerke</a>.</p>
 <p>Happy modelplotting!</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 16.758 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 17.173 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="To install the latest version (with pip)::"><img alt="" src="../../_images/sphx_glr_plot_modelplotpy_legacy_script_thumb.png"/>
@@ -1424,9 +1438,9 @@ or <a class="reference external" href="mailto:jurriaan.nagelkerke%40gmail.com">j
 </div><div class="sphx-glr-thumbcontainer" tooltip="The DummyCodeEncoder to encode each categorical features into dummy/indicator 0/1 variables. In this example, we will compare various different approaches for handling categorical features: GetDummies, TargetEncoder, OrdinalEncoder, OneHotEncoder, and dropping the category."><img alt="" src="../../_images/sphx_glr_plot_dummy_code_encoder_thumb.png"/>
 <p><a class="reference internal" href="../preprocessing/plot_dummy_code_encoder.html"><span class="doc">Comparing DummyCode Encoder with Other Encoders</span></a></p>
 <div class="sphx-glr-thumbnail-title">Comparing DummyCode Encoder with Other Encoders</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_calibration function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_calibration_script_thumb.png"/>
-<p><a class="reference internal" href="../calibration/plot_calibration_script.html"><span class="doc">plot_calibration with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">plot_calibration with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.estimators.plot_feature_importances function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_feature_importances_script_thumb.png"/>
+<p><a class="reference internal" href="../classification/plot_feature_importances_script.html"><span class="doc">plot_feature_importances with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">plot_feature_importances with examples</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_residuals_distribution function used by a scikit-learn regressor."><img alt="" src="../../_images/sphx_glr_plot_residuals_distribution_script_thumb.png"/>
 <p><a class="reference internal" href="../stats/plot_residuals_distribution_script.html"><span class="doc">plot_residuals_distribution with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">plot_residuals_distribution with examples</div>
@@ -1496,7 +1510,7 @@ or <a class="reference external" href="mailto:jurriaan.nagelkerke%40gmail.com">j
 <li><a href="../../_sources/auto_examples/decile/plot_modelplotpy_script.rst.txt" rel="nofollow">Show Source</a></li>
 </ul>
 </div></div>
-<div class="sidebar-secondary-item"><div title="plot_modelplotpy_script.py"><a download="" href="../../_downloads/388a02c64ed0507c1b32e415c7bfb450/plot_modelplotpy_script.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_modelplotpy_script.ipynb"><a download="" href="../../_downloads/1ba7c4f462620b51056711582a22d3fe/plot_modelplotpy_script.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/decile/plot_modelplotpy_script.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo4.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/decile/plot_modelplotpy_script.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo4.svg"/></a></div></div></div></div>
+<div class="sidebar-secondary-item"><div title="plot_modelplotpy_script.py"><a download="" href="../../_downloads/388a02c64ed0507c1b32e415c7bfb450/plot_modelplotpy_script.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_modelplotpy_script.ipynb"><a download="" href="../../_downloads/1ba7c4f462620b51056711582a22d3fe/plot_modelplotpy_script.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/decile/plot_modelplotpy_script.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo5.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/decile/plot_modelplotpy_script.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo5.svg"/></a></div></div></div></div>
 </div>
 <footer class="bd-footer-content">
 </footer>
@@ -1512,7 +1526,7 @@ or <a class="reference external" href="mailto:jurriaan.nagelkerke%40gmail.com">j
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260129.86bdfc1 2026-01-29T08:02Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260201.e33c76c 2026-02-01T06:29Z.
       <br/>
 </p>
 </div>

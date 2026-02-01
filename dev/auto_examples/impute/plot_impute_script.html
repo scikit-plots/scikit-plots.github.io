@@ -370,6 +370,20 @@
 <li class="toctree-l2"><a class="reference internal" href="../clustering/plot_silhouette_script.html">plot_silhouette with examples</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cython/index.html">Cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_00_quickstart_compile_and_load.html">Cython quickstart: compile_and_load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_01_browse_and_compile_templates.html">Browse and compile templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_02_build_profiles.html">Build profiles: fast-debug, release, annotate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_03_cache_and_restart_reuse.html">Cache and restart reuse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_04_pin_alias.html">Pin/Alias: stable handles for cached builds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_05_package_examples_multimodule.html">Multi-module package builds (5 package examples)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_06_multifile_support_files.html">Multi-file builds: .pxi includes and external headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_07_cpp_mode_basics.html">C++ mode basics: cppclass and libcpp containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_08_vector_ops_without_numpy.html">Vector ops without NumPy: array(‘d’) + memoryviews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_09_workflow_templates_cli.html">Workflow templates (train / hpo / predict) + CLI entry template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_cython_template.html">Cython: Realtime compile_and_load (.pyx)</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../decile/index.html">Decile</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../decile/plot_cumulative_gain_script.html">plot_cumulative_gain with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../decile/plot_ks_statistic_script.html">plot_ks_statistic with examples</a></li>
@@ -613,7 +627,7 @@ df.head()</p>
 <span class="n">time_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">T</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>20.282107830047607
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>20.64282727241516
 </pre></div>
 </div>
 </section>
@@ -639,7 +653,7 @@ replaced by 0:</p>
 <span class="n">time_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">T</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>21.603069305419922
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>20.735631704330444
 </pre></div>
 </div>
 </section>
@@ -663,7 +677,7 @@ replaced by 0:</p>
 <span class="n">time_data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">T</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>22.93610143661499
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>21.786349773406982
 </pre></div>
 </div>
 </section>
@@ -690,7 +704,7 @@ results (otherwise known as a ‘long tail’).</p>
 <span class="n">time_data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">T</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>22.716754913330078
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>21.656567811965942
 </pre></div>
 </div>
 </section>
@@ -721,7 +735,7 @@ consider re-scaling them to potentially improve performance.</p>
 <span class="n">time_data</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">T</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>90.42242240905762
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>64.81722474098206
 </pre></div>
 </div>
 </section>
@@ -756,7 +770,7 @@ so we re-scale the features in the California housing dataset.</p>
 <span class="n">time_data</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">T</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>23.7593092918396
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>22.10256338119507
 </pre></div>
 </div>
 </section>
@@ -774,7 +788,7 @@ so we re-scale the features in the California housing dataset.</p>
 <span class="c1"># print(ANNImputer.__doc__)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0.5.dev0+git.20260129.86bdfc1
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0.5.dev0+git.20260201.e33c76c
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">t0</span> <span class="o">=</span> <a class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/time.html#time.time" title="time.time"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
@@ -798,7 +812,25 @@ so we re-scale the features in the California housing dataset.</p>
 <span class="n">time_data</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">T</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>25.92217707633972
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2026-02-01 06:37:24.711516: I scikitplot 139814615321472 _time.py:76:__enter__] Building `voyager.Index` for nearest neighbors approximate search...
+2026-02-01 06:37:24.729949: I scikitplot 139814615321472 _time.py:94:__exit__] ⏱ → Completed in 0.018s
+2026-02-01 06:37:24.730558: I scikitplot 139814615321472 _time.py:76:__enter__] Transforming with voyager...
+2026-02-01 06:37:24.749107: I scikitplot 139814615321472 _time.py:94:__exit__] ⏱ → Completed in 0.019s
+2026-02-01 06:37:24.750110: I scikitplot 139814615321472 _time.py:76:__enter__] Transforming with voyager...
+2026-02-01 06:37:24.757105: I scikitplot 139814615321472 _time.py:94:__exit__] ⏱ → Completed in 0.007s
+2026-02-01 06:37:25.486284: I scikitplot 139814615321472 _time.py:76:__enter__] Building `voyager.Index` for nearest neighbors approximate search...
+2026-02-01 06:37:27.178988: I scikitplot 139814615321472 _time.py:94:__exit__] ⏱ → Completed in 1.693s
+2026-02-01 06:37:27.182442: I scikitplot 139814615321472 _time.py:76:__enter__] Transforming with voyager...
+2026-02-01 06:37:28.116319: I scikitplot 139814615321472 _time.py:94:__exit__] ⏱ → Completed in 0.934s
+2026-02-01 06:37:28.121622: I scikitplot 139814615321472 _time.py:76:__enter__] Transforming with voyager...
+2026-02-01 06:37:28.419988: I scikitplot 139814615321472 _time.py:94:__exit__] ⏱ → Completed in 0.298s
+2026-02-01 06:37:49.212478: I scikitplot 139814615321472 _time.py:76:__enter__] Building `voyager.Index` for nearest neighbors approximate search...
+2026-02-01 06:37:49.237920: I scikitplot 139814615321472 _time.py:94:__exit__] ⏱ → Completed in 0.025s
+2026-02-01 06:37:49.238762: I scikitplot 139814615321472 _time.py:76:__enter__] Transforming with voyager...
+2026-02-01 06:37:49.262672: I scikitplot 139814615321472 _time.py:94:__exit__] ⏱ → Completed in 0.024s
+2026-02-01 06:37:49.263712: I scikitplot 139814615321472 _time.py:76:__enter__] Transforming with voyager...
+2026-02-01 06:37:49.272404: I scikitplot 139814615321472 _time.py:94:__exit__] ⏱ → Completed in 0.009s
+25.24638080596924
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">t0</span> <span class="o">=</span> <a class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/time.html#time.time" title="time.time"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
@@ -829,7 +861,25 @@ so we re-scale the features in the California housing dataset.</p>
 <span class="n">time_data</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="n">T</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>25.700446605682373
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2026-02-01 06:37:49.957953: I scikitplot 139814615321472 _time.py:76:__enter__] Building `AnnoyIndex` for nearest neighbors approximate search...
+2026-02-01 06:37:49.964153: I scikitplot 139814615321472 _time.py:94:__exit__] ⏱ → Completed in 0.006s
+2026-02-01 06:37:49.964627: I scikitplot 139814615321472 _time.py:76:__enter__] Transforming with Annoy...
+2026-02-01 06:37:49.989359: I scikitplot 139814615321472 _time.py:94:__exit__] ⏱ → Completed in 0.025s
+2026-02-01 06:37:49.990226: I scikitplot 139814615321472 _time.py:76:__enter__] Transforming with Annoy...
+2026-02-01 06:37:49.998661: I scikitplot 139814615321472 _time.py:94:__exit__] ⏱ → Completed in 0.008s
+2026-02-01 06:37:50.733480: I scikitplot 139814615321472 _time.py:76:__enter__] Building `AnnoyIndex` for nearest neighbors approximate search...
+2026-02-01 06:37:51.055437: I scikitplot 139814615321472 _time.py:94:__exit__] ⏱ → Completed in 0.322s
+2026-02-01 06:37:51.057404: I scikitplot 139814615321472 _time.py:76:__enter__] Transforming with Annoy...
+2026-02-01 06:37:52.399868: I scikitplot 139814615321472 _time.py:94:__exit__] ⏱ → Completed in 1.342s
+2026-02-01 06:37:52.405499: I scikitplot 139814615321472 _time.py:76:__enter__] Transforming with Annoy...
+2026-02-01 06:37:52.896704: I scikitplot 139814615321472 _time.py:94:__exit__] ⏱ → Completed in 0.491s
+2026-02-01 06:38:13.462031: I scikitplot 139814615321472 _time.py:76:__enter__] Building `AnnoyIndex` for nearest neighbors approximate search...
+2026-02-01 06:38:13.467103: I scikitplot 139814615321472 _time.py:94:__exit__] ⏱ → Completed in 0.005s
+2026-02-01 06:38:13.467587: I scikitplot 139814615321472 _time.py:76:__enter__] Transforming with Annoy...
+2026-02-01 06:38:13.505795: I scikitplot 139814615321472 _time.py:94:__exit__] ⏱ → Completed in 0.038s
+2026-02-01 06:38:13.506916: I scikitplot 139814615321472 _time.py:76:__enter__] Transforming with Annoy...
+2026-02-01 06:38:13.519749: I scikitplot 139814615321472 _time.py:94:__exit__] ⏱ → Completed in 0.013s
+24.28173804283142
 </pre></div>
 </div>
 </section>
@@ -935,7 +985,7 @@ selected distance metric and the number of trees used to build the Annoy index.
 An inappropriate metric or insufficient number of trees may lead to poor
 neighbor retrieval and degraded imputation quality.</p>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-impute.html"><span class="doc">model-workflow: impute</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-bar.html"><span class="doc">plot-type: bar</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (4 minutes 13.821 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (3 minutes 42.018 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_precision_script_thumb.png"/>
@@ -944,12 +994,12 @@ neighbor retrieval and degraded imputation quality.</p>
 </div><div class="sphx-glr-thumbcontainer" tooltip="The DummyCodeEncoder to encode each categorical features into dummy/indicator 0/1 variables. In this example, we will compare various different approaches for handling categorical features: GetDummies, TargetEncoder, OrdinalEncoder, OneHotEncoder, and dropping the category."><img alt="" src="../../_images/sphx_glr_plot_dummy_code_encoder_thumb.png"/>
 <p><a class="reference internal" href="../preprocessing/plot_dummy_code_encoder.html"><span class="doc">Comparing DummyCode Encoder with Other Encoders</span></a></p>
 <div class="sphx-glr-thumbnail-title">Comparing DummyCode Encoder with Other Encoders</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_mmap_script_thumb.png"/>
+<p><a class="reference internal" href="../annoy/plot_mmap_script.html"><span class="doc">Mmap annoy.AnnoyIndex with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">Mmap annoy.AnnoyIndex with examples</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.estimators.plot_feature_importances function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_feature_importances_script_thumb.png"/>
 <p><a class="reference internal" href="../classification/plot_feature_importances_script.html"><span class="doc">plot_feature_importances with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">plot_feature_importances with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_simple_script_thumb.png"/>
-<p><a class="reference internal" href="../annoy/plot_simple_script.html"><span class="doc">Simple annoy.AnnoyIndex with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">Simple annoy.AnnoyIndex with examples</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </section>
@@ -1004,7 +1054,7 @@ neighbor retrieval and degraded imputation quality.</p>
 <li><a href="../../_sources/auto_examples/impute/plot_impute_script.rst.txt" rel="nofollow">Show Source</a></li>
 </ul>
 </div></div>
-<div class="sidebar-secondary-item"><div title="plot_impute_script.py"><a download="" href="../../_downloads/7c7c0c3145e2571e0fe60b011351e0be/plot_impute_script.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_impute_script.ipynb"><a download="" href="../../_downloads/c017cf42fb7eb47bd929a9e4c52abe5d/plot_impute_script.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/impute/plot_impute_script.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo6.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/impute/plot_impute_script.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo6.svg"/></a></div></div></div></div>
+<div class="sidebar-secondary-item"><div title="plot_impute_script.py"><a download="" href="../../_downloads/7c7c0c3145e2571e0fe60b011351e0be/plot_impute_script.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_impute_script.ipynb"><a download="" href="../../_downloads/c017cf42fb7eb47bd929a9e4c52abe5d/plot_impute_script.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/impute/plot_impute_script.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo7.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/impute/plot_impute_script.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo7.svg"/></a></div></div></div></div>
 </div>
 <footer class="bd-footer-content">
 </footer>
@@ -1020,7 +1070,7 @@ neighbor retrieval and degraded imputation quality.</p>
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260129.86bdfc1 2026-01-29T08:02Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260201.e33c76c 2026-02-01T06:29Z.
       <br/>
 </p>
 </div>

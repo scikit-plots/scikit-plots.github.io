@@ -370,6 +370,20 @@
 <li class="toctree-l2"><a class="reference internal" href="../clustering/plot_silhouette_script.html">plot_silhouette with examples</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cython/index.html">Cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_00_quickstart_compile_and_load.html">Cython quickstart: compile_and_load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_01_browse_and_compile_templates.html">Browse and compile templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_02_build_profiles.html">Build profiles: fast-debug, release, annotate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_03_cache_and_restart_reuse.html">Cache and restart reuse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_04_pin_alias.html">Pin/Alias: stable handles for cached builds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_05_package_examples_multimodule.html">Multi-module package builds (5 package examples)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_06_multifile_support_files.html">Multi-file builds: .pxi includes and external headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_07_cpp_mode_basics.html">C++ mode basics: cppclass and libcpp containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_08_vector_ops_without_numpy.html">Vector ops without NumPy: array(‘d’) + memoryviews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_09_workflow_templates_cli.html">Workflow templates (train / hpo / predict) + CLI entry template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_cython_template.html">Cython: Realtime compile_and_load (.pyx)</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../decile/index.html">Decile</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../decile/plot_cumulative_gain_script.html">plot_cumulative_gain with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../decile/plot_ks_statistic_script.html">plot_ks_statistic with examples</a></li>
@@ -509,25 +523,50 @@ run_demo
     The implementation used by the CLI entry point.
 </pre></div>
 </div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><a class="sphx-glr-backref-module-scikitplot-mlflow sphx-glr-backref-type-py-data" href="../../modules/generated/scikitplot.mlflow.DEFAULT_PROJECT_MARKERS.html#scikitplot.mlflow.DEFAULT_PROJECT_MARKERS" title="scikitplot.mlflow.DEFAULT_PROJECT_MARKERS"><span class="n">sp</span><span class="o">.</span><span class="n">mlflow</span><span class="o">.</span><span class="n">DEFAULT_PROJECT_MARKERS</span></a><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>('.git', 'configs', 'configs/mlflow.toml', 'Makefile', 'pyproject.toml', 'README', 'README.txt', 'README.md', 'README.rst')
+</pre></div>
+</div>
 </section>
-<section id="quiskstart-beginner-workflow-demo">
-<h2>💡 Quiskstart: Beginner workflow demo<a class="headerlink" href="#quiskstart-beginner-workflow-demo" title="Link to this heading">#</a></h2>
-<p>Demo save config from default settings then custamize.</p>
+<section id="environment-best-for-ci">
+<h2>Environment (best for CI)<a class="headerlink" href="#environment-best-for-ci" title="Link to this heading">#</a></h2>
+<p>Default marker file-folder for auto detection
+Walk upward from <code class="docutils literal notranslate"><span class="pre">start</span></code> until a directory containing any marker is found.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1"># export SCIKITPLOT_PROJECT_MARKERS='[".git","pyproject.toml","README.txt","configs/mlflow.toml"]'</span>
+<a class="sphx-glr-backref-module-os sphx-glr-backref-type-py-data" href="https://docs.python.org/3/library/os.html#os.environ" title="os.environ"><span class="n">os</span><span class="o">.</span><span class="n">environ</span></a><span class="p">[</span><span class="s2">"SCIKITPLOT_PROJECT_MARKERS"</span><span class="p">]</span><span class="o">=</span><span class="s1">'[".git","pyproject.toml","README.txt","configs/mlflow.toml"]'</span>
+
+<span class="c1"># Check ROOT or base_dir is requested</span>
+<a class="sphx-glr-backref-module-scikitplot-mlflow sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.mlflow.find_project_root.html#scikitplot.mlflow.find_project_root" title="scikitplot.mlflow.find_project_root"><span class="n">sp</span><span class="o">.</span><span class="n">mlflow</span><span class="o">.</span><span class="n">find_project_root</span></a><span class="p">()</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>PosixPath('/home/circleci/repo/galleries/examples/mlflow')
+</pre></div>
+</div>
+</section>
+<section id="quiskstart-template-beginner-workflow-demo">
+<h2>💡 Quiskstart Template: Beginner workflow demo<a class="headerlink" href="#quiskstart-template-beginner-workflow-demo" title="Link to this heading">#</a></h2>
+<p>Demo save config from default settings then customize.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a class="sphx-glr-backref-module-scikitplot-mlflow sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.mlflow.workflow.html#scikitplot.mlflow.workflow" title="scikitplot.mlflow.workflow"><span class="n">sp</span><span class="o">.</span><span class="n">mlflow</span><span class="o">.</span><span class="n">workflow</span></a><span class="p">(</span>
     <span class="n">profile</span><span class="o">=</span><span class="s2">"local"</span><span class="p">,</span>
-    <span class="n">open_ui_seconds</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
-    <span class="n">experiment_name</span><span class="o">=</span><span class="s2">"my-first-project"</span><span class="p">,</span>
+    <span class="n">open_ui_seconds</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">experiment_name</span><span class="o">=</span><span class="s2">"my-first-project"</span><span class="p">,</span>  <span class="c1"># "scikitplot-project"</span>
     <span class="n">fmt</span><span class="o">=</span><span class="s2">"toml"</span><span class="p">,</span>
     <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># Config already exists: ./configs/mlflow.toml (use overwrite=True).</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2026/01/29 08:10:56 INFO mlflow.tracking.fluent: Experiment with name 'my-first-project' does not exist. Creating a new experiment.
-🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/d0852321451040e0ab1cbe55dbd676ea
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2026/02/01 06:38:25 INFO mlflow.tracking.fluent: Experiment with name 'my-first-project' does not exist. Creating a new experiment.
+🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/b63ae1eeaf734339a8aa94e2676deddc
 🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
 🌐 Open MLflow UI: http://127.0.0.1:8891
-🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/bee658a28c40445bacc0bf5ee0943e89
+🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/659c6baef44649a9bbd3631cdde7ba6f
 🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
+
+WorkflowPaths(_project_root=PosixPath('/home/circleci/repo/galleries/examples/mlflow'), _config_dir=PosixPath('/home/circleci/repo/galleries/examples/mlflow/configs'), _toml_path=PosixPath('/home/circleci/repo/galleries/examples/mlflow/configs/mlflow.toml'), _yaml_path=PosixPath('/home/circleci/repo/galleries/examples/mlflow/configs/mlflow.yaml'))
 </pre></div>
 </div>
 </section>
@@ -538,6 +577,7 @@ run_demo
 
 
 <span class="n">ROOT</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-mlflow sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.mlflow.find_project_root.html#scikitplot.mlflow.find_project_root" title="scikitplot.mlflow.find_project_root"><span class="n">sp</span><span class="o">.</span><span class="n">mlflow</span><span class="o">.</span><span class="n">find_project_root</span></a><span class="p">(</span><span class="n">config_path</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
 <span class="k">with</span> <a class="sphx-glr-backref-module-scikitplot-mlflow sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.mlflow.session_from_file.html#scikitplot.mlflow.session_from_file" title="scikitplot.mlflow.session_from_file"><span class="n">sp</span><span class="o">.</span><span class="n">mlflow</span><span class="o">.</span><span class="n">session_from_file</span></a><span class="p">(</span><span class="n">ROOT</span> <span class="o">/</span> <span class="s2">"configs/mlflow.toml"</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s2">"local"</span><span class="p">)</span> <span class="k">as</span> <span class="n">mlflow</span><span class="p">:</span>
     <span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">():</span>  <span class="c1"># default_run_name + default tags apply automatically</span>
         <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">"phase"</span><span class="p">,</span> <span class="s2">"train"</span><span class="p">)</span>
@@ -546,7 +586,8 @@ run_demo
     <a class="sphx-glr-backref-module-scikitplot-mlflow sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.mlflow.dump_project_config_yaml.html#scikitplot.mlflow.dump_project_config_yaml" title="scikitplot.mlflow.dump_project_config_yaml"><span class="n">sp</span><span class="o">.</span><span class="n">mlflow</span><span class="o">.</span><span class="n">dump_project_config_yaml</span></a><span class="p">(</span><span class="n">source_config_path</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 
 
-<span class="n">ROOT</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-mlflow sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.mlflow.find_project_root.html#scikitplot.mlflow.find_project_root" title="scikitplot.mlflow.find_project_root"><span class="n">sp</span><span class="o">.</span><span class="n">mlflow</span><span class="o">.</span><span class="n">find_project_root</span></a><span class="p">(</span><span class="n">config_path</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="c1"># ROOT = sp.mlflow.find_project_root(config_path=None)</span>
+
 <span class="k">with</span> <a class="sphx-glr-backref-module-scikitplot-mlflow sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.mlflow.session_from_file.html#scikitplot.mlflow.session_from_file" title="scikitplot.mlflow.session_from_file"><span class="n">sp</span><span class="o">.</span><span class="n">mlflow</span><span class="o">.</span><span class="n">session_from_file</span></a><span class="p">(</span><span class="n">ROOT</span> <span class="o">/</span> <span class="s2">"configs/mlflow.yaml"</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s2">"local"</span><span class="p">)</span> <span class="k">as</span> <span class="n">mlflow</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"Open MLflow UI:"</span><span class="p">,</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">ui_url</span><span class="p">)</span>
     <span class="c1"># do something</span>
@@ -558,29 +599,29 @@ run_demo
         <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">"phase"</span><span class="p">,</span> <span class="s2">"predict"</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/4db8ac6f468d46f887b2590fb609e3ab
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/2f7c12b49cc440ff87b204b80a0ca820
 🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
 Open MLflow UI: http://127.0.0.1:8891
-🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/d36c2b42e7854bd483c6e5b874fe53d4
+🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/e0075fe29e2f412caf2f7c6c8b483e45
 🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-model-building.html"><span class="doc">model-workflow: model building</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-mlflow.html"><span class="doc">plot-type: mlflow</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger reference internal" href="../../_tags/domain-mlflow.html"><span class="doc">domain: mlflow</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 43.320 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 57.996 seconds)</p>
 
 <p class="rubric">Related examples</p>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="To install the latest version (with pip)::"><img alt="" src="../../_images/sphx_glr_plot_modelplotpy_script_thumb.png"/>
-<p><a class="reference internal" href="../decile/plot_modelplotpy_script.html"><span class="doc">Introduction to modelplotpy</span></a></p>
-<div class="sphx-glr-thumbnail-title">Introduction to modelplotpy</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="To install the latest version (with pip)::"><img alt="" src="../../_images/sphx_glr_plot_modelplotpy_legacy_script_thumb.png"/>
-<p><a class="reference internal" href="../decile/plot_modelplotpy_legacy_script.html"><span class="doc">Introduction to modelplotpy (legacy)</span></a></p>
-<div class="sphx-glr-thumbnail-title">Introduction to modelplotpy (legacy)</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_dl_cnn_autoencoder_thumb.png"/>
-<p><a class="reference internal" href="../visualkeras/plot_dl_cnn_autoencoder.html"><span class="doc">visualkeras: autoencoder example</span></a></p>
-<div class="sphx-glr-thumbnail-title">visualkeras: autoencoder example</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_residuals_distribution function with a scikit-learn regressor (e.g., :py~sklearn.linear_model.LinearRegression) instance."><img alt="" src="../../_images/sphx_glr_plot_residuals_distribution_script_thumb1.png"/>
-<p><a class="reference internal" href="../regression/plot_residuals_distribution_script.html"><span class="doc">plot_residuals_distribution with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">plot_residuals_distribution with examples</div>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Compile and run the C++ Annoy precision example."><img alt="" src="../../_images/sphx_glr_s_compile_cpp_thumb.png"/>
+<p><a class="reference internal" href="../annoy/s_compile_cpp.html"><span class="doc">Compile and run the C++ Annoy with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">Compile and run the C++ Annoy with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_classifier_eval function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_classifier_eval_script_thumb.png"/>
+<p><a class="reference internal" href="../classification/plot_classifier_eval_script.html"><span class="doc">plot_classifier_eval with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">plot_classifier_eval with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows the minimal workflow:"><img alt="" src="../../_images/sphx_glr_plot_00_quickstart_compile_and_load_thumb.png"/>
+<p><a class="reference internal" href="../cython/plot_00_quickstart_compile_and_load.html"><span class="doc">Cython quickstart: compile_and_load</span></a></p>
+<div class="sphx-glr-thumbnail-title">Cython quickstart: compile_and_load</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Real projects often split Cython code across multiple files:"><img alt="" src="../../_images/sphx_glr_plot_06_multifile_support_files_thumb.png"/>
+<p><a class="reference internal" href="../cython/plot_06_multifile_support_files.html"><span class="doc">Multi-file builds: .pxi includes and external headers</span></a></p>
+<div class="sphx-glr-thumbnail-title">Multi-file builds: .pxi includes and external headers</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </section>
@@ -616,7 +657,8 @@ Open MLflow UI: http://127.0.0.1:8891
 <nav aria-labelledby="pst-page-navigation-heading-2" class="bd-toc-nav page-toc">
 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mlflow-workflow-helper">mlflow workflow helper</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiskstart-beginner-workflow-demo">💡 Quiskstart: Beginner workflow demo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-best-for-ci">Environment (best for CI)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiskstart-template-beginner-workflow-demo">💡 Quiskstart Template: Beginner workflow demo</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-customized-settings">🛠️ How to use customized settings?</a></li>
 </ul>
 </nav></div>
@@ -627,7 +669,7 @@ Open MLflow UI: http://127.0.0.1:8891
 <li><a href="../../_sources/auto_examples/mlflow/plot_mlflow.rst.txt" rel="nofollow">Show Source</a></li>
 </ul>
 </div></div>
-<div class="sidebar-secondary-item"><div title="plot_mlflow.py"><a download="" href="../../_downloads/5f793713f22d3c9ad64158df13e9ee69/plot_mlflow.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_mlflow.ipynb"><a download="" href="../../_downloads/f2b5691e338c880ded0a4446783fd670/plot_mlflow.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/mlflow/plot_mlflow.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo7.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/mlflow/plot_mlflow.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo7.svg"/></a></div></div></div></div>
+<div class="sidebar-secondary-item"><div title="plot_mlflow.py"><a download="" href="../../_downloads/5f793713f22d3c9ad64158df13e9ee69/plot_mlflow.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_mlflow.ipynb"><a download="" href="../../_downloads/f2b5691e338c880ded0a4446783fd670/plot_mlflow.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/mlflow/plot_mlflow.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo8.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/mlflow/plot_mlflow.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo8.svg"/></a></div></div></div></div>
 </div>
 <footer class="bd-footer-content">
 </footer>
@@ -643,7 +685,7 @@ Open MLflow UI: http://127.0.0.1:8891
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260129.86bdfc1 2026-01-29T08:02Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260201.e33c76c 2026-02-01T06:29Z.
       <br/>
 </p>
 </div>

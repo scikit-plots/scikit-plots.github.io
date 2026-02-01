@@ -1,0 +1,937 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../../" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Build profiles: fast-debug, release, annotate" property="og:title"/>
+<meta content="website" property="og:type"/>
+<meta content="https://scikit-plots.github.io/stable/auto_examples/cython/plot_02_build_profiles.html" property="og:url"/>
+<meta content="scikit-plots" property="og:site_name"/>
+<meta content="Profiles provide canonical preset build options, while keeping explicit user-provided arguments authoritative. Profiles: fast-debug: optimize for iteration speed (debug-friendly), release: optimize..." property="og:description"/>
+<meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
+<meta content="scikit-plots" property="og:image:alt"/>
+<meta content="Profiles provide canonical preset build options, while keeping explicit user-provided arguments authoritative. Profiles: fast-debug: optimize for iteration speed (debug-friendly), release: optimize..." name="description"/>
+<title>Build profiles: fast-debug, release, annotate — scikit-plots 0.5.dev0 documentation</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../../_static/graphviz.css?v=4ae1632d" rel="stylesheet" type="text/css"/>
+<link href="../../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/jupyter-sphinx.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/thebelab.css" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
+<link href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery.css?v=d2d258e8" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery-binder.css?v=f4aeca0c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/colors.css?v=14208072" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/custom.css?v=e4cb1417" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<script src="../../_static/documentation_options.js?v=de0fc20e"></script>
+<script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+<script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=e93d8674"></script>
+<script src="../../_static/thebelab-helper.js"></script>
+<script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+<script src="../../_static/design-tabs.js?v=f930bc37"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/cython/plot_02_build_profiles';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+<script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
+<script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
+<link href="../../_static/scikit-plots-favicon.ico" rel="icon"/>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="plot_03_cache_and_restart_reuse.html" rel="next" title="Cache and restart reuse"/>
+<link href="plot_01_browse_and_compile_templates.html" rel="prev" title="Browse and compile templates"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="0.5" name="docsearch:version"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Skip to main content</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button">
+<i class="fa-solid fa-arrow-up"></i>Back to top</button>
+<dialog id="pst-search-dialog">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search the docs ..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search the docs ..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Version warning" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Site navigation" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../index.html">
+<img alt="scikit-plots homepage" class="logo__image only-light" src="../../_static/scikit-plots-logo-small.png"/>
+<img alt="scikit-plots homepage" class="logo__image only-dark pst-js-only" src="../../_static/scikit-plots-logo-small.png"/>
+</a></div>
+</div>
+<div class="navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../index.html">
+    Tutorials
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+<li class="nav-item dropdown">
+<button aria-controls="pst-nav-more-links" aria-expanded="false" class="btn dropdown-toggle nav-item" data-bs-toggle="dropdown" type="button">
+                    More
+                </button>
+<ul class="dropdown-menu" id="pst-nav-more-links">
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../whats_new/index.html">
+    Release History
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/community.html">
+    Community
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/governance.html">
+    Governance Process
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/index.html">
+    About Us | Project
+  </a>
+</li>
+</ul>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item navbar-persistent--container">
+<button aria-label="Search" class="btn search-button-field search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Search">
+<i class="fa-solid fa-magnifying-glass"></i>
+<span class="search-button__default-text">Search</span>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+</div>
+<div class="navbar-item">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Version switcher list" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">
+    Choose version  <!-- this text may get changed later by javascript -->
+<span class="caret"></span>
+</button>
+<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://scikit-plots.github.io/dev/project/community.html" rel="noopener" target="_blank" title="Social Media Platforms"><img alt="Social Media Platforms" class="icon-link-image" src="../../_static/logos/scikit-plots-logo.svg"/></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><img alt="PyPI" class="icon-link-image" src="../../_static/logos/python-logo.png"/></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/scikit-plots/scikit-plots" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i>
+<span class="sr-only">GitHub</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="navbar-persistent--mobile">
+<button aria-label="Search" class="btn search-button-field search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Search">
+<i class="fa-solid fa-magnifying-glass"></i>
+<span class="search-button__default-text">Search</span>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+</div>
+<button aria-label="On this page" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../index.html">
+    Tutorials
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../whats_new/index.html">
+    Release History
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/community.html">
+    Community
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/governance.html">
+    Governance Process
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/index.html">
+    About Us | Project
+  </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Version switcher list" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">
+    Choose version  <!-- this text may get changed later by javascript -->
+<span class="caret"></span>
+</button>
+<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://scikit-plots.github.io/dev/project/community.html" rel="noopener" target="_blank" title="Social Media Platforms"><img alt="Social Media Platforms" class="icon-link-image" src="../../_static/logos/scikit-plots-logo.svg"/></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><img alt="PyPI" class="icon-link-image" src="../../_static/logos/python-logo.png"/></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/scikit-plots/scikit-plots" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i>
+<span class="sr-only">GitHub</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item">
+<nav aria-label="Section Navigation" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Section Navigation</p>
+<div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00-blogs/index.html">blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00-jupyter_notebooks/index.html">jupyter notebooks</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">ANNoy Vector Index DB</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_legacy_c_api.html">annoy.Annoy legacy c-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_python_api.html">annoy.Index python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_to_NPY_CSV.html">annoy.Index to NPY or CSV with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_mmap_script.html">Mmap annoy.AnnoyIndex with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_precision_script.html">Precision annoy.AnnoyIndex with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_simple_script.html">Simple annoy.AnnoyIndex with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/s_compile_cpp.html">Compile and run the C++ Annoy with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../array_api/index.html">Array API support</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../calibration/index.html">Calibration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calibration/plot_calibration_script.html">plot_calibration with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../classification/index.html">Classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_classifier_eval_script.html">plot_classifier_eval with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_confusion_matrix_script.html">plot_confusion_matrix with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_feature_importances_script.html">plot_feature_importances with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_learning_curve_script.html">plot_learning_curve with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_precision_recall_script.html">plot_precision_recall with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_roc_script.html">plot_roc_curve with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../clustering/index.html">Clustering</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_elbow_script.html">plot_elbow with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_silhouette_script.html">plot_silhouette with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Cython</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plot_00_quickstart_compile_and_load.html">Cython quickstart: compile_and_load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_01_browse_and_compile_templates.html">Browse and compile templates</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Build profiles: fast-debug, release, annotate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_03_cache_and_restart_reuse.html">Cache and restart reuse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_04_pin_alias.html">Pin/Alias: stable handles for cached builds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_05_package_examples_multimodule.html">Multi-module package builds (5 package examples)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_06_multifile_support_files.html">Multi-file builds: .pxi includes and external headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_07_cpp_mode_basics.html">C++ mode basics: cppclass and libcpp containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_08_vector_ops_without_numpy.html">Vector ops without NumPy: array(‘d’) + memoryviews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_09_workflow_templates_cli.html">Workflow templates (train / hpo / predict) + CLI entry template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_cython_template.html">Cython: Realtime compile_and_load (.pyx)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../decile/index.html">Decile</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_cumulative_gain_script.html">plot_cumulative_gain with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_ks_statistic_script.html">plot_ks_statistic with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_lift_script.html">plot_lift with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_legacy_script.html">Introduction to modelplotpy (legacy)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_script.html">Introduction to modelplotpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_report_script.html">plot_report with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../decomposition/index.html">Decomposition</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_2d_projection_script.html">plot_pca_2d_projection with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_component_variance_script.html">plot_pca_component_variance with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../impute/index.html">Impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../impute/plot_impute_script.html">annoy impute with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../mlflow/index.html">MLflow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mlflow/plot_mlflow.html">MLflow</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nc/index.html">Nc (NumCpp)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../nc/plot_nc_test.html">nc with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../preprocessing/index.html">Preprocessing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preprocessing/plot_dummy_code_encoder.html">Comparing DummyCode Encoder with Other Encoders</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../regression/index.html">Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../regression/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../seaborn/index.html">Seaborn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_aucplot_script.html">plot_aucplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_decileplot_script.html">plot_decileplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_evalplot_script.html">plot_evalplot_script with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../stats/index.html">Stats</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stats/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../visualkeras/index.html">Visualkeras</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_ann_conv_dense.html">Visualkeras: Spam Classification Conv1D Dense Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_ann_dense.html">visualkeras: Spam Dense example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_autoencoder.html">visualkeras: autoencoder example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_custom_vgg16.html">visualkeras: custom vgg16 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_custom_vgg16_show_dimension.html">visualkeras: custom vgg16 show dimension example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_efficientnetv2.html">visualkeras: EfficientNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_resnetv2.html">visualkeras: ResNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_vgg.html">visualkeras: custom VGG example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_nlp_vector_index_db.html">visualkeras: Vector Index DB</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">Examples</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">Cython</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">Build profiles: fast-debug, release, annotate</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+
+<section class="sphx-glr-example-title" id="build-profiles-fast-debug-release-annotate">
+<span id="sphx-glr-auto-examples-cython-plot-02-build-profiles-py"></span><h1>Build profiles: fast-debug, release, annotate<a class="headerlink" href="#build-profiles-fast-debug-release-annotate" title="Link to this heading">#</a></h1>
+<p>Profiles provide canonical preset build options, while keeping explicit
+user-provided arguments authoritative.</p>
+<p>Profiles:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fast-debug</span></code>: optimize for iteration speed (debug-friendly)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">release</span></code>: optimize for runtime speed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">annotate</span></code>: generate the Cython HTML annotation report</p></li>
+</ul>
+<p>This example compiles the same snippet under different profiles and prints
+the resulting cache keys (they differ because build options differ).</p>
+<p>What this example demonstrates:</p>
+<ol class="arabic simple">
+<li><p>Profiles change build options → cache keys differ deterministically.</p></li>
+<li><p>Explicit user arguments override profile defaults (strict precedence).</p></li>
+<li><p>Annotation builds may generate an HTML report; we show where it is stored.</p></li>
+</ol>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: The scikit-plots developers</span>
+<span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-typing sphx-glr-backref-type-py-data" href="https://docs.python.org/3/library/typing.html#typing.Any" title="typing.Any"><span class="n">Any</span></a>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">cython</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_print_result</span><span class="p">(</span><span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <a class="sphx-glr-backref-module-typing sphx-glr-backref-type-py-data" href="https://docs.python.org/3/library/typing.html#typing.Any" title="typing.Any"><span class="n">Any</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Print a compact BuildResult summary (stable fields only)."""</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">[</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">]"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"  module_name :"</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">module_name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"  key         :"</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"  used_cache  :"</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">used_cache</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"  artifact    :"</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">artifact_path</span><span class="p">)</span>
+    <span class="c1"># meta keys are stable across our devkit; use .get defensively.</span>
+    <span class="n">meta</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="s2">"meta"</span><span class="p">,</span> <span class="p">{})</span> <span class="ow">or</span> <span class="p">{}</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"  profile     :"</span><span class="p">,</span> <span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"profile"</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"  annotate    :"</span><span class="p">,</span> <span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"annotate"</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"  language    :"</span><span class="p">,</span> <span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"language"</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+
+    <span class="n">cargs</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"extra_compile_args"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">largs</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"extra_link_args"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">directives</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"compiler_directives"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">cargs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"  extra_compile_args:"</span><span class="p">,</span> <span class="n">cargs</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">largs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"  extra_link_args   :"</span><span class="p">,</span> <span class="n">largs</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">directives</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Print a small, deterministic subset if huge.</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">directives</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="n">keys</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">directives</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="n">subset</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">directives</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">[:</span><span class="mi">10</span><span class="p">]}</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"  compiler_directives (subset):"</span><span class="p">,</span> <span class="n">subset</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"  compiler_directives:"</span><span class="p">,</span> <span class="n">directives</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="generate-python-module-from-python">
+<h2>Generate <code class="docutils literal notranslate"><span class="pre">python</span></code> Module from <code class="docutils literal notranslate"><span class="pre">python</span></code><a class="headerlink" href="#generate-python-module-from-python" title="Link to this heading">#</a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">report</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cython sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.cython.check_build_prereqs.html#scikitplot.cython.check_build_prereqs" title="scikitplot.cython.check_build_prereqs"><span class="n">cython</span><span class="o">.</span><span class="n">check_build_prereqs</span></a><span class="p">(</span><span class="n">numpy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">report</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'cython'</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'ok'</span><span class="p">):</span>
+    <span class="c1"># sys.exit("Skipping compilation because build prerequisites are missing.")</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Skipping compilation because build prerequisites are missing."</span><span class="p">)</span>
+    <span class="n">problems</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"problems"</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="k">if</span> <span class="n">problems</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Problems:"</span><span class="p">,</span> <span class="n">problems</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">source</span> <span class="o">=</span> <span class="s2">"def f(int n):</span><span class="se">\n</span><span class="s2">    return n*n</span><span class="se">\n</span><span class="s2">"</span>
+
+    <span class="c1"># 1) Compile under three profiles.</span>
+    <span class="n">r_fast</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cython sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.cython.compile_and_load_result.html#scikitplot.cython.compile_and_load_result" title="scikitplot.cython.compile_and_load_result"><span class="n">cython</span><span class="o">.</span><span class="n">compile_and_load_result</span></a><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s2">"fast-debug"</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">r_rel</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cython sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.cython.compile_and_load_result.html#scikitplot.cython.compile_and_load_result" title="scikitplot.cython.compile_and_load_result"><span class="n">cython</span><span class="o">.</span><span class="n">compile_and_load_result</span></a><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s2">"release"</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># annotate profile already requests annotation generation; we keep annotate=True explicit</span>
+    <span class="c1"># to demonstrate that explicit user args remain authoritative and documented.</span>
+    <span class="n">r_ann</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cython sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.cython.compile_and_load_result.html#scikitplot.cython.compile_and_load_result" title="scikitplot.cython.compile_and_load_result"><span class="n">cython</span><span class="o">.</span><span class="n">compile_and_load_result</span></a><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s2">"annotate"</span><span class="p">,</span> <span class="n">annotate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">view_annotate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">use_cache</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">force_rebuild</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">html</span> <span class="o">=</span> <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="n">r_ann</span><span class="o">.</span><span class="n">build_dir</span><span class="p">)</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">r_ann</span><span class="o">.</span><span class="n">module_name</span><span class="si">}</span><span class="s2">.html"</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"HTML:"</span><span class="p">,</span> <span class="n">html</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"exists:"</span><span class="p">,</span> <span class="n">html</span><span class="o">.</span><span class="n">exists</span><span class="p">())</span>
+
+    <span class="c1"># 2) Keys differ deterministically.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"fast-debug key:"</span><span class="p">,</span> <span class="n">r_fast</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"release    key:"</span><span class="p">,</span> <span class="n">r_rel</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"annotate   key:"</span><span class="p">,</span> <span class="n">r_ann</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Key comparisons:"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"  fast vs release :"</span><span class="p">,</span> <span class="n">r_fast</span><span class="o">.</span><span class="n">key</span> <span class="o">!=</span> <span class="n">r_rel</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"  fast vs annotate:"</span><span class="p">,</span> <span class="n">r_fast</span><span class="o">.</span><span class="n">key</span> <span class="o">!=</span> <span class="n">r_ann</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"  release vs annotate:"</span><span class="p">,</span> <span class="n">r_rel</span><span class="o">.</span><span class="n">key</span> <span class="o">!=</span> <span class="n">r_ann</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>
+
+    <span class="c1"># 3) Sanity: compiled function works.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">f(10) fast-debug:"</span><span class="p">,</span> <span class="n">r_fast</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"f(10) release   :"</span><span class="p">,</span> <span class="n">r_rel</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"f(10) annotate  :"</span><span class="p">,</span> <span class="n">r_ann</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+
+    <span class="c1"># 4) Show what options differ (strictly from meta).</span>
+    <span class="n">_print_result</span><span class="p">(</span><span class="s2">"fast-debug"</span><span class="p">,</span> <span class="n">r_fast</span><span class="p">)</span>
+    <span class="n">_print_result</span><span class="p">(</span><span class="s2">"release"</span><span class="p">,</span> <span class="n">r_rel</span><span class="p">)</span>
+    <span class="n">_print_result</span><span class="p">(</span><span class="s2">"annotate"</span><span class="p">,</span> <span class="n">r_ann</span><span class="p">)</span>
+
+    <span class="c1"># 5) Show where annotation lives (if present).</span>
+    <span class="c1"># We do not assume a fixed filename; we check metadata.</span>
+    <span class="n">ann_meta</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">r_ann</span><span class="p">,</span> <span class="s2">"meta"</span><span class="p">,</span> <span class="p">{})</span> <span class="ow">or</span> <span class="p">{}</span>
+    <span class="n">ann_path</span> <span class="o">=</span> <span class="n">ann_meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"annotate_html"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="n">ann_meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"annotation_html"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ann_path</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Annotation HTML report:"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">" "</span><span class="p">,</span> <span class="n">ann_path</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Annotation HTML report not recorded in metadata for this build."</span><span class="p">)</span>
+
+    <span class="c1"># 6) Demonstrate precedence: explicit args override profile defaults.</span>
+    <span class="c1"># Example: even under "release", you can force annotate=False explicitly.</span>
+    <span class="n">r_rel_no_ann</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-cython sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.cython.compile_and_load_result.html#scikitplot.cython.compile_and_load_result" title="scikitplot.cython.compile_and_load_result"><span class="n">cython</span><span class="o">.</span><span class="n">compile_and_load_result</span></a><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s2">"release"</span><span class="p">,</span> <span class="n">annotate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Precedence demo: explicit annotate=False under release"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"  key:"</span><span class="p">,</span> <span class="n">r_rel_no_ann</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"  annotate in meta:"</span><span class="p">,</span> <span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">r_rel_no_ann</span><span class="p">,</span> <span class="s2">"meta"</span><span class="p">,</span> <span class="p">{})</span> <span class="ow">or</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"annotate"</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Compiling /home/circleci/.cache/scikitplot/cython/845d660f400d30825fcddf6775bf8f257d018f58bbda5f12092a3fbdde4bc2a5/scikitplot_cython_845d660f400d3082.pyx because it changed.
+[1/1] Cythonizing /home/circleci/.cache/scikitplot/cython/845d660f400d30825fcddf6775bf8f257d018f58bbda5f12092a3fbdde4bc2a5/scikitplot_cython_845d660f400d3082.pyx
+HTML: /home/circleci/.cache/scikitplot/cython/845d660f400d30825fcddf6775bf8f257d018f58bbda5f12092a3fbdde4bc2a5/scikitplot_cython_845d660f400d3082.html
+exists: True
+fast-debug key: c71820fcbdd3d3be311db100faa9f7ce550548267112a935bc644a9c9e59e29d
+release    key: b89f3272eca6106c5e5079f8fd5b949ad4898c3afd6de5904de4096323a5e9fb
+annotate   key: 845d660f400d30825fcddf6775bf8f257d018f58bbda5f12092a3fbdde4bc2a5
+
+Key comparisons:
+  fast vs release : True
+  fast vs annotate: True
+  release vs annotate: True
+
+f(10) fast-debug: 100
+f(10) release   : 100
+f(10) annotate  : 100
+
+[fast-debug]
+  module_name : scikitplot_cython_c71820fcbdd3d3be
+  key         : c71820fcbdd3d3be311db100faa9f7ce550548267112a935bc644a9c9e59e29d
+  used_cache  : True
+  artifact    : /home/circleci/.cache/scikitplot/cython/c71820fcbdd3d3be311db100faa9f7ce550548267112a935bc644a9c9e59e29d/scikitplot_cython_c71820fcbdd3d3be.cpython-311-x86_64-linux-gnu.so
+  profile     : fast-debug
+  annotate    : False
+  language    : None
+  extra_compile_args: ['-O0', '-g']
+  extra_link_args   : []
+  compiler_directives (subset): {'boundscheck': True, 'cdivision': False, 'embedsignature': True, 'initializedcheck': True, 'language_level': 3, 'wraparound': True}
+
+[release]
+  module_name : scikitplot_cython_b89f3272eca6106c
+  key         : b89f3272eca6106c5e5079f8fd5b949ad4898c3afd6de5904de4096323a5e9fb
+  used_cache  : False
+  artifact    : /home/circleci/.cache/scikitplot/cython/b89f3272eca6106c5e5079f8fd5b949ad4898c3afd6de5904de4096323a5e9fb/scikitplot_cython_b89f3272eca6106c.cpython-311-x86_64-linux-gnu.so
+  profile     : release
+  annotate    : False
+  language    : None
+  extra_compile_args: ['-O3', '-DNDEBUG']
+  extra_link_args   : []
+  compiler_directives (subset): {'boundscheck': False, 'cdivision': True, 'embedsignature': True, 'initializedcheck': False, 'language_level': 3, 'wraparound': False}
+
+[annotate]
+  module_name : scikitplot_cython_845d660f400d3082
+  key         : 845d660f400d30825fcddf6775bf8f257d018f58bbda5f12092a3fbdde4bc2a5
+  used_cache  : False
+  artifact    : /home/circleci/.cache/scikitplot/cython/845d660f400d30825fcddf6775bf8f257d018f58bbda5f12092a3fbdde4bc2a5/scikitplot_cython_845d660f400d3082.cpython-311-x86_64-linux-gnu.so
+  profile     : annotate
+  annotate    : True
+  language    : None
+  extra_compile_args: ['-O0', '-g']
+  extra_link_args   : []
+  compiler_directives (subset): {'boundscheck': True, 'embedsignature': True, 'initializedcheck': True, 'language_level': 3, 'wraparound': True}
+
+Annotation HTML report:
+  /home/circleci/.cache/scikitplot/cython/845d660f400d30825fcddf6775bf8f257d018f58bbda5f12092a3fbdde4bc2a5/scikitplot_cython_845d660f400d3082.html
+
+Precedence demo: explicit annotate=False under release
+  key: b89f3272eca6106c5e5079f8fd5b949ad4898c3afd6de5904de4096323a5e9fb
+  annotate in meta: False
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">textwrap</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pprint</span><span class="w"> </span><span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="k">if</span> <span class="n">report</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'cython'</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'ok'</span><span class="p">):</span>
+    <span class="c1"># pprint(textwrap.wrap(str(r_ann)))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">BuildResult (metadata):"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"  module_name :"</span><span class="p">,</span> <span class="n">r_ann</span><span class="o">.</span><span class="n">module_name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"  cache key   :"</span><span class="p">,</span> <span class="n">r_ann</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"  build dir   :"</span><span class="p">,</span> <span class="n">r_ann</span><span class="o">.</span><span class="n">build_dir</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"  artifact    :"</span><span class="p">,</span> <span class="n">r_ann</span><span class="o">.</span><span class="n">artifact_path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"  used_cache  :"</span><span class="p">,</span> <span class="n">r_ann</span><span class="o">.</span><span class="n">used_cache</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"  created_utc :"</span><span class="p">,</span> <span class="n">r_ann</span><span class="o">.</span><span class="n">created_utc</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"  Annotation  :"</span><span class="p">,</span> <span class="n">r_ann</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s2">"annotate"</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"  HTML report :"</span><span class="p">,</span> <span class="n">r_ann</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s2">"annotate_html"</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>BuildResult (metadata):
+  module_name : scikitplot_cython_845d660f400d3082
+  cache key   : 845d660f400d30825fcddf6775bf8f257d018f58bbda5f12092a3fbdde4bc2a5
+  build dir   : /home/circleci/.cache/scikitplot/cython/845d660f400d30825fcddf6775bf8f257d018f58bbda5f12092a3fbdde4bc2a5
+  artifact    : /home/circleci/.cache/scikitplot/cython/845d660f400d30825fcddf6775bf8f257d018f58bbda5f12092a3fbdde4bc2a5/scikitplot_cython_845d660f400d3082.cpython-311-x86_64-linux-gnu.so
+  used_cache  : False
+  created_utc : 2026-02-01T06:33:54Z
+  Annotation  : True
+  HTML report : /home/circleci/.cache/scikitplot/cython/845d660f400d30825fcddf6775bf8f257d018f58bbda5f12092a3fbdde4bc2a5/scikitplot_cython_845d660f400d3082.html
+</pre></div>
+</div>
+</section>
+<section id="display-annotate-profile-to-see-the-actual-c-code">
+<h2>Display <code class="docutils literal notranslate"><span class="pre">annotate</span></code> Profile to see the actual C code<a class="headerlink" href="#display-annotate-profile-to-see-the-actual-c-code" title="Link to this heading">#</a></h2>
+<p>cython –annotate &lt;pyx file&gt; will output an html report where each line of the the pyx file
+is color coded as to the amount of back and forth to the python interpreter that is required,
+and each line can be expanded to see the actual C code generated.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">read_html_file</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">html_content</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">html_content</span>
+
+<span class="k">if</span> <span class="n">report</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'cython'</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'ok'</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">ann_path</span><span class="p">:</span>
+        <span class="c1"># print(HTML(read_html_file(ann_path)).data[-8000:])</span>
+
+        <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-IPython-display sphx-glr-backref-type-py-function" href="https://ipython.readthedocs.io/en/stable/api/generated/IPython.display.html#IPython.display.display" title="IPython.display.display"><span class="n">display</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-IPython-display sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://ipython.readthedocs.io/en/stable/api/generated/IPython.display.html#IPython.display.HTML" title="IPython.display.HTML"><span class="n">HTML</span></a><span class="p">,</span> <span class="n">IFrame</span>
+        <span class="c1"># display(IFrame(src=ann_path, width=700, height=600))</span>
+        <span class="c1"># display(HTML('&lt;h1&gt;Hello, world!&lt;/h1&gt;'))</span>
+        <a class="sphx-glr-backref-module-IPython-display sphx-glr-backref-type-py-function" href="https://ipython.readthedocs.io/en/stable/api/generated/IPython.display.html#IPython.display.display" title="IPython.display.display"><span class="n">display</span></a><span class="p">(</span><a class="sphx-glr-backref-module-IPython-display sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://ipython.readthedocs.io/en/stable/api/generated/IPython.display.html#IPython.display.HTML" title="IPython.display.HTML"><span class="n">HTML</span></a><span class="p">(</span><span class="n">read_html_file</span><span class="p">(</span><span class="n">ann_path</span><span class="p">)))</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;IPython.core.display.HTML object&gt;
+</pre></div>
+</div>
+</section>
+<section id="viewing-the-html-web-file-to-see-the-actual-c-code">
+<h2>Viewing the HTML web file to see the actual C code<a class="headerlink" href="#viewing-the-html-web-file-to-see-the-actual-c-code" title="Link to this heading">#</a></h2>
+<p>cython –annotate &lt;pyx file&gt; will output an html report where each line of the the pyx file
+is color coded as to the amount of back and forth to the python interpreter that is required,
+and each line can be expanded to see the actual C code generated.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import module</span>
+<span class="c1"># import webbrowser</span>
+
+<span class="c1"># open html file</span>
+<span class="c1"># webbrowser.open(ann_path)</span>
+
+<span class="c1"># Sample Output:</span>
+<span class="sa">r</span><span class="sd">"""</span>
+<span class="sd">Generated by Cython 3.2.4</span>
+
+<span class="sd">Yellow lines hint at Python interaction.</span>
+<span class="sd">Click on a line that starts with a "+" to see the C code that Cython generated for it.</span>
+
+<span class="sd">Raw output: scikitplot_cython_ddc7a5b27b5b1257.c</span>
+
+<span class="sd">−1: def f(int n):</span>
+<span class="sd">/* Python wrapper */</span>
+<span class="sd">static PyObject *__pyx_pw_34scikitplot_cython_ddc7a5b27b5b1257_1f(PyObject *__pyx_self,</span>
+<span class="sd">#if CYTHON_METH_FASTCALL</span>
+<span class="sd">PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds</span>
+<span class="sd">#else</span>
+<span class="sd">PyObject *__pyx_args, PyObject *__pyx_kwds</span>
+<span class="sd">#endif</span>
+<span class="sd">); /*proto*/</span>
+<span class="sd">PyDoc_STRVAR(__pyx_doc_34scikitplot_cython_ddc7a5b27b5b1257_f, "f(int n)");</span>
+<span class="sd">static PyMethodDef __pyx_mdef_34scikitplot_cython_ddc7a5b27b5b1257_1f = {"f", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_34scikitplot_cython_ddc7a5b27b5b1257_1f, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_34scikitplot_cython_ddc7a5b27b5b1257_f};</span>
+<span class="sd">static PyObject *__pyx_pw_34scikitplot_cython_ddc7a5b27b5b1257_1f(PyObject *__pyx_self,</span>
+<span class="sd">#if CYTHON_METH_FASTCALL</span>
+<span class="sd">PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds</span>
+<span class="sd">#else</span>
+<span class="sd">PyObject *__pyx_args, PyObject *__pyx_kwds</span>
+<span class="sd">#endif</span>
+<span class="sd">) {</span>
+<span class="sd">  int __pyx_v_n;</span>
+<span class="sd">  #if !CYTHON_METH_FASTCALL</span>
+<span class="sd">  CYTHON_UNUSED Py_ssize_t __pyx_nargs;</span>
+<span class="sd">  #endif</span>
+<span class="sd">  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;</span>
+<span class="sd">  PyObject *__pyx_r = 0;</span>
+<span class="sd">  __Pyx_RefNannyDeclarations</span>
+<span class="sd">  __Pyx_RefNannySetupContext("f (wrapper)", 0);</span>
+<span class="sd">  #if !CYTHON_METH_FASTCALL</span>
+<span class="sd">  #if CYTHON_ASSUME_SAFE_SIZE</span>
+<span class="sd">  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);</span>
+<span class="sd">  #else</span>
+<span class="sd">  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs &lt; 0)) return NULL;</span>
+<span class="sd">  #endif</span>
+<span class="sd">  #endif</span>
+<span class="sd">  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);</span>
+<span class="sd">  {</span>
+<span class="sd">    PyObject ** const __pyx_pyargnames[] = {&amp;__pyx_mstate_global-&gt;__pyx_n_u_n,0};</span>
+<span class="sd">  PyObject* values[1] = {0};</span>
+<span class="sd">    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;</span>
+<span class="sd">    if (unlikely(__pyx_kwds_len) &lt; 0) __PYX_ERR(0, 1, __pyx_L3_error)</span>
+<span class="sd">    if (__pyx_kwds_len &gt; 0) {</span>
+<span class="sd">      switch (__pyx_nargs) {</span>
+<span class="sd">        case  1:</span>
+<span class="sd">        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);</span>
+<span class="sd">        if (!CYTHON_ASSUME_SAFE_MACROS &amp;&amp; unlikely(!values[0])) __PYX_ERR(0, 1, __pyx_L3_error)</span>
+<span class="sd">        CYTHON_FALLTHROUGH;</span>
+<span class="sd">        case  0: break;</span>
+<span class="sd">        default: goto __pyx_L5_argtuple_error;</span>
+<span class="sd">      }</span>
+<span class="sd">      const Py_ssize_t kwd_pos_args = __pyx_nargs;</span>
+<span class="sd">      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "f", 0) &lt; (0)) __PYX_ERR(0, 1, __pyx_L3_error)</span>
+<span class="sd">      for (Py_ssize_t i = __pyx_nargs; i &lt; 1; i++) {</span>
+<span class="sd">        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("f", 1, 1, 1, i); __PYX_ERR(0, 1, __pyx_L3_error) }</span>
+<span class="sd">      }</span>
+<span class="sd">    } else if (unlikely(__pyx_nargs != 1)) {</span>
+<span class="sd">      goto __pyx_L5_argtuple_error;</span>
+<span class="sd">    } else {</span>
+<span class="sd">      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);</span>
+<span class="sd">      if (!CYTHON_ASSUME_SAFE_MACROS &amp;&amp; unlikely(!values[0])) __PYX_ERR(0, 1, __pyx_L3_error)</span>
+<span class="sd">    }</span>
+<span class="sd">    __pyx_v_n = __Pyx_PyLong_As_int(values[0]); if (unlikely((__pyx_v_n == (int)-1) &amp;&amp; PyErr_Occurred())) __PYX_ERR(0, 1, __pyx_L3_error)</span>
+<span class="sd">  }</span>
+<span class="sd">  goto __pyx_L6_skip;</span>
+<span class="sd">  __pyx_L5_argtuple_error:;</span>
+<span class="sd">  __Pyx_RaiseArgtupleInvalid("f", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1, __pyx_L3_error)</span>
+<span class="sd">  __pyx_L6_skip:;</span>
+<span class="sd">  goto __pyx_L4_argument_unpacking_done;</span>
+<span class="sd">  __pyx_L3_error:;</span>
+<span class="sd">  for (Py_ssize_t __pyx_temp=0; __pyx_temp &lt; (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {</span>
+<span class="sd">    Py_XDECREF(values[__pyx_temp]);</span>
+<span class="sd">  }</span>
+<span class="sd">  __Pyx_AddTraceback("scikitplot_cython_ddc7a5b27b5b1257.f", __pyx_clineno, __pyx_lineno, __pyx_filename);</span>
+<span class="sd">  __Pyx_RefNannyFinishContext();</span>
+<span class="sd">  return NULL;</span>
+<span class="sd">  __pyx_L4_argument_unpacking_done:;</span>
+<span class="sd">  __pyx_r = __pyx_pf_34scikitplot_cython_ddc7a5b27b5b1257_f(__pyx_self, __pyx_v_n);</span>
+<span class="sd">  int __pyx_lineno = 0;</span>
+<span class="sd">  const char *__pyx_filename = NULL;</span>
+<span class="sd">  int __pyx_clineno = 0;</span>
+
+<span class="sd">  /* function exit code */</span>
+<span class="sd">  for (Py_ssize_t __pyx_temp=0; __pyx_temp &lt; (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {</span>
+<span class="sd">    Py_XDECREF(values[__pyx_temp]);</span>
+<span class="sd">  }</span>
+<span class="sd">  __Pyx_RefNannyFinishContext();</span>
+<span class="sd">  return __pyx_r;</span>
+<span class="sd">}</span>
+
+<span class="sd">static PyObject *__pyx_pf_34scikitplot_cython_ddc7a5b27b5b1257_f(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_n) {</span>
+<span class="sd">  PyObject *__pyx_r = NULL;</span>
+<span class="sd">/* … */</span>
+<span class="sd">  __pyx_t_2 = __Pyx_CyFunction_New(&amp;__pyx_mdef_34scikitplot_cython_ddc7a5b27b5b1257_1f, 0, __pyx_mstate_global-&gt;__pyx_n_u_f, NULL, __pyx_mstate_global-&gt;__pyx_n_u_scikitplot_cython_ddc7a5b27b5b12, __pyx_mstate_global-&gt;__pyx_d, ((PyObject *)__pyx_mstate_global-&gt;__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)</span>
+<span class="sd">  __Pyx_GOTREF(__pyx_t_2);</span>
+<span class="sd">  #if CYTHON_COMPILING_IN_CPYTHON &amp;&amp; PY_VERSION_HEX &gt;= 0x030E0000</span>
+<span class="sd">  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);</span>
+<span class="sd">  #endif</span>
+<span class="sd">  if (PyDict_SetItem(__pyx_mstate_global-&gt;__pyx_d, __pyx_mstate_global-&gt;__pyx_n_u_f, __pyx_t_2) &lt; (0)) __PYX_ERR(0, 1, __pyx_L1_error)</span>
+<span class="sd">  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;</span>
+<span class="sd">  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)</span>
+<span class="sd">  __Pyx_GOTREF(__pyx_t_2);</span>
+<span class="sd">  if (PyDict_SetItem(__pyx_mstate_global-&gt;__pyx_d, __pyx_mstate_global-&gt;__pyx_n_u_test, __pyx_t_2) &lt; (0)) __PYX_ERR(0, 1, __pyx_L1_error)</span>
+<span class="sd">  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;</span>
+<span class="sd">−2:     return n*n</span>
+<span class="sd">  __Pyx_XDECREF(__pyx_r);</span>
+<span class="sd">  __pyx_t_1 = __Pyx_PyLong_From_int((__pyx_v_n * __pyx_v_n)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 2, __pyx_L1_error)</span>
+<span class="sd">  __Pyx_GOTREF(__pyx_t_1);</span>
+<span class="sd">  __pyx_r = __pyx_t_1;</span>
+<span class="sd">  __pyx_t_1 = 0;</span>
+<span class="sd">  goto __pyx_L0;</span>
+<span class="sd">"""</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>'\nGenerated by Cython 3.2.4\n\nYellow lines hint at Python interaction.\nClick on a line that starts with a "+" to see the C code that Cython generated for it.\n\nRaw output: scikitplot_cython_ddc7a5b27b5b1257.c\n\n−1: def f(int n):\n/* Python wrapper */\nstatic PyObject *__pyx_pw_34scikitplot_cython_ddc7a5b27b5b1257_1f(PyObject *__pyx_self,\n#if CYTHON_METH_FASTCALL\nPyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds\n#else\nPyObject *__pyx_args, PyObject *__pyx_kwds\n#endif\n); /*proto*/\nPyDoc_STRVAR(__pyx_doc_34scikitplot_cython_ddc7a5b27b5b1257_f, "f(int n)");\nstatic PyMethodDef __pyx_mdef_34scikitplot_cython_ddc7a5b27b5b1257_1f = {"f", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_34scikitplot_cython_ddc7a5b27b5b1257_1f, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_34scikitplot_cython_ddc7a5b27b5b1257_f};\nstatic PyObject *__pyx_pw_34scikitplot_cython_ddc7a5b27b5b1257_1f(PyObject *__pyx_self,\n#if CYTHON_METH_FASTCALL\nPyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds\n#else\nPyObject *__pyx_args, PyObject *__pyx_kwds\n#endif\n) {\n  int __pyx_v_n;\n  #if !CYTHON_METH_FASTCALL\n  CYTHON_UNUSED Py_ssize_t __pyx_nargs;\n  #endif\n  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;\n  PyObject *__pyx_r = 0;\n  __Pyx_RefNannyDeclarations\n  __Pyx_RefNannySetupContext("f (wrapper)", 0);\n  #if !CYTHON_METH_FASTCALL\n  #if CYTHON_ASSUME_SAFE_SIZE\n  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);\n  #else\n  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs &lt; 0)) return NULL;\n  #endif\n  #endif\n  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);\n  {\n    PyObject ** const __pyx_pyargnames[] = {&amp;__pyx_mstate_global-&gt;__pyx_n_u_n,0};\n  PyObject* values[1] = {0};\n    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;\n    if (unlikely(__pyx_kwds_len) &lt; 0) __PYX_ERR(0, 1, __pyx_L3_error)\n    if (__pyx_kwds_len &gt; 0) {\n      switch (__pyx_nargs) {\n        case  1:\n        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);\n        if (!CYTHON_ASSUME_SAFE_MACROS &amp;&amp; unlikely(!values[0])) __PYX_ERR(0, 1, __pyx_L3_error)\n        CYTHON_FALLTHROUGH;\n        case  0: break;\n        default: goto __pyx_L5_argtuple_error;\n      }\n      const Py_ssize_t kwd_pos_args = __pyx_nargs;\n      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "f", 0) &lt; (0)) __PYX_ERR(0, 1, __pyx_L3_error)\n      for (Py_ssize_t i = __pyx_nargs; i &lt; 1; i++) {\n        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("f", 1, 1, 1, i); __PYX_ERR(0, 1, __pyx_L3_error) }\n      }\n    } else if (unlikely(__pyx_nargs != 1)) {\n      goto __pyx_L5_argtuple_error;\n    } else {\n      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);\n      if (!CYTHON_ASSUME_SAFE_MACROS &amp;&amp; unlikely(!values[0])) __PYX_ERR(0, 1, __pyx_L3_error)\n    }\n    __pyx_v_n = __Pyx_PyLong_As_int(values[0]); if (unlikely((__pyx_v_n == (int)-1) &amp;&amp; PyErr_Occurred())) __PYX_ERR(0, 1, __pyx_L3_error)\n  }\n  goto __pyx_L6_skip;\n  __pyx_L5_argtuple_error:;\n  __Pyx_RaiseArgtupleInvalid("f", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1, __pyx_L3_error)\n  __pyx_L6_skip:;\n  goto __pyx_L4_argument_unpacking_done;\n  __pyx_L3_error:;\n  for (Py_ssize_t __pyx_temp=0; __pyx_temp &lt; (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {\n    Py_XDECREF(values[__pyx_temp]);\n  }\n  __Pyx_AddTraceback("scikitplot_cython_ddc7a5b27b5b1257.f", __pyx_clineno, __pyx_lineno, __pyx_filename);\n  __Pyx_RefNannyFinishContext();\n  return NULL;\n  __pyx_L4_argument_unpacking_done:;\n  __pyx_r = __pyx_pf_34scikitplot_cython_ddc7a5b27b5b1257_f(__pyx_self, __pyx_v_n);\n  int __pyx_lineno = 0;\n  const char *__pyx_filename = NULL;\n  int __pyx_clineno = 0;\n\n  /* function exit code */\n  for (Py_ssize_t __pyx_temp=0; __pyx_temp &lt; (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {\n    Py_XDECREF(values[__pyx_temp]);\n  }\n  __Pyx_RefNannyFinishContext();\n  return __pyx_r;\n}\n\nstatic PyObject *__pyx_pf_34scikitplot_cython_ddc7a5b27b5b1257_f(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_n) {\n  PyObject *__pyx_r = NULL;\n/* … */\n  __pyx_t_2 = __Pyx_CyFunction_New(&amp;__pyx_mdef_34scikitplot_cython_ddc7a5b27b5b1257_1f, 0, __pyx_mstate_global-&gt;__pyx_n_u_f, NULL, __pyx_mstate_global-&gt;__pyx_n_u_scikitplot_cython_ddc7a5b27b5b12, __pyx_mstate_global-&gt;__pyx_d, ((PyObject *)__pyx_mstate_global-&gt;__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)\n  __Pyx_GOTREF(__pyx_t_2);\n  #if CYTHON_COMPILING_IN_CPYTHON &amp;&amp; PY_VERSION_HEX &gt;= 0x030E0000\n  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);\n  #endif\n  if (PyDict_SetItem(__pyx_mstate_global-&gt;__pyx_d, __pyx_mstate_global-&gt;__pyx_n_u_f, __pyx_t_2) &lt; (0)) __PYX_ERR(0, 1, __pyx_L1_error)\n  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;\n  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)\n  __Pyx_GOTREF(__pyx_t_2);\n  if (PyDict_SetItem(__pyx_mstate_global-&gt;__pyx_d, __pyx_mstate_global-&gt;__pyx_n_u_test, __pyx_t_2) &lt; (0)) __PYX_ERR(0, 1, __pyx_L1_error)\n  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;\n−2:     return n*n\n  __Pyx_XDECREF(__pyx_r);\n  __pyx_t_1 = __Pyx_PyLong_From_int((__pyx_v_n * __pyx_v_n)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 2, __pyx_L1_error)\n  __Pyx_GOTREF(__pyx_t_1);\n  __pyx_r = __pyx_t_1;\n  __pyx_t_1 = 0;\n  goto __pyx_L0;\n'
+</pre></div>
+</div>
+<p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger reference internal" href="../../_tags/domain-cython.html"><span class="doc">domain: cython</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-cython.html"><span class="doc">plot-type: cython</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.426 seconds)</p>
+
+<p class="rubric">Related examples</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example shows the minimal workflow:"><img alt="" src="../../_images/sphx_glr_plot_00_quickstart_compile_and_load_thumb.png"/>
+<p><a class="reference internal" href="plot_00_quickstart_compile_and_load.html"><span class="doc">Cython quickstart: compile_and_load</span></a></p>
+<div class="sphx-glr-thumbnail-title">Cython quickstart: compile_and_load</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to build a small compiled package consisting of multiple Cython extension modules in one build directory."><img alt="" src="../../_images/sphx_glr_plot_05_package_examples_multimodule_thumb.png"/>
+<p><a class="reference internal" href="plot_05_package_examples_multimodule.html"><span class="doc">Multi-module package builds (5 package examples)</span></a></p>
+<div class="sphx-glr-thumbnail-title">Multi-module package builds (5 package examples)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to:"><img alt="" src="../../_images/sphx_glr_plot_01_browse_and_compile_templates_thumb.png"/>
+<p><a class="reference internal" href="plot_01_browse_and_compile_templates.html"><span class="doc">Browse and compile templates</span></a></p>
+<div class="sphx-glr-thumbnail-title">Browse and compile templates</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Real projects often split Cython code across multiple files:"><img alt="" src="../../_images/sphx_glr_plot_06_multifile_support_files_thumb.png"/>
+<p><a class="reference internal" href="plot_06_multifile_support_files.html"><span class="doc">Multi-file builds: .pxi includes and external headers</span></a></p>
+<div class="sphx-glr-thumbnail-title">Multi-file builds: .pxi includes and external headers</div>
+</div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+</article>
+<footer class="bd-footer-article">
+<div class="footer-article-items footer-article__inner">
+<div class="footer-article-item">
+<div class="prev-next-area">
+<a class="left-prev" href="plot_01_browse_and_compile_templates.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">Browse and compile templates</p>
+</div>
+</a>
+<a class="right-next" href="plot_03_cache_and_restart_reuse.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">Cache and restart reuse</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div></div>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> On this page
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="bd-toc-nav page-toc">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-python-module-from-python">Generate <code class="docutils literal notranslate"><span class="pre">python</span></code> Module from <code class="docutils literal notranslate"><span class="pre">python</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#display-annotate-profile-to-see-the-actual-c-code">Display <code class="docutils literal notranslate"><span class="pre">annotate</span></code> Profile to see the actual C code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viewing-the-html-web-file-to-see-the-actual-c-code">Viewing the HTML web file to see the actual C code</a></li>
+</ul>
+</nav></div>
+<div class="sidebar-secondary-item">
+<div aria-label="source link" role="note">
+<h3>This Page</h3>
+<ul class="this-page-menu">
+<li><a href="../../_sources/auto_examples/cython/plot_02_build_profiles.rst.txt" rel="nofollow">Show Source</a></li>
+</ul>
+</div></div>
+<div class="sidebar-secondary-item"><div title="plot_02_build_profiles.py"><a download="" href="../../_downloads/b23995e26470e0b68ae0edf2ee962e0a/plot_02_build_profiles.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_02_build_profiles.ipynb"><a download="" href="../../_downloads/08761d35a1d099622f1fb73a45705c8b/plot_02_build_profiles.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/cython/plot_02_build_profiles.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo4.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_02_build_profiles.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo4.svg"/></a></div></div></div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">
+    
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260201.e33c76c 2026-02-01T06:29Z.
+      <br/>
+</p>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>
