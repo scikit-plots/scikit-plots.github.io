@@ -2090,6 +2090,31 @@ Next, we evaluate the models using cross validation and record the results:
 
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    /home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-packages/scikitplot/preprocessing/_encoders.py:1668: UserWarning:
+
+    Found unknown categories in columns ['120', '997', 'a 250', 'alloy wheels (23")', 'cla 180', 'cle 300', 'glc 200', 'i3', 'panamera', 'volvo', 'xc40', 'xc90'] during transform. These unknown categories will be encoded as all zeros
+
+    /home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-packages/scikitplot/preprocessing/_encoders.py:1668: UserWarning:
+
+    Found unknown categories in columns ['116', '316', '418', 'alloy wheels (17")', 'c 300', 'focus', 'ford', 'm3', 'vito'] during transform. These unknown categories will be encoded as all zeros
+
+    /home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-packages/scikitplot/preprocessing/_encoders.py:1668: UserWarning:
+
+    Found unknown categories in columns ['159', '340', 'giulietta', 'm8', 'q8', 'sprinter', 'stelvio', 'taycan', 'tonale', 'x5 m'] during transform. These unknown categories will be encoded as all zeros
+
+    /home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-packages/scikitplot/preprocessing/_encoders.py:1668: UserWarning:
+
+    Found unknown categories in columns ['125', '430', '520', '991', 'awning', 'citan', 'e 220', 'glc 300', 'gle 350', 'm850', 'sliding door right', 'spare tyre', 'targa', 'x4'] during transform. These unknown categories will be encoded as all zeros
+
+    /home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-packages/scikitplot/preprocessing/_encoders.py:1668: UserWarning:
+
+    Found unknown categories in columns ['147', '325', '535', '911', 'a5', 'cng', 'giulia', 'honda', 'hr-v', 'ix', 'suzuki', 'swift'] during transform. These unknown categories will be encoded as all zeros
+
+
 
 
 
@@ -4282,7 +4307,7 @@ Finally, we evaluate the pipeline using cross validation and record the results:
                                                                      unknown_value=-1),
                                                       Index([&#x27;make&#x27;, &#x27;body_type&#x27;, &#x27;fuel_category&#x27;], dtype=&#x27;object&#x27;)),
                                                      (&#x27;equipment&#x27;,
-                                                      DummyCodeEncoder(sep=&lt;function &lt;lambda&gt; at 0x7f5ea35d2e80&gt;,
+                                                      DummyCodeEncoder(sep=&lt;function &lt;lambda&gt; at 0x7fddef24e200&gt;,
                                                                        sparse_output=False),
                                                       [&#x27;equipment_comfort&#x27;,
                                                        &#x27;equipment_entertainment&#x27;,
@@ -4753,7 +4778,7 @@ Finally, we evaluate the pipeline using cross validation and record the results:
                               this.parentElement.nextElementSibling)"
                 ></i></td>
                 <td class="param">sep</td>
-                <td class="value">&lt;function &lt;la...x7f5ea35d2e80&gt;</td>
+                <td class="value">&lt;function &lt;la...x7fddef24e200&gt;</td>
             </tr>
     
 
@@ -5360,6 +5385,23 @@ Finally, we evaluate the pipeline using cross validation and record the results:
 
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    /home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-packages/scikitplot/preprocessing/_encoders.py:1668: UserWarning:
+
+    Found unknown categories in columns ['alloy wheels (23")'] during transform. These unknown categories will be encoded as all zeros
+
+    /home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-packages/scikitplot/preprocessing/_encoders.py:1668: UserWarning:
+
+    Found unknown categories in columns ['alloy wheels (17")'] during transform. These unknown categories will be encoded as all zeros
+
+    /home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-packages/scikitplot/preprocessing/_encoders.py:1668: UserWarning:
+
+    Found unknown categories in columns ['awning', 'sliding door right', 'spare tyre'] during transform. These unknown categories will be encoded as all zeros
+
+
 
 
 
@@ -5456,7 +5498,7 @@ can be explained as follows:
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 4.148 seconds)
+   **Total running time of the script:** (0 minutes 4.183 seconds)
 
 
 .. _sphx_glr_download_auto_examples_preprocessing_plot_dummy_code_encoder.py:
