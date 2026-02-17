@@ -1,0 +1,1014 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Vector Similarity Search and Vector Database" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://scikit-plots.github.io/stable/user_guide/annoy/annoy_index_vector_database.html" />
+<meta property="og:site_name" content="scikit-plots" />
+<meta property="og:description" content="This page explains vector databases in a simple way. A vector database stores vectors (numbers)., It can search for similar vectors very fast., This is useful for AI apps.. A vector database stores..." />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
+<meta property="og:image:alt" content="scikit-plots" />
+<meta name="description" content="This page explains vector databases in a simple way. A vector database stores vectors (numbers)., It can search for similar vectors very fast., This is useful for AI apps.. A vector database stores..." />
+
+    <title>Vector Similarity Search and Vector Database &#8212; scikit-plots 0.4.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=14208072" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=e4cb1417" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=6c02275b"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=e93d8674"></script>
+    <script src="../../_static/thebelab-helper.js"></script>
+    <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/annoy/annoy_index_vector_database';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
+    <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
+    <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Annoy Index class Inheritance Diagrams (MRO)" href="annoy_index_inheritance_diagrams.html" />
+    <link rel="prev" title="ANNoy Vector Database (Approximate Nearest Neighbors)" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.4" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/scikit-plots-logo-small.png" class="logo__image only-light" alt="scikit-plots homepage"/>
+    <img src="../../_static/scikit-plots-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-plots homepage"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../whats_new/index.html">
+    Release History
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/governance.html">
+    Governance Process
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/index.html">
+    About Us | Project
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/python-logo.png" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whats_new/index.html">
+    Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/governance.html">
+    Governance Process
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/index.html">
+    About Us | Project
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/logos/python-logo.png" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">ANNoy</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Vector Similarity Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annoy_index_inheritance_diagrams.html">Index Inheritance</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api/index.html">Metric Performance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/decomposition.html">Decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/estimators.html">Estimators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/metrics.html">Metrics</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cython/index.html">Cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cython/_templates/templates_index.html">Cython templates</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../decile/index.html">Decile-Wise Performance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../decile/kds.html">KeyToDataScience</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/modelplotpy.html">ModelPlotPy</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../impute/index.html">Impute</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../logging/index.html">Logging</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../memmap/index.html">MemMap</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../mlflow/index.html">MLflow</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nc/index.html">Nc</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../preprocessing/index.html">Preprocessing</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../random/index.html">Random</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../seaborn/index.html">Seaborn</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../stats/index.html">Stats</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../visualkeras/index.html">Visualkeras</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../_lib/index.html">Array API support</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../_logo.html">Logo API</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">development</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../cexperimental/index.html">C-Experimental (experimental)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cexternals/index.html">C-Externals (experimental)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cexternals/_annoy/index.html">spotify/ANNoy Vector Index DB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cexternals/_astropy/index.html">Astropy (experimental)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cexternals/_f2py/index.html">f2py (experimental)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cexternals/_numcpp/index.html">NumCpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cexternals/_lightnumpy/index.html">LightNumPy (experimental)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../experimental/index.html">Experimental (experimental)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../experimental/pipeline/index.html">Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../experimental/_doremi/index.html">Do-Re-Mi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../experimental/_llm_provider/index.html">LLM Provider (experimental)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../externals/index.html">Externals (experimental)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../externals/array_api_compat/index.html">array_api_compat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../externals/array_api_extra/index.html">array_api_extra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../externals/_probscale/index.html">Probability Plots (experimental)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../externals/_seaborn/index.html">Seaborn (experimental)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../externals/_sphinxext/index.html">Matplotlib Sphinx Ext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../externals/_tweedie/index.html">Tweedie Family</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">User Guide</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">ANNoy Vector Database (Approximate Nearest Neighbors)</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Vector Similarity Search and Vector Database</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="vector-similarity-search-and-vector-database">
+<span id="annoy-index-vector-database"></span><h1>Vector Similarity Search and Vector Database<a class="headerlink" href="#vector-similarity-search-and-vector-database" title="Link to this heading">#</a></h1>
+<p>This page explains vector databases in a simple way.</p>
+<ul class="simple">
+<li><p>A <strong>vector database</strong> stores vectors (numbers).</p></li>
+<li><p>It can search for <em>similar vectors</em> very fast.</p></li>
+<li><p>This is useful for AI apps.</p></li>
+</ul>
+<p>A <strong>vector database</strong> stores, manages, and indexes high-dimensional vectors and
+is designed for low-latency similarity queries.</p>
+<p>Vector databases are popular for AI because they work well with unstructured
+data like text, images, and audio (after you convert them into embeddings).</p>
+<section id="vector-similarity-search">
+<h2>Vector similarity search<a class="headerlink" href="#vector-similarity-search" title="Link to this heading">#</a></h2>
+<p>Vector similarity search finds the items whose vectors are <em>closest</em> to a query vector.
+It is widely used in retrieval tasks such as semantic search, recommendations, and clustering.</p>
+<section id="distance-and-similarity-metrics">
+<h3>Distance and similarity metrics<a class="headerlink" href="#distance-and-similarity-metrics" title="Link to this heading">#</a></h3>
+<p>Different metrics define “closeness” in different ways:</p>
+<ul class="simple">
+<li><p><strong>Dot product (inner product)</strong> is often used as a similarity score.</p>
+<ul>
+<li><p>Larger <span class="math notranslate nohighlight">\(\mathbf{u}\cdot\mathbf{v}\)</span> means more similar.</p></li>
+<li><p>Some libraries expect a <em>distance</em> to minimize, so they use the <strong>negative dot product</strong>.</p></li>
+</ul>
+</li>
+<li><p><strong>Cosine similarity</strong> measures the <em>direction</em> (angle) between vectors.</p>
+<ul>
+<li><p>Range: <strong>-1 to 1</strong> (for many embedding use cases, values are often <strong>0 to 1</strong>).</p></li>
+<li><p><strong>1</strong> means vectors point in the same direction (most similar).</p></li>
+<li><p><strong>0</strong> means vectors are orthogonal (no directional similarity).</p></li>
+<li><p><strong>-1</strong> means vectors point in opposite directions (most dissimilar).</p></li>
+</ul>
+</li>
+<li><p><strong>Cosine distance</strong> converts cosine similarity into a distance.</p>
+<ul>
+<li><p>A common definition is <span class="math notranslate nohighlight">\(1 - \text{cosine\_similarity}\)</span>.</p></li>
+<li><p>Range (with this definition): <strong>0 to 2</strong>.</p></li>
+<li><p><strong>0</strong> means most similar; values closer to <strong>2</strong> mean more dissimilar.</p></li>
+</ul>
+</li>
+<li><p><strong>Euclidean (L2) distance</strong> measures straight-line distance.</p>
+<ul>
+<li><p>Think: <em>as-the-crow-flies</em> distance in space.</p></li>
+<li><p>Larger values mean vectors are farther apart.</p></li>
+</ul>
+</li>
+<li><p><strong>Manhattan (L1) distance</strong> measures grid-like distance.</p>
+<ul>
+<li><p>Think: moving along city blocks (right/left/up/down).</p></li>
+<li><p>Often more robust to outliers than L2.</p></li>
+</ul>
+</li>
+<li><p><strong>Hamming distance</strong> counts how many positions differ.</p>
+<ul>
+<li><p>Used for <strong>binary vectors</strong> (0/1) or <strong>equal-length strings</strong>.</p></li>
+<li><p>It is the number of indices where <span class="math notranslate nohighlight">\(u_i \neq v_i\)</span>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="formulas">
+<h3>Formulas<a class="headerlink" href="#formulas" title="Link to this heading">#</a></h3>
+<p>For two vectors <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> of length <span class="math notranslate nohighlight">\(k\)</span>:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Dot product is <em>not</em> scale-invariant: if you multiply <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> by 2,
+the dot product doubles. Using <span class="math notranslate nohighlight">\(d_{\text{dot}} = -(\mathbf{u}\cdot\mathbf{v})\)</span>
+produces the same ranking as maximizing <span class="math notranslate nohighlight">\(\mathbf{u}\cdot\mathbf{v}\)</span> (it just
+flips the sign). If vectors are L2-normalized, dot product and cosine similarity
+become equivalent.</p>
+</div>
+<ul>
+<li><p><strong>Dot product (similarity score)</strong>:</p>
+<div class="math notranslate nohighlight">
+\[s_{\text{dot}}(\mathbf{u}, \mathbf{v})
+= \mathbf{u} \cdot \mathbf{v}
+= \sum_{i=1}^{k} u_i v_i\]</div>
+</li>
+<li><p><strong>Negative dot product</strong> (dot as a distance to minimize):</p>
+<div class="math notranslate nohighlight">
+\[d_{\text{dot}}(\mathbf{u}, \mathbf{v})
+= -(\mathbf{u} \cdot \mathbf{v})
+= -\sum_{i=1}^{k} u_i v_i\]</div>
+</li>
+<li><p><strong>Cosine similarity</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\text{cos\_sim}(\mathbf{u}, \mathbf{v})
+= \frac{\mathbf{u} \cdot \mathbf{v}}{\lVert \mathbf{u} \rVert \, \lVert \mathbf{v} \rVert}\]</div>
+</li>
+<li><p><strong>Cosine distance</strong> (common definition):</p>
+<div class="math notranslate nohighlight">
+\[d_{\text{cos}}(\mathbf{u}, \mathbf{v})
+= 1 - \text{cos\_sim}(\mathbf{u}, \mathbf{v})\]</div>
+</li>
+<li><p><strong>Euclidean (L2) distance</strong>:</p>
+<div class="math notranslate nohighlight">
+\[d_{2}(\mathbf{u}, \mathbf{v})
+= \sqrt{\sum_{i=1}^{k} (u_i - v_i)^2}\]</div>
+</li>
+<li><p><strong>Manhattan (L1) distance</strong>:</p>
+<div class="math notranslate nohighlight">
+\[d_{1}(\mathbf{u}, \mathbf{v})
+= \sum_{i=1}^{k} \lvert u_i - v_i \rvert\]</div>
+</li>
+<li><p><strong>Hamming distance</strong>:</p>
+<div class="math notranslate nohighlight">
+\[d_{\text{ham}}(\mathbf{u}, \mathbf{v})
+= \sum_{i=1}^{k} \mathbb{1}[u_i \neq v_i]\]</div>
+</li>
+</ul>
+</section>
+</section>
+<section id="vector-database-vs-vector-index-library">
+<h2>Vector database vs “vector index library”<a class="headerlink" href="#vector-database-vs-vector-index-library" title="Link to this heading">#</a></h2>
+<p>A <em>vector index library</em> (example: Annoy) is usually a library that you run
+inside your application process.</p>
+<p>A <em>vector database</em> is usually a separate service (or a database extension)
+that focuses on:</p>
+<ul class="simple">
+<li><p>storing vectors + metadata</p></li>
+<li><p>indexing vectors for fast search</p></li>
+<li><p>scaling to large datasets and many users</p></li>
+<li><p>operational features (replication, backups, monitoring, access control)</p></li>
+</ul>
+<p>Vector databases store vectors (example: pgvector with PostgreSQL) and support similarity search,
+often using approximate nearest neighbor methods in a pipeline for fast retrieval.</p>
+</section>
+<section id="pros-and-cons-of-vector-search">
+<h2>Pros and cons of vector search<a class="headerlink" href="#pros-and-cons-of-vector-search" title="Link to this heading">#</a></h2>
+<p>Vector similarity search can be very effective:</p>
+<ul class="simple">
+<li><p>Efficient searching with special index structures (fast retrieval)</p></li>
+<li><p>High accuracy for semantic similarity (meaning-based matches)</p></li>
+<li><p>Range queries (search within a threshold)</p></li>
+</ul>
+<p>But there are also limitations:</p>
+<ul class="simple">
+<li><p>High-dimensional data can be hard (needs special handling)</p></li>
+<li><p>Scalability can be challenging for very large datasets</p></li>
+<li><p>Distance metric choice matters (wrong metric = bad results)</p></li>
+<li><p>Indexing/storage needs can be high (large vectors take space)</p></li>
+</ul>
+</section>
+<section id="practical-tips">
+<h2>5 practical tips<a class="headerlink" href="#practical-tips" title="Link to this heading">#</a></h2>
+<p>Instaclustr suggests these practical steps for good results:</p>
+<ol class="arabic simple">
+<li><p>Clean and normalize data (reduce noise; keep a common scale)</p></li>
+<li><p>Configure and tune algorithms (balance speed and accuracy)</p></li>
+<li><p>Use sharding / partitioning for large datasets</p></li>
+<li><p>Consider hardware acceleration (GPU/TPU) when needed</p></li>
+<li><p>Handle high-dimensional data (e.g., dimensionality reduction when useful)</p></li>
+</ol>
+</section>
+<section id="open-source-options">
+<h2>Open source options<a class="headerlink" href="#open-source-options" title="Link to this heading">#</a></h2>
+<p>Instaclustr lists popular open source options including:</p>
+<p>Dedicated / vector-native options (examples)</p>
+<ul class="simple">
+<li><p>Elasticsearch</p></li>
+<li><p>Faiss</p></li>
+<li><p>Qdrant</p></li>
+<li><p>OpenSearch</p></li>
+<li><p>Chroma</p></li>
+<li><p>Milvus</p></li>
+<li><p>Weaviate</p></li>
+</ul>
+<p>General-purpose databases with vector support (examples)</p>
+<ul class="simple">
+<li><p>PostgreSQL (via extensions such as pgvector)</p></li>
+<li><p>Others depending on your stack</p></li>
+</ul>
+</section>
+<section id="how-to-choose-simple-rules">
+<h2>How to choose (simple rules)<a class="headerlink" href="#how-to-choose-simple-rules" title="Link to this heading">#</a></h2>
+<p>Choose a vector index library (like Annoy) when:</p>
+<ul class="simple">
+<li><p>you want something small and local</p></li>
+<li><p>you control the process memory</p></li>
+<li><p>you can rebuild the index when needed</p></li>
+</ul>
+<p>Choose a vector database when:</p>
+<ul class="simple">
+<li><p>you need a shared service for many users/apps</p></li>
+<li><p>you need storage + metadata filters + operations (backup/monitoring)</p></li>
+<li><p>you need easy scaling and high availability</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item">
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">ANNoy Vector Database (Approximate Nearest Neighbors)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="annoy_index_inheritance_diagrams.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Annoy <code class="xref py py-class docutils literal notranslate"><span class="pre">Index</span></code> class Inheritance Diagrams (MRO)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+                </footer>
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-similarity-search">Vector similarity search</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-and-similarity-metrics">Distance and similarity metrics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formulas">Formulas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-database-vs-vector-index-library">Vector database vs “vector index library”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pros-and-cons-of-vector-search">Pros and cons of vector search</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-tips">5 practical tips</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-source-options">Open source options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-choose-simple-rules">How to choose (simple rules)</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/user_guide/annoy/annoy_index_vector_database.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.4.0.post10+git.20260217.bf0721e 2026-02-17T18:10Z.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

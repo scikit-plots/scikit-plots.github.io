@@ -49,16 +49,20 @@ reference on concepts repeated across the APIs, see :ref:`glossary-index`.
   scikitplot.cexperimental
   scikitplot.cexternals
   scikitplot.config
+  scikitplot.cython
+  scikitplot.datasets
+  scikitplot.decile
   scikitplot.exceptions
   scikitplot.experimental
   scikitplot.externals
   scikitplot.impute
-  scikitplot.kds
   scikitplot.logging
-  scikitplot.modelplotpy
+  scikitplot.memmap
+  scikitplot.mlflow
   scikitplot.nc
   scikitplot.preprocessing
-  scikitplot.snsx
+  scikitplot.random
+  scikitplot.seaborn
   scikitplot.stats
   scikitplot.utils
   scikitplot.visualkeras
@@ -70,6 +74,33 @@ reference on concepts repeated across the APIs, see :ref:`glossary-index`.
 
   * - Object
     - Description
+
+  * - :obj:`~.__version__` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot
+        .. autoshortsummary:: scikitplot.__version__
+        .. div:: caption
+
+          :mod:`scikitplot`
+
+  * - :obj:`~.__version_iso_8601__` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot
+        .. autoshortsummary:: scikitplot.__version_iso_8601__
+        .. div:: caption
+
+          :mod:`scikitplot`
+
+  * - :obj:`~.online_help` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot
+        .. autoshortsummary:: scikitplot.online_help
+        .. div:: caption
+
+          :mod:`scikitplot`
 
   * - :obj:`~.config_context` 
     - .. div:: sk-apis-search-desc
@@ -85,24 +116,6 @@ reference on concepts repeated across the APIs, see :ref:`glossary-index`.
 
         .. currentmodule:: scikitplot
         .. autoshortsummary:: scikitplot.get_config
-        .. div:: caption
-
-          :mod:`scikitplot`
-
-  * - :obj:`~.get_logger` 
-    - .. div:: sk-apis-search-desc
-
-        .. currentmodule:: scikitplot
-        .. autoshortsummary:: scikitplot.get_logger
-        .. div:: caption
-
-          :mod:`scikitplot`
-
-  * - :obj:`~.logger` 
-    - .. div:: sk-apis-search-desc
-
-        .. currentmodule:: scikitplot
-        .. autoshortsummary:: scikitplot.logger
         .. div:: caption
 
           :mod:`scikitplot`
@@ -134,14 +147,32 @@ reference on concepts repeated across the APIs, see :ref:`glossary-index`.
 
           :mod:`scikitplot`
 
-  * - :obj:`~.online_help` 
+  * - :obj:`~.get_logger` 
     - .. div:: sk-apis-search-desc
 
         .. currentmodule:: scikitplot
-        .. autoshortsummary:: scikitplot.online_help
+        .. autoshortsummary:: scikitplot.get_logger
         .. div:: caption
 
           :mod:`scikitplot`
+
+  * - :obj:`~.logger` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot
+        .. autoshortsummary:: scikitplot.logger
+        .. div:: caption
+
+          :mod:`scikitplot`
+
+  * - :obj:`~._annoy.Index` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.annoy._annoy
+        .. autoshortsummary:: scikitplot.annoy._annoy.Index
+        .. div:: caption
+
+          :mod:`scikitplot.annoy._annoy`
 
   * - :obj:`~.Annoy` 
     - .. div:: sk-apis-search-desc
@@ -557,6 +588,690 @@ reference on concepts repeated across the APIs, see :ref:`glossary-index`.
 
           :mod:`scikitplot.config`
 
+  * - :obj:`~.compile_and_load` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.compile_and_load
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.compile_and_load_result` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.compile_and_load_result
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.cython_import` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.cython_import
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.cython_import_result` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.cython_import_result
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.cython_import_all` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.cython_import_all
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.build_package_from_code` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.build_package_from_code
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.build_package_from_code_result` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.build_package_from_code_result
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.build_package_from_paths` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.build_package_from_paths
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.build_package_from_paths_result` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.build_package_from_paths_result
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.import_cached` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.import_cached
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.import_cached_result` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.import_cached_result
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.import_cached_by_name` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.import_cached_by_name
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.import_cached_package` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.import_cached_package
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.import_cached_package_result` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.import_cached_package_result
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.register_cached_artifact_path` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.register_cached_artifact_path
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.register_cached_artifact_bytes` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.register_cached_artifact_bytes
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.import_artifact_path` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.import_artifact_path
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.import_artifact_bytes` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.import_artifact_bytes
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.export_cached` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.export_cached
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.get_cache_dir` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.get_cache_dir
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.list_cached` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.list_cached
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.list_cached_packages` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.list_cached_packages
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.cache_stats` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.cache_stats
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.gc_cache` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.gc_cache
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.purge_cache` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.purge_cache
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.pin` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.pin
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.unpin` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.unpin
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.list_pins` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.list_pins
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.import_pinned` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.import_pinned
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.import_pinned_result` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.import_pinned_result
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.check_build_prereqs` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.check_build_prereqs
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.BuildResult` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.BuildResult
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.PackageBuildResult` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.PackageBuildResult
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.CacheStats` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.CacheStats
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.CacheGCResult` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.CacheGCResult
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.CacheEntry` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.CacheEntry
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.PackageCacheEntry` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.PackageCacheEntry
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.TemplateInfo` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.TemplateInfo
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.template_root` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.template_root
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.list_templates` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.list_templates
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.get_template_path` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.get_template_path
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.read_template` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.read_template
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.read_template_info` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.read_template_info
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.load_template_metadata` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.load_template_metadata
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.compile_template` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.compile_template
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.compile_template_result` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.compile_template_result
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.list_package_examples` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.list_package_examples
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.get_package_example_path` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.get_package_example_path
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.load_package_example_metadata` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.load_package_example_metadata
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.build_package_example_result` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.build_package_example_result
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.build_package_example` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.build_package_example
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.list_workflows` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.list_workflows
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.get_workflow_path` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.get_workflow_path
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.workflow_cli_template_path` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.workflow_cli_template_path
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.copy_workflow` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.copy_workflow
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.generate_sphinx_template_docs` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.cython
+        .. autoshortsummary:: scikitplot.cython.generate_sphinx_template_docs
+        .. div:: caption
+
+          :mod:`scikitplot.cython`
+
+  * - :obj:`~.get_data_home` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.datasets
+        .. autoshortsummary:: scikitplot.datasets.get_data_home
+        .. div:: caption
+
+          :mod:`scikitplot.datasets`
+
+  * - :obj:`~.get_dataset_names` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.datasets
+        .. autoshortsummary:: scikitplot.datasets.get_dataset_names
+        .. div:: caption
+
+          :mod:`scikitplot.datasets`
+
+  * - :obj:`~.load_dataset` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.datasets
+        .. autoshortsummary:: scikitplot.datasets.load_dataset
+        .. div:: caption
+
+          :mod:`scikitplot.datasets`
+
+  * - :obj:`~.kds.print_labels` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.decile.kds
+        .. autoshortsummary:: scikitplot.decile.kds.print_labels
+        .. div:: caption
+
+          :mod:`scikitplot.decile.kds`
+
+  * - :obj:`~.kds.decile_table` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.decile.kds
+        .. autoshortsummary:: scikitplot.decile.kds.decile_table
+        .. div:: caption
+
+          :mod:`scikitplot.decile.kds`
+
+  * - :obj:`~.kds.plot_cumulative_gain` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.decile.kds
+        .. autoshortsummary:: scikitplot.decile.kds.plot_cumulative_gain
+        .. div:: caption
+
+          :mod:`scikitplot.decile.kds`
+
+  * - :obj:`~.kds.plot_lift` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.decile.kds
+        .. autoshortsummary:: scikitplot.decile.kds.plot_lift
+        .. div:: caption
+
+          :mod:`scikitplot.decile.kds`
+
+  * - :obj:`~.kds.plot_lift_decile_wise` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.decile.kds
+        .. autoshortsummary:: scikitplot.decile.kds.plot_lift_decile_wise
+        .. div:: caption
+
+          :mod:`scikitplot.decile.kds`
+
+  * - :obj:`~.kds.plot_ks_statistic` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.decile.kds
+        .. autoshortsummary:: scikitplot.decile.kds.plot_ks_statistic
+        .. div:: caption
+
+          :mod:`scikitplot.decile.kds`
+
+  * - :obj:`~.kds.report` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.decile.kds
+        .. autoshortsummary:: scikitplot.decile.kds.report
+        .. div:: caption
+
+          :mod:`scikitplot.decile.kds`
+
+  * - :obj:`~.modelplotpy.ModelPlotPy` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.decile.modelplotpy
+        .. autoshortsummary:: scikitplot.decile.modelplotpy.ModelPlotPy
+        .. div:: caption
+
+          :mod:`scikitplot.decile.modelplotpy`
+
+  * - :obj:`~.ModelPlotPy` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.decile
+        .. autoshortsummary:: scikitplot.decile.ModelPlotPy
+        .. div:: caption
+
+          :mod:`scikitplot.decile`
+
+  * - :obj:`~.plot_response` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.decile
+        .. autoshortsummary:: scikitplot.decile.plot_response
+        .. div:: caption
+
+          :mod:`scikitplot.decile`
+
+  * - :obj:`~.plot_cumresponse` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.decile
+        .. autoshortsummary:: scikitplot.decile.plot_cumresponse
+        .. div:: caption
+
+          :mod:`scikitplot.decile`
+
+  * - :obj:`~.plot_cumlift` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.decile
+        .. autoshortsummary:: scikitplot.decile.plot_cumlift
+        .. div:: caption
+
+          :mod:`scikitplot.decile`
+
+  * - :obj:`~.plot_cumgains` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.decile
+        .. autoshortsummary:: scikitplot.decile.plot_cumgains
+        .. div:: caption
+
+          :mod:`scikitplot.decile`
+
+  * - :obj:`~.plot_all` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.decile
+        .. autoshortsummary:: scikitplot.decile.plot_all
+        .. div:: caption
+
+          :mod:`scikitplot.decile`
+
+  * - :obj:`~.plot_costsrevs` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.decile
+        .. autoshortsummary:: scikitplot.decile.plot_costsrevs
+        .. div:: caption
+
+          :mod:`scikitplot.decile`
+
+  * - :obj:`~.plot_profit` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.decile
+        .. autoshortsummary:: scikitplot.decile.plot_profit
+        .. div:: caption
+
+          :mod:`scikitplot.decile`
+
+  * - :obj:`~.plot_roi` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.decile
+        .. autoshortsummary:: scikitplot.decile.plot_roi
+        .. div:: caption
+
+          :mod:`scikitplot.decile`
+
   * - :obj:`~.ModuleDeprecationWarning` 
     - .. div:: sk-apis-search-desc
 
@@ -728,6 +1443,24 @@ reference on concepts repeated across the APIs, see :ref:`glossary-index`.
 
           :mod:`scikitplot.experimental._llm_provider`
 
+  * - :obj:`~.array_api_compat` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.externals
+        .. autoshortsummary:: scikitplot.externals.array_api_compat
+        .. div:: caption
+
+          :mod:`scikitplot.externals`
+
+  * - :obj:`~.array_api_extra` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.externals
+        .. autoshortsummary:: scikitplot.externals.array_api_extra
+        .. div:: caption
+
+          :mod:`scikitplot.externals`
+
   * - :obj:`~._probscale.ProbScale` 
     - .. div:: sk-apis-search-desc
 
@@ -782,6 +1515,51 @@ reference on concepts repeated across the APIs, see :ref:`glossary-index`.
 
           :mod:`scikitplot.externals`
 
+  * - :obj:`~._sphinxext.figmpl_directive` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.externals._sphinxext
+        .. autoshortsummary:: scikitplot.externals._sphinxext.figmpl_directive
+        .. div:: caption
+
+          :mod:`scikitplot.externals._sphinxext`
+
+  * - :obj:`~._sphinxext.mathmpl` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.externals._sphinxext
+        .. autoshortsummary:: scikitplot.externals._sphinxext.mathmpl
+        .. div:: caption
+
+          :mod:`scikitplot.externals._sphinxext`
+
+  * - :obj:`~._sphinxext.plot_directive` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.externals._sphinxext
+        .. autoshortsummary:: scikitplot.externals._sphinxext.plot_directive
+        .. div:: caption
+
+          :mod:`scikitplot.externals._sphinxext`
+
+  * - :obj:`~._sphinxext.roles` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.externals._sphinxext
+        .. autoshortsummary:: scikitplot.externals._sphinxext.roles
+        .. div:: caption
+
+          :mod:`scikitplot.externals._sphinxext`
+
+  * - :obj:`~._sphinxext.sphinx_tabs_patch` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.externals._sphinxext
+        .. autoshortsummary:: scikitplot.externals._sphinxext.sphinx_tabs_patch
+        .. div:: caption
+
+          :mod:`scikitplot.externals._sphinxext`
+
   * - :obj:`~._tweedie` 
     - .. div:: sk-apis-search-desc
 
@@ -791,23 +1569,23 @@ reference on concepts repeated across the APIs, see :ref:`glossary-index`.
 
           :mod:`scikitplot.externals`
 
-  * - :obj:`~.array_api_compat` 
+  * - :obj:`~._tweedie.tweedie` 
     - .. div:: sk-apis-search-desc
 
-        .. currentmodule:: scikitplot.externals
-        .. autoshortsummary:: scikitplot.externals.array_api_compat
+        .. currentmodule:: scikitplot.externals._tweedie
+        .. autoshortsummary:: scikitplot.externals._tweedie.tweedie
         .. div:: caption
 
-          :mod:`scikitplot.externals`
+          :mod:`scikitplot.externals._tweedie`
 
-  * - :obj:`~.array_api_extra` 
+  * - :obj:`~._tweedie.tweedie_gen` 
     - .. div:: sk-apis-search-desc
 
-        .. currentmodule:: scikitplot.externals
-        .. autoshortsummary:: scikitplot.externals.array_api_extra
+        .. currentmodule:: scikitplot.externals._tweedie
+        .. autoshortsummary:: scikitplot.externals._tweedie.tweedie_gen
         .. div:: caption
 
-          :mod:`scikitplot.externals`
+          :mod:`scikitplot.externals._tweedie`
 
   * - :obj:`~._ann.ANNImputer` 
     - .. div:: sk-apis-search-desc
@@ -817,69 +1595,6 @@ reference on concepts repeated across the APIs, see :ref:`glossary-index`.
         .. div:: caption
 
           :mod:`scikitplot.impute._ann`
-
-  * - :obj:`~.print_labels` 
-    - .. div:: sk-apis-search-desc
-
-        .. currentmodule:: scikitplot.kds
-        .. autoshortsummary:: scikitplot.kds.print_labels
-        .. div:: caption
-
-          :mod:`scikitplot.kds`
-
-  * - :obj:`~.decile_table` 
-    - .. div:: sk-apis-search-desc
-
-        .. currentmodule:: scikitplot.kds
-        .. autoshortsummary:: scikitplot.kds.decile_table
-        .. div:: caption
-
-          :mod:`scikitplot.kds`
-
-  * - :obj:`~.plot_cumulative_gain` 
-    - .. div:: sk-apis-search-desc
-
-        .. currentmodule:: scikitplot.kds
-        .. autoshortsummary:: scikitplot.kds.plot_cumulative_gain
-        .. div:: caption
-
-          :mod:`scikitplot.kds`
-
-  * - :obj:`~.plot_lift` 
-    - .. div:: sk-apis-search-desc
-
-        .. currentmodule:: scikitplot.kds
-        .. autoshortsummary:: scikitplot.kds.plot_lift
-        .. div:: caption
-
-          :mod:`scikitplot.kds`
-
-  * - :obj:`~.plot_lift_decile_wise` 
-    - .. div:: sk-apis-search-desc
-
-        .. currentmodule:: scikitplot.kds
-        .. autoshortsummary:: scikitplot.kds.plot_lift_decile_wise
-        .. div:: caption
-
-          :mod:`scikitplot.kds`
-
-  * - :obj:`~.plot_ks_statistic` 
-    - .. div:: sk-apis-search-desc
-
-        .. currentmodule:: scikitplot.kds
-        .. autoshortsummary:: scikitplot.kds.plot_ks_statistic
-        .. div:: caption
-
-          :mod:`scikitplot.kds`
-
-  * - :obj:`~.report` 
-    - .. div:: sk-apis-search-desc
-
-        .. currentmodule:: scikitplot.kds
-        .. autoshortsummary:: scikitplot.kds.report
-        .. div:: caption
-
-          :mod:`scikitplot.kds`
 
   * - :obj:`~.CRITICAL` 
     - .. div:: sk-apis-search-desc
@@ -971,11 +1686,92 @@ reference on concepts repeated across the APIs, see :ref:`glossary-index`.
 
           :mod:`scikitplot.logging`
 
-  * - :obj:`~.critical` 
+  * - :obj:`~.getEffectiveLevel` 
     - .. div:: sk-apis-search-desc
 
         .. currentmodule:: scikitplot.logging
-        .. autoshortsummary:: scikitplot.logging.critical
+        .. autoshortsummary:: scikitplot.logging.getEffectiveLevel
+        .. div:: caption
+
+          :mod:`scikitplot.logging`
+
+  * - :obj:`~.get_logger` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.logging
+        .. autoshortsummary:: scikitplot.logging.get_logger
+        .. div:: caption
+
+          :mod:`scikitplot.logging`
+
+  * - :obj:`~.get_verbosity` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.logging
+        .. autoshortsummary:: scikitplot.logging.get_verbosity
+        .. div:: caption
+
+          :mod:`scikitplot.logging`
+
+  * - :obj:`~.setLevel` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.logging
+        .. autoshortsummary:: scikitplot.logging.setLevel
+        .. div:: caption
+
+          :mod:`scikitplot.logging`
+
+  * - :obj:`~.set_verbosity` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.logging
+        .. autoshortsummary:: scikitplot.logging.set_verbosity
+        .. div:: caption
+
+          :mod:`scikitplot.logging`
+
+  * - :obj:`~.log` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.logging
+        .. autoshortsummary:: scikitplot.logging.log
+        .. div:: caption
+
+          :mod:`scikitplot.logging`
+
+  * - :obj:`~.log_every_n` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.logging
+        .. autoshortsummary:: scikitplot.logging.log_every_n
+        .. div:: caption
+
+          :mod:`scikitplot.logging`
+
+  * - :obj:`~.log_first_n` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.logging
+        .. autoshortsummary:: scikitplot.logging.log_first_n
+        .. div:: caption
+
+          :mod:`scikitplot.logging`
+
+  * - :obj:`~.log_if` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.logging
+        .. autoshortsummary:: scikitplot.logging.log_if
+        .. div:: caption
+
+          :mod:`scikitplot.logging`
+
+  * - :obj:`~.vlog` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.logging
+        .. autoshortsummary:: scikitplot.logging.vlog
         .. div:: caption
 
           :mod:`scikitplot.logging`
@@ -985,6 +1781,33 @@ reference on concepts repeated across the APIs, see :ref:`glossary-index`.
 
         .. currentmodule:: scikitplot.logging
         .. autoshortsummary:: scikitplot.logging.debug
+        .. div:: caption
+
+          :mod:`scikitplot.logging`
+
+  * - :obj:`~.info` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.logging
+        .. autoshortsummary:: scikitplot.logging.info
+        .. div:: caption
+
+          :mod:`scikitplot.logging`
+
+  * - :obj:`~.warning` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.logging
+        .. autoshortsummary:: scikitplot.logging.warning
+        .. div:: caption
+
+          :mod:`scikitplot.logging`
+
+  * - :obj:`~.warn` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.logging
+        .. autoshortsummary:: scikitplot.logging.warn
         .. div:: caption
 
           :mod:`scikitplot.logging`
@@ -1007,6 +1830,33 @@ reference on concepts repeated across the APIs, see :ref:`glossary-index`.
 
           :mod:`scikitplot.logging`
 
+  * - :obj:`~.exception` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.logging
+        .. autoshortsummary:: scikitplot.logging.exception
+        .. div:: caption
+
+          :mod:`scikitplot.logging`
+
+  * - :obj:`~.TaskLevelStatusMessage` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.logging
+        .. autoshortsummary:: scikitplot.logging.TaskLevelStatusMessage
+        .. div:: caption
+
+          :mod:`scikitplot.logging`
+
+  * - :obj:`~.critical` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.logging
+        .. autoshortsummary:: scikitplot.logging.critical
+        .. div:: caption
+
+          :mod:`scikitplot.logging`
+
   * - :obj:`~.fatal` 
     - .. div:: sk-apis-search-desc
 
@@ -1016,149 +1866,203 @@ reference on concepts repeated across the APIs, see :ref:`glossary-index`.
 
           :mod:`scikitplot.logging`
 
-  * - :obj:`~.getEffectiveLevel` 
+  * - :obj:`~.MemoryMap` 
     - .. div:: sk-apis-search-desc
 
-        .. currentmodule:: scikitplot.logging
-        .. autoshortsummary:: scikitplot.logging.getEffectiveLevel
+        .. currentmodule:: scikitplot.memmap
+        .. autoshortsummary:: scikitplot.memmap.MemoryMap
         .. div:: caption
 
-          :mod:`scikitplot.logging`
+          :mod:`scikitplot.memmap`
 
-  * - :obj:`~.get_logger` 
+  * - :obj:`~.mmap_region` 
     - .. div:: sk-apis-search-desc
 
-        .. currentmodule:: scikitplot.logging
-        .. autoshortsummary:: scikitplot.logging.get_logger
+        .. currentmodule:: scikitplot.memmap
+        .. autoshortsummary:: scikitplot.memmap.mmap_region
         .. div:: caption
 
-          :mod:`scikitplot.logging`
+          :mod:`scikitplot.memmap`
 
-  * - :obj:`~.log_if` 
+  * - :obj:`~.MlflowHandle` 
     - .. div:: sk-apis-search-desc
 
-        .. currentmodule:: scikitplot.logging
-        .. autoshortsummary:: scikitplot.logging.log_if
+        .. currentmodule:: scikitplot.mlflow
+        .. autoshortsummary:: scikitplot.mlflow.MlflowHandle
         .. div:: caption
 
-          :mod:`scikitplot.logging`
+          :mod:`scikitplot.mlflow`
 
-  * - :obj:`~.setLevel` 
+  * - :obj:`~.session` 
     - .. div:: sk-apis-search-desc
 
-        .. currentmodule:: scikitplot.logging
-        .. autoshortsummary:: scikitplot.logging.setLevel
+        .. currentmodule:: scikitplot.mlflow
+        .. autoshortsummary:: scikitplot.mlflow.session
         .. div:: caption
 
-          :mod:`scikitplot.logging`
+          :mod:`scikitplot.mlflow`
 
-  * - :obj:`~.vlog` 
+  * - :obj:`~.session_from_file` 
     - .. div:: sk-apis-search-desc
 
-        .. currentmodule:: scikitplot.logging
-        .. autoshortsummary:: scikitplot.logging.vlog
+        .. currentmodule:: scikitplot.mlflow
+        .. autoshortsummary:: scikitplot.mlflow.session_from_file
         .. div:: caption
 
-          :mod:`scikitplot.logging`
+          :mod:`scikitplot.mlflow`
 
-  * - :obj:`~.warn` 
+  * - :obj:`~.session_from_toml` 
     - .. div:: sk-apis-search-desc
 
-        .. currentmodule:: scikitplot.logging
-        .. autoshortsummary:: scikitplot.logging.warn
+        .. currentmodule:: scikitplot.mlflow
+        .. autoshortsummary:: scikitplot.mlflow.session_from_toml
         .. div:: caption
 
-          :mod:`scikitplot.logging`
+          :mod:`scikitplot.mlflow`
 
-  * - :obj:`~.warning` 
+  * - :obj:`~.DEFAULT_PROJECT_MARKERS` 
     - .. div:: sk-apis-search-desc
 
-        .. currentmodule:: scikitplot.logging
-        .. autoshortsummary:: scikitplot.logging.warning
+        .. currentmodule:: scikitplot.mlflow
+        .. autoshortsummary:: scikitplot.mlflow.DEFAULT_PROJECT_MARKERS
         .. div:: caption
 
-          :mod:`scikitplot.logging`
+          :mod:`scikitplot.mlflow`
 
-  * - :obj:`~.ModelPlotPy` 
+  * - :obj:`~.find_project_root` 
     - .. div:: sk-apis-search-desc
 
-        .. currentmodule:: scikitplot.modelplotpy
-        .. autoshortsummary:: scikitplot.modelplotpy.ModelPlotPy
+        .. currentmodule:: scikitplot.mlflow
+        .. autoshortsummary:: scikitplot.mlflow.find_project_root
         .. div:: caption
 
-          :mod:`scikitplot.modelplotpy`
+          :mod:`scikitplot.mlflow`
 
-  * - :obj:`~.plot_response` 
+  * - :obj:`~.load_project_config` 
     - .. div:: sk-apis-search-desc
 
-        .. currentmodule:: scikitplot.modelplotpy
-        .. autoshortsummary:: scikitplot.modelplotpy.plot_response
+        .. currentmodule:: scikitplot.mlflow
+        .. autoshortsummary:: scikitplot.mlflow.load_project_config
         .. div:: caption
 
-          :mod:`scikitplot.modelplotpy`
+          :mod:`scikitplot.mlflow`
 
-  * - :obj:`~.plot_cumresponse` 
+  * - :obj:`~.load_project_config_toml` 
     - .. div:: sk-apis-search-desc
 
-        .. currentmodule:: scikitplot.modelplotpy
-        .. autoshortsummary:: scikitplot.modelplotpy.plot_cumresponse
+        .. currentmodule:: scikitplot.mlflow
+        .. autoshortsummary:: scikitplot.mlflow.load_project_config_toml
         .. div:: caption
 
-          :mod:`scikitplot.modelplotpy`
+          :mod:`scikitplot.mlflow`
 
-  * - :obj:`~.plot_cumlift` 
+  * - :obj:`~.dump_project_config_yaml` 
     - .. div:: sk-apis-search-desc
 
-        .. currentmodule:: scikitplot.modelplotpy
-        .. autoshortsummary:: scikitplot.modelplotpy.plot_cumlift
+        .. currentmodule:: scikitplot.mlflow
+        .. autoshortsummary:: scikitplot.mlflow.dump_project_config_yaml
         .. div:: caption
 
-          :mod:`scikitplot.modelplotpy`
+          :mod:`scikitplot.mlflow`
 
-  * - :obj:`~.plot_cumgains` 
+  * - :obj:`~.ServerConfig` 
     - .. div:: sk-apis-search-desc
 
-        .. currentmodule:: scikitplot.modelplotpy
-        .. autoshortsummary:: scikitplot.modelplotpy.plot_cumgains
+        .. currentmodule:: scikitplot.mlflow
+        .. autoshortsummary:: scikitplot.mlflow.ServerConfig
         .. div:: caption
 
-          :mod:`scikitplot.modelplotpy`
+          :mod:`scikitplot.mlflow`
 
-  * - :obj:`~.plot_all` 
+  * - :obj:`~.SessionConfig` 
     - .. div:: sk-apis-search-desc
 
-        .. currentmodule:: scikitplot.modelplotpy
-        .. autoshortsummary:: scikitplot.modelplotpy.plot_all
+        .. currentmodule:: scikitplot.mlflow
+        .. autoshortsummary:: scikitplot.mlflow.SessionConfig
         .. div:: caption
 
-          :mod:`scikitplot.modelplotpy`
+          :mod:`scikitplot.mlflow`
 
-  * - :obj:`~.plot_costsrevs` 
+  * - :obj:`~.ProjectConfig` 
     - .. div:: sk-apis-search-desc
 
-        .. currentmodule:: scikitplot.modelplotpy
-        .. autoshortsummary:: scikitplot.modelplotpy.plot_costsrevs
+        .. currentmodule:: scikitplot.mlflow
+        .. autoshortsummary:: scikitplot.mlflow.ProjectConfig
         .. div:: caption
 
-          :mod:`scikitplot.modelplotpy`
+          :mod:`scikitplot.mlflow`
 
-  * - :obj:`~.plot_profit` 
+  * - :obj:`~.MlflowIntegrationError` 
     - .. div:: sk-apis-search-desc
 
-        .. currentmodule:: scikitplot.modelplotpy
-        .. autoshortsummary:: scikitplot.modelplotpy.plot_profit
+        .. currentmodule:: scikitplot.mlflow
+        .. autoshortsummary:: scikitplot.mlflow.MlflowIntegrationError
         .. div:: caption
 
-          :mod:`scikitplot.modelplotpy`
+          :mod:`scikitplot.mlflow`
 
-  * - :obj:`~.plot_roi` 
+  * - :obj:`~.MlflowNotInstalledError` 
     - .. div:: sk-apis-search-desc
 
-        .. currentmodule:: scikitplot.modelplotpy
-        .. autoshortsummary:: scikitplot.modelplotpy.plot_roi
+        .. currentmodule:: scikitplot.mlflow
+        .. autoshortsummary:: scikitplot.mlflow.MlflowNotInstalledError
         .. div:: caption
 
-          :mod:`scikitplot.modelplotpy`
+          :mod:`scikitplot.mlflow`
+
+  * - :obj:`~.MlflowCliIncompatibleError` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.mlflow
+        .. autoshortsummary:: scikitplot.mlflow.MlflowCliIncompatibleError
+        .. div:: caption
+
+          :mod:`scikitplot.mlflow`
+
+  * - :obj:`~.MlflowServerStartError` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.mlflow
+        .. autoshortsummary:: scikitplot.mlflow.MlflowServerStartError
+        .. div:: caption
+
+          :mod:`scikitplot.mlflow`
+
+  * - :obj:`~.workflow` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.mlflow
+        .. autoshortsummary:: scikitplot.mlflow.workflow
+        .. div:: caption
+
+          :mod:`scikitplot.mlflow`
+
+  * - :obj:`~.builtin_config_path` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.mlflow
+        .. autoshortsummary:: scikitplot.mlflow.builtin_config_path
+        .. div:: caption
+
+          :mod:`scikitplot.mlflow`
+
+  * - :obj:`~.export_builtin_config` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.mlflow
+        .. autoshortsummary:: scikitplot.mlflow.export_builtin_config
+        .. div:: caption
+
+          :mod:`scikitplot.mlflow`
+
+  * - :obj:`~.default_project_paths` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.mlflow
+        .. autoshortsummary:: scikitplot.mlflow.default_project_paths
+        .. div:: caption
+
+          :mod:`scikitplot.mlflow`
 
   * - :obj:`~.get_include` 
     - .. div:: sk-apis-search-desc
@@ -1196,41 +2100,185 @@ reference on concepts repeated across the APIs, see :ref:`glossary-index`.
 
           :mod:`scikitplot.preprocessing`
 
+  * - :obj:`~.Kiss32Random` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.random
+        .. autoshortsummary:: scikitplot.random.Kiss32Random
+        .. div:: caption
+
+          :mod:`scikitplot.random`
+
+  * - :obj:`~.Kiss64Random` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.random
+        .. autoshortsummary:: scikitplot.random.Kiss64Random
+        .. div:: caption
+
+          :mod:`scikitplot.random`
+
+  * - :obj:`~.KissRandom` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.random
+        .. autoshortsummary:: scikitplot.random.KissRandom
+        .. div:: caption
+
+          :mod:`scikitplot.random`
+
+  * - :obj:`~.KissSeedSequence` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.random
+        .. autoshortsummary:: scikitplot.random.KissSeedSequence
+        .. div:: caption
+
+          :mod:`scikitplot.random`
+
+  * - :obj:`~.KissBitGenerator` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.random
+        .. autoshortsummary:: scikitplot.random.KissBitGenerator
+        .. div:: caption
+
+          :mod:`scikitplot.random`
+
+  * - :obj:`~.KissGenerator` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.random
+        .. autoshortsummary:: scikitplot.random.KissGenerator
+        .. div:: caption
+
+          :mod:`scikitplot.random`
+
+  * - :obj:`~.KissRandomState` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.random
+        .. autoshortsummary:: scikitplot.random.KissRandomState
+        .. div:: caption
+
+          :mod:`scikitplot.random`
+
+  * - :obj:`~.default_rng` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.random
+        .. autoshortsummary:: scikitplot.random.default_rng
+        .. div:: caption
+
+          :mod:`scikitplot.random`
+
+  * - :obj:`~.kiss_context` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.random
+        .. autoshortsummary:: scikitplot.random.kiss_context
+        .. div:: caption
+
+          :mod:`scikitplot.random`
+
+  * - :obj:`~.choice` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.random
+        .. autoshortsummary:: scikitplot.random.choice
+        .. div:: caption
+
+          :mod:`scikitplot.random`
+
+  * - :obj:`~.integers` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.random
+        .. autoshortsummary:: scikitplot.random.integers
+        .. div:: caption
+
+          :mod:`scikitplot.random`
+
+  * - :obj:`~.normal` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.random
+        .. autoshortsummary:: scikitplot.random.normal
+        .. div:: caption
+
+          :mod:`scikitplot.random`
+
+  * - :obj:`~.permutation` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.random
+        .. autoshortsummary:: scikitplot.random.permutation
+        .. div:: caption
+
+          :mod:`scikitplot.random`
+
+  * - :obj:`~.random` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.random
+        .. autoshortsummary:: scikitplot.random.random
+        .. div:: caption
+
+          :mod:`scikitplot.random`
+
+  * - :obj:`~.shuffle` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.random
+        .. autoshortsummary:: scikitplot.random.shuffle
+        .. div:: caption
+
+          :mod:`scikitplot.random`
+
+  * - :obj:`~.uniform` 
+    - .. div:: sk-apis-search-desc
+
+        .. currentmodule:: scikitplot.random
+        .. autoshortsummary:: scikitplot.random.uniform
+        .. div:: caption
+
+          :mod:`scikitplot.random`
+
   * - :obj:`~.aucplot` 
     - .. div:: sk-apis-search-desc
 
-        .. currentmodule:: scikitplot.snsx
-        .. autoshortsummary:: scikitplot.snsx.aucplot
+        .. currentmodule:: scikitplot.seaborn
+        .. autoshortsummary:: scikitplot.seaborn.aucplot
         .. div:: caption
 
-          :mod:`scikitplot.snsx`
+          :mod:`scikitplot.seaborn`
 
   * - :obj:`~.evalplot` 
     - .. div:: sk-apis-search-desc
 
-        .. currentmodule:: scikitplot.snsx
-        .. autoshortsummary:: scikitplot.snsx.evalplot
+        .. currentmodule:: scikitplot.seaborn
+        .. autoshortsummary:: scikitplot.seaborn.evalplot
         .. div:: caption
 
-          :mod:`scikitplot.snsx`
+          :mod:`scikitplot.seaborn`
 
   * - :obj:`~.decileplot` 
     - .. div:: sk-apis-search-desc
 
-        .. currentmodule:: scikitplot.snsx
-        .. autoshortsummary:: scikitplot.snsx.decileplot
+        .. currentmodule:: scikitplot.seaborn
+        .. autoshortsummary:: scikitplot.seaborn.decileplot
         .. div:: caption
 
-          :mod:`scikitplot.snsx`
+          :mod:`scikitplot.seaborn`
 
   * - :obj:`~.print_labels` 
     - .. div:: sk-apis-search-desc
 
-        .. currentmodule:: scikitplot.snsx
-        .. autoshortsummary:: scikitplot.snsx.print_labels
+        .. currentmodule:: scikitplot.seaborn
+        .. autoshortsummary:: scikitplot.seaborn.print_labels
         .. div:: caption
 
-          :mod:`scikitplot.snsx`
+          :mod:`scikitplot.seaborn`
 
   * - :obj:`~.Events` 
     - .. div:: sk-apis-search-desc

@@ -21,13 +21,15 @@
 annoy impute with examples
 ==================================
 
-Examples related to the :py:class:`~scikitplot.impute.ANNImputer` class
+.. currentmodule:: scikitplot.impute
+
+Examples related to the :py:class:`~scikitplot.impute._ann.ANNImputer` class
 with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegression`) instance.
 
 .. seealso::
     * https://scikit-learn.org/stable/auto_examples/impute/plot_missing_values.html#sphx-glr-auto-examples-impute-plot-missing-values-py
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-15
+.. GENERATED FROM PYTHON SOURCE LINES 13-17
 
 .. code-block:: Python
 
@@ -42,7 +44,7 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 16-29
+.. GENERATED FROM PYTHON SOURCE LINES 18-31
 
 Download the data and make missing values sets
 ##############################################
@@ -58,7 +60,7 @@ https://media.geeksforgeeks.org/wp-content/uploads/20240904104950/creditcard.csv
 df = pd.read_csv("https://media.geeksforgeeks.org/wp-content/uploads/20240904104950/creditcard.csv")
 df.head()
 
-.. GENERATED FROM PYTHON SOURCE LINES 29-51
+.. GENERATED FROM PYTHON SOURCE LINES 31-53
 
 .. code-block:: Python
 
@@ -91,7 +93,7 @@ df.head()
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 52-58
+.. GENERATED FROM PYTHON SOURCE LINES 54-60
 
 .. code-block:: Python
 
@@ -126,7 +128,7 @@ df.head()
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 59-77
+.. GENERATED FROM PYTHON SOURCE LINES 61-79
 
 .. code-block:: Python
 
@@ -155,7 +157,7 @@ df.head()
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 78-94
+.. GENERATED FROM PYTHON SOURCE LINES 80-96
 
 .. code-block:: Python
 
@@ -182,7 +184,7 @@ df.head()
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 95-104
+.. GENERATED FROM PYTHON SOURCE LINES 97-106
 
 .. code-block:: Python
 
@@ -202,7 +204,7 @@ df.head()
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 105-135
+.. GENERATED FROM PYTHON SOURCE LINES 107-137
 
 .. code-block:: Python
 
@@ -243,14 +245,14 @@ df.head()
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 136-140
+.. GENERATED FROM PYTHON SOURCE LINES 138-142
 
 Estimate the score
 ------------------
 First, we want to estimate the score on the original data:
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 140-151
+.. GENERATED FROM PYTHON SOURCE LINES 142-153
 
 .. code-block:: Python
 
@@ -273,12 +275,12 @@ First, we want to estimate the score on the original data:
 
  .. code-block:: none
 
-    19.130059242248535
+    19.985354900360107
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 152-158
+.. GENERATED FROM PYTHON SOURCE LINES 154-160
 
 Replace missing values by 0
 ---------------------------
@@ -287,7 +289,7 @@ Now we will estimate the score on the data where the missing values are
 replaced by 0:
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 158-177
+.. GENERATED FROM PYTHON SOURCE LINES 160-179
 
 .. code-block:: Python
 
@@ -318,18 +320,18 @@ replaced by 0:
 
  .. code-block:: none
 
-    20.49448561668396
+    21.100834369659424
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 178-181
+.. GENERATED FROM PYTHON SOURCE LINES 180-183
 
 Impute missing values with mean
 -------------------------------
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 181-200
+.. GENERATED FROM PYTHON SOURCE LINES 183-202
 
 .. code-block:: Python
 
@@ -360,12 +362,12 @@ Impute missing values with mean
 
  .. code-block:: none
 
-    21.74126148223877
+    21.821456909179688
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 201-207
+.. GENERATED FROM PYTHON SOURCE LINES 203-209
 
 Impute missing values with median
 ---------------------------------
@@ -374,7 +376,7 @@ The median is a more
 robust estimator for data with high magnitude variables which could dominate
 results (otherwise known as a 'long tail').
 
-.. GENERATED FROM PYTHON SOURCE LINES 207-226
+.. GENERATED FROM PYTHON SOURCE LINES 209-228
 
 .. code-block:: Python
 
@@ -405,12 +407,12 @@ results (otherwise known as a 'long tail').
 
  .. code-block:: none
 
-    21.54109525680542
+    21.50120210647583
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 227-235
+.. GENERATED FROM PYTHON SOURCE LINES 229-237
 
 kNN-imputation of the missing values
 ------------------------------------
@@ -421,7 +423,7 @@ have vastly different scales (as in the California housing dataset),
 consider re-scaling them to potentially improve performance.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 235-257
+.. GENERATED FROM PYTHON SOURCE LINES 237-259
 
 .. code-block:: Python
 
@@ -455,12 +457,12 @@ consider re-scaling them to potentially improve performance.
 
  .. code-block:: none
 
-    54.47114896774292
+    72.38772916793823
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 258-269
+.. GENERATED FROM PYTHON SOURCE LINES 260-271
 
 Iterative imputation of the missing values
 ------------------------------------------
@@ -474,7 +476,7 @@ may be negatively affected by vastly different scales of the features,
 so we re-scale the features in the California housing dataset.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 269-292
+.. GENERATED FROM PYTHON SOURCE LINES 271-294
 
 .. code-block:: Python
 
@@ -509,19 +511,19 @@ so we re-scale the features in the California housing dataset.
 
  .. code-block:: none
 
-    24.222107887268066
+    22.97631525993347
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 293-297
+.. GENERATED FROM PYTHON SOURCE LINES 295-299
 
 ANN-imputation of the missing values
 ------------------------------------
 
-:class:`~scikitplot.impute.ANNImputer`
+:class:`~scikitplot.impute._ann.ANNImputer`
 
-.. GENERATED FROM PYTHON SOURCE LINES 297-309
+.. GENERATED FROM PYTHON SOURCE LINES 299-311
 
 .. code-block:: Python
 
@@ -545,12 +547,12 @@ ANN-imputation of the missing values
 
  .. code-block:: none
 
-    0.4.0.post9
+    0.4.0.post10
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 310-332
+.. GENERATED FROM PYTHON SOURCE LINES 312-334
 
 .. code-block:: Python
 
@@ -584,12 +586,30 @@ ANN-imputation of the missing values
 
  .. code-block:: none
 
-    27.928369522094727
+    2026-02-17 18:20:15.083738: I scikitplot 140574761585536 _time.py:76:__enter__] Building `voyager.Index` for nearest neighbors approximate search...
+    2026-02-17 18:20:15.106192: I scikitplot 140574761585536 _time.py:94:__exit__] ⏱ → Completed in 0.022s
+    2026-02-17 18:20:15.106851: I scikitplot 140574761585536 _time.py:76:__enter__] Transforming with voyager...
+    2026-02-17 18:20:15.126982: I scikitplot 140574761585536 _time.py:94:__exit__] ⏱ → Completed in 0.020s
+    2026-02-17 18:20:15.128316: I scikitplot 140574761585536 _time.py:76:__enter__] Transforming with voyager...
+    2026-02-17 18:20:15.135741: I scikitplot 140574761585536 _time.py:94:__exit__] ⏱ → Completed in 0.007s
+    2026-02-17 18:20:15.883425: I scikitplot 140574761585536 _time.py:76:__enter__] Building `voyager.Index` for nearest neighbors approximate search...
+    2026-02-17 18:20:17.591889: I scikitplot 140574761585536 _time.py:94:__exit__] ⏱ → Completed in 1.708s
+    2026-02-17 18:20:17.595120: I scikitplot 140574761585536 _time.py:76:__enter__] Transforming with voyager...
+    2026-02-17 18:20:18.512529: I scikitplot 140574761585536 _time.py:94:__exit__] ⏱ → Completed in 0.917s
+    2026-02-17 18:20:18.516124: I scikitplot 140574761585536 _time.py:76:__enter__] Transforming with voyager...
+    2026-02-17 18:20:18.807731: I scikitplot 140574761585536 _time.py:94:__exit__] ⏱ → Completed in 0.292s
+    2026-02-17 18:20:39.951236: I scikitplot 140574761585536 _time.py:76:__enter__] Building `voyager.Index` for nearest neighbors approximate search...
+    2026-02-17 18:20:39.976606: I scikitplot 140574761585536 _time.py:94:__exit__] ⏱ → Completed in 0.025s
+    2026-02-17 18:20:39.977268: I scikitplot 140574761585536 _time.py:76:__enter__] Transforming with voyager...
+    2026-02-17 18:20:40.000155: I scikitplot 140574761585536 _time.py:94:__exit__] ⏱ → Completed in 0.023s
+    2026-02-17 18:20:40.001170: I scikitplot 140574761585536 _time.py:76:__enter__] Transforming with voyager...
+    2026-02-17 18:20:40.009617: I scikitplot 140574761585536 _time.py:94:__exit__] ⏱ → Completed in 0.008s
+    25.619919538497925
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 333-362
+.. GENERATED FROM PYTHON SOURCE LINES 335-364
 
 .. code-block:: Python
 
@@ -630,12 +650,30 @@ ANN-imputation of the missing values
 
  .. code-block:: none
 
-    28.756412982940674
+    2026-02-17 18:20:40.702115: I scikitplot 140574761585536 _time.py:76:__enter__] Building `AnnoyIndex` for nearest neighbors approximate search...
+    2026-02-17 18:20:40.707844: I scikitplot 140574761585536 _time.py:94:__exit__] ⏱ → Completed in 0.006s
+    2026-02-17 18:20:40.708243: I scikitplot 140574761585536 _time.py:76:__enter__] Transforming with Annoy...
+    2026-02-17 18:20:40.732579: I scikitplot 140574761585536 _time.py:94:__exit__] ⏱ → Completed in 0.024s
+    2026-02-17 18:20:40.733453: I scikitplot 140574761585536 _time.py:76:__enter__] Transforming with Annoy...
+    2026-02-17 18:20:40.741740: I scikitplot 140574761585536 _time.py:94:__exit__] ⏱ → Completed in 0.008s
+    2026-02-17 18:20:41.464950: I scikitplot 140574761585536 _time.py:76:__enter__] Building `AnnoyIndex` for nearest neighbors approximate search...
+    2026-02-17 18:20:41.793222: I scikitplot 140574761585536 _time.py:94:__exit__] ⏱ → Completed in 0.328s
+    2026-02-17 18:20:41.795166: I scikitplot 140574761585536 _time.py:76:__enter__] Transforming with Annoy...
+    2026-02-17 18:20:43.120175: I scikitplot 140574761585536 _time.py:94:__exit__] ⏱ → Completed in 1.325s
+    2026-02-17 18:20:43.126246: I scikitplot 140574761585536 _time.py:76:__enter__] Transforming with Annoy...
+    2026-02-17 18:20:43.577226: I scikitplot 140574761585536 _time.py:94:__exit__] ⏱ → Completed in 0.451s
+    2026-02-17 18:21:04.136987: I scikitplot 140574761585536 _time.py:76:__enter__] Building `AnnoyIndex` for nearest neighbors approximate search...
+    2026-02-17 18:21:04.144664: I scikitplot 140574761585536 _time.py:94:__exit__] ⏱ → Completed in 0.008s
+    2026-02-17 18:21:04.145122: I scikitplot 140574761585536 _time.py:76:__enter__] Transforming with Annoy...
+    2026-02-17 18:21:04.179928: I scikitplot 140574761585536 _time.py:94:__exit__] ⏱ → Completed in 0.035s
+    2026-02-17 18:21:04.181010: I scikitplot 140574761585536 _time.py:76:__enter__] Transforming with Annoy...
+    2026-02-17 18:21:04.193328: I scikitplot 140574761585536 _time.py:94:__exit__] ⏱ → Completed in 0.012s
+    24.165130376815796
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 363-368
+.. GENERATED FROM PYTHON SOURCE LINES 365-370
 
 Plot the results
 ################
@@ -643,7 +681,7 @@ Plot the results
 Finally we are going to visualize the score:
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 368-461
+.. GENERATED FROM PYTHON SOURCE LINES 370-463
 
 .. code-block:: Python
 
@@ -752,14 +790,14 @@ Finally we are going to visualize the score:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 462-466
+.. GENERATED FROM PYTHON SOURCE LINES 464-468
 
 ANNImputer performance and accuracy are highly sensitive to both the
 selected distance metric and the number of trees used to build the Annoy index.
 An inappropriate metric or insufficient number of trees may lead to poor
 neighbor retrieval and degraded imputation quality.
 
-.. GENERATED FROM PYTHON SOURCE LINES 468-475
+.. GENERATED FROM PYTHON SOURCE LINES 470-477
 
 .. tags::
 
@@ -772,7 +810,7 @@ neighbor retrieval and degraded imputation quality.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (3 minutes 38.839 seconds)
+   **Total running time of the script:** (3 minutes 50.322 seconds)
 
 
 .. _sphx_glr_download_auto_examples_impute_plot_impute_script.py:

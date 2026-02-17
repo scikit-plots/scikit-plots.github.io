@@ -61,8 +61,8 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=6c02275b"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=e93d8674"></script>
     <script src="../_static/thebelab-helper.js"></script>
@@ -84,7 +84,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Getting Started Guide" href="getting_started.html" />
-    <link rel="prev" title="Dependencies" href="../install/dependencies.html" />
+    <link rel="prev" title="Troubleshooting" href="../install/troubleshooting_faq.inc.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.4" />
@@ -564,6 +564,7 @@
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../install/installation.html">Installation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../install/dependencies.html">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install/troubleshooting_faq.inc.html">Troubleshooting</a></li>
 </ul>
 </details></li>
 </ul>
@@ -633,7 +634,9 @@
 </ol>
 <ul>
 <li><p>Use pip to install Scikit-plots:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="n">scikit</span><span class="o">-</span><span class="n">plots</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="n">scikit</span><span class="o">-</span><span class="n">plots</span> <span class="o">-</span><span class="n">U</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">## Cause numpy&gt;=2.0.0 but support old numpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># pip install numpy==1.26.4</span>
 </pre></div>
 </div>
 </li>
@@ -646,13 +649,13 @@
 <li><p><strong>Load the Dataset</strong>:
 We’ll use the digits dataset, which contains features and labels for classification.</p></li>
 <li><p><strong>Initialize the Classifier</strong>:
-Create a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></a> with specified parameters.</p></li>
+Create a <a class="reference external" href="https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v1.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></a> with specified parameters.</p></li>
 <li><p><strong>Generate Predictions</strong>:
-Use <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_predict.html#sklearn.model_selection.cross_val_predict" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">cross_val_predict</span></code></a> to obtain predicted labels through cross-validation. This function provides cross-validated estimates for each sample point, which helps in evaluating metrics like accuracy, precision, recall, and the confusion matrix.</p></li>
+Use <a class="reference external" href="https://scikit-learn.org/dev/modules/generated/sklearn.model_selection.cross_val_predict.html#sklearn.model_selection.cross_val_predict" title="(in scikit-learn v1.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">cross_val_predict</span></code></a> to obtain predicted labels through cross-validation. This function provides cross-validated estimates for each sample point, which helps in evaluating metrics like accuracy, precision, recall, and the confusion matrix.</p></li>
 <li><p><strong>Plot the Confusion Matrix</strong>:
 Use <a class="reference internal" href="../modules/generated/scikitplot.api.metrics.plot_classifier_eval.html#scikitplot.api.metrics.plot_classifier_eval" title="scikitplot.api.metrics.plot_classifier_eval"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_classifier_eval</span></code></a> to visualize the confusion matrix.</p></li>
 <li><p><strong>Display the Plot</strong>:
-Optionally, use <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v3.10.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">show</span></code></a> to display the plot.</p></li>
+Optionally, use <a class="reference external" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v3.11.0.dev1794+g30c8b8c9c)"><code class="xref py py-func docutils literal notranslate"><span class="pre">show</span></code></a> to display the plot.</p></li>
 </ol>
 <p>Here’s the code to illustrate the process:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># introduction/quick_start.py</span>
@@ -711,7 +714,7 @@ Optionally, use <a class="reference external" href="https://matplotlib.org/stabl
 <p><strong>Maximum flexibility. Compatibility with non-scikit-learn objects.</strong></p>
 <p>Although Scikit-plot is loosely based around the scikit-learn interface, you don’t actually need Scikit-learn objects to use the available functions. As long as you provide the functions what they’re asking for, they’ll happily draw the plots for you.</p>
 <p>Try Deep Learning Models like <a class="reference external" href="https://www.tensorflow.org">Tensorflow</a> or <a class="reference external" href="https://pytorch.org">Pytorch</a> or  <a class="reference external" href="https://huggingface.co/docs/transformers/index">🤗 Transformers</a> etc.</p>
-<p>Here’s a quick example to generate the precision-recall curves of a <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/Model" title="(in TensorFlow v2.4)"><code class="docutils literal notranslate"><span class="pre">tf.keras.Model</span></code></a> or <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a> or <code class="xref py py-class docutils literal notranslate"><span class="pre">TFPreTrainedModel</span></code> model on a sample dataset.</p>
+<p>Here’s a quick example to generate the precision-recall curves of a <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/Model" title="(in TensorFlow v2.8)"><code class="docutils literal notranslate"><span class="pre">tf.keras.Model</span></code></a> or <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a> or <code class="xref py py-class docutils literal notranslate"><span class="pre">TFPreTrainedModel</span></code> model on a sample dataset.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># introduction/quick_start_tf.py</span>
 <span class="c1"># %run: Python scripts and shows any outputs directly in the notebook.</span>
 <span class="c1"># %run ../docs/source/introduction/quick_start_tf.py</span>
@@ -815,12 +818,12 @@ in the correct format.</p>
     <div class="footer-article-item">
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../install/dependencies.html"
+       href="../install/troubleshooting_faq.inc.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Dependencies</p>
+        <p class="prev-next-title">Troubleshooting</p>
       </div>
     </a>
     <a class="right-next"
@@ -895,7 +898,7 @@ in the correct format.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.4.0.post9+git.20260106.726934a 2026-01-06T16:48Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.4.0.post10+git.20260217.bf0721e 2026-02-17T18:10Z.
       <br/>
     
   </p>

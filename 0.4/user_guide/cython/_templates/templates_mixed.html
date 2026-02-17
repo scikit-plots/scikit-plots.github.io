@@ -1,0 +1,1539 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="mixed" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://scikit-plots.github.io/stable/user_guide/cython/_templates/templates_mixed.html" />
+<meta property="og:site_name" content="scikit-plots" />
+<meta property="og:description" content="t01_square_int: t02_fib_cpdef: t03_cdef_class_counter: t04_memoryview_sum: t05_numpy_ndarray_sum: t06_directives_boundscheck: t07_libc_math: t08_struct_point: t09_enum_state: t10_safe_div_except: t..." />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
+<meta property="og:image:alt" content="scikit-plots" />
+<meta name="description" content="t01_square_int: t02_fib_cpdef: t03_cdef_class_counter: t04_memoryview_sum: t05_numpy_ndarray_sum: t06_directives_boundscheck: t07_libc_math: t08_struct_point: t09_enum_state: t10_safe_div_except: t..." />
+
+    <title>mixed &#8212; scikit-plots 0.4.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/colors.css?v=14208072" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/custom.css?v=e4cb1417" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=6c02275b"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=e93d8674"></script>
+    <script src="../../../_static/thebelab-helper.js"></script>
+    <script src="../../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/cython/_templates/templates_mixed';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <script src="../../../_static/scripts/dropdown.js?v=e2048168"></script>
+    <script src="../../../_static/scripts/version-switcher.js?v=9bbada16"></script>
+    <link rel="icon" href="../../../_static/scikit-plots-favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="module_cython" href="templates_module_cython.html" />
+    <link rel="prev" title="medium_python" href="templates_medium_python.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.4" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/scikit-plots-logo-small.png" class="logo__image only-light" alt="scikit-plots homepage"/>
+    <img src="../../../_static/scikit-plots-logo-small.png" class="logo__image only-dark pst-js-only" alt="scikit-plots homepage"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../whats_new/index.html">
+    Release History
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../project/governance.html">
+    Governance Process
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../project/index.html">
+    About Us | Project
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/python-logo.png" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../auto_examples/index.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../whats_new/index.html">
+    Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../project/governance.html">
+    Governance Process
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../project/index.html">
+    About Us | Project
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://scikit-plots.github.io/dev/project/community.html" title="Social Media Platforms" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/scikit-plots-logo.svg" class="icon-link-image" alt="Social Media Platforms"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/scikit-plots" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/logos/python-logo.png" class="icon-link-image" alt="PyPI"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-plots/scikit-plots" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../annoy/index.html">ANNoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../annoy/annoy_index_vector_database.html">Vector Similarity Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../annoy/annoy_index_inheritance_diagrams.html">Index Inheritance</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">Metric Performance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api/decomposition.html">Decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/estimators.html">Estimators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/metrics.html">Metrics</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Cython</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="reference internal" href="templates_index.html">Cython templates</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../decile/index.html">Decile-Wise Performance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../decile/kds.html">KeyToDataScience</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../decile/modelplotpy.html">ModelPlotPy</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../impute/index.html">Impute</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../logging/index.html">Logging</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../memmap/index.html">MemMap</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../mlflow/index.html">MLflow</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../nc/index.html">Nc</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../preprocessing/index.html">Preprocessing</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../random/index.html">Random</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../seaborn/index.html">Seaborn</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../stats/index.html">Stats</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../visualkeras/index.html">Visualkeras</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../_lib/index.html">Array API support</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../_logo.html">Logo API</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">development</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../cexperimental/index.html">C-Experimental (experimental)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../cexternals/index.html">C-Externals (experimental)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cexternals/_annoy/index.html">spotify/ANNoy Vector Index DB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cexternals/_astropy/index.html">Astropy (experimental)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cexternals/_f2py/index.html">f2py (experimental)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cexternals/_numcpp/index.html">NumCpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cexternals/_lightnumpy/index.html">LightNumPy (experimental)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../experimental/index.html">Experimental (experimental)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../experimental/pipeline/index.html">Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../experimental/_doremi/index.html">Do-Re-Mi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../experimental/_llm_provider/index.html">LLM Provider (experimental)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../externals/index.html">Externals (experimental)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../externals/array_api_compat/index.html">array_api_compat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../externals/array_api_extra/index.html">array_api_extra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../externals/_probscale/index.html">Probability Plots (experimental)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../externals/_seaborn/index.html">Seaborn (experimental)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../externals/_sphinxext/index.html">Matplotlib Sphinx Ext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../externals/_tweedie/index.html">Tweedie Family</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">User Guide</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Cython Realtime Inplace PKG/MOD Generation</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="templates_index.html" class="nav-link">Cython templates</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">mixed</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="mixed">
+<h1>mixed<a class="headerlink" href="#mixed" title="Link to this heading">#</a></h1>
+<section id="t01-square-int">
+<h2>t01_square_int<a class="headerlink" href="#t01-square-int" title="Link to this heading">#</a></h2>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="c"># cython: language_level=3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">t01_square_int — typed integer function (minimal).</span>
+
+<span class="sd">What it demonstrates:</span>
+
+<span class="sd">- Declaring C-typed arguments in a Python-visible function.</span>
+<span class="sd">- Returning Python integers from C-typed arithmetic.</span>
+
+<span class="sd">How to run:</span>
+
+<span class="sd">&gt;&gt;&gt; from scikitplot.cython import compile_template</span>
+<span class="sd">&gt;&gt;&gt; m = compile_template(&quot;t01_square_int&quot;)</span>
+<span class="sd">&gt;&gt;&gt; m.f(10)</span>
+<span class="sd">100</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="nb">int</span> <span class="n">n</span><span class="p">):</span>
+    <span class="c"># A C-typed local variable is faster than Python ints for arithmetic.</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span> <span class="nf">x</span><span class="w"> </span><span class="o">=</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+</pre></div>
+</div>
+</section>
+<section id="t02-fib-cpdef">
+<h2>t02_fib_cpdef<a class="headerlink" href="#t02-fib-cpdef" title="Link to this heading">#</a></h2>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="c"># cython: language_level=3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">t02_fib_cpdef — cpdef Fibonacci (iterative).</span>
+
+<span class="sd">What it demonstrates:</span>
+
+<span class="sd">- ``cpdef``: a function that is callable efficiently from both Cython and Python.</span>
+<span class="sd">- Strict input validation (no heuristics).</span>
+
+<span class="sd">How to run:</span>
+
+<span class="sd">&gt;&gt;&gt; from scikitplot.cython import compile_template</span>
+<span class="sd">&gt;&gt;&gt; m = compile_template(&quot;t02_fib_cpdef&quot;)</span>
+<span class="sd">&gt;&gt;&gt; m.fib(10)</span>
+<span class="sd">55</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">cpdef</span><span class="w"> </span><span class="kt">long</span> <span class="nf">fib</span><span class="p">(</span><span class="nb">int</span> <span class="n">n</span><span class="p">):</span>
+    <span class="c"># Strict validation: negative inputs are rejected deterministically.</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mf">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;n must be &gt;= 0&quot;</span><span class="p">)</span>
+
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">long</span> <span class="nf">a</span><span class="w"> </span><span class="o">=</span> <span class="mf">0</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">long</span> <span class="nf">b</span><span class="w"> </span><span class="o">=</span> <span class="mf">1</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span> <span class="nf">i</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="k">return</span> <span class="n">a</span>
+</pre></div>
+</div>
+</section>
+<section id="t03-cdef-class-counter">
+<h2>t03_cdef_class_counter<a class="headerlink" href="#t03-cdef-class-counter" title="Link to this heading">#</a></h2>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="c"># cython: language_level=3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">t03_cdef_class_counter — cdef class with typed fields.</span>
+
+<span class="sd">What it demonstrates:</span>
+
+<span class="sd">- ``cdef class`` for C-accelerated classes.</span>
+<span class="sd">- Typed attribute storage and methods.</span>
+
+<span class="sd">How to run:</span>
+
+<span class="sd">&gt;&gt;&gt; from scikitplot.cython import compile_template</span>
+<span class="sd">&gt;&gt;&gt; m = compile_template(&quot;t03_cdef_class_counter&quot;)</span>
+<span class="sd">&gt;&gt;&gt; c = m.Counter(3)</span>
+<span class="sd">&gt;&gt;&gt; c.inc()</span>
+<span class="sd">4</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">cdef</span><span class="w"> </span><span class="k">class</span> <span class="nf">Counter</span><span class="p">:</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">long</span> <span class="nf">_value</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__cinit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">long</span> <span class="n">start</span><span class="o">=</span><span class="mf">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="n">start</span>
+
+    <span class="k">cpdef</span><span class="w"> </span><span class="kt">long</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span>
+
+    <span class="k">cpdef</span><span class="w"> </span><span class="kt">long</span> <span class="nf">inc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">long</span> <span class="n">step</span><span class="o">=</span><span class="mf">1</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">+=</span> <span class="n">step</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span>
+</pre></div>
+</div>
+</section>
+<section id="t04-memoryview-sum">
+<h2>t04_memoryview_sum<a class="headerlink" href="#t04-memoryview-sum" title="Link to this heading">#</a></h2>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="c"># cython: language_level=3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">t04_memoryview_sum — sum a 1D typed memoryview.</span>
+
+<span class="sd">What it demonstrates:</span>
+
+<span class="sd">- Using typed memoryviews (buffer protocol) without importing NumPy.</span>
+<span class="sd">- Strict typing for predictable performance.</span>
+
+<span class="sd">How to run:</span>
+
+<span class="sd">&gt;&gt;&gt; from scikitplot.cython import compile_template</span>
+<span class="sd">&gt;&gt;&gt; m = compile_template(&quot;t04_memoryview_sum&quot;)</span>
+<span class="sd">&gt;&gt;&gt; m.sum_double([1.0, 2.0, 3.0])</span>
+<span class="sd">6.0</span>
+
+<span class="sd">Notes</span>
+<span class="sd">-----</span>
+<span class="sd">Python lists do not expose a buffer, so pass an ``array(&#39;d&#39;)`` or ``memoryview``</span>
+<span class="sd">of a suitable buffer for best results:</span>
+
+<span class="sd">&gt;&gt;&gt; import array</span>
+<span class="sd">&gt;&gt;&gt; a = array.array(&#39;d&#39;, [1.0, 2.0, 3.0])</span>
+<span class="sd">&gt;&gt;&gt; m.sum_double(a)</span>
+<span class="sd">6.0</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sum_double</span><span class="p">(</span><span class="n">double</span><span class="p">[:]</span> <span class="n">x</span><span class="p">):</span>
+
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">i</span><span class="p">,</span> <span class="nf">n</span><span class="w"> </span><span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">s</span><span class="w"> </span><span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">s</span>
+</pre></div>
+</div>
+</section>
+<section id="t05-numpy-ndarray-sum">
+<h2>t05_numpy_ndarray_sum<a class="headerlink" href="#t05-numpy-ndarray-sum" title="Link to this heading">#</a></h2>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="c"># cython: language_level=3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">t05_numpy_ndarray_sum — typed NumPy ndarray loop.</span>
+
+<span class="sd">What it demonstrates:</span>
+
+<span class="sd">- ``cimport numpy`` and typed ndarrays for fast loops.</span>
+<span class="sd">- Enforcing dtype/ndim at call time.</span>
+
+<span class="sd">How to run:</span>
+
+<span class="sd">&gt;&gt;&gt; from scikitplot.cython import compile_template</span>
+<span class="sd">&gt;&gt;&gt; import numpy as np</span>
+<span class="sd">&gt;&gt;&gt; m = compile_template(&quot;t05_numpy_ndarray_sum&quot;)</span>
+<span class="sd">&gt;&gt;&gt; m.sum_int32(np.array([1, 2, 3], dtype=np.int32))</span>
+<span class="sd">6</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">cimport</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cnp</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sum_int32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">[</span><span class="n">cnp</span><span class="o">.</span><span class="n">int32_t</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mf">1</span><span class="p">]</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">i</span><span class="p">,</span> <span class="nf">n</span><span class="w"> </span><span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">long</span> <span class="nf">s</span><span class="w"> </span><span class="o">=</span> <span class="mf">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">s</span>
+</pre></div>
+</div>
+</section>
+<section id="t06-directives-boundscheck">
+<h2>t06_directives_boundscheck<a class="headerlink" href="#t06-directives-boundscheck" title="Link to this heading">#</a></h2>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="c"># cython: language_level=3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">t06_directives_boundscheck — directives for speed.</span>
+
+<span class="sd">What it demonstrates</span>
+<span class="sd">--------------------</span>
+<span class="sd">- ``cython.boundscheck(False)`` and ``cython.wraparound(False)``.</span>
+<span class="sd">- Local, explicit performance directives (no global magic).</span>
+
+<span class="sd">How to run</span>
+<span class="sd">----------</span>
+<span class="sd">&gt;&gt;&gt; from scikitplot.cython import compile_template</span>
+<span class="sd">&gt;&gt;&gt; import numpy as np</span>
+<span class="sd">&gt;&gt;&gt; m = compile_template(&quot;t06_directives_boundscheck&quot;)</span>
+<span class="sd">&gt;&gt;&gt; m.prefix_sum(np.array([1, 2, 3], dtype=np.int64)).tolist()</span>
+<span class="sd">[1, 3, 6]</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">import</span><span class="w"> </span><span class="nn">cython</span>
+<span class="k">cimport</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cnp</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+
+<span class="nd">@cython</span><span class="o">.</span><span class="n">boundscheck</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="nd">@cython</span><span class="o">.</span><span class="n">wraparound</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">prefix_sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">[</span><span class="n">cnp</span><span class="o">.</span><span class="n">int64_t</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mf">1</span><span class="p">]</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">i</span><span class="p">,</span> <span class="nf">n</span><span class="w"> </span><span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">np</span>.<span class="kt">ndarray</span>[<span class="kt">cnp</span>.<span class="nf">int64_t</span><span class="p">,</span> <span class="nf">ndim</span><span class="o">=</span><span class="mf">1</span><span class="p">]</span> <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">long</span> <span class="kt">long</span> <span class="nf">acc</span><span class="w"> </span><span class="o">=</span> <span class="mf">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">acc</span> <span class="o">+=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">acc</span>
+    <span class="k">return</span> <span class="n">out</span>
+</pre></div>
+</div>
+</section>
+<section id="t07-libc-math">
+<h2>t07_libc_math<a class="headerlink" href="#t07-libc-math" title="Link to this heading">#</a></h2>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="c"># cython: language_level=3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">t07_libc_math — libc math usage.</span>
+
+<span class="sd">What it demonstrates:</span>
+
+<span class="sd">- ``cimport`` from ``libc.math`` for fast math operations.</span>
+<span class="sd">- A pure C-style loop over a memoryview.</span>
+
+<span class="sd">How to run:</span>
+
+<span class="sd">&gt;&gt;&gt; from scikitplot.cython import compile_template</span>
+<span class="sd">&gt;&gt;&gt; import array</span>
+<span class="sd">&gt;&gt;&gt; m = compile_template(&quot;t07_libc_math&quot;)</span>
+<span class="sd">&gt;&gt;&gt; a = array.array(&#39;d&#39;, [0.0, 1.0, 4.0])</span>
+<span class="sd">&gt;&gt;&gt; m.sqrt_sum(a)</span>
+<span class="sd">3.0</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">from</span><span class="w"> </span><span class="nn">libc.math</span><span class="w"> </span><span class="k">cimport</span> <span class="n">sqrt</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sqrt_sum</span><span class="p">(</span><span class="n">double</span><span class="p">[:]</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">i</span><span class="p">,</span> <span class="nf">n</span><span class="w"> </span><span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">s</span><span class="w"> </span><span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">s</span>
+</pre></div>
+</div>
+</section>
+<section id="t08-struct-point">
+<h2>t08_struct_point<a class="headerlink" href="#t08-struct-point" title="Link to this heading">#</a></h2>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="c"># cython: language_level=3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">t08_struct_point — cdef struct.</span>
+
+<span class="sd">What it demonstrates</span>
+<span class="sd">--------------------</span>
+<span class="sd">- Defining a ``cdef struct`` and using it for computation.</span>
+<span class="sd">- Returning Python floats from C math.</span>
+
+<span class="sd">How to run</span>
+<span class="sd">----------</span>
+<span class="sd">&gt;&gt;&gt; from scikitplot.cython import compile_template</span>
+<span class="sd">&gt;&gt;&gt; m = compile_template(&quot;t08_struct_point&quot;)</span>
+<span class="sd">&gt;&gt;&gt; m.dist2(0.0, 0.0, 3.0, 4.0)</span>
+<span class="sd">25.0</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="k">cdef</span><span class="w"> </span><span class="k">struct</span> <span class="nf">Point</span><span class="p">:</span>
+    <span class="n">double</span> <span class="n">x</span>
+    <span class="n">double</span> <span class="n">y</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">dist2</span><span class="p">(</span><span class="n">double</span> <span class="n">x1</span><span class="p">,</span> <span class="n">double</span> <span class="n">y1</span><span class="p">,</span> <span class="n">double</span> <span class="n">x2</span><span class="p">,</span> <span class="n">double</span> <span class="n">y2</span><span class="p">):</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Point</span> <span class="nf">a</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Point</span> <span class="nf">b</span>
+
+    <span class="n">a</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x1</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y1</span>
+    <span class="n">b</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x2</span>
+    <span class="n">b</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y2</span>
+
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">dx</span><span class="w"> </span><span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">b</span><span class="o">.</span><span class="n">x</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">dy</span><span class="w"> </span><span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">b</span><span class="o">.</span><span class="n">y</span>
+    <span class="k">return</span> <span class="n">dx</span><span class="o">*</span><span class="n">dx</span> <span class="o">+</span> <span class="n">dy</span><span class="o">*</span><span class="n">dy</span>
+</pre></div>
+</div>
+</section>
+<section id="t09-enum-state">
+<h2>t09_enum_state<a class="headerlink" href="#t09-enum-state" title="Link to this heading">#</a></h2>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="c"># cython: language_level=3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">t09_enum_state — cdef enum.</span>
+
+<span class="sd">What it demonstrates</span>
+<span class="sd">--------------------</span>
+<span class="sd">- Defining an enum and exposing stable integer codes to Python.</span>
+
+<span class="sd">How to run</span>
+<span class="sd">----------</span>
+<span class="sd">&gt;&gt;&gt; from scikitplot.cython import compile_template</span>
+<span class="sd">&gt;&gt;&gt; m = compile_template(&quot;t09_enum_state&quot;)</span>
+<span class="sd">&gt;&gt;&gt; m.state_code(&quot;ok&quot;)</span>
+<span class="sd">0</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="k">cdef</span><span class="w"> </span><span class="k">enum</span> <span class="nf">State</span><span class="p">:</span>
+    <span class="n">OK</span> <span class="o">=</span> <span class="mf">0</span>
+    <span class="n">WARN</span> <span class="o">=</span> <span class="mf">1</span>
+    <span class="n">ERROR</span> <span class="o">=</span> <span class="mf">2</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">state_code</span><span class="p">(</span><span class="nb">str</span> <span class="n">s</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="s">&quot;ok&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">OK</span>
+    <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="s">&quot;warn&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">WARN</span>
+    <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="s">&quot;error&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ERROR</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;unknown state&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="t10-safe-div-except">
+<h2>t10_safe_div_except<a class="headerlink" href="#t10-safe-div-except" title="Link to this heading">#</a></h2>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="c"># cython: language_level=3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">t10_safe_div_except — exception-aware cpdef.</span>
+
+<span class="sd">What it demonstrates</span>
+<span class="sd">--------------------</span>
+<span class="sd">- ``cpdef`` with an explicit exception behavior.</span>
+<span class="sd">- Strict error handling (division by zero).</span>
+
+<span class="sd">How to run</span>
+<span class="sd">----------</span>
+<span class="sd">&gt;&gt;&gt; from scikitplot.cython import compile_template</span>
+<span class="sd">&gt;&gt;&gt; m = compile_template(&quot;t10_safe_div_except&quot;)</span>
+<span class="sd">&gt;&gt;&gt; m.safe_div(10, 2)</span>
+<span class="sd">5</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">cpdef</span><span class="w"> </span><span class="kt">int</span> <span class="nf">safe_div</span><span class="p">(</span><span class="nb">int</span> <span class="n">a</span><span class="p">,</span> <span class="nb">int</span> <span class="n">b</span><span class="p">)</span> <span class="k">except</span><span class="o">?</span> <span class="o">-</span><span class="mf">1</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mf">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ZeroDivisionError</span><span class="p">(</span><span class="s">&quot;b must be non-zero&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">//</span> <span class="n">b</span>
+</pre></div>
+</div>
+</section>
+<section id="t11-fused-types-dot">
+<h2>t11_fused_types_dot<a class="headerlink" href="#t11-fused-types-dot" title="Link to this heading">#</a></h2>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="c"># cython: language_level=3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">t11_fused_types_dot — fused types dot product.</span>
+
+<span class="sd">What it demonstrates</span>
+<span class="sd">--------------------</span>
+<span class="sd">- Fused types to generate specialized versions for multiple numeric types.</span>
+<span class="sd">- Typed memoryviews for flexible inputs.</span>
+
+<span class="sd">How to run</span>
+<span class="sd">----------</span>
+<span class="sd">&gt;&gt;&gt; from scikitplot.cython import compile_template</span>
+<span class="sd">&gt;&gt;&gt; import array</span>
+<span class="sd">&gt;&gt;&gt; m = compile_template(&quot;t11_fused_types_dot&quot;)</span>
+<span class="sd">&gt;&gt;&gt; a = array.array(&#39;d&#39;, [1.0, 2.0, 3.0])</span>
+<span class="sd">&gt;&gt;&gt; b = array.array(&#39;d&#39;, [4.0, 5.0, 6.0])</span>
+<span class="sd">&gt;&gt;&gt; m.dot(a, b)</span>
+<span class="sd">32.0</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">ctypedef</span> <span class="k">fused</span> <span class="n">floating</span><span class="p">:</span>
+    <span class="nb">float</span>
+    <span class="n">double</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">dot</span><span class="p">(</span><span class="n">floating</span><span class="p">[:]</span> <span class="n">a</span><span class="p">,</span> <span class="n">floating</span><span class="p">[:]</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">i</span><span class="p">,</span> <span class="nf">n</span><span class="w"> </span><span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">b</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">n</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;shapes must match&quot;</span><span class="p">)</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">s</span><span class="w"> </span><span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">s</span>
+</pre></div>
+</div>
+</section>
+<section id="t12-inline-clamp">
+<h2>t12_inline_clamp<a class="headerlink" href="#t12-inline-clamp" title="Link to this heading">#</a></h2>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="c"># cython: language_level=3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">t12_inline_clamp — cdef inline helper.</span>
+
+<span class="sd">What it demonstrates</span>
+<span class="sd">--------------------</span>
+<span class="sd">- ``cdef inline`` helper to avoid repetition and keep hot loops tight.</span>
+<span class="sd">- Clean separation of helper vs public function.</span>
+
+<span class="sd">How to run</span>
+<span class="sd">----------</span>
+<span class="sd">&gt;&gt;&gt; from scikitplot.cython import compile_template</span>
+<span class="sd">&gt;&gt;&gt; import array</span>
+<span class="sd">&gt;&gt;&gt; m = compile_template(&quot;t12_inline_clamp&quot;)</span>
+<span class="sd">&gt;&gt;&gt; x = array.array(&#39;d&#39;, [-1.0, 0.5, 2.0])</span>
+<span class="sd">&gt;&gt;&gt; m.clamp01(x).tolist()</span>
+<span class="sd">[0.0, 0.5, 1.0]</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="k">cdef</span><span class="w"> </span><span class="kr">inline</span> <span class="kt">double</span> <span class="nf">clamp01_scalar</span><span class="p">(</span><span class="n">double</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.0</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mf">1.0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">1.0</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">clamp01</span><span class="p">(</span><span class="n">double</span><span class="p">[:]</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">i</span><span class="p">,</span> <span class="nf">n</span><span class="w"> </span><span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
+    <span class="c"># We return a Python list to keep this template dependency-free.</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">clamp01_scalar</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">out</span>
+</pre></div>
+</div>
+</section>
+<section id="t13-bytes-xor">
+<h2>t13_bytes_xor<a class="headerlink" href="#t13-bytes-xor" title="Link to this heading">#</a></h2>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="c"># cython: language_level=3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">t13_bytes_xor — bytes processing with memoryviews.</span>
+
+<span class="sd">What it demonstrates:</span>
+
+<span class="sd">- Using ``unsigned char[:]`` memoryviews.</span>
+<span class="sd">- Creating output as ``bytes`` deterministically.</span>
+
+<span class="sd">How to run:</span>
+
+<span class="sd">&gt;&gt;&gt; from scikitplot.cython import compile_template</span>
+<span class="sd">&gt;&gt;&gt; m = compile_template(&quot;t13_bytes_xor&quot;)</span>
+<span class="sd">&gt;&gt;&gt; m.xor_bytes(b&quot;abc&quot;, 1)</span>
+<span class="sd">b&#39;`cb&#39;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">xor_bytes</span><span class="p">(</span><span class="nb">bytes</span> <span class="n">data</span><span class="p">,</span> <span class="nb">unsigned</span> <span class="n">char</span> <span class="n">key</span><span class="p">):</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">unsigned</span> <span class="kt">char</span>[<span class="p">:]</span> <span class="n">src</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">i</span><span class="p">,</span> <span class="nf">n</span><span class="w"> </span><span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">unsigned</span> <span class="kt">char</span>[<span class="p">:]</span> <span class="n">dst</span> <span class="o">=</span> <span class="n">out</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">dst</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">^</span> <span class="n">key</span>
+    <span class="k">return</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="t14-string-reverse">
+<h2>t14_string_reverse<a class="headerlink" href="#t14-string-reverse" title="Link to this heading">#</a></h2>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="c"># cython: language_level=3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">t14_string_reverse — Python string manipulation.</span>
+
+<span class="sd">What it demonstrates</span>
+<span class="sd">--------------------</span>
+<span class="sd">- Not everything needs to be C-typed; Cython can still help structure code.</span>
+<span class="sd">- Deterministic behavior with Unicode strings.</span>
+
+<span class="sd">How to run</span>
+<span class="sd">----------</span>
+<span class="sd">&gt;&gt;&gt; from scikitplot.cython import compile_template</span>
+<span class="sd">&gt;&gt;&gt; m = compile_template(&quot;t14_string_reverse&quot;)</span>
+<span class="sd">&gt;&gt;&gt; m.reverse(&quot;héllo&quot;)</span>
+<span class="sd">&#39;olléh&#39;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">reverse</span><span class="p">(</span><span class="nb">str</span> <span class="n">s</span><span class="p">):</span>
+    <span class="c"># Python-level reversal is correct for Unicode code points.</span>
+    <span class="k">return</span> <span class="n">s</span><span class="p">[::</span><span class="o">-</span><span class="mf">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="t15-lcg-rng">
+<h2>t15_lcg_rng<a class="headerlink" href="#t15-lcg-rng" title="Link to this heading">#</a></h2>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="c"># cython: language_level=3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">t15_lcg_rng — deterministic RNG (LCG) as cdef class.</span>
+
+<span class="sd">What it demonstrates</span>
+<span class="sd">--------------------</span>
+<span class="sd">- A tiny reproducible PRNG implemented with 32-bit arithmetic.</span>
+<span class="sd">- cdef class encapsulation for state and speed.</span>
+
+<span class="sd">How to run</span>
+<span class="sd">----------</span>
+<span class="sd">&gt;&gt;&gt; from scikitplot.cython import compile_template</span>
+<span class="sd">&gt;&gt;&gt; m = compile_template(&quot;t15_lcg_rng&quot;)</span>
+<span class="sd">&gt;&gt;&gt; r = m.LCG(123)</span>
+<span class="sd">&gt;&gt;&gt; [r.next_u32() for _ in range(3)]</span>
+<span class="sd">[... deterministic ...]</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">cdef</span><span class="w"> </span><span class="k">class</span> <span class="nf">LCG</span><span class="p">:</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="nf">_state</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__cinit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">unsigned</span> <span class="nb">int</span> <span class="n">seed</span><span class="o">=</span><span class="mf">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">seed</span> <span class="o">==</span> <span class="mf">0</span><span class="p">:</span>
+            <span class="n">seed</span> <span class="o">=</span> <span class="mf">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">=</span> <span class="n">seed</span>
+
+    <span class="k">cpdef</span><span class="w"> </span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="nf">next_u32</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># Numerical Recipes LCG constants (deterministic).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">*</span> <span class="mf">1664525</span><span class="n">u</span> <span class="o">+</span> <span class="mf">1013904223</span><span class="n">u</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state</span>
+
+    <span class="k">cpdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">next_float01</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># Convert to [0, 1) using 32-bit scaling.</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">next_u32</span><span class="p">()</span> <span class="o">/</span> <span class="mf">4294967296.0</span>
+</pre></div>
+</div>
+</section>
+<section id="t16-insertion-sort">
+<h2>t16_insertion_sort<a class="headerlink" href="#t16-insertion-sort" title="Link to this heading">#</a></h2>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="c"># cython: language_level=3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">t16_insertion_sort — insertion sort on a typed memoryview.</span>
+
+<span class="sd">What it demonstrates:</span>
+
+<span class="sd">- In-place algorithms on typed memoryviews.</span>
+<span class="sd">- Strict algorithm with deterministic output.</span>
+
+<span class="sd">How to run:</span>
+
+<span class="sd">&gt;&gt;&gt; from scikitplot.cython import compile_template</span>
+<span class="sd">&gt;&gt;&gt; import array</span>
+<span class="sd">&gt;&gt;&gt; m = compile_template(&quot;t16_insertion_sort&quot;)</span>
+<span class="sd">&gt;&gt;&gt; a = array.array(&#39;d&#39;, [3.0, 1.0, 2.0])</span>
+<span class="sd">&gt;&gt;&gt; m.insertion_sort(a)</span>
+<span class="sd">&gt;&gt;&gt; list(a)</span>
+<span class="sd">[1.0, 2.0, 3.0]</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">insertion_sort</span><span class="p">(</span><span class="n">double</span><span class="p">[:]</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">i</span><span class="p">,</span> <span class="nf">j</span><span class="p">,</span> <span class="nf">n</span><span class="w"> </span><span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">key</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mf">1</span>
+        <span class="k">while</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="mf">0</span> <span class="ow">and</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">key</span><span class="p">:</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mf">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+            <span class="n">j</span> <span class="o">-=</span> <span class="mf">1</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mf">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
+</pre></div>
+</div>
+</section>
+<section id="t17-kahan-sum">
+<h2>t17_kahan_sum<a class="headerlink" href="#t17-kahan-sum" title="Link to this heading">#</a></h2>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="c"># cython: language_level=3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">t17_kahan_sum — Kahan summation.</span>
+
+<span class="sd">What it demonstrates</span>
+<span class="sd">--------------------</span>
+<span class="sd">- Numerically stable summation using compensation.</span>
+<span class="sd">- Useful in ML metrics aggregation.</span>
+
+<span class="sd">How to run</span>
+<span class="sd">----------</span>
+<span class="sd">&gt;&gt;&gt; from scikitplot.cython import compile_template</span>
+<span class="sd">&gt;&gt;&gt; import array</span>
+<span class="sd">&gt;&gt;&gt; m = compile_template(&quot;t17_kahan_sum&quot;)</span>
+<span class="sd">&gt;&gt;&gt; a = array.array(&#39;d&#39;, [1e100, 1.0, -1e100])</span>
+<span class="sd">&gt;&gt;&gt; m.kahan_sum(a)</span>
+<span class="sd">1.0</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">kahan_sum</span><span class="p">(</span><span class="n">double</span><span class="p">[:]</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">i</span><span class="p">,</span> <span class="nf">n</span><span class="w"> </span><span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">s</span><span class="w"> </span><span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">c</span><span class="w"> </span><span class="o">=</span> <span class="mf">0.0</span>  <span class="c"># compensation</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">y</span><span class="p">,</span> <span class="nf">t</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">c</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="n">y</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">s</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">t</span>
+    <span class="k">return</span> <span class="n">s</span>
+</pre></div>
+</div>
+</section>
+<section id="t18-histogram-int">
+<h2>t18_histogram_int<a class="headerlink" href="#t18-histogram-int" title="Link to this heading">#</a></h2>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="c"># cython: language_level=3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">t18_histogram_int — histogram counting (NumPy int32).</span>
+
+<span class="sd">What it demonstrates</span>
+<span class="sd">--------------------</span>
+<span class="sd">- Counting histogram bins with typed ndarrays.</span>
+<span class="sd">- Strict bounds checks on bin range.</span>
+
+<span class="sd">How to run</span>
+<span class="sd">----------</span>
+<span class="sd">&gt;&gt;&gt; from scikitplot.cython import compile_template</span>
+<span class="sd">&gt;&gt;&gt; import numpy as np</span>
+<span class="sd">&gt;&gt;&gt; m = compile_template(&quot;t18_histogram_int&quot;)</span>
+<span class="sd">&gt;&gt;&gt; x = np.array([0, 1, 1, 2], dtype=np.int32)</span>
+<span class="sd">&gt;&gt;&gt; m.hist_counts(x, 3).tolist()</span>
+<span class="sd">[1, 2, 1]</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">cimport</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cnp</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">hist_counts</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">[</span><span class="n">cnp</span><span class="o">.</span><span class="n">int32_t</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mf">1</span><span class="p">]</span> <span class="n">x</span><span class="p">,</span> <span class="nb">int</span> <span class="n">n_bins</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n_bins</span> <span class="o">&lt;=</span> <span class="mf">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;n_bins must be &gt; 0&quot;</span><span class="p">)</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">np</span>.<span class="kt">ndarray</span>[<span class="kt">cnp</span>.<span class="nf">int64_t</span><span class="p">,</span> <span class="nf">ndim</span><span class="o">=</span><span class="mf">1</span><span class="p">]</span> <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_bins</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">i</span><span class="p">,</span> <span class="nf">n</span><span class="w"> </span><span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span> <span class="nf">v</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">v</span> <span class="o">&lt;</span> <span class="mf">0</span> <span class="ow">or</span> <span class="n">v</span> <span class="o">&gt;=</span> <span class="n">n_bins</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;value out of range&quot;</span><span class="p">)</span>
+        <span class="n">out</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">1</span>
+    <span class="k">return</span> <span class="n">out</span>
+</pre></div>
+</div>
+</section>
+<section id="t19-popcount">
+<h2>t19_popcount<a class="headerlink" href="#t19-popcount" title="Link to this heading">#</a></h2>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="c"># cython: language_level=3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">t19_popcount — portable bit population count.</span>
+
+<span class="sd">What it demonstrates</span>
+<span class="sd">--------------------</span>
+<span class="sd">- Bitwise operations on unsigned ints.</span>
+<span class="sd">- Portability: no compiler-specific builtins.</span>
+
+<span class="sd">How to run</span>
+<span class="sd">----------</span>
+<span class="sd">&gt;&gt;&gt; from scikitplot.cython import compile_template</span>
+<span class="sd">&gt;&gt;&gt; m = compile_template(&quot;t19_popcount&quot;)</span>
+<span class="sd">&gt;&gt;&gt; m.popcount32(0b1011)</span>
+<span class="sd">3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">cpdef</span><span class="w"> </span><span class="kt">int</span> <span class="nf">popcount32</span><span class="p">(</span><span class="nb">unsigned</span> <span class="nb">int</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span> <span class="nf">count</span><span class="w"> </span><span class="o">=</span> <span class="mf">0</span>
+    <span class="k">while</span> <span class="n">x</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">&amp;=</span> <span class="n">x</span> <span class="o">-</span> <span class="mf">1</span>  <span class="c"># clear lowest set bit</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mf">1</span>
+    <span class="k">return</span> <span class="n">count</span>
+</pre></div>
+</div>
+</section>
+<section id="t20-matmul-small">
+<h2>t20_matmul_small<a class="headerlink" href="#t20-matmul-small" title="Link to this heading">#</a></h2>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="c"># cython: language_level=3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">t20_matmul_small — naive 2D matrix multiplication (memoryviews).</span>
+
+<span class="sd">What it demonstrates:</span>
+
+<span class="sd">- 2D typed memoryviews and triple loops.</span>
+<span class="sd">- Strict dimension checks.</span>
+
+<span class="sd">How to run:</span>
+
+<span class="sd">&gt;&gt;&gt; from scikitplot.cython import compile_template</span>
+<span class="sd">&gt;&gt;&gt; import numpy as np</span>
+<span class="sd">&gt;&gt;&gt; m = compile_template(&quot;t20_matmul_small&quot;)</span>
+<span class="sd">&gt;&gt;&gt; A = np.array([[1., 2.],[3., 4.]], dtype=np.float64)</span>
+<span class="sd">&gt;&gt;&gt; B = np.array([[5., 6.],[7., 8.]], dtype=np.float64)</span>
+<span class="sd">&gt;&gt;&gt; m.matmul(A, B)</span>
+<span class="sd">array([[19., 22.],</span>
+<span class="sd">       [43., 50.]])</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">cimport</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cnp</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">matmul</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">[</span><span class="n">cnp</span><span class="o">.</span><span class="n">float64_t</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mf">2</span><span class="p">]</span> <span class="n">A</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">[</span><span class="n">cnp</span><span class="o">.</span><span class="n">float64_t</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mf">2</span><span class="p">]</span> <span class="n">B</span><span class="p">):</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">i</span><span class="p">,</span> <span class="nf">j</span><span class="p">,</span> <span class="nf">k</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">m</span><span class="w"> </span><span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">n</span><span class="w"> </span><span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">B</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">n</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;shape mismatch&quot;</span><span class="p">)</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">p</span><span class="w"> </span><span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">np</span>.<span class="kt">ndarray</span>[<span class="kt">cnp</span>.<span class="nf">float64_t</span><span class="p">,</span> <span class="nf">ndim</span><span class="o">=</span><span class="mf">2</span><span class="p">]</span> <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">m</span><span class="p">,</span> <span class="n">p</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+                <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">C</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item">
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="templates_medium_python.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">medium_python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="templates_module_cython.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">module_cython</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+                </footer>
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t01-square-int">t01_square_int</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t02-fib-cpdef">t02_fib_cpdef</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t03-cdef-class-counter">t03_cdef_class_counter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t04-memoryview-sum">t04_memoryview_sum</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t05-numpy-ndarray-sum">t05_numpy_ndarray_sum</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t06-directives-boundscheck">t06_directives_boundscheck</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t07-libc-math">t07_libc_math</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t08-struct-point">t08_struct_point</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t09-enum-state">t09_enum_state</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t10-safe-div-except">t10_safe_div_except</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t11-fused-types-dot">t11_fused_types_dot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t12-inline-clamp">t12_inline_clamp</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t13-bytes-xor">t13_bytes_xor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t14-string-reverse">t14_string_reverse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t15-lcg-rng">t15_lcg_rng</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t16-insertion-sort">t16_insertion_sort</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t17-kahan-sum">t17_kahan_sum</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t18-histogram-int">t18_histogram_int</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t19-popcount">t19_popcount</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t20-matmul-small">t20_matmul_small</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/user_guide/cython/_templates/templates_mixed.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.4.0.post10+git.20260217.bf0721e 2026-02-17T18:10Z.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

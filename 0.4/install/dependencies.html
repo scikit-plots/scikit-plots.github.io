@@ -61,8 +61,8 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=6c02275b"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=e93d8674"></script>
     <script src="../_static/thebelab-helper.js"></script>
@@ -83,7 +83,7 @@
     <link rel="icon" href="../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Quick Start Guide" href="../introduction/quick_start.html" />
+    <link rel="next" title="Troubleshooting" href="troubleshooting_faq.inc.html" />
     <link rel="prev" title="Installing scikit-plots" href="installation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -564,6 +564,7 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="installation.html">Installation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting_faq.inc.html">Troubleshooting</a></li>
 </ul>
 </details></li>
 </ul>
@@ -657,7 +658,7 @@ of Matplotlib.</p>
 <section id="backends">
 <span id="backend-dependencies"></span><h4>Backends<a class="headerlink" href="#backends" title="Link to this heading">#</a></h4>
 <p>Matplotlib figures can be rendered to various user interfaces. See
-<a class="reference external" href="https://matplotlib.org/stable/users/explain/figure/backends.html#what-is-a-backend" title="(in Matplotlib v3.10.8)"><span>What is a backend?</span></a> for more details on the optional Matplotlib backends
+<a class="reference external" href="https://matplotlib.org/devdocs/users/explain/figure/backends.html#what-is-a-backend" title="(in Matplotlib v3.11.0.dev1794+g30c8b8c9c)"><span>What is a backend?</span></a> for more details on the optional Matplotlib backends
 and the capabilities they provide.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.python.org/3/library/tk.html">Tk</a> (&gt;= 8.5, != 8.6.0 or 8.6.1): for the Tk-based backends. Tk is part of
@@ -786,11 +787,11 @@ which have a minimum version of pip which will recognize the wheels</p>
 <section id="build-dependencies">
 <span id="development-dependencies"></span><h2>Build dependencies<a class="headerlink" href="#build-dependencies" title="Link to this heading">#</a></h2>
 <section id="setup-dependencies">
-<span id="id5"></span><h3>Python<a class="headerlink" href="#setup-dependencies" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">pip</span></code> normally builds packages using <a class="reference external" href="https://pip.pypa.io/en/stable/reference/build-system/" title="(in pip v25.3)"><span class="xref std std-doc">build isolation</span></a>,
+<span id="id7"></span><h3>Python<a class="headerlink" href="#setup-dependencies" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span></code> normally builds packages using <a class="reference external" href="https://pip.pypa.io/en/stable/reference/build-system/" title="(in pip v26.0)"><span class="xref std std-doc">build isolation</span></a>,
 which means that <code class="docutils literal notranslate"><span class="pre">pip</span></code> installs the dependencies listed here for the
 duration of the build process. However, build isolation is disabled via the the
-<a class="reference external" href="https://pip.pypa.io/en/stable/cli/pip_install/#install-no-build-isolation" title="(in pip v25.3)"><span class="xref std std-ref">–no-build-isolation</span></a> flag
+<a class="reference external" href="https://pip.pypa.io/en/stable/cli/pip_install/#install-no-build-isolation" title="(in pip v26.0)"><span class="xref std std-ref">–no-build-isolation</span></a> flag
 when <a class="reference internal" href="../devel/guide_devel_setup.html#development-install"><span class="std std-ref">installing Matplotlib for development</span></a>, which
 means that the dependencies must be explicitly installed, either by <a class="reference internal" href="../devel/guide_devel_setup.html#dev-environment"><span class="std std-ref">creating a virtual environment</span></a>
 (recommended) or by manually installing the following packages:</p>
@@ -801,7 +802,7 @@ with Python.</p></li>
 <li><p><a class="reference external" href="https://pypi.org/project/setuptools-scm/">setuptools_scm</a> (&gt;= 7).  Used to
 update the reported <code class="docutils literal notranslate"><span class="pre">mpl.__version__</span></code> based on the current git commit.
 Also a runtime dependency for editable installs.</p></li>
-<li><p><a href="#id25"><span class="problematic" id="id26">NumPy_</span></a> (&gt;= 1.22).  Also a runtime dependency.</p></li>
+<li><p><a class="reference external" href="https://numpy.org/">NumPy</a> (&gt;= 1.22).  Also a runtime dependency.</p></li>
 </ul>
 </section>
 <section id="compilers-and-external-build-tools">
@@ -886,26 +887,26 @@ VS Code or Linux package manager. Choose <strong>one</strong> compiler from this
 </section>
 </section>
 <section id="test-dependencies">
-<span id="id6"></span><h2>Test dependencies<a class="headerlink" href="#test-dependencies" title="Link to this heading">#</a></h2>
+<span id="id8"></span><h2>Test dependencies<a class="headerlink" href="#test-dependencies" title="Link to this heading">#</a></h2>
 <p>This section lists the additional software required for
-<a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/testing.html#testing" title="(in xarray v2025.12.0)"><span class="xref std std-ref">running the tests</span></a>.</p>
-<section id="id7">
-<h3>Required<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/testing.html#testing" title="(in xarray v2026.2.0)"><span class="xref std std-ref">running the tests</span></a>.</p>
+<section id="id9">
+<h3>Required<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a href="#id27"><span class="problematic" id="id28">pytest_</span></a> (&gt;= 7.0.0)</p></li>
+<li><p><a class="reference external" href="https://docs.pytest.org/en/stable/">pytest</a> (&gt;= 7.0.0)</p></li>
 </ul>
 </section>
-<section id="id8">
-<h3>Optional<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<section id="id10">
+<h3>Optional<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <p>In addition to all of the optional dependencies on the main library, for
 testing the following will be used if they are installed.</p>
-<section id="id9">
-<h4>Python<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
+<section id="id11">
+<h4>Python<a class="headerlink" href="#id11" title="Link to this heading">#</a></h4>
 <p>These packages are installed when <a class="reference internal" href="../devel/guide_devel_setup.html#dev-environment"><span class="std std-ref">creating a virtual environment</span></a>,
 otherwise they must be installed manually:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://pypi.org/project/nbformat/">nbformat</a> and <a class="reference external" href="https://pypi.org/project/nbconvert/">nbconvert</a> used to test the notebook backend</p></li>
-<li><p><a href="#id29"><span class="problematic" id="id30">pandas_</span></a> used to test compatibility with Pandas</p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/">pandas</a> used to test compatibility with Pandas</p></li>
 <li><p><a class="reference external" href="https://pypi.org/project/pikepdf/">pikepdf</a> used in some tests for the pgf and pdf backends</p></li>
 <li><p><a class="reference external" href="https://pypi.org/project/psutil/">psutil</a> used in testing the interactive backends</p></li>
 <li><p><a class="reference external" href="https://pytest-cov.readthedocs.io/en/latest/">pytest-cov</a> (&gt;= 2.3.1) to collect coverage information</p></li>
@@ -941,12 +942,47 @@ tests will not find it.</p>
 <section id="id12">
 <h3>Python<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
 <p>The additional Python packages required to build the
-<a class="reference external" href="https://matplotlib.org/stable/devel/document.html#documenting-matplotlib" title="(in Matplotlib v3.10.8)"><span class="xref std std-ref">documentation</span></a> are listed in
-<code class="file docutils literal notranslate"><span class="pre">doc-requirements.txt</span></code> and can be installed using</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">doc</span><span class="o">-</span><span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+<a class="reference external" href="https://matplotlib.org/devdocs/devel/document.html#documenting-matplotlib" title="(in Matplotlib v3.11.0.dev1794+g30c8b8c9c)"><span class="xref std std-ref">documentation</span></a> are listed in
+<code class="file docutils literal notranslate"><span class="pre">doc.txt</span></code> and can be installed using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">/</span><span class="n">doc</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
-<p>The content of <code class="file docutils literal notranslate"><span class="pre">doc-requirements.txt</span></code> is also shown below:</p>
+<p>The content of <code class="file docutils literal notranslate"><span class="pre">doc.txt</span></code> is also shown below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Created at: 2026-01-28 16:14:03.693875</span>
+<span class="c1"># Generated via tools/requirements/generate_requirements.py.</span>
+<span class="c1"># Do not edit this file; modify `pyproject.toml` instead and run `python tools/generate_requirements.py`.</span>
+<span class="o">-</span><span class="n">r</span> <span class="n">core</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">sphinx</span><span class="o">&gt;=</span><span class="mf">5.0.0</span><span class="p">,</span><span class="o">&lt;</span><span class="mf">100.0.0</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">copybutton</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">design</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">gallery</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">prompt</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">remove</span><span class="o">-</span><span class="n">toctrees</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">rtd</span><span class="o">-</span><span class="n">theme</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">tabs</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">tags</span>
+<span class="n">sphinxext</span><span class="o">-</span><span class="n">opengraph</span>
+<span class="n">sphinxcontrib</span><span class="o">-</span><span class="n">inlinesyntaxhighlight</span>
+<span class="n">sphinxcontrib</span><span class="o">-</span><span class="n">sass</span>
+<span class="n">sphinxcontrib</span><span class="o">-</span><span class="n">svg2pdfconverter</span>
+<span class="n">pydata</span><span class="o">-</span><span class="n">sphinx</span><span class="o">-</span><span class="n">theme</span>
+<span class="n">colorspacious</span>
+<span class="n">jinja2</span>
+<span class="n">jupyter</span><span class="o">-</span><span class="n">sphinx</span>
+<span class="n">jupyterlite</span><span class="o">-</span><span class="n">pyodide</span><span class="o">-</span><span class="n">kernel</span>
+<span class="n">jupyterlite</span><span class="o">-</span><span class="n">sphinx</span>
+<span class="n">jupytext</span>
+<span class="n">intersphinx_registry</span>
+<span class="n">numpydoc</span>
+<span class="n">myst</span><span class="o">-</span><span class="n">nb</span>
+<span class="n">myst</span><span class="o">-</span><span class="n">parser</span>
+<span class="n">packaging</span>
+<span class="n">pooch</span>
+<span class="n">towncrier</span>
+<span class="n">catboost</span>
+<span class="n">xgboost</span>
+</pre></div>
+</div>
 </section>
 <section id="doc-dependencies-external">
 <span id="id13"></span><h3>External tools<a class="headerlink" href="#doc-dependencies-external" title="Link to this heading">#</a></h3>
@@ -1048,11 +1084,11 @@ process will raise various warnings.</p>
       </div>
     </a>
     <a class="right-next"
-       href="../introduction/quick_start.html"
+       href="troubleshooting_faq.inc.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Quick Start Guide</p>
+        <p class="prev-next-title">Troubleshooting</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1105,9 +1141,9 @@ process will raise various warnings.</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-dependencies">Test dependencies</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Required</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Optional</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Required</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Optional</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Python</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#external-tools">External tools</a></li>
 </ul>
 </li>
@@ -1162,7 +1198,7 @@ process will raise various warnings.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.4.0.post9+git.20260106.726934a 2026-01-06T16:48Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.4.0.post10+git.20260217.bf0721e 2026-02-17T18:10Z.
       <br/>
     
   </p>

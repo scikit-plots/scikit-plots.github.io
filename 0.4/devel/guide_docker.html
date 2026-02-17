@@ -61,8 +61,8 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=6c02275b"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=e93d8674"></script>
     <script src="../_static/thebelab-helper.js"></script>
@@ -676,7 +676,9 @@ code<span class="w"> </span>.
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p>You can use the prebuilt image directly from Docker Hub:</p>
-<p>📄 Docker Hub: <a href="#id1"><span class="problematic" id="id2">`https://hub.docker.com/r/scikitplot/scikit-plots`__</span></a></p>
+<ul class="simple">
+<li><p>📄 Docker Hub: <a class="reference external" href="https://hub.docker.com/r/scikitplot/scikit-plots">hub.docker.com/r/scikitplot/scikit-plots</a></p></li>
+</ul>
 </div>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># docker pull scikitplot/scikit-plots</span>
 docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>scikitplot/scikit-plots<span class="w"> </span>bash
@@ -715,12 +717,12 @@ docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </spa
 </pre></div>
 </div>
 </section>
-<section id="run-setup-vscode-ext-sh">
-<h3>▶️ Run setup_vscode_ext.sh<a class="headerlink" href="#run-setup-vscode-ext-sh" title="Link to this heading">#</a></h3>
+<section id="run-setup-vscode-extensions-sh">
+<h3>▶️ Run setup_vscode_extensions.sh<a class="headerlink" href="#run-setup-vscode-extensions-sh" title="Link to this heading">#</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1">## (Optionally) Install common vscode extensions</span>
 <span class="c1">##✅ C/C++/Python and Jupyter Notebook</span>
 <span class="c1">##✅ Linter and Formatter</span>
-bash<span class="w"> </span>docker/scripts/setup_vscode_ext.sh<span class="w">  </span><span class="c1"># (not needed every time)</span>
+bash<span class="w"> </span>docker/scripts/setup_vscode_extensions.sh<span class="w">  </span><span class="c1"># (not needed every time)</span>
 </pre></div>
 </div>
 </section>
@@ -749,7 +751,7 @@ bash<span class="w"> </span>docker/scripts/setup_vscode_ext.sh<span class="w">  
   $ bash docker/scripts/all_post_create.sh
 
 ✅  Git Safe Configs:
-  $ # bash docker/scripts/safe_dirs.sh  # add safe directories for git
+  $ # bash docker/scripts/git_add_safe_dirs.sh  # add safe directories for git
   $ git config --global --add safe.directory &#39;*&#39;
 
 ✅  (Optionally) Git Submodules Clone/Download/Initialize Configs, Not Needed Every Time:
@@ -762,7 +764,7 @@ bash<span class="w"> </span>docker/scripts/setup_vscode_ext.sh<span class="w">  
 ✅  Git Tag Configs:
   $ git fetch upstream --tags
 
-✅  Create Environment (Conda/Mamba):
+✅  Create Environment (Conda/Mamba/Micromamba):
   $ conda create -n py311 python=3.11 ipykernel -y
   $ conda activate py311
 
@@ -770,29 +772,35 @@ bash<span class="w"> </span>docker/scripts/setup_vscode_ext.sh<span class="w">  
   $ pip install -r requirements/build.txt
   $ pip install -r requirements/all.txt
 
+✅  (Optional) Install CPU-specific packages:
+  $ pip install -r requirements/cpu.txt
+
 ✅  Git hooks manager Initialize, Ensures code meets quality standards before it
   $ pre-commit install
 
 ✅  Install the current package in editable mode, using the current environment for building, and ignore cached builds:
-  $ pip install --no-build-isolation --no-cache-dir -e .
-
-✅  (Optional) Install CPU-specific packages:
-  $ pip install -r requirements/cpu.txt
+  $ pip install --no-build-isolation --no-cache-dir -e . -vvv
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📦  Environment Management Notes (Conda/Anaconda/Miniconda/Miniforge/Mamba/Micromamba):
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-• Activate environments (depending on tool):
-  $ conda activate py311
-  $ micromamba activate py311
+• Initialize Conda shell support (if needed):
+  # https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html
+  $ micromamba shell init --shell bash
+  $ mamba init
+  $ conda init
 
 • See environments:
-  $ conda info -e
   $ micromamba info -e
+  $ mamba info -e
+  $ conda info -e
 
-• Initialize Conda shell support (if needed):
-  $ conda init
+• Activate environments (depending on tool):
+  $ micromamba activate $(micromamba info -e | grep py312)
+  $ micromamba activate /root/micromamba/envs/py312
+  $ micromamba activate py311
+  $ conda activate py311
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 💡  Troubleshooting:
@@ -880,7 +888,8 @@ docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </s
 <p>📚 <a class="reference external" href="https://jupyter-docker-stacks.readthedocs.io/en/latest/">Jupyter Docker Stacks: Read the Docs</a></p>
 <p>📚 <a class="reference external" href="https://docs.docker.com/compose/">Docker Compose: Official Docs</a></p>
 <p>📚 <a class="reference external" href="https://containers.dev/guide/dockerfile">Dockerfile Best Practices</a></p>
-<p>📚 <a class="reference external" href="https://docs.localstack.cloud/getting-started/installation/#docker-compose">LocalStack Installation with Docker Compose</a></p>
+<p>📚 <a class="reference external" href="https://docs.docker.com/guides/localstack/">LocalStack with Docker</a></p>
+<p>📚 <a class="reference external" href="https://awesome-docker-compose.com/apps/paas/localstack">LocalStack Installation with Docker Compose</a></p>
 <p>📚 <a class="reference external" href="https://docs.nvidia.com/deeplearning/frameworks/user-guide/index.html">NVIDIA CUDA in Containers: NVIDIA Docs</a></p>
 <a class="reference external image-reference" href="https://developer.nvidia.com/blog/nvidia-docker-gpu-server-application-deployment-made-easy/"><img alt="https://developer-blogs.nvidia.com/wp-content/uploads/2016/06/nvidia-docker.png" class="align-center" src="https://developer-blogs.nvidia.com/wp-content/uploads/2016/06/nvidia-docker.png" />
 </a>
@@ -929,7 +938,7 @@ docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </s
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-docker-compose-the-easiest-way-to-launch-the-environment">🏷️ Using Docker Compose: The easiest way to launch the environment.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-docker-env-jupyter-notebook-by-vs-code">▶️ Run Docker Env Jupyter Notebook by VS Code</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-docker-container-especially-when-docker-gui-dont-available">▶️ Connect Docker Container Especially When <code class="docutils literal notranslate"><span class="pre">Docker-GUI</span> <span class="pre">dont</span> <span class="pre">available</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-setup-vscode-ext-sh">▶️ Run setup_vscode_ext.sh</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-setup-vscode-extensions-sh">▶️ Run setup_vscode_extensions.sh</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-post-create-commands-sh">▶️ Run post_create_commands.sh</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stop-containers">🚯 Stop Containers</a></li>
 </ul>
@@ -975,7 +984,7 @@ docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </s
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.4.0.post9+git.20260106.726934a 2026-01-06T16:48Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.4.0.post10+git.20260217.bf0721e 2026-02-17T18:10Z.
       <br/>
     
   </p>

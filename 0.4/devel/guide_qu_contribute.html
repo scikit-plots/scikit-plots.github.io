@@ -61,8 +61,8 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=6c02275b"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=e93d8674"></script>
     <script src="../_static/thebelab-helper.js"></script>
@@ -613,8 +613,9 @@ to <a class="reference external" href="https://scikit-plots.github.io/dev/help.h
 <p>scikit-plots is hosted on <a class="reference external" href="https://github.com/scikit-plots/scikit-plots">GitHub</a>, and to
 contribute, you will need a <a class="reference external" href="https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github">GitHub account</a>.</p>
 <p>We use <a class="reference external" href="https://git-scm.com/">Git</a> for version control and to allow many people to
-work together on the project. See the <a class="reference external" href="https://docs.github.com/en/get-started/quickstart/set-up-git">GitHub quickstart instructions</a> for installing and
-configuring git, as well as the <a class="reference internal" href="guide_git_resources.html#git-resources"><span class="std std-ref">Git Resources Guidelines</span></a> page.</p>
+work together on the project. See the
+<a class="reference external" href="https://docs.github.com/en/get-started/quickstart/set-up-git">GitHub quickstart instructions</a>
+for installing and configuring git, as well as the <a class="reference internal" href="guide_git_resources.html#git-resources"><span class="std std-ref">Git Resources Guidelines</span></a> page.</p>
 <p>If you are new to contributing to projects through forking on GitHub, see the
 <a class="reference external" href="https://docs.github.com/en/get-started/quickstart/contributing-to-projects">GitHub documentation for contributing to projects</a>.</p>
 <div class="admonition important">
@@ -627,7 +628,8 @@ configuring git, as well as the <a class="reference internal" href="guide_git_re
 <h3>Install a C compiler if needed<a class="headerlink" href="#install-a-c-compiler-if-needed" title="Link to this heading">#</a></h3>
 <p>How to do this will depend on your platform.</p>
 <p><strong>Windows</strong></p>
-<p>You will need <a class="reference external" href="https://visualstudio.microsoft.com/downloads/?q=build+tools">Build Tools for Visual Studio</a>.</p>
+<p>You will need
+<a class="reference external" href="https://visualstudio.microsoft.com/downloads/?q=build+tools">Build Tools for Visual Studio</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You DO NOT need to install Visual Studio.
@@ -670,9 +672,11 @@ span.prompt1:before {
 </pre></div></div><div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Actually we run below scripts step-by-step in following Documentation.
-(See Also: <a href="#id3"><span class="problematic" id="id4">`https://github.com/scikit-plots/scikit-plots/blob/main/docker/scripts/bash-first-run-notice.txt`__</span></a>)</p>
+(See Also: <a href="#id1"><span class="problematic" id="id2">`https://github.com/scikit-plots/scikit-plots/blob/main/docker/scripts/bash-first-run-notice.txt`__</span></a>)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">bash<span class="w"> </span>docker/scripts/post_create_commands.sh</span>
 </pre></div></div></div>
+<section id="quick-check-bash-first-run-notice-txt">
+<span id="bash-first-run-notice"></span><h3>▶️ Quick check bash-first-run-notice.txt<a class="headerlink" href="#quick-check-bash-first-run-notice-txt" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/main/docker/scripts/bash-first-run-notice.txt">“See Also: bash-first-run-notice.txt”</a></p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sdd" id="bash-first-run-notice.txt" open="open">
 <summary class="sd-summary-title sd-card-header">
@@ -696,7 +700,7 @@ span.prompt1:before {
   $ bash docker/scripts/all_post_create.sh
 
 ✅  Git Safe Configs:
-  $ # bash docker/scripts/safe_dirs.sh  # add safe directories for git
+  $ # bash docker/scripts/git_add_safe_dirs.sh  # add safe directories for git
   $ git config --global --add safe.directory &#39;*&#39;
 
 ✅  (Optionally) Git Submodules Clone/Download/Initialize Configs, Not Needed Every Time:
@@ -709,7 +713,7 @@ span.prompt1:before {
 ✅  Git Tag Configs:
   $ git fetch upstream --tags
 
-✅  Create Environment (Conda/Mamba):
+✅  Create Environment (Conda/Mamba/Micromamba):
   $ conda create -n py311 python=3.11 ipykernel -y
   $ conda activate py311
 
@@ -717,29 +721,35 @@ span.prompt1:before {
   $ pip install -r requirements/build.txt
   $ pip install -r requirements/all.txt
 
+✅  (Optional) Install CPU-specific packages:
+  $ pip install -r requirements/cpu.txt
+
 ✅  Git hooks manager Initialize, Ensures code meets quality standards before it
   $ pre-commit install
 
 ✅  Install the current package in editable mode, using the current environment for building, and ignore cached builds:
-  $ pip install --no-build-isolation --no-cache-dir -e .
-
-✅  (Optional) Install CPU-specific packages:
-  $ pip install -r requirements/cpu.txt
+  $ pip install --no-build-isolation --no-cache-dir -e . -vvv
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📦  Environment Management Notes (Conda/Anaconda/Miniconda/Miniforge/Mamba/Micromamba):
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-• Activate environments (depending on tool):
-  $ conda activate py311
-  $ micromamba activate py311
+• Initialize Conda shell support (if needed):
+  # https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html
+  $ micromamba shell init --shell bash
+  $ mamba init
+  $ conda init
 
 • See environments:
-  $ conda info -e
   $ micromamba info -e
+  $ mamba info -e
+  $ conda info -e
 
-• Initialize Conda shell support (if needed):
-  $ conda init
+• Activate environments (depending on tool):
+  $ micromamba activate $(micromamba info -e | grep py312)
+  $ micromamba activate /root/micromamba/envs/py312
+  $ micromamba activate py311
+  $ conda activate py311
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 💡  Troubleshooting:
@@ -771,15 +781,16 @@ span.prompt1:before {
 </pre></div>
 </div>
 </div>
-</details><section id="initialize-and-fetch-submodules">
-<h3>Initialize and Fetch Submodules:<a class="headerlink" href="#initialize-and-fetch-submodules" title="Link to this heading">#</a></h3>
+</details></section>
+<section id="initialize-and-fetch-submodules">
+<h3>Initialize and Fetch Submodules<a class="headerlink" href="#initialize-and-fetch-submodules" title="Link to this heading">#</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Not Needed Every Time.</p>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (if Necessary) Add in git safe dirs</span></span>
-<span class="prompt1"><span class="c1">## Or use `git config ...` to add `scikit-plots` in git safe dirs</span></span>
-<span class="prompt1"><span class="c1"># bash docker/scripts/safe_dirs.sh  # add safe directories for git</span></span>
+<span class="prompt1"><span class="c1">## Or use ``git config ...`` to add ``scikit-plots`` in git safe dirs</span></span>
+<span class="prompt1"><span class="c1"># bash docker/scripts/git_add_safe_dirs.sh  # add safe directories for git</span></span>
 <span class="prompt1">git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>--add<span class="w"> </span>safe.directory<span class="w"> </span><span class="s1">&#39;*&#39;</span></span>
 </pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1">## (Optionally) Git Submodules Clone/Download/Initialize Configs, Not Needed Every Time.</span></span>
 <span class="prompt1"><span class="c1">## Almost always used after cloning a repo with submodules.</span></span>
@@ -827,7 +838,9 @@ and use on all platforms and it makes it easy to install different Python versio
 can be useful for testing.</p>
 <section id="install-miniforge-and-conda">
 <h3>Install miniforge and conda<a class="headerlink" href="#install-miniforge-and-conda" title="Link to this heading">#</a></h3>
-<p>If you do not already have <code class="docutils literal notranslate"><span class="pre">conda</span></code> installed, <a class="reference external" href="https://github.com/conda-forge/miniforge/blob/main/README.md">download and install miniforge</a>. The details depend on
+<p>If you do not already have <code class="docutils literal notranslate"><span class="pre">conda</span></code> installed,
+<a class="reference external" href="https://github.com/conda-forge/miniforge/blob/main/README.md">download and install miniforge</a>.
+The details depend on
 your system but the end result is to provide a <code class="docutils literal notranslate"><span class="pre">conda</span></code> executable that you can use
 to create and manage isolated Python environments.</p>
 <p>Now create and activate an <code class="docutils literal notranslate"><span class="pre">py311</span></code> conda environment using the following:</p>
@@ -868,16 +881,16 @@ all the dependencies needed to build and fully test <code class="docutils litera
 <span class="prompt1">scikitplot<span class="w"> </span>-V</span>
 </pre></div></div><p>Next you may want to try running some or all of the <code class="docutils literal notranslate"><span class="pre">scikitplot</span></code> unit tests.
 Running the full test suite can take a few minutes, so you may want to start with a
-single sub-package (e.g. <a class="reference internal" href="../user_guide/decile_wise_perf/kds.html#kds-index"><span class="std std-ref">KeyToDataScience</span></a>):</p>
+single sub-package (e.g. <a class="reference internal" href="../user_guide/decile/kds.html#decile-kds-index"><span class="std std-ref">KeyToDataScience</span></a>):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1">## python -m pytest -p vscode_pytest --collect-only --rootdir=.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1">## run a sub set of the test suite</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pytest</span> <span class="n">scikitplot</span><span class="o">/</span><span class="n">kds</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pytest</span> <span class="n">scikitplot</span><span class="o">/</span><span class="n">decile</span><span class="o">/</span><span class="n">kds</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1">## or the whole suite</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pytest</span>
 </pre></div>
 </div>
-<p>Details on running and writing tests can be found in the <a class="reference external" href="https://numpy.org/doc/stable/reference/testing.html#testing-guidelines" title="(in NumPy v2.4)"><span>Testing guidelines</span></a>
+<p>Details on running and writing tests can be found in the <a class="reference internal" href="guide_test.html#testing-guidelines"><span class="std std-ref">Testing Guidelines</span></a>
 section.</p>
 </section>
 </section>
@@ -939,7 +952,7 @@ First ensure it’s up-to-date with the <code class="docutils literal notranslat
 </div>
 </section>
 <section id="recommended-use-fast-forward-only">
-<h3>(Recommended) Use Fast-forward only:<a class="headerlink" href="#recommended-use-fast-forward-only" title="Link to this heading">#</a></h3>
+<h3>(Recommended) Use Fast-forward only<a class="headerlink" href="#recommended-use-fast-forward-only" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Fast-forward only: Updates your branch only if it can be fast-forwarded (i.e., no local commits that diverge from upstream/main).</p></li>
 <li><p>If divergence exists: Git refuses to pull, and you must manually resolve the situation (e.g., using git rebase or git merge).</p></li>
@@ -970,7 +983,7 @@ A---B---C---D---E---F  (upstream/main)
 </div>
 </section>
 <section id="if-necessary-rebases">
-<h3>(if Necessary) Rebases:<a class="headerlink" href="#if-necessary-rebases" title="Link to this heading">#</a></h3>
+<h3>(if Necessary) Rebases<a class="headerlink" href="#if-necessary-rebases" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Rebases your local commits on top of the latest upstream/main</p></li>
 <li><p>Rewrites history by replaying your commits on top of upstream/main, making the history linear</p></li>
@@ -1015,7 +1028,7 @@ Keep any changes in this branch specific to one bug or feature so it is clear wh
 branch brings to <code class="docutils literal notranslate"><span class="pre">scikit-plots</span></code>. You can have many feature branches and switch in between them
 using the <a class="reference external" href="https://git-scm.com/docs/git-switch">git switch</a> command.</p>
 <p>Using a descriptive branch name can help you stay organized. For example
-<code class="docutils literal notranslate"><span class="pre">`kds-commented-header`</span></code> might be a good name for a branch that fixes the
+<code class="docutils literal notranslate"><span class="pre">kds-commented-header</span></code> might be a good name for a branch that fixes the
 commented header issue <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/issues/1">#1</a> in
 the <code class="docutils literal notranslate"><span class="pre">kds</span></code> sub-package.</p>
 <p>When you want to update the feature branch with changes in main after
@@ -1031,7 +1044,7 @@ code or documentation! At a high level this breaks into a few parts:</p>
 <li><p><strong>Make changes</strong>: Make the changes you want to make. This could be fixing a bug,
 adding a new feature, or updating the documentation.</p></li>
 <li><p><strong>Test changes</strong>: For code changes, ensure that they work as expected following the
-process outlined in the <a class="reference external" href="https://numpy.org/doc/stable/reference/testing.html#testing-guidelines" title="(in NumPy v2.4)"><span>Testing guidelines</span></a> section.</p></li>
+process outlined in the <a class="reference internal" href="guide_test.html#testing-guidelines"><span class="std std-ref">Testing Guidelines</span></a> section.</p></li>
 <li><p><strong>Build documentation</strong>: If you are updating the documentation, you will want to
 <a class="reference internal" href="guide_document.html#builddocs"><span class="std std-ref">build the documentation</span></a> to ensure that it looks good.</p></li>
 <li><p><strong>Add a changelog entry</strong>: For most code changes you will need to
@@ -1079,7 +1092,8 @@ your branch and create the PR. If you don’t have that link (and for a few more
 you can follow the <a class="reference internal" href="guide_devel_details.html#pull-request"><span class="std std-ref">Make a pull request</span></a> instructions.</p>
 <p>Follow the instructions in the PR template and fill it out as completely as possible.</p>
 <p>If your PR is still a work in progress then instead of clicking “Create pull request”,
-click on the small down arrow next to it and select “<a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests">Create draft pull request</a>”.
+click on the small down arrow next to it and select
+“<a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests">Create draft pull request</a>”.
 In addition, if your commits are not ready for CI testing, you
 should include <code class="docutils literal notranslate"><span class="pre">[ci</span> <span class="pre">skip]</span></code> the last commit message – but note that code formatting
 checks and documentation building will still be done. Formatting and style errors <em>should</em>
@@ -1101,7 +1115,8 @@ again to address any feedback and update your pull request:</p>
 and restart the <a class="reference external" href="contributing_ci">Continuous Integration</a> checks.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>At this point please read (or at least skim) the sections <a class="reference internal" href="guide_devel_details.html#revise-and-push"><span class="std std-ref">Do Not Create a Merge Commit</span></a>, <a class="reference internal" href="guide_devel_details.html#rebase"><span class="std std-ref">Rebase if necessary</span></a>, and <a class="reference internal" href="guide_devel_details.html#squash-if-necessary"><span class="std std-ref">Squash if necessary</span></a>. The information here
+<p>At this point please read (or at least skim) the sections <a class="reference internal" href="guide_devel_details.html#revise-and-push"><span class="std std-ref">Do Not Create a Merge Commit</span></a>,
+<a class="reference internal" href="guide_devel_details.html#rebase"><span class="std std-ref">Rebase if necessary</span></a>, and <a class="reference internal" href="guide_devel_details.html#squash-if-necessary"><span class="std std-ref">Squash if necessary</span></a>. The information here
 covers situations that happen on occasion and can be cause trouble. As always if
 you have questions, ask for help from the maintainer reviewing your PR.</p>
 </div>
@@ -1112,8 +1127,8 @@ you have questions, ask for help from the maintainer reviewing your PR.</p>
 maintainers will take a look. To make the process as smooth and efficient as possible,
 here are some tips:</p>
 <ul class="simple">
-<li><p><strong>Reference any existing open issue</strong> to <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests">link to that issue</a> and close the
-issue if the PR is merged.</p></li>
+<li><p><strong>Reference any existing open issue</strong> to <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests">link to that issue</a>
+and close the issue if the PR is merged.</p></li>
 <li><p><strong>Ensure you have appropriate tests</strong>.</p></li>
 <li><p><strong>Keep your pull requests as simple as possible</strong> – larger PRs take longer to review.</p></li>
 <li><p><strong>When practical, limit the scope of a PR to one sub-package</strong> – this means fewer
@@ -1163,7 +1178,8 @@ required reviewers and a faster review process.</p></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-clone-of-scikit-plots">Create a clone of scikit-plots</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-fetch-submodules">Initialize and Fetch Submodules:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-check-bash-first-run-notice-txt">▶️ Quick check bash-first-run-notice.txt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-fetch-submodules">Initialize and Fetch Submodules</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-isolated-development-environment">Create an isolated development environment</a><ul class="nav section-nav flex-column">
@@ -1177,8 +1193,8 @@ required reviewers and a faster review process.</p></li>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-submitting-a-pull-request">Creating and submitting a pull request</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-branch">Creating a branch</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-use-fast-forward-only">(Recommended) Use Fast-forward only:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-necessary-rebases">(if Necessary) Rebases:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-use-fast-forward-only">(Recommended) Use Fast-forward only</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-necessary-rebases">(if Necessary) Rebases</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-code-or-documentation-changes">Making code or documentation changes</a><ul class="nav section-nav flex-column">
@@ -1225,7 +1241,7 @@ required reviewers and a faster review process.</p></li>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.4.0.post9+git.20260106.726934a 2026-01-06T16:48Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.4.0.post10+git.20260217.bf0721e 2026-02-17T18:10Z.
       <br/>
     
   </p>
