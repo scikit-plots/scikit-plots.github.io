@@ -499,7 +499,8 @@
 <h2>Download the related packages<a class="headerlink" href="#download-the-related-packages" title="Link to this heading">#</a></h2>
 <p>First we download the media preproccess libraries (text, image, audio or video).
 pip install nltk gensim langdetect faster-whisper openai-whisper pytesseract youtube-transcript-api
-sudo apt-get install tesseract-ocr</p>
+sudo apt-get install tesseract-ocr
+pip install scikit-plots[corpus]</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># .. seealso::</span>
 <span class="c1">#    * galleries/examples/00-jupyter_notebooks/corpus/plot_corpus_from_any_media_notebook.ipynb</span>
 
@@ -508,26 +509,357 @@ sudo apt-get install tesseract-ocr</p>
 <span class="c1"># import youtube_transcript_api</span>
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">textwrap</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">corpus</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus._schema</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">CorpusDocument</span><span class="p">,</span>
+    <span class="n">SourceType</span><span class="p">,</span>
+    <span class="n">MatchMode</span><span class="p">,</span>
+    <span class="n">SectionType</span><span class="p">,</span>
+    <span class="n">ChunkingStrategy</span><span class="p">,</span>
+    <span class="n">_PROMOTED_RAW_KEYS</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus._base</span><span class="w"> </span><span class="kn">import</span> <span class="n">DocumentReader</span><span class="p">,</span> <span class="n">DefaultFilter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus._normalizers</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">NormalizationPipeline</span><span class="p">,</span>
+    <span class="n">UnicodeNormalizer</span><span class="p">,</span>
+    <span class="n">WhitespaceNormalizer</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus._enrichers._nlp_enricher</span><span class="w"> </span><span class="kn">import</span> <span class="n">NLPEnricher</span><span class="p">,</span> <span class="n">EnricherConfig</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus._similarity._similarity</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">SimilarityIndex</span><span class="p">,</span>
+    <span class="n">SearchConfig</span><span class="p">,</span>
+    <span class="n">SearchResult</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus._adapters</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">to_langchain_documents</span><span class="p">,</span>
+    <span class="n">to_langgraph_state</span><span class="p">,</span>
+    <span class="n">to_mcp_resources</span><span class="p">,</span>
+    <span class="n">to_mcp_tool_result</span><span class="p">,</span>
+    <span class="n">to_huggingface_dataset</span><span class="p">,</span>
+    <span class="n">to_rag_tuples</span><span class="p">,</span>
+    <span class="n">to_jsonl</span><span class="p">,</span>
+    <span class="n">MCPCorpusServer</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
+<span class="c1"># HELPER: print section banners</span>
+<span class="c1"># ===========================================================================</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">banner</span><span class="p">(</span><span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">char</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"="</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">char</span> <span class="o">*</span> <span class="mi">72</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="se">\n</span><span class="s2">  </span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">mini_banner</span><span class="p">(</span><span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">  --- </span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2"> ---</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">show_doc</span><span class="p">(</span><span class="n">doc</span><span class="p">:</span> <span class="n">CorpusDocument</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Pretty-print a single CorpusDocument."""</span>
+    <span class="n">text_preview</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="s2">" "</span><span class="p">)</span>
+    <span class="n">norm_preview</span> <span class="o">=</span> <span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">normalized_text</span> <span class="ow">or</span> <span class="s2">""</span><span class="p">)[:</span><span class="mi">80</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="s2">" "</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  [</span><span class="si">{</span><span class="n">index</span><span class="si">:</span><span class="s2">3d</span><span class="si">}</span><span class="s2">] doc_id=</span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">doc_id</span><span class="p">[:</span><span class="mi">12</span><span class="p">]</span><span class="si">}</span><span class="s2">…  source_type=</span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">source_type</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"        text: </span><span class="si">{</span><span class="n">text_preview</span><span class="si">!r}</span><span class="s2">…"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">norm_preview</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"        norm: </span><span class="si">{</span><span class="n">norm_preview</span><span class="si">!r}</span><span class="s2">…"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">tokens</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"        tokens(</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">tokens</span><span class="p">)</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">tokens</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span><span class="si">}</span><span class="s2">…"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">keywords</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"        keywords: </span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">keywords</span><span class="p">[:</span><span class="mi">6</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">timecode_start</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"        timecode: </span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">timecode_start</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">s – </span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">timecode_end</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">s"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">confidence</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"        confidence: </span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">confidence</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">page_number</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"        page: </span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">page_number</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
+<span class="c1"># PHASE 1: INGEST — Process all 5 source types via DocumentReader</span>
+<span class="c1"># ===========================================================================</span>
+
+<span class="n">banner</span><span class="p">(</span><span class="s2">"PHASE 1: INGEST — 5 Source Types via DocumentReader"</span><span class="p">)</span>
+
+<span class="n">all_documents</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CorpusDocument</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">source_log</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># --- Source ①: Web Article (HTML) ---</span>
+<span class="c1"># In production: DocumentReader.from_url("https://www.who.int/europe/news/item/...")</span>
+<span class="c1"># Here we use the local text proxy (same content)</span>
+<span class="n">mini_banner</span><span class="p">(</span><span class="s2">"Source ①: Web Article (text proxy for HTML URL)"</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">if</span> <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"who_health_care_article.txt"</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="c1"># from local raw html page</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">DocumentReader</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"who_health_care_article.txt"</span><span class="p">),</span>
+            <span class="n">source_type</span><span class="o">=</span><span class="n">SourceType</span><span class="o">.</span><span class="n">WEB</span><span class="p">,</span>
+            <span class="n">source_title</span><span class="o">=</span><span class="s2">"Out-of-pocket payments for health care unaffordable for millions in Europe"</span><span class="p">,</span>
+            <span class="n">source_author</span><span class="o">=</span><span class="s2">"WHO Regional Office for Europe"</span><span class="p">,</span>
+            <span class="n">source_date</span><span class="o">=</span><span class="s2">"2023-12-12"</span><span class="p">,</span>
+            <span class="n">collection_id</span><span class="o">=</span><span class="s2">"who-greece-financial-protection"</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># from url raw html page DocumentReader.from_url for raw html</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">DocumentReader</span><span class="o">.</span><span class="n">from_url</span><span class="p">(</span>
+            <span class="s2">"https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows"</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="n">docs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">reader</span><span class="o">.</span><span class="n">get_documents</span><span class="p">())</span>
+    <span class="n">all_documents</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
+    <span class="n">source_log</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"web_article"</span><span class="p">,</span> <span class="s2">"n_docs"</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">docs</span><span class="p">),</span> <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"OK"</span><span class="p">})</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ Web article: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span><span class="si">}</span><span class="s2"> chunks ingested"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">docs</span><span class="p">:</span>
+        <span class="n">show_doc</span><span class="p">(</span><span class="n">docs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">source_log</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"web_article"</span><span class="p">,</span> <span class="s2">"n_docs"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"status"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"ERROR: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">})</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✗ Web article: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>========================================================================
+  PHASE 1: INGEST — 5 Source Types via DocumentReader
+========================================================================
+
+
+  --- Source ①: Web Article (text proxy for HTML URL) ---
+
+  ✓ Web article: 91 chunks ingested
+  [  0] doc_id=9432e3e0cdf3…  source_type=web
+        text: 'Out-of-pocket payments for primary health care unaffordable for millions in Europe, new WHO report s'…
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">docs</span><span class="p">[</span><span class="mi">60</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>'Catastrophic out-of-pocket payments are mainly driven by household spending on services that are commonly delivered or managed in primary-care settings, indicating important gaps in the coverage of primary care in many countries.'
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">all_documents</span><span class="p">[</span><span class="mi">60</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>'Catastrophic out-of-pocket payments are mainly driven by household spending on services that are commonly delivered or managed in primary-care settings, indicating important gaps in the coverage of primary care in many countries.'
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Ingestion Summary ---</span>
+<span class="n">mini_banner</span><span class="p">(</span><span class="s2">"Ingestion Summary"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">source_log</span><span class="p">:</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="s2">"✓"</span> <span class="k">if</span> <span class="n">entry</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"OK"</span> <span class="k">else</span> <span class="s2">"⚠"</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  </span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">entry</span><span class="p">[</span><span class="s1">'type'</span><span class="p">]</span><span class="si">:</span><span class="s2">25s</span><span class="si">}</span><span class="s2"> → </span><span class="si">{</span><span class="n">entry</span><span class="p">[</span><span class="s1">'n_docs'</span><span class="p">]</span><span class="si">:</span><span class="s2">3d</span><span class="si">}</span><span class="s2"> docs  [</span><span class="si">{</span><span class="n">entry</span><span class="p">[</span><span class="s1">'status'</span><span class="p">]</span><span class="si">}</span><span class="s2">]"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">  Total documents in corpus: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">all_documents</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>--- Ingestion Summary ---
+
+✓ web_article               →  91 docs  [OK]
+
+Total documents in corpus: 91
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
+<span class="c1"># PHASE 4: INDEX — Build SimilarityIndex (KEYWORD mode, no embeddings)</span>
+<span class="c1"># ===========================================================================</span>
+
+<span class="n">banner</span><span class="p">(</span><span class="s2">"PHASE 4: INDEX — Build SimilarityIndex (BM25 keyword mode)"</span><span class="p">)</span>
+
+<span class="n">index</span> <span class="o">=</span> <span class="n">SimilarityIndex</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">SearchConfig</span><span class="p">(</span><span class="n">match_mode</span><span class="o">=</span><span class="s2">"keyword"</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">index</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">all_documents</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ Index built: </span><span class="si">{</span><span class="n">index</span><span class="o">.</span><span class="n">n_documents</span><span class="si">}</span><span class="s2"> documents, dense=</span><span class="si">{</span><span class="n">index</span><span class="o">.</span><span class="n">has_embeddings</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>========================================================================
+  PHASE 4: INDEX — Build SimilarityIndex (BM25 keyword mode)
+========================================================================
+
+  ✓ Index built: 91 documents, dense=False
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
+<span class="c1"># PHASE 6: ADAPTERS — Export to every downstream format</span>
+<span class="c1"># ===========================================================================</span>
+
+<span class="n">banner</span><span class="p">(</span><span class="s2">"PHASE 6: ADAPTERS — Export to LangChain / MCP / RAG / LangGraph / HF"</span><span class="p">)</span>
+
+<span class="c1"># --- 6a: LangChain Documents ---</span>
+<span class="n">mini_banner</span><span class="p">(</span><span class="s2">"6a: LangChain Documents"</span><span class="p">)</span>
+<span class="n">lc_docs</span> <span class="o">=</span> <span class="n">to_langchain_documents</span><span class="p">(</span><span class="n">all_documents</span><span class="p">)</span>
+<span class="n">first</span> <span class="o">=</span> <span class="n">lc_docs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">lc_docs</span><span class="p">)</span><span class="si">}</span><span class="s2"> LangChain docs (dict fallback — langchain not installed)"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    keys: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">first</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    page_content[:80]: </span><span class="si">{</span><span class="n">first</span><span class="p">[</span><span class="s1">'page_content'</span><span class="p">][:</span><span class="mi">80</span><span class="p">]</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    metadata keys: </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">first</span><span class="p">[</span><span class="s1">'metadata'</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())[:</span><span class="mi">10</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">lc_docs</span><span class="p">)</span><span class="si">}</span><span class="s2"> LangChain Document objects"</span><span class="p">)</span>
+
+<span class="c1"># --- 6b: LangGraph State ---</span>
+<span class="n">mini_banner</span><span class="p">(</span><span class="s2">"6b: LangGraph State"</span><span class="p">)</span>
+<span class="n">state</span> <span class="o">=</span> <span class="n">to_langgraph_state</span><span class="p">(</span>
+    <span class="n">all_documents</span><span class="p">,</span>
+    <span class="n">query</span><span class="o">=</span><span class="s2">"catastrophic health spending"</span><span class="p">,</span>
+    <span class="n">match_mode</span><span class="o">=</span><span class="s2">"keyword"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ LangGraph state dict:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    keys: </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    n_results: </span><span class="si">{</span><span class="n">state</span><span class="p">[</span><span class="s1">'n_results'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    query: </span><span class="si">{</span><span class="n">state</span><span class="p">[</span><span class="s1">'query'</span><span class="p">]</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="c1"># --- 6c: MCP Resources ---</span>
+<span class="n">mini_banner</span><span class="p">(</span><span class="s2">"6c: MCP Resources (Model Context Protocol)"</span><span class="p">)</span>
+<span class="n">resources</span> <span class="o">=</span> <span class="n">to_mcp_resources</span><span class="p">(</span><span class="n">all_documents</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">resources</span><span class="p">[:</span><span class="mi">2</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  resource:"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    uri:      </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">'uri'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    name:     </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    mimeType: </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">'mimeType'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    text[:60]: </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">'text'</span><span class="p">][:</span><span class="mi">60</span><span class="p">]</span><span class="si">!r}</span><span class="s2">…"</span><span class="p">)</span>
+
+<span class="c1"># --- 6d: MCP Tool Result ---</span>
+<span class="n">mini_banner</span><span class="p">(</span><span class="s2">"6d: MCP Tool Result (tools/call response)"</span><span class="p">)</span>
+<span class="n">tool_result</span> <span class="o">=</span> <span class="n">to_mcp_tool_result</span><span class="p">(</span><span class="n">all_documents</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ MCP tool result:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    isError: </span><span class="si">{</span><span class="n">tool_result</span><span class="p">[</span><span class="s1">'isError'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    content items: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">tool_result</span><span class="p">[</span><span class="s1">'content'</span><span class="p">])</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">tool_result</span><span class="p">[</span><span class="s2">"content"</span><span class="p">][:</span><span class="mi">2</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    [</span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">'type'</span><span class="p">]</span><span class="si">}</span><span class="s2">] text[:60]: </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">'text'</span><span class="p">][:</span><span class="mi">60</span><span class="p">]</span><span class="si">!r}</span><span class="s2">…"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"         annotations: </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">'annotations'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="c1"># --- 6e: MCP Server (adapter class) ---</span>
+<span class="n">mini_banner</span><span class="p">(</span><span class="s2">"6e: MCP Server Adapter"</span><span class="p">)</span>
+<span class="n">mcp_server</span> <span class="o">=</span> <span class="n">MCPCorpusServer</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">server_name</span><span class="o">=</span><span class="s2">"who-corpus"</span><span class="p">)</span>
+<span class="n">tools</span> <span class="o">=</span> <span class="n">mcp_server</span><span class="o">.</span><span class="n">list_tools</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ MCPCorpusServer: </span><span class="si">{</span><span class="n">mcp_server</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    tools: </span><span class="si">{</span><span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">tools</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    tool schema: </span><span class="si">{</span><a class="sphx-glr-backref-module-json sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/json.html#json.dumps" title="json.dumps"><span class="n">json</span><span class="o">.</span><span class="n">dumps</span></a><span class="p">(</span><span class="n">tools</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'inputSchema'</span><span class="p">],</span><span class="w"> </span><span class="n">indent</span><span class="o">=</span><span class="mi">6</span><span class="p">)[:</span><span class="mi">200</span><span class="p">]</span><span class="si">}</span><span class="s2">…"</span><span class="p">)</span>
+
+<span class="c1"># --- 6f: HuggingFace Dataset ---</span>
+<span class="n">mini_banner</span><span class="p">(</span><span class="s2">"6f: HuggingFace Dataset"</span><span class="p">)</span>
+<span class="n">hf</span> <span class="o">=</span> <span class="n">to_huggingface_dataset</span><span class="p">(</span><span class="n">all_documents</span><span class="p">)</span>
+<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">hf</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ HuggingFace column dict (datasets lib not installed)"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    columns: </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">hf</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    rows: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">hf</span><span class="p">[</span><span class="s1">'text'</span><span class="p">])</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ HuggingFace Dataset: </span><span class="si">{</span><span class="n">hf</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="c1"># --- 6g: RAG Tuples ---</span>
+<span class="n">mini_banner</span><span class="p">(</span><span class="s2">"6g: RAG Tuples (text, metadata, embedding)"</span><span class="p">)</span>
+<span class="n">tuples</span> <span class="o">=</span> <span class="n">to_rag_tuples</span><span class="p">(</span><span class="n">all_documents</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">meta</span><span class="p">,</span> <span class="n">emb</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tuples</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  [</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">] text[:50]: </span><span class="si">{</span><span class="n">text</span><span class="p">[:</span><span class="mi">50</span><span class="p">]</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"      meta keys: </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">keys</span><span class="p">())[:</span><span class="mi">8</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"      embedding: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">emb</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="c1"># --- 6h: JSONL ---</span>
+<span class="n">mini_banner</span><span class="p">(</span><span class="s2">"6h: JSONL Streaming"</span><span class="p">)</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">to_jsonl</span><span class="p">(</span><span class="n">all_documents</span><span class="p">[:</span><span class="mi">3</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span><span class="si">}</span><span class="s2"> JSONL lines"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">[:</span><span class="mi">2</span><span class="p">]):</span>
+    <span class="n">obj</span> <span class="o">=</span> <a class="sphx-glr-backref-module-json sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/json.html#json.loads" title="json.loads"><span class="n">json</span><span class="o">.</span><span class="n">loads</span></a><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  [</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">] keys: </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">keys</span><span class="p">())[:</span><span class="mi">8</span><span class="p">]</span><span class="si">}</span><span class="s2">…  text[:50]: </span><span class="si">{</span><span class="n">obj</span><span class="p">[</span><span class="s1">'text'</span><span class="p">][:</span><span class="mi">50</span><span class="p">]</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>========================================================================
+  PHASE 6: ADAPTERS — Export to LangChain / MCP / RAG / LangGraph / HF
+========================================================================
+
+
+  --- 6a: LangChain Documents ---
+
+  ✓ 91 LangChain docs (dict fallback — langchain not installed)
+    keys: ['page_content', 'metadata']
+    page_content[:80]: 'Out-of-pocket payments for primary health care unaffordable for millions in Euro'
+    metadata keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'section_type', 'source_file', 'source_type']
+
+  --- 6b: LangGraph State ---
+
+  ✓ LangGraph state dict:
+    keys: ['documents', 'match_mode', 'n_results', 'query']
+    n_results: 91
+    query: 'catastrophic health spending'
+
+  --- 6c: MCP Resources (Model Context Protocol) ---
+
+  resource:
+    uri:      corpus://9432e3e0cdf3de0d
+    name:     https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+    mimeType: text/plain
+    text[:60]: 'Out-of-pocket payments for primary health care unaffordable '…
+  resource:
+    uri:      corpus://d4100a2a7807259d
+    name:     https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+    mimeType: text/plain
+    text[:60]: 'Regions WHO Regional websites Africa Americas South-East Asi'…
+
+  --- 6d: MCP Tool Result (tools/call response) ---
+
+  ✓ MCP tool result:
+    isError: False
+    content items: 3
+    [text] text[:60]: 'Out-of-pocket payments for primary health care unaffordable '…
+         annotations: {'doc_id': '9432e3e0cdf3de0d', 'source_file': 'https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows', 'source_title': None, 'chunk_index': 0, 'score': None}
+    [text] text[:60]: 'Regions WHO Regional websites Africa Americas South-East Asi'…
+         annotations: {'doc_id': 'd4100a2a7807259d', 'source_file': 'https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows', 'source_title': None, 'chunk_index': 2, 'score': None}
+
+  --- 6e: MCP Server Adapter ---
+
+  ✓ MCPCorpusServer: MCPCorpusServer(name='who-corpus', n_docs=91)
+    tools: ['corpus_search']
+    tool schema: {
+      "type": "object",
+      "properties": {
+            "query": {
+                  "type": "string",
+                  "description": "Search query text"
+            },
+            "top_k": {
+  …
+
+  --- 6f: HuggingFace Dataset ---
+
+  ✓ HuggingFace column dict (datasets lib not installed)
+    columns: ['chunk_index', 'doc_id', 'language', 'metadata_json', 'source_file', 'source_title', 'source_type', 'text']
+    rows: 91
+
+  --- 6g: RAG Tuples (text, metadata, embedding) ---
+
+  [0] text[:50]: 'Out-of-pocket payments for primary health care una'
+      meta keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'section_type']
+      embedding: NoneType
+  [1] text[:50]: 'Regions WHO Regional websites Africa Americas Sout'
+      meta keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'section_type']
+      embedding: NoneType
+  [2] text[:50]: 'Countries Albania Andorra Armenia Austria Azerbaij'
+      meta keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'section_type']
+      embedding: NoneType
+
+  --- 6h: JSONL Streaming ---
+
+  ✓ 3 JSONL lines
+  [0] keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'section_type']…  text[:50]: 'Out-of-pocket payments for primary health care una'
+  [1] keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'section_type']…  text[:50]: 'Regions WHO Regional websites Africa Americas Sout'
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-corpus.html"><span class="doc">model-workflow: corpus</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-bar.html"><span class="doc">plot-type: bar</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.069 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.705 seconds)</p>
 
 <p class="rubric">Related examples</p>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.nc module."><img alt="" src="../../_images/sphx_glr_plot_nc_test_thumb.png"/>
-<p><a class="reference internal" href="../nc/plot_nc_test.html"><span class="doc">nc with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">nc with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.cython submodule.."><img alt="" src="../../_images/sphx_glr_plot_cython_template_thumb.png"/>
-<p><a class="reference internal" href="../cython/plot_cython_template.html"><span class="doc">Cython: Realtime compile_and_load (.pyx)</span></a></p>
-<div class="sphx-glr-thumbnail-title">Cython: Realtime compile_and_load (.pyx)</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_silhouette function used by a scikit-learn clusterer."><img alt="" src="../../_images/sphx_glr_plot_silhouette_script_thumb.png"/>
-<p><a class="reference internal" href="../clustering/plot_silhouette_script.html"><span class="doc">plot_silhouette with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">plot_silhouette with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.estimators.plot_feature_importances function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_feature_importances_script_thumb.png"/>
-<p><a class="reference internal" href="../classification/plot_feature_importances_script.html"><span class="doc">plot_feature_importances with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">plot_feature_importances with examples</div>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example shows the minimal workflow:"><img alt="" src="../../_images/sphx_glr_plot_00_quickstart_compile_and_load_thumb.png"/>
+<p><a class="reference internal" href="../cython/plot_00_quickstart_compile_and_load.html"><span class="doc">Cython quickstart: compile_and_load</span></a></p>
+<div class="sphx-glr-thumbnail-title">Cython quickstart: compile_and_load</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to:"><img alt="" src="../../_images/sphx_glr_plot_01_browse_and_compile_templates_thumb.png"/>
+<p><a class="reference internal" href="../cython/plot_01_browse_and_compile_templates.html"><span class="doc">Browse and compile templates</span></a></p>
+<div class="sphx-glr-thumbnail-title">Browse and compile templates</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy._annoy.Index class."><img alt="" src="../../_images/sphx_glr_plot_annoy_cython_hamlet_example_thumb.png"/>
+<p><a class="reference internal" href="../annoy/plot_annoy_cython_hamlet_example.html"><span class="doc">Approximate Nearest Neighbors with Annoy — A Hamlet Example</span></a></p>
+<div class="sphx-glr-thumbnail-title">Approximate Nearest Neighbors with Annoy — A Hamlet Example</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to build a small compiled package consisting of multiple Cython extension modules in one build directory."><img alt="" src="../../_images/sphx_glr_plot_05_package_examples_multimodule_thumb.png"/>
+<p><a class="reference internal" href="../cython/plot_05_package_examples_multimodule.html"><span class="doc">Multi-module package builds (5 package examples)</span></a></p>
+<div class="sphx-glr-thumbnail-title">Multi-module package builds (5 package examples)</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </section>
@@ -588,7 +920,7 @@ sudo apt-get install tesseract-ocr</p>
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260320.f5818ed 2026-03-20T13:18Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260320.8adfc92 2026-03-20T19:49Z.
       <br/>
 </p>
 </div>

@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/user_guide/corpus/index.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="Quick start: Examples" />
-<meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
-<meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="Quick start: Examples" />
+<meta property="og:description" content="Corpus Architecture Quick start: Examples Examples corpus with examples: Example notebook.." />
+<meta property="og:image" content="https://scikit-plots.github.io/stable/_images/corpus_any_to_any_architecture.png" />
+<meta property="og:image:alt" content="Corpus Architecture" />
+<meta name="description" content="Corpus Architecture Quick start: Examples Examples corpus with examples: Example notebook.." />
 
     <title>Corpus Generation &#8212; scikit-plots 0.5.dev0 documentation</title>
   
@@ -709,6 +709,7 @@
                   
   <section id="corpus-generation">
 <span id="corpus-index"></span><h1>Corpus Generation<a class="headerlink" href="#corpus-generation" title="Link to this heading">#</a></h1>
+<img alt="Corpus Architecture" class="align-center" src="../../_images/corpus_any_to_any_architecture.png" />
 <section id="quick-start">
 <h2>Quick start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h2>
 <p class="rubric">Examples</p>
@@ -716,10 +717,18 @@
 span.prompt1:before {
   content: ">>> ";
 }
-</style><span class="prompt1"><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">corpus</span></span>
+</style><span class="prompt1"><span class="c1"># First we download the media preproccess libraries (text, image, audio or video).</span></span>
+<span class="prompt1"><span class="c1"># pip install nltk gensim langdetect faster-whisper openai-whisper pytesseract youtube-transcript-api</span></span>
+<span class="prompt1"><span class="c1"># sudo apt-get install tesseract-ocr</span></span>
+<span class="prompt1"><span class="c1"># pip install scikit-plots[corpus]</span></span>
+<span class="prompt1"><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">corpus</span></span>
 <span class="prompt1"></span>
 <span class="prompt1"><span class="nb">print</span><span class="p">(</span><span class="n">corpus</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span></span>
-</pre></div></div></section>
+</pre></div></div><p class="rubric">Examples</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../auto_examples/corpus/plot_corpus_script.html#sphx-glr-auto-examples-corpus-plot-corpus-script-py"><span class="std std-ref">corpus with examples</span></a>: Example notebook.</p></li>
+</ul>
+</section>
 </section>
 
 
@@ -811,7 +820,7 @@ span.prompt1:before {
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260320.f5818ed 2026-03-20T13:18Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260320.8adfc92 2026-03-20T19:49Z.
       <br/>
     
   </p>
