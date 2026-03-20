@@ -344,8 +344,10 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">ANNoy Vector Index DB</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_legacy_c_api.html">annoy.Annoy legacy c-api with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_python_api.html">annoy.Index python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_0benchmark.html">Index (cython) python-api benchmark with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_api.html">Index (cython) python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_hamlet_example.html">Approximate Nearest Neighbors with Annoy — A Hamlet Example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_to_NPY_CSV.html">annoy.Index to NPY or CSV with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_cython_index_api.html">Index (cython) python-api with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_mmap_script.html">Mmap annoy.AnnoyIndex with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_precision_script.html">Precision annoy.AnnoyIndex with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_simple_script.html">Simple annoy.AnnoyIndex with examples</a></li>
@@ -369,6 +371,10 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../clustering/index.html">Clustering</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../clustering/plot_elbow_script.html">plot_elbow with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../clustering/plot_silhouette_script.html">plot_silhouette with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../corpus/index.html">Corpus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_script.html">corpus with examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../cython/index.html">Cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -2453,25 +2459,16 @@ the categorical features:</p>
     <span class="n">evaluate_model_and_store</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">pipe</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-packages/scikitplot/preprocessing/_encoders.py:1668: UserWarning:
-
-Found unknown categories in columns ['120', '997', 'a 250', 'alloy wheels (23")', 'cla 180', 'cle 300', 'glc 200', 'i3', 'panamera', 'volvo', 'xc40', 'xc90'] during transform. These unknown categories will be encoded as all zeros
-
-/home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-packages/scikitplot/preprocessing/_encoders.py:1668: UserWarning:
-
-Found unknown categories in columns ['116', '316', '418', 'alloy wheels (17")', 'c 300', 'focus', 'ford', 'm3', 'vito'] during transform. These unknown categories will be encoded as all zeros
-
-/home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-packages/scikitplot/preprocessing/_encoders.py:1668: UserWarning:
-
-Found unknown categories in columns ['159', '340', 'giulietta', 'm8', 'q8', 'sprinter', 'stelvio', 'taycan', 'tonale', 'x5 m'] during transform. These unknown categories will be encoded as all zeros
-
-/home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-packages/scikitplot/preprocessing/_encoders.py:1668: UserWarning:
-
-Found unknown categories in columns ['125', '430', '520', '991', 'awning', 'citan', 'e 220', 'glc 300', 'gle 350', 'm850', 'sliding door right', 'spare tyre', 'targa', 'x4'] during transform. These unknown categories will be encoded as all zeros
-
-/home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-packages/scikitplot/preprocessing/_encoders.py:1668: UserWarning:
-
-Found unknown categories in columns ['147', '325', '535', '911', 'a5', 'cng', 'giulia', 'honda', 'hr-v', 'ix', 'suzuki', 'swift'] during transform. These unknown categories will be encoded as all zeros
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/scikitplot/preprocessing/_encoders.py:1684: UserWarning: Found unknown categories in columns ['120', '997', 'a 250', 'alloy wheels (23")', 'cla 180', 'cle 300', 'glc 200', 'i3', 'panamera', 'volvo', 'xc40', 'xc90'] during transform. These unknown categories will be encoded as all zeros
+  warnings.warn(
+/home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/scikitplot/preprocessing/_encoders.py:1684: UserWarning: Found unknown categories in columns ['116', '316', '418', 'alloy wheels (17")', 'c 300', 'focus', 'ford', 'm3', 'vito'] during transform. These unknown categories will be encoded as all zeros
+  warnings.warn(
+/home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/scikitplot/preprocessing/_encoders.py:1684: UserWarning: Found unknown categories in columns ['159', '340', 'giulietta', 'm8', 'q8', 'sprinter', 'stelvio', 'taycan', 'tonale', 'x5 m'] during transform. These unknown categories will be encoded as all zeros
+  warnings.warn(
+/home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/scikitplot/preprocessing/_encoders.py:1684: UserWarning: Found unknown categories in columns ['125', '430', '520', '991', 'awning', 'citan', 'e 220', 'glc 300', 'gle 350', 'm850', 'sliding door right', 'spare tyre', 'targa', 'x4'] during transform. These unknown categories will be encoded as all zeros
+  warnings.warn(
+/home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/scikitplot/preprocessing/_encoders.py:1684: UserWarning: Found unknown categories in columns ['147', '325', '535', '911', 'a5', 'cng', 'giulia', 'honda', 'hr-v', 'ix', 'suzuki', 'swift'] during transform. These unknown categories will be encoded as all zeros
+  warnings.warn(
 </pre></div>
 </div>
 </section>
@@ -4379,7 +4376,7 @@ a.param-doc-link::before {
                                                                  unknown_value=-1),
                                                   Index(['make', 'body_type', 'fuel_category'], dtype='object')),
                                                  ('equipment',
-                                                  DummyCodeEncoder(sep=&lt;function &lt;lambda&gt; at 0x7fddef24e200&gt;,
+                                                  DummyCodeEncoder(sep=&lt;function &lt;lambda&gt; at 0x75b33d7cae80&gt;,
                                                                    sparse_output=False),
                                                   ['equipment_comfort',
                                                    'equipment_entertainment',
@@ -4702,7 +4699,7 @@ a.param-doc-link::before {
 </table>
 </details>
 </div>
-</div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-18" type="checkbox"/><label class="sk-toggleable__label sk-toggleable__label-arrow" for="sk-estimator-id-18"><div><div>equipment</div></div></label><div class="sk-toggleable__content" data-param-prefix="columntransformer__equipment__"><pre>['equipment_comfort', 'equipment_entertainment', 'equipment_extra', 'equipment_safety']</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-19" type="checkbox"/><label class="sk-toggleable__label sk-toggleable__label-arrow" for="sk-estimator-id-19"><div><div>DummyCodeEncoder</div></div></label><div class="sk-toggleable__content" data-param-prefix="columntransformer__equipment__">
+</div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-18" type="checkbox"/><label class="sk-toggleable__label sk-toggleable__label-arrow" for="sk-estimator-id-18"><div><div>equipment</div></div></label><div class="sk-toggleable__content" data-param-prefix="columntransformer__equipment__"><pre>['equipment_comfort', 'equipment_entertainment', 'equipment_extra', 'equipment_safety']</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-19" type="checkbox"/><label class="sk-toggleable__label sk-toggleable__label-arrow" for="sk-estimator-id-19"><div><div>DummyCodeEncoder</div></div><div><a class="sk-estimator-doc-link" href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html" rel="noreferrer" target="_blank">?<span>Documentation for DummyCodeEncoder</span></a></div></label><div class="sk-toggleable__content" data-param-prefix="columntransformer__equipment__">
 <div class="estimator-table">
 <details>
 <summary>Parameters</summary>
@@ -4711,85 +4708,155 @@ a.param-doc-link::before {
 <tr class="default">
 <td><i class="copy-paste-icon" onclick="copyToClipboard('columns',
                           this.parentElement.nextElementSibling)"></i></td>
-<td class="param">columns</td>
+<td class="param">
+<a class="param-doc-link" href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=columns,-list-like%2C%20default%3DNone" rel="noreferrer" target="_blank">
+            columns
+            <span class="param-doc-description">columns: list-like, default=None<br/><br/>Column names in the DataFrame to be encoded.<br/>If `columns` is None then all the columns with<br/>`object`, `string`, or `category` dtype will be converted.</span>
+</a>
+</td>
 <td class="value">None</td>
 </tr>
 <tr class="user-set">
 <td><i class="copy-paste-icon" onclick="copyToClipboard('sep',
                           this.parentElement.nextElementSibling)"></i></td>
-<td class="param">sep</td>
-<td class="value">&lt;function &lt;la...x7fddef24e200&gt;</td>
+<td class="param">
+<a class="param-doc-link" href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=sep,-callable%20or%20str%2C%20default%3D%27%7C%27" rel="noreferrer" target="_blank">
+            sep
+            <span class="param-doc-description">sep: callable or str, default='|'<br/><br/>String regex or literal separator to split on (e.g., "a,b,c").<br/><br/>- sep=',',<br/>- sep=r'\s*[,;|]\s*',<br/>- sep=lambda s: re.split(r'\s*[,;|]\s*', s.lower()),</span>
+</a>
+</td>
+<td class="value">&lt;function &lt;la...x75b33d7cae80&gt;</td>
 </tr>
 <tr class="default">
 <td><i class="copy-paste-icon" onclick="copyToClipboard('regex',
                           this.parentElement.nextElementSibling)"></i></td>
-<td class="param">regex</td>
+<td class="param">
+<a class="param-doc-link" href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=regex,-bool%2C%20default%3DTrue" rel="noreferrer" target="_blank">
+            regex
+            <span class="param-doc-description">regex: bool, default=True<br/><br/>Use regex to split on (e.g., "a,b|C;") by ``sep`` like:<br/><br/>- ``pattern=r'\s*[,;|]\s*'``</span>
+</a>
+</td>
 <td class="value">False</td>
 </tr>
 <tr class="default">
 <td><i class="copy-paste-icon" onclick="copyToClipboard('prefix',
                           this.parentElement.nextElementSibling)"></i></td>
-<td class="param">prefix</td>
+<td class="param">
+<a class="param-doc-link" href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=prefix,-str%2C%20list%20of%20str%2C%20or%20dict%20of%20str%2C%20default%3DNone" rel="noreferrer" target="_blank">
+            prefix
+            <span class="param-doc-description">prefix: str, list of str, or dict of str, default=None<br/><br/>String to append DataFrame column names.<br/>Pass a list with length equal to the number of columns<br/>when calling get_dummies on a DataFrame. Alternatively, `prefix`<br/>can be a dictionary mapping column names to prefixes.</span>
+</a>
+</td>
 <td class="value">None</td>
 </tr>
 <tr class="default">
 <td><i class="copy-paste-icon" onclick="copyToClipboard('prefix_sep',
                           this.parentElement.nextElementSibling)"></i></td>
-<td class="param">prefix_sep</td>
+<td class="param">
+<a class="param-doc-link" href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=prefix_sep,-str%2C%20default%3D%27_%27" rel="noreferrer" target="_blank">
+            prefix_sep
+            <span class="param-doc-description">prefix_sep: str, default='_'<br/><br/>If appending prefix, separator/delimiter to use. Or pass a<br/>list or dictionary as with `prefix` (e.g., "tags_a").</span>
+</a>
+</td>
 <td class="value">'_'</td>
 </tr>
 <tr class="default">
 <td><i class="copy-paste-icon" onclick="copyToClipboard('dummy_na',
                           this.parentElement.nextElementSibling)"></i></td>
-<td class="param">dummy_na</td>
+<td class="param">
+<a class="param-doc-link" href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=dummy_na,-bool%2C%20default%3DFalse" rel="noreferrer" target="_blank">
+            dummy_na
+            <span class="param-doc-description">dummy_na: bool, default=False<br/><br/>Add a column to indicate NaNs, if False NaNs are ignored.<br/><br/>.. caution::<br/>    If enabled to encode multi-feature supports only one contains ``None``.<br/>    Due to total categories need to unique so suggested dummy<br/>    fill instead of keeping one of (e.g., None, np.nan, pd.Na, pd.NAT).</span>
+</a>
+</td>
 <td class="value">False</td>
 </tr>
 <tr class="default">
 <td><i class="copy-paste-icon" onclick="copyToClipboard('categories',
                           this.parentElement.nextElementSibling)"></i></td>
-<td class="param">categories</td>
+<td class="param">
+<a class="param-doc-link" href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=categories,-%27auto%27%20or%20a%20list%20of%20array-like%2C%20default%3D%27auto%27" rel="noreferrer" target="_blank">
+            categories
+            <span class="param-doc-description">categories: 'auto' or a list of array-like, default='auto'<br/><br/>Categories (unique values) per feature:<br/><br/>- 'auto' : Determine categories automatically from the training data.<br/>- list : ``categories[i]`` holds the categories expected in the ith<br/>  column. The passed categories should not mix strings and numeric<br/>  values within a single feature, and should be sorted in case of<br/>  numeric values.<br/><br/>The used categories can be found in the ``categories_`` attribute.</span>
+</a>
+</td>
 <td class="value">'auto'</td>
 </tr>
 <tr class="default">
 <td><i class="copy-paste-icon" onclick="copyToClipboard('drop',
                           this.parentElement.nextElementSibling)"></i></td>
-<td class="param">drop</td>
+<td class="param">
+<a class="param-doc-link" href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=drop,-%7B%27first%27%2C%20%27if_binary%27%7D%20or%20an%20array-like%20of%20shape%20%28n_features%2C%29%2C%20%20%20%20%20%20%20%20%20%20%20%20%20default%3DNone" rel="noreferrer" target="_blank">
+            drop
+            <span class="param-doc-description">drop: {'first', 'if_binary'} or an array-like of shape (n_features,),             default=None<br/><br/>Specifies a methodology to use to drop one of the categories per<br/>feature. This is useful in situations where perfectly collinear<br/>features cause problems, such as when feeding the resulting data<br/>into an unregularized linear regression model.<br/><br/>However, dropping one category breaks the symmetry of the original<br/>representation and can therefore induce a bias in downstream models,<br/>for instance for penalized linear classification or regression models.<br/><br/>- None : retain all features (the default).<br/>- 'first' : drop the first category in each feature. If only one<br/>  category is present, the feature will be dropped entirely.<br/>- 'if_binary' : drop the first category in each feature with two<br/>  categories. Features with 1 or more than 2 categories are<br/>  left intact.<br/>- array : ``drop[i]`` is the category in feature ``X[:, i]`` that<br/>  should be dropped.<br/><br/>When `max_categories` or `min_frequency` is configured to group<br/>infrequent categories, the dropping behavior is handled after the<br/>grouping.</span>
+</a>
+</td>
 <td class="value">None</td>
 </tr>
 <tr class="user-set">
 <td><i class="copy-paste-icon" onclick="copyToClipboard('sparse_output',
                           this.parentElement.nextElementSibling)"></i></td>
-<td class="param">sparse_output</td>
+<td class="param">
+<a class="param-doc-link" href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=sparse_output,-bool%2C%20default%3DTrue" rel="noreferrer" target="_blank">
+            sparse_output
+            <span class="param-doc-description">sparse_output: bool, default=True<br/><br/>When ``True``, it returns a :class:`scipy.sparse.csr_matrix`,<br/>i.e. a sparse matrix in "Compressed Sparse Row" (CSR) format.</span>
+</a>
+</td>
 <td class="value">False</td>
 </tr>
 <tr class="default">
 <td><i class="copy-paste-icon" onclick="copyToClipboard('dtype',
                           this.parentElement.nextElementSibling)"></i></td>
-<td class="param">dtype</td>
+<td class="param">
+<a class="param-doc-link" href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=dtype,-number%20type%2C%20default%3Dnp.float64" rel="noreferrer" target="_blank">
+            dtype
+            <span class="param-doc-description">dtype: number type, default=np.float64<br/><br/>Desired dtype of output.</span>
+</a>
+</td>
 <td class="value">&lt;class 'numpy.float64'&gt;</td>
 </tr>
 <tr class="default">
 <td><i class="copy-paste-icon" onclick="copyToClipboard('handle_unknown',
                           this.parentElement.nextElementSibling)"></i></td>
-<td class="param">handle_unknown</td>
+<td class="param">
+<a class="param-doc-link" href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=handle_unknown,-%7B%27error%27%2C%20%27ignore%27%2C%20%27infrequent_if_exist%27%2C%20%27warn%27%7D%2C%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20default%3D%27error%27" rel="noreferrer" target="_blank">
+            handle_unknown
+            <span class="param-doc-description">handle_unknown: {'error', 'ignore', 'infrequent_if_exist', 'warn'},                      default='error'<br/><br/>Specifies the way unknown categories are handled during :meth:`transform`.<br/><br/>- 'error' : Raise an error if an unknown category is present during transform.<br/>- 'ignore' : When an unknown category is encountered during<br/>  transform, the resulting one-hot encoded columns for this feature<br/>  will be all zeros. In the inverse transform, an unknown category<br/>  will be denoted as None.<br/>- 'infrequent_if_exist' : When an unknown category is encountered<br/>  during transform, the resulting one-hot encoded columns for this<br/>  feature will map to the infrequent category if it exists. The<br/>  infrequent category will be mapped to the last position in the<br/>  encoding. During inverse transform, an unknown category will be<br/>  mapped to the category denoted `'infrequent'` if it exists. If the<br/>  `'infrequent'` category does not exist, then :meth:`transform` and<br/>  :meth:`inverse_transform` will handle an unknown category as with<br/>  `handle_unknown='ignore'`. Infrequent categories exist based on<br/>  `min_frequency` and `max_categories`. Read more in the<br/>  :ref:`User Guide <encoder_infrequent_categories>`.<br/>- 'warn' : When an unknown category is encountered during transform<br/>  a warning is issued, and the encoding then proceeds as described for<br/>  `handle_unknown="infrequent_if_exist"`.</encoder_infrequent_categories></span>
+</a>
+</td>
 <td class="value">'error'</td>
 </tr>
 <tr class="default">
 <td><i class="copy-paste-icon" onclick="copyToClipboard('min_frequency',
                           this.parentElement.nextElementSibling)"></i></td>
-<td class="param">min_frequency</td>
+<td class="param">
+<a class="param-doc-link" href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=min_frequency,-int%20or%20float%2C%20default%3DNone" rel="noreferrer" target="_blank">
+            min_frequency
+            <span class="param-doc-description">min_frequency: int or float, default=None<br/><br/>Specifies the minimum frequency below which a category will be<br/>considered infrequent.<br/><br/>- If `int`, categories with a smaller cardinality will be considered<br/>  infrequent.<br/><br/>- If `float`, categories with a smaller cardinality than<br/>  `min_frequency * n_samples`  will be considered infrequent.<br/><br/>.. versionadded:: 1.1<br/>    Read more in the :ref:`User Guide <encoder_infrequent_categories>`.</encoder_infrequent_categories></span>
+</a>
+</td>
 <td class="value">None</td>
 </tr>
 <tr class="default">
 <td><i class="copy-paste-icon" onclick="copyToClipboard('max_categories',
                           this.parentElement.nextElementSibling)"></i></td>
-<td class="param">max_categories</td>
+<td class="param">
+<a class="param-doc-link" href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=max_categories,-int%2C%20default%3DNone" rel="noreferrer" target="_blank">
+            max_categories
+            <span class="param-doc-description">max_categories: int, default=None<br/><br/>Specifies an upper limit to the number of output features for each input<br/>feature when considering infrequent categories. If there are infrequent<br/>categories, `max_categories` includes the category representing the<br/>infrequent categories along with the frequent categories. If `None`,<br/>there is no limit to the number of output features.<br/><br/>.. versionadded:: 1.1<br/>    Read more in the :ref:`User Guide <encoder_infrequent_categories>`.</encoder_infrequent_categories></span>
+</a>
+</td>
 <td class="value">None</td>
 </tr>
 <tr class="default">
 <td><i class="copy-paste-icon" onclick="copyToClipboard('feature_name_combiner',
                           this.parentElement.nextElementSibling)"></i></td>
-<td class="param">feature_name_combiner</td>
+<td class="param">
+<a class="param-doc-link" href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=feature_name_combiner,-%22concat%22%20or%20callable%2C%20default%3D%22concat%22" rel="noreferrer" target="_blank">
+            feature_name_combiner
+            <span class="param-doc-description">feature_name_combiner: "concat" or callable, default="concat"<br/><br/>Callable with signature `def callable(input_feature, category)` that returns a<br/>string. This is used to create feature names to be returned by<br/>:meth:`get_feature_names_out`.<br/><br/>`"concat"` concatenates encoded feature name and category with<br/>`feature + "_" + str(category)`.E.g. feature X with values 1, 6, 7 create<br/>feature names `X_1, X_6, X_7`.</span>
+</a>
+</td>
 <td class="value">'concat'</td>
 </tr>
 </tbody>
@@ -5159,17 +5226,12 @@ forceTheme('sk-container-id-2');</script></body>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">evaluate_model_and_store</span><span class="p">(</span><span class="s2">"mixed_dummy"</span><span class="p">,</span> <span class="n">mixed_pipe</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-packages/scikitplot/preprocessing/_encoders.py:1668: UserWarning:
-
-Found unknown categories in columns ['alloy wheels (23")'] during transform. These unknown categories will be encoded as all zeros
-
-/home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-packages/scikitplot/preprocessing/_encoders.py:1668: UserWarning:
-
-Found unknown categories in columns ['alloy wheels (17")'] during transform. These unknown categories will be encoded as all zeros
-
-/home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-packages/scikitplot/preprocessing/_encoders.py:1668: UserWarning:
-
-Found unknown categories in columns ['awning', 'sliding door right', 'spare tyre'] during transform. These unknown categories will be encoded as all zeros
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/scikitplot/preprocessing/_encoders.py:1684: UserWarning: Found unknown categories in columns ['alloy wheels (23")'] during transform. These unknown categories will be encoded as all zeros
+  warnings.warn(
+/home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/scikitplot/preprocessing/_encoders.py:1684: UserWarning: Found unknown categories in columns ['alloy wheels (17")'] during transform. These unknown categories will be encoded as all zeros
+  warnings.warn(
+/home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/scikitplot/preprocessing/_encoders.py:1684: UserWarning: Found unknown categories in columns ['awning', 'sliding door right', 'spare tyre'] during transform. These unknown categories will be encoded as all zeros
+  warnings.warn(
 </pre></div>
 </div>
 </br></br></br></br></section>
@@ -5243,21 +5305,21 @@ makes sense and leads to good results: the combination of smoothed target
 encoding and binning works as a good regularizing strategy against
 overfitting while not limiting the expressiveness of the pipeline too much.</p></li>
 </ul>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 4.183 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 4.419 seconds)</p>
 
 <p class="rubric">Related examples</p>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="To install the latest version (with pip)::"><img alt="" src="../../_images/sphx_glr_plot_modelplotpy_legacy_script_thumb.png"/>
-<p><a class="reference internal" href="../decile/plot_modelplotpy_legacy_script.html"><span class="doc">Introduction to modelplotpy (legacy)</span></a></p>
-<div class="sphx-glr-thumbnail-title">Introduction to modelplotpy (legacy)</div>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.seaborn.decileplot function with a scikit-learn classifier (e.g., :py~sklearn.linear_model.LogisticRegression) instance."><img alt="" src="../../_images/sphx_glr_plot_decileplot_script_thumb.png"/>
+<p><a class="reference internal" href="../seaborn/plot_decileplot_script.html"><span class="doc">plot_decileplot_script with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">plot_decileplot_script with examples</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="To install the latest version (with pip)::"><img alt="" src="../../_images/sphx_glr_plot_modelplotpy_script_thumb.png"/>
 <p><a class="reference internal" href="../decile/plot_modelplotpy_script.html"><span class="doc">Introduction to modelplotpy</span></a></p>
 <div class="sphx-glr-thumbnail-title">Introduction to modelplotpy</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="To install the latest version (with pip)::"><img alt="" src="../../_images/sphx_glr_plot_modelplotpy_legacy_script_thumb.png"/>
+<p><a class="reference internal" href="../decile/plot_modelplotpy_legacy_script.html"><span class="doc">Introduction to modelplotpy (legacy)</span></a></p>
+<div class="sphx-glr-thumbnail-title">Introduction to modelplotpy (legacy)</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.seaborn.aucplot function with a scikit-learn classifier (e.g., :py~sklearn.linear_model.LogisticRegression) instance."><img alt="" src="../../_images/sphx_glr_plot_aucplot_script_thumb.png"/>
 <p><a class="reference internal" href="../seaborn/plot_aucplot_script.html"><span class="doc">plot_aucplot_script with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">plot_aucplot_script with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.estimators.plot_feature_importances function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_feature_importances_script_thumb.png"/>
-<p><a class="reference internal" href="../classification/plot_feature_importances_script.html"><span class="doc">plot_feature_importances with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">plot_feature_importances with examples</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </section>
@@ -5305,7 +5367,7 @@ overfitting while not limiting the expressiveness of the pipeline too much.</p><
 <li><a href="../../_sources/auto_examples/preprocessing/plot_dummy_code_encoder.rst.txt" rel="nofollow">Show Source</a></li>
 </ul>
 </div></div>
-<div class="sidebar-secondary-item"><div title="plot_dummy_code_encoder.py"><a download="" href="../../_downloads/53cfc5839a972ce7bf6d0d6509618610/plot_dummy_code_encoder.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_dummy_code_encoder.ipynb"><a download="" href="../../_downloads/b60e8cf9ed29a75b75a5c2d955c8471f/plot_dummy_code_encoder.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/preprocessing/plot_dummy_code_encoder.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo11.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/preprocessing/plot_dummy_code_encoder.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo11.svg"/></a></div></div></div></div>
+<div class="sidebar-secondary-item"><div title="plot_dummy_code_encoder.py"><a download="" href="../../_downloads/53cfc5839a972ce7bf6d0d6509618610/plot_dummy_code_encoder.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_dummy_code_encoder.ipynb"><a download="" href="../../_downloads/b60e8cf9ed29a75b75a5c2d955c8471f/plot_dummy_code_encoder.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/preprocessing/plot_dummy_code_encoder.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo12.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/preprocessing/plot_dummy_code_encoder.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo12.svg"/></a></div></div></div></div>
 </div>
 <footer class="bd-footer-content">
 </footer>
@@ -5321,7 +5383,7 @@ overfitting while not limiting the expressiveness of the pipeline too much.</p><
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260216.503625b 2026-02-16T17:01Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260320.f5818ed 2026-03-20T13:18Z.
       <br>
 </br></p>
 </div>

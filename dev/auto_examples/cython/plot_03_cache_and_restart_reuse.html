@@ -344,8 +344,10 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">ANNoy Vector Index DB</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_legacy_c_api.html">annoy.Annoy legacy c-api with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_python_api.html">annoy.Index python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_0benchmark.html">Index (cython) python-api benchmark with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_api.html">Index (cython) python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_hamlet_example.html">Approximate Nearest Neighbors with Annoy — A Hamlet Example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_to_NPY_CSV.html">annoy.Index to NPY or CSV with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_cython_index_api.html">Index (cython) python-api with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_mmap_script.html">Mmap annoy.AnnoyIndex with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_precision_script.html">Precision annoy.AnnoyIndex with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_simple_script.html">Simple annoy.AnnoyIndex with examples</a></li>
@@ -369,6 +371,10 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../clustering/index.html">Clustering</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../clustering/plot_elbow_script.html">plot_elbow with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../clustering/plot_silhouette_script.html">plot_silhouette with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../corpus/index.html">Corpus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_script.html">corpus with examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Cython</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -572,47 +578,47 @@ the runtime fingerprint matches).</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>BuildResult:
-  module_name: scikitplot_cython_c71820fcbdd3d3be
-  key        : c71820fcbdd3d3be311db100faa9f7ce550548267112a935bc644a9c9e59e29d
-  artifact   : /home/circleci/.cache/scikitplot/cython/c71820fcbdd3d3be311db100faa9f7ce550548267112a935bc644a9c9e59e29d/scikitplot_cython_c71820fcbdd3d3be.cpython-311-x86_64-linux-gnu.so
+  module_name: scikitplot_cython_3f904bb3ce79bd35
+  key        : 3f904bb3ce79bd35887246b49d282a549d63f5bf176e6ab96c5f2e7af4e3c387
+  artifact   : /home/circleci/.cache/scikitplot/cython/3f904bb3ce79bd35887246b49d282a549d63f5bf176e6ab96c5f2e7af4e3c387/scikitplot_cython_3f904bb3ce79bd35.cpython-311-x86_64-linux-gnu.so
   used_cache : True
 Cache entries: 6
 Last 5 entries:
-  - key: 106892295832cfc7f01dbb65bd06b364352040aef37075f2634c508019b279d1
-    module_name: scikitplot_cython_106892295832cfc7
-    artifact_path: /home/circleci/.cache/scikitplot/cython/106892295832cfc7f01dbb65bd06b364352040aef37075f2634c508019b279d1/scikitplot_cython_106892295832cfc7.cpython-311-x86_64-linux-gnu.so
-    created_utc: 2026-02-16T17:06:02Z
-  - key: 632e06e9a1a7a87769ae8f9e448b50fa2865f5211a9c7fac72db477b95832e8d
-    module_name: scikitplot_cython_632e06e9a1a7a877
-    artifact_path: /home/circleci/.cache/scikitplot/cython/632e06e9a1a7a87769ae8f9e448b50fa2865f5211a9c7fac72db477b95832e8d/scikitplot_cython_632e06e9a1a7a877.cpython-311-x86_64-linux-gnu.so
-    created_utc: 2026-02-16T17:06:00Z
-  - key: 845d660f400d30825fcddf6775bf8f257d018f58bbda5f12092a3fbdde4bc2a5
-    module_name: scikitplot_cython_845d660f400d3082
-    artifact_path: /home/circleci/.cache/scikitplot/cython/845d660f400d30825fcddf6775bf8f257d018f58bbda5f12092a3fbdde4bc2a5/scikitplot_cython_845d660f400d3082.cpython-311-x86_64-linux-gnu.so
-    created_utc: 2026-02-16T17:06:02Z
-  - key: b89f3272eca6106c5e5079f8fd5b949ad4898c3afd6de5904de4096323a5e9fb
-    module_name: scikitplot_cython_b89f3272eca6106c
-    artifact_path: /home/circleci/.cache/scikitplot/cython/b89f3272eca6106c5e5079f8fd5b949ad4898c3afd6de5904de4096323a5e9fb/scikitplot_cython_b89f3272eca6106c.cpython-311-x86_64-linux-gnu.so
-    created_utc: 2026-02-16T17:06:02Z
-  - key: c71820fcbdd3d3be311db100faa9f7ce550548267112a935bc644a9c9e59e29d
-    module_name: scikitplot_cython_c71820fcbdd3d3be
-    artifact_path: /home/circleci/.cache/scikitplot/cython/c71820fcbdd3d3be311db100faa9f7ce550548267112a935bc644a9c9e59e29d/scikitplot_cython_c71820fcbdd3d3be.cpython-311-x86_64-linux-gnu.so
-    created_utc: 2026-02-16T17:06:00Z
+  - key: 3dea1eb4fbc32092602eb6c3558ebd6cdd4b1296f9572f041cd7d58b6eda1aae
+    module_name: scikitplot_cython_3dea1eb4fbc32092
+    artifact_path: /home/circleci/.cache/scikitplot/cython/3dea1eb4fbc32092602eb6c3558ebd6cdd4b1296f9572f041cd7d58b6eda1aae/scikitplot_cython_3dea1eb4fbc32092.cpython-311-x86_64-linux-gnu.so
+    created_utc: None
+  - key: 3f904bb3ce79bd35887246b49d282a549d63f5bf176e6ab96c5f2e7af4e3c387
+    module_name: scikitplot_cython_3f904bb3ce79bd35
+    artifact_path: /home/circleci/.cache/scikitplot/cython/3f904bb3ce79bd35887246b49d282a549d63f5bf176e6ab96c5f2e7af4e3c387/scikitplot_cython_3f904bb3ce79bd35.cpython-311-x86_64-linux-gnu.so
+    created_utc: 2026-03-20T13:21:53Z
+  - key: 586c1d04a4f78f7d670a08ee0f87ee8dd5837ee309b0f374a01b36c760abcd60
+    module_name: scikitplot_cython_586c1d04a4f78f7d
+    artifact_path: /home/circleci/.cache/scikitplot/cython/586c1d04a4f78f7d670a08ee0f87ee8dd5837ee309b0f374a01b36c760abcd60/scikitplot_cython_586c1d04a4f78f7d.cpython-311-x86_64-linux-gnu.so
+    created_utc: 2026-03-20T13:21:53Z
+  - key: 5d04fa4f020852a02f25000faed11301782143232a3f29c0795d9616bcb26c62
+    module_name: scikitplot_cython_5d04fa4f020852a0
+    artifact_path: /home/circleci/.cache/scikitplot/cython/5d04fa4f020852a02f25000faed11301782143232a3f29c0795d9616bcb26c62/scikitplot_cython_5d04fa4f020852a0.cpython-311-x86_64-linux-gnu.so
+    created_utc: 2026-03-20T13:21:54Z
+  - key: 98a87058db751006e27d3fb5552dbe6950e72e57220ee3ccaf06389db7c7965a
+    module_name: scikitplot_cython_98a87058db751006
+    artifact_path: /home/circleci/.cache/scikitplot/cython/98a87058db751006e27d3fb5552dbe6950e72e57220ee3ccaf06389db7c7965a/scikitplot_cython_98a87058db751006.cpython-311-x86_64-linux-gnu.so
+    created_utc: 2026-03-20T13:21:55Z
 
 Cache stats snapshot:
-CacheStats(cache_root=PosixPath('/home/circleci/.cache/scikitplot/cython'), n_modules=6, n_packages=0, total_bytes=4064943, pinned_aliases=1, pinned_keys=1, newest_mtime_utc='2026-02-16T17:06:02Z', oldest_mtime_utc='2026-02-16T17:06:00Z')
+CacheStats(cache_root=PosixPath('/home/circleci/.cache/scikitplot/cython'), n_modules=6, n_packages=0, total_bytes=3929101, pinned_aliases=1, pinned_keys=1, newest_mtime_utc='2026-03-20T13:21:55Z', oldest_mtime_utc='2026-03-20T13:21:53Z')
 
 Imported from cache (result API):
-  module_name: scikitplot_cython_c71820fcbdd3d3be
+  module_name: scikitplot_cython_3f904bb3ce79bd35
   used_cache : True
-  artifact   : /home/circleci/.cache/scikitplot/cython/c71820fcbdd3d3be311db100faa9f7ce550548267112a935bc644a9c9e59e29d/scikitplot_cython_c71820fcbdd3d3be.cpython-311-x86_64-linux-gnu.so
+  artifact   : /home/circleci/.cache/scikitplot/cython/3f904bb3ce79bd35887246b49d282a549d63f5bf176e6ab96c5f2e7af4e3c387/scikitplot_cython_3f904bb3ce79bd35.cpython-311-x86_64-linux-gnu.so
 import_cached(key).f(11) = 121
 Expected: 121
 Correct: True
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger reference internal" href="../../_tags/domain-cython.html"><span class="doc">domain: cython</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-cython.html"><span class="doc">plot-type: cython</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.010 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.009 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example shows the minimal workflow:"><img alt="" src="../../_images/sphx_glr_plot_00_quickstart_compile_and_load_thumb.png"/>
@@ -671,7 +677,7 @@ Correct: True
 <li><a href="../../_sources/auto_examples/cython/plot_03_cache_and_restart_reuse.rst.txt" rel="nofollow">Show Source</a></li>
 </ul>
 </div></div>
-<div class="sidebar-secondary-item"><div title="plot_03_cache_and_restart_reuse.py"><a download="" href="../../_downloads/07bbf5f18c42b0de30b29abdc7d30444/plot_03_cache_and_restart_reuse.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_03_cache_and_restart_reuse.ipynb"><a download="" href="../../_downloads/e47b1206d8df28277bda49485b5604ce/plot_03_cache_and_restart_reuse.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/cython/plot_03_cache_and_restart_reuse.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo4.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_03_cache_and_restart_reuse.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo4.svg"/></a></div></div></div></div>
+<div class="sidebar-secondary-item"><div title="plot_03_cache_and_restart_reuse.py"><a download="" href="../../_downloads/07bbf5f18c42b0de30b29abdc7d30444/plot_03_cache_and_restart_reuse.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_03_cache_and_restart_reuse.ipynb"><a download="" href="../../_downloads/e47b1206d8df28277bda49485b5604ce/plot_03_cache_and_restart_reuse.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/cython/plot_03_cache_and_restart_reuse.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo5.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_03_cache_and_restart_reuse.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo5.svg"/></a></div></div></div></div>
 </div>
 <footer class="bd-footer-content">
 </footer>
@@ -687,7 +693,7 @@ Correct: True
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260216.503625b 2026-02-16T17:01Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260320.f5818ed 2026-03-20T13:18Z.
       <br/>
 </p>
 </div>

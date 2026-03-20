@@ -344,8 +344,10 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">ANNoy Vector Index DB</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_legacy_c_api.html">annoy.Annoy legacy c-api with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_python_api.html">annoy.Index python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_0benchmark.html">Index (cython) python-api benchmark with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_api.html">Index (cython) python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_hamlet_example.html">Approximate Nearest Neighbors with Annoy — A Hamlet Example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_to_NPY_CSV.html">annoy.Index to NPY or CSV with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_cython_index_api.html">Index (cython) python-api with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_mmap_script.html">Mmap annoy.AnnoyIndex with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_precision_script.html">Precision annoy.AnnoyIndex with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_simple_script.html">Simple annoy.AnnoyIndex with examples</a></li>
@@ -369,6 +371,10 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../clustering/index.html">Clustering</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../clustering/plot_elbow_script.html">plot_elbow with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../clustering/plot_silhouette_script.html">plot_silhouette with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../corpus/index.html">Corpus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_script.html">corpus with examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../cython/index.html">Cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -568,11 +574,11 @@ Walk upward from <code class="docutils literal notranslate"><span class="pre">st
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2026/02/16 17:11:23 INFO mlflow.tracking.fluent: Experiment with name 'my-first-project' does not exist. Creating a new experiment.
-🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/5fd0bf2429da4a2682bf634d51c92aee
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2026/03/20 13:25:52 INFO mlflow.tracking.fluent: Experiment with name 'my-first-project' does not exist. Creating a new experiment.
+🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/4466eee251ca45f49b66626629637576
 🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
 🌐 Open MLflow UI: http://127.0.0.1:8891
-🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/a6bf7c27cb51425389ab8dd1e4e93e44
+🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/34f0e2138eaf415186687244256bf527
 🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
 
 WorkflowPaths(_project_root=PosixPath('/home/circleci/repo/galleries/examples/mlflow'), _config_dir=PosixPath('/home/circleci/repo/galleries/examples/mlflow/configs'), _toml_path=PosixPath('/home/circleci/repo/galleries/examples/mlflow/configs/mlflow.toml'), _yaml_path=PosixPath('/home/circleci/repo/galleries/examples/mlflow/configs/mlflow.yaml'))
@@ -608,29 +614,29 @@ WorkflowPaths(_project_root=PosixPath('/home/circleci/repo/galleries/examples/ml
         <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">"phase"</span><span class="p">,</span> <span class="s2">"predict"</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/33fd5e90cdd14a2291e59da52b3c6605
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/1bbeef9cafda4467b79e237f49bf5ba6
 🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
 Open MLflow UI: http://127.0.0.1:8891
-🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/cf91730adc8545f981b021c2d6a5ab64
+🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/6c6abf53e60f4f7ba25aa5853c484879
 🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-model-building.html"><span class="doc">model-workflow: model building</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-mlflow.html"><span class="doc">plot-type: mlflow</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger reference internal" href="../../_tags/domain-mlflow.html"><span class="doc">domain: mlflow</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 5.021 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 9.647 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Compile and run the C++ Annoy precision example."><img alt="" src="../../_images/sphx_glr_s_compile_cpp_thumb.png"/>
 <p><a class="reference internal" href="../annoy/s_compile_cpp.html"><span class="doc">Compile and run the C++ Annoy with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">Compile and run the C++ Annoy with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Workflow templates are shipped as package data under _templates/workflow/. They are designed to be copied into any project directory and executed directly."><img alt="" src="../../_images/sphx_glr_plot_09_workflow_templates_cli_thumb.png"/>
+<p><a class="reference internal" href="../cython/plot_09_workflow_templates_cli.html"><span class="doc">Workflow templates (train / hpo / predict) + CLI entry template</span></a></p>
+<div class="sphx-glr-thumbnail-title">Workflow templates (train / hpo / predict) + CLI entry template</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.cython submodule.."><img alt="" src="../../_images/sphx_glr_plot_cython_template_thumb.png"/>
 <p><a class="reference internal" href="../cython/plot_cython_template.html"><span class="doc">Cython: Realtime compile_and_load (.pyx)</span></a></p>
 <div class="sphx-glr-thumbnail-title">Cython: Realtime compile_and_load (.pyx)</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_classifier_eval function used by a scikit-learn classifier."><img alt="" src="../../_images/sphx_glr_plot_classifier_eval_script_thumb.png"/>
 <p><a class="reference internal" href="../classification/plot_classifier_eval_script.html"><span class="doc">plot_classifier_eval with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">plot_classifier_eval with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows the minimal workflow:"><img alt="" src="../../_images/sphx_glr_plot_00_quickstart_compile_and_load_thumb.png"/>
-<p><a class="reference internal" href="../cython/plot_00_quickstart_compile_and_load.html"><span class="doc">Cython quickstart: compile_and_load</span></a></p>
-<div class="sphx-glr-thumbnail-title">Cython quickstart: compile_and_load</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </section>
@@ -678,7 +684,7 @@ Open MLflow UI: http://127.0.0.1:8891
 <li><a href="../../_sources/auto_examples/mlflow/plot_mlflow.rst.txt" rel="nofollow">Show Source</a></li>
 </ul>
 </div></div>
-<div class="sidebar-secondary-item"><div title="plot_mlflow.py"><a download="" href="../../_downloads/5f793713f22d3c9ad64158df13e9ee69/plot_mlflow.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_mlflow.ipynb"><a download="" href="../../_downloads/f2b5691e338c880ded0a4446783fd670/plot_mlflow.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/mlflow/plot_mlflow.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo9.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/mlflow/plot_mlflow.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo9.svg"/></a></div></div></div></div>
+<div class="sidebar-secondary-item"><div title="plot_mlflow.py"><a download="" href="../../_downloads/5f793713f22d3c9ad64158df13e9ee69/plot_mlflow.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_mlflow.ipynb"><a download="" href="../../_downloads/f2b5691e338c880ded0a4446783fd670/plot_mlflow.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/mlflow/plot_mlflow.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo10.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/mlflow/plot_mlflow.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo10.svg"/></a></div></div></div></div>
 </div>
 <footer class="bd-footer-content">
 </footer>
@@ -694,7 +700,7 @@ Open MLflow UI: http://127.0.0.1:8891
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260216.503625b 2026-02-16T17:01Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260320.f5818ed 2026-03-20T13:18Z.
       <br/>
 </p>
 </div>

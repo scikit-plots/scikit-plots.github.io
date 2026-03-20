@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/modules/generated/scikitplot.cexternals._annoy.annoylib.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="Compiled with GCC/Clang. Using 512-bit AVX instructions. High-performance approximate nearest neighbours (Annoy) C++ core. This module is a low-level backend ( annoylib). It exposes the C++-powered..." />
+<meta property="og:description" content="Compiled with GCC/Clang(Using 512-bit AVX instructions). High-performance approximate nearest neighbours (Annoy) C++ core. This module is a low-level backend ( annoylib). It exposes the C++-powered..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="Compiled with GCC/Clang. Using 512-bit AVX instructions. High-performance approximate nearest neighbours (Annoy) C++ core. This module is a low-level backend ( annoylib). It exposes the C++-powered..." />
+<meta name="description" content="Compiled with GCC/Clang(Using 512-bit AVX instructions). High-performance approximate nearest neighbours (Annoy) C++ core. This module is a low-level backend ( annoylib). It exposes the C++-powered..." />
 
     <title>annoylib &#8212; scikit-plots 0.5.dev0 documentation</title>
   
@@ -742,10 +742,6 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._doremi.sheet_converter.html">sheet_converter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._doremi.serialize_sheet.html">serialize_sheet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._doremi.export_sheet.html">export_sheet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._llm_provider.LLM_PROVIDER_CONFIG_MAP.html">LLM_PROVIDER_CONFIG_MAP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._llm_provider.LLM_PROVIDER_ENV_CONNECTOR_MAP.html">LLM_PROVIDER_ENV_CONNECTOR_MAP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._llm_provider.get_response.html">get_response</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._llm_provider.load_mlflow_gateway_config.html">load_mlflow_gateway_config</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.externals.html">scikitplot.externals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -979,7 +975,7 @@
                   
   <section id="annoylib">
 <h1>annoylib<a class="headerlink" href="#annoylib" title="Link to this heading">#</a></h1>
-<p id="module-scikitplot.cexternals._annoy.annoylib">Compiled with GCC/Clang. Using 512-bit AVX instructions.</p>
+<p id="module-scikitplot.cexternals._annoy.annoylib">Compiled with GCC/Clang(Using 512-bit AVX instructions).</p>
 <p>High-performance approximate nearest neighbours (Annoy) C++ core.</p>
 <p>This module is a low-level backend (<code class="docutils literal notranslate"><span class="pre">annoylib</span></code>). It exposes the
 C++-powered <a class="reference internal" href="scikitplot.cexternals._annoy.Annoy.html#scikitplot.cexternals._annoy.Annoy" title="scikitplot.cexternals._annoy.Annoy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annoy</span></code></a> type.
@@ -994,6 +990,11 @@ type under a different module path (for example, <a class="reference internal" h
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annoy</span><span class="p">,</span> <span class="n">AnnoyIndex</span><span class="p">,</span> <span class="n">Index</span>
 </pre></div>
 </div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>32-bit integer (4 bytes) can store values from −2^31 to 2^31−1, roughly ±2 billion.</p></li>
+<li><p>64-bit integer (8 bytes) can store values from −2^63 to 2^63−1, roughly ±9 quintillion.</p></li>
+</ul>
 </section>
 
 
@@ -1073,7 +1074,7 @@ type under a different module path (for example, <a class="reference internal" h
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260216.503625b 2026-02-16T17:01Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260320.f5818ed 2026-03-20T13:18Z.
       <br/>
     
   </p>

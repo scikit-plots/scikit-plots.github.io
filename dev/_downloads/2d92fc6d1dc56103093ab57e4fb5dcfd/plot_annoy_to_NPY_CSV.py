@@ -89,8 +89,9 @@ q
 
 # %%
 
+feature_names = [f"col_{i}" for i in range(10)]
 # idx = Index().fit(X, feature_names=map("feature_{}".format, range(0,10)))
-idx = Index().fit(X, feature_names=map("col_{}".format, range(0,10)))
+idx = Index().fit(X, feature_names=feature_names)
 idx
 
 # %%
@@ -182,5 +183,6 @@ idx.kneighbors_graph(v, n_neighbors=10).toarray()
 #
 # .. tags::
 #
+#    model-workflow: vector-db
 #    level: beginner
 #    purpose: showcase

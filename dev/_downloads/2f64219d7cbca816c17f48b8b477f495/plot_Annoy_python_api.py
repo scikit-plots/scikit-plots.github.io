@@ -400,11 +400,11 @@ a.info(), a.get_n_items(), a.get_n_trees()
 
 # %%
 
-np.array_equal(a.get_item_vector(0), idx2.get_item_vector(0))
+np.array_equal(a.get_item(0), idx2.get_item(0))
 
 # %%
 
-np.array_equal(a.get_item_vector(0), idx.get_item_vector(0))
+np.array_equal(a.get_item(0), idx.get_item(0))
 
 # %%
 
@@ -476,7 +476,7 @@ idx
 
 # %%
 
-idx.get_nns_by_item(0, 10), len(idx.get_item_vector(0))
+idx.get_nns_by_item(0, 10), len(idx.get_item(0))
 
 # %%
 
@@ -489,8 +489,9 @@ q = [[random.gauss(0, 1) for _ in range(f)]]
 
 # %%
 
+feature_names = [f"col_{i}" for i in range(10)]
 # idx = Index().fit(X, feature_names=map("feature_{}".format, range(0,10)))
-idx = Index().fit(X, feature_names=map("col_{}".format, range(0,10)))
+idx = Index().fit(X, feature_names=feature_names)
 idx
 
 # %%
@@ -522,5 +523,6 @@ with Timer("rebuild"):
 #
 # .. tags::
 #
+#    model-workflow: vector-db
 #    level: beginner
 #    purpose: showcase

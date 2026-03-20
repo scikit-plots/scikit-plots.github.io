@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/user_guide/annoy/index.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="ANNoy helps you find similar items fast. You give your data as vectors(arrays of numbers). Then you can search for the nearest neighbors(the most similar vectors). This page documents the Annoy 1 u..." />
+<meta property="og:description" content="ANNOY (Approximate Nearest Neighbors Oh Yeah): The core data structure are random projection trees, a set of binary trees where each non-leaf node represents a hyperplane splitting the input space ..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="ANNoy helps you find similar items fast. You give your data as vectors(arrays of numbers). Then you can search for the nearest neighbors(the most similar vectors). This page documents the Annoy 1 u..." />
+<meta name="description" content="ANNOY (Approximate Nearest Neighbors Oh Yeah): The core data structure are random projection trees, a set of binary trees where each non-leaf node represents a hyperplane splitting the input space ..." />
 
     <title>ANNoy Vector Database (Approximate Nearest Neighbors) &#8212; scikit-plots 0.5.dev0 documentation</title>
   
@@ -565,6 +565,7 @@
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">ANNoy</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="annoy_index_vector_database.html">Vector Similarity Search</a></li>
 <li class="toctree-l2"><a class="reference internal" href="annoy_index_inheritance_diagrams.html">Index Inheritance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_annoy.html">ANNoy Cython</a></li>
 </ul>
 </details></li>
 </ul>
@@ -575,6 +576,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../api/metrics.html">Metrics</a></li>
 </ul>
 </details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../corpus/index.html">Corpus</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../cython/index.html">Cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -639,7 +643,6 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../experimental/index.html">Experimental (experimental)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../experimental/pipeline/index.html">Pipeline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../experimental/_doremi/index.html">Do-Re-Mi</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../experimental/_llm_provider/index.html">LLM Provider (experimental)</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../externals/index.html">Externals (experimental)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -706,6 +709,13 @@
                   
   <section id="annoy-vector-database-approximate-nearest-neighbors">
 <span id="annoy-index"></span><h1>ANNoy Vector Database (Approximate Nearest Neighbors)<a class="headerlink" href="#annoy-vector-database-approximate-nearest-neighbors" title="Link to this heading">#</a></h1>
+<p>ANNOY (Approximate Nearest Neighbors Oh Yeah): The core data structure are random projection trees,
+a set of binary trees where each non-leaf node represents a hyperplane splitting the input space into half
+and each leaf stores one data point. Trees are built independently and at random, so to some extent,
+it mimics a hashing function. ANNOY search happens in all the trees to iteratively search through the half
+that is closest to the query and then aggregates the results.
+The idea is quite related to KD tree but a lot more scalable.
+<code class="docutils literal notranslate"><span class="pre">LLM</span> <span class="pre">Powered</span> <span class="pre">Autonomous</span> <span class="pre">Agents</span> <span class="pre">&lt;https://lilianweng.github.io/posts/2023-06-23-agent/&gt;</span></code></p>
 <p>ANNoy helps you find <em>similar items</em> fast.</p>
 <p>You give your data as <strong>vectors</strong> (arrays of numbers). Then you can search for
 the <strong>nearest neighbors</strong> (the most similar vectors).</p>
@@ -752,6 +762,24 @@ the <strong>nearest neighbors</strong> (the most similar vectors).</p>
 <li class="toctree-l2"><a class="reference internal" href="annoy_index_inheritance_diagrams.html#notes-and-limitations">Notes and Limitations</a></li>
 </ul>
 </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 sf-fs-1 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>cython</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_annoy.html">ANNoy Cython</a></li>
 </ul>
 </div>
 </div>
@@ -978,7 +1006,7 @@ Github. https://pypi.org/project/annoy</a></p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260216.503625b 2026-02-16T17:01Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260320.f5818ed 2026-03-20T13:18Z.
       <br/>
     
   </p>

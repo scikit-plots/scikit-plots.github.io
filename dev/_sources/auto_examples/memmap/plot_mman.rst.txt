@@ -60,10 +60,10 @@ Imports
 
     from scikitplot.memmap import (
         MemoryMap,
-        PROT_READ,
-        PROT_WRITE,
-        MAP_SHARED,
-        MS_SYNC,
+        PY_PROT_READ,
+        PY_PROT_WRITE,
+        PY_MAP_SHARED,
+        PY_MS_SYNC,
     )
 
 
@@ -88,7 +88,7 @@ the simplest way to get a writable memory region managed by the kernel.
 
     # --- 1. allocate 4 KB anonymous region ------------------------------------
     PAGE: int = 4096                          # one page on most platforms
-    with MemoryMap.create_anonymous(PAGE, PROT_READ | PROT_WRITE) as m:
+    with MemoryMap.create_anonymous(PAGE, PY_PROT_READ | PY_PROT_WRITE) as m:
 
         # --- 2. write a greeting ----------------------------------------------
         message: bytes = b"Hello from mman!"
@@ -135,7 +135,7 @@ the simplest way to get a writable memory region managed by the kernel.
 MEDIUM – file-backed mapping: write, sync, read back, visualise
 ===========================================================================
 A *file-backed* mapping lets you read/write a file as if it were an array
-in RAM.  With ``MAP_SHARED`` + ``msync`` every modification is flushed to
+in RAM.  With ``PY_MAP_SHARED`` + ``msync`` every modification is flushed to
 disk.  We then re-read the raw file to prove the bytes made it.
 
 .. GENERATED FROM PYTHON SOURCE LINES 89-170
@@ -163,17 +163,17 @@ disk.  We then re-read the raw file to prove the bytes made it.
     os.close(tmp_fd)
 
     # --------------------------------------------------------------------------
-    # 2. open, map with MAP_SHARED, write structured data, sync
+    # 2. open, map with PY_MAP_SHARED, write structured data, sync
     # --------------------------------------------------------------------------
     with open(tmp_path, "r+b") as f:
         fd: int = f.fileno()
         with MemoryMap.create_file_mapping(
-            fd, 0, FILE_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED
+            fd, 0, FILE_SIZE, PY_PROT_READ | PY_PROT_WRITE, PY_MAP_SHARED
         ) as m:
             for i in range(N_ROWS):
                 row: bytes = _pack_row(i, float(i) * 1.5)
                 m.write(row, offset=i * ROW_SIZE)
-            m.msync(MS_SYNC)                 # guarantee flush to disk
+            m.msync(PY_MS_SYNC)                 # guarantee flush to disk
             print(f"[MEDIUM] wrote {N_ROWS} records via mmap and synced.")
 
     # --------------------------------------------------------------------------
@@ -269,7 +269,7 @@ write permission at runtime, and time read() vs the array slice.
     # --------------------------------------------------------------------------
     # 1. allocate, fill via NumPy, read back via .read()
     # --------------------------------------------------------------------------
-    with MemoryMap.create_anonymous(BENCH_SIZE, PROT_READ | PROT_WRITE) as m:
+    with MemoryMap.create_anonymous(BENCH_SIZE, PY_PROT_READ | PY_PROT_WRITE) as m:
 
         arr = m.as_numpy_array(dtype=np.uint8)   # zero-copy view
         print(f"[ADVANCED] array shape={arr.shape}, dtype={arr.dtype}, "
@@ -287,13 +287,13 @@ write permission at runtime, and time read() vs the array slice.
         # --------------------------------------------------------------------------
         # 2. mprotect lifecycle – make read-only, confirm write blocked, restore
         # --------------------------------------------------------------------------
-        m.mprotect(PROT_READ)                    # → read-only
-        print(f"[ADVANCED] after mprotect(PROT_READ): mapping is read-only")
+        m.mprotect(PY_PROT_READ)                    # → read-only
+        print(f"[ADVANCED] after mprotect(PY_PROT_READ): mapping is read-only")
         # The array flags are unchanged (we do not auto-sync them); the kernel
         # will SIGSEGV / raise on an actual write attempt.  We only *read* here.
         _ = m.read(64)                           # safe
-        m.mprotect(PROT_READ | PROT_WRITE)       # restore
-        print("[ADVANCED] mprotect(PROT_READ | PROT_WRITE) restored.")
+        m.mprotect(PY_PROT_READ | PY_PROT_WRITE)       # restore
+        print("[ADVANCED] mprotect(PY_PROT_READ | PY_PROT_WRITE) restored.")
 
         # --------------------------------------------------------------------------
         # 3. micro-benchmark: .read() vs NumPy slice copy
@@ -365,11 +365,11 @@ write permission at runtime, and time read() vs the array slice.
 
     [ADVANCED] array shape=(1048576,), dtype=uint8, writeable=True
     [ADVANCED] pattern written via NumPy, verified via .read().
-    [ADVANCED] after mprotect(PROT_READ): mapping is read-only
-    [ADVANCED] mprotect(PROT_READ | PROT_WRITE) restored.
+    [ADVANCED] after mprotect(PY_PROT_READ): mapping is read-only
+    [ADVANCED] mprotect(PY_PROT_READ | PY_PROT_WRITE) restored.
     [ADVANCED] 200 iterations over 1.0 MB:
-               .read()     : 0.0991 s  (2.12 GB/s)
-               arr.copy()  : 0.0426 s  (4.92 GB/s)
+               .read()     : 0.0802 s  (2.62 GB/s)
+               arr.copy()  : 0.0360 s  (5.83 GB/s)
     [ADVANCED] done.
 
 
@@ -379,7 +379,7 @@ write permission at runtime, and time read() vs the array slice.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 1.144 seconds)
+   **Total running time of the script:** (0 minutes 0.897 seconds)
 
 
 .. _sphx_glr_download_auto_examples_memmap_plot_mman.py:

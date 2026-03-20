@@ -179,7 +179,7 @@ Import Models
  .. code-block:: none
 
 
-    '1.2.8'
+    '1.2.10'
 
 
 
@@ -239,7 +239,7 @@ Import Models
  .. code-block:: none
 
 
-    '0.5.dev0+git.20260216.503625b'
+    '0.5.dev0+git.20260320.f5818ed'
 
 
 
@@ -331,12 +331,12 @@ Lets train a few models to evaluate with our plots.
     [300]   validation_0-logloss:0.19339
     [400]   validation_0-logloss:0.19815
     [499]   validation_0-logloss:0.20117
-    0:      learn: 0.4927453        test: 0.4923715 best: 0.4923715 (0)     total: 61ms     remaining: 30.5s
-    100:    learn: 0.1676717        test: 0.1816126 best: 0.1815845 (99)    total: 580ms    remaining: 2.29s
-    200:    learn: 0.1558113        test: 0.1821743 best: 0.1810643 (134)   total: 1.11s    remaining: 1.65s
-    300:    learn: 0.1470072        test: 0.1834927 best: 0.1810643 (134)   total: 1.65s    remaining: 1.09s
-    400:    learn: 0.1397645        test: 0.1855101 best: 0.1810643 (134)   total: 2.22s    remaining: 549ms
-    499:    learn: 0.1339617        test: 0.1875986 best: 0.1810643 (134)   total: 2.71s    remaining: 0us
+    0:      learn: 0.4927453        test: 0.4923715 best: 0.4923715 (0)     total: 52ms     remaining: 26s
+    100:    learn: 0.1676717        test: 0.1816126 best: 0.1815845 (99)    total: 472ms    remaining: 1.86s
+    200:    learn: 0.1558113        test: 0.1821743 best: 0.1810643 (134)   total: 903ms    remaining: 1.34s
+    300:    learn: 0.1470072        test: 0.1834927 best: 0.1810643 (134)   total: 1.35s    remaining: 892ms
+    400:    learn: 0.1397645        test: 0.1855101 best: 0.1810643 (134)   total: 1.79s    remaining: 443ms
+    499:    learn: 0.1339617        test: 0.1875986 best: 0.1810643 (134)   total: 2.22s    remaining: 0us
 
     bestTest = 0.1810643099
     bestIteration = 134
@@ -449,7 +449,7 @@ can help them select customers for their term deposit campaign.
                   max_cat_to_onehot=None, max_delta_step=None, max_depth=6,
                   max_leaves=None, min_child_weight=None, missing=nan,
                   monotone_constraints=None, multi_strategy=None, n_estimators=500,
-                  n_jobs=None, num_parallel_tree=None, ...), <catboost.core.CatBoostClassifier object at 0x7f5088c10790>], 'model_labels': ['random forest', 'multinomial logit', 'XGBClassifier', 'CatBoostClassifier'], 'ntiles': 10, 'seed': 0}
+                  n_jobs=None, num_parallel_tree=None, ...), CatBoostClassifier(learning_rate=0.15, max_depth=6, n_estimators=500, random_state=0)], 'model_labels': ['random forest', 'multinomial logit', 'XGBClassifier', 'CatBoostClassifier'], 'ntiles': 10, 'seed': 0}
 
 
 
@@ -1399,7 +1399,7 @@ Happy modelplotting!
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 19.422 seconds)
+   **Total running time of the script:** (0 minutes 15.533 seconds)
 
 
 .. _sphx_glr_download_auto_examples_decile_plot_modelplotpy_script.py:

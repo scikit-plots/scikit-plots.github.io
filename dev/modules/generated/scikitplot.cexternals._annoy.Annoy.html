@@ -742,10 +742,6 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._doremi.sheet_converter.html">sheet_converter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._doremi.serialize_sheet.html">serialize_sheet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._doremi.export_sheet.html">export_sheet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._llm_provider.LLM_PROVIDER_CONFIG_MAP.html">LLM_PROVIDER_CONFIG_MAP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._llm_provider.LLM_PROVIDER_ENV_CONNECTOR_MAP.html">LLM_PROVIDER_ENV_CONNECTOR_MAP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._llm_provider.get_response.html">get_response</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._llm_provider.load_mlflow_gateway_config.html">load_mlflow_gateway_config</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.externals.html">scikitplot.externals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -981,19 +977,22 @@
 <h1>Annoy<a class="headerlink" href="#annoy" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.cexternals._annoy.Annoy">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.cexternals._annoy.</span></span><span class="sig-name descname"><span class="pre">Annoy</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/503625b/scikitplot/cexternals/_annoy/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexternals._annoy.Annoy" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.cexternals._annoy.</span></span><span class="sig-name descname"><span class="pre">Annoy</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f5818ed/scikitplot/cexternals/_annoy/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexternals._annoy.Annoy" title="Link to this definition">#</a></dt>
 <dd><p>Compiled with GCC/Clang. Using 512-bit AVX instructions.</p>
 <p>Approximate Nearest Neighbors index (Annoy) with a small, lazy C-extension wrapper.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Annoy</span><span class="p">(</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">f</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">metric</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="o">*</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">n_trees</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># None = -1 = auto</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>  <span class="c1"># None = 5</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">on_disk_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">prefault</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">verbose</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">schema_version</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">n_jobs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="c1"># None = -1</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">l1_ratio</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>  <span class="c1"># None = 0.0 Future</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1015,6 +1014,9 @@ If None, behavior depends on <code class="docutils literal notranslate"><span cl
 <a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.metric" title="scikitplot.cexternals._annoy.Annoy.metric"><code class="xref py py-attr docutils literal notranslate"><span class="pre">metric</span></code></a> later before construction, or it will default to
 <code class="docutils literal notranslate"><span class="pre">'angular'</span></code> on first <a class="reference internal" href="#scikitplot.cexternals._annoy.Annoy.add_item" title="scikitplot.cexternals._annoy.Annoy.add_item"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_item</span></code></a>.</p></li>
 </ul>
+</dd>
+<dt><strong>n_trees</strong><span class="classifier">int, default=-1</span></dt><dd><p>Number of trees to build. If -1, auto-selects based on dimension.
+More trees = better accuracy but slower queries and more memory.</p>
 </dd>
 <dt><strong>n_neighbors</strong><span class="classifier">int, default=5</span></dt><dd><p>Non-negative integer Number of neighbors to retrieve for each query.</p>
 </dd>
@@ -1057,6 +1059,9 @@ rebuilding deterministically).</p></li>
 a fallback if the ABI check fails).</p></li>
 </ul>
 <p>If None, treated as <code class="docutils literal notranslate"><span class="pre">0</span></code> (reset to default).</p>
+</dd>
+<dt><strong>n_jobs</strong><span class="classifier">int or None, default=None</span></dt><dd><p>Number of threads. If -1, uses all available cores.
+If None, treated as <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -1293,12 +1298,12 @@ the forest, further calls to <a class="reference internal" href="#scikitplot.cex
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cexternals._annoy.Annoy.build">
-<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_trees</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.cexternals._annoy.Annoy.build" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_trees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.cexternals._annoy.Annoy.build" title="Link to this definition">#</a></dt>
 <dd><p>Build a forest of random projection trees.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>n_trees</strong><span class="classifier">int</span></dt><dd><p>Number of trees in the forest. Larger values typically improve recall
+<dt><strong>n_trees</strong><span class="classifier">int or None, optional, default=None</span></dt><dd><p>Number of trees in the forest. Larger values typically improve recall
 at the cost of slower build time and higher memory usage.</p>
 <p>If set to <code class="docutils literal notranslate"><span class="pre">n_trees=-1</span></code>, trees are built dynamically until
 the index reaches approximately twice the number of items
@@ -1310,7 +1315,7 @@ the index reaches approximately twice the number of items
 <li><p>Large datasets (&gt;1M samples): 50-100+ trees.</p></li>
 </ul>
 </dd>
-<dt><strong>n_jobs</strong><span class="classifier">int, optional, default=-1</span></dt><dd><p>Number of threads to use while building. <code class="docutils literal notranslate"><span class="pre">-1</span></code> means “auto” (use
+<dt><strong>n_jobs</strong><span class="classifier">int or None, optional, default=None</span></dt><dd><p>Number of threads to use while building. <code class="docutils literal notranslate"><span class="pre">-1</span></code> means “auto” (use
 the implementation’s default, typically all available CPU cores).</p>
 </dd>
 </dl>
@@ -1655,8 +1660,8 @@ feature names (if available) and the expected input dimensionality.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="scikitplot.cexternals._annoy.Annoy.get_item_vector">
-<span class="sig-name descname"><span class="pre">get_item_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#scikitplot.cexternals._annoy.Annoy.get_item_vector" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="scikitplot.cexternals._annoy.Annoy.get_item">
+<span class="sig-name descname"><span class="pre">get_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#scikitplot.cexternals._annoy.Annoy.get_item" title="Link to this definition">#</a></dt>
 <dd><p>Return the stored embedding vector for a given item id.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2235,7 +2240,7 @@ index types). The source index is not mutated.</p>
 If on_disk_path is provided and is string-equal to the source’s configured
 path, it is ignored to avoid accidental overwrite/truncation hazards.</p>
 </dd>
-<dt><strong>n_trees</strong><span class="classifier">int or None, optional</span></dt><dd><p>If provided, build the new index with this number of trees (or -1 for
+<dt><strong>n_trees</strong><span class="classifier">int or None, optional, default=None</span></dt><dd><p>If provided, build the new index with this number of trees (or -1 for
 Annoy’s internal auto mode). If None, reuse the source’s tree count only
 when the source index is already built; otherwise do not build.</p>
 </dd>
@@ -2876,7 +2881,7 @@ become <code class="docutils literal notranslate"><span class="pre">None</span><
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.fit_transform"><code class="docutils literal notranslate"><span class="pre">fit_transform</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.get_distance"><code class="docutils literal notranslate"><span class="pre">get_distance</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.get_feature_names_out"><code class="docutils literal notranslate"><span class="pre">get_feature_names_out</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.get_item_vector"><code class="docutils literal notranslate"><span class="pre">get_item_vector</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.get_item"><code class="docutils literal notranslate"><span class="pre">get_item</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.get_n_items"><code class="docutils literal notranslate"><span class="pre">get_n_items</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.get_n_trees"><code class="docutils literal notranslate"><span class="pre">get_n_trees</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.cexternals._annoy.Annoy.get_nns_by_item"><code class="docutils literal notranslate"><span class="pre">get_nns_by_item</span></code></a></li>
@@ -2954,7 +2959,7 @@ become <code class="docutils literal notranslate"><span class="pre">None</span><
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260216.503625b 2026-02-16T17:01Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260320.f5818ed 2026-03-20T13:18Z.
       <br/>
     
   </p>

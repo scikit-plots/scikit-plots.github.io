@@ -344,8 +344,10 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">ANNoy Vector Index DB</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_legacy_c_api.html">annoy.Annoy legacy c-api with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_python_api.html">annoy.Index python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_0benchmark.html">Index (cython) python-api benchmark with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_api.html">Index (cython) python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_hamlet_example.html">Approximate Nearest Neighbors with Annoy — A Hamlet Example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_to_NPY_CSV.html">annoy.Index to NPY or CSV with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_cython_index_api.html">Index (cython) python-api with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_mmap_script.html">Mmap annoy.AnnoyIndex with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_precision_script.html">Precision annoy.AnnoyIndex with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_simple_script.html">Simple annoy.AnnoyIndex with examples</a></li>
@@ -369,6 +371,10 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../clustering/index.html">Clustering</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../clustering/plot_elbow_script.html">plot_elbow with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../clustering/plot_silhouette_script.html">plot_silhouette with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../corpus/index.html">Corpus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_script.html">corpus with examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Cython</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -576,30 +582,30 @@
         <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">No unpin() API found in this build; skipping unpin demo."</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Built key: c71820fcbdd3d3be311db100faa9f7ce550548267112a935bc644a9c9e59e29d
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Built key: 3f904bb3ce79bd35887246b49d282a549d63f5bf176e6ab96c5f2e7af4e3c387
 Pin alias: demo_square
 
 Imported via alias (result API):
-  module_name: scikitplot_cython_c71820fcbdd3d3be
-  key        : c71820fcbdd3d3be311db100faa9f7ce550548267112a935bc644a9c9e59e29d
+  module_name: scikitplot_cython_3f904bb3ce79bd35
+  key        : 3f904bb3ce79bd35887246b49d282a549d63f5bf176e6ab96c5f2e7af4e3c387
   used_cache : True
 demo_square.f(9) = 81
 Expected: 81
 Correct: True
 
-Pins: {'demo_square': 'c71820fcbdd3d3be311db100faa9f7ce550548267112a935bc644a9c9e59e29d', 'quickstart_g': '093729e666d9308a2ee01f667576da3e7022aaf802855405f2fe6727629b9a2a'}
-Alias resolves to this key: c71820fcbdd3d3be311db100faa9f7ce550548267112a935bc644a9c9e59e29d
+Pins: {'demo_square': '3f904bb3ce79bd35887246b49d282a549d63f5bf176e6ab96c5f2e7af4e3c387', 'quickstart_g': '5d04fa4f020852a02f25000faed11301782143232a3f29c0795d9616bcb26c62'}
+Alias resolves to this key: 3f904bb3ce79bd35887246b49d282a549d63f5bf176e6ab96c5f2e7af4e3c387
 
 Strict collision demo:
 As expected, pin without overwrite failed:
-  ValueError: Alias collision: alias 'demo_square' already points to a different key (c71820fcbdd3d3be...). Use overwrite=True to replace.
+  ValueError: Alias collision: alias 'demo_square' already points to a different key (3f904bb3ce79bd35...). Use overwrite=True to replace.
 After overwrite, demo_square.f(9) = 82
 
-After unpin, pins: {'quickstart_g': '093729e666d9308a2ee01f667576da3e7022aaf802855405f2fe6727629b9a2a'}
+After unpin, pins: {'quickstart_g': '5d04fa4f020852a02f25000faed11301782143232a3f29c0795d9616bcb26c62'}
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger reference internal" href="../../_tags/domain-cython.html"><span class="doc">domain: cython</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-cython.html"><span class="doc">plot-type: cython</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.524 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.408 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example shows the minimal workflow:"><img alt="" src="../../_images/sphx_glr_plot_00_quickstart_compile_and_load_thumb.png"/>
@@ -611,9 +617,9 @@ After unpin, pins: {'quickstart_g': '093729e666d9308a2ee01f667576da3e7022aaf8028
 </div><div class="sphx-glr-thumbcontainer" tooltip="Compiled artifacts are cached on disk. After a Python kernel restart, you can import the cached module again without recompiling (as long as the runtime fingerprint matches)."><img alt="" src="../../_images/sphx_glr_plot_03_cache_and_restart_reuse_thumb.png"/>
 <p><a class="reference internal" href="plot_03_cache_and_restart_reuse.html"><span class="doc">Cache and restart reuse</span></a></p>
 <div class="sphx-glr-thumbnail-title">Cache and restart reuse</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Real projects often split Cython code across multiple files:"><img alt="" src="../../_images/sphx_glr_plot_06_multifile_support_files_thumb.png"/>
-<p><a class="reference internal" href="plot_06_multifile_support_files.html"><span class="doc">Multi-file builds: .pxi includes and external headers</span></a></p>
-<div class="sphx-glr-thumbnail-title">Multi-file builds: .pxi includes and external headers</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Workflow templates are shipped as package data under _templates/workflow/. They are designed to be copied into any project directory and executed directly."><img alt="" src="../../_images/sphx_glr_plot_09_workflow_templates_cli_thumb.png"/>
+<p><a class="reference internal" href="plot_09_workflow_templates_cli.html"><span class="doc">Workflow templates (train / hpo / predict) + CLI entry template</span></a></p>
+<div class="sphx-glr-thumbnail-title">Workflow templates (train / hpo / predict) + CLI entry template</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </section>
@@ -659,7 +665,7 @@ After unpin, pins: {'quickstart_g': '093729e666d9308a2ee01f667576da3e7022aaf8028
 <li><a href="../../_sources/auto_examples/cython/plot_04_pin_alias.rst.txt" rel="nofollow">Show Source</a></li>
 </ul>
 </div></div>
-<div class="sidebar-secondary-item"><div title="plot_04_pin_alias.py"><a download="" href="../../_downloads/01e0f02a82b701c006359d09b51ac3f2/plot_04_pin_alias.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_04_pin_alias.ipynb"><a download="" href="../../_downloads/51f502e99319a1d7a46eacdfa9b21d8d/plot_04_pin_alias.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/cython/plot_04_pin_alias.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo4.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_04_pin_alias.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo4.svg"/></a></div></div></div></div>
+<div class="sidebar-secondary-item"><div title="plot_04_pin_alias.py"><a download="" href="../../_downloads/01e0f02a82b701c006359d09b51ac3f2/plot_04_pin_alias.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_04_pin_alias.ipynb"><a download="" href="../../_downloads/51f502e99319a1d7a46eacdfa9b21d8d/plot_04_pin_alias.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/cython/plot_04_pin_alias.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo5.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_04_pin_alias.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo5.svg"/></a></div></div></div></div>
 </div>
 <footer class="bd-footer-content">
 </footer>
@@ -675,7 +681,7 @@ After unpin, pins: {'quickstart_g': '093729e666d9308a2ee01f667576da3e7022aaf8028
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260216.503625b 2026-02-16T17:01Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260320.f5818ed 2026-03-20T13:18Z.
       <br/>
 </p>
 </div>

@@ -344,8 +344,10 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">ANNoy Vector Index DB</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_legacy_c_api.html">annoy.Annoy legacy c-api with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_python_api.html">annoy.Index python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_0benchmark.html">Index (cython) python-api benchmark with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_api.html">Index (cython) python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_hamlet_example.html">Approximate Nearest Neighbors with Annoy — A Hamlet Example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_to_NPY_CSV.html">annoy.Index to NPY or CSV with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_cython_index_api.html">Index (cython) python-api with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_mmap_script.html">Mmap annoy.AnnoyIndex with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_precision_script.html">Precision annoy.AnnoyIndex with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_simple_script.html">Simple annoy.AnnoyIndex with examples</a></li>
@@ -369,6 +371,10 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../clustering/index.html">Clustering</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../clustering/plot_elbow_script.html">plot_elbow with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../clustering/plot_silhouette_script.html">plot_silhouette with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../corpus/index.html">Corpus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_script.html">corpus with examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Cython</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -628,7 +634,7 @@ First 8: ['basic_cython/t01_square_int', 'basic_cython/t02_add_float', 'basic_cy
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Template: basic_cython/t01_square_int
-Path: /home/circleci/.pyenv/versions/3.11.14/lib/python3.11/site-packages/scikitplot/cython/_templates/basic_cython/t01_square_int.pyx
+Path: /home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/scikitplot/cython/_templates/basic_cython/t01_square_int.pyx
 
 Source preview:
 
@@ -645,33 +651,33 @@ def square(int n):
 
 
 BuildResult:
-  module_name: scikitplot_cython_632e06e9a1a7a877
-  key        : 632e06e9a1a7a87769ae8f9e448b50fa2865f5211a9c7fac72db477b95832e8d
-  artifact   : /home/circleci/.cache/scikitplot/cython/632e06e9a1a7a87769ae8f9e448b50fa2865f5211a9c7fac72db477b95832e8d/scikitplot_cython_632e06e9a1a7a877.cpython-311-x86_64-linux-gnu.so
+  module_name: scikitplot_cython_586c1d04a4f78f7d
+  key        : 586c1d04a4f78f7d670a08ee0f87ee8dd5837ee309b0f374a01b36c760abcd60
+  artifact   : /home/circleci/.cache/scikitplot/cython/586c1d04a4f78f7d670a08ee0f87ee8dd5837ee309b0f374a01b36c760abcd60/scikitplot_cython_586c1d04a4f78f7d.cpython-311-x86_64-linux-gnu.so
   used_cache : False
 
-Imported module: scikitplot_cython_632e06e9a1a7a877
+Imported module: scikitplot_cython_586c1d04a4f78f7d
 Public names: ['square']
 
 No demo_calls declared in template metadata; skipping execution.
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger reference internal" href="../../_tags/domain-cython.html"><span class="doc">domain: cython</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-cython.html"><span class="doc">plot-type: cython</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.551 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.120 seconds)</p>
 
 <p class="rubric">Related examples</p>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to build a small compiled package consisting of multiple Cython extension modules in one build directory."><img alt="" src="../../_images/sphx_glr_plot_05_package_examples_multimodule_thumb.png"/>
-<p><a class="reference internal" href="plot_05_package_examples_multimodule.html"><span class="doc">Multi-module package builds (5 package examples)</span></a></p>
-<div class="sphx-glr-thumbnail-title">Multi-module package builds (5 package examples)</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Workflow templates are shipped as package data under _templates/workflow/. They are designed to be copied into any project directory and executed directly."><img alt="" src="../../_images/sphx_glr_plot_09_workflow_templates_cli_thumb.png"/>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Workflow templates are shipped as package data under _templates/workflow/. They are designed to be copied into any project directory and executed directly."><img alt="" src="../../_images/sphx_glr_plot_09_workflow_templates_cli_thumb.png"/>
 <p><a class="reference internal" href="plot_09_workflow_templates_cli.html"><span class="doc">Workflow templates (train / hpo / predict) + CLI entry template</span></a></p>
 <div class="sphx-glr-thumbnail-title">Workflow templates (train / hpo / predict) + CLI entry template</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to build a small compiled package consisting of multiple Cython extension modules in one build directory."><img alt="" src="../../_images/sphx_glr_plot_05_package_examples_multimodule_thumb.png"/>
+<p><a class="reference internal" href="plot_05_package_examples_multimodule.html"><span class="doc">Multi-module package builds (5 package examples)</span></a></p>
+<div class="sphx-glr-thumbnail-title">Multi-module package builds (5 package examples)</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example shows the minimal workflow:"><img alt="" src="../../_images/sphx_glr_plot_00_quickstart_compile_and_load_thumb.png"/>
 <p><a class="reference internal" href="plot_00_quickstart_compile_and_load.html"><span class="doc">Cython quickstart: compile_and_load</span></a></p>
 <div class="sphx-glr-thumbnail-title">Cython quickstart: compile_and_load</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Compile and run the C++ Annoy precision example."><img alt="" src="../../_images/sphx_glr_s_compile_cpp_thumb.png"/>
-<p><a class="reference internal" href="../annoy/s_compile_cpp.html"><span class="doc">Compile and run the C++ Annoy with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">Compile and run the C++ Annoy with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Compiled artifacts are cached on disk. After a Python kernel restart, you can import the cached module again without recompiling (as long as the runtime fingerprint matches)."><img alt="" src="../../_images/sphx_glr_plot_03_cache_and_restart_reuse_thumb.png"/>
+<p><a class="reference internal" href="plot_03_cache_and_restart_reuse.html"><span class="doc">Cache and restart reuse</span></a></p>
+<div class="sphx-glr-thumbnail-title">Cache and restart reuse</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </section>
@@ -718,7 +724,7 @@ No demo_calls declared in template metadata; skipping execution.
 <li><a href="../../_sources/auto_examples/cython/plot_01_browse_and_compile_templates.rst.txt" rel="nofollow">Show Source</a></li>
 </ul>
 </div></div>
-<div class="sidebar-secondary-item"><div title="plot_01_browse_and_compile_templates.py"><a download="" href="../../_downloads/c47afb181a9c8aeda3b5933a49df2d9d/plot_01_browse_and_compile_templates.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_01_browse_and_compile_templates.ipynb"><a download="" href="../../_downloads/a389ff47550de162e8a988982129b8cb/plot_01_browse_and_compile_templates.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/cython/plot_01_browse_and_compile_templates.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo4.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_01_browse_and_compile_templates.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo4.svg"/></a></div></div></div></div>
+<div class="sidebar-secondary-item"><div title="plot_01_browse_and_compile_templates.py"><a download="" href="../../_downloads/c47afb181a9c8aeda3b5933a49df2d9d/plot_01_browse_and_compile_templates.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_01_browse_and_compile_templates.ipynb"><a download="" href="../../_downloads/a389ff47550de162e8a988982129b8cb/plot_01_browse_and_compile_templates.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/cython/plot_01_browse_and_compile_templates.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo5.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_01_browse_and_compile_templates.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo5.svg"/></a></div></div></div></div>
 </div>
 <footer class="bd-footer-content">
 </footer>
@@ -734,7 +740,7 @@ No demo_calls declared in template metadata; skipping execution.
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260216.503625b 2026-02-16T17:01Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260320.f5818ed 2026-03-20T13:18Z.
       <br/>
 </p>
 </div>
