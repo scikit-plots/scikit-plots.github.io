@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/user_guide/annoy/_annoy.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content=",,,,,,,,,,, Type, Introduced, Exact Width Guaranteed, Signedness, ISO C Minimum Width, Typical Width (Modern), Minimum (Formula), Maximum (Formula), Overflow Semantics | Portability Risk | Notes,,,..." />
+<meta property="og:description" content=",,,,,,,,,,, Type, Introduced, Exact Width Guaranteed, Signedness, ISO C Minimum Width, Typical Width (Modern), Minimum (Formula), Maximum (Formula), Overflow Semantics, Portability Risk, Notes,,, c..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content=",,,,,,,,,,, Type, Introduced, Exact Width Guaranteed, Signedness, ISO C Minimum Width, Typical Width (Modern), Minimum (Formula), Maximum (Formula), Overflow Semantics | Portability Risk | Notes,,,..." />
+<meta name="description" content=",,,,,,,,,,, Type, Introduced, Exact Width Guaranteed, Signedness, ISO C Minimum Width, Typical Width (Modern), Minimum (Formula), Maximum (Formula), Overflow Semantics, Portability Risk, Notes,,, c..." />
 
     <title>ANNoy Cython &#8212; scikit-plots 0.5.dev0 documentation</title>
   
@@ -722,7 +722,9 @@
 <th class="head"><p>Typical Width (Modern)</p></th>
 <th class="head"><p>Minimum (Formula)</p></th>
 <th class="head"><p>Maximum (Formula)</p></th>
-<th class="head" colspan="3"><p>Overflow Semantics | Portability Risk | Notes</p></th>
+<th class="head"><p>Overflow Semantics</p></th>
+<th class="head"><p>Portability Risk</p></th>
+<th class="head"><p>Notes</p></th>
 </tr>
 </thead>
 <tbody>
@@ -869,7 +871,7 @@ Unsigned: modulo</p></td>
 <td><p>2^7-1</p></td>
 <td><p>UB on overflow</p></td>
 <td><p>NONE</p></td>
-<td><p>Requires exact-width support</p></td>
+<td><p>max 127 items, Requires exact-width support</p></td>
 </tr>
 <tr class="row-even"><td><p>uint8_t</p></td>
 <td><p>C99</p></td>
@@ -881,7 +883,7 @@ Unsigned: modulo</p></td>
 <td><p>2^8-1</p></td>
 <td><p>Modulo 2^8</p></td>
 <td><p>NONE</p></td>
-<td></td>
+<td><p>max 255 items</p></td>
 </tr>
 <tr class="row-odd"><td><p>int16_t</p></td>
 <td><p>C99</p></td>
@@ -893,7 +895,7 @@ Unsigned: modulo</p></td>
 <td><p>2^15-1</p></td>
 <td><p>UB on overflow</p></td>
 <td><p>NONE</p></td>
-<td></td>
+<td><p>max 32 767 items</p></td>
 </tr>
 <tr class="row-even"><td><p>uint16_t</p></td>
 <td><p>C99</p></td>
@@ -905,7 +907,7 @@ Unsigned: modulo</p></td>
 <td><p>2^16-1</p></td>
 <td><p>Modulo 2^16</p></td>
 <td><p>NONE</p></td>
-<td></td>
+<td><p>max 65 535 items</p></td>
 </tr>
 <tr class="row-odd"><td><p>int32_t</p></td>
 <td><p>C99</p></td>
@@ -917,7 +919,7 @@ Unsigned: modulo</p></td>
 <td><p>2^31-1</p></td>
 <td><p>UB on overflow</p></td>
 <td><p>NONE</p></td>
-<td></td>
+<td><p>max ~2.1 E8 B items, 4 bytes/node-id</p></td>
 </tr>
 <tr class="row-even"><td><p>uint32_t</p></td>
 <td><p>C99</p></td>
@@ -929,7 +931,7 @@ Unsigned: modulo</p></td>
 <td><p>2^32-1</p></td>
 <td><p>Modulo 2^32</p></td>
 <td><p>NONE</p></td>
-<td></td>
+<td><p>max ~4.3 E9 (10⁹) B items, 4 bytes/node-id</p></td>
 </tr>
 <tr class="row-odd"><td><p>int64_t</p></td>
 <td><p>C99</p></td>
@@ -941,7 +943,7 @@ Unsigned: modulo</p></td>
 <td><p>2^63-1</p></td>
 <td><p>UB on overflow</p></td>
 <td><p>NONE</p></td>
-<td></td>
+<td><p>max ~9.2 E18 items</p></td>
 </tr>
 <tr class="row-even"><td><p>uint64_t</p></td>
 <td><p>C99</p></td>
@@ -953,7 +955,7 @@ Unsigned: modulo</p></td>
 <td><p>2^64-1</p></td>
 <td><p>Modulo 2^64</p></td>
 <td><p>NONE</p></td>
-<td></td>
+<td><p>max ~1.8 × E19 (10¹⁹) items, 8 bytes/node-id</p></td>
 </tr>
 </tbody>
 </table>
@@ -1037,7 +1039,7 @@ Unsigned: modulo</p></td>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260320.8adfc92 2026-03-20T19:49Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260322.11d77c2 2026-03-22T19:16Z.
       <br/>
     
   </p>

@@ -469,19 +469,23 @@ trade-off used by PyTorch's `torch.float16` and TensorFlow's `tf.float16`.
 
  .. code-block:: none
 
-    Download failed (<urlopen error [Errno 99] Cannot assign requested address>); using built-in excerpt.
-    Raw text length: 9,465 chars
+    Raw text length: 185,498 chars
+
+
+
 
     THE TRAGEDY OF HAMLET, PRINCE OF DENMARK
 
     by William Shakespeare
 
+
+
+
     Contents
 
-    ACT I
-    Scene I. Elsinore. A platform before the Castle
-    Scene II. Elsinore. A room of state in the Castle
-    Scene III. A room i
+     ACT I
+     Scene I. Elsinore. A platform before the Castle
+     Scene II. Elsinore. A room of state in the Ca
 
 
 
@@ -648,8 +652,8 @@ Annoy index
 
  .. code-block:: none
 
-    Extracted 43 passages
-    Characters: ['Bernardo', 'Francisco', 'Ghost', 'Hamlet', 'Horatio', 'King', 'Laertes', 'Marcellus', 'Ophelia', 'Polonius', 'Queen']
+    Extracted 922 passages
+    Characters: ['Barnardo', 'First Ambassador', 'First Clown', 'First Player', 'First Sailor', 'Fortinbras', 'Francisco', 'Gentleman', 'Ghost', 'Guildenstern', 'Hamlet', 'Horatio', 'King', 'Laertes', 'Lord', 'Lucianus', 'Marcellus', 'Messenger', 'Ophelia', 'Osric', 'Player King', 'Player Queen', 'Polonius', 'Priest', 'Prologue', 'Queen', 'Reynaldo', 'Rosencrantz', 'Second Clown', 'Servant', 'Voltemand']
 
       [  0] Francisco    | SCENE I. Elsinore
             Nay, answer me. Stand and unfold yourself....
@@ -657,19 +661,19 @@ Annoy index
       [  1] Francisco    | SCENE I. Elsinore
             You come most carefully upon your hour....
 
-      [  2] Bernardo     | SCENE I. Elsinore
+      [  2] Barnardo     | SCENE I. Elsinore
             'Tis now struck twelve. Get thee to bed, Francisco....
 
       [  3] Francisco    | SCENE I. Elsinore
             For this relief much thanks. 'Tis bitter cold, And I am sick at heart....
 
-      [  4] Bernardo     | SCENE I. Elsinore
+      [  4] Barnardo     | SCENE I. Elsinore
             Have you had quiet guard?...
 
       [  5] Francisco    | SCENE I. Elsinore
             Not a mouse stirring....
 
-      [  6] Bernardo     | SCENE I. Elsinore
+      [  6] Barnardo     | SCENE I. Elsinore
             Well, good night. If you do meet Horatio and Marcellus, The rivals of my watch, bid them m...
 
 
@@ -840,10 +844,10 @@ OpenAI embeddings, or any other embedding model.
 
  .. code-block:: none
 
-    Vocabulary size : 529
-    TF-IDF dimension: 529
+    Vocabulary size : 1500
+    TF-IDF dimension: 1500
     Final embedding : 64-d
-    Num passages    : 33
+    Num passages    : 792
 
 
 
@@ -899,7 +903,7 @@ idx.save('index.ann')                                  # 5. Persist
 
  .. code-block:: none
 
-    Items added: 33
+    Items added: 792
     Trees built: 10
     Index ready for queries!
 
@@ -1046,16 +1050,16 @@ Now the soliloquy should be found reliably
     ==========================================================================================
     QUERY: 'To be, or not to be' soliloquy
     ==========================================================================================
-    Query: [25] Hamlet (ACT III. SCENE I)
-      "To be, or not to be- that is the question: Whether 'tis nobler in the mind to su..."
+    Query: [327] Hamlet (SCENE I. A room in the Castle)
+      "To be, or not to be, that is the question: Whether 'tis nobler in the mind to su..."
 
     Rank  ID        Dist Character      Passage excerpt
     ------------------------------------------------------------------------------------------
-    1     25      0.0000 Hamlet         To be, or not to be- that is the question: Whether... ← query
-    2     7       1.1726 Horatio        Friends to this ground....
-    3     5       1.2272 Bernardo       Well, good night. If you do meet Horatio and Marce...
-    4     17      1.2286 Hamlet         Ay, madam, it is common. O that this too too solid...
-    5     18      1.2579 Laertes        My necessaries are embark'd. Farewell. And, sister...
+    1     327     0.0000 Hamlet         To be, or not to be, that is the question: Whether... ← query
+    2     172     1.0381 Polonius       Marry, sir, here's my drift, And I believe it is a...
+    3     517     1.0737 Rosencrantz    Take you me for a sponge, my lord?...
+    4     321     1.0781 King           Sweet Gertrude, leave us too, For we have closely ...
+    5     350     1.1102 Hamlet         Speak the speech, I pray you, as I pronounced it t...
 
 
 
@@ -1126,11 +1130,11 @@ Now the soliloquy should be found reliably
 
     Rank  ID        Dist Character      Passage excerpt
     ------------------------------------------------------------------------------------------
-    1     25      0.6718 Hamlet         To be, or not to be- that is the question: Whether 'tis...
-    2     29      0.6718 Hamlet         Alas, poor Yorick! I knew him, Horatio. A fellow of inf...
-    3     27      1.2177 Hamlet         Speak the speech, I pray you, as I pronounced it to you...
-    4     7       1.2559 Horatio        Friends to this ground....
-    5     4       1.2785 Francisco      Not a mouse stirring....
+    1     327     0.6920 Hamlet         To be, or not to be, that is the question: Whether 'tis...
+    2     321     1.0875 King           Sweet Gertrude, leave us too, For we have closely sent ...
+    3     172     1.1020 Polonius       Marry, sir, here's my drift, And I believe it is a fetc...
+    4     181     1.1112 King           Welcome, dear Rosencrantz and Guildenstern. Moreover th...
+    5     163     1.1227 Hamlet         And therefore as a stranger give it welcome. There are ...
 
 
 
@@ -1198,21 +1202,21 @@ for well-separated vectors while halving storage.
 
  .. code-block:: none
 
-    float16 index built: 33 items, 10 trees
+    float16 index built: 792 items, 10 trees
 
     ==========================================================================================
     float16 QUERY: 'To be, or not to be'
     ==========================================================================================
-    Query: [25] Hamlet (ACT III. SCENE I)
-      "To be, or not to be- that is the question: Whether 'tis nobler in the mind to su..."
+    Query: [327] Hamlet (SCENE I. A room in the Castle)
+      "To be, or not to be, that is the question: Whether 'tis nobler in the mind to su..."
 
     Rank  ID        Dist Character      Passage excerpt
     ------------------------------------------------------------------------------------------
-    1     25      0.0000 Hamlet         To be, or not to be- that is the question: Whether... ← query
-    2     7       1.1729 Horatio        Friends to this ground....
-    3     5       1.2266 Bernardo       Well, good night. If you do meet Horatio and Marce...
-    4     17      1.2285 Hamlet         Ay, madam, it is common. O that this too too solid...
-    5     18      1.2578 Laertes        My necessaries are embark'd. Farewell. And, sister...
+    1     327     0.0000 Hamlet         To be, or not to be, that is the question: Whether... ← query
+    2     172     1.0391 Polonius       Marry, sir, here's my drift, And I believe it is a...
+    3     252     1.1777 Rosencrantz    [_To Guildenstern._] What say you?...
+    4     455     1.1875 Polonius       My lord, he's going to his mother's closet. Behind...
+    5     413     1.2236 King           Give me some light. Away. All. Lights, lights, lig...
 
 
 
@@ -1304,13 +1308,13 @@ for well-separated vectors while halving storage.
 
     dtype       Build(ms)  Query(μs)   Disk(KB) Top-5 IDs
     ----------------------------------------------------------------------
-    float16           0.1       23.1        7.2 [25, 7, 5, 17, 18]
-    float32           0.1        9.6       13.9 [25, 7, 5, 17, 18]
-    float64           0.1       16.7       27.3 [25, 7, 5, 17, 18]
+    float16         127.0       71.8      198.2 [327, 172, 426, 308, 350]
+    float32           3.8       20.6      295.2 [327, 172, 680, 517, 321]
+    float64           6.9       22.0      494.0 [327, 172, 308, 181, 132]
 
-    Overlap float16 ∩ float32 (top-10): 10/10
-    Overlap float16 ∩ float64 (top-10): 10/10
-    Overlap float32 ∩ float64 (top-10): 10/10
+    Overlap float16 ∩ float32 (top-10): 3/10
+    Overlap float16 ∩ float64 (top-10): 4/10
+    Overlap float32 ∩ float64 (top-10): 3/10
 
 
 
@@ -1365,38 +1369,38 @@ Annoy supports several metrics, each suited to different data:
     ============================================================
     Metric: angular
     ============================================================
-      1. [ 25] d=0.0000  Hamlet       To be, or not to be- that is the question: Wh...
-      2. [  7] d=1.1726  Horatio      Friends to this ground....
-      3. [  5] d=1.2272  Bernardo     Well, good night. If you do meet Horatio and ...
-      4. [ 17] d=1.2286  Hamlet       Ay, madam, it is common. O that this too too ...
-      5. [ 18] d=1.2579  Laertes      My necessaries are embark'd. Farewell. And, s...
+      1. [327] d=0.0000  Hamlet       To be, or not to be, that is the question: Wh...
+      2. [172] d=1.0381  Polonius     Marry, sir, here's my drift, And I believe it...
+      3. [517] d=1.0737  Rosencrantz  Take you me for a sponge, my lord?...
+      4. [321] d=1.0781  King         Sweet Gertrude, leave us too, For we have clo...
+      5. [350] d=1.1102  Hamlet       Speak the speech, I pray you, as I pronounced...
 
     ============================================================
     Metric: euclidean
     ============================================================
-      1. [ 25] d=0.0000  Hamlet       To be, or not to be- that is the question: Wh...
-      2. [  7] d=1.1726  Horatio      Friends to this ground....
-      3. [  5] d=1.2272  Bernardo     Well, good night. If you do meet Horatio and ...
-      4. [ 17] d=1.2286  Hamlet       Ay, madam, it is common. O that this too too ...
-      5. [ 18] d=1.2579  Laertes      My necessaries are embark'd. Farewell. And, s...
+      1. [327] d=0.0000  Hamlet       To be, or not to be, that is the question: Wh...
+      2. [321] d=1.0781  King         Sweet Gertrude, leave us too, For we have clo...
+      3. [350] d=1.1102  Hamlet       Speak the speech, I pray you, as I pronounced...
+      4. [181] d=1.1195  King         Welcome, dear Rosencrantz and Guildenstern. M...
+      5. [163] d=1.1416  Hamlet       And therefore as a stranger give it welcome. ...
 
     ============================================================
     Metric: manhattan
     ============================================================
-      1. [ 25] d=0.0000  Hamlet       To be, or not to be- that is the question: Wh...
-      2. [  5] d=7.5136  Bernardo     Well, good night. If you do meet Horatio and ...
-      3. [  7] d=7.6720  Horatio      Friends to this ground....
-      4. [ 29] d=7.8554  Hamlet       Alas, poor Yorick! I knew him, Horatio. A fel...
-      5. [ 31] d=7.8941  Horatio      That is most certain....
+      1. [327] d=0.0000  Hamlet       To be, or not to be, that is the question: Wh...
+      2. [426] d=6.5561  Hamlet       Make you a wholesome answer. My wit's disease...
+      3. [172] d=6.6172  Polonius     Marry, sir, here's my drift, And I believe it...
+      4. [350] d=7.2020  Hamlet       Speak the speech, I pray you, as I pronounced...
+      5. [308] d=7.2097  Hamlet       Ay, so, God b' wi' ye. Now I am alone. O what...
 
     ============================================================
     Metric: dot
     ============================================================
-      1. [ 25] d=1.0000  Hamlet       To be, or not to be- that is the question: Wh...
-      2. [  7] d=0.3125  Horatio      Friends to this ground....
-      3. [  5] d=0.2470  Bernardo     Well, good night. If you do meet Horatio and ...
-      4. [ 17] d=0.2452  Hamlet       Ay, madam, it is common. O that this too too ...
-      5. [ 18] d=0.2088  Laertes      My necessaries are embark'd. Farewell. And, s...
+      1. [327] d=1.0000  Hamlet       To be, or not to be, that is the question: Wh...
+      2. [172] d=0.4612  Polonius     Marry, sir, here's my drift, And I believe it...
+      3. [680] d=0.4404  Hamlet       I lov'd Ophelia; forty thousand brothers Coul...
+      4. [321] d=0.4189  King         Sweet Gertrude, leave us too, For we have clo...
+      5. [426] d=0.4078  Hamlet       Make you a wholesome answer. My wit's disease...
 
 
 
@@ -1461,9 +1465,9 @@ The `index_dtype` parameter controls the width of item IDs:
 
  .. code-block:: none
 
-    int8 + float16 index: 33 items
-    Neighbors of [25]: [1, 0]
-      [  1] Bernardo     'Tis now struck twelve. Get thee to bed, Francisco....
+    int8 + float16 index: 100 items
+    Neighbors of [99]: [1, 0]
+      [  1] Barnardo     'Tis now struck twelve. Get thee to bed, Francisco....
       [  0] Francisco    Nay, answer me. Stand and unfold yourself. You come most car...
 
 
@@ -1554,15 +1558,15 @@ This is useful for locality-sensitive hashing (LSH) or binary feature vectors.
 
  .. code-block:: none
 
-    Hamming index built: 33 items
+    Hamming index built: 792 items
 
     Rank  ID     Hamming Character      Passage excerpt
     --------------------------------------------------------------------------------
-    1     25           0 Hamlet         To be, or not to be- that is the question: Wheth...
-    2     18          23 Laertes        My necessaries are embark'd. Farewell. And, sist...
-    3     7           25 Horatio        Friends to this ground....
-    4     15          26 Hamlet         Not so, my lord. I am too much i' the sun....
-    5     4           29 Francisco      Not a mouse stirring....
+    1     327          0 Hamlet         To be, or not to be, that is the question: Wheth...
+    2     426         19 Hamlet         Make you a wholesome answer. My wit's diseased. ...
+    3     241         20 Hamlet         O God, I could be bounded in a nutshell, and cou...
+    4     639         20 Hamlet         There's another. Why may not that be the skull o...
+    5     518         22 Hamlet         Ay, sir; that soaks up the King's countenance, h...
 
 
 
@@ -1620,16 +1624,16 @@ Annoy indexes can be saved to disk and memory-mapped for:
 
  .. code-block:: none
 
-    float16    saved:      7.2 KB  (/tmp/tmpziep2kpr/hamlet_float16.ann)
-    float32    saved:     13.9 KB  (/tmp/tmpziep2kpr/hamlet_float32.ann)
-    float64    saved:     27.3 KB  (/tmp/tmpziep2kpr/hamlet_float64.ann)
+    float16    saved:    198.2 KB  (/tmp/tmpx8c9th7u/hamlet_float16.ann)
+    float32    saved:    295.2 KB  (/tmp/tmpx8c9th7u/hamlet_float32.ann)
+    float64    saved:    494.0 KB  (/tmp/tmpx8c9th7u/hamlet_float64.ann)
 
-    Loaded float16 index from disk, queried [25]:
-      [ 25] Hamlet       To be, or not to be- that is the question: Whether 'tis...
-      [  7] Horatio      Friends to this ground....
-      [  5] Bernardo     Well, good night. If you do meet Horatio and Marcellus,...
-      [ 17] Hamlet       Ay, madam, it is common. O that this too too solid fles...
-      [ 18] Laertes      My necessaries are embark'd. Farewell. And, sister, as ...
+    Loaded float16 index from disk, queried [327]:
+      [327] Hamlet       To be, or not to be, that is the question: Whether 'tis...
+      [172] Polonius     Marry, sir, here's my drift, And I believe it is a fetc...
+      [252] Rosencrantz  [_To Guildenstern._] What say you?...
+      [455] Polonius     My lord, he's going to his mother's closet. Behind the ...
+      [413] King         Give me some light. Away. All. Lights, lights, lights. ...
 
 
 
@@ -1692,11 +1696,11 @@ float128 trades size for accuracy.
  .. code-block:: none
 
     float128 euclidean index — results:
-      1. [ 25] d=0.0000000000  Hamlet       To be, or not to be- that is the questio...
-      2. [  7] d=1.1726121700  Horatio      Friends to this ground....
-      3. [  5] d=1.2271863883  Bernardo     Well, good night. If you do meet Horatio...
-      4. [ 17] d=1.2286322763  Hamlet       Ay, madam, it is common. O that this too...
-      5. [ 18] d=1.2579339909  Laertes      My necessaries are embark'd. Farewell. A...
+      1. [327] d=0.0000000000  Hamlet       To be, or not to be, that is the questio...
+      2. [172] d=1.0381001022  Polonius     Marry, sir, here's my drift, And I belie...
+      3. [680] d=1.0579268598  Hamlet       I lov'd Ophelia; forty thousand brothers...
+      4. [517] d=1.0737152704  Rosencrantz  Take you me for a sponge, my lord?...
+      5. [321] d=1.0780543368  King         Sweet Gertrude, leave us too, For we hav...
 
 
 
@@ -1780,19 +1784,38 @@ by averaging their passage embeddings and querying.
 
  .. code-block:: none
 
-    Characters with 2+ passages: 6
-      Hamlet          (11 passages)
+    Characters with 2+ passages: 25
+      Hamlet          (247 passages)
+      King            (83 passages)
+      Horatio         (76 passages)
+      Polonius        (61 passages)
+      Queen           (56 passages)
+      Ophelia         (43 passages)
+      Laertes         (41 passages)
+      Rosencrantz     (40 passages)
+      Marcellus       (23 passages)
+      Guildenstern    (20 passages)
+      First Clown     (18 passages)
+      Osric           (18 passages)
+      Barnardo        (11 passages)
+      Ghost           (6 passages)
+      First Player    (6 passages)
+      Second Clown    (6 passages)
       Francisco       (5 passages)
-      Bernardo        (4 passages)
-      Horatio         (3 passages)
-      King            (3 passages)
-      Marcellus       (2 passages)
+      Reynaldo        (5 passages)
+      Player Queen    (5 passages)
+      Player King     (4 passages)
+      Fortinbras      (4 passages)
+      Gentleman       (2 passages)
+      Messenger       (2 passages)
+      Priest          (2 passages)
+      Lord            (2 passages)
 
     Characters most similar to HAMLET in speech:
     Rank  Character         Distance   Passages
     ---------------------------------------------
-    1     Hamlet              0.0000         11 ←
-    2     Francisco           1.2656          5
+    1     Hamlet              0.0000        247 ←
+    2     King                0.7129         83
 
 
 
@@ -1878,7 +1901,7 @@ with Index(f=128, metric='angular') as idx:
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 10.148 seconds)
+   **Total running time of the script:** (0 minutes 3.384 seconds)
 
 
 .. _sphx_glr_download_auto_examples_annoy_plot_annoy_cython_hamlet_example.py:

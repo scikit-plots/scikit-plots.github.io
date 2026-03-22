@@ -520,7 +520,7 @@ Parameters
 profile : str, default="local"
     Profile name inside the project config.
 open_ui_seconds : float, default=0.0
-    If &gt; 0, sleeps for this many seconds while the session is open, printing ``ui_url``.
+    If &gt; 0, sleeps for this many seconds while the session is open, logging ``ui_url``.
 experiment_name : str or None, default=None
     If provided, patches the exported config to use this experiment name.
 fmt : {"toml", "yaml"}, default="toml"
@@ -530,7 +530,8 @@ overwrite : bool, default=False
 
 Returns
 -------
-None
+WorkflowPaths
+    Paths used during the workflow (project root, config dir, toml/yaml paths).
 
 See Also
 --------
@@ -574,11 +575,10 @@ Walk upward from <code class="docutils literal notranslate"><span class="pre">st
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2026/03/20 19:56:45 INFO mlflow.tracking.fluent: Experiment with name 'my-first-project' does not exist. Creating a new experiment.
-🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/259869cb9515465aa8becf97add3ec57
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2026/03/22 19:23:19 INFO mlflow.tracking.fluent: Experiment with name 'my-first-project' does not exist. Creating a new experiment.
+🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/3eddaf70bc1f49618635b477b52d018e
 🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
-🌐 Open MLflow UI: http://127.0.0.1:8891
-🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/dccb28f7010a493eac81c5b83c7bee15
+🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/3b93b47298594c679474294876e60c81
 🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
 
 WorkflowPaths(_project_root=PosixPath('/home/circleci/repo/galleries/examples/mlflow'), _config_dir=PosixPath('/home/circleci/repo/galleries/examples/mlflow/configs'), _toml_path=PosixPath('/home/circleci/repo/galleries/examples/mlflow/configs/mlflow.toml'), _yaml_path=PosixPath('/home/circleci/repo/galleries/examples/mlflow/configs/mlflow.yaml'))
@@ -614,15 +614,15 @@ WorkflowPaths(_project_root=PosixPath('/home/circleci/repo/galleries/examples/ml
         <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">"phase"</span><span class="p">,</span> <span class="s2">"predict"</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/5f977aefd9e54fff91e84ab05fc96679
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/7b5ef77ce31049c392ff83fdf42d565d
 🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
 Open MLflow UI: http://127.0.0.1:8891
-🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/ad39f11938e94b1a86bbc2ae01940dcc
+🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/9accc1cbf25c436dbbd56020b15f32cc
 🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-model-building.html"><span class="doc">model-workflow: model building</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-mlflow.html"><span class="doc">plot-type: mlflow</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger reference internal" href="../../_tags/domain-mlflow.html"><span class="doc">domain: mlflow</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 2.784 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 7.055 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Compile and run the C++ Annoy precision example."><img alt="" src="../../_images/sphx_glr_s_compile_cpp_thumb.png"/>
@@ -700,7 +700,7 @@ Open MLflow UI: http://127.0.0.1:8891
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260320.8adfc92 2026-03-20T19:49Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260322.11d77c2 2026-03-22T19:16Z.
       <br/>
 </p>
 </div>
