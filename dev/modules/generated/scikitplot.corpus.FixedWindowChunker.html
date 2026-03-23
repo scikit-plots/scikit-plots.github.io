@@ -82,8 +82,8 @@
     <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="ParagraphChunker" href="scikitplot.corpus.ParagraphChunker.html" />
-    <link rel="prev" title="YouTubeReader" href="scikitplot.corpus.YouTubeReader.html" />
+    <link rel="next" title="FixedWindowChunkerConfig" href="scikitplot.corpus.FixedWindowChunkerConfig.html" />
+    <link rel="prev" title="bridge_chunker" href="scikitplot.corpus.bridge_chunker.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.5" />
@@ -640,7 +640,61 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ChunkerBase.html">ChunkerBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DefaultFilter.html">DefaultFilter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DocumentReader.html">DocumentReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DummyReader.html">DummyReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FilterBase.html">FilterBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineGuard.html">PipelineGuard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._MultiSourceReader.html">_MultiSourceReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._is_url.html">_is_url</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ChunkerBridge.html">ChunkerBridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FixedWindowChunkerBridge.html">FixedWindowChunkerBridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ParagraphChunkerBridge.html">ParagraphChunkerBridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SentenceChunkerBridge.html">SentenceChunkerBridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.WordChunkerBridge.html">WordChunkerBridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.bridge_chunker.html">bridge_chunker</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">FixedWindowChunker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FixedWindowChunkerConfig.html">FixedWindowChunkerConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.WindowUnit.html">WindowUnit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ParagraphChunker.html">ParagraphChunker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ParagraphChunkerConfig.html">ParagraphChunkerConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SentenceBackend.html">SentenceBackend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SentenceChunker.html">SentenceChunker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SentenceChunkerConfig.html">SentenceChunkerConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LemmatizationBackend.html">LemmatizationBackend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.StemmingBackend.html">StemmingBackend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.StopwordSource.html">StopwordSource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TokenizerBackend.html">TokenizerBackend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.WordChunker.html">WordChunker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.WordChunkerConfig.html">WordChunkerConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.BuildResult.html">BuildResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.BuilderConfig.html">BuilderConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CorpusBuilder.html">CorpusBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DEFAULT_CACHE_DIR.html">DEFAULT_CACHE_DIR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DEFAULT_MODEL.html">DEFAULT_MODEL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.EmbeddingEngine.html">EmbeddingEngine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DEFAULT_AUDIO_MODEL.html">DEFAULT_AUDIO_MODEL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DEFAULT_IMAGE_MODEL.html">DEFAULT_IMAGE_MODEL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DEFAULT_TEXT_MODEL.html">DEFAULT_TEXT_MODEL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LLMTrainingExporter.html">LLMTrainingExporter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.MultimodalEmbeddingEngine.html">MultimodalEmbeddingEngine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.BUILTIN_STOPWORDS.html">BUILTIN_STOPWORDS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.EnricherConfig.html">EnricherConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.NLPEnricher.html">NLPEnricher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.export_documents.html">export_documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.load_documents.html">load_documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DedupLinesNormalizer.html">DedupLinesNormalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.HTMLStripNormalizer.html">HTMLStripNormalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LanguageDetectionNormalizer.html">LanguageDetectionNormalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LowercaseNormalizer.html">LowercaseNormalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.NormalizationPipeline.html">NormalizationPipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.NormalizerBase.html">NormalizerBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.UnicodeNormalizer.html">UnicodeNormalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.WhitespaceNormalizer.html">WhitespaceNormalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.NormalizerConfig.html">NormalizerConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TextNormalizer.html">TextNormalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.normalize_text.html">normalize_text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CorpusPipeline.html">CorpusPipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineResult.html">PipelineResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.create_corpus.html">create_corpus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ALTOReader.html">ALTOReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.AudioReader.html">AudioReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ImageReader.html">ImageReader</a></li>
@@ -653,32 +707,13 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.WebReader.html">WebReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.XMLReader.html">XMLReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.YouTubeReader.html">YouTubeReader</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">FixedWindowChunker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ParagraphChunker.html">ParagraphChunker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SentenceChunker.html">SentenceChunker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.WordChunker.html">WordChunker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DedupLinesNormalizer.html">DedupLinesNormalizer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.HTMLStripNormalizer.html">HTMLStripNormalizer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LanguageDetectionNormalizer.html">LanguageDetectionNormalizer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LowercaseNormalizer.html">LowercaseNormalizer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.NormalizationPipeline.html">NormalizationPipeline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.NormalizerBase.html">NormalizerBase</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.NormalizerConfig.html">NormalizerConfig</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TextNormalizer.html">TextNormalizer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.UnicodeNormalizer.html">UnicodeNormalizer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.WhitespaceNormalizer.html">WhitespaceNormalizer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.normalize_text.html">normalize_text</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.EnricherConfig.html">EnricherConfig</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.NLPEnricher.html">NLPEnricher</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DEFAULT_MODEL.html">DEFAULT_MODEL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.EmbedFn.html">EmbedFn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.EmbeddingEngine.html">EmbeddingEngine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ZipReader.html">ZipReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SearchConfig.html">SearchConfig</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SearchResult.html">SearchResult</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SimilarityIndex.html">SimilarityIndex</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CorpusPipeline.html">CorpusPipeline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineResult.html">PipelineResult</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.create_corpus.html">create_corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CorpusSource.html">CorpusSource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SourceEntry.html">SourceEntry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SourceKind.html">SourceKind</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.cython.html">scikitplot.cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -1020,7 +1055,7 @@
 <h1>FixedWindowChunker<a class="headerlink" href="#fixedwindowchunker" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.FixedWindowChunker">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">FixedWindowChunker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/11d77c2/scikitplot/corpus/_chunkers/_fixed_window.py#L220"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FixedWindowChunker" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">FixedWindowChunker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/badf5f9/scikitplot/corpus/_chunkers/_fixed_window.py#L226"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FixedWindowChunker" title="Link to this definition">#</a></dt>
 <dd><p>Produce fixed-size sliding-window chunks over a document.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1030,7 +1065,7 @@
 </dl>
 </dd>
 <dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>config</strong> (<em>FixedWindowChunkerConfig</em><em> | </em><em>None</em>)</p>
+<dd class="field-even"><p><strong>config</strong> (<a class="reference internal" href="scikitplot.corpus.FixedWindowChunkerConfig.html#scikitplot.corpus.FixedWindowChunkerConfig" title="scikitplot.corpus.FixedWindowChunkerConfig"><em>FixedWindowChunkerConfig</em></a><em> | </em><em>None</em>)</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -1045,7 +1080,7 @@
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FixedWindowChunker.chunk">
-<span class="sig-name descname"><span class="pre">chunk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/11d77c2/scikitplot/corpus/_chunkers/_fixed_window.py#L281"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FixedWindowChunker.chunk" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">chunk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/badf5f9/scikitplot/corpus/_chunkers/_fixed_window.py#L287"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FixedWindowChunker.chunk" title="Link to this definition">#</a></dt>
 <dd><p>Split <em>text</em> into fixed-window chunks.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1087,7 +1122,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FixedWindowChunker.chunk_batch">
-<span class="sig-name descname"><span class="pre">chunk_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/11d77c2/scikitplot/corpus/_chunkers/_fixed_window.py#L360"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FixedWindowChunker.chunk_batch" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">chunk_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/badf5f9/scikitplot/corpus/_chunkers/_fixed_window.py#L366"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FixedWindowChunker.chunk_batch" title="Link to this definition">#</a></dt>
 <dd><p>Chunk a list of documents.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1142,20 +1177,20 @@
     <div class="footer-article-item">
 <div class="prev-next-area">
     <a class="left-prev"
-       href="scikitplot.corpus.YouTubeReader.html"
+       href="scikitplot.corpus.bridge_chunker.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">YouTubeReader</p>
+        <p class="prev-next-title">bridge_chunker</p>
       </div>
     </a>
     <a class="right-next"
-       href="scikitplot.corpus.ParagraphChunker.html"
+       href="scikitplot.corpus.FixedWindowChunkerConfig.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">ParagraphChunker</p>
+        <p class="prev-next-title">FixedWindowChunkerConfig</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1228,7 +1263,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260322.11d77c2 2026-03-22T19:16Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260323.badf5f9 2026-03-23T16:43Z.
       <br/>
     
   </p>

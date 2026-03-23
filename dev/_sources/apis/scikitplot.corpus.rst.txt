@@ -22,7 +22,138 @@ Base
   ChunkerBase
   DefaultFilter
   DocumentReader
+  DummyReader
   FilterBase
+  PipelineGuard
+  _MultiSourceReader
+  _is_url
+
+.. _corpus_ref-chunkers:
+
+Chunkers
+--------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  ChunkerBridge
+  FixedWindowChunkerBridge
+  ParagraphChunkerBridge
+  SentenceChunkerBridge
+  WordChunkerBridge
+  bridge_chunker
+  FixedWindowChunker
+  FixedWindowChunkerConfig
+  WindowUnit
+  ParagraphChunker
+  ParagraphChunkerConfig
+  SentenceBackend
+  SentenceChunker
+  SentenceChunkerConfig
+  LemmatizationBackend
+  StemmingBackend
+  StopwordSource
+  TokenizerBackend
+  WordChunker
+  WordChunkerConfig
+
+.. _corpus_ref-corpus-builder:
+
+Corpus Builder
+--------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  BuildResult
+  BuilderConfig
+  CorpusBuilder
+
+.. _corpus_ref-embeddings:
+
+Embeddings
+----------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  DEFAULT_CACHE_DIR
+  DEFAULT_MODEL
+  EmbeddingEngine
+  DEFAULT_AUDIO_MODEL
+  DEFAULT_IMAGE_MODEL
+  DEFAULT_TEXT_MODEL
+  LLMTrainingExporter
+  MultimodalEmbeddingEngine
+
+.. _corpus_ref-enricher:
+
+Enricher
+--------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  BUILTIN_STOPWORDS
+  EnricherConfig
+  NLPEnricher
+
+.. _corpus_ref-export:
+
+Export
+------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  export_documents
+  load_documents
+
+.. _corpus_ref-normalizers:
+
+Normalizers
+-----------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  DedupLinesNormalizer
+  HTMLStripNormalizer
+  LanguageDetectionNormalizer
+  LowercaseNormalizer
+  NormalizationPipeline
+  NormalizerBase
+  UnicodeNormalizer
+  WhitespaceNormalizer
+  NormalizerConfig
+  TextNormalizer
+  normalize_text
+
+.. _corpus_ref-pipeline:
+
+Pipeline
+--------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  CorpusPipeline
+  PipelineResult
+  create_corpus
 
 .. _corpus_ref-readers:
 
@@ -46,70 +177,7 @@ Readers
   WebReader
   XMLReader
   YouTubeReader
-
-.. _corpus_ref-chunkers:
-
-Chunkers
---------
-
-.. autosummary::
-  :nosignatures:
-  :toctree: ../modules/generated/
-  :template: base.rst
-  
-  FixedWindowChunker
-  ParagraphChunker
-  SentenceChunker
-  WordChunker
-
-.. _corpus_ref-normalizers:
-
-Normalizers
------------
-
-.. autosummary::
-  :nosignatures:
-  :toctree: ../modules/generated/
-  :template: base.rst
-  
-  DedupLinesNormalizer
-  HTMLStripNormalizer
-  LanguageDetectionNormalizer
-  LowercaseNormalizer
-  NormalizationPipeline
-  NormalizerBase
-  NormalizerConfig
-  TextNormalizer
-  UnicodeNormalizer
-  WhitespaceNormalizer
-  normalize_text
-
-.. _corpus_ref-enricher:
-
-Enricher
---------
-
-.. autosummary::
-  :nosignatures:
-  :toctree: ../modules/generated/
-  :template: base.rst
-  
-  EnricherConfig
-  NLPEnricher
-
-.. _corpus_ref-embeddings:
-
-Embeddings
-----------
-
-.. autosummary::
-  :nosignatures:
-  :toctree: ../modules/generated/
-  :template: base.rst
-  
-  DEFAULT_MODEL
-  EmbedFn
-  EmbeddingEngine
+  ZipReader
 
 .. _corpus_ref-similarity:
 
@@ -125,16 +193,16 @@ Similarity
   SearchResult
   SimilarityIndex
 
-.. _corpus_ref-pipeline:
+.. _corpus_ref-source:
 
-Pipeline
---------
+Source
+------
 
 .. autosummary::
   :nosignatures:
   :toctree: ../modules/generated/
   :template: base.rst
   
-  CorpusPipeline
-  PipelineResult
-  create_corpus
+  CorpusSource
+  SourceEntry
+  SourceKind

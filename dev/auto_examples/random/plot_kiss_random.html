@@ -374,7 +374,10 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../corpus/index.html">Corpus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_script.html">corpus with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_a_tale_of_two_cities_mp3_script.html">corpus A Tale of Two Cities .mp3 with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_who_per_file_script.html">corpus WHO European Region local or url per file with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_who_youtube_shorts_script.html">corpus WHO European Region YouTube shorts with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_who_zip_script.html">corpus WHO European Region local .zip with examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../cython/index.html">Cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -634,37 +637,37 @@ ENHANCED KISS RANDOM - NEW FEATURES DEMONSTRATION
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Numpy
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.0036784860021725763,
- 'time_mean': 0.0044774722002330234,
- 'time_max': 0.005763872999523301,
- 'time_std': 0.0008545456458119449,
+ 'time_min': 0.0037399070001811197,
+ 'time_mean': 0.00485080040007233,
+ 'time_max': 0.005589248999967822,
+ 'time_std': 0.000996055437081286,
  'output_mean': 0.5000264761740889,
  'output_std': 0.2886354529025341}
 Kiss Customized 64
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.012421356001141248,
- 'time_mean': 0.013090957399981562,
- 'time_max': 0.013958829000330297,
- 'time_std': 0.0007596895880189658,
+ 'time_min': 0.014204750999851967,
+ 'time_mean': 0.01501871119999123,
+ 'time_max': 0.01758857499999067,
+ 'time_std': 0.001451740078033369,
  'output_mean': 0.4994983951235817,
  'output_std': 0.28868033687878636}
 Numpy
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.004904274999717018,
- 'time_mean': 0.005677687800198328,
- 'time_max': 0.007143578000977868,
- 'time_std': 0.0010534607025477923,
+ 'time_min': 0.005123021999679622,
+ 'time_mean': 0.007203494000077626,
+ 'time_max': 0.009098589000132051,
+ 'time_std': 0.0017910647035489936,
  'output_mean': 0.5000264761740889,
  'output_std': 0.2886354529025341}
 Kiss Customized 64
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.014601956998376409,
- 'time_mean': 0.0160069935991487,
- 'time_max': 0.01865694799926132,
- 'time_std': 0.0015980309312449645,
+ 'time_min': 0.01688899600003424,
+ 'time_mean': 0.020461386400074843,
+ 'time_max': 0.023797629999990022,
+ 'time_std': 0.0026466802809904885,
  'output_mean': 0.4994983951235817,
  'output_std': 0.28868033687878636}
 </pre></div>
@@ -877,13 +880,13 @@ Generator from seed: KissGenerator
 Generator from BitGenerator: KissGenerator
 
 Generator methods:
-  random(5):         [0.13371611 0.18449384 0.98881012 0.78353319 0.3186975 ]
-  integers(0, 100):  [ 9 79 53 79 79]
-  normal(0, 1):      [-0.30601911 -0.53215298 -1.04136032  1.72053336 -2.4639076 ]
-  uniform(10, 20):   [12.08322039 18.73567899 14.58118435 16.57300222 11.13354332]
-  choice(['A','B','C']): ['C' 'C' 'A' 'C' 'A' 'A' 'B' 'C' 'C' 'C']
-  Weighted choice A: 49% (✅ expected ~50%)
-  shuffle([0..9]):   [8 0 6 5 9 1 2 3 4 7]
+  random(5):         [0.35947227 0.32149228 0.207461   0.25432468 0.83978041]
+  integers(0, 100):  [72 31 46 94 95]
+  normal(0, 1):      [-0.87568931 -0.0416152  -1.47920652 -1.8157288   0.32521993]
+  uniform(10, 20):   [11.55614214 11.89690502 11.64042478 11.65038681 18.50872854]
+  choice(['A','B','C']): ['B' 'C' 'C' 'B' 'A' 'C' 'A' 'A' 'A' 'C']
+  Weighted choice A: 52% (✅ expected ~50%)
+  shuffle([0..9]):   [1 0 6 2 9 5 4 7 3 8]
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
@@ -1142,8 +1145,8 @@ Chi-square uniformity test:
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>======================================================================
 10. ADVANCED USAGE - CUSTOM DISTRIBUTIONS
 ======================================================================
-Exponential(scale=2): [3.17865313 1.05788713 0.43180557 0.96599958 2.04437699]
-Beta(2, 5):           [0.14795218 0.30555454 0.54238445 0.04627423 0.19508053]
+Exponential(scale=2): [3.08718248 5.15465677 1.40301428 2.88417048 0.05172815]
+Beta(2, 5):           [0.20790876 0.51337865 0.51963215 0.38441028 0.42077351]
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
@@ -1380,7 +1383,7 @@ RECOMMENDED USAGE:
 ======================================================================
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.178 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.418 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This gallery example demonstrates the :py~scikitplot.memmap.MemoryMap module at three levels of complexity."><img alt="" src="../../_images/sphx_glr_plot_mman_thumb.png"/>
@@ -1445,7 +1448,7 @@ RECOMMENDED USAGE:
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260322.11d77c2 2026-03-22T19:16Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260323.badf5f9 2026-03-23T16:43Z.
       <br/>
 </p>
 </div>
