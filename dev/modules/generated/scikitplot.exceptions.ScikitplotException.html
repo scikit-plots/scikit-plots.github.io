@@ -668,6 +668,16 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.BuildResult.html">BuildResult</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.BuilderConfig.html">BuilderConfig</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CorpusBuilder.html">CorpusBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.BuilderFactories.html">BuilderFactories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomChunker.html">CustomChunker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomEnricherConfig.html">CustomEnricherConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomFilter.html">CustomFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomNLPEnricher.html">CustomNLPEnricher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomNormalizer.html">CustomNormalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomSimilarityIndex.html">CustomSimilarityIndex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FactoryCorpusBuilder.html">FactoryCorpusBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.HookableCorpusPipeline.html">HookableCorpusPipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineHooks.html">PipelineHooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DEFAULT_CACHE_DIR.html">DEFAULT_CACHE_DIR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DEFAULT_MODEL.html">DEFAULT_MODEL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.EmbeddingEngine.html">EmbeddingEngine</a></li>
@@ -697,6 +707,7 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.create_corpus.html">create_corpus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ALTOReader.html">ALTOReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.AudioReader.html">AudioReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomReader.html">CustomReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ImageReader.html">ImageReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.MarkdownReader.html">MarkdownReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PDFReader.html">PDFReader</a></li>
@@ -1055,11 +1066,47 @@
 <h1>ScikitplotException<a class="headerlink" href="#scikitplotexception" title="Link to this heading">#</a></h1>
 <dl class="py exception">
 <dt class="sig sig-object py" id="scikitplot.exceptions.ScikitplotException">
-<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.exceptions.</span></span><span class="sig-name descname"><span class="pre">ScikitplotException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/badf5f9/scikitplot/exceptions.py#L413"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.exceptions.ScikitplotException" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.exceptions.</span></span><span class="sig-name descname"><span class="pre">ScikitplotException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/be1c1c4/scikitplot/exceptions.py#L363"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.exceptions.ScikitplotException" title="Link to this definition">#</a></dt>
 <dd><p>Generic exception thrown to surface failure information about external-facing operations.</p>
-<p>The error message associated with this exception may be exposed to clients in HTTP responses
-for debugging purposes. If the error text is sensitive, raise a generic <code class="docutils literal notranslate"><span class="pre">Exception</span></code> object
-instead.</p>
+<p>The error message associated with this exception may be exposed to clients
+in HTTP responses for debugging purposes.  If the error text is sensitive,
+raise a generic <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.14)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">Exception</span></code></a> object instead.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>message</strong><span class="classifier">str or Exception</span></dt><dd><p>The message or exception describing the error that occurred.  Converted
+to <code class="docutils literal notranslate"><span class="pre">str</span></code> unconditionally.  Included in the serialised JSON payload.</p>
+</dd>
+<dt><strong>error_code</strong><span class="classifier">int or str, optional</span></dt><dd><p>An error code for the error that occurred.  May be an integer
+(legacy convention) or a string sentinel such as <code class="docutils literal notranslate"><span class="pre">&quot;NOT_FOUND&quot;</span></code>.
+Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.  Included in the serialised JSON payload.</p>
+</dd>
+<dt><strong>**kwargs</strong></dt><dd><p>Additional key-value pairs included in the serialised JSON payload.
+Values must be JSON-serialisable; non-serialisable values are
+coerced to their <code class="docutils literal notranslate"><span class="pre">str</span></code> representation during serialisation.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>error_code</strong><span class="classifier">int or str</span></dt><dd><p>The error code as supplied.</p>
+</dd>
+<dt><strong>message</strong><span class="classifier">str</span></dt><dd><p>The string form of the supplied message.</p>
+</dd>
+<dt><strong>json_kwargs</strong><span class="classifier">dict</span></dt><dd><p>The extra keyword arguments to include in the JSON payload.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p><strong>User note</strong> – catch this class (or its subclasses) when you need to
+distinguish scikit-plots operational errors from other <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.14)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">Exception</span></code></a>
+types.</p>
+<p><strong>Developer note</strong> – <code class="docutils literal notranslate"><span class="pre">error_code</span></code> is stored verbatim; do not apply
+integer-only logic elsewhere in the codebase without first checking its
+type.  The <code class="docutils literal notranslate"><span class="pre">try/except</span></code> that previously guarded the attribute assignment
+was dead code (attribute assignment never raises <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> or
+<a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.14)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a>) and has been removed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Annotation<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Unrecognized objtype: <code class="docutils literal notranslate"><span class="pre">exception</span></code></p>
@@ -1162,7 +1209,7 @@ instead.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260323.badf5f9 2026-03-23T16:43Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260403.be1c1c4 2026-04-02T21:34Z.
       <br/>
     
   </p>

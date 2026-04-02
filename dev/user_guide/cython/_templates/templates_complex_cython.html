@@ -730,12 +730,12 @@
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">sum_ints</span><span class="p">(</span><span class="nb">list</span> <span class="n">xs</span><span class="p">):</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">vector</span>[<span class="kt">int</span>] <span class="nf">v</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span> <span class="nf">x</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">vector</span>[<span class="kt">int</span>] <span class="nv">v</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span> <span class="nv">x</span>
     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">:</span>
         <span class="n">v</span><span class="o">.</span><span class="n">push_back</span><span class="p">(&lt;</span><span class="kt">int</span><span class="p">&gt;</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">long</span> <span class="nf">s</span><span class="w"> </span><span class="o">=</span> <span class="mf">0</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">size_t</span> <span class="nf">i</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">long</span> <span class="nv">s</span><span class="w"> </span><span class="o">=</span> <span class="mf">0</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">size_t</span> <span class="nv">i</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">size</span><span class="p">()):</span>
         <span class="n">s</span> <span class="o">+=</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">s</span>
@@ -750,14 +750,14 @@
 <span class="sd">&quot;&quot;&quot;Complex Cython template: clip values in-place on a memoryview.&quot;&quot;&quot;</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">clip_inplace</span><span class="p">(</span><span class="n">double</span><span class="p">[:]</span> <span class="n">x</span><span class="p">,</span> <span class="n">double</span> <span class="n">lo</span><span class="p">,</span> <span class="n">double</span> <span class="n">hi</span><span class="p">):</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">i</span><span class="p">,</span> <span class="nf">n</span><span class="w"> </span><span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">clip_inplace</span><span class="p">(</span><span class="nb">double</span><span class="p">[:]</span> <span class="n">x</span><span class="p">,</span> <span class="nb">double</span> <span class="n">lo</span><span class="p">,</span> <span class="nb">double</span> <span class="n">hi</span><span class="p">):</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nv">i</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">lo</span><span class="p">:</span>
             <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">lo</span>
         <span class="k">elif</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">hi</span><span class="p">:</span>
             <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">hi</span>
-    <span class="k">return</span> <span class="bp">None</span>
+    <span class="k">return</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </section>
@@ -768,8 +768,8 @@
 <span class="sd">nogil numeric loop demo (no Python interaction in inner loop).</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="k">cpdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">sum_squares</span><span class="p">(</span><span class="nb">int</span> <span class="n">n</span><span class="p">):</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span> <span class="nf">i</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">acc</span><span class="w"> </span><span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span> <span class="nv">i</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nv">acc</span><span class="w"> </span><span class="o">=</span> <span class="mf">0.0</span>
     <span class="k">with</span> <span class="k">nogil</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
             <span class="n">acc</span> <span class="o">+=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span>
@@ -784,8 +784,8 @@
 <span class="sd">nogil numeric loop demo (no Python interaction in inner loop).</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="k">cpdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">sum_squares</span><span class="p">(</span><span class="nb">int</span> <span class="n">n</span><span class="p">):</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span> <span class="nf">i</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">acc</span><span class="w"> </span><span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span> <span class="nv">i</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nv">acc</span><span class="w"> </span><span class="o">=</span> <span class="mf">0.0</span>
     <span class="k">with</span> <span class="k">nogil</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
             <span class="n">acc</span> <span class="o">+=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span>
@@ -800,8 +800,8 @@
 <span class="sd">nogil numeric loop demo (no Python interaction in inner loop).</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="k">cpdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">sum_squares</span><span class="p">(</span><span class="nb">int</span> <span class="n">n</span><span class="p">):</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span> <span class="nf">i</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">acc</span><span class="w"> </span><span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span> <span class="nv">i</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nv">acc</span><span class="w"> </span><span class="o">=</span> <span class="mf">0.0</span>
     <span class="k">with</span> <span class="k">nogil</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
             <span class="n">acc</span> <span class="o">+=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span>
@@ -928,7 +928,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260323.badf5f9 2026-03-23T16:43Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260403.be1c1c4 2026-04-02T21:34Z.
       <br/>
     
   </p>

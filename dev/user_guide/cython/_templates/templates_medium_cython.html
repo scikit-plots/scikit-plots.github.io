@@ -725,7 +725,7 @@
 <span class="k">ctypedef</span> <span class="k">fused</span> <span class="n">number_t</span><span class="p">:</span>
     <span class="nb">int</span>
     <span class="nb">long</span>
-    <span class="n">double</span>
+    <span class="nb">double</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">number_t</span> <span class="n">a</span><span class="p">,</span> <span class="n">number_t</span> <span class="n">b</span><span class="p">):</span>
@@ -745,15 +745,15 @@
 <span class="k">ctypedef</span> <span class="k">fused</span> <span class="n">num_t</span><span class="p">:</span>
     <span class="nb">int</span>
     <span class="nb">long</span>
-    <span class="n">double</span>
+    <span class="nb">double</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">dot</span><span class="p">(</span><span class="n">num_t</span><span class="p">[:]</span> <span class="n">a</span><span class="p">,</span> <span class="n">num_t</span><span class="p">[:]</span> <span class="n">b</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return dot product of two 1D vectors.&quot;&quot;&quot;</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">i</span><span class="p">,</span> <span class="nf">n</span><span class="w"> </span><span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nv">i</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
     <span class="k">if</span> <span class="n">b</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">n</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;shape mismatch&quot;</span><span class="p">)</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">s</span><span class="w"> </span><span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nv">s</span><span class="w"> </span><span class="o">=</span> <span class="mf">0.0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
         <span class="n">s</span> <span class="o">+=</span> <span class="p">(&lt;</span><span class="kt">double</span><span class="p">&gt;</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">*</span> <span class="p">(&lt;</span><span class="kt">double</span><span class="p">&gt;</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">s</span>
@@ -766,15 +766,15 @@
 <div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="c"># cython: language_level=3</span>
 <span class="sd">&quot;&quot;&quot;Medium Cython template: a small stateful `cdef class`.&quot;&quot;&quot;</span>
 
-<span class="k">cdef</span><span class="w"> </span><span class="k">class</span> <span class="nf">RunningMean</span><span class="p">:</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">_sum</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">long</span> <span class="nf">_n</span>
+<span class="k">cdef</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">RunningMean</span><span class="p">:</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nv">_sum</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">long</span> <span class="nv">_n</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">__cinit__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sum</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_n</span> <span class="o">=</span> <span class="mf">0</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">double</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">double</span> <span class="n">x</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sum</span> <span class="o">+=</span> <span class="n">x</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_n</span> <span class="o">+=</span> <span class="mf">1</span>
 
@@ -793,7 +793,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="k">ctypedef</span> <span class="k">fused</span> <span class="n">number_t</span><span class="p">:</span>
     <span class="nb">int</span>
-    <span class="n">double</span>
+    <span class="nb">double</span>
 
 <span class="k">cpdef</span><span class="w"> </span><span class="kt">number_t</span> <span class="nf">add</span><span class="p">(</span><span class="n">number_t</span> <span class="n">a</span><span class="p">,</span> <span class="n">number_t</span> <span class="n">b</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
@@ -808,7 +808,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="k">ctypedef</span> <span class="k">fused</span> <span class="n">number_t</span><span class="p">:</span>
     <span class="nb">int</span>
-    <span class="n">double</span>
+    <span class="nb">double</span>
 
 <span class="k">cpdef</span><span class="w"> </span><span class="kt">number_t</span> <span class="nf">add</span><span class="p">(</span><span class="n">number_t</span> <span class="n">a</span><span class="p">,</span> <span class="n">number_t</span> <span class="n">b</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
@@ -822,13 +822,13 @@
 <span class="sd">Compute min and max from a double[:] memoryview.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="k">cpdef</span><span class="w"> </span><span class="kt">tuple</span> <span class="nf">minmax</span><span class="p">(</span><span class="n">double</span><span class="p">[:]</span> <span class="n">x</span><span class="p">):</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">n</span><span class="w"> </span><span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
+<span class="k">cpdef</span><span class="w"> </span><span class="kt">tuple</span> <span class="nf">minmax</span><span class="p">(</span><span class="nb">double</span><span class="p">[:]</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nv">n</span><span class="w"> </span><span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mf">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;empty&quot;</span><span class="p">)</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">i</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">mn</span><span class="w"> </span><span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">mx</span><span class="w"> </span><span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nv">i</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nv">mn</span><span class="w"> </span><span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nv">mx</span><span class="w"> </span><span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">mn</span><span class="p">:</span>
             <span class="n">mn</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -845,12 +845,12 @@
 <span class="sd">Argmax on double[:] memoryview.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="k">cpdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">argmax</span><span class="p">(</span><span class="n">double</span><span class="p">[:]</span> <span class="n">x</span><span class="p">):</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">n</span><span class="w"> </span><span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
+<span class="k">cpdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">argmax</span><span class="p">(</span><span class="nb">double</span><span class="p">[:]</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nv">n</span><span class="w"> </span><span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mf">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;empty&quot;</span><span class="p">)</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">i</span><span class="p">,</span> <span class="nf">best</span><span class="w"> </span><span class="o">=</span> <span class="mf">0</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">bestv</span><span class="w"> </span><span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nv">i</span><span class="p">,</span> <span class="n">best</span> <span class="o">=</span> <span class="mf">0</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nv">bestv</span><span class="w"> </span><span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">bestv</span><span class="p">:</span>
             <span class="n">bestv</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -956,7 +956,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260323.badf5f9 2026-03-23T16:43Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260403.be1c1c4 2026-04-02T21:34Z.
       <br/>
     
   </p>

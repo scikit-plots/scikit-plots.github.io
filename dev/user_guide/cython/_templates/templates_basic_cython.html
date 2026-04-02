@@ -747,7 +747,7 @@
 <span class="sd">- Keep signatures explicit for stable docs and predictable behavior.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="k">cpdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">add</span><span class="p">(</span><span class="n">double</span> <span class="n">a</span><span class="p">,</span> <span class="n">double</span> <span class="n">b</span><span class="p">):</span>
+<span class="k">cpdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">add</span><span class="p">(</span><span class="nb">double</span> <span class="n">a</span><span class="p">,</span> <span class="nb">double</span> <span class="n">b</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a + b as a C double.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 </pre></div>
@@ -844,9 +844,9 @@
 <span class="k">cpdef</span><span class="w"> </span><span class="kt">bytes</span> <span class="nf">xor_bytes</span><span class="p">(</span><span class="nb">bytes</span> <span class="n">a</span><span class="p">,</span> <span class="nb">bytes</span> <span class="n">b</span><span class="p">):</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;length mismatch&quot;</span><span class="p">)</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">n</span><span class="w"> </span><span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">bytearray</span> <span class="nf">out</span><span class="w"> </span><span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">i</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nv">n</span><span class="w"> </span><span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">bytearray</span> <span class="nv">out</span><span class="w"> </span><span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nv">i</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
         <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">^</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="k">return</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
@@ -949,7 +949,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260323.badf5f9 2026-03-23T16:43Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260403.be1c1c4 2026-04-02T21:34Z.
       <br/>
     
   </p>

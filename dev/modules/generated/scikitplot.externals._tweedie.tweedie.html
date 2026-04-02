@@ -668,6 +668,16 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.BuildResult.html">BuildResult</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.BuilderConfig.html">BuilderConfig</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CorpusBuilder.html">CorpusBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.BuilderFactories.html">BuilderFactories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomChunker.html">CustomChunker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomEnricherConfig.html">CustomEnricherConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomFilter.html">CustomFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomNLPEnricher.html">CustomNLPEnricher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomNormalizer.html">CustomNormalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomSimilarityIndex.html">CustomSimilarityIndex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FactoryCorpusBuilder.html">FactoryCorpusBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.HookableCorpusPipeline.html">HookableCorpusPipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineHooks.html">PipelineHooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DEFAULT_CACHE_DIR.html">DEFAULT_CACHE_DIR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DEFAULT_MODEL.html">DEFAULT_MODEL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.EmbeddingEngine.html">EmbeddingEngine</a></li>
@@ -697,6 +707,7 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.create_corpus.html">create_corpus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ALTOReader.html">ALTOReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.AudioReader.html">AudioReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomReader.html">CustomReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ImageReader.html">ImageReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.MarkdownReader.html">MarkdownReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PDFReader.html">PDFReader</a></li>
@@ -1055,7 +1066,7 @@
 <h1>tweedie<a class="headerlink" href="#tweedie" title="Link to this heading">#</a></h1>
 <dl class="py data">
 <dt class="sig sig-object py" id="scikitplot.externals._tweedie.tweedie">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.externals._tweedie.</span></span><span class="sig-name descname"><span class="pre">tweedie</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;scikitplot.externals._tweedie._tweedie_dist.tweedie_gen</span> <span class="pre">object&gt;</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/badf5f9/scikitplot/externals/_tweedie/_tweedie_dist.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.externals._tweedie.tweedie" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.externals._tweedie.</span></span><span class="sig-name descname"><span class="pre">tweedie</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;scikitplot.externals._tweedie._tweedie_dist.tweedie_gen</span> <span class="pre">object&gt;</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/be1c1c4/scikitplot/externals/_tweedie/_tweedie_dist.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.externals._tweedie.tweedie" title="Link to this definition">#</a></dt>
 <dd><p>An instance of <a class="reference internal" href="scikitplot.externals._tweedie.tweedie_gen.html#scikitplot.externals._tweedie.tweedie_gen" title="scikitplot.externals._tweedie.tweedie_gen"><code class="xref py py-class docutils literal notranslate"><span class="pre">tweedie_gen</span></code></a>, providing Tweedie distribution functionality.</p>
 <p>This instance provides:</p>
 <ul class="simple">
@@ -1129,10 +1140,10 @@ by a <code class="docutils literal notranslate"><span class="pre">p</span></code
 </div></div>
 <div class="cell_output docutils container">
 <div class="thebelab-output" data-output="true"><div class="docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([0.        , 2.79777364, 0.56213935, 0.95646239, 0.66361529,
-       2.11239634, 0.13387576, 0.        , 0.17001314, 0.28403087,
-       0.32894759, 2.45658124, 1.02750734, 0.03875364, 0.09898194,
-       0.67635964])
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([0.        , 0.06747459, 0.3567968 , 4.28154269, 0.43516964,
+       0.62948638, 0.28432195, 0.56235529, 2.58608995, 0.75202821,
+       1.10065865, 1.50457458, 0.27115766, 0.83774721, 0.46014028,
+       0.10900476])
 </pre></div>
 </div>
 </div>
@@ -1267,7 +1278,7 @@ by a <code class="docutils literal notranslate"><span class="pre">p</span></code
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260323.badf5f9 2026-03-23T16:43Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260403.be1c1c4 2026-04-02T21:34Z.
       <br/>
     
   </p>

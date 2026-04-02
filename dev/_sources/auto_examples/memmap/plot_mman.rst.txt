@@ -254,7 +254,7 @@ ADVANCED – zero-copy NumPy, mprotect lifecycle, micro-benchmark
 byte-for-byte — no copy.  We also exercise ``mprotect()`` to toggle
 write permission at runtime, and time read() vs the array slice.
 
-.. GENERATED FROM PYTHON SOURCE LINES 177-269
+.. GENERATED FROM PYTHON SOURCE LINES 177-271
 
 .. code-block:: Python
 
@@ -353,6 +353,8 @@ write permission at runtime, and time read() vs the array slice.
 
 
 
+
+
 .. image-sg:: /auto_examples/memmap/images/sphx_glr_plot_mman_002.png
    :alt: Copy benchmark – 200 x 1 MB, Effective copy throughput
    :srcset: /auto_examples/memmap/images/sphx_glr_plot_mman_002.png
@@ -368,18 +370,26 @@ write permission at runtime, and time read() vs the array slice.
     [ADVANCED] after mprotect(PY_PROT_READ): mapping is read-only
     [ADVANCED] mprotect(PY_PROT_READ | PY_PROT_WRITE) restored.
     [ADVANCED] 200 iterations over 1.0 MB:
-               .read()     : 0.0906 s  (2.31 GB/s)
-               arr.copy()  : 0.0389 s  (5.39 GB/s)
+               .read()     : 0.0834 s  (2.51 GB/s)
+               arr.copy()  : 0.0382 s  (5.49 GB/s)
     [ADVANCED] done.
 
 
 
 
 
+.. GENERATED FROM PYTHON SOURCE LINES 272-277
+
+.. tags::
+
+   plot-type: bar
+   level: beginner
+   purpose: showcase
+
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 1.330 seconds)
+   **Total running time of the script:** (0 minutes 0.876 seconds)
 
 
 .. _sphx_glr_download_auto_examples_memmap_plot_mman.py:

@@ -416,6 +416,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../memmap/plot_mman.html">Memory-Mapping Showcase – Basic / Medium / Advanced</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../misc/index.html">Misc</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../misc/plot_misc_script.html">Misc Showcase</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../mlflow/index.html">MLflow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../mlflow/plot_mlflow.html">MLflow</a></li>
 </ul>
@@ -520,6 +524,9 @@
 <span class="p">)</span>
 </pre></div>
 </div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2026-04-02 21:37:40.673769: W scikitplot.corpus._base 136166324542336 _base.py:2052:__init_subclass__] DocumentReader: extension '.zip' already registered to ALTOReader; overriding with ZipReader.
+</pre></div>
+</div>
 <section id="zip-archive-with-per-extension-kwargs">
 <h2>ZIP archive with per-extension kwargs<a class="headerlink" href="#zip-archive-with-per-extension-kwargs" title="Link to this heading">#</a></h2>
 <p>Pass a nested <code class="docutils literal notranslate"><span class="pre">"reader_kwargs"</span></code> key to configure individual member types
@@ -557,11 +564,17 @@ constructor signature — the pipeline threads the outer dict straight through.<
 <span class="n">result_zip</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>PipelineResult(source='data/WHO-EURO-2025-12555-52329-80560-eng.zip', n_documents=7, n_omitted=0, n_embedded=0, elapsed=18.7s, output=output/WHO-EURO-2025-12555-52329-80560-eng.csv)
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-04-02 21:37:57.008222: W scikitplot.corpus._readers._pdf 136166324542336 _pdf.py:521:get_raw_chunks] PDFReader: could not determine page count for WHO-EURO-2025-12555-52329-80560-eng.zip/WHO-EURO-2025-12555-52329-80560-eng.pdf. Attempting page-by-page extraction until first failure.
+2026-04-02 21:37:57.008753: W scikitplot.corpus._readers._zip 136166324542336 _zip.py:456:get_raw_chunks] ZipReader: failed to read member WHO-EURO-2025-12555-52329-80560-eng.pdf from WHO-EURO-2025-12555-52329-80560-eng.zip: Neither pdfminer.six nor pypdf is installed. Install at least one:
+  pip install pdfminer.six
+  pip install pypdf
+
+PipelineResult(source='data/WHO-EURO-2025-12555-52329-80560-eng.zip', n_documents=7, n_omitted=0, n_embedded=0, elapsed=16.7s, output=output/WHO-EURO-2025-12555-52329-80560-eng.csv)
 </pre></div>
 </div>
-<p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-corpus.html"><span class="doc">model-workflow: corpus</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-bar.html"><span class="doc">plot-type: bar</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 18.680 seconds)</p>
+<p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-corpus.html"><span class="doc">model-workflow: corpus</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-text.html"><span class="doc">plot-type: text</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 16.957 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule."><img alt="" src="../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png"/>
@@ -637,7 +650,7 @@ constructor signature — the pipeline threads the outer dict straight through.<
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260323.badf5f9 2026-03-23T16:43Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260403.be1c1c4 2026-04-02T21:34Z.
       <br/>
 </p>
 </div>

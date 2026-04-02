@@ -416,6 +416,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../memmap/plot_mman.html">Memory-Mapping Showcase – Basic / Medium / Advanced</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../misc/index.html">Misc</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../misc/plot_misc_script.html">Misc Showcase</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../mlflow/index.html">MLflow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../mlflow/plot_mlflow.html">MLflow</a></li>
 </ul>
@@ -637,37 +641,37 @@ ENHANCED KISS RANDOM - NEW FEATURES DEMONSTRATION
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Numpy
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.0037399070001811197,
- 'time_mean': 0.00485080040007233,
- 'time_max': 0.005589248999967822,
- 'time_std': 0.000996055437081286,
+ 'time_min': 0.009110565999435494,
+ 'time_mean': 0.015742451199912466,
+ 'time_max': 0.029937945000710897,
+ 'time_std': 0.00819294631778707,
  'output_mean': 0.5000264761740889,
  'output_std': 0.2886354529025341}
 Kiss Customized 64
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.014204750999851967,
- 'time_mean': 0.01501871119999123,
- 'time_max': 0.01758857499999067,
- 'time_std': 0.001451740078033369,
+ 'time_min': 0.014200670000718674,
+ 'time_mean': 0.015641130799849634,
+ 'time_max': 0.0198838149990479,
+ 'time_std': 0.002387296280654112,
  'output_mean': 0.4994983951235817,
  'output_std': 0.28868033687878636}
 Numpy
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.005123021999679622,
- 'time_mean': 0.007203494000077626,
- 'time_max': 0.009098589000132051,
- 'time_std': 0.0017910647035489936,
+ 'time_min': 0.006652380001469282,
+ 'time_mean': 0.007827043600264006,
+ 'time_max': 0.009858281000560964,
+ 'time_std': 0.0012299698753407418,
  'output_mean': 0.5000264761740889,
  'output_std': 0.2886354529025341}
 Kiss Customized 64
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.01688899600003424,
- 'time_mean': 0.020461386400074843,
- 'time_max': 0.023797629999990022,
- 'time_std': 0.0026466802809904885,
+ 'time_min': 0.01714105000064592,
+ 'time_mean': 0.018238528400615905,
+ 'time_max': 0.02244041400081187,
+ 'time_std': 0.002349303467537909,
  'output_mean': 0.4994983951235817,
  'output_std': 0.28868033687878636}
 </pre></div>
@@ -880,13 +884,13 @@ Generator from seed: KissGenerator
 Generator from BitGenerator: KissGenerator
 
 Generator methods:
-  random(5):         [0.35947227 0.32149228 0.207461   0.25432468 0.83978041]
-  integers(0, 100):  [72 31 46 94 95]
-  normal(0, 1):      [-0.87568931 -0.0416152  -1.47920652 -1.8157288   0.32521993]
-  uniform(10, 20):   [11.55614214 11.89690502 11.64042478 11.65038681 18.50872854]
-  choice(['A','B','C']): ['B' 'C' 'C' 'B' 'A' 'C' 'A' 'A' 'A' 'C']
-  Weighted choice A: 52% (✅ expected ~50%)
-  shuffle([0..9]):   [1 0 6 2 9 5 4 7 3 8]
+  random(5):         [0.036293   0.19321451 0.29288355 0.57211788 0.75265834]
+  integers(0, 100):  [52 24 46 30 70]
+  normal(0, 1):      [ 0.51866076  1.8422213  -2.13989994  0.22442094  0.94935503]
+  uniform(10, 20):   [17.82949032 15.05691207 13.3359529  18.86404004 18.56137439]
+  choice(['A','B','C']): ['C' 'A' 'A' 'A' 'A' 'C' 'C' 'C' 'A' 'A']
+  Weighted choice A: 49% (✅ expected ~50%)
+  shuffle([0..9]):   [2 4 8 3 7 0 5 6 1 9]
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
@@ -1145,8 +1149,8 @@ Chi-square uniformity test:
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>======================================================================
 10. ADVANCED USAGE - CUSTOM DISTRIBUTIONS
 ======================================================================
-Exponential(scale=2): [3.08718248 5.15465677 1.40301428 2.88417048 0.05172815]
-Beta(2, 5):           [0.20790876 0.51337865 0.51963215 0.38441028 0.42077351]
+Exponential(scale=2): [0.9008057  2.94582255 1.51755268 4.28296027 1.00477957]
+Beta(2, 5):           [0.15881538 0.14924861 0.25379647 0.2667109  0.37832015]
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
@@ -1383,7 +1387,7 @@ RECOMMENDED USAGE:
 ======================================================================
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.418 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.315 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This gallery example demonstrates the :py~scikitplot.memmap.MemoryMap module at three levels of complexity."><img alt="" src="../../_images/sphx_glr_plot_mman_thumb.png"/>
@@ -1432,7 +1436,7 @@ RECOMMENDED USAGE:
 <li><a href="../../_sources/auto_examples/random/plot_kiss_random.rst.txt" rel="nofollow">Show Source</a></li>
 </ul>
 </div></div>
-<div class="sidebar-secondary-item"><div title="plot_kiss_random.py"><a download="" href="../../_downloads/2117d7c9103999425b903c0e48303995/plot_kiss_random.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_kiss_random.ipynb"><a download="" href="../../_downloads/ce3f634011a2324c237757c468b6c928/plot_kiss_random.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/random/plot_kiss_random.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo13.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/random/plot_kiss_random.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo13.svg"/></a></div></div></div></div>
+<div class="sidebar-secondary-item"><div title="plot_kiss_random.py"><a download="" href="../../_downloads/2117d7c9103999425b903c0e48303995/plot_kiss_random.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_kiss_random.ipynb"><a download="" href="../../_downloads/ce3f634011a2324c237757c468b6c928/plot_kiss_random.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/random/plot_kiss_random.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo14.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/random/plot_kiss_random.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo14.svg"/></a></div></div></div></div>
 </div>
 <footer class="bd-footer-content">
 </footer>
@@ -1448,7 +1452,7 @@ RECOMMENDED USAGE:
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260323.badf5f9 2026-03-23T16:43Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260403.be1c1c4 2026-04-02T21:34Z.
       <br/>
 </p>
 </div>

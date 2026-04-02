@@ -635,6 +635,10 @@
 <li class="toctree-l2"><a class="reference internal" href="memmap/plot_mman.html">Memory-Mapping Showcase – Basic / Medium / Advanced</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="misc/index.html">Misc</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="misc/plot_misc_script.html">Misc Showcase</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="mlflow/index.html">MLflow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="mlflow/plot_mlflow.html">MLflow</a></li>
 </ul>
@@ -833,7 +837,19 @@ and source code.</p>
 <section id="corpus">
 <h2>Corpus<a class="headerlink" href="#corpus" title="Link to this heading">#</a></h2>
 <p>Examples related to the <a class="reference internal" href="../apis/scikitplot.corpus.html#module-scikitplot.corpus" title="scikitplot.corpus"><code class="xref py py-mod docutils literal notranslate"><span class="pre">corpus</span></code></a> submodule.</p>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule."><img alt="" src="../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png" />
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: "$ ";
+}
+</style><span class="prompt1"><span class="c1"># 💡 corpus Need additionals packages</span></span>
+<span class="prompt1">curl<span class="w"> </span>-O<span class="w"> </span>https://raw.githubusercontent.com/scikit-plots/scikit-plots/main/requirements/corpus.txt</span>
+<span class="prompt1">pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements/corpus.txt</span>
+<span class="prompt1">pip<span class="w"> </span>install<span class="w"> </span>scikit-plots<span class="o">[</span>corpus<span class="o">]</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="c1"># (Recommended)</span></span>
+<span class="prompt1"><span class="c1"># !pip install nltk gensim langdetect faster-whisper openai-whisper pytesseract youtube-transcript-api</span></span>
+<span class="prompt1"><span class="c1"># sudo apt-get install tesseract-ocr</span></span>
+</pre></div></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule."><img alt="" src="../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png" />
 <p><a class="reference internal" href="corpus/plot_corpus_a_tale_of_two_cities_mp3_script.html"><span class="doc">corpus A Tale of Two Cities .mp3 with examples</span></a></p>
   <div class="sphx-glr-thumbnail-title">corpus A Tale of Two Cities .mp3 with examples</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule."><img alt="" src="../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png" />
@@ -849,11 +865,7 @@ and source code.</p>
 <section id="id1">
 <h2>Cython<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>Examples related to the <a class="reference internal" href="../apis/scikitplot.cython.html#module-scikitplot.cython" title="scikitplot.cython"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cython</span></code></a> submodule.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
-span.prompt1:before {
-  content: "$ ";
-}
-</style><span class="prompt1"><span class="c1"># 💡cython Need cython and setuptools</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="c1"># 💡cython Need cython and setuptools</span></span>
 <span class="prompt1">pip<span class="w"> </span>install<span class="w"> </span>scikitplot<span class="o">[</span>build<span class="o">]</span><span class="w"> </span>setuptools</span>
 <span class="prompt1"></span>
 <span class="prompt1"><span class="c1"># (Recommended)</span></span>
@@ -955,6 +967,13 @@ with a scikit-learn regressor (e.g., <a class="reference external" href="https:/
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This gallery example demonstrates the :py~scikitplot.memmap.MemoryMap module at three levels of complexity."><img alt="" src="../_images/sphx_glr_plot_mman_thumb.png" />
 <p><a class="reference internal" href="memmap/plot_mman.html"><span class="doc">Memory-Mapping Showcase – Basic / Medium / Advanced</span></a></p>
   <div class="sphx-glr-thumbnail-title">Memory-Mapping Showcase – Basic / Medium / Advanced</div>
+</div></div></section>
+<section id="misc">
+<h2>Misc<a class="headerlink" href="#misc" title="Link to this heading">#</a></h2>
+<p>Examples related to the <code class="xref py py-mod docutils literal notranslate"><span class="pre">misc</span></code> submodule.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This gallery example demonstrates the :py~scikitplot.misc. module."><img alt="" src="../_images/sphx_glr_plot_misc_script_thumb.png" />
+<p><a class="reference internal" href="misc/plot_misc_script.html"><span class="doc">Misc Showcase</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Misc Showcase</div>
 </div></div></section>
 <section id="id3">
 <h2>MLflow<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
@@ -1154,7 +1173,7 @@ e.g. a DL (ANN, CNN, NLP) <a class="reference external" href="https://www.tensor
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260323.badf5f9 2026-03-23T16:43Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260403.be1c1c4 2026-04-02T21:34Z.
       <br/>
     
   </p>

@@ -668,6 +668,16 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.BuildResult.html">BuildResult</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.BuilderConfig.html">BuilderConfig</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CorpusBuilder.html">CorpusBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.BuilderFactories.html">BuilderFactories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomChunker.html">CustomChunker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomEnricherConfig.html">CustomEnricherConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomFilter.html">CustomFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomNLPEnricher.html">CustomNLPEnricher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomNormalizer.html">CustomNormalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomSimilarityIndex.html">CustomSimilarityIndex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FactoryCorpusBuilder.html">FactoryCorpusBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.HookableCorpusPipeline.html">HookableCorpusPipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineHooks.html">PipelineHooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DEFAULT_CACHE_DIR.html">DEFAULT_CACHE_DIR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DEFAULT_MODEL.html">DEFAULT_MODEL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.EmbeddingEngine.html">EmbeddingEngine</a></li>
@@ -697,6 +707,7 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.create_corpus.html">create_corpus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ALTOReader.html">ALTOReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.AudioReader.html">AudioReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomReader.html">CustomReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ImageReader.html">ImageReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.MarkdownReader.html">MarkdownReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PDFReader.html">PDFReader</a></li>
@@ -1055,7 +1066,7 @@
 <h1>show_versions<a class="headerlink" href="#show-versions" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.show_versions">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.</span></span><span class="sig-name descname"><span class="pre">show_versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'stdout'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/badf5f9/scikitplot/utils/_show_versions.py#L208"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.show_versions" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.</span></span><span class="sig-name descname"><span class="pre">show_versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'stdout'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/be1c1c4/scikitplot/utils/_show_versions.py#L214"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.show_versions" title="Link to this definition">#</a></dt>
 <dd><p>Print or return debugging information about the system, Python, dependencies, and hardware.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1111,12 +1122,12 @@ python_implementation: CPython
                    ci: true
 
 Python Dependencies:
-           scikitplot: 0.5.dev0+git.20260323.badf5f9
+           scikitplot: 0.5.dev0+git.20260403.be1c1c4
                   pip: 26.0.1
          meson-python: 0.19.0
            setuptools: 79.0.1
                cython: 3.2.4
-                numpy: 2.4.3
+                numpy: 2.4.4
                 scipy: 1.17.1
                pandas: 2.3.3
            matplotlib: 3.10.8
@@ -1148,8 +1159,8 @@ Threadpoolctl Information:
          internal_api: openblas
           num_threads: 36
                prefix: libscipy_openblas
-             filepath: /home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff84a88b.so
-              version: 0.3.31.dev
+             filepath: /home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-32a4b2a6.so
+              version: 0.3.31.188.0
       threading_layer: pthreads
          architecture: SkylakeX
 
@@ -1178,12 +1189,12 @@ Threadpoolctl Information:
   &#39;architecture&#39;: &#39;x86_64&#39;,
   &#39;OS&#39;: &#39;Linux-6.17.0-1007-aws-x86_64-with-glibc2.35&#39;,
   &#39;ci&#39;: &#39;true&#39;},
- &#39;dependencies&#39;: {&#39;scikitplot&#39;: &#39;0.5.dev0+git.20260323.badf5f9&#39;,
+ &#39;dependencies&#39;: {&#39;scikitplot&#39;: &#39;0.5.dev0+git.20260403.be1c1c4&#39;,
   &#39;pip&#39;: &#39;26.0.1&#39;,
   &#39;meson-python&#39;: &#39;0.19.0&#39;,
   &#39;setuptools&#39;: &#39;79.0.1&#39;,
   &#39;cython&#39;: &#39;3.2.4&#39;,
-  &#39;numpy&#39;: &#39;2.4.3&#39;,
+  &#39;numpy&#39;: &#39;2.4.4&#39;,
   &#39;scipy&#39;: &#39;1.17.1&#39;,
   &#39;pandas&#39;: &#39;2.3.3&#39;,
   &#39;matplotlib&#39;: &#39;3.10.8&#39;,
@@ -1205,8 +1216,8 @@ Threadpoolctl Information:
    &#39;internal_api&#39;: &#39;openblas&#39;,
    &#39;num_threads&#39;: 36,
    &#39;prefix&#39;: &#39;libscipy_openblas&#39;,
-   &#39;filepath&#39;: &#39;/home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff84a88b.so&#39;,
-   &#39;version&#39;: &#39;0.3.31.dev&#39;,
+   &#39;filepath&#39;: &#39;/home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-32a4b2a6.so&#39;,
+   &#39;version&#39;: &#39;0.3.31.188.0&#39;,
    &#39;threading_layer&#39;: &#39;pthreads&#39;,
    &#39;architecture&#39;: &#39;SkylakeX&#39;}]}
 </pre></div>
@@ -1228,9 +1239,7 @@ Threadpoolctl Information:
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>[32m[1mChanged logging level: WARNING[0m
 [1;36mScikit-plot Version Information:[0m
 
-</pre></div>
-</div>
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
+
 System Information:
                python: 3.11.15 (main, Mar  4 2026, 16:25:54) [GCC 11.4.0]
            executable: /home/circleci/.pyenv/versions/3.11.15/bin/python
@@ -1243,12 +1252,12 @@ python_implementation: CPython
                    ci: true
 
 Python Dependencies:
-           scikitplot: 0.5.dev0+git.20260323.badf5f9
+           scikitplot: 0.5.dev0+git.20260403.be1c1c4
                   pip: 26.0.1
          meson-python: 0.19.0
            setuptools: 79.0.1
                cython: 3.2.4
-                numpy: 2.4.3
+                numpy: 2.4.4
                 scipy: 1.17.1
                pandas: 2.3.3
            matplotlib: 3.10.8
@@ -1280,8 +1289,8 @@ Threadpoolctl Information:
          internal_api: openblas
           num_threads: 36
                prefix: libscipy_openblas
-             filepath: /home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-ff84a88b.so
-              version: 0.3.31.dev
+             filepath: /home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-32a4b2a6.so
+              version: 0.3.31.188.0
       threading_layer: pthreads
          architecture: SkylakeX
 
@@ -1407,7 +1416,7 @@ Threadpoolctl Information:
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260323.badf5f9 2026-03-23T16:43Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260403.be1c1c4 2026-04-02T21:34Z.
       <br/>
     
   </p>

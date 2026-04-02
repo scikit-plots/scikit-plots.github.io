@@ -668,6 +668,16 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.BuildResult.html">BuildResult</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.BuilderConfig.html">BuilderConfig</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CorpusBuilder.html">CorpusBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.BuilderFactories.html">BuilderFactories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomChunker.html">CustomChunker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomEnricherConfig.html">CustomEnricherConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomFilter.html">CustomFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomNLPEnricher.html">CustomNLPEnricher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomNormalizer.html">CustomNormalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomSimilarityIndex.html">CustomSimilarityIndex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FactoryCorpusBuilder.html">FactoryCorpusBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.HookableCorpusPipeline.html">HookableCorpusPipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineHooks.html">PipelineHooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DEFAULT_CACHE_DIR.html">DEFAULT_CACHE_DIR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DEFAULT_MODEL.html">DEFAULT_MODEL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.EmbeddingEngine.html">EmbeddingEngine</a></li>
@@ -697,6 +707,7 @@
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.create_corpus.html">create_corpus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ALTOReader.html">ALTOReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.AudioReader.html">AudioReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomReader.html">CustomReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ImageReader.html">ImageReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.MarkdownReader.html">MarkdownReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PDFReader.html">PDFReader</a></li>
@@ -1055,60 +1066,57 @@
 <h1>online_help<a class="headerlink" href="#online-help" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.online_help">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.</span></span><span class="sig-name descname"><span class="pre">online_help</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">docs_root_url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'https://scikit-plots.github.io/'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_page</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'search.html'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/badf5f9/scikitplot/__init__.py#L363"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.online_help" title="Link to this definition">#</a></dt>
-<dd><p>Open the online documentation search page.</p>
-<p>Use a given search query in the default web browser.
-This function constructs a search URL based on the provided query
-and opens it in the web browser.
-It detects whether the version is in development or stable state
-and directs the user to the appropriate documentation.</p>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.</span></span><span class="sig-name descname"><span class="pre">online_help</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">docs_root_url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'https://scikit-plots.github.io/'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_page</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'search.html'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/be1c1c4/scikitplot/__init__.py#L447"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.online_help" title="Link to this definition">#</a></dt>
+<dd><p>Open the online documentation search page in the default web browser.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>query</strong><span class="classifier">str, optional</span></dt><dd><p>The search query to find relevant documentation.
-Defaults to an empty string.</p>
+<dt><strong>query</strong><span class="classifier">str, optional</span></dt><dd><p>The search query. Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>.</p>
 </dd>
-<dt><strong>docs_root_url</strong><span class="classifier">str, optional</span></dt><dd><p>The base URL of the documentation website.
-Defaults to <code class="docutils literal notranslate"><span class="pre">https://scikit-plots.github.io/</span></code>.</p>
+<dt><strong>docs_root_url</strong><span class="classifier">str, optional</span></dt><dd><p>Base URL of the documentation website.
+Overridden by the <code class="docutils literal notranslate"><span class="pre">DOCS_ROOT_URL</span></code> environment variable when set.
+Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;https://scikit-plots.github.io/&quot;</span></code>.</p>
 </dd>
-<dt><strong>search_page</strong><span class="classifier">str, optional</span></dt><dd><p>The search page URL (relative to <code class="docutils literal notranslate"><span class="pre">docs_root_url</span></code>).
-Defaults to <code class="docutils literal notranslate"><span class="pre">search.html</span></code>.</p>
+<dt><strong>search_page</strong><span class="classifier">str, optional</span></dt><dd><p>Search page path relative to <code class="docutils literal notranslate"><span class="pre">docs_root_url</span></code>.
+Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;search.html&quot;</span></code>.</p>
 </dd>
-<dt><strong>new_window</strong><span class="classifier">int, optional</span></dt><dd><p>Controls how the URL is opened in the browser:</p>
-<ul class="simple">
-<li><p>0: Open in the same browser window.</p></li>
-<li><p>1: Open in a new browser window.</p></li>
-<li><p>2: Open in a new browser tab.</p></li>
-</ul>
+<dt><strong>new_window</strong><span class="classifier">int, optional</span></dt><dd><p>Browser open mode — <code class="docutils literal notranslate"><span class="pre">0</span></code> same window, <code class="docutils literal notranslate"><span class="pre">1</span></code> new window,
+<code class="docutils literal notranslate"><span class="pre">2</span></code> new tab. Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>bool</dt><dd><p>Returns True if the browser was successfully launched, False otherwise.</p>
+<dt>bool</dt><dd><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the browser was successfully launched, <code class="docutils literal notranslate"><span class="pre">False</span></code>
+otherwise.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Does not raise — all errors are caught and logged; returns <code class="docutils literal notranslate"><span class="pre">False</span></code>.</dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
 <li><p><strong>query</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
 <li><p><strong>docs_root_url</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
 <li><p><strong>search_page</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
 <li><p><strong>new_window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a></p>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a></p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<ul class="simple">
-<li><p>The function automatically switches between the ‘dev’ and ‘stable’
-versions of the documentation based on the value of <code class="docutils literal notranslate"><span class="pre">__version__</span></code>.</p></li>
-<li><p>Requires an active internet connection.</p></li>
-<li><p>If the environment variable <code class="docutils literal notranslate"><span class="pre">DOCS_ROOT_URL</span></code> is set,
-it overrides the <code class="docutils literal notranslate"><span class="pre">docs_root_url</span></code> argument.</p></li>
-</ul>
+<p><strong>User:</strong> Requires an active internet connection. The URL printed to
+stderr shows the exact page that will open.</p>
+<p><strong>Developer:</strong> URL construction is intentionally separated into
+<code class="docutils literal notranslate"><span class="pre">_validate_base_url</span></code> and <code class="docutils literal notranslate"><span class="pre">_build_docs_url</span></code> so that each concern
+is independently testable and the security boundary is explicit.
+<code class="docutils literal notranslate"><span class="pre">os.getenv</span></code> is resolved <em>before</em> validation so that an unsafe env
+value is rejected with a clear error rather than silently used.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scikitplot</span><span class="o">.</span><span class="n">online_help</span><span class="p">(</span><span class="s2">&quot;installation&quot;</span><span class="p">)</span>
@@ -1212,7 +1220,7 @@ it overrides the <code class="docutils literal notranslate"><span class="pre">do
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260323.badf5f9 2026-03-23T16:43Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260403.be1c1c4 2026-04-02T21:34Z.
       <br/>
     
   </p>

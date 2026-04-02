@@ -665,6 +665,16 @@
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.BuildResult.html">BuildResult</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.BuilderConfig.html">BuilderConfig</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CorpusBuilder.html">CorpusBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.BuilderFactories.html">BuilderFactories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomChunker.html">CustomChunker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomEnricherConfig.html">CustomEnricherConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomFilter.html">CustomFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomNLPEnricher.html">CustomNLPEnricher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomNormalizer.html">CustomNormalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomSimilarityIndex.html">CustomSimilarityIndex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.FactoryCorpusBuilder.html">FactoryCorpusBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.HookableCorpusPipeline.html">HookableCorpusPipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.PipelineHooks.html">PipelineHooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DEFAULT_CACHE_DIR.html">DEFAULT_CACHE_DIR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DEFAULT_MODEL.html">DEFAULT_MODEL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.EmbeddingEngine.html">EmbeddingEngine</a></li>
@@ -694,6 +704,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.create_corpus.html">create_corpus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ALTOReader.html">ALTOReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.AudioReader.html">AudioReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomReader.html">CustomReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ImageReader.html">ImageReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.MarkdownReader.html">MarkdownReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.PDFReader.html">PDFReader</a></li>
@@ -1051,6 +1062,28 @@
 <p>This module contains errors/exceptions and warnings of general use for
 scikit-plots. Exceptions that are specific to a given subpackage should <em>not</em> be
 here, but rather in the particular subpackage.</p>
+<p>The builtin warning hierarchy is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Warning
+├── DeprecationWarning          ← base of ScikitplotDeprecationWarning
+├── PendingDeprecationWarning   ← base of ScikitplotPendingDeprecationWarning
+└── UserWarning                 ← base of ScikitplotUserWarning
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<p><strong>Developer notes</strong></p>
+<ul class="simple">
+<li><p>Do <em>not</em> import this module from <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> before it has been fully
+bootstrapped.  The <code class="docutils literal notranslate"><span class="pre">_is_loaded</span></code> guard prevents accidental re-import, which
+would create duplicate class identities and break <code class="docutils literal notranslate"><span class="pre">isinstance</span></code> checks across
+reload boundaries.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">error_code</span></code> in <a class="reference internal" href="../modules/generated/scikitplot.exceptions.ScikitplotException.html#scikitplot.exceptions.ScikitplotException" title="scikitplot.exceptions.ScikitplotException"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScikitplotException</span></code></a> and its subclasses may be
+either an <code class="docutils literal notranslate"><span class="pre">int</span></code> (legacy convention) or a <code class="docutils literal notranslate"><span class="pre">str</span></code> sentinel (e.g.
+<code class="docutils literal notranslate"><span class="pre">&quot;NOT_FOUND&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;INVALID_STATE&quot;</span></code>).  Both forms are preserved verbatim in
+the JSON payload; callers must not assume a particular type.</p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">__getattr__</span></code> at module scope handles the deprecated <code class="docutils literal notranslate"><span class="pre">ErfaError</span></code> /
+<code class="docutils literal notranslate"><span class="pre">ErfaWarning</span></code> aliases.  <code class="docutils literal notranslate"><span class="pre">stacklevel=2</span></code> ensures the warning frame points
+at the <em>caller</em> rather than at the <code class="docutils literal notranslate"><span class="pre">__getattr__</span></code> body itself.</p></li>
+</ul>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ModuleDeprecationWarning.html#scikitplot.exceptions.ModuleDeprecationWarning" title="scikitplot.exceptions.ModuleDeprecationWarning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModuleDeprecationWarning</span></code></a></p></td>
@@ -1129,7 +1162,7 @@ here, but rather in the particular subpackage.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260323.badf5f9 2026-03-23T16:43Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260403.be1c1c4 2026-04-02T21:34Z.
       <br/>
     
   </p>

@@ -722,8 +722,8 @@
 
 <span class="sd">&quot;&quot;&quot;Hard Cython template: cdef class counter.&quot;&quot;&quot;</span>
 
-<span class="k">cdef</span><span class="w"> </span><span class="k">class</span> <span class="nf">Counter</span><span class="p">:</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">long</span> <span class="nf">value</span>
+<span class="k">cdef</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Counter</span><span class="p">:</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">long</span> <span class="nv">value</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">__cinit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">long</span> <span class="n">start</span><span class="o">=</span><span class="mf">0</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">start</span>
@@ -745,22 +745,22 @@
 
 <span class="k">from</span><span class="w"> </span><span class="nn">libc.stdlib</span><span class="w"> </span><span class="k">cimport</span> <span class="n">malloc</span><span class="p">,</span> <span class="n">free</span>
 
-<span class="k">cdef</span><span class="w"> </span><span class="k">class</span> <span class="nf">IntVector</span><span class="p">:</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span>* <span class="nf">data</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">n</span>
+<span class="k">cdef</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">IntVector</span><span class="p">:</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span>* <span class="nv">data</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nv">n</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">__cinit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">Py_ssize_t</span> <span class="n">n</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mf">0</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;n must be &gt;= 0&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">*&gt;</span><span class="n">malloc</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">sizeof</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span> <span class="k">if</span> <span class="n">n</span> <span class="k">else</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">*&gt;</span><span class="mf">0</span>
-        <span class="k">if</span> <span class="n">n</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">==</span> <span class="bp">NULL</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">==</span> <span class="kc">NULL</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">MemoryError</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">__dealloc__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">!=</span> <span class="bp">NULL</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">!=</span> <span class="kc">NULL</span><span class="p">:</span>
             <span class="n">free</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">NULL</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="kc">NULL</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span>
@@ -787,11 +787,11 @@
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">dot_int64</span><span class="p">(</span><span class="nb">long</span><span class="p">[:]</span> <span class="n">a</span><span class="p">,</span> <span class="nb">long</span><span class="p">[:]</span> <span class="n">b</span><span class="p">):</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">n</span><span class="w"> </span><span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nv">n</span><span class="w"> </span><span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
     <span class="k">if</span> <span class="n">b</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">n</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;shape mismatch&quot;</span><span class="p">)</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nf">i</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">int64_t</span> <span class="nf">s</span><span class="w"> </span><span class="o">=</span> <span class="mf">0</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Py_ssize_t</span> <span class="nv">i</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">int64_t</span> <span class="nv">s</span><span class="w"> </span><span class="o">=</span> <span class="mf">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
         <span class="n">s</span> <span class="o">+=</span> <span class="o">&lt;</span><span class="n">int64_t</span><span class="o">&gt;</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="o">&lt;</span><span class="n">int64_t</span><span class="o">&gt;</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">s</span>
@@ -810,13 +810,13 @@
 
 <span class="k">cpdef</span><span class="w"> </span><span class="kt">int</span> <span class="nf">sum_range</span><span class="p">(</span><span class="nb">int</span> <span class="n">n</span><span class="p">):</span>
 
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span>* <span class="nf">buf</span><span class="w"> </span><span class="o">=</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">*&gt;</span><span class="n">malloc</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">sizeof</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span>* <span class="nv">buf</span><span class="w"> </span><span class="o">=</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">*&gt;</span><span class="n">malloc</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">sizeof</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
 
-    <span class="k">if</span> <span class="n">buf</span> <span class="o">==</span> <span class="bp">NULL</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">buf</span> <span class="o">==</span> <span class="kc">NULL</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">MemoryError</span><span class="p">()</span>
 
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span> <span class="nf">i</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">long</span> <span class="kt">long</span> <span class="nf">acc</span><span class="w"> </span><span class="o">=</span> <span class="mf">0</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span> <span class="nv">i</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">long</span> <span class="kt">long</span> <span class="nv">acc</span><span class="w"> </span><span class="o">=</span> <span class="mf">0</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -842,13 +842,13 @@
 <span class="k">cpdef</span><span class="w"> </span><span class="kt">int</span> <span class="nf">sum_range</span><span class="p">(</span><span class="nb">int</span> <span class="n">n</span><span class="p">):</span>
 
     <span class="c"># Static type declarations</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span>* <span class="nf">buf</span><span class="w"> </span><span class="o">=</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">*&gt;</span><span class="n">malloc</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">sizeof</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span>* <span class="nv">buf</span><span class="w"> </span><span class="o">=</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">*&gt;</span><span class="n">malloc</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">sizeof</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
 
-    <span class="k">if</span> <span class="n">buf</span> <span class="o">==</span> <span class="bp">NULL</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">buf</span> <span class="o">==</span> <span class="kc">NULL</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">MemoryError</span><span class="p">()</span>
 
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span> <span class="nf">i</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">long</span> <span class="kt">long</span> <span class="nf">acc</span><span class="w"> </span><span class="o">=</span> <span class="mf">0</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">int</span> <span class="nv">i</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">long</span> <span class="kt">long</span> <span class="nv">acc</span><span class="w"> </span><span class="o">=</span> <span class="mf">0</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -873,18 +873,18 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="k">from</span><span class="w"> </span><span class="nn">libc.math</span><span class="w"> </span><span class="k">cimport</span> <span class="n">sqrt</span>
 
-<span class="k">cdef</span><span class="w"> </span><span class="k">struct</span> <span class="nf">Point2</span><span class="p">:</span>
-    <span class="n">double</span> <span class="n">x</span>
-    <span class="n">double</span> <span class="n">y</span>
+<span class="k">cdef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Point2</span><span class="p">:</span>
+    <span class="nb">double</span> <span class="n">x</span>
+    <span class="nb">double</span> <span class="n">y</span>
 
 <span class="k">cdef</span><span class="w"> </span><span class="kr">inline</span> <span class="kt">double</span> <span class="nf">_dist</span><span class="p">(</span><span class="n">Point2</span> <span class="n">a</span><span class="p">,</span> <span class="n">Point2</span> <span class="n">b</span><span class="p">)</span> <span class="k">nogil</span><span class="p">:</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">dx</span><span class="w"> </span><span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">b</span><span class="o">.</span><span class="n">x</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">dy</span><span class="w"> </span><span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">b</span><span class="o">.</span><span class="n">y</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nv">dx</span><span class="w"> </span><span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">b</span><span class="o">.</span><span class="n">x</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="nv">dy</span><span class="w"> </span><span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">b</span><span class="o">.</span><span class="n">y</span>
     <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">dx</span><span class="o">*</span><span class="n">dx</span> <span class="o">+</span> <span class="n">dy</span><span class="o">*</span><span class="n">dy</span><span class="p">)</span>
 
-<span class="k">cpdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">dist</span><span class="p">(</span><span class="n">double</span> <span class="n">ax</span><span class="p">,</span> <span class="n">double</span> <span class="n">ay</span><span class="p">,</span> <span class="n">double</span> <span class="n">bx</span><span class="p">,</span> <span class="n">double</span> <span class="k">by</span><span class="p">):</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">Point2</span> <span class="nf">a</span>
-    <span class="k">cdef</span><span class="w"> </span><span class="kt">Point2</span> <span class="nf">b</span>
+<span class="k">cpdef</span><span class="w"> </span><span class="kt">double</span> <span class="nf">dist</span><span class="p">(</span><span class="nb">double</span> <span class="n">ax</span><span class="p">,</span> <span class="nb">double</span> <span class="n">ay</span><span class="p">,</span> <span class="nb">double</span> <span class="n">bx</span><span class="p">,</span> <span class="nb">double</span> <span class="k">by</span><span class="p">):</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Point2</span> <span class="nv">a</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">Point2</span> <span class="nv">b</span>
     <span class="n">a</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">ax</span>
     <span class="n">a</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">ay</span>
     <span class="n">b</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">bx</span>
@@ -989,7 +989,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260323.badf5f9 2026-03-23T16:43Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260403.be1c1c4 2026-04-02T21:34Z.
       <br/>
     
   </p>

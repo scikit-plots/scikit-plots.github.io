@@ -9,10 +9,10 @@
 <meta content="website" property="og:type"/>
 <meta content="https://scikit-plots.github.io/stable/auto_examples/annoy/plot_precision_script.html" property="og:url"/>
 <meta content="scikit-plots" property="og:site_name"/>
-<meta content="An example showing the AnnoyIndex class. n, f = 1_000_000, 100 # 100~2.5GB Tags: model-workflow: vector-db plot-type: bar level: beginner purpose: showcase Total running time of the script:(2 minut..." property="og:description"/>
+<meta content="An example showing the AnnoyIndex class. n, f = 1_000_000, 100 # 100~2.5GB Tags: model-workflow: vector-db plot-type: bar level: beginner purpose: showcase Total running time of the script:(1 minut..." property="og:description"/>
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
-<meta content="An example showing the AnnoyIndex class. n, f = 1_000_000, 100 # 100~2.5GB Tags: model-workflow: vector-db plot-type: bar level: beginner purpose: showcase Total running time of the script:(2 minut..." name="description"/>
+<meta content="An example showing the AnnoyIndex class. n, f = 1_000_000, 100 # 100~2.5GB Tags: model-workflow: vector-db plot-type: bar level: beginner purpose: showcase Total running time of the script:(1 minut..." name="description"/>
 <title>Precision annoy.AnnoyIndex with examples — scikit-plots 0.5.dev0 documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
@@ -416,6 +416,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../memmap/plot_mman.html">Memory-Mapping Showcase – Basic / Medium / Advanced</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../misc/index.html">Misc</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../misc/plot_misc_script.html">Misc Showcase</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../mlflow/index.html">MLflow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../mlflow/plot_mlflow.html">MLflow</a></li>
 </ul>
@@ -538,77 +542,72 @@
 
   0%|          | 0/100000 [00:00&lt;?, ?it/s]0 / 100000 = 0.0
 
-  1%|▏         | 1405/100000 [00:00&lt;00:07, 14041.34it/s]
-  3%|▎         | 3009/100000 [00:00&lt;00:06, 15211.36it/s]
-  5%|▍         | 4531/100000 [00:00&lt;00:06, 14474.74it/s]
-  6%|▌         | 5983/100000 [00:00&lt;00:06, 14052.33it/s]
-  7%|▋         | 7448/100000 [00:00&lt;00:06, 14257.01it/s]
-  9%|▉         | 8919/100000 [00:00&lt;00:06, 14400.84it/s]10000 / 100000 = 0.1
+  2%|▏         | 1764/100000 [00:00&lt;00:05, 17631.44it/s]
+  4%|▎         | 3528/100000 [00:00&lt;00:05, 17618.89it/s]
+  5%|▌         | 5294/100000 [00:00&lt;00:05, 17636.53it/s]
+  7%|▋         | 7058/100000 [00:00&lt;00:05, 17621.49it/s]
+  9%|▉         | 8821/100000 [00:00&lt;00:05, 17607.65it/s]10000 / 100000 = 0.1
 
- 10%|█         | 10418/100000 [00:00&lt;00:06, 14589.49it/s]
- 12%|█▏        | 11932/100000 [00:00&lt;00:05, 14761.52it/s]
- 13%|█▎        | 13425/100000 [00:00&lt;00:05, 14813.08it/s]
- 15%|█▍        | 14974/100000 [00:01&lt;00:05, 15019.98it/s]
- 17%|█▋        | 16526/100000 [00:01&lt;00:05, 15171.63it/s]
- 18%|█▊        | 18044/100000 [00:01&lt;00:05, 15129.22it/s]
- 20%|█▉        | 19558/100000 [00:01&lt;00:05, 15124.40it/s]20000 / 100000 = 0.2
+ 11%|█         | 10582/100000 [00:00&lt;00:05, 17568.32it/s]
+ 12%|█▏        | 12339/100000 [00:00&lt;00:04, 17534.33it/s]
+ 14%|█▍        | 14114/100000 [00:00&lt;00:04, 17599.38it/s]
+ 16%|█▌        | 15874/100000 [00:00&lt;00:04, 17546.96it/s]
+ 18%|█▊        | 17651/100000 [00:01&lt;00:04, 17614.11it/s]
+ 19%|█▉        | 19425/100000 [00:01&lt;00:04, 17651.49it/s]20000 / 100000 = 0.2
 
- 21%|██        | 21071/100000 [00:01&lt;00:05, 14981.02it/s]
- 23%|██▎       | 22762/100000 [00:01&lt;00:04, 15557.10it/s]
- 24%|██▍       | 24319/100000 [00:01&lt;00:04, 15364.96it/s]
- 26%|██▌       | 26026/100000 [00:01&lt;00:04, 15868.95it/s]
- 28%|██▊       | 27615/100000 [00:01&lt;00:04, 15641.39it/s]
- 29%|██▉       | 29324/100000 [00:01&lt;00:04, 16068.19it/s]30000 / 100000 = 0.3
+ 21%|██        | 21191/100000 [00:01&lt;00:04, 17636.03it/s]
+ 23%|██▎       | 22961/100000 [00:01&lt;00:04, 17653.62it/s]
+ 25%|██▍       | 24730/100000 [00:01&lt;00:04, 17661.61it/s]
+ 26%|██▋       | 26500/100000 [00:01&lt;00:04, 17670.92it/s]
+ 28%|██▊       | 28268/100000 [00:01&lt;00:04, 17065.26it/s]30000 / 100000 = 0.3
 
- 31%|███       | 31044/100000 [00:02&lt;00:04, 16403.14it/s]
- 33%|███▎      | 32686/100000 [00:02&lt;00:04, 15777.41it/s]
- 34%|███▍      | 34323/100000 [00:02&lt;00:04, 15947.87it/s]
- 36%|███▌      | 35923/100000 [00:02&lt;00:04, 15129.70it/s]
- 37%|███▋      | 37466/100000 [00:02&lt;00:04, 15214.41it/s]
- 39%|███▉      | 38996/100000 [00:02&lt;00:04, 14933.92it/s]40000 / 100000 = 0.4
+ 30%|███       | 30040/100000 [00:01&lt;00:04, 17255.12it/s]
+ 32%|███▏      | 31814/100000 [00:01&lt;00:03, 17395.43it/s]
+ 34%|███▎      | 33584/100000 [00:01&lt;00:03, 17482.94it/s]
+ 35%|███▌      | 35335/100000 [00:02&lt;00:03, 17393.82it/s]
+ 37%|███▋      | 37103/100000 [00:02&lt;00:03, 17477.90it/s]
+ 39%|███▉      | 38874/100000 [00:02&lt;00:03, 17544.26it/s]40000 / 100000 = 0.4
 
- 41%|████      | 40692/100000 [00:02&lt;00:03, 15514.80it/s]
- 42%|████▏     | 42405/100000 [00:02&lt;00:03, 15983.89it/s]
- 44%|████▍     | 44117/100000 [00:02&lt;00:03, 16317.22it/s]
- 46%|████▌     | 45754/100000 [00:02&lt;00:03, 16300.57it/s]
- 47%|████▋     | 47448/100000 [00:03&lt;00:03, 16489.94it/s]
- 49%|████▉     | 49100/100000 [00:03&lt;00:03, 15814.39it/s]50000 / 100000 = 0.5
+ 41%|████      | 40643/100000 [00:02&lt;00:03, 17585.47it/s]
+ 42%|████▏     | 42415/100000 [00:02&lt;00:03, 17623.57it/s]
+ 44%|████▍     | 44186/100000 [00:02&lt;00:03, 17649.20it/s]
+ 46%|████▌     | 45952/100000 [00:02&lt;00:03, 17459.43it/s]
+ 48%|████▊     | 47721/100000 [00:02&lt;00:02, 17527.77it/s]
+ 49%|████▉     | 49491/100000 [00:02&lt;00:02, 17577.38it/s]50000 / 100000 = 0.5
 
- 51%|█████     | 50689/100000 [00:03&lt;00:03, 15283.52it/s]
- 52%|█████▏    | 52225/100000 [00:03&lt;00:03, 15204.42it/s]
- 54%|█████▍    | 53853/100000 [00:03&lt;00:02, 15512.95it/s]
- 56%|█████▌    | 55618/100000 [00:03&lt;00:02, 16133.45it/s]
- 57%|█████▋    | 57376/100000 [00:03&lt;00:02, 16558.52it/s]
- 59%|█████▉    | 59045/100000 [00:03&lt;00:02, 16596.77it/s]60000 / 100000 = 0.6
+ 51%|█████▏    | 51252/100000 [00:02&lt;00:02, 17586.24it/s]
+ 53%|█████▎    | 53021/100000 [00:03&lt;00:02, 17616.63it/s]
+ 55%|█████▍    | 54789/100000 [00:03&lt;00:02, 17632.70it/s]
+ 57%|█████▋    | 56553/100000 [00:03&lt;00:02, 17630.89it/s]
+ 58%|█████▊    | 58317/100000 [00:03&lt;00:02, 17631.42it/s]60000 / 100000 = 0.6
 
- 61%|██████    | 60711/100000 [00:03&lt;00:02, 16614.74it/s]
- 62%|██████▏   | 62375/100000 [00:04&lt;00:02, 16576.45it/s]
- 64%|██████▍   | 64035/100000 [00:04&lt;00:02, 16531.09it/s]
- 66%|██████▌   | 65713/100000 [00:04&lt;00:02, 16603.00it/s]
- 67%|██████▋   | 67380/100000 [00:04&lt;00:01, 16621.39it/s]
- 69%|██████▉   | 69077/100000 [00:04&lt;00:01, 16724.91it/s]70000 / 100000 = 0.7
+ 60%|██████    | 60081/100000 [00:03&lt;00:02, 17415.57it/s]
+ 62%|██████▏   | 61850/100000 [00:03&lt;00:02, 17494.29it/s]
+ 64%|██████▎   | 63615/100000 [00:03&lt;00:02, 17540.56it/s]
+ 65%|██████▌   | 65380/100000 [00:03&lt;00:01, 17570.93it/s]
+ 67%|██████▋   | 67152/100000 [00:03&lt;00:01, 17613.10it/s]
+ 69%|██████▉   | 68917/100000 [00:03&lt;00:01, 17621.67it/s]70000 / 100000 = 0.7
 
- 71%|███████   | 70750/100000 [00:04&lt;00:01, 16702.68it/s]
- 72%|███████▏  | 72421/100000 [00:04&lt;00:01, 16480.42it/s]
- 74%|███████▍  | 74070/100000 [00:04&lt;00:01, 16305.45it/s]
- 76%|███████▌  | 75702/100000 [00:04&lt;00:01, 16179.75it/s]
- 77%|███████▋  | 77321/100000 [00:04&lt;00:01, 15792.44it/s]
- 79%|███████▉  | 79028/100000 [00:05&lt;00:01, 16164.20it/s]80000 / 100000 = 0.8
+ 71%|███████   | 70687/100000 [00:04&lt;00:01, 17643.33it/s]
+ 72%|███████▏  | 72457/100000 [00:04&lt;00:01, 17658.45it/s]
+ 74%|███████▍  | 74225/100000 [00:04&lt;00:01, 17662.73it/s]
+ 76%|███████▌  | 75994/100000 [00:04&lt;00:01, 17669.38it/s]
+ 78%|███████▊  | 77761/100000 [00:04&lt;00:01, 17346.83it/s]
+ 80%|███████▉  | 79531/100000 [00:04&lt;00:01, 17448.71it/s]80000 / 100000 = 0.8
 
- 81%|████████  | 80742/100000 [00:05&lt;00:01, 16449.15it/s]
- 82%|████████▏ | 82477/100000 [00:05&lt;00:01, 16715.03it/s]
- 84%|████████▍ | 84212/100000 [00:05&lt;00:00, 16902.69it/s]
- 86%|████████▌ | 85904/100000 [00:05&lt;00:00, 16817.65it/s]
- 88%|████████▊ | 87634/100000 [00:05&lt;00:00, 16959.84it/s]
- 89%|████████▉ | 89359/100000 [00:05&lt;00:00, 17043.73it/s]90000 / 100000 = 0.9
+ 81%|████████▏ | 81292/100000 [00:04&lt;00:01, 17494.73it/s]
+ 83%|████████▎ | 83058/100000 [00:04&lt;00:00, 17541.03it/s]
+ 85%|████████▍ | 84819/100000 [00:04&lt;00:00, 17559.93it/s]
+ 87%|████████▋ | 86582/100000 [00:04&lt;00:00, 17579.12it/s]
+ 88%|████████▊ | 88342/100000 [00:05&lt;00:00, 17582.65it/s]90000 / 100000 = 0.9
 
- 91%|█████████ | 91065/100000 [00:05&lt;00:00, 16950.60it/s]
- 93%|█████████▎| 92761/100000 [00:05&lt;00:00, 16888.02it/s]
- 94%|█████████▍| 94451/100000 [00:05&lt;00:00, 16470.37it/s]
- 96%|█████████▌| 96101/100000 [00:06&lt;00:00, 16449.39it/s]
- 98%|█████████▊| 97771/100000 [00:06&lt;00:00, 16519.94it/s]
- 99%|█████████▉| 99425/100000 [00:06&lt;00:00, 15247.94it/s]
-100%|██████████| 100000/100000 [00:06&lt;00:00, 15848.45it/s]
+ 90%|█████████ | 90105/100000 [00:05&lt;00:00, 17595.69it/s]
+ 92%|█████████▏| 91865/100000 [00:05&lt;00:00, 17596.47it/s]
+ 94%|█████████▎| 93631/100000 [00:05&lt;00:00, 17612.53it/s]
+ 95%|█████████▌| 95397/100000 [00:05&lt;00:00, 17624.05it/s]
+ 97%|█████████▋| 97160/100000 [00:05&lt;00:00, 17600.52it/s]
+ 99%|█████████▉| 98921/100000 [00:05&lt;00:00, 17481.11it/s]
+100%|██████████| 100000/100000 [00:05&lt;00:00, 17526.35it/s]
 
 {'f': 100, 'metric': 'angular', 'n_neighbors': 5, 'on_disk_path': 'test.annoy', 'prefault': False, 'seed': None, 'verbose': None, 'schema_version': 0, 'n_items': 100000, 'n_trees': 200, 'memory_usage_byte': 499984128, 'memory_usage_mib': 476.822021484375}
 </pre></div>
@@ -679,16 +678,16 @@
   q.set_seed(0)
 
   0%|          | 0/10 [00:00&lt;?, ?it/s]
- 60%|██████    | 6/10 [00:00&lt;00:00, 52.82it/s]
-100%|██████████| 10/10 [00:00&lt;00:00, 52.24it/s]
-limit: 10        precision:  10.00% avg time: 0.000148s
-limit: 100       precision:  16.00% avg time: 0.000142s
-limit: 1000      precision:  33.00% avg time: 0.000424s
-limit: 10000     precision:  86.00% avg time: 0.002517s
+ 60%|██████    | 6/10 [00:00&lt;00:00, 59.38it/s]
+100%|██████████| 10/10 [00:00&lt;00:00, 61.04it/s]
+limit: 10        precision:  10.00% avg time: 0.000130s
+limit: 100       precision:  16.00% avg time: 0.000114s
+limit: 1000      precision:  33.00% avg time: 0.000344s
+limit: 10000     precision:  86.00% avg time: 0.001961s
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-vector-db.html"><span class="doc">model-workflow: vector-db</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-bar.html"><span class="doc">plot-type: bar</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (2 minutes 12.420 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 53.114 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_simple_script_thumb.png"/>
@@ -753,7 +752,7 @@ limit: 10000     precision:  86.00% avg time: 0.002517s
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260323.badf5f9 2026-03-23T16:43Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260403.be1c1c4 2026-04-02T21:34Z.
       <br/>
 </p>
 </div>

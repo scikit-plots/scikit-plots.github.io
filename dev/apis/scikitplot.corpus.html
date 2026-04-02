@@ -665,6 +665,16 @@
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.BuildResult.html">BuildResult</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.BuilderConfig.html">BuilderConfig</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CorpusBuilder.html">CorpusBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.BuilderFactories.html">BuilderFactories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomChunker.html">CustomChunker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomEnricherConfig.html">CustomEnricherConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomFilter.html">CustomFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomNLPEnricher.html">CustomNLPEnricher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomNormalizer.html">CustomNormalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomSimilarityIndex.html">CustomSimilarityIndex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.FactoryCorpusBuilder.html">FactoryCorpusBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.HookableCorpusPipeline.html">HookableCorpusPipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.PipelineHooks.html">PipelineHooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DEFAULT_CACHE_DIR.html">DEFAULT_CACHE_DIR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DEFAULT_MODEL.html">DEFAULT_MODEL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.EmbeddingEngine.html">EmbeddingEngine</a></li>
@@ -694,6 +704,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.create_corpus.html">create_corpus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ALTOReader.html">ALTOReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.AudioReader.html">AudioReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomReader.html">CustomReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ImageReader.html">ImageReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.MarkdownReader.html">MarkdownReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.PDFReader.html">PDFReader</a></li>
@@ -1055,8 +1066,9 @@ embedding, and export pipeline for NLP and ML workflows.</p>
 module, preserving all proven design patterns while resolving every known
 correctness, robustness, and maintainability issue identified during the
 migration audit.</p>
-<section id="quick-start">
-<h3>Quick start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h3>
+<p>The Universal/Standard NLP/ML Workflow:
+<code class="docutils literal notranslate"><span class="pre">Sourcing</span> <span class="pre">→</span> <span class="pre">Reading</span> <span class="pre">→</span> <span class="pre">Chunking</span> <span class="pre">→</span> <span class="pre">Filtering</span> <span class="pre">→</span> <span class="pre">Normalizing</span> <span class="pre">→</span> <span class="pre">Embedding</span> <span class="pre">→</span> <span class="pre">Exporting</span></code>.</p>
+<p class="rubric">Examples</p>
 <p>Single file, no embedding:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">CorpusPipeline</span><span class="p">,</span> <span class="n">ParagraphChunker</span>
@@ -1068,7 +1080,8 @@ migration audit.</p>
 <p>Batch processing with sentence chunking:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">CorpusPipeline</span><span class="p">,</span> <span class="n">SentenceChunker</span><span class="p">,</span> <span class="n">ExportFormat</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">CorpusPipeline</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">chunker</span><span class="o">=</span><span class="n">SentenceChunker</span><span class="p">(</span><span class="s2">&quot;en_core_web_sm&quot;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="c1"># chunker=SentenceChunker(SentenceChunkerConfig(backend=SentenceBackend.NLTK)),</span>
+<span class="gp">... </span>    <span class="n">chunker</span><span class="o">=</span><span class="n">SentenceChunker</span><span class="p">(</span><span class="s2">&quot;en_core_web_sm&quot;</span><span class="p">),</span>  <span class="c1"># default backend spacy</span>
 <span class="gp">... </span>    <span class="n">output_dir</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;output/&quot;</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">export_format</span><span class="o">=</span><span class="n">ExportFormat</span><span class="o">.</span><span class="n">PARQUET</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
@@ -1082,7 +1095,7 @@ migration audit.</p>
 </pre></div>
 </div>
 <p>YouTube transcript:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">run_url</span><span class="p">(</span><span class="s2">&quot;https://www.youtube.com/watch?v=rwPISgZcYIk&quot;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;https://www.youtube.com/watch?v=rwPISgZcYIk&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Image OCR:</p>
@@ -1131,29 +1144,6 @@ migration audit.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mcp_response</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">to_mcp_tool_result</span><span class="p">(</span><span class="s2">&quot;quantum computing&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="package-structure">
-<h3>Package structure<a class="headerlink" href="#package-structure" title="Link to this heading">#</a></h3>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">scikitplot.corpus._schema</span></code></dt><dd><p>Core data types: CorpusDocument, SectionType, ChunkingStrategy,
-ExportFormat, SourceType, MatchMode.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">scikitplot.corpus._base</span></code></dt><dd><p>Abstract bases: DocumentReader, ChunkerBase, FilterBase, DefaultFilter.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">scikitplot.corpus._chunkers</span></code></dt><dd><p>WordChunker, WordChunkerConfig, SentenceChunker, SentenceChunkerConfig,
-ParagraphChunker, ParagraphChunkerConfig, FixedWindowChunker, FixedWindowChunkerConfig.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">scikitplot.corpus._readers</span></code></dt><dd><p>TextReader, MarkdownReader, ReSTReader, XMLReader, TEIReader, AudioReader,
-ALTOReader, PDFReader, ImageReader, VideoReader, WebReader, YouTubeReader.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">scikitplot.corpus._embeddings</span></code></dt><dd><p>EmbeddingEngine – multi-backend embedding with disk cache.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">scikitplot.corpus._pipeline</span></code></dt><dd><p>CorpusPipeline, PipelineResult, create_corpus.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">scikitplot.corpus._export</span></code></dt><dd><p>export_documents, load_documents.</p>
-</dd>
-</dl>
-</section>
 </section>
 <p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/corpus/index.html#corpus-index"><span class="std std-ref">Corpus Generation</span></a> section for further details.</p>
 <section id="base">
@@ -1268,6 +1258,44 @@ ALTOReader, PDFReader, ImageReader, VideoReader, WebReader, YouTubeReader.</p>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.CorpusBuilder.html#scikitplot.corpus.CorpusBuilder" title="scikitplot.corpus.CorpusBuilder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CorpusBuilder</span></code></a></p></td>
 <td><p>Unified corpus builder — end-to-end pipeline orchestrator.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="custom-hooks">
+<span id="corpus-ref-custom-hooks"></span><h2>Custom Hooks<a class="headerlink" href="#custom-hooks" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.BuilderFactories.html#scikitplot.corpus.BuilderFactories" title="scikitplot.corpus.BuilderFactories"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BuilderFactories</span></code></a></p></td>
+<td><p>Component factory callables for <a class="reference internal" href="../modules/generated/scikitplot.corpus.FactoryCorpusBuilder.html#scikitplot.corpus.FactoryCorpusBuilder" title="scikitplot.corpus.FactoryCorpusBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">FactoryCorpusBuilder</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomChunker.html#scikitplot.corpus.CustomChunker" title="scikitplot.corpus.CustomChunker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CustomChunker</span></code></a></p></td>
+<td><p>Wrap any callable as a <a class="reference internal" href="../modules/generated/scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase" title="scikitplot.corpus._base.ChunkerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChunkerBase</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomEnricherConfig.html#scikitplot.corpus.CustomEnricherConfig" title="scikitplot.corpus.CustomEnricherConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CustomEnricherConfig</span></code></a></p></td>
+<td><p>Custom backend callables for <a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomNLPEnricher.html#scikitplot.corpus.CustomNLPEnricher" title="scikitplot.corpus.CustomNLPEnricher"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomNLPEnricher</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomFilter.html#scikitplot.corpus.CustomFilter" title="scikitplot.corpus.CustomFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CustomFilter</span></code></a></p></td>
+<td><p>Wrap any callable as a <a class="reference internal" href="../modules/generated/scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase" title="scikitplot.corpus._base.FilterBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">FilterBase</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomNLPEnricher.html#scikitplot.corpus.CustomNLPEnricher" title="scikitplot.corpus.CustomNLPEnricher"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CustomNLPEnricher</span></code></a></p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">NLPEnricher</span></code> extended with fully-replaceable NLP backends.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomNormalizer.html#scikitplot.corpus.CustomNormalizer" title="scikitplot.corpus.CustomNormalizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CustomNormalizer</span></code></a></p></td>
+<td><p>Wrap any callable as a <code class="xref py py-class docutils literal notranslate"><span class="pre">NormalizerBase</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomSimilarityIndex.html#scikitplot.corpus.CustomSimilarityIndex" title="scikitplot.corpus.CustomSimilarityIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CustomSimilarityIndex</span></code></a></p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">SimilarityIndex</span></code> extended with a fully-replaceable custom scorer callable.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.FactoryCorpusBuilder.html#scikitplot.corpus.FactoryCorpusBuilder" title="scikitplot.corpus.FactoryCorpusBuilder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FactoryCorpusBuilder</span></code></a></p></td>
+<td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.CorpusBuilder.html#scikitplot.corpus.CorpusBuilder" title="scikitplot.corpus._corpus_builder.CorpusBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusBuilder</span></code></a> extended with pluggable component factories.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.HookableCorpusPipeline.html#scikitplot.corpus.HookableCorpusPipeline" title="scikitplot.corpus.HookableCorpusPipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HookableCorpusPipeline</span></code></a></p></td>
+<td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline" title="scikitplot.corpus._pipeline.CorpusPipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusPipeline</span></code></a> extended with per-stage lifecycle hooks.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.PipelineHooks.html#scikitplot.corpus.PipelineHooks" title="scikitplot.corpus.PipelineHooks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PipelineHooks</span></code></a></p></td>
+<td><p>Lifecycle callbacks for <a class="reference internal" href="../modules/generated/scikitplot.corpus.HookableCorpusPipeline.html#scikitplot.corpus.HookableCorpusPipeline" title="scikitplot.corpus.HookableCorpusPipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">HookableCorpusPipeline</span></code></a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1404,37 +1432,40 @@ ALTOReader, PDFReader, ImageReader, VideoReader, WebReader, YouTubeReader.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.AudioReader.html#scikitplot.corpus.AudioReader" title="scikitplot.corpus.AudioReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AudioReader</span></code></a></p></td>
 <td><p>Text extraction from audio files via companion transcript/lyrics parsing, Whisper ASR, and optional audio classification.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ImageReader.html#scikitplot.corpus.ImageReader" title="scikitplot.corpus.ImageReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ImageReader</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomReader.html#scikitplot.corpus.CustomReader" title="scikitplot.corpus.CustomReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CustomReader</span></code></a></p></td>
+<td><p>Fully user-customizable reader for any file extension and resource type.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ImageReader.html#scikitplot.corpus.ImageReader" title="scikitplot.corpus.ImageReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ImageReader</span></code></a></p></td>
 <td><p>OCR-based text extraction from raster image files.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.MarkdownReader.html#scikitplot.corpus.MarkdownReader" title="scikitplot.corpus.MarkdownReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MarkdownReader</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.MarkdownReader.html#scikitplot.corpus.MarkdownReader" title="scikitplot.corpus.MarkdownReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MarkdownReader</span></code></a></p></td>
 <td><p>Markdown document reader.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.PDFReader.html#scikitplot.corpus.PDFReader" title="scikitplot.corpus.PDFReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PDFReader</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.PDFReader.html#scikitplot.corpus.PDFReader" title="scikitplot.corpus.PDFReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PDFReader</span></code></a></p></td>
 <td><p>PDF document reader with pdfminer.six → pypdf cascade.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ReSTReader.html#scikitplot.corpus.ReSTReader" title="scikitplot.corpus.ReSTReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReSTReader</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ReSTReader.html#scikitplot.corpus.ReSTReader" title="scikitplot.corpus.ReSTReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReSTReader</span></code></a></p></td>
 <td><p>reStructuredText document reader.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.TEIReader.html#scikitplot.corpus.TEIReader" title="scikitplot.corpus.TEIReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TEIReader</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.TEIReader.html#scikitplot.corpus.TEIReader" title="scikitplot.corpus.TEIReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TEIReader</span></code></a></p></td>
 <td><p>TEI/XML document reader with dramatic structure extraction.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.TextReader.html#scikitplot.corpus.TextReader" title="scikitplot.corpus.TextReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TextReader</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.TextReader.html#scikitplot.corpus.TextReader" title="scikitplot.corpus.TextReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TextReader</span></code></a></p></td>
 <td><p>Plain-text document reader.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.VideoReader.html#scikitplot.corpus.VideoReader" title="scikitplot.corpus.VideoReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VideoReader</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.VideoReader.html#scikitplot.corpus.VideoReader" title="scikitplot.corpus.VideoReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VideoReader</span></code></a></p></td>
 <td><p>Text extraction from video files via subtitle parsing and/or automatic speech recognition.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.WebReader.html#scikitplot.corpus.WebReader" title="scikitplot.corpus.WebReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WebReader</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.WebReader.html#scikitplot.corpus.WebReader" title="scikitplot.corpus.WebReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WebReader</span></code></a></p></td>
 <td><p>Fetch a web page and extract structured text via BeautifulSoup.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.XMLReader.html#scikitplot.corpus.XMLReader" title="scikitplot.corpus.XMLReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">XMLReader</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.XMLReader.html#scikitplot.corpus.XMLReader" title="scikitplot.corpus.XMLReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">XMLReader</span></code></a></p></td>
 <td><p>Generic XML document reader with configurable XPath.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.YouTubeReader.html#scikitplot.corpus.YouTubeReader" title="scikitplot.corpus.YouTubeReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">YouTubeReader</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.YouTubeReader.html#scikitplot.corpus.YouTubeReader" title="scikitplot.corpus.YouTubeReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">YouTubeReader</span></code></a></p></td>
 <td><p>Extract the transcript of a YouTube video using <code class="docutils literal notranslate"><span class="pre">youtube-transcript-api</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ZipReader.html#scikitplot.corpus.ZipReader" title="scikitplot.corpus.ZipReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZipReader</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ZipReader.html#scikitplot.corpus.ZipReader" title="scikitplot.corpus.ZipReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZipReader</span></code></a></p></td>
 <td><p>Generic ZIP archive reader — dispatches each member to its natural reader.</p></td>
 </tr>
 </tbody>
@@ -1539,7 +1570,7 @@ ALTOReader, PDFReader, ImageReader, VideoReader, WebReader, YouTubeReader.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260323.badf5f9 2026-03-23T16:43Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260403.be1c1c4 2026-04-02T21:34Z.
       <br/>
     
   </p>
