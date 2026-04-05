@@ -9,39 +9,25 @@ scikitplot.cython
 
 **User guide.** See the :ref:`cython-index` section for further details.
 
-.. _cython_ref-cython-realtime-inplace-pkg-mod-generation:
+.. _cython_ref-pkg-mod-builder:
 
-Cython Realtime Inplace PKG/MOD Generation
-------------------------------------------
+PKG/MOD Builder
+---------------
 
 .. autosummary::
   :nosignatures:
   :toctree: ../modules/generated/
   :template: base.rst
   
-  compile_and_load
-  compile_and_load_result
-  cython_import
-  cython_import_result
-  cython_import_all
-  build_package_from_code
-  build_package_from_code_result
-  build_package_from_paths
-  build_package_from_paths_result
-  import_cached
-  import_cached_result
-  import_cached_by_name
-  import_cached_package
-  import_cached_package_result
-  register_cached_artifact_path
-  register_cached_artifact_bytes
-  import_artifact_path
-  import_artifact_bytes
-  export_cached
+  DEFAULT_COMPILER_DIRECTIVES
+  build_extension_module
+  build_extension_module_result
+  build_extension_package_from_code_result
+  build_extension_package_from_paths_result
 
 .. _cython_ref-cache-management:
 
-Cache management
+Cache Management
 ----------------
 
 .. autosummary::
@@ -49,61 +35,93 @@ Cache management
   :toctree: ../modules/generated/
   :template: base.rst
   
-  get_cache_dir
-  list_cached
-  list_cached_packages
-  cache_stats
-  gc_cache
-  purge_cache
-
-.. _cython_ref-pins-aliases:
-
-Pins/aliases
-------------
-
-.. autosummary::
-  :nosignatures:
-  :toctree: ../modules/generated/
-  :template: base.rst
-  
-  pin
-  unpin
-  list_pins
-  import_pinned
-  import_pinned_result
-
-.. _cython_ref-prereqs:
-
-Prereqs
--------
-
-.. autosummary::
-  :nosignatures:
-  :toctree: ../modules/generated/
-  :template: base.rst
-  
-  check_build_prereqs
-
-.. _cython_ref-results:
-
-Results
--------
-
-.. autosummary::
-  :nosignatures:
-  :toctree: ../modules/generated/
-  :template: base.rst
-  
-  BuildResult
-  PackageBuildResult
-  CacheStats
-  CacheGCResult
   CacheEntry
   PackageCacheEntry
+  find_entries_by_name
+  find_entry_by_key
+  find_package_entry_by_key
+  is_valid_key
+  iter_all_entry_dirs
+  iter_cache_entries
+  iter_package_entries
+  make_cache_key
+  peek_cache_dir
+  read_meta
+  register_artifact_path
+  resolve_cache_dir
+  runtime_fingerprint
+  source_digest
+  write_meta
 
-.. _cython_ref-templates---workflows:
+.. _cython_ref-custom-compiler-protocol:
 
-Templates / workflows
+Custom Compiler Protocol
+------------------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  CustomCompilerProtocol
+  CompilerRegistry
+  register_compiler
+  get_compiler
+  list_compilers
+  pure_python_prereqs
+  cython_cpp_prereqs
+  full_stack_prereqs
+  pybind11_only_prereqs
+  c_api_prereqs
+  pybind11_include
+  numpy_include
+  collect_c_api_sources
+  collect_header_dirs
+  PybindCompiler
+  CApiCompiler
+
+.. _cython_ref-cache-management-utilities:
+
+Cache Management Utilities
+--------------------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  cache_stats
+  gc_cache
+
+.. _cython_ref-extension-module-loader:
+
+Extension Module Loader
+-----------------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  import_extension
+  import_extension_from_bytes
+  import_extension_from_path
+
+.. _cython_ref-cross-platform-build-lock:
+
+Cross-platform Build Lock
+-------------------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  build_lock
+
+.. _cython_ref-pins-aliases-registry:
+
+Pins/Aliases Registry
 ---------------------
 
 .. autosummary::
@@ -111,22 +129,135 @@ Templates / workflows
   :toctree: ../modules/generated/
   :template: base.rst
   
+  list_pins
+  pin
+  resolve_pinned_key
+  unpin
+
+.. _cython_ref-build-profile-presets:
+
+Build Profile Presets
+---------------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  ProfileDefaults
+  apply_profile
+  is_windows
+  resolve_profile
+
+.. _cython_ref-public-api:
+
+Public API
+----------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  build_package_from_code
+  build_package_from_code_result
+  build_package_from_paths
+  build_package_from_paths_result
+  check_build_prereqs
+  compile_and_load
+  compile_and_load_result
+  cython_import
+  cython_import_all
+  cython_import_result
+  export_cached
+  get_cache_dir
+  import_artifact_bytes
+  import_artifact_path
+  import_cached
+  import_cached_by_name
+  import_cached_package
+  import_cached_package_result
+  import_cached_result
+  import_pinned
+  import_pinned_result
+  list_cached
+  list_cached_packages
+  purge_cache
+  register_cached_artifact_bytes
+  register_cached_artifact_path
+
+.. _cython_ref-result-types:
+
+Result types
+------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  BuildResult
+  CacheGCResult
+  CacheStats
+  PackageBuildResult
+
+.. _cython_ref-security-guards:
+
+Security Guards
+---------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  DEFAULT_SECURITY_POLICY
+  RELAXED_SECURITY_POLICY
+  SecurityError
+  SecurityPolicy
+  is_safe_compiler_arg
+  is_safe_macro_name
+  is_safe_path
+  validate_build_inputs
+
+.. _cython_ref-template-and-workflow-assets:
+
+Template and workflow assets
+----------------------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
   TemplateInfo
-  template_root
-  list_templates
-  get_template_path
-  read_template
-  read_template_info
-  load_template_metadata
+  build_package_example
+  build_package_example_result
   compile_template
   compile_template_result
-  list_package_examples
-  get_package_example_path
-  load_package_example_metadata
-  build_package_example_result
-  build_package_example
-  list_workflows
-  get_workflow_path
-  workflow_cli_template_path
   copy_workflow
   generate_sphinx_template_docs
+  get_package_example_path
+  get_template_path
+  get_workflow_path
+  list_package_examples
+  list_templates
+  list_workflows
+  load_package_example_metadata
+  load_template_metadata
+  read_template
+  read_template_info
+  template_root
+  workflow_cli_template_path
+
+.. _cython_ref-small-utilities:
+
+Small utilities
+---------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  sanitize

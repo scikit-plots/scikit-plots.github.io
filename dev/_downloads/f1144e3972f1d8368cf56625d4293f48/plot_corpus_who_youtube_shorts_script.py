@@ -47,6 +47,8 @@ pipeline
 # Unfortunately, most IPs from cloud providers are blocked by YouTube.
 # result = pipeline.run_url("https://www.youtube.com/shorts/VMZ40dVugAk")
 
+# Richard Feynman - The Character of Physical Law (1964) - Complete - Better Audio
+# https://www.youtube.com/watch?v=kEx-gRfuhhk
 # result = pipeline.run("https://www.youtube.com/shorts/VMZ40dVugAk")
 # result
 
