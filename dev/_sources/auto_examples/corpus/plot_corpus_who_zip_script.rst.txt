@@ -74,7 +74,7 @@ Examples related to the :py:mod:`~scikitplot.corpus` submodule.
 
  .. code-block:: none
 
-    2026-04-05 15:18:54.504083: W scikitplot.corpus._base 134995167849344 _base.py:2052:__init_subclass__] DocumentReader: extension '.zip' already registered to ALTOReader; overriding with ZipReader.
+    2026-04-07 18:46:00.274158: W scikitplot.corpus._base 127566191754112 _base.py:2052:__init_subclass__] DocumentReader: extension '.zip' already registered to ALTOReader; overriding with ZipReader.
 
 
 
@@ -146,12 +146,12 @@ The same ZIP via :class:`CorpusPipeline`
  .. code-block:: none
 
     Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-    2026-04-05 15:19:12.747167: W scikitplot.corpus._readers._pdf 134995167849344 _pdf.py:521:get_raw_chunks] PDFReader: could not determine page count for WHO-EURO-2025-12555-52329-80560-eng.zip/WHO-EURO-2025-12555-52329-80560-eng.pdf. Attempting page-by-page extraction until first failure.
-    2026-04-05 15:19:12.747677: W scikitplot.corpus._readers._zip 134995167849344 _zip.py:456:get_raw_chunks] ZipReader: failed to read member WHO-EURO-2025-12555-52329-80560-eng.pdf from WHO-EURO-2025-12555-52329-80560-eng.zip: Neither pdfminer.six nor pypdf is installed. Install at least one:
+    2026-04-07 18:46:17.956170: W scikitplot.corpus._readers._pdf 127566191754112 _pdf.py:521:get_raw_chunks] PDFReader: could not determine page count for WHO-EURO-2025-12555-52329-80560-eng.zip/WHO-EURO-2025-12555-52329-80560-eng.pdf. Attempting page-by-page extraction until first failure.
+    2026-04-07 18:46:17.956760: W scikitplot.corpus._readers._zip 127566191754112 _zip.py:456:get_raw_chunks] ZipReader: failed to read member WHO-EURO-2025-12555-52329-80560-eng.pdf from WHO-EURO-2025-12555-52329-80560-eng.zip: Neither pdfminer.six nor pypdf is installed. Install at least one:
       pip install pdfminer.six
       pip install pypdf
 
-    PipelineResult(source='data/WHO-EURO-2025-12555-52329-80560-eng.zip', n_documents=7, n_omitted=0, n_embedded=0, elapsed=18.6s, output=output/WHO-EURO-2025-12555-52329-80560-eng.csv)
+    PipelineResult(source='data/WHO-EURO-2025-12555-52329-80560-eng.zip', n_documents=7, n_omitted=0, n_embedded=0, elapsed=18.1s, output=output/WHO-EURO-2025-12555-52329-80560-eng.csv)
 
 
 
@@ -256,7 +256,7 @@ The same ZIP via :class:`CorpusPipeline`
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 18.909 seconds)
+   **Total running time of the script:** (0 minutes 18.346 seconds)
 
 
 .. _sphx_glr_download_auto_examples_corpus_plot_corpus_who_zip_script.py:

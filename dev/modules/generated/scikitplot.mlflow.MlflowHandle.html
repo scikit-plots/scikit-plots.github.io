@@ -84,7 +84,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="session" href="scikitplot.mlflow.session.html" />
-    <link rel="prev" title="scikitplot.mlflow" href="../../apis/scikitplot.mlflow.html" />
+    <link rel="prev" title="spawn_server" href="scikitplot.mlflow.spawn_server.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.5" />
@@ -961,26 +961,66 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../apis/scikitplot.mlflow.html">scikitplot.mlflow</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.DEFAULT_MLFLOW_SERVER_FLAGS.html">DEFAULT_MLFLOW_SERVER_FLAGS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.MlflowServerCliCaps.html">MlflowServerCliCaps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.ensure_flags_supported.html">ensure_flags_supported</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.get_mlflow_server_cli_caps.html">get_mlflow_server_cli_caps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.import_mlflow.html">import_mlflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.resolve_download_artifacts.html">resolve_download_artifacts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.ServerConfig.html">ServerConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.SessionConfig.html">SessionConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.running_in_docker.html">running_in_docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.MlflowProvider.html">MlflowProvider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.get_provider.html">get_provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.set_provider.html">set_provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.use_provider.html">use_provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.EnvSnapshot.html">EnvSnapshot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.apply_env.html">apply_env</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.parse_dotenv.html">parse_dotenv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.MlflowCliIncompatibleError.html">MlflowCliIncompatibleError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.MlflowIntegrationError.html">MlflowIntegrationError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.MlflowNotInstalledError.html">MlflowNotInstalledError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.MlflowServerStartError.html">MlflowServerStartError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.SecurityPolicyViolationError.html">SecurityPolicyViolationError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.ArtifactsFacade.html">ArtifactsFacade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.ModelsFacade.html">ModelsFacade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.DEFAULT_PROJECT_MARKERS.html">DEFAULT_PROJECT_MARKERS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.ProjectConfig.html">ProjectConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.dump_project_config_yaml.html">dump_project_config_yaml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.ensure_local_store_layout.html">ensure_local_store_layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.find_project_root.html">find_project_root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.get_project_markers.html">get_project_markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.load_project_config.html">load_project_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.load_project_config_toml.html">load_project_config_toml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.load_project_config_yaml.html">load_project_config_yaml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.normalize_mlflow_store_values.html">normalize_mlflow_store_values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.project_markers.html">project_markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.set_project_markers.html">set_project_markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.wait_tracking_ready.html">wait_tracking_ready</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.DEFAULT_SECURITY_POLICY.html">DEFAULT_SECURITY_POLICY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.RELAXED_SECURITY_POLICY.html">RELAXED_SECURITY_POLICY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.SecurityPolicy.html">SecurityPolicy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.get_security_policy.html">get_security_policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.security_policy.html">security_policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.set_security_policy.html">set_security_policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.SpawnedServer.html">SpawnedServer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.build_server_args.html">build_server_args</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.build_server_command.html">build_server_command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.spawn_server.html">spawn_server</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">MlflowHandle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.session.html">session</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.session_from_file.html">session_from_file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.session_from_toml.html">session_from_toml</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.DEFAULT_PROJECT_MARKERS.html">DEFAULT_PROJECT_MARKERS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.find_project_root.html">find_project_root</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.load_project_config.html">load_project_config</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.load_project_config_toml.html">load_project_config_toml</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.dump_project_config_yaml.html">dump_project_config_yaml</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.ServerConfig.html">ServerConfig</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.SessionConfig.html">SessionConfig</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.ProjectConfig.html">ProjectConfig</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.MlflowIntegrationError.html">MlflowIntegrationError</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.MlflowNotInstalledError.html">MlflowNotInstalledError</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.MlflowCliIncompatibleError.html">MlflowCliIncompatibleError</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.MlflowServerStartError.html">MlflowServerStartError</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.workflow.html">workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.MlflowVersion.html">MlflowVersion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.is_mlflow_installed.html">is_mlflow_installed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.mlflow_version.html">mlflow_version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.WorkflowPaths.html">WorkflowPaths</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.builtin_config_path.html">builtin_config_path</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.export_builtin_config.html">export_builtin_config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.default_project_paths.html">default_project_paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.export_builtin_config.html">export_builtin_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.patch_experiment_name_in_toml.html">patch_experiment_name_in_toml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.run_demo.html">run_demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.workflow.html">workflow</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.nc.html">scikitplot.nc</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -1132,7 +1172,7 @@
 <h1>MlflowHandle<a class="headerlink" href="#mlflowhandle" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.mlflow.MlflowHandle">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.mlflow.</span></span><span class="sig-name descname"><span class="pre">MlflowHandle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_mlflow_module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_tracking_uri</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_registry_uri</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_ui_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_artifacts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_models</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">experiment_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_run_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_run_tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/23ea7eb/scikitplot/mlflow/_session.py#L142"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.mlflow.MlflowHandle" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.mlflow.</span></span><span class="sig-name descname"><span class="pre">MlflowHandle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_mlflow_module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_tracking_uri</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_registry_uri</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_ui_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_artifacts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_models</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">experiment_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_run_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_run_tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f3e50c8/scikitplot/mlflow/_session.py#L157"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.mlflow.MlflowHandle" title="Link to this definition">#</a></dt>
 <dd><p>A handle that proxies the upstream <code class="docutils literal notranslate"><span class="pre">mlflow</span></code> module while adding session context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Attributes<span class="colon">:</span></dt>
@@ -1170,9 +1210,9 @@
 <li><p><strong>_registry_uri</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
 <li><p><strong>_ui_url</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
 <li><p><strong>_client</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>)</p></li>
-<li><p><strong>_artifacts</strong> (<em>ArtifactsFacade</em>)</p></li>
-<li><p><strong>_models</strong> (<em>ModelsFacade</em>)</p></li>
-<li><p><strong>server</strong> (<em>SpawnedServer</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>_artifacts</strong> (<a class="reference internal" href="scikitplot.mlflow.ArtifactsFacade.html#scikitplot.mlflow.ArtifactsFacade" title="scikitplot.mlflow._facade.ArtifactsFacade"><em>ArtifactsFacade</em></a>)</p></li>
+<li><p><strong>_models</strong> (<a class="reference internal" href="scikitplot.mlflow.ModelsFacade.html#scikitplot.mlflow.ModelsFacade" title="scikitplot.mlflow._facade.ModelsFacade"><em>ModelsFacade</em></a>)</p></li>
+<li><p><strong>server</strong> (<a class="reference internal" href="scikitplot.mlflow.SpawnedServer.html#scikitplot.mlflow.SpawnedServer" title="scikitplot.mlflow._server.SpawnedServer"><em>SpawnedServer</em></a><em> | </em><em>None</em>)</p></li>
 <li><p><strong>version</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em> | </em><em>None</em>)</p></li>
 <li><p><strong>experiment_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
 <li><p><strong>default_run_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
@@ -1185,7 +1225,7 @@
 to omit <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">mlflow</span></code> while keeping identical API usage.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="scikitplot.mlflow.MlflowHandle.artifacts">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">artifacts</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ArtifactsFacade</span></span><a class="headerlink" href="#scikitplot.mlflow.MlflowHandle.artifacts" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">artifacts</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="scikitplot.mlflow.ArtifactsFacade.html#scikitplot.mlflow.ArtifactsFacade" title="scikitplot.mlflow._facade.ArtifactsFacade"><span class="pre">ArtifactsFacade</span></a></span><a class="headerlink" href="#scikitplot.mlflow.MlflowHandle.artifacts" title="Link to this definition">#</a></dt>
 <dd><p>Artifact helper facade.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1234,7 +1274,7 @@ to omit <code class="docutils literal notranslate"><span class="pre">import</spa
 
 <dl class="py property">
 <dt class="sig sig-object py" id="scikitplot.mlflow.MlflowHandle.models">
-<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">models</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ModelsFacade</span></span><a class="headerlink" href="#scikitplot.mlflow.MlflowHandle.models" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">models</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="scikitplot.mlflow.ModelsFacade.html#scikitplot.mlflow.ModelsFacade" title="scikitplot.mlflow._facade.ModelsFacade"><span class="pre">ModelsFacade</span></a></span><a class="headerlink" href="#scikitplot.mlflow.MlflowHandle.models" title="Link to this definition">#</a></dt>
 <dd><p>Model helper facade.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1254,12 +1294,12 @@ to omit <code class="docutils literal notranslate"><span class="pre">import</spa
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.mlflow.MlflowHandle.server">
-<span class="sig-name descname"><span class="pre">server</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">SpawnedServer</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#scikitplot.mlflow.MlflowHandle.server" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">server</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="scikitplot.mlflow.SpawnedServer.html#scikitplot.mlflow.SpawnedServer" title="scikitplot.mlflow._server.SpawnedServer"><span class="pre">SpawnedServer</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#scikitplot.mlflow.MlflowHandle.server" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.mlflow.MlflowHandle.start_run">
-<span class="sig-name descname"><span class="pre">start_run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/23ea7eb/scikitplot/mlflow/_session.py#L255"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.mlflow.MlflowHandle.start_run" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">start_run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f3e50c8/scikitplot/mlflow/_session.py#L270"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.mlflow.MlflowHandle.start_run" title="Link to this definition">#</a></dt>
 <dd><p>Start an MLflow run and apply session defaults.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1331,12 +1371,12 @@ to omit <code class="docutils literal notranslate"><span class="pre">import</spa
     <div class="footer-article-item">
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../apis/scikitplot.mlflow.html"
+       href="scikitplot.mlflow.spawn_server.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">scikitplot.mlflow</p>
+        <p class="prev-next-title">spawn_server</p>
       </div>
     </a>
     <a class="right-next"
@@ -1428,7 +1468,7 @@ to omit <code class="docutils literal notranslate"><span class="pre">import</spa
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260405.23ea7eb 2026-04-05T15:15Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260407.f3e50c8 2026-04-07T18:41Z.
       <br/>
     
   </p>

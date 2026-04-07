@@ -85,8 +85,8 @@
     <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="load_project_config" href="scikitplot.mlflow.load_project_config.html" />
-    <link rel="prev" title="DEFAULT_PROJECT_MARKERS" href="scikitplot.mlflow.DEFAULT_PROJECT_MARKERS.html" />
+    <link rel="next" title="get_project_markers" href="scikitplot.mlflow.get_project_markers.html" />
+    <link rel="prev" title="ensure_local_store_layout" href="scikitplot.mlflow.ensure_local_store_layout.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.5" />
@@ -963,26 +963,66 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../apis/scikitplot.mlflow.html">scikitplot.mlflow</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.DEFAULT_MLFLOW_SERVER_FLAGS.html">DEFAULT_MLFLOW_SERVER_FLAGS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.MlflowServerCliCaps.html">MlflowServerCliCaps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.ensure_flags_supported.html">ensure_flags_supported</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.get_mlflow_server_cli_caps.html">get_mlflow_server_cli_caps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.import_mlflow.html">import_mlflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.resolve_download_artifacts.html">resolve_download_artifacts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.ServerConfig.html">ServerConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.SessionConfig.html">SessionConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.running_in_docker.html">running_in_docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.MlflowProvider.html">MlflowProvider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.get_provider.html">get_provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.set_provider.html">set_provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.use_provider.html">use_provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.EnvSnapshot.html">EnvSnapshot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.apply_env.html">apply_env</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.parse_dotenv.html">parse_dotenv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.MlflowCliIncompatibleError.html">MlflowCliIncompatibleError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.MlflowIntegrationError.html">MlflowIntegrationError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.MlflowNotInstalledError.html">MlflowNotInstalledError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.MlflowServerStartError.html">MlflowServerStartError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.SecurityPolicyViolationError.html">SecurityPolicyViolationError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.ArtifactsFacade.html">ArtifactsFacade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.ModelsFacade.html">ModelsFacade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.DEFAULT_PROJECT_MARKERS.html">DEFAULT_PROJECT_MARKERS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.ProjectConfig.html">ProjectConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.dump_project_config_yaml.html">dump_project_config_yaml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.ensure_local_store_layout.html">ensure_local_store_layout</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">find_project_root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.get_project_markers.html">get_project_markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.load_project_config.html">load_project_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.load_project_config_toml.html">load_project_config_toml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.load_project_config_yaml.html">load_project_config_yaml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.normalize_mlflow_store_values.html">normalize_mlflow_store_values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.project_markers.html">project_markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.set_project_markers.html">set_project_markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.wait_tracking_ready.html">wait_tracking_ready</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.DEFAULT_SECURITY_POLICY.html">DEFAULT_SECURITY_POLICY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.RELAXED_SECURITY_POLICY.html">RELAXED_SECURITY_POLICY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.SecurityPolicy.html">SecurityPolicy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.get_security_policy.html">get_security_policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.security_policy.html">security_policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.set_security_policy.html">set_security_policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.SpawnedServer.html">SpawnedServer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.build_server_args.html">build_server_args</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.build_server_command.html">build_server_command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.spawn_server.html">spawn_server</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.MlflowHandle.html">MlflowHandle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.session.html">session</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.session_from_file.html">session_from_file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.session_from_toml.html">session_from_toml</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.DEFAULT_PROJECT_MARKERS.html">DEFAULT_PROJECT_MARKERS</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">find_project_root</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.load_project_config.html">load_project_config</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.load_project_config_toml.html">load_project_config_toml</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.dump_project_config_yaml.html">dump_project_config_yaml</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.ServerConfig.html">ServerConfig</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.SessionConfig.html">SessionConfig</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.ProjectConfig.html">ProjectConfig</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.MlflowIntegrationError.html">MlflowIntegrationError</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.MlflowNotInstalledError.html">MlflowNotInstalledError</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.MlflowCliIncompatibleError.html">MlflowCliIncompatibleError</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.MlflowServerStartError.html">MlflowServerStartError</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.workflow.html">workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.MlflowVersion.html">MlflowVersion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.is_mlflow_installed.html">is_mlflow_installed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.mlflow_version.html">mlflow_version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.WorkflowPaths.html">WorkflowPaths</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.builtin_config_path.html">builtin_config_path</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.export_builtin_config.html">export_builtin_config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.default_project_paths.html">default_project_paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.export_builtin_config.html">export_builtin_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.patch_experiment_name_in_toml.html">patch_experiment_name_in_toml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.run_demo.html">run_demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mlflow.workflow.html">workflow</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.nc.html">scikitplot.nc</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -1134,7 +1174,7 @@
 <h1>find_project_root<a class="headerlink" href="#find-project-root" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.mlflow.find_project_root">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.mlflow.</span></span><span class="sig-name descname"><span class="pre">find_project_root</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">markers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/23ea7eb/scikitplot/mlflow/_project.py#L269"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.mlflow.find_project_root" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.mlflow.</span></span><span class="sig-name descname"><span class="pre">find_project_root</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">markers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f3e50c8/scikitplot/mlflow/_project.py#L284"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.mlflow.find_project_root" title="Link to this definition">#</a></dt>
 <dd><p>Find a project root directory deterministically.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1142,7 +1182,7 @@
 <dt><strong>start</strong><span class="classifier">pathlib.Path or None, default=None</span></dt><dd><p>Starting directory. If None, uses the current working directory.</p>
 </dd>
 <dt><strong>markers</strong><span class="classifier">sequence[str] or None, default=None</span></dt><dd><p>Marker files/directories that define a project root. If None, resolved via
-<code class="xref py py-func docutils literal notranslate"><span class="pre">get_project_markers</span></code> (using <code class="docutils literal notranslate"><span class="pre">config_path</span></code> if provided).</p>
+<a class="reference internal" href="scikitplot.mlflow.get_project_markers.html#scikitplot.mlflow.get_project_markers" title="scikitplot.mlflow.get_project_markers"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_project_markers</span></code></a> (using <code class="docutils literal notranslate"><span class="pre">config_path</span></code> if provided).</p>
 </dd>
 <dt><strong>config_path</strong><span class="classifier">pathlib.Path or None, default=None</span></dt><dd><p>Optional TOML file to read <code class="docutils literal notranslate"><span class="pre">[project].markers</span></code> from.</p>
 </dd>
@@ -1196,20 +1236,20 @@
     <div class="footer-article-item">
 <div class="prev-next-area">
     <a class="left-prev"
-       href="scikitplot.mlflow.DEFAULT_PROJECT_MARKERS.html"
+       href="scikitplot.mlflow.ensure_local_store_layout.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">DEFAULT_PROJECT_MARKERS</p>
+        <p class="prev-next-title">ensure_local_store_layout</p>
       </div>
     </a>
     <a class="right-next"
-       href="scikitplot.mlflow.load_project_config.html"
+       href="scikitplot.mlflow.get_project_markers.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">load_project_config</p>
+        <p class="prev-next-title">get_project_markers</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1279,7 +1319,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260405.23ea7eb 2026-04-05T15:15Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260407.f3e50c8 2026-04-07T18:41Z.
       <br/>
     
   </p>

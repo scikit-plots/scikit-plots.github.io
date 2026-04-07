@@ -282,7 +282,7 @@ via :class:`CorpusPipeline`
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 56-65
+.. GENERATED FROM PYTHON SOURCE LINES 56-66
 
 .. code-block:: Python
 
@@ -290,6 +290,7 @@ via :class:`CorpusPipeline`
     import matplotlib.pyplot as plt
     import matplotlib.image as mpimg
 
+    plt.figure(dpi=300)  # Set DPI to 150
     img = mpimg.imread(result_zip.source)
     plt.imshow(img)
     plt.axis('off')  # hides axes
@@ -307,7 +308,30 @@ via :class:`CorpusPipeline`
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 66-73
+.. GENERATED FROM PYTHON SOURCE LINES 67-73
+
+.. code-block:: Python
+
+
+    from IPython.display import FileLink, FileLinks
+
+    # Replace 'path/to/your_file.csv' with your actual file path
+    FileLink(Path("data/echo_of_the_wise/AI_Generated_Image_1ix.png"))
+
+
+
+
+
+
+.. raw:: html
+
+    <div class="output_subarea output_html rendered_html output_result">
+    Path (<tt>data/echo_of_the_wise/AI_Generated_Image_1ix.png</tt>) doesn't exist. It may still be in the process of being generated, or you may have the incorrect path.
+    </div>
+    <br />
+    <br />
+
+.. GENERATED FROM PYTHON SOURCE LINES 74-81
 
 .. tags::
 
@@ -320,7 +344,7 @@ via :class:`CorpusPipeline`
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 4.513 seconds)
+   **Total running time of the script:** (0 minutes 5.158 seconds)
 
 
 .. _sphx_glr_download_auto_examples_corpus_plot_corpus_knowledge_script.py:

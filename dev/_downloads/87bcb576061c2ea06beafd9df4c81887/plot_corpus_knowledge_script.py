@@ -57,10 +57,18 @@ pprint(pd.read_csv(result_zip.output_path).head().to_dict())
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
+plt.figure(dpi=300)  # Set DPI to 150
 img = mpimg.imread(result_zip.source)
 plt.imshow(img)
 plt.axis('off')  # hides axes
 plt.show()
+
+# %%
+
+from IPython.display import FileLink, FileLinks
+
+# Replace 'path/to/your_file.csv' with your actual file path
+FileLink(Path("data/echo_of_the_wise/AI_Generated_Image_1ix.png"))
 
 # %%
 #

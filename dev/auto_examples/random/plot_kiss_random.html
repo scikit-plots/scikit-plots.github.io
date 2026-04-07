@@ -652,37 +652,37 @@ ENHANCED KISS RANDOM - NEW FEATURES DEMONSTRATION
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Numpy
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.003680562000226928,
- 'time_mean': 0.003699037399928784,
- 'time_max': 0.0037273649977578316,
- 'time_std': 2.1712141961517535e-05,
+ 'time_min': 0.005668163999871467,
+ 'time_mean': 0.00810205119987586,
+ 'time_max': 0.015629251999598637,
+ 'time_std': 0.004284797963921117,
  'output_mean': 0.5000264761740889,
  'output_std': 0.2886354529025341}
 Kiss Customized 64
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.012392410997563275,
- 'time_mean': 0.01254781940006069,
- 'time_max': 0.012739835001411848,
- 'time_std': 0.00012472014807862243,
+ 'time_min': 0.014432422000027145,
+ 'time_mean': 0.01636061300005167,
+ 'time_max': 0.019231527000101778,
+ 'time_std': 0.002104511990550061,
  'output_mean': 0.4994983951235817,
  'output_std': 0.28868033687878636}
 Numpy
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.004854505001276266,
- 'time_mean': 0.004899033599940594,
- 'time_max': 0.004991360998246819,
- 'time_std': 5.4432212065191345e-05,
+ 'time_min': 0.006829624000147305,
+ 'time_mean': 0.007627231199967355,
+ 'time_max': 0.009264952999728848,
+ 'time_std': 0.0010277913418702141,
  'output_mean': 0.5000264761740889,
  'output_std': 0.2886354529025341}
 Kiss Customized 64
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.015078866999829188,
- 'time_mean': 0.015495996199751972,
- 'time_max': 0.016464162999909604,
- 'time_std': 0.0005618016851619696,
+ 'time_min': 0.0175458910002817,
+ 'time_mean': 0.020483978399988702,
+ 'time_max': 0.027066610000019864,
+ 'time_std': 0.003976293177171722,
  'output_mean': 0.4994983951235817,
  'output_std': 0.28868033687878636}
 </pre></div>
@@ -895,13 +895,13 @@ Generator from seed: KissGenerator
 Generator from BitGenerator: KissGenerator
 
 Generator methods:
-  random(5):         [0.37402336 0.87460082 0.5107969  0.51942789 0.14087324]
-  integers(0, 100):  [13 10 62 48 31]
-  normal(0, 1):      [ 0.06935291  0.22015885  0.36988078 -1.5201317   0.13771586]
-  uniform(10, 20):   [14.57363756 15.64870457 18.72062269 10.03920659 14.82067641]
-  choice(['A','B','C']): ['A' 'A' 'A' 'B' 'C' 'C' 'A' 'B' 'A' 'B']
-  Weighted choice A: 60% (✅ expected ~50%)
-  shuffle([0..9]):   [0 8 1 5 3 4 6 2 7 9]
+  random(5):         [0.18985644 0.96465589 0.50422437 0.04551247 0.44810513]
+  integers(0, 100):  [27  0 62 91 68]
+  normal(0, 1):      [ 1.06898073  1.02496441 -1.27217719  1.37458322  0.55921322]
+  uniform(10, 20):   [10.31991695 14.11137732 16.02308106 19.03639422 12.21321495]
+  choice(['A','B','C']): ['B' 'C' 'B' 'C' 'C' 'B' 'C' 'B' 'C' 'A']
+  Weighted choice A: 37% (✅ expected ~50%)
+  shuffle([0..9]):   [4 3 0 1 8 6 9 7 2 5]
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
@@ -1160,8 +1160,8 @@ Chi-square uniformity test:
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>======================================================================
 10. ADVANCED USAGE - CUSTOM DISTRIBUTIONS
 ======================================================================
-Exponential(scale=2): [1.99019626 3.34152867 1.03913534 2.08398351 5.1355601 ]
-Beta(2, 5):           [0.05445477 0.34935577 0.20301193 0.20363531 0.44121976]
+Exponential(scale=2): [1.87934354 0.04287948 0.85721042 3.52348584 2.01388377]
+Beta(2, 5):           [0.15442177 0.28159836 0.44521108 0.27964211 0.15950394]
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
@@ -1398,7 +1398,7 @@ RECOMMENDED USAGE:
 ======================================================================
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.091 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.617 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This gallery example demonstrates the :py~scikitplot.memmap.MemoryMap module at three levels of complexity."><img alt="" src="../../_images/sphx_glr_plot_mman_thumb.png"/>
@@ -1457,7 +1457,7 @@ RECOMMENDED USAGE:
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260405.23ea7eb 2026-04-05T15:15Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260407.f3e50c8 2026-04-07T18:41Z.
       <br/>
 </p>
 </div>

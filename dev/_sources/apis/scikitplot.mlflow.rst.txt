@@ -9,55 +9,38 @@ scikitplot.mlflow
 
 **User guide.** See the :ref:`mlflow-index` section for further details.
 
-.. _mlflow_ref-mlflow-session-helper:
+.. _mlflow_ref-cli-helper:
 
-Mlflow Session Helper
----------------------
-
-.. automodule:: scikitplot.mlflow._session
-
-.. currentmodule:: scikitplot.mlflow
-
-
-**User guide.** See the :ref:`mlflow-index` section for further details.
+Cli Helper
+----------
 
 .. autosummary::
   :nosignatures:
   :toctree: ../modules/generated/
   :template: base.rst
   
-  MlflowHandle
-  session
-  session_from_file
-  session_from_toml
+  DEFAULT_MLFLOW_SERVER_FLAGS
+  MlflowServerCliCaps
+  ensure_flags_supported
+  get_mlflow_server_cli_caps
 
-.. _mlflow_ref-project-config-helpers:
+.. _mlflow_ref-compat-helper:
 
-project config helpers
-----------------------
-
-.. automodule:: scikitplot.mlflow._project
-
-.. currentmodule:: scikitplot.mlflow
-
-
-**User guide.** See the :ref:`mlflow-index` section for further details.
+Compat Helper
+-------------
 
 .. autosummary::
   :nosignatures:
   :toctree: ../modules/generated/
   :template: base.rst
   
-  DEFAULT_PROJECT_MARKERS
-  find_project_root
-  load_project_config
-  load_project_config_toml
-  dump_project_config_yaml
+  import_mlflow
+  resolve_download_artifacts
 
-.. _mlflow_ref-config:
+.. _mlflow_ref-config-helper:
 
-config
-------
+Config Helper
+-------------
 
 .. automodule:: scikitplot.mlflow._config
 
@@ -73,29 +56,83 @@ config
   
   ServerConfig
   SessionConfig
-  ProjectConfig
 
-.. _mlflow_ref-errors:
+.. _mlflow_ref-container-helper:
 
-errors
-------
+Container Helper
+----------------
 
 .. autosummary::
   :nosignatures:
   :toctree: ../modules/generated/
   :template: base.rst
   
+  running_in_docker
+
+.. _mlflow_ref-customization-helper:
+
+Customization Helper
+--------------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  MlflowProvider
+  get_provider
+  set_provider
+  use_provider
+
+.. _mlflow_ref-env-helper:
+
+Env Helper
+----------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  EnvSnapshot
+  apply_env
+  parse_dotenv
+
+.. _mlflow_ref-error-helper:
+
+Error Helper
+------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  MlflowCliIncompatibleError
   MlflowIntegrationError
   MlflowNotInstalledError
-  MlflowCliIncompatibleError
   MlflowServerStartError
+  SecurityPolicyViolationError
 
-.. _mlflow_ref-workflow-helpers:
+.. _mlflow_ref-facade-helper:
 
-workflow helpers
-----------------
+Facade Helper
+-------------
 
-.. automodule:: scikitplot.mlflow._workflow
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  ArtifactsFacade
+  ModelsFacade
+
+.. _mlflow_ref-project-helper:
+
+Project Helper
+--------------
+
+.. automodule:: scikitplot.mlflow._project
 
 .. currentmodule:: scikitplot.mlflow
 
@@ -107,7 +144,106 @@ workflow helpers
   :toctree: ../modules/generated/
   :template: base.rst
   
-  workflow
+  DEFAULT_PROJECT_MARKERS
+  ProjectConfig
+  dump_project_config_yaml
+  ensure_local_store_layout
+  find_project_root
+  get_project_markers
+  load_project_config
+  load_project_config_toml
+  load_project_config_yaml
+  normalize_mlflow_store_values
+  project_markers
+  set_project_markers
+
+.. _mlflow_ref-readiness-helper:
+
+Readiness Helper
+----------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  wait_tracking_ready
+
+.. _mlflow_ref-security-helper:
+
+Security Helper
+---------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  DEFAULT_SECURITY_POLICY
+  RELAXED_SECURITY_POLICY
+  SecurityPolicy
+  get_security_policy
+  security_policy
+  set_security_policy
+
+.. _mlflow_ref-server-helper:
+
+Server Helper
+-------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  SpawnedServer
+  build_server_args
+  build_server_command
+  spawn_server
+
+.. _mlflow_ref-session-helper:
+
+Session Helper
+--------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  MlflowHandle
+  session
+  session_from_file
+  session_from_toml
+
+.. _mlflow_ref-helper:
+
+Helper
+------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  MlflowVersion
+  is_mlflow_installed
+  mlflow_version
+
+.. _mlflow_ref-workflow-helper:
+
+Workflow Helper
+---------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  WorkflowPaths
   builtin_config_path
-  export_builtin_config
   default_project_paths
+  export_builtin_config
+  patch_experiment_name_in_toml
+  run_demo
+  workflow
