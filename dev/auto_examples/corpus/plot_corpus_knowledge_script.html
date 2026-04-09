@@ -9,10 +9,13 @@
 <meta content="website" property="og:type"/>
 <meta content="https://scikit-plots.github.io/stable/auto_examples/corpus/plot_corpus_knowledge_script.html" property="og:url"/>
 <meta content="scikit-plots" property="og:site_name"/>
-<meta content="Examples related to the corpus submodule. via CorpusPipeline: Tags: model-type: classification model-workflow: corpus plot-type: text level: beginner purpose: showcase Total running time of the scr..." property="og:description"/>
+<meta content="Examples related to the corpus submodule. 1. Word chunker by document: via CorpusPipeline 1. Word chunker by sentence: via CorpusPipeline 2. Sentence chunker: via CorpusPipeline 3. Fixed Window chu..." property="og:description"/>
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
-<meta content="Examples related to the corpus submodule. via CorpusPipeline: Tags: model-type: classification model-workflow: corpus plot-type: text level: beginner purpose: showcase Total running time of the scr..." name="description"/>
+<meta content="Examples related to the corpus submodule. 1. Word chunker by document: via CorpusPipeline 1. Word chunker by sentence: via CorpusPipeline 2. Sentence chunker: via CorpusPipeline 3. Fixed Window chu..." name="description"/>
+<script>
+window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": false}, "providers": {"claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Claude about this documentation page.", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Get familiar with the documentation at {url} so I can ask questions about it."}, "chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask ChatGPT about this documentation page.", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Get familiar with the documentation at {url} so I can ask questions about it."}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}}, "baseUrl": "https://docs.example.com"};
+</script>
 <title>corpus Knowledge and Information local .png with examples — scikit-plots 0.5.dev0 documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
@@ -34,6 +37,7 @@
 <link href="../../_static/graphviz.css?v=4ae1632d" rel="stylesheet" type="text/css"/>
 <link href="../../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/ai-assistant.css?v=9781a02e" rel="stylesheet" type="text/css"/>
 <link href="../../_static/jupyter-sphinx.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/thebelab.css" rel="stylesheet" type="text/css"/>
 <link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
@@ -55,6 +59,7 @@
 <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
 <script src="../../_static/copybutton.js?v=e93d8674"></script>
+<script src="../../_static/ai-assistant.js?v=cb662cc4"></script>
 <script src="../../_static/thebelab-helper.js"></script>
 <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
 <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -71,6 +76,7 @@
 <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
 <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
 <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
+<link href="https://docs.example.com/auto_examples/corpus/plot_corpus_knowledge_script.html" rel="canonical"/>
 <link href="../../_static/scikit-plots-favicon.ico" rel="icon"/>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
@@ -458,6 +464,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../stats/index.html">Stats</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stats/plot_gaussian_mixture_models.html">Gaussian Mixture Models — AIC, AICc, and BIC Model Selection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../stats/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
 </ul>
 </details></li>
@@ -522,23 +529,46 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">corpus</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">SourceType</span><span class="p">,</span>
     <span class="n">DocumentReader</span><span class="p">,</span>
+    <span class="n">CorpusDocument</span><span class="p">,</span>
     <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline" title="scikitplot.corpus.CorpusPipeline"><span class="n">CorpusPipeline</span></a><span class="p">,</span>
+    <span class="n">SentenceBackend</span><span class="p">,</span>
     <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunker.html#scikitplot.corpus.SentenceChunker" title="scikitplot.corpus.SentenceChunker"><span class="n">SentenceChunker</span></a><span class="p">,</span>
     <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunkerConfig.html#scikitplot.corpus.SentenceChunkerConfig" title="scikitplot.corpus.SentenceChunkerConfig"><span class="n">SentenceChunkerConfig</span></a><span class="p">,</span>
     <span class="n">ExportFormat</span><span class="p">,</span>
-    <span class="n">CorpusDocument</span><span class="p">,</span>
-    <span class="n">SourceType</span><span class="p">,</span>
-    <span class="n">SentenceBackend</span><span class="p">,</span>
     <span class="n">EnricherConfig</span><span class="p">,</span>
     <span class="n">NLPEnricher</span><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.WordChunkerConfig.html#scikitplot.corpus.WordChunkerConfig" title="scikitplot.corpus.WordChunkerConfig"><span class="n">WordChunkerConfig</span></a><span class="p">,</span>
+    <span class="n">StemmingBackend</span><span class="p">,</span>
+    <span class="n">LemmatizationBackend</span><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.WordChunker.html#scikitplot.corpus.WordChunker" title="scikitplot.corpus.WordChunker"><span class="n">WordChunker</span></a><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.FixedWindowChunkerConfig.html#scikitplot.corpus.FixedWindowChunkerConfig" title="scikitplot.corpus.FixedWindowChunkerConfig"><span class="n">FixedWindowChunkerConfig</span></a><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.FixedWindowChunker.html#scikitplot.corpus.FixedWindowChunker" title="scikitplot.corpus.FixedWindowChunker"><span class="n">FixedWindowChunker</span></a><span class="p">,</span>
+    <span class="n">StopwordSource</span><span class="p">,</span>
+    <span class="n">WindowUnit</span><span class="p">,</span>
+    <span class="n">TokenizerBackend</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<section id="via-corpuspipeline">
-<h2>via <a class="reference internal" href="../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline" title="scikitplot.corpus.CorpusPipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusPipeline</span></code></a><a class="headerlink" href="#via-corpuspipeline" title="Link to this heading">#</a></h2>
+<section id="word-chunker-by-document">
+<h2>1. Word chunker by document<a class="headerlink" href="#word-chunker-by-document" title="Link to this heading">#</a></h2>
+<p>via <a class="reference internal" href="../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline" title="scikitplot.corpus.CorpusPipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusPipeline</span></code></a></p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pipeline_zip</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline" title="scikitplot.corpus.CorpusPipeline"><span class="n">CorpusPipeline</span></a><span class="p">(</span>
-    <span class="n">chunker</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunker.html#scikitplot.corpus.SentenceChunker" title="scikitplot.corpus.SentenceChunker"><span class="n">SentenceChunker</span></a><span class="p">(</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunkerConfig.html#scikitplot.corpus.SentenceChunkerConfig" title="scikitplot.corpus.SentenceChunkerConfig"><span class="n">SentenceChunkerConfig</span></a><span class="p">(</span><span class="n">backend</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus-SentenceBackend sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.corpus.SentenceBackend.html#scikitplot.corpus.SentenceBackend.NLTK" title="scikitplot.corpus.SentenceBackend.NLTK"><span class="n">SentenceBackend</span><span class="o">.</span><span class="n">NLTK</span></a><span class="p">)),</span>
+    <span class="n">chunker</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.WordChunker.html#scikitplot.corpus.WordChunker" title="scikitplot.corpus.WordChunker"><span class="n">WordChunker</span></a><span class="p">(</span>
+        <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.WordChunkerConfig.html#scikitplot.corpus.WordChunkerConfig" title="scikitplot.corpus.WordChunkerConfig"><span class="n">WordChunkerConfig</span></a><span class="p">(</span>
+            <span class="n">chunk_by</span><span class="o">=</span><span class="s2">"document"</span><span class="p">,</span>
+            <span class="n">stemmer</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus-StemmingBackend sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.corpus.StemmingBackend.html#scikitplot.corpus.StemmingBackend.PORTER" title="scikitplot.corpus.StemmingBackend.PORTER"><span class="n">StemmingBackend</span><span class="o">.</span><span class="n">PORTER</span></a><span class="p">,</span>
+            <span class="n">nltk_language</span><span class="o">=</span><span class="s2">"english"</span><span class="p">,</span>
+            <span class="n">tokenizer</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus-TokenizerBackend sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.corpus.TokenizerBackend.html#scikitplot.corpus.TokenizerBackend.NLTK" title="scikitplot.corpus.TokenizerBackend.NLTK"><span class="n">TokenizerBackend</span><span class="o">.</span><span class="n">NLTK</span></a><span class="p">,</span>
+            <span class="n">lemmatizer</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus-LemmatizationBackend sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.corpus.LemmatizationBackend.html#scikitplot.corpus.LemmatizationBackend.NLTK_WORDNET" title="scikitplot.corpus.LemmatizationBackend.NLTK_WORDNET"><span class="n">LemmatizationBackend</span><span class="o">.</span><span class="n">NLTK_WORDNET</span></a><span class="p">,</span>
+            <span class="n">stopwords</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus-StopwordSource sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.corpus.StopwordSource.html#scikitplot.corpus.StopwordSource.BUILTIN" title="scikitplot.corpus.StopwordSource.BUILTIN"><span class="n">StopwordSource</span><span class="o">.</span><span class="n">BUILTIN</span></a><span class="p">,</span>
+            <span class="n">lowercase</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">remove_punctuation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">min_token_length</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+        <span class="p">)</span>
+    <span class="p">),</span>
     <span class="n">output_dir</span><span class="o">=</span><a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"output/"</span><span class="p">),</span>
     <span class="n">export_format</span><span class="o">=</span><span class="n">ExportFormat</span><span class="o">.</span><span class="n">CSV</span><span class="p">,</span>
 <span class="p">)</span>
@@ -546,16 +576,209 @@
 <span class="n">result_zip</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>PipelineResult(source='data/echo_of_the_wise/AI_Generated_Image_1ix.png', n_documents=8, n_omitted=0, n_embedded=0, elapsed=4.2s, output=output/AI_Generated_Image_1ix.csv)
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>PipelineResult(source='data/echo_of_the_wise/AI_Generated_Image_1ix.png', n_documents=1, n_omitted=0, n_embedded=0, elapsed=4.3s, output=output/AI_Generated_Image_1ix.csv)
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pprint</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-pprint sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/pprint.html#pprint.pprint" title="pprint.pprint"><span class="n">pprint</span></a>
 
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Word chunker by document"</span><span class="p">)</span>
 <a class="sphx-glr-backref-module-pprint sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/pprint.html#pprint.pprint" title="pprint.pprint"><span class="n">pprint</span></a><span class="p">(</span><a class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-function" href="https://pandas.pydata.org/docs/dev/reference/api/pandas.read_csv.html#pandas.read_csv" title="pandas.read_csv"><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span></a><span class="p">(</span><span class="n">result_zip</span><span class="o">.</span><span class="n">output_path</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{'act': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Word chunker by document
+{'act': {0: nan},
+ 'bbox': {0: nan},
+ 'char_end': {0: 861},
+ 'char_start': {0: 0},
+ 'chunk_index': {0: 0},
+ 'chunking_strategy': {0: 'custom'},
+ 'collection_id': {0: nan},
+ 'confidence': {0: 0.6372},
+ 'content_hash': {0: '6a406fd997f6814b7150ec03f001938a'},
+ 'doc_id': {0: 'cddbb4132e9ed33c'},
+ 'doi': {0: nan},
+ 'frame_index': {0: nan},
+ 'image_height': {0: 1024},
+ 'image_width': {0: 1024},
+ 'isbn': {0: nan},
+ 'keywords': {0: nan},
+ 'language': {0: nan},
+ 'lemmas': {0: nan},
+ 'line_number': {0: nan},
+ 'modality': {0: 'text'},
+ 'normalized_text': {0: nan},
+ 'ocr_engine': {0: 'tesseract'},
+ 'page_number': {0: 0},
+ 'paragraph_index': {0: nan},
+ 'parent_doc_id': {0: nan},
+ 'raw_dtype': {0: nan},
+ 'raw_shape': {0: nan},
+ 'scene_number': {0: nan},
+ 'section_type': {0: 'text'},
+ 'source_author': {0: nan},
+ 'source_date': {0: nan},
+ 'source_file': {0: 'AI_Generated_Image_1ix.png'},
+ 'source_title': {0: nan},
+ 'source_type': {0: 'image'},
+ 'stems': {0: nan},
+ 'text': {0: 'ire uursacesc caraga io 10 bi6dokew erna monet 1b aoe maa ett '
+             'rco rsp eo ere memmnminsan erklaren kannst hast du creerona eat '
+             'brome ccrlhi petesercn verstanden explain sa onan co oiag '
+             'understand well enough ge vida nd tron sa ea ae nia apiotoréanc '
+             'aaseavsp0¢ richard feynman albert einstein 384322 bc 356323 bc '
+             'mieza macedonia 19181988 new york usa princeton pasadena 991955 '
+             'ulm princeton onsen venient cc ae crore mokoeoeri ae bartend aa '
+             've es clenrecemnnc ahupiingao ka taea pombelcuic ssri lic pye '
+             'matterhow much kaov word reach onli far person understand ugh '
+             'glen lat cs lb cle lage ernest rutherford mevlana 18711937 '
+             'nelson nz cambridg warm ed balkh konya sato le scholar ace '
+             'simplic mark os true knowledg focus pocus distract cenit innoc '
+             'know world convers sto person intellig vision knowledg limit '
+             'speaker limit listen mevlana wisdom 12071273 balkh konya'},
+ 'timecode_end': {0: nan},
+ 'timecode_start': {0: nan},
+ 'tokens': {0: nan},
+ 'total_frames': {0: 1},
+ 'url': {0: nan}}
+</pre></div>
+</div>
+</section>
+<section id="word-chunker-by-sentence">
+<h2>1. Word chunker by sentence<a class="headerlink" href="#word-chunker-by-sentence" title="Link to this heading">#</a></h2>
+<p>via <a class="reference internal" href="../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline" title="scikitplot.corpus.CorpusPipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusPipeline</span></code></a></p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pipeline_zip</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline" title="scikitplot.corpus.CorpusPipeline"><span class="n">CorpusPipeline</span></a><span class="p">(</span>
+    <span class="n">chunker</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.WordChunker.html#scikitplot.corpus.WordChunker" title="scikitplot.corpus.WordChunker"><span class="n">WordChunker</span></a><span class="p">(</span>
+        <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.WordChunkerConfig.html#scikitplot.corpus.WordChunkerConfig" title="scikitplot.corpus.WordChunkerConfig"><span class="n">WordChunkerConfig</span></a><span class="p">(</span>
+            <span class="n">chunk_by</span><span class="o">=</span><span class="s2">"sentence"</span><span class="p">,</span>
+            <span class="n">stemmer</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus-StemmingBackend sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.corpus.StemmingBackend.html#scikitplot.corpus.StemmingBackend.SNOWBALL" title="scikitplot.corpus.StemmingBackend.SNOWBALL"><span class="n">StemmingBackend</span><span class="o">.</span><span class="n">SNOWBALL</span></a><span class="p">,</span>
+            <span class="n">nltk_language</span><span class="o">=</span><span class="s2">"english"</span><span class="p">,</span>
+            <span class="n">tokenizer</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus-TokenizerBackend sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.corpus.TokenizerBackend.html#scikitplot.corpus.TokenizerBackend.SIMPLE" title="scikitplot.corpus.TokenizerBackend.SIMPLE"><span class="n">TokenizerBackend</span><span class="o">.</span><span class="n">SIMPLE</span></a><span class="p">,</span>
+            <span class="n">lemmatizer</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus-LemmatizationBackend sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.corpus.LemmatizationBackend.html#scikitplot.corpus.LemmatizationBackend.NLTK_WORDNET" title="scikitplot.corpus.LemmatizationBackend.NLTK_WORDNET"><span class="n">LemmatizationBackend</span><span class="o">.</span><span class="n">NLTK_WORDNET</span></a><span class="p">,</span>
+            <span class="n">stopwords</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus-StopwordSource sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.corpus.StopwordSource.html#scikitplot.corpus.StopwordSource.BUILTIN" title="scikitplot.corpus.StopwordSource.BUILTIN"><span class="n">StopwordSource</span><span class="o">.</span><span class="n">BUILTIN</span></a><span class="p">,</span>
+            <span class="n">lowercase</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">remove_punctuation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">min_token_length</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+        <span class="p">)</span>
+    <span class="p">),</span>
+    <span class="n">output_dir</span><span class="o">=</span><a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"output/"</span><span class="p">),</span>
+    <span class="n">export_format</span><span class="o">=</span><span class="n">ExportFormat</span><span class="o">.</span><span class="n">CSV</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">result_zip</span> <span class="o">=</span> <span class="n">pipeline_zip</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"data/echo_of_the_wise/AI_Generated_Image_1ix.png"</span><span class="p">))</span>
+<span class="n">result_zip</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>PipelineResult(source='data/echo_of_the_wise/AI_Generated_Image_1ix.png', n_documents=4, n_omitted=1, n_embedded=0, elapsed=4.1s, output=output/AI_Generated_Image_1ix.csv)
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pprint</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-pprint sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/pprint.html#pprint.pprint" title="pprint.pprint"><span class="n">pprint</span></a>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Word chunker by sentence"</span><span class="p">)</span>
+<a class="sphx-glr-backref-module-pprint sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/pprint.html#pprint.pprint" title="pprint.pprint"><span class="n">pprint</span></a><span class="p">(</span><a class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-function" href="https://pandas.pydata.org/docs/dev/reference/api/pandas.read_csv.html#pandas.read_csv" title="pandas.read_csv"><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span></a><span class="p">(</span><span class="n">result_zip</span><span class="o">.</span><span class="n">output_path</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Word chunker by sentence
+{'act': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'bbox': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'char_end': {0: 274, 1: 522, 2: 22, 3: 35},
+ 'char_start': {0: 0, 1: 0, 2: 0, 3: 0},
+ 'chunk_index': {0: 0, 1: 1, 2: 2, 3: 4},
+ 'chunking_strategy': {0: 'custom', 1: 'custom', 2: 'custom', 3: 'custom'},
+ 'collection_id': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'confidence': {0: 0.6372, 1: 0.6372, 2: 0.6372, 3: 0.6372},
+ 'content_hash': {0: '33f68ead927ced8f1830ab83e041f48f',
+                  1: 'b425c02b6305598e94c04a129e24f714',
+                  2: '357043daf50f1a2c8969664f442c153e',
+                  3: '0e3d11aeb9c648a124ea5a868a59f79e'},
+ 'doc_id': {0: 'cddbb4132e9ed33c',
+            1: '373e950c24f9fe97',
+            2: '8f7b55bd79324031',
+            3: '999aca3ee85e1488'},
+ 'doi': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'frame_index': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'image_height': {0: 1024, 1: 1024, 2: 1024, 3: 1024},
+ 'image_width': {0: 1024, 1: 1024, 2: 1024, 3: 1024},
+ 'isbn': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'keywords': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'language': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'lemmas': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'line_number': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'modality': {0: 'text', 1: 'text', 2: 'text', 3: 'text'},
+ 'normalized_text': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'ocr_engine': {0: 'tesseract', 1: 'tesseract', 2: 'tesseract', 3: 'tesseract'},
+ 'page_number': {0: 0, 1: 0, 2: 0, 3: 0},
+ 'paragraph_index': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'parent_doc_id': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'raw_dtype': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'raw_shape': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'scene_number': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'section_type': {0: 'text', 1: 'text', 2: 'text', 3: 'text'},
+ 'source_author': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'source_date': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'source_file': {0: 'AI_Generated_Image_1ix.png',
+                 1: 'AI_Generated_Image_1ix.png',
+                 2: 'AI_Generated_Image_1ix.png',
+                 3: 'AI_Generated_Image_1ix.png'},
+ 'source_title': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'source_type': {0: 'image', 1: 'image', 2: 'image', 3: 'image'},
+ 'stems': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'text': {0: 'ire uursacesc caraga io 10 bi6dokew erna monet 1b aoe maa ett '
+             'rco rsp eo ere memmnminsan erklaren kannst hast du creerona eat '
+             'brome ccrlhi petesercn verstanden cannot explain sas onan co '
+             'oiag understand well enough ge vida nd tron sa ea ae nia '
+             'apiotoréanc aaseavsp0¢ richard',
+          1: 'feynman albert einstein 384322 bc 356323 bc mieza macedonia '
+             '19181988 new york usa princeton pasadena 991955 ulm princeton '
+             'onsen venient cc ae crore mokoeoeri ae bartend aa ve es '
+             'clenrecemnnc ahupiingao ka taea pombelcuic ssri lic pye '
+             'matterhow much kaov word reach onli far person understand ugh '
+             'glen lat cs lb cle lage ernest rutherford mevlana 18711937 '
+             'nelson nz cambridg warm ed balkh konya sato le scholar ace '
+             'simplic mark os true knowledg focus pocus distract cenit innoc '
+             'know world convers sto person intellig vision',
+          2: 'knowledg limit speaker',
+          3: 'mevlana wisdom 12071273 balkh konya'},
+ 'timecode_end': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'timecode_start': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'tokens': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'total_frames': {0: 1, 1: 1, 2: 1, 3: 1},
+ 'url': {0: nan, 1: nan, 2: nan, 3: nan}}
+</pre></div>
+</div>
+</section>
+<section id="sentence-chunker">
+<h2>2. Sentence chunker<a class="headerlink" href="#sentence-chunker" title="Link to this heading">#</a></h2>
+<p>via <a class="reference internal" href="../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline" title="scikitplot.corpus.CorpusPipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusPipeline</span></code></a></p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pipeline_zip</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline" title="scikitplot.corpus.CorpusPipeline"><span class="n">CorpusPipeline</span></a><span class="p">(</span>
+    <span class="n">chunker</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunker.html#scikitplot.corpus.SentenceChunker" title="scikitplot.corpus.SentenceChunker"><span class="n">SentenceChunker</span></a><span class="p">(</span>
+        <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SentenceChunkerConfig.html#scikitplot.corpus.SentenceChunkerConfig" title="scikitplot.corpus.SentenceChunkerConfig"><span class="n">SentenceChunkerConfig</span></a><span class="p">(</span>
+            <span class="n">backend</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus-SentenceBackend sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.corpus.SentenceBackend.html#scikitplot.corpus.SentenceBackend.NLTK" title="scikitplot.corpus.SentenceBackend.NLTK"><span class="n">SentenceBackend</span><span class="o">.</span><span class="n">NLTK</span></a><span class="p">,</span>
+            <span class="n">nltk_language</span><span class="o">=</span><span class="s2">"english"</span><span class="p">,</span>
+            <span class="n">strip_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">include_offsets</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">),</span>
+    <span class="n">output_dir</span><span class="o">=</span><a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"output/"</span><span class="p">),</span>
+    <span class="n">export_format</span><span class="o">=</span><span class="n">ExportFormat</span><span class="o">.</span><span class="n">CSV</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">result_zip</span> <span class="o">=</span> <span class="n">pipeline_zip</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"data/echo_of_the_wise/AI_Generated_Image_1ix.png"</span><span class="p">))</span>
+<span class="n">result_zip</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>PipelineResult(source='data/echo_of_the_wise/AI_Generated_Image_1ix.png', n_documents=8, n_omitted=0, n_embedded=0, elapsed=4.3s, output=output/AI_Generated_Image_1ix.csv)
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pprint</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-pprint sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/pprint.html#pprint.pprint" title="pprint.pprint"><span class="n">pprint</span></a>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Sentence chunker"</span><span class="p">)</span>
+<a class="sphx-glr-backref-module-pprint sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/pprint.html#pprint.pprint" title="pprint.pprint"><span class="n">pprint</span></a><span class="p">(</span><a class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-function" href="https://pandas.pydata.org/docs/dev/reference/api/pandas.read_csv.html#pandas.read_csv" title="pandas.read_csv"><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span></a><span class="p">(</span><span class="n">result_zip</span><span class="o">.</span><span class="n">output_path</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Sentence chunker
+{'act': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'bbox': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'char_end': {0: 229, 1: 299, 2: 607, 3: 1011, 4: 1179},
  'char_start': {0: 6, 1: 230, 2: 301, 3: 608, 4: 1013},
@@ -713,28 +936,387 @@
  'url': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan}}
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.image</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpimg</span>
-
-<a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.figure.html#matplotlib.pyplot.figure" title="matplotlib.pyplot.figure"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">(</span><span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>  <span class="c1"># Set DPI to 150</span>
-<span class="n">img</span> <span class="o">=</span> <a class="sphx-glr-backref-module-matplotlib-image sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/image_api.html#matplotlib.image.imread" title="matplotlib.image.imread"><span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span></a><span class="p">(</span><span class="n">result_zip</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
-<a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.imshow.html#matplotlib.pyplot.imshow" title="matplotlib.pyplot.imshow"><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span></a><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-<a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axis.html#matplotlib.pyplot.axis" title="matplotlib.pyplot.axis"><span class="n">plt</span><span class="o">.</span><span class="n">axis</span></a><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>  <span class="c1"># hides axes</span>
-<a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+</section>
+<section id="fixed-window-chunker-by-chars">
+<h2>3. Fixed Window chunker by chars<a class="headerlink" href="#fixed-window-chunker-by-chars" title="Link to this heading">#</a></h2>
+<p>via <a class="reference internal" href="../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline" title="scikitplot.corpus.CorpusPipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusPipeline</span></code></a></p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pipeline_zip</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline" title="scikitplot.corpus.CorpusPipeline"><span class="n">CorpusPipeline</span></a><span class="p">(</span>
+    <span class="n">chunker</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.FixedWindowChunker.html#scikitplot.corpus.FixedWindowChunker" title="scikitplot.corpus.FixedWindowChunker"><span class="n">FixedWindowChunker</span></a><span class="p">(</span>
+        <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.FixedWindowChunkerConfig.html#scikitplot.corpus.FixedWindowChunkerConfig" title="scikitplot.corpus.FixedWindowChunkerConfig"><span class="n">FixedWindowChunkerConfig</span></a><span class="p">(</span>
+            <span class="n">unit</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus-WindowUnit sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.corpus.WindowUnit.html#scikitplot.corpus.WindowUnit.CHARS" title="scikitplot.corpus.WindowUnit.CHARS"><span class="n">WindowUnit</span><span class="o">.</span><span class="n">CHARS</span></a><span class="p">,</span>
+            <span class="n">min_length</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">),</span>
+    <span class="n">output_dir</span><span class="o">=</span><a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"output/"</span><span class="p">),</span>
+    <span class="n">export_format</span><span class="o">=</span><span class="n">ExportFormat</span><span class="o">.</span><span class="n">CSV</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">result_zip</span> <span class="o">=</span> <span class="n">pipeline_zip</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"data/echo_of_the_wise/AI_Generated_Image_1ix.png"</span><span class="p">))</span>
+<span class="n">result_zip</span>
 </pre></div>
 </div>
-<img alt="plot corpus knowledge script" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_corpus_knowledge_script_001.png" srcset="../../_images/sphx_glr_plot_corpus_knowledge_script_001.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-IPython-display sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://ipython.readthedocs.io/en/stable/api/generated/IPython.display.html#IPython.display.FileLink" title="IPython.display.FileLink"><span class="n">FileLink</span></a><span class="p">,</span> <span class="n">FileLinks</span>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>PipelineResult(source='data/echo_of_the_wise/AI_Generated_Image_1ix.png', n_documents=5, n_omitted=0, n_embedded=0, elapsed=3.7s, output=output/AI_Generated_Image_1ix.csv)
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pprint</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-pprint sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/pprint.html#pprint.pprint" title="pprint.pprint"><span class="n">pprint</span></a>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Fixed Window chunker by chars"</span><span class="p">)</span>
+<a class="sphx-glr-backref-module-pprint sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/pprint.html#pprint.pprint" title="pprint.pprint"><span class="n">pprint</span></a><span class="p">(</span><a class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-function" href="https://pandas.pydata.org/docs/dev/reference/api/pandas.read_csv.html#pandas.read_csv" title="pandas.read_csv"><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span></a><span class="p">(</span><span class="n">result_zip</span><span class="o">.</span><span class="n">output_path</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fixed Window chunker by chars
+{'act': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'bbox': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'char_end': {0: 506, 1: 768, 2: 1023, 3: 1279, 4: 1293},
+ 'char_start': {0: 0, 1: 256, 2: 512, 3: 768, 4: 1024},
+ 'chunk_index': {0: 0, 1: 1, 2: 2, 3: 3, 4: 4},
+ 'chunking_strategy': {0: 'fixed_window',
+                       1: 'fixed_window',
+                       2: 'fixed_window',
+                       3: 'fixed_window',
+                       4: 'fixed_window'},
+ 'collection_id': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'confidence': {0: 0.6372, 1: 0.6372, 2: 0.6372, 3: 0.6372, 4: 0.6372},
+ 'content_hash': {0: '671592852b8acb95a8d8fc55b86a1d65',
+                  1: '04b7e8f4f1e97f02ddf5494b2733a001',
+                  2: 'b2e1a3305d1a2c6cb62f0a85a9139004',
+                  3: 'ed5fb80c57aa1440f5cdbff9c548ddae',
+                  4: '94cbe0d3b596da3d27f721698e46d4d7'},
+ 'doc_id': {0: '033fe979c6bb209c',
+            1: 'f0beb35fc68a949b',
+            2: '3dfc7e6e9304011c',
+            3: 'fba7147bfc0a189c',
+            4: '0c3188c73ed9b48c'},
+ 'doi': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'frame_index': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'image_height': {0: 1024, 1: 1024, 2: 1024, 3: 1024, 4: 1024},
+ 'image_width': {0: 1024, 1: 1024, 2: 1024, 3: 1024, 4: 1024},
+ 'isbn': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'keywords': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'language': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'lemmas': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'line_number': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'modality': {0: 'text', 1: 'text', 2: 'text', 3: 'text', 4: 'text'},
+ 'normalized_text': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'ocr_engine': {0: 'tesseract',
+                1: 'tesseract',
+                2: 'tesseract',
+                3: 'tesseract',
+                4: 'tesseract'},
+ 'page_number': {0: 0, 1: 0, 2: 0, 3: 0, 4: 0},
+ 'paragraph_index': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'parent_doc_id': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'raw_dtype': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'raw_shape': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'scene_number': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'section_type': {0: 'text', 1: 'text', 2: 'text', 3: 'text', 4: 'text'},
+ 'source_author': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'source_date': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'source_file': {0: 'AI_Generated_Image_1ix.png',
+                 1: 'AI_Generated_Image_1ix.png',
+                 2: 'AI_Generated_Image_1ix.png',
+                 3: 'AI_Generated_Image_1ix.png',
+                 4: 'AI_Generated_Image_1ix.png'},
+ 'source_title': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'source_type': {0: 'image', 1: 'image', 2: 'image', 3: 'image', 4: 'image'},
+ 'stems': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'text': {0: 'ire uursacesced Caraga io\n'
+             '10 Bi6doKew 8 Erna monet) 1b / aoe Maa ETT\n'
+             'RCO RSP eo ere\n'
+             '\n'
+             'Memmnminsane(s)\n'
+             'erklaren kannst, hast du\n'
+             'Creerona eats\n'
+             '\n'
+             ' \n'
+             ' \n'
+             '      \n'
+             '     \n'
+             '   \n'
+             ' \n'
+             ' \n'
+             ' \n'
+             ' \n'
+             ' \n'
+             '  \n'
+             ' \n'
+             '\n'
+             ' \n'
+             '\n'
+             'Brome ccrlhy | |\n'
+             ' Petesercne | verstanden.\n'
+             '&gt;\n'
+             'If you cannot explain\n'
+             '» Sas ONAN Co oiag\n'
+             'understand it well enough.\n'
+             '\n'
+             'ge VIDA ND TRON\n'
+             '\n'
+             'Sa eas\n'
+             'aE Nia)\n'
+             '\n'
+             '   \n'
+             '\n'
+             '‘ApiotoréAnc + AASEavSp0¢ , Richard P. Feynman j Albert '
+             'Einstein\n'
+             '\n'
+             '384-322 BC - 356-323 BC | Mieza, Macedonia 1918-1988 | New York, '
+             'USA — Princeton — Pasadena 99-1955 | Ulm —',
+          1: 'Sas ONAN Co oiag\n'
+             'understand it well enough.\n'
+             '\n'
+             'ge VIDA ND TRON\n'
+             '\n'
+             'Sa eas\n'
+             'aE Nia)\n'
+             '\n'
+             '   \n'
+             '\n'
+             '‘ApiotoréAnc + AASEavSp0¢ , Richard P. Feynman j Albert '
+             'Einstein\n'
+             '\n'
+             '384-322 BC - 356-323 BC | Mieza, Macedonia 1918-1988 | New York, '
+             'USA — Princeton — Pasadena 99-1955 | Ulm — Princeton\n'
+             '\n'
+             ' \n'
+             ' \n'
+             ' \n'
+             ' \n'
+             '  \n'
+             '  \n'
+             ' \n'
+             ' \n'
+             '   \n'
+             '\n'
+             'ONSEN\n'
+             'venient Cc ae\n'
+             '| Crore mokoeoeri ae} A\n'
+             '\n'
+             'to a bartender. aa ve, r\n'
+             'es Clenrecemnnc\n'
+             'ahupiingao ka taea\n'
+             'POMBELCUICIC IN\n'
+             'SSRI LIC\n'
+             '\n'
+             ' \n'
+             '\n'
+             'Pye matterhow much you kaov\n'
+             'your words reach only as far as the\n'
+             'other person can unders',
+          2: 'Princeton\n'
+             '\n'
+             ' \n'
+             ' \n'
+             ' \n'
+             ' \n'
+             '  \n'
+             '  \n'
+             ' \n'
+             ' \n'
+             '   \n'
+             '\n'
+             'ONSEN\n'
+             'venient Cc ae\n'
+             '| Crore mokoeoeri ae} A\n'
+             '\n'
+             'to a bartender. aa ve, r\n'
+             'es Clenrecemnnc\n'
+             'ahupiingao ka taea\n'
+             'POMBELCUICIC IN\n'
+             'SSRI LIC\n'
+             '\n'
+             ' \n'
+             '\n'
+             'Pye matterhow much you kaov\n'
+             'your words reach only as far as the\n'
+             'other person can understand,\n'
+             '\n'
+             ': ugh $9) glen a lat 9 CS lb cle Lage I y\n'
+             '\n'
+             ' \n'
+             '\n'
+             '       \n'
+             ' \n'
+             '\n'
+             'Ernest Rutherford F Mevlana\n'
+             '1871-1937 | Nelson, NZ &gt; Cambridge _—_ warm, Ed 3 | Balkh &gt; '
+             'Konya\n'
+             '\n'
+             '           \n'
+             ' \n'
+             '\n'
+             'Sato r le Scholar aCe Is\n'
+             '\n'
+             'Simplicity is the mark\n'
+             '7 Os true knowledge.\n'
+             '\n'
+             '“ (Focused)',
+          3: 'tand,\n'
+             '\n'
+             ': ugh $9) glen a lat 9 CS lb cle Lage I y\n'
+             '\n'
+             ' \n'
+             '\n'
+             '       \n'
+             ' \n'
+             '\n'
+             'Ernest Rutherford F Mevlana\n'
+             '1871-1937 | Nelson, NZ &gt; Cambridge _—_ warm, Ed 3 | Balkh &gt; '
+             'Konya\n'
+             '\n'
+             '           \n'
+             ' \n'
+             '\n'
+             'Sato r le Scholar aCe Is\n'
+             '\n'
+             'Simplicity is the mark\n'
+             '7 Os true knowledge.\n'
+             '\n'
+             '“ (Focused)  (Pocused) | (Distracted)\n'
+             '\n'
+             'cenit)\n'
+             '(Innocent)\n'
+             '\n'
+             '   \n'
+             '\n'
+             'You may know all the worlds, but the conversation sto,\n'
+             'j at the other person’s intelligence and vision. Knowledge is\n'
+             'not limited by the speaker. It is limited by the listener.\n'
+             '\n'
+             "Mevlana's Wisdom\n"
+             '1207-1273',
+          4: '(Pocused) | (Distracted)\n'
+             '\n'
+             'cenit)\n'
+             '(Innocent)\n'
+             '\n'
+             '   \n'
+             '\n'
+             'You may know all the worlds, but the conversation sto,\n'
+             'j at the other person’s intelligence and vision. Knowledge is\n'
+             'not limited by the speaker. It is limited by the listener.\n'
+             '\n'
+             "Mevlana's Wisdom\n"
+             '1207-1273 | Balkh + Konya'},
+ 'timecode_end': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'timecode_start': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'tokens': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'total_frames': {0: 1, 1: 1, 2: 1, 3: 1, 4: 1},
+ 'url': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan}}
+</pre></div>
+</div>
+</section>
+<section id="fixed-window-chunker-by-tokens">
+<h2>3. Fixed Window chunker by tokens<a class="headerlink" href="#fixed-window-chunker-by-tokens" title="Link to this heading">#</a></h2>
+<p>via <a class="reference internal" href="../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline" title="scikitplot.corpus.CorpusPipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusPipeline</span></code></a></p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pipeline_zip</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline" title="scikitplot.corpus.CorpusPipeline"><span class="n">CorpusPipeline</span></a><span class="p">(</span>
+    <span class="n">chunker</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.FixedWindowChunker.html#scikitplot.corpus.FixedWindowChunker" title="scikitplot.corpus.FixedWindowChunker"><span class="n">FixedWindowChunker</span></a><span class="p">(</span>
+        <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.FixedWindowChunkerConfig.html#scikitplot.corpus.FixedWindowChunkerConfig" title="scikitplot.corpus.FixedWindowChunkerConfig"><span class="n">FixedWindowChunkerConfig</span></a><span class="p">(</span>
+            <span class="n">unit</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus-WindowUnit sphx-glr-backref-type-py-attribute" href="../../modules/generated/scikitplot.corpus.WindowUnit.html#scikitplot.corpus.WindowUnit.TOKENS" title="scikitplot.corpus.WindowUnit.TOKENS"><span class="n">WindowUnit</span><span class="o">.</span><span class="n">TOKENS</span></a><span class="p">,</span>
+            <span class="n">min_length</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">),</span>
+    <span class="n">output_dir</span><span class="o">=</span><a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"output/"</span><span class="p">),</span>
+    <span class="n">export_format</span><span class="o">=</span><span class="n">ExportFormat</span><span class="o">.</span><span class="n">CSV</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">result_zip</span> <span class="o">=</span> <span class="n">pipeline_zip</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"data/echo_of_the_wise/AI_Generated_Image_1ix.png"</span><span class="p">))</span>
+<span class="n">result_zip</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>PipelineResult(source='data/echo_of_the_wise/AI_Generated_Image_1ix.png', n_documents=1, n_omitted=0, n_embedded=0, elapsed=3.6s, output=output/AI_Generated_Image_1ix.csv)
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pprint</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-pprint sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/pprint.html#pprint.pprint" title="pprint.pprint"><span class="n">pprint</span></a>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Fixed Window chunker by tokens"</span><span class="p">)</span>
+<a class="sphx-glr-backref-module-pprint sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/pprint.html#pprint.pprint" title="pprint.pprint"><span class="n">pprint</span></a><span class="p">(</span><a class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-function" href="https://pandas.pydata.org/docs/dev/reference/api/pandas.read_csv.html#pandas.read_csv" title="pandas.read_csv"><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span></a><span class="p">(</span><span class="n">result_zip</span><span class="o">.</span><span class="n">output_path</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fixed Window chunker by tokens
+{'act': {0: nan},
+ 'bbox': {0: nan},
+ 'char_end': {0: 1171},
+ 'char_start': {0: 6},
+ 'chunk_index': {0: 0},
+ 'chunking_strategy': {0: 'fixed_window'},
+ 'collection_id': {0: nan},
+ 'confidence': {0: 0.6372},
+ 'content_hash': {0: 'c250ed74816a460c2a6a541c63968145'},
+ 'doc_id': {0: '14578619132abab9'},
+ 'doi': {0: nan},
+ 'frame_index': {0: nan},
+ 'image_height': {0: 1024},
+ 'image_width': {0: 1024},
+ 'isbn': {0: nan},
+ 'keywords': {0: nan},
+ 'language': {0: nan},
+ 'lemmas': {0: nan},
+ 'line_number': {0: nan},
+ 'modality': {0: 'text'},
+ 'normalized_text': {0: nan},
+ 'ocr_engine': {0: 'tesseract'},
+ 'page_number': {0: 0},
+ 'paragraph_index': {0: nan},
+ 'parent_doc_id': {0: nan},
+ 'raw_dtype': {0: nan},
+ 'raw_shape': {0: nan},
+ 'scene_number': {0: nan},
+ 'section_type': {0: 'text'},
+ 'source_author': {0: nan},
+ 'source_date': {0: nan},
+ 'source_file': {0: 'AI_Generated_Image_1ix.png'},
+ 'source_title': {0: nan},
+ 'source_type': {0: 'image'},
+ 'stems': {0: nan},
+ 'text': {0: 'ire uursacesced Caraga io 10 Bi6doKew 8 Erna monet) 1b / aoe Maa '
+             'ETT RCO RSP eo ere Memmnminsane(s) erklaren kannst, hast du '
+             'Creerona eats Brome ccrlhy | | Petesercne | verstanden. &gt; If you '
+             'cannot explain » Sas ONAN Co oiag understand it well enough. ge '
+             'VIDA ND TRON Sa eas aE Nia) ‘ApiotoréAnc + AASEavSp0¢ , Richard '
+             'P. Feynman j Albert Einstein 384-322 BC - 356-323 BC | Mieza, '
+             'Macedonia 1918-1988 | New York, USA — Princeton — Pasadena '
+             '99-1955 | Ulm — Princeton ONSEN venient Cc ae | Crore mokoeoeri '
+             'ae} A to a bartender. aa ve, r es Clenrecemnnc ahupiingao ka '
+             'taea POMBELCUICIC IN SSRI LIC Pye matterhow much you kaov your '
+             'words reach only as far as the other person can understand, : '
+             'ugh $9) glen a lat 9 CS lb cle Lage I y Ernest Rutherford F '
+             'Mevlana 1871-1937 | Nelson, NZ &gt; Cambridge _—_ warm, Ed 3 | '
+             'Balkh &gt; Konya Sato r le Scholar aCe Is Simplicity is the mark 7 '
+             'Os true knowledge. “ (Focused) (Pocused) | (Distracted) cenit) '
+             '(Innocent) You may know all the worlds, but the conversation '
+             'sto, j at the other person’s intelligence and vision. Knowledge '
+             'is not limited by the speaker. It is limited by the listener. '
+             "Mevlana's Wisdom 1207-1273 | Balkh + Konya"},
+ 'timecode_end': {0: nan},
+ 'timecode_start': {0: nan},
+ 'tokens': {0: nan},
+ 'total_frames': {0: 1},
+ 'url': {0: nan}}
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-IPython-display sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://ipython.readthedocs.io/en/stable/api/generated/IPython.display.html#IPython.display.FileLink" title="IPython.display.FileLink"><span class="n">FileLink</span></a><span class="p">,</span> <span class="n">FileLinks</span>
 
 <span class="c1"># Replace 'path/to/your_file.csv' with your actual file path</span>
-<a class="sphx-glr-backref-module-IPython-display sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://ipython.readthedocs.io/en/stable/api/generated/IPython.display.html#IPython.display.FileLink" title="IPython.display.FileLink"><span class="n">FileLink</span></a><span class="p">(</span><a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"data/echo_of_the_wise/AI_Generated_Image_1ix.png"</span><span class="p">))</span>
+<a class="sphx-glr-backref-module-IPython-display sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://ipython.readthedocs.io/en/stable/api/generated/IPython.display.html#IPython.display.FileLink" title="IPython.display.FileLink"><span class="n">FileLink</span></a><span class="p">(</span><span class="n">result_zip</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="output_subarea output_html rendered_html output_result">
 Path (<tt>data/echo_of_the_wise/AI_Generated_Image_1ix.png</tt>) doesn't exist. It may still be in the process of being generated, or you may have the incorrect path.
 </div>
 <br/>
-<br/><p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-corpus.html"><span class="doc">model-workflow: corpus</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-text.html"><span class="doc">plot-type: text</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 5.158 seconds)</p>
+<br/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import matplotlib.pyplot as plt</span>
+<span class="c1"># import matplotlib.image as mpimg</span>
+
+<span class="c1"># plt.figure(dpi=300)  # Set DPI to 150</span>
+<span class="c1"># img = mpimg.imread(result_zip.source)</span>
+<span class="c1"># plt.imshow(img)</span>
+<span class="c1"># plt.axis('off')  # hides axes</span>
+<span class="c1"># plt.show()</span>
+</pre></div>
+</div>
+<p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-corpus.html"><span class="doc">model-workflow: corpus</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-text.html"><span class="doc">plot-type: text</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 20.144 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule."><img alt="" src="../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png"/>
@@ -746,9 +1328,9 @@ Path (<tt>data/echo_of_the_wise/AI_Generated_Image_1ix.png</tt>) doesn't exist. 
 </div><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule."><img alt="" src="../../_images/sphx_glr_plot_corpus_who_youtube_shorts_script_thumb.png"/>
 <p><a class="reference internal" href="plot_corpus_who_youtube_shorts_script.html"><span class="doc">corpus WHO European Region YouTube shorts with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">corpus WHO European Region YouTube shorts with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule."><img alt="" src="../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png"/>
-<p><a class="reference internal" href="plot_corpus_who_per_file_script.html"><span class="doc">corpus WHO European Region local or url per file with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">corpus WHO European Region local or url per file with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy._annoy.Index class."><img alt="" src="../../_images/sphx_glr_plot_annoy_cython_0benchmark_thumb.png"/>
+<p><a class="reference internal" href="../annoy/plot_annoy_cython_0benchmark.html"><span class="doc">Index (cython) python-api benchmark with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">Index (cython) python-api benchmark with examples</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </section>
@@ -783,7 +1365,11 @@ Path (<tt>data/echo_of_the_wise/AI_Generated_Image_1ix.png</tt>) doesn't exist. 
   </div>
 <nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#via-corpuspipeline">via <code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusPipeline</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#word-chunker-by-document">1. Word chunker by document</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#word-chunker-by-sentence">1. Word chunker by sentence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sentence-chunker">2. Sentence chunker</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fixed-window-chunker-by-chars">3. Fixed Window chunker by chars</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fixed-window-chunker-by-tokens">3. Fixed Window chunker by tokens</a></li>
 </ul>
 </nav></div>
 
@@ -803,7 +1389,7 @@ Path (<tt>data/echo_of_the_wise/AI_Generated_Image_1ix.png</tt>) doesn't exist. 
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260407.f3e50c8 2026-04-07T18:41Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260409.dbbf22f 2026-04-09T03:39Z.
       <br/>
 </p>
 </div>

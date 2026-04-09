@@ -1,0 +1,473 @@
+# CorpusPipeline[#](#corpuspipeline "Link to this heading")
+
+class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **embedding\_engine=None**, **output\_dir=None**, **export\_format=ExportFormat.CSV**, **default\_language=None**, **progress\_callback=None**, **reader\_kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_pipeline.py#L136)[#](#scikitplot.corpus.CorpusPipeline "Link to this definition")
+:   Orchestrates the full corpus ingestion pipeline.
+
+    Instantiate once, then call [`run`](#scikitplot.corpus.CorpusPipeline.run "scikitplot.corpus.CorpusPipeline.run") (single file),
+    [`run_batch`](#scikitplot.corpus.CorpusPipeline.run_batch "scikitplot.corpus.CorpusPipeline.run_batch") (multiple files), or [`run_url`](#scikitplot.corpus.CorpusPipeline.run_url "scikitplot.corpus.CorpusPipeline.run_url") (URL source)
+    any number of times. The pipeline is stateless between calls; all
+    configuration is set at construction time.
+
+    Parameters:
+    :   ****chunker****ChunkerBase or None, optional
+        :   Chunker to inject into every reader. `None` yields one
+            `CorpusDocument` per raw chunk.
+            Default: `None`.
+
+        ****filter\_****FilterBase or None, optional
+        :   Filter applied after chunking. `None` uses
+            [`DefaultFilter`](scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus._base.DefaultFilter").
+            Default: `None`.
+
+        ****embedding\_engine****EmbeddingEngine or None, optional
+        :   When provided, documents are embedded in batches after
+            chunking/filtering. Embeddings are stored in
+            `embedding`.
+            Default: `None` (no embedding).
+
+        ****output\_dir****pathlib.Path or None, optional
+        :   Directory where exported files are written. When `None`,
+            export is skipped unless `output_path` is supplied explicitly
+            in a [`run`](#scikitplot.corpus.CorpusPipeline.run "scikitplot.corpus.CorpusPipeline.run") call. Default: `None`.
+
+        ****export\_format****ExportFormat or None, optional
+        :   Default export format. Individual [`run`](#scikitplot.corpus.CorpusPipeline.run "scikitplot.corpus.CorpusPipeline.run") calls can override.
+            Default: `CSV`.
+
+        ****default\_language****str or None, optional
+        :   ISO 639-1 language code applied to all documents when the reader
+            cannot detect language. Default: `None`.
+
+        ****progress\_callback****callable or None, optional
+        :   Called after each batch of documents is processed.
+            Signature: `(source: str, n_done: int, n_total_estimate: int) → None`.
+            `n_total_estimate` is `-1` when the total is unknown.
+            Default: `None`.
+
+        ****reader\_kwargs****dict or None, optional
+        :   Extra keyword arguments forwarded to every reader constructed by
+            this pipeline — both `create`
+            (used by [`run`](#scikitplot.corpus.CorpusPipeline.run "scikitplot.corpus.CorpusPipeline.run") and [`run_batch`](#scikitplot.corpus.CorpusPipeline.run_batch "scikitplot.corpus.CorpusPipeline.run_batch")) and
+            `from_url`
+            (used by [`run_url`](#scikitplot.corpus.CorpusPipeline.run_url "scikitplot.corpus.CorpusPipeline.run_url")). Default: `None`.
+
+            ****Audio / video URL transcription**** — forward Whisper kwargs
+            directly so `run_url` on an `.mp3` URL transcribes it:
+
+            ```
+            pipeline = CorpusPipeline(
+                reader_kwargs={
+                    "transcribe": True,
+                    "whisper_model": "small",  # "tiny" / "base" / "medium" / "large"
+                },
+            )
+            result = pipeline.run_url("https://archive.org/details/.../episode.mp3")
+
+            ```
+
+            ****ZIP archive with per-extension overrides**** — when the source is
+            a `.zip` file, `reader_kwargs` is forwarded to
+            `ZipReader`. Pass a nested
+            `"reader_kwargs"` key to control individual member types:
+
+            ```
+            pipeline = CorpusPipeline(
+                reader_kwargs={
+                    "reader_kwargs": {
+                        ".mp3": {"transcribe": True, "whisper_model": "small"},
+                        ".jpg": {"backend": "easyocr"},
+                    },
+                },
+            )
+            result = pipeline.run(Path("WHO-EURO-2025.zip"))
+
+            ```
+
+            ****Single-type files**** — for a pipeline that only processes audio
+            files (no ZIP), pass the kwargs flat:
+
+            ```
+            pipeline = CorpusPipeline(
+                reader_kwargs={"transcribe": True, "whisper_model": "base"},
+            )
+            result = pipeline.run(Path("podcast.mp3"))
+
+            ```
+
+    Attributes:
+    :   ****chunker****ChunkerBase or None
+
+
+        ****filter\_****FilterBase or None
+
+
+        ****embedding\_engine****EmbeddingEngine or None
+
+
+        ****output\_dir****pathlib.Path or None
+
+
+        ****export\_format****ExportFormat or None
+
+
+        ****default\_language****str or None
+
+    Parameters:
+    :   * ****chunker**** ([**ChunkerBase**](scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus.ChunkerBase") **|** **None**)
+        * ****filter\_**** ([**FilterBase**](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus.FilterBase") **|** **None**)
+        * ****embedding\_engine**** (**Any** **|** **None**)
+        * ****output\_dir**** ([**pathlib.Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
+        * ****export\_format**** (**ExportFormat** **|** **None**)
+        * ****default\_language**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+        * ****progress\_callback**** (**Callable****[****[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**,** [**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]****,** **None****]** **|** **None**)
+        * ****reader\_kwargs**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **Any****]** **|** **None**)
+
+    > **See also**
+    > `scikitplot.corpus._export.export_documents`
+    :   Low-level export function.
+
+    `scikitplot.corpus._embeddings.EmbeddingEngine`
+    :   Embedding backend.
+
+    Notes
+
+    ****Thread safety:**** [`CorpusPipeline`](#scikitplot.corpus.CorpusPipeline "scikitplot.corpus.CorpusPipeline") is not thread-safe.
+    Run one instance per thread, or use [`run_batch`](#scikitplot.corpus.CorpusPipeline.run_batch "scikitplot.corpus.CorpusPipeline.run_batch") (which
+    processes files sequentially, not in parallel).
+
+    ****Embedding and caching:**** When `embedding_engine` is provided,
+    embeddings are cached to disk using the source file path and mtime
+    as the cache key. URL sources disable caching (no stable mtime).
+
+    Examples
+
+    Basic single-file run:
+
+    ```
+    >>> from pathlib import Path
+    >>> from scikitplot.corpus._pipeline import CorpusPipeline
+    >>> from scikitplot.corpus._chunkers import SentenceChunker
+    >>> pipeline = CorpusPipeline(
+    ...     chunker=SentenceChunker("en_core_web_sm"),
+    ...     output_dir=Path("output/"),
+    ... )
+    >>> result = pipeline.run(Path("corpus.txt"))
+    >>> print(result)
+
+    ```
+
+    Batch processing with embeddings:
+
+    ```
+    >>> from scikitplot.corpus._embeddings import EmbeddingEngine
+    >>> engine = EmbeddingEngine(backend="sentence_transformers")
+    >>> pipeline = CorpusPipeline(
+    ...     chunker=SentenceChunker("en_core_web_sm"),
+    ...     embedding_engine=engine,
+    ...     output_dir=Path("output/"),
+    ...     export_format=ExportFormat.PARQUET,
+    ... )
+    >>> results = pipeline.run_batch(list(Path("corpus/").glob("*.txt")))
+
+    ```
+
+    URL ingestion:
+
+    ```
+    >>> result = pipeline.run_url("https://en.wikipedia.org/wiki/Python")
+
+    ```
+
+    Audio URL transcription via `reader_kwargs`:
+
+    ```
+    >>> pipeline = CorpusPipeline(
+    ...     reader_kwargs={"transcribe": True, "whisper_model": "small"},
+    ...     output_dir=Path("output/"),
+    ... )
+    >>> result = pipeline.run_url(
+    ...     "https://archive.org/details/tale_two_cities_librivox/"
+    ...     "tale_of_two_cities_01_dickens.mp3"
+    ... )
+
+    ```
+
+    ZIP archive with per-extension kwargs:
+
+    ```
+    >>> pipeline = CorpusPipeline(
+    ...     reader_kwargs={
+    ...         "reader_kwargs": {
+    ...             ".mp3": {"transcribe": True, "whisper_model": "small"},
+    ...             ".jpg": {"backend": "easyocr"},
+    ...         },
+    ...     },
+    ...     output_dir=Path("output/"),
+    ... )
+    >>> result = pipeline.run(Path("WHO-EURO-2025.zip"))
+
+    ```
+
+    run(**input\_file**, **\***, **output\_path=None**, **export\_format=None**, **filename\_override=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_pipeline.py#L327)[#](#scikitplot.corpus.CorpusPipeline.run "Link to this definition")
+    :   Process a single source and return a [`PipelineResult`](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus.PipelineResult").
+
+        Accepts a local file path ****or**** an `http(s)://` URL string.
+        URL detection is performed before any `pathlib.Path` conversion,
+        so passing a URL string routes correctly to the web/YouTube/audio
+        reader rather than crashing with a “file not found” error.
+
+        Parameters:
+        :   ****input\_file****pathlib.Path or str
+            :   Path to a local file ****or**** an `http(s)://` URL string.
+                A `str` that starts with `http://` or `https://`
+                (case-insensitive) is treated as a URL and routed through
+                `from_url`;
+                all other values are treated as local file paths and
+                dispatched by extension via the reader registry.
+
+            ****output\_path****pathlib.Path or None, optional
+            :   Explicit output file path. When `None`, the path is
+                derived from `output_dir` and the input stem. If both
+                are `None`, export is skipped.
+
+            ****export\_format****ExportFormat or None, optional
+            :   Override the pipeline-level `export_format` for this call.
+
+            ****filename\_override****str or None, optional
+            :   Override the `source_file` label in generated documents.
+                Ignored for URL sources.
+
+        Returns:
+        :   PipelineResult
+            :   Result summary including the document list.
+
+        Raises:
+        :   TypeError
+            :   If **input\_file** is not a `str` or [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)").
+
+            ValueError
+            :   If a local file path does not exist, or no reader is
+                registered for the file extension.
+
+            ValueError
+            :   If **input\_file** is a URL string and the URL is invalid or
+                cannot be resolved.
+
+        Parameters:
+        :   * ****input\_file**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+            * ****output\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
+            * ****export\_format**** (**ExportFormat** **|** **None**)
+            * ****filename\_override**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+
+        Return type:
+        :   [**PipelineResult**](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus._pipeline.PipelineResult")
+
+        > **See also**
+        > [`run_batch`](#scikitplot.corpus.CorpusPipeline.run_batch "scikitplot.corpus.CorpusPipeline.run_batch")
+        :   Process multiple sources (files and/or URLs).
+
+        [`run_url`](#scikitplot.corpus.CorpusPipeline.run_url "scikitplot.corpus.CorpusPipeline.run_url")
+        :   Process one or more URLs directly (legacy entry point).
+
+        Examples
+
+        Local file:
+
+        ```
+        >>> result = pipeline.run(Path("chapter01.txt"))
+        >>> len(result.documents)
+        312
+
+        ```
+
+        URL string — no separate `run_url` call needed:
+
+        ```
+        >>> result = pipeline.run("https://en.wikipedia.org/wiki/Python")
+        >>> result.source
+        'https://en.wikipedia.org/wiki/Python'
+
+        ```
+
+    run\_batch(**input\_files**, **\***, **stop\_on\_error=False**, **export\_format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_pipeline.py#L692)[#](#scikitplot.corpus.CorpusPipeline.run_batch "Link to this definition")
+    :   Process multiple sources sequentially.
+
+        Each item may be a local file path ****or**** an `http(s)://` URL
+        string. Mixed lists (some paths, some URLs) are fully supported.
+        Each item is dispatched through `_run_source`, which tests
+        for URL strings ****before**** any `pathlib.Path` conversion so that
+        URL strings are never silently mangled.
+
+        Parameters:
+        :   ****input\_files****list of pathlib.Path or str
+            :   Sources to process in order. Each element may be:
+
+                * a [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") or `str` pointing to a local file, or
+                * a `str` starting with `http://` or `https://` (a URL).
+
+                Mixed lists are allowed:
+                `[Path("paper.pdf"), "https://en.wikipedia.org/wiki/Python"]`.
+
+            ****stop\_on\_error****bool, optional
+            :   When `False` (default), errors on individual sources are
+                logged as warnings and processing continues. When `True`,
+                the first error is re-raised immediately.
+
+            ****export\_format****ExportFormat or None, optional
+            :   Override the pipeline-level `export_format` for all sources
+                in this batch.
+
+        Returns:
+        :   list of PipelineResult
+            :   One result per successfully processed source, in input order.
+                Failed sources (when `stop_on_error=False`) are omitted
+                from the list and logged at WARNING level.
+
+        Raises:
+        :   TypeError
+            :   If any element of **input\_files** is not a `str` or
+                [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)").
+
+            ValueError
+            :   Re-raised from `_run_source` when `stop_on_error=True`
+                and a source fails.
+
+        Parameters:
+        :   * ****input\_files**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
+            * ****stop\_on\_error**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+            * ****export\_format**** (**ExportFormat** **|** **None**)
+
+        Return type:
+        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**PipelineResult**](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus._pipeline.PipelineResult")]
+
+        > **See also**
+        > [`run`](#scikitplot.corpus.CorpusPipeline.run "scikitplot.corpus.CorpusPipeline.run")
+        :   Process a single source (file or URL).
+
+        [`run_url`](#scikitplot.corpus.CorpusPipeline.run_url "scikitplot.corpus.CorpusPipeline.run_url")
+        :   Process one or more URLs directly (legacy entry point).
+
+        Examples
+
+        Local files only (original behaviour, unchanged):
+
+        ```
+        >>> paths = list(Path("corpus/").glob("*.txt"))
+        >>> results = pipeline.run_batch(paths)
+        >>> total_docs = sum(r.n_documents for r in results)
+
+        ```
+
+        Mixed files and URLs:
+
+        ```
+        >>> results = pipeline.run_batch(
+        ...     [
+        ...         Path("local_report.pdf"),
+        ...         "https://en.wikipedia.org/wiki/Python",
+        ...         "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        ...     ]
+        ... )
+        >>> [r.source for r in results]
+        ['local_report.pdf', 'https://...', 'https://...']
+
+        ```
+
+    run\_url(**url**, **\***, **output\_path=None**, **export\_format=None**, **stop\_on\_error=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_pipeline.py#L528)[#](#scikitplot.corpus.CorpusPipeline.run_url "Link to this definition")
+    :   Process one URL or a list of URLs.
+
+        Accepts a single URL string or a list of URL strings. When a list
+        is passed each URL is processed independently and a parallel list of
+        [`PipelineResult`](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus.PipelineResult") objects is returned. The single-URL form
+        returns a single [`PipelineResult`](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus.PipelineResult") (backwards compatible).
+
+        Parameters:
+        :   ****url****str or list of str
+            :   One URL string or a list of URL strings. Every string must
+                start with `http://` or `https://`.
+
+            ****output\_path****pathlib.Path or None, optional
+            :   Explicit output file path. Ignored when **url** is a list
+                (each result derives its own path from the URL).
+
+            ****export\_format****ExportFormat or None, optional
+            :   Override the pipeline-level `export_format` for this call.
+
+            ****stop\_on\_error****bool, optional
+            :   When `True` and **url** is a list, re-raise the first
+                exception encountered instead of continuing. Has no effect
+                for single-URL calls (exceptions always propagate).
+
+        Returns:
+        :   PipelineResult
+            :   When **url** is a `str`.
+
+            list of PipelineResult
+            :   When **url** is a `list`. Results are in the same order as
+                **url**. Failed URLs (when `stop_on_error=False`) are
+                omitted from the list and logged at ERROR level.
+
+        Raises:
+        :   TypeError
+            :   If **url** is not a `str` or `list`.
+
+            ValueError
+            :   If any URL string does not start with `http://` or
+                `https://`.
+
+            ImportError
+            :   If `scikitplot.corpus._readers` has not been imported yet.
+
+        Parameters:
+        :   * ****url**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
+            * ****output\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
+            * ****export\_format**** (**ExportFormat** **|** **None**)
+            * ****stop\_on\_error**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+
+        Return type:
+        :   [**PipelineResult**](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus._pipeline.PipelineResult") | [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**PipelineResult**](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus._pipeline.PipelineResult")]
+
+        Examples
+
+        Single video:
+
+        ```
+        >>> result = pipeline.run_url("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+        >>> isinstance(result, PipelineResult)
+        True
+
+        ```
+
+        List of URLs (returns list):
+
+        ```
+        >>> results = pipeline.run_url(
+        ...     [
+        ...         "https://www.youtube.com/@WHO/shorts",
+        ...         "https://www.youtube.com/@WHO/videos",
+        ...     ]
+        ... )
+        >>> isinstance(results, list)
+        True
+
+        ```
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png)
+
+[corpus A Tale of Two Cities .mp3 with examples](../../auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.html)
+
+corpus A Tale of Two Cities .mp3 with examples![](../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png)
+
+[corpus Knowledge and Information local .png with examples](../../auto_examples/corpus/plot_corpus_knowledge_script.html)
+
+corpus Knowledge and Information local .png with examples![](../../_images/sphx_glr_plot_corpus_who_youtube_shorts_script_thumb.png)
+
+[corpus WHO European Region YouTube shorts with examples](../../auto_examples/corpus/plot_corpus_who_youtube_shorts_script.html)
+
+corpus WHO European Region YouTube shorts with examples![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
+
+[corpus WHO European Region local .zip with examples](../../auto_examples/corpus/plot_corpus_who_zip_script.html)
+
+corpus WHO European Region local .zip with examples

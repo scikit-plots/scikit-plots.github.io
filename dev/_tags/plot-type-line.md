@@ -1,0 +1,20 @@
+# My tags: plot-type: line[#](#my-tags-plot-type-line "Link to this heading")
+
+With this tag
+
+* [plot\_calibration with examples](../auto_examples/calibration/plot_calibration_script.html)
+* [plot\_learning\_curve with examples](../auto_examples/classification/plot_learning_curve_script.html)
+* [plot\_precision\_recall with examples](../auto_examples/classification/plot_precision_recall_script.html)
+* [plot\_roc\_curve with examples](../auto_examples/classification/plot_roc_script.html)
+* [plot\_elbow with examples](../auto_examples/clustering/plot_elbow_script.html)
+* [plot\_cumulative\_gain with examples](../auto_examples/decile/plot_cumulative_gain_script.html)
+* [plot\_ks\_statistic with examples](../auto_examples/decile/plot_ks_statistic_script.html)
+* [plot\_lift with examples](../auto_examples/decile/plot_lift_script.html)
+* [Introduction to modelplotpy (legacy)](../auto_examples/decile/plot_modelplotpy_legacy_script.html)
+* [Introduction to modelplotpy](../auto_examples/decile/plot_modelplotpy_script.html)
+* [plot\_report with examples](../auto_examples/decile/plot_report_script.html)
+* [plot\_pca\_component\_variance with examples](../auto_examples/decomposition/plot_pca_component_variance_script.html)
+* [plot\_aucplot\_script with examples](../auto_examples/seaborn/plot_aucplot_script.html)
+* [plot\_decileplot\_script with examples](../auto_examples/seaborn/plot_decileplot_script.html)
+* [plot\_evalplot\_script with examples](../auto_examples/seaborn/plot_evalplot_script.html)
+* [Gaussian Mixture Models — AIC, AICc, and BIC Model Selection](../auto_examples/stats/plot_gaussian_mixture_models.html)

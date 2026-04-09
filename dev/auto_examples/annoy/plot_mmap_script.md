@@ -1,0 +1,152 @@
+> **Note**
+> [Go to the end](#sphx-glr-download-auto-examples-annoy-plot-mmap-script-py)
+to download the full example code or to run this example in your browser via JupyterLite or Binder.
+
+# Mmap annoy.AnnoyIndex with examples[#](#mmap-annoy-annoyindex-with-examples "Link to this heading")
+
+An example showing the [`AnnoyIndex`](../../modules/generated/scikitplot.annoy.AnnoyIndex.html#scikitplot.annoy.AnnoyIndex "scikitplot.annoy.AnnoyIndex") class.
+
+```
+from __future__ import print_function
+
+import random; random.seed(0)
+import time
+
+# from annoy import AnnoyIndex
+# from scikitplot.annoy import AnnoyIndex
+from scikitplot.annoy import Index as AnnoyIndex
+
+```
+```
+idx = AnnoyIndex(
+    f=3,
+    metric='angular',
+)
+idx.add_item(0, [1, 0, 0])
+idx.add_item(1, [0, 1, 0])
+idx.add_item(2, [0, 0, 1])
+idx.build(-1)
+idx.save('test.annoy')
+
+```
+Annoy[dev](https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html "Annoy docs (dev)")|[0.5](https://scikit-plots.github.io/0.5/modules/generated/scikitplot.cexternals._annoy.Annoy.html "Annoy docs (installed)")Parameters
+
+|  | Parameter | Value |
+| --- | --- | --- |
+| 🗗 Copy | f | 3 |
+| 🗗 Copy | metric | 'angular' |
+| 🗗 Copy | n\_trees | -1 |
+| 🗗 Copy | n\_neighbors | 5 |
+| 🗗 Copy | on\_disk\_path | 'test.annoy' |
+| 🗗 Copy | prefault | False |
+| 🗗 Copy | seed | None |
+| 🗗 Copy | verbose | None |
+| 🗗 Copy | schema\_version | 0 |
+| 🗗 Copy | n\_jobs | -1 |
+| 🗗 Copy | l1\_ratio | 0.0 |
+
+  
+  
+```
+b = AnnoyIndex(
+    f=3,
+    metric='angular',
+)
+b.load('test.annoy')
+
+```
+Annoy[dev](https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html "Annoy docs (dev)")|[0.5](https://scikit-plots.github.io/0.5/modules/generated/scikitplot.cexternals._annoy.Annoy.html "Annoy docs (installed)")Parameters
+
+|  | Parameter | Value |
+| --- | --- | --- |
+| 🗗 Copy | f | 3 |
+| 🗗 Copy | metric | 'angular' |
+| 🗗 Copy | n\_trees | -1 |
+| 🗗 Copy | n\_neighbors | 5 |
+| 🗗 Copy | on\_disk\_path | 'test.annoy' |
+| 🗗 Copy | prefault | False |
+| 🗗 Copy | seed | None |
+| 🗗 Copy | verbose | None |
+| 🗗 Copy | schema\_version | 0 |
+| 🗗 Copy | n\_jobs | -1 |
+| 🗗 Copy | l1\_ratio | 0.0 |
+
+  
+  
+```
+print(b.get_nns_by_item(0, 100))
+print(b.get_nns_by_vector([1.0, 0.5, 0.5], 100))
+
+```
+```
+[0, 1, 2]
+[0, 1, 2]
+
+```
+```
+def plot(idx, y=None, **kwargs):
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import scikitplot.cexternals._annoy._plotting as utils
+
+    single = np.zeros(idx.get_n_items(), dtype=int)
+    if y is None:
+        double = np.random.uniform(0, 1, idx.get_n_items()).round()
+
+    # single vs double
+    fig, ax = plt.subplots(ncols=2, figsize=(12, 5))
+    alpha = kwargs.pop("alpha", 0.8)
+    y2 = utils.plot_annoy_index(
+        idx,
+        dims = list(range(idx.f)),
+        plot_kwargs={"draw_legend": False},
+        ax=ax[0],
+    )[0]
+    utils.plot_annoy_knn_edges(
+        idx,
+        y2,
+        k=1,
+        line_kwargs={"alpha": alpha},
+        ax=ax[1],
+    )
+
+# idx.unbuild()
+# idx.build(10)
+plot(idx)
+
+```
+![plot mmap script](../../_images/sphx_glr_plot_mmap_script_001.png)
+
+Tags: [model-workflow: vector-db](../../_tags/model-workflow-vector-db.html) [plot-type: bar](../../_tags/plot-type-bar.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
+
+****Total running time of the script:**** (0 minutes 0.050 seconds)
+
+[![Launch binder](../../_images/binder_badge_logo.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/annoy/plot_mmap_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo.svg)](../../lite/lab/index.html?path=auto_examples/annoy/plot_mmap_script.ipynb)
+
+[`Download Jupyter notebook: plot_mmap_script.ipynb`](../../_downloads/9eecd4c0192dd80ac9e3405da97e0031/plot_mmap_script.ipynb)
+
+[`Download Python source code: plot_mmap_script.py`](../../_downloads/420ae44ee8c08cd249e5a1fe1565010f/plot_mmap_script.py)
+
+[`Download zipped: plot_mmap_script.zip`](../../_downloads/e0e93a49dd96772174ad2402f677db22/plot_mmap_script.zip)
+
+Related examples
+
+![](../../_images/sphx_glr_plot_simple_script_thumb.png)
+
+[Simple annoy.AnnoyIndex with examples](plot_simple_script.html)
+
+Simple annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_Annoy_legacy_c_api_thumb.png)
+
+[annoy.Annoy legacy c-api with examples](plot_Annoy_legacy_c_api.html)
+
+annoy.Annoy legacy c-api with examples![](../../_images/sphx_glr_plot_precision_script_thumb.png)
+
+[Precision annoy.AnnoyIndex with examples](plot_precision_script.html)
+
+Precision annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_annoy_to_NPY_CSV_thumb.png)
+
+[annoy.Index to NPY or CSV with examples](plot_annoy_to_NPY_CSV.html)
+
+annoy.Index to NPY or CSV with examples
+
+[Gallery generated by Sphinx-Gallery](https://sphinx-gallery.github.io)
