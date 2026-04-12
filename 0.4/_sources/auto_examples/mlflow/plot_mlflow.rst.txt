@@ -82,7 +82,7 @@ regardless of current working directory.
         profile : str, default="local"
             Profile name inside the project config.
         open_ui_seconds : float, default=0.0
-            If > 0, sleeps for this many seconds while the session is open, printing ``ui_url``.
+            If > 0, sleeps for this many seconds while the session is open, logging ``ui_url``.
         experiment_name : str or None, default=None
             If provided, patches the exported config to use this experiment name.
         fmt : {"toml", "yaml"}, default="toml"
@@ -92,7 +92,8 @@ regardless of current working directory.
 
         Returns
         -------
-        None
+        WorkflowPaths
+            Paths used during the workflow (project root, config dir, toml/yaml paths).
 
         See Also
         --------
@@ -183,11 +184,10 @@ Demo save config from default settings then customize.
 
  .. code-block:: none
 
-    2026/02/17 18:21:17 INFO mlflow.tracking.fluent: Experiment with name 'my-first-project' does not exist. Creating a new experiment.
-    🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/451fcd23537a48c2a0b8e3224b56a676
+    2026/04/12 09:16:05 INFO mlflow.tracking.fluent: Experiment with name 'my-first-project' does not exist. Creating a new experiment.
+    🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/e55b912b5eaa4c7386826d5c40812628
     🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
-    🌐 Open MLflow UI: http://127.0.0.1:8891
-    🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/32a7a68695cb4a1eae8d043a8e57ba39
+    🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/db45f7412bac49a1a4ff96848d24b43d
     🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
 
     WorkflowPaths(_project_root=PosixPath('/home/circleci/repo/galleries/examples/mlflow'), _config_dir=PosixPath('/home/circleci/repo/galleries/examples/mlflow/configs'), _toml_path=PosixPath('/home/circleci/repo/galleries/examples/mlflow/configs/mlflow.toml'), _yaml_path=PosixPath('/home/circleci/repo/galleries/examples/mlflow/configs/mlflow.yaml'))
@@ -239,10 +239,10 @@ Demo save config from default settings then customize.
 
  .. code-block:: none
 
-    🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/15f6285b452348848e120b6d94ef59f7
+    🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/3cf41654adea4ca9be805687b1bc080b
     🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
     Open MLflow UI: http://127.0.0.1:8891
-    🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/3d092842f0df4d6f9acc330807f5e835
+    🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/8bb81c76735d4d37b93acf039d808c0c
     🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
 
 
@@ -254,7 +254,7 @@ Demo save config from default settings then customize.
 
    model-type: classification
    model-workflow: model building
-   plot-type: mlflow
+   plot-type: text
    domain: mlflow
    level: beginner
    purpose: showcase
@@ -262,7 +262,7 @@ Demo save config from default settings then customize.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 56.898 seconds)
+   **Total running time of the script:** (1 minutes 7.582 seconds)
 
 
 .. _sphx_glr_download_auto_examples_mlflow_plot_mlflow.py:

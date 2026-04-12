@@ -1,0 +1,1443 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../../" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Gaussian Mixture Models — AIC, AICc, and BIC Model Selection" property="og:title"/>
+<meta content="website" property="og:type"/>
+<meta content="https://scikit-plots.github.io/stable/auto_examples/stats/plot_gaussian_mixture_models.html" property="og:url"/>
+<meta content="scikit-plots" property="og:site_name"/>
+<meta content="What is a Gaussian Mixture Model?: Imagine you have a scatter plot of data and you can see a few separate clusters. A Gaussian Mixture Model (GMM) formalises that intuition: it assumes the data cam..." property="og:description"/>
+<meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
+<meta content="scikit-plots" property="og:image:alt"/>
+<meta content="What is a Gaussian Mixture Model?: Imagine you have a scatter plot of data and you can see a few separate clusters. A Gaussian Mixture Model (GMM) formalises that intuition: it assumes the data cam..." name="description"/>
+<script>
+window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true}, "providers": {"claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Claude about this documentation page.", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask ChatGPT about this documentation page.", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Read {url} so I can ask questions about it.", "model": "gpt-4o", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this documentation page.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Please review this documentation: {url}\n\nI have questions.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
+</script>
+<title>Gaussian Mixture Models — AIC, AICc, and BIC Model Selection — scikit-plots 0.4.0 documentation</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet"/>
+<link href="../../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../../_static/graphviz.css?v=4ae1632d" rel="stylesheet" type="text/css"/>
+<link href="../../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/ai-assistant.css?v=9781a02e" rel="stylesheet" type="text/css"/>
+<link href="../../_static/jupyter-sphinx.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/thebelab.css" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
+<link href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery.css?v=d2d258e8" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery-binder.css?v=f4aeca0c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/colors.css?v=14208072" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/custom.css?v=e4cb1417" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script defer="" src="../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" rel="preload"/>
+<script src="../../_static/documentation_options.js?v=6c02275b"></script>
+<script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+<script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=e93d8674"></script>
+<script src="../../_static/ai-assistant.js?v=cb662cc4"></script>
+<script src="../../_static/thebelab-helper.js"></script>
+<script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+<script src="../../_static/design-tabs.js?v=f930bc37"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/stats/plot_gaussian_mixture_models';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+<script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+<script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
+<script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
+<link href="https://scikit-plots.github.io/auto_examples/stats/plot_gaussian_mixture_models.html" rel="canonical"/>
+<link href="../../_static/scikit-plots-favicon.ico" rel="icon"/>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="plot_residuals_distribution_script.html" rel="next" title="plot_residuals_distribution with examples"/>
+<link href="index.html" rel="prev" title="Stats"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="0.4" name="docsearch:version"/>
+<script src="../../_static/searchtools.js"></script>
+<script src="../../_static/language_data.js"></script>
+<script src="../../searchindex.js"></script>
+</head>
+<body data-default-mode="">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Skip to main content</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button">
+<i class="fa-solid fa-arrow-up"></i>Back to top</button>
+<dialog id="pst-search-dialog">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search the docs ..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search the docs ..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Version warning" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none" id="pst-header">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Site navigation" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../index.html">
+<img alt="scikit-plots homepage" class="logo__image only-light" src="../../_static/scikit-plots-logo-small.png"/>
+<img alt="scikit-plots homepage" class="logo__image only-dark pst-js-only" src="../../_static/scikit-plots-logo-small.png"/>
+</a></div>
+</div>
+<div class="navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../index.html">
+    Tutorials
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+<li class="nav-item dropdown">
+<button aria-controls="pst-nav-more-links" aria-expanded="false" class="btn dropdown-toggle nav-item" data-bs-toggle="dropdown" type="button">
+                    More
+                </button>
+<ul class="dropdown-menu" id="pst-nav-more-links">
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../whats_new/index.html">
+    Release History
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/community.html">
+    Community
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/governance.html">
+    Governance Process
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/index.html">
+    About Us | Project
+  </a>
+</li>
+</ul>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item navbar-persistent--container">
+<button aria-label="Search" class="btn search-button-field search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Search">
+<i class="fa-solid fa-magnifying-glass"></i>
+<span class="search-button__default-text">Search</span>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+</div>
+<div class="navbar-item">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Version switcher list" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">
+    Choose version  <!-- this text may get changed later by javascript -->
+<span class="caret"></span>
+</button>
+<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://scikit-plots.github.io/dev/project/community.html" rel="noopener" target="_blank" title="Social Media Platforms"><img alt="Social Media Platforms" class="icon-link-image" src="../../_static/logos/scikit-plots-logo.svg"/></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><img alt="PyPI" class="icon-link-image" src="../../_static/logos/python-logo.png"/></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/scikit-plots/scikit-plots" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i>
+<span class="sr-only">GitHub</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="navbar-persistent--mobile">
+<button aria-label="Search" class="btn search-button-field search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Search">
+<i class="fa-solid fa-magnifying-glass"></i>
+<span class="search-button__default-text">Search</span>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+</div>
+<button aria-label="On this page" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../index.html">
+    Tutorials
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../whats_new/index.html">
+    Release History
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/community.html">
+    Community
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/governance.html">
+    Governance Process
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/index.html">
+    About Us | Project
+  </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Version switcher list" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">
+    Choose version  <!-- this text may get changed later by javascript -->
+<span class="caret"></span>
+</button>
+<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://scikit-plots.github.io/dev/project/community.html" rel="noopener" target="_blank" title="Social Media Platforms"><img alt="Social Media Platforms" class="icon-link-image" src="../../_static/logos/scikit-plots-logo.svg"/></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><img alt="PyPI" class="icon-link-image" src="../../_static/logos/python-logo.png"/></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/scikit-plots/scikit-plots" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i>
+<span class="sr-only">GitHub</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button"><svg aria-hidden="true" class="pst-icon svg-inline--fa" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z" fill="currentColor"></path>
+</svg>
+<span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+<span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+<div class="sidebar-primary-item">
+<nav aria-label="Section Navigation" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Section Navigation</p>
+<div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00-blogs/index.html">blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00-jupyter_notebooks/index.html">jupyter notebooks</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">ANNoy Vector Index DB</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_legacy_c_api.html">annoy.Annoy legacy c-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_python_api.html">annoy.Index python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_0benchmark.html">Index (cython) python-api benchmark with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_api.html">Index (cython) python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_hamlet_example.html">Approximate Nearest Neighbors with Annoy — A Hamlet Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_to_NPY_CSV.html">annoy.Index to NPY or CSV with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_mmap_script.html">Mmap annoy.AnnoyIndex with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_precision_script.html">Precision annoy.AnnoyIndex with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_simple_script.html">Simple annoy.AnnoyIndex with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/s_compile_cpp.html">Compile and run the C++ Annoy with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../array_api/index.html">Array API support</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../calibration/index.html">Calibration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calibration/plot_calibration_script.html">plot_calibration with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../classification/index.html">Classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_classifier_eval_script.html">plot_classifier_eval with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_confusion_matrix_script.html">plot_confusion_matrix with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_feature_importances_script.html">plot_feature_importances with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_learning_curve_script.html">plot_learning_curve with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_precision_recall_script.html">plot_precision_recall with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_roc_script.html">plot_roc_curve with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../clustering/index.html">Clustering</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_elbow_script.html">plot_elbow with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_silhouette_script.html">plot_silhouette with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../corpus/index.html">Corpus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_a_tale_of_two_cities_mp3_script.html">corpus A Tale of Two Cities .mp3 with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_knowledge_script.html">corpus Knowledge and Information local .png with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_who_per_file_script.html">corpus WHO European Region local or url per file with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_who_youtube_shorts_script.html">corpus WHO European Region YouTube shorts with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_who_zip_script.html">corpus WHO European Region local .zip with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cython/index.html">Cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_00_quickstart_compile_and_load.html">Cython quickstart: compile_and_load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_01_browse_and_compile_templates.html">Browse and compile templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_02_build_profiles.html">Build profiles: fast-debug, release, annotate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_03_cache_and_restart_reuse.html">Cache and restart reuse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_04_pin_alias.html">Pin/Alias: stable handles for cached builds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_05_package_examples_multimodule.html">Multi-module package builds (5 package examples)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_06_multifile_support_files.html">Multi-file builds: .pxi includes and external headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_07_cpp_mode_basics.html">C++ mode basics: cppclass and libcpp containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_08_vector_ops_without_numpy.html">Vector ops without NumPy: array(‘d’) + memoryviews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_09_workflow_templates_cli.html">Workflow templates (train / hpo / predict) + CLI entry template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_cython_template.html">Cython: Realtime compile_and_load (.pyx)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../decile/index.html">Decile</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_cumulative_gain_script.html">plot_cumulative_gain with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_ks_statistic_script.html">plot_ks_statistic with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_lift_script.html">plot_lift with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_legacy_script.html">Introduction to modelplotpy (legacy)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_script.html">Introduction to modelplotpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_report_script.html">plot_report with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../decomposition/index.html">Decomposition</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_2d_projection_script.html">plot_pca_2d_projection with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_component_variance_script.html">plot_pca_component_variance with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../impute/index.html">Impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../impute/plot_impute_script.html">annoy impute with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../memmap/index.html">MemMap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../memmap/plot_mman.html">Memory-Mapping Showcase – Basic / Medium / Advanced</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../misc/index.html">Misc</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../misc/plot_misc_script.html">Misc Showcase</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../mlflow/index.html">MLflow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mlflow/plot_mlflow.html">MLflow</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nc/index.html">Nc (NumCpp)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../nc/plot_nc_test.html">nc with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../preprocessing/index.html">Preprocessing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preprocessing/plot_dummy_code_encoder.html">Comparing DummyCode Encoder with Other Encoders</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../random/index.html">Random</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../random/plot_kiss_random.html">Enhanced KISS Random Generator - Complete Usage Examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../regression/index.html">Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../regression/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../seaborn/index.html">Seaborn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_aucplot_script.html">plot_aucplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_decileplot_script.html">plot_decileplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_evalplot_script.html">plot_evalplot_script with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Stats</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Gaussian Mixture Models — AIC, AICc, and BIC Model Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../visualkeras/index.html">Visualkeras</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_ann_conv_dense.html">Visualkeras: Spam Classification Conv1D Dense Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_ann_dense.html">visualkeras: Spam Dense example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_autoencoder.html">visualkeras: autoencoder example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_custom_vgg16.html">visualkeras: custom vgg16 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_custom_vgg16_show_dimension.html">visualkeras: custom vgg16 show dimension example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_efficientnetv2.html">visualkeras: EfficientNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_resnetv2.html">visualkeras: ResNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_vgg.html">visualkeras: custom VGG example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_nlp_vector_index_db.html">visualkeras: Vector Index DB</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">Examples</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">Stats</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">Gaussian Mixture Models — AIC, AICc, and BIC Model Selection</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+
+<section class="sphx-glr-example-title" id="gaussian-mixture-models-aic-aicc-and-bic-model-selection">
+<span id="sphx-glr-auto-examples-stats-plot-gaussian-mixture-models-py"></span><h1>Gaussian Mixture Models — AIC, AICc, and BIC Model Selection<a class="headerlink" href="#gaussian-mixture-models-aic-aicc-and-bic-model-selection" title="Link to this heading">#</a></h1>
+<section id="what-is-a-gaussian-mixture-model">
+<h2>What is a Gaussian Mixture Model?<a class="headerlink" href="#what-is-a-gaussian-mixture-model" title="Link to this heading">#</a></h2>
+<p>Imagine you have a scatter plot of data and you can see a few separate
+clusters.  A Gaussian Mixture Model (GMM) formalises that intuition: it
+assumes the data came from K overlapping “blobs”, each shaped like a
+multivariate Gaussian (bell curve).  We do not know K ahead of time —
+that is the whole point of this example.</p>
+<p>Mathematically, the model says:</p>
+<blockquote>
+<div><p>p(x | θ) = Σ_j  α_j · N(x | μ_j, Σ_j)    for j = 1 … K</p>
+</div></blockquote>
+<dl class="simple">
+<dt>where:</dt><dd><p>K    — number of blobs (unknown, to be selected)
+α_j  — how big / common blob j is          (all α_j sum to 1)
+μ_j  — centre of blob j
+Σ_j  — shape and orientation of blob j (covariance matrix)
+θ    — shorthand for all of {α_j, μ_j, Σ_j} together</p>
+</dd>
+</dl>
+</section>
+<section id="how-does-sklearn-fit-the-model-expectationmaximisation-em">
+<h2>How does sklearn fit the model?  (Expectation–Maximisation, EM)<a class="headerlink" href="#how-does-sklearn-fit-the-model-expectationmaximisation-em" title="Link to this heading">#</a></h2>
+<p>EM is an iterative two-step algorithm:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>E-step  For each data point, calculate how likely it is that each</dt><dd><p>blob generated it.  These are called “responsibilities”.</p>
+</dd>
+<dt>M-step  Update α, μ, Σ so that the model better explains those</dt><dd><p>responsibilities.</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>EM repeats until the improvement per iteration falls below a threshold
+(<code class="docutils literal notranslate"><span class="pre">tol</span></code> in sklearn, default 1e-3).</p>
+</section>
+<section id="the-trouble-with-just-maximising-log-likelihood">
+<h2>The trouble with just maximising log-likelihood<a class="headerlink" href="#the-trouble-with-just-maximising-log-likelihood" title="Link to this heading">#</a></h2>
+<p>Adding more blobs always makes the model fit the <em>training</em> data better —
+it can memorise every point if K is large enough.  We need a way to
+penalise models that are more complex than the data actually warrants.
+That is what AIC, AICc, and BIC do.</p>
+</section>
+<section id="the-three-criteria">
+<h2>The three criteria<a class="headerlink" href="#the-three-criteria" title="Link to this heading">#</a></h2>
+<p>All three are computed from the same two ingredients:</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="simple">
+<dt>ln L*   the log-likelihood after EM has converged</dt><dd><p>(bigger = the model explains the data better)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>p       the number of free parameters in the model</dt><dd><p>(bigger = the model is more complex)</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<p>The formulas:</p>
+<blockquote>
+<div><p>AIC  = -2 ln L*  +  2p
+AICc = -2 ln L*  +  2p  +  2p(p+1) / (N - p - 1)
+BIC  = -2 ln L*  +  p · ln N</p>
+</div></blockquote>
+<p>All three are <strong>lower-is-better</strong>.  The -2 ln L* term rewards a good fit;
+the second term penalises complexity.  The penalties differ:</p>
+<blockquote>
+<div><p>AIC   penalises each parameter by exactly 2.
+AICc  is AIC plus a small extra correction for small sample sizes.</p>
+<blockquote>
+<div><p>When N is large the correction shrinks to zero and AICc ≈ AIC.
+When N is small (rough rule: N/p &lt; 40) the correction matters.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>BIC   penalises each parameter by ln N, which is &gt; 2 for N &gt; 7.</dt><dd><p>This makes BIC prefer sparser (fewer components) models.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="when-should-i-use-each">
+<h2>When should I use each?<a class="headerlink" href="#when-should-i-use-each" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>AIC   — your goal is <em>prediction</em>.  You are building a generative model</dt><dd><p>and you want the best out-of-sample log-likelihood.  AIC’s
+softer penalty lets you keep richer structure when the data
+support it.</p>
+</dd>
+<dt>AICc  — same goal as AIC but your dataset is small or the number of</dt><dd><p>parameters p is large relative to N.  Use AICc by default if
+you are unsure; for large N it converges to AIC anyway.</p>
+</dd>
+<dt>BIC   — your goal is <em>structure recovery</em>: you want to know the true</dt><dd><p>number of clusters, not just predict well.  BIC’s stronger
+penalty makes it more likely to land on the right K when one
+exists.  This example uses BIC to pick the final model.</p>
+</dd>
+</dl>
+<p>Practical tip: always plot all three.  If they all agree on K, you can
+be confident.  If they disagree, the difference is usually just ±1 and
+you can inspect both models visually.</p>
+</div></blockquote>
+</section>
+<section id="how-to-read-the-aic-aicc-bic-curves">
+<h2>How to read the AIC / AICc / BIC curves<a class="headerlink" href="#how-to-read-the-aic-aicc-bic-curves" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Plot score (y-axis) vs K (x-axis).</p></li>
+<li><p>The best K is at the minimum of the curve.</p></li>
+<li><p>A sharp dip    → the data strongly prefer that K.</p></li>
+<li><dl class="simple">
+<dt>A flat plateau → nearby K values are nearly equivalent;</dt><dd><p>pick the smaller K (simpler is safer).</p>
+</dd>
+</dl>
+</li>
+<li><p>BIC minimum ≤ AIC minimum — BIC always penalises more,
+so its minimum shifts left.  This is expected, not a bug.</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="free-parameter-count-for-a-full-covariance-gmm-on-d-dimensional-data">
+<h2>Free parameter count for a full-covariance GMM on d-dimensional data<a class="headerlink" href="#free-parameter-count-for-a-full-covariance-gmm-on-d-dimensional-data" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>means      :  K × d
+covariances:  K × d(d+1)/2    (symmetric matrix, upper triangle only)
+weights    :  K - 1           (K weights constrained to sum to 1)</p>
+<p>Total  p = K × d  +  K × d(d+1)/2  +  (K - 1)</p>
+<p>For d=2 (this example):  p = 2K + 3K + K - 1 = 6K - 1
+For K=5:                 p = 29</p>
+</div></blockquote>
+</section>
+<section id="this-example">
+<h2>This example<a class="headerlink" href="#this-example" title="Link to this heading">#</a></h2>
+<p>We generate a 2-D dataset from K_true = 5 known Gaussian blobs.  Having
+a ground truth lets us check whether the criteria recover the right K.</p>
+<dl class="simple">
+<dt>Steps:</dt><dd><ol class="arabic simple">
+<li><p>Generate 2 000 points from 5 blobs with different spreads.</p></li>
+<li><p>Fit GMMs for K = 1 … 13.</p></li>
+<li><p>Compute AIC, AICc, and BIC for each K.</p></li>
+<li><p>Pick K_best = argmin(BIC).</p></li>
+<li><dl class="simple">
+<dt>Produce four plots:</dt><dd><ol class="loweralpha simple">
+<li><p>raw 2-D data density (observed histogram)</p></li>
+<li><p>AIC / AICc / BIC curves with minima marked</p></li>
+<li><p>best-fit GMM density with component ellipses</p></li>
+<li><p>side-by-side: observed density vs. recovered density</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+<p>Dependencies: NumPy, matplotlib, scikit-learn.  Nothing else.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p>Akaike, H. (1974). A new look at the statistical model
+identification. IEEE Trans. Autom. Control, 19(6), 716-723.</p>
+</aside>
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<p>Schwarz, G. (1978). Estimating the dimension of a model.
+Ann. Stat., 6(2), 461-464.</p>
+</aside>
+<aside class="footnote brackets" id="id3" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<p>Hurvich, C. M., &amp; Tsai, C.-L. (1989). Regression and time series
+model selection in small samples.  Biometrika, 76(2), 297-307.</p>
+</aside>
+<aside class="footnote brackets" id="id4" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
+<p>McLachlan, G. J., &amp; Peel, D. (2000). Finite Mixture Models.
+Wiley-Interscience.</p>
+</aside>
+<aside class="footnote brackets" id="id5" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
+<p>scikit-learn GaussianMixture docs:
+<a class="reference external" href="https://scikit-learn.org/stable/modules/mixture.html">https://scikit-learn.org/stable/modules/mixture.html</a></p>
+</aside>
+</aside>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<p>sklearn.mixture.GaussianMixture
+sklearn.datasets.make_blobs</p>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
+<p>Run as a standalone script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">plot_gaussian_mixture_models</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Import individual helpers inside a notebook:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">plot_gaussian_mixture_models</span><span class="w"> </span><span class="kn">import</span> <span class="n">fit_gmm_range</span><span class="p">,</span> <span class="n">draw_ellipse</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: The scikit-plots developers</span>
+<span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
+</pre></div>
+</div>
+<section id="section-1-imports">
+<h3>Section 1 — Imports<a class="headerlink" href="#section-1-imports" title="Link to this heading">#</a></h3>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.patches</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-matplotlib-patches sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Ellipse.html#matplotlib.patches.Ellipse" title="matplotlib.patches.Ellipse"><span class="n">Ellipse</span></a>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/dev/modules/generated/sklearn.datasets.make_blobs.html#sklearn.datasets.make_blobs" title="sklearn.datasets.make_blobs"><span class="n">make_blobs</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.mixture</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-sklearn-mixture sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/dev/modules/generated/sklearn.mixture.GaussianMixture.html#sklearn.mixture.GaussianMixture" title="sklearn.mixture.GaussianMixture"><span class="n">GaussianMixture</span></a>
+
+<span class="c1"># One seed controls everything: data generation, GMM initialisation,</span>
+<span class="c1"># and the random-state of all helper functions.</span>
+<span class="n">RANDOM_STATE</span> <span class="o">=</span> <span class="mi">42</span>
+</pre></div>
+</div>
+</section>
+<section id="section-2-utility-functions">
+<h3>Section 2 — Utility functions<a class="headerlink" href="#section-2-utility-functions" title="Link to this heading">#</a></h3>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_gmm_n_params</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">covariance_type</span><span class="o">=</span><span class="s2">"full"</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Count the number of free parameters in a fitted GMM.</span>
+
+<span class="sd">    This is the ``p`` that goes into AIC, AICc, and BIC.  sklearn computes</span>
+<span class="sd">    it internally for ``.aic()`` and ``.bic()``; we expose it here so we</span>
+<span class="sd">    can also compute AICc.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    k : int</span>
+<span class="sd">        Number of Gaussian components.</span>
+<span class="sd">    d : int</span>
+<span class="sd">        Number of features (data dimensionality).</span>
+<span class="sd">    covariance_type : {'full', 'tied', 'diag', 'spherical'}, optional</span>
+<span class="sd">        Covariance structure.  Default is ``'full'``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    n_params : int</span>
+<span class="sd">        Total number of free parameters.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Breakdown by covariance type (means + covariances + weights):</span>
+
+<span class="sd">    full      K*d  +  K*d*(d+1)/2  +  (K-1)   — each component has its</span>
+<span class="sd">              own full covariance matrix (most expressive, most params).</span>
+<span class="sd">    tied      K*d  +    d*(d+1)/2  +  (K-1)   — one shared covariance.</span>
+<span class="sd">    diag      K*d  +          K*d  +  (K-1)   — axis-aligned ellipses.</span>
+<span class="sd">    spherical K*d  +            K  +  (K-1)   — circular blobs.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; _gmm_n_params(k=5, d=2, covariance_type='full')</span>
+<span class="sd">    29</span>
+<span class="sd">    &gt;&gt;&gt; _gmm_n_params(k=5, d=2, covariance_type='diag')</span>
+<span class="sd">    24</span>
+<span class="sd">    """</span>
+    <span class="n">cov_params</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">"full"</span><span class="p">:</span>      <span class="n">k</span> <span class="o">*</span> <span class="n">d</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">"tied"</span><span class="p">:</span>          <span class="n">d</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">"diag"</span><span class="p">:</span>      <span class="n">k</span> <span class="o">*</span> <span class="n">d</span><span class="p">,</span>
+        <span class="s2">"spherical"</span><span class="p">:</span> <span class="n">k</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="n">covariance_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cov_params</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"covariance_type must be one of </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">cov_params</span><span class="p">)</span><span class="si">}</span><span class="s2">, "</span>
+            <span class="sa">f</span><span class="s2">"got '</span><span class="si">{</span><span class="n">covariance_type</span><span class="si">}</span><span class="s2">'."</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">k</span> <span class="o">*</span> <span class="n">d</span> <span class="o">+</span> <span class="n">cov_params</span><span class="p">[</span><span class="n">covariance_type</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_aicc</span><span class="p">(</span><span class="n">aic</span><span class="p">,</span> <span class="n">n_params</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Compute the corrected AIC (AICc) from a plain AIC value.</span>
+
+<span class="sd">    AICc adds a finite-sample correction on top of AIC:</span>
+
+<span class="sd">        AICc = AIC + 2p(p+1) / (N - p - 1)</span>
+
+<span class="sd">    For large N the correction term shrinks toward zero and AICc ≈ AIC.</span>
+<span class="sd">    For small N (rough guide: N/p &lt; 40) the correction is meaningful and</span>
+<span class="sd">    AICc is the safer choice over plain AIC.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    aic : float</span>
+<span class="sd">        Plain AIC value from ``GaussianMixture.aic(X)``.</span>
+<span class="sd">    n_params : int</span>
+<span class="sd">        Number of free parameters ``p`` in the model.  Use</span>
+<span class="sd">        :func:`_gmm_n_params` to compute this.</span>
+<span class="sd">    n_samples : int</span>
+<span class="sd">        Number of training data points ``N``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    aicc : float</span>
+<span class="sd">        Corrected AIC value.  Returns ``aic`` unchanged when</span>
+<span class="sd">        ``N - p - 1 &lt;= 0`` (degenerate case; treat result as unreliable).</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The correction term ``2p(p+1)/(N-p-1)`` is always positive, so</span>
+<span class="sd">    AICc &gt;= AIC.  When N is large the denominator dominates and the</span>
+<span class="sd">    two values converge.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; compute_aicc(aic=1000.0, n_params=10, n_samples=200)</span>
+<span class="sd">    1001.1055276381909</span>
+<span class="sd">    &gt;&gt;&gt; compute_aicc(aic=1000.0, n_params=10, n_samples=10_000)</span>
+<span class="sd">    1000.02202200220</span>
+<span class="sd">    """</span>
+    <span class="n">denom</span> <span class="o">=</span> <span class="n">n_samples</span> <span class="o">-</span> <span class="n">n_params</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">denom</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># N is so small relative to p that the correction is undefined.</span>
+        <span class="c1"># Return plain AIC and let the caller decide what to do.</span>
+        <span class="k">return</span> <span class="n">aic</span>
+    <span class="k">return</span> <span class="n">aic</span> <span class="o">+</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">n_params</span> <span class="o">*</span> <span class="p">(</span><span class="n">n_params</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">denom</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_ellipse</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">covariance</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">n_std</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Draw a confidence ellipse for one 2-D Gaussian component.</span>
+
+<span class="sd">    The ellipse captures roughly 74 % of the probability mass for a</span>
+<span class="sd">    2-D Gaussian when ``n_std=1.5`` (equivalent to a 1.5-sigma contour).</span>
+
+<span class="sd">    Internally, we decompose the covariance matrix into eigenvalues and</span>
+<span class="sd">    eigenvectors.  The eigenvectors tell us the orientation of the ellipse;</span>
+<span class="sd">    the square-roots of the eigenvalues give the semi-axis lengths.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mean : array-like of shape (2,)</span>
+<span class="sd">        Centre of the Gaussian component.</span>
+<span class="sd">    covariance : array-like of shape (2, 2)</span>
+<span class="sd">        2×2 covariance matrix of the component.</span>
+<span class="sd">    ax : matplotlib.axes.Axes</span>
+<span class="sd">        The axes to draw on.</span>
+<span class="sd">    n_std : float, optional</span>
+<span class="sd">        Radius of the ellipse in standard deviations.  Default is ``1.5``.</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        Forwarded to ``matplotlib.patches.Ellipse``.  Common ones:</span>
+<span class="sd">        ``fc`` (face colour), ``ec`` (edge colour), ``lw`` (line width).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    patch : matplotlib.patches.Ellipse</span>
+<span class="sd">        The patch that was added to *ax*.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If *covariance* is not exactly 2×2.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    We use ``np.linalg.eigh`` rather than ``eig`` because the covariance</span>
+<span class="sd">    matrix is always symmetric.  ``eigh`` exploits symmetry for numerical</span>
+<span class="sd">    stability and guarantees the eigenvalues come back real and sorted.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import matplotlib.pyplot as plt</span>
+<span class="sd">    &gt;&gt;&gt; fig, ax = plt.subplots()</span>
+<span class="sd">    &gt;&gt;&gt; patch = draw_ellipse([0, 0], [[1, 0.5], [0.5, 1]], ax=ax,</span>
+<span class="sd">    ...                      n_std=2.0, fc='none', ec='black')</span>
+<span class="sd">    """</span>
+    <span class="n">covariance</span> <span class="o">=</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.asarray.html#numpy.asarray" title="numpy.asarray"><span class="n">np</span><span class="o">.</span><span class="n">asarray</span></a><span class="p">(</span><span class="n">covariance</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">covariance</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"covariance must be shape (2, 2), got </span><span class="si">{</span><span class="n">covariance</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">."</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Decompose: eigenvectors = axes directions, eigenvalues = spread along axes</span>
+    <span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <a class="sphx-glr-backref-module-numpy-linalg sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.linalg.eigh.html#numpy.linalg.eigh" title="numpy.linalg.eigh"><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span></a><span class="p">(</span><span class="n">covariance</span><span class="p">)</span>
+
+    <span class="c1"># Sort largest eigenvalue first (primary axis first)</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="n">eigenvalues</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">eigenvalues</span> <span class="o">=</span> <span class="n">eigenvalues</span><span class="p">[</span><span class="n">order</span><span class="p">]</span>
+    <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">eigenvectors</span><span class="p">[:,</span> <span class="n">order</span><span class="p">]</span>
+
+    <span class="c1"># Angle of the primary axis relative to the x-axis (in degrees)</span>
+    <span class="n">angle</span> <span class="o">=</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data" href="https://numpy.org/doc/stable/reference/generated/numpy.degrees.html#numpy.degrees" title="numpy.degrees"><span class="n">np</span><span class="o">.</span><span class="n">degrees</span></a><span class="p">(</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data" href="https://numpy.org/doc/stable/reference/generated/numpy.arctan2.html#numpy.arctan2" title="numpy.arctan2"><span class="n">np</span><span class="o">.</span><span class="n">arctan2</span></a><span class="p">(</span><span class="n">eigenvectors</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">eigenvectors</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]))</span>
+
+    <span class="c1"># Full axis lengths = 2 × n_std × sqrt(eigenvalue)</span>
+    <span class="c1"># np.maximum guards against tiny negative eigenvalues from floating-point</span>
+    <span class="n">width</span>  <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">n_std</span> <span class="o">*</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data" href="https://numpy.org/doc/stable/reference/generated/numpy.sqrt.html#numpy.sqrt" title="numpy.sqrt"><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span></a><span class="p">(</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data" href="https://numpy.org/doc/stable/reference/generated/numpy.maximum.html#numpy.maximum" title="numpy.maximum"><span class="n">np</span><span class="o">.</span><span class="n">maximum</span></a><span class="p">(</span><span class="n">eigenvalues</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">))</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">n_std</span> <span class="o">*</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data" href="https://numpy.org/doc/stable/reference/generated/numpy.sqrt.html#numpy.sqrt" title="numpy.sqrt"><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span></a><span class="p">(</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data" href="https://numpy.org/doc/stable/reference/generated/numpy.maximum.html#numpy.maximum" title="numpy.maximum"><span class="n">np</span><span class="o">.</span><span class="n">maximum</span></a><span class="p">(</span><span class="n">eigenvalues</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">))</span>
+
+    <span class="n">patch</span> <span class="o">=</span> <a class="sphx-glr-backref-module-matplotlib-patches sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Ellipse.html#matplotlib.patches.Ellipse" title="matplotlib.patches.Ellipse"><span class="n">Ellipse</span></a><span class="p">(</span><span class="n">xy</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">height</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="n">angle</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">patch</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">patch</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fit_gmm_range</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span>
+    <span class="n">n_components_range</span><span class="p">,</span>
+    <span class="n">covariance_type</span><span class="o">=</span><span class="s2">"full"</span><span class="p">,</span>
+    <span class="n">max_iter</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Fit one GMM per value of K and return the models plus AIC, AICc, BIC.</span>
+
+<span class="sd">    We loop over every K in *n_components_range*, fit a</span>
+<span class="sd">    ``GaussianMixture``, and collect AIC, AICc, and BIC.  All models are</span>
+<span class="sd">    returned so the caller can inspect any of them (not just the best one).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    X : array-like of shape (n_samples, n_features)</span>
+<span class="sd">        Training data.</span>
+<span class="sd">    n_components_range : array-like of int</span>
+<span class="sd">        The K values to try, e.g. ``range(1, 14)`` or ``[1, 2, 5, 10]``.</span>
+<span class="sd">    covariance_type : {'full', 'tied', 'diag', 'spherical'}, optional</span>
+<span class="sd">        How each component's covariance is parameterised.  ``'full'``</span>
+<span class="sd">        (default) gives the most flexible shape but uses the most</span>
+<span class="sd">        parameters — see :func:`_gmm_n_params` for the count.</span>
+<span class="sd">    max_iter : int, optional</span>
+<span class="sd">        Hard cap on EM iterations per model.  Default is ``200``.</span>
+<span class="sd">        Increase if you see ``gmm.converged_ == False`` in practice.</span>
+<span class="sd">    random_state : int or None, optional</span>
+<span class="sd">        Seed passed to every ``GaussianMixture`` for reproducibility.</span>
+<span class="sd">        Default is ``None`` (non-deterministic).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    models : list of GaussianMixture</span>
+<span class="sd">        One fitted model per K, in the same order as *n_components_range*.</span>
+<span class="sd">    aic_scores : list of float</span>
+<span class="sd">        AIC for each model.  Lower is better.</span>
+<span class="sd">    aicc_scores : list of float</span>
+<span class="sd">        AICc for each model.  Lower is better.</span>
+<span class="sd">        Equals AIC for large N; preferred when the dataset is small.</span>
+<span class="sd">    bic_scores : list of float</span>
+<span class="sd">        BIC for each model.  Lower is better.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If *n_components_range* is empty.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    ``init_params='kmeans'`` (sklearn default) is used, which places the</span>
+<span class="sd">    initial component centres via k-means.  This converges faster and more</span>
+<span class="sd">    reliably than random initialisation for typical datasets.</span>
+
+<span class="sd">    The AICc correction uses the free-parameter count from</span>
+<span class="sd">    :func:`_gmm_n_params`, which replicates sklearn's internal parameter</span>
+<span class="sd">    counting.  The three criteria should therefore be mutually consistent.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; rng = np.random.default_rng(0)</span>
+<span class="sd">    &gt;&gt;&gt; X = rng.standard_normal((400, 2))</span>
+<span class="sd">    &gt;&gt;&gt; models, aic, aicc, bic = fit_gmm_range(X, range(1, 6), random_state=0)</span>
+<span class="sd">    &gt;&gt;&gt; len(models)</span>
+<span class="sd">    5</span>
+<span class="sd">    &gt;&gt;&gt; best_k_bic = np.argmin(bic) + 1</span>
+<span class="sd">    """</span>
+    <span class="n">n_components_range</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">n_components_range</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">n_components_range</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"n_components_range must not be empty."</span><span class="p">)</span>
+
+    <span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span> <span class="o">=</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.asarray.html#numpy.asarray" title="numpy.asarray"><span class="n">np</span><span class="o">.</span><span class="n">asarray</span></a><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">models</span><span class="p">,</span> <span class="n">aic_scores</span><span class="p">,</span> <span class="n">aicc_scores</span><span class="p">,</span> <span class="n">bic_scores</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">n_components_range</span><span class="p">:</span>
+        <span class="n">gmm</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-mixture sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://scikit-learn.org/dev/modules/generated/sklearn.mixture.GaussianMixture.html#sklearn.mixture.GaussianMixture" title="sklearn.mixture.GaussianMixture"><span class="n">GaussianMixture</span></a><span class="p">(</span>
+            <span class="n">n_components</span><span class="o">=</span><span class="n">k</span><span class="p">,</span>
+            <span class="n">covariance_type</span><span class="o">=</span><span class="n">covariance_type</span><span class="p">,</span>
+            <span class="n">max_iter</span><span class="o">=</span><span class="n">max_iter</span><span class="p">,</span>
+            <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">gmm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">models</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gmm</span><span class="p">)</span>
+
+        <span class="n">aic_val</span>  <span class="o">=</span> <span class="n">gmm</span><span class="o">.</span><span class="n">aic</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">bic_val</span>  <span class="o">=</span> <span class="n">gmm</span><span class="o">.</span><span class="n">bic</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">p</span>        <span class="o">=</span> <span class="n">_gmm_n_params</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">n_features</span><span class="p">,</span> <span class="n">covariance_type</span><span class="p">)</span>
+        <span class="n">aicc_val</span> <span class="o">=</span> <span class="n">compute_aicc</span><span class="p">(</span><span class="n">aic_val</span><span class="p">,</span> <span class="n">n_params</span><span class="o">=</span><span class="n">p</span><span class="p">,</span> <span class="n">n_samples</span><span class="o">=</span><span class="n">n_samples</span><span class="p">)</span>
+
+        <span class="n">aic_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">aic_val</span><span class="p">)</span>
+        <span class="n">aicc_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">aicc_val</span><span class="p">)</span>
+        <span class="n">bic_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bic_val</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">models</span><span class="p">,</span> <span class="n">aic_scores</span><span class="p">,</span> <span class="n">aicc_scores</span><span class="p">,</span> <span class="n">bic_scores</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_density_grid</span><span class="p">(</span><span class="n">gmm</span><span class="p">,</span> <span class="n">x_bins</span><span class="p">,</span> <span class="n">y_bins</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Evaluate the log-density of a fitted GMM on a regular 2-D grid.</span>
+
+<span class="sd">    We create a meshgrid from *x_bins* and *y_bins*, stack the grid points</span>
+<span class="sd">    into a (n_points, 2) array, ask the GMM for its log-probability at every</span>
+<span class="sd">    point, and reshape the result back to (n_y, n_x) so it can be passed</span>
+<span class="sd">    directly to ``imshow(origin='lower')``.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    gmm : GaussianMixture</span>
+<span class="sd">        A fitted ``GaussianMixture`` instance.</span>
+<span class="sd">    x_bins : array-like of shape (n_x,)</span>
+<span class="sd">        x-coordinates of the grid (typically bin centres from a histogram).</span>
+<span class="sd">    y_bins : array-like of shape (n_y,)</span>
+<span class="sd">        y-coordinates of the grid.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    log_dens : numpy.ndarray of shape (n_y, n_x)</span>
+<span class="sd">        Log-probability density at each grid point.</span>
+<span class="sd">        Pass ``np.exp(log_dens)`` to get plain density for ``imshow``.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    ``score_samples`` returns ``log p(x | θ)`` — the log of the mixture</span>
+<span class="sd">    density at each point.  We keep it in log space until plotting to</span>
+<span class="sd">    avoid numerical underflow in sparse regions.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; from sklearn.mixture import GaussianMixture</span>
+<span class="sd">    &gt;&gt;&gt; X = np.random.randn(500, 2)</span>
+<span class="sd">    &gt;&gt;&gt; gmm = GaussianMixture(n_components=2, random_state=0).fit(X)</span>
+<span class="sd">    &gt;&gt;&gt; xb = np.linspace(-4, 4, 30)</span>
+<span class="sd">    &gt;&gt;&gt; yb = np.linspace(-4, 4, 30)</span>
+<span class="sd">    &gt;&gt;&gt; ld = compute_density_grid(gmm, xb, yb)</span>
+<span class="sd">    &gt;&gt;&gt; ld.shape</span>
+<span class="sd">    (30, 30)</span>
+<span class="sd">    """</span>
+    <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.meshgrid.html#numpy.meshgrid" title="numpy.meshgrid"><span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span></a><span class="p">(</span><span class="n">x_bins</span><span class="p">,</span> <span class="n">y_bins</span><span class="p">)</span>
+    <span class="n">X_grid</span>  <span class="o">=</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.column_stack.html#numpy.column_stack" title="numpy.column_stack"><span class="n">np</span><span class="o">.</span><span class="n">column_stack</span></a><span class="p">([</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
+    <span class="n">log_dens</span> <span class="o">=</span> <span class="n">gmm</span><span class="o">.</span><span class="n">score_samples</span><span class="p">(</span><span class="n">X_grid</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_bins</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">x_bins</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">log_dens</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_density_panel</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">extent</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">"Feature 1"</span><span class="p">,</span>
+                       <span class="n">ylabel</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Show a 2-D density image on *ax* with consistent axes and labelling.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ax : matplotlib.axes.Axes</span>
+<span class="sd">        The axes to draw on.</span>
+<span class="sd">    image : numpy.ndarray of shape (n_y, n_x)</span>
+<span class="sd">        Density values — either raw histogram counts or ``exp(log_dens)``</span>
+<span class="sd">        from a GMM.</span>
+<span class="sd">    extent : list of float</span>
+<span class="sd">        ``[x_min, x_max, y_min, y_max]`` passed directly to ``imshow``.</span>
+<span class="sd">    label : str</span>
+<span class="sd">        Short annotation placed in the upper-right corner of the panel.</span>
+<span class="sd">    xlabel : str, optional</span>
+<span class="sd">        x-axis label.  Default is ``'Feature 1'``.</span>
+<span class="sd">    ylabel : str or None, optional</span>
+<span class="sd">        y-axis label.  Pass ``None`` to omit (useful for right-hand panels</span>
+<span class="sd">        in a shared-axes layout).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ax : matplotlib.axes.Axes</span>
+<span class="sd">        The same axes, modified in place.</span>
+<span class="sd">    """</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
+        <span class="n">image</span><span class="p">,</span>
+        <span class="n">origin</span><span class="o">=</span><span class="s2">"lower"</span><span class="p">,</span>
+        <span class="n">interpolation</span><span class="o">=</span><span class="s2">"nearest"</span><span class="p">,</span>
+        <span class="n">aspect</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span>
+        <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="s2">"binary"</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
+        <span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span>
+        <span class="n">va</span><span class="o">=</span><span class="s2">"top"</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">"right"</span><span class="p">,</span>
+        <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span>
+        <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ylabel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ax</span>
+</pre></div>
+</div>
+</section>
+<section id="section-3-generate-synthetic-2-d-data">
+<h3>Section 3 — Generate synthetic 2-D data<a class="headerlink" href="#section-3-generate-synthetic-2-d-data" title="Link to this heading">#</a></h3>
+<p>Five blobs with deliberately different spreads (cluster_std).  Varying
+the spreads makes the problem slightly harder and more realistic than
+equal-variance blobs.</p>
+<p>K_TRUE is used only for validation at the end.  The GMM fitting loop
+below never sees this value — it has to figure out K on its own.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">K_TRUE</span>   <span class="o">=</span> <span class="mi">5</span>
+<span class="n">N_SAMPLES</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">N_BINS</span>    <span class="o">=</span> <span class="mi">51</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y_true</span> <span class="o">=</span> <a class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function" href="https://scikit-learn.org/dev/modules/generated/sklearn.datasets.make_blobs.html#sklearn.datasets.make_blobs" title="sklearn.datasets.make_blobs"><span class="n">make_blobs</span></a><span class="p">(</span>
+    <span class="n">n_samples</span><span class="o">=</span><span class="n">N_SAMPLES</span><span class="p">,</span>
+    <span class="n">centers</span><span class="o">=</span><span class="n">K_TRUE</span><span class="p">,</span>
+    <span class="n">cluster_std</span><span class="o">=</span><span class="p">[</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="n">RANDOM_STATE</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="section-4-fit-gmms-for-k-1-13-collect-aic-aicc-bic">
+<h3>Section 4 — Fit GMMs for K = 1 … 13; collect AIC, AICc, BIC<a class="headerlink" href="#section-4-fit-gmms-for-k-1-13-collect-aic-aicc-bic" title="Link to this heading">#</a></h3>
+<p>We fit all models upfront so Sections 5–10 are just reads — no recomputation.
+max_iter=300 is generous for a 2-D problem; lower values are fine too.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">N_RANGE</span> <span class="o">=</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.arange.html#numpy.arange" title="numpy.arange"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>
+
+<span class="n">models</span><span class="p">,</span> <span class="n">AIC</span><span class="p">,</span> <span class="n">AICC</span><span class="p">,</span> <span class="n">BIC</span> <span class="o">=</span> <span class="n">fit_gmm_range</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span>
+    <span class="n">n_components_range</span><span class="o">=</span><span class="n">N_RANGE</span><span class="p">,</span>
+    <span class="n">covariance_type</span><span class="o">=</span><span class="s2">"full"</span><span class="p">,</span>
+    <span class="n">max_iter</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="n">RANDOM_STATE</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="section-5-pick-the-best-model-minimum-bic">
+<h3>Section 5 — Pick the best model (minimum BIC)<a class="headerlink" href="#section-5-pick-the-best-model-minimum-bic" title="Link to this heading">#</a></h3>
+<p>BIC is preferred here because our goal is recovering the true K, not
+maximising predictive accuracy.  AICc is printed for comparison.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">i_best</span>   <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.argmin.html#numpy.argmin" title="numpy.argmin"><span class="n">np</span><span class="o">.</span><span class="n">argmin</span></a><span class="p">(</span><span class="n">BIC</span><span class="p">))</span>
+<span class="n">gmm_best</span> <span class="o">=</span> <span class="n">models</span><span class="p">[</span><span class="n">i_best</span><span class="p">]</span>
+<span class="n">k_best</span>   <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">N_RANGE</span><span class="p">[</span><span class="n">i_best</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"EM converged      : </span><span class="si">{</span><span class="n">gmm_best</span><span class="o">.</span><span class="n">converged_</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"BIC-optimal  K    : </span><span class="si">{</span><span class="n">k_best</span><span class="si">}</span><span class="s2">           (true K = </span><span class="si">{</span><span class="n">K_TRUE</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"AIC-optimal  K    : </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">N_RANGE</span><span class="p">[</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.argmin.html#numpy.argmin" title="numpy.argmin"><span class="n">np</span><span class="o">.</span><span class="n">argmin</span></a><span class="p">(</span><span class="n">AIC</span><span class="p">)])</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"AICc-optimal K    : </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">N_RANGE</span><span class="p">[</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.argmin.html#numpy.argmin" title="numpy.argmin"><span class="n">np</span><span class="o">.</span><span class="n">argmin</span></a><span class="p">(</span><span class="n">AICC</span><span class="p">)])</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Scores at BIC-optimal K:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  AIC  = </span><span class="si">{</span><span class="n">AIC</span><span class="p">[</span><span class="n">i_best</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  AICc = </span><span class="si">{</span><span class="n">AICC</span><span class="p">[</span><span class="n">i_best</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">  (delta from AIC: </span><span class="si">{</span><span class="n">AICC</span><span class="p">[</span><span class="n">i_best</span><span class="p">]</span><span class="o">-</span><span class="n">AIC</span><span class="p">[</span><span class="n">i_best</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  BIC  = </span><span class="si">{</span><span class="n">BIC</span><span class="p">[</span><span class="n">i_best</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="n">n_params_best</span> <span class="o">=</span> <span class="n">_gmm_n_params</span><span class="p">(</span><span class="n">k_best</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">covariance_type</span><span class="o">=</span><span class="s2">"full"</span><span class="p">)</span>
+<span class="n">ratio</span> <span class="o">=</span> <span class="n">N_SAMPLES</span> <span class="o">/</span> <span class="n">n_params_best</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"N / p = </span><span class="si">{</span><span class="n">N_SAMPLES</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">n_params_best</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">ratio</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">ratio</span> <span class="o">&lt;</span> <span class="mi">40</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"  → N/p &lt; 40: AICc correction is meaningful here."</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"  → N/p &gt;= 40: AICc ≈ AIC for this dataset (correction is tiny)."</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>EM converged      : True
+BIC-optimal  K    : 5           (true K = 5)
+AIC-optimal  K    : 5
+AICc-optimal K    : 5
+
+Scores at BIC-optimal K:
+  AIC  = 14675.3
+  AICc = 14676.2  (delta from AIC: 0.88)
+  BIC  = 14837.7
+
+N / p = 2000 / 29 = 69.0
+  → N/p &gt;= 40: AICc ≈ AIC for this dataset (correction is tiny).
+</pre></div>
+</div>
+</section>
+<section id="section-6-build-observed-density-histogram-and-gmm-density-grid">
+<h3>Section 6 — Build observed density (histogram) and GMM density grid<a class="headerlink" href="#section-6-build-observed-density-histogram-and-gmm-density-grid" title="Link to this heading">#</a></h3>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">x1_flat</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">x2_flat</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># np.histogram2d returns counts in H[i, j] = count in bin (x_i, y_j).</span>
+<span class="c1"># We transpose H before passing to imshow so that rows map to y and</span>
+<span class="c1"># columns to x, consistent with origin='lower'.</span>
+<span class="n">H</span><span class="p">,</span> <span class="n">x1_edges</span><span class="p">,</span> <span class="n">x2_edges</span> <span class="o">=</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.histogram2d.html#numpy.histogram2d" title="numpy.histogram2d"><span class="n">np</span><span class="o">.</span><span class="n">histogram2d</span></a><span class="p">(</span><span class="n">x1_flat</span><span class="p">,</span> <span class="n">x2_flat</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">N_BINS</span><span class="p">)</span>
+
+<span class="n">x1_centres</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">x1_edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">x1_edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+<span class="n">x2_centres</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">x2_edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">x2_edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+
+<span class="n">log_dens</span> <span class="o">=</span> <span class="n">compute_density_grid</span><span class="p">(</span><span class="n">gmm_best</span><span class="p">,</span> <span class="n">x1_centres</span><span class="p">,</span> <span class="n">x2_centres</span><span class="p">)</span>
+
+<span class="c1"># extent tells imshow the physical coordinate range of the image</span>
+<span class="n">extent</span> <span class="o">=</span> <span class="p">[</span><span class="n">x1_edges</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x1_edges</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">x2_edges</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x2_edges</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+</pre></div>
+</div>
+</section>
+<section id="section-7-plot-raw-observed-density-what-the-data-look-like">
+<h3>Section 7 — Plot: raw observed density (what the data look like)<a class="headerlink" href="#section-7-plot-raw-observed-density-what-the-data-look-like" title="Link to this heading">#</a></h3>
+<p>This is the “before” panel — purely the data, no model involved.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">))</span>
+<span class="n">plot_density_panel</span><span class="p">(</span>
+    <span class="n">ax</span><span class="p">,</span>
+    <span class="n">image</span><span class="o">=</span><span class="n">H</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+    <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"Input data"</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">"Feature 1"</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">"Feature 2"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html#matplotlib.pyplot.savefig" title="matplotlib.pyplot.savefig"><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span></a><span class="p">(</span><span class="s2">"gmm_01_input_density.png"</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="plot gaussian mixture models" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_gaussian_mixture_models_001.png" srcset="../../_images/sphx_glr_plot_gaussian_mixture_models_001.png"/></section>
+<section id="section-8-plot-aic-aicc-and-bic-curves">
+<h3>Section 8 — Plot: AIC, AICc, and BIC curves<a class="headerlink" href="#section-8-plot-aic-aicc-and-bic-curves" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>Reading guide (printed in the title too):</dt><dd><ul class="simple">
+<li><p>All three curves are lower-is-better.</p></li>
+<li><p>The dip / elbow marks the recommended K for each criterion.</p></li>
+<li><p>BIC minimum is usually at a smaller K than AIC/AICc — expected.</p></li>
+<li><p>AICc ≈ AIC when N is large (lines nearly overlap in that case).</p></li>
+<li><p>A flat region means the data cannot distinguish those K values well.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">N_RANGE</span><span class="p">,</span> <span class="n">AIC</span><span class="p">,</span>  <span class="s2">"-o"</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s2">"steelblue"</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"AIC"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">N_RANGE</span><span class="p">,</span> <span class="n">AICC</span><span class="p">,</span> <span class="s2">"^"</span><span class="p">,</span>   <span class="n">color</span><span class="o">=</span><span class="s2">"seagreen"</span><span class="p">,</span>  <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"AICc"</span><span class="p">,</span>
+        <span class="n">linestyle</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>   <span class="c1"># dash-dot-dot</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">N_RANGE</span><span class="p">,</span> <span class="n">BIC</span><span class="p">,</span>  <span class="s2">"--s"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"tomato"</span><span class="p">,</span>    <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"BIC"</span><span class="p">)</span>
+
+<span class="c1"># Vertical lines mark each criterion's minimum</span>
+<span class="n">k_aic_opt</span>  <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">N_RANGE</span><span class="p">[</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.argmin.html#numpy.argmin" title="numpy.argmin"><span class="n">np</span><span class="o">.</span><span class="n">argmin</span></a><span class="p">(</span><span class="n">AIC</span><span class="p">)])</span>
+<span class="n">k_aicc_opt</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">N_RANGE</span><span class="p">[</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function" href="https://numpy.org/doc/stable/reference/generated/numpy.argmin.html#numpy.argmin" title="numpy.argmin"><span class="n">np</span><span class="o">.</span><span class="n">argmin</span></a><span class="p">(</span><span class="n">AICC</span><span class="p">)])</span>
+<span class="n">k_bic_opt</span>  <span class="o">=</span> <span class="n">k_best</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">k_aic_opt</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s2">"steelblue"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">k_aicc_opt</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"seagreen"</span><span class="p">,</span>  <span class="n">lw</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">k_bic_opt</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s2">"tomato"</span><span class="p">,</span>    <span class="n">lw</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+
+<span class="c1"># Mark the true K with a grey bar so readers can see how close we got</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">K_TRUE</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"grey"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">"-"</span><span class="p">,</span>
+           <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"True K = </span><span class="si">{</span><span class="n">K_TRUE</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Number of components  K"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Criterion score  (lower = better)"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span>
+    <span class="s2">"AIC / AICc / BIC — which K fits best without overfitting?</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="s2">"Each dashed vertical line marks that criterion's minimum."</span><span class="p">,</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.setp.html#matplotlib.pyplot.setp" title="matplotlib.pyplot.setp"><span class="n">plt</span><span class="o">.</span><span class="n">setp</span></a><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">(),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html#matplotlib.pyplot.savefig" title="matplotlib.pyplot.savefig"><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span></a><span class="p">(</span><span class="s2">"gmm_02_aic_aicc_bic.png"</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="AIC / AICc / BIC — which K fits best without overfitting? Each dashed vertical line marks that criterion's minimum." class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_gaussian_mixture_models_002.png" srcset="../../_images/sphx_glr_plot_gaussian_mixture_models_002.png"/></section>
+<section id="section-9-plot-best-fit-gmm-density-component-ellipses">
+<h3>Section 9 — Plot: best-fit GMM density + component ellipses<a class="headerlink" href="#section-9-plot-best-fit-gmm-density-component-ellipses" title="Link to this heading">#</a></h3>
+<p>Each red dot is a component mean.
+Each white ellipse is the ±1.5σ confidence region of one component —
+roughly where 74 % of that component’s probability mass sits.
+If the ellipses align with the visible blobs, the model has captured
+the data structure well.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">))</span>
+<span class="n">plot_density_panel</span><span class="p">(</span>
+    <span class="n">ax</span><span class="p">,</span>
+    <span class="n">image</span><span class="o">=</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data" href="https://numpy.org/doc/stable/reference/generated/numpy.exp.html#numpy.exp" title="numpy.exp"><span class="n">np</span><span class="o">.</span><span class="n">exp</span></a><span class="p">(</span><span class="n">log_dens</span><span class="p">),</span>
+    <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"GMM  K = </span><span class="si">{</span><span class="n">k_best</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">"Feature 1"</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">"Feature 2"</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">gmm_best</span><span class="o">.</span><span class="n">means_</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="n">gmm_best</span><span class="o">.</span><span class="n">means_</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">c</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Component means"</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">mu</span><span class="p">,</span> <span class="n">cov</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">gmm_best</span><span class="o">.</span><span class="n">means_</span><span class="p">,</span> <span class="n">gmm_best</span><span class="o">.</span><span class="n">covariances_</span><span class="p">):</span>
+    <span class="n">draw_ellipse</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">n_std</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s2">"none"</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s2">"white"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">"lower right"</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html#matplotlib.pyplot.savefig" title="matplotlib.pyplot.savefig"><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span></a><span class="p">(</span><span class="s2">"gmm_03_best_model.png"</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="plot gaussian mixture models" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_gaussian_mixture_models_003.png" srcset="../../_images/sphx_glr_plot_gaussian_mixture_models_003.png"/></section>
+<section id="section-10-side-by-side-observed-density-vs-recovered-density">
+<h3>Section 10 — Side-by-side: observed density vs. recovered density<a class="headerlink" href="#section-10-side-by-side-observed-density-vs-recovered-density" title="Link to this heading">#</a></h3>
+<p>Left panel:  the raw data histogram — what we measured.
+Right panel: the GMM density — what the model learned.
+Good agreement means the model captured the real structure; systematic
+differences reveal where the model is wrong.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plot_density_panel</span><span class="p">(</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">image</span><span class="o">=</span><span class="n">H</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+    <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"Input data"</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">"Feature 1"</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">"Feature 2"</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">plot_density_panel</span><span class="p">(</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">image</span><span class="o">=</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data" href="https://numpy.org/doc/stable/reference/generated/numpy.exp.html#numpy.exp" title="numpy.exp"><span class="n">np</span><span class="o">.</span><span class="n">exp</span></a><span class="p">(</span><span class="n">log_dens</span><span class="p">),</span>
+    <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"GMM  K = </span><span class="si">{</span><span class="n">k_best</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">"Feature 1"</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">gmm_best</span><span class="o">.</span><span class="n">means_</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="n">gmm_best</span><span class="o">.</span><span class="n">means_</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">c</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">for</span> <span class="n">mu</span><span class="p">,</span> <span class="n">cov</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">gmm_best</span><span class="o">.</span><span class="n">means_</span><span class="p">,</span> <span class="n">gmm_best</span><span class="o">.</span><span class="n">covariances_</span><span class="p">):</span>
+    <span class="n">draw_ellipse</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">n_std</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s2">"none"</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s2">"white"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">"Observed data (left) vs. GMM recovery (right)</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="sa">f</span><span class="s2">"K_true = </span><span class="si">{</span><span class="n">K_TRUE</span><span class="si">}</span><span class="s2">,  BIC-selected K = </span><span class="si">{</span><span class="n">k_best</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html#matplotlib.pyplot.savefig" title="matplotlib.pyplot.savefig"><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span></a><span class="p">(</span><span class="s2">"gmm_04_comparison.png"</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<a class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="Observed data (left) vs. GMM recovery (right) K_true = 5,  BIC-selected K = 5" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_gaussian_mixture_models_004.png" srcset="../../_images/sphx_glr_plot_gaussian_mixture_models_004.png"/><p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-clustering.html"><span class="doc">model-type: clustering</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-model-selection.html"><span class="doc">model-workflow: model-selection</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-density.html"><span class="doc">plot-type: density</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-line.html"><span class="doc">plot-type: line</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger reference internal" href="../../_tags/domain-statistics.html"><span class="doc">domain: statistics</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.402 seconds)</p>
+
+<p class="rubric">Related examples</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This gallery example demonstrates the :py~scikitplot.memmap.MemoryMap module at three levels of complexity."><img alt="" src="../../_images/sphx_glr_plot_mman_thumb.png"/>
+<p><a class="reference internal" href="../memmap/plot_mman.html"><span class="doc">Memory-Mapping Showcase – Basic / Medium / Advanced</span></a></p>
+<div class="sphx-glr-thumbnail-title">Memory-Mapping Showcase – Basic / Medium / Advanced</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Demonstrates all new features: 1. Auto-detection (Kiss64Random with None, 32, or 64) 2. Context manager support (with statement) 3. NumPy-like BitGenerator and Generator 4. State serialization/deserialization 5. Thread-safe operations"><img alt="" src="../../_images/sphx_glr_plot_kiss_random_thumb.png"/>
+<p><a class="reference internal" href="../random/plot_kiss_random.html"><span class="doc">Enhanced KISS Random Generator - Complete Usage Examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">Enhanced KISS Random Generator - Complete Usage Examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="To install the latest version (with pip)::"><img alt="" src="../../_images/sphx_glr_plot_modelplotpy_script_thumb.png"/>
+<p><a class="reference internal" href="../decile/plot_modelplotpy_script.html"><span class="doc">Introduction to modelplotpy</span></a></p>
+<div class="sphx-glr-thumbnail-title">Introduction to modelplotpy</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="The DummyCodeEncoder to encode each categorical features into dummy/indicator 0/1 variables. In this example, we will compare various different approaches for handling categorical features: GetDummies, TargetEncoder, OrdinalEncoder, OneHotEncoder, and dropping the category."><img alt="" src="../../_images/sphx_glr_plot_dummy_code_encoder_thumb.png"/>
+<p><a class="reference internal" href="../preprocessing/plot_dummy_code_encoder.html"><span class="doc">Comparing DummyCode Encoder with Other Encoders</span></a></p>
+<div class="sphx-glr-thumbnail-title">Comparing DummyCode Encoder with Other Encoders</div>
+</div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+</section>
+</article>
+<footer class="bd-footer-article">
+<div class="footer-article-items footer-article__inner">
+<div class="footer-article-item">
+<div class="prev-next-area">
+<a class="left-prev" href="index.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">Stats</p>
+</div>
+</a>
+<a class="right-next" href="plot_residuals_distribution_script.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">plot_residuals_distribution with examples</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div></div>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> On this page
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-gaussian-mixture-model">What is a Gaussian Mixture Model?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-sklearn-fit-the-model-expectationmaximisation-em">How does sklearn fit the model?  (Expectation–Maximisation, EM)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-trouble-with-just-maximising-log-likelihood">The trouble with just maximising log-likelihood</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-three-criteria">The three criteria</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-should-i-use-each">When should I use each?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-read-the-aic-aicc-bic-curves">How to read the AIC / AICc / BIC curves</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#free-parameter-count-for-a-full-covariance-gmm-on-d-dimensional-data">Free parameter count for a full-covariance GMM on d-dimensional data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#this-example">This example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1-imports">Section 1 — Imports</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-utility-functions">Section 2 — Utility functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-3-generate-synthetic-2-d-data">Section 3 — Generate synthetic 2-D data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-4-fit-gmms-for-k-1-13-collect-aic-aicc-bic">Section 4 — Fit GMMs for K = 1 … 13; collect AIC, AICc, BIC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-5-pick-the-best-model-minimum-bic">Section 5 — Pick the best model (minimum BIC)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-6-build-observed-density-histogram-and-gmm-density-grid">Section 6 — Build observed density (histogram) and GMM density grid</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-7-plot-raw-observed-density-what-the-data-look-like">Section 7 — Plot: raw observed density (what the data look like)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-8-plot-aic-aicc-and-bic-curves">Section 8 — Plot: AIC, AICc, and BIC curves</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-9-plot-best-fit-gmm-density-component-ellipses">Section 9 — Plot: best-fit GMM density + component ellipses</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-10-side-by-side-observed-density-vs-recovered-density">Section 10 — Side-by-side: observed density vs. recovered density</a></li>
+</ul>
+</li>
+</ul>
+</nav></div>
+
+<div class="sidebar-secondary-item"><div title="plot_gaussian_mixture_models.py"><a download="" href="../../_downloads/1369c5097ec4dcf0ecfa914bcab550b7/plot_gaussian_mixture_models.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_gaussian_mixture_models.ipynb"><a download="" href="../../_downloads/45b8334103b88d9f720f54e424f7a464/plot_gaussian_mixture_models.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/stats/plot_gaussian_mixture_models.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo17.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/maintenance/0.4.X?urlpath=lab/tree/notebooks/auto_examples/stats/plot_gaussian_mixture_models.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo17.svg"/></a></div></div></div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
+<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">
+    
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.4.0.post11+git.20260412.64b40d9 2026-04-12T09:07Z.
+      <br/>
+</p>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

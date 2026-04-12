@@ -16,6 +16,10 @@
 <meta property="og:image:alt" content="scikit-plots" />
 <meta name="description" content="External dependencies vendored for stability and reproducibility for Scikit-Plots. This package contains third-party Python modules that Scikit-Plots depends on for plotting, statistics, array APIs..." />
 
+<script>
+window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true}, "providers": {"claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Claude about this documentation page.", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask ChatGPT about this documentation page.", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Read {url} so I can ask questions about it.", "model": "gpt-4o", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this documentation page.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Please review this documentation: {url}\n\nI have questions.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
+</script>
+
     <title>scikitplot.externals &#8212; scikit-plots 0.4.0 documentation</title>
   
   
@@ -35,13 +39,14 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/ai-assistant.css?v=9781a02e" />
     <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
@@ -55,16 +60,17 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=e4cb1417" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" />
 
     <script src="../_static/documentation_options.js?v=6c02275b"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=e93d8674"></script>
+    <script src="../_static/ai-assistant.js?v=cb662cc4"></script>
     <script src="../_static/thebelab-helper.js"></script>
     <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
@@ -72,30 +78,36 @@
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'apis/scikitplot.externals';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="../_static/scripts/dropdown.js?v=e2048168"></script>
     <script src="../_static/scripts/version-switcher.js?v=9bbada16"></script>
+    <link rel="canonical" href="https://scikit-plots.github.io/apis/scikitplot.externals.html" />
     <link rel="icon" href="../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="array_api_compat" href="../modules/generated/scikitplot.externals.array_api_compat.html" />
-    <link rel="prev" title="load_mlflow_gateway_config" href="../modules/generated/scikitplot.experimental._llm_provider.load_mlflow_gateway_config.html" />
+    <link rel="prev" title="export_sheet" href="../modules/generated/scikitplot.experimental._doremi.export_sheet.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.4" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
@@ -127,7 +139,7 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
   <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
@@ -553,7 +565,14 @@
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
         <div class="sidebar-primary-item">
+
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
@@ -569,6 +588,17 @@
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.show_versions.html">show_versions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.get_logger.html">get_logger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logger.html">logger</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot._externals.html">scikitplot._externals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._externals._sphinx_ext._sphinx_ai_assistant.html">_sphinx_ai_assistant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._externals._sphinx_ext._sphinx_ai_assistant.add_ai_assistant_context.html">add_ai_assistant_context</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_llms_txt.html">generate_llms_txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_llms_txt_standalone.html">generate_llms_txt_standalone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_markdown_files.html">generate_markdown_files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._externals._sphinx_ext._sphinx_ai_assistant.html_to_markdown.html">html_to_markdown</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._externals._sphinx_ext._sphinx_ai_assistant.html_to_markdown_converter.html">html_to_markdown_converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._externals._sphinx_ext._sphinx_ai_assistant.process_html_directory.html">process_html_directory</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.annoy.html">scikitplot.annoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -633,63 +663,286 @@
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.config.__citation__.html">__citation__</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.corpus.html">scikitplot.corpus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.to_langchain_documents.html">to_langchain_documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.to_langgraph_state.html">to_langgraph_state</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.to_mcp_resources.html">to_mcp_resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.to_mcp_tool_result.html">to_mcp_tool_result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.to_huggingface_dataset.html">to_huggingface_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.to_rag_tuples.html">to_rag_tuples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.to_jsonl.html">to_jsonl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.to_numpy_arrays.html">to_numpy_arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.to_tensorflow_dataset.html">to_tensorflow_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.to_torch_dataloader.html">to_torch_dataloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.LangChainCorpusRetriever.html">LangChainCorpusRetriever</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.MCPCorpusServer.html">MCPCorpusServer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.extract_archive.html">extract_archive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.is_archive.html">is_archive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ChunkerBase.html">ChunkerBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DefaultFilter.html">DefaultFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DocumentReader.html">DocumentReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DummyReader.html">DummyReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.FilterBase.html">FilterBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.PipelineGuard.html">PipelineGuard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus._MultiSourceReader.html">_MultiSourceReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus._is_url.html">_is_url</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ChunkerBridge.html">ChunkerBridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.FixedWindowChunkerBridge.html">FixedWindowChunkerBridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ParagraphChunkerBridge.html">ParagraphChunkerBridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SentenceChunkerBridge.html">SentenceChunkerBridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.WordChunkerBridge.html">WordChunkerBridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.bridge_chunker.html">bridge_chunker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.register_bridge.html">register_bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.unregister_bridge.html">unregister_bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.TokenizerProtocol.html">TokenizerProtocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SentenceSplitterProtocol.html">SentenceSplitterProtocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.StemmerProtocol.html">StemmerProtocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.LemmatizerProtocol.html">LemmatizerProtocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.FunctionTokenizer.html">FunctionTokenizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.FunctionSentenceSplitter.html">FunctionSentenceSplitter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.FunctionStemmer.html">FunctionStemmer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.FunctionLemmatizer.html">FunctionLemmatizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomTokenizerRegistry.html">CustomTokenizerRegistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.register_tokenizer.html">register_tokenizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.get_tokenizer.html">get_tokenizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.register_sentence_splitter.html">register_sentence_splitter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.get_sentence_splitter.html">get_sentence_splitter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.register_stemmer.html">register_stemmer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.get_stemmer.html">get_stemmer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.register_lemmatizer.html">register_lemmatizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.get_lemmatizer.html">get_lemmatizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ScriptType.html">ScriptType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.detect_script.html">detect_script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.is_cjk_char.html">is_cjk_char</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.is_rtl_char.html">is_rtl_char</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.split_cjk_chars.html">split_cjk_chars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.MULTI_SCRIPT_SENTENCE_RE_PATTERN.html">MULTI_SCRIPT_SENTENCE_RE_PATTERN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.FixedWindowChunker.html">FixedWindowChunker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.FixedWindowChunkerConfig.html">FixedWindowChunkerConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.WindowUnit.html">WindowUnit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ISO_TO_NLTK.html">ISO_TO_NLTK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ISO_TO_NAME.html">ISO_TO_NAME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.NLTK_TO_ISO.html">NLTK_TO_ISO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.NLTK_STOPWORD_LANGUAGES.html">NLTK_STOPWORD_LANGUAGES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.BUILTIN_LANG_STOPWORDS.html">BUILTIN_LANG_STOPWORDS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.coerce_language.html">coerce_language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.resolve_stopwords.html">resolve_stopwords</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.iso_to_nltk.html">iso_to_nltk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.nltk_to_iso.html">nltk_to_iso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ParagraphChunker.html">ParagraphChunker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ParagraphChunkerConfig.html">ParagraphChunkerConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SentenceBackend.html">SentenceBackend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SentenceChunker.html">SentenceChunker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SentenceChunkerConfig.html">SentenceChunkerConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.LemmatizationBackend.html">LemmatizationBackend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.StemmingBackend.html">StemmingBackend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.StopwordSource.html">StopwordSource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.TokenizerBackend.html">TokenizerBackend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.WordChunker.html">WordChunker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.WordChunkerConfig.html">WordChunkerConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.BuildResult.html">BuildResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.BuilderConfig.html">BuilderConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CorpusBuilder.html">CorpusBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.BuilderFactories.html">BuilderFactories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomChunker.html">CustomChunker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomEnricherConfig.html">CustomEnricherConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomFilter.html">CustomFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomNLPEnricher.html">CustomNLPEnricher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomNormalizer.html">CustomNormalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomSimilarityIndex.html">CustomSimilarityIndex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.FactoryCorpusBuilder.html">FactoryCorpusBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.HookableCorpusPipeline.html">HookableCorpusPipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.PipelineHooks.html">PipelineHooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DEFAULT_CACHE_DIR.html">DEFAULT_CACHE_DIR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DEFAULT_MODEL.html">DEFAULT_MODEL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.EmbeddingEngine.html">EmbeddingEngine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DEFAULT_AUDIO_MODEL.html">DEFAULT_AUDIO_MODEL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DEFAULT_IMAGE_MODEL.html">DEFAULT_IMAGE_MODEL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DEFAULT_TEXT_MODEL.html">DEFAULT_TEXT_MODEL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.LLMTrainingExporter.html">LLMTrainingExporter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.MultimodalEmbeddingEngine.html">MultimodalEmbeddingEngine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.BUILTIN_STOPWORDS.html">BUILTIN_STOPWORDS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.EnricherConfig.html">EnricherConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.NLPEnricher.html">NLPEnricher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.export_documents.html">export_documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.load_documents.html">load_documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CollectionManifest.html">CollectionManifest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CorpusStats.html">CorpusStats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.compute_stats.html">compute_stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.provenance_from_filename.html">provenance_from_filename</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DedupLinesNormalizer.html">DedupLinesNormalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.HTMLStripNormalizer.html">HTMLStripNormalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.LanguageDetectionNormalizer.html">LanguageDetectionNormalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.LowercaseNormalizer.html">LowercaseNormalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.NormalizationPipeline.html">NormalizationPipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.NormalizerBase.html">NormalizerBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.UnicodeNormalizer.html">UnicodeNormalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.WhitespaceNormalizer.html">WhitespaceNormalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.NormalizerConfig.html">NormalizerConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.TextNormalizer.html">TextNormalizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.normalize_text.html">normalize_text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CorpusPipeline.html">CorpusPipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.PipelineResult.html">PipelineResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.create_corpus.html">create_corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ALTOReader.html">ALTOReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.AudioReader.html">AudioReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomReader.html">CustomReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.normalize_extractor_output.html">normalize_extractor_output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ImageReader.html">ImageReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.PDFReader.html">PDFReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.MarkdownReader.html">MarkdownReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ReSTReader.html">ReSTReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.TextReader.html">TextReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.VideoReader.html">VideoReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.WebReader.html">WebReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.YouTubeReader.html">YouTubeReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.TEIReader.html">TEIReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.XMLReader.html">XMLReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ZipReader.html">ZipReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ComponentRegistry.html">ComponentRegistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.registry.html">registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SearchConfig.html">SearchConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SearchResult.html">SearchResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SimilarityIndex.html">SimilarityIndex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SectionType.html">SectionType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ChunkingStrategy.html">ChunkingStrategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ExportFormat.html">ExportFormat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SourceType.html">SourceType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.MatchMode.html">MatchMode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.Modality.html">Modality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ErrorPolicy.html">ErrorPolicy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CorpusDocument.html">CorpusDocument</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus._PROMOTED_RAW_KEYS.html">_PROMOTED_RAW_KEYS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.documents_to_pandas.html">documents_to_pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.documents_to_polars.html">documents_to_polars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CorpusSource.html">CorpusSource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SourceEntry.html">SourceEntry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SourceKind.html">SourceKind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.InMemoryStorage.html">InMemoryStorage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.JSONLStorage.html">JSONLStorage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.QueryResult.html">QueryResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SQLiteStorage.html">SQLiteStorage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.StorageBase.html">StorageBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.StorageQuery.html">StorageQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.URLKind.html">URLKind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.classify_url.html">classify_url</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.download_url.html">download_url</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.infer_extension.html">infer_extension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.probe_url_kind.html">probe_url_kind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.resolve_url.html">resolve_url</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.cython.html">scikitplot.cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.compile_and_load.html">compile_and_load</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.compile_and_load_result.html">compile_and_load_result</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.cython_import.html">cython_import</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.cython_import_result.html">cython_import_result</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.cython_import_all.html">cython_import_all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.DEFAULT_COMPILER_DIRECTIVES.html">DEFAULT_COMPILER_DIRECTIVES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.build_extension_module.html">build_extension_module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.build_extension_module_result.html">build_extension_module_result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.build_extension_package_from_code_result.html">build_extension_package_from_code_result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.build_extension_package_from_paths_result.html">build_extension_package_from_paths_result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.CacheEntry.html">CacheEntry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.PackageCacheEntry.html">PackageCacheEntry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.find_entries_by_name.html">find_entries_by_name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.find_entry_by_key.html">find_entry_by_key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.find_package_entry_by_key.html">find_package_entry_by_key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.is_valid_key.html">is_valid_key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.iter_all_entry_dirs.html">iter_all_entry_dirs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.iter_cache_entries.html">iter_cache_entries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.iter_package_entries.html">iter_package_entries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.make_cache_key.html">make_cache_key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.peek_cache_dir.html">peek_cache_dir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.read_meta.html">read_meta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.register_artifact_path.html">register_artifact_path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.resolve_cache_dir.html">resolve_cache_dir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.runtime_fingerprint.html">runtime_fingerprint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.source_digest.html">source_digest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.write_meta.html">write_meta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.CustomCompilerProtocol.html">CustomCompilerProtocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.CompilerRegistry.html">CompilerRegistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.register_compiler.html">register_compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.get_compiler.html">get_compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.list_compilers.html">list_compilers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.pure_python_prereqs.html">pure_python_prereqs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.cython_cpp_prereqs.html">cython_cpp_prereqs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.full_stack_prereqs.html">full_stack_prereqs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.pybind11_only_prereqs.html">pybind11_only_prereqs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.c_api_prereqs.html">c_api_prereqs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.pybind11_include.html">pybind11_include</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.numpy_include.html">numpy_include</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.collect_c_api_sources.html">collect_c_api_sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.collect_header_dirs.html">collect_header_dirs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.PybindCompiler.html">PybindCompiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.CApiCompiler.html">CApiCompiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.cache_stats.html">cache_stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.gc_cache.html">gc_cache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.import_extension.html">import_extension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.import_extension_from_bytes.html">import_extension_from_bytes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.import_extension_from_path.html">import_extension_from_path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.build_lock.html">build_lock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.list_pins.html">list_pins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.pin.html">pin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.resolve_pinned_key.html">resolve_pinned_key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.unpin.html">unpin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.ProfileDefaults.html">ProfileDefaults</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.apply_profile.html">apply_profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.is_windows.html">is_windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.resolve_profile.html">resolve_profile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.build_package_from_code.html">build_package_from_code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.build_package_from_code_result.html">build_package_from_code_result</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.build_package_from_paths.html">build_package_from_paths</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.build_package_from_paths_result.html">build_package_from_paths_result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.check_build_prereqs.html">check_build_prereqs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.compile_and_load.html">compile_and_load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.compile_and_load_result.html">compile_and_load_result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.cython_import.html">cython_import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.cython_import_all.html">cython_import_all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.cython_import_result.html">cython_import_result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.export_cached.html">export_cached</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.get_cache_dir.html">get_cache_dir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.import_artifact_bytes.html">import_artifact_bytes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.import_artifact_path.html">import_artifact_path</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.import_cached.html">import_cached</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.import_cached_result.html">import_cached_result</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.import_cached_by_name.html">import_cached_by_name</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.import_cached_package.html">import_cached_package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.import_cached_package_result.html">import_cached_package_result</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.register_cached_artifact_path.html">register_cached_artifact_path</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.register_cached_artifact_bytes.html">register_cached_artifact_bytes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.import_artifact_path.html">import_artifact_path</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.import_artifact_bytes.html">import_artifact_bytes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.export_cached.html">export_cached</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.get_cache_dir.html">get_cache_dir</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.list_cached.html">list_cached</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.list_cached_packages.html">list_cached_packages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.cache_stats.html">cache_stats</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.gc_cache.html">gc_cache</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.purge_cache.html">purge_cache</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.pin.html">pin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.unpin.html">unpin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.list_pins.html">list_pins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.import_cached_result.html">import_cached_result</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.import_pinned.html">import_pinned</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.import_pinned_result.html">import_pinned_result</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.check_build_prereqs.html">check_build_prereqs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.list_cached.html">list_cached</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.list_cached_packages.html">list_cached_packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.purge_cache.html">purge_cache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.register_cached_artifact_bytes.html">register_cached_artifact_bytes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.register_cached_artifact_path.html">register_cached_artifact_path</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.BuildResult.html">BuildResult</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.PackageBuildResult.html">PackageBuildResult</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.CacheStats.html">CacheStats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.CacheGCResult.html">CacheGCResult</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.CacheEntry.html">CacheEntry</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.PackageCacheEntry.html">PackageCacheEntry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.CacheStats.html">CacheStats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.PackageBuildResult.html">PackageBuildResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.DEFAULT_SECURITY_POLICY.html">DEFAULT_SECURITY_POLICY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.RELAXED_SECURITY_POLICY.html">RELAXED_SECURITY_POLICY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.SecurityError.html">SecurityError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.SecurityPolicy.html">SecurityPolicy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.is_safe_compiler_arg.html">is_safe_compiler_arg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.is_safe_macro_name.html">is_safe_macro_name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.is_safe_path.html">is_safe_path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.validate_build_inputs.html">validate_build_inputs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.TemplateInfo.html">TemplateInfo</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.template_root.html">template_root</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.list_templates.html">list_templates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.get_template_path.html">get_template_path</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.read_template.html">read_template</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.read_template_info.html">read_template_info</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.load_template_metadata.html">load_template_metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.build_package_example.html">build_package_example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.build_package_example_result.html">build_package_example_result</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.compile_template.html">compile_template</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.compile_template_result.html">compile_template_result</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.list_package_examples.html">list_package_examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.get_package_example_path.html">get_package_example_path</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.load_package_example_metadata.html">load_package_example_metadata</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.build_package_example_result.html">build_package_example_result</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.build_package_example.html">build_package_example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.list_workflows.html">list_workflows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.get_workflow_path.html">get_workflow_path</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.workflow_cli_template_path.html">workflow_cli_template_path</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.copy_workflow.html">copy_workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.generate_sphinx_template_docs.html">generate_sphinx_template_docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.get_package_example_path.html">get_package_example_path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.get_template_path.html">get_template_path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.get_workflow_path.html">get_workflow_path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.list_package_examples.html">list_package_examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.list_templates.html">list_templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.list_workflows.html">list_workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.load_package_example_metadata.html">load_package_example_metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.load_template_metadata.html">load_template_metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.read_template.html">read_template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.read_template_info.html">read_template_info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.template_root.html">template_root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.workflow_cli_template_path.html">workflow_cli_template_path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cython.sanitize.html">sanitize</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.datasets.html">scikitplot.datasets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -737,10 +990,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.sheet_converter.html">sheet_converter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.serialize_sheet.html">serialize_sheet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.export_sheet.html">export_sheet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._llm_provider.LLM_PROVIDER_CONFIG_MAP.html">LLM_PROVIDER_CONFIG_MAP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._llm_provider.LLM_PROVIDER_ENV_CONNECTOR_MAP.html">LLM_PROVIDER_ENV_CONNECTOR_MAP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._llm_provider.get_response.html">get_response</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._llm_provider.load_mlflow_gateway_config.html">load_mlflow_gateway_config</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">scikitplot.externals</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -805,26 +1054,66 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.mlflow.html">scikitplot.mlflow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.DEFAULT_MLFLOW_SERVER_FLAGS.html">DEFAULT_MLFLOW_SERVER_FLAGS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.MlflowServerCliCaps.html">MlflowServerCliCaps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.ensure_flags_supported.html">ensure_flags_supported</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.get_mlflow_server_cli_caps.html">get_mlflow_server_cli_caps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.import_mlflow.html">import_mlflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.resolve_download_artifacts.html">resolve_download_artifacts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.ServerConfig.html">ServerConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.SessionConfig.html">SessionConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.running_in_docker.html">running_in_docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.MlflowProvider.html">MlflowProvider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.get_provider.html">get_provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.set_provider.html">set_provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.use_provider.html">use_provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.EnvSnapshot.html">EnvSnapshot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.apply_env.html">apply_env</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.parse_dotenv.html">parse_dotenv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.MlflowCliIncompatibleError.html">MlflowCliIncompatibleError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.MlflowIntegrationError.html">MlflowIntegrationError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.MlflowNotInstalledError.html">MlflowNotInstalledError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.MlflowServerStartError.html">MlflowServerStartError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.SecurityPolicyViolationError.html">SecurityPolicyViolationError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.ArtifactsFacade.html">ArtifactsFacade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.ModelsFacade.html">ModelsFacade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.DEFAULT_PROJECT_MARKERS.html">DEFAULT_PROJECT_MARKERS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.ProjectConfig.html">ProjectConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.dump_project_config_yaml.html">dump_project_config_yaml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.ensure_local_store_layout.html">ensure_local_store_layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.find_project_root.html">find_project_root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.get_project_markers.html">get_project_markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.load_project_config.html">load_project_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.load_project_config_toml.html">load_project_config_toml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.load_project_config_yaml.html">load_project_config_yaml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.normalize_mlflow_store_values.html">normalize_mlflow_store_values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.project_markers.html">project_markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.set_project_markers.html">set_project_markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.wait_tracking_ready.html">wait_tracking_ready</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.DEFAULT_SECURITY_POLICY.html">DEFAULT_SECURITY_POLICY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.RELAXED_SECURITY_POLICY.html">RELAXED_SECURITY_POLICY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.SecurityPolicy.html">SecurityPolicy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.get_security_policy.html">get_security_policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.security_policy.html">security_policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.set_security_policy.html">set_security_policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.SpawnedServer.html">SpawnedServer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.build_server_args.html">build_server_args</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.build_server_command.html">build_server_command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.spawn_server.html">spawn_server</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.MlflowHandle.html">MlflowHandle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.session.html">session</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.session_from_file.html">session_from_file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.session_from_toml.html">session_from_toml</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.DEFAULT_PROJECT_MARKERS.html">DEFAULT_PROJECT_MARKERS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.find_project_root.html">find_project_root</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.load_project_config.html">load_project_config</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.load_project_config_toml.html">load_project_config_toml</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.dump_project_config_yaml.html">dump_project_config_yaml</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.ServerConfig.html">ServerConfig</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.SessionConfig.html">SessionConfig</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.ProjectConfig.html">ProjectConfig</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.MlflowIntegrationError.html">MlflowIntegrationError</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.MlflowNotInstalledError.html">MlflowNotInstalledError</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.MlflowCliIncompatibleError.html">MlflowCliIncompatibleError</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.MlflowServerStartError.html">MlflowServerStartError</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.workflow.html">workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.MlflowVersion.html">MlflowVersion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.is_mlflow_installed.html">is_mlflow_installed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.mlflow_version.html">mlflow_version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.WorkflowPaths.html">WorkflowPaths</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.builtin_config_path.html">builtin_config_path</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.export_builtin_config.html">export_builtin_config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.default_project_paths.html">default_project_paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.export_builtin_config.html">export_builtin_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.patch_experiment_name_in_toml.html">patch_experiment_name_in_toml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.run_demo.html">run_demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mlflow.workflow.html">workflow</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.nc.html">scikitplot.nc</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -1054,7 +1343,7 @@ this implementation for the default when working with NumPy arrays.</p>
 <p>sphinxext.</p>
 <p class="rubric">Notes</p>
 <ul class="simple">
-<li><p><a class="github reference external" href="https://github.com/matplotlib/matplotlib/tree/main/lib/matplotlib/sphinxext">matplotlib/matplotlib</a></p></li>
+<li><p><a class="reference external" href="https://github.com/matplotlib/matplotlib/tree/main/lib/matplotlib/sphinxext">https://github.com/matplotlib/matplotlib/tree/main/lib/matplotlib/sphinxext</a></p></li>
 </ul>
 <p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/externals/_sphinxext/index.html#externals-sphinxext-index"><span class="std std-ref">Matplotlib Sphinx extensions for embedded plots (experimental)</span></a> section for further details.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
@@ -1121,12 +1410,12 @@ However, it supports calculations for all valid values of the shape parameter <c
     <div class="footer-article-item">
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../modules/generated/scikitplot.experimental._llm_provider.load_mlflow_gateway_config.html"
+       href="../modules/generated/scikitplot.experimental._doremi.export_sheet.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">load_mlflow_gateway_config</p>
+        <p class="prev-next-title">export_sheet</p>
       </div>
     </a>
     <a class="right-next"
@@ -1160,8 +1449,8 @@ However, it supports calculations for all valid values of the shape parameter <c
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1172,7 +1461,7 @@ However, it supports calculations for all valid values of the shape parameter <c
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.4.0.post10+git.20260217.bf0721e 2026-02-17T18:10Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.4.0.post11+git.20260412.64b40d9 2026-04-12T09:07Z.
       <br/>
     
   </p>

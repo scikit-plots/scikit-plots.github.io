@@ -1,0 +1,385 @@
+:html_theme.sidebar_secondary.remove:
+
+.. _corpus_ref:
+
+scikitplot.corpus
+=================
+
+.. automodule:: scikitplot.corpus
+
+**User guide.** See the :ref:`corpus-index` section for further details.
+
+.. _corpus_ref-adapter-layer:
+
+Adapter layer
+-------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  to_langchain_documents
+  to_langgraph_state
+  to_mcp_resources
+  to_mcp_tool_result
+  to_huggingface_dataset
+  to_rag_tuples
+  to_jsonl
+  to_numpy_arrays
+  to_tensorflow_dataset
+  to_torch_dataloader
+  LangChainCorpusRetriever
+  MCPCorpusServer
+
+.. _corpus_ref-archive-within-archive:
+
+Archive-within-archive
+----------------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  extract_archive
+  is_archive
+
+.. _corpus_ref-base-classes:
+
+Base Classes
+------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  ChunkerBase
+  DefaultFilter
+  DocumentReader
+  DummyReader
+  FilterBase
+  PipelineGuard
+  _MultiSourceReader
+  _is_url
+
+.. _corpus_ref-chunkers:
+
+Chunkers
+--------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  ChunkerBridge
+  FixedWindowChunkerBridge
+  ParagraphChunkerBridge
+  SentenceChunkerBridge
+  WordChunkerBridge
+  bridge_chunker
+  register_bridge
+  unregister_bridge
+  TokenizerProtocol
+  SentenceSplitterProtocol
+  StemmerProtocol
+  LemmatizerProtocol
+  FunctionTokenizer
+  FunctionSentenceSplitter
+  FunctionStemmer
+  FunctionLemmatizer
+  CustomTokenizerRegistry
+  register_tokenizer
+  get_tokenizer
+  register_sentence_splitter
+  get_sentence_splitter
+  register_stemmer
+  get_stemmer
+  register_lemmatizer
+  get_lemmatizer
+  ScriptType
+  detect_script
+  is_cjk_char
+  is_rtl_char
+  split_cjk_chars
+  MULTI_SCRIPT_SENTENCE_RE_PATTERN
+  FixedWindowChunker
+  FixedWindowChunkerConfig
+  WindowUnit
+  ISO_TO_NLTK
+  ISO_TO_NAME
+  NLTK_TO_ISO
+  NLTK_STOPWORD_LANGUAGES
+  BUILTIN_LANG_STOPWORDS
+  coerce_language
+  resolve_stopwords
+  iso_to_nltk
+  nltk_to_iso
+  ParagraphChunker
+  ParagraphChunkerConfig
+  SentenceBackend
+  SentenceChunker
+  SentenceChunkerConfig
+  LemmatizationBackend
+  StemmingBackend
+  StopwordSource
+  TokenizerBackend
+  WordChunker
+  WordChunkerConfig
+
+.. _corpus_ref-corpus-builder:
+
+Corpus Builder
+--------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  BuildResult
+  BuilderConfig
+  CorpusBuilder
+
+.. _corpus_ref-custom-hooks:
+
+Custom Hooks
+------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  BuilderFactories
+  CustomChunker
+  CustomEnricherConfig
+  CustomFilter
+  CustomNLPEnricher
+  CustomNormalizer
+  CustomSimilarityIndex
+  FactoryCorpusBuilder
+  HookableCorpusPipeline
+  PipelineHooks
+
+.. _corpus_ref-embeddings:
+
+Embeddings
+----------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  DEFAULT_CACHE_DIR
+  DEFAULT_MODEL
+  EmbeddingEngine
+  DEFAULT_AUDIO_MODEL
+  DEFAULT_IMAGE_MODEL
+  DEFAULT_TEXT_MODEL
+  LLMTrainingExporter
+  MultimodalEmbeddingEngine
+
+.. _corpus_ref-enricher:
+
+Enricher
+--------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  BUILTIN_STOPWORDS
+  EnricherConfig
+  NLPEnricher
+
+.. _corpus_ref-export:
+
+Export
+------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  export_documents
+  load_documents
+
+.. _corpus_ref-metadata:
+
+Metadata
+--------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  CollectionManifest
+  CorpusStats
+  compute_stats
+  provenance_from_filename
+
+.. _corpus_ref-normalizers:
+
+Normalizers
+-----------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  DedupLinesNormalizer
+  HTMLStripNormalizer
+  LanguageDetectionNormalizer
+  LowercaseNormalizer
+  NormalizationPipeline
+  NormalizerBase
+  UnicodeNormalizer
+  WhitespaceNormalizer
+  NormalizerConfig
+  TextNormalizer
+  normalize_text
+
+.. _corpus_ref-pipeline:
+
+Pipeline
+--------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  CorpusPipeline
+  PipelineResult
+  create_corpus
+
+.. _corpus_ref-readers:
+
+Readers
+-------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  ALTOReader
+  AudioReader
+  CustomReader
+  normalize_extractor_output
+  ImageReader
+  PDFReader
+  MarkdownReader
+  ReSTReader
+  TextReader
+  VideoReader
+  WebReader
+  YouTubeReader
+  TEIReader
+  XMLReader
+  ZipReader
+
+.. _corpus_ref-registry:
+
+Registry
+--------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  ComponentRegistry
+  registry
+
+.. _corpus_ref-similarity:
+
+Similarity
+----------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  SearchConfig
+  SearchResult
+  SimilarityIndex
+
+.. _corpus_ref-schema:
+
+Schema
+------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  SectionType
+  ChunkingStrategy
+  ExportFormat
+  SourceType
+  MatchMode
+  Modality
+  ErrorPolicy
+  CorpusDocument
+  _PROMOTED_RAW_KEYS
+  documents_to_pandas
+  documents_to_polars
+
+.. _corpus_ref-source:
+
+Source
+------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  CorpusSource
+  SourceEntry
+  SourceKind
+
+.. _corpus_ref-storage:
+
+Storage
+-------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  InMemoryStorage
+  JSONLStorage
+  QueryResult
+  SQLiteStorage
+  StorageBase
+  StorageQuery
+
+.. _corpus_ref-url:
+
+URL
+---
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+  
+  URLKind
+  classify_url
+  download_url
+  infer_extension
+  probe_url_kind
+  resolve_url

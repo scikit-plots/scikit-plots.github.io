@@ -9,10 +9,13 @@
 <meta content="website" property="og:type"/>
 <meta content="https://scikit-plots.github.io/stable/auto_examples/annoy/plot_annoy_to_NPY_CSV.html" property="og:url"/>
 <meta content="scikit-plots" property="og:site_name"/>
-<meta content="An example showing the Index class. Tags: level: beginner purpose: showcase Total running time of the script:(0 minutes 0.577 seconds) Launch binder Launch JupyterLite Download Jupyter notebook: pl..." property="og:description"/>
+<meta content="An example showing the Index class. Tags: model-workflow: vector-db level: beginner purpose: showcase Total running time of the script:(0 minutes 0.540 seconds) Launch binder Launch JupyterLite Dow..." property="og:description"/>
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
-<meta content="An example showing the Index class. Tags: level: beginner purpose: showcase Total running time of the script:(0 minutes 0.577 seconds) Launch binder Launch JupyterLite Download Jupyter notebook: pl..." name="description"/>
+<meta content="An example showing the Index class. Tags: model-workflow: vector-db level: beginner purpose: showcase Total running time of the script:(0 minutes 0.540 seconds) Launch binder Launch JupyterLite Dow..." name="description"/>
+<script>
+window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true}, "providers": {"claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Claude about this documentation page.", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask ChatGPT about this documentation page.", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Read {url} so I can ask questions about it.", "model": "gpt-4o", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this documentation page.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Please review this documentation: {url}\n\nI have questions.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
+</script>
 <title>annoy.Index to NPY or CSV with examples — scikit-plots 0.4.0 documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
@@ -28,12 +31,13 @@
     </style>
 </noscript>
 <!-- Loaded before other Sphinx assets -->
-<link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet"/>
 <link href="../../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
 <link href="../../_static/graphviz.css?v=4ae1632d" rel="stylesheet" type="text/css"/>
 <link href="../../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/ai-assistant.css?v=9781a02e" rel="stylesheet" type="text/css"/>
 <link href="../../_static/jupyter-sphinx.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/thebelab.css" rel="stylesheet" type="text/css"/>
 <link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
@@ -46,15 +50,16 @@
 <link href="../../_static/styles/colors.css?v=14208072" rel="stylesheet" type="text/css"/>
 <link href="../../_static/styles/custom.css?v=e4cb1417" rel="stylesheet" type="text/css"/>
 <!-- So that users can add custom icons -->
-<script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+<script defer="" src="../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
 <!-- Pre-loaded scripts that we'll load fully later -->
-<link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
-<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" rel="preload"/>
 <script src="../../_static/documentation_options.js?v=6c02275b"></script>
 <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
 <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
 <script src="../../_static/copybutton.js?v=e93d8674"></script>
+<script src="../../_static/ai-assistant.js?v=cb662cc4"></script>
 <script src="../../_static/thebelab-helper.js"></script>
 <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
 <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -62,24 +67,29 @@
 <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
 <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/annoy/plot_annoy_to_NPY_CSV';</script>
 <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
+<script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
 <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
 <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
+<link href="https://scikit-plots.github.io/auto_examples/annoy/plot_annoy_to_NPY_CSV.html" rel="canonical"/>
 <link href="../../_static/scikit-plots-favicon.ico" rel="icon"/>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
-<link href="plot_cython_index_api.html" rel="next" title="Index (cython) python-api with examples"/>
-<link href="plot_Annoy_python_api.html" rel="prev" title="annoy.Index python-api with examples"/>
+<link href="plot_mmap_script.html" rel="next" title="Mmap annoy.AnnoyIndex with examples"/>
+<link href="plot_annoy_cython_hamlet_example.html" rel="prev" title="Approximate Nearest Neighbors with Annoy — A Hamlet Example"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="en" name="docsearch:language"/>
 <meta content="0.4" name="docsearch:version"/>
+<script src="../../_static/searchtools.js"></script>
+<script src="../../_static/language_data.js"></script>
+<script src="../../searchindex.js"></script>
 </head>
-<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<body data-default-mode="">
 <div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Skip to main content</a></div>
 <div id="pst-scroll-pixel-helper"></div>
 <button class="btn rounded-pill" id="pst-back-to-top" type="button">
@@ -94,7 +104,7 @@
 <div class="pst-async-banner-revealer d-none">
 <aside aria-label="Version warning" class="d-none d-print-none" id="bd-header-version-warning"></aside>
 </div>
-<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none" id="pst-header">
 <div class="bd-header__inner bd-page-width">
 <button aria-label="Site navigation" class="pst-navbar-icon sidebar-toggle primary-toggle">
 <span class="fa-solid fa-bars"></span>
@@ -335,6 +345,12 @@
 </div>
 </div>
 <div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button"><svg aria-hidden="true" class="pst-icon svg-inline--fa" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z" fill="currentColor"></path>
+</svg>
+<span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+<span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
 <div class="sidebar-primary-item">
 <nav aria-label="Section Navigation" class="bd-docs-nav bd-links">
 <p aria-level="1" class="bd-links__title" role="heading">Section Navigation</p>
@@ -344,8 +360,10 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">ANNoy Vector Index DB</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="plot_Annoy_legacy_c_api.html">annoy.Annoy legacy c-api with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_Annoy_python_api.html">annoy.Index python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_annoy_cython_0benchmark.html">Index (cython) python-api benchmark with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_annoy_cython_api.html">Index (cython) python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_annoy_cython_hamlet_example.html">Approximate Nearest Neighbors with Annoy — A Hamlet Example</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">annoy.Index to NPY or CSV with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_cython_index_api.html">Index (cython) python-api with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_mmap_script.html">Mmap annoy.AnnoyIndex with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_precision_script.html">Precision annoy.AnnoyIndex with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_simple_script.html">Simple annoy.AnnoyIndex with examples</a></li>
@@ -369,6 +387,14 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../clustering/index.html">Clustering</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../clustering/plot_elbow_script.html">plot_elbow with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../clustering/plot_silhouette_script.html">plot_silhouette with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../corpus/index.html">Corpus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_a_tale_of_two_cities_mp3_script.html">corpus A Tale of Two Cities .mp3 with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_knowledge_script.html">corpus Knowledge and Information local .png with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_who_per_file_script.html">corpus WHO European Region local or url per file with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_who_youtube_shorts_script.html">corpus WHO European Region YouTube shorts with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_who_zip_script.html">corpus WHO European Region local .zip with examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../cython/index.html">Cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -407,6 +433,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../memmap/plot_mman.html">Memory-Mapping Showcase – Basic / Medium / Advanced</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../misc/index.html">Misc</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../misc/plot_misc_script.html">Misc Showcase</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../mlflow/index.html">MLflow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../mlflow/plot_mlflow.html">MLflow</a></li>
 </ul>
@@ -434,6 +464,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../stats/index.html">Stats</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stats/plot_gaussian_mixture_models.html">Gaussian Mixture Models — AIC, AICc, and BIC Model Selection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../stats/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
 </ul>
 </details></li>
@@ -671,31 +702,31 @@ Index.from_low_level
 </pre></div>
 </div>
 <div class="output_subarea output_html rendered_html output_result">
-<div class="annoy-repr" id="annoy-repr-0x7f9d5cf7d348-21"><style>
-#annoy-repr-0x7f9d5cf7d348-21 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
-#annoy-repr-0x7f9d5cf7d348-21 details{margin:0;padding:0;}
-#annoy-repr-0x7f9d5cf7d348-21 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-#annoy-repr-0x7f9d5cf7d348-21 summary::-webkit-details-marker{display:none;}
-#annoy-repr-0x7f9d5cf7d348-21 .annoy-title{font-weight:600;}
-#annoy-repr-0x7f9d5cf7d348-21 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
-#annoy-repr-0x7f9d5cf7d348-21 .annoy-links a{color:#0969da;text-decoration:none;}
-#annoy-repr-0x7f9d5cf7d348-21 .annoy-links a:hover{text-decoration:underline;}
-#annoy-repr-0x7f9d5cf7d348-21 .annoy-sep{color:#57606a;}
-#annoy-repr-0x7f9d5cf7d348-21 .annoy-subtitle{font-weight:600;}
-#annoy-repr-0x7f9d5cf7d348-21 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
-#annoy-repr-0x7f9d5cf7d348-21 details[open] > summary .annoy-arrow::before{content:'\25BC';}
-#annoy-repr-0x7f9d5cf7d348-21 .annoy-body{padding:0 10px 10px 10px;}
-#annoy-repr-0x7f9d5cf7d348-21 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-#annoy-repr-0x7f9d5cf7d348-21 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
-#annoy-repr-0x7f9d5cf7d348-21 .annoy-table th{font-weight:600;}
-#annoy-repr-0x7f9d5cf7d348-21 .annoy-td-btn{width:72px;}
-#annoy-repr-0x7f9d5cf7d348-21 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
-#annoy-repr-0x7f9d5cf7d348-21 .annoy-copy:active{transform:translateY(1px);}
-#annoy-repr-0x7f9d5cf7d348-21 .annoy-key{white-space:nowrap;}
-#annoy-repr-0x7f9d5cf7d348-21 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
-</style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" rel="noopener noreferrer" target="_blank" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.4/modules/generated/scikitplot.cexternals._annoy.Annoy.html" rel="noopener noreferrer" target="_blank" title="Annoy docs (installed)">0.4</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">10</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">'angular'</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">n_neighbors</td><td class="annoy-value">5</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">'/home/circleci/repo/galleries/examples/annoy/../../../scikitplot/annoy/tests/test_v2.tree'</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr></tbody></table></details></div></details></div><script>
+<div class="annoy-repr" id="annoy-repr-0x71bd6be5f408-21"><style>
+#annoy-repr-0x71bd6be5f408-21 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
+#annoy-repr-0x71bd6be5f408-21 details{margin:0;padding:0;}
+#annoy-repr-0x71bd6be5f408-21 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+#annoy-repr-0x71bd6be5f408-21 summary::-webkit-details-marker{display:none;}
+#annoy-repr-0x71bd6be5f408-21 .annoy-title{font-weight:600;}
+#annoy-repr-0x71bd6be5f408-21 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
+#annoy-repr-0x71bd6be5f408-21 .annoy-links a{color:#0969da;text-decoration:none;}
+#annoy-repr-0x71bd6be5f408-21 .annoy-links a:hover{text-decoration:underline;}
+#annoy-repr-0x71bd6be5f408-21 .annoy-sep{color:#57606a;}
+#annoy-repr-0x71bd6be5f408-21 .annoy-subtitle{font-weight:600;}
+#annoy-repr-0x71bd6be5f408-21 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
+#annoy-repr-0x71bd6be5f408-21 details[open] > summary .annoy-arrow::before{content:'\25BC';}
+#annoy-repr-0x71bd6be5f408-21 .annoy-body{padding:0 10px 10px 10px;}
+#annoy-repr-0x71bd6be5f408-21 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+#annoy-repr-0x71bd6be5f408-21 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
+#annoy-repr-0x71bd6be5f408-21 .annoy-table th{font-weight:600;}
+#annoy-repr-0x71bd6be5f408-21 .annoy-td-btn{width:72px;}
+#annoy-repr-0x71bd6be5f408-21 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
+#annoy-repr-0x71bd6be5f408-21 .annoy-copy:active{transform:translateY(1px);}
+#annoy-repr-0x71bd6be5f408-21 .annoy-key{white-space:nowrap;}
+#annoy-repr-0x71bd6be5f408-21 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+</style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" rel="noopener noreferrer" target="_blank" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.4/modules/generated/scikitplot.cexternals._annoy.Annoy.html" rel="noopener noreferrer" target="_blank" title="Annoy docs (installed)">0.4</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">10</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">'angular'</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">n_trees</td><td class="annoy-value">10</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">n_neighbors</td><td class="annoy-value">5</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">'/home/circleci/repo/galleries/examples/annoy/../../../scikitplot/annoy/tests/test_v2.tree'</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">n_jobs</td><td class="annoy-value">-1</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">l1_ratio</td><td class="annoy-value">0.0</td></tr></tbody></table></details></div></details></div><script>
 (function(){
-  var root=document.getElementById('annoy-repr-0x7f9d5cf7d348-21');
+  var root=document.getElementById('annoy-repr-0x71bd6be5f408-21');
   if(!root)return;
   var btns=root.querySelectorAll('button.annoy-copy');
   for(var i=0;i<btns.length;i++){
@@ -743,37 +774,38 @@ Index.from_low_level
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[-0.3127546401869483, 0.9465724218669327, -0.3108358621823917, -1.112641318602492, 0.7006717421745847, -0.0728556513441296, -0.1340195780820892, -0.7864385964019445, 0.19071761022347317, 0.20808301694308412]]
 </pre></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># idx = Index().fit(X, feature_names=map("feature_{}".format, range(0,10)))</span>
-<span class="n">idx</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">Index</span></a><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="nb">map</span><span class="p">(</span><span class="s2">"col_</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">)))</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">feature_names</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"col_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="c1"># idx = Index().fit(X, feature_names=map("feature_{}".format, range(0,10)))</span>
+<span class="n">idx</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-annoy sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index" title="scikitplot.annoy.Index"><span class="n">Index</span></a><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">feature_names</span><span class="p">)</span>
 <span class="n">idx</span>
 </pre></div>
 </div>
 <div class="output_subarea output_html rendered_html output_result">
-<div class="annoy-repr" id="annoy-repr-0x7f9d5cf7d348-22"><style>
-#annoy-repr-0x7f9d5cf7d348-22 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
-#annoy-repr-0x7f9d5cf7d348-22 details{margin:0;padding:0;}
-#annoy-repr-0x7f9d5cf7d348-22 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-#annoy-repr-0x7f9d5cf7d348-22 summary::-webkit-details-marker{display:none;}
-#annoy-repr-0x7f9d5cf7d348-22 .annoy-title{font-weight:600;}
-#annoy-repr-0x7f9d5cf7d348-22 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
-#annoy-repr-0x7f9d5cf7d348-22 .annoy-links a{color:#0969da;text-decoration:none;}
-#annoy-repr-0x7f9d5cf7d348-22 .annoy-links a:hover{text-decoration:underline;}
-#annoy-repr-0x7f9d5cf7d348-22 .annoy-sep{color:#57606a;}
-#annoy-repr-0x7f9d5cf7d348-22 .annoy-subtitle{font-weight:600;}
-#annoy-repr-0x7f9d5cf7d348-22 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
-#annoy-repr-0x7f9d5cf7d348-22 details[open] > summary .annoy-arrow::before{content:'\25BC';}
-#annoy-repr-0x7f9d5cf7d348-22 .annoy-body{padding:0 10px 10px 10px;}
-#annoy-repr-0x7f9d5cf7d348-22 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-#annoy-repr-0x7f9d5cf7d348-22 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
-#annoy-repr-0x7f9d5cf7d348-22 .annoy-table th{font-weight:600;}
-#annoy-repr-0x7f9d5cf7d348-22 .annoy-td-btn{width:72px;}
-#annoy-repr-0x7f9d5cf7d348-22 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
-#annoy-repr-0x7f9d5cf7d348-22 .annoy-copy:active{transform:translateY(1px);}
-#annoy-repr-0x7f9d5cf7d348-22 .annoy-key{white-space:nowrap;}
-#annoy-repr-0x7f9d5cf7d348-22 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
-</style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" rel="noopener noreferrer" target="_blank" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.4/modules/generated/scikitplot.cexternals._annoy.Annoy.html" rel="noopener noreferrer" target="_blank" title="Annoy docs (installed)">0.4</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">10</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">'angular'</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">n_neighbors</td><td class="annoy-value">5</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr></tbody></table></details></div></details></div><script>
+<div class="annoy-repr" id="annoy-repr-0x71bd6be5f408-22"><style>
+#annoy-repr-0x71bd6be5f408-22 .annoy-box{border:1px solid #d0d7de;border-radius:6px;display:inline-block;min-width:280px;}
+#annoy-repr-0x71bd6be5f408-22 details{margin:0;padding:0;}
+#annoy-repr-0x71bd6be5f408-22 summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:8px 10px;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+#annoy-repr-0x71bd6be5f408-22 summary::-webkit-details-marker{display:none;}
+#annoy-repr-0x71bd6be5f408-22 .annoy-title{font-weight:600;}
+#annoy-repr-0x71bd6be5f408-22 .annoy-links{margin-left:auto;display:flex;align-items:center;gap:8px;}
+#annoy-repr-0x71bd6be5f408-22 .annoy-links a{color:#0969da;text-decoration:none;}
+#annoy-repr-0x71bd6be5f408-22 .annoy-links a:hover{text-decoration:underline;}
+#annoy-repr-0x71bd6be5f408-22 .annoy-sep{color:#57606a;}
+#annoy-repr-0x71bd6be5f408-22 .annoy-subtitle{font-weight:600;}
+#annoy-repr-0x71bd6be5f408-22 .annoy-arrow::before{content:'\25B6';display:inline-block;width:14px;}
+#annoy-repr-0x71bd6be5f408-22 details[open] > summary .annoy-arrow::before{content:'\25BC';}
+#annoy-repr-0x71bd6be5f408-22 .annoy-body{padding:0 10px 10px 10px;}
+#annoy-repr-0x71bd6be5f408-22 .annoy-table{border-collapse:collapse;width:100%;font:12px/1.35 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+#annoy-repr-0x71bd6be5f408-22 .annoy-table th,.annoy-table td{border-top:1px solid #eaeef2;padding:6px 6px;text-align:left;vertical-align:top;}
+#annoy-repr-0x71bd6be5f408-22 .annoy-table th{font-weight:600;}
+#annoy-repr-0x71bd6be5f408-22 .annoy-td-btn{width:72px;}
+#annoy-repr-0x71bd6be5f408-22 .annoy-copy{font:11px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;border:1px solid #d0d7de;border-radius:6px;padding:3px 6px;background:#f6f8fa;cursor:pointer;}
+#annoy-repr-0x71bd6be5f408-22 .annoy-copy:active{transform:translateY(1px);}
+#annoy-repr-0x71bd6be5f408-22 .annoy-key{white-space:nowrap;}
+#annoy-repr-0x71bd6be5f408-22 .annoy-value{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+</style><div class="annoy-box"><details class="annoy-main"><summary><span class="annoy-arrow"></span><span class="annoy-title">Annoy</span><span class="annoy-links"><a href="https://scikit-plots.github.io/dev/modules/generated/scikitplot.cexternals._annoy.Annoy.html" rel="noopener noreferrer" target="_blank" title="Annoy docs (dev)">dev</a><span class="annoy-sep">|</span><a href="https://scikit-plots.github.io/0.4/modules/generated/scikitplot.cexternals._annoy.Annoy.html" rel="noopener noreferrer" target="_blank" title="Annoy docs (installed)">0.4</a></span></summary><div class="annoy-body"><details class="annoy-sub"><summary><span class="annoy-arrow"></span><span class="annoy-subtitle">Parameters</span></summary><table class="annoy-table"><thead><tr><th></th><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">f</td><td class="annoy-value">10</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">metric</td><td class="annoy-value">'angular'</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">n_trees</td><td class="annoy-value">-1</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">n_neighbors</td><td class="annoy-value">5</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">on_disk_path</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">prefault</td><td class="annoy-value">False</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">seed</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">verbose</td><td class="annoy-value">None</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">schema_version</td><td class="annoy-value">0</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">n_jobs</td><td class="annoy-value">-1</td></tr><tr><td class="annoy-td-btn"><button aria-label="Copy value" class="annoy-copy" title="Copy value" type="button">🗗 Copy</button></td><td class="annoy-key">l1_ratio</td><td class="annoy-value">0.0</td></tr></tbody></table></details></div></details></div><script>
 (function(){
-  var root=document.getElementById('annoy-repr-0x7f9d5cf7d348-22');
+  var root=document.getElementById('annoy-repr-0x71bd6be5f408-22');
   if(!root)return;
   var btns=root.querySelectorAll('button.annoy-copy');
   for(var i=0;i<btns.length;i++){
@@ -823,13 +855,13 @@ Index.from_low_level
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[[0.5474572777748108, -1.30021333694458, -0.24908927083015442, -0.338500440120697, -1.4725918769836426, -0.6193925142288208, 0.4619145691394806, 0.32358142733573914, 0.2247430980205536, 0.7160129547119141], [0.3795432150363922, -1.0814439058303833, -0.6971868872642517, -0.5686206817626953, -1.103886365890503, -0.7541236281394958, 0.705725371837616, 0.943377673625946, 0.6119086742401123, 1.3435934782028198], [0.7672842741012573, -0.9102413058280945, -1.3365751504898071, -0.3575524091720581, -1.0078351497650146, -0.27656781673431396, 0.4459843337535858, 0.25284719467163086, 0.712553083896637, 0.3709689974784851], [1.9459642171859741, -1.4119740724563599, -0.9970489144325256, -0.6231048107147217, -0.9430398344993591, -0.5126528143882751, 0.11039887368679047, 1.4114537239074707, 0.47007548809051514, 0.475698858499527], [0.2495984137058258, -1.7227978706359863, 0.8990013003349304, -0.19579380750656128, -1.3166929483413696, -0.3067028224468231, -0.44282829761505127, 0.6236724257469177, -0.44507327675819397, 0.8003492951393127]], [[0.05573755502700806, -0.4706576466560364, -0.6597297191619873, 0.16312913596630096, -0.9790469408035278, -0.8275525569915771, -2.060459852218628, -2.729288101196289, -0.8268195986747742, 0.6338273882865906], [0.649846613407135, -1.2302342653274536, 0.013532223179936409, -0.8263025283813477, -1.2967811822891235, -1.2061113119125366, -0.7416226267814636, -2.066455841064453, -1.0455116033554077, 1.7582625150680542], [1.2927970886230469, -0.8755640387535095, -0.5056493282318115, -0.09927254915237427, -0.16237357258796692, 0.2741217613220215, -1.6539034843444824, -1.5960801839828491, -0.2236139178276062, 1.1900722980499268], [0.4305778443813324, -0.29055115580558777, -1.0095888376235962, 0.1667640209197998, -0.12013609707355499, -0.28109559416770935, -0.2604212164878845, -2.8846733570098877, 0.4523351788520813, 0.9384317994117737], [0.4064362943172455, -1.0276243686676025, -0.757765531539917, 0.7894313931465149, -0.6055637001991272, -0.41537636518478394, -0.7599490880966187, -0.7554258704185486, -0.9755097031593323, 0.27309876680374146]], [[1.037416696548462, 0.6505188941955566, 0.9112770557403564, 0.40074265003204346, 1.7090003490447998, -1.8210971355438232, -1.0613712072372437, -1.0616240501403809, -0.001068173092789948, -0.2159004658460617], [0.9943563938140869, 0.151925727725029, 2.238942861557007, 0.8607289791107178, 1.2040303945541382, -2.3748667240142822, 0.5421305298805237, -1.2962846755981445, -1.0256778001785278, 0.3658820688724518], [1.0757293701171875, 1.6776785850524902, -0.4844566285610199, -0.2801186442375183, 0.7964460253715515, -1.5309860706329346, -0.9653468132019043, -1.1346079111099243, -0.48670199513435364, 0.3066943287849426], [0.7255332469940186, 0.22458761930465698, 0.5582488775253296, -0.4674156904220581, 0.3457297086715698, -1.1519341468811035, -2.4280519485473633, -1.0988396406173706, 0.20553182065486908, 0.07200413197278976], [1.7669215202331543, 0.24634987115859985, 0.3993820250034332, -0.6646016836166382, 0.9281969666481018, -0.7843007445335388, -0.3725874125957489, -0.6647116541862488, 0.6425178050994873, 0.3136956989765167]], [[1.2054249048233032, -1.0638865232467651, 0.9474580883979797, -0.8452785015106201, -1.4825248718261719, -0.8566842079162598, 1.247633934020996, 0.8291140198707581, -1.2124615907669067, -0.5157737135887146], [0.16599434614181519, -1.2545446157455444, 1.5510746240615845, -0.5211600661277771, -1.1034409999847412, -0.6353161334991455, 1.226678490638733, -0.0911865234375, -0.9819154143333435, 0.2407008856534958], [1.115717887878418, -0.44695305824279785, 1.3250070810317993, -0.6017792820930481, -1.2686055898666382, -2.6183433532714844, 0.22277195751667023, 0.7337615489959717, -1.1620653867721558, -0.5668874979019165], [0.8928369879722595, -1.1051188707351685, 0.9232276082038879, -0.4902592599391937, -0.8964894413948059, -0.51762455701828, 1.4229260683059692, -0.7730417251586914, -0.4338323771953583, -0.10377947986125946], [1.1795421838760376, -0.3011368215084076, 0.6097577810287476, -1.1726853847503662, -0.4631544351577759, -1.6243982315063477, 1.009369134902954, -0.025708090513944626, -0.30856025218963623, -0.007602848578244448]], [[-0.4644966423511505, 0.8524463772773743, 1.1260707378387451, -0.6392664909362793, -0.06072111055254936, 0.18059048056602478, 0.13483808934688568, 0.13324356079101562, -0.12403132766485214, 1.2627049684524536], [-0.2865630090236664, 0.267973929643631, 1.3443444967269897, -1.2862900495529175, -0.4104452431201935, 0.22263342142105103, 0.896701455116272, 0.44988250732421875, -0.6043241024017334, 1.5569214820861816], [-0.551535964012146, 0.6913226246833801, 1.466260552406311, -0.6457347869873047, -0.9011657238006592, -0.019423335790634155, 0.10446380078792572, 1.3888795375823975, -0.5449660420417786, 1.5216526985168457], [-0.8694427013397217, 0.9422611594200134, 1.529123306274414, -0.21110539138317108, -0.5779234766960144, 0.2732229232788086, 0.29372403025627136, -0.1075374186038971, 1.0344274044036865, 1.3135284185409546], [-0.9806204438209534, 0.6720618605613708, 1.1598405838012695, -1.156262755393982, -0.08514151722192764, 0.3562352657318115, 0.6620896458625793, 1.5465965270996094, 0.9621661305427551, 1.5791634321212769]]]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[[0.5474572777748108, -1.30021333694458, -0.24908927083015442, -0.338500440120697, -1.4725918769836426, -0.6193925142288208, 0.4619145691394806, 0.32358142733573914, 0.2247430980205536, 0.7160129547119141], [0.3795432150363922, -1.0814439058303833, -0.6971868872642517, -0.5686206817626953, -1.103886365890503, -0.7541236281394958, 0.705725371837616, 0.943377673625946, 0.6119086742401123, 1.3435934782028198], [1.9459642171859741, -1.4119740724563599, -0.9970489144325256, -0.6231048107147217, -0.9430398344993591, -0.5126528143882751, 0.11039887368679047, 1.4114537239074707, 0.47007548809051514, 0.475698858499527], [1.4078900814056396, -1.2572218179702759, -0.19029712677001953, -1.5371088981628418, -0.797193706035614, -1.1316567659378052, 0.16409116983413696, 0.43394869565963745, 0.2933441400527954, 2.5479888916015625], [0.27005574107170105, -0.8005436062812805, 1.0799580812454224, -0.4893670380115509, -1.2696515321731567, -0.53715980052948, 0.5811453461647034, 1.238759160041809, 0.06037227064371109, 0.8479045629501343]], [[0.05573755502700806, -0.4706576466560364, -0.6597297191619873, 0.16312913596630096, -0.9790469408035278, -0.8275525569915771, -2.060459852218628, -2.729288101196289, -0.8268195986747742, 0.6338273882865906], [0.649846613407135, -1.2302342653274536, 0.013532223179936409, -0.8263025283813477, -1.2967811822891235, -1.2061113119125366, -0.7416226267814636, -2.066455841064453, -1.0455116033554077, 1.7582625150680542], [1.2927970886230469, -0.8755640387535095, -0.5056493282318115, -0.09927254915237427, -0.16237357258796692, 0.2741217613220215, -1.6539034843444824, -1.5960801839828491, -0.2236139178276062, 1.1900722980499268], [-0.27623432874679565, -0.22157371044158936, 0.22077061235904694, 0.5062069296836853, 0.34730294346809387, -0.06066732481122017, -0.7001211047172546, -1.7459063529968262, -0.593009352684021, -0.36977270245552063], [-0.28827008605003357, -0.26296961307525635, -1.7341712713241577, 1.1647381782531738, -0.06094349920749664, -1.6457926034927368, -1.198385238647461, -0.9916990399360657, -0.6739792227745056, -0.11818507313728333]], [[1.037416696548462, 0.6505188941955566, 0.9112770557403564, 0.40074265003204346, 1.7090003490447998, -1.8210971355438232, -1.0613712072372437, -1.0616240501403809, -0.001068173092789948, -0.2159004658460617], [0.9943563938140869, 0.151925727725029, 2.238942861557007, 0.8607289791107178, 1.2040303945541382, -2.3748667240142822, 0.5421305298805237, -1.2962846755981445, -1.0256778001785278, 0.3658820688724518], [1.0757293701171875, 1.6776785850524902, -0.4844566285610199, -0.2801186442375183, 0.7964460253715515, -1.5309860706329346, -0.9653468132019043, -1.1346079111099243, -0.48670199513435364, 0.3066943287849426], [0.4567016661167145, 1.339646816253662, 0.9898688793182373, -0.25645315647125244, 1.4672883749008179, -0.6375895142555237, -0.6386777758598328, 0.18234391510486603, -0.4200282394886017, 0.0998697504401207], [-0.10394603759050369, -0.012165610678493977, 0.25386205315589905, 0.2508637309074402, 0.9716657400131226, -3.6088063716888428, -0.4995570480823517, -0.3662931025028229, -0.18416844308376312, 0.6204052567481995]], [[1.2054249048233032, -1.0638865232467651, 0.9474580883979797, -0.8452785015106201, -1.4825248718261719, -0.8566842079162598, 1.247633934020996, 0.8291140198707581, -1.2124615907669067, -0.5157737135887146], [1.115717887878418, -0.44695305824279785, 1.3250070810317993, -0.6017792820930481, -1.2686055898666382, -2.6183433532714844, 0.22277195751667023, 0.7337615489959717, -1.1620653867721558, -0.5668874979019165], [0.8928369879722595, -1.1051188707351685, 0.9232276082038879, -0.4902592599391937, -0.8964894413948059, -0.51762455701828, 1.4229260683059692, -0.7730417251586914, -0.4338323771953583, -0.10377947986125946], [1.015687108039856, 0.18673701584339142, -0.21417959034442902, -0.668981671333313, -1.3195013999938965, -0.4612681567668915, 0.8830868005752563, 0.11312589794397354, -1.3212906122207642, -1.1506803035736084], [1.1795421838760376, -0.3011368215084076, 0.6097577810287476, -1.1726853847503662, -0.4631544351577759, -1.6243982315063477, 1.009369134902954, -0.025708090513944626, -0.30856025218963623, -0.007602848578244448]], [[-0.4644966423511505, 0.8524463772773743, 1.1260707378387451, -0.6392664909362793, -0.06072111055254936, 0.18059048056602478, 0.13483808934688568, 0.13324356079101562, -0.12403132766485214, 1.2627049684524536], [-0.2865630090236664, 0.267973929643631, 1.3443444967269897, -1.2862900495529175, -0.4104452431201935, 0.22263342142105103, 0.896701455116272, 0.44988250732421875, -0.6043241024017334, 1.5569214820861816], [-0.551535964012146, 0.6913226246833801, 1.466260552406311, -0.6457347869873047, -0.9011657238006592, -0.019423335790634155, 0.10446380078792572, 1.3888795375823975, -0.5449660420417786, 1.5216526985168457], [-0.8694427013397217, 0.9422611594200134, 1.529123306274414, -0.21110539138317108, -0.5779234766960144, 0.2732229232788086, 0.29372403025627136, -0.1075374186038971, 1.0344274044036865, 1.3135284185409546], [-0.9806204438209534, 0.6720618605613708, 1.1598405838012695, -1.156262755393982, -0.08514151722192764, 0.3562352657318115, 0.6620896458625793, 1.5465965270996094, 0.9621661305427551, 1.5791634321212769]]]
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">[:</span><span class="mi">5</span><span class="p">],</span> <span class="n">output_type</span><span class="o">=</span><span class="s2">"item"</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[0, 382, 226, 635, 966], [1, 664, 736, 126, 352], [2, 607, 113, 460, 268], [3, 663, 583, 943, 837], [4, 999, 805, 750, 503]]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[0, 382, 635, 9, 983], [1, 664, 736, 273, 866], [2, 607, 113, 87, 115], [3, 583, 943, 618, 837], [4, 999, 805, 750, 503]]
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">output_type</span><span class="o">=</span><span class="s2">"item"</span><span class="p">)</span>
@@ -1312,14 +1344,14 @@ Index.from_low_level
 <br/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span><span class="o">.</span><span class="n">query_by_item</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="mi">999</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">include_distances</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>([999, 4, 805, 313, 53, 985, 503, 705, 662, 483], [0.0, 0.5096477270126343, 0.5483975410461426, 0.5549066662788391, 0.617791473865509, 0.640846848487854, 0.6939642429351807, 0.7039787173271179, 0.7275376915931702, 0.7314350605010986])
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>([999, 4, 805, 985, 503, 705, 483, 614, 765, 11], [0.0, 0.5096477270126343, 0.5483975410461426, 0.640846848487854, 0.6939642429351807, 0.7039787173271179, 0.7314350605010986, 0.7961425185203552, 0.8021402955055237, 0.811093807220459])
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span><span class="o">.</span><span class="n">query_by_vector</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">include_distances</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(array([  2, 175, 607, 545, 724, 844, 113, 830, 593, 814]), array([0.51189727, 0.6862775 , 0.7083861 , 0.7152001 , 0.71820927,
-       0.73485404, 0.7635894 , 0.76915634, 0.7721067 , 0.77473843],
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(array([  2, 607, 545, 230, 708, 113, 830, 593, 814, 553]), array([0.51189727, 0.7083861 , 0.7152001 , 0.7458863 , 0.74949676,
+       0.7635894 , 0.76915634, 0.7721067 , 0.77473843, 0.78286034],
       dtype=float32))
 </pre></div>
 </div>
@@ -1329,21 +1361,18 @@ Index.from_low_level
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(array([[[ 1.0374167e+00,  6.5051889e-01,  9.1127706e-01,  4.0074265e-01,
           1.7090003e+00, -1.8210971e+00, -1.0613712e+00, -1.0616241e+00,
          -1.0681731e-03, -2.1590047e-01],
-        [ 2.9087302e-01,  1.6061112e-01,  3.9728770e-01,  1.9413948e-01,
-          1.2719213e+00, -3.8282692e-02, -1.4632310e-01, -4.3435779e-01,
-         -1.1334780e+00, -4.2447588e-01],
         [ 9.9435639e-01,  1.5192573e-01,  2.2389429e+00,  8.6072898e-01,
           1.2040304e+00, -2.3748667e+00,  5.4213053e-01, -1.2962847e+00,
          -1.0256778e+00,  3.6588207e-01],
         [ 7.1888703e-01,  7.3268467e-01,  2.3450242e-01,  1.5037581e-01,
           6.4846951e-01, -9.9940211e-01, -9.4879419e-01,  3.7035388e-01,
          -4.7108948e-01, -1.2148813e+00],
-        [ 1.3661820e+00, -1.2864377e-01,  4.3765622e-01, -2.1177258e-02,
-          1.0801957e+00, -2.0413859e-02,  4.9145448e-01, -9.4777948e-01,
-         -1.3595277e+00,  9.3816016e-03],
-        [ 3.3725286e-01,  4.8323366e-01, -6.7216474e-01,  9.3216991e-01,
-          1.2259924e+00, -6.3187069e-01,  2.7677077e-01, -1.6246588e+00,
-         -9.6495825e-01, -6.4760941e-01],
+        [ 6.8823141e-01, -5.5825579e-01,  4.1297093e-01, -7.1109569e-01,
+          1.2938592e+00, -8.2418549e-01,  1.1426173e-01, -1.3992578e-01,
+         -2.8197980e-02, -2.5514895e-01],
+        [ 1.1679308e+00,  5.6283808e-01,  2.6349679e-01, -7.5371748e-01,
+          4.8455983e-01, -1.1545458e+00, -5.3180063e-01,  4.5244047e-01,
+         -1.3836339e+00, -5.3382808e-01],
         [ 1.0757294e+00,  1.6776786e+00, -4.8445663e-01, -2.8011864e-01,
           7.9644603e-01, -1.5309861e+00, -9.6534681e-01, -1.1346079e+00,
          -4.8670200e-01,  3.0669433e-01],
@@ -1355,8 +1384,11 @@ Index.from_low_level
          -6.4494091e-01, -8.9031553e-01],
         [ 5.4629058e-01, -1.3325349e+00,  3.3328983e-01,  9.7204581e-02,
           1.2871857e+00, -1.8145564e+00,  8.7446226e-03, -4.8731416e-01,
-          6.8151496e-02, -7.2500211e-01]]], dtype=float32), array([[0.51189727, 0.6862775 , 0.7083861 , 0.7152001 , 0.71820927,
-        0.73485404, 0.7635894 , 0.76915634, 0.7721067 , 0.77473843]],
+          6.8151496e-02, -7.2500211e-01],
+        [ 1.2632313e+00,  9.7530079e-01,  6.4274698e-01,  1.4165179e+00,
+          9.3050772e-01, -1.0064713e+00,  6.4645040e-01, -6.3877535e-01,
+          8.1640345e-01, -1.1055323e+00]]], dtype=float32), array([[0.51189727, 0.7083861 , 0.7152001 , 0.7458863 , 0.74949676,
+        0.7635894 , 0.76915634, 0.7721067 , 0.77473843, 0.78286034]],
       dtype=float32))
 </pre></div>
 </div>
@@ -1380,7 +1412,11 @@ Index.from_low_level
         0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
         0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
         0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
         0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
         0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
         0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
@@ -1400,15 +1436,10 @@ Index.from_low_level
         0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
         0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
         0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-        0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 1., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.,
         0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
         0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
         0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1.,
-        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
         0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
         0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
         0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
@@ -1420,9 +1451,10 @@ Index.from_low_level
         0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
         0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
         0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
         0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.,
         0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.,
-        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
         0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
         0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
         0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
@@ -1435,22 +1467,22 @@ Index.from_low_level
         0., 0., 0., 0., 0., 0., 0., 0.]], dtype=float32)
 </pre></div>
 </div>
-<p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.577 seconds)</p>
+<p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-vector-db.html"><span class="doc">model-workflow: vector-db</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.540 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Annoy, :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_Annoy_legacy_c_api_thumb.png"/>
 <p><a class="reference internal" href="plot_Annoy_legacy_c_api.html"><span class="doc">annoy.Annoy legacy c-api with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">annoy.Annoy legacy c-api with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy._annoy.Index class."><img alt="" src="../../_images/sphx_glr_plot_cython_index_api_thumb.png"/>
-<p><a class="reference internal" href="plot_cython_index_api.html"><span class="doc">Index (cython) python-api with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">Index (cython) python-api with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_precision_script_thumb.png"/>
-<p><a class="reference internal" href="plot_precision_script.html"><span class="doc">Precision annoy.AnnoyIndex with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">Precision annoy.AnnoyIndex with examples</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_simple_script_thumb.png"/>
 <p><a class="reference internal" href="plot_simple_script.html"><span class="doc">Simple annoy.AnnoyIndex with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">Simple annoy.AnnoyIndex with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Index class."><img alt="" src="../../_images/sphx_glr_plot_Annoy_python_api_thumb.png"/>
+<p><a class="reference internal" href="plot_Annoy_python_api.html"><span class="doc">annoy.Index python-api with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">annoy.Index python-api with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_precision_script_thumb.png"/>
+<p><a class="reference internal" href="plot_precision_script.html"><span class="doc">Precision annoy.AnnoyIndex with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">Precision annoy.AnnoyIndex with examples</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </article>
@@ -1458,17 +1490,17 @@ Index.from_low_level
 <div class="footer-article-items footer-article__inner">
 <div class="footer-article-item">
 <div class="prev-next-area">
-<a class="left-prev" href="plot_Annoy_python_api.html" title="previous page">
+<a class="left-prev" href="plot_annoy_cython_hamlet_example.html" title="previous page">
 <i class="fa-solid fa-angle-left"></i>
 <div class="prev-next-info">
 <p class="prev-next-subtitle">previous</p>
-<p class="prev-next-title">annoy.Index python-api with examples</p>
+<p class="prev-next-title">Approximate Nearest Neighbors with Annoy — A Hamlet Example</p>
 </div>
 </a>
-<a class="right-next" href="plot_cython_index_api.html" title="next page">
+<a class="right-next" href="plot_mmap_script.html" title="next page">
 <div class="prev-next-info">
 <p class="prev-next-subtitle">next</p>
-<p class="prev-next-title">Index (cython) python-api with examples</p>
+<p class="prev-next-title">Mmap annoy.AnnoyIndex with examples</p>
 </div>
 <i class="fa-solid fa-angle-right"></i>
 </a>
@@ -1478,13 +1510,7 @@ Index.from_low_level
 </div>
 <dialog id="pst-secondary-sidebar-modal"></dialog>
 <div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
-<div class="sidebar-secondary-item">
-<div aria-label="source link" role="note">
-<h3>This Page</h3>
-<ul class="this-page-menu">
-<li><a href="../../_sources/auto_examples/annoy/plot_annoy_to_NPY_CSV.rst.txt" rel="nofollow">Show Source</a></li>
-</ul>
-</div></div>
+
 <div class="sidebar-secondary-item"><div title="plot_annoy_to_NPY_CSV.py"><a download="" href="../../_downloads/2d92fc6d1dc56103093ab57e4fb5dcfd/plot_annoy_to_NPY_CSV.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_annoy_to_NPY_CSV.ipynb"><a download="" href="../../_downloads/831d6ba33cf3d409a5bf7fd6d0931d94/plot_annoy_to_NPY_CSV.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/annoy/plot_annoy_to_NPY_CSV.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/maintenance/0.4.X?urlpath=lab/tree/notebooks/auto_examples/annoy/plot_annoy_to_NPY_CSV.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo.svg"/></a></div></div></div></div>
 </div>
 <footer class="bd-footer-content">
@@ -1493,15 +1519,15 @@ Index.from_low_level
 </div>
 </div>
 <!-- Scripts loaded after <body> so the DOM is not blocked -->
-<script defer="" src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+<script defer="" src="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
+<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
 <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
 <div class="footer-items__start">
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.4.0.post10+git.20260217.bf0721e 2026-02-17T18:10Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.4.0.post11+git.20260412.64b40d9 2026-04-12T09:07Z.
       <br/>
 </p>
 </div>

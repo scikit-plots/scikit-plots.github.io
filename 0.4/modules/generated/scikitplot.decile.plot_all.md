@@ -1,0 +1,122 @@
+# plot\_all[#](#plot-all "Link to this heading")
+
+scikitplot.decile.plot\_all(**plot\_input**, **\***, **highlight\_ntile=None**, **highlight\_how='plot\_text'**, **autopct='%.2f%%'**, **figsize=(15, 10)**, **line\_kws=None**, **ref\_line\_kws=None**, **legend\_kws=None**, **grid\_kws=None**, **axes\_kws=None**, **annotation\_kws=None**, **footer\_kws=None**, **save\_fig=True**, **save\_fig\_filename=''**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/64b40d9/scikitplot/decile/_decile_modelplotpy.py#L3124)[#](#scikitplot.decile.plot_all "Link to this definition")
+:   Plot response, cumulative response, cumulative lift, and cumulative gains as a 2x2 panel.
+
+    Parameters:
+    :   ****plot\_input****pandas.DataFrame
+        :   Output of [`ModelPlotPy.plotting_scope`](scikitplot.decile.ModelPlotPy.html#scikitplot.decile.ModelPlotPy.plotting_scope "scikitplot.decile.ModelPlotPy.plotting_scope").
+
+        ****highlight\_ntile****int, Sequence[int], or None, default=None
+        :   Ntile(s) to highlight across all subplots.
+
+        ****highlight\_how****{‘plot’, ‘text’, ‘plot\_text’}, default=’plot\_text’
+        :   Where to render highlight information.
+
+            * ‘text’ prints standardized lines to stdout
+            * ‘plot’ renders them in a footer area
+            * ‘plot\_text’ does both
+
+        ****autopct****None or str or callable, default=’%.2f%%’
+        :   Percentage formatter.
+
+        ****figsize****tuple[int, int], default=(15, 10)
+        :   Figure size.
+
+        ****line\_kws, ref\_line\_kws, legend\_kws, grid\_kws, axes\_kws, annotation\_kws, footer\_kws****Mapping[str, Any] or None
+        :   Per-component styling kwargs.
+
+        ****\*\*kwargs****Any
+        :   Legacy alias for `line_kws`.
+
+    Returns:
+    :   matplotlib.axes.Axes
+        :   The top-left subplot axis (cumulative gains), matching legacy behavior.
+
+    Other Parameters:
+    :   ****show\_fig****bool, default=True
+        :   Show the plot.
+
+            Added in version 0.4.0.
+
+        ****save\_fig****bool, default=False
+        :   Save the plot.
+            Used by `save_plot_decorator`.
+
+            Added in version 0.4.0.
+
+        ****save\_fig\_filename****str, optional, default=’’
+        :   Specify the path and filetype to save the plot.
+            If nothing specified, the plot will be saved as png
+            inside `result_images` under to the current working directory.
+            Defaults to plot image named to used `func.__name__`.
+            Used by `save_plot_decorator`.
+
+            Added in version 0.4.0.
+
+        ****overwrite****bool, optional, default=True
+        :   If False and a file exists, auto-increments the filename to avoid overwriting.
+
+            Added in version 0.4.0.
+
+        ****add\_timestamp****bool, optional, default=False
+        :   Whether to append a timestamp to the filename.
+            Default is False.
+
+            Added in version 0.4.0.
+
+        ****verbose****bool, optional
+        :   If True, enables verbose output with informative messages during execution.
+            Useful for debugging or understanding internal operations such as backend selection,
+            font loading, and file saving status. If False, runs silently unless errors occur.
+
+            Default is False.
+
+            Added in version 0.4.0: The `verbose` parameter was added to control logging and user feedback verbosity.
+
+    Raises:
+    :   \_PlotInputError
+        :   If required columns are missing.
+
+    Parameters:
+    :   * ****plot\_input**** (**DataFrame**)
+        * ****highlight\_ntile**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** [**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]** **|** **None**)
+        * ****highlight\_how**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'plot'****,** **'text'****,** **'plot\_text'****]**)
+        * ****autopct**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")**[****[**[**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**]****,** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
+        * ****figsize**** ([**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**,** [**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]**)
+        * ****line\_kws**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
+        * ****ref\_line\_kws**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
+        * ****legend\_kws**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
+        * ****grid\_kws**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
+        * ****axes\_kws**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
+        * ****annotation\_kws**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
+        * ****footer\_kws**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
+        * ****save\_fig**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        * ****save\_fig\_filename**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
+
+    Return type:
+    :   [**Axes**](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes "(in Matplotlib v3.11.0.dev2286+ge6cab33bb)")
+
+    > **See also**
+    > [`plot_response`](scikitplot.decile.plot_response.html#scikitplot.decile.plot_response "scikitplot.decile.plot_response"), [`plot_cumresponse`](scikitplot.decile.plot_cumresponse.html#scikitplot.decile.plot_cumresponse "scikitplot.decile.plot_cumresponse"), [`plot_cumlift`](scikitplot.decile.plot_cumlift.html#scikitplot.decile.plot_cumlift "scikitplot.decile.plot_cumlift"), [`plot_cumgains`](scikitplot.decile.plot_cumgains.html#scikitplot.decile.plot_cumgains "scikitplot.decile.plot_cumgains")
+
+    Notes
+
+    Dev note: plot\_all must not call other decorated plot\_\* functions.
+    Nesting save\_plot\_decorator calls can clear/close figures unexpectedly.
+
+    Examples
+
+    ```
+    >>> # ax = plot_all(plot_input)
+
+    ```
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_modelplotpy_script_thumb.png)
+
+[Introduction to modelplotpy](../../auto_examples/decile/plot_modelplotpy_script.html)
+
+Introduction to modelplotpy

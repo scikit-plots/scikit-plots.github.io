@@ -1,5 +1,51 @@
 :orphan:
 
+.. https://devguide.python.org/documentation/markup/#substitutions
+.. Welcome to Scikit-plots 101 |br| |release| - |today|
+..
+    substitutions don’t work in .. raw:: html
+    .. raw:: html
+
+    <div style="text-align: center"><strong>
+    Welcome to Scikit-plots 101<br>|full_version| - |today|
+    </strong></div>
+..
+    https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-centered
+    .. centered:: Welcome to Scikit-plots 101 :raw-html:`<br />` |full_version| - |today|
+    .. centered::
+        **Scikit-plots Documentation** :raw-html:`<br />` |full_version| - |today|
+
+.. https://docutils.sourceforge.io/docs/ref/rst/directives.html#custom-interpreted-text-roles
+.. role:: raw-html(raw)
+   :format: html
+
+.. |br| raw:: html
+
+   <br/>
+
+.. _scikit-plots-examples-tutorials:
+
+:raw-html:`<div style="text-align: center"><strong>` Scikit-plots Examples & Tutorials
+|br| |full_version| - |today|
+:raw-html:`</strong></div>`
+
+..
+  https://devguide.python.org/documentation/markup/#sections
+  https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#sections
+  # with overline, for parts    : ######################################################################
+  * with overline, for chapters : **********************************************************************
+  = for sections                : ======================================================================
+  - for subsections             : ----------------------------------------------------------------------
+  ^ for subsubsections          : ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  " for paragraphs              : """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. # https://rsted.info.ucl.ac.be/
+.. # https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#paragraph-level-markup
+.. # https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#footnotes
+.. # https://documatt.com/restructuredtext-reference/element/admonition.html
+.. # attention, caution, danger, error, hint, important, note, tip, warning, admonition, seealso
+.. # versionadded, versionchanged, deprecated, versionremoved, rubric, centered, hlist
+
 .. _examples-index:
 
 Examples
@@ -123,6 +169,57 @@ Examples related to the :py:mod:`~scikitplot.annoy` and :py:mod:`~scikitplot.cex
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy._annoy.Index class.">
+
+.. only:: html
+
+  .. image:: /auto_examples/annoy/images/thumb/sphx_glr_plot_annoy_cython_0benchmark_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/annoy/plot_annoy_cython_0benchmark`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Index (cython) python-api benchmark with examples</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy._annoy.Index class.">
+
+.. only:: html
+
+  .. image:: /auto_examples/annoy/images/thumb/sphx_glr_plot_annoy_cython_api_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/annoy/plot_annoy_cython_api`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Index (cython) python-api with examples</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy._annoy.Index class.">
+
+.. only:: html
+
+  .. image:: /auto_examples/annoy/images/thumb/sphx_glr_plot_annoy_cython_hamlet_example_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/annoy/plot_annoy_cython_hamlet_example`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Approximate Nearest Neighbors with Annoy — A Hamlet Example</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Index class.">
 
 .. only:: html
@@ -135,23 +232,6 @@ Examples related to the :py:mod:`~scikitplot.annoy` and :py:mod:`~scikitplot.cex
 .. raw:: html
 
       <div class="sphx-glr-thumbnail-title">annoy.Index to NPY or CSV with examples</div>
-    </div>
-
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy._annoy.Index class.">
-
-.. only:: html
-
-  .. image:: /auto_examples/annoy/images/thumb/sphx_glr_plot_cython_index_api_thumb.png
-    :alt:
-
-  :doc:`/auto_examples/annoy/plot_cython_index_api`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Index (cython) python-api with examples</div>
     </div>
 
 
@@ -455,6 +535,122 @@ Examples related to the :py:mod:`~scikitplot.api.estimators` submodule with e.g.
 .. raw:: html
 
       <div class="sphx-glr-thumbnail-title">plot_silhouette with examples</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+Corpus
+----------------------------------------------------------------------
+
+Examples related to the :py:mod:`~scikitplot.corpus` submodule.
+
+.. prompt:: bash $
+
+    # 💡 corpus Need additionals packages
+    curl -O https://raw.githubusercontent.com/scikit-plots/scikit-plots/main/requirements/corpus.txt
+    pip install -r requirements/corpus.txt
+    pip install scikit-plots[corpus]
+
+    # (Recommended)
+    # !pip install nltk gensim langdetect faster-whisper openai-whisper pytesseract youtube-transcript-api
+    # sudo apt-get install tesseract-ocr
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule.">
+
+.. only:: html
+
+  .. image:: /auto_examples/corpus/images/thumb/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">corpus A Tale of Two Cities .mp3 with examples</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule. Demonstrates all four chunkers (WordChunker-by-document, WordChunker-by-sentence, SentenceChunker, FixedWindowChunker-chars, FixedWindowChunker-tokens) on an image file containing multi-script text extracted via OCR.">
+
+.. only:: html
+
+  .. image:: /auto_examples/corpus/images/thumb/sphx_glr_plot_corpus_knowledge_script_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/corpus/plot_corpus_knowledge_script`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">corpus Knowledge and Information local .png with examples</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule.">
+
+.. only:: html
+
+  .. image:: /auto_examples/corpus/images/thumb/sphx_glr_plot_corpus_who_per_file_script_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/corpus/plot_corpus_who_per_file_script`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">corpus WHO European Region local or url per file with examples</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule.">
+
+.. only:: html
+
+  .. image:: /auto_examples/corpus/images/thumb/sphx_glr_plot_corpus_who_youtube_shorts_script_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/corpus/plot_corpus_who_youtube_shorts_script`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">corpus WHO European Region YouTube shorts with examples</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule.">
+
+.. only:: html
+
+  .. image:: /auto_examples/corpus/images/thumb/sphx_glr_plot_corpus_who_zip_script_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/corpus/plot_corpus_who_zip_script`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">corpus WHO European Region local .zip with examples</div>
     </div>
 
 
@@ -946,6 +1142,43 @@ Examples related to the :py:mod:`~scikitplot.memmap` submodule.
     </div>
 
 
+Misc
+----------------------------------------------------------------------
+
+Examples related to the :py:mod:`~scikitplot.misc` submodule.
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This gallery example demonstrates the :py~scikitplot.misc. module.">
+
+.. only:: html
+
+  .. image:: /auto_examples/misc/images/thumb/sphx_glr_plot_misc_script_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/misc/plot_misc_script`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Misc Showcase</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
 MLflow
 ----------------------------------------------------------------------
 
@@ -1235,6 +1468,23 @@ Examples related to the :py:mod:`~scikitplot.stats` submodule with e.g. :py:clas
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="What is a Gaussian Mixture Model? ---------------------------------- Imagine you have a scatter plot of data and you can see a few separate clusters.  A Gaussian Mixture Model (GMM) formalises that intuition: it assumes the data came from K overlapping &quot;blobs&quot;, each shaped like a multivariate Gaussian (bell curve).  We do not know K ahead of time — that is the whole point of this example.">
+
+.. only:: html
+
+  .. image:: /auto_examples/stats/images/thumb/sphx_glr_plot_gaussian_mixture_models_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/stats/plot_gaussian_mixture_models`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Gaussian Mixture Models — AIC, AICc, and BIC Model Selection</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.api.metrics.plot_residuals_distribution function used by a scikit-learn regressor.">
 
 .. only:: html
@@ -1467,11 +1717,13 @@ e.g. a DL (ANN, CNN, NLP) :py:class:`~tensorflow.keras.Model` model instance.
    /auto_examples/calibration/index.rst
    /auto_examples/classification/index.rst
    /auto_examples/clustering/index.rst
+   /auto_examples/corpus/index.rst
    /auto_examples/cython/index.rst
    /auto_examples/decile/index.rst
    /auto_examples/decomposition/index.rst
    /auto_examples/impute/index.rst
    /auto_examples/memmap/index.rst
+   /auto_examples/misc/index.rst
    /auto_examples/mlflow/index.rst
    /auto_examples/nc/index.rst
    /auto_examples/preprocessing/index.rst

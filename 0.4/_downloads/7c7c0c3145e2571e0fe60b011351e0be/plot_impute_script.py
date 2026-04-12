@@ -29,7 +29,10 @@ with a scikit-learn regressor (e.g., :py:class:`~sklearn.linear_model.LinearRegr
 # df = pd.read_csv("https://media.geeksforgeeks.org/wp-content/uploads/20240904104950/creditcard.csv")
 # df.head()
 
+import os
 import time
+from pathlib import Path
+
 import numpy as np; np.random.seed(0)  # reproducibility
 import pandas as pd
 
@@ -52,10 +55,39 @@ from sklearn.preprocessing import MaxAbsScaler, RobustScaler, StandardScaler
 
 # %%
 
+import inspect
 import joblib
+from pathlib import Path
 
+def get_current_script_dir() -> Path:
+    """
+    Returns the directory of the current script in a robust way.
+
+    Returns
+    -------
+    Path
+        Absolute directory path.
+
+    Raises
+    ------
+    RuntimeError
+        If location cannot be determined.
+    """
+    # Case 1: normal Python execution
+    if "__file__" in globals():
+        return Path(__file__).resolve().parent
+
+    # Case 2: fallback for Sphinx-gallery / exec environments
+    frame = inspect.currentframe()
+    if frame is not None:
+        file = inspect.getfile(frame)
+        return Path(file).resolve().parent
+
+    raise RuntimeError("Cannot determine script directory.")
+
+BASE_DIR = get_current_script_dir()
 # joblib.dump(fetch_california_housing(return_X_y=True), "fetch_california_housing.joblib")
-joblib.load("fetch_california_housing.joblib")
+joblib.load(BASE_DIR / "fetch_california_housing.joblib")
 
 # %%
 
@@ -335,7 +367,7 @@ time_data[6] = T
 
 t0 = time.time()
 # ⚠️ Reproducibility for Annoy required both random_state and n_trees
-imputer = ANNImputer(add_indicator=True, random_state=42, n_trees=5,
+imputer = ANNImputer(add_indicator=True, random_state=42, # n_trees=5,
     index_access="private", on_disk_build=True, index_store_path=None,)
 mses_diabetes[7], stds_diabetes[7] = get_score(
     Xdi_train_miss, Xdi_val_miss, ydi_train_miss, ydi_val_miss,
@@ -349,7 +381,8 @@ mses_california[7], stds_california[7] = get_score(
     Xca_train_miss, Xca_val_miss, yca_train_miss, yca_val_miss,
     make_pipeline(MaxAbsScaler(), RobustScaler(), imputer),
 )
-imputer = ANNImputer(add_indicator=True, random_state=42, n_trees=10)
+imputer = ANNImputer(add_indicator=True, random_state=42, # n_trees=10
+                     )
 mses_train[7], stds_train[7] = get_score(
     Xbc_train_miss, Xbc_val_miss, ybc_train_miss, ybc_val_miss,
     make_pipeline(MaxAbsScaler(), RobustScaler(), imputer),

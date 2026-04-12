@@ -9,10 +9,13 @@
 <meta content="website" property="og:type"/>
 <meta content="https://scikit-plots.github.io/stable/auto_examples/annoy/plot_precision_script.html" property="og:url"/>
 <meta content="scikit-plots" property="og:site_name"/>
-<meta content="An example showing the AnnoyIndex class. n, f = 1_000_000, 100 # 100~2.5GB Tags: model-type: classification model-workflow: impute plot-type: bar level: beginner purpose: showcase Total running tim..." property="og:description"/>
+<meta content="An example showing the AnnoyIndex class. n, f = 1_000_000, 100 # 100~2.5GB Tags: model-workflow: vector-db plot-type: bar level: beginner purpose: showcase Total running time of the script:(2 minut..." property="og:description"/>
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
-<meta content="An example showing the AnnoyIndex class. n, f = 1_000_000, 100 # 100~2.5GB Tags: model-type: classification model-workflow: impute plot-type: bar level: beginner purpose: showcase Total running tim..." name="description"/>
+<meta content="An example showing the AnnoyIndex class. n, f = 1_000_000, 100 # 100~2.5GB Tags: model-workflow: vector-db plot-type: bar level: beginner purpose: showcase Total running time of the script:(2 minut..." name="description"/>
+<script>
+window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true}, "providers": {"claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Claude about this documentation page.", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask ChatGPT about this documentation page.", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Read {url} so I can ask questions about it.", "model": "gpt-4o", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this documentation page.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Please review this documentation: {url}\n\nI have questions.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
+</script>
 <title>Precision annoy.AnnoyIndex with examples — scikit-plots 0.4.0 documentation</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
@@ -28,12 +31,13 @@
     </style>
 </noscript>
 <!-- Loaded before other Sphinx assets -->
-<link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet"/>
 <link href="../../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
 <link href="../../_static/graphviz.css?v=4ae1632d" rel="stylesheet" type="text/css"/>
 <link href="../../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/ai-assistant.css?v=9781a02e" rel="stylesheet" type="text/css"/>
 <link href="../../_static/jupyter-sphinx.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/thebelab.css" rel="stylesheet" type="text/css"/>
 <link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
@@ -46,15 +50,16 @@
 <link href="../../_static/styles/colors.css?v=14208072" rel="stylesheet" type="text/css"/>
 <link href="../../_static/styles/custom.css?v=e4cb1417" rel="stylesheet" type="text/css"/>
 <!-- So that users can add custom icons -->
-<script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+<script defer="" src="../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
 <!-- Pre-loaded scripts that we'll load fully later -->
-<link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
-<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" rel="preload"/>
 <script src="../../_static/documentation_options.js?v=6c02275b"></script>
 <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
 <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
 <script src="../../_static/copybutton.js?v=e93d8674"></script>
+<script src="../../_static/ai-assistant.js?v=cb662cc4"></script>
 <script src="../../_static/thebelab-helper.js"></script>
 <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
 <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -62,14 +67,16 @@
 <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
 <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/annoy/plot_precision_script';</script>
 <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             true;
         </script>
+<script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
 <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
 <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
+<link href="https://scikit-plots.github.io/auto_examples/annoy/plot_precision_script.html" rel="canonical"/>
 <link href="../../_static/scikit-plots-favicon.ico" rel="icon"/>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
@@ -78,8 +85,11 @@
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="en" name="docsearch:language"/>
 <meta content="0.4" name="docsearch:version"/>
+<script src="../../_static/searchtools.js"></script>
+<script src="../../_static/language_data.js"></script>
+<script src="../../searchindex.js"></script>
 </head>
-<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<body data-default-mode="">
 <div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Skip to main content</a></div>
 <div id="pst-scroll-pixel-helper"></div>
 <button class="btn rounded-pill" id="pst-back-to-top" type="button">
@@ -94,7 +104,7 @@
 <div class="pst-async-banner-revealer d-none">
 <aside aria-label="Version warning" class="d-none d-print-none" id="bd-header-version-warning"></aside>
 </div>
-<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none" id="pst-header">
 <div class="bd-header__inner bd-page-width">
 <button aria-label="Site navigation" class="pst-navbar-icon sidebar-toggle primary-toggle">
 <span class="fa-solid fa-bars"></span>
@@ -335,6 +345,12 @@
 </div>
 </div>
 <div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button"><svg aria-hidden="true" class="pst-icon svg-inline--fa" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z" fill="currentColor"></path>
+</svg>
+<span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+<span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
 <div class="sidebar-primary-item">
 <nav aria-label="Section Navigation" class="bd-docs-nav bd-links">
 <p aria-level="1" class="bd-links__title" role="heading">Section Navigation</p>
@@ -344,8 +360,10 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">ANNoy Vector Index DB</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="plot_Annoy_legacy_c_api.html">annoy.Annoy legacy c-api with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_Annoy_python_api.html">annoy.Index python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_annoy_cython_0benchmark.html">Index (cython) python-api benchmark with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_annoy_cython_api.html">Index (cython) python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_annoy_cython_hamlet_example.html">Approximate Nearest Neighbors with Annoy — A Hamlet Example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_annoy_to_NPY_CSV.html">annoy.Index to NPY or CSV with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_cython_index_api.html">Index (cython) python-api with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_mmap_script.html">Mmap annoy.AnnoyIndex with examples</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Precision annoy.AnnoyIndex with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_simple_script.html">Simple annoy.AnnoyIndex with examples</a></li>
@@ -369,6 +387,14 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../clustering/index.html">Clustering</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../clustering/plot_elbow_script.html">plot_elbow with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../clustering/plot_silhouette_script.html">plot_silhouette with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../corpus/index.html">Corpus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_a_tale_of_two_cities_mp3_script.html">corpus A Tale of Two Cities .mp3 with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_knowledge_script.html">corpus Knowledge and Information local .png with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_who_per_file_script.html">corpus WHO European Region local or url per file with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_who_youtube_shorts_script.html">corpus WHO European Region YouTube shorts with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/plot_corpus_who_zip_script.html">corpus WHO European Region local .zip with examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../cython/index.html">Cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -407,6 +433,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../memmap/plot_mman.html">Memory-Mapping Showcase – Basic / Medium / Advanced</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../misc/index.html">Misc</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../misc/plot_misc_script.html">Misc Showcase</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../mlflow/index.html">MLflow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../mlflow/plot_mlflow.html">MLflow</a></li>
 </ul>
@@ -434,6 +464,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../stats/index.html">Stats</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stats/plot_gaussian_mixture_models.html">Gaussian Mixture Models — AIC, AICc, and BIC Model Selection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../stats/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
 </ul>
 </details></li>
@@ -524,88 +555,85 @@
 <span class="n">idx</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/repo/galleries/examples/annoy/plot_precision_script.py:37: UserWarning:
-
-seed=0 resets to Annoy's default seed
-
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/repo/galleries/examples/annoy/plot_precision_script.py:37: UserWarning: seed=0 resets to Annoy's default seed
+  idx.set_seed(0)
 
   0%|          | 0/100000 [00:00&lt;?, ?it/s]0 / 100000 = 0.0
 
-  2%|▏         | 1525/100000 [00:00&lt;00:06, 15245.76it/s]
-  3%|▎         | 3115/100000 [00:00&lt;00:06, 15628.97it/s]
-  5%|▍         | 4678/100000 [00:00&lt;00:06, 15251.59it/s]
-  6%|▋         | 6272/100000 [00:00&lt;00:06, 15515.78it/s]
-  8%|▊         | 7825/100000 [00:00&lt;00:06, 15327.47it/s]
-  9%|▉         | 9406/100000 [00:00&lt;00:05, 15488.24it/s]10000 / 100000 = 0.1
+  1%|▏         | 1454/100000 [00:00&lt;00:06, 14537.24it/s]
+  3%|▎         | 2908/100000 [00:00&lt;00:06, 14401.84it/s]
+  4%|▍         | 4349/100000 [00:00&lt;00:06, 14038.23it/s]
+  6%|▌         | 5817/100000 [00:00&lt;00:06, 14283.31it/s]
+  7%|▋         | 7312/100000 [00:00&lt;00:06, 14517.85it/s]
+  9%|▉         | 8780/100000 [00:00&lt;00:06, 14570.57it/s]10000 / 100000 = 0.1
 
- 11%|█         | 10956/100000 [00:00&lt;00:05, 15418.02it/s]
- 12%|█▏        | 12499/100000 [00:00&lt;00:05, 15404.56it/s]
- 14%|█▍        | 14055/100000 [00:00&lt;00:05, 15451.83it/s]
- 16%|█▌        | 15601/100000 [00:01&lt;00:05, 15449.01it/s]
- 17%|█▋        | 17147/100000 [00:01&lt;00:05, 15409.52it/s]
- 19%|█▊        | 18690/100000 [00:01&lt;00:05, 15412.50it/s]20000 / 100000 = 0.2
+ 10%|█         | 10238/100000 [00:00&lt;00:06, 14107.17it/s]
+ 12%|█▏        | 11761/100000 [00:00&lt;00:06, 14453.34it/s]
+ 13%|█▎        | 13295/100000 [00:00&lt;00:05, 14722.44it/s]
+ 15%|█▍        | 14940/100000 [00:01&lt;00:05, 15248.19it/s]
+ 16%|█▋        | 16468/100000 [00:01&lt;00:05, 14736.74it/s]
+ 18%|█▊        | 18029/100000 [00:01&lt;00:05, 14989.44it/s]
+ 20%|█▉        | 19533/100000 [00:01&lt;00:05, 14577.66it/s]20000 / 100000 = 0.2
 
- 20%|██        | 20292/100000 [00:01&lt;00:05, 15594.92it/s]
- 22%|██▏       | 21852/100000 [00:01&lt;00:05, 15526.58it/s]
- 23%|██▎       | 23405/100000 [00:01&lt;00:04, 15519.22it/s]
- 25%|██▌       | 25083/100000 [00:01&lt;00:04, 15896.81it/s]
- 27%|██▋       | 26673/100000 [00:01&lt;00:04, 15508.49it/s]
- 28%|██▊       | 28351/100000 [00:01&lt;00:04, 15880.93it/s]
- 30%|██▉       | 29980/100000 [00:01&lt;00:04, 16001.71it/s]30000 / 100000 = 0.3
+ 21%|██        | 21187/100000 [00:01&lt;00:05, 15146.49it/s]
+ 23%|██▎       | 22707/100000 [00:01&lt;00:05, 14533.83it/s]
+ 24%|██▍       | 24169/100000 [00:01&lt;00:05, 14229.45it/s]
+ 26%|██▌       | 25598/100000 [00:01&lt;00:05, 13937.14it/s]
+ 27%|██▋       | 27043/100000 [00:01&lt;00:05, 14082.40it/s]
+ 29%|██▊       | 28639/100000 [00:01&lt;00:04, 14625.38it/s]30000 / 100000 = 0.3
 
- 32%|███▏      | 31582/100000 [00:02&lt;00:04, 15888.59it/s]
- 33%|███▎      | 33173/100000 [00:02&lt;00:04, 15711.98it/s]
- 35%|███▍      | 34746/100000 [00:02&lt;00:04, 15463.59it/s]
- 36%|███▋      | 36294/100000 [00:02&lt;00:04, 15441.23it/s]
- 38%|███▊      | 37879/100000 [00:02&lt;00:03, 15560.55it/s]
- 39%|███▉      | 39444/100000 [00:02&lt;00:03, 15584.52it/s]40000 / 100000 = 0.4
+ 30%|███       | 30171/100000 [00:02&lt;00:04, 14828.42it/s]
+ 32%|███▏      | 31768/100000 [00:02&lt;00:04, 15161.74it/s]
+ 33%|███▎      | 33365/100000 [00:02&lt;00:04, 15400.87it/s]
+ 35%|███▍      | 34908/100000 [00:02&lt;00:04, 15404.12it/s]
+ 36%|███▋      | 36489/100000 [00:02&lt;00:04, 15524.65it/s]
+ 38%|███▊      | 38072/100000 [00:02&lt;00:03, 15614.16it/s]
+ 40%|███▉      | 39674/100000 [00:02&lt;00:03, 15733.91it/s]40000 / 100000 = 0.4
 
- 41%|████      | 41028/100000 [00:02&lt;00:03, 15658.66it/s]
- 43%|████▎     | 42625/100000 [00:02&lt;00:03, 15749.57it/s]
- 44%|████▍     | 44240/100000 [00:02&lt;00:03, 15868.25it/s]
- 46%|████▌     | 45828/100000 [00:02&lt;00:03, 15546.51it/s]
- 47%|████▋     | 47385/100000 [00:03&lt;00:03, 15456.07it/s]
- 49%|████▉     | 48932/100000 [00:03&lt;00:03, 15316.94it/s]50000 / 100000 = 0.5
+ 41%|████▏     | 41258/100000 [00:02&lt;00:03, 15764.04it/s]
+ 43%|████▎     | 42842/100000 [00:02&lt;00:03, 15786.57it/s]
+ 44%|████▍     | 44430/100000 [00:02&lt;00:03, 15811.76it/s]
+ 46%|████▌     | 46012/100000 [00:03&lt;00:03, 15634.42it/s]
+ 48%|████▊     | 47607/100000 [00:03&lt;00:03, 15727.87it/s]
+ 49%|████▉     | 49204/100000 [00:03&lt;00:03, 15799.11it/s]50000 / 100000 = 0.5
 
- 50%|█████     | 50465/100000 [00:03&lt;00:03, 15183.54it/s]
- 52%|█████▏    | 52027/100000 [00:03&lt;00:03, 15311.24it/s]
- 54%|█████▎    | 53560/100000 [00:03&lt;00:03, 15314.65it/s]
- 55%|█████▌    | 55100/100000 [00:03&lt;00:02, 15337.91it/s]
- 57%|█████▋    | 56635/100000 [00:03&lt;00:02, 15029.50it/s]
- 58%|█████▊    | 58140/100000 [00:03&lt;00:02, 14983.69it/s]
- 60%|█████▉    | 59640/100000 [00:03&lt;00:02, 14794.82it/s]60000 / 100000 = 0.6
+ 51%|█████     | 50798/100000 [00:03&lt;00:03, 15838.70it/s]
+ 52%|█████▏    | 52383/100000 [00:03&lt;00:03, 15690.44it/s]
+ 54%|█████▍    | 53977/100000 [00:03&lt;00:02, 15763.92it/s]
+ 56%|█████▌    | 55554/100000 [00:03&lt;00:02, 15726.73it/s]
+ 57%|█████▋    | 57167/100000 [00:03&lt;00:02, 15843.99it/s]
+ 59%|█████▉    | 58752/100000 [00:03&lt;00:02, 15653.75it/s]60000 / 100000 = 0.6
 
- 61%|██████    | 61121/100000 [00:03&lt;00:02, 14676.54it/s]
- 63%|██████▎   | 62595/100000 [00:04&lt;00:02, 14694.37it/s]
- 64%|██████▍   | 64149/100000 [00:04&lt;00:02, 14943.16it/s]
- 66%|██████▌   | 65645/100000 [00:04&lt;00:02, 14393.72it/s]
- 67%|██████▋   | 67244/100000 [00:04&lt;00:02, 14854.87it/s]
- 69%|██████▉   | 68811/100000 [00:04&lt;00:02, 15092.95it/s]70000 / 100000 = 0.7
+ 60%|██████    | 60348/100000 [00:03&lt;00:02, 15742.55it/s]
+ 62%|██████▏   | 61923/100000 [00:04&lt;00:02, 15644.37it/s]
+ 64%|██████▎   | 63522/100000 [00:04&lt;00:02, 15746.77it/s]
+ 65%|██████▌   | 65184/100000 [00:04&lt;00:02, 16005.91it/s]
+ 67%|██████▋   | 66940/100000 [00:04&lt;00:02, 16469.28it/s]
+ 69%|██████▊   | 68692/100000 [00:04&lt;00:01, 16782.31it/s]70000 / 100000 = 0.7
 
- 70%|███████   | 70325/100000 [00:04&lt;00:02, 14520.69it/s]
- 72%|███████▏  | 71856/100000 [00:04&lt;00:01, 14747.87it/s]
- 73%|███████▎  | 73355/100000 [00:04&lt;00:01, 14818.04it/s]
- 75%|███████▍  | 74841/100000 [00:04&lt;00:01, 14590.94it/s]
- 76%|███████▋  | 76304/100000 [00:05&lt;00:01, 14083.13it/s]
- 78%|███████▊  | 78017/100000 [00:05&lt;00:01, 14956.20it/s]
- 80%|███████▉  | 79647/100000 [00:05&lt;00:01, 15345.12it/s]80000 / 100000 = 0.8
+ 70%|███████   | 70442/100000 [00:04&lt;00:01, 16995.85it/s]
+ 72%|███████▏  | 72185/100000 [00:04&lt;00:01, 17124.65it/s]
+ 74%|███████▍  | 73926/100000 [00:04&lt;00:01, 17208.72it/s]
+ 76%|███████▌  | 75665/100000 [00:04&lt;00:01, 17260.76it/s]
+ 77%|███████▋  | 77392/100000 [00:04&lt;00:01, 17028.41it/s]
+ 79%|███████▉  | 79134/100000 [00:05&lt;00:01, 17143.25it/s]80000 / 100000 = 0.8
 
- 81%|████████▏ | 81274/100000 [00:05&lt;00:01, 15616.02it/s]
- 83%|████████▎ | 82841/100000 [00:05&lt;00:01, 14910.20it/s]
- 84%|████████▍ | 84342/100000 [00:05&lt;00:01, 14458.63it/s]
- 86%|████████▌ | 85978/100000 [00:05&lt;00:00, 14998.03it/s]
- 88%|████████▊ | 87604/100000 [00:05&lt;00:00, 15359.85it/s]
- 89%|████████▉ | 89148/100000 [00:05&lt;00:00, 15175.38it/s]90000 / 100000 = 0.9
+ 81%|████████  | 80873/100000 [00:05&lt;00:01, 17216.16it/s]
+ 83%|████████▎ | 82615/100000 [00:05&lt;00:01, 17276.23it/s]
+ 84%|████████▍ | 84355/100000 [00:05&lt;00:00, 17312.72it/s]
+ 86%|████████▌ | 86092/100000 [00:05&lt;00:00, 17328.76it/s]
+ 88%|████████▊ | 87826/100000 [00:05&lt;00:00, 17297.42it/s]
+ 90%|████████▉ | 89556/100000 [00:05&lt;00:00, 17280.74it/s]90000 / 100000 = 0.9
 
- 91%|█████████ | 90848/100000 [00:05&lt;00:00, 15706.04it/s]
- 93%|█████████▎| 92520/100000 [00:06&lt;00:00, 16002.31it/s]
- 94%|█████████▍| 94163/100000 [00:06&lt;00:00, 16128.43it/s]
- 96%|█████████▌| 95848/100000 [00:06&lt;00:00, 16342.44it/s]
- 97%|█████████▋| 97485/100000 [00:06&lt;00:00, 16150.43it/s]
- 99%|█████████▉| 99103/100000 [00:06&lt;00:00, 15864.11it/s]
-100%|██████████| 100000/100000 [00:06&lt;00:00, 15361.99it/s]
+ 91%|█████████▏| 91285/100000 [00:05&lt;00:00, 17270.47it/s]
+ 93%|█████████▎| 93028/100000 [00:05&lt;00:00, 17315.07it/s]
+ 95%|█████████▍| 94766/100000 [00:05&lt;00:00, 17332.50it/s]
+ 97%|█████████▋| 96511/100000 [00:06&lt;00:00, 17365.38it/s]
+ 98%|█████████▊| 98249/100000 [00:06&lt;00:00, 17368.62it/s]
+100%|█████████▉| 99986/100000 [00:06&lt;00:00, 17053.16it/s]
+100%|██████████| 100000/100000 [00:06&lt;00:00, 15876.87it/s]
 
-{'f': 100, 'metric': 'angular', 'n_neighbors': 5, 'on_disk_path': 'test.annoy', 'prefault': False, 'seed': None, 'verbose': None, 'schema_version': 0, 'n_items': 100000, 'n_trees': 200, 'memory_usage_byte': 270651036, 'memory_usage_mib': 258.11294174194336}
+{'f': 100, 'metric': 'angular', 'n_neighbors': 5, 'on_disk_path': 'test.annoy', 'prefault': False, 'seed': None, 'verbose': None, 'schema_version': 0, 'n_items': 100000, 'n_trees': 200, 'memory_usage_byte': 499984128, 'memory_usage_mib': 476.822021484375}
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -670,30 +698,28 @@ seed=0 resets to Annoy's default seed
 <span class="n">precision</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/repo/galleries/examples/annoy/plot_precision_script.py:111: UserWarning:
-
-seed=0 resets to Annoy's default seed
-
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/circleci/repo/galleries/examples/annoy/plot_precision_script.py:111: UserWarning: seed=0 resets to Annoy's default seed
+  q.set_seed(0)
 
   0%|          | 0/10 [00:00&lt;?, ?it/s]
- 70%|███████   | 7/10 [00:00&lt;00:00, 67.72it/s]
-100%|██████████| 10/10 [00:00&lt;00:00, 68.82it/s]
-limit: 10        precision:  11.00% avg time: 0.000144s
-limit: 100       precision:  12.00% avg time: 0.000098s
-limit: 1000      precision:  33.00% avg time: 0.000275s
-limit: 10000     precision:  76.00% avg time: 0.001839s
+ 70%|███████   | 7/10 [00:00&lt;00:00, 61.81it/s]
+100%|██████████| 10/10 [00:00&lt;00:00, 63.04it/s]
+limit: 10        precision:  10.00% avg time: 0.000119s
+limit: 100       precision:  16.00% avg time: 0.000110s
+limit: 1000      precision:  33.00% avg time: 0.000324s
+limit: 10000     precision:  86.00% avg time: 0.001898s
 </pre></div>
 </div>
-<p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-impute.html"><span class="doc">model-workflow: impute</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-bar.html"><span class="doc">plot-type: bar</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (2 minutes 3.692 seconds)</p>
+<p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-vector-db.html"><span class="doc">model-workflow: vector-db</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-bar.html"><span class="doc">plot-type: bar</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (2 minutes 1.794 seconds)</p>
 
 <p class="rubric">Related examples</p>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Index class."><img alt="" src="../../_images/sphx_glr_plot_annoy_to_NPY_CSV_thumb.png"/>
-<p><a class="reference internal" href="plot_annoy_to_NPY_CSV.html"><span class="doc">annoy.Index to NPY or CSV with examples</span></a></p>
-<div class="sphx-glr-thumbnail-title">annoy.Index to NPY or CSV with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_simple_script_thumb.png"/>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_simple_script_thumb.png"/>
 <p><a class="reference internal" href="plot_simple_script.html"><span class="doc">Simple annoy.AnnoyIndex with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">Simple annoy.AnnoyIndex with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.Index class."><img alt="" src="../../_images/sphx_glr_plot_annoy_to_NPY_CSV_thumb.png"/>
+<p><a class="reference internal" href="plot_annoy_to_NPY_CSV.html"><span class="doc">annoy.Index to NPY or CSV with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">annoy.Index to NPY or CSV with examples</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_mmap_script_thumb.png"/>
 <p><a class="reference internal" href="plot_mmap_script.html"><span class="doc">Mmap annoy.AnnoyIndex with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">Mmap annoy.AnnoyIndex with examples</div>
@@ -727,13 +753,7 @@ limit: 10000     precision:  76.00% avg time: 0.001839s
 </div>
 <dialog id="pst-secondary-sidebar-modal"></dialog>
 <div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
-<div class="sidebar-secondary-item">
-<div aria-label="source link" role="note">
-<h3>This Page</h3>
-<ul class="this-page-menu">
-<li><a href="../../_sources/auto_examples/annoy/plot_precision_script.rst.txt" rel="nofollow">Show Source</a></li>
-</ul>
-</div></div>
+
 <div class="sidebar-secondary-item"><div title="plot_precision_script.py"><a download="" href="../../_downloads/c2d2f0a185e42e4309a9e8e17501ce87/plot_precision_script.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_precision_script.ipynb"><a download="" href="../../_downloads/07d5582f4876eb3715769a9aead8056c/plot_precision_script.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/annoy/plot_precision_script.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/maintenance/0.4.X?urlpath=lab/tree/notebooks/auto_examples/annoy/plot_precision_script.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo.svg"/></a></div></div></div></div>
 </div>
 <footer class="bd-footer-content">
@@ -742,15 +762,15 @@ limit: 10000     precision:  76.00% avg time: 0.001839s
 </div>
 </div>
 <!-- Scripts loaded after <body> so the DOM is not blocked -->
-<script defer="" src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+<script defer="" src="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
+<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
 <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
 <div class="footer-items__start">
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.4.0.post10+git.20260217.bf0721e 2026-02-17T18:10Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.4.0.post11+git.20260412.64b40d9 2026-04-12T09:07Z.
       <br/>
 </p>
 </div>

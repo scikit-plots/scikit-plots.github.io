@@ -1,0 +1,1571 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../../" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="corpus WHO European Region local or url per file with examples" property="og:title"/>
+<meta content="website" property="og:type"/>
+<meta content="https://scikit-plots.github.io/stable/auto_examples/corpus/plot_corpus_who_per_file_script.html" property="og:url"/>
+<meta content="scikit-plots" property="og:site_name"/>
+<meta content="Examples related to the corpus submodule. Download the related packages: First we download the media preproccess libraries (text, image, audio or video). Tags: model-type: classification model-work..." property="og:description"/>
+<meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
+<meta content="scikit-plots" property="og:image:alt"/>
+<meta content="Examples related to the corpus submodule. Download the related packages: First we download the media preproccess libraries (text, image, audio or video). Tags: model-type: classification model-work..." name="description"/>
+<script>
+window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true}, "providers": {"claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Claude about this documentation page.", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask ChatGPT about this documentation page.", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Read {url} so I can ask questions about it.", "model": "gpt-4o", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this documentation page.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Please review this documentation: {url}\n\nI have questions.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
+</script>
+<title>corpus WHO European Region local or url per file with examples — scikit-plots 0.4.0 documentation</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet"/>
+<link href="../../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../../_static/graphviz.css?v=4ae1632d" rel="stylesheet" type="text/css"/>
+<link href="../../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/ai-assistant.css?v=9781a02e" rel="stylesheet" type="text/css"/>
+<link href="../../_static/jupyter-sphinx.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/thebelab.css" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
+<link href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery.css?v=d2d258e8" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery-binder.css?v=f4aeca0c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/colors.css?v=14208072" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/custom.css?v=e4cb1417" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script defer="" src="../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" rel="preload"/>
+<script src="../../_static/documentation_options.js?v=6c02275b"></script>
+<script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+<script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=e93d8674"></script>
+<script src="../../_static/ai-assistant.js?v=cb662cc4"></script>
+<script src="../../_static/thebelab-helper.js"></script>
+<script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+<script src="../../_static/design-tabs.js?v=f930bc37"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/corpus/plot_corpus_who_per_file_script';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.4.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+<script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+<script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
+<script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
+<link href="https://scikit-plots.github.io/auto_examples/corpus/plot_corpus_who_per_file_script.html" rel="canonical"/>
+<link href="../../_static/scikit-plots-favicon.ico" rel="icon"/>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="plot_corpus_who_youtube_shorts_script.html" rel="next" title="corpus WHO European Region YouTube shorts with examples"/>
+<link href="plot_corpus_knowledge_script.html" rel="prev" title="corpus Knowledge and Information local .png with examples"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="0.4" name="docsearch:version"/>
+<script src="../../_static/searchtools.js"></script>
+<script src="../../_static/language_data.js"></script>
+<script src="../../searchindex.js"></script>
+</head>
+<body data-default-mode="">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Skip to main content</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button">
+<i class="fa-solid fa-arrow-up"></i>Back to top</button>
+<dialog id="pst-search-dialog">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search the docs ..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search the docs ..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Version warning" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none" id="pst-header">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Site navigation" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../index.html">
+<img alt="scikit-plots homepage" class="logo__image only-light" src="../../_static/scikit-plots-logo-small.png"/>
+<img alt="scikit-plots homepage" class="logo__image only-dark pst-js-only" src="../../_static/scikit-plots-logo-small.png"/>
+</a></div>
+</div>
+<div class="navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../index.html">
+    Tutorials
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+<li class="nav-item dropdown">
+<button aria-controls="pst-nav-more-links" aria-expanded="false" class="btn dropdown-toggle nav-item" data-bs-toggle="dropdown" type="button">
+                    More
+                </button>
+<ul class="dropdown-menu" id="pst-nav-more-links">
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../whats_new/index.html">
+    Release History
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/community.html">
+    Community
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/governance.html">
+    Governance Process
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/index.html">
+    About Us | Project
+  </a>
+</li>
+</ul>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item navbar-persistent--container">
+<button aria-label="Search" class="btn search-button-field search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Search">
+<i class="fa-solid fa-magnifying-glass"></i>
+<span class="search-button__default-text">Search</span>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+</div>
+<div class="navbar-item">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Version switcher list" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">
+    Choose version  <!-- this text may get changed later by javascript -->
+<span class="caret"></span>
+</button>
+<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://scikit-plots.github.io/dev/project/community.html" rel="noopener" target="_blank" title="Social Media Platforms"><img alt="Social Media Platforms" class="icon-link-image" src="../../_static/logos/scikit-plots-logo.svg"/></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><img alt="PyPI" class="icon-link-image" src="../../_static/logos/python-logo.png"/></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/scikit-plots/scikit-plots" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i>
+<span class="sr-only">GitHub</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="navbar-persistent--mobile">
+<button aria-label="Search" class="btn search-button-field search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Search">
+<i class="fa-solid fa-magnifying-glass"></i>
+<span class="search-button__default-text">Search</span>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+</div>
+<button aria-label="On this page" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../introduction/index.html">
+    Introduction
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../apis/index.html">
+    APIs Reference
+  </a>
+</li>
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../index.html">
+    Tutorials
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
+    Tags
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../whats_new/index.html">
+    Release History
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-external" href="https://scikit-plots.github.io/dev/devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/community.html">
+    Community
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/code_of_conduct.html">
+    Code of Conduct
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/governance.html">
+    Governance Process
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/roadmap.html">
+    Roadmap
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/index.html">
+    About Us | Project
+  </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Version switcher list" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">
+    Choose version  <!-- this text may get changed later by javascript -->
+<span class="caret"></span>
+</button>
+<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://scikit-plots.github.io/dev/project/community.html" rel="noopener" target="_blank" title="Social Media Platforms"><img alt="Social Media Platforms" class="icon-link-image" src="../../_static/logos/scikit-plots-logo.svg"/></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://pypi.org/project/scikit-plots" rel="noopener" target="_blank" title="PyPI"><img alt="PyPI" class="icon-link-image" src="../../_static/logos/python-logo.png"/></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/scikit-plots/scikit-plots" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i>
+<span class="sr-only">GitHub</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button"><svg aria-hidden="true" class="pst-icon svg-inline--fa" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z" fill="currentColor"></path>
+</svg>
+<span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+<span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+<div class="sidebar-primary-item">
+<nav aria-label="Section Navigation" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Section Navigation</p>
+<div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00-blogs/index.html">blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00-jupyter_notebooks/index.html">jupyter notebooks</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">ANNoy Vector Index DB</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_legacy_c_api.html">annoy.Annoy legacy c-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_python_api.html">annoy.Index python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_0benchmark.html">Index (cython) python-api benchmark with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_api.html">Index (cython) python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_hamlet_example.html">Approximate Nearest Neighbors with Annoy — A Hamlet Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_to_NPY_CSV.html">annoy.Index to NPY or CSV with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_mmap_script.html">Mmap annoy.AnnoyIndex with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_precision_script.html">Precision annoy.AnnoyIndex with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_simple_script.html">Simple annoy.AnnoyIndex with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/s_compile_cpp.html">Compile and run the C++ Annoy with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../array_api/index.html">Array API support</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../calibration/index.html">Calibration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calibration/plot_calibration_script.html">plot_calibration with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../classification/index.html">Classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_classifier_eval_script.html">plot_classifier_eval with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_confusion_matrix_script.html">plot_confusion_matrix with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_feature_importances_script.html">plot_feature_importances with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_learning_curve_script.html">plot_learning_curve with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_precision_recall_script.html">plot_precision_recall with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_roc_script.html">plot_roc_curve with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../clustering/index.html">Clustering</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_elbow_script.html">plot_elbow with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_silhouette_script.html">plot_silhouette with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Corpus</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_a_tale_of_two_cities_mp3_script.html">corpus A Tale of Two Cities .mp3 with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_knowledge_script.html">corpus Knowledge and Information local .png with examples</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">corpus WHO European Region local or url per file with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_youtube_shorts_script.html">corpus WHO European Region YouTube shorts with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_zip_script.html">corpus WHO European Region local .zip with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cython/index.html">Cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_00_quickstart_compile_and_load.html">Cython quickstart: compile_and_load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_01_browse_and_compile_templates.html">Browse and compile templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_02_build_profiles.html">Build profiles: fast-debug, release, annotate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_03_cache_and_restart_reuse.html">Cache and restart reuse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_04_pin_alias.html">Pin/Alias: stable handles for cached builds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_05_package_examples_multimodule.html">Multi-module package builds (5 package examples)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_06_multifile_support_files.html">Multi-file builds: .pxi includes and external headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_07_cpp_mode_basics.html">C++ mode basics: cppclass and libcpp containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_08_vector_ops_without_numpy.html">Vector ops without NumPy: array(‘d’) + memoryviews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_09_workflow_templates_cli.html">Workflow templates (train / hpo / predict) + CLI entry template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_cython_template.html">Cython: Realtime compile_and_load (.pyx)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../decile/index.html">Decile</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_cumulative_gain_script.html">plot_cumulative_gain with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_ks_statistic_script.html">plot_ks_statistic with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_lift_script.html">plot_lift with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_legacy_script.html">Introduction to modelplotpy (legacy)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_script.html">Introduction to modelplotpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_report_script.html">plot_report with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../decomposition/index.html">Decomposition</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_2d_projection_script.html">plot_pca_2d_projection with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_component_variance_script.html">plot_pca_component_variance with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../impute/index.html">Impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../impute/plot_impute_script.html">annoy impute with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../memmap/index.html">MemMap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../memmap/plot_mman.html">Memory-Mapping Showcase – Basic / Medium / Advanced</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../misc/index.html">Misc</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../misc/plot_misc_script.html">Misc Showcase</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../mlflow/index.html">MLflow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mlflow/plot_mlflow.html">MLflow</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nc/index.html">Nc (NumCpp)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../nc/plot_nc_test.html">nc with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../preprocessing/index.html">Preprocessing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preprocessing/plot_dummy_code_encoder.html">Comparing DummyCode Encoder with Other Encoders</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../random/index.html">Random</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../random/plot_kiss_random.html">Enhanced KISS Random Generator - Complete Usage Examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../regression/index.html">Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../regression/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../seaborn/index.html">Seaborn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_aucplot_script.html">plot_aucplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_decileplot_script.html">plot_decileplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_evalplot_script.html">plot_evalplot_script with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../stats/index.html">Stats</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stats/plot_gaussian_mixture_models.html">Gaussian Mixture Models — AIC, AICc, and BIC Model Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../visualkeras/index.html">Visualkeras</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_ann_conv_dense.html">Visualkeras: Spam Classification Conv1D Dense Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_ann_dense.html">visualkeras: Spam Dense example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_autoencoder.html">visualkeras: autoencoder example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_custom_vgg16.html">visualkeras: custom vgg16 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_custom_vgg16_show_dimension.html">visualkeras: custom vgg16 show dimension example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_efficientnetv2.html">visualkeras: EfficientNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_resnetv2.html">visualkeras: ResNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_vgg.html">visualkeras: custom VGG example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_nlp_vector_index_db.html">visualkeras: Vector Index DB</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">Examples</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">Corpus</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">corpus WHO European Region local or url per file with examples</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+
+<section class="sphx-glr-example-title" id="corpus-who-european-region-local-or-url-per-file-with-examples">
+<span id="sphx-glr-auto-examples-corpus-plot-corpus-who-per-file-script-py"></span><h1>corpus WHO European Region local or url per file with examples<a class="headerlink" href="#corpus-who-european-region-local-or-url-per-file-with-examples" title="Link to this heading">#</a></h1>
+<p>Examples related to the <a class="reference internal" href="../../apis/scikitplot.corpus.html#module-scikitplot.corpus" title="scikitplot.corpus"><code class="xref py py-mod docutils literal notranslate"><span class="pre">corpus</span></code></a> submodule.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: The scikit-plots developers</span>
+<span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
+</pre></div>
+</div>
+<section id="download-the-related-packages">
+<h2>Download the related packages<a class="headerlink" href="#download-the-related-packages" title="Link to this heading">#</a></h2>
+<p>First we download the media preproccess libraries (text, image, audio or video).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">nltk</span> <span class="n">gensim</span> <span class="n">langdetect</span> <span class="n">faster</span><span class="o">-</span><span class="n">whisper</span> <span class="n">openai</span><span class="o">-</span><span class="n">whisper</span> <span class="n">pytesseract</span> <span class="n">youtube</span><span class="o">-</span><span class="n">transcript</span><span class="o">-</span><span class="n">api</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">tesseract</span><span class="o">-</span><span class="n">ocr</span>
+
+<span class="n">curl</span> <span class="o">-</span><span class="n">O</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">plots</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">plots</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">requirements</span><span class="o">/</span><span class="n">corpus</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">/</span><span class="n">corpus</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">scikit</span><span class="o">-</span><span class="n">plots</span><span class="p">[</span><span class="n">corpus</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p>galleries/examples/00-jupyter_notebooks/corpus/plot_corpus_from_any_media_notebook.ipynb</p></li>
+</ul>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import faster_whisper</span>
+<span class="c1"># import whisper  # openai-whisper</span>
+<span class="c1"># import youtube_transcript_api</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">textwrap</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">corpus</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">DocumentReader</span><span class="p">,</span>
+    <span class="n">CorpusPipeline</span><span class="p">,</span>
+    <span class="n">SentenceChunker</span><span class="p">,</span>
+    <span class="n">ExportFormat</span><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument" title="scikitplot.corpus.CorpusDocument"><span class="n">CorpusDocument</span></a><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType" title="scikitplot.corpus.SourceType"><span class="n">SourceType</span></a><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus._schema</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument" title="scikitplot.corpus.CorpusDocument"><span class="n">CorpusDocument</span></a><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType" title="scikitplot.corpus.SourceType"><span class="n">SourceType</span></a><span class="p">,</span>
+    <span class="n">MatchMode</span><span class="p">,</span>
+    <span class="n">SectionType</span><span class="p">,</span>
+    <span class="n">ChunkingStrategy</span><span class="p">,</span>
+    <span class="n">_PROMOTED_RAW_KEYS</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus._base</span><span class="w"> </span><span class="kn">import</span> <span class="n">DocumentReader</span><span class="p">,</span> <span class="n">DefaultFilter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus._normalizers</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.NormalizationPipeline.html#scikitplot.corpus.NormalizationPipeline" title="scikitplot.corpus.NormalizationPipeline"><span class="n">NormalizationPipeline</span></a><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.UnicodeNormalizer.html#scikitplot.corpus.UnicodeNormalizer" title="scikitplot.corpus.UnicodeNormalizer"><span class="n">UnicodeNormalizer</span></a><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.WhitespaceNormalizer.html#scikitplot.corpus.WhitespaceNormalizer" title="scikitplot.corpus.WhitespaceNormalizer"><span class="n">WhitespaceNormalizer</span></a><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus._enrichers._nlp_enricher</span><span class="w"> </span><span class="kn">import</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.NLPEnricher.html#scikitplot.corpus.NLPEnricher" title="scikitplot.corpus.NLPEnricher"><span class="n">NLPEnricher</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.EnricherConfig.html#scikitplot.corpus.EnricherConfig" title="scikitplot.corpus.EnricherConfig"><span class="n">EnricherConfig</span></a>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus._similarity._similarity</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SimilarityIndex.html#scikitplot.corpus.SimilarityIndex" title="scikitplot.corpus.SimilarityIndex"><span class="n">SimilarityIndex</span></a><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SearchConfig.html#scikitplot.corpus.SearchConfig" title="scikitplot.corpus.SearchConfig"><span class="n">SearchConfig</span></a><span class="p">,</span>
+    <span class="n">SearchResult</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus._adapters</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_langchain_documents.html#scikitplot.corpus.to_langchain_documents" title="scikitplot.corpus.to_langchain_documents"><span class="n">to_langchain_documents</span></a><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_langgraph_state.html#scikitplot.corpus.to_langgraph_state" title="scikitplot.corpus.to_langgraph_state"><span class="n">to_langgraph_state</span></a><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_mcp_resources.html#scikitplot.corpus.to_mcp_resources" title="scikitplot.corpus.to_mcp_resources"><span class="n">to_mcp_resources</span></a><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_mcp_tool_result.html#scikitplot.corpus.to_mcp_tool_result" title="scikitplot.corpus.to_mcp_tool_result"><span class="n">to_mcp_tool_result</span></a><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_huggingface_dataset.html#scikitplot.corpus.to_huggingface_dataset" title="scikitplot.corpus.to_huggingface_dataset"><span class="n">to_huggingface_dataset</span></a><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_rag_tuples.html#scikitplot.corpus.to_rag_tuples" title="scikitplot.corpus.to_rag_tuples"><span class="n">to_rag_tuples</span></a><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_jsonl.html#scikitplot.corpus.to_jsonl" title="scikitplot.corpus.to_jsonl"><span class="n">to_jsonl</span></a><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.MCPCorpusServer.html#scikitplot.corpus.MCPCorpusServer" title="scikitplot.corpus.MCPCorpusServer"><span class="n">MCPCorpusServer</span></a><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2026-04-12 09:11:37.204744: W scikitplot.corpus._base 123464331078528 _base.py:2052:__init_subclass__] DocumentReader: extension '.zip' already registered to ALTOReader; overriding with ZipReader.
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
+<span class="c1"># HELPER: print section banners</span>
+<span class="c1"># ===========================================================================</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">banner</span><span class="p">(</span><span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">char</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"="</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">char</span> <span class="o">*</span> <span class="mi">72</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="se">\n</span><span class="s2">  </span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">mini_banner</span><span class="p">(</span><span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">  --- </span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2"> ---</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">show_doc</span><span class="p">(</span><span class="n">doc</span><span class="p">:</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument" title="scikitplot.corpus.CorpusDocument"><span class="n">CorpusDocument</span></a><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Pretty-print a single CorpusDocument."""</span>
+    <span class="n">text_preview</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="s2">" "</span><span class="p">)</span>
+    <span class="n">norm_preview</span> <span class="o">=</span> <span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">normalized_text</span> <span class="ow">or</span> <span class="s2">""</span><span class="p">)[:</span><span class="mi">80</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="s2">" "</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  [</span><span class="si">{</span><span class="n">index</span><span class="si">:</span><span class="s2">3d</span><span class="si">}</span><span class="s2">] doc_id=</span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">doc_id</span><span class="p">[:</span><span class="mi">12</span><span class="p">]</span><span class="si">}</span><span class="s2">…  source_type=</span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">source_type</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"        text: </span><span class="si">{</span><span class="n">text_preview</span><span class="si">!r}</span><span class="s2">…"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">norm_preview</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"        norm: </span><span class="si">{</span><span class="n">norm_preview</span><span class="si">!r}</span><span class="s2">…"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">tokens</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"        tokens(</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">tokens</span><span class="p">)</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">tokens</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span><span class="si">}</span><span class="s2">…"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">keywords</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"        keywords: </span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">keywords</span><span class="p">[:</span><span class="mi">6</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">timecode_start</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"        timecode: </span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">timecode_start</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">s – </span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">timecode_end</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">s"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">confidence</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"        confidence: </span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">confidence</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">page_number</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"        page: </span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">page_number</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
+<span class="c1"># PHASE 1: INGEST — Process all 5 source types via DocumentReader</span>
+<span class="c1"># ===========================================================================</span>
+
+<span class="n">banner</span><span class="p">(</span><span class="s2">"PHASE 1: INGEST — 5 Source Types via DocumentReader"</span><span class="p">)</span>
+
+<span class="n">all_documents</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument" title="scikitplot.corpus.CorpusDocument"><span class="n">CorpusDocument</span></a><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">source_log</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># --- Source ①: Web Article (HTML) ---</span>
+<span class="c1"># In production: DocumentReader.from_url("https://www.who.int/europe/news/item/...")</span>
+<span class="c1"># Here we use the local text proxy (same content)</span>
+<span class="c1"># https://archive.org/download/WHO-documents</span>
+<span class="n">mini_banner</span><span class="p">(</span><span class="s2">"Source ①: Web Article (text proxy for HTML URL)"</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">if</span> <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"who_health_care_article_raw_html.txt"</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="c1"># from local raw html page</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">DocumentReader</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"who_health_care_article_raw_html.txt"</span><span class="p">),</span>
+            <span class="n">source_type</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType" title="scikitplot.corpus.SourceType"><span class="n">SourceType</span></a><span class="o">.</span><span class="n">WEB</span><span class="p">,</span>
+            <span class="n">source_title</span><span class="o">=</span><span class="s2">"Out-of-pocket payments for health care unaffordable for millions in Europe"</span><span class="p">,</span>
+            <span class="n">source_author</span><span class="o">=</span><span class="s2">"WHO Regional Office for Europe"</span><span class="p">,</span>
+            <span class="n">source_date</span><span class="o">=</span><span class="s2">"2023-12-12"</span><span class="p">,</span>
+            <span class="n">collection_id</span><span class="o">=</span><span class="s2">"who-greece-financial-protection"</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># from url raw html page DocumentReader.from_url for raw html</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">DocumentReader</span><span class="o">.</span><span class="n">from_url</span><span class="p">(</span>
+            <span class="s2">"https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows"</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="n">docs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">reader</span><span class="o">.</span><span class="n">get_documents</span><span class="p">())</span>
+    <span class="n">all_documents</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
+    <span class="n">source_log</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"web_article"</span><span class="p">,</span> <span class="s2">"n_docs"</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">docs</span><span class="p">),</span> <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"OK"</span><span class="p">})</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ Web article: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span><span class="si">}</span><span class="s2"> chunks ingested"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">docs</span><span class="p">:</span>
+        <span class="n">show_doc</span><span class="p">(</span><span class="n">docs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">source_log</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"web_article"</span><span class="p">,</span> <span class="s2">"n_docs"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"status"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"ERROR: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">})</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✗ Web article: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>========================================================================
+  PHASE 1: INGEST — 5 Source Types via DocumentReader
+========================================================================
+
+
+  --- Source ①: Web Article (text proxy for HTML URL) ---
+
+  ✓ Web article: 91 chunks ingested
+  [  0] doc_id=9432e3e0cdf3…  source_type=web
+        text: 'Out-of-pocket payments for primary health care unaffordable for millions in Europe, new WHO report s'…
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">docs</span><span class="p">[</span><span class="mi">60</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>'Catastrophic out-of-pocket payments are mainly driven by household spending on services that are commonly delivered or managed in primary-care settings, indicating important gaps in the coverage of primary care in many countries.'
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">all_documents</span><span class="p">[</span><span class="mi">60</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>'Catastrophic out-of-pocket payments are mainly driven by household spending on services that are commonly delivered or managed in primary-care settings, indicating important gaps in the coverage of primary care in many countries.'
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Source ②: YouTube Transcript ---</span>
+<span class="c1"># In production: DocumentReader.from_url("https://youtu.be/rwPISgZcYIk")</span>
+<span class="c1"># "https://youtu.be/rwPISgZcYIk",  # https://www.youtube.com/watch?v=rwPISgZcYIk</span>
+<span class="n">mini_banner</span><span class="p">(</span><span class="s2">"Source ②: YouTube Transcript (text proxy)"</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">if</span> <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"who_video_transcript.txt"</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="c1"># TODO: Not implemented from local for raw video embedding support</span>
+        <span class="c1"># from local video Transcript</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">DocumentReader</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"who_video_transcript.txt"</span><span class="p">),</span>
+            <span class="n">source_type</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType" title="scikitplot.corpus.SourceType"><span class="n">SourceType</span></a><span class="o">.</span><span class="n">VIDEO</span><span class="p">,</span>
+            <span class="n">source_title</span><span class="o">=</span><span class="s2">"Can people afford to pay for health care? WHO Europe"</span><span class="p">,</span>
+            <span class="n">collection_id</span><span class="o">=</span><span class="s2">"who-greece-financial-protection"</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># TODO: Not implemented pdf from DocumentReader.from_url for raw video embedding support</span>
+        <span class="c1"># from url video Transcript</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">DocumentReader</span><span class="o">.</span><span class="n">from_url</span><span class="p">(</span><span class="s2">"https://youtu.be/rwPISgZcYIk"</span><span class="p">)</span>
+    <span class="n">docs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">reader</span><span class="o">.</span><span class="n">get_documents</span><span class="p">())</span>
+    <span class="n">all_documents</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
+    <span class="n">source_log</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"youtube_transcript"</span><span class="p">,</span> <span class="s2">"n_docs"</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">docs</span><span class="p">),</span> <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"OK"</span><span class="p">})</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ YouTube transcript: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span><span class="si">}</span><span class="s2"> chunks ingested"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">docs</span><span class="p">:</span>
+        <span class="n">show_doc</span><span class="p">(</span><span class="n">docs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">source_log</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"youtube_transcript"</span><span class="p">,</span> <span class="s2">"n_docs"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"status"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"ERROR: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">})</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✗ YouTube transcript: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  --- Source ②: YouTube Transcript (text proxy) ---
+
+  ✗ YouTube transcript: YouTubeReader: could not retrieve transcripts for video 'rwPISgZcYIk':
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=rwPISgZcYIk! This is most likely caused by:
+
+YouTube is blocking requests from your IP. This usually is due to one of the following reasons:
+- You have done too many requests and your IP has been blocked by YouTube
+- You are doing requests from an IP belonging to a cloud provider (like AWS, Google Cloud Platform, Azure, etc.). Unfortunately, most IPs from cloud providers are blocked by YouTube.
+
+There are two things you can do to work around this:
+1. Use proxies to hide your IP address, as explained in the "Working around IP bans" section of the README (https://github.com/jdepoix/youtube-transcript-api?tab=readme-ov-file#working-around-ip-bans-requestblocked-or-ipblocked-exception).
+2. (NOT RECOMMENDED) If you authenticate your requests using cookies, you will be able to continue doing requests for a while. However, YouTube will eventually permanently ban the account that you have used to authenticate with! So only do this if you don't mind your account being banned!
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># docs[0].text</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Source ③: PDF Report ---</span>
+<span class="c1"># In production: fetch PDF from URL then DocumentReader.create("report.pdf")</span>
+<span class="n">mini_banner</span><span class="p">(</span><span class="s2">"Source ③: PDF Report (text proxy)"</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">if</span> <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"WHO-EURO-2025-12555-52329-80560-eng.pdf"</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="c1"># from local pdf</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">DocumentReader</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"WHO-EURO-2025-12555-52329-80560-eng.pdf"</span><span class="p">),</span>
+            <span class="n">source_type</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType" title="scikitplot.corpus.SourceType"><span class="n">SourceType</span></a><span class="o">.</span><span class="n">RESEARCH</span><span class="p">,</span>
+            <span class="n">source_title</span><span class="o">=</span><span class="s2">"Financial Protection Review: Greece Summary"</span><span class="p">,</span>
+            <span class="n">source_author</span><span class="o">=</span><span class="s2">"WHO Barcelona Office"</span><span class="p">,</span>
+            <span class="n">source_date</span><span class="o">=</span><span class="s2">"2023-01-01"</span><span class="p">,</span>
+            <span class="n">doi</span><span class="o">=</span><span class="s2">"10.2307/who-greece-fp-2023"</span><span class="p">,</span>
+            <span class="n">collection_id</span><span class="o">=</span><span class="s2">"who-greece-financial-protection"</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># TODO: Not implemented pdf from DocumentReader.from_url pdf url link</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">DocumentReader</span><span class="o">.</span><span class="n">from_url</span><span class="p">(</span>
+            <span class="s2">"https://iris.who.int/server/api/core/bitstreams/7ad66865-7f23-4485-8cf5-7b3d78bdf4f9/content"</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">pass</span>
+    <span class="n">docs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">reader</span><span class="o">.</span><span class="n">get_documents</span><span class="p">())</span>
+    <span class="n">all_documents</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
+    <span class="n">source_log</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"pdf_report"</span><span class="p">,</span> <span class="s2">"n_docs"</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">docs</span><span class="p">),</span> <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"OK"</span><span class="p">})</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ PDF report: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span><span class="si">}</span><span class="s2"> chunks ingested"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">docs</span><span class="p">:</span>
+        <span class="n">show_doc</span><span class="p">(</span><span class="n">docs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">source_log</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"pdf_report"</span><span class="p">,</span> <span class="s2">"n_docs"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"status"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"ERROR: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">})</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✗ PDF report: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  --- Source ③: PDF Report (text proxy) ---
+
+2026-04-12 09:11:38.932808: W scikitplot.corpus._readers._pdf 123464331078528 _pdf.py:521:get_raw_chunks] PDFReader: could not determine page count for https://iris.who.int/server/api/core/bitstreams/7ad66865-7f23-4485-8cf5-7b3d78bdf4f9/content. Attempting page-by-page extraction until first failure.
+  ✗ PDF report: Neither pdfminer.six nor pypdf is installed. Install at least one:
+  pip install pdfminer.six
+  pip install pypdf
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># docs[0].text</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Source ④: Document Scan (Image OCR) ---</span>
+<span class="n">mini_banner</span><span class="p">(</span><span class="s2">"Source ④: Document Scan (JPG → OCR)"</span><span class="p">)</span>
+<span class="n">image_path</span> <span class="o">=</span> <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"WHO-EURO-2025-12555-52329-80560-eng.pdf.jpg"</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">image_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="c1"># TODO: Not implemented image from local</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">DocumentReader</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">image_path</span><span class="p">,</span>
+            <span class="n">source_type</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType" title="scikitplot.corpus.SourceType"><span class="n">SourceType</span></a><span class="o">.</span><span class="n">IMAGE</span><span class="p">,</span>
+            <span class="n">source_title</span><span class="o">=</span><span class="s2">"WHO Greece Report — Page 1 Scan"</span><span class="p">,</span>
+            <span class="n">collection_id</span><span class="o">=</span><span class="s2">"who-greece-financial-protection"</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># TODO: Not implemented for image DocumentReader.from_url image url link</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">DocumentReader</span><span class="o">.</span><span class="n">from_url</span><span class="p">(</span>
+            <span class="s2">"https://iris.who.int/server/api/core/bitstreams/d57241c0-512d-4cfc-9ead-91a83eea83f0/content"</span><span class="p">,</span>
+            <span class="n">source_type</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType" title="scikitplot.corpus.SourceType"><span class="n">SourceType</span></a><span class="o">.</span><span class="n">IMAGE</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">pass</span>
+    <span class="n">docs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">reader</span><span class="o">.</span><span class="n">get_documents</span><span class="p">())</span>
+    <span class="n">all_documents</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
+    <span class="n">source_log</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"image_ocr"</span><span class="p">,</span> <span class="s2">"n_docs"</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">docs</span><span class="p">),</span> <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"OK"</span><span class="p">})</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ Image OCR: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span><span class="si">}</span><span class="s2"> chunks ingested"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">docs</span><span class="p">:</span>
+        <span class="n">show_doc</span><span class="p">(</span><span class="n">docs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">source_log</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"image_ocr"</span><span class="p">,</span> <span class="s2">"n_docs"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"status"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"SKIP (dep missing): </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">})</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ⚠ Image OCR skipped (dependency not installed): </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    In production: pip install pytesseract Pillow"</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">source_log</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"image_ocr"</span><span class="p">,</span> <span class="s2">"n_docs"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"status"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"ERROR: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">})</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✗ Image OCR: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>--- Source ④: Document Scan (JPG → OCR) ---
+
+✓ Image OCR: 1 chunks ingested
+[  0] doc_id=54c988bceb4a…  source_type=image
+      text: '= re can people afford topay for health care?  New evidence on financial protection  InGreece! summa'…
+      confidence: 0.598
+      page: 0
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># docs[0].text</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Source ⑤: Audio Podcast (MP3 → ASR) ---</span>
+<span class="n">mini_banner</span><span class="p">(</span><span class="s2">"Source ⑤: Audio Podcast (MP3 → ASR)"</span><span class="p">)</span>
+<span class="n">audio_path</span> <span class="o">=</span> <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"data/can-people-afford-to-pay-for-health-care.mp3"</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">audio_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="c1"># TODO: Not implemented audio from local</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">DocumentReader</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">audio_path</span><span class="p">,</span>
+            <span class="n">source_type</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType" title="scikitplot.corpus.SourceType"><span class="n">SourceType</span></a><span class="o">.</span><span class="n">AUDIO</span><span class="p">,</span>
+            <span class="n">source_title</span><span class="o">=</span><span class="s2">"Can people afford to pay for health care? (podcast)"</span><span class="p">,</span>
+            <span class="n">collection_id</span><span class="o">=</span><span class="s2">"who-greece-financial-protection"</span><span class="p">,</span>
+            <span class="n">transcribe</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="c1"># If Needed like (animal sounds)</span>
+            <span class="c1"># [ERROR: AudioReader: classify=True requires a 'classifier' callable. Provide a function with signature: classifier(path: Path, offset: float, duration: float) -&gt; list[dict[str, Any]].]</span>
+            <span class="c1"># classify=True,</span>
+            <span class="c1"># classifier=my_classifier,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># TODO: Not implemented audio from DocumentReader.from_url audio file url link</span>
+        <span class="c1"># https://archive.org/details/makingcon-241016/makingcon-241016_promo.mp3</span>
+        <span class="c1"># https://www.bbc.com/audio/play/w3ct6vk6</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">DocumentReader</span><span class="o">.</span><span class="n">from_url</span><span class="p">(</span>
+            <span class="s2">"https://archive.org/download/makingcon-241016/makingcon-241016_promo.mp3"</span><span class="p">,</span>
+            <span class="n">transcribe</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">pass</span>
+    <span class="n">docs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">reader</span><span class="o">.</span><span class="n">get_documents</span><span class="p">())</span>
+    <span class="n">all_documents</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
+    <span class="n">source_log</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"audio_asr"</span><span class="p">,</span> <span class="s2">"n_docs"</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">docs</span><span class="p">),</span> <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"OK"</span><span class="p">})</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ Audio ASR: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span><span class="si">}</span><span class="s2"> chunks ingested"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">docs</span><span class="p">:</span>
+        <span class="n">show_doc</span><span class="p">(</span><span class="n">docs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">source_log</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"audio_asr"</span><span class="p">,</span> <span class="s2">"n_docs"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"status"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"SKIP (dep missing)"</span><span class="p">})</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ⚠ Audio ASR skipped (dependency not installed): </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    In production: pip install faster-whisper librosa"</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">source_log</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"audio_asr"</span><span class="p">,</span> <span class="s2">"n_docs"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"status"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"ERROR: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">})</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✗ Audio ASR: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>--- Source ⑤: Audio Podcast (MP3 → ASR) ---
+
+✓ Audio ASR: 5 chunks ingested
+[  0] doc_id=7c39f4d500e1…  source_type=audio
+      text: 'Can people afford to pay for health care in Europe?'…
+      timecode: 0.0s – 6.0s
+      confidence: 0.854
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># docs[0].text</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Ingestion Summary ---</span>
+<span class="n">mini_banner</span><span class="p">(</span><span class="s2">"Ingestion Summary"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">source_log</span><span class="p">:</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="s2">"✓"</span> <span class="k">if</span> <span class="n">entry</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"OK"</span> <span class="k">else</span> <span class="s2">"⚠"</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  </span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">entry</span><span class="p">[</span><span class="s1">'type'</span><span class="p">]</span><span class="si">:</span><span class="s2">25s</span><span class="si">}</span><span class="s2"> → </span><span class="si">{</span><span class="n">entry</span><span class="p">[</span><span class="s1">'n_docs'</span><span class="p">]</span><span class="si">:</span><span class="s2">3d</span><span class="si">}</span><span class="s2"> docs  [</span><span class="si">{</span><span class="n">entry</span><span class="p">[</span><span class="s1">'status'</span><span class="p">]</span><span class="si">}</span><span class="s2">]"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">  Total documents in corpus: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">all_documents</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  --- Ingestion Summary ---
+
+  ✓ web_article               →  91 docs  [OK]
+  ⚠ youtube_transcript        →   0 docs  [ERROR: YouTubeReader: could not retrieve transcripts for video 'rwPISgZcYIk':
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=rwPISgZcYIk! This is most likely caused by:
+
+YouTube is blocking requests from your IP. This usually is due to one of the following reasons:
+- You have done too many requests and your IP has been blocked by YouTube
+- You are doing requests from an IP belonging to a cloud provider (like AWS, Google Cloud Platform, Azure, etc.). Unfortunately, most IPs from cloud providers are blocked by YouTube.
+
+There are two things you can do to work around this:
+1. Use proxies to hide your IP address, as explained in the "Working around IP bans" section of the README (https://github.com/jdepoix/youtube-transcript-api?tab=readme-ov-file#working-around-ip-bans-requestblocked-or-ipblocked-exception).
+2. (NOT RECOMMENDED) If you authenticate your requests using cookies, you will be able to continue doing requests for a while. However, YouTube will eventually permanently ban the account that you have used to authenticate with! So only do this if you don't mind your account being banned!
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!]
+  ⚠ pdf_report                →   0 docs  [ERROR: Neither pdfminer.six nor pypdf is installed. Install at least one:
+  pip install pdfminer.six
+  pip install pypdf]
+  ✓ image_ocr                 →   1 docs  [OK]
+  ✓ audio_asr                 →   5 docs  [OK]
+
+  Total documents in corpus: 97
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
+<span class="c1"># PHASE 2: NORMALIZE — Clean text for embedding quality</span>
+<span class="c1"># ===========================================================================</span>
+
+<span class="n">banner</span><span class="p">(</span><span class="s2">"PHASE 2: NORMALIZE — Unicode + Whitespace cleanup"</span><span class="p">)</span>
+
+<span class="n">normalizer</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.NormalizationPipeline.html#scikitplot.corpus.NormalizationPipeline" title="scikitplot.corpus.NormalizationPipeline"><span class="n">NormalizationPipeline</span></a><span class="p">([</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.UnicodeNormalizer.html#scikitplot.corpus.UnicodeNormalizer" title="scikitplot.corpus.UnicodeNormalizer"><span class="n">UnicodeNormalizer</span></a><span class="p">(),</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.WhitespaceNormalizer.html#scikitplot.corpus.WhitespaceNormalizer" title="scikitplot.corpus.WhitespaceNormalizer"><span class="n">WhitespaceNormalizer</span></a><span class="p">(),</span>
+<span class="p">])</span>
+<span class="n">all_documents</span> <span class="o">=</span> <span class="n">normalizer</span><span class="o">.</span><span class="n">normalize_batch</span><span class="p">(</span><span class="n">all_documents</span><span class="p">)</span>
+
+<span class="n">n_normalised</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">all_documents</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">normalized_text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ Normalised </span><span class="si">{</span><span class="n">n_normalised</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">all_documents</span><span class="p">)</span><span class="si">}</span><span class="s2"> documents"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">all_documents</span><span class="p">:</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">all_documents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  Example (doc 0):"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    text[:80]:           </span><span class="si">{</span><span class="n">d</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">80</span><span class="p">]</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    normalized_text[:80]: </span><span class="si">{</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">normalized_text</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="s1">''</span><span class="p">)[:</span><span class="mi">80</span><span class="p">]</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>========================================================================
+  PHASE 2: NORMALIZE — Unicode + Whitespace cleanup
+========================================================================
+
+  ✓ Normalised 97/97 documents
+  Example (doc 0):
+    text[:80]:           'Out-of-pocket payments for primary health care unaffordable for millions in Euro'
+    normalized_text[:80]: 'Out-of-pocket payments for primary health care unaffordable for millions in Euro'
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
+<span class="c1"># PHASE 3: ENRICH — Tokenize + keywords for KEYWORD/BM25 search</span>
+<span class="c1"># ===========================================================================</span>
+
+<span class="n">banner</span><span class="p">(</span><span class="s2">"PHASE 3: ENRICH — Tokens + Keywords (NLPEnricher)"</span><span class="p">)</span>
+
+<span class="n">enricher</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.NLPEnricher.html#scikitplot.corpus.NLPEnricher" title="scikitplot.corpus.NLPEnricher"><span class="n">NLPEnricher</span></a><span class="p">(</span><span class="n">config</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.EnricherConfig.html#scikitplot.corpus.EnricherConfig" title="scikitplot.corpus.EnricherConfig"><span class="n">EnricherConfig</span></a><span class="p">(</span>
+    <span class="n">tokenizer</span><span class="o">=</span><span class="s2">"simple"</span><span class="p">,</span>
+    <span class="n">keyword_extractor</span><span class="o">=</span><span class="s2">"frequency"</span><span class="p">,</span>
+    <span class="n">max_keywords</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+    <span class="n">remove_stopwords</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">min_token_length</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="p">))</span>
+<span class="n">all_documents</span> <span class="o">=</span> <span class="n">enricher</span><span class="o">.</span><span class="n">enrich_documents</span><span class="p">(</span><span class="n">all_documents</span><span class="p">)</span>
+
+<span class="n">n_enriched</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">all_documents</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">tokens</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ Enriched </span><span class="si">{</span><span class="n">n_enriched</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">all_documents</span><span class="p">)</span><span class="si">}</span><span class="s2"> documents"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">all_documents</span><span class="p">:</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">all_documents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  Example (doc 0):"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    tokens(</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">tokens</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="p">[])</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">tokens</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="p">[])[:</span><span class="mi">10</span><span class="p">]</span><span class="si">}</span><span class="s2">…"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    keywords: </span><span class="si">{</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">keywords</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="p">[])[:</span><span class="mi">8</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>========================================================================
+  PHASE 3: ENRICH — Tokens + Keywords (NLPEnricher)
+========================================================================
+
+  ✓ Enriched 97/97 documents
+  Example (doc 0):
+    tokens(11): ['pocket', 'payments', 'primary', 'health', 'care', 'unaffordable', 'millions', 'europe', 'new', 'report']…
+    keywords: ['pocket', 'payments', 'primary', 'health', 'care', 'unaffordable', 'millions', 'europe']
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
+<span class="c1"># PHASE 4: INDEX — Build SimilarityIndex (KEYWORD mode, no embeddings)</span>
+<span class="c1"># ===========================================================================</span>
+
+<span class="n">banner</span><span class="p">(</span><span class="s2">"PHASE 4: INDEX — Build SimilarityIndex (BM25 keyword mode)"</span><span class="p">)</span>
+
+<span class="n">index</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SimilarityIndex.html#scikitplot.corpus.SimilarityIndex" title="scikitplot.corpus.SimilarityIndex"><span class="n">SimilarityIndex</span></a><span class="p">(</span><span class="n">config</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SearchConfig.html#scikitplot.corpus.SearchConfig" title="scikitplot.corpus.SearchConfig"><span class="n">SearchConfig</span></a><span class="p">(</span><span class="n">match_mode</span><span class="o">=</span><span class="s2">"keyword"</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">index</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">all_documents</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ Index built: </span><span class="si">{</span><span class="n">index</span><span class="o">.</span><span class="n">n_documents</span><span class="si">}</span><span class="s2"> documents, dense=</span><span class="si">{</span><span class="n">index</span><span class="o">.</span><span class="n">has_embeddings</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>========================================================================
+  PHASE 4: INDEX — Build SimilarityIndex (BM25 keyword mode)
+========================================================================
+
+  ✓ Index built: 97 documents, dense=False
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
+<span class="c1"># PHASE 5: SEARCH — Multi-mode queries</span>
+<span class="c1"># ===========================================================================</span>
+
+<span class="n">banner</span><span class="p">(</span><span class="s2">"PHASE 5: SEARCH — Multi-mode queries against the corpus"</span><span class="p">)</span>
+
+<span class="n">queries</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">"catastrophic health spending Greece"</span><span class="p">,</span> <span class="s2">"keyword"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"poorest households"</span><span class="p">,</span> <span class="s2">"keyword"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"out-of-pocket payments medicines"</span><span class="p">,</span> <span class="s2">"keyword"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"dental care"</span><span class="p">,</span> <span class="s2">"strict"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"WHO Barcelona"</span><span class="p">,</span> <span class="s2">"strict"</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">query</span><span class="p">,</span> <span class="n">mode</span> <span class="ow">in</span> <span class="n">queries</span><span class="p">:</span>
+    <span class="n">mini_banner</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Search: "</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s1">" (mode=</span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s1">)'</span><span class="p">)</span>
+    <span class="n">cfg</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SearchConfig.html#scikitplot.corpus.SearchConfig" title="scikitplot.corpus.SearchConfig"><span class="n">SearchConfig</span></a><span class="p">(</span><span class="n">match_mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">cfg</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"  (no results)"</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">res</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">results</span><span class="p">):</span>
+        <span class="n">text_preview</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">90</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="s2">" "</span><span class="p">)</span>
+        <span class="n">src</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">source_title</span> <span class="ow">or</span> <span class="n">res</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">source_file</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  [</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">] score=</span><span class="si">{</span><span class="n">res</span><span class="o">.</span><span class="n">score</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">  src=</span><span class="si">{</span><span class="n">src</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"      </span><span class="si">{</span><span class="n">text_preview</span><span class="si">!r}</span><span class="s2">…"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>========================================================================
+  PHASE 5: SEARCH — Multi-mode queries against the corpus
+========================================================================
+
+
+  --- Search: "catastrophic health spending Greece" (mode=keyword) ---
+
+  [1] score=6.3942  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+      'Out-of-pocket payments lead to catastrophic health spending for between 1% and 20% of hous'…
+  [2] score=5.4036  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+      'The report provides an assessment of financial protection for 40 countries (including all '…
+  [3] score=3.9819  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+      'Catastrophic out-of-pocket payments are mainly driven by household spending on services th'…
+
+  --- Search: "poorest households" (mode=keyword) ---
+
+  [1] score=5.8803  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+      'Out-of-pocket payments lead to catastrophic health spending for between 1% and 20% of hous'…
+  [2] score=2.6516  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+      'Using new pre-pandemic data from 2019, the report finds that out-of-pocket payments for ou'…
+  [3] score=1.3198  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+      'Financial hardship caused by out-of-pocket payments for medicines, medical products such a'…
+
+  --- Search: "out-of-pocket payments medicines" (mode=keyword) ---
+
+  [1] score=6.4551  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+      'Primary-care coverage should include treatment, not just consultation and diagnosis. This '…
+  [2] score=5.3309  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+      'Redesigning health coverage policy to reduce out-of-pocket payments'…
+  [3] score=5.1315  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+      'Using new pre-pandemic data from 2019, the report finds that out-of-pocket payments for ou'…
+
+  --- Search: "dental care" (mode=strict) ---
+
+  [1] score=1.0000  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+      'Financial hardship caused by out-of-pocket payments for medicines, medical products such a'…
+  [2] score=1.0000  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+      'Using new pre-pandemic data from 2019, the report finds that out-of-pocket payments for ou'…
+  [3] score=1.0000  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+      'Primary-care coverage should include treatment, not just consultation and diagnosis. This '…
+
+  --- Search: "WHO Barcelona" (mode=strict) ---
+
+  [1] score=1.0000  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+      'She added, “I congratulate the WHO Barcelona Office for Health Systems Financing on the la'…
+  [2] score=1.0000  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+      'WHO/Europe monitors financial protection through the WHO Barcelona Office for Health Syste'…
+  [3] score=1.0000  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+      'WHO Barcelona Office for Health Systems Financing (Spain)'…
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
+<span class="c1"># PHASE 6: ADAPTERS — Export to every downstream format</span>
+<span class="c1"># ===========================================================================</span>
+
+<span class="n">banner</span><span class="p">(</span><span class="s2">"PHASE 6: ADAPTERS — Export to LangChain / MCP / RAG / LangGraph / HF"</span><span class="p">)</span>
+
+<span class="c1"># --- 6a: LangChain Documents ---</span>
+<span class="n">mini_banner</span><span class="p">(</span><span class="s2">"6a: LangChain Documents"</span><span class="p">)</span>
+<span class="n">lc_docs</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_langchain_documents.html#scikitplot.corpus.to_langchain_documents" title="scikitplot.corpus.to_langchain_documents"><span class="n">to_langchain_documents</span></a><span class="p">(</span><span class="n">all_documents</span><span class="p">)</span>
+<span class="n">first</span> <span class="o">=</span> <span class="n">lc_docs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">lc_docs</span><span class="p">)</span><span class="si">}</span><span class="s2"> LangChain docs (dict fallback — langchain not installed)"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    keys: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">first</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    page_content[:80]: </span><span class="si">{</span><span class="n">first</span><span class="p">[</span><span class="s1">'page_content'</span><span class="p">][:</span><span class="mi">80</span><span class="p">]</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    metadata keys: </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">first</span><span class="p">[</span><span class="s1">'metadata'</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())[:</span><span class="mi">10</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">lc_docs</span><span class="p">)</span><span class="si">}</span><span class="s2"> LangChain Document objects"</span><span class="p">)</span>
+
+<span class="c1"># --- 6b: LangGraph State ---</span>
+<span class="n">mini_banner</span><span class="p">(</span><span class="s2">"6b: LangGraph State"</span><span class="p">)</span>
+<span class="n">state</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_langgraph_state.html#scikitplot.corpus.to_langgraph_state" title="scikitplot.corpus.to_langgraph_state"><span class="n">to_langgraph_state</span></a><span class="p">(</span>
+    <span class="n">all_documents</span><span class="p">,</span>
+    <span class="n">query</span><span class="o">=</span><span class="s2">"catastrophic health spending"</span><span class="p">,</span>
+    <span class="n">match_mode</span><span class="o">=</span><span class="s2">"keyword"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ LangGraph state dict:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    keys: </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    n_results: </span><span class="si">{</span><span class="n">state</span><span class="p">[</span><span class="s1">'n_results'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    query: </span><span class="si">{</span><span class="n">state</span><span class="p">[</span><span class="s1">'query'</span><span class="p">]</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="c1"># --- 6c: MCP Resources ---</span>
+<span class="n">mini_banner</span><span class="p">(</span><span class="s2">"6c: MCP Resources (Model Context Protocol)"</span><span class="p">)</span>
+<span class="n">resources</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_mcp_resources.html#scikitplot.corpus.to_mcp_resources" title="scikitplot.corpus.to_mcp_resources"><span class="n">to_mcp_resources</span></a><span class="p">(</span><span class="n">all_documents</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">resources</span><span class="p">[:</span><span class="mi">2</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  resource:"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    uri:      </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">'uri'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    name:     </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    mimeType: </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">'mimeType'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    text[:60]: </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">'text'</span><span class="p">][:</span><span class="mi">60</span><span class="p">]</span><span class="si">!r}</span><span class="s2">…"</span><span class="p">)</span>
+
+<span class="c1"># --- 6d: MCP Tool Result ---</span>
+<span class="n">mini_banner</span><span class="p">(</span><span class="s2">"6d: MCP Tool Result (tools/call response)"</span><span class="p">)</span>
+<span class="n">tool_result</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_mcp_tool_result.html#scikitplot.corpus.to_mcp_tool_result" title="scikitplot.corpus.to_mcp_tool_result"><span class="n">to_mcp_tool_result</span></a><span class="p">(</span><span class="n">all_documents</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ MCP tool result:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    isError: </span><span class="si">{</span><span class="n">tool_result</span><span class="p">[</span><span class="s1">'isError'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    content items: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">tool_result</span><span class="p">[</span><span class="s1">'content'</span><span class="p">])</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">tool_result</span><span class="p">[</span><span class="s2">"content"</span><span class="p">][:</span><span class="mi">2</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    [</span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">'type'</span><span class="p">]</span><span class="si">}</span><span class="s2">] text[:60]: </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">'text'</span><span class="p">][:</span><span class="mi">60</span><span class="p">]</span><span class="si">!r}</span><span class="s2">…"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"         annotations: </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">'annotations'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="c1"># --- 6e: MCP Server (adapter class) ---</span>
+<span class="n">mini_banner</span><span class="p">(</span><span class="s2">"6e: MCP Server Adapter"</span><span class="p">)</span>
+<span class="n">mcp_server</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.MCPCorpusServer.html#scikitplot.corpus.MCPCorpusServer" title="scikitplot.corpus.MCPCorpusServer"><span class="n">MCPCorpusServer</span></a><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">server_name</span><span class="o">=</span><span class="s2">"who-corpus"</span><span class="p">)</span>
+<span class="n">tools</span> <span class="o">=</span> <span class="n">mcp_server</span><span class="o">.</span><span class="n">list_tools</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ MCPCorpusServer: </span><span class="si">{</span><span class="n">mcp_server</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    tools: </span><span class="si">{</span><span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">tools</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    tool schema: </span><span class="si">{</span><a class="sphx-glr-backref-module-json sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/json.html#json.dumps" title="json.dumps"><span class="n">json</span><span class="o">.</span><span class="n">dumps</span></a><span class="p">(</span><span class="n">tools</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'inputSchema'</span><span class="p">],</span><span class="w"> </span><span class="n">indent</span><span class="o">=</span><span class="mi">6</span><span class="p">)[:</span><span class="mi">200</span><span class="p">]</span><span class="si">}</span><span class="s2">…"</span><span class="p">)</span>
+
+<span class="c1"># --- 6f: HuggingFace Dataset ---</span>
+<span class="n">mini_banner</span><span class="p">(</span><span class="s2">"6f: HuggingFace Dataset"</span><span class="p">)</span>
+<span class="n">hf</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_huggingface_dataset.html#scikitplot.corpus.to_huggingface_dataset" title="scikitplot.corpus.to_huggingface_dataset"><span class="n">to_huggingface_dataset</span></a><span class="p">(</span><span class="n">all_documents</span><span class="p">)</span>
+<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">hf</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ HuggingFace column dict (datasets lib not installed)"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    columns: </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">hf</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    rows: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">hf</span><span class="p">[</span><span class="s1">'text'</span><span class="p">])</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ HuggingFace Dataset: </span><span class="si">{</span><span class="n">hf</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="c1"># --- 6g: RAG Tuples ---</span>
+<span class="n">mini_banner</span><span class="p">(</span><span class="s2">"6g: RAG Tuples (text, metadata, embedding)"</span><span class="p">)</span>
+<span class="n">tuples</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_rag_tuples.html#scikitplot.corpus.to_rag_tuples" title="scikitplot.corpus.to_rag_tuples"><span class="n">to_rag_tuples</span></a><span class="p">(</span><span class="n">all_documents</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">meta</span><span class="p">,</span> <span class="n">emb</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tuples</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  [</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">] text[:50]: </span><span class="si">{</span><span class="n">text</span><span class="p">[:</span><span class="mi">50</span><span class="p">]</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"      meta keys: </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">keys</span><span class="p">())[:</span><span class="mi">8</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"      embedding: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">emb</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="c1"># --- 6h: JSONL ---</span>
+<span class="n">mini_banner</span><span class="p">(</span><span class="s2">"6h: JSONL Streaming"</span><span class="p">)</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_jsonl.html#scikitplot.corpus.to_jsonl" title="scikitplot.corpus.to_jsonl"><span class="n">to_jsonl</span></a><span class="p">(</span><span class="n">all_documents</span><span class="p">[:</span><span class="mi">3</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span><span class="si">}</span><span class="s2"> JSONL lines"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">[:</span><span class="mi">2</span><span class="p">]):</span>
+    <span class="n">obj</span> <span class="o">=</span> <a class="sphx-glr-backref-module-json sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/json.html#json.loads" title="json.loads"><span class="n">json</span><span class="o">.</span><span class="n">loads</span></a><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  [</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">] keys: </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">keys</span><span class="p">())[:</span><span class="mi">8</span><span class="p">]</span><span class="si">}</span><span class="s2">…  text[:50]: </span><span class="si">{</span><span class="n">obj</span><span class="p">[</span><span class="s1">'text'</span><span class="p">][:</span><span class="mi">50</span><span class="p">]</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>========================================================================
+  PHASE 6: ADAPTERS — Export to LangChain / MCP / RAG / LangGraph / HF
+========================================================================
+
+
+  --- 6a: LangChain Documents ---
+
+  ✓ 97 LangChain docs (dict fallback — langchain not installed)
+    keys: ['page_content', 'metadata']
+    page_content[:80]: 'Out-of-pocket payments for primary health care unaffordable for millions in Euro'
+    metadata keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'section_type', 'source_file', 'source_type']
+
+  --- 6b: LangGraph State ---
+
+  ✓ LangGraph state dict:
+    keys: ['documents', 'match_mode', 'n_results', 'query']
+    n_results: 97
+    query: 'catastrophic health spending'
+
+  --- 6c: MCP Resources (Model Context Protocol) ---
+
+  resource:
+    uri:      corpus://9432e3e0cdf3de0d
+    name:     https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+    mimeType: text/plain
+    text[:60]: 'Out-of-pocket payments for primary health care unaffordable '…
+  resource:
+    uri:      corpus://d4100a2a7807259d
+    name:     https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+    mimeType: text/plain
+    text[:60]: 'Regions WHO Regional websites Africa Americas South-East Asi'…
+
+  --- 6d: MCP Tool Result (tools/call response) ---
+
+  ✓ MCP tool result:
+    isError: False
+    content items: 3
+    [text] text[:60]: 'Out-of-pocket payments for primary health care unaffordable '…
+         annotations: {'doc_id': '9432e3e0cdf3de0d', 'source_file': 'https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows', 'source_title': None, 'chunk_index': 0, 'score': None}
+    [text] text[:60]: 'Regions WHO Regional websites Africa Americas South-East Asi'…
+         annotations: {'doc_id': 'd4100a2a7807259d', 'source_file': 'https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows', 'source_title': None, 'chunk_index': 2, 'score': None}
+
+  --- 6e: MCP Server Adapter ---
+
+  ✓ MCPCorpusServer: MCPCorpusServer(name='who-corpus', n_docs=97)
+    tools: ['corpus_search']
+    tool schema: {
+      "type": "object",
+      "properties": {
+            "query": {
+                  "type": "string",
+                  "description": "Search query text"
+            },
+            "top_k": {
+  …
+
+  --- 6f: HuggingFace Dataset ---
+
+  ✓ HuggingFace column dict (datasets lib not installed)
+    columns: ['chunk_index', 'doc_id', 'language', 'metadata_json', 'source_file', 'source_title', 'source_type', 'text']
+    rows: 97
+
+  --- 6g: RAG Tuples (text, metadata, embedding) ---
+
+  [0] text[:50]: 'Out-of-pocket payments for primary health care una'
+      meta keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'section_type']
+      embedding: NoneType
+  [1] text[:50]: 'Regions WHO Regional websites Africa Americas Sout'
+      meta keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'section_type']
+      embedding: NoneType
+  [2] text[:50]: 'Countries Albania Andorra Armenia Austria Azerbaij'
+      meta keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'section_type']
+      embedding: NoneType
+
+  --- 6h: JSONL Streaming ---
+
+  ✓ 3 JSONL lines
+  [0] keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'section_type']…  text[:50]: 'Out-of-pocket payments for primary health care una'
+  [1] keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'section_type']…  text[:50]: 'Regions WHO Regional websites Africa Americas Sout'
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
+<span class="c1"># PHASE 7: SHOW REAL URL USAGE (code-only, not executed)</span>
+<span class="c1"># ===========================================================================</span>
+
+<span class="n">banner</span><span class="p">(</span><span class="s2">"PHASE 7: PRODUCTION USAGE — All 5 Real Sources"</span><span class="p">)</span>
+
+<span class="n">PRODUCTION_CODE</span> <span class="o">=</span> <span class="s1">'''</span>
+<span class="s1"># ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+<span class="s1"># PRODUCTION: Process all 5 real sources via CorpusBuilder</span>
+<span class="s1"># ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+
+<span class="s1">from scikitplot.corpus import CorpusBuilder, BuilderConfig</span>
+
+<span class="s1">builder = CorpusBuilder(BuilderConfig(</span>
+<span class="s1">    chunker="paragraph",</span>
+<span class="s1">    normalize=True,</span>
+<span class="s1">    normalizer_steps=["unicode", "whitespace"],</span>
+<span class="s1">    enrich=True,</span>
+<span class="s1">    enricher_kwargs={"keyword_extractor": "frequency", "max_keywords": 15},</span>
+<span class="s1">    embed=True,                    # requires: pip install sentence-transformers</span>
+<span class="s1">    embedding_model="all-MiniLM-L6-v2",</span>
+<span class="s1">    build_index=True,</span>
+<span class="s1">    collection_id="who-greece-financial-protection",</span>
+<span class="s1">    source_author="WHO Regional Office for Europe",</span>
+<span class="s1">))</span>
+
+<span class="s1"># ① Web Article (HTML)</span>
+<span class="s1">result = builder.build([</span>
+<span class="s1">    "https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-"</span>
+<span class="s1">    "payments-for-primary-health-care-unaffordable-for-millions-in-"</span>
+<span class="s1">    "europe-new-who-report-shows",</span>
+<span class="s1">])</span>
+
+<span class="s1"># ② YouTube Video</span>
+<span class="s1">result = builder.build([</span>
+<span class="s1">    # "https://youtu.be/rwPISgZcYIk",  # https://www.youtube.com/watch?v=rwPISgZcYIk</span>
+<span class="s1">    "https://youtu.be/rwPISgZcYIk?si=TddW-0bwBRF_4_qU",</span>
+<span class="s1">])</span>
+
+<span class="s1"># ③ PDF (download first, then process locally)</span>
+<span class="s1">import urllib.request</span>
+<span class="s1">urllib.request.urlretrieve(</span>
+<span class="s1">    "https://iris.who.int/server/api/core/bitstreams/"</span>
+<span class="s1">    "7ad66865-7f23-4485-8cf5-7b3d78bdf4f9/content",</span>
+<span class="s1">    "who_greece_report.pdf",</span>
+<span class="s1">)</span>
+<span class="s1">result = builder.build(["who_greece_report.pdf"])</span>
+
+<span class="s1"># ④ Image scan (local file or downloaded URL)</span>
+<span class="s1">result = builder.build(["WHO-EURO-2025-12555-52329-80560-eng_pdf.jpg"])</span>
+
+<span class="s1"># ⑤ Audio podcast (local MP3)</span>
+<span class="s1">result = builder.build(["can-people-afford-to-pay-for-health-care.mp3"])</span>
+
+<span class="s1"># ━━━ Or process ALL at once: ━━━</span>
+<span class="s1">result = builder.build([</span>
+<span class="s1">    "https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-...",</span>
+<span class="s1">    "https://youtu.be/rwPISgZcYIk",  # https://www.youtube.com/watch?v=rwPISgZcYIk</span>
+<span class="s1">    "who_greece_report.pdf",</span>
+<span class="s1">    "scan.jpg",</span>
+<span class="s1">    "podcast.mp3",</span>
+<span class="s1">])</span>
+
+<span class="s1"># ━━━ Search ━━━</span>
+<span class="s1">results = builder.search("catastrophic health spending", match_mode="hybrid")</span>
+<span class="s1">for r in results:</span>
+<span class="s1">    print(f"  score=</span><span class="si">{r.score:.4f}</span><span class="s1">  </span><span class="si">{r.doc.text[:80]}</span><span class="s1">")</span>
+
+<span class="s1"># ━━━ Export to ANY consumer ━━━</span>
+<span class="s1">lc_docs = builder.to_langchain()           # LangChain</span>
+<span class="s1">state   = builder.to_langgraph_state()     # LangGraph</span>
+<span class="s1">mcp     = builder.to_mcp_tool_result("...")  # MCP server</span>
+<span class="s1">hf      = builder.to_huggingface()         # HuggingFace</span>
+<span class="s1">rag     = builder.to_rag_tuples()          # Vector store</span>
+<span class="s1">retriever = builder.to_langchain_retriever()  # LangChain retriever</span>
+<span class="s1">server  = builder.to_mcp_server()          # Full MCP server</span>
+<span class="s1">builder.export("corpus.parquet")           # File export</span>
+<span class="s1">'''</span>
+
+<span class="nb">print</span><span class="p">(</span><a class="sphx-glr-backref-module-textwrap sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/textwrap.html#textwrap.dedent" title="textwrap.dedent"><span class="n">textwrap</span><span class="o">.</span><span class="n">dedent</span></a><span class="p">(</span><span class="n">PRODUCTION_CODE</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>========================================================================
+  PHASE 7: PRODUCTION USAGE — All 5 Real Sources
+========================================================================
+
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# PRODUCTION: Process all 5 real sources via CorpusBuilder
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+from scikitplot.corpus import CorpusBuilder, BuilderConfig
+
+builder = CorpusBuilder(BuilderConfig(
+    chunker="paragraph",
+    normalize=True,
+    normalizer_steps=["unicode", "whitespace"],
+    enrich=True,
+    enricher_kwargs={"keyword_extractor": "frequency", "max_keywords": 15},
+    embed=True,                    # requires: pip install sentence-transformers
+    embedding_model="all-MiniLM-L6-v2",
+    build_index=True,
+    collection_id="who-greece-financial-protection",
+    source_author="WHO Regional Office for Europe",
+))
+
+# ① Web Article (HTML)
+result = builder.build([
+    "https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-"
+    "payments-for-primary-health-care-unaffordable-for-millions-in-"
+    "europe-new-who-report-shows",
+])
+
+# ② YouTube Video
+result = builder.build([
+    # "https://youtu.be/rwPISgZcYIk",  # https://www.youtube.com/watch?v=rwPISgZcYIk
+    "https://youtu.be/rwPISgZcYIk?si=TddW-0bwBRF_4_qU",
+])
+
+# ③ PDF (download first, then process locally)
+import urllib.request
+urllib.request.urlretrieve(
+    "https://iris.who.int/server/api/core/bitstreams/"
+    "7ad66865-7f23-4485-8cf5-7b3d78bdf4f9/content",
+    "who_greece_report.pdf",
+)
+result = builder.build(["who_greece_report.pdf"])
+
+# ④ Image scan (local file or downloaded URL)
+result = builder.build(["WHO-EURO-2025-12555-52329-80560-eng_pdf.jpg"])
+
+# ⑤ Audio podcast (local MP3)
+result = builder.build(["can-people-afford-to-pay-for-health-care.mp3"])
+
+# ━━━ Or process ALL at once: ━━━
+result = builder.build([
+    "https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-...",
+    "https://youtu.be/rwPISgZcYIk",  # https://www.youtube.com/watch?v=rwPISgZcYIk
+    "who_greece_report.pdf",
+    "scan.jpg",
+    "podcast.mp3",
+])
+
+# ━━━ Search ━━━
+results = builder.search("catastrophic health spending", match_mode="hybrid")
+for r in results:
+    print(f"  score={r.score:.4f}  {r.doc.text[:80]}")
+
+# ━━━ Export to ANY consumer ━━━
+lc_docs = builder.to_langchain()           # LangChain
+state   = builder.to_langgraph_state()     # LangGraph
+mcp     = builder.to_mcp_tool_result("...")  # MCP server
+hf      = builder.to_huggingface()         # HuggingFace
+rag     = builder.to_rag_tuples()          # Vector store
+retriever = builder.to_langchain_retriever()  # LangChain retriever
+server  = builder.to_mcp_server()          # Full MCP server
+builder.export("corpus.parquet")           # File export
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
+<span class="c1"># SUMMARY</span>
+<span class="c1"># ===========================================================================</span>
+
+<span class="n">banner</span><span class="p">(</span><span class="s2">"SUMMARY"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  Sources processed:  </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">source_log</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  Total documents:    </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">all_documents</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  Normalised:         </span><span class="si">{</span><span class="n">n_normalised</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  Enriched (tokens):  </span><span class="si">{</span><span class="n">n_enriched</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  Index documents:    </span><span class="si">{</span><span class="n">index</span><span class="o">.</span><span class="n">n_documents</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  Dense embeddings:   </span><span class="si">{</span><span class="n">index</span><span class="o">.</span><span class="n">has_embeddings</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"  Adapter outputs demonstrated:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"    ✓ LangChain Documents      → to_langchain_documents()"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"    ✓ LangGraph State          → to_langgraph_state()"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"    ✓ MCP Resources            → to_mcp_resources()"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"    ✓ MCP Tool Result          → to_mcp_tool_result()"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"    ✓ MCP Server Adapter       → MCPCorpusServer()"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"    ✓ HuggingFace Dataset      → to_huggingface_dataset()"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"    ✓ RAG Vector Store Tuples  → to_rag_tuples()"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"    ✓ JSONL Streaming          → to_jsonl()"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"  Source types supported:"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">st</span> <span class="ow">in</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType" title="scikitplot.corpus.SourceType"><span class="n">SourceType</span></a><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    • </span><span class="si">{</span><span class="n">st</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"  Pipeline complete. All 5 source types → unified corpus → any consumer."</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>========================================================================
+  SUMMARY
+========================================================================
+
+  Sources processed:  5
+  Total documents:    97
+  Normalised:         97
+  Enriched (tokens):  97
+  Index documents:    97
+  Dense embeddings:   False
+
+  Adapter outputs demonstrated:
+    ✓ LangChain Documents      → to_langchain_documents()
+    ✓ LangGraph State          → to_langgraph_state()
+    ✓ MCP Resources            → to_mcp_resources()
+    ✓ MCP Tool Result          → to_mcp_tool_result()
+    ✓ MCP Server Adapter       → MCPCorpusServer()
+    ✓ HuggingFace Dataset      → to_huggingface_dataset()
+    ✓ RAG Vector Store Tuples  → to_rag_tuples()
+    ✓ JSONL Streaming          → to_jsonl()
+
+  Source types supported:
+    • book
+    • article
+    • research
+    • biography
+    • play
+    • poem
+    • news
+    • blog
+    • newsletter
+    • press_release
+    • audio
+    • podcast
+    • lecture
+    • interview
+    • video
+    • movie
+    • subtitle
+    • web
+    • wiki
+    • social_media
+    • forum
+    • faq
+    • documentation
+    • tutorial
+    • manual
+    • report
+    • legal
+    • medical
+    • patent
+    • spreadsheet
+    • dataset
+    • code
+    • email
+    • chat
+    • image
+    • unknown
+
+  Pipeline complete. All 5 source types → unified corpus → any consumer.
+</pre></div>
+</div>
+<p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-corpus.html"><span class="doc">model-workflow: corpus</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-bar.html"><span class="doc">plot-type: bar</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 10.498 seconds)</p>
+
+<p class="rubric">Related examples</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule."><img alt="" src="../../_images/sphx_glr_plot_corpus_who_youtube_shorts_script_thumb.png"/>
+<p><a class="reference internal" href="plot_corpus_who_youtube_shorts_script.html"><span class="doc">corpus WHO European Region YouTube shorts with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">corpus WHO European Region YouTube shorts with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule."><img alt="" src="../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png"/>
+<p><a class="reference internal" href="plot_corpus_who_zip_script.html"><span class="doc">corpus WHO European Region local .zip with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">corpus WHO European Region local .zip with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule."><img alt="" src="../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png"/>
+<p><a class="reference internal" href="plot_corpus_a_tale_of_two_cities_mp3_script.html"><span class="doc">corpus A Tale of Two Cities .mp3 with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">corpus A Tale of Two Cities .mp3 with examples</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule. Demonstrates all four chunkers (WordChunker-by-document, WordChunker-by-sentence, SentenceChunker, FixedWindowChunker-chars, FixedWindowChunker-tokens) on an image file containing multi-script text extracted via OCR."><img alt="" src="../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png"/>
+<p><a class="reference internal" href="plot_corpus_knowledge_script.html"><span class="doc">corpus Knowledge and Information local .png with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">corpus Knowledge and Information local .png with examples</div>
+</div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+</article>
+<footer class="bd-footer-article">
+<div class="footer-article-items footer-article__inner">
+<div class="footer-article-item">
+<div class="prev-next-area">
+<a class="left-prev" href="plot_corpus_knowledge_script.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">corpus Knowledge and Information local .png with examples</p>
+</div>
+</a>
+<a class="right-next" href="plot_corpus_who_youtube_shorts_script.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">corpus WHO European Region YouTube shorts with examples</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div></div>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> On this page
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-related-packages">Download the related packages</a></li>
+</ul>
+</nav></div>
+
+<div class="sidebar-secondary-item"><div title="plot_corpus_who_per_file_script.py"><a download="" href="../../_downloads/3bed8f76d7875cdf6ef28603f2ec6b20/plot_corpus_who_per_file_script.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_corpus_who_per_file_script.ipynb"><a download="" href="../../_downloads/9466f181166917995d30d548ac0003b5/plot_corpus_who_per_file_script.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_who_per_file_script.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo4.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/maintenance/0.4.X?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_who_per_file_script.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo4.svg"/></a></div></div></div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
+<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">
+    
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.4.0.post11+git.20260412.64b40d9 2026-04-12T09:07Z.
+      <br/>
+</p>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

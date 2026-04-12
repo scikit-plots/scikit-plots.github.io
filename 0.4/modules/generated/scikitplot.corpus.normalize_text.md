@@ -1,0 +1,31 @@
+# normalize\_text[#](#normalize-text "Link to this heading")
+
+scikitplot.corpus.normalize\_text(**text**, **\***, **config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/64b40d9/scikitplot/corpus/_normalizers/_text_normalizer.py#L223)[#](#scikitplot.corpus.normalize_text "Link to this definition")
+:   Normalise **text** according to **config**.
+
+    Parameters:
+    :   ****text****str
+        :   Raw text to normalise.
+
+        ****config****NormalizerConfig or None, optional
+        :   Configuration. `None` uses defaults.
+
+    Returns:
+    :   str or None
+        :   Normalised text, or `None` if the result is shorter than
+            `config.min_length`.
+
+    Parameters:
+    :   * ****text**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        * ****config**** ([**NormalizerConfig**](scikitplot.corpus.NormalizerConfig.html#scikitplot.corpus.NormalizerConfig "scikitplot.corpus._normalizers._text_normalizer.NormalizerConfig") **|** **None**)
+
+    Return type:
+    :   [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | None
+
+    Examples
+
+    ```
+    >>> normalize_text("The  ﬁrst  compu-\\nter  was huge.")
+    'The first computer was huge.'
+
+    ```
