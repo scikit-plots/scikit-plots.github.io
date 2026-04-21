@@ -19,9 +19,11 @@ scikitplot.random.normal(**self**, **loc=0.0**, **scale=1.0**, **size=None**)[#]
 
     Examples
 
+    Try it in your browser!
     ```
     >>> gen = KissGenerator(42)
     >>> gen.normal(0, 1, size=1000)
     array([...])
 
     ```
+    Go BackOpen In Tab

@@ -71,7 +71,7 @@ sphinxext.
 
 Notes
 
-* <https://github.com/matplotlib/matplotlib/tree/main/lib/matplotlib/sphinxext>
+* [matplotlib/matplotlib](https://github.com/matplotlib/matplotlib/tree/main/lib/matplotlib/sphinxext)
 
 ****User guide.**** See the [Matplotlib Sphinx extensions for embedded plots (experimental)](../user_guide/externals/_sphinxext/index.html#externals-sphinxext-index) section for further details.
 

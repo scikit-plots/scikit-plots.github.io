@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 
 
@@ -17,7 +18,7 @@
 <meta name="description" content="restructuredtext References: https://www.sphinx-doc.org/en/master/index.html, https://sphinx-tutorial.readthedocs.io/cheatsheet/#rst-cheat-sheet, https://documatt.com/restructuredtext-reference/, h..." />
 
 <script>
-window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": false}, "providers": {"claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Claude about this documentation page.", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Get familiar with the documentation at {url} so I can ask questions about it."}, "chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask ChatGPT about this documentation page.", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Get familiar with the documentation at {url} so I can ask questions about it."}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}}, "baseUrl": "https://docs.example.com"};
+window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true}, "providers": {"claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Claude about this documentation page.", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask ChatGPT about this documentation page.", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Read {url} so I can ask questions about it.", "model": "gpt-4o", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this documentation page.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Please review this documentation: {url}\n\nI have questions.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
 </script>
 
     <title>Documentation Writing Guidelines &#8212; scikit-plots 0.5.dev0 documentation</title>
@@ -39,8 +40,8 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
@@ -60,16 +61,16 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=e4cb1417" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../_static/documentation_options.js?v=de0fc20e"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=e93d8674"></script>
+    <script src="../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../_static/ai-assistant.js?v=cb662cc4"></script>
     <script src="../_static/thebelab-helper.js"></script>
     <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
@@ -78,7 +79,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'devel/guide_document_write';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -87,7 +88,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="../_static/scripts/dropdown.js?v=e2048168"></script>
     <script src="../_static/scripts/version-switcher.js?v=9bbada16"></script>
-    <link rel="canonical" href="https://docs.example.com/devel/guide_document_write.html" />
+    <link rel="canonical" href="https://scikit-plots.github.io/devel/guide_document_write.html" />
     <link rel="icon" href="../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -113,7 +114,9 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -224,22 +227,8 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../whats_new/index.html">
-    Release History
-  </a>
-</li>
-
-
-<li class=" current active">
-  <a class="nav-link dropdown-item nav-internal" href="index.html">
-    Developer's Guide
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../project/community.html">
-    Community
+  <a class="nav-link dropdown-item nav-internal" href="../cheatsheet/index.html">
+    Cheatsheet
   </a>
 </li>
 
@@ -252,8 +241,29 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../project/governance.html">
     Governance Process
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../whats_new/index.html">
+    Release History
   </a>
 </li>
 
@@ -441,22 +451,8 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../whats_new/index.html">
-    Release History
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="index.html">
-    Developer's Guide
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../project/community.html">
-    Community
+  <a class="nav-link nav-internal" href="../cheatsheet/index.html">
+    Cheatsheet
   </a>
 </li>
 
@@ -469,8 +465,29 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../project/governance.html">
     Governance Process
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../whats_new/index.html">
+    Release History
   </a>
 </li>
 
@@ -671,6 +688,14 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
       <main id="main-content" class="bd-main" role="main">
         
         
+
+  
+  
+  
+
+  
+  
+  
           <div class="bd-content">
             <div class="bd-article-container">
               
@@ -963,7 +988,7 @@ See the example <span class="na">:doc:</span><span class="nv">`/gallery/lines_ba
 <blockquote>
 <div><p>See the <a class="reference internal" href="../install/index.html"><span class="doc">Installation</span></a></p>
 <p>See the tutorial <a class="reference internal" href="../introduction/quick_start.html#quick-start"><span class="std std-ref">Quick Start Guide</span></a></p>
-<p>See the example <a class="reference external" href="https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/simple_plot.html" title="(in Matplotlib v3.11.0.dev2075+ga7fc90270)"><span>Line plot</span></a></p>
+<p>See the example <a class="reference external" href="https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/simple_plot.html" title="(in Matplotlib v3.11.0.dev2332+gb07211fda)"><span>Line plot</span></a></p>
 </div></blockquote>
 <p>Sections can also be given reference labels.  For instance from the
 <a class="reference internal" href="../install/index.html"><span class="doc">Installation</span></a> link:</p>
@@ -1072,7 +1097,7 @@ In rare cases we want the rendering of the mathematical text in the
 documentation html to exactly match with the rendering of the mathematical
 expression in the Matplotlib figure. In these cases, you can use the
 <code class="docutils literal notranslate"><span class="pre">matplotlib.sphinxext.mathmpl</span></code> Sphinx extension (See also the
-<a class="reference external" href="https://matplotlib.org/devdocs/users/explain/text/mathtext.html" title="(in Matplotlib v3.11.0.dev2075+ga7fc90270)"><span>Writing mathematical expressions</span></a> tutorial.)</p>
+<a class="reference external" href="https://matplotlib.org/devdocs/users/explain/text/mathtext.html" title="(in Matplotlib v3.11.0.dev2332+gb07211fda)"><span>Writing mathematical expressions</span></a> tutorial.)</p>
 </section>
 </section>
 <section id="write-docstrings">
@@ -1467,7 +1492,7 @@ the file <code class="file docutils literal notranslate"><span class="pre">examp
 <code class="docutils literal notranslate"><span class="pre">gallery/text_labels_and_annotations/legend.py</span></code>, a redirection that may be
 fixed in future re-organization of the docs.</p>
 <p>Plots can also be directly placed inside docstrings.  Details are in
-<a class="reference external" href="https://matplotlib.org/devdocs/api/sphinxext_plot_directive_api.html" title="(in Matplotlib v3.11.0.dev2075+ga7fc90270)"><span>matplotlib.sphinxext.plot_directive</span></a>.  A short example is:</p>
+<a class="reference external" href="https://matplotlib.org/devdocs/api/sphinxext_plot_directive_api.html" title="(in Matplotlib v3.11.0.dev2332+gb07211fda)"><span>matplotlib.sphinxext.plot_directive</span></a>.  A short example is:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">...</span>
 
@@ -1527,7 +1552,7 @@ formatted comment blocks are treated as <a class="reference external" href="http
 displayed, and figures are put into the built page.  Matplotlib uses the
 <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">%%</span></code> section separator so that IDEs will identify “code cells” to make
 it easy to re-run sub-sections of the example.</p>
-<p>For instance the example <a class="reference external" href="https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/simple_plot.html" title="(in Matplotlib v3.11.0.dev2075+ga7fc90270)"><span>Line plot</span></a>
+<p>For instance the example <a class="reference external" href="https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/simple_plot.html" title="(in Matplotlib v3.11.0.dev2332+gb07211fda)"><span>Line plot</span></a>
 example is generated from
 <code class="file docutils literal notranslate"><span class="pre">/galleries/examples/lines_bars_and_markers/simple_plot.py</span></code>, which looks
 like:</p>
@@ -1557,7 +1582,7 @@ like:</p>
 </pre></div>
 </div>
 <p>The first comment block is treated as <a class="reference external" href="https://docutils.sourceforge.io/rst.html">docutils</a> text.  The other comment blocks
-render as comments in <a class="reference external" href="https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/simple_plot.html" title="(in Matplotlib v3.11.0.dev2075+ga7fc90270)"><span>Line plot</span></a>.</p>
+render as comments in <a class="reference external" href="https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/simple_plot.html" title="(in Matplotlib v3.11.0.dev2332+gb07211fda)"><span>Line plot</span></a>.</p>
 <p>Tutorials are made with the exact same mechanism, except they are longer and
 typically have more than one comment block (i.e. <a class="reference internal" href="../introduction/quick_start.html#quick-start"><span class="std std-ref">Quick Start Guide</span></a>).  The
 first comment block can be the same as the example above.  Subsequent blocks of
@@ -1623,7 +1648,7 @@ reference should always be the second to mention; see the example above.</p>
 </section>
 <section id="order-examples">
 <h3>Order examples<a class="headerlink" href="#order-examples" title="Link to this heading">#</a></h3>
-<p>The order of the sections of the <a class="reference external" href="https://matplotlib.org/devdocs/tutorials/index.html#tutorials" title="(in Matplotlib v3.11.0.dev2075+ga7fc90270)"><span>Tutorials</span></a> and the <a class="reference external" href="https://matplotlib.org/devdocs/gallery/index.html#gallery" title="(in Matplotlib v3.11.0.dev2075+ga7fc90270)"><span>Examples</span></a>, as
+<p>The order of the sections of the <a class="reference external" href="https://matplotlib.org/devdocs/tutorials/index.html#tutorials" title="(in Matplotlib v3.11.0.dev2332+gb07211fda)"><span>Tutorials</span></a> and the <a class="reference external" href="https://matplotlib.org/devdocs/gallery/index.html#gallery" title="(in Matplotlib v3.11.0.dev2332+gb07211fda)"><span>Examples</span></a>, as
 well as the order of the examples within each section are determined in a
 two step process from within the <code class="file docutils literal notranslate"><span class="pre">/doc/sphinxext/gallery_order.py</span></code>:</p>
 <ul class="simple">
@@ -1699,13 +1724,13 @@ doing. When more context or explanation is required, add a text paragraph before
 the code example.</p>
 </dd>
 </dl>
-<p><a class="reference external" href="https://matplotlib.org/devdocs/gallery/misc/bbox_intersect.html" title="(in Matplotlib v3.11.0.dev2075+ga7fc90270)"><span>Identify whether artists intersect</span></a> demonstrates the point of visual examples.
+<p><a class="reference external" href="https://matplotlib.org/devdocs/gallery/misc/bbox_intersect.html" title="(in Matplotlib v3.11.0.dev2332+gb07211fda)"><span>Identify whether artists intersect</span></a> demonstrates the point of visual examples.
 This example is “messy” in that it’s hard to categorize, but the gallery is the right
 spot for it because it makes sense to find it by visual search</p>
-<p><a class="reference external" href="https://matplotlib.org/devdocs/gallery/images_contours_and_fields/colormap_interactive_adjustment.html" title="(in Matplotlib v3.11.0.dev2075+ga7fc90270)"><span>Interactive adjustment of colormap range</span></a> is an
+<p><a class="reference external" href="https://matplotlib.org/devdocs/gallery/images_contours_and_fields/colormap_interactive_adjustment.html" title="(in Matplotlib v3.11.0.dev2332+gb07211fda)"><span>Interactive adjustment of colormap range</span></a> is an
 example of a good descriptive title that briefly summarizes how the showcased
 library features are used to implement the demonstrated visualization technique.</p>
-<p><a class="reference external" href="https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/lines_with_ticks_demo.html" title="(in Matplotlib v3.11.0.dev2075+ga7fc90270)"><span>Lines with a ticked patheffect</span></a> is an example of having a
+<p><a class="reference external" href="https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/lines_with_ticks_demo.html" title="(in Matplotlib v3.11.0.dev2332+gb07211fda)"><span>Lines with a ticked patheffect</span></a> is an example of having a
 minimal amount of code necessary to showcase the feature. The lack of extraneous code
 makes it easier for the reader to map which parts of code correspond to which parts of
 the plot.</p>
@@ -1927,13 +1952,19 @@ style or topbar should be made there to propagate across all subprojects.</p>
             
           </footer>
         
+
+  
+  
+  
+
+
       </main>
     </div>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1944,7 +1975,7 @@ style or topbar should be made there to propagate across all subprojects.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260409.dbbf22f 2026-04-09T03:39Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260421.25a82c5 2026-04-21T21:14Z.
       <br/>
     
   </p>

@@ -34,8 +34,10 @@ scikitplot.cexperimental.\_cy\_cexperimental.log\_expit(**x0**)[#](#scikitplot.c
 
     Examples
 
+    Try it in your browser!
     ```
     >>> log_expit(0.5)
     -0.4740769841801067
 
     ```
+    Go BackOpen In Tab

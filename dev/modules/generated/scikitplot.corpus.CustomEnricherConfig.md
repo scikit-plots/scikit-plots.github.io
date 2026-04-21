@@ -1,6 +1,6 @@
 # CustomEnricherConfig[#](#customenricherconfig "Link to this heading")
 
-class scikitplot.corpus.CustomEnricherConfig(**custom\_tokenizer=None**, **custom\_lemmatizer=None**, **custom\_stemmer=None**, **custom\_keyword\_extractor=None**, **custom\_stopwords=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_custom_hooks.py#L517)[#](#scikitplot.corpus.CustomEnricherConfig "Link to this definition")
+class scikitplot.corpus.CustomEnricherConfig(**custom\_tokenizer=None**, **custom\_lemmatizer=None**, **custom\_stemmer=None**, **custom\_keyword\_extractor=None**, **custom\_stopwords=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_custom_hooks.py#L519)[#](#scikitplot.corpus.CustomEnricherConfig "Link to this definition")
 :   Custom backend callables for [`CustomNLPEnricher`](scikitplot.corpus.CustomNLPEnricher.html#scikitplot.corpus.CustomNLPEnricher "scikitplot.corpus.CustomNLPEnricher").
 
     Every field is optional. When set it ****replaces**** the corresponding
@@ -64,6 +64,8 @@ class scikitplot.corpus.CustomEnricherConfig(**custom\_tokenizer=None**, **custo
 
     Examples
 
+    Try it in your browser!
+
     Replace keyword extraction with a KeyBERT-based extractor:
 
     ```
@@ -78,6 +80,7 @@ class scikitplot.corpus.CustomEnricherConfig(**custom\_tokenizer=None**, **custo
     enricher = CustomNLPEnricher(custom_config=ccfg)
 
     ```
+    Go BackOpen In Tab
 
     custom\_keyword\_extractor: [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]], [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CustomEnricherConfig.custom_keyword_extractor "Link to this definition")
 

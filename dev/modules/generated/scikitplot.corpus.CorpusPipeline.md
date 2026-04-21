@@ -1,6 +1,6 @@
 # CorpusPipeline[#](#corpuspipeline "Link to this heading")
 
-class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **embedding\_engine=None**, **output\_dir=None**, **export\_format=ExportFormat.CSV**, **default\_language=None**, **progress\_callback=None**, **reader\_kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_pipeline.py#L136)[#](#scikitplot.corpus.CorpusPipeline "Link to this definition")
+class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **embedding\_engine=None**, **output\_path=None**, **export\_format=ExportFormat.CSV**, **normalizer=None**, **enricher=None**, **default\_language=None**, **progress\_callback=None**, **reader\_kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_pipeline.py#L147)[#](#scikitplot.corpus.CorpusPipeline "Link to this definition")
 :   Orchestrates the full corpus ingestion pipeline.
 
     Instantiate once, then call [`run`](#scikitplot.corpus.CorpusPipeline.run "scikitplot.corpus.CorpusPipeline.run") (single file),
@@ -11,7 +11,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
     Parameters:
     :   ****chunker****ChunkerBase or None, optional
         :   Chunker to inject into every reader. `None` yields one
-            `CorpusDocument` per raw chunk.
+            [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument") per raw chunk.
             Default: `None`.
 
         ****filter\_****FilterBase or None, optional
@@ -25,7 +25,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
             `embedding`.
             Default: `None` (no embedding).
 
-        ****output\_dir****pathlib.Path or None, optional
+        ****output\_path****pathlib.Path or None, optional
         :   Directory where exported files are written. When `None`,
             export is skipped unless `output_path` is supplied explicitly
             in a [`run`](#scikitplot.corpus.CorpusPipeline.run "scikitplot.corpus.CorpusPipeline.run") call. Default: `None`.
@@ -40,9 +40,34 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
 
         ****progress\_callback****callable or None, optional
         :   Called after each batch of documents is processed.
-            Signature: `(source: str, n_done: int, n_total_estimate: int) → None`.
+            Signature: `(input_path: str, n_done: int, n_total_estimate: int) → None`.
             `n_total_estimate` is `-1` when the total is unknown.
             Default: `None`.
+
+        ****normalizer****TextNormalizer or None, optional
+        :   When provided, `normalized_text` is populated on every document
+            after chunking/filtering and before embedding. Insert between the
+            filter and embedding stages to clean OCR noise, collapsed whitespace,
+            ligatures, and other artefacts. Default: `None` (skip).
+
+        ****enricher****NLPEnricher or None, optional
+        :   When provided, NLP enrichment fields (`tokens`, `lemmas`,
+            `stems`, `keywords`, and optional metadata such as `pos_tags`,
+            `ner_entities`, `sentence_count`, `char_count`,
+            `type_token_ratio`, `token_scores`) are populated on every
+            document after normalisation and before embedding. Supports
+            200+ world languages via the `language` parameter of
+            [`EnricherConfig`](scikitplot.corpus.EnricherConfig.html#scikitplot.corpus.EnricherConfig "scikitplot.corpus._enrichers._nlp_enricher.EnricherConfig").
+            Default: `None` (skip).
+
+        ****default\_language****str or list[str] or None, optional
+        :   ISO 639-1 language code (or list of codes, or `None`) applied to
+            all documents when the reader cannot detect language. Accepts ISO
+            639-1 two-letter codes (`"en"`, `"ar"`), NLTK names
+            (`"english"`, `"arabic"`), lists (`["en", "ar"]`), or `None`
+            (auto-detect per document via `detect_script`).
+            Forwarded to the reader; the enricher uses its own `language`
+            config when set. Default: `None`.
 
         ****reader\_kwargs****dict or None, optional
         :   Extra keyword arguments forwarded to every reader constructed by
@@ -104,7 +129,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
         ****embedding\_engine****EmbeddingEngine or None
 
 
-        ****output\_dir****pathlib.Path or None
+        ****output\_path****pathlib.Path or None
 
 
         ****export\_format****ExportFormat or None
@@ -116,9 +141,11 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
     :   * ****chunker**** ([**ChunkerBase**](scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus.ChunkerBase") **|** **None**)
         * ****filter\_**** ([**FilterBase**](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus.FilterBase") **|** **None**)
         * ****embedding\_engine**** (**Any** **|** **None**)
-        * ****output\_dir**** ([**pathlib.Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
-        * ****export\_format**** (**ExportFormat** **|** **None**)
-        * ****default\_language**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+        * ****output\_path**** ([**pathlib.Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
+        * ****export\_format**** ([**ExportFormat**](scikitplot.corpus.ExportFormat.html#scikitplot.corpus.ExportFormat "scikitplot.corpus.ExportFormat") **|** **None**)
+        * ****normalizer**** ([**TextNormalizer**](scikitplot.corpus.TextNormalizer.html#scikitplot.corpus.TextNormalizer "scikitplot.corpus.TextNormalizer") **|** **None**)
+        * ****enricher**** ([**NLPEnricher**](scikitplot.corpus.NLPEnricher.html#scikitplot.corpus.NLPEnricher "scikitplot.corpus.NLPEnricher") **|** **None**)
+        * ****default\_language**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)") **|** **None**)
         * ****progress\_callback**** (**Callable****[****[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**,** [**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]****,** **None****]** **|** **None**)
         * ****reader\_kwargs**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **Any****]** **|** **None**)
 
@@ -141,6 +168,8 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
 
     Examples
 
+    Try it in your browser!
+
     Basic single-file run:
 
     ```
@@ -149,7 +178,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
     >>> from scikitplot.corpus._chunkers import SentenceChunker
     >>> pipeline = CorpusPipeline(
     ...     chunker=SentenceChunker("en_core_web_sm"),
-    ...     output_dir=Path("output/"),
+    ...     output_path=Path("output/"),
     ... )
     >>> result = pipeline.run(Path("corpus.txt"))
     >>> print(result)
@@ -164,7 +193,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
     >>> pipeline = CorpusPipeline(
     ...     chunker=SentenceChunker("en_core_web_sm"),
     ...     embedding_engine=engine,
-    ...     output_dir=Path("output/"),
+    ...     output_path=Path("output/"),
     ...     export_format=ExportFormat.PARQUET,
     ... )
     >>> results = pipeline.run_batch(list(Path("corpus/").glob("*.txt")))
@@ -183,7 +212,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
     ```
     >>> pipeline = CorpusPipeline(
     ...     reader_kwargs={"transcribe": True, "whisper_model": "small"},
-    ...     output_dir=Path("output/"),
+    ...     output_path=Path("output/"),
     ... )
     >>> result = pipeline.run_url(
     ...     "https://archive.org/details/tale_two_cities_librivox/"
@@ -202,13 +231,14 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
     ...             ".jpg": {"backend": "easyocr"},
     ...         },
     ...     },
-    ...     output_dir=Path("output/"),
+    ...     output_path=Path("output/"),
     ... )
     >>> result = pipeline.run(Path("WHO-EURO-2025.zip"))
 
     ```
+    Go BackOpen In Tab
 
-    run(**input\_file**, **\***, **output\_path=None**, **export\_format=None**, **filename\_override=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_pipeline.py#L327)[#](#scikitplot.corpus.CorpusPipeline.run "Link to this definition")
+    run(**input\_path**, **\***, **output\_path=None**, **export\_format=None**, **filename\_override=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_pipeline.py#L366)[#](#scikitplot.corpus.CorpusPipeline.run "Link to this definition")
     :   Process a single source and return a [`PipelineResult`](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus.PipelineResult").
 
         Accepts a local file path ****or**** an `http(s)://` URL string.
@@ -217,7 +247,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
         reader rather than crashing with a “file not found” error.
 
         Parameters:
-        :   ****input\_file****pathlib.Path or str
+        :   ****input\_path****str or pathlib.Path
             :   Path to a local file ****or**** an `http(s)://` URL string.
                 A `str` that starts with `http://` or `https://`
                 (case-insensitive) is treated as a URL and routed through
@@ -227,14 +257,14 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
 
             ****output\_path****pathlib.Path or None, optional
             :   Explicit output file path. When `None`, the path is
-                derived from `output_dir` and the input stem. If both
+                derived from `output_path` and the input stem. If both
                 are `None`, export is skipped.
 
             ****export\_format****ExportFormat or None, optional
             :   Override the pipeline-level `export_format` for this call.
 
             ****filename\_override****str or None, optional
-            :   Override the `source_file` label in generated documents.
+            :   Override the `input_path` label in generated documents.
                 Ignored for URL sources.
 
         Returns:
@@ -243,20 +273,20 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
 
         Raises:
         :   TypeError
-            :   If **input\_file** is not a `str` or [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)").
+            :   If **input\_path** is not a `str` or [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)").
 
             ValueError
             :   If a local file path does not exist, or no reader is
                 registered for the file extension.
 
             ValueError
-            :   If **input\_file** is a URL string and the URL is invalid or
+            :   If **input\_path** is a URL string and the URL is invalid or
                 cannot be resolved.
 
         Parameters:
-        :   * ****input\_file**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        :   * ****input\_path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
             * ****output\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
-            * ****export\_format**** (**ExportFormat** **|** **None**)
+            * ****export\_format**** ([**ExportFormat**](scikitplot.corpus.ExportFormat.html#scikitplot.corpus.ExportFormat "scikitplot.corpus._schema.ExportFormat") **|** **None**)
             * ****filename\_override**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
 
         Return type:
@@ -271,6 +301,8 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
 
         Examples
 
+        Try it in your browser!
+
         Local file:
 
         ```
@@ -284,12 +316,13 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
 
         ```
         >>> result = pipeline.run("https://en.wikipedia.org/wiki/Python")
-        >>> result.source
+        >>> result.input_path
         'https://en.wikipedia.org/wiki/Python'
 
         ```
+        Go BackOpen In Tab
 
-    run\_batch(**input\_files**, **\***, **stop\_on\_error=False**, **export\_format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_pipeline.py#L692)[#](#scikitplot.corpus.CorpusPipeline.run_batch "Link to this definition")
+    run\_batch(**input\_files**, **\***, **stop\_on\_error=False**, **export\_format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_pipeline.py#L759)[#](#scikitplot.corpus.CorpusPipeline.run_batch "Link to this definition")
     :   Process multiple sources sequentially.
 
         Each item may be a local file path ****or**** an `http(s)://` URL
@@ -335,7 +368,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
         Parameters:
         :   * ****input\_files**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
             * ****stop\_on\_error**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****export\_format**** (**ExportFormat** **|** **None**)
+            * ****export\_format**** ([**ExportFormat**](scikitplot.corpus.ExportFormat.html#scikitplot.corpus.ExportFormat "scikitplot.corpus._schema.ExportFormat") **|** **None**)
 
         Return type:
         :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**PipelineResult**](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus._pipeline.PipelineResult")]
@@ -348,6 +381,8 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
         :   Process one or more URLs directly (legacy entry point).
 
         Examples
+
+        Try it in your browser!
 
         Local files only (original behaviour, unchanged):
 
@@ -368,18 +403,31 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
         ...         "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
         ...     ]
         ... )
-        >>> [r.source for r in results]
+        >>> [r.input_path for r in results]
         ['local_report.pdf', 'https://...', 'https://...']
 
         ```
+        Go BackOpen In Tab
 
-    run\_url(**url**, **\***, **output\_path=None**, **export\_format=None**, **stop\_on\_error=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_pipeline.py#L528)[#](#scikitplot.corpus.CorpusPipeline.run_url "Link to this definition")
+    run\_url(**url**, **\***, **output\_path=None**, **export\_format=None**, **stop\_on\_error=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_pipeline.py#L595)[#](#scikitplot.corpus.CorpusPipeline.run_url "Link to this definition")
     :   Process one URL or a list of URLs.
 
         Accepts a single URL string or a list of URL strings. When a list
         is passed each URL is processed independently and a parallel list of
         [`PipelineResult`](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus.PipelineResult") objects is returned. The single-URL form
         returns a single [`PipelineResult`](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus.PipelineResult") (backwards compatible).
+
+        Supported URL shapes:
+
+        * Single video — `watch?v=`, `youtu.be/`, `/shorts/`,
+          `/embed/`, `/live/`
+        * Video + playlist context — `watch?v=…&list=…`
+          (treated as single video; `list=` is ignored)
+        * Channel / handle page — `@Handle`, `@Handle/videos`,
+          `@Handle/shorts`, `@Handle/podcasts`,
+          `/channel/UCxxx`, `/c/Name`, `/user/Name`
+        * Pure playlist — `/playlist?list=…`
+        * Any `http(s)://` URL — routed to [`WebReader`](scikitplot.corpus.WebReader.html#scikitplot.corpus.WebReader "scikitplot.corpus.WebReader")
 
         Parameters:
         :   ****url****str or list of str
@@ -421,13 +469,15 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
         Parameters:
         :   * ****url**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
             * ****output\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
-            * ****export\_format**** (**ExportFormat** **|** **None**)
+            * ****export\_format**** ([**ExportFormat**](scikitplot.corpus.ExportFormat.html#scikitplot.corpus.ExportFormat "scikitplot.corpus._schema.ExportFormat") **|** **None**)
             * ****stop\_on\_error**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
 
         Return type:
         :   [**PipelineResult**](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus._pipeline.PipelineResult") | [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**PipelineResult**](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus._pipeline.PipelineResult")]
 
         Examples
+
+        Try it in your browser!
 
         Single video:
 
@@ -451,6 +501,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
         True
 
         ```
+        Go BackOpen In Tab
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

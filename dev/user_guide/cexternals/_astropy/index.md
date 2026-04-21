@@ -6,7 +6,7 @@ This module contains some functions related to [`_astropy`](../../../modules/gen
 > Module also available under [`stats`](../../../apis/scikitplot.stats.html#module-scikitplot.stats "scikitplot.stats") library.
 User guide for more [Astrostatistics Tools (experimental)](../../stats/index.html#astrostatistics-index).
 > **See also**
-> * <https://github.com/astropy/astropy>
+> * [astropy/astropy](https://github.com/astropy/astropy)
 * <https://docs.astropy.org/en/stable/visualization/histogram.html>
 * <https://docs.astropy.org/en/stable/stats/ref_api.html#module-astropy.stats>
 * Documentation is available in the docstrings and online at <https://www.astropy.org/>.

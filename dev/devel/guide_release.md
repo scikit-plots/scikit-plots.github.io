@@ -510,9 +510,9 @@ be squashed because the intent is to merge the branch histories.
 After the release is published to PyPI and conda, it should be announced
 through our communication channels:
 
-* Send a short version of the release notes and acknowledgments to all the [Mailing lists](https://matplotlib.org/devdocs/devel/communication_guide.html#mailing-lists "(in Matplotlib v3.11.0.dev2075+ga7fc90270)")
-* Post highlights and link to [What’s new](https://matplotlib.org/devdocs/release/release_notes.html#release-notes "(in Matplotlib v3.11.0.dev2075+ga7fc90270)") on the
-  active [social media accounts](https://matplotlib.org/devdocs/devel/communication_guide.html#social-media "(in Matplotlib v3.11.0.dev2075+ga7fc90270)")
+* Send a short version of the release notes and acknowledgments to all the [Mailing lists](https://matplotlib.org/devdocs/devel/communication_guide.html#mailing-lists "(in Matplotlib v3.11.0.dev2332+gb07211fda)")
+* Post highlights and link to [What’s new](https://matplotlib.org/devdocs/release/release_notes.html#release-notes "(in Matplotlib v3.11.0.dev2332+gb07211fda)") on the
+  active [social media accounts](https://matplotlib.org/devdocs/devel/communication_guide.html#social-media "(in Matplotlib v3.11.0.dev2332+gb07211fda)")
 * Add a release announcement to the “News” section of
   [matplotlib.org](https://github.com/matplotlib/mpl-brochure-site) by editing
   `docs/body.html`. Link to the auto-generated announcement discourse post,
@@ -524,4 +524,4 @@ The Matplotlib project itself does not release conda packages. In particular,
 the Matplotlib release manager is not responsible for conda packaging.
 
 For information on the packaging of Matplotlib for conda-forge see
-<https://github.com/conda-forge/matplotlib-feedstock>.
+[conda-forge/matplotlib-feedstock](https://github.com/conda-forge/matplotlib-feedstock).

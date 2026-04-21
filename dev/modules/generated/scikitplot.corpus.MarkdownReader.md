@@ -1,6 +1,6 @@
 # MarkdownReader[#](#markdownreader "Link to this heading")
 
-class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_uri=None**, **source\_provenance=<factory>**, **custom\_extractor=None**, **custom\_extractor\_kwargs=<factory>**, **encoding=None**, **max\_file\_bytes=524288000**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_readers/_text.py#L340)[#](#scikitplot.corpus.MarkdownReader "Link to this definition")
+class scikitplot.corpus.MarkdownReader(**input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_uri=None**, **source\_provenance=<factory>**, **custom\_extractor=None**, **custom\_extractor\_kwargs=<factory>**, **encoding=None**, **max\_file\_bytes=524288000**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_readers/_text.py#L340)[#](#scikitplot.corpus.MarkdownReader "Link to this definition")
 :   Markdown document reader.
 
     Identical to [`TextReader`](scikitplot.corpus.TextReader.html#scikitplot.corpus.TextReader "scikitplot.corpus.TextReader") in every respect — Markdown files
@@ -11,7 +11,7 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
     use cases.
 
     Parameters:
-    :   ****input\_file****pathlib.Path
+    :   ****input\_path****pathlib.Path
         :   Path to the `.md` file.
 
     Attributes:
@@ -23,7 +23,7 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
             `[".md"]`.
 
     Parameters:
-    :   * ****input\_file**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
+    :   * ****input\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
         * ****chunker**** ([**ChunkerBase**](scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus._base.ChunkerBase") **|** **None**)
         * ****filter\_**** ([**FilterBase**](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase") **|** **None**)
         * ****filename\_override**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
@@ -44,18 +44,20 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
 
     Examples
 
+    Try it in your browser!
     ```
     >>> from pathlib import Path
-    >>> reader = MarkdownReader(input_file=Path("README.md"))
+    >>> reader = MarkdownReader(input_path=Path("README.md"))
     >>> docs = list(reader.get_documents())
 
     ```
+    Go BackOpen In Tab
 
     chunker: [ChunkerBase](scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus._base.ChunkerBase") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.MarkdownReader.chunker "Link to this definition")
     :   Chunker to apply to each raw text block. `None` means each raw chunk
         is used as-is (one CorpusDocument per raw chunk).
 
-    classmethod create(**\*inputs**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_base.py#L1239)[#](#scikitplot.corpus.MarkdownReader.create "Link to this definition")
+    classmethod create(**\*input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_base.py#L1239)[#](#scikitplot.corpus.MarkdownReader.create "Link to this definition")
     :   Instantiate the appropriate reader for one or more sources.
 
         Accepts any mix of file paths, URL strings, and
@@ -65,7 +67,7 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
         as a local file path and dispatched by extension via the registry.
 
         Parameters:
-        :   ****\*inputs****pathlib.Path or str
+        :   ****\*input\_path****str or pathlib.Path
             :   One or more source paths or URL strings. Each element is
                 classified independently:
 
@@ -91,15 +93,15 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
                 ([`DefaultFilter`](scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus.DefaultFilter")).
 
             ****filename\_override****str or None, optional
-            :   Override the `source_file` label. Only applied when
-                **inputs** contains exactly one source. Default: `None`.
+            :   Override the `input_path` label. Only applied when
+                **input\_path** contains exactly one source. Default: `None`.
 
             ****default\_language****str or None, optional
             :   ISO 639-1 language code applied to all sources.
                 Default: `None`.
 
             ****source\_type****SourceType, list[SourceType or None], or None, optional
-            :   Semantic label for the source kind. When **inputs** has more
+            :   Semantic label for the source kind. When **input\_path** has more
                 than one element you may pass a list of the same length to
                 assign a distinct type per source; `None` entries in the
                 list mean “infer from extension / URL”. A single value is
@@ -131,28 +133,28 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
 
         Returns:
         :   DocumentReader
-            :   A single reader when **inputs** has exactly one element (backward
+            :   A single reader when **input\_path** has exactly one element (backward
                 compatible with every existing call site). A
-                [`_MultiSourceReader`](scikitplot.corpus._MultiSourceReader.html#scikitplot.corpus._MultiSourceReader "scikitplot.corpus._MultiSourceReader") when **inputs** has more than one
+                [`_MultiSourceReader`](scikitplot.corpus._MultiSourceReader.html#scikitplot.corpus._MultiSourceReader "scikitplot.corpus._MultiSourceReader") when **input\_path** has more than one
                 element — it implements the same `get_documents()` interface
                 and chains documents from all sub-readers in order.
 
         Raises:
         :   ValueError
-            :   If **inputs** is empty, or if a source URL is invalid, or if no
+            :   If **input\_path** is empty, or if a source URL is invalid, or if no
                 reader is registered for a file’s extension.
 
             TypeError
-            :   If any element of **inputs** is not a `str` or
+            :   If any element of **input\_path** is not a `str` or
                 [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)").
 
         Parameters:
-        :   * ****inputs**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        :   * ****input\_path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
             * ****chunker**** ([**ChunkerBase**](scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus._base.ChunkerBase") **|** **None**)
             * ****filter\_**** ([**FilterBase**](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase") **|** **None**)
             * ****filename\_override**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
             * ****default\_language**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****source\_type**** (**SourceType** **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[****SourceType** **|** **None****]** **|** **None**)
+            * ****source\_type**** ([**SourceType**](scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType "scikitplot.corpus._schema.SourceType") **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**SourceType**](scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType "scikitplot.corpus._schema.SourceType") **|** **None****]** **|** **None**)
             * ****source\_title**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
             * ****source\_author**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
             * ****source\_date**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
@@ -172,7 +174,7 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
         paths. This means you no longer need to call [`from_url`](#scikitplot.corpus.MarkdownReader.from_url "scikitplot.corpus.MarkdownReader.from_url")
         explicitly — just pass the URL string to [`create`](#scikitplot.corpus.MarkdownReader.create "scikitplot.corpus.MarkdownReader.create").
 
-        ****Per-source source\_type:**** When passing multiple inputs with
+        ****Per-source source\_type:**** When passing multiple input\_path with
         different media types, supply a list:
 
         ```
@@ -194,6 +196,8 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
         * `classify=True`, `classifier=fn` → [`AudioReader`](scikitplot.corpus.AudioReader.html#scikitplot.corpus.AudioReader "scikitplot.corpus.AudioReader")
 
         Examples
+
+        Try it in your browser!
 
         Single file (backward-compatible):
 
@@ -224,13 +228,14 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
         >>> docs = list(reader.get_documents())  # chained stream from all three
 
         ```
+        Go BackOpen In Tab
 
     custom\_extractor: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.MarkdownReader.custom_extractor "Link to this definition")
     :   User-supplied extraction callable that ****replaces**** [`get_raw_chunks`](#scikitplot.corpus.MarkdownReader.get_raw_chunks "scikitplot.corpus.MarkdownReader.get_raw_chunks")
         entirely for this reader instance.
 
         When set, `_iter_raw_chunks` calls
-        `custom_extractor(self.input_file, **custom_extractor_kwargs)` and
+        `custom_extractor(self.input_path, **custom_extractor_kwargs)` and
         normalises the return value through
         `normalize_extractor_output`.
         The built-in [`get_raw_chunks`](#scikitplot.corpus.MarkdownReader.get_raw_chunks "scikitplot.corpus.MarkdownReader.get_raw_chunks") implementation is ****not**** called.
@@ -240,6 +245,8 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
         without any subclassing — simply pass a callable at construction time.
 
         Examples
+
+        Try it in your browser!
 
         Override PDF extraction with `pdfplumber` for a single reader:
 
@@ -260,13 +267,15 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
         docs = list(reader.get_documents())
 
         ```
+        Go BackOpen In Tab
 
-    custom\_extractor\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_readers/_text.py#L340)[#](#scikitplot.corpus.MarkdownReader.custom_extractor_kwargs "Link to this definition")
+    custom\_extractor\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_readers/_text.py#L340)[#](#scikitplot.corpus.MarkdownReader.custom_extractor_kwargs "Link to this definition")
     :   Extra keyword arguments forwarded to [`custom_extractor`](#scikitplot.corpus.MarkdownReader.custom_extractor "scikitplot.corpus.MarkdownReader.custom_extractor") on every
         invocation. Merged into the call as `**custom_extractor_kwargs`.
 
         Examples
 
+        Try it in your browser!
         ```
         reader = DocumentReader.create(
             Path("report.pdf"),
@@ -275,6 +284,7 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
         )
 
         ```
+        Go BackOpen In Tab
 
     default\_language: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.MarkdownReader.default_language "Link to this definition")
     :   ISO 639-1 language code to assign when the source has no language info.
@@ -287,7 +297,7 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
     :   Effective filename used in document labels.
 
         Returns `filename_override` when set; otherwise returns
-        `input_file.name`.
+        `input_path.name`.
 
         Returns:
         :   str
@@ -295,13 +305,15 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
 
         Examples
 
+        Try it in your browser!
         ```
         >>> from pathlib import Path
-        >>> reader = TextReader(input_file=Path("/data/corpus.txt"))
+        >>> reader = TextReader(input_path=Path("/data/corpus.txt"))
         >>> reader.file_name
         'corpus.txt'
 
         ```
+        Go BackOpen In Tab
 
     file\_type: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")] = '.md'[#](#scikitplot.corpus.MarkdownReader.file_type "Link to this definition")
     :   Single file extension this reader handles (lowercase, including leading
@@ -321,12 +333,12 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
         class, `file_types` takes precedence and `file_type` is ignored.
 
     filename\_override: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.MarkdownReader.filename_override "Link to this definition")
-    :   Override for the `source_file` label in generated documents.
+    :   Override for the `input_path` label in generated documents.
 
     filter\_: [FilterBase](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.MarkdownReader.filter_ "Link to this definition")
     :   Filter applied after chunking. `None` triggers the [`DefaultFilter`](scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus.DefaultFilter").
 
-    classmethod from\_manifest(**manifest\_path**, **\***, **chunker=None**, **filter\_=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **encoding='utf-8'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_base.py#L1556)[#](#scikitplot.corpus.MarkdownReader.from_manifest "Link to this definition")
+    classmethod from\_manifest(**manifest\_path**, **\***, **chunker=None**, **filter\_=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **encoding='utf-8'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_base.py#L1556)[#](#scikitplot.corpus.MarkdownReader.from_manifest "Link to this definition")
     :   Build a [`_MultiSourceReader`](scikitplot.corpus._MultiSourceReader.html#scikitplot.corpus._MultiSourceReader "scikitplot.corpus._MultiSourceReader") from a manifest file.
 
         The manifest is a text file with one source per line — either a
@@ -335,7 +347,7 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
         also supported.
 
         Parameters:
-        :   ****manifest\_path****pathlib.Path or str
+        :   ****manifest\_path****str or pathlib.Path
             :   Path to the manifest file. Supported formats:
 
                 * `.txt` / `.manifest` — one source per line.
@@ -392,11 +404,11 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
             :   If the manifest format is not recognised.
 
         Parameters:
-        :   * ****manifest\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        :   * ****manifest\_path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
             * ****chunker**** ([**ChunkerBase**](scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus._base.ChunkerBase") **|** **None**)
             * ****filter\_**** ([**FilterBase**](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase") **|** **None**)
             * ****default\_language**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****source\_type**** (**SourceType** **|** **None**)
+            * ****source\_type**** ([**SourceType**](scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType "scikitplot.corpus._schema.SourceType") **|** **None**)
             * ****source\_title**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
             * ****source\_author**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
             * ****source\_date**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
@@ -428,6 +440,8 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
 
         Examples
 
+        Try it in your browser!
+
         Text manifest `sources.txt`:
 
         ```
@@ -449,8 +463,9 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
         docs = list(reader.get_documents())
 
         ```
+        Go BackOpen In Tab
 
-    classmethod from\_url(**url**, **\***, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_base.py#L1752)[#](#scikitplot.corpus.MarkdownReader.from_url "Link to this definition")
+    classmethod from\_url(**url**, **\***, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_base.py#L1752)[#](#scikitplot.corpus.MarkdownReader.from_url "Link to this definition")
     :   Instantiate the appropriate reader for a URL source.
 
         Dispatches to `YouTubeReader`
@@ -469,7 +484,7 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
             :   Filter to inject. Default: `None` ([`DefaultFilter`](scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus.DefaultFilter")).
 
             ****filename\_override****str or None, optional
-            :   Override for the `source_file` label. Default: `None`.
+            :   Override for the `input_path` label. Default: `None`.
 
             ****default\_language****str or None, optional
             :   ISO 639-1 language code. Default: `None`.
@@ -518,7 +533,7 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
             * ****filter\_**** ([**FilterBase**](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase") **|** **None**)
             * ****filename\_override**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
             * ****default\_language**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****source\_type**** (**SourceType** **|** **None**)
+            * ****source\_type**** ([**SourceType**](scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType "scikitplot.corpus._schema.SourceType") **|** **None**)
             * ****source\_title**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
             * ****source\_author**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
             * ****source\_date**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
@@ -538,6 +553,7 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
 
         Examples
 
+        Try it in your browser!
         ```
         >>> reader = DocumentReader.from_url("https://en.wikipedia.org/wiki/Python")
         >>> docs = list(reader.get_documents())
@@ -548,9 +564,10 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
         >>> docs = list(yt.get_documents())
 
         ```
+        Go BackOpen In Tab
 
-    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_base.py#L940)[#](#scikitplot.corpus.MarkdownReader.get_documents "Link to this definition")
-    :   Yield validated `CorpusDocument`
+    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_base.py#L940)[#](#scikitplot.corpus.MarkdownReader.get_documents "Link to this definition")
+    :   Yield validated [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
         instances for the input file.
 
         Orchestrates the full per-file pipeline:
@@ -558,7 +575,7 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
         1. [`validate_input`](#scikitplot.corpus.MarkdownReader.validate_input "scikitplot.corpus.MarkdownReader.validate_input") — fail fast if file is missing.
         2. [`get_raw_chunks`](#scikitplot.corpus.MarkdownReader.get_raw_chunks "scikitplot.corpus.MarkdownReader.get_raw_chunks") — format-specific text extraction.
         3. Chunker (if set) — sub-segments each raw block.
-        4. `CorpusDocument` construction with validated schema.
+        4. [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus.CorpusDocument") construction with validated schema.
         5. Filter — discards noise documents.
 
         Yields:
@@ -570,19 +587,20 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
             :   If the input file is missing or the format is invalid.
 
         Return type:
-        :   [**Generator**](https://docs.python.org/3/library/typing.html#typing.Generator "(in Python v3.14)")[**CorpusDocument**, None, None]
+        :   [**Generator**](https://docs.python.org/3/library/typing.html#typing.Generator "(in Python v3.14)")[[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument"), None, None]
 
         Notes
 
         The global `chunk_index` counter is monotonically increasing across
         ****all**** raw chunks and sub-chunks for a single file, ensuring that
-        `(source_file, chunk_index)` is a unique key within one reader run.
+        `(input_path, chunk_index)` is a unique key within one reader run.
 
         Omitted-document statistics are logged at INFO level after processing
         each file.
 
         Examples
 
+        Try it in your browser!
         ```
         >>> from pathlib import Path
         >>> reader = DocumentReader.create(Path("corpus.txt"))
@@ -591,8 +609,9 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
         True
 
         ```
+        Go BackOpen In Tab
 
-    get\_raw\_chunks()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_readers/_text.py#L258)[#](#scikitplot.corpus.MarkdownReader.get_raw_chunks "Link to this definition")
+    get\_raw\_chunks()[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_readers/_text.py#L258)[#](#scikitplot.corpus.MarkdownReader.get_raw_chunks "Link to this definition")
     :   Read the text file and yield a single raw chunk dict.
 
         Yields:
@@ -620,7 +639,7 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
         sub-chunking into sentences/paragraphs/windows is delegated to
         the injected [`ChunkerBase`](scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus._base.ChunkerBase").
 
-    input\_file: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_readers/_text.py#L340)[#](#scikitplot.corpus.MarkdownReader.input_file "Link to this definition")
+    input\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_readers/_text.py#L340)[#](#scikitplot.corpus.MarkdownReader.input_path "Link to this definition")
     :   Path to the source file.
 
         For URL-based readers ([`WebReader`](scikitplot.corpus.WebReader.html#scikitplot.corpus.WebReader "scikitplot.corpus.WebReader"), [`YouTubeReader`](scikitplot.corpus.YouTubeReader.html#scikitplot.corpus.YouTubeReader "scikitplot.corpus.YouTubeReader")),
@@ -634,7 +653,7 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
         Type:
         :   Maximum file size in bytes before rejecting. Default
 
-    source\_provenance: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_readers/_text.py#L340)[#](#scikitplot.corpus.MarkdownReader.source_provenance "Link to this definition")
+    source\_provenance: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_readers/_text.py#L340)[#](#scikitplot.corpus.MarkdownReader.source_provenance "Link to this definition")
     :   Provenance overrides propagated into every yielded `CorpusDocument`.
 
         Keys may include `"source_type"`, `"source_title"`,
@@ -645,21 +664,23 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
     source\_uri: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.MarkdownReader.source_uri "Link to this definition")
     :   Original URI for URL-based readers (web pages, YouTube videos).
 
-        Set this to the full URL string when `input_file` is a synthetic
+        Set this to the full URL string when `input_path` is a synthetic
         `pathlib.Path` wrapping a URL. File-based readers leave this
         `None`.
 
         Examples
 
+        Try it in your browser!
         ```
         >>> reader = WebReader(
-        ...     input_file=Path("https://example.com/article"),
+        ...     input_path=Path("https://example.com/article"),
         ...     source_uri="https://example.com/article",
         ... )
 
         ```
+        Go BackOpen In Tab
 
-    classmethod subclass\_by\_type()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_base.py#L1128)[#](#scikitplot.corpus.MarkdownReader.subclass_by_type "Link to this definition")
+    classmethod subclass\_by\_type()[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_base.py#L1128)[#](#scikitplot.corpus.MarkdownReader.subclass_by_type "Link to this definition")
     :   Return a copy of the extension → reader class registry.
 
         Returns:
@@ -672,14 +693,16 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
 
         Examples
 
+        Try it in your browser!
         ```
         >>> registry = DocumentReader.subclass_by_type()
         >>> ".txt" in registry
         True
 
         ```
+        Go BackOpen In Tab
 
-    classmethod supported\_types()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_base.py#L1110)[#](#scikitplot.corpus.MarkdownReader.supported_types "Link to this definition")
+    classmethod supported\_types()[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_base.py#L1110)[#](#scikitplot.corpus.MarkdownReader.supported_types "Link to this definition")
     :   Return a sorted list of file extensions supported by registered readers.
 
         Returns:
@@ -692,18 +715,20 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
 
         Examples
 
+        Try it in your browser!
         ```
         >>> DocumentReader.supported_types()
         ['.pdf', '.txt', '.xml', '.zip']
 
         ```
+        Go BackOpen In Tab
 
-    validate\_input()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_base.py#L755)[#](#scikitplot.corpus.MarkdownReader.validate_input "Link to this definition")
+    validate\_input()[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_base.py#L755)[#](#scikitplot.corpus.MarkdownReader.validate_input "Link to this definition")
     :   Assert that the input file exists and is readable.
 
         Raises:
         :   ValueError
-            :   If `input_file` does not exist or is not a regular file.
+            :   If `input_path` does not exist or is not a regular file.
 
         Return type:
         :   None
@@ -715,6 +740,7 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
 
         Examples
 
+        Try it in your browser!
         ```
         >>> reader = DocumentReader.create(Path("missing.txt"))
         >>> reader.validate_input()
@@ -723,3 +749,4 @@ class scikitplot.corpus.MarkdownReader(**input\_file**, **chunker=None**, **filt
         ValueError: Input file does not exist: missing.txt
 
         ```
+        Go BackOpen In Tab

@@ -1,6 +1,6 @@
 # sheet\_converter[#](#sheet-converter "Link to this heading")
 
-scikitplot.experimental.\_doremi.sheet\_converter(**sheet=None**, **add\_frequency=True**, **return\_mode='dict'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/experimental/_doremi/note.py#L323)[#](#scikitplot.experimental._doremi.sheet_converter "Link to this definition")
+scikitplot.experimental.\_doremi.sheet\_converter(**sheet=None**, **add\_frequency=True**, **return\_mode='dict'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/experimental/_doremi/note.py#L323)[#](#scikitplot.experimental._doremi.sheet_converter "Link to this definition")
 :   Display parsed notes or note frequencies from a musical sheet.
 
     Parameters:
@@ -35,9 +35,11 @@ scikitplot.experimental.\_doremi.sheet\_converter(**sheet=None**, **add\_frequen
 
     Examples
 
+    Try it in your browser!
     ```
     >>> sheet_converter(return_mode='df')
     ...     note octave duration frequency
     ... 0       G        4          0.50         392.00
 
     ```
+    Go BackOpen In Tab

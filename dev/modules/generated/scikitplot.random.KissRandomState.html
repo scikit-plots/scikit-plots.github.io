@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 
 
@@ -15,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 
 <script>
-window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": false}, "providers": {"claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Claude about this documentation page.", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Get familiar with the documentation at {url} so I can ask questions about it."}, "chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask ChatGPT about this documentation page.", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Get familiar with the documentation at {url} so I can ask questions about it."}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}}, "baseUrl": "https://docs.example.com"};
+window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true}, "providers": {"claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Claude about this documentation page.", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask ChatGPT about this documentation page.", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Read {url} so I can ask questions about it.", "model": "gpt-4o", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this documentation page.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Please review this documentation: {url}\n\nI have questions.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
 </script>
 
     <title>KissRandomState &#8212; scikit-plots 0.5.dev0 documentation</title>
@@ -37,8 +38,8 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
@@ -59,16 +60,16 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=e4cb1417" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=de0fc20e"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=e93d8674"></script>
+    <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/ai-assistant.js?v=cb662cc4"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
@@ -77,7 +78,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'modules/generated/scikitplot.random.KissRandomState';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -86,7 +87,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
     <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
-    <link rel="canonical" href="https://docs.example.com/modules/generated/scikitplot.random.KissRandomState.html" />
+    <link rel="canonical" href="https://scikit-plots.github.io/modules/generated/scikitplot.random.KissRandomState.html" />
     <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -112,7 +113,9 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -223,22 +226,8 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../whats_new/index.html">
-    Release History
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../devel/index.html">
-    Developer's Guide
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../project/community.html">
-    Community
+  <a class="nav-link dropdown-item nav-internal" href="../../cheatsheet/index.html">
+    Cheatsheet
   </a>
 </li>
 
@@ -251,8 +240,29 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../project/governance.html">
     Governance Process
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../whats_new/index.html">
+    Release History
   </a>
 </li>
 
@@ -440,22 +450,8 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../whats_new/index.html">
-    Release History
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../devel/index.html">
-    Developer's Guide
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../project/community.html">
-    Community
+  <a class="nav-link nav-internal" href="../../cheatsheet/index.html">
+    Cheatsheet
   </a>
 </li>
 
@@ -468,8 +464,29 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../project/governance.html">
     Governance Process
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whats_new/index.html">
+    Release History
   </a>
 </li>
 
@@ -597,8 +614,11 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="toctree-l2"><a class="reference internal" href="scikitplot._externals._sphinx_ext._sphinx_ai_assistant.html">_sphinx_ai_assistant</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot._externals._sphinx_ext._sphinx_ai_assistant.add_ai_assistant_context.html">add_ai_assistant_context</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_llms_txt.html">generate_llms_txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_llms_txt_standalone.html">generate_llms_txt_standalone</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_markdown_files.html">generate_markdown_files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot._externals._sphinx_ext._sphinx_ai_assistant.html_to_markdown.html">html_to_markdown</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot._externals._sphinx_ext._sphinx_ai_assistant.html_to_markdown_converter.html">html_to_markdown_converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot._externals._sphinx_ext._sphinx_ai_assistant.process_html_directory.html">process_html_directory</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.annoy.html">scikitplot.annoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -664,6 +684,20 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.corpus.html">scikitplot.corpus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.to_langchain_documents.html">to_langchain_documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.to_langgraph_state.html">to_langgraph_state</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.to_mcp_resources.html">to_mcp_resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.to_mcp_tool_result.html">to_mcp_tool_result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.to_huggingface_dataset.html">to_huggingface_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.to_rag_tuples.html">to_rag_tuples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.to_jsonl.html">to_jsonl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.to_numpy_arrays.html">to_numpy_arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.to_tensorflow_dataset.html">to_tensorflow_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.to_torch_dataloader.html">to_torch_dataloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LangChainCorpusRetriever.html">LangChainCorpusRetriever</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.MCPCorpusServer.html">MCPCorpusServer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.extract_archive.html">extract_archive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.is_archive.html">is_archive</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ChunkerBase.html">ChunkerBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DefaultFilter.html">DefaultFilter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DocumentReader.html">DocumentReader</a></li>
@@ -678,9 +712,43 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SentenceChunkerBridge.html">SentenceChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.WordChunkerBridge.html">WordChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.bridge_chunker.html">bridge_chunker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.register_bridge.html">register_bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.unregister_bridge.html">unregister_bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TokenizerProtocol.html">TokenizerProtocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SentenceSplitterProtocol.html">SentenceSplitterProtocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.StemmerProtocol.html">StemmerProtocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LemmatizerProtocol.html">LemmatizerProtocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FunctionTokenizer.html">FunctionTokenizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FunctionSentenceSplitter.html">FunctionSentenceSplitter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FunctionStemmer.html">FunctionStemmer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FunctionLemmatizer.html">FunctionLemmatizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomTokenizerRegistry.html">CustomTokenizerRegistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.register_tokenizer.html">register_tokenizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.get_tokenizer.html">get_tokenizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.register_sentence_splitter.html">register_sentence_splitter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.get_sentence_splitter.html">get_sentence_splitter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.register_stemmer.html">register_stemmer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.get_stemmer.html">get_stemmer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.register_lemmatizer.html">register_lemmatizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.get_lemmatizer.html">get_lemmatizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ScriptType.html">ScriptType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.detect_script.html">detect_script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.is_cjk_char.html">is_cjk_char</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.is_rtl_char.html">is_rtl_char</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.split_cjk_chars.html">split_cjk_chars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.MULTI_SCRIPT_SENTENCE_RE_PATTERN.html">MULTI_SCRIPT_SENTENCE_RE_PATTERN</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FixedWindowChunker.html">FixedWindowChunker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FixedWindowChunkerConfig.html">FixedWindowChunkerConfig</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.WindowUnit.html">WindowUnit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ISO_TO_NLTK.html">ISO_TO_NLTK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ISO_TO_NAME.html">ISO_TO_NAME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.NLTK_TO_ISO.html">NLTK_TO_ISO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.NLTK_STOPWORD_LANGUAGES.html">NLTK_STOPWORD_LANGUAGES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.BUILTIN_LANG_STOPWORDS.html">BUILTIN_LANG_STOPWORDS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.coerce_language.html">coerce_language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.resolve_stopwords.html">resolve_stopwords</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.iso_to_nltk.html">iso_to_nltk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.nltk_to_iso.html">nltk_to_iso</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ParagraphChunker.html">ParagraphChunker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ParagraphChunkerConfig.html">ParagraphChunkerConfig</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SentenceBackend.html">SentenceBackend</a></li>
@@ -705,6 +773,14 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FactoryCorpusBuilder.html">FactoryCorpusBuilder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.HookableCorpusPipeline.html">HookableCorpusPipeline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineHooks.html">PipelineHooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.AnyDownloader.html">AnyDownloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.BaseDownloader.html">BaseDownloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomDownloader.html">CustomDownloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DownloadResult.html">DownloadResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.GitHubDownloader.html">GitHubDownloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.GoogleDriveDownloader.html">GoogleDriveDownloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.WebDownloader.html">WebDownloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.YouTubeDownloader.html">YouTubeDownloader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DEFAULT_CACHE_DIR.html">DEFAULT_CACHE_DIR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DEFAULT_MODEL.html">DEFAULT_MODEL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.EmbeddingEngine.html">EmbeddingEngine</a></li>
@@ -718,6 +794,10 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.NLPEnricher.html">NLPEnricher</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.export_documents.html">export_documents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.load_documents.html">load_documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CollectionManifest.html">CollectionManifest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CorpusStats.html">CorpusStats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.compute_stats.html">compute_stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.provenance_from_filename.html">provenance_from_filename</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DedupLinesNormalizer.html">DedupLinesNormalizer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.HTMLStripNormalizer.html">HTMLStripNormalizer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LanguageDetectionNormalizer.html">LanguageDetectionNormalizer</a></li>
@@ -735,23 +815,49 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ALTOReader.html">ALTOReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.AudioReader.html">AudioReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomReader.html">CustomReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.normalize_extractor_output.html">normalize_extractor_output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ImageReader.html">ImageReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.MarkdownReader.html">MarkdownReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PDFReader.html">PDFReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.MarkdownReader.html">MarkdownReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ReSTReader.html">ReSTReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TEIReader.html">TEIReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TextReader.html">TextReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.VideoReader.html">VideoReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.WebReader.html">WebReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.XMLReader.html">XMLReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.YouTubeReader.html">YouTubeReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TEIReader.html">TEIReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.XMLReader.html">XMLReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ZipReader.html">ZipReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ComponentRegistry.html">ComponentRegistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.registry.html">registry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SearchConfig.html">SearchConfig</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SearchResult.html">SearchResult</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SimilarityIndex.html">SimilarityIndex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SectionType.html">SectionType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ChunkingStrategy.html">ChunkingStrategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ExportFormat.html">ExportFormat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SourceType.html">SourceType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.MatchMode.html">MatchMode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.Modality.html">Modality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ErrorPolicy.html">ErrorPolicy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CorpusDocument.html">CorpusDocument</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._PROMOTED_RAW_KEYS.html">_PROMOTED_RAW_KEYS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.documents_to_pandas.html">documents_to_pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.documents_to_polars.html">documents_to_polars</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CorpusSource.html">CorpusSource</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SourceEntry.html">SourceEntry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SourceKind.html">SourceKind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.InMemoryStorage.html">InMemoryStorage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.JSONLStorage.html">JSONLStorage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.QueryResult.html">QueryResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SQLiteStorage.html">SQLiteStorage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.StorageBase.html">StorageBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.StorageQuery.html">StorageQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.URLKind.html">URLKind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.classify_url.html">classify_url</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.download_url.html">download_url</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.infer_extension.html">infer_extension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.probe_url_kind.html">probe_url_kind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.resolve_url.html">resolve_url</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.cython.html">scikitplot.cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -1142,6 +1248,14 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
       <main id="main-content" class="bd-main" role="main">
         
         
+
+  
+  
+  
+
+  
+  
+  
           <div class="bd-content">
             <div class="bd-article-container">
               
@@ -1187,7 +1301,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>KissRandomState<a class="headerlink" href="#kissrandomstate" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.random.KissRandomState">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.random.</span></span><span class="sig-name descname"><span class="pre">KissRandomState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/random/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.random.KissRandomState" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.random.</span></span><span class="sig-name descname"><span class="pre">KissRandomState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/random/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.random.KissRandomState" title="Link to this definition">#</a></dt>
 <dd><p>NumPy RandomState-compatible interface with complete serialization.</p>
 <p>KissRandomState : Inherites from KissGenerator.
 Provides legacy numpy.random.RandomState API for backward compatibility.</p>
@@ -1229,6 +1343,8 @@ Provides legacy numpy.random.RandomState API for backward compatibility.</p>
 for users who prefer the legacy API. All serialization methods
 are inherited from KissGenerator.</p>
 <p class="rubric">Examples</p>
+<div class="try_examples_outer_container docutils container" id="45d96d7d-8322-432b-aeea-96718c56dcf2">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('45d96d7d-8322-432b-aeea-96718c56dcf2','df9682cf-606b-49fb-8231-364127ffdc29','ebc9bd83-a097-4785-8098-61ca673440b3','../../lite/tree/../notebooks/index.html?path=28774885_4df1_4315_ba7f_f3c2dab9a797.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rs</span> <span class="o">=</span> <span class="n">KissRandomState</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rs</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># Like np.random.rand</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rs</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># Like np.random.randint</span>
@@ -1243,7 +1359,9 @@ are inherited from KissGenerator.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">restored</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">rs</span><span class="p">))</span>
 </pre></div>
 </div>
-<dl class="py attribute">
+</div>
+</div>
+<div id="ebc9bd83-a097-4785-8098-61ca673440b3" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('45d96d7d-8322-432b-aeea-96718c56dcf2','ebc9bd83-a097-4785-8098-61ca673440b3')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('45d96d7d-8322-432b-aeea-96718c56dcf2','ebc9bd83-a097-4785-8098-61ca673440b3')">Open In Tab</button></div><div id="df9682cf-606b-49fb-8231-364127ffdc29" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.random.KissRandomState.bit_generator">
 <span class="sig-name descname"><span class="pre">bit_generator</span></span><a class="headerlink" href="#scikitplot.random.KissRandomState.bit_generator" title="Link to this definition">#</a></dt>
 <dd><p>Gets the bit generator instance used by the generator</p>
@@ -1256,13 +1374,17 @@ are inherited from KissGenerator.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
+<div class="try_examples_outer_container docutils container" id="0e2e9a4e-c29d-49ac-b553-dc669595300d">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('0e2e9a4e-c29d-49ac-b553-dc669595300d','0c158ad0-680a-45ed-955f-9fa64ac00a0c','db8550e4-b01b-480f-9e06-fd7c04b63a4e','../../lite/tree/../notebooks/index.html?path=ce2afaf7_4d65_4109_b42c_b87c8a00cfaf.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bg</span> <span class="o">=</span> <span class="n">gen</span><span class="o">.</span><span class="n">get_bit_generator</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">bg</span><span class="p">))</span>
 <span class="go">&lt;class &#39;KissBitGenerator&#39;&gt;</span>
 </pre></div>
 </div>
-</dd></dl>
+</div>
+</div>
+<div id="db8550e4-b01b-480f-9e06-fd7c04b63a4e" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('0e2e9a4e-c29d-49ac-b553-dc669595300d','db8550e4-b01b-480f-9e06-fd7c04b63a4e')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('0e2e9a4e-c29d-49ac-b553-dc669595300d','db8550e4-b01b-480f-9e06-fd7c04b63a4e')">Open In Tab</button></div><div id="0c158ad0-680a-45ed-955f-9fa64ac00a0c" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissRandomState.choice">
@@ -1289,12 +1411,16 @@ are inherited from KissGenerator.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
+<div class="try_examples_outer_container docutils container" id="20f5d919-f4d6-41af-9c3c-63cc2c8ff26e">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('20f5d919-f4d6-41af-9c3c-63cc2c8ff26e','ef416416-a3d8-44ce-b629-9b88da54c35b','1c71bbe1-f33d-4e48-b5a6-05b2bc0f03ad','../../lite/tree/../notebooks/index.html?path=16c824b2_2a31_4e03_8c73_f13d490c82f0.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="go">array([...])</span>
 </pre></div>
 </div>
-</dd></dl>
+</div>
+</div>
+<div id="1c71bbe1-f33d-4e48-b5a6-05b2bc0f03ad" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('20f5d919-f4d6-41af-9c3c-63cc2c8ff26e','1c71bbe1-f33d-4e48-b5a6-05b2bc0f03ad')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('20f5d919-f4d6-41af-9c3c-63cc2c8ff26e','1c71bbe1-f33d-4e48-b5a6-05b2bc0f03ad')">Open In Tab</button></div><div id="ef416416-a3d8-44ce-b629-9b88da54c35b" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissRandomState.deserialize">
@@ -1325,6 +1451,8 @@ are inherited from KissGenerator.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
+<div class="try_examples_outer_container docutils container" id="45cdb5dc-2d00-41b0-bab1-75bfe2156b8e">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('45cdb5dc-2d00-41b0-bab1-75bfe2156b8e','3929663d-b98c-4069-85dd-cb48b682f073','4e40bbde-65e0-4864-bcc2-b6fd9dbe9cb5','../../lite/tree/../notebooks/index.html?path=5175aa65_c70b_458a_8be7_fb7f160ca8a0.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">json_str</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">gen</span><span class="o">.</span><span class="n">serialize</span><span class="p">())</span>
@@ -1332,7 +1460,9 @@ are inherited from KissGenerator.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">restored</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
-</dd></dl>
+</div>
+</div>
+<div id="4e40bbde-65e0-4864-bcc2-b6fd9dbe9cb5" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('45cdb5dc-2d00-41b0-bab1-75bfe2156b8e','4e40bbde-65e0-4864-bcc2-b6fd9dbe9cb5')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('45cdb5dc-2d00-41b0-bab1-75bfe2156b8e','4e40bbde-65e0-4864-bcc2-b6fd9dbe9cb5')">Open In Tab</button></div><div id="3929663d-b98c-4069-85dd-cb48b682f073" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissRandomState.from_dict">
@@ -1353,13 +1483,17 @@ are inherited from KissGenerator.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
+<div class="try_examples_outer_container docutils container" id="75cbbb86-a6cc-4df8-8059-06e6193f74a2">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('75cbbb86-a6cc-4df8-8059-06e6193f74a2','dae4d717-03bc-431d-acbd-754818f5e76c','1c53ee13-9ab3-4267-b179-d4cbe19204bc','../../lite/tree/../notebooks/index.html?path=a0caef4e_66aa_499c_b7ad_415ee1bf5f68.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bg</span> <span class="o">=</span> <span class="n">gen</span><span class="o">.</span><span class="n">get_bit_generator</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">bg</span><span class="p">))</span>
 <span class="go">&lt;class &#39;KissBitGenerator&#39;&gt;</span>
 </pre></div>
 </div>
-</dd></dl>
+</div>
+</div>
+<div id="1c53ee13-9ab3-4267-b179-d4cbe19204bc" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('75cbbb86-a6cc-4df8-8059-06e6193f74a2','1c53ee13-9ab3-4267-b179-d4cbe19204bc')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('75cbbb86-a6cc-4df8-8059-06e6193f74a2','1c53ee13-9ab3-4267-b179-d4cbe19204bc')">Open In Tab</button></div><div id="dae4d717-03bc-431d-acbd-754818f5e76c" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissRandomState.get_params">
@@ -1380,11 +1514,15 @@ are inherited from KissGenerator.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
+<div class="try_examples_outer_container docutils container" id="44e56426-7458-42d5-9aa9-2a0d4583e394">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('44e56426-7458-42d5-9aa9-2a0d4583e394','9b00d932-26f4-459f-b4ff-c36028fadb22','b5493d77-3659-4db5-a49c-1522742aa168','../../lite/tree/../notebooks/index.html?path=ed75b620_04d3_4513_8556_274495ca73bd.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">params</span> <span class="o">=</span> <span class="n">gen</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
 </pre></div>
 </div>
-</dd></dl>
+</div>
+</div>
+<div id="b5493d77-3659-4db5-a49c-1522742aa168" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('44e56426-7458-42d5-9aa9-2a0d4583e394','b5493d77-3659-4db5-a49c-1522742aa168')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('44e56426-7458-42d5-9aa9-2a0d4583e394','b5493d77-3659-4db5-a49c-1522742aa168')">Open In Tab</button></div><div id="9b00d932-26f4-459f-b4ff-c36028fadb22" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissRandomState.get_state">
@@ -1399,13 +1537,17 @@ are inherited from KissGenerator.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
+<div class="try_examples_outer_container docutils container" id="d1ea9d5a-d21b-474c-b207-156abb2b6c30">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('d1ea9d5a-d21b-474c-b207-156abb2b6c30','a9e15571-539b-49cc-9ad0-0b1a88d40b48','43e22a19-5424-4c8c-9120-dc3d14be6879','../../lite/tree/../notebooks/index.html?path=8c5b8e33_2d05_430f_8ab2_9f933772be05.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">state</span> <span class="o">=</span> <span class="n">gen</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;bit_generator_state&quot;</span> <span class="ow">in</span> <span class="n">state</span><span class="p">)</span>
 <span class="go">True</span>
 </pre></div>
 </div>
-</dd></dl>
+</div>
+</div>
+<div id="43e22a19-5424-4c8c-9120-dc3d14be6879" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('d1ea9d5a-d21b-474c-b207-156abb2b6c30','43e22a19-5424-4c8c-9120-dc3d14be6879')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('d1ea9d5a-d21b-474c-b207-156abb2b6c30','43e22a19-5424-4c8c-9120-dc3d14be6879')">Open In Tab</button></div><div id="a9e15571-539b-49cc-9ad0-0b1a88d40b48" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissRandomState.integers">
@@ -1434,12 +1576,16 @@ are inherited from KissGenerator.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
+<div class="try_examples_outer_container docutils container" id="630bcb80-a4a9-48d1-a53c-a52f3111a4c7">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('630bcb80-a4a9-48d1-a53c-a52f3111a4c7','8fb8370f-c1b0-4b03-95f1-ec73976708a0','cf00a33b-1fc3-4db5-a6db-a5c4c5ba32c3','../../lite/tree/../notebooks/index.html?path=ec565b58_6719_4461_9cfa_7f40867e6385.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="go">array([...])</span>
 </pre></div>
 </div>
-</dd></dl>
+</div>
+</div>
+<div id="cf00a33b-1fc3-4db5-a6db-a5c4c5ba32c3" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('630bcb80-a4a9-48d1-a53c-a52f3111a4c7','cf00a33b-1fc3-4db5-a6db-a5c4c5ba32c3')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('630bcb80-a4a9-48d1-a53c-a52f3111a4c7','cf00a33b-1fc3-4db5-a6db-a5c4c5ba32c3')">Open In Tab</button></div><div id="8fb8370f-c1b0-4b03-95f1-ec73976708a0" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissRandomState.normal">
@@ -1464,12 +1610,16 @@ are inherited from KissGenerator.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
+<div class="try_examples_outer_container docutils container" id="6e47373f-74d1-4413-b109-f11112dcb75b">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('6e47373f-74d1-4413-b109-f11112dcb75b','848daf66-814c-4b5c-aff4-9483d5196294','55f507a9-92dc-4e65-b377-ec2f9569b692','../../lite/tree/../notebooks/index.html?path=4f74b5c3_ba79_4e6c_a803_4e07c1203c1a.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 <span class="go">array([...])</span>
 </pre></div>
 </div>
-</dd></dl>
+</div>
+</div>
+<div id="55f507a9-92dc-4e65-b377-ec2f9569b692" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('6e47373f-74d1-4413-b109-f11112dcb75b','55f507a9-92dc-4e65-b377-ec2f9569b692')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('6e47373f-74d1-4413-b109-f11112dcb75b','55f507a9-92dc-4e65-b377-ec2f9569b692')">Open In Tab</button></div><div id="848daf66-814c-4b5c-aff4-9483d5196294" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissRandomState.permutation">
@@ -1505,6 +1655,8 @@ If array-like, permute copy of array.</p>
 <p>Unlike shuffle(), this returns a permuted copy without
 modifying the input.</p>
 <p class="rubric">Examples</p>
+<div class="try_examples_outer_container docutils container" id="08545811-c147-4dd3-b402-aba0b49d5ffe">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('08545811-c147-4dd3-b402-aba0b49d5ffe','dfe54513-ff32-49a5-bfa8-76f8f6c75c15','c2121f51-f997-4792-ad1d-4fe05495f849','../../lite/tree/../notebooks/index.html?path=59b4415a_9ef5_4f7f_a608_f77bf426c5b6.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># Permuted [0, 1, ..., 9]</span>
 <span class="go">array([3, 7, 1, 9, 2, 5, 8, 0, 6, 4])</span>
@@ -1517,7 +1669,9 @@ modifying the input.</p>
 <span class="go">array([1, 2, 3, 4])</span>
 </pre></div>
 </div>
-</dd></dl>
+</div>
+</div>
+<div id="c2121f51-f997-4792-ad1d-4fe05495f849" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('08545811-c147-4dd3-b402-aba0b49d5ffe','c2121f51-f997-4792-ad1d-4fe05495f849')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('08545811-c147-4dd3-b402-aba0b49d5ffe','c2121f51-f997-4792-ad1d-4fe05495f849')">Open In Tab</button></div><div id="dfe54513-ff32-49a5-bfa8-76f8f6c75c15" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissRandomState.rand">
@@ -1538,11 +1692,15 @@ modifying the input.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
+<div class="try_examples_outer_container docutils container" id="6e816c42-381a-4aff-a999-fa1b5c50a738">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('6e816c42-381a-4aff-a999-fa1b5c50a738','4f90f633-b667-465e-8ca2-f9ea99b20de0','0f89c5d3-fe26-4560-b114-368c5377c0ed','../../lite/tree/../notebooks/index.html?path=8cc98b82_5f12_49d7_83d6_99a9d9806068.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rs</span> <span class="o">=</span> <span class="n">KissRandomState</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rs</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># 3x4 array</span>
 </pre></div>
 </div>
-</dd></dl>
+</div>
+</div>
+<div id="0f89c5d3-fe26-4560-b114-368c5377c0ed" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('6e816c42-381a-4aff-a999-fa1b5c50a738','0f89c5d3-fe26-4560-b114-368c5377c0ed')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('6e816c42-381a-4aff-a999-fa1b5c50a738','0f89c5d3-fe26-4560-b114-368c5377c0ed')">Open In Tab</button></div><div id="4f90f633-b667-465e-8ca2-f9ea99b20de0" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissRandomState.randint">
@@ -1569,11 +1727,15 @@ modifying the input.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
+<div class="try_examples_outer_container docutils container" id="e977154b-0980-4b20-bd60-14b1ef322f53">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('e977154b-0980-4b20-bd60-14b1ef322f53','ded3f57b-72c0-4b53-8ce1-7d6988e9ac13','011d9dbe-fdad-4741-9b86-3c24a87b691e','../../lite/tree/../notebooks/index.html?path=78dfb6ff_a932_451c_ba57_a65893590d59.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rs</span> <span class="o">=</span> <span class="n">KissRandomState</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rs</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
-</dd></dl>
+</div>
+</div>
+<div id="011d9dbe-fdad-4741-9b86-3c24a87b691e" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('e977154b-0980-4b20-bd60-14b1ef322f53','011d9dbe-fdad-4741-9b86-3c24a87b691e')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('e977154b-0980-4b20-bd60-14b1ef322f53','011d9dbe-fdad-4741-9b86-3c24a87b691e')">Open In Tab</button></div><div id="ded3f57b-72c0-4b53-8ce1-7d6988e9ac13" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissRandomState.randn">
@@ -1594,11 +1756,15 @@ modifying the input.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
+<div class="try_examples_outer_container docutils container" id="e010b56f-e043-45cf-b2bf-47217b701ef5">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('e010b56f-e043-45cf-b2bf-47217b701ef5','94194e1d-2c6f-41e6-92a3-a388f99d0721','2c2486e3-8d8b-4239-8a0e-5a17d6ad7db1','../../lite/tree/../notebooks/index.html?path=f68bd35a_19a9_4475_a3f8_66d30abdd8c0.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rs</span> <span class="o">=</span> <span class="n">KissRandomState</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rs</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># 3x4 array</span>
 </pre></div>
 </div>
-</dd></dl>
+</div>
+</div>
+<div id="2c2486e3-8d8b-4239-8a0e-5a17d6ad7db1" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('e010b56f-e043-45cf-b2bf-47217b701ef5','2c2486e3-8d8b-4239-8a0e-5a17d6ad7db1')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('e010b56f-e043-45cf-b2bf-47217b701ef5','2c2486e3-8d8b-4239-8a0e-5a17d6ad7db1')">Open In Tab</button></div><div id="94194e1d-2c6f-41e6-92a3-a388f99d0721" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissRandomState.random">
@@ -1623,12 +1789,16 @@ modifying the input.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
+<div class="try_examples_outer_container docutils container" id="7a85e091-3c09-4e24-8a59-e9cfb16ae652">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('7a85e091-3c09-4e24-8a59-e9cfb16ae652','9ae150a4-367b-4f9e-b225-046146ae7573','5d807163-e1e7-4947-81f5-118ee30fd9f1','../../lite/tree/../notebooks/index.html?path=9a44ad04_fc4c_44dc_a677_324db0cd20e8.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="go">array([...])</span>
 </pre></div>
 </div>
-</dd></dl>
+</div>
+</div>
+<div id="5d807163-e1e7-4947-81f5-118ee30fd9f1" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('7a85e091-3c09-4e24-8a59-e9cfb16ae652','5d807163-e1e7-4947-81f5-118ee30fd9f1')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('7a85e091-3c09-4e24-8a59-e9cfb16ae652','5d807163-e1e7-4947-81f5-118ee30fd9f1')">Open In Tab</button></div><div id="9ae150a4-367b-4f9e-b225-046146ae7573" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissRandomState.random_sample">
@@ -1649,11 +1819,15 @@ modifying the input.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
+<div class="try_examples_outer_container docutils container" id="d9c9ae6c-bf57-4b60-bdbb-e90fe32e3d64">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('d9c9ae6c-bf57-4b60-bdbb-e90fe32e3d64','656f2611-a9c7-4864-9062-51d30611a31f','40ac2345-babb-433c-88c4-0b432dcdcb26','../../lite/tree/../notebooks/index.html?path=5d19e9dd_b6ed_46b5_b9fd_8eef24a81dec.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rs</span> <span class="o">=</span> <span class="n">KissRandomState</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rs</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>  <span class="c1"># Re-seed</span>
 </pre></div>
 </div>
-</dd></dl>
+</div>
+</div>
+<div id="40ac2345-babb-433c-88c4-0b432dcdcb26" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('d9c9ae6c-bf57-4b60-bdbb-e90fe32e3d64','40ac2345-babb-433c-88c4-0b432dcdcb26')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('d9c9ae6c-bf57-4b60-bdbb-e90fe32e3d64','40ac2345-babb-433c-88c4-0b432dcdcb26')">Open In Tab</button></div><div id="656f2611-a9c7-4864-9062-51d30611a31f" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissRandomState.serialize">
@@ -1668,13 +1842,17 @@ modifying the input.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
+<div class="try_examples_outer_container docutils container" id="38cfdd72-cc66-4dba-93d0-18fb9348a347">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('38cfdd72-cc66-4dba-93d0-18fb9348a347','842fa7e0-e990-40d5-bad7-902e002dc69e','09a6caca-29f5-483e-bc9a-88e7015dfa58','../../lite/tree/../notebooks/index.html?path=74f05f0a_1175_4879_b0fd_39636e3b5239.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">gen</span><span class="o">.</span><span class="n">serialize</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">json_str</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
-</dd></dl>
+</div>
+</div>
+<div id="09a6caca-29f5-483e-bc9a-88e7015dfa58" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('38cfdd72-cc66-4dba-93d0-18fb9348a347','09a6caca-29f5-483e-bc9a-88e7015dfa58')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('38cfdd72-cc66-4dba-93d0-18fb9348a347','09a6caca-29f5-483e-bc9a-88e7015dfa58')">Open In Tab</button></div><div id="842fa7e0-e990-40d5-bad7-902e002dc69e" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissRandomState.set_bit_generator">
@@ -1695,12 +1873,16 @@ modifying the input.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
+<div class="try_examples_outer_container docutils container" id="2864b01b-0a9b-4c9d-ad73-d5ccd11624cb">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('2864b01b-0a9b-4c9d-ad73-d5ccd11624cb','becd2f2a-516d-439d-83e3-37f190573198','54f6243f-b7b1-4380-9821-b146a5e2dbc3','../../lite/tree/../notebooks/index.html?path=3f195833_d003_4ed0_ad43_06b892647310.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">new_bg</span> <span class="o">=</span> <span class="n">KissBitGenerator</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span><span class="o">.</span><span class="n">set_bit_generator</span><span class="p">(</span><span class="n">new_bg</span><span class="p">)</span>
 </pre></div>
 </div>
-</dd></dl>
+</div>
+</div>
+<div id="54f6243f-b7b1-4380-9821-b146a5e2dbc3" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('2864b01b-0a9b-4c9d-ad73-d5ccd11624cb','54f6243f-b7b1-4380-9821-b146a5e2dbc3')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('2864b01b-0a9b-4c9d-ad73-d5ccd11624cb','54f6243f-b7b1-4380-9821-b146a5e2dbc3')">Open In Tab</button></div><div id="becd2f2a-516d-439d-83e3-37f190573198" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissRandomState.set_params">
@@ -1720,11 +1902,15 @@ modifying the input.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
+<div class="try_examples_outer_container docutils container" id="54c1c393-bc35-40ed-8daa-f9da0c15f5f2">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('54c1c393-bc35-40ed-8daa-f9da0c15f5f2','fb9c7572-c9c7-40e6-951c-72795937f71c','aca6e2fa-dbfb-4ee8-8f9a-6157d2ab5572','../../lite/tree/../notebooks/index.html?path=be941477_bcec_4f21_97fd_582bc2209c29.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">bit_generator</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">})</span>
 </pre></div>
 </div>
-</dd></dl>
+</div>
+</div>
+<div id="aca6e2fa-dbfb-4ee8-8f9a-6157d2ab5572" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('54c1c393-bc35-40ed-8daa-f9da0c15f5f2','aca6e2fa-dbfb-4ee8-8f9a-6157d2ab5572')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('54c1c393-bc35-40ed-8daa-f9da0c15f5f2','aca6e2fa-dbfb-4ee8-8f9a-6157d2ab5572')">Open In Tab</button></div><div id="fb9c7572-c9c7-40e6-951c-72795937f71c" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissRandomState.set_state">
@@ -1739,13 +1925,17 @@ modifying the input.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
+<div class="try_examples_outer_container docutils container" id="0c086fe7-4dd3-486c-b338-90df7e76dc48">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('0c086fe7-4dd3-486c-b338-90df7e76dc48','f3d72e26-5083-4808-9d1f-0f2e7f5f5d6a','f013198b-5334-4e87-ae72-808a2e64947c','../../lite/tree/../notebooks/index.html?path=1486e210_63d6_4bf5_b71a_0851afe073e4.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen1</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">state</span> <span class="o">=</span> <span class="n">gen1</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen2</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen2</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
 </pre></div>
 </div>
-</dd></dl>
+</div>
+</div>
+<div id="f013198b-5334-4e87-ae72-808a2e64947c" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('0c086fe7-4dd3-486c-b338-90df7e76dc48','f013198b-5334-4e87-ae72-808a2e64947c')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('0c086fe7-4dd3-486c-b338-90df7e76dc48','f013198b-5334-4e87-ae72-808a2e64947c')">Open In Tab</button></div><div id="f3d72e26-5083-4808-9d1f-0f2e7f5f5d6a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissRandomState.shuffle">
@@ -1760,13 +1950,17 @@ modifying the input.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
+<div class="try_examples_outer_container docutils container" id="a3c44cc4-836b-470c-ba38-db6ccea69335">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('a3c44cc4-836b-470c-ba38-db6ccea69335','7073eddc-fadf-4fcd-9768-334ab803e1ba','279ddbd9-aa8e-4036-9f7b-348a6087911f','../../lite/tree/../notebooks/index.html?path=a654c6a0_64c8_4c6b_8292_b554f0e1d9bc.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>  <span class="c1"># shuffled</span>
 </pre></div>
 </div>
-</dd></dl>
+</div>
+</div>
+<div id="279ddbd9-aa8e-4036-9f7b-348a6087911f" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('a3c44cc4-836b-470c-ba38-db6ccea69335','279ddbd9-aa8e-4036-9f7b-348a6087911f')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('a3c44cc4-836b-470c-ba38-db6ccea69335','279ddbd9-aa8e-4036-9f7b-348a6087911f')">Open In Tab</button></div><div id="7073eddc-fadf-4fcd-9768-334ab803e1ba" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissRandomState.spawn">
@@ -1805,6 +1999,8 @@ Each child generator has its own independent random stream.</p>
 <p>Useful for parallel computation where each worker needs an
 independent RNG.</p>
 <p class="rubric">Examples</p>
+<div class="try_examples_outer_container docutils container" id="5c796670-76fc-4866-9dbc-fe69bdb43969">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('5c796670-76fc-4866-9dbc-fe69bdb43969','dd954fa4-ac7b-4519-953f-81b618d52481','d66a55d4-cfc8-4cb3-946a-d2d07ecb87f6','../../lite/tree/../notebooks/index.html?path=ff68af5d_c866_4904_aa8d_29864d8dbec8.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">children</span> <span class="o">=</span> <span class="n">gen</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">children</span><span class="p">))</span>
@@ -1820,7 +2016,9 @@ independent RNG.</p>
 <span class="gp">... </span>    <span class="n">results</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">executor</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">worker</span><span class="p">,</span> <span class="n">children</span><span class="p">))</span>
 </pre></div>
 </div>
-</dd></dl>
+</div>
+</div>
+<div id="d66a55d4-cfc8-4cb3-946a-d2d07ecb87f6" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('5c796670-76fc-4866-9dbc-fe69bdb43969','d66a55d4-cfc8-4cb3-946a-d2d07ecb87f6')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('5c796670-76fc-4866-9dbc-fe69bdb43969','d66a55d4-cfc8-4cb3-946a-d2d07ecb87f6')">Open In Tab</button></div><div id="dd954fa4-ac7b-4519-953f-81b618d52481" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissRandomState.to_dict">
@@ -1851,12 +2049,16 @@ independent RNG.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
+<div class="try_examples_outer_container docutils container" id="5d97427d-e7b6-41c7-b9a5-99200d646f43">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('5d97427d-e7b6-41c7-b9a5-99200d646f43','d30aa2a7-fdee-49e1-a5dd-77979d6f30a4','6cfd95c6-7b7e-456b-adf9-25618070c3bf','../../lite/tree/../notebooks/index.html?path=c974f97c_41d9_4df1_a2b2_2e4436f78c8d.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="go">array([...])</span>
 </pre></div>
 </div>
-</dd></dl>
+</div>
+</div>
+<div id="6cfd95c6-7b7e-456b-adf9-25618070c3bf" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('5d97427d-e7b6-41c7-b9a5-99200d646f43','6cfd95c6-7b7e-456b-adf9-25618070c3bf')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('5d97427d-e7b6-41c7-b9a5-99200d646f43','6cfd95c6-7b7e-456b-adf9-25618070c3bf')">Open In Tab</button></div><div id="d30aa2a7-fdee-49e1-a5dd-77979d6f30a4" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </dd></dl>
 
@@ -1964,13 +2166,19 @@ independent RNG.</p>
             
           </footer>
         
+
+  
+  
+  
+
+
       </main>
     </div>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1981,7 +2189,7 @@ independent RNG.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260409.dbbf22f 2026-04-09T03:39Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260421.25a82c5 2026-04-21T21:14Z.
       <br/>
     
   </p>

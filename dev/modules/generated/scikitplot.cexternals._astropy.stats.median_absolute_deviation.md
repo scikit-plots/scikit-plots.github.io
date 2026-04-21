@@ -1,6 +1,6 @@
 # median\_absolute\_deviation[#](#median-absolute-deviation "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.median\_absolute\_deviation(**data**, **axis=None**, **func=None**, **ignore\_nan=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/cexternals/_astropy/stats/funcs.py#L788)[#](#scikitplot.cexternals._astropy.stats.median_absolute_deviation "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.median\_absolute\_deviation(**data**, **axis=None**, **func=None**, **ignore\_nan=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cexternals/_astropy/stats/funcs.py#L788)[#](#scikitplot.cexternals._astropy.stats.median_absolute_deviation "Link to this definition")
 :   Calculate the median absolute deviation (MAD).
 
     The MAD is defined as `median(abs(a - median(a)))`.
@@ -43,6 +43,8 @@ scikitplot.cexternals.\_astropy.stats.median\_absolute\_deviation(**data**, **ax
 
     Examples
 
+    Try it in your browser!
+
     Generate random variates from a Gaussian distribution and return the
     median absolute deviation for that distribution:
 
@@ -56,3 +58,4 @@ scikitplot.cexternals.\_astropy.stats.median\_absolute\_deviation(**data**, **ax
     0.6829504282771885
 
     ```
+    Go BackOpen In Tab

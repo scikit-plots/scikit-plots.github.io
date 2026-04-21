@@ -1,6 +1,6 @@
 # plot\_lift[#](#plot-lift "Link to this heading")
 
-scikitplot.decile.kds.plot\_lift(**y\_true**, **y\_score**, **\***, **pos\_label=None**, **class\_index=1**, **title='Lift Curves'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **data=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/decile/kds/_kds.py#L320)[#](#scikitplot.decile.kds.plot_lift "Link to this definition")
+scikitplot.decile.kds.plot\_lift(**y\_true**, **y\_score**, **\***, **pos\_label=None**, **class\_index=1**, **title='Lift Curves'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **data=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/decile/kds/_kds.py#L320)[#](#scikitplot.decile.kds.plot_lift "Link to this definition")
 :   Generate the Decile based cumulative Lift Plot from labels and probabilities.
 
     The lift curve is used to determine the effectiveness of a
@@ -135,10 +135,11 @@ scikitplot.decile.kds.plot\_lift(**y\_true**, **y\_score**, **\***, **pos\_label
 
     References
 
-    [1] <https://github.com/tensorbored/kds/blob/master/kds/metrics.py#L382>
+    [1] [tensorbored/kds](https://github.com/tensorbored/kds/blob/master/kds/metrics.py#L382)
 
     Examples
 
+    Try it in your browser!
     ```
     >>> from sklearn.datasets import load_iris as data_3_classes
     >>> from sklearn.model_selection import train_test_split
@@ -163,6 +164,7 @@ scikitplot.decile.kds.plot\_lift(**y\_true**, **y\_score**, **\***, **pos\_label
     ([`Source code`](../../_downloads/2f61f6a5e521b675821a85814fe552e3/scikitplot-decile-kds-plot_lift-1.py), [`png`](../../_downloads/0b56d4d8801af58edd402b969b062e78/scikitplot-decile-kds-plot_lift-1.png))
 
     ![Lift Curves](../../_images/scikitplot-decile-kds-plot_lift-1.png)
+    Go BackOpen In Tab
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

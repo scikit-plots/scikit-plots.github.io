@@ -1,6 +1,6 @@
 # show\_versions[#](#show-versions "Link to this heading")
 
-scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/utils/_show_versions.py#L214)[#](#scikitplot.show_versions "Link to this definition")
+scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/utils/_show_versions.py#L214)[#](#scikitplot.show_versions "Link to this definition")
 :   Print or return debugging information about the system, Python, dependencies, and hardware.
 
     Parameters:
@@ -28,6 +28,7 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
 
     Examples
 
+    Try it in your browser!
     ```
     >>> import scikitplot
     >>> scikitplot.show_versions()
@@ -47,7 +48,7 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                        ci: true
 
     Python Dependencies:
-               scikitplot: 0.5.dev0+git.20260409.dbbf22f
+               scikitplot: 0.5.dev0+git.20260421.25a82c5
                       pip: 26.0.1
              meson-python: 0.19.0
                setuptools: 79.0.1
@@ -62,7 +63,7 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                   aggdraw: 1.4.1
                   seaborn: 0.13.2
                     bokeh: None
-                   plotly: 6.6.0
+                   plotly: 6.7.0
                 streamlit: None
                    gradio: None
                    pyyaml: 6.0.3
@@ -106,7 +107,7 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
       'architecture': 'x86_64',
       'OS': 'Linux-6.17.0-1007-aws-x86_64-with-glibc2.35',
       'ci': 'true'},
-     'dependencies': {'scikitplot': '0.5.dev0+git.20260409.dbbf22f',
+     'dependencies': {'scikitplot': '0.5.dev0+git.20260421.25a82c5',
       'pip': '26.0.1',
       'meson-python': '0.19.0',
       'setuptools': '79.0.1',
@@ -121,7 +122,7 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
       'aggdraw': '1.4.1',
       'seaborn': '0.13.2',
       'bokeh': None,
-      'plotly': '6.6.0',
+      'plotly': '6.7.0',
       'streamlit': None,
       'gradio': None,
       'pyyaml': '6.0.3'},
@@ -146,11 +147,11 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
     ```
     ```
     [32m[1mChanged logging level: WARNING[0m
+
+    ```
+    ```
     [1;36mScikit-plot Version Information:[0m
 
-
-    ```
-    ```
 
     System Information:
                    python: 3.11.15 (main, Mar  4 2026, 16:25:54) [GCC 11.4.0]
@@ -164,7 +165,7 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                        ci: true
 
     Python Dependencies:
-               scikitplot: 0.5.dev0+git.20260409.dbbf22f
+               scikitplot: 0.5.dev0+git.20260421.25a82c5
                       pip: 26.0.1
              meson-python: 0.19.0
                setuptools: 79.0.1
@@ -179,7 +180,7 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                   aggdraw: 1.4.1
                   seaborn: 0.13.2
                     bokeh: None
-                   plotly: 6.6.0
+                   plotly: 6.7.0
                 streamlit: None
                    gradio: None
                    pyyaml: 6.0.3
@@ -224,5 +225,6 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
 
 
     ```
+    Go BackOpen In Tab
 
 Make live

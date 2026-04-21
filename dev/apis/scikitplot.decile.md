@@ -56,7 +56,7 @@ Includes plots for machine learning evaluation decile / ntile analysis
 
 References
 
-* <https://github.com/modelplot/modelplotpy/blob/master/modelplotpy/functions.py>
+* [modelplot/modelplotpy](https://github.com/modelplot/modelplotpy/blob/master/modelplotpy/functions.py)
 * <https://modelplot.github.io/intro_modelplotpy.html>
 
 ****User guide.**** See the [ModelPlotPy](../user_guide/decile/modelplotpy.html#decile-modelplotpy-index) and [modelplotpy financial](../user_guide/decile/modelplotpy.html#decile-modelplotpy-financial-index) sections for further details.

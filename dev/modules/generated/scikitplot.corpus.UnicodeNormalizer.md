@@ -1,6 +1,6 @@
 # UnicodeNormalizer[#](#unicodenormalizer "Link to this heading")
 
-class scikitplot.corpus.UnicodeNormalizer(**form='NFC'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_normalizers/_normalizer.py#L151)[#](#scikitplot.corpus.UnicodeNormalizer "Link to this definition")
+class scikitplot.corpus.UnicodeNormalizer(**form='NFC'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_normalizers/_normalizer.py#L151)[#](#scikitplot.corpus.UnicodeNormalizer "Link to this definition")
 :   Apply Unicode normalisation (NFC, NFD, NFKC, or NFKD).
 
     Parameters:
@@ -14,6 +14,7 @@ class scikitplot.corpus.UnicodeNormalizer(**form='NFC'**)[[source]](https://gith
 
     Examples
 
+    Try it in your browser!
     ```
     >>> from scikitplot.corpus._normalizers import UnicodeNormalizer
     >>> norm = UnicodeNormalizer(form="NFKC")
@@ -22,8 +23,9 @@ class scikitplot.corpus.UnicodeNormalizer(**form='NFC'**)[[source]](https://gith
     'file'
 
     ```
+    Go BackOpen In Tab
 
-    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_normalizers/_normalizer.py#L181)[#](#scikitplot.corpus.UnicodeNormalizer.normalize_doc "Link to this definition")
+    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_normalizers/_normalizer.py#L181)[#](#scikitplot.corpus.UnicodeNormalizer.normalize_doc "Link to this definition")
     :   Apply Unicode normalisation to the document text.
 
         Parameters:
@@ -33,10 +35,10 @@ class scikitplot.corpus.UnicodeNormalizer(**form='NFC'**)[[source]](https://gith
         :   CorpusDocument
 
         Parameters:
-        :   ****doc**** (**CorpusDocument**)
+        :   ****doc**** ([**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument"))
 
         Return type:
-        :   **CorpusDocument**
+        :   [**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

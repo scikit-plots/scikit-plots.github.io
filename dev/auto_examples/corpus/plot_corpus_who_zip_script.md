@@ -63,7 +63,7 @@ constructor signature — the pipeline threads the outer dict straight through.
 ```
 pipeline_zip = CorpusPipeline(
     chunker=SentenceChunker(SentenceChunkerConfig(backend=SentenceBackend.NLTK)),
-    output_dir=Path("output/"),
+    output_path=Path("output/"),
     export_format=ExportFormat.CSV,
     reader_kwargs={
         "reader_kwargs": {
@@ -79,7 +79,7 @@ result_zip
 ```
 Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
 
-PipelineResult(source='data/WHO-EURO-2025-12555-52329-80560-eng.zip', n_documents=7, n_omitted=0, n_embedded=0, elapsed=19.7s, output=output/WHO-EURO-2025-12555-52329-80560-eng.csv)
+PipelineResult(input_path='data/WHO-EURO-2025-12555-52329-80560-eng.zip', output_path=output/WHO-EURO-2025-12555-52329-80560-eng.csv, export_format=csv, n_documents=7, n_read=8, n_omitted=1, n_embedded=0, elapsed_seconds=23.6s)
 
 ```
 ```
@@ -116,6 +116,11 @@ pprint(pd.read_csv(result_zip.output_path).head().to_dict())
  'frame_index': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'image_height': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'image_width': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'input_path': {0: 'WHO-EURO-2025-12555-52329-80560-eng.zip',
+                1: 'WHO-EURO-2025-12555-52329-80560-eng.zip',
+                2: 'WHO-EURO-2025-12555-52329-80560-eng.zip',
+                3: 'WHO-EURO-2025-12555-52329-80560-eng.zip',
+                4: 'WHO-EURO-2025-12555-52329-80560-eng.zip'},
  'isbn': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'keywords': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'language': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
@@ -137,11 +142,6 @@ pprint(pd.read_csv(result_zip.output_path).head().to_dict())
                   4: 'transcript'},
  'source_author': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'source_date': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'source_file': {0: 'WHO-EURO-2025-12555-52329-80560-eng.zip',
-                 1: 'WHO-EURO-2025-12555-52329-80560-eng.zip',
-                 2: 'WHO-EURO-2025-12555-52329-80560-eng.zip',
-                 3: 'WHO-EURO-2025-12555-52329-80560-eng.zip',
-                 4: 'WHO-EURO-2025-12555-52329-80560-eng.zip'},
  'source_title': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'source_type': {0: 'audio', 1: 'audio', 2: 'audio', 3: 'audio', 4: 'audio'},
  'stems': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
@@ -161,7 +161,7 @@ pprint(pd.read_csv(result_zip.output_path).head().to_dict())
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 19.677 seconds)
+****Total running time of the script:**** (0 minutes 23.578 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_who_zip_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_who_zip_script.ipynb)
 
@@ -173,11 +173,7 @@ Tags: [model-type: classification](../../_tags/model-type-classification.html) [
 
 Related examples
 
-![](../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png)
-
-[corpus Knowledge and Information local .png with examples](plot_corpus_knowledge_script.html)
-
-corpus Knowledge and Information local .png with examples![](../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png)
+![](../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png)
 
 [corpus A Tale of Two Cities .mp3 with examples](plot_corpus_a_tale_of_two_cities_mp3_script.html)
 
@@ -185,7 +181,11 @@ corpus A Tale of Two Cities .mp3 with examples![](../../_images/sphx_glr_plot_co
 
 [corpus WHO European Region YouTube shorts with examples](plot_corpus_who_youtube_shorts_script.html)
 
-corpus WHO European Region YouTube shorts with examples![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
+corpus WHO European Region YouTube shorts with examples![](../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png)
+
+[corpus Knowledge and Information local .png with examples](plot_corpus_knowledge_script.html)
+
+corpus Knowledge and Information local .png with examples![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
 
 [corpus WHO European Region local or url per file with examples](plot_corpus_who_per_file_script.html)
 

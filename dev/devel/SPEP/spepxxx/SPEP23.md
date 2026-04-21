@@ -10,7 +10,7 @@
 ## [Branches and Pull requests](#id2)[#](#branches-and-pull-requests "Link to this heading")
 
 ****Previous work****
-- <https://github.com/matplotlib/matplotlib/pull/2465> ****To-delete****
+- [matplotlib/matplotlib#2465](https://github.com/matplotlib/matplotlib/pull/2465) ****To-delete****
 
 ## [Abstract](#id3)[#](#abstract "Link to this heading")
 

@@ -1,6 +1,6 @@
 # show\_config[#](#show-config "Link to this heading")
 
-scikitplot.show\_config(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/config/__config__.py#L177)[#](#scikitplot.show_config "Link to this definition")
+scikitplot.show\_config(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/config/__config__.py#L177)[#](#scikitplot.show_config "Link to this definition")
 :   Show libraries and system information on which SciPy was built
     and is being used
 
@@ -21,6 +21,7 @@ scikitplot.show\_config(**mode='stdout'**)[[source]](https://github.com/scikit-p
 
     Examples
 
+    Try it in your browser!
     ```
     >>> import scikitplot
     >>> scikitplot.show_config()
@@ -52,7 +53,7 @@ scikitplot.show\_config(**mode='stdout'**)[[source]](https://github.com/scikit-p
         detection method: config-tool
         include directory: unknown
         name: pybind11
-        version: 3.0.3
+        version: 3.0.4
     Compilers:
       c:
         commands: /usr/bin/ccache, cc
@@ -93,5 +94,6 @@ scikitplot.show\_config(**mode='stdout'**)[[source]](https://github.com/scikit-p
 
 
     ```
+    Go BackOpen In Tab
 
 Make live

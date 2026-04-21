@@ -133,7 +133,7 @@ The procedure for the feature freeze is as follows:
     Add the name of CI jobs that are required; these should be the same jobs that
     required on `main` before the branching. Click “Save changes” at the bottom when done.
 11. Update the “Actual date” column of
-    <https://github.com/astropy/astropy/wiki/Release-Calendar> with the current
+    [astropy/astropy](https://github.com/astropy/astropy/wiki/Release-Calendar) with the current
     date for this version’s feature freeze.
 12. Go to [RTD’s Settings](https://readthedocs.org/projects/astropy/versions/)
     and check “Activate” and “Hidden” for the new release branch, which should be
@@ -349,7 +349,7 @@ the release candidate and including a link to the wiki page to report any
 successes and failures.
 
 Additionally, you should update the release calendar by going to
-<https://github.com/astropy/astropy/wiki/Release-Calendar> and updating the
+[astropy/astropy](https://github.com/astropy/astropy/wiki/Release-Calendar) and updating the
 “Actual date” column of this version’s release candidate with the current date.
 
 ## Releasing subsequent release candidates[#](#releasing-subsequent-release-candidates "Link to this heading")
@@ -415,7 +415,7 @@ intended for the e.g. v6.0.x release branch.
 
 ### Checking the changelog[#](#checking-the-changelog "Link to this heading")
 
-Scripts are provided at <https://github.com/astropy/astropy-tools/tree/main/pr_consistency>
+Scripts are provided at [astropy/astropy-tools](https://github.com/astropy/astropy-tools/tree/main/pr_consistency)
 to check for consistency between milestones, labels, the presence of pull requests
 in release branches, and the changelog. Follow the instructions in that repository
 to make sure everything is correct for the present release.
@@ -444,7 +444,7 @@ clean-up tasks to finalize the process.
    (the previous versions are still accessible by their URL though).
 3. If you have updated the list of contributors during the release, update the
    equivalent list on the Astropy web site at
-   <https://github.com/astropy/astropy.github.com>.
+   [astropy/astropy.github.com](https://github.com/astropy/astropy.github.com).
 4. Cherry-pick the commit rendering the changelog and deleting the fragments and
    open a PR to the astropy **main** branch. Also make sure you cherry-pick the
    commit updating the `.mailmap` and `docs/credits.rst` files to the **main**
@@ -459,7 +459,7 @@ clean-up tasks to finalize the process.
    possibly `conda` works before sending out the public announcement (so that
    users who want to try out the new version can do so with `conda`).
 7. Upload the release to Zenodo by creating a GitHub Release off the GitHub tag.
-   Click on the tag in <https://github.com/astropy/astropy/tags> and then click on
+   Click on the tag in [astropy/astropy](https://github.com/astropy/astropy/tags) and then click on
    “Create release from tag” on the upper right. The release title is the same as the
    tag. In the description, you can copy and paste a description from the previous
    release, as it should be a one-liner that points to `CHANGES.rst`. When you
@@ -476,7 +476,7 @@ clean-up tasks to finalize the process.
    You should also coordinate with the rest of the Astropy release team and the
    community engagement coordinators.
 9. If this is a feature release, update the release calendar by going to
-   <https://github.com/astropy/astropy/wiki/Release-Calendar> and updating the
+   [astropy/astropy](https://github.com/astropy/astropy/wiki/Release-Calendar) and updating the
    “Actual date” column of this version’s release with the date you performed
    the release (probably the date of the tag and PyPI upload).
 10. In the main branch, update the [SECURITY.md file in the astropy repo](https://github.com/astropy/astropy/blob/main/SECURITY.md) to include the

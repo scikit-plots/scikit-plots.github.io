@@ -1,6 +1,6 @@
 # tweedie[#](#tweedie "Link to this heading")
 
-scikitplot.externals.\_tweedie.tweedie = <scikitplot.externals.\_tweedie.\_tweedie\_dist.tweedie\_gen object>[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/externals/_tweedie/_tweedie_dist.py#L)[#](#scikitplot.externals._tweedie.tweedie "Link to this definition")
+scikitplot.externals.\_tweedie.tweedie = <scikitplot.externals.\_tweedie.\_tweedie\_dist.tweedie\_gen object>[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/externals/_tweedie/_tweedie_dist.py#L)[#](#scikitplot.externals._tweedie.tweedie "Link to this definition")
 :   An instance of [`tweedie_gen`](scikitplot.externals._tweedie.tweedie_gen.html#scikitplot.externals._tweedie.tweedie_gen "scikitplot.externals._tweedie.tweedie_gen"), providing Tweedie distribution functionality.
 
     This instance provides:
@@ -36,6 +36,8 @@ scikitplot.externals.\_tweedie.tweedie = <scikitplot.externals.\_tweedie.\_tweed
 
     Examples
 
+    Try it in your browser!
+
     Compute the pdf and cdf at a given point:
 
     ```
@@ -62,10 +64,10 @@ scikitplot.externals.\_tweedie.tweedie = <scikitplot.externals.\_tweedie.\_tweed
 
     ```
     ```
-    array([0.2438818 , 0.15903211, 1.06082819, 1.11915998, 1.28314912,
-           1.80852889, 0.        , 1.13644741, 0.9489671 , 0.        ,
-           0.09073782, 2.48497484, 0.71262724, 0.        , 0.52958761,
-           1.32042621])
+    array([0.81901311, 1.37828553, 0.79948296, 0.00317202, 0.95070454,
+           0.70273788, 0.27996604, 1.79287375, 0.29621398, 0.56374687,
+           0.20984732, 2.32259924, 0.        , 0.75115445, 0.63315353,
+           1.87618476])
 
     ```
 
@@ -89,5 +91,6 @@ scikitplot.externals.\_tweedie.tweedie = <scikitplot.externals.\_tweedie.\_tweed
     ([`Source code`](../../_downloads/637c2552e076b53b0ebfa0573e1abbeb/scikitplot-externals-_tweedie-tweedie-1.py), [`png`](../../_downloads/c42fb8be7ece17a106c1124dbe612404/scikitplot-externals-_tweedie-tweedie-1.png))
 
     ![../../_images/scikitplot-externals-_tweedie-tweedie-1.png](../../_images/scikitplot-externals-_tweedie-tweedie-1.png)
+    Go BackOpen In Tab
 
 Make live

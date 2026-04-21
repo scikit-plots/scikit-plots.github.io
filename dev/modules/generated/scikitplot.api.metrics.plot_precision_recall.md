@@ -1,6 +1,6 @@
 # plot\_precision\_recall[#](#plot-precision-recall "Link to this heading")
 
-scikitplot.api.metrics.plot\_precision\_recall(**y\_true**, **y\_probas**, **\***, **class\_index=None**, **class\_names=None**, **multi\_class=None**, **to\_plot\_class\_index=None**, **title='Precision-Recall AUC Curves'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **cmap=None**, **show\_labels=True**, **digits=4**, **plot\_micro=True**, **plot\_macro=False**, **pr\_auc='pr\_auc'**, **ap\_score=True**, **plot\_chance\_level=True**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/api/metrics/_classification/_precision_recall_curve.py#L198)[#](#scikitplot.api.metrics.plot_precision_recall "Link to this definition")
+scikitplot.api.metrics.plot\_precision\_recall(**y\_true**, **y\_probas**, **\***, **class\_index=None**, **class\_names=None**, **multi\_class=None**, **to\_plot\_class\_index=None**, **title='Precision-Recall AUC Curves'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **cmap=None**, **show\_labels=True**, **digits=4**, **plot\_micro=True**, **plot\_macro=False**, **pr\_auc='pr\_auc'**, **ap\_score=True**, **plot\_chance\_level=True**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/api/metrics/_classification/_precision_recall_curve.py#L198)[#](#scikitplot.api.metrics.plot_precision_recall "Link to this definition")
 :   Generates the Precision-Recall AUC Curves from labels and predicted scores/probabilities.
 
     Precision-Recall curve plots the precision against the recall for different threshold values.
@@ -181,6 +181,7 @@ scikitplot.api.metrics.plot\_precision\_recall(**y\_true**, **y\_probas**, **\**
 
     Examples
 
+    Try it in your browser!
     ```
     >>> from sklearn.datasets import load_digits as data_10_classes
     >>> from sklearn.model_selection import train_test_split
@@ -202,3 +203,4 @@ scikitplot.api.metrics.plot\_precision\_recall(**y\_true**, **y\_probas**, **\**
     ([`Source code`](../../_downloads/742acd8ac929a4c24b450746e42e66be/scikitplot-api-metrics-plot_precision_recall-1.py), [`png`](../../_downloads/03472242a02136dad8db2214fbf6d074/scikitplot-api-metrics-plot_precision_recall-1.png))
 
     ![Precision-Recall AUC Curves](../../_images/scikitplot-api-metrics-plot_precision_recall-1.png)
+    Go BackOpen In Tab

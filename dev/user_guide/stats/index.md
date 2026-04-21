@@ -39,7 +39,7 @@ The Tweedie distribution is widely used in:
 * Environmental science: Rainfall modeling and hydrology studies.
 
 > **See also**
-> * <https://github.com/thequackdaddy/tweedie>
+> * [thequackdaddy/tweedie](https://github.com/thequackdaddy/tweedie)
 * <https://www.statsmodels.org/dev/generated/statsmodels.genmod.families.family.Tweedie.html>
 * <https://glum.readthedocs.io/en/latest/glm.html#glum.TweedieDistribution>
 * <https://glum.readthedocs.io/en/latest/glm.html#glum.TweedieDistribution.log_likelihood>

@@ -1,6 +1,6 @@
 # plot\_elbow[#](#plot-elbow "Link to this heading")
 
-scikitplot.api.estimators.plot\_elbow(**clf**, **X**, **\***, **cluster\_ranges=None**, **show\_cluster\_time=True**, **n\_jobs=1**, **title='Elbow Curves'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/api/estimators/_cluster/_elbow.py#L92)[#](#scikitplot.api.estimators.plot_elbow "Link to this definition")
+scikitplot.api.estimators.plot\_elbow(**clf**, **X**, **\***, **cluster\_ranges=None**, **show\_cluster\_time=True**, **n\_jobs=1**, **title='Elbow Curves'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/api/estimators/_cluster/_elbow.py#L92)[#](#scikitplot.api.estimators.plot_elbow "Link to this definition")
 :   Plot the elbow curve for different values of K in KMeans clustering.
 
     Parameters:
@@ -119,6 +119,7 @@ scikitplot.api.estimators.plot\_elbow(**clf**, **X**, **\***, **cluster\_ranges=
 
     Examples
 
+    Try it in your browser!
     ```
     >>> from sklearn.cluster import KMeans
     >>> from sklearn.datasets import load_iris as data_3_classes
@@ -136,3 +137,4 @@ scikitplot.api.estimators.plot\_elbow(**clf**, **X**, **\***, **cluster\_ranges=
     ([`Source code`](../../_downloads/fb165c638d466254758a029ea8d39b64/scikitplot-api-estimators-plot_elbow-1.py), [`png`](../../_downloads/9e42b6888dea35fe456541484362c5e0/scikitplot-api-estimators-plot_elbow-1.png))
 
     ![Elbow Curve](../../_images/scikitplot-api-estimators-plot_elbow-1.png)
+    Go BackOpen In Tab

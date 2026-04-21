@@ -25,9 +25,11 @@ scikitplot.random.integers(**self**, **low**, **high=None**, **size=None**, **dt
 
     Examples
 
+    Try it in your browser!
     ```
     >>> gen = KissGenerator(42)
     >>> gen.integers(0, 10, size=5)
     array([...])
 
     ```
+    Go BackOpen In Tab

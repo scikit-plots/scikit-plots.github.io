@@ -1,9 +1,9 @@
 # normalize\_mlflow\_store\_values[#](#normalize-mlflow-store-values "Link to this heading")
 
-scikitplot.mlflow.normalize\_mlflow\_store\_values(**\***, **backend\_store\_uri**, **default\_artifact\_root**, **base\_dir**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/mlflow/_project.py#L421)[#](#scikitplot.mlflow.normalize_mlflow_store_values "Link to this definition")
+scikitplot.mlflow.normalize\_mlflow\_store\_values(**\***, **backend\_store\_uri**, **default\_artifact\_root**, **base\_dir**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/mlflow/_project.py#L421)[#](#scikitplot.mlflow.normalize_mlflow_store_values "Link to this definition")
 :   Normalize local store values for consistent multi-script usage.
 
-    ## Deterministic normalization rules[#](#deterministic-normalization-rules "Link to this heading")
+    Deterministic normalization rules:
 
     * If backend\_store\_uri starts with “sqlite:///” => normalize the filesystem path to absolute.
     * Else if backend\_store\_uri is a local path => normalize to absolute.

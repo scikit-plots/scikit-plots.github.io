@@ -27,7 +27,7 @@ Browse archived artifacts and releases.
 ## Social Media Platforms[#](#social-media-platforms "Link to this heading")
 
 * <https://www.linkedin.com/company/scikit-plots>
-* <https://github.com/orgs/scikit-plots/discussions>
+* [orgs/scikit-plots#discussions](https://github.com/orgs/scikit-plots/discussions)
 * <https://zenodo.org/communities/scikit-plots>
 
 ## Subscribe to releases[#](#subscribe-to-releases "Link to this heading")

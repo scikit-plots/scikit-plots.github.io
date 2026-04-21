@@ -36,6 +36,7 @@ scikitplot.cexperimental.\_cy\_cexperimental.logit(**x0**)[#](#scikitplot.cexper
 
     Examples
 
+    Try it in your browser!
     ```
     >>> logit(0.5)
     0.0
@@ -46,3 +47,4 @@ scikitplot.cexperimental.\_cy\_cexperimental.logit(**x0**)[#](#scikitplot.cexper
     1.3862943611198906
 
     ```
+    Go BackOpen In Tab

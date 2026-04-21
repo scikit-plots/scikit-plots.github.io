@@ -1,6 +1,6 @@
 # add\_ai\_assistant\_context[#](#add-ai-assistant-context "Link to this heading")
 
-scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.add\_ai\_assistant\_context(**app**, **pagename**, **templatename**, **context**, **doctree**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L1189)[#](#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.add_ai_assistant_context "Link to this definition")
+scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.add\_ai\_assistant\_context(**app**, **pagename**, **templatename**, **context**, **doctree**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L2410)[#](#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.add_ai_assistant_context "Link to this definition")
 :   Inject AI-assistant configuration into each HTML page’s template context.
 
     Registered with Sphinx’s `html-page-context` event in `setup`.
@@ -28,7 +28,7 @@ scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.add\_ai\_assistant\
     :   * ****app**** (**Sphinx**)
         * ****pagename**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
         * ****templatename**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****context**** (**Dict****[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **Any****]**)
+        * ****context**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **Any****]**)
         * ****doctree**** (**Any**)
 
     Return type:
@@ -36,16 +36,6 @@ scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_ai\_assistant.add\_ai\_assistant\
 
     Notes
 
-    ****Security****: The configuration dict is serialised with
-    `_safe_json_for_script` which escapes `</script>` sequences,
-    preventing script-injection attacks via adversarially crafted config
-    values.
-
-    ****Position validation****: `ai_assistant_position` is validated against
-    `_ALLOWED_POSITIONS`. Invalid values are replaced with
-    `"sidebar"` and a warning is logged.
-
-    ****Provider filtering****: Providers whose `url_template` does not use
-    the `http://` or `https://` scheme are silently removed from the
-    serialised config to prevent `javascript:` or `data:` injection
-    via the browser-side widget.
+    ****Security****: Serialised via `_safe_json_for_script` (XSS guard).
+    Invalid position → fallback to `"sidebar"` with a logged warning.
+    Providers with dangerous `url_template` schemes are filtered out.

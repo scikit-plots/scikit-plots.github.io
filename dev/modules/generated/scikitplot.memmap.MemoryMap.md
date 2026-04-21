@@ -31,12 +31,14 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
 
     Examples
 
+    Try it in your browser!
     ```
     >>> with MemoryMap.create_anonymous(4096, PROT_READ | PROT_WRITE) as m:
     ...     m.write(b"test")
     ...     data = m.read(4)
 
     ```
+    Go BackOpen In Tab
 
     addr[#](#scikitplot.memmap.MemoryMap.addr "Link to this definition")
     :   int
@@ -100,6 +102,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
 
         Examples
 
+        Try it in your browser!
         ```
         >>> import numpy as np
         >>> with MemoryMap.create_anonymous(4096) as m:
@@ -118,6 +121,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
         ...     arr[0] = 3.14
 
         ```
+        Go BackOpen In Tab
 
     close(**self**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.memmap.MemoryMap.close "Link to this definition")
     :   Close the memory mapping.
@@ -142,6 +146,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
 
         Examples
 
+        Try it in your browser!
         ```
         >>> m = MemoryMap.create_anonymous(4096)
         >>> m.close()
@@ -149,6 +154,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
         False
 
         ```
+        Go BackOpen In Tab
 
     static create\_anonymous(**int size: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**, **int prot: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 0x3**, **int flags: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 2**) → [MemoryMap](#scikitplot.memmap.MemoryMap "scikitplot.memmap.MemoryMap")[#](#scikitplot.memmap.MemoryMap.create_anonymous "Link to this definition")
     :   Create anonymous memory mapping (not backed by file).
@@ -192,6 +198,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
 
         Examples
 
+        Try it in your browser!
         ```
         >>> m = MemoryMap.create_anonymous(4096, PROT_READ | PROT_WRITE)
         >>> m.write(b"Hello")
@@ -206,6 +213,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
         ...     m.write(b"Hello, World!")
 
         ```
+        Go BackOpen In Tab
 
     static create\_file\_mapping(**int fd: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**, **int offset: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**, **int size: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**, **int prot: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 1**, **int flags: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 2**) → [MemoryMap](#scikitplot.memmap.MemoryMap "scikitplot.memmap.MemoryMap")[#](#scikitplot.memmap.MemoryMap.create_file_mapping "Link to this definition")
     :   Create file-backed memory mapping.
@@ -258,6 +266,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
 
         Examples
 
+        Try it in your browser!
         ```
         >>> with open("data.bin", "r+b") as f:
         ...     m = MemoryMap.create_file_mapping(f.fileno(), 0, 4096, PROT_READ)
@@ -265,6 +274,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
         ...     m.close()
 
         ```
+        Go BackOpen In Tab
 
     is\_valid[#](#scikitplot.memmap.MemoryMap.is_valid "Link to this definition")
     :   bool
@@ -304,6 +314,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
 
         Examples
 
+        Try it in your browser!
         ```
         >>> with MemoryMap.create_anonymous(4096) as m:
         ...     m.mlock()       # pages will not be swapped out
@@ -311,6 +322,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
         ...     m.munlock()     # release the lock
 
         ```
+        Go BackOpen In Tab
 
     mprotect(**self**, **int prot: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.memmap.MemoryMap.mprotect "Link to this definition")
     :   Change memory protection of mapped region.
@@ -334,12 +346,14 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
 
         Examples
 
+        Try it in your browser!
         ```
         >>> with MemoryMap.create_anonymous(4096, PROT_READ) as m:
         ...     m.mprotect(PROT_READ | PROT_WRITE)
         ...     m.write(b"Now writable!")
 
         ```
+        Go BackOpen In Tab
 
     msync(**self**, **int flags: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 2**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.memmap.MemoryMap.msync "Link to this definition")
     :   Synchronize mapped region with backing storage.
@@ -370,12 +384,14 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
 
         Examples
 
+        Try it in your browser!
         ```
         >>> with MemoryMap.create_file_mapping(fd, 0, 4096, PROT_WRITE, MAP_SHARED) as m:
         ...     m.write(b"Data")
         ...     m.msync(MS_SYNC)  # Ensure written to disk
 
         ```
+        Go BackOpen In Tab
 
     munlock(**self**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.memmap.MemoryMap.munlock "Link to this definition")
     :   Unlock mapped pages (allow the kernel to swap them out again).
@@ -398,6 +414,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
 
         Examples
 
+        Try it in your browser!
         ```
         >>> with MemoryMap.create_anonymous(4096) as m:
         ...     m.mlock()
@@ -405,6 +422,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
         ...     m.munlock()
 
         ```
+        Go BackOpen In Tab
 
     page\_size[#](#scikitplot.memmap.MemoryMap.page_size "Link to this definition")
     :   int
@@ -455,6 +473,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
 
         Examples
 
+        Try it in your browser!
         ```
         >>> with MemoryMap.create_anonymous(4096) as m:
         ...     m.write(b"Hello")
@@ -463,6 +482,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
         b'Hello'
 
         ```
+        Go BackOpen In Tab
 
     size[#](#scikitplot.memmap.MemoryMap.size "Link to this definition")
     :   int
@@ -507,6 +527,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
 
         Examples
 
+        Try it in your browser!
         ```
         >>> with MemoryMap.create_anonymous(4096, PROT_WRITE) as m:
         ...     n = m.write(b"Hello, World!")
@@ -514,6 +535,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
         13
 
         ```
+        Go BackOpen In Tab
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

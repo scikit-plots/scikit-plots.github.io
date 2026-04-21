@@ -1,4 +1,4 @@
-# ANNoy Vector Database (Approximate Nearest Neighbors)[#](#annoy-vector-database-approximate-nearest-neighbors "Link to this heading")
+# ANNoy Vector Database[#](#annoy-vector-database "Link to this heading")
 
 ANNOY (Approximate Nearest Neighbors Oh Yeah): The core data structure are random projection trees,
 a set of binary trees where each non-leaf node represents a hyperplane splitting the input space into half
@@ -116,7 +116,7 @@ to keep features separate and explicit.
 > **See also**
 > * [ANNoy](#annoy-index)
 * [cexternals/ANNoy (experimental)](../cexternals/_annoy/index.html#cexternals-annoy-index)
-* <https://github.com/spotify/annoy>
+* [spotify/annoy](https://github.com/spotify/annoy)
 * <https://pypi.org/project/annoy>
 > **See also**
 > * Python pickling: <https://docs.python.org/3/library/pickle.html#what-can-be-pickled-and-unpickled>

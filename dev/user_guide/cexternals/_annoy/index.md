@@ -203,14 +203,14 @@ Index t(f);  // C++14 compatible
 > **See also**
 > * [ANNoy](../../annoy/index.html#annoy-index)
 * [cexternals/ANNoy (experimental)](#cexternals-annoy-index)
-* <https://github.com/spotify/annoy>
+* [spotify/annoy](https://github.com/spotify/annoy)
 * <https://pypi.org/project/annoy>
 > **See also**
 > * [`from_low_level`](../../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index.from_low_level "scikitplot.annoy.Index.from_low_level")
 * [`pickle`](https://docs.python.org/3/library/pickle.html#module-pickle "(in Python v3.14)") (Python standard library)
 * Alternative ANN libraries:
-  - <https://github.com/nmslib/hnswlib>
-  - <https://github.com/spotify/voyager>
+  - [nmslib/hnswlib](https://github.com/nmslib/hnswlib)
+  - [spotify/voyager](https://github.com/spotify/voyager)
 
 ## References[#](#references "Link to this heading")
 

@@ -1,6 +1,6 @@
 # LanguageDetectionNormalizer[#](#languagedetectionnormalizer "Link to this heading")
 
-class scikitplot.corpus.LanguageDetectionNormalizer(**fallback\_language=None**, **min\_confidence=0.7**, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_normalizers/_normalizer.py#L506)[#](#scikitplot.corpus.LanguageDetectionNormalizer "Link to this definition")
+class scikitplot.corpus.LanguageDetectionNormalizer(**fallback\_language=None**, **min\_confidence=0.7**, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_normalizers/_normalizer.py#L507)[#](#scikitplot.corpus.LanguageDetectionNormalizer "Link to this definition")
 :   Detect document language and set `CorpusDocument.language`.
 
     Uses `langdetect` (`pip install langdetect`) which is a port of
@@ -29,6 +29,7 @@ class scikitplot.corpus.LanguageDetectionNormalizer(**fallback\_language=None**,
 
     Examples
 
+    Try it in your browser!
     ```
     >>> norm = LanguageDetectionNormalizer(fallback_language="en")
     >>> doc = CorpusDocument.create("f.txt", 0, "The quick brown fox.")
@@ -37,8 +38,9 @@ class scikitplot.corpus.LanguageDetectionNormalizer(**fallback\_language=None**,
     'en'
 
     ```
+    Go BackOpen In Tab
 
-    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_normalizers/_normalizer.py#L552)[#](#scikitplot.corpus.LanguageDetectionNormalizer.normalize_doc "Link to this definition")
+    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_normalizers/_normalizer.py#L553)[#](#scikitplot.corpus.LanguageDetectionNormalizer.normalize_doc "Link to this definition")
     :   Detect language and update `doc.language`.
 
         Parameters:
@@ -53,7 +55,7 @@ class scikitplot.corpus.LanguageDetectionNormalizer(**fallback\_language=None**,
             :   If `langdetect` is not installed.
 
         Parameters:
-        :   ****doc**** (**CorpusDocument**)
+        :   ****doc**** ([**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument"))
 
         Return type:
-        :   **CorpusDocument**
+        :   [**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")

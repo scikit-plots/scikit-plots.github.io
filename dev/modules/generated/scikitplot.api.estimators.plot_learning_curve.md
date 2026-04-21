@@ -1,6 +1,6 @@
 # plot\_learning\_curve[#](#plot-learning-curve "Link to this heading")
 
-scikitplot.api.estimators.plot\_learning\_curve(**estimator**, **X**, **y**, **\***, **train\_sizes=None**, **cv=None**, **scoring=None**, **n\_jobs=None**, **verbose=0**, **shuffle=False**, **random\_state=None**, **fit\_params=None**, **title='Learning Curves'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/api/estimators/_classifier/_learning_curve.py#L41)[#](#scikitplot.api.estimators.plot_learning_curve "Link to this definition")
+scikitplot.api.estimators.plot\_learning\_curve(**estimator**, **X**, **y**, **\***, **train\_sizes=None**, **cv=None**, **scoring=None**, **n\_jobs=None**, **verbose=0**, **shuffle=False**, **random\_state=None**, **fit\_params=None**, **title='Learning Curves'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/api/estimators/_classifier/_learning_curve.py#L41)[#](#scikitplot.api.estimators.plot_learning_curve "Link to this definition")
 :   Generates a plot of the train and test learning curves for a classifier.
 
     The learning curves plot the performance of a classifier as a function of the number of
@@ -166,6 +166,7 @@ scikitplot.api.estimators.plot\_learning\_curve(**estimator**, **X**, **y**, **\
 
     Examples
 
+    Try it in your browser!
     ```
     >>> from sklearn.datasets import load_digits as data_10_classes
     >>> from sklearn.model_selection import train_test_split
@@ -187,3 +188,4 @@ scikitplot.api.estimators.plot\_learning\_curve(**estimator**, **X**, **y**, **\
     ([`Source code`](../../_downloads/e01ef274d6d5b5cdcfedab1271a53197/scikitplot-api-estimators-plot_learning_curve-1.py), [`png`](../../_downloads/94c77bce36479cdca94670fca4edac4e/scikitplot-api-estimators-plot_learning_curve-1.png))
 
     ![Learning Curves](../../_images/scikitplot-api-estimators-plot_learning_curve-1.png)
+    Go BackOpen In Tab

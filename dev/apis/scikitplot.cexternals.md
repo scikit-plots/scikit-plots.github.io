@@ -26,7 +26,7 @@ Exports:
 > **See also**
 > * [ANNoy](../user_guide/annoy/index.html#annoy-index)
 * [cexternals/ANNoy](../user_guide/cexternals/_annoy/index.html#cexternals-annoy-index)
-* <https://github.com/spotify/annoy>
+* [spotify/annoy](https://github.com/spotify/annoy)
 * <https://pypi.org/project/annoy>
 
 References
@@ -38,6 +38,7 @@ Github. https://github.com/spotify/annoy](https://github.com/spotify/annoy)
 
 Examples
 
+Try it in your browser!
 ```
 >>> import random; random.seed(0)
 >>> # from annoy import Annoy, AnnoyIndex
@@ -53,6 +54,7 @@ Examples
 >>> t.get_nns_by_item(0, 1)  # Find nearest neighbor
 
 ```
+Go BackOpen In Tab
 
 ****User guide.**** See the [spotify/ANNoy Vector Database (Approximate Nearest Neighbors)](../user_guide/cexternals/_annoy/index.html#cexternals-annoy-index) section for further details.
 

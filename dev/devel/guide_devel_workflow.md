@@ -534,7 +534,7 @@ pull request.
 | Linting | [code style](guide_code_style_write.html#code-style) | Errors are displayed as annotations on the pull request diff. |
 | MypyStubtest | [static type hints](guide_code_style_write.html#type-hints) | Errors are displayed as annotations on the pull request diff. |
 | CircleCI | [documentation build](guide_document_write.html#writing-rest-pages) | Search the CircleCI log for `WARNING`. |
-| GitHub ActionsAppVeyorAzure pipelines | [tests](https://docs.xarray.dev/en/stable/user-guide/testing.html#testing "(in xarray v2026.2.0)") | Search the log for `FAILURES`. Subsequent section should contain information on failed tests. On Azure, find the images as **artifacts** of the Azure job:1. Click **Details** on the check on the GitHub PR page.2. Click **View more details on Azure Pipelines** to go to Azure.3. On the overview page **artifacts** are listed in the section **Related**. |
+| GitHub ActionsAppVeyorAzure pipelines | [tests](https://docs.xarray.dev/en/stable/user-guide/testing.html#testing "(in xarray v2026.4.0)") | Search the log for `FAILURES`. Subsequent section should contain information on failed tests. On Azure, find the images as **artifacts** of the Azure job:1. Click **Details** on the check on the GitHub PR page.2. Click **View more details on Azure Pipelines** to go to Azure.3. On the overview page **artifacts** are listed in the section **Related**. |
 
 ### Skip CI checks[#](#skip-ci-checks "Link to this heading")
 

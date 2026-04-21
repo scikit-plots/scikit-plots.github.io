@@ -11,7 +11,7 @@
 
 Main PR (including GTK3):
 
-* <https://github.com/matplotlib/matplotlib/pull/4143>
+* [matplotlib/matplotlib#4143](https://github.com/matplotlib/matplotlib/pull/4143)
 
 Backend specific branch diffs:
 

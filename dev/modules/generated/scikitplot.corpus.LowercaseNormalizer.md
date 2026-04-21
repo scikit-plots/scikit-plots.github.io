@@ -1,6 +1,6 @@
 # LowercaseNormalizer[#](#lowercasenormalizer "Link to this heading")
 
-class scikitplot.corpus.LowercaseNormalizer(**locale\_aware=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_normalizers/_normalizer.py#L375)[#](#scikitplot.corpus.LowercaseNormalizer "Link to this definition")
+class scikitplot.corpus.LowercaseNormalizer(**locale\_aware=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_normalizers/_normalizer.py#L376)[#](#scikitplot.corpus.LowercaseNormalizer "Link to this definition")
 :   Convert the document text to lowercase.
 
     Parameters:
@@ -14,6 +14,7 @@ class scikitplot.corpus.LowercaseNormalizer(**locale\_aware=False**)[[source]](h
 
     Examples
 
+    Try it in your browser!
     ```
     >>> norm = LowercaseNormalizer()
     >>> doc = CorpusDocument.create("f.txt", 0, "Hello World.")
@@ -21,8 +22,9 @@ class scikitplot.corpus.LowercaseNormalizer(**locale\_aware=False**)[[source]](h
     'hello world.'
 
     ```
+    Go BackOpen In Tab
 
-    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_normalizers/_normalizer.py#L397)[#](#scikitplot.corpus.LowercaseNormalizer.normalize_doc "Link to this definition")
+    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_normalizers/_normalizer.py#L398)[#](#scikitplot.corpus.LowercaseNormalizer.normalize_doc "Link to this definition")
     :   Lowercase the document text.
 
         Parameters:
@@ -32,7 +34,7 @@ class scikitplot.corpus.LowercaseNormalizer(**locale\_aware=False**)[[source]](h
         :   CorpusDocument
 
         Parameters:
-        :   ****doc**** (**CorpusDocument**)
+        :   ****doc**** ([**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument"))
 
         Return type:
-        :   **CorpusDocument**
+        :   [**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")

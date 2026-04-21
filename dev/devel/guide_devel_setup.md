@@ -7,7 +7,7 @@ To set up scikit-plots for development follow these steps:
 
 ## [Fork the scikit-plots repository](#id1)[#](#fork-the-scikit-plots-repository "Link to this heading")
 
-scikit-plots is hosted at <https://github.com/scikit-plots/scikit-plots.git>. If you
+scikit-plots is hosted at [scikit-plots/scikit-plots.git](https://github.com/scikit-plots/scikit-plots.git). If you
 plan on solving issues or submitting pull requests to the main scikit-plots
 repository, you should first fork this repository by **clicking** the
  ****Fork**** button near the top of the [project repository](https://github.com/scikit-plots/scikit-plots) page.
@@ -247,7 +247,7 @@ We encourage you to run tests and build docs to verify that the code installed c
 and that the docs build cleanly, so that when you make code or document related changes
 you are aware of the existing issues beforehand.
 
-* Run test cases to verify installation [Testing your code](https://docs.xarray.dev/en/stable/user-guide/testing.html#testing "(in xarray v2026.2.0)")
+* Run test cases to verify installation [Testing your code](https://docs.xarray.dev/en/stable/user-guide/testing.html#testing "(in xarray v2026.4.0)")
 * Verify documentation build [Documentation Writing Guidelines](guide_document_write.html#documenting-scikit-plots)
 
 ## [Install pre-commit hooks](#id8)[#](#install-pre-commit-hooks "Link to this heading")

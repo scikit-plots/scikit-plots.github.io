@@ -1,22 +1,15 @@
 # NLPEnricher[#](#nlpenricher "Link to this heading")
 
-class scikitplot.corpus.NLPEnricher(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_enrichers/_nlp_enricher.py#L273)[#](#scikitplot.corpus.NLPEnricher "Link to this definition")
+class scikitplot.corpus.NLPEnricher(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_enrichers/_nlp_enricher.py#L484)[#](#scikitplot.corpus.NLPEnricher "Link to this definition")
 :   Pipeline component that populates NLP enrichment fields on
-    `CorpusDocument`.
+    [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument").
 
     Parameters:
     :   ****config****EnricherConfig or None, optional
-        :   Enrichment settings. `None` uses defaults.
+        :   Enrichment settings. `None` uses all defaults.
 
     Parameters:
     :   ****config**** ([**EnricherConfig**](scikitplot.corpus.EnricherConfig.html#scikitplot.corpus.EnricherConfig "scikitplot.corpus.EnricherConfig") **|** **None**)
-
-    > **See also**
-    > [`scikitplot.corpus._normalizers._text_normalizer.TextNormalizer`](scikitplot.corpus.TextNormalizer.html#scikitplot.corpus.TextNormalizer "scikitplot.corpus._normalizers._text_normalizer.TextNormalizer")
-    :   Upstream component that prepares `normalized_text`.
-
-    `scikitplot.corpus._schema.CorpusDocument`
-    :   The `tokens`, `lemmas`, `stems`, `keywords` fields.
 
     Notes
 
@@ -30,35 +23,46 @@ class scikitplot.corpus.NLPEnricher(**config=None**)[[source]](https://github.co
     ```
 
     The enricher reads `doc.normalized_text` when available,
-    falling back to `doc.text`.
+    falling back to `doc.text`. When `language=None`, the
+    dominant script of each document is detected independently via
+    `detect_script`.
 
-    ****Developer note:**** All NLP backends are lazy-loaded and
-    cached on `self._*` attributes. The class is NOT thread-safe
-    (shared mutable cache). Use separate instances per thread.
+    ****Developer note:**** All NLP backends are lazy-loaded and cached on
+    `self._*` attributes. The class is NOT thread-safe. Use separate
+    instances per thread.
 
     Examples
 
+    Try it in your browser!
     ```
-    >>> enricher = NLPEnricher()
-    >>> # doc = CorpusDocument(text="The quick brown fox.", ...)
-    >>> # docs = enricher.enrich_documents([doc])
-    >>> # docs[0].tokens == ["quick", "brown", "fox"]
+    >>> cfg = EnricherConfig(
+    ...     language=["en", "ar"],
+    ...     keyword_extractor="tfidf",
+    ...     sentence_count=True,
+    ...     char_count=True,
+    ...     save_token_scores=True,
+    ... )
+    >>> enricher = NLPEnricher(cfg)
+    >>> # docs = enricher.enrich_documents([doc1, doc2])
 
     ```
+    Go BackOpen In Tab
 
-    enrich\_documents(**documents**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_enrichers/_nlp_enricher.py#L328)[#](#scikitplot.corpus.NLPEnricher.enrich_documents "Link to this definition")
+    enrich\_documents(**documents**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_enrichers/_nlp_enricher.py#L535)[#](#scikitplot.corpus.NLPEnricher.enrich_documents "Link to this definition")
     :   Enrich a batch of `CorpusDocument` instances.
 
         Parameters:
         :   ****documents****Sequence[CorpusDocument]
-            :   Documents to enrich. Not mutated.
+            :   Documents to enrich. Original objects are not mutated;
+                new instances are returned via `doc.replace()`.
 
             ****overwrite****bool, optional
-            :   Re-enrich even if NLP fields are already populated.
+            :   When `True`, re-enrich even if NLP fields are already set.
+                Default `False` (skip already-enriched documents).
 
         Returns:
         :   list[CorpusDocument]
-            :   New instances with NLP fields populated.
+            :   New document instances with NLP and metadata fields populated.
 
         Parameters:
         :   * ****documents**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
@@ -66,6 +70,11 @@ class scikitplot.corpus.NLPEnricher(**config=None**)[[source]](https://github.co
 
         Return type:
         :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
+
+        Notes
+
+        ****Developer note:**** Documents are processed sequentially.
+        For large corpora, call in batches to control memory.
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

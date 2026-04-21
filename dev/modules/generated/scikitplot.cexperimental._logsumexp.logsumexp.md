@@ -1,6 +1,6 @@
 # logsumexp[#](#logsumexp "Link to this heading")
 
-scikitplot.cexperimental.\_logsumexp.logsumexp(**a**, **axis=None**, **b=None**, **keepdims=False**, **return\_sign=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/cexperimental/_logsumexp.py#L58)[#](#scikitplot.cexperimental._logsumexp.logsumexp "Link to this definition")
+scikitplot.cexperimental.\_logsumexp.logsumexp(**a**, **axis=None**, **b=None**, **keepdims=False**, **return\_sign=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cexperimental/_logsumexp.py#L58)[#](#scikitplot.cexperimental._logsumexp.logsumexp "Link to this definition")
 :   Compute the log of the sum of exponentials of input elements.
 
     Parameters:
@@ -63,6 +63,7 @@ scikitplot.cexperimental.\_logsumexp.logsumexp(**a**, **axis=None**, **b=None**,
 
     Examples
 
+    Try it in your browser!
     ```
     >>> import numpy as np
     >>> from scipy.special import logsumexp
@@ -104,3 +105,4 @@ scikitplot.cexperimental.\_logsumexp.logsumexp(**a**, **axis=None**, **b=None**,
     1.6094379124341005, 1.6094379124341005
 
     ```
+    Go BackOpen In Tab

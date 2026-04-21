@@ -15,7 +15,7 @@ on GitHub and specify what feedback from the developers would be helpful.
 
 Please be patient with reviewers. We try our best to respond quickly, but we have
 limited bandwidth. If there is no feedback within a couple of days, please ping
-us by posting a comment to your PR or reaching out on a [communication channel](https://matplotlib.org/devdocs/devel/communication_guide.html#communication-channels "(in Matplotlib v3.11.0.dev2075+ga7fc90270)")
+us by posting a comment to your PR or reaching out on a [communication channel](https://matplotlib.org/devdocs/devel/communication_guide.html#communication-channels "(in Matplotlib v3.11.0.dev2332+gb07211fda)")
 
 ## Summary for pull request authors[#](#summary-for-pull-request-authors "Link to this heading")
 
@@ -23,14 +23,14 @@ We recommend that you check that your contribution complies with the following
 guidelines before submitting a pull request:
 
 * Changes, both new features and bugfixes, should have good test coverage. See
-  [Testing your code](https://docs.xarray.dev/en/stable/user-guide/testing.html#testing "(in xarray v2026.2.0)") for more details.
+  [Testing your code](https://docs.xarray.dev/en/stable/user-guide/testing.html#testing "(in xarray v2026.4.0)") for more details.
 * Update the [documentation](#pr-documentation) if necessary.
 * All public methods should have informative docstrings with sample usage when
   appropriate. Use the [docstring standards](guide_document_write.html#writing-docstrings).
 * For high-level plotting functions, consider adding a small example to the
-  [examples gallery](https://matplotlib.org/devdocs/gallery/index.html#gallery "(in Matplotlib v3.11.0.dev2075+ga7fc90270)").
+  [examples gallery](https://matplotlib.org/devdocs/gallery/index.html#gallery "(in Matplotlib v3.11.0.dev2332+gb07211fda)").
 * If you add a major new feature or change the API in a backward-incompatible
-  way, please document it as described in [API guidelines](https://matplotlib.org/devdocs/devel/api_changes.html#api-changes "(in Matplotlib v3.11.0.dev2075+ga7fc90270)").
+  way, please document it as described in [API guidelines](https://matplotlib.org/devdocs/devel/api_changes.html#api-changes "(in Matplotlib v3.11.0.dev2332+gb07211fda)").
 * Code should follow our conventions as documented in our [Code Style and Writing Guidelines](guide_code_style_write.html#coding-guidelines).
 * When adding or changing public function signatures, add [type hints](guide_code_style_write.html#type-hints).
 * When adding keyword arguments, see our guide to [Keyword argument processing](guide_code_style_write.html#keyword-argument-processing).
@@ -95,7 +95,7 @@ requirements before merging it:
   a dedicated example file in the `examples` directory, which will be
   rendered to the examples gallery in the documentation.
 * Build the docs and make sure all formatting warnings are addressed.
-* See [Write documentation](https://matplotlib.org/devdocs/devel/document.html#documenting-matplotlib "(in Matplotlib v3.11.0.dev2075+ga7fc90270)") for our documentation style guide.
+* See [Write documentation](https://matplotlib.org/devdocs/devel/document.html#documenting-matplotlib "(in Matplotlib v3.11.0.dev2332+gb07211fda)") for our documentation style guide.
 
 ### Labels[#](#labels "Link to this heading")
 
@@ -168,7 +168,7 @@ green”, or “Take or leave the comments. You may self merge”.).
 ### Automated tests[#](#automated-tests "Link to this heading")
 
 Before being merged, a PR should pass the [Automated tests](guide_devel_workflow.html#automated-tests). If you are
-unsure why a test is failing, ask on the PR or in our [Official project platforms](https://matplotlib.org/devdocs/devel/communication_guide.html#communication-channels "(in Matplotlib v3.11.0.dev2075+ga7fc90270)")
+unsure why a test is failing, ask on the PR or in our [Official project platforms](https://matplotlib.org/devdocs/devel/communication_guide.html#communication-channels "(in Matplotlib v3.11.0.dev2332+gb07211fda)")
 
 ### Number of commits and squashing[#](#number-of-commits-and-squashing "Link to this heading")
 

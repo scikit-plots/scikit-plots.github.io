@@ -1,6 +1,6 @@
 # PlottingMixin[#](#plottingmixin "Link to this heading")
 
-class scikitplot.annoy.PlottingMixin[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/annoy/_mixins/_plotting.py#L159)[#](#scikitplot.annoy.PlottingMixin "Link to this definition")
+class scikitplot.annoy.PlottingMixin[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/annoy/_mixins/_plotting.py#L159)[#](#scikitplot.annoy.PlottingMixin "Link to this definition")
 :   Mixin that adds convenient plotting methods to high-level Annoy wrappers.
 
     The mixin assumes the **host class** is Annoy-like (implements
@@ -21,7 +21,7 @@ class scikitplot.annoy.PlottingMixin[[source]](https://github.com/scikit-plots/s
       `scikitplot.cexternals._annoy._plotting`.
     * All methods are deterministic given index contents and parameters.
 
-    plot\_index(**labels=None**, **\***, **ids=None**, **projection='pca'**, **dims=(0**, **1)**, **center=True**, **maxabs=False**, **l2\_normalize=False**, **dtype=<class 'numpy.float32'>**, **ax=None**, **title=None**, **plot\_kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/annoy/_mixins/_plotting.py#L231)[#](#scikitplot.annoy.PlottingMixin.plot_index "Link to this definition")
+    plot\_index(**labels=None**, **\***, **ids=None**, **projection='pca'**, **dims=(0**, **1)**, **center=True**, **maxabs=False**, **l2\_normalize=False**, **dtype=<class 'numpy.float32'>**, **ax=None**, **title=None**, **plot\_kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/annoy/_mixins/_plotting.py#L231)[#](#scikitplot.annoy.PlottingMixin.plot_index "Link to this definition")
     :   Plot this index as a 2D scatter plot.
 
         This is a thin wrapper around `plot_annoy_index` that uses
@@ -68,6 +68,7 @@ class scikitplot.annoy.PlottingMixin[[source]](https://github.com/scikit-plots/s
 
         Examples
 
+        Try it in your browser!
         ```
         >>> import numpy as np
         >>> import scikitplot.annoy as skann
@@ -77,8 +78,9 @@ class scikitplot.annoy.PlottingMixin[[source]](https://github.com/scikit-plots/s
         >>> y2, ids, ax = idx.plot_index(labels=labels, projection="pca")
 
         ```
+        Go BackOpen In Tab
 
-    plot\_knn\_edges(**y2**, **\***, **ids=None**, **k=10**, **search\_k=-1**, **ax=None**, **line\_kwargs=None**, **undirected=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/annoy/_mixins/_plotting.py#L304)[#](#scikitplot.annoy.PlottingMixin.plot_knn_edges "Link to this definition")
+    plot\_knn\_edges(**y2**, **\***, **ids=None**, **k=10**, **search\_k=-1**, **ax=None**, **line\_kwargs=None**, **undirected=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/annoy/_mixins/_plotting.py#L304)[#](#scikitplot.annoy.PlottingMixin.plot_knn_edges "Link to this definition")
     :   Overlay kNN edges onto an existing 2D index plot.
 
         This is a thin wrapper around `plot_annoy_knn_edges` that uses
@@ -120,8 +122,10 @@ class scikitplot.annoy.PlottingMixin[[source]](https://github.com/scikit-plots/s
 
         Examples
 
+        Try it in your browser!
         ```
         >>> y2, ids, ax = idx.plot_index(labels=np.zeros(idx.get_n_items(), dtype=int))
         >>> idx.plot_knn_edges(y2, ids=ids, k=5, line_kwargs={"alpha": 0.15})
 
         ```
+        Go BackOpen In Tab

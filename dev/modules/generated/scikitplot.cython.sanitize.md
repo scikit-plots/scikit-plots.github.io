@@ -1,6 +1,6 @@
 # sanitize[#](#sanitize "Link to this heading")
 
-scikitplot.cython.sanitize(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/cython/_utils.py#L10)[#](#scikitplot.cython.sanitize "Link to this definition")
+scikitplot.cython.sanitize(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cython/_utils.py#L10)[#](#scikitplot.cython.sanitize "Link to this definition")
 :   Convert an arbitrary string into a valid Python module name.
 
     Parameters:
@@ -33,6 +33,7 @@ scikitplot.cython.sanitize(**name**)[[source]](https://github.com/scikit-plots/s
 
     Examples
 
+    Try it in your browser!
     ```
     >>> sanitize("hello-world")
     'hello_world'
@@ -44,3 +45,4 @@ scikitplot.cython.sanitize(**name**)[[source]](https://github.com/scikit-plots/s
     'a_b_c'
 
     ```
+    Go BackOpen In Tab

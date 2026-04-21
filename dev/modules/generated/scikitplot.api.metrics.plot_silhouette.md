@@ -1,6 +1,6 @@
 # plot\_silhouette[#](#plot-silhouette "Link to this heading")
 
-scikitplot.api.metrics.plot\_silhouette(**X**, **cluster\_labels**, **\***, **metric='euclidean'**, **title='Silhouette Analysis'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **cmap=None**, **digits=4**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/api/metrics/_clustering/_silhouette.py#L40)[#](#scikitplot.api.metrics.plot_silhouette "Link to this definition")
+scikitplot.api.metrics.plot\_silhouette(**X**, **cluster\_labels**, **\***, **metric='euclidean'**, **title='Silhouette Analysis'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **cmap=None**, **digits=4**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/api/metrics/_clustering/_silhouette.py#L40)[#](#scikitplot.api.metrics.plot_silhouette "Link to this definition")
 :   Plots silhouette analysis of clusters provided.
 
     Silhouette analysis is a method of interpreting and validating the consistency
@@ -136,6 +136,7 @@ scikitplot.api.metrics.plot\_silhouette(**X**, **cluster\_labels**, **\***, **me
 
     Examples
 
+    Try it in your browser!
     ```
     >>> from sklearn.datasets import make_blobs
     >>> from sklearn.cluster import KMeans
@@ -154,3 +155,4 @@ scikitplot.api.metrics.plot\_silhouette(**X**, **cluster\_labels**, **\***, **me
     ([`Source code`](../../_downloads/1b35ca0cdd9d88eea26cd4777dc4f932/scikitplot-api-metrics-plot_silhouette-1.py), [`png`](../../_downloads/c173cd458e122a3ff955575f97a3a4e2/scikitplot-api-metrics-plot_silhouette-1.png))
 
     ![Silhouette Plot](../../_images/scikitplot-api-metrics-plot_silhouette-1.png)
+    Go BackOpen In Tab

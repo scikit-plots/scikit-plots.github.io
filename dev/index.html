@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 
 
@@ -8,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script>
-window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": false}, "providers": {"claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Claude about this documentation page.", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Get familiar with the documentation at {url} so I can ask questions about it."}, "chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask ChatGPT about this documentation page.", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Get familiar with the documentation at {url} so I can ask questions about it."}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}}, "baseUrl": "https://docs.example.com"};
+window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true}, "providers": {"claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Claude about this documentation page.", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask ChatGPT about this documentation page.", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Read {url} so I can ask questions about it.", "model": "gpt-4o", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this documentation page.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Please review this documentation: {url}\n\nI have questions.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
 </script>
 
     <title>scikit-plots: machine learning visualization in Python &#8212; scikit-plots 0.5.dev0 documentation</title>
@@ -30,8 +31,8 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -49,22 +50,22 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/index.css?v=e49e61c4" />
-    <link rel="stylesheet" type="text/css" href="_static/shell_styles.css?v=1ff61690" />
+    <link rel="stylesheet" type="text/css" href="_static/shell_styles.css?v=e10b8129" />
     <link rel="stylesheet" type="text/css" href="_static/shell_code_styles.css?v=ca936495" />
     <link rel="stylesheet" type="text/css" href="_static/styles/colors.css?v=14208072" />
     <link rel="stylesheet" type="text/css" href="_static/styles/custom.css?v=e4cb1417" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="_static/documentation_options.js?v=de0fc20e"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=e93d8674"></script>
+    <script src="_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="_static/ai-assistant.js?v=cb662cc4"></script>
     <script src="_static/thebelab-helper.js"></script>
     <script src="_static/jupyterlite_sphinx.js?v=96e329c5"></script>
@@ -76,7 +77,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="_static/shell_scripts.js?v=2dfa42e0"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -85,7 +86,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="_static/scripts/dropdown.js?v=e2048168"></script>
     <script src="_static/scripts/version-switcher.js?v=9bbada16"></script>
-    <link rel="canonical" href="https://docs.example.com/index.html" />
+    <link rel="canonical" href="https://scikit-plots.github.io/index.html" />
     <link rel="icon" href="_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -109,7 +110,9 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -221,22 +224,8 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="whats_new/index.html">
-    Release History
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="devel/index.html">
-    Developer's Guide
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="project/community.html">
-    Community
+  <a class="nav-link dropdown-item nav-internal" href="cheatsheet/index.html">
+    Cheatsheet
   </a>
 </li>
 
@@ -249,8 +238,29 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="project/governance.html">
     Governance Process
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="whats_new/index.html">
+    Release History
   </a>
 </li>
 
@@ -459,22 +469,8 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="whats_new/index.html">
-    Release History
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="devel/index.html">
-    Developer's Guide
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="project/community.html">
-    Community
+  <a class="nav-link nav-internal" href="cheatsheet/index.html">
+    Cheatsheet
   </a>
 </li>
 
@@ -487,8 +483,29 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="project/governance.html">
     Governance Process
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="whats_new/index.html">
+    Release History
   </a>
 </li>
 
@@ -752,19 +769,26 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <div class="additional-content">
 
 <div class="hero-right">
+
   <!-- Include title section -->
   <div class="flex-column shell-title-container">
-      <div class="shell-title">Try scikit-plots</div>
-      <div class="shell-content-message">
-        <p>Use the interactive shell to try `scikit-plots` in the browser.</p>
-        <!-- 🔔 &#x1F514; -->
-        <p style="font-size:12.5px;">🔔
-          <b>Note:</b>
-          <span style="color:turquoise;">Pyodide</span> uses older, compatible versions of some PyPI packages;
-          <span style="color:red;">latest versions may not be supported</span>.
-        </p>
-      </div>
+    <div class="shell-title">Try scikit-plots</div>
+    <div class="shell-content-message">
+      <!-- Don’t inject HTML without | safe → will render as text -->
+        <!-- Use the interactive shell to try <strong>scikit-plots</strong> in the browser. -->
+      <p>
+        <span>Use the interactive shell to try <strong>scikit-plots</strong> in the browser.</span>
+      </p>
+      <!-- 🔔 &#x1F514; -->
+      <p style="font-size:12.5px;">🔔
+        <b>Note:</b>
+        <span style="color:turquoise;">Pyodide</span> uses older, compatible versions of some PyPI packages;
+        <span style="color:red;">latest versions may not be supported</span>.
+      </p>
+    </div>
   </div>
+
+  <!-- Open in new tab -->
   <div>
     <!-- Import Font Awesome icons for the link buttons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -823,28 +847,40 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
       <ul class="demo-links">
         <!-- Non-clickable label-style item -->
         <li>
+          <!-- Open in new tab -->
+          <a href="./auto_examples/00-jupyter_notebooks/index.html" target="_blank" title="Try JupyterLab, a multi-document app">
           <!-- Using span instead of label (label is for form inputs) -->
           <span title="Opens all links in a new browser tab">
-            <i class="fa-solid fa-external-link"></i>       <!-- Link icon -->
-            Open in new tab                                 <!-- Text next to icon -->
+            <!-- Link icon -->
+            <i class="fa-solid fa-external-link"></i>
+            <!-- Text next to icon -->
+            Open Tutorial Notebooks in new tab.
           </span>
+          </a>
         </li>
         <!-- JupyterLab link item -->
         <li>
-          <a href="./lite/lab/index.html?path=auto_examples%2Fcalibration%2Fplot_calibration_script.ipynb"
+          <!-- Open in new tab -->
+          <!-- <a href="./lite/lab/index.html?path=auto_examples%2Fcalibration%2Fplot_calibration_script.ipynb" -->
+          <a href="./lite/lab/index.html"
             target="_blank"
-            title="Try JupyterLab, a multi-document app">  <!-- Open in new tab -->
-            <i class="fa-solid fa-flask"></i>               <!-- Flask icon -->
-            Lab                                             <!-- Text label -->
+            title="Try JupyterLab, a multi-document app">
+            <!-- Flask icon -->
+            <i class="fa-solid fa-flask"></i>
+            <!-- Text label -->
+            Lab
           </a>
         </li>
         <!-- RetroLab link item -->
         <li>
-          <a href="./lite/notebooks/index.html?path=auto_examples%2Fcalibration%2Fplot_calibration_script.ipynb"
+          <!-- <a href="./lite/notebooks/index.html?path=auto_examples%2Fcalibration%2Fplot_calibration_script.ipynb" -->
+          <a href="./lite/tree/index.html"
             target="_blank"
             title="Try RetroLab, a single-document app">
-            <i class="fa-solid fa-book"></i>                <!-- Book icon -->
-            Retro                                           <!-- Text label -->
+            <!-- Book icon -->
+            <i class="fa-solid fa-book"></i>
+            <!-- Text label -->
+            Retro
           </a>
         </li>
         <!-- REPL link item -->
@@ -852,22 +888,20 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
           <a href="./lite/repl/index.html?kernel=python&code=import%20this"
             target="_blank"
             title="Try REPL, a minimal console app">
-            <i class="fa-solid fa-terminal"></i>            <!-- Terminal icon -->
-            REPL                                            <!-- Text label -->
+            <!-- Terminal icon -->
+            <i class="fa-solid fa-terminal"></i>
+            <!-- Text label -->
+            REPL
           </a>
         </li>
       </ul>
     </div>
   </div>
+
   <!-- Include code sample and editor section -->
   <div class="numpy-shell-container">
-
     <!-- Include Python example code section -->
-    <div class="shell-lesson code-content">
-  <!-- First Code block with copy button -->
-  <div class="code-container">
-    <pre><code class="language-python" id="code-block-1"
-># Example code to try:
+    <!--
 from sklearn.datasets import (
   load_breast_cancer as data_2_classes,
   load_iris as data_3_classes,
@@ -891,7 +925,41 @@ ax, features = sp.estimators.plot_feature_importances(
     model,
     display_bar_label=False,
     figsize=(12,5)
-);</code></pre>
+); -->
+
+<div class="shell-lesson code-content">
+  <!-- First Code block with copy button -->
+  <div class="code-container">
+    <pre><code class="language-python" id="code-block-1"
+># Example code to try:
+import micropip; await micropip.install("ipywidgets")
+import io
+import ipywidgets as widgets
+import pandas as pd
+from IPython.display import display
+from sklearn.datasets import (
+  load_breast_cancer as data_2_classes,
+  load_iris as data_3_classes,
+  load_digits as data_10_classes,
+  make_classification,
+)
+upload = widgets.FileUpload(accept=".csv", multiple=False)
+display(upload)
+
+def process_file(change=None):
+    if not upload.value:
+        return
+    file_info = next(iter(upload.value))
+    return pd.read_csv(io.BytesIO(file_info["content"]))
+
+upload.observe(
+  process_file,
+  names="value",
+)
+
+# Load the data
+X, y = data_3_classes(return_X_y=True, as_frame=True)
+X</code></pre>
     <!-- Copy button with data-copy-target attribute -->
     <button class="copy-btn" data-copy-target="code-block-1">&#128203; Copy</button>
   </div>
@@ -909,7 +977,9 @@ ax, features = sp.estimators.plot_feature_importances(
   <div class="code-container">
     <pre><code class="language-python" id="code-block-2"
 ># Check installed packages:
-import micropip; micropip.list()</code></pre>
+# import micropip; micropip.list()
+df = process_file()
+df</code></pre>
     <!-- Copy button with data-copy-target attribute -->
     <button class="copy-btn" data-copy-target="code-block-2">&#128203; Copy</button>
 
@@ -933,12 +1003,11 @@ await micropip.install('scikit-plots')</code></pre> -->
   <!-- src="https://jupyterlite.github.io/demo/repl/?toolbar=1&kernel=python&code=import%20numpy%20as%20np" -->
   <iframe
     class="numpy-shell"
-    src=https://jupyterlite-pyodide-kernel.readthedocs.io/en/latest/_static/repl/index.html?kernel=python&code=import%20micropip%0AURL%20%3D%20%28%0A%20%20%20%20%23%20%22https%3A//anaconda.org/scikit-plots-wheels-staging-nightly/scikit-plots/%7Bv%7D/download/%22%0A%20%20%20%20%22https%3A//pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple/scikit-plots/%7Bv%7D/%22%0A%20%20%20%20%22scikit_plots-%7Bv%7D-cp312-cp312-pyodide_2024_0_wasm32.whl%22%29%0Afor%20v%20in%20%5B%220.5.dev0%22%2C%20%220.4.0.post10%22%5D%3A%0A%20%20%20%20try%3A%0A%20%20%20%20%20%20%20%20await%20micropip.install%28URL.format%28v%3Dv%29%2C%20keep_going%3DTrue%29%0A%20%20%20%20%20%20%20%20break%20%20%23%20success%20-%3E%20stop%20trying%0A%20%20%20%20except%20Exception%20as%20e%3A%0A%20%20%20%20%20%20%20%20print%28f%22install%20failed%20for%20%7Bv%7D%3A%20%7Be%7D%22%29%0Aelse%3A%0A%20%20%20%20%23%20runs%20only%20if%20the%20loop%20never%20hit%20%27break%27%20%28i.e.%2C%20all%20installs%20failed%29%0A%20%20%20%20await%20micropip.install%28%22scikit-plots%3D%3D0.3.9rc3%22%2C%20keep_going%3DTrue%29%0Aimport%20scikitplot%20as%20sp%0Aprint%28%22scikit-plots%20version%3A%22%2C%20sp.__version__%29%0Asp.show_versions%28%29
+    src=https://jupyterlite.github.io/demo/repl?toolbar=1&execute=1&kernel=python&code=import+micropip%0Afrom+itertools+import+combinations%2C+product%0AVERSIONS+++%3D+%5B%220.5.dev0%22%2C+%220.4.0.post11%22%5D%0ABUILD_TAGS+%3D+%5B%0A++++%22cp312-cp312-pyodide_2024_0_wasm32%22%2C%0A++++%22cp313-cp313-pyodide_2025_0_wasm32%22%2C%0A%5D%0AURL_TEMPLATE+%3D+%28%0A++++%23+%22https%3A%2F%2Fanaconda.org%2Fscikit-plots-wheels-staging-nightly%2Fscikit-plots%2F%7Bv%7D%2Fdownload%2F%22%0A++++%22https%3A%2F%2Fpypi.anaconda.org%2Fscikit-plots-wheels-staging-nightly%2Fsimple%2Fscikit-plots%2F%7Bv%7D%2F%22%0A++++%22scikit_plots-%7Bv%7D-%7Btag%7D.whl%22%0A%29%0Afor+v%2C+tag+in+product%28VERSIONS%2C+BUILD_TAGS%29%3A%0A++++url+%3D+URL_TEMPLATE.format%28v%3Dv%2C+tag%3Dtag%29%0A++++try%3A%0A++++++++await+micropip.install%28url%2C+keep_going%3DTrue%29%0A++++++++break++%23+success+-%3E+stop+trying%0A++++except+Exception+as+e%3A%0A++++++++print%28f%22install+failed+for+%7Bv%7D+%7Btag%7D%3A+%7Be%7D%22%29%0Aelse%3A%0A++++%23+Pure+python+runs+only+if+the+loop+never+hit+%27break%27+%28i.e.%2C+all+installs+failed%29%0A++++await+micropip.install%28%22scikit-plots%3D%3D0.3.9rc3%22%2C+keep_going%3DTrue%29%0Aimport+scikitplot+as+sp%0Aprint%28%22scikit-plots+version%3A%22%2C+sp.__version__%29%0Asp.show_versions%28%29%0A
     width="100%" height="auto"
   >Try the REPL!
   </iframe>
 </div>
-
   </div>
 </div>
 </div>
@@ -948,8 +1017,8 @@ await micropip.install('scikit-plots')</code></pre> -->
   
 
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
 <div class="container-fluid sk-landing-more-info py-3">
   <div class="container sk-landing-container bd-page-width">

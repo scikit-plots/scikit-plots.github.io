@@ -1,6 +1,6 @@
 # plot\_feature\_importances[#](#plot-feature-importances "Link to this heading")
 
-scikitplot.api.estimators.plot\_feature\_importances(**estimator**, **\***, **feature\_names=None**, **class\_index=None**, **threshold=None**, **title='Feature Importances'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **cmap='PiYG'**, **order=None**, **orientation='vertical'**, **x\_tick\_rotation=None**, **bar\_padding=11**, **digits=4**, **display\_bar\_label=True**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/api/estimators/_classifier/_feature_importances.py#L44)[#](#scikitplot.api.estimators.plot_feature_importances "Link to this definition")
+scikitplot.api.estimators.plot\_feature\_importances(**estimator**, **\***, **feature\_names=None**, **class\_index=None**, **threshold=None**, **title='Feature Importances'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **cmap='PiYG'**, **order=None**, **orientation='vertical'**, **x\_tick\_rotation=None**, **bar\_padding=11**, **digits=4**, **display\_bar\_label=True**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/api/estimators/_classifier/_feature_importances.py#L44)[#](#scikitplot.api.estimators.plot_feature_importances "Link to this definition")
 :   Generate a plot of a sklearn model’s feature importances.
 
     This function handles different types of classifiers and their respective
@@ -164,6 +164,7 @@ scikitplot.api.estimators.plot\_feature\_importances(**estimator**, **\***, **fe
 
     Examples
 
+    Try it in your browser!
     ```
     >>> from sklearn.datasets import load_digits as data_10_classes
     >>> from sklearn.model_selection import train_test_split
@@ -185,3 +186,4 @@ scikitplot.api.estimators.plot\_feature\_importances(**estimator**, **\***, **fe
     ([`Source code`](../../_downloads/ddd2ab7b55561710d741d7da66889263/scikitplot-api-estimators-plot_feature_importances-1.py), [`png`](../../_downloads/7d3324c741f9e41a077c33893be5fd67/scikitplot-api-estimators-plot_feature_importances-1.png))
 
     ![Feature Importances](../../_images/scikitplot-api-estimators-plot_feature_importances-1.png)
+    Go BackOpen In Tab

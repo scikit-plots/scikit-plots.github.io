@@ -1,6 +1,6 @@
 # WhitespaceNormalizer[#](#whitespacenormalizer "Link to this heading")
 
-class scikitplot.corpus.WhitespaceNormalizer(**collapse\_newlines=False**, **strip=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_normalizers/_normalizer.py#L206)[#](#scikitplot.corpus.WhitespaceNormalizer "Link to this definition")
+class scikitplot.corpus.WhitespaceNormalizer(**collapse\_newlines=False**, **strip=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_normalizers/_normalizer.py#L206)[#](#scikitplot.corpus.WhitespaceNormalizer "Link to this definition")
 :   Collapse runs of whitespace and optionally strip leading/trailing space.
 
     Parameters:
@@ -19,6 +19,7 @@ class scikitplot.corpus.WhitespaceNormalizer(**collapse\_newlines=False**, **str
 
     Examples
 
+    Try it in your browser!
     ```
     >>> norm = WhitespaceNormalizer()
     >>> doc = CorpusDocument.create("f.txt", 0, "Hello   world.")
@@ -26,8 +27,9 @@ class scikitplot.corpus.WhitespaceNormalizer(**collapse\_newlines=False**, **str
     'Hello world.'
 
     ```
+    Go BackOpen In Tab
 
-    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_normalizers/_normalizer.py#L236)[#](#scikitplot.corpus.WhitespaceNormalizer.normalize_doc "Link to this definition")
+    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_normalizers/_normalizer.py#L236)[#](#scikitplot.corpus.WhitespaceNormalizer.normalize_doc "Link to this definition")
     :   Collapse whitespace in the document text.
 
         Parameters:
@@ -37,10 +39,10 @@ class scikitplot.corpus.WhitespaceNormalizer(**collapse\_newlines=False**, **str
         :   CorpusDocument
 
         Parameters:
-        :   ****doc**** (**CorpusDocument**)
+        :   ****doc**** ([**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument"))
 
         Return type:
-        :   **CorpusDocument**
+        :   [**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

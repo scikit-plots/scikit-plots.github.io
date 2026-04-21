@@ -1,6 +1,6 @@
 # bridge\_chunker[#](#bridge-chunker "Link to this heading")
 
-scikitplot.corpus.bridge\_chunker(**chunker**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_chunker_bridge.py#L267)[#](#scikitplot.corpus.bridge_chunker "Link to this definition")
+scikitplot.corpus.bridge\_chunker(**chunker**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_chunker_bridge.py#L345)[#](#scikitplot.corpus.bridge_chunker "Link to this definition")
 :   Wrap **chunker** in a bridge if it is a new-style chunker.
 
     Parameters:
@@ -20,6 +20,7 @@ scikitplot.corpus.bridge\_chunker(**chunker**)[[source]](https://github.com/scik
 
     Examples
 
+    Try it in your browser!
     ```
     >>> from scikitplot.corpus._chunkers import SentenceChunker
     >>> bridged = bridge_chunker(SentenceChunker())
@@ -29,3 +30,4 @@ scikitplot.corpus.bridge\_chunker(**chunker**)[[source]](https://github.com/scik
     True
 
     ```
+    Go BackOpen In Tab

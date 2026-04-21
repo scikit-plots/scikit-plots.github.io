@@ -1,6 +1,6 @@
 # plot\_classifier\_eval[#](#plot-classifier-eval "Link to this heading")
 
-scikitplot.api.metrics.plot\_classifier\_eval(**y\_true**, **y\_pred**, **\***, **labels=None**, **normalize=None**, **digits=3**, **title='train'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **cmap=None**, **x\_tick\_rotation=0**, **figsize=(8, 3)**, **nrows=1**, **ncols=2**, **index=2**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/api/metrics/_classification/_confusion_matrix.py#L265)[#](#scikitplot.api.metrics.plot_classifier_eval "Link to this definition")
+scikitplot.api.metrics.plot\_classifier\_eval(**y\_true**, **y\_pred**, **\***, **labels=None**, **normalize=None**, **digits=3**, **title='train'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **cmap=None**, **x\_tick\_rotation=0**, **figsize=(8, 3)**, **nrows=1**, **ncols=2**, **index=2**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/api/metrics/_classification/_confusion_matrix.py#L265)[#](#scikitplot.api.metrics.plot_classifier_eval "Link to this definition")
 :   Generates various evaluation plots for a classifier, including confusion matrix,
     precision-recall curve, and ROC curve.
 
@@ -153,6 +153,7 @@ scikitplot.api.metrics.plot\_classifier\_eval(**y\_true**, **y\_pred**, **\***, 
 
     Examples
 
+    Try it in your browser!
     ```
     >>> from sklearn.datasets import load_digits as data_10_classes
     >>> from sklearn.model_selection import train_test_split
@@ -173,3 +174,4 @@ scikitplot.api.metrics.plot\_classifier\_eval(**y\_true**, **y\_pred**, **\***, 
     ([`Source code`](../../_downloads/c485df5546c6c7cbea44b17cfe781a83/scikitplot-api-metrics-plot_classifier_eval-1.py), [`png`](../../_downloads/5d3f89cc555847c857948aaa8233c0cc/scikitplot-api-metrics-plot_classifier_eval-1.png))
 
     ![Confusion Matrix](../../_images/scikitplot-api-metrics-plot_classifier_eval-1.png)
+    Go BackOpen In Tab

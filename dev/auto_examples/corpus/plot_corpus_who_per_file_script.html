@@ -14,7 +14,7 @@
 <meta content="scikit-plots" property="og:image:alt"/>
 <meta content="Examples related to the corpus submodule. Download the related packages: First we download the media preproccess libraries (text, image, audio or video). Tags: model-type: classification model-work..." name="description"/>
 <script>
-window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": false}, "providers": {"claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Claude about this documentation page.", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Get familiar with the documentation at {url} so I can ask questions about it."}, "chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask ChatGPT about this documentation page.", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Get familiar with the documentation at {url} so I can ask questions about it."}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}}, "baseUrl": "https://docs.example.com"};
+window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true}, "providers": {"claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Claude about this documentation page.", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask ChatGPT about this documentation page.", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Read {url} so I can ask questions about it.", "model": "gpt-4o", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this documentation page.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Please review this documentation: {url}\n\nI have questions.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
 </script>
 <title>corpus WHO European Region local or url per file with examples — scikit-plots 0.5.dev0 documentation</title>
 <script data-cfasync="false">
@@ -31,8 +31,8 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     </style>
 </noscript>
 <!-- Loaded before other Sphinx assets -->
-<link href="../../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet"/>
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet"/>
+<link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
 <link href="../../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
 <link href="../../_static/graphviz.css?v=4ae1632d" rel="stylesheet" type="text/css"/>
 <link href="../../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
@@ -50,15 +50,15 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <link href="../../_static/styles/colors.css?v=14208072" rel="stylesheet" type="text/css"/>
 <link href="../../_static/styles/custom.css?v=e4cb1417" rel="stylesheet" type="text/css"/>
 <!-- So that users can add custom icons -->
-<script defer="" src="../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
+<script defer="" src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
 <!-- Pre-loaded scripts that we'll load fully later -->
-<link as="script" href="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" rel="preload"/>
-<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" rel="preload"/>
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
 <script src="../../_static/documentation_options.js?v=de0fc20e"></script>
 <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
 <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-<script src="../../_static/copybutton.js?v=e93d8674"></script>
+<script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
 <script src="../../_static/ai-assistant.js?v=cb662cc4"></script>
 <script src="../../_static/thebelab-helper.js"></script>
 <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
@@ -67,7 +67,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
 <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/corpus/plot_corpus_who_per_file_script';</script>
 <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -76,7 +76,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
 <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
 <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
-<link href="https://docs.example.com/auto_examples/corpus/plot_corpus_who_per_file_script.html" rel="canonical"/>
+<link href="https://scikit-plots.github.io/auto_examples/corpus/plot_corpus_who_per_file_script.html" rel="canonical"/>
 <link href="../../_static/scikit-plots-favicon.ico" rel="icon"/>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
@@ -152,18 +152,8 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
                 </button>
 <ul class="dropdown-menu" id="pst-nav-more-links">
 <li class="">
-<a class="nav-link dropdown-item nav-internal" href="../../whats_new/index.html">
-    Release History
-  </a>
-</li>
-<li class="">
-<a class="nav-link dropdown-item nav-internal" href="../../devel/index.html">
-    Developer's Guide
-  </a>
-</li>
-<li class="">
-<a class="nav-link dropdown-item nav-internal" href="../../project/community.html">
-    Community
+<a class="nav-link dropdown-item nav-internal" href="../../cheatsheet/index.html">
+    Cheatsheet
   </a>
 </li>
 <li class="">
@@ -172,8 +162,23 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
   </a>
 </li>
 <li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../project/community.html">
+    Community
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+<li class="">
 <a class="nav-link dropdown-item nav-internal" href="../../project/governance.html">
     Governance Process
+  </a>
+</li>
+<li class="">
+<a class="nav-link dropdown-item nav-internal" href="../../whats_new/index.html">
+    Release History
   </a>
 </li>
 <li class="">
@@ -276,18 +281,8 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
   </a>
 </li>
 <li class="nav-item">
-<a class="nav-link nav-internal" href="../../whats_new/index.html">
-    Release History
-  </a>
-</li>
-<li class="nav-item">
-<a class="nav-link nav-internal" href="../../devel/index.html">
-    Developer's Guide
-  </a>
-</li>
-<li class="nav-item">
-<a class="nav-link nav-internal" href="../../project/community.html">
-    Community
+<a class="nav-link nav-internal" href="../../cheatsheet/index.html">
+    Cheatsheet
   </a>
 </li>
 <li class="nav-item">
@@ -296,8 +291,23 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
   </a>
 </li>
 <li class="nav-item">
+<a class="nav-link nav-internal" href="../../project/community.html">
+    Community
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+<li class="nav-item">
 <a class="nav-link nav-internal" href="../../project/governance.html">
     Governance Process
+  </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../whats_new/index.html">
+    Release History
   </a>
 </li>
 <li class="nav-item">
@@ -357,7 +367,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../00-blogs/index.html">blog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../00-jupyter_notebooks/index.html">jupyter notebooks</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">ANNoy Vector Index DB</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">ANNoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_legacy_c_api.html">annoy.Annoy legacy c-api with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_python_api.html">annoy.Index python-api with examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_0benchmark.html">Index (cython) python-api benchmark with examples</a></li>
@@ -555,13 +565,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <span class="n">CorpusPipeline</span><span class="p">,</span>
     <span class="n">SentenceChunker</span><span class="p">,</span>
     <span class="n">ExportFormat</span><span class="p">,</span>
-    <span class="n">CorpusDocument</span><span class="p">,</span>
-    <span class="n">SourceType</span><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument" title="scikitplot.corpus.CorpusDocument"><span class="n">CorpusDocument</span></a><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType" title="scikitplot.corpus.SourceType"><span class="n">SourceType</span></a><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus._schema</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">CorpusDocument</span><span class="p">,</span>
-    <span class="n">SourceType</span><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument" title="scikitplot.corpus.CorpusDocument"><span class="n">CorpusDocument</span></a><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType" title="scikitplot.corpus.SourceType"><span class="n">SourceType</span></a><span class="p">,</span>
     <span class="n">MatchMode</span><span class="p">,</span>
     <span class="n">SectionType</span><span class="p">,</span>
     <span class="n">ChunkingStrategy</span><span class="p">,</span>
@@ -580,15 +590,18 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <span class="n">SearchResult</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus._adapters</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">to_langchain_documents</span><span class="p">,</span>
-    <span class="n">to_langgraph_state</span><span class="p">,</span>
-    <span class="n">to_mcp_resources</span><span class="p">,</span>
-    <span class="n">to_mcp_tool_result</span><span class="p">,</span>
-    <span class="n">to_huggingface_dataset</span><span class="p">,</span>
-    <span class="n">to_rag_tuples</span><span class="p">,</span>
-    <span class="n">to_jsonl</span><span class="p">,</span>
-    <span class="n">MCPCorpusServer</span><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_langchain_documents.html#scikitplot.corpus.to_langchain_documents" title="scikitplot.corpus.to_langchain_documents"><span class="n">to_langchain_documents</span></a><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_langgraph_state.html#scikitplot.corpus.to_langgraph_state" title="scikitplot.corpus.to_langgraph_state"><span class="n">to_langgraph_state</span></a><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_mcp_resources.html#scikitplot.corpus.to_mcp_resources" title="scikitplot.corpus.to_mcp_resources"><span class="n">to_mcp_resources</span></a><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_mcp_tool_result.html#scikitplot.corpus.to_mcp_tool_result" title="scikitplot.corpus.to_mcp_tool_result"><span class="n">to_mcp_tool_result</span></a><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_huggingface_dataset.html#scikitplot.corpus.to_huggingface_dataset" title="scikitplot.corpus.to_huggingface_dataset"><span class="n">to_huggingface_dataset</span></a><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_rag_tuples.html#scikitplot.corpus.to_rag_tuples" title="scikitplot.corpus.to_rag_tuples"><span class="n">to_rag_tuples</span></a><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_jsonl.html#scikitplot.corpus.to_jsonl" title="scikitplot.corpus.to_jsonl"><span class="n">to_jsonl</span></a><span class="p">,</span>
+    <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.MCPCorpusServer.html#scikitplot.corpus.MCPCorpusServer" title="scikitplot.corpus.MCPCorpusServer"><span class="n">MCPCorpusServer</span></a><span class="p">,</span>
 <span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2026-04-21 21:19:28.709111: W scikitplot.corpus._base 127489903582080 _base.py:2052:__init_subclass__] DocumentReader: extension '.zip' already registered to ALTOReader; overriding with ZipReader.
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
@@ -602,7 +615,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <span class="k">def</span><span class="w"> </span><span class="nf">mini_banner</span><span class="p">(</span><span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">  --- </span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2"> ---</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">show_doc</span><span class="p">(</span><span class="n">doc</span><span class="p">:</span> <span class="n">CorpusDocument</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">show_doc</span><span class="p">(</span><span class="n">doc</span><span class="p">:</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument" title="scikitplot.corpus.CorpusDocument"><span class="n">CorpusDocument</span></a><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Pretty-print a single CorpusDocument."""</span>
     <span class="n">text_preview</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="s2">" "</span><span class="p">)</span>
     <span class="n">norm_preview</span> <span class="o">=</span> <span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">normalized_text</span> <span class="ow">or</span> <span class="s2">""</span><span class="p">)[:</span><span class="mi">80</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="s2">" "</span><span class="p">)</span>
@@ -628,7 +641,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 <span class="n">banner</span><span class="p">(</span><span class="s2">"PHASE 1: INGEST — 5 Source Types via DocumentReader"</span><span class="p">)</span>
 
-<span class="n">all_documents</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CorpusDocument</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">all_documents</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument" title="scikitplot.corpus.CorpusDocument"><span class="n">CorpusDocument</span></a><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">source_log</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="c1"># --- Source ①: Web Article (HTML) ---</span>
@@ -641,7 +654,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
         <span class="c1"># from local raw html page</span>
         <span class="n">reader</span> <span class="o">=</span> <span class="n">DocumentReader</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
             <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"who_health_care_article_raw_html.txt"</span><span class="p">),</span>
-            <span class="n">source_type</span><span class="o">=</span><span class="n">SourceType</span><span class="o">.</span><span class="n">WEB</span><span class="p">,</span>
+            <span class="n">source_type</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType" title="scikitplot.corpus.SourceType"><span class="n">SourceType</span></a><span class="o">.</span><span class="n">WEB</span><span class="p">,</span>
             <span class="n">source_title</span><span class="o">=</span><span class="s2">"Out-of-pocket payments for health care unaffordable for millions in Europe"</span><span class="p">,</span>
             <span class="n">source_author</span><span class="o">=</span><span class="s2">"WHO Regional Office for Europe"</span><span class="p">,</span>
             <span class="n">source_date</span><span class="o">=</span><span class="s2">"2023-12-12"</span><span class="p">,</span>
@@ -697,7 +710,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
         <span class="c1"># from local video Transcript</span>
         <span class="n">reader</span> <span class="o">=</span> <span class="n">DocumentReader</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
             <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"who_video_transcript.txt"</span><span class="p">),</span>
-            <span class="n">source_type</span><span class="o">=</span><span class="n">SourceType</span><span class="o">.</span><span class="n">VIDEO</span><span class="p">,</span>
+            <span class="n">source_type</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType" title="scikitplot.corpus.SourceType"><span class="n">SourceType</span></a><span class="o">.</span><span class="n">VIDEO</span><span class="p">,</span>
             <span class="n">source_title</span><span class="o">=</span><span class="s2">"Can people afford to pay for health care? WHO Europe"</span><span class="p">,</span>
             <span class="n">collection_id</span><span class="o">=</span><span class="s2">"who-greece-financial-protection"</span><span class="p">,</span>
         <span class="p">)</span>
@@ -743,7 +756,7 @@ If you are sure that the described cause is not responsible for this error and t
         <span class="c1"># from local pdf</span>
         <span class="n">reader</span> <span class="o">=</span> <span class="n">DocumentReader</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
             <a class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path"><span class="n">Path</span></a><span class="p">(</span><span class="s2">"WHO-EURO-2025-12555-52329-80560-eng.pdf"</span><span class="p">),</span>
-            <span class="n">source_type</span><span class="o">=</span><span class="n">SourceType</span><span class="o">.</span><span class="n">RESEARCH</span><span class="p">,</span>
+            <span class="n">source_type</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType" title="scikitplot.corpus.SourceType"><span class="n">SourceType</span></a><span class="o">.</span><span class="n">RESEARCH</span><span class="p">,</span>
             <span class="n">source_title</span><span class="o">=</span><span class="s2">"Financial Protection Review: Greece Summary"</span><span class="p">,</span>
             <span class="n">source_author</span><span class="o">=</span><span class="s2">"WHO Barcelona Office"</span><span class="p">,</span>
             <span class="n">source_date</span><span class="o">=</span><span class="s2">"2023-01-01"</span><span class="p">,</span>
@@ -767,11 +780,12 @@ If you are sure that the described cause is not responsible for this error and t
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✗ PDF report: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>--- Source ③: PDF Report (text proxy) ---
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  --- Source ③: PDF Report (text proxy) ---
 
-✗ PDF report: Neither pdfminer.six nor pypdf is installed. Install at least one:
-pip install pdfminer.six
-pip install pypdf
+2026-04-21 21:19:31.385494: W scikitplot.corpus._readers._pdf 127489903582080 _pdf.py:521:get_raw_chunks] PDFReader: could not determine page count for https://iris.who.int/server/api/core/bitstreams/7ad66865-7f23-4485-8cf5-7b3d78bdf4f9/content. Attempting page-by-page extraction until first failure.
+  ✗ PDF report: Neither pdfminer.six nor pypdf is installed. Install at least one:
+  pip install pdfminer.six
+  pip install pypdf
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># docs[0].text</span>
@@ -785,7 +799,7 @@ pip install pypdf
         <span class="c1"># TODO: Not implemented image from local</span>
         <span class="n">reader</span> <span class="o">=</span> <span class="n">DocumentReader</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
             <span class="n">image_path</span><span class="p">,</span>
-            <span class="n">source_type</span><span class="o">=</span><span class="n">SourceType</span><span class="o">.</span><span class="n">IMAGE</span><span class="p">,</span>
+            <span class="n">source_type</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType" title="scikitplot.corpus.SourceType"><span class="n">SourceType</span></a><span class="o">.</span><span class="n">IMAGE</span><span class="p">,</span>
             <span class="n">source_title</span><span class="o">=</span><span class="s2">"WHO Greece Report — Page 1 Scan"</span><span class="p">,</span>
             <span class="n">collection_id</span><span class="o">=</span><span class="s2">"who-greece-financial-protection"</span><span class="p">,</span>
         <span class="p">)</span>
@@ -793,7 +807,7 @@ pip install pypdf
         <span class="c1"># TODO: Not implemented for image DocumentReader.from_url image url link</span>
         <span class="n">reader</span> <span class="o">=</span> <span class="n">DocumentReader</span><span class="o">.</span><span class="n">from_url</span><span class="p">(</span>
             <span class="s2">"https://iris.who.int/server/api/core/bitstreams/d57241c0-512d-4cfc-9ead-91a83eea83f0/content"</span><span class="p">,</span>
-            <span class="n">source_type</span><span class="o">=</span><span class="n">SourceType</span><span class="o">.</span><span class="n">IMAGE</span><span class="p">,</span>
+            <span class="n">source_type</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType" title="scikitplot.corpus.SourceType"><span class="n">SourceType</span></a><span class="o">.</span><span class="n">IMAGE</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="k">pass</span>
     <span class="n">docs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">reader</span><span class="o">.</span><span class="n">get_documents</span><span class="p">())</span>
@@ -831,7 +845,7 @@ pip install pypdf
         <span class="c1"># TODO: Not implemented audio from local</span>
         <span class="n">reader</span> <span class="o">=</span> <span class="n">DocumentReader</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
             <span class="n">audio_path</span><span class="p">,</span>
-            <span class="n">source_type</span><span class="o">=</span><span class="n">SourceType</span><span class="o">.</span><span class="n">AUDIO</span><span class="p">,</span>
+            <span class="n">source_type</span><span class="o">=</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType" title="scikitplot.corpus.SourceType"><span class="n">SourceType</span></a><span class="o">.</span><span class="n">AUDIO</span><span class="p">,</span>
             <span class="n">source_title</span><span class="o">=</span><span class="s2">"Can people afford to pay for health care? (podcast)"</span><span class="p">,</span>
             <span class="n">collection_id</span><span class="o">=</span><span class="s2">"who-greece-financial-protection"</span><span class="p">,</span>
             <span class="n">transcribe</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -1013,7 +1027,7 @@ If you are sure that the described cause is not responsible for this error and t
         <span class="nb">print</span><span class="p">(</span><span class="s2">"  (no results)"</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">res</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">results</span><span class="p">):</span>
         <span class="n">text_preview</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">90</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="s2">" "</span><span class="p">)</span>
-        <span class="n">src</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">source_title</span> <span class="ow">or</span> <span class="n">res</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">source_file</span>
+        <span class="n">src</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">source_title</span> <span class="ow">or</span> <span class="n">res</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">input_path</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  [</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">] score=</span><span class="si">{</span><span class="n">res</span><span class="o">.</span><span class="n">score</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">  src=</span><span class="si">{</span><span class="n">src</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"      </span><span class="si">{</span><span class="n">text_preview</span><span class="si">!r}</span><span class="s2">…"</span><span class="p">)</span>
 </pre></div>
@@ -1077,7 +1091,7 @@ If you are sure that the described cause is not responsible for this error and t
 
 <span class="c1"># --- 6a: LangChain Documents ---</span>
 <span class="n">mini_banner</span><span class="p">(</span><span class="s2">"6a: LangChain Documents"</span><span class="p">)</span>
-<span class="n">lc_docs</span> <span class="o">=</span> <span class="n">to_langchain_documents</span><span class="p">(</span><span class="n">all_documents</span><span class="p">)</span>
+<span class="n">lc_docs</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_langchain_documents.html#scikitplot.corpus.to_langchain_documents" title="scikitplot.corpus.to_langchain_documents"><span class="n">to_langchain_documents</span></a><span class="p">(</span><span class="n">all_documents</span><span class="p">)</span>
 <span class="n">first</span> <span class="o">=</span> <span class="n">lc_docs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">lc_docs</span><span class="p">)</span><span class="si">}</span><span class="s2"> LangChain docs (dict fallback — langchain not installed)"</span><span class="p">)</span>
@@ -1089,7 +1103,7 @@ If you are sure that the described cause is not responsible for this error and t
 
 <span class="c1"># --- 6b: LangGraph State ---</span>
 <span class="n">mini_banner</span><span class="p">(</span><span class="s2">"6b: LangGraph State"</span><span class="p">)</span>
-<span class="n">state</span> <span class="o">=</span> <span class="n">to_langgraph_state</span><span class="p">(</span>
+<span class="n">state</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_langgraph_state.html#scikitplot.corpus.to_langgraph_state" title="scikitplot.corpus.to_langgraph_state"><span class="n">to_langgraph_state</span></a><span class="p">(</span>
     <span class="n">all_documents</span><span class="p">,</span>
     <span class="n">query</span><span class="o">=</span><span class="s2">"catastrophic health spending"</span><span class="p">,</span>
     <span class="n">match_mode</span><span class="o">=</span><span class="s2">"keyword"</span><span class="p">,</span>
@@ -1101,7 +1115,7 @@ If you are sure that the described cause is not responsible for this error and t
 
 <span class="c1"># --- 6c: MCP Resources ---</span>
 <span class="n">mini_banner</span><span class="p">(</span><span class="s2">"6c: MCP Resources (Model Context Protocol)"</span><span class="p">)</span>
-<span class="n">resources</span> <span class="o">=</span> <span class="n">to_mcp_resources</span><span class="p">(</span><span class="n">all_documents</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">resources</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_mcp_resources.html#scikitplot.corpus.to_mcp_resources" title="scikitplot.corpus.to_mcp_resources"><span class="n">to_mcp_resources</span></a><span class="p">(</span><span class="n">all_documents</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
 <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">resources</span><span class="p">[:</span><span class="mi">2</span><span class="p">]:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  resource:"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    uri:      </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">'uri'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
@@ -1111,7 +1125,7 @@ If you are sure that the described cause is not responsible for this error and t
 
 <span class="c1"># --- 6d: MCP Tool Result ---</span>
 <span class="n">mini_banner</span><span class="p">(</span><span class="s2">"6d: MCP Tool Result (tools/call response)"</span><span class="p">)</span>
-<span class="n">tool_result</span> <span class="o">=</span> <span class="n">to_mcp_tool_result</span><span class="p">(</span><span class="n">all_documents</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">tool_result</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_mcp_tool_result.html#scikitplot.corpus.to_mcp_tool_result" title="scikitplot.corpus.to_mcp_tool_result"><span class="n">to_mcp_tool_result</span></a><span class="p">(</span><span class="n">all_documents</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ MCP tool result:"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    isError: </span><span class="si">{</span><span class="n">tool_result</span><span class="p">[</span><span class="s1">'isError'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    content items: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">tool_result</span><span class="p">[</span><span class="s1">'content'</span><span class="p">])</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
@@ -1121,7 +1135,7 @@ If you are sure that the described cause is not responsible for this error and t
 
 <span class="c1"># --- 6e: MCP Server (adapter class) ---</span>
 <span class="n">mini_banner</span><span class="p">(</span><span class="s2">"6e: MCP Server Adapter"</span><span class="p">)</span>
-<span class="n">mcp_server</span> <span class="o">=</span> <span class="n">MCPCorpusServer</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">server_name</span><span class="o">=</span><span class="s2">"who-corpus"</span><span class="p">)</span>
+<span class="n">mcp_server</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.MCPCorpusServer.html#scikitplot.corpus.MCPCorpusServer" title="scikitplot.corpus.MCPCorpusServer"><span class="n">MCPCorpusServer</span></a><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">server_name</span><span class="o">=</span><span class="s2">"who-corpus"</span><span class="p">)</span>
 <span class="n">tools</span> <span class="o">=</span> <span class="n">mcp_server</span><span class="o">.</span><span class="n">list_tools</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ MCPCorpusServer: </span><span class="si">{</span><span class="n">mcp_server</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    tools: </span><span class="si">{</span><span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">tools</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
@@ -1129,7 +1143,7 @@ If you are sure that the described cause is not responsible for this error and t
 
 <span class="c1"># --- 6f: HuggingFace Dataset ---</span>
 <span class="n">mini_banner</span><span class="p">(</span><span class="s2">"6f: HuggingFace Dataset"</span><span class="p">)</span>
-<span class="n">hf</span> <span class="o">=</span> <span class="n">to_huggingface_dataset</span><span class="p">(</span><span class="n">all_documents</span><span class="p">)</span>
+<span class="n">hf</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_huggingface_dataset.html#scikitplot.corpus.to_huggingface_dataset" title="scikitplot.corpus.to_huggingface_dataset"><span class="n">to_huggingface_dataset</span></a><span class="p">(</span><span class="n">all_documents</span><span class="p">)</span>
 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">hf</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ HuggingFace column dict (datasets lib not installed)"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    columns: </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">hf</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
@@ -1139,7 +1153,7 @@ If you are sure that the described cause is not responsible for this error and t
 
 <span class="c1"># --- 6g: RAG Tuples ---</span>
 <span class="n">mini_banner</span><span class="p">(</span><span class="s2">"6g: RAG Tuples (text, metadata, embedding)"</span><span class="p">)</span>
-<span class="n">tuples</span> <span class="o">=</span> <span class="n">to_rag_tuples</span><span class="p">(</span><span class="n">all_documents</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">tuples</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_rag_tuples.html#scikitplot.corpus.to_rag_tuples" title="scikitplot.corpus.to_rag_tuples"><span class="n">to_rag_tuples</span></a><span class="p">(</span><span class="n">all_documents</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">meta</span><span class="p">,</span> <span class="n">emb</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tuples</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  [</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">] text[:50]: </span><span class="si">{</span><span class="n">text</span><span class="p">[:</span><span class="mi">50</span><span class="p">]</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"      meta keys: </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">keys</span><span class="p">())[:</span><span class="mi">8</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
@@ -1147,7 +1161,7 @@ If you are sure that the described cause is not responsible for this error and t
 
 <span class="c1"># --- 6h: JSONL ---</span>
 <span class="n">mini_banner</span><span class="p">(</span><span class="s2">"6h: JSONL Streaming"</span><span class="p">)</span>
-<span class="n">lines</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">to_jsonl</span><span class="p">(</span><span class="n">all_documents</span><span class="p">[:</span><span class="mi">3</span><span class="p">]))</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.corpus.to_jsonl.html#scikitplot.corpus.to_jsonl" title="scikitplot.corpus.to_jsonl"><span class="n">to_jsonl</span></a><span class="p">(</span><span class="n">all_documents</span><span class="p">[:</span><span class="mi">3</span><span class="p">]))</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ✓ </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span><span class="si">}</span><span class="s2"> JSONL lines"</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">[:</span><span class="mi">2</span><span class="p">]):</span>
     <span class="n">obj</span> <span class="o">=</span> <a class="sphx-glr-backref-module-json sphx-glr-backref-type-py-function" href="https://docs.python.org/3/library/json.html#json.loads" title="json.loads"><span class="n">json</span><span class="o">.</span><span class="n">loads</span></a><span class="p">(</span><span class="n">line</span><span class="p">)</span>
@@ -1164,7 +1178,7 @@ If you are sure that the described cause is not responsible for this error and t
   ✓ 97 LangChain docs (dict fallback — langchain not installed)
     keys: ['page_content', 'metadata']
     page_content[:80]: 'Out-of-pocket payments for primary health care unaffordable for millions in Euro'
-    metadata keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'section_type', 'source_file', 'source_type']
+    metadata keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'input_path', 'section_type', 'source_type']
 
   --- 6b: LangGraph State ---
 
@@ -1192,9 +1206,9 @@ If you are sure that the described cause is not responsible for this error and t
     isError: False
     content items: 3
     [text] text[:60]: 'Out-of-pocket payments for primary health care unaffordable '…
-         annotations: {'doc_id': '9432e3e0cdf3de0d', 'source_file': 'https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows', 'source_title': None, 'chunk_index': 0, 'score': None}
+         annotations: {'doc_id': '9432e3e0cdf3de0d', 'input_path': 'https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows', 'source_title': None, 'chunk_index': 0, 'score': None}
     [text] text[:60]: 'Regions WHO Regional websites Africa Americas South-East Asi'…
-         annotations: {'doc_id': 'd4100a2a7807259d', 'source_file': 'https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows', 'source_title': None, 'chunk_index': 2, 'score': None}
+         annotations: {'doc_id': 'd4100a2a7807259d', 'input_path': 'https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows', 'source_title': None, 'chunk_index': 2, 'score': None}
 
   --- 6e: MCP Server Adapter ---
 
@@ -1213,26 +1227,26 @@ If you are sure that the described cause is not responsible for this error and t
   --- 6f: HuggingFace Dataset ---
 
   ✓ HuggingFace column dict (datasets lib not installed)
-    columns: ['chunk_index', 'doc_id', 'language', 'metadata_json', 'source_file', 'source_title', 'source_type', 'text']
+    columns: ['chunk_index', 'doc_id', 'input_path', 'language', 'metadata_json', 'source_title', 'source_type', 'text']
     rows: 97
 
   --- 6g: RAG Tuples (text, metadata, embedding) ---
 
   [0] text[:50]: 'Out-of-pocket payments for primary health care una'
-      meta keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'section_type']
+      meta keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'input_path']
       embedding: NoneType
   [1] text[:50]: 'Regions WHO Regional websites Africa Americas Sout'
-      meta keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'section_type']
+      meta keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'input_path']
       embedding: NoneType
   [2] text[:50]: 'Countries Albania Andorra Armenia Austria Azerbaij'
-      meta keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'section_type']
+      meta keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'input_path']
       embedding: NoneType
 
   --- 6h: JSONL Streaming ---
 
   ✓ 3 JSONL lines
-  [0] keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'section_type']…  text[:50]: 'Out-of-pocket payments for primary health care una'
-  [1] keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'section_type']…  text[:50]: 'Regions WHO Regional websites Africa Americas Sout'
+  [0] keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'input_path']…  text[:50]: 'Out-of-pocket payments for primary health care una'
+  [1] keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'input_path']…  text[:50]: 'Regions WHO Regional websites Africa Americas Sout'
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
@@ -1418,7 +1432,7 @@ builder.export("corpus.parquet")           # File export
 <span class="nb">print</span><span class="p">(</span><span class="s2">"    ✓ JSONL Streaming          → to_jsonl()"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"  Source types supported:"</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">st</span> <span class="ow">in</span> <span class="n">SourceType</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">st</span> <span class="ow">in</span> <a class="sphx-glr-backref-module-scikitplot-corpus sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType" title="scikitplot.corpus.SourceType"><span class="n">SourceType</span></a><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"    • </span><span class="si">{</span><span class="n">st</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"  Pipeline complete. All 5 source types → unified corpus → any consumer."</span><span class="p">)</span>
@@ -1487,7 +1501,7 @@ builder.export("corpus.parquet")           # File export
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-corpus.html"><span class="doc">model-workflow: corpus</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-bar.html"><span class="doc">plot-type: bar</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 9.778 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 14.803 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule."><img alt="" src="../../_images/sphx_glr_plot_corpus_who_youtube_shorts_script_thumb.png"/>
@@ -1499,9 +1513,9 @@ builder.export("corpus.parquet")           # File export
 </div><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule."><img alt="" src="../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png"/>
 <p><a class="reference internal" href="plot_corpus_a_tale_of_two_cities_mp3_script.html"><span class="doc">corpus A Tale of Two Cities .mp3 with examples</span></a></p>
 <div class="sphx-glr-thumbnail-title">corpus A Tale of Two Cities .mp3 with examples</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows the minimal workflow:"><img alt="" src="../../_images/sphx_glr_plot_00_quickstart_compile_and_load_thumb.png"/>
-<p><a class="reference internal" href="../cython/plot_00_quickstart_compile_and_load.html"><span class="doc">Cython quickstart: compile_and_load</span></a></p>
-<div class="sphx-glr-thumbnail-title">Cython quickstart: compile_and_load</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule. Demonstrates all four chunkers (WordChunker-by-document, WordChunker-by-sentence, SentenceChunker, FixedWindowChunker-chars, FixedWindowChunker-tokens) on an image file containing multi-script text extracted via OCR."><img alt="" src="../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png"/>
+<p><a class="reference internal" href="plot_corpus_knowledge_script.html"><span class="doc">corpus Knowledge and Information local .png with examples</span></a></p>
+<div class="sphx-glr-thumbnail-title">corpus Knowledge and Information local .png with examples</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </section>
@@ -1548,15 +1562,15 @@ builder.export("corpus.parquet")           # File export
 </div>
 </div>
 <!-- Scripts loaded after <body> so the DOM is not blocked -->
-<script defer="" src="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
-<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
+<script defer="" src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
 <div class="footer-items__start">
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260409.dbbf22f 2026-04-09T03:39Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260421.25a82c5 2026-04-21T21:14Z.
       <br/>
 </p>
 </div>

@@ -1,6 +1,6 @@
 # plot\_pca\_component\_variance[#](#plot-pca-component-variance "Link to this heading")
 
-scikitplot.api.decomposition.plot\_pca\_component\_variance(**clf**, **\***, **target\_explained\_variance=0.75**, **model\_type=None**, **title='Cumulative Explained Variance Ratio by Principal Components'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **x\_tick\_rotation=0**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/api/decomposition/_components.py#L35)[#](#scikitplot.api.decomposition.plot_pca_component_variance "Link to this definition")
+scikitplot.api.decomposition.plot\_pca\_component\_variance(**clf**, **\***, **target\_explained\_variance=0.75**, **model\_type=None**, **title='Cumulative Explained Variance Ratio by Principal Components'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **x\_tick\_rotation=0**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/api/decomposition/_components.py#L35)[#](#scikitplot.api.decomposition.plot_pca_component_variance "Link to this definition")
 :   Plots PCA components’ explained variance ratios. (new in v0.2.2)
 
     Added in version 0.2.2.
@@ -113,6 +113,7 @@ scikitplot.api.decomposition.plot\_pca\_component\_variance(**clf**, **\***, **t
 
     Examples
 
+    Try it in your browser!
     ```
     >>> from sklearn.decomposition import PCA
     >>> from sklearn.datasets import load_digits as data_10_classes
@@ -143,3 +144,4 @@ scikitplot.api.decomposition.plot\_pca\_component\_variance(**clf**, **\***, **t
     ([`Source code`](../../_downloads/ec076f4f3a7991260cd317e63e7073f9/scikitplot-api-decomposition-plot_pca_component_variance-2.py), [`png`](../../_downloads/d74d1f7f9a34b7daa273d249f260d56b/scikitplot-api-decomposition-plot_pca_component_variance-2.png))
 
     ![LDA Components Variances](../../_images/scikitplot-api-decomposition-plot_pca_component_variance-2.png)
+    Go BackOpen In Tab

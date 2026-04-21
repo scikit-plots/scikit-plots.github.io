@@ -4,7 +4,7 @@
 > 🔎 Run the latest scikit-plots container — with full or partial preinstallation — interactively:
 
 * [“Scikit-plots Runtime Docker Images”](https://hub.docker.com/r/scikitplot/scikit-plots)
-* <https://github.com/scikit-plots/scikit-plots>
+* [scikit-plots/scikit-plots](https://github.com/scikit-plots/scikit-plots)
 
 ## 📦 Conda/Anaconda Environment Guidelines[#](#conda-anaconda-environment-guidelines "Link to this heading")
 
@@ -89,4 +89,4 @@ conda install --name py311 --file environment.yml --group extended
 
 > **See also**
 > * [“pipenv”](https://pypi.org/project/pipenv/)
-* <https://github.com/scikit-plots/scikit-plots/tree/main/docker/env_pipenv>
+* [scikit-plots/scikit-plots](https://github.com/scikit-plots/scikit-plots/tree/main/docker/env_pipenv)

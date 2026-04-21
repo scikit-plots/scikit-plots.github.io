@@ -1,6 +1,6 @@
 # CustomChunker[#](#customchunker "Link to this heading")
 
-class scikitplot.corpus.CustomChunker(**chunk\_fn**, **\***, **name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_custom_hooks.py#L108)[#](#scikitplot.corpus.CustomChunker "Link to this definition")
+class scikitplot.corpus.CustomChunker(**chunk\_fn**, **\***, **name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_custom_hooks.py#L110)[#](#scikitplot.corpus.CustomChunker "Link to this definition")
 :   Wrap any callable as a [`ChunkerBase`](scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus._base.ChunkerBase").
 
     The caller provides a `chunk_fn` that accepts `(text: str,
@@ -57,10 +57,12 @@ class scikitplot.corpus.CustomChunker(**chunk\_fn**, **\***, **name=None**)[[sou
 
     ****Developer note:**** The `strategy` class variable is fixed to
     `CUSTOM` so the pipeline records the correct
-    `ChunkingStrategy` on every generated
-    `CorpusDocument`.
+    [`ChunkingStrategy`](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy") on every generated
+    [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument").
 
     Examples
+
+    Try it in your browser!
 
     Split on double newlines (paragraph-like) without using ParagraphChunker:
 
@@ -79,8 +81,9 @@ class scikitplot.corpus.CustomChunker(**chunk\_fn**, **\***, **name=None**)[[sou
     pipeline = CorpusPipeline(chunker=chunker)
 
     ```
+    Go BackOpen In Tab
 
-    chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_custom_hooks.py#L212)[#](#scikitplot.corpus.CustomChunker.chunk "Link to this definition")
+    chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_custom_hooks.py#L214)[#](#scikitplot.corpus.CustomChunker.chunk "Link to this definition")
     :   Delegate to the user-supplied `chunk_fn`.
 
         Parameters:
@@ -108,6 +111,6 @@ class scikitplot.corpus.CustomChunker(**chunk\_fn**, **\***, **name=None**)[[sou
         Return type:
         :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"), [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]]
 
-    strategy: ChunkingStrategy = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.CustomChunker.strategy "Link to this definition")
-    :   Identifies which `ChunkingStrategy`
+    strategy: [ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy") = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.CustomChunker.strategy "Link to this definition")
+    :   Identifies which [`ChunkingStrategy`](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")
         this implementation provides. ****Must**** be defined on every concrete subclass.

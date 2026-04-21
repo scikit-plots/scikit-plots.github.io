@@ -9,6 +9,7 @@ scikitplot.random.shuffle(**self**, **x**)[#](#scikitplot.random.shuffle "Link t
 
     Examples
 
+    Try it in your browser!
     ```
     >>> gen = KissGenerator(42)
     >>> arr = np.arange(10)
@@ -16,3 +17,4 @@ scikitplot.random.shuffle(**self**, **x**)[#](#scikitplot.random.shuffle "Link t
     >>> print(arr)  # shuffled
 
     ```
+    Go BackOpen In Tab

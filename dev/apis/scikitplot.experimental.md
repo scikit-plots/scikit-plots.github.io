@@ -42,11 +42,13 @@ See [[1]](#ra8daf91a3bab-1), [[2]](#ra8daf91a3bab-2), and [[3]](#ra8daf91a3bab-3
 
 Examples
 
+Try it in your browser!
 ```
 >>> from scikitplot.experimental import _doremi as doremi
 >>> doremi.compose_as_waveform()
 
 ```
+Go BackOpen In Tab
 
 References
 

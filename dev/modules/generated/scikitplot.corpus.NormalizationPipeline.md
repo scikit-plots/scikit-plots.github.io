@@ -1,6 +1,6 @@
 # NormalizationPipeline[#](#normalizationpipeline "Link to this heading")
 
-class scikitplot.corpus.NormalizationPipeline(**steps**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_normalizers/_normalizer.py#L639)[#](#scikitplot.corpus.NormalizationPipeline "Link to this definition")
+class scikitplot.corpus.NormalizationPipeline(**steps**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_normalizers/_normalizer.py#L640)[#](#scikitplot.corpus.NormalizationPipeline "Link to this definition")
 :   Apply a sequence of normalisers in order.
 
     Each normaliser in the pipeline receives the output of the previous
@@ -20,6 +20,7 @@ class scikitplot.corpus.NormalizationPipeline(**steps**)[[source]](https://githu
 
     Examples
 
+    Try it in your browser!
     ```
     >>> pipeline = NormalizationPipeline(
     ...     [
@@ -31,8 +32,9 @@ class scikitplot.corpus.NormalizationPipeline(**steps**)[[source]](https://githu
     >>> result = pipeline.normalize_doc(doc)
 
     ```
+    Go BackOpen In Tab
 
-    normalize\_batch(**docs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_normalizers/_normalizer.py#L698)[#](#scikitplot.corpus.NormalizationPipeline.normalize_batch "Link to this definition")
+    normalize\_batch(**docs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_normalizers/_normalizer.py#L699)[#](#scikitplot.corpus.NormalizationPipeline.normalize_batch "Link to this definition")
     :   Apply the pipeline to a list of documents.
 
         Parameters:
@@ -42,12 +44,12 @@ class scikitplot.corpus.NormalizationPipeline(**steps**)[[source]](https://githu
         :   list[CorpusDocument]
 
         Parameters:
-        :   ****docs**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[****CorpusDocument****]**)
+        :   ****docs**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")**]**)
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[**CorpusDocument**]
+        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")]
 
-    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_normalizers/_normalizer.py#L680)[#](#scikitplot.corpus.NormalizationPipeline.normalize_doc "Link to this definition")
+    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_normalizers/_normalizer.py#L681)[#](#scikitplot.corpus.NormalizationPipeline.normalize_doc "Link to this definition")
     :   Apply all normalisers in order.
 
         Parameters:
@@ -58,10 +60,10 @@ class scikitplot.corpus.NormalizationPipeline(**steps**)[[source]](https://githu
             :   Document after all normalisation stages.
 
         Parameters:
-        :   ****doc**** (**CorpusDocument**)
+        :   ****doc**** ([**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument"))
 
         Return type:
-        :   **CorpusDocument**
+        :   [**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

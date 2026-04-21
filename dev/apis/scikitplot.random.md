@@ -27,6 +27,7 @@ NumPy Development Team. “Random Generator.”
 
 Examples
 
+Try it in your browser!
 ```
 >>> from scikitplot.random import default_rng, kiss_context
 >>> rng = default_rng(42)
@@ -44,6 +45,7 @@ Context manager
 ...     data = rng.random(1000)
 
 ```
+Go BackOpen In Tab
 
 ****User guide.**** See the [Random](../user_guide/random/index.html#random-index) section for further details.
 

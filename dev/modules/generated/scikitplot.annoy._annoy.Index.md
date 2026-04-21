@@ -1,6 +1,6 @@
 # Index[#](#index "Link to this heading")
 
-class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **str metric: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int n\_neighbors: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 5**, **\***, **str on\_disk\_path: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **bool prefault: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False**, **int seed: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int verbose: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int schema\_version: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 0**, **str dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'float32'**, **str index\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'int32'**, **str wrapper\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'uint64'**, **str random\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'uint64'**, **int n\_jobs: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/annoy/_annoy/__init__.py#L)[#](#scikitplot.annoy._annoy.Index "Link to this definition")
+class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **str metric: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int n\_neighbors: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 5**, **\***, **str on\_disk\_path: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **bool prefault: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False**, **int seed: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int verbose: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int schema\_version: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 0**, **str dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'float32'**, **str index\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'int32'**, **str wrapper\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'uint64'**, **str random\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'uint64'**, **int n\_jobs: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/annoy/_annoy/__init__.py#L)[#](#scikitplot.annoy._annoy.Index "Link to this definition")
 :   Annoy Approximate Nearest Neighbors Index.
 
     This is a Cython-powered Python wrapper around the Annoy C++ library.
@@ -106,6 +106,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
 
     Examples
 
+    Try it in your browser!
     ```
     >>> index = Index(f=128, metric='angular', seed=42)
     >>> index.add_item(0, [0.1] * 128)
@@ -128,6 +129,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
     >>> # index = Index(f=128, metric='angular', dtype='float16')
 
     ```
+    Go BackOpen In Tab
 
     add\_item(**self**, **item**, **vector**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.annoy._annoy.Index.add_item "Link to this definition")
     :   Add a vector to the index.
@@ -193,6 +195,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
 
         Examples
 
+        Try it in your browser!
         ```
         >>> # Multiple threads can build independently:
         >>> from concurrent.futures import ThreadPoolExecutor
@@ -202,6 +205,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         ...     futures = [executor.submit(worker, index, i) for i in range(4)]
 
         ```
+        Go BackOpen In Tab
 
     clone(**self**, **\*\*override\_params**) → Self[#](#scikitplot.annoy._annoy.Index.clone "Link to this definition")
     :   Create a copy of the index with optional parameter overrides.
@@ -219,11 +223,13 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
 
         Examples
 
+        Try it in your browser!
         ```
         >>> index1 = Index(f=128, metric='angular', seed=42)
         >>> index2 = index1.clone(seed=123)  # Same f and metric, different seed
 
         ```
+        Go BackOpen In Tab
 
     classmethod deserialize(**cls, dict data: Dict[str, Any]**) → Self[#](#scikitplot.annoy._annoy.Index.deserialize "Link to this definition")
     :   Deserialize from dictionary.
@@ -251,6 +257,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
 
         Examples
 
+        Try it in your browser!
         ```
         >>> import json
         >>> index = Index(f=128, metric='angular', seed=42)
@@ -259,6 +266,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         >>> restored = Index.deserialize(data)
 
         ```
+        Go BackOpen In Tab
 
     f[#](#scikitplot.annoy._annoy.Index.f "Link to this definition")
     :   int
@@ -353,12 +361,14 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
 
         Examples
 
+        Try it in your browser!
         ```
         >>> idx = Index(3, metric='angular').fit([[1,0,0],[0,1,0]])
         >>> idx.get_feature_names_out()
         ('neighbor_0', 'neighbor_1', 'neighbor_2', 'neighbor_3', 'neighbor_4')
 
         ```
+        Go BackOpen In Tab
 
     get\_item(**self**, **item**)[#](#scikitplot.annoy._annoy.Index.get_item "Link to this definition")
     :   Retrieve a stored embedding vector.
@@ -449,6 +459,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
 
         Examples
 
+        Try it in your browser!
         ```
         >>> # Parallel queries from multiple threads:
         >>> from concurrent.futures import ThreadPoolExecutor
@@ -462,6 +473,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         >>> # True parallelism - all 8 threads run concurrently!
 
         ```
+        Go BackOpen In Tab
 
     get\_nns\_by\_vector(**self**, **vector**, **int n**, **int search\_k=-1**, **bool include\_distances=False**)[#](#scikitplot.annoy._annoy.Index.get_nns_by_vector "Link to this definition")
     :   Query by vector (thread-safe, releases GIL).
@@ -512,6 +524,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
 
         Examples
 
+        Try it in your browser!
         ```
         >>> index = Index(f=128, metric='angular', seed=42)
         >>> params = index.get_params()
@@ -521,6 +534,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         'angular'
 
         ```
+        Go BackOpen In Tab
 
     get\_state(**self**) → Dict[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any][#](#scikitplot.annoy._annoy.Index.get_state "Link to this definition")
     :   Get complete state dictionary.
@@ -537,6 +551,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
 
         Examples
 
+        Try it in your browser!
         ```
         >>> index = Index(f=128, metric='angular', seed=42)
         >>> index.add_item(0, [0.1] * 128)
@@ -548,6 +563,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         True
 
         ```
+        Go BackOpen In Tab
 
     is\_built(**self**) → [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.annoy._annoy.Index.is_built "Link to this definition")
     :   Check if index has been built.
@@ -661,6 +677,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
 
         Examples
 
+        Try it in your browser!
         ```
         >>> idx = Index(3, metric='angular').on_disk_build("test.annoy")
         >>> for i, v in enumerate([[1,2,3],[4,5,6],[7,8,9]]):
@@ -668,6 +685,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         >>> idx.build(n_trees=10)
 
         ```
+        Go BackOpen In Tab
 
     repr\_info(**self**, **bool include\_n\_items=True**, **bool include\_n\_trees=True**, **include\_memory=None**) → [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[#](#scikitplot.annoy._annoy.Index.repr_info "Link to this definition")
     :   Rich dictionary-like string representation.
@@ -692,11 +710,13 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
 
         Examples
 
+        Try it in your browser!
         ```
         >>> print(index.repr_info())
         Annoy(**{'f': 128, 'metric': 'angular', 'n_items': 1000, 'n_trees': 10})
 
         ```
+        Go BackOpen In Tab
 
     save(**self**, **filename**, **bool prefault=False**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.annoy._annoy.Index.save "Link to this definition")
     :   Save index to disk file.
@@ -730,6 +750,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
 
         Examples
 
+        Try it in your browser!
         ```
         >>> import json
         >>> index = Index(f=128, metric='angular', seed=42)
@@ -739,6 +760,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         >>> json_str = json.dumps(data, default=str)  # handle bytes
 
         ```
+        Go BackOpen In Tab
 
     set\_params(**self**, **\*\*params**) → Self[#](#scikitplot.annoy._annoy.Index.set_params "Link to this definition")
     :   Set parameters (sklearn-style).
@@ -765,12 +787,14 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
 
         Examples
 
+        Try it in your browser!
         ```
         >>> index = Index(f=128, metric='angular')
         >>> index.set_params(n_neighbors=10, seed=42)
         >>> index.build()
 
         ```
+        Go BackOpen In Tab
 
     set\_seed(**self**, **seed**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.annoy._annoy.Index.set_seed "Link to this definition")
     :   Set random seed for index construction.
@@ -815,6 +839,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
 
         Examples
 
+        Try it in your browser!
         ```
         >>> index1 = Index(f=128, metric='angular', seed=42)
         >>> index1.add_item(0, [0.1] * 128)
@@ -826,6 +851,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         >>> # index2 now has same data as index1
 
         ```
+        Go BackOpen In Tab
 
     set\_verbose(**self**, **bool v**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.annoy._annoy.Index.set_verbose "Link to this definition")
     :   Enable/disable verbose logging.

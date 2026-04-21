@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 
 
@@ -17,7 +18,7 @@
 <meta name="description" content="This page describes the release process for the core astropy package. For the average coordinated or affiliated package, you can instead check these instructions which will be a lot simpler. The co..." />
 
 <script>
-window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": false}, "providers": {"claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Claude about this documentation page.", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Get familiar with the documentation at {url} so I can ask questions about it."}, "chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask ChatGPT about this documentation page.", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Get familiar with the documentation at {url} so I can ask questions about it."}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}}, "baseUrl": "https://docs.example.com"};
+window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true}, "providers": {"claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Claude about this documentation page.", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask ChatGPT about this documentation page.", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Read {url} so I can ask questions about it.", "model": "gpt-4o", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this documentation page.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Please review this documentation: {url}\n\nI have questions.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
 </script>
 
     <title>Release procedure for the astropy core package &#8212; scikit-plots 0.5.dev0 documentation</title>
@@ -39,8 +40,8 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
@@ -60,16 +61,16 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=e4cb1417" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=de0fc20e"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=e93d8674"></script>
+    <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/ai-assistant.js?v=cb662cc4"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
@@ -78,7 +79,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'devel/maintainers/releasing';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -87,7 +88,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="../../_static/scripts/dropdown.js?v=e2048168"></script>
     <script src="../../_static/scripts/version-switcher.js?v=9bbada16"></script>
-    <link rel="canonical" href="https://docs.example.com/devel/maintainers/releasing.html" />
+    <link rel="canonical" href="https://scikit-plots.github.io/devel/maintainers/releasing.html" />
     <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -111,7 +112,9 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -222,22 +225,8 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../whats_new/index.html">
-    Release History
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../index.html">
-    Developer's Guide
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../project/community.html">
-    Community
+  <a class="nav-link dropdown-item nav-internal" href="../../cheatsheet/index.html">
+    Cheatsheet
   </a>
 </li>
 
@@ -250,8 +239,29 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../project/governance.html">
     Governance Process
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../whats_new/index.html">
+    Release History
   </a>
 </li>
 
@@ -439,22 +449,8 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../whats_new/index.html">
-    Release History
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../index.html">
-    Developer's Guide
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../project/community.html">
-    Community
+  <a class="nav-link nav-internal" href="../../cheatsheet/index.html">
+    Cheatsheet
   </a>
 </li>
 
@@ -467,8 +463,29 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../project/governance.html">
     Governance Process
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../whats_new/index.html">
+    Release History
   </a>
 </li>
 
@@ -592,6 +609,14 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
       <main id="main-content" class="bd-main" role="main">
         
         
+
+  
+  
+  
+
+  
+  
+  
           <div class="bd-content">
             <div class="bd-article-container">
               
@@ -749,7 +774,7 @@ Check the “Require status checks to pass before merging” box.
 Add the name of CI jobs that are required; these should be the same jobs that
 required on <code class="docutils literal notranslate"><span class="pre">main</span></code> before the branching. Click “Save changes” at the bottom when done.</p></li>
 <li><p>Update the “Actual date” column of
-<a class="reference external" href="https://github.com/astropy/astropy/wiki/Release-Calendar">https://github.com/astropy/astropy/wiki/Release-Calendar</a> with the current
+<a class="github reference external" href="https://github.com/astropy/astropy/wiki/Release-Calendar">astropy/astropy</a> with the current
 date for this version’s feature freeze.</p></li>
 <li><p>Go to <a class="reference external" href="https://readthedocs.org/projects/astropy/versions/">RTD’s Settings</a>
 and check “Activate” and “Hidden” for the new release branch, which should be
@@ -924,7 +949,7 @@ as a template. You can now email the user and developer community advertising
 the release candidate and including a link to the wiki page to report any
 successes and failures.</p>
 <p>Additionally, you should update the release calendar by going to
-<a class="reference external" href="https://github.com/astropy/astropy/wiki/Release-Calendar">https://github.com/astropy/astropy/wiki/Release-Calendar</a> and updating the
+<a class="github reference external" href="https://github.com/astropy/astropy/wiki/Release-Calendar">astropy/astropy</a> and updating the
 “Actual date” column of this version’s release candidate with the current date.</p>
 </section>
 </section>
@@ -980,7 +1005,7 @@ intended for the e.g. v6.0.x release branch.</p>
 </section>
 <section id="checking-the-changelog">
 <span id="release-procedure-checking-changelog"></span><h3>Checking the changelog<a class="headerlink" href="#checking-the-changelog" title="Link to this heading">#</a></h3>
-<p>Scripts are provided at <a class="reference external" href="https://github.com/astropy/astropy-tools/tree/main/pr_consistency">https://github.com/astropy/astropy-tools/tree/main/pr_consistency</a>
+<p>Scripts are provided at <a class="github reference external" href="https://github.com/astropy/astropy-tools/tree/main/pr_consistency">astropy/astropy-tools</a>
 to check for consistency between milestones, labels, the presence of pull requests
 in release branches, and the changelog. Follow the instructions in that repository
 to make sure everything is correct for the present release.</p>
@@ -1009,7 +1034,7 @@ cluttering the list of versions that users see in the version dropdown
 (the previous versions are still accessible by their URL though).</p></li>
 <li><p>If you have updated the list of contributors during the release, update the
 equivalent list on the Astropy web site at
-<a class="reference external" href="https://github.com/astropy/astropy.github.com">https://github.com/astropy/astropy.github.com</a>.</p></li>
+<a class="github reference external" href="https://github.com/astropy/astropy.github.com">astropy/astropy.github.com</a>.</p></li>
 <li><p>Cherry-pick the commit rendering the changelog and deleting the fragments and
 open a PR to the astropy <em>main</em> branch. Also make sure you cherry-pick the
 commit updating the <code class="docutils literal notranslate"><span class="pre">.mailmap</span></code> and <code class="docutils literal notranslate"><span class="pre">docs/credits.rst</span></code> files to the <em>main</em>
@@ -1024,7 +1049,7 @@ default channels. Typically, you should wait to make sure <code class="docutils 
 possibly <code class="docutils literal notranslate"><span class="pre">conda</span></code> works before sending out the public announcement (so that
 users who want to try out the new version can do so with <code class="docutils literal notranslate"><span class="pre">conda</span></code>).</p></li>
 <li><p>Upload the release to Zenodo by creating a GitHub Release off the GitHub tag.
-Click on the tag in <a class="reference external" href="https://github.com/astropy/astropy/tags">https://github.com/astropy/astropy/tags</a> and then click on
+Click on the tag in <a class="github reference external" href="https://github.com/astropy/astropy/tags">astropy/astropy</a> and then click on
 “Create release from tag” on the upper right. The release title is the same as the
 tag. In the description, you can copy and paste a description from the previous
 release, as it should be a one-liner that points to <code class="docutils literal notranslate"><span class="pre">CHANGES.rst</span></code>. When you
@@ -1041,7 +1066,7 @@ lists. For a bugfix release, use the previous announcement as a template.
 You should also coordinate with the rest of the Astropy release team and the
 community engagement coordinators.</p></li>
 <li><p>If this is a feature release, update the release calendar by going to
-<a class="reference external" href="https://github.com/astropy/astropy/wiki/Release-Calendar">https://github.com/astropy/astropy/wiki/Release-Calendar</a> and updating the
+<a class="github reference external" href="https://github.com/astropy/astropy/wiki/Release-Calendar">astropy/astropy</a> and updating the
 “Actual date” column of this version’s release with the date you performed
 the release (probably the date of the tag and PyPI upload).</p></li>
 <li><p>In the main branch, update the <a class="reference external" href="https://github.com/astropy/astropy/blob/main/SECURITY.md">SECURITY.md file in the astropy repo</a> to include the
@@ -1282,13 +1307,19 @@ it’s harder for commits that need to be backported from getting lost.</p>
             
           </footer>
         
+
+  
+  
+  
+
+
       </main>
     </div>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1299,7 +1330,7 @@ it’s harder for commits that need to be backported from getting lost.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260409.dbbf22f 2026-04-09T03:39Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260421.25a82c5 2026-04-21T21:14Z.
       <br/>
     
   </p>

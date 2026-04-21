@@ -1,6 +1,6 @@
 # load\_dataset[#](#load-dataset "Link to this heading")
 
-scikitplot.datasets.load\_dataset(**name**, **cache=True**, **data\_home=None**, **\*\*kws**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/datasets/_load_dataset.py#L76)[#](#scikitplot.datasets.load_dataset "Link to this definition")
+scikitplot.datasets.load\_dataset(**name**, **cache=True**, **data\_home=None**, **\*\*kws**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/datasets/_load_dataset.py#L76)[#](#scikitplot.datasets.load_dataset "Link to this definition")
 :   Load an example dataset from the online repository (requires internet).
 
     This function provides quick access to a small number of example datasets
@@ -15,7 +15,7 @@ scikitplot.datasets.load\_dataset(**name**, **cache=True**, **data\_home=None**,
     Parameters:
     :   ****name****str
         :   Name of the dataset (`{name}.csv` on
-            <https://github.com/scikit-plots/scikit-plots-data>).
+            [scikit-plots/scikit-plots-data](https://github.com/scikit-plots/scikit-plots-data)).
 
         ****cache****boolean, optional
         :   If True, try to load from the local cache first, and save to the cache

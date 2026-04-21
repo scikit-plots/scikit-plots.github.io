@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 
 
@@ -17,7 +18,7 @@
 <meta name="description" content="Various utilities to help with development. Developer guide. See the Contributing Guidelines to scikit-plots section for further details. Time Utilities: Lightweight timing context manager with log..." />
 
 <script>
-window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": false}, "providers": {"claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Claude about this documentation page.", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Get familiar with the documentation at {url} so I can ask questions about it."}, "chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask ChatGPT about this documentation page.", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Get familiar with the documentation at {url} so I can ask questions about it."}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}}, "baseUrl": "https://docs.example.com"};
+window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true}, "providers": {"claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Claude about this documentation page.", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask ChatGPT about this documentation page.", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Read {url} so I can ask questions about it.", "model": "gpt-4o", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this documentation page.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Please review this documentation: {url}\n\nI have questions.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
 </script>
 
     <title>scikitplot.utils &#8212; scikit-plots 0.5.dev0 documentation</title>
@@ -39,8 +40,8 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
@@ -60,16 +61,16 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=e4cb1417" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../_static/documentation_options.js?v=de0fc20e"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=e93d8674"></script>
+    <script src="../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../_static/ai-assistant.js?v=cb662cc4"></script>
     <script src="../_static/thebelab-helper.js"></script>
     <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
@@ -78,7 +79,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'apis/scikitplot.utils';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -87,7 +88,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="../_static/scripts/dropdown.js?v=e2048168"></script>
     <script src="../_static/scripts/version-switcher.js?v=9bbada16"></script>
-    <link rel="canonical" href="https://docs.example.com/apis/scikitplot.utils.html" />
+    <link rel="canonical" href="https://scikit-plots.github.io/apis/scikitplot.utils.html" />
     <link rel="icon" href="../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -113,7 +114,9 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -224,22 +227,8 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../whats_new/index.html">
-    Release History
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../devel/index.html">
-    Developer's Guide
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../project/community.html">
-    Community
+  <a class="nav-link dropdown-item nav-internal" href="../cheatsheet/index.html">
+    Cheatsheet
   </a>
 </li>
 
@@ -252,8 +241,29 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../project/governance.html">
     Governance Process
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../whats_new/index.html">
+    Release History
   </a>
 </li>
 
@@ -437,22 +447,8 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../whats_new/index.html">
-    Release History
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../devel/index.html">
-    Developer's Guide
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../project/community.html">
-    Community
+  <a class="nav-link nav-internal" href="../cheatsheet/index.html">
+    Cheatsheet
   </a>
 </li>
 
@@ -465,8 +461,29 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../project/governance.html">
     Governance Process
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../whats_new/index.html">
+    Release History
   </a>
 </li>
 
@@ -594,8 +611,11 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._externals._sphinx_ext._sphinx_ai_assistant.html">_sphinx_ai_assistant</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._externals._sphinx_ext._sphinx_ai_assistant.add_ai_assistant_context.html">add_ai_assistant_context</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_llms_txt.html">generate_llms_txt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_llms_txt_standalone.html">generate_llms_txt_standalone</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_markdown_files.html">generate_markdown_files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._externals._sphinx_ext._sphinx_ai_assistant.html_to_markdown.html">html_to_markdown</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._externals._sphinx_ext._sphinx_ai_assistant.html_to_markdown_converter.html">html_to_markdown_converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._externals._sphinx_ext._sphinx_ai_assistant.process_html_directory.html">process_html_directory</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.annoy.html">scikitplot.annoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -661,6 +681,20 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.corpus.html">scikitplot.corpus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.to_langchain_documents.html">to_langchain_documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.to_langgraph_state.html">to_langgraph_state</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.to_mcp_resources.html">to_mcp_resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.to_mcp_tool_result.html">to_mcp_tool_result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.to_huggingface_dataset.html">to_huggingface_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.to_rag_tuples.html">to_rag_tuples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.to_jsonl.html">to_jsonl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.to_numpy_arrays.html">to_numpy_arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.to_tensorflow_dataset.html">to_tensorflow_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.to_torch_dataloader.html">to_torch_dataloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.LangChainCorpusRetriever.html">LangChainCorpusRetriever</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.MCPCorpusServer.html">MCPCorpusServer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.extract_archive.html">extract_archive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.is_archive.html">is_archive</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ChunkerBase.html">ChunkerBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DefaultFilter.html">DefaultFilter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DocumentReader.html">DocumentReader</a></li>
@@ -675,9 +709,43 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SentenceChunkerBridge.html">SentenceChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.WordChunkerBridge.html">WordChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.bridge_chunker.html">bridge_chunker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.register_bridge.html">register_bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.unregister_bridge.html">unregister_bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.TokenizerProtocol.html">TokenizerProtocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SentenceSplitterProtocol.html">SentenceSplitterProtocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.StemmerProtocol.html">StemmerProtocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.LemmatizerProtocol.html">LemmatizerProtocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.FunctionTokenizer.html">FunctionTokenizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.FunctionSentenceSplitter.html">FunctionSentenceSplitter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.FunctionStemmer.html">FunctionStemmer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.FunctionLemmatizer.html">FunctionLemmatizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomTokenizerRegistry.html">CustomTokenizerRegistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.register_tokenizer.html">register_tokenizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.get_tokenizer.html">get_tokenizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.register_sentence_splitter.html">register_sentence_splitter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.get_sentence_splitter.html">get_sentence_splitter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.register_stemmer.html">register_stemmer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.get_stemmer.html">get_stemmer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.register_lemmatizer.html">register_lemmatizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.get_lemmatizer.html">get_lemmatizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ScriptType.html">ScriptType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.detect_script.html">detect_script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.is_cjk_char.html">is_cjk_char</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.is_rtl_char.html">is_rtl_char</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.split_cjk_chars.html">split_cjk_chars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.MULTI_SCRIPT_SENTENCE_RE_PATTERN.html">MULTI_SCRIPT_SENTENCE_RE_PATTERN</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.FixedWindowChunker.html">FixedWindowChunker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.FixedWindowChunkerConfig.html">FixedWindowChunkerConfig</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.WindowUnit.html">WindowUnit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ISO_TO_NLTK.html">ISO_TO_NLTK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ISO_TO_NAME.html">ISO_TO_NAME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.NLTK_TO_ISO.html">NLTK_TO_ISO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.NLTK_STOPWORD_LANGUAGES.html">NLTK_STOPWORD_LANGUAGES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.BUILTIN_LANG_STOPWORDS.html">BUILTIN_LANG_STOPWORDS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.coerce_language.html">coerce_language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.resolve_stopwords.html">resolve_stopwords</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.iso_to_nltk.html">iso_to_nltk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.nltk_to_iso.html">nltk_to_iso</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ParagraphChunker.html">ParagraphChunker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ParagraphChunkerConfig.html">ParagraphChunkerConfig</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SentenceBackend.html">SentenceBackend</a></li>
@@ -702,6 +770,14 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.FactoryCorpusBuilder.html">FactoryCorpusBuilder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.HookableCorpusPipeline.html">HookableCorpusPipeline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.PipelineHooks.html">PipelineHooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.AnyDownloader.html">AnyDownloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.BaseDownloader.html">BaseDownloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomDownloader.html">CustomDownloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DownloadResult.html">DownloadResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.GitHubDownloader.html">GitHubDownloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.GoogleDriveDownloader.html">GoogleDriveDownloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.WebDownloader.html">WebDownloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.YouTubeDownloader.html">YouTubeDownloader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DEFAULT_CACHE_DIR.html">DEFAULT_CACHE_DIR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DEFAULT_MODEL.html">DEFAULT_MODEL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.EmbeddingEngine.html">EmbeddingEngine</a></li>
@@ -715,6 +791,10 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.NLPEnricher.html">NLPEnricher</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.export_documents.html">export_documents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.load_documents.html">load_documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CollectionManifest.html">CollectionManifest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CorpusStats.html">CorpusStats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.compute_stats.html">compute_stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.provenance_from_filename.html">provenance_from_filename</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DedupLinesNormalizer.html">DedupLinesNormalizer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.HTMLStripNormalizer.html">HTMLStripNormalizer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.LanguageDetectionNormalizer.html">LanguageDetectionNormalizer</a></li>
@@ -732,23 +812,49 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ALTOReader.html">ALTOReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.AudioReader.html">AudioReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomReader.html">CustomReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.normalize_extractor_output.html">normalize_extractor_output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ImageReader.html">ImageReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.MarkdownReader.html">MarkdownReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.PDFReader.html">PDFReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.MarkdownReader.html">MarkdownReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ReSTReader.html">ReSTReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.TEIReader.html">TEIReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.TextReader.html">TextReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.VideoReader.html">VideoReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.WebReader.html">WebReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.XMLReader.html">XMLReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.YouTubeReader.html">YouTubeReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.TEIReader.html">TEIReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.XMLReader.html">XMLReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ZipReader.html">ZipReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ComponentRegistry.html">ComponentRegistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.registry.html">registry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SearchConfig.html">SearchConfig</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SearchResult.html">SearchResult</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SimilarityIndex.html">SimilarityIndex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SectionType.html">SectionType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ChunkingStrategy.html">ChunkingStrategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ExportFormat.html">ExportFormat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SourceType.html">SourceType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.MatchMode.html">MatchMode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.Modality.html">Modality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ErrorPolicy.html">ErrorPolicy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CorpusDocument.html">CorpusDocument</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus._PROMOTED_RAW_KEYS.html">_PROMOTED_RAW_KEYS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.documents_to_pandas.html">documents_to_pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.documents_to_polars.html">documents_to_polars</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CorpusSource.html">CorpusSource</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SourceEntry.html">SourceEntry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SourceKind.html">SourceKind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.InMemoryStorage.html">InMemoryStorage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.JSONLStorage.html">JSONLStorage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.QueryResult.html">QueryResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SQLiteStorage.html">SQLiteStorage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.StorageBase.html">StorageBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.StorageQuery.html">StorageQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.URLKind.html">URLKind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.classify_url.html">classify_url</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.download_url.html">download_url</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.infer_extension.html">infer_extension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.probe_url_kind.html">probe_url_kind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.resolve_url.html">resolve_url</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.cython.html">scikitplot.cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -1139,6 +1245,14 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
       <main id="main-content" class="bd-main" role="main">
         
         
+
+  
+  
+  
+
+  
+  
+  
           <div class="bd-content">
             <div class="bd-article-container">
               
@@ -1268,13 +1382,19 @@ collision-resistant file and folder names. The default format is designed to be:
             
           </footer>
         
+
+  
+  
+  
+
+
       </main>
     </div>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1285,7 +1405,7 @@ collision-resistant file and folder names. The default format is designed to be:
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260409.dbbf22f 2026-04-09T03:39Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260421.25a82c5 2026-04-21T21:14Z.
       <br/>
     
   </p>

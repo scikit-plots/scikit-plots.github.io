@@ -1,6 +1,6 @@
 # CustomNLPEnricher[#](#customnlpenricher "Link to this heading")
 
-class scikitplot.corpus.CustomNLPEnricher(**config=None**, **\***, **custom\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_custom_hooks.py#L615)[#](#scikitplot.corpus.CustomNLPEnricher "Link to this definition")
+class scikitplot.corpus.CustomNLPEnricher(**config=None**, **\***, **custom\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_custom_hooks.py#L617)[#](#scikitplot.corpus.CustomNLPEnricher "Link to this definition")
 :   `NLPEnricher` extended with
     fully-replaceable NLP backends.
 
@@ -44,6 +44,8 @@ class scikitplot.corpus.CustomNLPEnricher(**config=None**, **\***, **custom\_con
 
     Examples
 
+    Try it in your browser!
+
     Integrate a custom tokenizer (e.g. SentencePiece):
 
     ```
@@ -60,8 +62,9 @@ class scikitplot.corpus.CustomNLPEnricher(**config=None**, **\***, **custom\_con
     docs = enricher.enrich_documents(corpus_docs)
 
     ```
+    Go BackOpen In Tab
 
-    enrich\_documents(**documents**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_custom_hooks.py#L700)[#](#scikitplot.corpus.CustomNLPEnricher.enrich_documents "Link to this definition")
+    enrich\_documents(**documents**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_custom_hooks.py#L702)[#](#scikitplot.corpus.CustomNLPEnricher.enrich_documents "Link to this definition")
     :   Enrich a batch of `CorpusDocument` instances using custom or
         built-in backends per stage.
 

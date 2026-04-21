@@ -27,9 +27,9 @@ and printing the `__file__` attribute:
 ## `matplotlib` configuration and cache directory locations[#](#matplotlib-configuration-and-cache-directory-locations "Link to this heading")
 
 Each user has a Matplotlib configuration directory which may contain a
-[matplotlibrc](https://matplotlib.org/devdocs/users/explain/customizing.html#customizing-with-matplotlibrc-files "(in Matplotlib v3.11.0.dev2075+ga7fc90270)") file. To
+[matplotlibrc](https://matplotlib.org/devdocs/users/explain/customizing.html#customizing-with-matplotlibrc-files "(in Matplotlib v3.11.0.dev2332+gb07211fda)") file. To
 locate your `matplotlib/` configuration directory, use
-[`matplotlib.get_configdir`](https://matplotlib.org/devdocs/api/matplotlib_configuration_api.html#matplotlib.get_configdir "(in Matplotlib v3.11.0.dev2075+ga7fc90270)"):
+[`matplotlib.get_configdir`](https://matplotlib.org/devdocs/api/matplotlib_configuration_api.html#matplotlib.get_configdir "(in Matplotlib v3.11.0.dev2332+gb07211fda)"):
 
 ```
 >>> import matplotlib as mpl
@@ -43,7 +43,7 @@ On Unix-like systems, this directory is generally located in your
 
 In addition, users have a cache directory. On Unix-like systems, this is
 separate from the configuration directory by default. To locate your
-`.cache/` directory, use [`matplotlib.get_cachedir`](https://matplotlib.org/devdocs/api/matplotlib_configuration_api.html#matplotlib.get_cachedir "(in Matplotlib v3.11.0.dev2075+ga7fc90270)"):
+`.cache/` directory, use [`matplotlib.get_cachedir`](https://matplotlib.org/devdocs/api/matplotlib_configuration_api.html#matplotlib.get_cachedir "(in Matplotlib v3.11.0.dev2332+gb07211fda)"):
 
 ```
 >>> import matplotlib as mpl
@@ -68,6 +68,6 @@ directory by default:
 If you would like to use a different configuration directory, you can
 do so by specifying the location in your [`MPLCONFIGDIR`](environment_variables_faq.html#envvar-MPLCONFIGDIR)
 environment variable – see
-[Setting environment variables in Linux and macOS](https://matplotlib.org/devdocs/install/environment_variables_faq.html#setting-linux-macos-environment-variables "(in Matplotlib v3.11.0.dev2075+ga7fc90270)"). Note that
+[Setting environment variables in Linux and macOS](https://matplotlib.org/devdocs/install/environment_variables_faq.html#setting-linux-macos-environment-variables "(in Matplotlib v3.11.0.dev2332+gb07211fda)"). Note that
 [`MPLCONFIGDIR`](environment_variables_faq.html#envvar-MPLCONFIGDIR) sets the location of both the configuration
 directory and the cache directory.

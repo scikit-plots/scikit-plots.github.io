@@ -7,7 +7,7 @@ For Seaborn: statistical data visualization.
 > Experimental, we keep `seaborn` to transform [`api`](../../../apis/scikitplot.api.html#module-scikitplot.api "scikitplot.api")
 module for compatibility seaborn core.
 > **See also**
-> * <https://github.com/mwaskom/seaborn>
+> * [mwaskom/seaborn](https://github.com/mwaskom/seaborn)
 * <https://seaborn.pydata.org/>
 * Documentation is available in the docstrings and online at <https://seaborn.pydata.org/index.html>.
 ```

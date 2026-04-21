@@ -1,11 +1,11 @@
 # EmbeddingEngine[#](#embeddingengine "Link to this heading")
 
-class scikitplot.corpus.EmbeddingEngine(**model\_name='paraphrase-multilingual-mpnet-base-v2'**, **backend='sentence\_transformers'**, **custom\_fn=None**, **cache\_dir=None**, **enable\_cache=True**, **batch\_size=64**, **normalize=True**, **dtype=<class 'numpy.float32'>**, **show\_progress\_bar=False**, **device=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_embeddings/_embedding.py#L362)[#](#scikitplot.corpus.EmbeddingEngine "Link to this definition")
+class scikitplot.corpus.EmbeddingEngine(**model\_name='paraphrase-multilingual-mpnet-base-v2'**, **backend='sentence\_transformers'**, **custom\_fn=None**, **cache\_dir=None**, **enable\_cache=True**, **batch\_size=64**, **normalize=True**, **dtype=<class 'numpy.float32'>**, **show\_progress\_bar=False**, **device=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_embeddings/_embedding.py#L362)[#](#scikitplot.corpus.EmbeddingEngine "Link to this definition")
 :   Multi-backend sentence embedding engine with SHA-256 file caching.
 
     Produces a 2-D `float32` numpy array of shape `(n_texts, dim)`
     for a list of input strings. Embeddings are cached to `.npy` files
-    keyed by `(model_name, source_path, mtime, n_texts)` so that
+    keyed by `(model_name, input_path, mtime, n_texts)` so that
     unchanged corpora are served from disk in O(1).
 
     Parameters:
@@ -92,7 +92,7 @@ class scikitplot.corpus.EmbeddingEngine(**model\_name='paraphrase-multilingual-m
     ****Cache invalidation:**** The cache key includes the source file’s
     modification time. Any write to the source file (even a metadata
     update via `touch`) invalidates the cache. If this is undesirable,
-    pass a stable `source_path` (e.g. a logical identifier rather than
+    pass a stable `input_path` (e.g. a logical identifier rather than
     the real path).
 
     ****Normalisation:**** When `normalize=True`, zero-norm vectors (e.g.
@@ -101,6 +101,8 @@ class scikitplot.corpus.EmbeddingEngine(**model\_name='paraphrase-multilingual-m
     will warn if any zero vectors are detected at search time.
 
     Examples
+
+    Try it in your browser!
 
     Default usage (sentence\_transformers):
 
@@ -132,10 +134,11 @@ class scikitplot.corpus.EmbeddingEngine(**model\_name='paraphrase-multilingual-m
     >>> from pathlib import Path
     >>> vecs, from_cache = engine.embed_with_cache(
     ...     texts,
-    ...     source_path=Path("corpus.txt"),
+    ...     input_path=Path("corpus.txt"),
     ... )
 
     ```
+    Go BackOpen In Tab
 
     VALID\_BACKENDS: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), ...]] = ('sentence\_transformers', 'openai', 'custom')[#](#scikitplot.corpus.EmbeddingEngine.VALID_BACKENDS "Link to this definition")
     :   Accepted `backend` values.
@@ -154,10 +157,10 @@ class scikitplot.corpus.EmbeddingEngine(**model\_name='paraphrase-multilingual-m
 
     device: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.EmbeddingEngine.device "Link to this definition")
 
-    dtype[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/../numpy/__init__.py#L)[#](#scikitplot.corpus.EmbeddingEngine.dtype "Link to this definition")
+    dtype[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/../numpy/__init__.py#L)[#](#scikitplot.corpus.EmbeddingEngine.dtype "Link to this definition")
     :   alias of `float32`
 
-    embed(**texts**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_embeddings/_embedding.py#L539)[#](#scikitplot.corpus.EmbeddingEngine.embed "Link to this definition")
+    embed(**texts**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_embeddings/_embedding.py#L539)[#](#scikitplot.corpus.EmbeddingEngine.embed "Link to this definition")
     :   Compute embeddings for `texts` without caching.
 
         Parameters:
@@ -185,6 +188,7 @@ class scikitplot.corpus.EmbeddingEngine(**model\_name='paraphrase-multilingual-m
 
         Examples
 
+        Try it in your browser!
         ```
         >>> engine = EmbeddingEngine(
         ...     backend="custom",
@@ -194,8 +198,9 @@ class scikitplot.corpus.EmbeddingEngine(**model\_name='paraphrase-multilingual-m
         (1, 32)
 
         ```
+        Go BackOpen In Tab
 
-    embed\_documents(**documents**, **source\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_embeddings/_embedding.py#L688)[#](#scikitplot.corpus.EmbeddingEngine.embed_documents "Link to this definition")
+    embed\_documents(**documents**, **input\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_embeddings/_embedding.py#L688)[#](#scikitplot.corpus.EmbeddingEngine.embed_documents "Link to this definition")
     :   Embed a list of `CorpusDocument`
         instances in-place (sets `doc.embedding` on each).
 
@@ -203,7 +208,7 @@ class scikitplot.corpus.EmbeddingEngine(**model\_name='paraphrase-multilingual-m
         :   ****documents****list of CorpusDocument
             :   Documents to embed. Each must have a non-empty `text` field.
 
-            ****source\_path****pathlib.Path or None, optional
+            ****input\_path****pathlib.Path or None, optional
             :   Source path for cache key. `None` disables caching.
 
         Returns:
@@ -213,13 +218,14 @@ class scikitplot.corpus.EmbeddingEngine(**model\_name='paraphrase-multilingual-m
 
         Parameters:
         :   * ****documents**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
-            * ****source\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
+            * ****input\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
 
         Return type:
         :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
 
         Examples
 
+        Try it in your browser!
         ```
         >>> docs = list(reader.get_documents())
         >>> docs = engine.embed_documents(docs)
@@ -227,15 +233,16 @@ class scikitplot.corpus.EmbeddingEngine(**model\_name='paraphrase-multilingual-m
         True
 
         ```
+        Go BackOpen In Tab
 
-    embed\_with\_cache(**texts**, **source\_path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_embeddings/_embedding.py#L605)[#](#scikitplot.corpus.EmbeddingEngine.embed_with_cache "Link to this definition")
-    :   Compute embeddings with file caching keyed to `source_path`.
+    embed\_with\_cache(**texts**, **input\_path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_embeddings/_embedding.py#L605)[#](#scikitplot.corpus.EmbeddingEngine.embed_with_cache "Link to this definition")
+    :   Compute embeddings with file caching keyed to `input_path`.
 
         Parameters:
         :   ****texts****list of str
             :   Text strings to embed.
 
-            ****source\_path****pathlib.Path
+            ****input\_path****pathlib.Path
             :   Path to the source file that generated `texts`. Used to
                 build the cache key (path + mtime + len(texts)).
 
@@ -255,19 +262,21 @@ class scikitplot.corpus.EmbeddingEngine(**model\_name='paraphrase-multilingual-m
 
         Parameters:
         :   * ****texts**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
-            * ****source\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
+            * ****input\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
 
         Return type:
         :   [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), …], [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.5.dev0)")[**float32**]], [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")]
 
         Examples
 
+        Try it in your browser!
         ```
         >>> vecs, cached = engine.embed_with_cache(texts, Path("corpus.txt"))
         >>> cached  # True on second call with same inputs
         False
 
         ```
+        Go BackOpen In Tab
 
     enable\_cache: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.EmbeddingEngine.enable_cache "Link to this definition")
 

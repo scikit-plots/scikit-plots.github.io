@@ -1,6 +1,6 @@
 # plot\_cumulative\_gain[#](#plot-cumulative-gain "Link to this heading")
 
-scikitplot.decile.kds.plot\_cumulative\_gain(**y\_true**, **y\_score**, **\***, **pos\_label=None**, **class\_index=1**, **title='Cumulative Gain Plot'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **data=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/decile/kds/_kds.py#L600)[#](#scikitplot.decile.kds.plot_cumulative_gain "Link to this definition")
+scikitplot.decile.kds.plot\_cumulative\_gain(**y\_true**, **y\_score**, **\***, **pos\_label=None**, **class\_index=1**, **title='Cumulative Gain Plot'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **data=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/decile/kds/_kds.py#L600)[#](#scikitplot.decile.kds.plot_cumulative_gain "Link to this definition")
 :   Generate the Decile-wise Lift Plot from labels and probabilities.
 
     The lift curve is used to determine the effectiveness of a
@@ -139,10 +139,11 @@ scikitplot.decile.kds.plot\_cumulative\_gain(**y\_true**, **y\_score**, **\***, 
 
     References
 
-    [1] <https://github.com/tensorbored/kds/blob/master/kds/metrics.py#L382>
+    [1] [tensorbored/kds](https://github.com/tensorbored/kds/blob/master/kds/metrics.py#L382)
 
     Examples
 
+    Try it in your browser!
     ```
     >>> from sklearn.datasets import load_iris as data_3_classes
     >>> from sklearn.model_selection import train_test_split
@@ -167,6 +168,7 @@ scikitplot.decile.kds.plot\_cumulative\_gain(**y\_true**, **y\_score**, **\***, 
     ([`Source code`](../../_downloads/bad1c63e9afd7f2aefe644e6ba6c55bf/scikitplot-decile-kds-plot_cumulative_gain-1.py), [`png`](../../_downloads/9c1b47bfd4789104d61e6145f1f095f3/scikitplot-decile-kds-plot_cumulative_gain-1.png))
 
     ![Cumulative Gain Curves](../../_images/scikitplot-decile-kds-plot_cumulative_gain-1.png)
+    Go BackOpen In Tab
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

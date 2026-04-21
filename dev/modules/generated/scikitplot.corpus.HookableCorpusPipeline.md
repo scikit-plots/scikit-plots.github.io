@@ -1,6 +1,6 @@
 # HookableCorpusPipeline[#](#hookablecorpuspipeline "Link to this heading")
 
-class scikitplot.corpus.HookableCorpusPipeline(**hooks=None**, **chunker=None**, **filter\_=None**, **embedding\_engine=None**, **output\_dir=None**, **export\_format=None**, **default\_language=None**, **progress\_callback=None**, **reader\_kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_custom_hooks.py#L941)[#](#scikitplot.corpus.HookableCorpusPipeline "Link to this definition")
+class scikitplot.corpus.HookableCorpusPipeline(**hooks=None**, **chunker=None**, **filter\_=None**, **embedding\_engine=None**, **output\_path=None**, **export\_format=None**, **default\_language=None**, **progress\_callback=None**, **reader\_kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_custom_hooks.py#L955)[#](#scikitplot.corpus.HookableCorpusPipeline "Link to this definition")
 :   [`CorpusPipeline`](scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline "scikitplot.corpus._pipeline.CorpusPipeline") extended with
     per-stage lifecycle hooks.
 
@@ -23,7 +23,7 @@ class scikitplot.corpus.HookableCorpusPipeline(**hooks=None**, **chunker=None**,
         ****embedding\_engine****EmbeddingEngine or None, optional
         :   Embedding backend.
 
-        ****output\_dir****pathlib.Path or None, optional
+        ****output\_path****pathlib.Path or None, optional
         :   Output directory for exports.
 
         ****export\_format****ExportFormat or None, optional
@@ -43,7 +43,7 @@ class scikitplot.corpus.HookableCorpusPipeline(**hooks=None**, **chunker=None**,
         * ****chunker**** (**Any** **|** **None**)
         * ****filter\_**** (**Any** **|** **None**)
         * ****embedding\_engine**** (**Any** **|** **None**)
-        * ****output\_dir**** (**Any** **|** **None**)
+        * ****output\_path**** (**Any** **|** **None**)
         * ****export\_format**** (**Any** **|** **None**)
         * ****default\_language**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
         * ****progress\_callback**** (**Callable****[****[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**,** [**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]****,** **None****]** **|** **None**)
@@ -67,6 +67,7 @@ class scikitplot.corpus.HookableCorpusPipeline(**hooks=None**, **chunker=None**,
 
     Examples
 
+    Try it in your browser!
     ```
     from scikitplot.corpus._custom_hooks import (
         HookableCorpusPipeline,
@@ -77,16 +78,17 @@ class scikitplot.corpus.HookableCorpusPipeline(**hooks=None**, **chunker=None**,
         pre_read_hook=lambda src: logger.info("Reading: %s", src),
         post_read_hook=lambda src, docs: [d for d in docs if len(d.text) > 50],
     )
-    pipeline = HookableCorpusPipeline(hooks=hooks, output_dir=Path("out/"))
+    pipeline = HookableCorpusPipeline(hooks=hooks, output_path=Path("out/"))
     result = pipeline.run(Path("corpus.pdf"))
 
     ```
+    Go BackOpen In Tab
 
-    run(**input\_file**, **\***, **output\_path=None**, **export\_format=None**, **filename\_override=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_custom_hooks.py#L1084)[#](#scikitplot.corpus.HookableCorpusPipeline.run "Link to this definition")
+    run(**input\_path**, **\***, **output\_path=None**, **export\_format=None**, **filename\_override=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_custom_hooks.py#L1098)[#](#scikitplot.corpus.HookableCorpusPipeline.run "Link to this definition")
     :   Process a single source with lifecycle hooks applied.
 
         Parameters:
-        :   ****input\_file****pathlib.Path or str
+        :   ****input\_path****str or pathlib.Path
             :   Path or URL.
 
             ****output\_path****pathlib.Path or None, optional
@@ -102,7 +104,7 @@ class scikitplot.corpus.HookableCorpusPipeline(**hooks=None**, **chunker=None**,
         :   PipelineResult
 
         Parameters:
-        :   * ****input\_file**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
+        :   * ****input\_path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
             * ****output\_path**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") **|** **None**)
             * ****export\_format**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") **|** **None**)
             * ****filename\_override**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
@@ -110,7 +112,7 @@ class scikitplot.corpus.HookableCorpusPipeline(**hooks=None**, **chunker=None**,
         Return type:
         :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")
 
-    run\_batch(**input\_files**, **\***, **stop\_on\_error=False**, **export\_format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_custom_hooks.py#L1130)[#](#scikitplot.corpus.HookableCorpusPipeline.run_batch "Link to this definition")
+    run\_batch(**input\_files**, **\***, **stop\_on\_error=False**, **export\_format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_custom_hooks.py#L1144)[#](#scikitplot.corpus.HookableCorpusPipeline.run_batch "Link to this definition")
     :   Process multiple sources with hooks applied to each.
 
         Parameters:
@@ -134,7 +136,7 @@ class scikitplot.corpus.HookableCorpusPipeline(**hooks=None**, **chunker=None**,
         Return type:
         :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
 
-    run\_url(**url**, **\***, **output\_path=None**, **export\_format=None**, **stop\_on\_error=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_custom_hooks.py#L1167)[#](#scikitplot.corpus.HookableCorpusPipeline.run_url "Link to this definition")
+    run\_url(**url**, **\***, **output\_path=None**, **export\_format=None**, **stop\_on\_error=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_custom_hooks.py#L1181)[#](#scikitplot.corpus.HookableCorpusPipeline.run_url "Link to this definition")
     :   Process one URL or a list of URLs with hooks applied.
 
         Parameters:

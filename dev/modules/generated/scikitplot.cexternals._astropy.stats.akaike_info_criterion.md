@@ -1,6 +1,6 @@
 # akaike\_info\_criterion[#](#akaike-info-criterion "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.akaike\_info\_criterion(**log\_likelihood**, **n\_params**, **n\_samples**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/cexternals/_astropy/stats/info_theory.py#L218)[#](#scikitplot.cexternals._astropy.stats.akaike_info_criterion "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.akaike\_info\_criterion(**log\_likelihood**, **n\_params**, **n\_samples**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cexternals/_astropy/stats/info_theory.py#L218)[#](#scikitplot.cexternals._astropy.stats.akaike_info_criterion "Link to this definition")
 :   Computes the Akaike Information Criterion (AIC).
 
     Like the Bayesian Information Criterion, the AIC is a measure of
@@ -97,6 +97,8 @@ scikitplot.cexternals.\_astropy.stats.akaike\_info\_criterion(**log\_likelihood*
 
     Examples
 
+    Try it in your browser!
+
     The following example was originally presented in [[2]](#r56c92aff02b4-2). Basically, two
     models are being compared. One with six parameters (model 1) and another
     with five parameters (model 2). Despite of the fact that model 2 has a
@@ -118,3 +120,5 @@ scikitplot.cexternals.\_astropy.stats.akaike\_info\_criterion(**log\_likelihood*
 
     Therefore, we can strongly support the model 1 with the advantage that
     it has more free parameters.
+
+    Go BackOpen In Tab

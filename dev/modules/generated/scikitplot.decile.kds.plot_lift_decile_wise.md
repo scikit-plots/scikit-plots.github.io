@@ -1,6 +1,6 @@
 # plot\_lift\_decile\_wise[#](#plot-lift-decile-wise "Link to this heading")
 
-scikitplot.decile.kds.plot\_lift\_decile\_wise(**y\_true**, **y\_score**, **\***, **pos\_label=None**, **class\_index=1**, **title='Decile-wise Lift Plot'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **data=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/decile/kds/_kds.py#L461)[#](#scikitplot.decile.kds.plot_lift_decile_wise "Link to this definition")
+scikitplot.decile.kds.plot\_lift\_decile\_wise(**y\_true**, **y\_score**, **\***, **pos\_label=None**, **class\_index=1**, **title='Decile-wise Lift Plot'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **data=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/decile/kds/_kds.py#L461)[#](#scikitplot.decile.kds.plot_lift_decile_wise "Link to this definition")
 :   Generate the Decile-wise Lift Plot from labels and probabilities.
 
     The lift curve is used to determine the effectiveness of a
@@ -131,10 +131,11 @@ scikitplot.decile.kds.plot\_lift\_decile\_wise(**y\_true**, **y\_score**, **\***
 
     References
 
-    [1] <https://github.com/tensorbored/kds/blob/master/kds/metrics.py#L382>
+    [1] [tensorbored/kds](https://github.com/tensorbored/kds/blob/master/kds/metrics.py#L382)
 
     Examples
 
+    Try it in your browser!
     ```
     >>> from sklearn.datasets import load_iris
     >>> from sklearn.model_selection import train_test_split
@@ -156,3 +157,4 @@ scikitplot.decile.kds.plot\_lift\_decile\_wise(**y\_true**, **y\_score**, **\***
     ([`Source code`](../../_downloads/f92be85275b994a440c23883464be1d3/scikitplot-decile-kds-plot_lift_decile_wise-1.py), [`png`](../../_downloads/4b27ca135a132ba086c8b1aade7e0654/scikitplot-decile-kds-plot_lift_decile_wise-1.png))
 
     ![Lift Decile Wise Curves](../../_images/scikitplot-decile-kds-plot_lift_decile_wise-1.png)
+    Go BackOpen In Tab

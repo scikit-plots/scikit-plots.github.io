@@ -214,7 +214,7 @@ hardware accelerators (e.g. the internal GPU component of the M1 or M2 chips).
 However, the MPS device support for PyTorch is incomplete at the time of
 writing. See the following github issue for more details:
 
-* <https://github.com/pytorch/pytorch/issues/77764>
+* [pytorch/pytorch#77764](https://github.com/pytorch/pytorch/issues/77764)
 
 To enable the MPS support in PyTorch, set the environment variable
 `PYTORCH_ENABLE_MPS_FALLBACK=1` before running the tests:

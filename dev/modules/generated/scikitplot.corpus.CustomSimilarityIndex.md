@@ -1,6 +1,6 @@
 # CustomSimilarityIndex[#](#customsimilarityindex "Link to this heading")
 
-class scikitplot.corpus.CustomSimilarityIndex(**config=None**, **\***, **custom\_scorer\_fn=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_custom_hooks.py#L1632)[#](#scikitplot.corpus.CustomSimilarityIndex "Link to this definition")
+class scikitplot.corpus.CustomSimilarityIndex(**config=None**, **\***, **custom\_scorer\_fn=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_custom_hooks.py#L1648)[#](#scikitplot.corpus.CustomSimilarityIndex "Link to this definition")
 :   `SimilarityIndex` extended with a
     fully-replaceable custom scorer callable.
 
@@ -50,6 +50,8 @@ class scikitplot.corpus.CustomSimilarityIndex(**config=None**, **\***, **custom\
 
     Examples
 
+    Try it in your browser!
+
     Plug in a Cohere reranker:
 
     ```
@@ -72,8 +74,9 @@ class scikitplot.corpus.CustomSimilarityIndex(**config=None**, **\***, **custom\
     results = index.search("clinical trial outcomes")
 
     ```
+    Go BackOpen In Tab
 
-    build(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_custom_hooks.py#L1745)[#](#scikitplot.corpus.CustomSimilarityIndex.build "Link to this definition")
+    build(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_custom_hooks.py#L1761)[#](#scikitplot.corpus.CustomSimilarityIndex.build "Link to this definition")
     :   Build the index from documents.
 
         Parameters:
@@ -96,7 +99,7 @@ class scikitplot.corpus.CustomSimilarityIndex(**config=None**, **\***, **custom\
     property n\_documents: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.CustomSimilarityIndex.n_documents "Link to this definition")
     :   Number of indexed documents.
 
-    search(**query**, **\***, **config=None**, **query\_embedding=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_custom_hooks.py#L1765)[#](#scikitplot.corpus.CustomSimilarityIndex.search "Link to this definition")
+    search(**query**, **\***, **config=None**, **query\_embedding=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_custom_hooks.py#L1781)[#](#scikitplot.corpus.CustomSimilarityIndex.search "Link to this definition")
     :   Search the index using the custom scorer or built-in modes.
 
         When `custom_scorer_fn` is set it is called with

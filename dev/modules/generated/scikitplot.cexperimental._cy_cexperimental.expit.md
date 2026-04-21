@@ -35,6 +35,7 @@ scikitplot.cexperimental.\_cy\_cexperimental.expit(**x0**)[#](#scikitplot.cexper
 
     Examples
 
+    Try it in your browser!
     ```
     >>> expit(0.0)
     0.5
@@ -45,3 +46,4 @@ scikitplot.cexperimental.\_cy\_cexperimental.expit(**x0**)[#](#scikitplot.cexper
     0.6224593312018546
 
     ```
+    Go BackOpen In Tab

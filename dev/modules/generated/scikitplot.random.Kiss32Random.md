@@ -1,6 +1,6 @@
 # Kiss32Random[#](#kiss32random "Link to this heading")
 
-class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/random/__init__.py#L)[#](#scikitplot.random.Kiss32Random "Link to this definition")
+class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/random/__init__.py#L)[#](#scikitplot.random.Kiss32Random "Link to this definition")
 :   32-bit KISS RNG with complete serialization support.
 
     Period: ~2^121 (suitable for <16M data points)
@@ -64,6 +64,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
 
     Examples
 
+    Try it in your browser!
     ```
     >>> rng = Kiss32Random(42)
     >>> rng.kiss()  # Random uint32
@@ -77,6 +78,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
     >>> restored = pickle.loads(pickle.dumps(rng))
 
     ```
+    Go BackOpen In Tab
 
     default\_seed = 123456789[#](#scikitplot.random.Kiss32Random.default_seed "Link to this definition")
 
@@ -93,6 +95,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
 
         Examples
 
+        Try it in your browser!
         ```
         >>> import json
         >>> rng = Kiss32Random(42)
@@ -101,6 +104,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
         >>> restored = Kiss32Random.deserialize(data)
 
         ```
+        Go BackOpen In Tab
 
     flip(**self**) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.random.Kiss32Random.flip "Link to this definition")
     :   Generate random binary value (0 or 1).
@@ -111,6 +115,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
 
         Examples
 
+        Try it in your browser!
         ```
         >>> rng = Kiss32Random(42)
         >>> rng.flip() in {0, 1}
@@ -127,6 +132,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
         True
 
         ```
+        Go BackOpen In Tab
 
     classmethod from\_dict(**cls**, **data**)[#](#scikitplot.random.Kiss32Random.from_dict "Link to this definition")
     :   Alias for deserialize().
@@ -143,11 +149,13 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
 
         Examples
 
+        Try it in your browser!
         ```
         >>> Kiss32Random.get_default_seed()
         123456789
 
         ```
+        Go BackOpen In Tab
 
     get\_params(**self**, **deep=True**)[#](#scikitplot.random.Kiss32Random.get_params "Link to this definition")
     :   Get parameters (sklearn-style).
@@ -162,6 +170,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
 
         Examples
 
+        Try it in your browser!
         ```
         >>> rng = Kiss32Random(42)
         >>> params = rng.get_params()
@@ -169,6 +178,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
         {'seed': 42}
 
         ```
+        Go BackOpen In Tab
 
     get\_state(**self**)[#](#scikitplot.random.Kiss32Random.get_state "Link to this definition")
     :   Get state dictionary.
@@ -179,6 +189,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
 
         Examples
 
+        Try it in your browser!
         ```
         >>> rng = Kiss32Random(42)
         >>> state = rng.get_state()
@@ -186,6 +197,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
         42
 
         ```
+        Go BackOpen In Tab
 
     index(**self**, **size\_t n**) → size\_t[#](#scikitplot.random.Kiss32Random.index "Link to this definition")
     :   Generate random index in range [0, n-1].
@@ -213,6 +225,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
 
         Examples
 
+        Try it in your browser!
         ```
         >>> rng = Kiss32Random(42)
         >>> idx = rng.index(100)
@@ -230,6 +243,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
         >>> random_element = arr[rng.index(len(arr))]
 
         ```
+        Go BackOpen In Tab
 
     kiss(**self**) → uint32\_t[#](#scikitplot.random.Kiss32Random.kiss "Link to this definition")
     :   Generate next random 32-bit unsigned integer.
@@ -244,6 +258,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
 
         Examples
 
+        Try it in your browser!
         ```
         >>> rng = Kiss32Random(42)
         >>> value = rng.kiss()
@@ -251,6 +266,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
         True
 
         ```
+        Go BackOpen In Tab
 
     lock[#](#scikitplot.random.Kiss32Random.lock "Link to this definition")
     :   !! processed by numpydoc !!
@@ -278,6 +294,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
 
         Examples
 
+        Try it in your browser!
         ```
         >>> Kiss32Random.normalize_seed(42)
         42
@@ -285,6 +302,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
         123456789
 
         ```
+        Go BackOpen In Tab
 
     reset(**self**, **int seed: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.random.Kiss32Random.reset "Link to this definition")
     :   Reset RNG state with new seed.
@@ -309,6 +327,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
 
         Examples
 
+        Try it in your browser!
         ```
         >>> rng = Kiss32Random(42)
         >>> values1 = [rng.kiss() for _ in range(5)]
@@ -318,6 +337,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
         True
 
         ```
+        Go BackOpen In Tab
 
     reset\_default(**self**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.random.Kiss32Random.reset_default "Link to this definition")
     :   Reset to default seed.
@@ -326,6 +346,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
 
         Examples
 
+        Try it in your browser!
         ```
         >>> rng = Kiss32Random()
         >>> rng.reset_default()
@@ -333,6 +354,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
         True
 
         ```
+        Go BackOpen In Tab
 
         Return type:
         :   None
@@ -348,12 +370,14 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
 
         Examples
 
+        Try it in your browser!
         ```
         >>> rng = Kiss32Random(42)
         >>> rng.seed
         42
 
         ```
+        Go BackOpen In Tab
 
         Type:
         :   [Kiss32Random.seed](#scikitplot.random.Kiss32Random.seed "scikitplot.random.Kiss32Random.seed")
@@ -367,6 +391,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
 
         Examples
 
+        Try it in your browser!
         ```
         >>> import json
         >>> rng = Kiss32Random(42)
@@ -374,6 +399,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
         >>> json_str = json.dumps(data)
 
         ```
+        Go BackOpen In Tab
 
     set\_params(**self**, **\*\*params**)[#](#scikitplot.random.Kiss32Random.set_params "Link to this definition")
     :   Set parameters (sklearn-style).
@@ -388,6 +414,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
 
         Examples
 
+        Try it in your browser!
         ```
         >>> rng = Kiss32Random(42)
         >>> rng.set_params(seed=123)
@@ -395,6 +422,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
         123
 
         ```
+        Go BackOpen In Tab
 
     set\_seed(**self**, **int seed: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.random.Kiss32Random.set_seed "Link to this definition")
     :   Set new seed (alias for reset).
@@ -411,11 +439,13 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
 
         Examples
 
+        Try it in your browser!
         ```
         >>> rng = Kiss32Random()
         >>> rng.set_seed(42)
 
         ```
+        Go BackOpen In Tab
 
     set\_state(**self**, **state**)[#](#scikitplot.random.Kiss32Random.set_state "Link to this definition")
     :   Set state from dictionary.
@@ -426,6 +456,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
 
         Examples
 
+        Try it in your browser!
         ```
         >>> rng1 = Kiss32Random(42)
         >>> state = rng1.get_state()
@@ -433,6 +464,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
         >>> rng2.set_state(state)
 
         ```
+        Go BackOpen In Tab
 
     to\_dict(**self**)[#](#scikitplot.random.Kiss32Random.to_dict "Link to this definition")
     :   Alias for serialize().

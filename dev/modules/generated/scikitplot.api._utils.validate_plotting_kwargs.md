@@ -1,6 +1,6 @@
 # validate\_plotting\_kwargs[#](#validate-plotting-kwargs "Link to this heading")
 
-scikitplot.api.\_utils.validate\_plotting\_kwargs(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/api/_utils/validation.py#L198)[#](#scikitplot.api._utils.validate_plotting_kwargs "Link to this definition")
+scikitplot.api.\_utils.validate\_plotting\_kwargs(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/api/_utils/validation.py#L198)[#](#scikitplot.api._utils.validate_plotting_kwargs "Link to this definition")
 :   Validate the provided axes and figure or create new ones if needed.
 
     This function checks if valid axes and figure objects are provided. If not, it creates
@@ -68,6 +68,8 @@ scikitplot.api.\_utils.validate\_plotting\_kwargs(**\*args**, **\*\*kwargs**)[[s
 
     Examples
 
+    Try it in your browser!
+
     Create a new figure and axes:
 
     ```
@@ -82,3 +84,4 @@ scikitplot.api.\_utils.validate\_plotting\_kwargs(**\*args**, **\*\*kwargs**)[[s
     >>> fig, ax = validate_plotting_kwargs(ax=ax)
 
     ```
+    Go BackOpen In Tab

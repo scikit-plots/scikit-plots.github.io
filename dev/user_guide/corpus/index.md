@@ -1,4 +1,4 @@
-# Corpus Generation[#](#corpus-generation "Link to this heading")
+# Corpus (Remarks) Generation[#](#corpus-remarks-generation "Link to this heading")
 
 ![Corpus Architecture](../../_images/scikitplot_corpus_architecture.svg)
 

@@ -1,6 +1,6 @@
 # collect\_header\_dirs[#](#collect-header-dirs "Link to this heading")
 
-scikitplot.cython.collect\_header\_dirs(**\*paths**, **recursive=True**, **suffixes=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/cython/_custom_compiler.py#L784)[#](#scikitplot.cython.collect_header_dirs "Link to this definition")
+scikitplot.cython.collect\_header\_dirs(**\*paths**, **recursive=True**, **suffixes=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cython/_custom_compiler.py#L784)[#](#scikitplot.cython.collect_header_dirs "Link to this definition")
 :   Collect unique directories that contain C/C++ header files.
 
     This complements [`collect_c_api_sources`](scikitplot.cython.collect_c_api_sources.html#scikitplot.cython.collect_c_api_sources "scikitplot.cython.collect_c_api_sources"):
@@ -43,6 +43,7 @@ scikitplot.cython.collect\_header\_dirs(**\*paths**, **recursive=True**, **suffi
 
     Examples
 
+    Try it in your browser!
     ```
     >>> import tempfile, pathlib
     >>> with tempfile.TemporaryDirectory() as td:
@@ -53,3 +54,4 @@ scikitplot.cython.collect\_header\_dirs(**\*paths**, **recursive=True**, **suffi
     1
 
     ```
+    Go BackOpen In Tab

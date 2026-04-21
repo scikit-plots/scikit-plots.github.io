@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 
 
@@ -17,7 +18,7 @@
 <meta name="description" content="Install an official release: Matplotlib releases are available as wheel packages for macOS, Windows and Linux on PyPI. Install it using pip: If this command results in Matplotlib being compiled fro..." />
 
 <script>
-window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": false}, "providers": {"claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Claude about this documentation page.", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Get familiar with the documentation at {url} so I can ask questions about it."}, "chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask ChatGPT about this documentation page.", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Get familiar with the documentation at {url} so I can ask questions about it."}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}}, "baseUrl": "https://docs.example.com"};
+window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true}, "providers": {"claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Claude about this documentation page.", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask ChatGPT about this documentation page.", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Read {url} so I can ask questions about it.", "model": "gpt-4o", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this documentation page.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Please review this documentation: {url}\n\nI have questions.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
 </script>
 
     <title>Installation &#8212; scikit-plots 0.5.dev0 documentation</title>
@@ -39,8 +40,8 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
@@ -60,16 +61,16 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=e4cb1417" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../_static/documentation_options.js?v=de0fc20e"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=e93d8674"></script>
+    <script src="../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../_static/ai-assistant.js?v=cb662cc4"></script>
     <script src="../_static/thebelab-helper.js"></script>
     <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
@@ -78,7 +79,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'install/index';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -87,7 +88,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="../_static/scripts/dropdown.js?v=e2048168"></script>
     <script src="../_static/scripts/version-switcher.js?v=9bbada16"></script>
-    <link rel="canonical" href="https://docs.example.com/install/index.html" />
+    <link rel="canonical" href="https://scikit-plots.github.io/install/index.html" />
     <link rel="icon" href="../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -111,7 +112,9 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -222,22 +225,8 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../whats_new/index.html">
-    Release History
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../devel/index.html">
-    Developer's Guide
-  </a>
-</li>
-
-
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../project/community.html">
-    Community
+  <a class="nav-link dropdown-item nav-internal" href="../cheatsheet/index.html">
+    Cheatsheet
   </a>
 </li>
 
@@ -250,8 +239,29 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../project/governance.html">
     Governance Process
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../whats_new/index.html">
+    Release History
   </a>
 </li>
 
@@ -441,22 +451,8 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../whats_new/index.html">
-    Release History
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../devel/index.html">
-    Developer's Guide
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../project/community.html">
-    Community
+  <a class="nav-link nav-internal" href="../cheatsheet/index.html">
+    Cheatsheet
   </a>
 </li>
 
@@ -469,8 +465,29 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../project/community.html">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../devel/index.html">
+    Developer's Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../project/governance.html">
     Governance Process
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../whats_new/index.html">
+    Release History
   </a>
 </li>
 
@@ -578,6 +595,14 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
       <main id="main-content" class="bd-main" role="main">
         
         
+
+  
+  
+  
+
+  
+  
+  
           <div class="bd-content">
             <div class="bd-article-container">
               
@@ -694,7 +719,7 @@ scientific-python-nightly-wheels as the package index to query:</p>
 <p class="admonition-title">Installing for Development</p>
 <p>If you would like to contribute to Matplotlib or otherwise need to
 install the latest development code, please follow the instructions in
-<a class="reference external" href="https://matplotlib.org/devdocs/devel/development_setup.html#installing-for-devs" title="(in Matplotlib v3.11.0.dev2075+ga7fc90270)"><span>Development setup</span></a>.</p>
+<a class="reference external" href="https://matplotlib.org/devdocs/devel/development_setup.html#installing-for-devs" title="(in Matplotlib v3.11.0.dev2332+gb07211fda)"><span>Development setup</span></a>.</p>
 </div>
 <p>The following instructions are for installing from source for production use.
 This is generally <em>not</em> recommended; please use prebuilt packages when possible.
@@ -723,7 +748,7 @@ options will be particularly useful to those packaging Matplotlib.</p>
 </ul>
 </div>
 <p>Default plotting appearance and behavior can be configured via the
-<a class="reference external" href="https://matplotlib.org/devdocs/users/explain/customizing.html#customizing-with-matplotlibrc-files" title="(in Matplotlib v3.11.0.dev2075+ga7fc90270)"><span class="xref std std-ref">rcParams file</span></a></p>
+<a class="reference external" href="https://matplotlib.org/devdocs/users/explain/customizing.html#customizing-with-matplotlibrc-files" title="(in Matplotlib v3.11.0.dev2332+gb07211fda)"><span class="xref std std-ref">rcParams file</span></a></p>
 </section>
 <section id="dependencies">
 <h2>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading">#</a></h2>
@@ -746,11 +771,11 @@ reference and troubleshooting.</p>
 <span id="installing-faq"></span><h2>Frequently asked questions<a class="headerlink" href="#frequently-asked-questions" title="Link to this heading">#</a></h2>
 <section id="report-a-compilation-problem">
 <h3>Report a compilation problem<a class="headerlink" href="#report-a-compilation-problem" title="Link to this heading">#</a></h3>
-<p>See <a class="reference external" href="https://matplotlib.org/devdocs/users/faq.html#reporting-problems" title="(in Matplotlib v3.11.0.dev2075+ga7fc90270)"><span>Get help</span></a>.</p>
+<p>See <a class="reference external" href="https://matplotlib.org/devdocs/users/faq.html#reporting-problems" title="(in Matplotlib v3.11.0.dev2332+gb07211fda)"><span>Get help</span></a>.</p>
 </section>
 <section id="matplotlib-compiled-fine-but-nothing-shows-up-when-i-use-it">
 <h3>Matplotlib compiled fine, but nothing shows up when I use it<a class="headerlink" href="#matplotlib-compiled-fine-but-nothing-shows-up-when-i-use-it" title="Link to this heading">#</a></h3>
-<p>The first thing to try is a <a class="reference external" href="https://matplotlib.org/devdocs/install/index.html#clean-install" title="(in Matplotlib v3.11.0.dev2075+ga7fc90270)"><span class="xref std std-ref">clean install</span></a> and see if
+<p>The first thing to try is a <a class="reference external" href="https://matplotlib.org/devdocs/install/index.html#clean-install" title="(in Matplotlib v3.11.0.dev2332+gb07211fda)"><span class="xref std std-ref">clean install</span></a> and see if
 that helps.  If not, the best way to test your install is by running a script,
 rather than working interactively from a python shell or an integrated
 development environment such as <strong class="program">IDLE</strong> which add additional
@@ -761,18 +786,18 @@ example:</p>
 </div>
 <p>This will give you additional information about which backends Matplotlib is
 loading, version information, and more. At this point you might want to make
-sure you understand Matplotlib’s <a class="reference external" href="https://matplotlib.org/devdocs/users/explain/customizing.html#customizing" title="(in Matplotlib v3.11.0.dev2075+ga7fc90270)"><span class="xref std std-ref">configuration</span></a>
+sure you understand Matplotlib’s <a class="reference external" href="https://matplotlib.org/devdocs/users/explain/customizing.html#customizing" title="(in Matplotlib v3.11.0.dev2332+gb07211fda)"><span class="xref std std-ref">configuration</span></a>
 process, governed by the <code class="file docutils literal notranslate"><span class="pre">matplotlibrc</span></code> configuration file which contains
 instructions within and the concept of the Matplotlib backend.</p>
-<p>If you are still having trouble, see <a class="reference external" href="https://matplotlib.org/devdocs/users/faq.html#reporting-problems" title="(in Matplotlib v3.11.0.dev2075+ga7fc90270)"><span>Get help</span></a>.</p>
+<p>If you are still having trouble, see <a class="reference external" href="https://matplotlib.org/devdocs/users/faq.html#reporting-problems" title="(in Matplotlib v3.11.0.dev2332+gb07211fda)"><span>Get help</span></a>.</p>
 </section>
 <section id="how-to-completely-remove-matplotlib">
 <span id="clean-install"></span><h3>How to completely remove Matplotlib<a class="headerlink" href="#how-to-completely-remove-matplotlib" title="Link to this heading">#</a></h3>
 <p>Occasionally, problems with Matplotlib can be solved with a clean
 installation of the package.  In order to fully remove an installed Matplotlib:</p>
 <ol class="arabic simple">
-<li><p>Delete the caches from your <a class="reference external" href="https://matplotlib.org/devdocs/install/index.html#locating-matplotlib-config-dir" title="(in Matplotlib v3.11.0.dev2075+ga7fc90270)"><span class="xref std std-ref">Matplotlib configuration directory</span></a>.</p></li>
-<li><p>Delete any Matplotlib directories or eggs from your <a class="reference external" href="https://matplotlib.org/devdocs/install/index.html#locating-matplotlib-install" title="(in Matplotlib v3.11.0.dev2075+ga7fc90270)"><span class="xref std std-ref">installation directory</span></a>.</p></li>
+<li><p>Delete the caches from your <a class="reference external" href="https://matplotlib.org/devdocs/install/index.html#locating-matplotlib-config-dir" title="(in Matplotlib v3.11.0.dev2332+gb07211fda)"><span class="xref std std-ref">Matplotlib configuration directory</span></a>.</p></li>
+<li><p>Delete any Matplotlib directories or eggs from your <a class="reference external" href="https://matplotlib.org/devdocs/install/index.html#locating-matplotlib-install" title="(in Matplotlib v3.11.0.dev2332+gb07211fda)"><span class="xref std std-ref">installation directory</span></a>.</p></li>
 </ol>
 </section>
 <section id="macos-notes">
@@ -845,7 +870,7 @@ and restarting Terminal.app before running the check again. If that doesn’t fi
 the problem, depending on which Python you wanted to use, consider reinstalling
 Python.org Python, or check your homebrew or macports setup.  Remember that
 the disk image installer only works for Python.org Python, and will not get
-picked up by other Pythons.  If all these fail, please <a class="reference external" href="https://matplotlib.org/devdocs/users/faq.html#reporting-problems" title="(in Matplotlib v3.11.0.dev2075+ga7fc90270)"><span class="xref std std-ref">let us know</span></a>.</p>
+picked up by other Pythons.  If all these fail, please <a class="reference external" href="https://matplotlib.org/devdocs/users/faq.html#reporting-problems" title="(in Matplotlib v3.11.0.dev2332+gb07211fda)"><span class="xref std std-ref">let us know</span></a>.</p>
 </section>
 </section>
 </section>
@@ -874,9 +899,9 @@ and printing the <code class="docutils literal notranslate"><span class="pre">__
 <section id="matplotlib-configuration-and-cache-directory-locations">
 <span id="locating-matplotlib-config-dir"></span><h3><code class="file docutils literal notranslate"><span class="pre">matplotlib</span></code> configuration and cache directory locations<a class="headerlink" href="#matplotlib-configuration-and-cache-directory-locations" title="Link to this heading">#</a></h3>
 <p>Each user has a Matplotlib configuration directory which may contain a
-<a class="reference external" href="https://matplotlib.org/devdocs/users/explain/customizing.html#customizing-with-matplotlibrc-files" title="(in Matplotlib v3.11.0.dev2075+ga7fc90270)"><span class="xref std std-ref">matplotlibrc</span></a> file. To
+<a class="reference external" href="https://matplotlib.org/devdocs/users/explain/customizing.html#customizing-with-matplotlibrc-files" title="(in Matplotlib v3.11.0.dev2332+gb07211fda)"><span class="xref std std-ref">matplotlibrc</span></a> file. To
 locate your <code class="file docutils literal notranslate"><span class="pre">matplotlib/</span></code> configuration directory, use
-<a class="reference external" href="https://matplotlib.org/devdocs/api/matplotlib_configuration_api.html#matplotlib.get_configdir" title="(in Matplotlib v3.11.0.dev2075+ga7fc90270)"><code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.get_configdir</span></code></a>:</p>
+<a class="reference external" href="https://matplotlib.org/devdocs/api/matplotlib_configuration_api.html#matplotlib.get_configdir" title="(in Matplotlib v3.11.0.dev2332+gb07211fda)"><code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.get_configdir</span></code></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mpl</span><span class="o">.</span><span class="n">get_configdir</span><span class="p">()</span>
 <span class="go">&#39;/home/darren/.config/matplotlib&#39;</span>
@@ -886,7 +911,7 @@ locate your <code class="file docutils literal notranslate"><span class="pre">ma
 <span class="target" id="index-0"></span><a class="reference internal" href="environment_variables_faq.html#envvar-HOME"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">HOME</span></code></a> directory under the <code class="file docutils literal notranslate"><span class="pre">.config/</span></code> directory.</p>
 <p>In addition, users have a cache directory. On Unix-like systems, this is
 separate from the configuration directory by default. To locate your
-<code class="file docutils literal notranslate"><span class="pre">.cache/</span></code> directory, use <a class="reference external" href="https://matplotlib.org/devdocs/api/matplotlib_configuration_api.html#matplotlib.get_cachedir" title="(in Matplotlib v3.11.0.dev2075+ga7fc90270)"><code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.get_cachedir</span></code></a>:</p>
+<code class="file docutils literal notranslate"><span class="pre">.cache/</span></code> directory, use <a class="reference external" href="https://matplotlib.org/devdocs/api/matplotlib_configuration_api.html#matplotlib.get_cachedir" title="(in Matplotlib v3.11.0.dev2332+gb07211fda)"><code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.get_cachedir</span></code></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mpl</span><span class="o">.</span><span class="n">get_cachedir</span><span class="p">()</span>
 <span class="go">&#39;/home/darren/.cache/matplotlib&#39;</span>
@@ -905,7 +930,7 @@ directory by default:</p>
 <p>If you would like to use a different configuration directory, you can
 do so by specifying the location in your <span class="target" id="index-1"></span><a class="reference internal" href="environment_variables_faq.html#envvar-MPLCONFIGDIR"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">MPLCONFIGDIR</span></code></a>
 environment variable – see
-<a class="reference external" href="https://matplotlib.org/devdocs/install/environment_variables_faq.html#setting-linux-macos-environment-variables" title="(in Matplotlib v3.11.0.dev2075+ga7fc90270)"><span>Setting environment variables in Linux and macOS</span></a>.  Note that
+<a class="reference external" href="https://matplotlib.org/devdocs/install/environment_variables_faq.html#setting-linux-macos-environment-variables" title="(in Matplotlib v3.11.0.dev2332+gb07211fda)"><span>Setting environment variables in Linux and macOS</span></a>.  Note that
 <span class="target" id="index-2"></span><a class="reference internal" href="environment_variables_faq.html#envvar-MPLCONFIGDIR"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">MPLCONFIGDIR</span></code></a> sets the location of both the configuration
 directory and the cache directory.</p>
 </section>
@@ -994,13 +1019,19 @@ directory and the cache directory.</p>
             
           </footer>
         
+
+  
+  
+  
+
+
       </main>
     </div>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1011,7 +1042,7 @@ directory and the cache directory.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260409.dbbf22f 2026-04-09T03:39Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260421.25a82c5 2026-04-21T21:14Z.
       <br/>
     
   </p>

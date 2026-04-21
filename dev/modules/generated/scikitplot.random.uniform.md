@@ -19,9 +19,11 @@ scikitplot.random.uniform(**self**, **low=0.0**, **high=1.0**, **size=None**)[#]
 
     Examples
 
+    Try it in your browser!
     ```
     >>> gen = KissGenerator(42)
     >>> gen.uniform(0, 10, size=5)
     array([...])
 
     ```
+    Go BackOpen In Tab

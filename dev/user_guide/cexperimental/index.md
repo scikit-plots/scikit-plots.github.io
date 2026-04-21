@@ -18,7 +18,7 @@ pybind11 is a lightweight header-only library that exposes C++ types in Python
 and vice versa, mainly to create Python bindings of existing C++ code.
 
 > **See also**
-> * <https://github.com/pybind/pybind11>
+> * [pybind/pybind11](https://github.com/pybind/pybind11)
 
 ## C/CPP Headers Source[#](#c-cpp-headers-source "Link to this heading")
 
@@ -44,8 +44,8 @@ np.get_include()
 A lightweight version of NumPy (or similar functionality).
 
 > **See also**
-> * <https://github.com/dpilger26/NumCpp>
-* <https://github.com/scikit-plots/lightnumpy>
+> * [dpilger26/NumCpp](https://github.com/dpilger26/NumCpp)
+* [scikit-plots/lightnumpy](https://github.com/scikit-plots/lightnumpy)
 ```
 try:
   # pip install git+https://github.com/scikit-plots/lightnumpy.git@main

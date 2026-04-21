@@ -36,11 +36,11 @@ References
 
 [[2](#id2)]
 
-<https://github.com/spotify/annoy>
+[spotify/annoy](https://github.com/spotify/annoy)
 
 [[3](#id3)]
 
-<https://github.com/spotify/voyager>
+[spotify/voyager](https://github.com/spotify/voyager)
 
 ****User guide.**** See the [ANNImputer](../user_guide/impute/index.html#ann-imputer-index) section for further details.
 

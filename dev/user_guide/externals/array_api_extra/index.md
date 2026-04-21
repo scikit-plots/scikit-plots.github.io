@@ -7,6 +7,6 @@ This module contains functions related to [`array_api_extra`](../../../modules/g
 Extra array functions built on top of the array API standard.
 
 > **See also**
-> * <https://github.com/data-apis>
-* <https://github.com/data-apis/array-api-compat>
-* <https://github.com/data-apis/array-api-extra>
+> * [data-apis](https://github.com/data-apis)
+* [data-apis/array-api-compat](https://github.com/data-apis/array-api-compat)
+* [data-apis/array-api-extra](https://github.com/data-apis/array-api-extra)

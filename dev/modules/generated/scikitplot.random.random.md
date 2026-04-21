@@ -19,9 +19,11 @@ scikitplot.random.random(**self**, **size=None**, **dtype=np.float64**, **out=No
 
     Examples
 
+    Try it in your browser!
     ```
     >>> gen = KissGenerator(42)
     >>> gen.random(5)
     array([...])
 
     ```
+    Go BackOpen In Tab

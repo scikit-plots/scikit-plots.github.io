@@ -1,6 +1,6 @@
 # config\_context[#](#config-context "Link to this heading")
 
-scikitplot.config\_context(**\***, **assume\_finite=None**, **working\_memory=None**, **display=None**, **array\_api\_dispatch=None**, **transform\_output=None**, **skip\_parameter\_validation=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/config/_config.py#L240)[#](#scikitplot.config_context "Link to this definition")
+scikitplot.config\_context(**\***, **assume\_finite=None**, **working\_memory=None**, **display=None**, **array\_api\_dispatch=None**, **transform\_output=None**, **skip\_parameter\_validation=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/config/_config.py#L240)[#](#scikitplot.config_context "Link to this definition")
 :   Context manager for global scikit-plots configuration.
 
     Parameters:
@@ -75,6 +75,7 @@ scikitplot.config\_context(**\***, **assume\_finite=None**, **working\_memory=No
 
     Examples
 
+    Try it in your browser!
     ```
     >>> import scikitplot
     >>> from scikitplot.utils.validation import assert_all_finite
@@ -88,3 +89,4 @@ scikitplot.config\_context(**\***, **assume\_finite=None**, **working\_memory=No
     ValueError: Input contains NaN...
 
     ```
+    Go BackOpen In Tab

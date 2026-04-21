@@ -1,6 +1,6 @@
 # FixedWindowChunker[#](#fixedwindowchunker "Link to this heading")
 
-class scikitplot.corpus.FixedWindowChunker(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_fixed_window.py#L226)[#](#scikitplot.corpus.FixedWindowChunker "Link to this definition")
+class scikitplot.corpus.FixedWindowChunker(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_fixed_window.py#L250)[#](#scikitplot.corpus.FixedWindowChunker "Link to this definition")
 :   Produce fixed-size sliding-window chunks over a document.
 
     Parameters:
@@ -12,6 +12,7 @@ class scikitplot.corpus.FixedWindowChunker(**config=None**)[[source]](https://gi
 
     Examples
 
+    Try it in your browser!
     ```
     >>> cfg = FixedWindowChunkerConfig(
     ...     window_size=20, step_size=10, unit=WindowUnit.CHARS
@@ -22,8 +23,9 @@ class scikitplot.corpus.FixedWindowChunker(**config=None**)[[source]](https://gi
     'The quick brown fox '
 
     ```
+    Go BackOpen In Tab
 
-    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_fixed_window.py#L287)[#](#scikitplot.corpus.FixedWindowChunker.chunk "Link to this definition")
+    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_fixed_window.py#L311)[#](#scikitplot.corpus.FixedWindowChunker.chunk "Link to this definition")
     :   Split **text** into fixed-window chunks.
 
         Parameters:
@@ -55,7 +57,7 @@ class scikitplot.corpus.FixedWindowChunker(**config=None**)[[source]](https://gi
         Return type:
         :   **ChunkResult**
 
-    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_fixed_window.py#L366)[#](#scikitplot.corpus.FixedWindowChunker.chunk_batch "Link to this definition")
+    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_fixed_window.py#L390)[#](#scikitplot.corpus.FixedWindowChunker.chunk_batch "Link to this definition")
     :   Chunk a list of documents.
 
         Parameters:

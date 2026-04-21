@@ -7,6 +7,6 @@ This module contains functions related to [`array_api_compat`](../../../modules/
 Compatibility layer for common array libraries to support the Array API.
 
 > **See also**
-> * <https://github.com/data-apis>
-* <https://github.com/data-apis/array-api-compat>
-* <https://github.com/data-apis/array-api-extra>
+> * [data-apis](https://github.com/data-apis)
+* [data-apis/array-api-compat](https://github.com/data-apis/array-api-compat)
+* [data-apis/array-api-extra](https://github.com/data-apis/array-api-extra)

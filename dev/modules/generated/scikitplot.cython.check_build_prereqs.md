@@ -1,6 +1,6 @@
 # check\_build\_prereqs[#](#check-build-prereqs "Link to this heading")
 
-scikitplot.cython.check\_build\_prereqs(**\***, **numpy=False**, **pybind11=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/cython/_public.py#L183)[#](#scikitplot.cython.check_build_prereqs "Link to this definition")
+scikitplot.cython.check\_build\_prereqs(**\***, **numpy=False**, **pybind11=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cython/_public.py#L183)[#](#scikitplot.cython.check_build_prereqs "Link to this definition")
 :   Check whether build prerequisites are importable.
 
     Parameters:
@@ -30,6 +30,7 @@ scikitplot.cython.check\_build\_prereqs(**\***, **numpy=False**, **pybind11=Fals
 
     Examples
 
+    Try it in your browser!
     ```
     >>> result = check_build_prereqs()
     >>> "cython" in result and "setuptools" in result
@@ -39,6 +40,7 @@ scikitplot.cython.check\_build\_prereqs(**\***, **numpy=False**, **pybind11=Fals
     True
 
     ```
+    Go BackOpen In Tab
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

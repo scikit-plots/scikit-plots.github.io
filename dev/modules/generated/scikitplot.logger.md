@@ -27,7 +27,7 @@ Module Dependencies:
 - Python standard library: [`logging`](https://docs.python.org/3/library/logging.html#module-logging "(in Python v3.14)")
 
 > **See also**
-> * <https://github.com/python/cpython/blob/main/Lib/logging/__init__.py>
+> * [python/cpython](https://github.com/python/cpython/blob/main/Lib/logging/__init__.py)
 
 References
 

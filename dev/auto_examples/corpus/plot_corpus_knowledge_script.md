@@ -5,6 +5,18 @@ to download the full example code or to run this example in your browser via Jup
 # corpus Knowledge and Information local .png with examples[#](#corpus-knowledge-and-information-local-png-with-examples "Link to this heading")
 
 Examples related to the [`corpus`](../../apis/scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") submodule.
+Demonstrates all four chunkers (WordChunker-by-document, WordChunker-by-sentence,
+SentenceChunker, FixedWindowChunker-chars, FixedWindowChunker-tokens) on an
+image file containing multi-script text extracted via OCR.
+
+## Notes[#](#notes "Link to this heading")
+
+****User note:**** Run from any working directory — paths are resolved relative
+to this script’s location, not the caller’s CWD.
+
+****Developer note:**** `FileLink` / `FileLinks` (IPython display utilities)
+are guarded behind `_IN_JUPYTER` so this script executes correctly in
+plain Python, pytest, Docker CI, and notebook contexts alike.
 
 ```
 # Authors: The scikit-plots developers
@@ -12,45 +24,95 @@ Examples related to the [`corpus`](../../apis/scikitplot.corpus.html#module-scik
 
 ```
 ```
-import os
-import json
-import sys
-import textwrap
-from pathlib import Path
+from __future__ import annotations
 
-import scikitplot as sp
-from scikitplot import corpus
+import os
+import sys
+from pathlib import Path
+from pprint import pprint
+
+import matplotlib.image as mpimg
+import matplotlib.pyplot as plt
+import pandas as pd
+
+import scikitplot as sp  # noqa: F401  (kept for side effects / version logging)
 from scikitplot.corpus import (
-    SourceType,
-    DocumentReader,
-    CorpusDocument,
     CorpusPipeline,
+    ExportFormat,
+    FixedWindowChunker,
+    FixedWindowChunkerConfig,
+    NLPEnricher,
+    EnricherConfig,
     SentenceBackend,
     SentenceChunker,
     SentenceChunkerConfig,
-    ExportFormat,
-    EnricherConfig,
-    NLPEnricher,
-    WordChunkerConfig,
+    SourceType,
     StemmingBackend,
-    LemmatizationBackend,
-    WordChunker,
-    FixedWindowChunkerConfig,
-    FixedWindowChunker,
     StopwordSource,
-    WindowUnit,
     TokenizerBackend,
+    LemmatizationBackend,
+    WindowUnit,
+    WordChunker,
+    WordChunkerConfig,
 )
 
+# ---------------------------------------------------------------------------
+# Path resolution — always relative to this file, not caller's CWD.
+# ---------------------------------------------------------------------------
+
+# _SCRIPT_DIR: Path = Path(__file__).resolve().parent
+_SCRIPT_DIR = Path.cwd()
+_DATA_DIR: Path = _SCRIPT_DIR / "data"
+_OUTPUT_DIR: Path = _SCRIPT_DIR / "output"
+_IMAGE_PATH: Path = _DATA_DIR / "echo_of_the_wise" / "AI_Generated_Image_1ix.png"
+
+# Detect Jupyter environment once — used to guard IPython display utilities.
+_IN_JUPYTER: bool = "ipykernel" in sys.modules
+
+# ---------------------------------------------------------------------------
+# Helper: build a pipeline and run it on the shared image path.
+# ---------------------------------------------------------------------------
+
+
+def _run(chunker: object, label: str) -> object:
+    """Build a CorpusPipeline, run it, print head, return result.
+
+    Parameters
+    ----------
+    chunker : object
+        An instantiated chunker (WordChunker, SentenceChunker, etc.).
+    label : str
+        Human-readable label printed before the CSV head.
+
+    Returns
+    -------
+    object
+        The pipeline run result (carries ``output_path`` and ``input_path``).
+    """
+    pipeline = CorpusPipeline(
+        chunker=chunker,
+        output_path=_OUTPUT_DIR,
+        export_format=ExportFormat.CSV,
+    )
+    result = pipeline.run(_IMAGE_PATH)
+
+    print(f"\n{'=' * 60}")
+    print(label)
+    print("=" * 60)
+    df = pd.read_csv(result.output_path)
+    pprint(df.head().to_dict())
+    return result
+
 ```
 
-## 1. Word chunker by document[#](#word-chunker-by-document "Link to this heading")
+## 1. Word chunker — chunk\_by=”document”[#](#word-chunker-chunk-by-document "Link to this heading")
 
-via [`CorpusPipeline`](../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline "scikitplot.corpus.CorpusPipeline")
+One chunk per image (all OCR text joined as a single document).
+Demonstrates PORTER stemming + BUILTIN stopwords.
 
 ```
-pipeline_zip = CorpusPipeline(
-    chunker=WordChunker(
+result_word_doc = _run(
+    WordChunker(
         WordChunkerConfig(
             chunk_by="document",
             stemmer=StemmingBackend.PORTER,
@@ -59,46 +121,34 @@ pipeline_zip = CorpusPipeline(
             lemmatizer=LemmatizationBackend.NLTK_WORDNET,
             stopwords=StopwordSource.BUILTIN,
             lowercase=True,
-            remove_punctuation=True,
+            remove_punctuation=False,
             min_token_length=2,
-            ngram_range=(1,1),
+            ngram_range=(1, 1),
         )
     ),
-    output_dir=Path("output/"),
-    export_format=ExportFormat.CSV,
+    label="Word chunker — chunk_by='document' (PORTER stemming)",
 )
-result_zip = pipeline_zip.run(Path("data/echo_of_the_wise/AI_Generated_Image_1ix.png"))
-result_zip
 
 ```
 ```
-PipelineResult(source='data/echo_of_the_wise/AI_Generated_Image_1ix.png', n_documents=1, n_omitted=0, n_embedded=0, elapsed=4.3s, output=output/AI_Generated_Image_1ix.csv)
-
-```
-```
-import pandas as pd
-from pprint import pprint
-
-print("Word chunker by document")
-pprint(pd.read_csv(result_zip.output_path).head().to_dict())
-
-```
-```
-Word chunker by document
+============================================================
+Word chunker — chunk_by='document' (PORTER stemming)
+============================================================
 {'act': {0: nan},
  'bbox': {0: nan},
- 'char_end': {0: 861},
+ 'char_end': {0: 873},
  'char_start': {0: 0},
  'chunk_index': {0: 0},
  'chunking_strategy': {0: 'custom'},
  'collection_id': {0: nan},
  'confidence': {0: 0.6372},
- 'content_hash': {0: '6a406fd997f6814b7150ec03f001938a'},
+ 'content_hash': {0: '8db16ee6ad399ec05154ba6a29e2c8a6'},
  'doc_id': {0: 'cddbb4132e9ed33c'},
  'doi': {0: nan},
  'frame_index': {0: nan},
  'image_height': {0: 1024},
  'image_width': {0: 1024},
+ 'input_path': {0: 'AI_Generated_Image_1ix.png'},
  'isbn': {0: nan},
  'keywords': {0: nan},
  'language': {0: nan},
@@ -116,7 +166,6 @@ Word chunker by document
  'section_type': {0: 'text'},
  'source_author': {0: nan},
  'source_date': {0: nan},
- 'source_file': {0: 'AI_Generated_Image_1ix.png'},
  'source_title': {0: nan},
  'source_type': {0: 'image'},
  'stems': {0: nan},
@@ -124,16 +173,17 @@ Word chunker by document
              'rco rsp eo ere memmnminsan erklaren kannst hast du creerona eat '
              'brome ccrlhi petesercn verstanden explain sa onan co oiag '
              'understand well enough ge vida nd tron sa ea ae nia apiotoréanc '
-             'aaseavsp0¢ richard feynman albert einstein 384322 bc 356323 bc '
-             'mieza macedonia 19181988 new york usa princeton pasadena 991955 '
-             'ulm princeton onsen venient cc ae crore mokoeoeri ae bartend aa '
-             've es clenrecemnnc ahupiingao ka taea pombelcuic ssri lic pye '
-             'matterhow much kaov word reach onli far person understand ugh '
-             'glen lat cs lb cle lage ernest rutherford mevlana 18711937 '
-             'nelson nz cambridg warm ed balkh konya sato le scholar ace '
-             'simplic mark os true knowledg focus pocus distract cenit innoc '
-             'know world convers sto person intellig vision knowledg limit '
-             'speaker limit listen mevlana wisdom 12071273 balkh konya'},
+             'aaseavsp0¢ richard p. feynman albert einstein 384-322 bc 356-323 '
+             'bc mieza macedonia 1918-1988 new york usa princeton pasadena '
+             '99-1955 ulm princeton onsen venient cc ae crore mokoeoeri ae '
+             'bartend aa ve es clenrecemnnc ahupiingao ka taea pombelcuic ssri '
+             'lic pye matterhow much kaov word reach onli far person '
+             'understand ugh glen lat cs lb cle lage ernest rutherford mevlana '
+             '1871-1937 nelson nz cambridg warm ed balkh konya sato le scholar '
+             'ace simplic mark os true knowledg focus pocus distract cenit '
+             'innoc know world convers sto person intellig vision knowledg '
+             "limit speaker limit listen mevlana 's wisdom 1207-1273 balkh "
+             'konya'},
  'timecode_end': {0: nan},
  'timecode_start': {0: nan},
  'tokens': {0: nan},
@@ -142,13 +192,14 @@ Word chunker by document
 
 ```
 
-## 1. Word chunker by sentence[#](#word-chunker-by-sentence "Link to this heading")
+## 2. Word chunker — chunk\_by=”sentence”[#](#word-chunker-chunk-by-sentence "Link to this heading")
 
-via [`CorpusPipeline`](../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline "scikitplot.corpus.CorpusPipeline")
+One chunk per sentence, each tokenised separately.
+Demonstrates SNOWBALL stemming on English text.
 
 ```
-pipeline_zip = CorpusPipeline(
-    chunker=WordChunker(
+result_word_sent = _run(
+    WordChunker(
         WordChunkerConfig(
             chunk_by="sentence",
             stemmer=StemmingBackend.SNOWBALL,
@@ -157,32 +208,19 @@ pipeline_zip = CorpusPipeline(
             lemmatizer=LemmatizationBackend.NLTK_WORDNET,
             stopwords=StopwordSource.BUILTIN,
             lowercase=True,
-            remove_punctuation=True,
+            remove_punctuation=False,
             min_token_length=2,
-            ngram_range=(1,1),
+            ngram_range=(1, 1),
         )
     ),
-    output_dir=Path("output/"),
-    export_format=ExportFormat.CSV,
+    label="Word chunker — chunk_by='sentence' (SNOWBALL stemming)",
 )
-result_zip = pipeline_zip.run(Path("data/echo_of_the_wise/AI_Generated_Image_1ix.png"))
-result_zip
 
 ```
 ```
-PipelineResult(source='data/echo_of_the_wise/AI_Generated_Image_1ix.png', n_documents=4, n_omitted=1, n_embedded=0, elapsed=4.1s, output=output/AI_Generated_Image_1ix.csv)
-
-```
-```
-import pandas as pd
-from pprint import pprint
-
-print("Word chunker by sentence")
-pprint(pd.read_csv(result_zip.output_path).head().to_dict())
-
-```
-```
-Word chunker by sentence
+============================================================
+Word chunker — chunk_by='sentence' (SNOWBALL stemming)
+============================================================
 {'act': {0: nan, 1: nan, 2: nan, 3: nan},
  'bbox': {0: nan, 1: nan, 2: nan, 3: nan},
  'char_end': {0: 274, 1: 522, 2: 22, 3: 35},
@@ -203,6 +241,10 @@ Word chunker by sentence
  'frame_index': {0: nan, 1: nan, 2: nan, 3: nan},
  'image_height': {0: 1024, 1: 1024, 2: 1024, 3: 1024},
  'image_width': {0: 1024, 1: 1024, 2: 1024, 3: 1024},
+ 'input_path': {0: 'AI_Generated_Image_1ix.png',
+                1: 'AI_Generated_Image_1ix.png',
+                2: 'AI_Generated_Image_1ix.png',
+                3: 'AI_Generated_Image_1ix.png'},
  'isbn': {0: nan, 1: nan, 2: nan, 3: nan},
  'keywords': {0: nan, 1: nan, 2: nan, 3: nan},
  'language': {0: nan, 1: nan, 2: nan, 3: nan},
@@ -220,10 +262,6 @@ Word chunker by sentence
  'section_type': {0: 'text', 1: 'text', 2: 'text', 3: 'text'},
  'source_author': {0: nan, 1: nan, 2: nan, 3: nan},
  'source_date': {0: nan, 1: nan, 2: nan, 3: nan},
- 'source_file': {0: 'AI_Generated_Image_1ix.png',
-                 1: 'AI_Generated_Image_1ix.png',
-                 2: 'AI_Generated_Image_1ix.png',
-                 3: 'AI_Generated_Image_1ix.png'},
  'source_title': {0: nan, 1: nan, 2: nan, 3: nan},
  'source_type': {0: 'image', 1: 'image', 2: 'image', 3: 'image'},
  'stems': {0: nan, 1: nan, 2: nan, 3: nan},
@@ -251,41 +289,28 @@ Word chunker by sentence
 
 ```
 
-## 2. Sentence chunker[#](#sentence-chunker "Link to this heading")
+## 3. Sentence chunker (NLTK backend)[#](#sentence-chunker-nltk-backend "Link to this heading")
 
-via [`CorpusPipeline`](../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline "scikitplot.corpus.CorpusPipeline")
+Splits OCR text into individual sentences; preserves raw text with offsets.
 
 ```
-pipeline_zip = CorpusPipeline(
-    chunker=SentenceChunker(
+result_sentence = _run(
+    SentenceChunker(
         SentenceChunkerConfig(
             backend=SentenceBackend.NLTK,
             nltk_language="english",
             strip_whitespace=True,
             include_offsets=True,
-        ),
+        )
     ),
-    output_dir=Path("output/"),
-    export_format=ExportFormat.CSV,
+    label="Sentence chunker (NLTK backend)",
 )
-result_zip = pipeline_zip.run(Path("data/echo_of_the_wise/AI_Generated_Image_1ix.png"))
-result_zip
 
 ```
 ```
-PipelineResult(source='data/echo_of_the_wise/AI_Generated_Image_1ix.png', n_documents=8, n_omitted=0, n_embedded=0, elapsed=4.3s, output=output/AI_Generated_Image_1ix.csv)
-
-```
-```
-import pandas as pd
-from pprint import pprint
-
-print("Sentence chunker")
-pprint(pd.read_csv(result_zip.output_path).head().to_dict())
-
-```
-```
-Sentence chunker
+============================================================
+Sentence chunker (NLTK backend)
+============================================================
 {'act': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'bbox': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'char_end': {0: 229, 1: 299, 2: 607, 3: 1011, 4: 1179},
@@ -312,6 +337,11 @@ Sentence chunker
  'frame_index': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'image_height': {0: 1024, 1: 1024, 2: 1024, 3: 1024, 4: 1024},
  'image_width': {0: 1024, 1: 1024, 2: 1024, 3: 1024, 4: 1024},
+ 'input_path': {0: 'AI_Generated_Image_1ix.png',
+                1: 'AI_Generated_Image_1ix.png',
+                2: 'AI_Generated_Image_1ix.png',
+                3: 'AI_Generated_Image_1ix.png',
+                4: 'AI_Generated_Image_1ix.png'},
  'isbn': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'keywords': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'language': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
@@ -333,11 +363,6 @@ Sentence chunker
  'section_type': {0: 'text', 1: 'text', 2: 'text', 3: 'text', 4: 'text'},
  'source_author': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'source_date': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'source_file': {0: 'AI_Generated_Image_1ix.png',
-                 1: 'AI_Generated_Image_1ix.png',
-                 2: 'AI_Generated_Image_1ix.png',
-                 3: 'AI_Generated_Image_1ix.png',
-                 4: 'AI_Generated_Image_1ix.png'},
  'source_title': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'source_type': {0: 'image', 1: 'image', 2: 'image', 3: 'image', 4: 'image'},
  'stems': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
@@ -445,39 +470,28 @@ Sentence chunker
 
 ```
 
-## 3. Fixed Window chunker by chars[#](#fixed-window-chunker-by-chars "Link to this heading")
+## 4. Fixed Window chunker — unit=CHARS[#](#fixed-window-chunker-unit-chars "Link to this heading")
 
-via [`CorpusPipeline`](../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline "scikitplot.corpus.CorpusPipeline")
+Splits by character count regardless of word/sentence boundaries.
 
 ```
-pipeline_zip = CorpusPipeline(
-    chunker=FixedWindowChunker(
+result_fw_chars = _run(
+    FixedWindowChunker(
         FixedWindowChunkerConfig(
             unit=WindowUnit.CHARS,
+            window_size=512,
+            step_size=256,
             min_length=10,
         )
     ),
-    output_dir=Path("output/"),
-    export_format=ExportFormat.CSV,
+    label="Fixed Window chunker — unit=CHARS (window=512, step=256)",
 )
-result_zip = pipeline_zip.run(Path("data/echo_of_the_wise/AI_Generated_Image_1ix.png"))
-result_zip
 
 ```
 ```
-PipelineResult(source='data/echo_of_the_wise/AI_Generated_Image_1ix.png', n_documents=5, n_omitted=0, n_embedded=0, elapsed=3.7s, output=output/AI_Generated_Image_1ix.csv)
-
-```
-```
-import pandas as pd
-from pprint import pprint
-
-print("Fixed Window chunker by chars")
-pprint(pd.read_csv(result_zip.output_path).head().to_dict())
-
-```
-```
-Fixed Window chunker by chars
+============================================================
+Fixed Window chunker — unit=CHARS (window=512, step=256)
+============================================================
 {'act': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'bbox': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'char_end': {0: 506, 1: 768, 2: 1023, 3: 1279, 4: 1293},
@@ -504,6 +518,11 @@ Fixed Window chunker by chars
  'frame_index': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'image_height': {0: 1024, 1: 1024, 2: 1024, 3: 1024, 4: 1024},
  'image_width': {0: 1024, 1: 1024, 2: 1024, 3: 1024, 4: 1024},
+ 'input_path': {0: 'AI_Generated_Image_1ix.png',
+                1: 'AI_Generated_Image_1ix.png',
+                2: 'AI_Generated_Image_1ix.png',
+                3: 'AI_Generated_Image_1ix.png',
+                4: 'AI_Generated_Image_1ix.png'},
  'isbn': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'keywords': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'language': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
@@ -525,11 +544,6 @@ Fixed Window chunker by chars
  'section_type': {0: 'text', 1: 'text', 2: 'text', 3: 'text', 4: 'text'},
  'source_author': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'source_date': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
- 'source_file': {0: 'AI_Generated_Image_1ix.png',
-                 1: 'AI_Generated_Image_1ix.png',
-                 2: 'AI_Generated_Image_1ix.png',
-                 3: 'AI_Generated_Image_1ix.png',
-                 4: 'AI_Generated_Image_1ix.png'},
  'source_title': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'source_type': {0: 'image', 1: 'image', 2: 'image', 3: 'image', 4: 'image'},
  'stems': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
@@ -719,124 +733,153 @@ Fixed Window chunker by chars
 
 ```
 
-## 3. Fixed Window chunker by tokens[#](#fixed-window-chunker-by-tokens "Link to this heading")
+## 5. Fixed Window chunker — unit=TOKENS[#](#fixed-window-chunker-unit-tokens "Link to this heading")
 
-via [`CorpusPipeline`](../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline "scikitplot.corpus.CorpusPipeline")
+Splits by whitespace-delimited token count.
+CJK text is auto-handled via character-level fallback.
 
 ```
-pipeline_zip = CorpusPipeline(
-    chunker=FixedWindowChunker(
+result_fw_tokens = _run(
+    FixedWindowChunker(
         FixedWindowChunkerConfig(
             unit=WindowUnit.TOKENS,
+            window_size=64,
+            step_size=32,
             min_length=10,
         )
     ),
-    output_dir=Path("output/"),
-    export_format=ExportFormat.CSV,
+    label="Fixed Window chunker — unit=TOKENS (window=64, step=32)",
 )
-result_zip = pipeline_zip.run(Path("data/echo_of_the_wise/AI_Generated_Image_1ix.png"))
-result_zip
 
 ```
 ```
-PipelineResult(source='data/echo_of_the_wise/AI_Generated_Image_1ix.png', n_documents=1, n_omitted=0, n_embedded=0, elapsed=3.6s, output=output/AI_Generated_Image_1ix.csv)
-
-```
-```
-import pandas as pd
-from pprint import pprint
-
-print("Fixed Window chunker by tokens")
-pprint(pd.read_csv(result_zip.output_path).head().to_dict())
-
-```
-```
-Fixed Window chunker by tokens
-{'act': {0: nan},
- 'bbox': {0: nan},
- 'char_end': {0: 1171},
- 'char_start': {0: 6},
- 'chunk_index': {0: 0},
- 'chunking_strategy': {0: 'fixed_window'},
- 'collection_id': {0: nan},
- 'confidence': {0: 0.6372},
- 'content_hash': {0: 'c250ed74816a460c2a6a541c63968145'},
- 'doc_id': {0: '14578619132abab9'},
- 'doi': {0: nan},
- 'frame_index': {0: nan},
- 'image_height': {0: 1024},
- 'image_width': {0: 1024},
- 'isbn': {0: nan},
- 'keywords': {0: nan},
- 'language': {0: nan},
- 'lemmas': {0: nan},
- 'line_number': {0: nan},
- 'modality': {0: 'text'},
- 'normalized_text': {0: nan},
- 'ocr_engine': {0: 'tesseract'},
- 'page_number': {0: 0},
- 'paragraph_index': {0: nan},
- 'parent_doc_id': {0: nan},
- 'raw_dtype': {0: nan},
- 'raw_shape': {0: nan},
- 'scene_number': {0: nan},
- 'section_type': {0: 'text'},
- 'source_author': {0: nan},
- 'source_date': {0: nan},
- 'source_file': {0: 'AI_Generated_Image_1ix.png'},
- 'source_title': {0: nan},
- 'source_type': {0: 'image'},
- 'stems': {0: nan},
+============================================================
+Fixed Window chunker — unit=TOKENS (window=64, step=32)
+============================================================
+{'act': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'bbox': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'char_end': {0: 352, 1: 560, 2: 746, 3: 752, 4: 1098},
+ 'char_start': {0: 6, 1: 230, 2: 405, 3: 435, 4: 777},
+ 'chunk_index': {0: 0, 1: 1, 2: 2, 3: 3, 4: 4},
+ 'chunking_strategy': {0: 'fixed_window',
+                       1: 'fixed_window',
+                       2: 'fixed_window',
+                       3: 'fixed_window',
+                       4: 'fixed_window'},
+ 'collection_id': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'confidence': {0: 0.6372, 1: 0.6372, 2: 0.6372, 3: 0.6372, 4: 0.6372},
+ 'content_hash': {0: '6ec041942787956ac51b4fe44674856b',
+                  1: 'a4e5f3bc8d179a2e6a4e422d58e632e1',
+                  2: '93c35634eb6d7e679f07d04429d07d85',
+                  3: '7f2941cc0c1702425a21d38c343d735c',
+                  4: '594f83ff7ed721cf3797cc954d9c6c70'},
+ 'doc_id': {0: '14578619132abab9',
+            1: 'a52bde7151592af4',
+            2: 'efd17d43a8360abc',
+            3: '0b1428dfd3b9383e',
+            4: '82c5d8c562da48a2'},
+ 'doi': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'frame_index': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'image_height': {0: 1024, 1: 1024, 2: 1024, 3: 1024, 4: 1024},
+ 'image_width': {0: 1024, 1: 1024, 2: 1024, 3: 1024, 4: 1024},
+ 'input_path': {0: 'AI_Generated_Image_1ix.png',
+                1: 'AI_Generated_Image_1ix.png',
+                2: 'AI_Generated_Image_1ix.png',
+                3: 'AI_Generated_Image_1ix.png',
+                4: 'AI_Generated_Image_1ix.png'},
+ 'isbn': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'keywords': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'language': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'lemmas': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'line_number': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'modality': {0: 'text', 1: 'text', 2: 'text', 3: 'text', 4: 'text'},
+ 'normalized_text': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'ocr_engine': {0: 'tesseract',
+                1: 'tesseract',
+                2: 'tesseract',
+                3: 'tesseract',
+                4: 'tesseract'},
+ 'page_number': {0: 0, 1: 0, 2: 0, 3: 0, 4: 0},
+ 'paragraph_index': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'parent_doc_id': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'raw_dtype': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'raw_shape': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'scene_number': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'section_type': {0: 'text', 1: 'text', 2: 'text', 3: 'text', 4: 'text'},
+ 'source_author': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'source_date': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'source_title': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'source_type': {0: 'image', 1: 'image', 2: 'image', 3: 'image', 4: 'image'},
+ 'stems': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'text': {0: 'ire uursacesced Caraga io 10 Bi6doKew 8 Erna monet) 1b / aoe Maa '
              'ETT RCO RSP eo ere Memmnminsane(s) erklaren kannst, hast du '
              'Creerona eats Brome ccrlhy | | Petesercne | verstanden. > If you '
              'cannot explain » Sas ONAN Co oiag understand it well enough. ge '
              'VIDA ND TRON Sa eas aE Nia) ‘ApiotoréAnc + AASEavSp0¢ , Richard '
-             'P. Feynman j Albert Einstein 384-322 BC - 356-323 BC | Mieza, '
-             'Macedonia 1918-1988 | New York, USA — Princeton — Pasadena '
-             '99-1955 | Ulm — Princeton ONSEN venient Cc ae | Crore mokoeoeri '
-             'ae} A to a bartender. aa ve, r es Clenrecemnnc ahupiingao ka '
-             'taea POMBELCUICIC IN SSRI LIC Pye matterhow much you kaov your '
-             'words reach only as far as the other person can understand, : '
-             'ugh $9) glen a lat 9 CS lb cle Lage I y Ernest Rutherford F '
+             'P. Feynman j Albert Einstein',
+          1: '> If you cannot explain » Sas ONAN Co oiag understand it well '
+             'enough. ge VIDA ND TRON Sa eas aE Nia) ‘ApiotoréAnc + AASEavSp0¢ '
+             ', Richard P. Feynman j Albert Einstein 384-322 BC - 356-323 BC | '
+             'Mieza, Macedonia 1918-1988 | New York, USA — Princeton — '
+             'Pasadena 99-1955 | Ulm — Princeton ONSEN venient Cc ae | Crore '
+             'mokoeoeri ae} A to',
+          2: '384-322 BC - 356-323 BC | Mieza, Macedonia 1918-1988 | New York, '
+             'USA — Princeton — Pasadena 99-1955 | Ulm — Princeton ONSEN '
+             'venient Cc ae | Crore mokoeoeri ae} A to a bartender. aa ve, r '
+             'es Clenrecemnnc ahupiingao ka taea POMBELCUICIC IN SSRI LIC Pye '
+             'matterhow much you kaov your words reach only as far as the '
+             'other person can understand, :',
+          3: 'a bartender. aa ve, r es Clenrecemnnc ahupiingao ka taea '
+             'POMBELCUICIC IN SSRI LIC Pye matterhow much you kaov your words '
+             'reach only as far as the other person can understand, : ugh $9) '
+             'glen a lat 9 CS lb cle Lage I y Ernest Rutherford F Mevlana '
+             '1871-1937 | Nelson, NZ > Cambridge _—_ warm, Ed 3 | Balkh > '
+             'Konya Sato r',
+          4: 'ugh $9) glen a lat 9 CS lb cle Lage I y Ernest Rutherford F '
              'Mevlana 1871-1937 | Nelson, NZ > Cambridge _—_ warm, Ed 3 | '
              'Balkh > Konya Sato r le Scholar aCe Is Simplicity is the mark 7 '
              'Os true knowledge. “ (Focused) (Pocused) | (Distracted) cenit) '
              '(Innocent) You may know all the worlds, but the conversation '
-             'sto, j at the other person’s intelligence and vision. Knowledge '
-             'is not limited by the speaker. It is limited by the listener. '
-             "Mevlana's Wisdom 1207-1273 | Balkh + Konya"},
- 'timecode_end': {0: nan},
- 'timecode_start': {0: nan},
- 'tokens': {0: nan},
- 'total_frames': {0: 1},
- 'url': {0: nan}}
+             'sto, j at the'},
+ 'timecode_end': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'timecode_start': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'tokens': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'total_frames': {0: 1, 1: 1, 2: 1, 3: 1, 4: 1},
+ 'url': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan}}
 
 ```
-```
-from IPython.display import FileLink, FileLinks
 
-# Replace 'path/to/your_file.csv' with your actual file path
-FileLink(result_zip.source)
+## Display the source image[#](#display-the-source-image "Link to this heading")
+
+Renders inline in Jupyter; opens a matplotlib window otherwise.
 
 ```
-Path (data/echo\_of\_the\_wise/AI\_Generated\_Image\_1ix.png) doesn't exist. It may still be in the process of being generated, or you may have the incorrect path.  
-  
-```
-# import matplotlib.pyplot as plt
-# import matplotlib.image as mpimg
+print(f"\nSource image: {result_fw_tokens.input_path}")
 
-# plt.figure(dpi=300)  # Set DPI to 150
-# img = mpimg.imread(result_zip.source)
+if _IN_JUPYTER:
+    # IPython display utilities — only import inside Jupyter to avoid
+    # ImportError in plain Python / CI environments.
+    from IPython.display import FileLink  # noqa: PLC0415
+
+    display(FileLink(str(result_fw_tokens.input_path)))  # noqa: F821
+
+# plt.figure(figsize=(8, 8), dpi=150)
+# img = mpimg.imread(result_fw_tokens.input_path)
 # plt.imshow(img)
-# plt.axis('off')  # hides axes
+# plt.axis("off")
+# plt.title("Source image (OCR input)", fontsize=12)
+# plt.tight_layout()
 # plt.show()
+
+```
+```
+Source image: /home/circleci/repo/galleries/examples/corpus/data/echo_of_the_wise/AI_Generated_Image_1ix.png
 
 ```
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 20.144 seconds)
+****Total running time of the script:**** (0 minutes 23.636 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_knowledge_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_knowledge_script.ipynb)
 
@@ -848,22 +891,22 @@ Tags: [model-type: classification](../../_tags/model-type-classification.html) [
 
 Related examples
 
-![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
-
-[corpus WHO European Region local .zip with examples](plot_corpus_who_zip_script.html)
-
-corpus WHO European Region local .zip with examples![](../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png)
+![](../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png)
 
 [corpus A Tale of Two Cities .mp3 with examples](plot_corpus_a_tale_of_two_cities_mp3_script.html)
 
-corpus A Tale of Two Cities .mp3 with examples![](../../_images/sphx_glr_plot_corpus_who_youtube_shorts_script_thumb.png)
+corpus A Tale of Two Cities .mp3 with examples![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
+
+[corpus WHO European Region local .zip with examples](plot_corpus_who_zip_script.html)
+
+corpus WHO European Region local .zip with examples![](../../_images/sphx_glr_plot_corpus_who_youtube_shorts_script_thumb.png)
 
 [corpus WHO European Region YouTube shorts with examples](plot_corpus_who_youtube_shorts_script.html)
 
-corpus WHO European Region YouTube shorts with examples![](../../_images/sphx_glr_plot_annoy_cython_0benchmark_thumb.png)
+corpus WHO European Region YouTube shorts with examples![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
 
-[Index (cython) python-api benchmark with examples](../annoy/plot_annoy_cython_0benchmark.html)
+[corpus WHO European Region local or url per file with examples](plot_corpus_who_per_file_script.html)
 
-Index (cython) python-api benchmark with examples
+corpus WHO European Region local or url per file with examples
 
 [Gallery generated by Sphinx-Gallery](https://sphinx-gallery.github.io)

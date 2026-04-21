@@ -1,6 +1,6 @@
 # numpy\_include[#](#numpy-include "Link to this heading")
 
-scikitplot.cython.numpy\_include()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/cython/_custom_compiler.py#L617)[#](#scikitplot.cython.numpy_include "Link to this definition")
+scikitplot.cython.numpy\_include()[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cython/_custom_compiler.py#L617)[#](#scikitplot.cython.numpy_include "Link to this definition")
 :   Return the NumPy C-API include directory, or `None` if not installed.
 
     Returns:
@@ -19,9 +19,11 @@ scikitplot.cython.numpy\_include()[[source]](https://github.com/scikit-plots/sci
 
     Examples
 
+    Try it in your browser!
     ```
     >>> p = numpy_include()
     >>> p is None or p.is_dir()
     True
 
     ```
+    Go BackOpen In Tab

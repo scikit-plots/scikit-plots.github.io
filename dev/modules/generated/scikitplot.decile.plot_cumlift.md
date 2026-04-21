@@ -1,6 +1,6 @@
 # plot\_cumlift[#](#plot-cumlift "Link to this heading")
 
-scikitplot.decile.plot\_cumlift(**plot\_input**, **\***, **highlight\_ntile=None**, **highlight\_how='plot\_text'**, **line\_kws=None**, **ref\_line\_kws=None**, **legend\_kws=None**, **grid\_kws=None**, **axes\_kws=None**, **annotation\_kws=None**, **footer\_kws=None**, **save\_fig=True**, **save\_fig\_filename=''**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/decile/_decile_modelplotpy.py#L2827)[#](#scikitplot.decile.plot_cumlift "Link to this definition")
+scikitplot.decile.plot\_cumlift(**plot\_input**, **\***, **highlight\_ntile=None**, **highlight\_how='plot\_text'**, **line\_kws=None**, **ref\_line\_kws=None**, **legend\_kws=None**, **grid\_kws=None**, **axes\_kws=None**, **annotation\_kws=None**, **footer\_kws=None**, **save\_fig=True**, **save\_fig\_filename=''**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/decile/_decile_modelplotpy.py#L2827)[#](#scikitplot.decile.plot_cumlift "Link to this definition")
 :   Plot cumulative lift curve.
 
     Parameters:
@@ -84,7 +84,7 @@ scikitplot.decile.plot\_cumlift(**plot\_input**, **\***, **highlight\_ntile=None
         * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
 
     Return type:
-    :   [**Axes**](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes "(in Matplotlib v3.11.0.dev2075+ga7fc90270)")
+    :   [**Axes**](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes "(in Matplotlib v3.11.0.dev2332+gb07211fda)")
 
     > **See also**
     > [`plot_response`](scikitplot.decile.plot_response.html#scikitplot.decile.plot_response "scikitplot.decile.plot_response"), [`plot_cumresponse`](scikitplot.decile.plot_cumresponse.html#scikitplot.decile.plot_cumresponse "scikitplot.decile.plot_cumresponse"), [`plot_cumgains`](scikitplot.decile.plot_cumgains.html#scikitplot.decile.plot_cumgains "scikitplot.decile.plot_cumgains")
@@ -95,10 +95,12 @@ scikitplot.decile.plot\_cumlift(**plot\_input**, **\***, **highlight\_ntile=None
 
     Examples
 
+    Try it in your browser!
     ```
     >>> # ax = plot_cumlift(plot_input)
 
     ```
+    Go BackOpen In Tab
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

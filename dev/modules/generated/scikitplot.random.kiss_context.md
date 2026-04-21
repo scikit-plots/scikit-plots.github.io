@@ -45,6 +45,7 @@ scikitplot.random.kiss\_context(**seed=None**, **bit\_width=None**)[#](#scikitpl
 
     Examples
 
+    Try it in your browser!
     ```
     >>> # from contextlib import closing
     >>> from scikitplot.random import kiss_context
@@ -53,6 +54,7 @@ scikitplot.random.kiss\_context(**seed=None**, **bit\_width=None**)[#](#scikitpl
     ...     data = rng.random(1000)
 
     ```
+    Go BackOpen In Tab
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

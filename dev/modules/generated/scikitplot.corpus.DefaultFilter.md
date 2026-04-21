@@ -1,6 +1,6 @@
 # DefaultFilter[#](#defaultfilter "Link to this heading")
 
-class scikitplot.corpus.DefaultFilter(**min\_words=3**, **min\_chars=10**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_base.py#L335)[#](#scikitplot.corpus.DefaultFilter "Link to this definition")
+class scikitplot.corpus.DefaultFilter(**min\_words=3**, **min\_chars=10**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_base.py#L335)[#](#scikitplot.corpus.DefaultFilter "Link to this definition")
 :   Standard noise filter ported and improved from remarx’s `include_sentence`.
 
     Rejects a document when ****any**** of the following is true:
@@ -25,10 +25,11 @@ class scikitplot.corpus.DefaultFilter(**min\_words=3**, **min\_chars=10**)[[sour
     The letter check uses `re.compile(r'[^\\W\\d_]', re.UNICODE)` which
     matches any Unicode letter (including accented and non-Latin characters)
     while excluding digits and underscore. This is more robust than
-    remarx’s original `^[\\W\\d]+$` which could pass on some Unicode inputs.
+    remarx’s original `^[\\W\\d]+$` which could pass on some Unicode input\_path.
 
     Examples
 
+    Try it in your browser!
     ```
     >>> f = DefaultFilter(min_words=3, min_chars=10)
     >>> doc_ok = CorpusDocument.create("f.txt", 0, "Hello world test.")
@@ -39,8 +40,9 @@ class scikitplot.corpus.DefaultFilter(**min\_words=3**, **min\_chars=10**)[[sour
     False
 
     ```
+    Go BackOpen In Tab
 
-    include(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_base.py#L392)[#](#scikitplot.corpus.DefaultFilter.include "Link to this definition")
+    include(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_base.py#L392)[#](#scikitplot.corpus.DefaultFilter.include "Link to this definition")
     :   Return `True` if `doc` passes all noise checks.
 
         Parameters:
@@ -52,7 +54,7 @@ class scikitplot.corpus.DefaultFilter(**min\_words=3**, **min\_chars=10**)[[sour
             :   `True` to include; `False` to discard.
 
         Parameters:
-        :   ****doc**** (**CorpusDocument**)
+        :   ****doc**** ([**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument"))
 
         Return type:
         :   [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")

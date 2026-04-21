@@ -5,7 +5,7 @@ Examples relevant to the [`nc`](../../apis/scikitplot.nc.html#module-scikitplot.
 [`nc`](../../apis/scikitplot.nc.html#module-scikitplot.nc "scikitplot.nc") is a Python module that provides high-performance numerical functions by exposing the C++ header-only library NumCpp, allowing seamless use of NumPy arrays in Python.
 
 > **See also**
-> * <https://github.com/dpilger26/NumCpp>
+> * [dpilger26/NumCpp](https://github.com/dpilger26/NumCpp)
 * <https://numcpp.readthedocs.io/en/latest/>
 * <https://numcpp.readthedocs.io/en/latest/commandTable.html>
 ```

@@ -1,6 +1,6 @@
 # SimilarityIndex[#](#similarityindex "Link to this heading")
 
-class scikitplot.corpus.SimilarityIndex(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_similarity/_similarity.py#L229)[#](#scikitplot.corpus.SimilarityIndex "Link to this definition")
+class scikitplot.corpus.SimilarityIndex(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_similarity/_similarity.py#L229)[#](#scikitplot.corpus.SimilarityIndex "Link to this definition")
 :   Multi-mode similarity index over `CorpusDocument` collections.
 
     Parameters:
@@ -11,7 +11,7 @@ class scikitplot.corpus.SimilarityIndex(**config=None**)[[source]](https://githu
     :   ****config**** ([**SearchConfig**](scikitplot.corpus.SearchConfig.html#scikitplot.corpus.SearchConfig "scikitplot.corpus.SearchConfig") **|** **None**)
 
     > **See also**
-    > `scikitplot.corpus._schema.MatchMode`
+    > [`scikitplot.corpus._schema.MatchMode`](scikitplot.corpus.MatchMode.html#scikitplot.corpus.MatchMode "scikitplot.corpus._schema.MatchMode")
     :   Enum of match modes.
 
     `scikitplot.corpus._adapters`
@@ -34,14 +34,16 @@ class scikitplot.corpus.SimilarityIndex(**config=None**)[[source]](https://githu
 
     Examples
 
+    Try it in your browser!
     ```
     >>> index = SimilarityIndex()
     >>> # index.build(corpus_documents)
     >>> # results = index.search("quantum computing")
 
     ```
+    Go BackOpen In Tab
 
-    build(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_similarity/_similarity.py#L277)[#](#scikitplot.corpus.SimilarityIndex.build "Link to this definition")
+    build(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_similarity/_similarity.py#L277)[#](#scikitplot.corpus.SimilarityIndex.build "Link to this definition")
     :   Build the index from `CorpusDocument` instances.
 
         Parameters:
@@ -65,7 +67,7 @@ class scikitplot.corpus.SimilarityIndex(**config=None**)[[source]](https://githu
     property n\_documents: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.SimilarityIndex.n_documents "Link to this definition")
     :   Number of indexed documents.
 
-    search(**query**, **\***, **config=None**, **query\_embedding=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_similarity/_similarity.py#L371)[#](#scikitplot.corpus.SimilarityIndex.search "Link to this definition")
+    search(**query**, **\***, **config=None**, **query\_embedding=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_similarity/_similarity.py#L371)[#](#scikitplot.corpus.SimilarityIndex.search "Link to this definition")
     :   Search the index.
 
         Parameters:

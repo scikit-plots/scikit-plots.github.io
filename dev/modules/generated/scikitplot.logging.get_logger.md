@@ -1,6 +1,6 @@
 # get\_logger[#](#get-logger "Link to this heading")
 
-scikitplot.logging.get\_logger()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/logging.py#L1125)[#](#scikitplot.logging.get_logger "Link to this definition")
+scikitplot.logging.get\_logger()[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/logging.py#L1126)[#](#scikitplot.logging.get_logger "Link to this definition")
 :   Return SP (scikitplot) logger instance.
 
     Returns:
@@ -65,6 +65,8 @@ scikitplot.logging.get\_logger()[[source]](https://github.com/scikit-plots/sciki
 
     Examples
 
+    Try it in your browser!
+
     Get the root `logger` from `module attr`:
 
     ```
@@ -88,3 +90,4 @@ scikitplot.logging.get\_logger()[[source]](https://github.com/scikit-plots/sciki
     >>> sp.get_logger().info("This is a info message from the sp logger.")
 
     ```
+    Go BackOpen In Tab

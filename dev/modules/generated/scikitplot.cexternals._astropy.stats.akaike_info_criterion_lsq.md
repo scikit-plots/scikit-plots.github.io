@@ -1,6 +1,6 @@
 # akaike\_info\_criterion\_lsq[#](#akaike-info-criterion-lsq "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.akaike\_info\_criterion\_lsq(**ssr**, **n\_params**, **n\_samples**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/cexternals/_astropy/stats/info_theory.py#L327)[#](#scikitplot.cexternals._astropy.stats.akaike_info_criterion_lsq "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.akaike\_info\_criterion\_lsq(**ssr**, **n\_params**, **n\_samples**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cexternals/_astropy/stats/info_theory.py#L327)[#](#scikitplot.cexternals._astropy.stats.akaike_info_criterion_lsq "Link to this definition")
 :   Computes the Akaike Information Criterion assuming that the observations
     are Gaussian distributed.
 
@@ -58,6 +58,8 @@ scikitplot.cexternals.\_astropy.stats.akaike\_info\_criterion\_lsq(**ssr**, **n\
 
     Examples
 
+    Try it in your browser!
+
     This example is based on Astropy Modeling webpage, Compound models
     section.
 
@@ -101,3 +103,5 @@ scikitplot.cexternals.\_astropy.stats.akaike\_info\_criterion\_lsq(**ssr**, **n\
     Hence, from the AIC values, we would prefer to choose the model g2\_fit.
     However, we can considerably support the model g3\_fit, since the
     difference in AIC is about 2.4. We should reject the model g1\_fit.
+
+    Go BackOpen In Tab

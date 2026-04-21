@@ -1,6 +1,6 @@
 # bayesian\_info\_criterion\_lsq[#](#bayesian-info-criterion-lsq "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.bayesian\_info\_criterion\_lsq(**ssr**, **n\_params**, **n\_samples**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/cexternals/_astropy/stats/info_theory.py#L128)[#](#scikitplot.cexternals._astropy.stats.bayesian_info_criterion_lsq "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.bayesian\_info\_criterion\_lsq(**ssr**, **n\_params**, **n\_samples**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cexternals/_astropy/stats/info_theory.py#L128)[#](#scikitplot.cexternals._astropy.stats.bayesian_info_criterion_lsq "Link to this definition")
 :   Computes the Bayesian Information Criterion (BIC) assuming that the
     observations come from a Gaussian distribution.
 
@@ -56,6 +56,8 @@ scikitplot.cexternals.\_astropy.stats.bayesian\_info\_criterion\_lsq(**ssr**, **
 
     Examples
 
+    Try it in your browser!
+
     Consider the simple 1-D fitting example presented in the Astropy
     modeling webpage [[3]](#rc3c9a32b9547-3). There, two models (Box and Gaussian) were fitted to
     a source flux using the least squares statistic. However, the fittings
@@ -96,3 +98,5 @@ scikitplot.cexternals.\_astropy.stats.bayesian\_info\_criterion\_lsq(**ssr**, **
     Hence, there is a very strong evidence that the Gaussian model has a
     significantly better representation of the data than the Box model. This
     is, obviously, expected since the true model is Gaussian.
+
+    Go BackOpen In Tab

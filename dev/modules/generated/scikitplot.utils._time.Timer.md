@@ -1,10 +1,11 @@
 # Timer[#](#timer "Link to this heading")
 
-class scikitplot.utils.\_time.Timer(**message=''**, **\***, **precision=3**, **logging\_level='info'**, **verbose=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/utils/_time.py#L16)[#](#scikitplot.utils._time.Timer "Link to this definition")
+class scikitplot.utils.\_time.Timer(**message=''**, **\***, **precision=3**, **logging\_level='info'**, **verbose=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/utils/_time.py#L16)[#](#scikitplot.utils._time.Timer "Link to this definition")
 :   Lightweight ⏱ timing context manager with [`logger`](scikitplot.logger.html#module-scikitplot.logger "scikitplot.logger") support.
 
     Examples
 
+    Try it in your browser!
     ```
     >>> from scikitplot.utils._time import Timer
     >>> with Timer("Building Annoy index...", verbose=True):
@@ -60,6 +61,7 @@ class scikitplot.utils.\_time.Timer(**message=''**, **\***, **precision=3**, **l
     ...     sp.make_path()
 
     ```
+    Go BackOpen In Tab
 
     Parameters:
     :   * ****message**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))

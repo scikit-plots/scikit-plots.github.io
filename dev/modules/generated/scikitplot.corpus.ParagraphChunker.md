@@ -1,6 +1,6 @@
 # ParagraphChunker[#](#paragraphchunker "Link to this heading")
 
-class scikitplot.corpus.ParagraphChunker(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_paragraph.py#L237)[#](#scikitplot.corpus.ParagraphChunker "Link to this definition")
+class scikitplot.corpus.ParagraphChunker(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_paragraph.py#L237)[#](#scikitplot.corpus.ParagraphChunker "Link to this definition")
 :   Split a document into paragraph-level `Chunk` objects.
 
     Parameters:
@@ -12,6 +12,7 @@ class scikitplot.corpus.ParagraphChunker(**config=None**)[[source]](https://gith
 
     Examples
 
+    Try it in your browser!
     ```
     >>> chunker = ParagraphChunker()
     >>> text = "First paragraph.\n\nSecond paragraph."
@@ -20,8 +21,9 @@ class scikitplot.corpus.ParagraphChunker(**config=None**)[[source]](https://gith
     2
 
     ```
+    Go BackOpen In Tab
 
-    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_paragraph.py#L299)[#](#scikitplot.corpus.ParagraphChunker.chunk "Link to this definition")
+    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_paragraph.py#L299)[#](#scikitplot.corpus.ParagraphChunker.chunk "Link to this definition")
     :   Split **text** into paragraph-level chunks.
 
         Parameters:
@@ -53,7 +55,7 @@ class scikitplot.corpus.ParagraphChunker(**config=None**)[[source]](https://gith
         Return type:
         :   **ChunkResult**
 
-    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_paragraph.py#L391)[#](#scikitplot.corpus.ParagraphChunker.chunk_batch "Link to this definition")
+    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_paragraph.py#L391)[#](#scikitplot.corpus.ParagraphChunker.chunk_batch "Link to this definition")
     :   Chunk a list of documents.
 
         Parameters:

@@ -1,11 +1,33 @@
 # CustomCompilerProtocol[#](#customcompilerprotocol "Link to this heading")
 
-class scikitplot.cython.CustomCompilerProtocol(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/cython/_custom_compiler.py#L131)[#](#scikitplot.cython.CustomCompilerProtocol "Link to this definition")
+class scikitplot.cython.CustomCompilerProtocol(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cython/_custom_compiler.py#L131)[#](#scikitplot.cython.CustomCompilerProtocol "Link to this definition")
 :   Structural protocol for custom compiler callables.
 
     Any callable that satisfies this protocol can be registered with
     [`CompilerRegistry`](scikitplot.cython.CompilerRegistry.html#scikitplot.cython.CompilerRegistry "scikitplot.cython.CompilerRegistry") and used as a drop-in replacement or
     supplement to the default Cython/setuptools compiler.
+
+    Required interface:
+
+    `name : str`
+    :   Unique compiler name. Must start with `custom_` or `Custom`.
+
+    `__call__(source, *, build_dir, module_name, **kwargs) -> Path`
+    :   Compile `source` and return the path to the built artifact.
+
+    Parameters:
+    :   ****source****str
+        :   Source code to compile (pyx, C, C++, or backend-specific).
+
+        ****build\_dir****pathlib.Path
+        :   Directory where intermediate and output files should be placed.
+
+        ****module\_name****str
+        :   Desired Python module name for the compiled extension.
+
+        ****\*\*kwargs****Any
+        :   Additional keyword arguments forwarded from the build pipeline
+            (e.g., `include_dirs`, `extra_compile_args`).
 
     Returns:
     :   pathlib.Path
@@ -26,6 +48,8 @@ class scikitplot.cython.CustomCompilerProtocol(**\*args**, **\*\*kwargs**)[[sour
 
     Examples
 
+    Try it in your browser!
+
     Minimal custom compiler:
 
     ```
@@ -44,8 +68,9 @@ class scikitplot.cython.CustomCompilerProtocol(**\*args**, **\*\*kwargs**)[[sour
     register_compiler(custom_nvcc())
 
     ```
+    Go BackOpen In Tab
 
-    \_\_call\_\_(**source**, **\***, **build\_dir**, **module\_name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/cython/_custom_compiler.py#L202)[#](#scikitplot.cython.CustomCompilerProtocol.__call__ "Link to this definition")
+    \_\_call\_\_(**source**, **\***, **build\_dir**, **module\_name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cython/_custom_compiler.py#L202)[#](#scikitplot.cython.CustomCompilerProtocol.__call__ "Link to this definition")
     :   Compile **source** and return the artifact path.
 
         Parameters:

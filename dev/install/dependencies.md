@@ -27,7 +27,7 @@ of Matplotlib.
 #### Backends[#](#backends "Link to this heading")
 
 Matplotlib figures can be rendered to various user interfaces. See
-[What is a backend?](https://matplotlib.org/devdocs/users/explain/figure/backends.html#what-is-a-backend "(in Matplotlib v3.11.0.dev2075+ga7fc90270)") for more details on the optional Matplotlib backends
+[What is a backend?](https://matplotlib.org/devdocs/users/explain/figure/backends.html#what-is-a-backend "(in Matplotlib v3.11.0.dev2332+gb07211fda)") for more details on the optional Matplotlib backends
 and the capabilities they provide.
 
 * [Tk](https://docs.python.org/3/library/tk.html) (>= 8.5, != 8.6.0 or 8.6.1): for the Tk-based backends. Tk is part of
@@ -239,7 +239,7 @@ VS Code or Linux package manager. Choose ****one**** compiler from this list:
 ## Test dependencies[#](#test-dependencies "Link to this heading")
 
 This section lists the additional software required for
-[running the tests](https://docs.xarray.dev/en/stable/user-guide/testing.html#testing "(in xarray v2026.2.0)").
+[running the tests](https://docs.xarray.dev/en/stable/user-guide/testing.html#testing "(in xarray v2026.4.0)").
 
 ### Required[#](#id9 "Link to this heading")
 
@@ -287,7 +287,7 @@ tests will not find it.
 ### Python[#](#id12 "Link to this heading")
 
 The additional Python packages required to build the
-[documentation](https://matplotlib.org/devdocs/devel/document.html#documenting-matplotlib "(in Matplotlib v3.11.0.dev2075+ga7fc90270)") are listed in
+[documentation](https://matplotlib.org/devdocs/devel/document.html#documenting-matplotlib "(in Matplotlib v3.11.0.dev2332+gb07211fda)") are listed in
 `doc.txt` and can be installed using
 
 ```

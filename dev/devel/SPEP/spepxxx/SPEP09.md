@@ -13,7 +13,7 @@ by the user.
 
 ## [Branches and Pull requests](#id2)[#](#branches-and-pull-requests "Link to this heading")
 
-<https://github.com/dhyams/matplotlib/tree/MEP9>
+[dhyams/matplotlib](https://github.com/dhyams/matplotlib/tree/MEP9)
 
 ## [Abstract](#id3)[#](#abstract "Link to this heading")
 

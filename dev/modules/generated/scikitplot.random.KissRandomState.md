@@ -1,6 +1,6 @@
 # KissRandomState[#](#kissrandomstate "Link to this heading")
 
-class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissRandomState "Link to this definition")
+class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissRandomState "Link to this definition")
 :   NumPy RandomState-compatible interface with complete serialization.
 
     KissRandomState : Inherites from KissGenerator.
@@ -44,6 +44,7 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
 
     Examples
 
+    Try it in your browser!
     ```
     >>> rs = KissRandomState(42)
     >>> rs.rand(5)  # Like np.random.rand
@@ -59,6 +60,7 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
     >>> restored = pickle.loads(pickle.dumps(rs))
 
     ```
+    Go BackOpen In Tab
 
     bit\_generator[#](#scikitplot.random.KissRandomState.bit_generator "Link to this definition")
     :   Gets the bit generator instance used by the generator
@@ -69,6 +71,7 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator(42)
         >>> bg = gen.get_bit_generator()
@@ -76,6 +79,7 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
         <class 'KissBitGenerator'>
 
         ```
+        Go BackOpen In Tab
 
     choice(**self**, **a**, **size=None**, **replace=True**, **p=None**)[#](#scikitplot.random.KissRandomState.choice "Link to this definition")
     :   Random sample from array.
@@ -99,12 +103,14 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator(42)
         >>> gen.choice(10, size=5)
         array([...])
 
         ```
+        Go BackOpen In Tab
 
     classmethod deserialize(**cls**, **data**)[#](#scikitplot.random.KissRandomState.deserialize "Link to this definition")
     :   Deserialize a KissGenerator from a JSON-compatible dict.
@@ -129,6 +135,7 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
 
         Examples
 
+        Try it in your browser!
         ```
         >>> import json
         >>> gen = KissGenerator(42)
@@ -137,6 +144,7 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
         >>> restored = KissGenerator.deserialize(data)
 
         ```
+        Go BackOpen In Tab
 
     classmethod from\_dict(**cls**, **data**)[#](#scikitplot.random.KissRandomState.from_dict "Link to this definition")
     :   Alias for deserialize().
@@ -150,6 +158,7 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator(42)
         >>> bg = gen.get_bit_generator()
@@ -157,6 +166,7 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
         <class 'KissBitGenerator'>
 
         ```
+        Go BackOpen In Tab
 
     get\_params(**self**, **deep=True**)[#](#scikitplot.random.KissRandomState.get_params "Link to this definition")
     :   Get parameters (sklearn-style).
@@ -171,11 +181,13 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator(42)
         >>> params = gen.get_params()
 
         ```
+        Go BackOpen In Tab
 
     get\_state(**self**)[#](#scikitplot.random.KissRandomState.get_state "Link to this definition")
     :   Get state dictionary.
@@ -186,6 +198,7 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator(42)
         >>> state = gen.get_state()
@@ -193,6 +206,7 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
         True
 
         ```
+        Go BackOpen In Tab
 
     integers(**self**, **low**, **high=None**, **size=None**, **dtype=np.int64**, **endpoint=False**)[#](#scikitplot.random.KissRandomState.integers "Link to this definition")
     :   Random integers in [low, high) or [low, high].
@@ -219,12 +233,14 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator(42)
         >>> gen.integers(0, 10, size=5)
         array([...])
 
         ```
+        Go BackOpen In Tab
 
     normal(**self**, **loc=0.0**, **scale=1.0**, **size=None**)[#](#scikitplot.random.KissRandomState.normal "Link to this definition")
     :   Normal distribution (Box-Muller transform).
@@ -245,12 +261,14 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator(42)
         >>> gen.normal(0, 1, size=1000)
         array([...])
 
         ```
+        Go BackOpen In Tab
 
     permutation(**self**, **x**, **axis=0**)[#](#scikitplot.random.KissRandomState.permutation "Link to this definition")
     :   Randomly permute sequence or return permuted range.
@@ -281,6 +299,7 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator()
         >>> gen.permutation(10)  # Permuted [0, 1, ..., 9]
@@ -294,6 +313,7 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
         array([1, 2, 3, 4])
 
         ```
+        Go BackOpen In Tab
 
     rand(**self**, **\*args**)[#](#scikitplot.random.KissRandomState.rand "Link to this definition")
     :   Random values in [0, 1) with given shape.
@@ -308,11 +328,13 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
 
         Examples
 
+        Try it in your browser!
         ```
         >>> rs = KissRandomState(42)
         >>> rs.rand(3, 4)  # 3x4 array
 
         ```
+        Go BackOpen In Tab
 
     randint(**self**, **low**, **high=None**, **size=None**, **dtype=np.int64**)[#](#scikitplot.random.KissRandomState.randint "Link to this definition")
     :   Random integers in [low, high).
@@ -336,11 +358,13 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
 
         Examples
 
+        Try it in your browser!
         ```
         >>> rs = KissRandomState(42)
         >>> rs.randint(0, 10, size=5)
 
         ```
+        Go BackOpen In Tab
 
     randn(**self**, **\*args**)[#](#scikitplot.random.KissRandomState.randn "Link to this definition")
     :   Standard normal distribution with given shape.
@@ -355,11 +379,13 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
 
         Examples
 
+        Try it in your browser!
         ```
         >>> rs = KissRandomState(42)
         >>> rs.randn(3, 4)  # 3x4 array
 
         ```
+        Go BackOpen In Tab
 
     random(**self**, **size=None**, **dtype=np.float64**, **out=None**)[#](#scikitplot.random.KissRandomState.random "Link to this definition")
     :   Random floats in [0, 1).
@@ -380,12 +406,14 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator(42)
         >>> gen.random(5)
         array([...])
 
         ```
+        Go BackOpen In Tab
 
     random\_sample(**self**, **size=None**)[#](#scikitplot.random.KissRandomState.random_sample "Link to this definition")
     :   Random floats in [0, 1).
@@ -399,11 +427,13 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
 
         Examples
 
+        Try it in your browser!
         ```
         >>> rs = KissRandomState(42)
         >>> rs.seed(123)  # Re-seed
 
         ```
+        Go BackOpen In Tab
 
     serialize(**self**)[#](#scikitplot.random.KissRandomState.serialize "Link to this definition")
     :   Serialize to JSON-compatible dict.
@@ -414,6 +444,7 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
 
         Examples
 
+        Try it in your browser!
         ```
         >>> import json
         >>> gen = KissGenerator(42)
@@ -421,6 +452,7 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
         >>> json_str = json.dumps(data)
 
         ```
+        Go BackOpen In Tab
 
     set\_bit\_generator(**self**, **bit\_generator**)[#](#scikitplot.random.KissRandomState.set_bit_generator "Link to this definition")
     :   Set new bit generator.
@@ -435,12 +467,14 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator(42)
         >>> new_bg = KissBitGenerator(123)
         >>> gen.set_bit_generator(new_bg)
 
         ```
+        Go BackOpen In Tab
 
     set\_params(**self**, **\*\*params**)[#](#scikitplot.random.KissRandomState.set_params "Link to this definition")
     :   Set parameters (sklearn-style).
@@ -454,11 +488,13 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator(42)
         >>> gen.set_params(bit_generator={"seed": 123})
 
         ```
+        Go BackOpen In Tab
 
     set\_state(**self**, **state**)[#](#scikitplot.random.KissRandomState.set_state "Link to this definition")
     :   Set state from dictionary.
@@ -469,6 +505,7 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen1 = KissGenerator(42)
         >>> state = gen1.get_state()
@@ -476,6 +513,7 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
         >>> gen2.set_state(state)
 
         ```
+        Go BackOpen In Tab
 
     shuffle(**self**, **x**)[#](#scikitplot.random.KissRandomState.shuffle "Link to this definition")
     :   Shuffle array in-place (Fisher-Yates algorithm).
@@ -486,6 +524,7 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator(42)
         >>> arr = np.arange(10)
@@ -493,6 +532,7 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
         >>> print(arr)  # shuffled
 
         ```
+        Go BackOpen In Tab
 
     spawn(**self**, **n\_children**)[#](#scikitplot.random.KissRandomState.spawn "Link to this definition")
     :   Create independent child Generators.
@@ -523,6 +563,7 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator()
         >>> children = gen.spawn(4)
@@ -542,6 +583,7 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
         ...     results = list(executor.map(worker, children))
 
         ```
+        Go BackOpen In Tab
 
     to\_dict(**self**)[#](#scikitplot.random.KissRandomState.to_dict "Link to this definition")
     :   Alias for serialize().
@@ -565,9 +607,11 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator(42)
         >>> gen.uniform(0, 10, size=5)
         array([...])
 
         ```
+        Go BackOpen In Tab

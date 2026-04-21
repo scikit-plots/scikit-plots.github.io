@@ -1,6 +1,6 @@
 # WordChunker[#](#wordchunker "Link to this heading")
 
-class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_word.py#L663)[#](#scikitplot.corpus.WordChunker "Link to this definition")
+class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_word.py#L1035)[#](#scikitplot.corpus.WordChunker "Link to this definition")
 :   Process a document at word level, producing normalised token chunks.
 
     Each output `Chunk` contains:
@@ -24,6 +24,7 @@ class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**
 
     Examples
 
+    Try it in your browser!
     ```
     >>> cfg = WordChunkerConfig(stemmer=StemmingBackend.PORTER)
     >>> chunker = WordChunker(cfg)
@@ -32,8 +33,9 @@ class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**
     True
 
     ```
+    Go BackOpen In Tab
 
-    static build\_gensim\_dictionary(**token\_lists**, **no\_below=2**, **no\_above=0.9**, **keep\_n=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_word.py#L984)[#](#scikitplot.corpus.WordChunker.build_gensim_dictionary "Link to this definition")
+    static build\_gensim\_dictionary(**token\_lists**, **no\_below=2**, **no\_above=0.9**, **keep\_n=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_word.py#L1395)[#](#scikitplot.corpus.WordChunker.build_gensim_dictionary "Link to this definition")
     :   Build a `gensim.corpora.Dictionary` from token lists.
 
         Parameters:
@@ -70,7 +72,7 @@ class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**
         Return type:
         :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")
 
-    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_word.py#L866)[#](#scikitplot.corpus.WordChunker.chunk "Link to this definition")
+    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_word.py#L1277)[#](#scikitplot.corpus.WordChunker.chunk "Link to this definition")
     :   Process **text** into word-level chunks.
 
         Parameters:
@@ -102,7 +104,7 @@ class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**
         Return type:
         :   **ChunkResult**
 
-    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_word.py#L935)[#](#scikitplot.corpus.WordChunker.chunk_batch "Link to this definition")
+    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_word.py#L1346)[#](#scikitplot.corpus.WordChunker.chunk_batch "Link to this definition")
     :   Process a list of documents into word-level chunks.
 
         Parameters:
@@ -134,7 +136,7 @@ class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**
         Return type:
         :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[**ChunkResult**]
 
-    static vocabulary\_stats(**token\_lists**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_word.py#L1037)[#](#scikitplot.corpus.WordChunker.vocabulary_stats "Link to this definition")
+    static vocabulary\_stats(**token\_lists**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_word.py#L1448)[#](#scikitplot.corpus.WordChunker.vocabulary_stats "Link to this definition")
     :   Compute vocabulary statistics over a corpus.
 
         Parameters:

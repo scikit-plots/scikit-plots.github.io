@@ -1,6 +1,6 @@
 # decile\_table[#](#decile-table "Link to this heading")
 
-scikitplot.decile.kds.decile\_table(**y\_true**, **y\_score**, **\***, **labels=None**, **class\_index=1**, **pos\_label=None**, **change\_deciles=10**, **digits=6**, **feature\_infos=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/decile/kds/_kds.py#L116)[#](#scikitplot.decile.kds.decile_table "Link to this definition")
+scikitplot.decile.kds.decile\_table(**y\_true**, **y\_score**, **\***, **labels=None**, **class\_index=1**, **pos\_label=None**, **change\_deciles=10**, **digits=6**, **feature\_infos=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/decile/kds/_kds.py#L116)[#](#scikitplot.decile.kds.decile_table "Link to this definition")
 :   Generate the Decile Table from labels and probabilities.
 
     The Decile Table is creared by first sorting the customers by their predicted
@@ -80,10 +80,11 @@ scikitplot.decile.kds.decile\_table(**y\_true**, **y\_score**, **\***, **labels=
 
     References
 
-    [1] <https://github.com/tensorbored/kds/blob/master/kds/metrics.py#L382>
+    [1] [tensorbored/kds](https://github.com/tensorbored/kds/blob/master/kds/metrics.py#L382)
 
     Examples
 
+    Try it in your browser!
     ```
     >>> from sklearn.datasets import (
     ...     load_breast_cancer as data_2_classes,
@@ -119,6 +120,8 @@ scikitplot.decile.kds.decile\_table(**y\_true**, **y\_score**, **\***, **labels=
     | 7 | 8 | 0.049020 | 0.049020 | 0.049020 | 28.0 | 6.0 | 22.0 | 18.4 | 0 | 21.428571 | 228.0 | 183.0 | 184 | 45.0 | 80.000000 | 99.456522 | 100.000000 | 44.554455 | 54.902067 | 1.243207 |
     | 8 | 9 | 0.049020 | 0.049020 | 0.049020 | 29.0 | 1.0 | 28.0 | 18.4 | 0 | 3.448276 | 257.0 | 184.0 | 184 | 73.0 | 90.175439 | 100.000000 | 100.000000 | 72.277228 | 27.722772 | 1.108949 |
     | 9 | 10 | 0.049020 | 0.049020 | 0.049020 | 28.0 | 0.0 | 28.0 | 18.4 | 0 | 0.000000 | 285.0 | 184.0 | 184 | 101.0 | 100.000000 | 100.000000 | 100.000000 | 100.000000 | 0.000000 | 1.000000 |
+
+    Go BackOpen In Tab
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

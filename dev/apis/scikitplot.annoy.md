@@ -27,7 +27,7 @@ or matplotlib imports).
 > **See also**
 > * [ANNoy](../user_guide/annoy/index.html#annoy-index)
 * [cexternals/ANNoy](../user_guide/cexternals/_annoy/index.html#cexternals-annoy-index)
-* <https://github.com/spotify/annoy>
+* [spotify/annoy](https://github.com/spotify/annoy)
 * <https://pypi.org/project/annoy>
 > **See also**
 > [`scikitplot.cexternals._annoy`](../modules/generated/scikitplot.cexternals._annoy.html#module-scikitplot.cexternals._annoy "scikitplot.cexternals._annoy")
@@ -45,6 +45,7 @@ Github. https://github.com/spotify/annoy](https://github.com/spotify/annoy)
 
 Examples
 
+Try it in your browser!
 ```
 >>> import random
 >>> random.seed(0)
@@ -64,8 +65,9 @@ Examples
 >>> t.get_nns_by_item(0, 1)  # Find nearest neighbor
 
 ```
+Go BackOpen In Tab
 
-****User guide.**** See the [ANNoy Vector Database (Approximate Nearest Neighbors)](../user_guide/annoy/index.html#annoy-index) section for further details.
+****User guide.**** See the [ANNoy Vector Database](../user_guide/annoy/index.html#annoy-index) section for further details.
 
 ## ANNoy (`cython` based `scikitplot/annoy/_annoy`)[#](#annoy-cython-based-scikitplot-annoy-annoy "Link to this heading")
 

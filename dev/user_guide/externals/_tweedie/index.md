@@ -6,8 +6,8 @@ This module contains functions related to [`_tweedie`](../../../modules/generate
 > Module also available under [`stats`](../../../apis/scikitplot.stats.html#module-scikitplot.stats "scikitplot.stats") punlic library.
 User guide for more [Tweedie Distribution (generalized family)](../../stats/index.html#tweedie-dist-index).
 > **See also**
-> * <https://github.com/thequackdaddy/tweedie>
-* Documentation is available in the docstrings and online at <https://github.com/thequackdaddy/tweedie>.
+> * [thequackdaddy/tweedie](https://github.com/thequackdaddy/tweedie)
+* Documentation is available in the docstrings and online at [thequackdaddy/tweedie](https://github.com/thequackdaddy/tweedie).
 ```
 # (recommended) scikitplot stats also include _tweedie
 import scikitplot.stats as stats

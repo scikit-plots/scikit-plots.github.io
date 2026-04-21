@@ -1,7 +1,7 @@
 # MultimodalEmbeddingEngine[#](#multimodalembeddingengine "Link to this heading")
 
-class scikitplot.corpus.MultimodalEmbeddingEngine(**text\_backend='sentence\_transformers'**, **text\_model='all-MiniLM-L6-v2'**, **text\_custom\_fn=None**, **image\_backend='clip'**, **image\_model='openai/clip-vit-base-patch32'**, **image\_custom\_fn=None**, **audio\_backend='whisper'**, **audio\_model='openai/whisper-base'**, **audio\_custom\_fn=None**, **multimodal\_fusion='mean'**, **projection\_dim=None**, **custom\_projection\_fn=None**, **normalize=True**, **batch\_size=32**, **device=None**, **cache\_dir=None**, **enable\_cache=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L540)[#](#scikitplot.corpus.MultimodalEmbeddingEngine "Link to this definition")
-:   Unified embedding engine for any `CorpusDocument`
+class scikitplot.corpus.MultimodalEmbeddingEngine(**text\_backend='sentence\_transformers'**, **text\_model='all-MiniLM-L6-v2'**, **text\_custom\_fn=None**, **image\_backend='clip'**, **image\_model='openai/clip-vit-base-patch32'**, **image\_custom\_fn=None**, **audio\_backend='whisper'**, **audio\_model='openai/whisper-base'**, **audio\_custom\_fn=None**, **multimodal\_fusion='mean'**, **projection\_dim=None**, **custom\_projection\_fn=None**, **normalize=True**, **batch\_size=32**, **device=None**, **cache\_dir=None**, **enable\_cache=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L560)[#](#scikitplot.corpus.MultimodalEmbeddingEngine "Link to this definition")
+:   Unified embedding engine for any [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus.CorpusDocument")
     modality — text, image, audio, video, or multimodal.
 
     Routes each document to the appropriate backend by inspecting
@@ -114,6 +114,8 @@ class scikitplot.corpus.MultimodalEmbeddingEngine(**text\_backend='sentence\_tra
 
     Examples
 
+    Try it in your browser!
+
     Text + image documents in one call:
 
     ```
@@ -144,6 +146,14 @@ class scikitplot.corpus.MultimodalEmbeddingEngine(**text\_backend='sentence\_tra
 
     ```
 
+    Developer note:
+
+    `projection_dim` with `custom_projection_fn=None` uses a random
+    orthonormal projection (QR decomposition). For production fine-tuning
+    replace this with a learned adapter trained on your downstream task.
+
+    Go BackOpen In Tab
+
     VALID\_AUDIO\_BACKENDS: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), ...]] = ('whisper', 'wav2vec', 'custom')[#](#scikitplot.corpus.MultimodalEmbeddingEngine.VALID_AUDIO_BACKENDS "Link to this definition")
 
     VALID\_FUSION: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), ...]] = ('mean', 'concat', 'text\_only', 'image\_only')[#](#scikitplot.corpus.MultimodalEmbeddingEngine.VALID_FUSION "Link to this definition")
@@ -166,7 +176,7 @@ class scikitplot.corpus.MultimodalEmbeddingEngine(**text\_backend='sentence\_tra
 
     device: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.MultimodalEmbeddingEngine.device "Link to this definition")
 
-    embed\_audio(**waveforms**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L935)[#](#scikitplot.corpus.MultimodalEmbeddingEngine.embed_audio "Link to this definition")
+    embed\_audio(**waveforms**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L955)[#](#scikitplot.corpus.MultimodalEmbeddingEngine.embed_audio "Link to this definition")
     :   Embed a list of audio waveforms via the configured audio backend.
 
         Parameters:
@@ -183,7 +193,7 @@ class scikitplot.corpus.MultimodalEmbeddingEngine(**text\_backend='sentence\_tra
         Return type:
         :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), …], [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.5.dev0)")[**\_ScalarT**]]
 
-    embed\_documents(**documents**, **source\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L763)[#](#scikitplot.corpus.MultimodalEmbeddingEngine.embed_documents "Link to this definition")
+    embed\_documents(**documents**, **input\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L783)[#](#scikitplot.corpus.MultimodalEmbeddingEngine.embed_documents "Link to this definition")
     :   Embed all documents in-place (via `doc.replace(embedding=...)`)
         and return the updated list.
 
@@ -200,7 +210,7 @@ class scikitplot.corpus.MultimodalEmbeddingEngine(**text\_backend='sentence\_tra
         :   ****documents****list[CorpusDocument]
             :   Documents to embed.
 
-            ****source\_path****pathlib.Path or None, optional
+            ****input\_path****pathlib.Path or None, optional
             :   Used as the cache-key anchor. Pass the source file path for
                 per-file caching. Default: `None` (no file cache).
 
@@ -210,13 +220,13 @@ class scikitplot.corpus.MultimodalEmbeddingEngine(**text\_backend='sentence\_tra
 
         Parameters:
         :   * ****documents**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
-            * ****source\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
+            * ****input\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
 
         Return type:
         :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
 
-    embed\_documents\_with\_cache(**documents**, **source\_path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1000)[#](#scikitplot.corpus.MultimodalEmbeddingEngine.embed_documents_with_cache "Link to this definition")
-    :   Embed documents with SHA-256 cache keyed to **source\_path**.
+    embed\_documents\_with\_cache(**documents**, **input\_path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1020)[#](#scikitplot.corpus.MultimodalEmbeddingEngine.embed_documents_with_cache "Link to this definition")
+    :   Embed documents with SHA-256 cache keyed to **input\_path**.
 
         Cache key: `SHA256(modality_tag + backend + model + path + mtime + N)[:24]`.
 
@@ -224,7 +234,7 @@ class scikitplot.corpus.MultimodalEmbeddingEngine(**text\_backend='sentence\_tra
         :   ****documents****list[CorpusDocument]
             :   Documents to embed.
 
-            ****source\_path****pathlib.Path
+            ****input\_path****pathlib.Path
             :   Source file path. Used to build the cache key (path + mtime).
 
         Returns:
@@ -233,12 +243,12 @@ class scikitplot.corpus.MultimodalEmbeddingEngine(**text\_backend='sentence\_tra
 
         Parameters:
         :   * ****documents**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
-            * ****source\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
+            * ****input\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
 
         Return type:
         :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
 
-    embed\_images(**arrays**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L908)[#](#scikitplot.corpus.MultimodalEmbeddingEngine.embed_images "Link to this definition")
+    embed\_images(**arrays**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L928)[#](#scikitplot.corpus.MultimodalEmbeddingEngine.embed_images "Link to this definition")
     :   Embed a list of raw image arrays via the configured image backend.
 
         Parameters:
@@ -259,7 +269,7 @@ class scikitplot.corpus.MultimodalEmbeddingEngine(**text\_backend='sentence\_tra
         Return type:
         :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), …], [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.5.dev0)")[**\_ScalarT**]]
 
-    embed\_texts(**texts**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L889)[#](#scikitplot.corpus.MultimodalEmbeddingEngine.embed_texts "Link to this definition")
+    embed\_texts(**texts**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L909)[#](#scikitplot.corpus.MultimodalEmbeddingEngine.embed_texts "Link to this definition")
     :   Embed a list of strings via the configured text backend.
 
         Parameters:
@@ -276,7 +286,7 @@ class scikitplot.corpus.MultimodalEmbeddingEngine(**text\_backend='sentence\_tra
         Return type:
         :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), …], [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.5.dev0)")[**\_ScalarT**]]
 
-    embed\_video(**frame\_sequences**, **n\_sample\_frames=8**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L957)[#](#scikitplot.corpus.MultimodalEmbeddingEngine.embed_video "Link to this definition")
+    embed\_video(**frame\_sequences**, **n\_sample\_frames=8**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L977)[#](#scikitplot.corpus.MultimodalEmbeddingEngine.embed_video "Link to this definition")
     :   Embed video by sampling frames and mean-pooling CLIP embeddings.
 
         Parameters:

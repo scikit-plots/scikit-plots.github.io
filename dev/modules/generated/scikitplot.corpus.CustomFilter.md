@@ -1,6 +1,6 @@
 # CustomFilter[#](#customfilter "Link to this heading")
 
-class scikitplot.corpus.CustomFilter(**fn**, **\***, **name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_custom_hooks.py#L259)[#](#scikitplot.corpus.CustomFilter "Link to this definition")
+class scikitplot.corpus.CustomFilter(**fn**, **\***, **name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_custom_hooks.py#L261)[#](#scikitplot.corpus.CustomFilter "Link to this definition")
 :   Wrap any callable as a [`FilterBase`](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase").
 
     Parameters:
@@ -22,7 +22,7 @@ class scikitplot.corpus.CustomFilter(**fn**, **\***, **name=None**)[[source]](ht
         :   If `fn` is not callable.
 
     Parameters:
-    :   * ****fn**** (**Callable****[****[****CorpusDocument****]****,** [**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")**]**)
+    :   * ****fn**** (**Callable****[****[**[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus.CorpusDocument")**]****,** [**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")**]**)
         * ****name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
 
     > **See also**
@@ -39,6 +39,8 @@ class scikitplot.corpus.CustomFilter(**fn**, **\***, **name=None**)[[source]](ht
 
     Examples
 
+    Try it in your browser!
+
     Keep only English documents that contain the word “treatment”:
 
     ```
@@ -53,8 +55,9 @@ class scikitplot.corpus.CustomFilter(**fn**, **\***, **name=None**)[[source]](ht
     )
 
     ```
+    Go BackOpen In Tab
 
-    include(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_custom_hooks.py#L333)[#](#scikitplot.corpus.CustomFilter.include "Link to this definition")
+    include(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_custom_hooks.py#L335)[#](#scikitplot.corpus.CustomFilter.include "Link to this definition")
     :   Return the result of the user-supplied filter callable.
 
         Parameters:
@@ -66,7 +69,7 @@ class scikitplot.corpus.CustomFilter(**fn**, **\***, **name=None**)[[source]](ht
             :   `True` to include; `False` to discard.
 
         Parameters:
-        :   ****doc**** (**CorpusDocument**)
+        :   ****doc**** ([**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument"))
 
         Return type:
         :   [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")

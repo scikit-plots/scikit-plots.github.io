@@ -1,6 +1,6 @@
 # ensure\_local\_store\_layout[#](#ensure-local-store-layout "Link to this heading")
 
-scikitplot.mlflow.ensure\_local\_store\_layout(**\***, **backend\_store\_uri**, **default\_artifact\_root**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/mlflow/_project.py#L468)[#](#scikitplot.mlflow.ensure_local_store_layout "Link to this definition")
+scikitplot.mlflow.ensure\_local\_store\_layout(**\***, **backend\_store\_uri**, **default\_artifact\_root**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/mlflow/_project.py#L468)[#](#scikitplot.mlflow.ensure_local_store_layout "Link to this definition")
 :   Ensure local backend/artifact directories exist.
 
     Parameters:

@@ -7,7 +7,7 @@ Utilities to load popular datasets and artificial data generators.
 Load an example dataset from the online repository (requires internet if any).
 
 > **See also**
-> * <https://github.com/scikit-plots/scikit-plots-data>
+> * [scikit-plots/scikit-plots-data](https://github.com/scikit-plots/scikit-plots-data)
 
 |  |  |
 | --- | --- |

@@ -1,7 +1,10 @@
 # apply\_profile[#](#apply-profile "Link to this heading")
 
-scikitplot.cython.apply\_profile(**\***, **profile**, **annotate**, **compiler\_directives**, **extra\_compile\_args**, **extra\_link\_args**, **language**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/cython/_profiles.py#L180)[#](#scikitplot.cython.apply_profile "Link to this definition")
+scikitplot.cython.apply\_profile(**\***, **profile**, **annotate**, **compiler\_directives**, **extra\_compile\_args**, **extra\_link\_args**, **language**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cython/_profiles.py#L180)[#](#scikitplot.cython.apply_profile "Link to this definition")
 :   Apply a profile with strict precedence rules.
+
+    * If an explicit argument is provided by the user, it is kept unchanged.
+    * Otherwise, the profile default is applied.
 
     Parameters:
     :   ****profile****str or None

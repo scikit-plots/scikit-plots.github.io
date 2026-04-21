@@ -1,6 +1,6 @@
 # binary\_ks\_curve[#](#binary-ks-curve "Link to this heading")
 
-scikitplot.api.\_utils.binary\_ks\_curve(**y\_true**, **y\_probas**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/api/_utils/_helpers.py#L251)[#](#scikitplot.api._utils.binary_ks_curve "Link to this definition")
+scikitplot.api.\_utils.binary\_ks\_curve(**y\_true**, **y\_probas**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/api/_utils/_helpers.py#L251)[#](#scikitplot.api._utils.binary_ks_curve "Link to this definition")
 :   Generate the data points necessary to plot the Kolmogorov-Smirnov (KS)
     curve for binary classification tasks.
 
@@ -68,6 +68,7 @@ scikitplot.api.\_utils.binary\_ks\_curve(**y\_true**, **y\_probas**)[[source]](h
 
     Examples
 
+    Try it in your browser!
     ```
     >>> from sklearn.datasets import make_classification
     >>> from sklearn.linear_model import LogisticRegression
@@ -112,3 +113,4 @@ scikitplot.api.\_utils.binary\_ks\_curve(**y\_true**, **y\_probas**)[[source]](h
     ([`Source code`](../../_downloads/118af971a574ac4de1e71983a741f1ff/scikitplot-api-_utils-binary_ks_curve-1.py), [`png`](../../_downloads/3121fd519249a83e139112165fa1fabe/scikitplot-api-_utils-binary_ks_curve-1.png))
 
     ![Kolmogorov-Smirnov (KS) Statistic](../../_images/scikitplot-api-_utils-binary_ks_curve-1.png)
+    Go BackOpen In Tab

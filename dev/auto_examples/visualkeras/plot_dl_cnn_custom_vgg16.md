@@ -112,7 +112,7 @@ ImageFont.load_default()
 
 ```
 ```
-<PIL.ImageFont.FreeTypeFont object at 0x7a93bd7c4150>
+<PIL.ImageFont.FreeTypeFont object at 0x7e60c04fd6d0>
 
 ```
 ```
@@ -127,9 +127,9 @@ img_vgg16 = visualkeras.layered_view(
 ```
 ![plot dl cnn custom vgg16](../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_001.png)
 ```
-2026-04-09 03:49:55.042708: W scikitplot 134776804916096 _pil.py:204:load_font] Error loading system font: cannot open resource
-2026-04-09 03:49:55.042969: W scikitplot 134776804916096 _pil.py:206:load_font] Falling back to PIL default font.
-2026-04-09 03:49:55.043202: W scikitplot 134776804916096 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
+2026-04-21 21:26:40.379093: W scikitplot 138956462812032 _pil.py:204:load_font] Error loading system font: cannot open resource
+2026-04-21 21:26:40.379259: W scikitplot 138956462812032 _pil.py:206:load_font] Falling back to PIL default font.
+2026-04-21 21:26:40.379385: W scikitplot 138956462812032 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
 
 ```
 ```
@@ -151,11 +151,11 @@ img_vgg16_legend
 ```
 ![plot dl cnn custom vgg16](../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_002.png)
 ```
-2026-04-09 03:49:56.585240: W scikitplot 134776804916096 _pil.py:204:load_font] Error loading system font: cannot open resource
-2026-04-09 03:49:56.585386: W scikitplot 134776804916096 _pil.py:206:load_font] Falling back to PIL default font.
-2026-04-09 03:49:56.585511: W scikitplot 134776804916096 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
+2026-04-21 21:26:41.493285: W scikitplot 138956462812032 _pil.py:204:load_font] Error loading system font: cannot open resource
+2026-04-21 21:26:41.493435: W scikitplot 138956462812032 _pil.py:206:load_font] Falling back to PIL default font.
+2026-04-21 21:26:41.493547: W scikitplot 138956462812032 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
 
-<matplotlib.image.AxesImage object at 0x7a93b4436650>
+<matplotlib.image.AxesImage object at 0x7e60c0460350>
 
 ```
 ```
@@ -172,11 +172,11 @@ img_vgg16_spacing_layers
 ```
 ![plot dl cnn custom vgg16](../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_003.png)
 ```
-2026-04-09 03:49:57.791192: W scikitplot 134776804916096 _pil.py:204:load_font] Error loading system font: cannot open resource
-2026-04-09 03:49:57.791350: W scikitplot 134776804916096 _pil.py:206:load_font] Falling back to PIL default font.
-2026-04-09 03:49:57.791471: W scikitplot 134776804916096 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
+2026-04-21 21:26:42.605785: W scikitplot 138956462812032 _pil.py:204:load_font] Error loading system font: cannot open resource
+2026-04-21 21:26:42.605956: W scikitplot 138956462812032 _pil.py:206:load_font] Falling back to PIL default font.
+2026-04-21 21:26:42.606105: W scikitplot 138956462812032 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
 
-<matplotlib.image.AxesImage object at 0x7a93b4260ed0>
+<matplotlib.image.AxesImage object at 0x7e60a8770190>
 
 ```
 ```
@@ -197,11 +197,11 @@ img_vgg16_type_ignore
 ```
 ![plot dl cnn custom vgg16](../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_004.png)
 ```
-2026-04-09 03:49:58.650046: W scikitplot 134776804916096 _pil.py:204:load_font] Error loading system font: cannot open resource
-2026-04-09 03:49:58.650171: W scikitplot 134776804916096 _pil.py:206:load_font] Falling back to PIL default font.
-2026-04-09 03:49:58.650272: W scikitplot 134776804916096 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
+2026-04-21 21:26:43.548979: W scikitplot 138956462812032 _pil.py:204:load_font] Error loading system font: cannot open resource
+2026-04-21 21:26:43.549098: W scikitplot 138956462812032 _pil.py:206:load_font] Falling back to PIL default font.
+2026-04-21 21:26:43.549210: W scikitplot 138956462812032 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
 
-<matplotlib.image.AxesImage object at 0x7a93b446a9d0>
+<matplotlib.image.AxesImage object at 0x7e60a87dc2d0>
 
 ```
 ```
@@ -218,11 +218,11 @@ img_vgg16_color_map
 ```
 ![plot dl cnn custom vgg16](../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_005.png)
 ```
-2026-04-09 03:49:59.299880: W scikitplot 134776804916096 _pil.py:204:load_font] Error loading system font: cannot open resource
-2026-04-09 03:49:59.299981: W scikitplot 134776804916096 _pil.py:206:load_font] Falling back to PIL default font.
-2026-04-09 03:49:59.300102: W scikitplot 134776804916096 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
+2026-04-21 21:26:44.162442: W scikitplot 138956462812032 _pil.py:204:load_font] Error loading system font: cannot open resource
+2026-04-21 21:26:44.162560: W scikitplot 138956462812032 _pil.py:206:load_font] Falling back to PIL default font.
+2026-04-21 21:26:44.162689: W scikitplot 138956462812032 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
 
-<matplotlib.image.AxesImage object at 0x7a93b40f6650>
+<matplotlib.image.AxesImage object at 0x7e60a87f5c50>
 
 ```
 ```
@@ -239,11 +239,11 @@ img_vgg16_flat
 ```
 ![plot dl cnn custom vgg16](../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_006.png)
 ```
-2026-04-09 03:50:00.187851: W scikitplot 134776804916096 _pil.py:204:load_font] Error loading system font: cannot open resource
-2026-04-09 03:50:00.187951: W scikitplot 134776804916096 _pil.py:206:load_font] Falling back to PIL default font.
-2026-04-09 03:50:00.188044: W scikitplot 134776804916096 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
+2026-04-21 21:26:45.110207: W scikitplot 138956462812032 _pil.py:204:load_font] Error loading system font: cannot open resource
+2026-04-21 21:26:45.110343: W scikitplot 138956462812032 _pil.py:206:load_font] Falling back to PIL default font.
+2026-04-21 21:26:45.110500: W scikitplot 138956462812032 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
 
-<matplotlib.image.AxesImage object at 0x7a93b41a2a90>
+<matplotlib.image.AxesImage object at 0x7e60a839e290>
 
 ```
 ```
@@ -267,17 +267,17 @@ img_vgg16_scaling
 ```
 ![plot dl cnn custom vgg16](../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_007.png)
 ```
-2026-04-09 03:50:00.834537: W scikitplot 134776804916096 _pil.py:204:load_font] Error loading system font: cannot open resource
-2026-04-09 03:50:00.834638: W scikitplot 134776804916096 _pil.py:206:load_font] Falling back to PIL default font.
-2026-04-09 03:50:00.834730: W scikitplot 134776804916096 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
+2026-04-21 21:26:45.829093: W scikitplot 138956462812032 _pil.py:204:load_font] Error loading system font: cannot open resource
+2026-04-21 21:26:45.829188: W scikitplot 138956462812032 _pil.py:206:load_font] Falling back to PIL default font.
+2026-04-21 21:26:45.829279: W scikitplot 138956462812032 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
 
-<matplotlib.image.AxesImage object at 0x7a939c12dad0>
+<matplotlib.image.AxesImage object at 0x7e60a821af50>
 
 ```
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: model building](../../_tags/model-workflow-model-building.html) [plot-type: visualkeras](../../_tags/plot-type-visualkeras.html) [domain: neural network](../../_tags/domain-neural-network.html) [level: intermediate](../../_tags/level-intermediate.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 19.645 seconds)
+****Total running time of the script:**** (0 minutes 18.709 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo18.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/visualkeras/plot_dl_cnn_custom_vgg16.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo18.svg)](../../lite/lab/index.html?path=auto_examples/visualkeras/plot_dl_cnn_custom_vgg16.ipynb)
 

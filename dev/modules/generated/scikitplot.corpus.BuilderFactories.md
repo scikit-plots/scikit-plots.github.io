@@ -1,6 +1,6 @@
 # BuilderFactories[#](#builderfactories "Link to this heading")
 
-class scikitplot.corpus.BuilderFactories(**reader\_factory=None**, **chunker\_factory=None**, **filter\_factory=None**, **normalizer\_factory=None**, **enricher\_factory=None**, **embedding\_engine\_factory=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_custom_hooks.py#L1297)[#](#scikitplot.corpus.BuilderFactories "Link to this definition")
+class scikitplot.corpus.BuilderFactories(**reader\_factory=None**, **chunker\_factory=None**, **filter\_factory=None**, **normalizer\_factory=None**, **enricher\_factory=None**, **embedding\_engine\_factory=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_custom_hooks.py#L1311)[#](#scikitplot.corpus.BuilderFactories "Link to this definition")
 :   Component factory callables for [`FactoryCorpusBuilder`](scikitplot.corpus.FactoryCorpusBuilder.html#scikitplot.corpus.FactoryCorpusBuilder "scikitplot.corpus.FactoryCorpusBuilder").
 
     Each factory replaces the corresponding lazy-creation method in
@@ -84,6 +84,8 @@ class scikitplot.corpus.BuilderFactories(**reader\_factory=None**, **chunker\_fa
 
     Examples
 
+    Try it in your browser!
+
     Use a custom reader factory that injects a per-source language code:
 
     ```
@@ -98,6 +100,7 @@ class scikitplot.corpus.BuilderFactories(**reader\_factory=None**, **chunker\_fa
     result = builder.build("./data/")
 
     ```
+    Go BackOpen In Tab
 
     chunker\_factory: [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[], [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.BuilderFactories.chunker_factory "Link to this definition")
 

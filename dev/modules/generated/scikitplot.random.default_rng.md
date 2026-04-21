@@ -50,6 +50,7 @@ scikitplot.random.default\_rng(**seed=None**, **bit\_width=None**)[#](#scikitplo
 
     Examples
 
+    Try it in your browser!
     ```
     >>> from scikitplot.random import default_rng
     >>>
@@ -67,6 +68,7 @@ scikitplot.random.default\_rng(**seed=None**, **bit\_width=None**)[#](#scikitplo
     >>> restored = pickle.loads(pickle.dumps(rng))
 
     ```
+    Go BackOpen In Tab
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

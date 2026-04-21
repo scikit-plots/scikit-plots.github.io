@@ -3,7 +3,7 @@
 This module contains functions related to [`kds`](../../apis/scikitplot.decile.html#module-scikitplot.decile.kds "scikitplot.decile.kds").
 
 > **See also**
-> * <https://github.com/tensorbored/kds/blob/master/kds/metrics.py>
+> * [tensorbored/kds](https://github.com/tensorbored/kds/blob/master/kds/metrics.py)
 
 ## kds Plots[#](#kds-plots "Link to this heading")
 

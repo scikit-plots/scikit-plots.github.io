@@ -1,6 +1,6 @@
 # VideoReader[#](#videoreader "Link to this heading")
 
-class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_uri=None**, **source\_provenance=<factory>**, **custom\_extractor=None**, **custom\_extractor\_kwargs=<factory>**, **transcribe=False**, **whisper\_model='base'**, **subtitle\_frame\_rate=25.0**, **max\_file\_bytes=10737418240**, **yield\_frames=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_readers/_video.py#L451)[#](#scikitplot.corpus.VideoReader "Link to this definition")
+class scikitplot.corpus.VideoReader(**input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_uri=None**, **source\_provenance=<factory>**, **custom\_extractor=None**, **custom\_extractor\_kwargs=<factory>**, **transcribe=False**, **whisper\_model='base'**, **subtitle\_frame\_rate=25.0**, **max\_file\_bytes=10737418240**, **yield\_frames=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_readers/_video.py#L451)[#](#scikitplot.corpus.VideoReader "Link to this definition")
 :   Text extraction from video files via subtitle parsing and/or
     automatic speech recognition.
 
@@ -15,7 +15,7 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
        `openai-whisper`.
 
     Parameters:
-    :   ****input\_file****pathlib.Path
+    :   ****input\_path****pathlib.Path
         :   Path to the video file.
 
         ****transcribe****bool, optional
@@ -62,7 +62,7 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
         :   If `transcribe=True` and neither Whisper variant is installed.
 
     Parameters:
-    :   * ****input\_file**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
+    :   * ****input\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
         * ****chunker**** ([**ChunkerBase**](scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus._base.ChunkerBase") **|** **None**)
         * ****filter\_**** ([**FilterBase**](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase") **|** **None**)
         * ****filename\_override**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
@@ -103,14 +103,14 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
     Each yielded chunk dict contains:
 
     * `"text"` — subtitle cue or transcription segment text
-    * `"section_type"` — always `SectionType.TEXT`
+    * `"section_type"` — always [`SectionType.TEXT`](scikitplot.corpus.SectionType.html#scikitplot.corpus.SectionType.TEXT "scikitplot.corpus.SectionType.TEXT")
     * `"timecode_start"` — start time in seconds (float); promoted to
-      `CorpusDocument.timecode_start`
+      [`CorpusDocument.timecode_start`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument.timecode_start "scikitplot.corpus.CorpusDocument.timecode_start")
     * `"timecode_end"` — end time in seconds (float); promoted to
-      `CorpusDocument.timecode_end`
-    * `"source_type"` — `SourceType.SUBTITLE` for subtitle cues,
-      `SourceType.VIDEO` for Whisper transcription; promoted to
-      `CorpusDocument.source_type`
+      [`CorpusDocument.timecode_end`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument.timecode_end "scikitplot.corpus.CorpusDocument.timecode_end")
+    * `"source_type"` — [`SourceType.SUBTITLE`](scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType.SUBTITLE "scikitplot.corpus.SourceType.SUBTITLE") for subtitle cues,
+      [`SourceType.VIDEO`](scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType.VIDEO "scikitplot.corpus.SourceType.VIDEO") for Whisper transcription; promoted to
+      [`CorpusDocument.source_type`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument.source_type "scikitplot.corpus.CorpusDocument.source_type")
     * `"subtitle_format"` — `"srt"`, `"vtt"`, `"sbv"`, `"sub"`,
       or `None` for transcription (goes to `metadata`)
     * `"transcript_type"` — `"whisper"` for Whisper transcription,
@@ -118,11 +118,13 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
 
     Examples
 
+    Try it in your browser!
+
     Subtitle-only (no transcription):
 
     ```
     >>> from pathlib import Path
-    >>> reader = VideoReader(input_file=Path("lecture.mp4"))
+    >>> reader = VideoReader(input_path=Path("lecture.mp4"))
     >>> docs = list(reader.get_documents())
     >>> print(f"Subtitle cues: {len(docs)}")
 
@@ -132,7 +134,7 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
 
     ```
     >>> reader = VideoReader(
-    ...     input_file=Path("interview.mp4"),
+    ...     input_path=Path("interview.mp4"),
     ...     transcribe=True,
     ...     whisper_model="small",
     ...     default_language="en",
@@ -140,12 +142,13 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
     >>> docs = list(reader.get_documents())
 
     ```
+    Go BackOpen In Tab
 
     chunker: [ChunkerBase](scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus._base.ChunkerBase") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.VideoReader.chunker "Link to this definition")
     :   Chunker to apply to each raw text block. `None` means each raw chunk
         is used as-is (one CorpusDocument per raw chunk).
 
-    classmethod create(**\*inputs**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_base.py#L1239)[#](#scikitplot.corpus.VideoReader.create "Link to this definition")
+    classmethod create(**\*input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_base.py#L1239)[#](#scikitplot.corpus.VideoReader.create "Link to this definition")
     :   Instantiate the appropriate reader for one or more sources.
 
         Accepts any mix of file paths, URL strings, and
@@ -155,7 +158,7 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
         as a local file path and dispatched by extension via the registry.
 
         Parameters:
-        :   ****\*inputs****pathlib.Path or str
+        :   ****\*input\_path****str or pathlib.Path
             :   One or more source paths or URL strings. Each element is
                 classified independently:
 
@@ -181,15 +184,15 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
                 ([`DefaultFilter`](scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus.DefaultFilter")).
 
             ****filename\_override****str or None, optional
-            :   Override the `source_file` label. Only applied when
-                **inputs** contains exactly one source. Default: `None`.
+            :   Override the `input_path` label. Only applied when
+                **input\_path** contains exactly one source. Default: `None`.
 
             ****default\_language****str or None, optional
             :   ISO 639-1 language code applied to all sources.
                 Default: `None`.
 
             ****source\_type****SourceType, list[SourceType or None], or None, optional
-            :   Semantic label for the source kind. When **inputs** has more
+            :   Semantic label for the source kind. When **input\_path** has more
                 than one element you may pass a list of the same length to
                 assign a distinct type per source; `None` entries in the
                 list mean “infer from extension / URL”. A single value is
@@ -221,28 +224,28 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
 
         Returns:
         :   DocumentReader
-            :   A single reader when **inputs** has exactly one element (backward
+            :   A single reader when **input\_path** has exactly one element (backward
                 compatible with every existing call site). A
-                [`_MultiSourceReader`](scikitplot.corpus._MultiSourceReader.html#scikitplot.corpus._MultiSourceReader "scikitplot.corpus._MultiSourceReader") when **inputs** has more than one
+                [`_MultiSourceReader`](scikitplot.corpus._MultiSourceReader.html#scikitplot.corpus._MultiSourceReader "scikitplot.corpus._MultiSourceReader") when **input\_path** has more than one
                 element — it implements the same `get_documents()` interface
                 and chains documents from all sub-readers in order.
 
         Raises:
         :   ValueError
-            :   If **inputs** is empty, or if a source URL is invalid, or if no
+            :   If **input\_path** is empty, or if a source URL is invalid, or if no
                 reader is registered for a file’s extension.
 
             TypeError
-            :   If any element of **inputs** is not a `str` or
+            :   If any element of **input\_path** is not a `str` or
                 [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)").
 
         Parameters:
-        :   * ****inputs**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        :   * ****input\_path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
             * ****chunker**** ([**ChunkerBase**](scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus._base.ChunkerBase") **|** **None**)
             * ****filter\_**** ([**FilterBase**](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase") **|** **None**)
             * ****filename\_override**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
             * ****default\_language**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****source\_type**** (**SourceType** **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[****SourceType** **|** **None****]** **|** **None**)
+            * ****source\_type**** ([**SourceType**](scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType "scikitplot.corpus._schema.SourceType") **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**SourceType**](scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType "scikitplot.corpus._schema.SourceType") **|** **None****]** **|** **None**)
             * ****source\_title**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
             * ****source\_author**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
             * ****source\_date**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
@@ -262,7 +265,7 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
         paths. This means you no longer need to call [`from_url`](#scikitplot.corpus.VideoReader.from_url "scikitplot.corpus.VideoReader.from_url")
         explicitly — just pass the URL string to [`create`](#scikitplot.corpus.VideoReader.create "scikitplot.corpus.VideoReader.create").
 
-        ****Per-source source\_type:**** When passing multiple inputs with
+        ****Per-source source\_type:**** When passing multiple input\_path with
         different media types, supply a list:
 
         ```
@@ -284,6 +287,8 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
         * `classify=True`, `classifier=fn` → [`AudioReader`](scikitplot.corpus.AudioReader.html#scikitplot.corpus.AudioReader "scikitplot.corpus.AudioReader")
 
         Examples
+
+        Try it in your browser!
 
         Single file (backward-compatible):
 
@@ -314,6 +319,7 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
         >>> docs = list(reader.get_documents())  # chained stream from all three
 
         ```
+        Go BackOpen In Tab
 
     custom\_extractor: [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[...], [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.VideoReader.custom_extractor "Link to this definition")
     :   User-supplied video extraction callable. When set, this callable is
@@ -338,6 +344,7 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
 
         Examples
 
+        Try it in your browser!
         ```
         >>> def cloud_transcribe(path, language="en", **kw):
         ...     result = cloud_api.transcribe_video(str(path), lang=language)
@@ -345,13 +352,14 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
         ...              "timecode_end": seg.end}
         ...             for seg in result.segments]
         >>> reader = VideoReader(
-        ...     input_file=Path("lecture.mp4"),
+        ...     input_path=Path("lecture.mp4"),
         ...     custom_extractor=cloud_transcribe,
         ... )
 
         ```
+        Go BackOpen In Tab
 
-    custom\_extractor\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_readers/_video.py#L451)[#](#scikitplot.corpus.VideoReader.custom_extractor_kwargs "Link to this definition")
+    custom\_extractor\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_readers/_video.py#L451)[#](#scikitplot.corpus.VideoReader.custom_extractor_kwargs "Link to this definition")
     :   Extra keyword arguments forwarded to [`custom_extractor`](#scikitplot.corpus.VideoReader.custom_extractor "scikitplot.corpus.VideoReader.custom_extractor") on every
         call. Only used when [`custom_extractor`](#scikitplot.corpus.VideoReader.custom_extractor "scikitplot.corpus.VideoReader.custom_extractor") is set. Default: `{}`.
 
@@ -362,7 +370,7 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
     :   Effective filename used in document labels.
 
         Returns `filename_override` when set; otherwise returns
-        `input_file.name`.
+        `input_path.name`.
 
         Returns:
         :   str
@@ -370,13 +378,15 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
 
         Examples
 
+        Try it in your browser!
         ```
         >>> from pathlib import Path
-        >>> reader = TextReader(input_file=Path("/data/corpus.txt"))
+        >>> reader = TextReader(input_path=Path("/data/corpus.txt"))
         >>> reader.file_name
         'corpus.txt'
 
         ```
+        Go BackOpen In Tab
 
     file\_type: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")] = None[#](#scikitplot.corpus.VideoReader.file_type "Link to this definition")
     :   Single file extension this reader handles (lowercase, including leading
@@ -396,12 +406,12 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
         class, `file_types` takes precedence and `file_type` is ignored.
 
     filename\_override: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.VideoReader.filename_override "Link to this definition")
-    :   Override for the `source_file` label in generated documents.
+    :   Override for the `input_path` label in generated documents.
 
     filter\_: [FilterBase](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.VideoReader.filter_ "Link to this definition")
     :   Filter applied after chunking. `None` triggers the [`DefaultFilter`](scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus.DefaultFilter").
 
-    classmethod from\_manifest(**manifest\_path**, **\***, **chunker=None**, **filter\_=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **encoding='utf-8'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_base.py#L1556)[#](#scikitplot.corpus.VideoReader.from_manifest "Link to this definition")
+    classmethod from\_manifest(**manifest\_path**, **\***, **chunker=None**, **filter\_=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **encoding='utf-8'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_base.py#L1556)[#](#scikitplot.corpus.VideoReader.from_manifest "Link to this definition")
     :   Build a [`_MultiSourceReader`](scikitplot.corpus._MultiSourceReader.html#scikitplot.corpus._MultiSourceReader "scikitplot.corpus._MultiSourceReader") from a manifest file.
 
         The manifest is a text file with one source per line — either a
@@ -410,7 +420,7 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
         also supported.
 
         Parameters:
-        :   ****manifest\_path****pathlib.Path or str
+        :   ****manifest\_path****str or pathlib.Path
             :   Path to the manifest file. Supported formats:
 
                 * `.txt` / `.manifest` — one source per line.
@@ -467,11 +477,11 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
             :   If the manifest format is not recognised.
 
         Parameters:
-        :   * ****manifest\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+        :   * ****manifest\_path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
             * ****chunker**** ([**ChunkerBase**](scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus._base.ChunkerBase") **|** **None**)
             * ****filter\_**** ([**FilterBase**](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase") **|** **None**)
             * ****default\_language**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****source\_type**** (**SourceType** **|** **None**)
+            * ****source\_type**** ([**SourceType**](scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType "scikitplot.corpus._schema.SourceType") **|** **None**)
             * ****source\_title**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
             * ****source\_author**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
             * ****source\_date**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
@@ -503,6 +513,8 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
 
         Examples
 
+        Try it in your browser!
+
         Text manifest `sources.txt`:
 
         ```
@@ -524,8 +536,9 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
         docs = list(reader.get_documents())
 
         ```
+        Go BackOpen In Tab
 
-    classmethod from\_url(**url**, **\***, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_base.py#L1752)[#](#scikitplot.corpus.VideoReader.from_url "Link to this definition")
+    classmethod from\_url(**url**, **\***, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_base.py#L1752)[#](#scikitplot.corpus.VideoReader.from_url "Link to this definition")
     :   Instantiate the appropriate reader for a URL source.
 
         Dispatches to `YouTubeReader`
@@ -544,7 +557,7 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
             :   Filter to inject. Default: `None` ([`DefaultFilter`](scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus.DefaultFilter")).
 
             ****filename\_override****str or None, optional
-            :   Override for the `source_file` label. Default: `None`.
+            :   Override for the `input_path` label. Default: `None`.
 
             ****default\_language****str or None, optional
             :   ISO 639-1 language code. Default: `None`.
@@ -593,7 +606,7 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
             * ****filter\_**** ([**FilterBase**](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase") **|** **None**)
             * ****filename\_override**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
             * ****default\_language**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-            * ****source\_type**** (**SourceType** **|** **None**)
+            * ****source\_type**** ([**SourceType**](scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType "scikitplot.corpus._schema.SourceType") **|** **None**)
             * ****source\_title**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
             * ****source\_author**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
             * ****source\_date**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
@@ -613,6 +626,7 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
 
         Examples
 
+        Try it in your browser!
         ```
         >>> reader = DocumentReader.from_url("https://en.wikipedia.org/wiki/Python")
         >>> docs = list(reader.get_documents())
@@ -623,9 +637,10 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
         >>> docs = list(yt.get_documents())
 
         ```
+        Go BackOpen In Tab
 
-    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_base.py#L940)[#](#scikitplot.corpus.VideoReader.get_documents "Link to this definition")
-    :   Yield validated `CorpusDocument`
+    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_base.py#L940)[#](#scikitplot.corpus.VideoReader.get_documents "Link to this definition")
+    :   Yield validated [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
         instances for the input file.
 
         Orchestrates the full per-file pipeline:
@@ -633,7 +648,7 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
         1. [`validate_input`](#scikitplot.corpus.VideoReader.validate_input "scikitplot.corpus.VideoReader.validate_input") — fail fast if file is missing.
         2. [`get_raw_chunks`](#scikitplot.corpus.VideoReader.get_raw_chunks "scikitplot.corpus.VideoReader.get_raw_chunks") — format-specific text extraction.
         3. Chunker (if set) — sub-segments each raw block.
-        4. `CorpusDocument` construction with validated schema.
+        4. [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus.CorpusDocument") construction with validated schema.
         5. Filter — discards noise documents.
 
         Yields:
@@ -645,19 +660,20 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
             :   If the input file is missing or the format is invalid.
 
         Return type:
-        :   [**Generator**](https://docs.python.org/3/library/typing.html#typing.Generator "(in Python v3.14)")[**CorpusDocument**, None, None]
+        :   [**Generator**](https://docs.python.org/3/library/typing.html#typing.Generator "(in Python v3.14)")[[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument"), None, None]
 
         Notes
 
         The global `chunk_index` counter is monotonically increasing across
         ****all**** raw chunks and sub-chunks for a single file, ensuring that
-        `(source_file, chunk_index)` is a unique key within one reader run.
+        `(input_path, chunk_index)` is a unique key within one reader run.
 
         Omitted-document statistics are logged at INFO level after processing
         each file.
 
         Examples
 
+        Try it in your browser!
         ```
         >>> from pathlib import Path
         >>> reader = DocumentReader.create(Path("corpus.txt"))
@@ -666,8 +682,9 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
         True
 
         ```
+        Go BackOpen In Tab
 
-    get\_raw\_chunks()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_readers/_video.py#L680)[#](#scikitplot.corpus.VideoReader.get_raw_chunks "Link to this definition")
+    get\_raw\_chunks()[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_readers/_video.py#L680)[#](#scikitplot.corpus.VideoReader.get_raw_chunks "Link to this definition")
     :   Extract text from the video via subtitle or transcription.
 
         Attempts subtitle detection first. Falls back to Whisper only
@@ -689,7 +706,7 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
         Return type:
         :   [**Generator**](https://docs.python.org/3/library/typing.html#typing.Generator "(in Python v3.14)")[[dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")], None, None]
 
-    input\_file: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_readers/_video.py#L451)[#](#scikitplot.corpus.VideoReader.input_file "Link to this definition")
+    input\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_readers/_video.py#L451)[#](#scikitplot.corpus.VideoReader.input_path "Link to this definition")
     :   Path to the source file.
 
         For URL-based readers ([`WebReader`](scikitplot.corpus.WebReader.html#scikitplot.corpus.WebReader "scikitplot.corpus.WebReader"), [`YouTubeReader`](scikitplot.corpus.YouTubeReader.html#scikitplot.corpus.YouTubeReader "scikitplot.corpus.YouTubeReader")),
@@ -703,7 +720,7 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
         Type:
         :   Maximum video file size. Default
 
-    source\_provenance: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_readers/_video.py#L451)[#](#scikitplot.corpus.VideoReader.source_provenance "Link to this definition")
+    source\_provenance: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_readers/_video.py#L451)[#](#scikitplot.corpus.VideoReader.source_provenance "Link to this definition")
     :   Provenance overrides propagated into every yielded `CorpusDocument`.
 
         Keys may include `"source_type"`, `"source_title"`,
@@ -714,21 +731,23 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
     source\_uri: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.VideoReader.source_uri "Link to this definition")
     :   Original URI for URL-based readers (web pages, YouTube videos).
 
-        Set this to the full URL string when `input_file` is a synthetic
+        Set this to the full URL string when `input_path` is a synthetic
         `pathlib.Path` wrapping a URL. File-based readers leave this
         `None`.
 
         Examples
 
+        Try it in your browser!
         ```
         >>> reader = WebReader(
-        ...     input_file=Path("https://example.com/article"),
+        ...     input_path=Path("https://example.com/article"),
         ...     source_uri="https://example.com/article",
         ... )
 
         ```
+        Go BackOpen In Tab
 
-    classmethod subclass\_by\_type()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_base.py#L1128)[#](#scikitplot.corpus.VideoReader.subclass_by_type "Link to this definition")
+    classmethod subclass\_by\_type()[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_base.py#L1128)[#](#scikitplot.corpus.VideoReader.subclass_by_type "Link to this definition")
     :   Return a copy of the extension → reader class registry.
 
         Returns:
@@ -741,12 +760,14 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
 
         Examples
 
+        Try it in your browser!
         ```
         >>> registry = DocumentReader.subclass_by_type()
         >>> ".txt" in registry
         True
 
         ```
+        Go BackOpen In Tab
 
     subtitle\_frame\_rate: [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") = 25.0[#](#scikitplot.corpus.VideoReader.subtitle_frame_rate "Link to this definition")
     :   25.0.
@@ -754,7 +775,7 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
         Type:
         :   Frames per second for MicroDVD SUB format. Default
 
-    classmethod supported\_types()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_base.py#L1110)[#](#scikitplot.corpus.VideoReader.supported_types "Link to this definition")
+    classmethod supported\_types()[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_base.py#L1110)[#](#scikitplot.corpus.VideoReader.supported_types "Link to this definition")
     :   Return a sorted list of file extensions supported by registered readers.
 
         Returns:
@@ -767,21 +788,23 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
 
         Examples
 
+        Try it in your browser!
         ```
         >>> DocumentReader.supported_types()
         ['.pdf', '.txt', '.xml', '.zip']
 
         ```
+        Go BackOpen In Tab
 
     transcribe: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.corpus.VideoReader.transcribe "Link to this definition")
     :   Enable Whisper fallback when no subtitle file is found.
 
-    validate\_input()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_base.py#L755)[#](#scikitplot.corpus.VideoReader.validate_input "Link to this definition")
+    validate\_input()[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_base.py#L755)[#](#scikitplot.corpus.VideoReader.validate_input "Link to this definition")
     :   Assert that the input file exists and is readable.
 
         Raises:
         :   ValueError
-            :   If `input_file` does not exist or is not a regular file.
+            :   If `input_path` does not exist or is not a regular file.
 
         Return type:
         :   None
@@ -793,6 +816,7 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
 
         Examples
 
+        Try it in your browser!
         ```
         >>> reader = DocumentReader.create(Path("missing.txt"))
         >>> reader.validate_input()
@@ -801,6 +825,7 @@ class scikitplot.corpus.VideoReader(**input\_file**, **chunker=None**, **filter\
         ValueError: Input file does not exist: missing.txt
 
         ```
+        Go BackOpen In Tab
 
     whisper\_model: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'base'[#](#scikitplot.corpus.VideoReader.whisper_model "Link to this definition")
     :   `"base"`.

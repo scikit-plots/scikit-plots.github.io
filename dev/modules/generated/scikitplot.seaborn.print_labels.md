@@ -1,6 +1,6 @@
 # print\_labels[#](#print-labels "Link to this heading")
 
-scikitplot.seaborn.print\_labels(**as\_json=True**, **indent=2**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/seaborn/_decile.py#L303)[#](#scikitplot.seaborn.print_labels "Link to this definition")
+scikitplot.seaborn.print\_labels(**as\_json=True**, **indent=2**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/seaborn/_decile.py#L303)[#](#scikitplot.seaborn.print_labels "Link to this definition")
 :   Pretty-print the legend of decile table column names.
 
     ```
@@ -56,14 +56,15 @@ scikitplot.seaborn.print\_labels(**as\_json=True**, **indent=2**)[[source]](http
 
     [1]
 
-    <https://github.com/tensorbored/kds/blob/master/kds/metrics.py#L382>
+    [tensorbored/kds](https://github.com/tensorbored/kds/blob/master/kds/metrics.py#L382)
 
     [2]
 
-    <https://github.com/tensorbored/kds/blob/master/kds/metrics.py#L382>
+    [tensorbored/kds](https://github.com/tensorbored/kds/blob/master/kds/metrics.py#L382)
 
     Examples
 
+    Try it in your browser!
     ```
     >>> import scikitplot.seaborn as sp
     >>> sp.print_labels()
@@ -98,5 +99,6 @@ scikitplot.seaborn.print\_labels(**as\_json=True**, **indent=2**)[[source]](http
     }
 
     ```
+    Go BackOpen In Tab
 
 Make live

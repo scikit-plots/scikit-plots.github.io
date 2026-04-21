@@ -1,13 +1,30 @@
 # LemmatizationBackend[#](#lemmatizationbackend "Link to this heading")
 
-class scikitplot.corpus.LemmatizationBackend(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_word.py#L179)[#](#scikitplot.corpus.LemmatizationBackend "Link to this definition")
+class scikitplot.corpus.LemmatizationBackend(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_word.py#L254)[#](#scikitplot.corpus.LemmatizationBackend "Link to this definition")
 :   Lemmatization backend.
 
-    NLTK\_WORDNET = 'nltk\_wordnet'[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.LemmatizationBackend.NLTK_WORDNET "Link to this definition")
+    Attributes:
+    :   ****NONE****
+        :   No lemmatization applied.
 
-    NONE = 'none'[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.LemmatizationBackend.NONE "Link to this definition")
+        ****NLTK\_WORDNET****
+        :   NLTK WordNetLemmatizer — English only.
 
-    SPACY = 'spacy'[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.LemmatizationBackend.SPACY "Link to this definition")
+        ****SPACY****
+        :   spaCy `.lemma_` — language depends on loaded model.
+
+        ****CUSTOM****
+        :   User-supplied [`LemmatizerProtocol`](scikitplot.corpus.LemmatizerProtocol.html#scikitplot.corpus.LemmatizerProtocol "scikitplot.corpus._chunkers._custom_tokenizer.LemmatizerProtocol") or
+            `Callable[[str, Optional[str]], str]` stored in
+            [`WordChunkerConfig.custom_lemmatizer`](scikitplot.corpus.WordChunkerConfig.html#scikitplot.corpus.WordChunkerConfig.custom_lemmatizer "scikitplot.corpus.WordChunkerConfig.custom_lemmatizer").
+
+    CUSTOM = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.LemmatizationBackend.CUSTOM "Link to this definition")
+
+    NLTK\_WORDNET = 'nltk\_wordnet'[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.LemmatizationBackend.NLTK_WORDNET "Link to this definition")
+
+    NONE = 'none'[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.LemmatizationBackend.NONE "Link to this definition")
+
+    SPACY = 'spacy'[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.LemmatizationBackend.SPACY "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.corpus.LemmatizationBackend.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

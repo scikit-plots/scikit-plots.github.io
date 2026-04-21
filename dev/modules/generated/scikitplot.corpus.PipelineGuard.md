@@ -1,6 +1,6 @@
 # PipelineGuard[#](#pipelineguard "Link to this heading")
 
-class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, **checkpoint\_path=None**, **checkpoint\_every=500**, **max\_retries=3**, **retry\_delay=1.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_base.py#L2422)[#](#scikitplot.corpus.PipelineGuard "Link to this definition")
+class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, **checkpoint\_path=None**, **checkpoint\_every=500**, **max\_retries=3**, **retry\_delay=1.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_base.py#L2422)[#](#scikitplot.corpus.PipelineGuard "Link to this definition")
 :   Wrap any document stream with resilience, deduplication, and checkpointing.
 
     [`PipelineGuard`](#scikitplot.corpus.PipelineGuard "scikitplot.corpus.PipelineGuard") is a thin, composable layer you place around
@@ -8,7 +8,7 @@ class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, *
     `Iterable[CorpusDocument]`) to get:
 
     * ****Error isolation**** — per-document failures are handled according to
-      `ErrorPolicy` instead of crashing
+      [`ErrorPolicy`](scikitplot.corpus.ErrorPolicy.html#scikitplot.corpus.ErrorPolicy "scikitplot.corpus._schema.ErrorPolicy") instead of crashing
       the whole pipeline.
     * ****Content deduplication**** — documents with identical `content_hash`
       are dropped after the first occurrence.
@@ -20,7 +20,7 @@ class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, *
     Parameters:
     :   ****policy****ErrorPolicy, optional
         :   How to handle per-document exceptions.
-            Default: `LOG` (log and skip).
+            Default: [`LOG`](scikitplot.corpus.ErrorPolicy.html#scikitplot.corpus.ErrorPolicy.LOG "scikitplot.corpus.ErrorPolicy.LOG") (log and skip).
 
         ****dedup****bool, optional
         :   Drop documents with duplicate `content_hash`.
@@ -35,7 +35,7 @@ class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, *
         :   Flush checkpoint every N yielded documents. Default: 500.
 
         ****max\_retries****int, optional
-        :   Maximum retry attempts for `RETRY` policy.
+        :   Maximum retry attempts for [`RETRY`](scikitplot.corpus.ErrorPolicy.html#scikitplot.corpus.ErrorPolicy.RETRY "scikitplot.corpus.ErrorPolicy.RETRY") policy.
             Default: 3.
 
         ****retry\_delay****float, optional
@@ -61,6 +61,8 @@ class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, *
     processing sources in parallel.
 
     Examples
+
+    Try it in your browser!
 
     Basic error isolation — skip broken documents:
 
@@ -102,8 +104,9 @@ class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, *
     >>> docs = list(guard.iter(reader.get_documents()))
 
     ```
+    Go BackOpen In Tab
 
-    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_base.py#L2672)[#](#scikitplot.corpus.PipelineGuard.close "Link to this definition")
+    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_base.py#L2672)[#](#scikitplot.corpus.PipelineGuard.close "Link to this definition")
     :   Flush and close the checkpoint file handle.
 
         Notes
@@ -114,7 +117,7 @@ class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, *
         Return type:
         :   None
 
-    iter(**source**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_base.py#L2571)[#](#scikitplot.corpus.PipelineGuard.iter "Link to this definition")
+    iter(**source**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_base.py#L2571)[#](#scikitplot.corpus.PipelineGuard.iter "Link to this definition")
     :   Iterate **source** with resilience, dedup, and checkpoint.
 
         Parameters:

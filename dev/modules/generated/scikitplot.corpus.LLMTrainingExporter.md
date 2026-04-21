@@ -1,6 +1,6 @@
 # LLMTrainingExporter[#](#llmtrainingexporter "Link to this heading")
 
-class scikitplot.corpus.LLMTrainingExporter(**engine=None**, **default\_system\_prompt='You are a helpful assistant.'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1226)[#](#scikitplot.corpus.LLMTrainingExporter "Link to this definition")
+class scikitplot.corpus.LLMTrainingExporter(**engine=None**, **default\_system\_prompt='You are a helpful assistant.'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1355)[#](#scikitplot.corpus.LLMTrainingExporter "Link to this definition")
 :   Export a corpus with embeddings to LLM training formats.
 
     Orchestrates the full journey from
@@ -21,6 +21,8 @@ class scikitplot.corpus.LLMTrainingExporter(**engine=None**, **default\_system\_
         * ****default\_system\_prompt**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
 
     Examples
+
+    Try it in your browser!
 
     OpenAI fine-tuning (chat format):
 
@@ -54,12 +56,13 @@ class scikitplot.corpus.LLMTrainingExporter(**engine=None**, **default\_system\_
     (1024, 512)
 
     ```
+    Go BackOpen In Tab
 
     default\_system\_prompt: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'You are a helpful assistant.'[#](#scikitplot.corpus.LLMTrainingExporter.default_system_prompt "Link to this definition")
 
     engine: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.LLMTrainingExporter.engine "Link to this definition")
 
-    log\_to\_mlflow(**documents**, **\***, **run\_name=None**, **artifact\_dir='corpus\_embeddings'**, **log\_params=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1691)[#](#scikitplot.corpus.LLMTrainingExporter.log_to_mlflow "Link to this definition")
+    log\_to\_mlflow(**documents**, **\***, **run\_name=None**, **artifact\_dir='corpus\_embeddings'**, **log\_params=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1820)[#](#scikitplot.corpus.LLMTrainingExporter.log_to_mlflow "Link to this definition")
     :   Log embedding matrix and metadata as MLflow artifacts.
 
         Parameters:
@@ -89,7 +92,7 @@ class scikitplot.corpus.LLMTrainingExporter(**engine=None**, **default\_system\_
         Return type:
         :   None
 
-    to\_embedding\_matrix(**documents**, **\***, **include\_metadata=True**, **output\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1596)[#](#scikitplot.corpus.LLMTrainingExporter.to_embedding_matrix "Link to this definition")
+    to\_embedding\_matrix(**documents**, **\***, **include\_metadata=True**, **output\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1725)[#](#scikitplot.corpus.LLMTrainingExporter.to_embedding_matrix "Link to this definition")
     :   Export embeddings as a `(N, D)` NumPy matrix with metadata.
 
         Parameters:
@@ -110,7 +113,7 @@ class scikitplot.corpus.LLMTrainingExporter(**engine=None**, **default\_system\_
 
 
             ****metadata****pandas.DataFrame or dict[str, list]
-            :   Metadata table with `doc_id`, `source_file`,
+            :   Metadata table with `doc_id`, `input_path`,
                 `source_type`, `modality`, `content_hash`,
                 `chunk_index` columns. Returns plain dict when
                 pandas is not installed.
@@ -127,7 +130,7 @@ class scikitplot.corpus.LLMTrainingExporter(**engine=None**, **default\_system\_
         Return type:
         :   [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), …], [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.5.dev0)")[**\_ScalarT**]], [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
 
-    to\_huggingface\_training\_dataset(**documents**, **\***, **tokenizer\_name='gpt2'**, **max\_length=512**, **task='clm'**, **text\_field='text'**, **label\_field=None**, **include\_embeddings=False**, **stride=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1438)[#](#scikitplot.corpus.LLMTrainingExporter.to_huggingface_training_dataset "Link to this definition")
+    to\_huggingface\_training\_dataset(**documents**, **\***, **tokenizer\_name='gpt2'**, **max\_length=512**, **task='clm'**, **text\_field='text'**, **label\_field=None**, **include\_embeddings=False**, **stride=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1567)[#](#scikitplot.corpus.LLMTrainingExporter.to_huggingface_training_dataset "Link to this definition")
     :   Build a HuggingFace `datasets.Dataset` for LLM training.
 
         Parameters:
@@ -188,7 +191,7 @@ class scikitplot.corpus.LLMTrainingExporter(**engine=None**, **default\_system\_
         Return type:
         :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")
 
-    to\_openai\_finetuning\_jsonl(**documents**, **output\_path**, **\***, **system\_prompt=None**, **response\_fn=None**, **user\_field='text'**, **include\_embeddings=False**, **skip\_empty=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1313)[#](#scikitplot.corpus.LLMTrainingExporter.to_openai_finetuning_jsonl "Link to this definition")
+    to\_openai\_finetuning\_jsonl(**documents**, **output\_path**, **\***, **system\_prompt=None**, **response\_fn=None**, **user\_field='text'**, **include\_embeddings=False**, **skip\_empty=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1442)[#](#scikitplot.corpus.LLMTrainingExporter.to_openai_finetuning_jsonl "Link to this definition")
     :   Export documents as OpenAI chat fine-tuning JSONL.
 
         Each line is a valid fine-tuning example:

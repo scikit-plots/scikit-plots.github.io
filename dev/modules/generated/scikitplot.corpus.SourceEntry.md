@@ -1,6 +1,6 @@
 # SourceEntry[#](#sourceentry "Link to this heading")
 
-class scikitplot.corpus.SourceEntry(**path\_or\_url**, **kind**, **provenance=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_sources/_source.py#L122)[#](#scikitplot.corpus.SourceEntry "Link to this definition")
+class scikitplot.corpus.SourceEntry(**path\_or\_url**, **kind**, **provenance=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_sources/_source.py#L122)[#](#scikitplot.corpus.SourceEntry "Link to this definition")
 :   A single resolved source entry yielded by [`CorpusSource.iter_entries`](scikitplot.corpus.CorpusSource.html#scikitplot.corpus.CorpusSource.iter_entries "scikitplot.corpus.CorpusSource.iter_entries").
 
     Parameters:
@@ -29,8 +29,8 @@ class scikitplot.corpus.SourceEntry(**path\_or\_url**, **kind**, **provenance=<f
     property is\_url: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.corpus.SourceEntry.is_url "Link to this definition")
     :   Return `True` if this entry is a URL.
 
-    kind: [SourceKind](scikitplot.corpus.SourceKind.html#scikitplot.corpus.SourceKind "scikitplot.corpus._sources._source.SourceKind")[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_sources/_source.py#L122)[#](#scikitplot.corpus.SourceEntry.kind "Link to this definition")
+    kind: [SourceKind](scikitplot.corpus.SourceKind.html#scikitplot.corpus.SourceKind "scikitplot.corpus._sources._source.SourceKind")[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_sources/_source.py#L122)[#](#scikitplot.corpus.SourceEntry.kind "Link to this definition")
 
-    path\_or\_url: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_sources/_source.py#L122)[#](#scikitplot.corpus.SourceEntry.path_or_url "Link to this definition")
+    path\_or\_url: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_sources/_source.py#L122)[#](#scikitplot.corpus.SourceEntry.path_or_url "Link to this definition")
 
-    provenance: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_sources/_source.py#L122)[#](#scikitplot.corpus.SourceEntry.provenance "Link to this definition")
+    provenance: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_sources/_source.py#L122)[#](#scikitplot.corpus.SourceEntry.provenance "Link to this definition")

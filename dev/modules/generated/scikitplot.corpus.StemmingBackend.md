@@ -1,15 +1,38 @@
 # StemmingBackend[#](#stemmingbackend "Link to this heading")
 
-class scikitplot.corpus.StemmingBackend(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_word.py#L170)[#](#scikitplot.corpus.StemmingBackend "Link to this definition")
+class scikitplot.corpus.StemmingBackend(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_word.py#L225)[#](#scikitplot.corpus.StemmingBackend "Link to this definition")
 :   Stemming algorithm.
 
-    LANCASTER = 'lancaster'[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.LANCASTER "Link to this definition")
+    Attributes:
+    :   ****NONE****
+        :   No stemming applied.
 
-    NONE = 'none'[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.NONE "Link to this definition")
+        ****PORTER****
+        :   NLTK PorterStemmer — English only.
 
-    PORTER = 'porter'[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.PORTER "Link to this definition")
+        ****SNOWBALL****
+        :   NLTK SnowballStemmer — English, German, French, Spanish, Dutch,
+            Portuguese, Italian, Swedish, Norwegian, Danish, Finnish, Russian,
+            Hungarian, Romanian. Unsupported languages raise `ValueError`
+            at construction time.
 
-    SNOWBALL = 'snowball'[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.SNOWBALL "Link to this definition")
+        ****LANCASTER****
+        :   NLTK LancasterStemmer — English only, aggressive.
+
+        ****CUSTOM****
+        :   User-supplied [`StemmerProtocol`](scikitplot.corpus.StemmerProtocol.html#scikitplot.corpus.StemmerProtocol "scikitplot.corpus._chunkers._custom_tokenizer.StemmerProtocol") or
+            `Callable[[str], str]` stored in
+            [`WordChunkerConfig.custom_stemmer`](scikitplot.corpus.WordChunkerConfig.html#scikitplot.corpus.WordChunkerConfig.custom_stemmer "scikitplot.corpus.WordChunkerConfig.custom_stemmer").
+
+    CUSTOM = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.CUSTOM "Link to this definition")
+
+    LANCASTER = 'lancaster'[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.LANCASTER "Link to this definition")
+
+    NONE = 'none'[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.NONE "Link to this definition")
+
+    PORTER = 'porter'[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.PORTER "Link to this definition")
+
+    SNOWBALL = 'snowball'[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.SNOWBALL "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.corpus.StemmingBackend.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

@@ -1,6 +1,6 @@
 # plot\_costsrevs[#](#plot-costsrevs "Link to this heading")
 
-scikitplot.decile.plot\_costsrevs(**plot\_input**, **\***, **fixed\_costs**, **currency='€'**, **variable\_costs\_per\_unit**, **profit\_per\_unit**, **highlight\_ntile=None**, **highlight\_how='plot\_text'**, **line\_kws=None**, **ref\_line\_kws=None**, **legend\_kws=None**, **grid\_kws=None**, **axes\_kws=None**, **annotation\_kws=None**, **footer\_kws=None**, **save\_fig=True**, **save\_fig\_filename=''**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/decile/_decile_modelplotpy.py#L3499)[#](#scikitplot.decile.plot_costsrevs "Link to this definition")
+scikitplot.decile.plot\_costsrevs(**plot\_input**, **\***, **fixed\_costs**, **currency='€'**, **variable\_costs\_per\_unit**, **profit\_per\_unit**, **highlight\_ntile=None**, **highlight\_how='plot\_text'**, **line\_kws=None**, **ref\_line\_kws=None**, **legend\_kws=None**, **grid\_kws=None**, **axes\_kws=None**, **annotation\_kws=None**, **footer\_kws=None**, **save\_fig=True**, **save\_fig\_filename=''**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/decile/_decile_modelplotpy.py#L3499)[#](#scikitplot.decile.plot_costsrevs "Link to this definition")
 :   Plot costs and revenues curves.
 
     Parameters:
@@ -104,7 +104,7 @@ scikitplot.decile.plot\_costsrevs(**plot\_input**, **\***, **fixed\_costs**, **c
         * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
 
     Return type:
-    :   [**Axes**](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes "(in Matplotlib v3.11.0.dev2075+ga7fc90270)")
+    :   [**Axes**](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes "(in Matplotlib v3.11.0.dev2332+gb07211fda)")
 
     > **See also**
     > [`plot_profit`](scikitplot.decile.plot_profit.html#scikitplot.decile.plot_profit "scikitplot.decile.plot_profit"), [`plot_roi`](scikitplot.decile.plot_roi.html#scikitplot.decile.plot_roi "scikitplot.decile.plot_roi")
@@ -118,10 +118,12 @@ scikitplot.decile.plot\_costsrevs(**plot\_input**, **\***, **fixed\_costs**, **c
 
     Examples
 
+    Try it in your browser!
     ```
     >>> # ax = plot_costsrevs(plot_input, fixed_costs=100, variable_costs_per_unit=1, profit_per_unit=10)
 
     ```
+    Go BackOpen In Tab
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

@@ -36,7 +36,7 @@ References
 
 [[1](#id4)]
 
-<https://github.com/tensorbored/kds/blob/master/kds/metrics.py>
+[tensorbored/kds](https://github.com/tensorbored/kds/blob/master/kds/metrics.py)
 
 [2]
 ([1](#id3),[2](#id5))

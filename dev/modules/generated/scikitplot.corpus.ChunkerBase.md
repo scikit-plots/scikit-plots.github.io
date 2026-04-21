@@ -1,6 +1,6 @@
 # ChunkerBase[#](#chunkerbase "Link to this heading")
 
-class scikitplot.corpus.ChunkerBase[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_base.py#L164)[#](#scikitplot.corpus.ChunkerBase "Link to this definition")
+class scikitplot.corpus.ChunkerBase[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_base.py#L164)[#](#scikitplot.corpus.ChunkerBase "Link to this definition")
 :   Abstract base class for all text chunkers.
 
     A chunker receives a block of raw text (one logical unit from the
@@ -14,7 +14,7 @@ class scikitplot.corpus.ChunkerBase[[source]](https://github.com/scikit-plots/sc
 
     Attributes:
     :   ****strategy****ChunkingStrategy
-        :   Class variable. Identifies which `ChunkingStrategy` enum
+        :   Class variable. Identifies which [`ChunkingStrategy`](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus.ChunkingStrategy") enum
             member this chunker implements. Must be defined by every concrete
             subclass.
 
@@ -37,6 +37,8 @@ class scikitplot.corpus.ChunkerBase[[source]](https://github.com/scikit-plots/sc
 
     Examples
 
+    Try it in your browser!
+
     Implementing a trivial single-chunk chunker (no splitting):
 
     ```
@@ -47,8 +49,9 @@ class scikitplot.corpus.ChunkerBase[[source]](https://github.com/scikit-plots/sc
     ...         return [(0, text)] if text.strip() else []
 
     ```
+    Go BackOpen In Tab
 
-    abstractmethod chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_base.py#L215)[#](#scikitplot.corpus.ChunkerBase.chunk "Link to this definition")
+    abstractmethod chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_base.py#L215)[#](#scikitplot.corpus.ChunkerBase.chunk "Link to this definition")
     :   Segment `text` into a list of `(char_start, chunk_text)` tuples.
 
         Parameters:
@@ -87,6 +90,6 @@ class scikitplot.corpus.ChunkerBase[[source]](https://github.com/scikit-plots/sc
         should still return incrementally-built lists rather than loading
         everything into memory at once.
 
-    strategy: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[ChunkingStrategy][#](#scikitplot.corpus.ChunkerBase.strategy "Link to this definition")
-    :   Identifies which `ChunkingStrategy`
+    strategy: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")][#](#scikitplot.corpus.ChunkerBase.strategy "Link to this definition")
+    :   Identifies which [`ChunkingStrategy`](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")
         this implementation provides. ****Must**** be defined on every concrete subclass.

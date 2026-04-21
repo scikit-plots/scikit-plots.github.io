@@ -1,6 +1,6 @@
 # pure\_python\_prereqs[#](#pure-python-prereqs "Link to this heading")
 
-scikitplot.cython.pure\_python\_prereqs()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/cython/_custom_compiler.py#L426)[#](#scikitplot.cython.pure_python_prereqs "Link to this definition")
+scikitplot.cython.pure\_python\_prereqs()[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cython/_custom_compiler.py#L426)[#](#scikitplot.cython.pure_python_prereqs "Link to this definition")
 :   Check prerequisites pure Python, setuptools only.
 
     No Cython, pybind11, or NumPy is required. Only setuptools (for
@@ -22,9 +22,11 @@ scikitplot.cython.pure\_python\_prereqs()[[source]](https://github.com/scikit-pl
 
     Examples
 
+    Try it in your browser!
     ```
     >>> result = pure_python_prereqs()
     >>> "setuptools" in result
     True
 
     ```
+    Go BackOpen In Tab

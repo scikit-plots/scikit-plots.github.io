@@ -1,6 +1,6 @@
 # pybind11\_include[#](#pybind11-include "Link to this heading")
 
-scikitplot.cython.pybind11\_include()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/cython/_custom_compiler.py#L584)[#](#scikitplot.cython.pybind11_include "Link to this definition")
+scikitplot.cython.pybind11\_include()[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cython/_custom_compiler.py#L584)[#](#scikitplot.cython.pybind11_include "Link to this definition")
 :   Return the pybind11 include directory, or `None` if not installed.
 
     Returns:
@@ -25,9 +25,11 @@ scikitplot.cython.pybind11\_include()[[source]](https://github.com/scikit-plots/
 
     Examples
 
+    Try it in your browser!
     ```
     >>> p = pybind11_include()
     >>> p is None or p.is_dir()
     True
 
     ```
+    Go BackOpen In Tab

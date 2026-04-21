@@ -84,6 +84,10 @@ from scikitplot.corpus._adapters import (
 
 ```
 ```
+2026-04-21 21:19:28.709111: W scikitplot.corpus._base 127489903582080 _base.py:2052:__init_subclass__] DocumentReader: extension '.zip' already registered to ALTOReader; overriding with ZipReader.
+
+```
+```
 # ===========================================================================
 # HELPER: print section banners
 # ===========================================================================
@@ -271,11 +275,12 @@ except Exception as e:
 
 ```
 ```
---- Source ③: PDF Report (text proxy) ---
+  --- Source ③: PDF Report (text proxy) ---
 
-✗ PDF report: Neither pdfminer.six nor pypdf is installed. Install at least one:
-pip install pdfminer.six
-pip install pypdf
+2026-04-21 21:19:31.385494: W scikitplot.corpus._readers._pdf 127489903582080 _pdf.py:521:get_raw_chunks] PDFReader: could not determine page count for https://iris.who.int/server/api/core/bitstreams/7ad66865-7f23-4485-8cf5-7b3d78bdf4f9/content. Attempting page-by-page extraction until first failure.
+  ✗ PDF report: Neither pdfminer.six nor pypdf is installed. Install at least one:
+  pip install pdfminer.six
+  pip install pypdf
 
 ```
 ```
@@ -533,7 +538,7 @@ for query, mode in queries:
         print("  (no results)")
     for i, res in enumerate(results):
         text_preview = res.doc.text[:90].replace("\n", " ")
-        src = res.doc.source_title or res.doc.source_file
+        src = res.doc.source_title or res.doc.input_path
         print(f"  [{i+1}] score={res.score:.4f}  src={src}")
         print(f"      {text_preview!r}…")
 
@@ -687,7 +692,7 @@ for i, line in enumerate(lines[:2]):
   ✓ 97 LangChain docs (dict fallback — langchain not installed)
     keys: ['page_content', 'metadata']
     page_content[:80]: 'Out-of-pocket payments for primary health care unaffordable for millions in Euro'
-    metadata keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'section_type', 'source_file', 'source_type']
+    metadata keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'input_path', 'section_type', 'source_type']
 
   --- 6b: LangGraph State ---
 
@@ -715,9 +720,9 @@ for i, line in enumerate(lines[:2]):
     isError: False
     content items: 3
     [text] text[:60]: 'Out-of-pocket payments for primary health care unaffordable '…
-         annotations: {'doc_id': '9432e3e0cdf3de0d', 'source_file': 'https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows', 'source_title': None, 'chunk_index': 0, 'score': None}
+         annotations: {'doc_id': '9432e3e0cdf3de0d', 'input_path': 'https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows', 'source_title': None, 'chunk_index': 0, 'score': None}
     [text] text[:60]: 'Regions WHO Regional websites Africa Americas South-East Asi'…
-         annotations: {'doc_id': 'd4100a2a7807259d', 'source_file': 'https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows', 'source_title': None, 'chunk_index': 2, 'score': None}
+         annotations: {'doc_id': 'd4100a2a7807259d', 'input_path': 'https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows', 'source_title': None, 'chunk_index': 2, 'score': None}
 
   --- 6e: MCP Server Adapter ---
 
@@ -736,26 +741,26 @@ for i, line in enumerate(lines[:2]):
   --- 6f: HuggingFace Dataset ---
 
   ✓ HuggingFace column dict (datasets lib not installed)
-    columns: ['chunk_index', 'doc_id', 'language', 'metadata_json', 'source_file', 'source_title', 'source_type', 'text']
+    columns: ['chunk_index', 'doc_id', 'input_path', 'language', 'metadata_json', 'source_title', 'source_type', 'text']
     rows: 97
 
   --- 6g: RAG Tuples (text, metadata, embedding) ---
 
   [0] text[:50]: 'Out-of-pocket payments for primary health care una'
-      meta keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'section_type']
+      meta keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'input_path']
       embedding: NoneType
   [1] text[:50]: 'Regions WHO Regional websites Africa Americas Sout'
-      meta keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'section_type']
+      meta keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'input_path']
       embedding: NoneType
   [2] text[:50]: 'Countries Albania Andorra Armenia Austria Azerbaij'
-      meta keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'section_type']
+      meta keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'input_path']
       embedding: NoneType
 
   --- 6h: JSONL Streaming ---
 
   ✓ 3 JSONL lines
-  [0] keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'section_type']…  text[:50]: 'Out-of-pocket payments for primary health care una'
-  [1] keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'section_type']…  text[:50]: 'Regions WHO Regional websites Africa Americas Sout'
+  [0] keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'input_path']…  text[:50]: 'Out-of-pocket payments for primary health care una'
+  [1] keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'input_path']…  text[:50]: 'Regions WHO Regional websites Africa Americas Sout'
 
 ```
 ```
@@ -1016,7 +1021,7 @@ print("  Pipeline complete. All 5 source types → unified corpus → any consum
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: bar](../../_tags/plot-type-bar.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 9.778 seconds)
+****Total running time of the script:**** (0 minutes 14.803 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_who_per_file_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_who_per_file_script.ipynb)
 
@@ -1040,10 +1045,10 @@ corpus WHO European Region local .zip with examples![](../../_images/sphx_glr_pl
 
 [corpus A Tale of Two Cities .mp3 with examples](plot_corpus_a_tale_of_two_cities_mp3_script.html)
 
-corpus A Tale of Two Cities .mp3 with examples![](../../_images/sphx_glr_plot_00_quickstart_compile_and_load_thumb.png)
+corpus A Tale of Two Cities .mp3 with examples![](../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png)
 
-[Cython quickstart: compile\_and\_load](../cython/plot_00_quickstart_compile_and_load.html)
+[corpus Knowledge and Information local .png with examples](plot_corpus_knowledge_script.html)
 
-Cython quickstart: compile\_and\_load
+corpus Knowledge and Information local .png with examples
 
 [Gallery generated by Sphinx-Gallery](https://sphinx-gallery.github.io)

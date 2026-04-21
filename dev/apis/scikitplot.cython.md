@@ -9,11 +9,11 @@ garbage collection, and templating support.
 low-level Cython packages and modules for immediate use and testing.
 
 > **See also**
-> * <https://github.com/cython/cython>
+> * [cython/cython](https://github.com/cython/cython)
 * <https://cython.readthedocs.io/en/latest/index.html>
 * <https://doc.sagemath.org/html/en/reference/misc/sage/misc/cython.html>
 
-****User guide.**** See the [PKG/MOD Realtime-Inplace Generation](../user_guide/cython/index.html#cython-index) section for further details.
+****User guide.**** See the [Instant PKG/MOD Generation](../user_guide/cython/index.html#cython-index) section for further details.
 
 ## PKG/MOD Builder[#](#pkg-mod-builder "Link to this heading")
 

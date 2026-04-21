@@ -211,7 +211,7 @@ it into Astropy:
 ## Do Not Create a Merge Commit[#](#do-not-create-a-merge-commit "Link to this heading")
 
 If your branch associated with the pull request falls behind the `main`
-branch of <https://github.com/astropy/astropy>, GitHub might offer you the option
+branch of [astropy/astropy](https://github.com/astropy/astropy), GitHub might offer you the option
 to catch up or resolve conflicts via its web interface, but do not use this. Using
 the web interface might create a “merge commit” in your commit history, which is
 undesirable, as a “merge commit” can introduce maintenance overhead for the

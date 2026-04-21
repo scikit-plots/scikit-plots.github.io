@@ -1,6 +1,6 @@
 # SentenceChunker[#](#sentencechunker "Link to this heading")
 
-class scikitplot.corpus.SentenceChunker(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_sentence.py#L384)[#](#scikitplot.corpus.SentenceChunker "Link to this definition")
+class scikitplot.corpus.SentenceChunker(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_sentence.py#L492)[#](#scikitplot.corpus.SentenceChunker "Link to this definition")
 :   Split a document into sentence-level `Chunk` objects.
 
     Parameters:
@@ -46,6 +46,8 @@ class scikitplot.corpus.SentenceChunker(**config=None**)[[source]](https://githu
 
     Examples
 
+    Try it in your browser!
+
     Default REGEX backend:
 
     ```
@@ -77,8 +79,9 @@ class scikitplot.corpus.SentenceChunker(**config=None**)[[source]](https://githu
     >>> chunker = SentenceChunker(cfg)
 
     ```
+    Go BackOpen In Tab
 
-    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_sentence.py#L553)[#](#scikitplot.corpus.SentenceChunker.chunk "Link to this definition")
+    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_sentence.py#L693)[#](#scikitplot.corpus.SentenceChunker.chunk "Link to this definition")
     :   Split **text** into sentence-level chunks.
 
         Parameters:
@@ -110,7 +113,7 @@ class scikitplot.corpus.SentenceChunker(**config=None**)[[source]](https://githu
         Return type:
         :   **ChunkResult**
 
-    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_sentence.py#L634)[#](#scikitplot.corpus.SentenceChunker.chunk_batch "Link to this definition")
+    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_sentence.py#L774)[#](#scikitplot.corpus.SentenceChunker.chunk_batch "Link to this definition")
     :   Chunk a list of documents.
 
         Parameters:

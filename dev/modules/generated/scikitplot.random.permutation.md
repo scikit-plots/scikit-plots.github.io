@@ -29,6 +29,7 @@ scikitplot.random.permutation(**self**, **x**, **axis=0**)[#](#scikitplot.random
 
     Examples
 
+    Try it in your browser!
     ```
     >>> gen = KissGenerator()
     >>> gen.permutation(10)  # Permuted [0, 1, ..., 9]
@@ -42,3 +43,4 @@ scikitplot.random.permutation(**self**, **x**, **axis=0**)[#](#scikitplot.random
     array([1, 2, 3, 4])
 
     ```
+    Go BackOpen In Tab

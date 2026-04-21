@@ -1,6 +1,6 @@
 # plot\_confusion\_matrix[#](#plot-confusion-matrix "Link to this heading")
 
-scikitplot.api.metrics.plot\_confusion\_matrix(**y\_true**, **y\_pred**, **\***, **labels=None**, **true\_labels=None**, **pred\_labels=None**, **normalize=False**, **hide\_zeros=False**, **hide\_counts=False**, **title=None**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **x\_tick\_rotation=0**, **cmap='Blues'**, **show\_colorbar=True**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/api/metrics/_classification/_confusion_matrix.py#L56)[#](#scikitplot.api.metrics.plot_confusion_matrix "Link to this definition")
+scikitplot.api.metrics.plot\_confusion\_matrix(**y\_true**, **y\_pred**, **\***, **labels=None**, **true\_labels=None**, **pred\_labels=None**, **normalize=False**, **hide\_zeros=False**, **hide\_counts=False**, **title=None**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **x\_tick\_rotation=0**, **cmap='Blues'**, **show\_colorbar=True**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/api/metrics/_classification/_confusion_matrix.py#L56)[#](#scikitplot.api.metrics.plot_confusion_matrix "Link to this definition")
 :   Generates a confusion matrix plot from predictions and true labels.
 
     The confusion matrix is a summary of prediction results that shows the counts of true
@@ -154,6 +154,7 @@ scikitplot.api.metrics.plot\_confusion\_matrix(**y\_true**, **y\_pred**, **\***,
 
     Examples
 
+    Try it in your browser!
     ```
     >>> from sklearn.datasets import load_digits as data_10_classes
     >>> from sklearn.model_selection import train_test_split
@@ -173,3 +174,4 @@ scikitplot.api.metrics.plot\_confusion\_matrix(**y\_true**, **y\_pred**, **\***,
     ([`Source code`](../../_downloads/59adc794d4ab495d22ba9511522b158a/scikitplot-api-metrics-plot_confusion_matrix-1.py), [`png`](../../_downloads/200f3145bbaf24595f743511ccd02b39/scikitplot-api-metrics-plot_confusion_matrix-1.png))
 
     ![Confusion Matrix](../../_images/scikitplot-api-metrics-plot_confusion_matrix-1.png)
+    Go BackOpen In Tab

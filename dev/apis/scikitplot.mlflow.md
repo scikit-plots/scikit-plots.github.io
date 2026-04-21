@@ -10,6 +10,8 @@ regardless of current working directory.
 
 Examples
 
+Try it in your browser!
+
 Quiskstart Template: Beginner workflow demo
 
 ```
@@ -40,6 +42,7 @@ CLI
 >>> python -m scikitplot.mlflow --profile local --open-ui-seconds 5
 
 ```
+Go BackOpen In Tab
 
 ****User guide.**** See the [MLflow Workflow Automation](../user_guide/mlflow/index.html#mlflow-index) section for further details.
 
@@ -132,6 +135,8 @@ the underlying mutable default private. Users should prefer:
 
 Examples
 
+Try it in your browser!
+
 Option A — temporary (best for automation pipelines)
 
 ```
@@ -163,6 +168,7 @@ Option C — config-driven (best for teams)
 >>> markers = ["pyproject.toml", ".git", "configs/mlflow.toml"]
 
 ```
+Go BackOpen In Tab
 
 ****User guide.**** See the [MLflow Workflow Automation](../user_guide/mlflow/index.html#mlflow-index) section for further details.
 

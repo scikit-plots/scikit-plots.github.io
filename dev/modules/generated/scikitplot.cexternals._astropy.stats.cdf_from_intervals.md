@@ -1,6 +1,6 @@
 # cdf\_from\_intervals[#](#cdf-from-intervals "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.cdf\_from\_intervals(**breaks**, **totals**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/cexternals/_astropy/stats/funcs.py#L1588)[#](#scikitplot.cexternals._astropy.stats.cdf_from_intervals "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.cdf\_from\_intervals(**breaks**, **totals**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cexternals/_astropy/stats/funcs.py#L1588)[#](#scikitplot.cexternals._astropy.stats.cdf_from_intervals "Link to this definition")
 :   Construct a callable piecewise-linear CDF from a pair of arrays.
 
     Take a pair of arrays in the format returned by fold\_intervals and

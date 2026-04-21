@@ -1,6 +1,6 @@
 # DedupLinesNormalizer[#](#deduplinesnormalizer "Link to this heading")
 
-class scikitplot.corpus.DedupLinesNormalizer(**ignore\_whitespace=True**, **min\_line\_length=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_normalizers/_normalizer.py#L422)[#](#scikitplot.corpus.DedupLinesNormalizer "Link to this definition")
+class scikitplot.corpus.DedupLinesNormalizer(**ignore\_whitespace=True**, **min\_line\_length=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_normalizers/_normalizer.py#L423)[#](#scikitplot.corpus.DedupLinesNormalizer "Link to this definition")
 :   Remove exact duplicate lines while preserving first-occurrence order.
 
     Useful for de-noising OCR output and web-scraped text which often
@@ -22,6 +22,7 @@ class scikitplot.corpus.DedupLinesNormalizer(**ignore\_whitespace=True**, **min\
 
     Examples
 
+    Try it in your browser!
     ```
     >>> norm = DedupLinesNormalizer()
     >>> doc = CorpusDocument.create("f.txt", 0, "Hello.\\nHello.\\nWorld.")
@@ -29,8 +30,9 @@ class scikitplot.corpus.DedupLinesNormalizer(**ignore\_whitespace=True**, **min\
     'Hello.\\nWorld.'
 
     ```
+    Go BackOpen In Tab
 
-    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_normalizers/_normalizer.py#L460)[#](#scikitplot.corpus.DedupLinesNormalizer.normalize_doc "Link to this definition")
+    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_normalizers/_normalizer.py#L461)[#](#scikitplot.corpus.DedupLinesNormalizer.normalize_doc "Link to this definition")
     :   Remove duplicate lines from the document text.
 
         Parameters:
@@ -40,7 +42,7 @@ class scikitplot.corpus.DedupLinesNormalizer(**ignore\_whitespace=True**, **min\
         :   CorpusDocument
 
         Parameters:
-        :   ****doc**** (**CorpusDocument**)
+        :   ****doc**** ([**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument"))
 
         Return type:
-        :   **CorpusDocument**
+        :   [**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")

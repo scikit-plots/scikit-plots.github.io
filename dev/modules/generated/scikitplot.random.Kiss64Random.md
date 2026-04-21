@@ -1,6 +1,6 @@
 # Kiss64Random[#](#kiss64random "Link to this heading")
 
-class scikitplot.random.Kiss64Random(**int seed: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/random/__init__.py#L)[#](#scikitplot.random.Kiss64Random "Link to this definition")
+class scikitplot.random.Kiss64Random(**int seed: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/random/__init__.py#L)[#](#scikitplot.random.Kiss64Random "Link to this definition")
 :   Low-level 64-bit KISS RNG with context manager support.
 
     This class provides direct access to the C++ Kiss64Random implementation.
@@ -57,6 +57,7 @@ class scikitplot.random.Kiss64Random(**int seed: [int](https://docs.python.org/3
 
     Examples
 
+    Try it in your browser!
     ```
     >>> rng = Kiss64Random(42)
     >>> rng.kiss()  # Random uint64
@@ -70,6 +71,7 @@ class scikitplot.random.Kiss64Random(**int seed: [int](https://docs.python.org/3
     >>> restored = pickle.loads(pickle.dumps(rng))
 
     ```
+    Go BackOpen In Tab
 
     default\_seed = 1234567890987654321[#](#scikitplot.random.Kiss64Random.default_seed "Link to this definition")
 
@@ -86,6 +88,7 @@ class scikitplot.random.Kiss64Random(**int seed: [int](https://docs.python.org/3
 
         Examples
 
+        Try it in your browser!
         ```
         >>> import json
         >>> rng = Kiss64Random(42)
@@ -94,6 +97,7 @@ class scikitplot.random.Kiss64Random(**int seed: [int](https://docs.python.org/3
         >>> restored = Kiss64Random.deserialize(data)
 
         ```
+        Go BackOpen In Tab
 
     flip(**self**) → [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.random.Kiss64Random.flip "Link to this definition")
     :   Generate random binary value (0 or 1).
@@ -120,6 +124,7 @@ class scikitplot.random.Kiss64Random(**int seed: [int](https://docs.python.org/3
 
         Examples
 
+        Try it in your browser!
         ```
         >>> rng = Kiss64Random(42)
         >>> params = rng.get_params()
@@ -127,6 +132,7 @@ class scikitplot.random.Kiss64Random(**int seed: [int](https://docs.python.org/3
         {'seed': 42}
 
         ```
+        Go BackOpen In Tab
 
     get\_state(**self**)[#](#scikitplot.random.Kiss64Random.get_state "Link to this definition")
     :   Get state dictionary.
@@ -137,6 +143,7 @@ class scikitplot.random.Kiss64Random(**int seed: [int](https://docs.python.org/3
 
         Examples
 
+        Try it in your browser!
         ```
         >>> rng = Kiss64Random(42)
         >>> state = rng.get_state()
@@ -144,6 +151,7 @@ class scikitplot.random.Kiss64Random(**int seed: [int](https://docs.python.org/3
         42
 
         ```
+        Go BackOpen In Tab
 
     index(**self**, **size\_t n**) → size\_t[#](#scikitplot.random.Kiss64Random.index "Link to this definition")
     :   Generate random index in range [0, n-1].
@@ -199,6 +207,7 @@ class scikitplot.random.Kiss64Random(**int seed: [int](https://docs.python.org/3
 
         Examples
 
+        Try it in your browser!
         ```
         >>> import json
         >>> rng = Kiss64Random(42)
@@ -206,6 +215,7 @@ class scikitplot.random.Kiss64Random(**int seed: [int](https://docs.python.org/3
         >>> json_str = json.dumps(data)
 
         ```
+        Go BackOpen In Tab
 
     set\_params(**self**, **\*\*params**)[#](#scikitplot.random.Kiss64Random.set_params "Link to this definition")
     :   Set parameters (sklearn-style).
@@ -220,6 +230,7 @@ class scikitplot.random.Kiss64Random(**int seed: [int](https://docs.python.org/3
 
         Examples
 
+        Try it in your browser!
         ```
         >>> rng = Kiss64Random(42)
         >>> rng.set_params(seed=123)
@@ -227,6 +238,7 @@ class scikitplot.random.Kiss64Random(**int seed: [int](https://docs.python.org/3
         123
 
         ```
+        Go BackOpen In Tab
 
     set\_seed(**self**, **int seed: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.random.Kiss64Random.set_seed "Link to this definition")
     :   Set new seed (alias for reset).
@@ -246,6 +258,7 @@ class scikitplot.random.Kiss64Random(**int seed: [int](https://docs.python.org/3
 
         Examples
 
+        Try it in your browser!
         ```
         >>> rng1 = Kiss64Random(42)
         >>> state = rng1.get_state()
@@ -253,6 +266,7 @@ class scikitplot.random.Kiss64Random(**int seed: [int](https://docs.python.org/3
         >>> rng2.set_state(state)
 
         ```
+        Go BackOpen In Tab
 
     to\_dict(**self**)[#](#scikitplot.random.Kiss64Random.to_dict "Link to this definition")
     :   Alias for serialize().

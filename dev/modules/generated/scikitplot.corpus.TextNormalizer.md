@@ -1,8 +1,8 @@
 # TextNormalizer[#](#textnormalizer "Link to this heading")
 
-class scikitplot.corpus.TextNormalizer(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_normalizers/_text_normalizer.py#L296)[#](#scikitplot.corpus.TextNormalizer "Link to this definition")
+class scikitplot.corpus.TextNormalizer(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_normalizers/_text_normalizer.py#L296)[#](#scikitplot.corpus.TextNormalizer "Link to this definition")
 :   Pipeline component that populates `normalized_text` on
-    `CorpusDocument` instances.
+    [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument") instances.
 
     Parameters:
     :   ****config****NormalizerConfig or None, optional
@@ -12,7 +12,7 @@ class scikitplot.corpus.TextNormalizer(**config=None**)[[source]](https://github
     :   ****config**** ([**NormalizerConfig**](scikitplot.corpus.NormalizerConfig.html#scikitplot.corpus.NormalizerConfig "scikitplot.corpus.NormalizerConfig") **|** **None**)
 
     > **See also**
-    > `scikitplot.corpus._schema.CorpusDocument`
+    > [`scikitplot.corpus._schema.CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
     :   The normalised `normalized_text` field.
 
     [`scikitplot.corpus._enrichers._nlp_enricher.NLPEnricher`](scikitplot.corpus.NLPEnricher.html#scikitplot.corpus.NLPEnricher "scikitplot.corpus._enrichers._nlp_enricher.NLPEnricher")
@@ -37,6 +37,7 @@ class scikitplot.corpus.TextNormalizer(**config=None**)[[source]](https://github
 
     Examples
 
+    Try it in your browser!
     ```
     >>> from scikitplot.corpus._normalizers._text_normalizer import (
     ...     TextNormalizer,
@@ -47,8 +48,9 @@ class scikitplot.corpus.TextNormalizer(**config=None**)[[source]](https://github
     >>> # docs[0].normalized_text == "The first computer."
 
     ```
+    Go BackOpen In Tab
 
-    normalize(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_normalizers/_text_normalizer.py#L343)[#](#scikitplot.corpus.TextNormalizer.normalize "Link to this definition")
+    normalize(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_normalizers/_text_normalizer.py#L343)[#](#scikitplot.corpus.TextNormalizer.normalize "Link to this definition")
     :   Normalise a single string using only the steps in `config.steps`.
 
         Unlike [`normalize_text`](scikitplot.corpus.normalize_text.html#scikitplot.corpus.normalize_text "scikitplot.corpus.normalize_text"), this method:
@@ -76,6 +78,7 @@ class scikitplot.corpus.TextNormalizer(**config=None**)[[source]](https://github
 
         Examples
 
+        Try it in your browser!
         ```
         >>> n = TextNormalizer(NormalizerConfig(steps=["unicode"]))
         >>> "\\ufb01" not in n.normalize("fi\\ufb01rst")
@@ -87,8 +90,9 @@ class scikitplot.corpus.TextNormalizer(**config=None**)[[source]](https://github
         ''
 
         ```
+        Go BackOpen In Tab
 
-    normalize\_documents(**documents**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_normalizers/_text_normalizer.py#L406)[#](#scikitplot.corpus.TextNormalizer.normalize_documents "Link to this definition")
+    normalize\_documents(**documents**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_normalizers/_text_normalizer.py#L406)[#](#scikitplot.corpus.TextNormalizer.normalize_documents "Link to this definition")
     :   Normalise text for a batch of `CorpusDocument` instances.
 
         Parameters:

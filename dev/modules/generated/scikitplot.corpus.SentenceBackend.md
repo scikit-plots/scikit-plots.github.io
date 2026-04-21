@@ -1,13 +1,35 @@
 # SentenceBackend[#](#sentencebackend "Link to this heading")
 
-class scikitplot.corpus.SentenceBackend(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_sentence.py#L147)[#](#scikitplot.corpus.SentenceBackend "Link to this definition")
+class scikitplot.corpus.SentenceBackend(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_sentence.py#L164)[#](#scikitplot.corpus.SentenceBackend "Link to this definition")
 :   Supported sentence-splitting backends.
 
-    NLTK = 'nltk'[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_sentence.py#L)[#](#scikitplot.corpus.SentenceBackend.NLTK "Link to this definition")
+    Attributes:
+    :   ****REGEX****
+        :   Pure-Python regex heuristics. No external dependencies.
+            Latin-optimised by default; set `script_hint` to enable
+            multi-script boundary patterns.
 
-    REGEX = 'regex'[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_sentence.py#L)[#](#scikitplot.corpus.SentenceBackend.REGEX "Link to this definition")
+        ****NLTK****
+        :   NLTK Punkt sentence tokenizer. Supports many Latin-script
+            languages via the `nltk_language` parameter.
 
-    SPACY = 'spacy'[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_chunkers/_sentence.py#L)[#](#scikitplot.corpus.SentenceBackend.SPACY "Link to this definition")
+        ****SPACY****
+        :   spaCy sentence segmentation pipeline (`senter` component).
+            Language depends on loaded model (`spacy_model` parameter).
+
+        ****CUSTOM****
+        :   User-supplied [`SentenceSplitterProtocol`](scikitplot.corpus.SentenceSplitterProtocol.html#scikitplot.corpus.SentenceSplitterProtocol "scikitplot.corpus._chunkers._custom_tokenizer.SentenceSplitterProtocol")
+            or `Callable[[str], list[str]]` stored in
+            [`SentenceChunkerConfig.custom_splitter`](scikitplot.corpus.SentenceChunkerConfig.html#scikitplot.corpus.SentenceChunkerConfig.custom_splitter "scikitplot.corpus.SentenceChunkerConfig.custom_splitter"). Use PySBD,
+            CAMeL Tools, Stanza, or any custom segmenter.
+
+    CUSTOM = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_sentence.py#L)[#](#scikitplot.corpus.SentenceBackend.CUSTOM "Link to this definition")
+
+    NLTK = 'nltk'[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_sentence.py#L)[#](#scikitplot.corpus.SentenceBackend.NLTK "Link to this definition")
+
+    REGEX = 'regex'[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_sentence.py#L)[#](#scikitplot.corpus.SentenceBackend.REGEX "Link to this definition")
+
+    SPACY = 'spacy'[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_sentence.py#L)[#](#scikitplot.corpus.SentenceBackend.SPACY "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.corpus.SentenceBackend.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

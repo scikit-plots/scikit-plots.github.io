@@ -1,6 +1,6 @@
 # binom\_conf\_interval[#](#binom-conf-interval "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.binom\_conf\_interval(**k**, **n**, **confidence\_level=0.68269**, **interval='wilson'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/cexternals/_astropy/stats/funcs.py#L64)[#](#scikitplot.cexternals._astropy.stats.binom_conf_interval "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.binom\_conf\_interval(**k**, **n**, **confidence\_level=0.68269**, **interval='wilson'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cexternals/_astropy/stats/funcs.py#L64)[#](#scikitplot.cexternals._astropy.stats.binom_conf_interval "Link to this definition")
 :   Binomial proportion confidence interval given k successes,
     n trials.
 
@@ -138,6 +138,8 @@ scikitplot.cexternals.\_astropy.stats.binom\_conf\_interval(**k**, **n**, **conf
 
     Examples
 
+    Try it in your browser!
+
     Integer inputs return an array with shape (2,):
 
     ```
@@ -187,3 +189,4 @@ scikitplot.cexternals.\_astropy.stats.binom\_conf\_interval(**k**, **n**, **conf
            [ 0.66077835,  0.96433593]])
 
     ```
+    Go BackOpen In Tab

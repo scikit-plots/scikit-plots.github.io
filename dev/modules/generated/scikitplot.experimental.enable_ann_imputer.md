@@ -10,6 +10,8 @@ as an attribute of the impute module.
 
 Examples
 
+Try it in your browser!
+
 Explicitly require this experimental feature
 
 ```
@@ -23,3 +25,4 @@ Now you can import normally from impute
 >>> from scikitplot.impute import ANNImputer
 
 ```
+Go BackOpen In Tab

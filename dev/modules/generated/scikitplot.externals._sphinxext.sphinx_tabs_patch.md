@@ -22,9 +22,11 @@ Notes
   `attrs.pop('backrefs', None)` (or remove local attributes generically).
 * This shim is safe because it only adds a missing key or normalizes an
   invalid value for a docutils-internal attribute.
-* <https://github.com/executablebooks/sphinx-tabs/pull/207>
+* [executablebooks/sphinx-tabs#207](https://github.com/executablebooks/sphinx-tabs/pull/207)
 
 Examples
+
+Try it in your browser!
 
 1. Place this file at `docs/source/_sphinx_ext/sphinx_tabs_patch.py`.
 2. In `conf.py`:
@@ -46,3 +48,5 @@ Examples
 3. Rebuild:
 
 $ make clean html
+
+Go BackOpen In Tab

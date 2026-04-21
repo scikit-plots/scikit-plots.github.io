@@ -1,6 +1,6 @@
 # plot\_waveform[#](#plot-waveform "Link to this heading")
 
-scikitplot.experimental.\_doremi.plot\_waveform(**data**, **sample\_rate=None**, **normalize=False**, **title='Audio Waveform (Normalized 440Hz Tone)'**, **figsize=(10, 4)**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/experimental/_doremi/waveform_viz.py#L23)[#](#scikitplot.experimental._doremi.plot_waveform "Link to this definition")
+scikitplot.experimental.\_doremi.plot\_waveform(**data**, **sample\_rate=None**, **normalize=False**, **title='Audio Waveform (Normalized 440Hz Tone)'**, **figsize=(10, 4)**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/experimental/_doremi/waveform_viz.py#L23)[#](#scikitplot.experimental._doremi.plot_waveform "Link to this definition")
 :   Plot the waveform of mono or multi-channel audio data.
 
     Parameters:
@@ -37,6 +37,7 @@ scikitplot.experimental.\_doremi.plot\_waveform(**data**, **sample\_rate=None**,
 
     Examples
 
+    Try it in your browser!
     ```
     >>> t = np.linspace(0, 1, 44100)
     >>> data = 0.5 * np.sin(2 * np.pi * 440 * t)
@@ -124,5 +125,6 @@ scikitplot.experimental.\_doremi.plot\_waveform(**data**, **sample\_rate=None**,
     >>> # doremi.save_waveform(music)
 
     ```
+    Go BackOpen In Tab
 
 Make live

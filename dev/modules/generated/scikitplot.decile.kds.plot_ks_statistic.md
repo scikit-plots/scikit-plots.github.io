@@ -1,6 +1,6 @@
 # plot\_ks\_statistic[#](#plot-ks-statistic "Link to this heading")
 
-scikitplot.decile.kds.plot\_ks\_statistic(**y\_true**, **y\_score**, **\***, **pos\_label=None**, **class\_index=1**, **title='KS Statistic Plot'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **digits=2**, **data=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/decile/kds/_kds.py#L756)[#](#scikitplot.decile.kds.plot_ks_statistic "Link to this definition")
+scikitplot.decile.kds.plot\_ks\_statistic(**y\_true**, **y\_score**, **\***, **pos\_label=None**, **class\_index=1**, **title='KS Statistic Plot'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **digits=2**, **data=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/decile/kds/_kds.py#L756)[#](#scikitplot.decile.kds.plot_ks_statistic "Link to this definition")
 :   Generate the KS Statistic Plot from labels and probabilities.
 
     Kolmogorov-Smirnov (KS) statistic is used to measure how well the
@@ -142,10 +142,11 @@ scikitplot.decile.kds.plot\_ks\_statistic(**y\_true**, **y\_score**, **\***, **p
 
     References
 
-    [1] <https://github.com/tensorbored/kds/blob/master/kds/metrics.py#L382>
+    [1] [tensorbored/kds](https://github.com/tensorbored/kds/blob/master/kds/metrics.py#L382)
 
     Examples
 
+    Try it in your browser!
     ```
     >>> from sklearn.datasets import (
     ...     load_breast_cancer as data_2_classes,
@@ -172,6 +173,7 @@ scikitplot.decile.kds.plot\_ks\_statistic(**y\_true**, **y\_score**, **\***, **p
     ([`Source code`](../../_downloads/71753a436f977b34d3021b0cc738bbaa/scikitplot-decile-kds-plot_ks_statistic-1.py), [`png`](../../_downloads/6d3ad4a536e051cf73a386701fc0280b/scikitplot-decile-kds-plot_ks_statistic-1.png))
 
     ![KS Statistic Plot](../../_images/scikitplot-decile-kds-plot_ks_statistic-1.png)
+    Go BackOpen In Tab
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

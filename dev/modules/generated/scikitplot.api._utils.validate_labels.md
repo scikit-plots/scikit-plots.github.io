@@ -1,6 +1,6 @@
 # validate\_labels[#](#validate-labels "Link to this heading")
 
-scikitplot.api.\_utils.validate\_labels(**known\_classes**, **passed\_labels**, **argument\_name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/api/_utils/_helpers.py#L22)[#](#scikitplot.api._utils.validate_labels "Link to this definition")
+scikitplot.api.\_utils.validate\_labels(**known\_classes**, **passed\_labels**, **argument\_name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/api/_utils/_helpers.py#L22)[#](#scikitplot.api._utils.validate_labels "Link to this definition")
 :   Validates the labels passed into arguments such as `true_labels` or `pred_labels`
     in functions like `plot_confusion_matrix`.
 
@@ -24,6 +24,7 @@ scikitplot.api.\_utils.validate\_labels(**known\_classes**, **passed\_labels**, 
 
     Examples
 
+    Try it in your browser!
     ```
     >>> known_classes = ['A', 'B', 'C']
     >>> passed_labels = ['A', 'B']
@@ -31,3 +32,4 @@ scikitplot.api.\_utils.validate\_labels(**known\_classes**, **passed\_labels**, 
     >>> sp.api._utils.validate_labels(known_classes, passed_labels, 'true_labels')
 
     ```
+    Go BackOpen In Tab

@@ -5,7 +5,7 @@
 This module contains functions related to [`_probscale`](../../../apis/scikitplot.externals.html#module-scikitplot.externals._probscale "scikitplot.externals._probscale").
 
 > **See also**
-> * <https://github.com/matplotlib/mpl-probscale>
+> * [matplotlib/mpl-probscale](https://github.com/matplotlib/mpl-probscale)
 * <https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.probplot.html>
 * <https://www.statsmodels.org/stable/generated/statsmodels.graphics.gofplots.ProbPlot.html>
 > **Note**

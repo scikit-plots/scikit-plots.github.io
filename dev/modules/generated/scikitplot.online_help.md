@@ -1,6 +1,6 @@
 # online\_help[#](#online-help "Link to this heading")
 
-scikitplot.online\_help(**query=''**, **docs\_root\_url='https://scikit-plots.github.io/'**, **search\_page='search.html'**, **new\_window=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/__init__.py#L447)[#](#scikitplot.online_help "Link to this definition")
+scikitplot.online\_help(**query=''**, **docs\_root\_url='https://scikit-plots.github.io/'**, **search\_page='search.html'**, **new\_window=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/__init__.py#L452)[#](#scikitplot.online_help "Link to this definition")
 :   Open the online documentation search page in the default web browser.
 
     Parameters:
@@ -50,9 +50,11 @@ scikitplot.online\_help(**query=''**, **docs\_root\_url='https://scikit-plots.gi
 
     Examples
 
+    Try it in your browser!
     ```
     >>> import scikitplot
     >>> scikitplot.online_help("installation")
     https://scikit-plots.github.io/dev/search.html?q=installation
 
     ```
+    Go BackOpen In Tab

@@ -1,6 +1,6 @@
 # probplot[#](#probplot "Link to this heading")
 
-scikitplot.externals.\_probscale.probplot(**data**, **ax=None**, **plottype='prob'**, **dist=None**, **probax='x'**, **problabel=None**, **datascale='linear'**, **datalabel=None**, **bestfit=False**, **return\_best\_fit\_results=False**, **estimate\_ci=False**, **ci\_kws=None**, **pp\_kws=None**, **scatter\_kws=None**, **line\_kws=None**, **\*\*fgkwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/externals/_probscale/viz.py#L13)[#](#scikitplot.externals._probscale.probplot "Link to this definition")
+scikitplot.externals.\_probscale.probplot(**data**, **ax=None**, **plottype='prob'**, **dist=None**, **probax='x'**, **problabel=None**, **datascale='linear'**, **datalabel=None**, **bestfit=False**, **return\_best\_fit\_results=False**, **estimate\_ci=False**, **ci\_kws=None**, **pp\_kws=None**, **scatter\_kws=None**, **line\_kws=None**, **\*\*fgkwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/externals/_probscale/viz.py#L13)[#](#scikitplot.externals._probscale.probplot "Link to this definition")
 :   Probability, percentile, and quantile plots.
 
     Parameters:
@@ -110,6 +110,8 @@ scikitplot.externals.\_probscale.probplot(**data**, **ax=None**, **plottype='pro
 
     Examples
 
+    Try it in your browser!
+
     Probability plot with the probabilities on the y-axis
 
     ```
@@ -158,3 +160,4 @@ scikitplot.externals.\_probscale.probplot(**data**, **ax=None**, **plottype='pro
     ([`Source code`](../../_downloads/cdb4060c483ab3fa5d1fe8434135f598/scikitplot-externals-_probscale-probplot-2.py), [`png`](../../_downloads/2591fa093aef08a317476df0a53f801d/scikitplot-externals-_probscale-probplot-2.png))
 
     ![Probplot quantiles](../../_images/scikitplot-externals-_probscale-probplot-2.png)
+    Go BackOpen In Tab

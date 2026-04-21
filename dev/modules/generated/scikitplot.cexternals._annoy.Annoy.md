@@ -1,6 +1,6 @@
 # Annoy[#](#annoy "Link to this heading")
 
-class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/cexternals/_annoy/__init__.py#L)[#](#scikitplot.cexternals._annoy.Annoy "Link to this definition")
+class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cexternals/_annoy/__init__.py#L)[#](#scikitplot.cexternals._annoy.Annoy "Link to this definition")
 :   Compiled with GCC/Clang. Using 512-bit AVX instructions.
 
     Approximate Nearest Neighbors index (Annoy) with a small, lazy C-extension wrapper.
@@ -203,6 +203,7 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
 
     Examples
 
+    Try it in your browser!
     ```
     >>> from annoy import Annoy, AnnoyIndex
 
@@ -315,6 +316,8 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
     You can release OS resources with [`unload`](#scikitplot.cexternals._annoy.Annoy.unload "scikitplot.cexternals._annoy.Annoy.unload") and drop the
     current forest with [`unbuild`](#scikitplot.cexternals._annoy.Annoy.unbuild "scikitplot.cexternals._annoy.Annoy.unbuild").
 
+    Go BackOpen In Tab
+
     add\_item(**i**, **vector**)[#](#scikitplot.cexternals._annoy.Annoy.add_item "Link to this definition")
     :   Add a single embedding vector to the index.
 
@@ -349,6 +352,7 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
 
         Examples
 
+        Try it in your browser!
         ```
         >>> import random
         >>> from scikitplot.cexternals._annoy import Annoy, AnnoyIndex
@@ -362,6 +366,7 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
         ...    idx.add_item(i, v)
 
         ```
+        Go BackOpen In Tab
 
     build(**n\_trees=-1**, **n\_jobs=-1**)[#](#scikitplot.cexternals._annoy.Annoy.build "Link to this definition")
     :   Build a forest of random projection trees.
@@ -424,6 +429,7 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
 
         Examples
 
+        Try it in your browser!
         ```
         >>> import random
         >>> from scikitplot.cexternals._annoy import Annoy, AnnoyIndex
@@ -438,6 +444,7 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
         >>> idx.build(10)
 
         ```
+        Go BackOpen In Tab
 
     deserialize(**byte**, **prefault=None**)[#](#scikitplot.cexternals._annoy.Annoy.deserialize "Link to this definition")
     :   Restore the index from a serialized byte string.
@@ -579,6 +586,7 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
 
         Examples
 
+        Try it in your browser!
         ```
         >>> import random
         >>> from scikitplot.cexternals._annoy import Annoy, AnnoyIndex
@@ -597,6 +605,7 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
         ...     print(m, idx_m.transform(q))  # no .fit(X) here
 
         ```
+        Go BackOpen In Tab
 
     fit\_transform(**X**, **y=None**, **\***, **y\_map=None**, **n\_trees=-1**, **n\_jobs=-1**, **reset=True**, **start\_index=None**, **missing\_value=None**, **feature\_names=None**, **n\_neighbors=None**, **search\_k=-1**, **include\_distances=False**, **return\_labels=False**, **y\_fill\_value=None**)[#](#scikitplot.cexternals._annoy.Annoy.fit_transform "Link to this definition")
     :   Fit the index and transform X in a single deterministic call.
@@ -637,6 +646,7 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
 
         Examples
 
+        Try it in your browser!
         ```
         >>> import random
         >>> from scikitplot.cexternals._annoy import Annoy, AnnoyIndex
@@ -649,6 +659,7 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
         ...     print(m, AnnoyIndex().set_params(metric=m).fit_transform(q))
 
         ```
+        Go BackOpen In Tab
 
     get\_distance(**i**, **j**) → [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")[#](#scikitplot.cexternals._annoy.Annoy.get_distance "Link to this definition")
     :   Return the distance between two stored items.
@@ -905,6 +916,7 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
 
         Examples
 
+        Try it in your browser!
         ```
         >>> info = idx.info()
         >>> info['f']
@@ -913,6 +925,7 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
         1000
 
         ```
+        Go BackOpen In Tab
 
     load(**fn**, **prefault=None**)[#](#scikitplot.cexternals._annoy.Annoy.load "Link to this definition")
     :   Load (mmap) an index from disk into the current object.
@@ -1447,6 +1460,8 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
 
         Examples
 
+        Try it in your browser!
+
         Item queries (exclude the query id itself):
 
         ```
@@ -1467,6 +1482,7 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
         >>> idx.transform([10], input_type='item', output_type='vector', n_neighbors=5, exclude_self=True)
 
         ```
+        Go BackOpen In Tab
 
     unbuild()[#](#scikitplot.cexternals._annoy.Annoy.unbuild "Link to this definition")
     :   Discard the current forest, allowing new items to be added.

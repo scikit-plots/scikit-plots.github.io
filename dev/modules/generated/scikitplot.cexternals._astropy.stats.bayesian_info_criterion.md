@@ -1,6 +1,6 @@
 # bayesian\_info\_criterion[#](#bayesian-info-criterion "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.bayesian\_info\_criterion(**log\_likelihood**, **n\_params**, **n\_samples**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/cexternals/_astropy/stats/info_theory.py#L24)[#](#scikitplot.cexternals._astropy.stats.bayesian_info_criterion "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.bayesian\_info\_criterion(**log\_likelihood**, **n\_params**, **n\_samples**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cexternals/_astropy/stats/info_theory.py#L24)[#](#scikitplot.cexternals._astropy.stats.bayesian_info_criterion "Link to this definition")
 :   Computes the Bayesian Information Criterion (BIC) given the log of the
     likelihood function evaluated at the estimated (or analytically derived)
     parameters, the number of parameters, and the number of samples.
@@ -96,6 +96,8 @@ scikitplot.cexternals.\_astropy.stats.bayesian\_info\_criterion(**log\_likelihoo
 
     Examples
 
+    Try it in your browser!
+
     The following example was originally presented in [[1]](#r0c3d5800687d-1). Consider a
     Gaussian model (mu, sigma) and a t-Student model (mu, sigma, delta).
     In addition, assume that the t model has presented a higher likelihood.
@@ -118,3 +120,5 @@ scikitplot.cexternals.\_astropy.stats.bayesian\_info\_criterion(**log\_likelihoo
 
     Therefore, there exist a moderate evidence that the increasing in
     likelihood for t-Student model is due to the larger number of parameters.
+
+    Go BackOpen In Tab

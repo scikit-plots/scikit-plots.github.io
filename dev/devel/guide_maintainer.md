@@ -31,11 +31,11 @@ Preparation
 Permissions
 
 * The release manager must be a ****maintainer**** of the
-  <https://github.com/scikit-learn/scikit-learn> repository to be able to publish on
+  [scikit-learn/scikit-learn](https://github.com/scikit-learn/scikit-learn) repository to be able to publish on
   `pypi.org` and `test.pypi.org` (via a manual trigger of a dedicated Github Actions
   workflow).
 * The release manager must be a ****maintainer**** of the
-  <https://github.com/conda-forge/scikit-learn-feedstock> repository to be able to publish
+  [conda-forge/scikit-learn-feedstock](https://github.com/conda-forge/scikit-learn-feedstock) repository to be able to publish
   on `conda-forge`. This can be changed by editing the `recipe/meta.yaml` file in the
   first release pull request.
 
@@ -132,7 +132,7 @@ and bug fixes. Any major enhancement or new feature should be excluded.
   tag because it will automatically send notifications to all users that follow
   the repo even though the website isn’t updated and wheels aren’t uploaded yet.
 * Confirm that the bot has detected the tag on the conda-forge feedstock repository
-  <https://github.com/conda-forge/scikit-learn-feedstock>. If not, submit a PR for the
+  [conda-forge/scikit-learn-feedstock](https://github.com/conda-forge/scikit-learn-feedstock). If not, submit a PR for the
   release, targeting the `rc` branch.
 * Trigger the [PyPI publishing workflow](https://github.com/scikit-learn/scikit-learn/actions/workflows/publish_pypi.yml)
   again, but this time to upload the artifacts to the real <https://pypi.org/>. To do
@@ -269,7 +269,7 @@ Suppose that we are preparing the release `0.5.0`.
   tag because it will automatically send notifications to all users that follow
   the repo even though the website isn’t updated and wheels aren’t uploaded yet.
 * Confirm that the bot has detected the tag on the conda-forge feedstock repository
-  <https://github.com/conda-forge/scikit-learn-feedstock>. If not, submit a PR for the
+  [conda-forge/scikit-learn-feedstock](https://github.com/conda-forge/scikit-learn-feedstock). If not, submit a PR for the
   release, targeting the `main` branch.
 * Trigger the [PyPI publishing workflow](https://github.com/scikit-learn/scikit-learn/actions/workflows/publish_pypi.yml)
   again, but this time to upload the artifacts to the real <https://pypi.org/>. To do
@@ -350,7 +350,7 @@ Suppose that we are preparing the release `0.5.0`.
   the “On-going development” entry.
   Then cherry-pick it in the release branch.
 * Update the symlink for `stable` and the `latestStable` variable in
-  `versionwarning.js` in <https://github.com/scikit-learn/scikit-learn.github.io>.
+  `versionwarning.js` in [scikit-learn/scikit-learn.github.io](https://github.com/scikit-learn/scikit-learn.github.io).
 
   ```
   cd /tmp
@@ -366,7 +366,7 @@ Suppose that we are preparing the release `0.5.0`.
   git push origin main
 
   ```
-* Publish the release at <https://github.com/scikit-learn/scikit-learn/releases> and
+* Publish the release at [scikit-learn/scikit-learn](https://github.com/scikit-learn/scikit-learn/releases) and
   announce it on the mailing list and social networks. Remember to add a link to the
   changelog in the release note. Ideally, only perform this step once the package
   is available both on PyPI and conda-forge and once the website is up to date.
@@ -466,7 +466,7 @@ Suppose that we are preparing the release `0.4.1`.
   tag because it will automatically send notifications to all users that follow
   the repo even though the website isn’t updated and wheels aren’t uploaded yet.
 * Confirm that the bot has detected the tag on the conda-forge feedstock repository
-  <https://github.com/conda-forge/scikit-learn-feedstock>. If not, submit a PR for the
+  [conda-forge/scikit-learn-feedstock](https://github.com/conda-forge/scikit-learn-feedstock). If not, submit a PR for the
   release, targeting the `main` branch.
 * Trigger the [PyPI publishing workflow](https://github.com/scikit-learn/scikit-learn/actions/workflows/publish_pypi.yml)
   again, but this time to upload the artifacts to the real <https://pypi.org/>. To do
@@ -544,7 +544,7 @@ Suppose that we are preparing the release `0.4.1`.
 * In the `main` branch, edit `doc/templates/index.html` to change the “News” section
   in the landing page, along with the month of the release.
   Then cherry-pick it in the release branch.
-* Publish the release at <https://github.com/scikit-learn/scikit-learn/releases> and
+* Publish the release at [scikit-learn/scikit-learn](https://github.com/scikit-learn/scikit-learn/releases) and
   announce it on the mailing list and social networks. Remember to add a link to the
   changelog in the release note. Ideally, only perform this step once the package
   is available both on PyPI and conda-forge and once the website is up to date.
@@ -579,7 +579,7 @@ Individual commits are squashed when a PR is merged on GitHub. Before merging:
 
 The scikit-learn website (<https://scikit-learn.org>) is hosted on GitHub, but should
 rarely be updated manually by pushing to the
-<https://github.com/scikit-learn/scikit-learn.github.io> repository. Most updates can be
+[scikit-learn/scikit-learn.github.io](https://github.com/scikit-learn/scikit-learn.github.io) repository. Most updates can be
 made by pushing to `main` (for `/dev`) or a release branch `A.B.X`, from which Circle CI
 builds and uploads the documentation automatically.
 

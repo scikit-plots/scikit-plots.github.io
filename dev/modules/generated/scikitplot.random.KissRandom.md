@@ -41,6 +41,7 @@ scikitplot.random.KissRandom(**seed=None**, **bit\_width=None**)[#](#scikitplot.
 
     Examples
 
+    Try it in your browser!
     ```
     >>> rng = KissRandom(42)  # Auto-detect
     >>> rng = KissRandom(42, bit_width=32)  # Force 32-bit
@@ -48,3 +49,4 @@ scikitplot.random.KissRandom(**seed=None**, **bit\_width=None**)[#](#scikitplot.
     >>> rng = KissRandom(42, bit_width=None)  # Auto-detect
 
     ```
+    Go BackOpen In Tab

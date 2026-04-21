@@ -1,6 +1,6 @@
 # export\_documents[#](#export-documents "Link to this heading")
 
-scikitplot.corpus.export\_documents(**documents**, **output\_path**, **fmt**, **\***, **include\_embedding=True**, **json\_indent=2**, **parquet\_compression='snappy'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_export/_export.py#L115)[#](#scikitplot.corpus.export_documents "Link to this definition")
+scikitplot.corpus.export\_documents(**documents**, **output\_path**, **fmt**, **\***, **include\_embedding=True**, **json\_indent=2**, **parquet\_compression='snappy'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_export/_export.py#L115)[#](#scikitplot.corpus.export_documents "Link to this definition")
 :   Export a list of documents to `output_path` in the given format.
 
     Parameters:
@@ -39,7 +39,7 @@ scikitplot.corpus.export\_documents(**documents**, **output\_path**, **fmt**, **
 
     Raises:
     :   ValueError
-        :   If `fmt` is `ExportFormat.NUMPY` and no documents have
+        :   If `fmt` is [`ExportFormat.NUMPY`](scikitplot.corpus.ExportFormat.html#scikitplot.corpus.ExportFormat.NUMPY "scikitplot.corpus.ExportFormat.NUMPY") and no documents have
             embeddings, or if the embedding dimensions are inconsistent.
 
         ImportError
@@ -50,9 +50,9 @@ scikitplot.corpus.export\_documents(**documents**, **output\_path**, **fmt**, **
             written.
 
     Parameters:
-    :   * ****documents**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[****CorpusDocument****]**)
+    :   * ****documents**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")**]**)
         * ****output\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
-        * ****fmt**** (**ExportFormat**)
+        * ****fmt**** ([**ExportFormat**](scikitplot.corpus.ExportFormat.html#scikitplot.corpus.ExportFormat "scikitplot.corpus._schema.ExportFormat"))
         * ****include\_embedding**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
         * ****json\_indent**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
         * ****parquet\_compression**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
@@ -61,7 +61,7 @@ scikitplot.corpus.export\_documents(**documents**, **output\_path**, **fmt**, **
     :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")
 
     > **See also**
-    > `scikitplot.corpus._schema.ExportFormat`
+    > [`scikitplot.corpus._schema.ExportFormat`](scikitplot.corpus.ExportFormat.html#scikitplot.corpus.ExportFormat "scikitplot.corpus._schema.ExportFormat")
     :   Enumeration of all formats.
 
     Notes
@@ -75,6 +75,8 @@ scikitplot.corpus.export\_documents(**documents**, **output\_path**, **fmt**, **
     impractical. Use PICKLE, JOBLIB, or NUMPY to preserve embeddings.
 
     Examples
+
+    Try it in your browser!
 
     CSV export (zero dependencies):
 
@@ -104,3 +106,4 @@ scikitplot.corpus.export\_documents(**documents**, **output\_path**, **fmt**, **
     PosixPath('embeddings.npy')
 
     ```
+    Go BackOpen In Tab

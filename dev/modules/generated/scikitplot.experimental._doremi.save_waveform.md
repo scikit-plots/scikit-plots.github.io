@@ -1,6 +1,6 @@
 # save\_waveform[#](#save-waveform "Link to this heading")
 
-scikitplot.experimental.\_doremi.save\_waveform(**waveform**, **file\_path='output.wav'**, **ext=None**, **sample\_rate=44100**, **backend=None**, **dtype='float32'**, **normalize=True**, **stereo\_out=True**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/experimental/_doremi/note_io.py#L39)[#](#scikitplot.experimental._doremi.save_waveform "Link to this definition")
+scikitplot.experimental.\_doremi.save\_waveform(**waveform**, **file\_path='output.wav'**, **ext=None**, **sample\_rate=44100**, **backend=None**, **dtype='float32'**, **normalize=True**, **stereo\_out=True**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/experimental/_doremi/note_io.py#L39)[#](#scikitplot.experimental._doremi.save_waveform "Link to this definition")
 :   Save waveform to an audio file using specified or auto-selected backend.
 
     Parameters:
@@ -70,9 +70,11 @@ scikitplot.experimental.\_doremi.save\_waveform(**waveform**, **file\_path='outp
 
     Examples
 
+    Try it in your browser!
     ```
     >>> import numpy as np
     >>> tone = 0.5 * np.sin(2 * np.pi * 440 * np.linspace(0, 1, 44100))
     >>> save_waveform(tone, "tone.wav", dtype="int16")
 
     ```
+    Go BackOpen In Tab

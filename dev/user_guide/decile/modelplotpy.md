@@ -6,7 +6,7 @@ The [`ModelPlotPy`](../../modules/generated/scikitplot.decile.ModelPlotPy.html#s
 your modelling efforts easily to business colleagues.
 
 > **See also**
-> * <https://github.com/modelplot/modelplotpy/blob/master/modelplotpy/functions.py>
+> * [modelplot/modelplotpy](https://github.com/modelplot/modelplotpy/blob/master/modelplotpy/functions.py)
 * <https://modelplot.github.io/intro_modelplotpy.html>
 
 ## ModelPlotPy Plots[#](#modelplotpy-plots "Link to this heading")

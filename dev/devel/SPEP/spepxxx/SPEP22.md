@@ -11,16 +11,16 @@
 
 Previous work:
 
-* <https://github.com/matplotlib/matplotlib/pull/1849>
-* <https://github.com/matplotlib/matplotlib/pull/2557>
-* <https://github.com/matplotlib/matplotlib/pull/2465>
+* [matplotlib/matplotlib#1849](https://github.com/matplotlib/matplotlib/pull/1849)
+* [matplotlib/matplotlib#2557](https://github.com/matplotlib/matplotlib/pull/2557)
+* [matplotlib/matplotlib#2465](https://github.com/matplotlib/matplotlib/pull/2465)
 
 Pull Requests:
 
 * Removing the NavigationToolbar classes
-  <https://github.com/matplotlib/matplotlib/pull/2740> ****CLOSED****
-* Keeping the NavigationToolbar classes <https://github.com/matplotlib/matplotlib/pull/2759> ****CLOSED****
-* Navigation by events: <https://github.com/matplotlib/matplotlib/pull/3652>
+  [matplotlib/matplotlib#2740](https://github.com/matplotlib/matplotlib/pull/2740) ****CLOSED****
+* Keeping the NavigationToolbar classes [matplotlib/matplotlib#2759](https://github.com/matplotlib/matplotlib/pull/2759) ****CLOSED****
+* Navigation by events: [matplotlib/matplotlib#3652](https://github.com/matplotlib/matplotlib/pull/3652)
 
 ## [Abstract](#id5)[#](#abstract "Link to this heading")
 
@@ -45,9 +45,9 @@ The reconfiguration of the Toolbar is complex, most of the time it
 requires a custom backend.
 
 The creation of custom Tools sometimes interferes with the Toolbar, as
-example see <https://github.com/matplotlib/matplotlib/issues/2694> also
+example see [matplotlib/matplotlib#2694](https://github.com/matplotlib/matplotlib/issues/2694) also
 the shortcuts are hardcoded and again not easily modifiable
-<https://github.com/matplotlib/matplotlib/issues/2699>
+[matplotlib/matplotlib#2699](https://github.com/matplotlib/matplotlib/issues/2699)
 
 The proposed solution is to take the actions out of the `Toolbar` and the
 shortcuts out of the `Canvas`. The actions and shortcuts will be in the form

@@ -1,6 +1,6 @@
 # PipelineHooks[#](#pipelinehooks "Link to this heading")
 
-class scikitplot.corpus.PipelineHooks(**pre\_read\_hook=None**, **post\_read\_hook=None**, **post\_filter\_hook=None**, **post\_embed\_hook=None**, **pre\_export\_hook=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_custom_hooks.py#L829)[#](#scikitplot.corpus.PipelineHooks "Link to this definition")
+class scikitplot.corpus.PipelineHooks(**pre\_read\_hook=None**, **post\_read\_hook=None**, **post\_filter\_hook=None**, **post\_embed\_hook=None**, **pre\_export\_hook=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_custom_hooks.py#L843)[#](#scikitplot.corpus.PipelineHooks "Link to this definition")
 :   Lifecycle callbacks for [`HookableCorpusPipeline`](scikitplot.corpus.HookableCorpusPipeline.html#scikitplot.corpus.HookableCorpusPipeline "scikitplot.corpus.HookableCorpusPipeline").
 
     Every hook is optional (`None` = no-op). Hooks are called in the order
@@ -82,6 +82,8 @@ class scikitplot.corpus.PipelineHooks(**pre\_read\_hook=None**, **post\_read\_ho
 
     Examples
 
+    Try it in your browser!
+
     Log progress and filter by source-type in post\_read:
 
     ```
@@ -101,6 +103,7 @@ class scikitplot.corpus.PipelineHooks(**pre\_read\_hook=None**, **post\_read\_ho
     pipeline = HookableCorpusPipeline(hooks=hooks)
 
     ```
+    Go BackOpen In Tab
 
     post\_embed\_hook: [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]], [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.PipelineHooks.post_embed_hook "Link to this definition")
 

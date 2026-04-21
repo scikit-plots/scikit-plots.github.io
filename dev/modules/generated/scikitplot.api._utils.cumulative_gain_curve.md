@@ -1,6 +1,6 @@
 # cumulative\_gain\_curve[#](#cumulative-gain-curve "Link to this heading")
 
-scikitplot.api.\_utils.cumulative\_gain\_curve(**y\_true**, **y\_score**, **pos\_label=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/api/_utils/_helpers.py#L80)[#](#scikitplot.api._utils.cumulative_gain_curve "Link to this definition")
+scikitplot.api.\_utils.cumulative\_gain\_curve(**y\_true**, **y\_score**, **pos\_label=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/api/_utils/_helpers.py#L80)[#](#scikitplot.api._utils.cumulative_gain_curve "Link to this definition")
 :   Generate the data points necessary to plot the Cumulative Gain curve for binary classification tasks.
 
     The Cumulative Gain curve helps in visualizing how well a binary classifier identifies the positive class
@@ -62,6 +62,7 @@ scikitplot.api.\_utils.cumulative\_gain\_curve(**y\_true**, **y\_score**, **pos\
 
     Examples
 
+    Try it in your browser!
     ```
     >>> from sklearn.datasets import make_classification
     >>> from sklearn.linear_model import LogisticRegression
@@ -99,3 +100,4 @@ scikitplot.api.\_utils.cumulative\_gain\_curve(**y\_true**, **y\_score**, **pos\
     ([`Source code`](../../_downloads/84303ae958e7c86ce1ebd32b63a7e330/scikitplot-api-_utils-cumulative_gain_curve-1.py), [`png`](../../_downloads/ce13857c8ac8b13121ebb2d2044f6ef5/scikitplot-api-_utils-cumulative_gain_curve-1.png))
 
     ![../../_images/scikitplot-api-_utils-cumulative_gain_curve-1.png](../../_images/scikitplot-api-_utils-cumulative_gain_curve-1.png)
+    Go BackOpen In Tab

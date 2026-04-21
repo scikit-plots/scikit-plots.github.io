@@ -1,6 +1,6 @@
 # log\_softmax[#](#log-softmax "Link to this heading")
 
-scikitplot.cexperimental.\_logsumexp.log\_softmax(**x**, **axis=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/cexperimental/_logsumexp.py#L383)[#](#scikitplot.cexperimental._logsumexp.log_softmax "Link to this definition")
+scikitplot.cexperimental.\_logsumexp.log\_softmax(**x**, **axis=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cexperimental/_logsumexp.py#L383)[#](#scikitplot.cexperimental._logsumexp.log_softmax "Link to this definition")
 :   Compute the logarithm of the softmax function.
 
     In principle:
@@ -35,6 +35,7 @@ scikitplot.cexperimental.\_logsumexp.log\_softmax(**x**, **axis=None**)[[source]
 
     Examples
 
+    Try it in your browser!
     ```
     >>> import numpy as np
     >>> from scipy.special import log_softmax
@@ -59,3 +60,4 @@ scikitplot.cexperimental.\_logsumexp.log\_softmax(**x**, **axis=None**)[[source]
     array([  0., -inf])
 
     ```
+    Go BackOpen In Tab

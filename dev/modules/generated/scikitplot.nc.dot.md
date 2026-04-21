@@ -1,6 +1,6 @@
 # dot[#](#dot "Link to this heading")
 
-scikitplot.nc.dot(**a: [numpy.ndarray](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")**, **b: [numpy.ndarray](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")**) → [numpy.ndarray](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/nc/_wrappers.py#L193)[#](#scikitplot.nc.dot "Link to this definition")
+scikitplot.nc.dot(**a: [numpy.ndarray](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")**, **b: [numpy.ndarray](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")**) → [numpy.ndarray](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/nc/_wrappers.py#L193)[#](#scikitplot.nc.dot "Link to this definition")
 :   Dot product of two arrays using the C++ NumCpp backend.
 
     This function behaves similarly to [`numpy.dot`](https://numpy.org/devdocs/reference/generated/numpy.dot.html#numpy.dot "(in NumPy v2.5.dev0)") for 1-D and 2-D
@@ -46,7 +46,7 @@ scikitplot.nc.dot(**a: [numpy.ndarray](https://numpy.org/devdocs/reference/gener
 
     Notes
 
-    Use both NumCpp and Numpy. <https://github.com/dpilger26/NumCpp/issues/16>
+    Use both NumCpp and Numpy. [dpilger26/NumCpp#16](https://github.com/dpilger26/NumCpp/issues/16)
 
     The computation is performed by the C++ NumCpp implementation
     `nc::dot` on `nc::NdArray` containers obtained via the
@@ -66,6 +66,7 @@ scikitplot.nc.dot(**a: [numpy.ndarray](https://numpy.org/devdocs/reference/gener
 
     Examples
 
+    Try it in your browser!
     ```
     >>> import numpy as np
     >>> a = np.array([[1,2],[3,4]])
@@ -79,3 +80,4 @@ scikitplot.nc.dot(**a: [numpy.ndarray](https://numpy.org/devdocs/reference/gener
     >>> nc.dot([1,2], [3,4])
 
     ```
+    Go BackOpen In Tab

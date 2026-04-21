@@ -17,7 +17,7 @@ Ensure that the correct python.pythonPath is set in your `.vscode/settings.json`
 Matplotlib uses the [pytest](https://docs.pytest.org/en/stable/) framework.
 
 The tests are in `lib/matplotlib/tests`, and customizations to the pytest
-testing infrastructure are in [`matplotlib.testing`](https://matplotlib.org/devdocs/api/testing_api.html#module-matplotlib.testing "(in Matplotlib v3.11.0.dev2075+ga7fc90270)").
+testing infrastructure are in [`matplotlib.testing`](https://matplotlib.org/devdocs/api/testing_api.html#module-matplotlib.testing "(in Matplotlib v3.11.0.dev2332+gb07211fda)").
 
 ## Requirements[#](#requirements "Link to this heading")
 
@@ -258,7 +258,7 @@ Matplotlib repository will be tested. The Tests workflow is skipped in forked
 repositories but you can trigger a run manually from the [GitHub web interface](https://docs.github.com/en/actions/managing-workflow-runs/manually-running-a-workflow).
 
 You can see the GitHub Actions results at
-<https://github.com/your_GitHub_user_name/matplotlib/actions> – here’s [an
+[your\_GitHub\_user\_name/matplotlib](https://github.com/your_GitHub_user_name/matplotlib/actions) – here’s [an
 example](https://github.com/QuLogic/matplotlib/actions).
 
 ## Using tox[#](#using-tox "Link to this heading")

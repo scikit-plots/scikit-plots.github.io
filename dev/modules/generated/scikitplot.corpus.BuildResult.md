@@ -1,6 +1,6 @@
 # BuildResult[#](#buildresult "Link to this heading")
 
-class scikitplot.corpus.BuildResult(**documents=<factory>**, **n\_sources=0**, **n\_raw=0**, **n\_filtered=0**, **n\_normalised=0**, **n\_enriched=0**, **n\_embedded=0**, **index=None**, **errors=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_corpus_builder.py#L267)[#](#scikitplot.corpus.BuildResult "Link to this definition")
+class scikitplot.corpus.BuildResult(**documents=<factory>**, **n\_sources=0**, **n\_raw=0**, **n\_filtered=0**, **n\_normalised=0**, **n\_enriched=0**, **n\_embedded=0**, **index=None**, **errors=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_corpus_builder.py#L267)[#](#scikitplot.corpus.BuildResult "Link to this definition")
 :   Result of a corpus build operation.
 
     Parameters:
@@ -29,7 +29,7 @@ class scikitplot.corpus.BuildResult(**documents=<factory>**, **n\_sources=0**, *
         :   Built similarity index (if `build_index=True`).
 
         ****errors****list[tuple[str, Exception]]
-        :   `(source_path, exception)` pairs for failed sources.
+        :   `(input_path, exception)` pairs for failed sources.
 
     Parameters:
     :   * ****documents**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
@@ -53,14 +53,14 @@ class scikitplot.corpus.BuildResult(**documents=<factory>**, **n\_sources=0**, *
 
     ```
 
-    documents: [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_corpus_builder.py#L267)[#](#scikitplot.corpus.BuildResult.documents "Link to this definition")
+    documents: [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_corpus_builder.py#L267)[#](#scikitplot.corpus.BuildResult.documents "Link to this definition")
 
-    errors: [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Exception](https://docs.python.org/3/library/exceptions.html#Exception "(in Python v3.14)")]][[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_corpus_builder.py#L267)[#](#scikitplot.corpus.BuildResult.errors "Link to this definition")
+    errors: [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Exception](https://docs.python.org/3/library/exceptions.html#Exception "(in Python v3.14)")]][[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_corpus_builder.py#L267)[#](#scikitplot.corpus.BuildResult.errors "Link to this definition")
 
     index: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") = None[#](#scikitplot.corpus.BuildResult.index "Link to this definition")
 
     property n\_documents: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.BuildResult.n_documents "Link to this definition")
-    :   Number of `CorpusDocument` instances in [`documents`](#scikitplot.corpus.BuildResult.documents "scikitplot.corpus.BuildResult.documents").
+    :   Number of [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus.CorpusDocument") instances in [`documents`](#scikitplot.corpus.BuildResult.documents "scikitplot.corpus.BuildResult.documents").
 
         Returns:
         :   int
@@ -85,7 +85,7 @@ class scikitplot.corpus.BuildResult(**documents=<factory>**, **n\_sources=0**, *
             :   `(n_sources - len(errors)) / n_sources` in `[0.0, 1.0]`.
                 Returns `1.0` when no sources were processed.
 
-    summary()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_corpus_builder.py#L336)[#](#scikitplot.corpus.BuildResult.summary "Link to this definition")
+    summary()[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_corpus_builder.py#L336)[#](#scikitplot.corpus.BuildResult.summary "Link to this definition")
     :   Return a multi-line human-readable build summary.
 
         Returns:

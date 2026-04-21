@@ -1,6 +1,6 @@
 # KissGenerator[#](#kissgenerator "Link to this heading")
 
-class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissGenerator "Link to this definition")
+class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissGenerator "Link to this definition")
 :   High-level random number generator using KISS algorithm.
 
     Provides NumPy-compatible interface for common distributions
@@ -54,6 +54,7 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
 
     Examples
 
+    Try it in your browser!
     ```
     >>> gen = KissGenerator(42)
     >>> gen.random(5)
@@ -69,6 +70,7 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
     >>> restored = pickle.loads(pickle.dumps(gen))
 
     ```
+    Go BackOpen In Tab
 
     bit\_generator[#](#scikitplot.random.KissGenerator.bit_generator "Link to this definition")
     :   Gets the bit generator instance used by the generator
@@ -79,6 +81,7 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator(42)
         >>> bg = gen.get_bit_generator()
@@ -86,6 +89,7 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
         <class 'KissBitGenerator'>
 
         ```
+        Go BackOpen In Tab
 
     choice(**self**, **a**, **size=None**, **replace=True**, **p=None**)[#](#scikitplot.random.KissGenerator.choice "Link to this definition")
     :   Random sample from array.
@@ -109,12 +113,14 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator(42)
         >>> gen.choice(10, size=5)
         array([...])
 
         ```
+        Go BackOpen In Tab
 
     classmethod deserialize(**cls**, **data**)[#](#scikitplot.random.KissGenerator.deserialize "Link to this definition")
     :   Deserialize a KissGenerator from a JSON-compatible dict.
@@ -139,6 +145,7 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
 
         Examples
 
+        Try it in your browser!
         ```
         >>> import json
         >>> gen = KissGenerator(42)
@@ -147,6 +154,7 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
         >>> restored = KissGenerator.deserialize(data)
 
         ```
+        Go BackOpen In Tab
 
     classmethod from\_dict(**cls**, **data**)[#](#scikitplot.random.KissGenerator.from_dict "Link to this definition")
     :   Alias for deserialize().
@@ -160,6 +168,7 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator(42)
         >>> bg = gen.get_bit_generator()
@@ -167,6 +176,7 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
         <class 'KissBitGenerator'>
 
         ```
+        Go BackOpen In Tab
 
     get\_params(**self**, **deep=True**)[#](#scikitplot.random.KissGenerator.get_params "Link to this definition")
     :   Get parameters (sklearn-style).
@@ -181,11 +191,13 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator(42)
         >>> params = gen.get_params()
 
         ```
+        Go BackOpen In Tab
 
     get\_state(**self**)[#](#scikitplot.random.KissGenerator.get_state "Link to this definition")
     :   Get state dictionary.
@@ -196,6 +208,7 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator(42)
         >>> state = gen.get_state()
@@ -203,6 +216,7 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
         True
 
         ```
+        Go BackOpen In Tab
 
     integers(**self**, **low**, **high=None**, **size=None**, **dtype=np.int64**, **endpoint=False**)[#](#scikitplot.random.KissGenerator.integers "Link to this definition")
     :   Random integers in [low, high) or [low, high].
@@ -229,12 +243,14 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator(42)
         >>> gen.integers(0, 10, size=5)
         array([...])
 
         ```
+        Go BackOpen In Tab
 
     normal(**self**, **loc=0.0**, **scale=1.0**, **size=None**)[#](#scikitplot.random.KissGenerator.normal "Link to this definition")
     :   Normal distribution (Box-Muller transform).
@@ -255,12 +271,14 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator(42)
         >>> gen.normal(0, 1, size=1000)
         array([...])
 
         ```
+        Go BackOpen In Tab
 
     permutation(**self**, **x**, **axis=0**)[#](#scikitplot.random.KissGenerator.permutation "Link to this definition")
     :   Randomly permute sequence or return permuted range.
@@ -291,6 +309,7 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator()
         >>> gen.permutation(10)  # Permuted [0, 1, ..., 9]
@@ -304,6 +323,7 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
         array([1, 2, 3, 4])
 
         ```
+        Go BackOpen In Tab
 
     random(**self**, **size=None**, **dtype=np.float64**, **out=None**)[#](#scikitplot.random.KissGenerator.random "Link to this definition")
     :   Random floats in [0, 1).
@@ -324,12 +344,14 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator(42)
         >>> gen.random(5)
         array([...])
 
         ```
+        Go BackOpen In Tab
 
     serialize(**self**)[#](#scikitplot.random.KissGenerator.serialize "Link to this definition")
     :   Serialize to JSON-compatible dict.
@@ -340,6 +362,7 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
 
         Examples
 
+        Try it in your browser!
         ```
         >>> import json
         >>> gen = KissGenerator(42)
@@ -347,6 +370,7 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
         >>> json_str = json.dumps(data)
 
         ```
+        Go BackOpen In Tab
 
     set\_bit\_generator(**self**, **bit\_generator**)[#](#scikitplot.random.KissGenerator.set_bit_generator "Link to this definition")
     :   Set new bit generator.
@@ -361,12 +385,14 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator(42)
         >>> new_bg = KissBitGenerator(123)
         >>> gen.set_bit_generator(new_bg)
 
         ```
+        Go BackOpen In Tab
 
     set\_params(**self**, **\*\*params**)[#](#scikitplot.random.KissGenerator.set_params "Link to this definition")
     :   Set parameters (sklearn-style).
@@ -380,11 +406,13 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator(42)
         >>> gen.set_params(bit_generator={"seed": 123})
 
         ```
+        Go BackOpen In Tab
 
     set\_state(**self**, **state**)[#](#scikitplot.random.KissGenerator.set_state "Link to this definition")
     :   Set state from dictionary.
@@ -395,6 +423,7 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen1 = KissGenerator(42)
         >>> state = gen1.get_state()
@@ -402,6 +431,7 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
         >>> gen2.set_state(state)
 
         ```
+        Go BackOpen In Tab
 
     shuffle(**self**, **x**)[#](#scikitplot.random.KissGenerator.shuffle "Link to this definition")
     :   Shuffle array in-place (Fisher-Yates algorithm).
@@ -412,6 +442,7 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator(42)
         >>> arr = np.arange(10)
@@ -419,6 +450,7 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
         >>> print(arr)  # shuffled
 
         ```
+        Go BackOpen In Tab
 
     spawn(**self**, **n\_children**)[#](#scikitplot.random.KissGenerator.spawn "Link to this definition")
     :   Create independent child Generators.
@@ -449,6 +481,7 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator()
         >>> children = gen.spawn(4)
@@ -468,6 +501,7 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
         ...     results = list(executor.map(worker, children))
 
         ```
+        Go BackOpen In Tab
 
     to\_dict(**self**)[#](#scikitplot.random.KissGenerator.to_dict "Link to this definition")
     :   Alias for serialize().
@@ -491,12 +525,14 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
 
         Examples
 
+        Try it in your browser!
         ```
         >>> gen = KissGenerator(42)
         >>> gen.uniform(0, 10, size=5)
         array([...])
 
         ```
+        Go BackOpen In Tab
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

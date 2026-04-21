@@ -1,4 +1,6 @@
-# ANNoy Vector Index DB[#](#annoy-vector-index-db "Link to this heading")
+# ANNoy[#](#annoy "Link to this heading")
+
+## ANNoy Vector Index DB[#](#annoy-vector-index-db "Link to this heading")
 
 Examples related to the [`annoy`](../../apis/scikitplot.annoy.html#module-scikitplot.annoy "scikitplot.annoy") and [`_annoy`](../../modules/generated/scikitplot.cexternals._annoy.html#module-scikitplot.cexternals._annoy "scikitplot.cexternals._annoy") submodule instance.
 

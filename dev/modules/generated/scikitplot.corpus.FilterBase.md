@@ -1,9 +1,9 @@
 # FilterBase[#](#filterbase "Link to this heading")
 
-class scikitplot.corpus.FilterBase[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_base.py#L276)[#](#scikitplot.corpus.FilterBase "Link to this definition")
+class scikitplot.corpus.FilterBase[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_base.py#L276)[#](#scikitplot.corpus.FilterBase "Link to this definition")
 :   Abstract base class for corpus document filters.
 
-    A filter receives a fully-constructed `CorpusDocument`
+    A filter receives a fully-constructed [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
     and returns `True` if it should be included in the output corpus,
     `False` if it should be discarded.
 
@@ -28,6 +28,8 @@ class scikitplot.corpus.FilterBase[[source]](https://github.com/scikit-plots/sci
 
     Examples
 
+    Try it in your browser!
+
     Implementing a length filter:
 
     ```
@@ -39,8 +41,9 @@ class scikitplot.corpus.FilterBase[[source]](https://github.com/scikit-plots/sci
     ...         return len(doc.text) >= self.min_chars
 
     ```
+    Go BackOpen In Tab
 
-    abstractmethod include(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_base.py#L311)[#](#scikitplot.corpus.FilterBase.include "Link to this definition")
+    abstractmethod include(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_base.py#L311)[#](#scikitplot.corpus.FilterBase.include "Link to this definition")
     :   Return `True` if `doc` should be included in the corpus.
 
         Parameters:
@@ -52,14 +55,14 @@ class scikitplot.corpus.FilterBase[[source]](https://github.com/scikit-plots/sci
             :   `True` to include; `False` to discard.
 
         Parameters:
-        :   ****doc**** (**CorpusDocument**)
+        :   ****doc**** ([**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument"))
 
         Return type:
         :   [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")
 
         Notes
 
-        Must never raise for a valid `CorpusDocument`. Unexpected inputs
+        Must never raise for a valid `CorpusDocument`. Unexpected input\_path
         should return `False` defensively rather than raising, unless the
         error indicates a programming error (e.g. `None` passed instead of
         a document).

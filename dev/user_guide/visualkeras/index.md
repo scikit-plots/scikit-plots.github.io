@@ -4,10 +4,10 @@ This module contains functions related to [`visualkeras`](../../apis/scikitplot.
 For visualkeras for Keras / TensorFlow Models [`tf.keras.Model`](https://www.tensorflow.org/api_docs/python/tf/keras/Model "(in TensorFlow v2.8)").
 
 > **See also**
-> * <https://github.com/paulgavrikov/visualkeras>
+> * [paulgavrikov/visualkeras](https://github.com/paulgavrikov/visualkeras)
 
 Documentation is available in the docstrings and
-online at <https://github.com/paulgavrikov/visualkeras>.
+online at [paulgavrikov/visualkeras](https://github.com/paulgavrikov/visualkeras).
 
 ```
 # (optionally)

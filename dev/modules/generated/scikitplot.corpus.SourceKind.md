@@ -1,15 +1,29 @@
 # SourceKind[#](#sourcekind "Link to this heading")
 
-class scikitplot.corpus.SourceKind(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_sources/_source.py#L94)[#](#scikitplot.corpus.SourceKind "Link to this definition")
+class scikitplot.corpus.SourceKind(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_sources/_source.py#L94)[#](#scikitplot.corpus.SourceKind "Link to this definition")
 :   Discriminant for the kind of source an entry represents.
 
-    DIRECTORY = 'directory'[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_sources/_source.py#L)[#](#scikitplot.corpus.SourceKind.DIRECTORY "Link to this definition")
+    Attributes:
+    :   ****FILE****
+        :   A local filesystem path to a single file.
 
-    FILE = 'file'[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_sources/_source.py#L)[#](#scikitplot.corpus.SourceKind.FILE "Link to this definition")
+        ****URL****
+        :   An `http://` or `https://` URL.
 
-    MANIFEST = 'manifest'[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_sources/_source.py#L)[#](#scikitplot.corpus.SourceKind.MANIFEST "Link to this definition")
+        ****DIRECTORY****
+        :   A local directory (expanded into file entries by
+            [`CorpusSource.iter_entries`](scikitplot.corpus.CorpusSource.html#scikitplot.corpus.CorpusSource.iter_entries "scikitplot.corpus.CorpusSource.iter_entries")).
 
-    URL = 'url'[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_sources/_source.py#L)[#](#scikitplot.corpus.SourceKind.URL "Link to this definition")
+        ****MANIFEST****
+        :   A text file containing one URL or file path per line.
+
+    DIRECTORY = 'directory'[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_sources/_source.py#L)[#](#scikitplot.corpus.SourceKind.DIRECTORY "Link to this definition")
+
+    FILE = 'file'[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_sources/_source.py#L)[#](#scikitplot.corpus.SourceKind.FILE "Link to this definition")
+
+    MANIFEST = 'manifest'[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_sources/_source.py#L)[#](#scikitplot.corpus.SourceKind.MANIFEST "Link to this definition")
+
+    URL = 'url'[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_sources/_source.py#L)[#](#scikitplot.corpus.SourceKind.URL "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.corpus.SourceKind.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

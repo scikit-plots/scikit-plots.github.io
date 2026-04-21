@@ -1,6 +1,6 @@
 # print\_labels[#](#print-labels "Link to this heading")
 
-scikitplot.decile.kds.print\_labels(**\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/decile/kds/_kds.py#L59)[#](#scikitplot.decile.kds.print_labels "Link to this definition")
+scikitplot.decile.kds.print\_labels(**\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/decile/kds/_kds.py#L59)[#](#scikitplot.decile.kds.print_labels "Link to this definition")
 :   Display a legend for the abbreviations of decile table column names.
 
     Added in version 0.3.9.
@@ -26,10 +26,11 @@ scikitplot.decile.kds.print\_labels(**\*\*kwargs**)[[source]](https://github.com
 
     References
 
-    [1] <https://github.com/tensorbored/kds/blob/master/kds/metrics.py#L382>
+    [1] [tensorbored/kds](https://github.com/tensorbored/kds/blob/master/kds/metrics.py#L382)
 
     Examples
 
+    Try it in your browser!
     ```
     >>> import scikitplot.decile.kds as kds
     >>> kds.print_labels()
@@ -59,5 +60,6 @@ scikitplot.decile.kds.print\_labels(**\*\*kwargs**)[[source]](https://github.com
      lift             : Cumuative Lift Value decile-wise
 
     ```
+    Go BackOpen In Tab
 
 Make live

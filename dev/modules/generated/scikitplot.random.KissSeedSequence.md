@@ -1,6 +1,6 @@
 # KissSeedSequence[#](#kissseedsequence "Link to this heading")
 
-class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=()**, **pool\_size=4**, **n\_children\_spawned=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissSeedSequence "Link to this definition")
+class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=()**, **pool\_size=4**, **n\_children\_spawned=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissSeedSequence "Link to this definition")
 :   Seed sequence compatible with numpy.random.SeedSequence.
 
     Parameters:
@@ -87,6 +87,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
 
     Examples
 
+    Try it in your browser!
     ```
     >>> seq = KissSeedSequence(42)
     >>> state = seq.generate_state(4, dtype=np.uint32)
@@ -97,6 +98,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
     >>> restored = pickle.loads(pickle.dumps(seq))
 
     ```
+    Go BackOpen In Tab
 
     classmethod deserialize(**cls**, **dict data: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**)[#](#scikitplot.random.KissSeedSequence.deserialize "Link to this definition")
     :   Deserialize from dictionary.
@@ -114,6 +116,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
 
         Examples
 
+        Try it in your browser!
         ```
         >>> import json
         >>> seq = KissSeedSequence(42)
@@ -122,6 +125,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
         >>> restored = KissSeedSequence.deserialize(data)
 
         ```
+        Go BackOpen In Tab
 
     classmethod from\_dict(**cls**, **dict data: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**)[#](#scikitplot.random.KissSeedSequence.from_dict "Link to this definition")
     :   Alias for deserialize().
@@ -162,6 +166,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
 
         Examples
 
+        Try it in your browser!
         ```
         >>> seq = KissSeedSequence(42)
         >>> state = seq.generate_state(4, dtype=np.uint32)
@@ -169,6 +174,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
         (4,)
 
         ```
+        Go BackOpen In Tab
 
     get\_params(**self**, **bool deep: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True**) → [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[#](#scikitplot.random.KissSeedSequence.get_params "Link to this definition")
     :   Get parameters (sklearn-style).
@@ -189,6 +195,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
 
         Examples
 
+        Try it in your browser!
         ```
         >>> seq = KissSeedSequence(42)
         >>> params = seq.get_params()
@@ -196,6 +203,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
         42
 
         ```
+        Go BackOpen In Tab
 
     get\_state(**self**) → [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[#](#scikitplot.random.KissSeedSequence.get_state "Link to this definition")
     :   Get current state as dictionary.
@@ -209,6 +217,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
 
         Examples
 
+        Try it in your browser!
         ```
         >>> seq = KissSeedSequence(42)
         >>> state = seq.get_state()
@@ -216,6 +225,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
         42
 
         ```
+        Go BackOpen In Tab
 
     serialize(**self**) → [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[#](#scikitplot.random.KissSeedSequence.serialize "Link to this definition")
     :   Serialize to JSON-compatible dict.
@@ -229,6 +239,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
 
         Examples
 
+        Try it in your browser!
         ```
         >>> import json
         >>> seq = KissSeedSequence(42)
@@ -236,6 +247,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
         >>> json_str = json.dumps(data)
 
         ```
+        Go BackOpen In Tab
 
     set\_params(**self**, **\*\*params**)[#](#scikitplot.random.KissSeedSequence.set_params "Link to this definition")
     :   Set parameters (sklearn-style).
@@ -250,6 +262,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
 
         Examples
 
+        Try it in your browser!
         ```
         >>> seq = KissSeedSequence(42)
         >>> seq.set_params(entropy=123)
@@ -257,6 +270,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
         123
 
         ```
+        Go BackOpen In Tab
 
     set\_state(**self**, **dict state: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.random.KissSeedSequence.set_state "Link to this definition")
     :   Set state from dictionary.
@@ -277,6 +291,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
 
         Examples
 
+        Try it in your browser!
         ```
         >>> seq1 = KissSeedSequence(42)
         >>> state = seq1.get_state()
@@ -286,6 +301,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
         True
 
         ```
+        Go BackOpen In Tab
 
     spawn(**self**, **int n\_children: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**) → [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[#](#scikitplot.random.KissSeedSequence.spawn "Link to this definition")
     :   Create independent child seed sequences.
@@ -319,6 +335,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
 
         Examples
 
+        Try it in your browser!
         ```
         >>> seq = KissSeedSequence(42)
         >>> children = seq.spawn(3)
@@ -326,6 +343,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
         3
 
         ```
+        Go BackOpen In Tab
 
     KissSeedSequence.state -> dict[str, Any]
     :   Get current state as dictionary.
@@ -344,12 +362,14 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
 
         Examples
 
+        Try it in your browser!
         ```
         >>> seq = KissSeedSequence(42)
         >>> state = seq.state
         >>> # Restore with: KissSeedSequence(**state)
 
         ```
+        Go BackOpen In Tab
 
     to\_dict(**self**) → [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[#](#scikitplot.random.KissSeedSequence.to_dict "Link to this definition")
     :   Alias for serialize().

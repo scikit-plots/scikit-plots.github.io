@@ -5,7 +5,7 @@ This module contains some functions related to [`nc`](../../../apis/scikitplot.n
 NumCpp: A Templatized Header Only C++ Library with Implementation of the Python NumPy-Compatible API.
 
 > **See also**
-> * <https://github.com/dpilger26/NumCpp>
+> * [dpilger26/NumCpp](https://github.com/dpilger26/NumCpp)
 * <https://numcpp.readthedocs.io/en/latest/>
 * <https://numcpp.readthedocs.io/en/latest/commandTable.html>
 

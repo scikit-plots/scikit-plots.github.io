@@ -1,6 +1,6 @@
 # softmax[#](#softmax "Link to this heading")
 
-scikitplot.cexperimental.\_logsumexp.softmax(**x**, **axis=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/cexperimental/_logsumexp.py#L288)[#](#scikitplot.cexperimental._logsumexp.softmax "Link to this definition")
+scikitplot.cexperimental.\_logsumexp.softmax(**x**, **axis=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cexperimental/_logsumexp.py#L288)[#](#scikitplot.cexperimental._logsumexp.softmax "Link to this definition")
 :   Compute the softmax function.
 
     The softmax function transforms each element of a collection by
@@ -50,6 +50,7 @@ scikitplot.cexperimental.\_logsumexp.softmax(**x**, **axis=None**)[[source]](htt
 
     Examples
 
+    Try it in your browser!
     ```
     >>> import numpy as np
     >>> from scipy.special import softmax
@@ -112,3 +113,4 @@ scikitplot.cexperimental.\_logsumexp.softmax(**x**, **axis=None**)[[source]](htt
     array([ 1.,  1.,  1.])
 
     ```
+    Go BackOpen In Tab

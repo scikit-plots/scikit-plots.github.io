@@ -4,4 +4,4 @@ sphinxext.
 
 Notes
 
-* <https://github.com/matplotlib/matplotlib/tree/main/lib/matplotlib/sphinxext>
+* [matplotlib/matplotlib](https://github.com/matplotlib/matplotlib/tree/main/lib/matplotlib/sphinxext)

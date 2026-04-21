@@ -1,6 +1,6 @@
 # play\_waveform[#](#play-waveform "Link to this heading")
 
-scikitplot.experimental.\_doremi.play\_waveform(**music**, **rate=None**, **file\_path=None**, **blocking=True**, **backend='auto'**, **save\_generated=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/experimental/_doremi/waveform_playback.py#L62)[#](#scikitplot.experimental._doremi.play_waveform "Link to this definition")
+scikitplot.experimental.\_doremi.play\_waveform(**music**, **rate=None**, **file\_path=None**, **blocking=True**, **backend='auto'**, **save\_generated=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/experimental/_doremi/waveform_playback.py#L62)[#](#scikitplot.experimental._doremi.play_waveform "Link to this definition")
 :   Play audio from a NumPy array using either IPython (for Jupyter) or sounddevice.
 
     Parameters:
@@ -73,6 +73,7 @@ scikitplot.experimental.\_doremi.play\_waveform(**music**, **rate=None**, **file
 
     Examples
 
+    Try it in your browser!
     ```
     >>> import numpy as np
     >>> duration = 1.0  # seconds
@@ -103,3 +104,4 @@ scikitplot.experimental.\_doremi.play\_waveform(**music**, **rate=None**, **file
     >>> play_waveform(music, rate=doremi.DEFAULT_SAMPLE_RATE, backend="sounddevice")
 
     ```
+    Go BackOpen In Tab

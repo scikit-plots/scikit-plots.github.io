@@ -1,6 +1,6 @@
 # plot\_pca\_2d\_projection[#](#plot-pca-2d-projection "Link to this heading")
 
-scikitplot.api.decomposition.plot\_pca\_2d\_projection(**clf**, **X**, **y**, **\***, **biplot=False**, **feature\_labels=None**, **dimensions=[0, 1]**, **label\_dots=False**, **model\_type=None**, **title='PCA 2-D Projection'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **cmap='nipy\_spectral'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/api/decomposition/_projection.py#L44)[#](#scikitplot.api.decomposition.plot_pca_2d_projection "Link to this definition")
+scikitplot.api.decomposition.plot\_pca\_2d\_projection(**clf**, **X**, **y**, **\***, **biplot=False**, **feature\_labels=None**, **dimensions=[0, 1]**, **label\_dots=False**, **model\_type=None**, **title='PCA 2-D Projection'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **cmap='nipy\_spectral'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/api/decomposition/_projection.py#L44)[#](#scikitplot.api.decomposition.plot_pca_2d_projection "Link to this definition")
 :   Plots the 2-dimensional projection of PCA on a given dataset.
 
     Parameters:
@@ -124,6 +124,7 @@ scikitplot.api.decomposition.plot\_pca\_2d\_projection(**clf**, **X**, **y**, **
 
     Examples
 
+    Try it in your browser!
     ```
     >>> from sklearn.decomposition import PCA
     >>> from sklearn.datasets import load_iris as data_3_classes
@@ -164,3 +165,4 @@ scikitplot.api.decomposition.plot\_pca\_2d\_projection(**clf**, **X**, **y**, **
     ([`Source code`](../../_downloads/e1fafadaa3ce4aa57ead79ee20c7ca17/scikitplot-api-decomposition-plot_pca_2d_projection-2.py), [`png`](../../_downloads/139b5ba9eabf67e014c79a12d90042a5/scikitplot-api-decomposition-plot_pca_2d_projection-2.png))
 
     ![LDA 2D Projection](../../_images/scikitplot-api-decomposition-plot_pca_2d_projection-2.png)
+    Go BackOpen In Tab

@@ -11,10 +11,10 @@
 
 The following lists any open PRs or branches related to this MEP:
 
-1. Deprecate redundant statistical kwargs in `Axes.boxplot`: <https://github.com/phobson/matplotlib/tree/MEP28-initial-deprecations>
-2. Deprecate redundant style options in `Axes.boxplot`: <https://github.com/phobson/matplotlib/tree/MEP28-initial-deprecations>
+1. Deprecate redundant statistical kwargs in `Axes.boxplot`: [phobson/matplotlib](https://github.com/phobson/matplotlib/tree/MEP28-initial-deprecations)
+2. Deprecate redundant style options in `Axes.boxplot`: [phobson/matplotlib](https://github.com/phobson/matplotlib/tree/MEP28-initial-deprecations)
 3. Deprecate passings 2D NumPy arrays as input: None
-4. Add pre- & post-processing options to `cbook.boxplot_stats`: <https://github.com/phobson/matplotlib/tree/boxplot-stat-transforms>
+4. Add pre- & post-processing options to `cbook.boxplot_stats`: [phobson/matplotlib](https://github.com/phobson/matplotlib/tree/boxplot-stat-transforms)
 5. Exposing `cbook.boxplot_stats` through `Axes.boxplot` kwargs: None
 6. Remove redundant statistical kwargs in `Axes.boxplot`: None
 7. Remove redundant style options in `Axes.boxplot`: None

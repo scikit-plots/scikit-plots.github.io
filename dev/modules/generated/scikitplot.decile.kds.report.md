@@ -1,6 +1,6 @@
 # report[#](#report "Link to this heading")
 
-scikitplot.decile.kds.report(**y\_true**, **y\_score**, **\***, **pos\_label=None**, **class\_index=1**, **feature\_infos=True**, **digits=3**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **plot\_style=None**, **figsize=(10, 5)**, **nrows=2**, **ncols=2**, **data=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/decile/kds/_kds.py#L925)[#](#scikitplot.decile.kds.report "Link to this definition")
+scikitplot.decile.kds.report(**y\_true**, **y\_score**, **\***, **pos\_label=None**, **class\_index=1**, **feature\_infos=True**, **digits=3**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **plot\_style=None**, **figsize=(10, 5)**, **nrows=2**, **ncols=2**, **data=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/decile/kds/_kds.py#L925)[#](#scikitplot.decile.kds.report "Link to this definition")
 :   Generate a decile table and four plots.
 
     * `Lift` -> [`plot_lift`](scikitplot.decile.kds.plot_lift.html#scikitplot.decile.kds.plot_lift "scikitplot.decile.kds.plot_lift")
@@ -148,10 +148,11 @@ scikitplot.decile.kds.report(**y\_true**, **y\_score**, **\***, **pos\_label=Non
 
     References
 
-    [1] <https://github.com/tensorbored/kds/blob/master/kds/metrics.py#L382>
+    [1] [tensorbored/kds](https://github.com/tensorbored/kds/blob/master/kds/metrics.py#L382)
 
     Examples
 
+    Try it in your browser!
     ```
     >>> from sklearn.datasets import (
     ...     load_breast_cancer as data_2_classes,
@@ -179,6 +180,7 @@ scikitplot.decile.kds.report(**y\_true**, **y\_score**, **\***, **pos\_label=Non
     ([`Source code`](../../_downloads/ef67bd6f940cac6d8e9ca407b6d361ce/scikitplot-decile-kds-report-1.py), [`png`](../../_downloads/70436a8f494480a6d734b0c17e739a2d/scikitplot-decile-kds-report-1.png))
 
     ![KDS Report](../../_images/scikitplot-decile-kds-report-1.png)
+    Go BackOpen In Tab
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

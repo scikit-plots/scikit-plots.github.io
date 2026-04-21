@@ -35,7 +35,7 @@ tools they have built.
 
 The following venues are managed by Matplotlib maintainers and contributors:
 
-* library and docs: <https://github.com/matplotlib/matplotlib>
+* library and docs: [matplotlib/matplotlib](https://github.com/matplotlib/matplotlib)
 * forum: <https://discourse.matplotlib.org/>
 * chat: <https://matrix.to/#/#matplotlib:matrix.org>
 * blog: <https://blog.scientific-python.org/>

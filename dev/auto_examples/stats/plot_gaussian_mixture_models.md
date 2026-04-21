@@ -830,7 +830,7 @@ plt.show()
 
 Tags: [model-type: clustering](../../_tags/model-type-clustering.html) [model-workflow: model-selection](../../_tags/model-workflow-model-selection.html) [plot-type: density](../../_tags/plot-type-density.html) [plot-type: line](../../_tags/plot-type-line.html) [domain: statistics](../../_tags/domain-statistics.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 1.458 seconds)
+****Total running time of the script:**** (0 minutes 1.944 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo17.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/stats/plot_gaussian_mixture_models.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo17.svg)](../../lite/lab/index.html?path=auto_examples/stats/plot_gaussian_mixture_models.ipynb)
 
@@ -846,15 +846,15 @@ Related examples
 
 [Memory-Mapping Showcase – Basic / Medium / Advanced](../memmap/plot_mman.html)
 
-Memory-Mapping Showcase – Basic / Medium / Advanced![](../../_images/sphx_glr_plot_modelplotpy_script_thumb.png)
-
-[Introduction to modelplotpy](../decile/plot_modelplotpy_script.html)
-
-Introduction to modelplotpy![](../../_images/sphx_glr_plot_kiss_random_thumb.png)
+Memory-Mapping Showcase – Basic / Medium / Advanced![](../../_images/sphx_glr_plot_kiss_random_thumb.png)
 
 [Enhanced KISS Random Generator - Complete Usage Examples](../random/plot_kiss_random.html)
 
-Enhanced KISS Random Generator - Complete Usage Examples![](../../_images/sphx_glr_plot_dummy_code_encoder_thumb.png)
+Enhanced KISS Random Generator - Complete Usage Examples![](../../_images/sphx_glr_plot_modelplotpy_script_thumb.png)
+
+[Introduction to modelplotpy](../decile/plot_modelplotpy_script.html)
+
+Introduction to modelplotpy![](../../_images/sphx_glr_plot_dummy_code_encoder_thumb.png)
 
 [Comparing DummyCode Encoder with Other Encoders](../preprocessing/plot_dummy_code_encoder.html)
 

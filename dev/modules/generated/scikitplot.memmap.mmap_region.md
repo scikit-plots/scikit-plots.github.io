@@ -35,9 +35,11 @@ scikitplot.memmap.mmap\_region(**int size: [int](https://docs.python.org/3/libra
 
     Examples
 
+    Try it in your browser!
     ```
     >>> m = mmap_region(4096)
     >>> m.write(b"Hello")
     >>> m.close()
 
     ```
+    Go BackOpen In Tab

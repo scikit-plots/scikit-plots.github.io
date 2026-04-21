@@ -1,6 +1,6 @@
 # KissBitGenerator[#](#kissbitgenerator "Link to this heading")
 
-class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSeedSequence]]=None**, **int bit\_width: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissBitGenerator "Link to this definition")
+class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSeedSequence]]=None**, **int bit\_width: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissBitGenerator "Link to this definition")
 :   NumPy-compatible BitGenerator using KISS algorithm with complete serialization.
 
     Parameters:
@@ -50,17 +50,19 @@ class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSee
     Notes
 
     The bit\_width parameter determines internal generator:
-    - 32: Uses Kiss32Random (faster, period ~2^121)
-    - 64: Uses Kiss64Random (slower, period ~2^250)
-    - NumPy BitGenerator protocol compatible
-    - Thread-safe via lock
-    - Complete pickle/JSON support
+
+    * 32: Uses Kiss32Random (faster, period ~2^121)
+    * 64: Uses Kiss64Random (slower, period ~2^250)
+    * NumPy BitGenerator protocol compatible
+    * Thread-safe via lock
+    * Complete pickle/JSON support
 
     For NumPy compatibility, random\_raw() always returns uint64 values
     regardless of internal bit width.
 
     Examples
 
+    Try it in your browser!
     ```
     >>> bg = KissBitGenerator(42)
     >>> bg.random_raw()
@@ -75,6 +77,7 @@ class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSee
     >>> restored = pickle.loads(pickle.dumps(bg))
 
     ```
+    Go BackOpen In Tab
 
     capsule[#](#scikitplot.random.KissBitGenerator.capsule "Link to this definition")
     :   Get PyCapsule for NumPy C API (protocol requirement).
@@ -92,6 +95,7 @@ class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSee
 
         Examples
 
+        Try it in your browser!
         ```
         >>> import json
         >>> bg = KissBitGenerator(42)
@@ -100,6 +104,7 @@ class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSee
         >>> restored = KissBitGenerator.deserialize(data)
 
         ```
+        Go BackOpen In Tab
 
     classmethod from\_dict(**cls**, **data**)[#](#scikitplot.random.KissBitGenerator.from_dict "Link to this definition")
     :   Alias for deserialize().
@@ -117,11 +122,13 @@ class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSee
 
         Examples
 
+        Try it in your browser!
         ```
         >>> bg = KissBitGenerator(42)
         >>> params = bg.get_params()
 
         ```
+        Go BackOpen In Tab
 
     get\_state(**self**)[#](#scikitplot.random.KissBitGenerator.get_state "Link to this definition")
     :   Get state dictionary.
@@ -132,6 +139,7 @@ class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSee
 
         Examples
 
+        Try it in your browser!
         ```
         >>> bg = KissBitGenerator(42)
         >>> state = bg.get_state()
@@ -139,6 +147,7 @@ class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSee
         True
 
         ```
+        Go BackOpen In Tab
 
     lock[#](#scikitplot.random.KissBitGenerator.lock "Link to this definition")
     :   !! processed by numpydoc !!
@@ -159,6 +168,7 @@ class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSee
 
         Examples
 
+        Try it in your browser!
         ```
         >>> bg = KissBitGenerator(seed=42)
         >>> bg.random_raw()  # Single value
@@ -170,6 +180,7 @@ class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSee
         >>> bg.random_raw((3, 4))  # 3x4 array
 
         ```
+        Go BackOpen In Tab
 
     seed\_seq[#](#scikitplot.random.KissBitGenerator.seed_seq "Link to this definition")
     :   object
@@ -186,6 +197,7 @@ class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSee
 
         Examples
 
+        Try it in your browser!
         ```
         >>> import json
         >>> bg = KissBitGenerator(42)
@@ -193,6 +205,7 @@ class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSee
         >>> json_str = json.dumps(data)
 
         ```
+        Go BackOpen In Tab
 
     set\_params(**self**, **\*\*params**)[#](#scikitplot.random.KissBitGenerator.set_params "Link to this definition")
     :   Set parameters (sklearn-style).
@@ -206,11 +219,13 @@ class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSee
 
         Examples
 
+        Try it in your browser!
         ```
         >>> bg = KissBitGenerator(42)
         >>> bg.set_params(seed=123)
 
         ```
+        Go BackOpen In Tab
 
     set\_state(**self**, **state**)[#](#scikitplot.random.KissBitGenerator.set_state "Link to this definition")
     :   Set state from dictionary.
@@ -221,6 +236,7 @@ class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSee
 
         Examples
 
+        Try it in your browser!
         ```
         >>> bg1 = KissBitGenerator(42)
         >>> state = bg1.get_state()
@@ -228,6 +244,7 @@ class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSee
         >>> bg2.set_state(state)
 
         ```
+        Go BackOpen In Tab
 
     spawn(**self**, **int n\_children: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**) → [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")['KissBitGenerator'][#](#scikitplot.random.KissBitGenerator.spawn "Link to this definition")
     :   Create independent child BitGenerators (NumPy protocol).
@@ -257,6 +274,7 @@ class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSee
 
         Examples
 
+        Try it in your browser!
         ```
         >>> bg = KissBitGenerator(42)
         >>> children = bg.spawn(3)
@@ -265,6 +283,7 @@ class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSee
         >>> # Use in parallel workers
 
         ```
+        Go BackOpen In Tab
 
     state[#](#scikitplot.random.KissBitGenerator.state "Link to this definition")
     :   dict

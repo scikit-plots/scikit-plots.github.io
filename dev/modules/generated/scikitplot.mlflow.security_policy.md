@@ -1,6 +1,6 @@
 # security\_policy[#](#security-policy "Link to this heading")
 
-scikitplot.mlflow.security\_policy(**policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/mlflow/_security.py#L724)[#](#scikitplot.mlflow.security_policy "Link to this definition")
+scikitplot.mlflow.security\_policy(**policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/mlflow/_security.py#L724)[#](#scikitplot.mlflow.security_policy "Link to this definition")
 :   Temporarily activate a [`SecurityPolicy`](scikitplot.mlflow.SecurityPolicy.html#scikitplot.mlflow.SecurityPolicy "scikitplot.mlflow.SecurityPolicy") for a context block.
 
     Parameters:
@@ -26,9 +26,11 @@ scikitplot.mlflow.security\_policy(**policy**)[[source]](https://github.com/scik
 
     Examples
 
+    Try it in your browser!
     ```
     >>> from scikitplot.mlflow._security import DEFAULT_SECURITY_POLICY, security_policy
     >>> with security_policy(DEFAULT_SECURITY_POLICY):
     ...     pass  # session() calls here are guarded
 
     ```
+    Go BackOpen In Tab

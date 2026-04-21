@@ -1,6 +1,6 @@
 # full\_stack\_prereqs[#](#full-stack-prereqs "Link to this heading")
 
-scikitplot.cython.full\_stack\_prereqs()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/cython/_custom_compiler.py#L482)[#](#scikitplot.cython.full_stack_prereqs "Link to this definition")
+scikitplot.cython.full\_stack\_prereqs()[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cython/_custom_compiler.py#L482)[#](#scikitplot.cython.full_stack_prereqs "Link to this definition")
 :   Check prerequisites full stack setuptools, Cython, pybind11, and NumPy.
 
     Validates setuptools, Cython, pybind11, and NumPy — the full set
@@ -33,9 +33,11 @@ scikitplot.cython.full\_stack\_prereqs()[[source]](https://github.com/scikit-plo
 
     Examples
 
+    Try it in your browser!
     ```
     >>> result = full_stack_prereqs()
     >>> all(k in result for k in ("setuptools", "cython", "pybind11", "numpy"))
     True
 
     ```
+    Go BackOpen In Tab

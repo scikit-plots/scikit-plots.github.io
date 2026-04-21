@@ -14,7 +14,7 @@ Compilers:
 * Boost Versions: 1.73+
 
 > **See also**
-> * <https://github.com/dpilger26/NumCpp>
+> * [dpilger26/NumCpp](https://github.com/dpilger26/NumCpp)
 
 ****User guide.**** See the [Nc (NumCpp)](../user_guide/nc/index.html#nc-index) section for further details.
 

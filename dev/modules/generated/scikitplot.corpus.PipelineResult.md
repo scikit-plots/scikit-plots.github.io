@@ -1,19 +1,19 @@
 # PipelineResult[#](#pipelineresult "Link to this heading")
 
-class scikitplot.corpus.PipelineResult(**source**, **documents**, **output\_path**, **n\_read**, **n\_omitted**, **n\_embedded**, **elapsed\_seconds**, **export\_format**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_pipeline.py#L63)[#](#scikitplot.corpus.PipelineResult "Link to this definition")
+class scikitplot.corpus.PipelineResult(**input\_path**, **output\_path**, **export\_format**, **documents**, **n\_read**, **n\_omitted**, **n\_embedded**, **elapsed\_seconds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_pipeline.py#L72)[#](#scikitplot.corpus.PipelineResult "Link to this definition")
 :   Immutable summary of a single pipeline run.
 
     Parameters:
-    :   ****source****str
+    :   ****input\_path****str
         :   Input source identifier (file path, URL, or batch label).
-
-        ****documents****list of CorpusDocument
-        :   All documents produced (after chunking, filtering, and optional
-            embedding). Empty list if the source yielded no usable text.
 
         ****output\_path****pathlib.Path or None
         :   Path to the exported file, or `None` when no export was
             requested (`output_path=None` in the pipeline call).
+
+        ****documents****list of CorpusDocument
+        :   All documents produced (after chunking, filtering, and optional
+            embedding). Empty list if the source yielded no usable text.
 
         ****n\_read****int
         :   Total raw chunks yielded by the reader before filtering.
@@ -32,14 +32,14 @@ class scikitplot.corpus.PipelineResult(**source**, **documents**, **output\_path
         :   Format used for export, or `None` when no export was done.
 
     Parameters:
-    :   * ****source**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****documents**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[****CorpusDocument****]**)
+    :   * ****input\_path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
         * ****output\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
+        * ****export\_format**** ([**ExportFormat**](scikitplot.corpus.ExportFormat.html#scikitplot.corpus.ExportFormat "scikitplot.corpus._schema.ExportFormat") **|** **None**)
+        * ****documents**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")**]**)
         * ****n\_read**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
         * ****n\_omitted**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
         * ****n\_embedded**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
         * ****elapsed\_seconds**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
-        * ****export\_format**** (**ExportFormat** **|** **None**)
 
     Notes
 
@@ -48,6 +48,7 @@ class scikitplot.corpus.PipelineResult(**source**, **documents**, **output\_path
 
     Examples
 
+    Try it in your browser!
     ```
     >>> result.n_read
     512
@@ -57,22 +58,23 @@ class scikitplot.corpus.PipelineResult(**source**, **documents**, **output\_path
     487
 
     ```
+    Go BackOpen In Tab
 
-    documents: [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[CorpusDocument][[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_pipeline.py#L63)[#](#scikitplot.corpus.PipelineResult.documents "Link to this definition")
+    documents: [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[CorpusDocument](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")][[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_pipeline.py#L72)[#](#scikitplot.corpus.PipelineResult.documents "Link to this definition")
 
-    elapsed\_seconds: [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_pipeline.py#L63)[#](#scikitplot.corpus.PipelineResult.elapsed_seconds "Link to this definition")
+    elapsed\_seconds: [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_pipeline.py#L72)[#](#scikitplot.corpus.PipelineResult.elapsed_seconds "Link to this definition")
 
-    export\_format: ExportFormat | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_pipeline.py#L63)[#](#scikitplot.corpus.PipelineResult.export_format "Link to this definition")
+    export\_format: [ExportFormat](scikitplot.corpus.ExportFormat.html#scikitplot.corpus.ExportFormat "scikitplot.corpus._schema.ExportFormat") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_pipeline.py#L72)[#](#scikitplot.corpus.PipelineResult.export_format "Link to this definition")
+
+    input\_path: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_pipeline.py#L72)[#](#scikitplot.corpus.PipelineResult.input_path "Link to this definition")
 
     property n\_documents: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[#](#scikitplot.corpus.PipelineResult.n_documents "Link to this definition")
     :   Number of documents in the result.
 
-    n\_embedded: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_pipeline.py#L63)[#](#scikitplot.corpus.PipelineResult.n_embedded "Link to this definition")
+    n\_embedded: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_pipeline.py#L72)[#](#scikitplot.corpus.PipelineResult.n_embedded "Link to this definition")
 
-    n\_omitted: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_pipeline.py#L63)[#](#scikitplot.corpus.PipelineResult.n_omitted "Link to this definition")
+    n\_omitted: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_pipeline.py#L72)[#](#scikitplot.corpus.PipelineResult.n_omitted "Link to this definition")
 
-    n\_read: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_pipeline.py#L63)[#](#scikitplot.corpus.PipelineResult.n_read "Link to this definition")
+    n\_read: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_pipeline.py#L72)[#](#scikitplot.corpus.PipelineResult.n_read "Link to this definition")
 
-    output\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_pipeline.py#L63)[#](#scikitplot.corpus.PipelineResult.output_path "Link to this definition")
-
-    source: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/corpus/_pipeline.py#L63)[#](#scikitplot.corpus.PipelineResult.source "Link to this definition")
+    output\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_pipeline.py#L72)[#](#scikitplot.corpus.PipelineResult.output_path "Link to this definition")

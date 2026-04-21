@@ -1,12 +1,12 @@
-# PKG/MOD Realtime-Inplace Generation[#](#pkg-mod-realtime-inplace-generation "Link to this heading")
+# Instant PKG/MOD Generation[#](#instant-pkg-mod-generation "Link to this heading")
 
 Examples relevant to the [`cython`](../../apis/scikitplot.cython.html#module-scikitplot.cython "scikitplot.cython") module.
 
 A lightweight runtime Cython development kit with caching, pinning,
-garbage collection, and templating support.
+garbage collection, and templating support. `"Simple Foundation. Truly Sovereign."`
 
-[`scikitplot.cython`](../../apis/scikitplot.cython.html#module-scikitplot.cython "scikitplot.cython") enables real-time, in-place (in-situ) generation of
-low-level Cython packages and modules for immediate use and testing.
+[`scikitplot.cython`](../../apis/scikitplot.cython.html#module-scikitplot.cython "scikitplot.cython") enables real-time, in-place (in-situ) live, on demand
+generation of low-level Cython packages and modules for immediate use and testing, at runtime.
 
 Quiskstart
 
@@ -25,7 +25,7 @@ Examples
 
 > **See also**
 > * <https://doc.sagemath.org/html/en/reference/misc/sage/misc/cython.html>
-* <https://github.com/cython/cython>
+* [cython/cython](https://github.com/cython/cython)
 * <https://cython.readthedocs.io/en/latest/index.html>
 
 ****cython templates****

@@ -1,6 +1,6 @@
 # plot\_roc[#](#plot-roc "Link to this heading")
 
-scikitplot.api.metrics.plot\_roc(**y\_true**, **y\_probas**, **\***, **class\_index=None**, **class\_names=None**, **multi\_class=None**, **to\_plot\_class\_index=None**, **title='ROC AUC Curves'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **cmap=None**, **show\_labels=True**, **digits=4**, **plot\_micro=True**, **plot\_macro=False**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/api/metrics/_classification/_roc_curve.py#L216)[#](#scikitplot.api.metrics.plot_roc "Link to this definition")
+scikitplot.api.metrics.plot\_roc(**y\_true**, **y\_probas**, **\***, **class\_index=None**, **class\_names=None**, **multi\_class=None**, **to\_plot\_class\_index=None**, **title='ROC AUC Curves'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **cmap=None**, **show\_labels=True**, **digits=4**, **plot\_micro=True**, **plot\_macro=False**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/api/metrics/_classification/_roc_curve.py#L216)[#](#scikitplot.api.metrics.plot_roc "Link to this definition")
 :   Generates the ROC AUC curves from labels and predicted scores/probabilities.
 
     ROC (Receiver Operating Characteristic) curve plots the true positive rate
@@ -162,6 +162,7 @@ scikitplot.api.metrics.plot\_roc(**y\_true**, **y\_probas**, **\***, **class\_in
 
     Examples
 
+    Try it in your browser!
     ```
     >>> from sklearn.datasets import load_digits as data_10_classes
     >>> from sklearn.model_selection import train_test_split
@@ -183,3 +184,4 @@ scikitplot.api.metrics.plot\_roc(**y\_true**, **y\_probas**, **\***, **class\_in
     ([`Source code`](../../_downloads/fa282970ce4a2e77a4a2b60a6f957ae4/scikitplot-api-metrics-plot_roc-1.py), [`png`](../../_downloads/7280852cb80a17b0f8ccd41e94457e41/scikitplot-api-metrics-plot_roc-1.png))
 
     ![ROC AUC Curves](../../_images/scikitplot-api-metrics-plot_roc-1.png)
+    Go BackOpen In Tab

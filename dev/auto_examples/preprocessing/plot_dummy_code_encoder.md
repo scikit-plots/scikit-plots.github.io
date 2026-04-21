@@ -491,7 +491,7 @@ Pipeline(steps=[('columntransformer',
                                                                  unknown_value=-1),
                                                   Index(['make', 'body_type', 'fuel_category'], dtype='object')),
                                                  ('equipment',
-                                                  DummyCodeEncoder(sep=<function <lambda> at 0x73c10ae81580>,
+                                                  DummyCodeEncoder(sep=<function <lambda> at 0x73f28916c220>,
                                                                    sparse_output=False),
                                                   ['equipment_comfort',
                                                    'equipment_entertainment',
@@ -507,7 +507,7 @@ Parameters
 
 |  |  |  |
 | --- | --- | --- |
-|  | [steps steps: list of tuples  List of (name of step, estimator) tuples that are to be chained in](https://scikit-learn.org/1.8/modules/generated/sklearn.pipeline.Pipeline.html#:~:text=steps,-list%20of%20tuples) | [('columntransformer', ...), ('histgradientboostingregressor', ...)] |
+|  | [steps steps: list of tuples](https://scikit-learn.org/1.8/modules/generated/sklearn.pipeline.Pipeline.html#:~:text=steps,-list%20of%20tuples) | [('columntransformer', ...), ('histgradientboostingregressor', ...)] |
 |  | [transform\_input transform\_input: list of str, default=None  The names of the :term:`metadata` parameters that should be transformed by the pipeline before passing it to the step consuming it.  This enables transforming some input arguments to ``fit`` (other than ``X``) to be transformed by the steps of the pipeline up to the step which requires them. Requirement is defined via :ref:`metadata routing `. For instance, this can be used to pass a validation set through the pipeline.  You can only set this if metadata routing is enabled, which you can enable using ``sklearn.set\_config(enable\_metadata\_routing=True)``.  .. versionadded:: 1.6](https://scikit-learn.org/1.8/modules/generated/sklearn.pipeline.Pipeline.html#:~:text=transform_input,-list%20of%20str%2C%20default%3DNone) | None |
 |  | [memory memory: str or object with the joblib.Memory interface, default=None  Used to cache the fitted transformers of the pipeline. The last step will never be cached, even if it is a transformer. By default, no caching is performed. If a string is given, it is the path to the caching directory. Enabling caching triggers a clone of the transformers before fitting. Therefore, the transformer instance given to the pipeline cannot be inspected directly. Use the attribute ``named\_steps`` or ``steps`` to inspect estimators within the pipeline. Caching the transformers is advantageous when fitting is time consuming. See :ref:`sphx\_glr\_auto\_examples\_neighbors\_plot\_caching\_nearest\_neighbors.py` for an example on how to enable caching.](https://scikit-learn.org/1.8/modules/generated/sklearn.pipeline.Pipeline.html#:~:text=memory,-str%20or%20object%20with%20the%20joblib.Memory%20interface%2C%20default%3DNone) | None |
 |  | [verbose verbose: bool, default=False  If True, the time elapsed while fitting each step will be printed as it is completed.](https://scikit-learn.org/1.8/modules/generated/sklearn.pipeline.Pipeline.html#:~:text=verbose,-bool%2C%20default%3DFalse) | False |
@@ -577,7 +577,7 @@ Parameters
 |  |  |  |
 | --- | --- | --- |
 |  | [columns columns: list-like, default=None  Column names in the DataFrame to be encoded. If `columns` is None then all the columns with `object`, `string`, or `category` dtype will be converted.](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=columns,-list-like%2C%20default%3DNone) | None |
-|  | [sep sep: callable or str, default='|'  String regex or literal separator to split on (e.g., "a,b,c").  - sep=',', - sep=r'\s\*[,;|]\s\*', - sep=lambda s: re.split(r'\s\*[,;|]\s\*', s.lower()),](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=sep,-callable%20or%20str%2C%20default%3D%27%7C%27) | <function <la...x73c10ae81580> |
+|  | [sep sep: callable or str, default='|'  String regex or literal separator to split on (e.g., "a,b,c").  - sep=',', - sep=r'\s\*[,;|]\s\*', - sep=lambda s: re.split(r'\s\*[,;|]\s\*', s.lower()),](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=sep,-callable%20or%20str%2C%20default%3D%27%7C%27) | <function <la...x73f28916c220> |
 |  | [regex regex: bool, default=True  Use regex to split on (e.g., "a,b|C;") by ``sep`` like:  - ``pattern=r'\s\*[,;|]\s\*'``](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=regex,-bool%2C%20default%3DTrue) | False |
 |  | [prefix prefix: str, list of str, or dict of str, default=None  String to append DataFrame column names. Pass a list with length equal to the number of columns when calling get\_dummies on a DataFrame. Alternatively, `prefix` can be a dictionary mapping column names to prefixes.](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=prefix,-str%2C%20list%20of%20str%2C%20or%20dict%20of%20str%2C%20default%3DNone) | None |
 |  | [prefix\_sep prefix\_sep: str, default='\_'  If appending prefix, separator/delimiter to use. Or pass a list or dictionary as with `prefix` (e.g., "tags\_a").](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=prefix_sep,-str%2C%20default%3D%27_%27) | '\_' |
@@ -702,7 +702,7 @@ can be explained as follows:
   encoding and binning works as a good regularizing strategy against
   overfitting while not limiting the expressiveness of the pipeline too much.
 
-****Total running time of the script:**** (0 minutes 4.860 seconds)
+****Total running time of the script:**** (0 minutes 6.026 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo13.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/preprocessing/plot_dummy_code_encoder.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo13.svg)](../../lite/lab/index.html?path=auto_examples/preprocessing/plot_dummy_code_encoder.ipynb)
 

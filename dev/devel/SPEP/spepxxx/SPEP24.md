@@ -19,7 +19,7 @@ negative r values (not by clipping or reflection).
 ## [Detailed description](#id4)[#](#detailed-description "Link to this heading")
 
 One obvious application that we should support is bB plots (see
-<https://github.com/matplotlib/matplotlib/issues/1730#issuecomment-40815837>),
+[matplotlib/matplotlib#1730](https://github.com/matplotlib/matplotlib/issues/1730#issuecomment-40815837)),
 but this seems more generally useful (for example growth rate as a
 function of angle). The assumption in the current code (as I
 understand it) is that the center of the graph is `r==0`, however it

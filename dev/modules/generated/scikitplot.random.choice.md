@@ -22,9 +22,11 @@ scikitplot.random.choice(**self**, **a**, **size=None**, **replace=True**, **p=N
 
     Examples
 
+    Try it in your browser!
     ```
     >>> gen = KissGenerator(42)
     >>> gen.choice(10, size=5)
     array([...])
 
     ```
+    Go BackOpen In Tab

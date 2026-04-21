@@ -1,6 +1,6 @@
 # get\_include[#](#get-include "Link to this heading")
 
-scikitplot.nc.get\_include()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/nc/__init__.py#L48)[#](#scikitplot.nc.get_include "Link to this definition")
+scikitplot.nc.get\_include()[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/nc/__init__.py#L48)[#](#scikitplot.nc.get_include "Link to this definition")
 :   Return the absolute path to the NumCpp C++ headers include directory.
 
     Returns:
@@ -25,6 +25,7 @@ scikitplot.nc.get\_include()[[source]](https://github.com/scikit-plots/scikit-pl
 
     Examples
 
+    Try it in your browser!
     ```
     >>> import scikitplot.nc as nc
     >>> nc.get_include()
@@ -40,3 +41,4 @@ scikitplot.nc.get\_include()[[source]](https://github.com/scikit-plots/scikit-pl
     ... )
 
     ```
+    Go BackOpen In Tab

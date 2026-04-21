@@ -1,6 +1,6 @@
 # poisson\_conf\_interval[#](#poisson-conf-interval "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.poisson\_conf\_interval(**n**, **interval='root-n'**, **sigma=1.0**, **background=0.0**, **confidence\_level=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dbbf22f/scikitplot/cexternals/_astropy/stats/funcs.py#L508)[#](#scikitplot.cexternals._astropy.stats.poisson_conf_interval "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.poisson\_conf\_interval(**n**, **interval='root-n'**, **sigma=1.0**, **background=0.0**, **confidence\_level=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cexternals/_astropy/stats/funcs.py#L508)[#](#scikitplot.cexternals._astropy.stats.poisson_conf_interval "Link to this definition")
 :   Poisson parameter confidence interval given observed counts.
 
     Parameters:
@@ -132,6 +132,7 @@ scikitplot.cexternals.\_astropy.stats.poisson\_conf\_interval(**n**, **interval=
 
     Examples
 
+    Try it in your browser!
     ```
     >>> poisson_conf_interval(np.arange(10), interval='root-n').T
     array([[  0.        ,   0.        ],
@@ -202,3 +203,4 @@ scikitplot.cexternals.\_astropy.stats.poisson\_conf\_interval(**n**, **interval=
     array([[ 3.47894005, 16.113329533]])
 
     ```
+    Go BackOpen In Tab
