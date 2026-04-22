@@ -1,6 +1,6 @@
 # write\_meta[#](#write-meta "Link to this heading")
 
-scikitplot.cython.write\_meta(**build\_dir**, **meta**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cython/_cache.py#L359)[#](#scikitplot.cython.write_meta "Link to this definition")
+scikitplot.cython.write\_meta(**build\_dir**, **meta**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/cython/_cache.py#L359)[#](#scikitplot.cython.write_meta "Link to this definition")
 :   Write `meta.json` in the build directory atomically.
 
     Parameters:

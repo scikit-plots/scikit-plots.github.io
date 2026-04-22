@@ -268,6 +268,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../resources/index.html">
+    Resources
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
     Roadmap
   </a>
@@ -487,6 +494,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../whats_new/index.html">
     Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../resources/index.html">
+    Resources
   </a>
 </li>
 
@@ -1301,7 +1315,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>register_bridge<a class="headerlink" href="#register-bridge" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.register_bridge">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">register_bridge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chunker_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bridge_class</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_chunker_bridge.py#L269"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.register_bridge" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">register_bridge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chunker_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bridge_class</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/corpus/_chunkers/_chunker_bridge.py#L269"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.register_bridge" title="Link to this definition">#</a></dt>
 <dd><p>Register a custom bridge for a user-defined chunker class.</p>
 <p>After registration, <a class="reference internal" href="scikitplot.corpus.bridge_chunker.html#scikitplot.corpus.bridge_chunker" title="scikitplot.corpus.bridge_chunker"><code class="xref py py-func docutils literal notranslate"><span class="pre">bridge_chunker</span></code></a> will automatically wrap
 instances of <em>chunker_class</em> in <em>bridge_class</em>.</p>
@@ -1333,8 +1347,8 @@ separately if needed.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="af1d5b10-d3a5-488f-9c33-fe93037aab7a">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('af1d5b10-d3a5-488f-9c33-fe93037aab7a','cd594049-b7c6-4912-a2f4-cc4c51dc4123','f07230de-3075-49bc-8a24-ee8d261291db','../../lite/tree/../notebooks/index.html?path=ba2b5c75_17ce_4242_a98f_906bd7a4e3be.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="ed7f5864-e9e7-4f2f-8bb4-81fe21a78ac5">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('ed7f5864-e9e7-4f2f-8bb4-81fe21a78ac5','f238cbd6-0382-422b-a4dd-ac2f1d8a9592','a5c6a1df-4cfb-4e44-89fd-a41e7e223dec','../../lite/tree/../notebooks/index.html?path=4a1563f6_a5b9_4d49_b8bf_42a9c1546720.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">MyChunker</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">chunk</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">extra_metadata</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="kn">from</span><span class="w"> </span><span class="nn">.._types</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chunk</span><span class="p">,</span> <span class="n">ChunkResult</span>
@@ -1360,7 +1374,7 @@ separately if needed.</p>
 </div>
 </div>
 </div>
-<div id="f07230de-3075-49bc-8a24-ee8d261291db" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('af1d5b10-d3a5-488f-9c33-fe93037aab7a','f07230de-3075-49bc-8a24-ee8d261291db')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('af1d5b10-d3a5-488f-9c33-fe93037aab7a','f07230de-3075-49bc-8a24-ee8d261291db')">Open In Tab</button></div><div id="cd594049-b7c6-4912-a2f4-cc4c51dc4123" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="a5c6a1df-4cfb-4e44-89fd-a41e7e223dec" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('ed7f5864-e9e7-4f2f-8bb4-81fe21a78ac5','a5c6a1df-4cfb-4e44-89fd-a41e7e223dec')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('ed7f5864-e9e7-4f2f-8bb4-81fe21a78ac5','a5c6a1df-4cfb-4e44-89fd-a41e7e223dec')">Open In Tab</button></div><div id="f238cbd6-0382-422b-a4dd-ac2f1d8a9592" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1463,7 +1477,7 @@ separately if needed.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260421.25a82c5 2026-04-21T21:14Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260422.ee25698 2026-04-22T13:28Z.
       <br/>
     
   </p>

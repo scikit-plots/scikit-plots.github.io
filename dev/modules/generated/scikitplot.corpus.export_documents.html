@@ -268,6 +268,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../resources/index.html">
+    Resources
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
     Roadmap
   </a>
@@ -487,6 +494,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../whats_new/index.html">
     Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../resources/index.html">
+    Resources
   </a>
 </li>
 
@@ -1301,7 +1315,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>export_documents<a class="headerlink" href="#export-documents" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.export_documents">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">export_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_embedding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json_indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parquet_compression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'snappy'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_export/_export.py#L115"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.export_documents" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">export_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_embedding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json_indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parquet_compression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'snappy'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/corpus/_export/_export.py#L115"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.export_documents" title="Link to this definition">#</a></dt>
 <dd><p>Export a list of documents to <code class="docutils literal notranslate"><span class="pre">output_path</span></code> in the given format.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1379,8 +1393,8 @@ partial files at the final path.</p>
 because storing a float32 vector per row in a tabular cell is
 impractical. Use PICKLE, JOBLIB, or NUMPY to preserve embeddings.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="cf4604fc-6cc0-4f6e-9031-bbb54fd42ebe">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('cf4604fc-6cc0-4f6e-9031-bbb54fd42ebe','d552e829-d35f-44fd-b3a6-6a31442c12d3','11c92e0d-5ca5-4270-be53-0642e03765d7','../../lite/tree/../notebooks/index.html?path=b824491c_fc46_4a72_957c_b9c600d0aefb.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="38f55550-c00f-4f31-9b90-5ebf230fb148">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('38f55550-c00f-4f31-9b90-5ebf230fb148','e493013b-86a4-4bfc-a65f-b50ad34b05b6','6f227dd1-2a62-4669-ada5-05086dee9f23','../../lite/tree/../notebooks/index.html?path=b65ce545_d3f5_43e3_9c9c_defe58a4a71f.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>CSV export (zero dependencies):</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">export_documents</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;corpus.csv&quot;</span><span class="p">),</span> <span class="n">ExportFormat</span><span class="o">.</span><span class="n">CSV</span><span class="p">)</span>
@@ -1403,7 +1417,7 @@ impractical. Use PICKLE, JOBLIB, or NUMPY to preserve embeddings.</p>
 </div>
 </div>
 </div>
-<div id="11c92e0d-5ca5-4270-be53-0642e03765d7" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('cf4604fc-6cc0-4f6e-9031-bbb54fd42ebe','11c92e0d-5ca5-4270-be53-0642e03765d7')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('cf4604fc-6cc0-4f6e-9031-bbb54fd42ebe','11c92e0d-5ca5-4270-be53-0642e03765d7')">Open In Tab</button></div><div id="d552e829-d35f-44fd-b3a6-6a31442c12d3" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="6f227dd1-2a62-4669-ada5-05086dee9f23" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('38f55550-c00f-4f31-9b90-5ebf230fb148','6f227dd1-2a62-4669-ada5-05086dee9f23')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('38f55550-c00f-4f31-9b90-5ebf230fb148','6f227dd1-2a62-4669-ada5-05086dee9f23')">Open In Tab</button></div><div id="e493013b-86a4-4bfc-a65f-b50ad34b05b6" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1506,7 +1520,7 @@ impractical. Use PICKLE, JOBLIB, or NUMPY to preserve embeddings.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260421.25a82c5 2026-04-21T21:14Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260422.ee25698 2026-04-22T13:28Z.
       <br/>
     
   </p>

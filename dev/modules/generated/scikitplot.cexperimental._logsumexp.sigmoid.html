@@ -269,6 +269,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../resources/index.html">
+    Resources
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
     Roadmap
   </a>
@@ -488,6 +495,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../whats_new/index.html">
     Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../resources/index.html">
+    Resources
   </a>
 </li>
 
@@ -1302,7 +1316,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>sigmoid<a class="headerlink" href="#sigmoid" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cexperimental._logsumexp.sigmoid">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cexperimental._logsumexp.</span></span><span class="sig-name descname"><span class="pre">sigmoid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cexperimental/_logsumexp.py#L19"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexperimental._logsumexp.sigmoid" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cexperimental._logsumexp.</span></span><span class="sig-name descname"><span class="pre">sigmoid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/cexperimental/_logsumexp.py#L19"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexperimental._logsumexp.sigmoid" title="Link to this definition">#</a></dt>
 <dd><p>Compute the sigmoid function for the input array <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
 <p>The sigmoid function is defined as:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sigmoid</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
@@ -1332,8 +1346,8 @@ will be computed over the entire array. The default is None.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="65534ae5-fc7e-40da-8e4d-297f7daf9da0">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('65534ae5-fc7e-40da-8e4d-297f7daf9da0','03bf0922-0eb8-47cd-b217-9ba010465c11','7d7339ac-cce2-4454-8937-5a4ff4ac6f12','../../lite/tree/../notebooks/index.html?path=9a168a55_16c6_483c_9ede_2a902dc4a70a.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="347ae515-37ea-41f4-b8ec-e6eb5df737d5">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('347ae515-37ea-41f4-b8ec-e6eb5df737d5','a11cf87e-b089-4e88-8bbd-c7dfc149ec42','e582f13c-3f36-4cbf-8fdb-ef5e6cd6a016','../../lite/tree/../notebooks/index.html?path=1bd2a42a_fb32_45a0_9fb8_d046416cf699.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.cexperimental._logsumexp</span><span class="w"> </span><span class="kn">import</span> <span class="n">sigmoid</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
@@ -1343,7 +1357,7 @@ will be computed over the entire array. The default is None.</p>
 </div>
 </div>
 </div>
-<div id="7d7339ac-cce2-4454-8937-5a4ff4ac6f12" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('65534ae5-fc7e-40da-8e4d-297f7daf9da0','7d7339ac-cce2-4454-8937-5a4ff4ac6f12')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('65534ae5-fc7e-40da-8e4d-297f7daf9da0','7d7339ac-cce2-4454-8937-5a4ff4ac6f12')">Open In Tab</button></div><div id="03bf0922-0eb8-47cd-b217-9ba010465c11" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="e582f13c-3f36-4cbf-8fdb-ef5e6cd6a016" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('347ae515-37ea-41f4-b8ec-e6eb5df737d5','e582f13c-3f36-4cbf-8fdb-ef5e6cd6a016')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('347ae515-37ea-41f4-b8ec-e6eb5df737d5','e582f13c-3f36-4cbf-8fdb-ef5e6cd6a016')">Open In Tab</button></div><div id="a11cf87e-b089-4e88-8bbd-c7dfc149ec42" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1446,7 +1460,7 @@ will be computed over the entire array. The default is None.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260421.25a82c5 2026-04-21T21:14Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260422.ee25698 2026-04-22T13:28Z.
       <br/>
     
   </p>

@@ -268,6 +268,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../resources/index.html">
+    Resources
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
     Roadmap
   </a>
@@ -487,6 +494,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../whats_new/index.html">
     Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../resources/index.html">
+    Resources
   </a>
 </li>
 
@@ -1301,7 +1315,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>documents_to_polars<a class="headerlink" href="#documents-to-polars" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.documents_to_polars">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">documents_to_polars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">docs</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_embedding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_schema.py#L2304"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.documents_to_polars" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">documents_to_polars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">docs</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_embedding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/corpus/_schema.py#L2304"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.documents_to_polars" title="Link to this definition">#</a></dt>
 <dd><p>Convert a list of <a class="reference internal" href="scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument" title="scikitplot.corpus.CorpusDocument"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusDocument</span></code></a> instances to a
 <code class="docutils literal notranslate"><span class="pre">polars.DataFrame</span></code>.</p>
 <dl class="field-list simple">
@@ -1339,8 +1353,8 @@ values. Default: <code class="docutils literal notranslate"><span class="pre">Fa
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="b5664a4b-319f-4fef-ba7e-1b364c5a4835">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('b5664a4b-319f-4fef-ba7e-1b364c5a4835','00d222b5-513d-4650-a0d2-f0970a4ddf21','6e663ad7-90f2-402e-91a8-3ba031383cee','../../lite/tree/../notebooks/index.html?path=360972c1_c674_4306_a018_97a5ca5ca93c.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="f99383ab-cac0-4dda-b193-6247ab666347">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('f99383ab-cac0-4dda-b193-6247ab666347','32c516ab-14b1-4933-8966-2c78e52e9398','66df6c08-0aae-4a7f-9575-bf15abb7f7c6','../../lite/tree/../notebooks/index.html?path=3c8b4664_41fc_4def_ba10_11fd07b3efdc.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">docs</span> <span class="o">=</span> <span class="p">[</span><span class="n">CorpusDocument</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&quot;f.txt&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Sentence </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">documents_to_polars</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
@@ -1349,7 +1363,7 @@ values. Default: <code class="docutils literal notranslate"><span class="pre">Fa
 </div>
 </div>
 </div>
-<div id="6e663ad7-90f2-402e-91a8-3ba031383cee" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('b5664a4b-319f-4fef-ba7e-1b364c5a4835','6e663ad7-90f2-402e-91a8-3ba031383cee')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('b5664a4b-319f-4fef-ba7e-1b364c5a4835','6e663ad7-90f2-402e-91a8-3ba031383cee')">Open In Tab</button></div><div id="00d222b5-513d-4650-a0d2-f0970a4ddf21" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="66df6c08-0aae-4a7f-9575-bf15abb7f7c6" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('f99383ab-cac0-4dda-b193-6247ab666347','66df6c08-0aae-4a7f-9575-bf15abb7f7c6')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('f99383ab-cac0-4dda-b193-6247ab666347','66df6c08-0aae-4a7f-9575-bf15abb7f7c6')">Open In Tab</button></div><div id="32c516ab-14b1-4933-8966-2c78e52e9398" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1452,7 +1466,7 @@ values. Default: <code class="docutils literal notranslate"><span class="pre">Fa
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260421.25a82c5 2026-04-21T21:14Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260422.ee25698 2026-04-22T13:28Z.
       <br/>
     
   </p>

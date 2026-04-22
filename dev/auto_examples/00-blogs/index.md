@@ -1,1 +1,0 @@
-# blog[#](#blog "Link to this heading")

@@ -1,6 +1,6 @@
 # plot\_precision\_recall\_curve[#](#plot-precision-recall-curve "Link to this heading")
 
-scikitplot.api.metrics.plot\_precision\_recall\_curve(**y\_true**, **y\_probas**, **title='Precision-Recall Curve'**, **curves=('micro', 'each\_class')**, **ax=None**, **figsize=None**, **cmap='nipy\_spectral'**, **title\_fontsize='large'**, **text\_fontsize='medium'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/api/metrics/_classification/_precision_recall_curve.py#L50)[#](#scikitplot.api.metrics.plot_precision_recall_curve "Link to this definition")
+scikitplot.api.metrics.plot\_precision\_recall\_curve(**y\_true**, **y\_probas**, **title='Precision-Recall Curve'**, **curves=('micro', 'each\_class')**, **ax=None**, **figsize=None**, **cmap='nipy\_spectral'**, **title\_fontsize='large'**, **text\_fontsize='medium'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/api/metrics/_classification/_precision_recall_curve.py#L50)[#](#scikitplot.api.metrics.plot_precision_recall_curve "Link to this definition")
 :   Generates the Precision Recall Curve from labels and probabilities
 
     Parameters:
@@ -11,11 +11,11 @@ scikitplot.api.metrics.plot\_precision\_recall\_curve(**y\_true**, **y\_probas**
         * ****curves**** (**array-like**) – A listing of which curves should be plotted on the
           resulting plot. Defaults to `("micro", "each_class")`
           i.e. “micro” for micro-averaged curve
-        * ****ax**** ([`matplotlib.axes.Axes`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes "(in Matplotlib v3.11.0.dev2332+gb07211fda)"), optional) – The axes upon which to
+        * ****ax**** ([`matplotlib.axes.Axes`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes "(in Matplotlib v3.11.0.dev2342+g106899233)"), optional) – The axes upon which to
           plot the curve. If None, the plot is drawn on a new set of axes.
         * ****figsize**** (**2-tuple****,** **optional**) – Tuple denoting figure size of the plot
           e.g. (6, 6). Defaults to `None`.
-        * ****cmap**** (string or [`matplotlib.colors.Colormap`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.colors.Colormap.html#matplotlib.colors.Colormap "(in Matplotlib v3.11.0.dev2332+gb07211fda)") instance, optional) – Colormap used for plotting the projection. View Matplotlib Colormap
+        * ****cmap**** (string or [`matplotlib.colors.Colormap`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.colors.Colormap.html#matplotlib.colors.Colormap "(in Matplotlib v3.11.0.dev2342+g106899233)") instance, optional) – Colormap used for plotting the projection. View Matplotlib Colormap
           documentation for available options.
           <https://matplotlib.org/users/colormaps.html>
         * ****title\_fontsize**** (**string** **or** [**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**,** **optional**) – Matplotlib-style fontsizes.
@@ -30,7 +30,7 @@ scikitplot.api.metrics.plot\_precision\_recall\_curve(**y\_true**, **y\_probas**
         :   drawn.
 
     Return type:
-    :   ax ([`matplotlib.axes.Axes`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes "(in Matplotlib v3.11.0.dev2332+gb07211fda)"))
+    :   ax ([`matplotlib.axes.Axes`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes "(in Matplotlib v3.11.0.dev2342+g106899233)"))
 
     Example
 

@@ -268,6 +268,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../resources/index.html">
+    Resources
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
     Roadmap
   </a>
@@ -487,6 +494,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../whats_new/index.html">
     Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../resources/index.html">
+    Resources
   </a>
 </li>
 
@@ -1301,7 +1315,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>FunctionLemmatizer<a class="headerlink" href="#functionlemmatizer" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.FunctionLemmatizer">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">FunctionLemmatizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'custom'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L452"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FunctionLemmatizer" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">FunctionLemmatizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'custom'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L452"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FunctionLemmatizer" title="Link to this definition">#</a></dt>
 <dd><p>Wrap any <code class="docutils literal notranslate"><span class="pre">Callable[[str,</span> <span class="pre">Optional[str]],</span> <span class="pre">str]</span></code> as a <a class="reference internal" href="scikitplot.corpus.LemmatizerProtocol.html#scikitplot.corpus.LemmatizerProtocol" title="scikitplot.corpus.LemmatizerProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">LemmatizerProtocol</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1322,8 +1336,8 @@ silently dropped.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="9ab06e51-e726-41c3-afd5-61dd914620e5">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('9ab06e51-e726-41c3-afd5-61dd914620e5','a09e4b35-8bfc-4a25-acdc-b2dd5b8b819e','d0a83995-2fba-4327-9734-f68ed8af7ca2','../../lite/tree/../notebooks/index.html?path=891ab571_38ee_4eab_a2a1_b4ec531e675c.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="cd4d054e-817a-422f-ad3d-7495c846195f">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('cd4d054e-817a-422f-ad3d-7495c846195f','028bf49c-d461-4342-bdb7-04bfcd69a21d','a17f7b79-8bc1-42b7-b14f-a6bd742af8c0','../../lite/tree/../notebooks/index.html?path=cc2f20ca_4a6b_48e4_abae_eb74f1dfd9c3.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lm</span> <span class="o">=</span> <span class="n">FunctionLemmatizer</span><span class="p">(</span><span class="k">lambda</span> <span class="n">w</span><span class="p">:</span> <span class="n">w</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">pos</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lm</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="s2">&quot;Running&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="s2">&quot;v&quot;</span><span class="p">)</span>
 <span class="go">&#39;running&#39;</span>
@@ -1331,9 +1345,9 @@ silently dropped.</p>
 </div>
 </div>
 </div>
-<div id="d0a83995-2fba-4327-9734-f68ed8af7ca2" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('9ab06e51-e726-41c3-afd5-61dd914620e5','d0a83995-2fba-4327-9734-f68ed8af7ca2')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('9ab06e51-e726-41c3-afd5-61dd914620e5','d0a83995-2fba-4327-9734-f68ed8af7ca2')">Open In Tab</button></div><div id="a09e4b35-8bfc-4a25-acdc-b2dd5b8b819e" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="a17f7b79-8bc1-42b7-b14f-a6bd742af8c0" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('cd4d054e-817a-422f-ad3d-7495c846195f','a17f7b79-8bc1-42b7-b14f-a6bd742af8c0')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('cd4d054e-817a-422f-ad3d-7495c846195f','a17f7b79-8bc1-42b7-b14f-a6bd742af8c0')">Open In Tab</button></div><div id="028bf49c-d461-4342-bdb7-04bfcd69a21d" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FunctionLemmatizer.lemmatize">
-<span class="sig-name descname"><span class="pre">lemmatize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">word</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L492"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FunctionLemmatizer.lemmatize" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">lemmatize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">word</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L492"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FunctionLemmatizer.lemmatize" title="Link to this definition">#</a></dt>
 <dd><p>Lemmatize <em>word</em> with optional POS hint.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1468,7 +1482,7 @@ silently dropped.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260421.25a82c5 2026-04-21T21:14Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260422.ee25698 2026-04-22T13:28Z.
       <br/>
     
   </p>

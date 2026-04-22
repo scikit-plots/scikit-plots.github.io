@@ -1,6 +1,6 @@
 # NormalizerConfig[#](#normalizerconfig "Link to this heading")
 
-class scikitplot.corpus.NormalizerConfig(**unicode\_form='NFKC'**, **expand\_ligatures=True**, **fix\_hyphenation=True**, **collapse\_whitespace=True**, **strip\_control\_chars=True**, **lowercase=False**, **min\_length=1**, **custom\_pipeline=<factory>**, **steps=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_normalizers/_text_normalizer.py#L54)[#](#scikitplot.corpus.NormalizerConfig "Link to this definition")
+class scikitplot.corpus.NormalizerConfig(**unicode\_form='NFKC'**, **expand\_ligatures=True**, **fix\_hyphenation=True**, **collapse\_whitespace=True**, **strip\_control\_chars=True**, **lowercase=False**, **min\_length=1**, **custom\_pipeline=<factory>**, **steps=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/corpus/_normalizers/_text_normalizer.py#L54)[#](#scikitplot.corpus.NormalizerConfig "Link to this definition")
 :   Configuration for [`TextNormalizer`](scikitplot.corpus.TextNormalizer.html#scikitplot.corpus.TextNormalizer "scikitplot.corpus.TextNormalizer").
 
     Parameters:
@@ -71,7 +71,7 @@ class scikitplot.corpus.NormalizerConfig(**unicode\_form='NFKC'**, **expand\_lig
 
     collapse\_whitespace: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.NormalizerConfig.collapse_whitespace "Link to this definition")
 
-    custom\_pipeline: [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")], [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")], ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_normalizers/_text_normalizer.py#L54)[#](#scikitplot.corpus.NormalizerConfig.custom_pipeline "Link to this definition")
+    custom\_pipeline: [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")], [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")], ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/corpus/_normalizers/_text_normalizer.py#L54)[#](#scikitplot.corpus.NormalizerConfig.custom_pipeline "Link to this definition")
 
     expand\_ligatures: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.NormalizerConfig.expand_ligatures "Link to this definition")
 

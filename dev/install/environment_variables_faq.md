@@ -5,7 +5,7 @@ HOME[#](#envvar-HOME "Link to this definition")
 
 MPLBACKEND[#](#envvar-MPLBACKEND "Link to this definition")
 :   This optional variable can be set to choose the Matplotlib backend. See
-    [What is a backend?](https://matplotlib.org/devdocs/users/explain/figure/backends.html#what-is-a-backend "(in Matplotlib v3.11.0.dev2332+gb07211fda)").
+    [What is a backend?](https://matplotlib.org/devdocs/users/explain/figure/backends.html#what-is-a-backend "(in Matplotlib v3.11.0.dev2342+g106899233)").
 
 MPLCONFIGDIR[#](#envvar-MPLCONFIGDIR "Link to this definition")
 :   This is the directory used to store user customizations to
@@ -26,7 +26,7 @@ PYTHONPATH[#](#envvar-PYTHONPATH "Link to this definition")
 
 QT\_API[#](#envvar-QT_API "Link to this definition")
 :   The Python Qt wrapper to prefer when using Qt-based backends. See [the
-    entry in the usage guide](https://matplotlib.org/devdocs/api/backend_qt_api.html#qt-bindings "(in Matplotlib v3.11.0.dev2332+gb07211fda)") for more information.
+    entry in the usage guide](https://matplotlib.org/devdocs/api/backend_qt_api.html#qt-bindings "(in Matplotlib v3.11.0.dev2342+g106899233)") for more information.
 
 ## Setting environment variables in Linux and macOS[#](#setting-environment-variables-in-linux-and-macos "Link to this heading")
 

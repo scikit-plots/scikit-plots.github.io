@@ -268,6 +268,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../resources/index.html">
+    Resources
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
     Roadmap
   </a>
@@ -487,6 +494,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../whats_new/index.html">
     Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../resources/index.html">
+    Resources
   </a>
 </li>
 
@@ -1301,7 +1315,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>BuilderFactories<a class="headerlink" href="#builderfactories" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.BuilderFactories">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">BuilderFactories</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reader_factory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunker_factory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_factory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalizer_factory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enricher_factory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_engine_factory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_custom_hooks.py#L1311"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.BuilderFactories" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">BuilderFactories</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reader_factory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunker_factory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_factory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalizer_factory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enricher_factory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_engine_factory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/corpus/_custom_hooks.py#L1311"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.BuilderFactories" title="Link to this definition">#</a></dt>
 <dd><p>Component factory callables for <a class="reference internal" href="scikitplot.corpus.FactoryCorpusBuilder.html#scikitplot.corpus.FactoryCorpusBuilder" title="scikitplot.corpus.FactoryCorpusBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">FactoryCorpusBuilder</span></code></a>.</p>
 <p>Each factory replaces the corresponding lazy-creation method in
 <a class="reference internal" href="scikitplot.corpus.CorpusBuilder.html#scikitplot.corpus.CorpusBuilder" title="scikitplot.corpus._corpus_builder.CorpusBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusBuilder</span></code></a>.  <code class="docutils literal notranslate"><span class="pre">None</span></code>
@@ -1369,8 +1383,8 @@ No arguments.  Signature:</p>
 <code class="docutils literal notranslate"><span class="pre">BuilderConfig</span></code> settings.  For example, if <code class="docutils literal notranslate"><span class="pre">chunker_factory</span></code> is set,
 <code class="docutils literal notranslate"><span class="pre">BuilderConfig.chunker</span></code> is ignored for chunker creation.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="a80d4af7-6c48-4082-a1de-ffecb2b8d0c8">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('a80d4af7-6c48-4082-a1de-ffecb2b8d0c8','e5b9c803-a3e2-4aed-9698-bf454f2d5e56','f7c01df2-cbd9-439f-8299-f0959af3174f','../../lite/tree/../notebooks/index.html?path=1519d301_b5e3_4f52_918e_431fdc1eac4d.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="de9d98dd-9a57-43d9-9a0d-87529c334ba2">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('de9d98dd-9a57-43d9-9a0d-87529c334ba2','fe4ce4f4-9b92-4820-b9c8-f6a83707c2e0','467600aa-e2c7-49b8-bce5-3f6931c815e5','../../lite/tree/../notebooks/index.html?path=6dd3fea9_b200_4d28_abe5_766875512efc.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Use a custom reader factory that injects a per-source language code:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">langdetect</span><span class="w"> </span><span class="kn">import</span> <span class="n">detect</span>
 
@@ -1385,7 +1399,7 @@ No arguments.  Signature:</p>
 </div>
 </div>
 </div>
-<div id="f7c01df2-cbd9-439f-8299-f0959af3174f" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('a80d4af7-6c48-4082-a1de-ffecb2b8d0c8','f7c01df2-cbd9-439f-8299-f0959af3174f')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('a80d4af7-6c48-4082-a1de-ffecb2b8d0c8','f7c01df2-cbd9-439f-8299-f0959af3174f')">Open In Tab</button></div><div id="e5b9c803-a3e2-4aed-9698-bf454f2d5e56" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
+<div id="467600aa-e2c7-49b8-bce5-3f6931c815e5" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('de9d98dd-9a57-43d9-9a0d-87529c334ba2','467600aa-e2c7-49b8-bce5-3f6931c815e5')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('de9d98dd-9a57-43d9-9a0d-87529c334ba2','467600aa-e2c7-49b8-bce5-3f6931c815e5')">Open In Tab</button></div><div id="fe4ce4f4-9b92-4820-b9c8-f6a83707c2e0" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.BuilderFactories.chunker_factory">
 <span class="sig-name descname"><span class="pre">chunker_factory</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.14)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#scikitplot.corpus.BuilderFactories.chunker_factory" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
@@ -1526,7 +1540,7 @@ No arguments.  Signature:</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260421.25a82c5 2026-04-21T21:14Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260422.ee25698 2026-04-22T13:28Z.
       <br/>
     
   </p>

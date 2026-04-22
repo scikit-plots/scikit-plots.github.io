@@ -268,6 +268,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../resources/index.html">
+    Resources
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
     Roadmap
   </a>
@@ -487,6 +494,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../whats_new/index.html">
     Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../resources/index.html">
+    Resources
   </a>
 </li>
 
@@ -1301,7 +1315,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>FunctionTokenizer<a class="headerlink" href="#functiontokenizer" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.FunctionTokenizer">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">FunctionTokenizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'custom'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L259"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FunctionTokenizer" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">FunctionTokenizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'custom'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L259"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FunctionTokenizer" title="Link to this definition">#</a></dt>
 <dd><p>Wrap any <code class="docutils literal notranslate"><span class="pre">Callable[[str],</span> <span class="pre">list[str]]</span></code> as a <a class="reference internal" href="scikitplot.corpus.TokenizerProtocol.html#scikitplot.corpus.TokenizerProtocol" title="scikitplot.corpus.TokenizerProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">TokenizerProtocol</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1335,8 +1349,8 @@ and return a <code class="docutils literal notranslate"><span class="pre">list[s
 <p><strong>Developer note:</strong> The wrapper stores only the callable; no model
 loading happens at construction time.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="0bc4e899-362c-4bb2-94d1-550511f80723">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('0bc4e899-362c-4bb2-94d1-550511f80723','98323233-adb2-4328-af63-bcab4bf342f7','66267b1a-eb88-4cbc-bd14-6f5739520e41','../../lite/tree/../notebooks/index.html?path=c8667335_3b34_455e_9845_14d8f74f7368.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="829a4bc5-470c-466f-b1ad-edc814e5b7c7">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('829a4bc5-470c-466f-b1ad-edc814e5b7c7','46ca1d69-49ea-431e-b429-0bc02add3532','256166ef-d957-4add-aa63-87306d7a7bb2','../../lite/tree/../notebooks/index.html?path=8278b158_1ee0_44e4_8353_3babab3cf6c0.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tok</span> <span class="o">=</span> <span class="n">FunctionTokenizer</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">split</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tok</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
 <span class="go">[&#39;hello&#39;, &#39;world&#39;]</span>
@@ -1347,9 +1361,9 @@ loading happens at construction time.</p>
 </div>
 </div>
 </div>
-<div id="66267b1a-eb88-4cbc-bd14-6f5739520e41" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('0bc4e899-362c-4bb2-94d1-550511f80723','66267b1a-eb88-4cbc-bd14-6f5739520e41')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('0bc4e899-362c-4bb2-94d1-550511f80723','66267b1a-eb88-4cbc-bd14-6f5739520e41')">Open In Tab</button></div><div id="98323233-adb2-4328-af63-bcab4bf342f7" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="256166ef-d957-4add-aa63-87306d7a7bb2" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('829a4bc5-470c-466f-b1ad-edc814e5b7c7','256166ef-d957-4add-aa63-87306d7a7bb2')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('829a4bc5-470c-466f-b1ad-edc814e5b7c7','256166ef-d957-4add-aa63-87306d7a7bb2')">Open In Tab</button></div><div id="46ca1d69-49ea-431e-b429-0bc02add3532" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FunctionTokenizer.tokenize">
-<span class="sig-name descname"><span class="pre">tokenize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L310"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FunctionTokenizer.tokenize" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">tokenize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L310"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FunctionTokenizer.tokenize" title="Link to this definition">#</a></dt>
 <dd><p>Tokenize <em>text</em> using the wrapped callable.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1485,7 +1499,7 @@ loading happens at construction time.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260421.25a82c5 2026-04-21T21:14Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260422.ee25698 2026-04-22T13:28Z.
       <br/>
     
   </p>

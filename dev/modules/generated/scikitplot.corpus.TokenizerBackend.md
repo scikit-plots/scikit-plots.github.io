@@ -1,6 +1,6 @@
 # TokenizerBackend[#](#tokenizerbackend "Link to this heading")
 
-class scikitplot.corpus.TokenizerBackend(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_word.py#L199)[#](#scikitplot.corpus.TokenizerBackend "Link to this definition")
+class scikitplot.corpus.TokenizerBackend(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/corpus/_chunkers/_word.py#L199)[#](#scikitplot.corpus.TokenizerBackend "Link to this definition")
 :   Word tokenisation backend.
 
     Attributes:
@@ -21,13 +21,13 @@ class scikitplot.corpus.TokenizerBackend(**value**)[[source]](https://github.com
             camel-tools (Arabic/Ottoman), stanza (100+ languages), or any
             HuggingFace / third-party tokenizer.
 
-    CUSTOM = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.TokenizerBackend.CUSTOM "Link to this definition")
+    CUSTOM = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.TokenizerBackend.CUSTOM "Link to this definition")
 
-    NLTK = 'nltk'[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.TokenizerBackend.NLTK "Link to this definition")
+    NLTK = 'nltk'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.TokenizerBackend.NLTK "Link to this definition")
 
-    SIMPLE = 'simple'[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.TokenizerBackend.SIMPLE "Link to this definition")
+    SIMPLE = 'simple'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.TokenizerBackend.SIMPLE "Link to this definition")
 
-    SPACY = 'spacy'[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.TokenizerBackend.SPACY "Link to this definition")
+    SPACY = 'spacy'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.TokenizerBackend.SPACY "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.corpus.TokenizerBackend.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

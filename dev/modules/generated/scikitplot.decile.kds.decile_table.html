@@ -270,6 +270,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../resources/index.html">
+    Resources
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
     Roadmap
   </a>
@@ -489,6 +496,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../whats_new/index.html">
     Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../resources/index.html">
+    Resources
   </a>
 </li>
 
@@ -1303,7 +1317,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>decile_table<a class="headerlink" href="#decile-table" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.decile.kds.decile_table">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.decile.kds.</span></span><span class="sig-name descname"><span class="pre">decile_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_score</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">change_deciles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_infos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/decile/kds/_kds.py#L116"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.kds.decile_table" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.decile.kds.</span></span><span class="sig-name descname"><span class="pre">decile_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_score</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">change_deciles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_infos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/decile/kds/_kds.py#L116"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.kds.decile_table" title="Link to this definition">#</a></dt>
 <dd><p>Generate the Decile Table from labels and probabilities.</p>
 <p>The Decile Table is creared by first sorting the customers by their predicted
 probabilities, in decreasing order from highest (closest to one) to
@@ -1381,8 +1395,8 @@ y_pred are used in sorted order.</p>
 <p class="rubric">References</p>
 <p>[1] <a class="github reference external" href="https://github.com/tensorbored/kds/blob/master/kds/metrics.py#L382">tensorbored/kds</a></p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="620b277c-32e1-4c0a-8d53-e57463fbb976">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('620b277c-32e1-4c0a-8d53-e57463fbb976','3d01aa5e-a7bf-407e-a99a-e87991379b96','160d939c-8fb8-4606-a879-d72fd3b77c13','../../lite/tree/../notebooks/index.html?path=85341d2d_8109_42d5_ae3e_09167c6ae9b4.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="6b4f637c-592a-4f96-a7b2-52cd8ec82082">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('6b4f637c-592a-4f96-a7b2-52cd8ec82082','650a5401-a0b5-446f-9777-049dc7b5d3f8','8d0752e8-740d-437e-b440-3007cbafb1e1','../../lite/tree/../notebooks/index.html?path=2d005945_269a_4963_a7e7_f2ed1282a407.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="thebelab-code" data-executable="true" data-language="ipython"><div class="docutils container">
@@ -1689,7 +1703,7 @@ y_pred are used in sorted order.</p>
 </div>
 </div>
 </div>
-<div id="160d939c-8fb8-4606-a879-d72fd3b77c13" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('620b277c-32e1-4c0a-8d53-e57463fbb976','160d939c-8fb8-4606-a879-d72fd3b77c13')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('620b277c-32e1-4c0a-8d53-e57463fbb976','160d939c-8fb8-4606-a879-d72fd3b77c13')">Open In Tab</button></div><div id="3d01aa5e-a7bf-407e-a99a-e87991379b96" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="8d0752e8-740d-437e-b440-3007cbafb1e1" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('6b4f637c-592a-4f96-a7b2-52cd8ec82082','8d0752e8-740d-437e-b440-3007cbafb1e1')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('6b4f637c-592a-4f96-a7b2-52cd8ec82082','8d0752e8-740d-437e-b440-3007cbafb1e1')">Open In Tab</button></div><div id="650a5401-a0b5-446f-9777-049dc7b5d3f8" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <section id="gallery-examples">
 <h2>Gallery examples<a class="headerlink" href="#gallery-examples" title="Link to this heading">#</a></h2>
@@ -1803,7 +1817,7 @@ y_pred are used in sorted order.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260421.25a82c5 2026-04-21T21:14Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260422.ee25698 2026-04-22T13:28Z.
       <br/>
     
   </p>

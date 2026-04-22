@@ -268,6 +268,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../resources/index.html">
+    Resources
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
     Roadmap
   </a>
@@ -487,6 +494,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../whats_new/index.html">
     Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../resources/index.html">
+    Resources
   </a>
 </li>
 
@@ -1301,7 +1315,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>registry<a class="headerlink" href="#registry" title="Link to this heading">#</a></h1>
 <dl class="py data">
 <dt class="sig sig-object py" id="scikitplot.corpus.registry">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">registry</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">ComponentRegistry(chunkers=0,</span> <span class="pre">filters=0,</span> <span class="pre">readers=0,</span> <span class="pre">normalizers=0)</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_registry/_registry.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.registry" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">registry</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">ComponentRegistry(chunkers=0,</span> <span class="pre">filters=0,</span> <span class="pre">readers=0,</span> <span class="pre">normalizers=0)</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/corpus/_registry/_registry.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.registry" title="Link to this definition">#</a></dt>
 <dd><p>Central look-up table for corpus pipeline components.</p>
 <p>Stores class references (not instances) for four component types:
 chunkers, filters, readers, and normalizers. Callers retrieve a class
@@ -1311,8 +1325,8 @@ and instantiate it with their own parameters.</p>
 built-in components via <code class="xref py py-meth docutils literal notranslate"><span class="pre">register_builtins</span></code>. Third-party
 packages can register additional components after import.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="641211d8-7d13-4a29-888f-e2c2a0b0c445">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('641211d8-7d13-4a29-888f-e2c2a0b0c445','7fd66fde-c9c7-4142-905e-8440a55ee41f','cddfa0cf-cde2-4c77-85a9-1ec5e3685b16','../../lite/tree/../notebooks/index.html?path=9e1f7be5_aff7_4616_bb92_2dcba2d114c6.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="5d1bf9de-382c-4714-9bf3-6ba930f80f0d">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('5d1bf9de-382c-4714-9bf3-6ba930f80f0d','4533bc94-9f74-40d4-863b-87c586f9ff7d','c06eea71-0c24-44ad-872f-091b2450321c','../../lite/tree/../notebooks/index.html?path=c2cb885d_76ef_4485_8944_48eff6ff30c6.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus._registry</span><span class="w"> </span><span class="kn">import</span> <span class="n">registry</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">registry</span><span class="o">.</span><span class="n">register_builtins</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="bp">cls</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">get_chunker</span><span class="p">(</span><span class="s2">&quot;paragraph&quot;</span><span class="p">)</span>
@@ -1321,7 +1335,7 @@ packages can register additional components after import.</p>
 </div>
 </div>
 </div>
-<div id="cddfa0cf-cde2-4c77-85a9-1ec5e3685b16" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('641211d8-7d13-4a29-888f-e2c2a0b0c445','cddfa0cf-cde2-4c77-85a9-1ec5e3685b16')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('641211d8-7d13-4a29-888f-e2c2a0b0c445','cddfa0cf-cde2-4c77-85a9-1ec5e3685b16')">Open In Tab</button></div><div id="7fd66fde-c9c7-4142-905e-8440a55ee41f" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="c06eea71-0c24-44ad-872f-091b2450321c" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('5d1bf9de-382c-4714-9bf3-6ba930f80f0d','c06eea71-0c24-44ad-872f-091b2450321c')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('5d1bf9de-382c-4714-9bf3-6ba930f80f0d','c06eea71-0c24-44ad-872f-091b2450321c')">Open In Tab</button></div><div id="4533bc94-9f74-40d4-863b-87c586f9ff7d" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1424,7 +1438,7 @@ packages can register additional components after import.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260421.25a82c5 2026-04-21T21:14Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260422.ee25698 2026-04-22T13:28Z.
       <br/>
     
   </p>

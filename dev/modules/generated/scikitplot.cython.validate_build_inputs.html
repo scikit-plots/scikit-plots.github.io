@@ -268,6 +268,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../resources/index.html">
+    Resources
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
     Roadmap
   </a>
@@ -487,6 +494,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../whats_new/index.html">
     Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../resources/index.html">
+    Resources
   </a>
 </li>
 
@@ -1301,7 +1315,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>validate_build_inputs<a class="headerlink" href="#validate-build-inputs" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cython.validate_build_inputs">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">validate_build_inputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">define_macros</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_compile_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_link_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_dirs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">libraries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cython/_security.py#L463"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.validate_build_inputs" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">validate_build_inputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">define_macros</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_compile_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_link_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_dirs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">libraries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/cython/_security.py#L463"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.validate_build_inputs" title="Link to this definition">#</a></dt>
 <dd><p>Validate build inputs against a <a class="reference internal" href="scikitplot.cython.SecurityPolicy.html#scikitplot.cython.SecurityPolicy" title="scikitplot.cython.SecurityPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">SecurityPolicy</span></code></a>.</p>
 <p>Raises <a class="reference internal" href="scikitplot.cython.SecurityError.html#scikitplot.cython.SecurityError" title="scikitplot.cython.SecurityError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">SecurityError</span></code></a> on the <strong>first</strong> violation found.  All
 checks are deterministic and do not perform filesystem I/O.</p>
@@ -1356,8 +1370,8 @@ function directly — the public API applies it automatically via
 <p><strong>For masters</strong> (Scenarios 3-7): call this explicitly when you bypass
 the public API or when building with custom compilers.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="49c37035-04b0-49e6-b61d-68c698adc475">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('49c37035-04b0-49e6-b61d-68c698adc475','95acd8c6-1dbb-4f75-8d4d-70a1fe660c67','351a9a10-e489-48f4-8cc6-a0e0a3f2a1ce','../../lite/tree/../notebooks/index.html?path=bacbe159_e228_4e16_ae85_e74a7e5ffa82.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="fab2240d-9019-44df-b982-ede829d57108">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('fab2240d-9019-44df-b982-ede829d57108','bd3700ea-883d-4422-b9ef-93737cd9ae81','18312ea4-f30e-479b-9580-db62b286e347','../../lite/tree/../notebooks/index.html?path=e2beff39_cd6c_48e0_a543_afe077916165.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.cython._security</span><span class="w"> </span><span class="kn">import</span> <span class="n">validate_build_inputs</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">validate_build_inputs</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">source</span><span class="o">=</span><span class="s2">&quot;def hello(): return 42&quot;</span><span class="p">,</span>
@@ -1375,7 +1389,7 @@ the public API or when building with custom compilers.</p>
 </div>
 </div>
 </div>
-<div id="351a9a10-e489-48f4-8cc6-a0e0a3f2a1ce" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('49c37035-04b0-49e6-b61d-68c698adc475','351a9a10-e489-48f4-8cc6-a0e0a3f2a1ce')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('49c37035-04b0-49e6-b61d-68c698adc475','351a9a10-e489-48f4-8cc6-a0e0a3f2a1ce')">Open In Tab</button></div><div id="95acd8c6-1dbb-4f75-8d4d-70a1fe660c67" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="18312ea4-f30e-479b-9580-db62b286e347" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('fab2240d-9019-44df-b982-ede829d57108','18312ea4-f30e-479b-9580-db62b286e347')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('fab2240d-9019-44df-b982-ede829d57108','18312ea4-f30e-479b-9580-db62b286e347')">Open In Tab</button></div><div id="bd3700ea-883d-4422-b9ef-93737cd9ae81" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1478,7 +1492,7 @@ the public API or when building with custom compilers.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260421.25a82c5 2026-04-21T21:14Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260422.ee25698 2026-04-22T13:28Z.
       <br/>
     
   </p>

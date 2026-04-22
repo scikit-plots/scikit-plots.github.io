@@ -1,6 +1,6 @@
 # bayesian\_blocks[#](#bayesian-blocks "Link to this heading")
 
-scikitplot.stats.bayesian\_blocks(**t**, **x=None**, **sigma=None**, **fitness='events'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L67)[#](#scikitplot.stats.bayesian_blocks "Link to this definition")
+scikitplot.stats.bayesian\_blocks(**t**, **x=None**, **sigma=None**, **fitness='events'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L67)[#](#scikitplot.stats.bayesian_blocks "Link to this definition")
 :   Compute optimal segmentation of data with Scargle’s Bayesian Blocks.
 
     This is a flexible implementation of the Bayesian Blocks algorithm

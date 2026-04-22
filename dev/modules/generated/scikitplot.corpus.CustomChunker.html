@@ -268,6 +268,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../resources/index.html">
+    Resources
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
     Roadmap
   </a>
@@ -487,6 +494,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../whats_new/index.html">
     Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../resources/index.html">
+    Resources
   </a>
 </li>
 
@@ -1301,7 +1315,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>CustomChunker<a class="headerlink" href="#customchunker" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.CustomChunker">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">CustomChunker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chunk_fn</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_custom_hooks.py#L110"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.CustomChunker" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">CustomChunker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chunk_fn</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/corpus/_custom_hooks.py#L110"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.CustomChunker" title="Link to this definition">#</a></dt>
 <dd><p>Wrap any callable as a <a class="reference internal" href="scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase" title="scikitplot.corpus._base.ChunkerBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChunkerBase</span></code></a>.</p>
 <p>The caller provides a <code class="docutils literal notranslate"><span class="pre">chunk_fn</span></code> that accepts <code class="docutils literal notranslate"><span class="pre">(text:</span> <span class="pre">str,</span>
 <span class="pre">metadata:</span> <span class="pre">dict)</span></code> and returns <code class="docutils literal notranslate"><span class="pre">list[tuple[int,</span> <span class="pre">str]]</span></code> where each tuple
@@ -1365,8 +1379,8 @@ splits, semantic paragraph detection via a local LLM, etc.</p>
 <a class="reference internal" href="scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy" title="scikitplot.corpus._schema.ChunkingStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChunkingStrategy</span></code></a> on every generated
 <a class="reference internal" href="scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument" title="scikitplot.corpus._schema.CorpusDocument"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusDocument</span></code></a>.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="8ff8f621-e3e9-4509-86ed-ba682ea8bf66">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('8ff8f621-e3e9-4509-86ed-ba682ea8bf66','19d2f8a2-ff76-4134-8c31-b69152a1d70a','d8dc9c8c-06e2-4b83-a5ef-de5bf6ee07dd','../../lite/tree/../notebooks/index.html?path=f7654ccd_93d0_4f6a_be67_ad7fc764ec91.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="b81c6a42-6ff4-4709-a781-bed261faf8fa">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('b81c6a42-6ff4-4709-a781-bed261faf8fa','59c7634a-456e-4c15-81d7-1938a9de0c79','521e5e4e-b6f1-4f6a-afa8-6d5969fca09a','../../lite/tree/../notebooks/index.html?path=05f0b13e_d7cc_4643_a662_a637fc1b55b8.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Split on double newlines (paragraph-like) without using ParagraphChunker:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">my_para_chunk</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">metadata</span><span class="p">):</span>
     <span class="n">paras</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">n</span><span class="se">\\</span><span class="s2">n&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">strip</span><span class="p">()]</span>
@@ -1384,9 +1398,9 @@ splits, semantic paragraph detection via a local LLM, etc.</p>
 </div>
 </div>
 </div>
-<div id="d8dc9c8c-06e2-4b83-a5ef-de5bf6ee07dd" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('8ff8f621-e3e9-4509-86ed-ba682ea8bf66','d8dc9c8c-06e2-4b83-a5ef-de5bf6ee07dd')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('8ff8f621-e3e9-4509-86ed-ba682ea8bf66','d8dc9c8c-06e2-4b83-a5ef-de5bf6ee07dd')">Open In Tab</button></div><div id="19d2f8a2-ff76-4134-8c31-b69152a1d70a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="521e5e4e-b6f1-4f6a-afa8-6d5969fca09a" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('b81c6a42-6ff4-4709-a781-bed261faf8fa','521e5e4e-b6f1-4f6a-afa8-6d5969fca09a')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('b81c6a42-6ff4-4709-a781-bed261faf8fa','521e5e4e-b6f1-4f6a-afa8-6d5969fca09a')">Open In Tab</button></div><div id="59c7634a-456e-4c15-81d7-1938a9de0c79" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.CustomChunker.chunk">
-<span class="sig-name descname"><span class="pre">chunk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_custom_hooks.py#L214"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.CustomChunker.chunk" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">chunk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/corpus/_custom_hooks.py#L214"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.CustomChunker.chunk" title="Link to this definition">#</a></dt>
 <dd><p>Delegate to the user-supplied <code class="docutils literal notranslate"><span class="pre">chunk_fn</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1425,7 +1439,7 @@ splits, semantic paragraph detection via a local LLM, etc.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.CustomChunker.strategy">
-<span class="sig-name descname"><span class="pre">strategy</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy" title="scikitplot.corpus._schema.ChunkingStrategy"><span class="pre">ChunkingStrategy</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'custom'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.CustomChunker.strategy" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">strategy</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy" title="scikitplot.corpus._schema.ChunkingStrategy"><span class="pre">ChunkingStrategy</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'custom'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.CustomChunker.strategy" title="Link to this definition">#</a></dt>
 <dd><p>Identifies which <a class="reference internal" href="scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy" title="scikitplot.corpus._schema.ChunkingStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChunkingStrategy</span></code></a>
 this implementation provides. <strong>Must</strong> be defined on every concrete subclass.</p>
 </dd></dl>
@@ -1537,7 +1551,7 @@ this implementation provides. <strong>Must</strong> be defined on every concrete
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260421.25a82c5 2026-04-21T21:14Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260422.ee25698 2026-04-22T13:28Z.
       <br/>
     
   </p>

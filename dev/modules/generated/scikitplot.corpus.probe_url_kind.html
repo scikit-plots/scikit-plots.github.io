@@ -268,6 +268,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../resources/index.html">
+    Resources
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
     Roadmap
   </a>
@@ -487,6 +494,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../whats_new/index.html">
     Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../resources/index.html">
+    Resources
   </a>
 </li>
 
@@ -1301,7 +1315,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>probe_url_kind<a class="headerlink" href="#probe-url-kind" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.probe_url_kind">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">probe_url_kind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_ssrf_check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_url_handler.py#L503"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.probe_url_kind" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">probe_url_kind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_ssrf_check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/corpus/_url_handler.py#L503"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.probe_url_kind" title="Link to this definition">#</a></dt>
 <dd><p>Probe a URL with a HEAD request to classify by Content-Type.</p>
 <p>Use this when <a class="reference internal" href="scikitplot.corpus.classify_url.html#scikitplot.corpus.classify_url" title="scikitplot.corpus.classify_url"><code class="xref py py-func docutils literal notranslate"><span class="pre">classify_url</span></code></a> returns <a class="reference internal" href="scikitplot.corpus.URLKind.html#scikitplot.corpus.URLKind.WEB_PAGE" title="scikitplot.corpus.URLKind.WEB_PAGE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">URLKind.WEB_PAGE</span></code></a>
 but the URL has no file extension in the path (e.g. API endpoints
@@ -1368,8 +1382,8 @@ handling).  It falls back to <code class="docutils literal notranslate"><span cl
 installed.  The SSRF check is applied before connecting when
 <code class="docutils literal notranslate"><span class="pre">skip_ssrf_check=False</span></code>.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="000b2cfc-8308-4c38-8002-3c5186fb53ca">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('000b2cfc-8308-4c38-8002-3c5186fb53ca','50e78e1c-1426-4c34-8933-41d9fcecee0f','f0c26d56-7106-4936-9862-431ef42f4467','../../lite/tree/../notebooks/index.html?path=16729296_fb28_4d4d_a632_d3406e5db1b7.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="29b2c79a-1986-4949-86c8-a982f1266e74">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('29b2c79a-1986-4949-86c8-a982f1266e74','54f7e1b7-3a94-406c-8cdd-ebad37a65b71','e09f129b-2bd9-409d-9509-1edbfd511425','../../lite/tree/../notebooks/index.html?path=1e23e60a_8ef2_42b6_868b_6a12cb952c41.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># An API endpoint returning a PDF with no extension in path</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">kind</span> <span class="o">=</span> <span class="n">probe_url_kind</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="s2">&quot;https://iris.who.int/server/api/core/bitstreams/abc/content&quot;</span>
@@ -1386,7 +1400,7 @@ installed.  The SSRF check is applied before connecting when
 </div>
 </div>
 </div>
-<div id="f0c26d56-7106-4936-9862-431ef42f4467" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('000b2cfc-8308-4c38-8002-3c5186fb53ca','f0c26d56-7106-4936-9862-431ef42f4467')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('000b2cfc-8308-4c38-8002-3c5186fb53ca','f0c26d56-7106-4936-9862-431ef42f4467')">Open In Tab</button></div><div id="50e78e1c-1426-4c34-8933-41d9fcecee0f" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="e09f129b-2bd9-409d-9509-1edbfd511425" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('29b2c79a-1986-4949-86c8-a982f1266e74','e09f129b-2bd9-409d-9509-1edbfd511425')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('29b2c79a-1986-4949-86c8-a982f1266e74','e09f129b-2bd9-409d-9509-1edbfd511425')">Open In Tab</button></div><div id="54f7e1b7-3a94-406c-8cdd-ebad37a65b71" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1489,7 +1503,7 @@ installed.  The SSRF check is applied before connecting when
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260421.25a82c5 2026-04-21T21:14Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260422.ee25698 2026-04-22T13:28Z.
       <br/>
     
   </p>

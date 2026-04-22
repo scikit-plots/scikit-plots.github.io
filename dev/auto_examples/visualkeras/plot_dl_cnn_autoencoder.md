@@ -143,11 +143,11 @@ img_encoder
 ```
 ![plot dl cnn autoencoder](../../_images/sphx_glr_plot_dl_cnn_autoencoder_001.png)
 ```
-2026-04-21 21:26:35.327859: W scikitplot 132292091423616 _pil.py:204:load_font] Error loading system font: cannot open resource
-2026-04-21 21:26:35.328063: W scikitplot 132292091423616 _pil.py:206:load_font] Falling back to PIL default font.
-2026-04-21 21:26:35.328264: W scikitplot 132292091423616 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
+2026-04-22 13:37:29.543555: W scikitplot 136105236716416 _pil.py:204:load_font] Error loading system font: cannot open resource
+2026-04-22 13:37:29.543680: W scikitplot 136105236716416 _pil.py:206:load_font] Falling back to PIL default font.
+2026-04-22 13:37:29.543798: W scikitplot 136105236716416 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
 
-<matplotlib.image.AxesImage object at 0x7850ec2e5690>
+<matplotlib.image.AxesImage object at 0x7bc8d455c090>
 
 ```
 ```
@@ -162,11 +162,11 @@ img_autoencoder
 ```
 ![plot dl cnn autoencoder](../../_images/sphx_glr_plot_dl_cnn_autoencoder_002.png)
 ```
-2026-04-21 21:26:35.631063: W scikitplot 132292091423616 _pil.py:204:load_font] Error loading system font: cannot open resource
-2026-04-21 21:26:35.631262: W scikitplot 132292091423616 _pil.py:206:load_font] Falling back to PIL default font.
-2026-04-21 21:26:35.631475: W scikitplot 132292091423616 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
+2026-04-22 13:37:29.726131: W scikitplot 136105236716416 _pil.py:204:load_font] Error loading system font: cannot open resource
+2026-04-22 13:37:29.726256: W scikitplot 136105236716416 _pil.py:206:load_font] Falling back to PIL default font.
+2026-04-22 13:37:29.726362: W scikitplot 136105236716416 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
 
-<matplotlib.image.AxesImage object at 0x7850ac743bd0>
+<matplotlib.image.AxesImage object at 0x7bc8d40ab850>
 
 ```
 ```
@@ -192,18 +192,18 @@ img_autoencoder_text
 ```
 ![plot dl cnn autoencoder](../../_images/sphx_glr_plot_dl_cnn_autoencoder_003.png)
 ```
-2026-04-21 21:26:35.839484: W scikitplot 132292091423616 _pil.py:204:load_font] Error loading system font: cannot open resource
-2026-04-21 21:26:35.839726: W scikitplot 132292091423616 _pil.py:206:load_font] Falling back to PIL default font.
-2026-04-21 21:26:35.839940: W scikitplot 132292091423616 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
-[INFO] Saving path to: /home/circleci/repo/galleries/examples/visualkeras/result_images/autoencoder_text_20260421_212635Z.png
+2026-04-22 13:37:29.884630: W scikitplot 136105236716416 _pil.py:204:load_font] Error loading system font: cannot open resource
+2026-04-22 13:37:29.884747: W scikitplot 136105236716416 _pil.py:206:load_font] Falling back to PIL default font.
+2026-04-22 13:37:29.884881: W scikitplot 136105236716416 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
+[INFO] Saving path to: /home/circleci/repo/galleries/examples/visualkeras/result_images/autoencoder_text_20260422_133729Z.png
 
-<matplotlib.image.AxesImage object at 0x7850ec504d10>
+<matplotlib.image.AxesImage object at 0x7bc8d40bfcd0>
 
 ```
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: model building](../../_tags/model-workflow-model-building.html) [plot-type: visualkeras](../../_tags/plot-type-visualkeras.html) [domain: neural network](../../_tags/domain-neural-network.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 4.821 seconds)
+****Total running time of the script:**** (0 minutes 3.493 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo18.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/visualkeras/plot_dl_cnn_autoencoder.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo18.svg)](../../lite/lab/index.html?path=auto_examples/visualkeras/plot_dl_cnn_autoencoder.ipynb)
 

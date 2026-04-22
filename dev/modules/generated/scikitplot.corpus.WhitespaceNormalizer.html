@@ -270,6 +270,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../resources/index.html">
+    Resources
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
     Roadmap
   </a>
@@ -489,6 +496,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../whats_new/index.html">
     Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../resources/index.html">
+    Resources
   </a>
 </li>
 
@@ -1303,7 +1317,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>WhitespaceNormalizer<a class="headerlink" href="#whitespacenormalizer" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.WhitespaceNormalizer">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">WhitespaceNormalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collapse_newlines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_normalizers/_normalizer.py#L206"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.WhitespaceNormalizer" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">WhitespaceNormalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collapse_newlines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/corpus/_normalizers/_normalizer.py#L206"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.WhitespaceNormalizer" title="Link to this definition">#</a></dt>
 <dd><p>Collapse runs of whitespace and optionally strip leading/trailing space.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1325,8 +1339,8 @@ Default: <code class="docutils literal notranslate"><span class="pre">True</span
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="45c8e743-5eb8-46ca-bc9e-fb469c84f69d">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('45c8e743-5eb8-46ca-bc9e-fb469c84f69d','b05b80e0-dfe7-4a7f-80d9-1fd74fa8f5ad','1b1c4bec-3627-4245-8c78-59f701794e58','../../lite/tree/../notebooks/index.html?path=cbda11c4_a3e0_4a00_bccb_06d536286acd.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="a4c15f69-cc99-49d8-a463-12dfab0add81">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('a4c15f69-cc99-49d8-a463-12dfab0add81','9c648b34-638a-4c15-a1e6-938247ea3acc','396b8276-735b-4143-a4d8-b170a7ed5847','../../lite/tree/../notebooks/index.html?path=ad9a5f30_b0fb_4fa7_aa08_c27d282fa80e.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">norm</span> <span class="o">=</span> <span class="n">WhitespaceNormalizer</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">doc</span> <span class="o">=</span> <span class="n">CorpusDocument</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&quot;f.txt&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Hello   world.&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">norm</span><span class="o">.</span><span class="n">normalize_doc</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span><span class="o">.</span><span class="n">normalized_text</span>
@@ -1335,9 +1349,9 @@ Default: <code class="docutils literal notranslate"><span class="pre">True</span
 </div>
 </div>
 </div>
-<div id="1b1c4bec-3627-4245-8c78-59f701794e58" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('45c8e743-5eb8-46ca-bc9e-fb469c84f69d','1b1c4bec-3627-4245-8c78-59f701794e58')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('45c8e743-5eb8-46ca-bc9e-fb469c84f69d','1b1c4bec-3627-4245-8c78-59f701794e58')">Open In Tab</button></div><div id="b05b80e0-dfe7-4a7f-80d9-1fd74fa8f5ad" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="396b8276-735b-4143-a4d8-b170a7ed5847" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('a4c15f69-cc99-49d8-a463-12dfab0add81','396b8276-735b-4143-a4d8-b170a7ed5847')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('a4c15f69-cc99-49d8-a463-12dfab0add81','396b8276-735b-4143-a4d8-b170a7ed5847')">Open In Tab</button></div><div id="9c648b34-638a-4c15-a1e6-938247ea3acc" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.WhitespaceNormalizer.normalize_doc">
-<span class="sig-name descname"><span class="pre">normalize_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/corpus/_normalizers/_normalizer.py#L236"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.WhitespaceNormalizer.normalize_doc" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">normalize_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/corpus/_normalizers/_normalizer.py#L236"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.WhitespaceNormalizer.normalize_doc" title="Link to this definition">#</a></dt>
 <dd><p>Collapse whitespace in the document text.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1472,7 +1486,7 @@ Default: <code class="docutils literal notranslate"><span class="pre">True</span
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260421.25a82c5 2026-04-21T21:14Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260422.ee25698 2026-04-22T13:28Z.
       <br/>
     
   </p>

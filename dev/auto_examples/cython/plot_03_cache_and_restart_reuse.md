@@ -108,26 +108,26 @@ Last 5 entries:
   - key: 27e834d4d9b9704b6531d579adba3e067590eb11fa92da0e71dbff68fab3b664
     module_name: scikitplot_cython_27e834d4d9b9704b
     artifact_path: /home/circleci/.cache/scikitplot/cython/27e834d4d9b9704b6531d579adba3e067590eb11fa92da0e71dbff68fab3b664/scikitplot_cython_27e834d4d9b9704b.cpython-311-x86_64-linux-gnu.so
-    created_utc: 2026-04-21T21:19:55Z
+    created_utc: 2026-04-22T13:32:15Z
   - key: 30e033b9a404ca4d13e5e35fc0fe0e7882e6e681c3f3031e37440422f028cdc1
     module_name: scikitplot_cython_30e033b9a404ca4d
     artifact_path: /home/circleci/.cache/scikitplot/cython/30e033b9a404ca4d13e5e35fc0fe0e7882e6e681c3f3031e37440422f028cdc1/scikitplot_cython_30e033b9a404ca4d.cpython-311-x86_64-linux-gnu.so
-    created_utc: 2026-04-21T21:19:59Z
+    created_utc: 2026-04-22T13:32:17Z
   - key: b82a7d5a410e110f658412dad516f578eab39189361958efd923b876759fc411
     module_name: scikitplot_cython_b82a7d5a410e110f
     artifact_path: /home/circleci/.cache/scikitplot/cython/b82a7d5a410e110f658412dad516f578eab39189361958efd923b876759fc411/scikitplot_cython_b82a7d5a410e110f.cpython-311-x86_64-linux-gnu.so
-    created_utc: 2026-04-21T21:19:54Z
+    created_utc: 2026-04-22T13:32:14Z
   - key: c7f8ca5a32702f90198772919c7ee4ee9469d54dcd587e81217b6f20942038a3
     module_name: scikitplot_cython_c7f8ca5a32702f90
     artifact_path: /home/circleci/.cache/scikitplot/cython/c7f8ca5a32702f90198772919c7ee4ee9469d54dcd587e81217b6f20942038a3/scikitplot_cython_c7f8ca5a32702f90.cpython-311-x86_64-linux-gnu.so
-    created_utc: 2026-04-21T21:19:56Z
+    created_utc: 2026-04-22T13:32:15Z
   - key: f52b9ea7da4c44ddfa2fe6ff8fac643a390d2f1726a87b92dcd908ec9ac22c77
     module_name: scikitplot_cython_f52b9ea7da4c44dd
     artifact_path: /home/circleci/.cache/scikitplot/cython/f52b9ea7da4c44ddfa2fe6ff8fac643a390d2f1726a87b92dcd908ec9ac22c77/scikitplot_cython_f52b9ea7da4c44dd.cpython-311-x86_64-linux-gnu.so
-    created_utc: 2026-04-21T21:19:58Z
+    created_utc: 2026-04-22T13:32:17Z
 
 Cache stats snapshot:
-CacheStats(cache_root=PosixPath('/home/circleci/.cache/scikitplot/cython'), n_modules=5, n_packages=0, total_bytes=3450291, pinned_aliases=1, pinned_keys=1, newest_mtime_utc='2026-04-21T21:20:00Z', oldest_mtime_utc='2026-04-21T21:19:55Z')
+CacheStats(cache_root=PosixPath('/home/circleci/.cache/scikitplot/cython'), n_modules=5, n_packages=0, total_bytes=3450291, pinned_aliases=1, pinned_keys=1, newest_mtime_utc='2026-04-22T13:32:18Z', oldest_mtime_utc='2026-04-22T13:32:15Z')
 
 Imported from cache (result API):
   module_name: scikitplot_cython_b82a7d5a410e110f
@@ -141,7 +141,7 @@ Correct: True
 
 Tags: [domain: cython](../../_tags/domain-cython.html) [plot-type: cython](../../_tags/plot-type-cython.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.018 seconds)
+****Total running time of the script:**** (0 minutes 0.008 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_03_cache_and_restart_reuse.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/cython/plot_03_cache_and_restart_reuse.ipynb)
 

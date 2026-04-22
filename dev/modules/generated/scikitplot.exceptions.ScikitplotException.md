@@ -1,6 +1,6 @@
 # ScikitplotException[#](#scikitplotexception "Link to this heading")
 
-exception scikitplot.exceptions.ScikitplotException(**message**, **error\_code=0**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/exceptions.py#L363)[#](#scikitplot.exceptions.ScikitplotException "Link to this definition")
+exception scikitplot.exceptions.ScikitplotException(**message**, **error\_code=0**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/exceptions.py#L363)[#](#scikitplot.exceptions.ScikitplotException "Link to this definition")
 :   Generic exception thrown to surface failure information about external-facing operations.
 
     The error message associated with this exception may be exposed to clients

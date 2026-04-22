@@ -1,6 +1,6 @@
 # SpawnedServer[#](#spawnedserver "Link to this heading")
 
-class scikitplot.mlflow.SpawnedServer(**\_process**, **\_command**, **\_started\_at**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/mlflow/_server.py#L202)[#](#scikitplot.mlflow.SpawnedServer "Link to this definition")
+class scikitplot.mlflow.SpawnedServer(**\_process**, **\_command**, **\_started\_at**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/mlflow/_server.py#L202)[#](#scikitplot.mlflow.SpawnedServer "Link to this definition")
 :   Spawned MLflow server process state.
 
     Attributes:
@@ -21,7 +21,7 @@ class scikitplot.mlflow.SpawnedServer(**\_process**, **\_command**, **\_started\
     property process: [Popen](https://docs.python.org/3/library/subprocess.html#subprocess.Popen "(in Python v3.14)")[#](#scikitplot.mlflow.SpawnedServer.process "Link to this definition")
     :   The underlying server process.
 
-    read\_all\_output()[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/mlflow/_server.py#L234)[#](#scikitplot.mlflow.SpawnedServer.read_all_output "Link to this definition")
+    read\_all\_output()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/mlflow/_server.py#L234)[#](#scikitplot.mlflow.SpawnedServer.read_all_output "Link to this definition")
     :   Read all remaining captured stdout (best-effort).
 
         Returns:
@@ -34,7 +34,7 @@ class scikitplot.mlflow.SpawnedServer(**\_process**, **\_command**, **\_started\
     property started\_at: [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")[#](#scikitplot.mlflow.SpawnedServer.started_at "Link to this definition")
     :   Timestamp (time.time()) when the server was started.
 
-    terminate()[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/mlflow/_server.py#L250)[#](#scikitplot.mlflow.SpawnedServer.terminate "Link to this definition")
+    terminate()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/mlflow/_server.py#L250)[#](#scikitplot.mlflow.SpawnedServer.terminate "Link to this definition")
     :   Terminate the spawned process deterministically.
 
         Returns:

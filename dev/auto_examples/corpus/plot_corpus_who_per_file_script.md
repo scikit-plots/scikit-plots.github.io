@@ -84,7 +84,7 @@ from scikitplot.corpus._adapters import (
 
 ```
 ```
-2026-04-21 21:19:28.709111: W scikitplot.corpus._base 127489903582080 _base.py:2052:__init_subclass__] DocumentReader: extension '.zip' already registered to ALTOReader; overriding with ZipReader.
+2026-04-22 13:31:55.322869: W scikitplot.corpus._base 140528762055552 _base.py:2052:__init_subclass__] DocumentReader: extension '.zip' already registered to ALTOReader; overriding with ZipReader.
 
 ```
 ```
@@ -277,7 +277,7 @@ except Exception as e:
 ```
   --- Source ③: PDF Report (text proxy) ---
 
-2026-04-21 21:19:31.385494: W scikitplot.corpus._readers._pdf 127489903582080 _pdf.py:521:get_raw_chunks] PDFReader: could not determine page count for https://iris.who.int/server/api/core/bitstreams/7ad66865-7f23-4485-8cf5-7b3d78bdf4f9/content. Attempting page-by-page extraction until first failure.
+2026-04-22 13:31:57.453107: W scikitplot.corpus._readers._pdf 140528762055552 _pdf.py:521:get_raw_chunks] PDFReader: could not determine page count for https://iris.who.int/server/api/core/bitstreams/7ad66865-7f23-4485-8cf5-7b3d78bdf4f9/content. Attempting page-by-page extraction until first failure.
   ✗ PDF report: Neither pdfminer.six nor pypdf is installed. Install at least one:
   pip install pdfminer.six
   pip install pypdf
@@ -1021,7 +1021,7 @@ print("  Pipeline complete. All 5 source types → unified corpus → any consum
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: bar](../../_tags/plot-type-bar.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 14.803 seconds)
+****Total running time of the script:**** (0 minutes 10.478 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_who_per_file_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_who_per_file_script.ipynb)
 

@@ -1,6 +1,6 @@
 # peek\_cache\_dir[#](#peek-cache-dir "Link to this heading")
 
-scikitplot.cython.peek\_cache\_dir(**cache\_dir**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cython/_cache.py#L228)[#](#scikitplot.cython.peek_cache_dir "Link to this definition")
+scikitplot.cython.peek\_cache\_dir(**cache\_dir**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/cython/_cache.py#L228)[#](#scikitplot.cython.peek_cache_dir "Link to this definition")
 :   Resolve the cache directory path without creating it.
 
     Parameters:

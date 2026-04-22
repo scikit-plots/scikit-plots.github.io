@@ -269,6 +269,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../resources/index.html">
+    Resources
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
     Roadmap
   </a>
@@ -488,6 +495,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../whats_new/index.html">
     Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../resources/index.html">
+    Resources
   </a>
 </li>
 
@@ -1302,7 +1316,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>bayesian_blocks<a class="headerlink" href="#bayesian-blocks" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.stats.bayesian_blocks">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.stats.</span></span><span class="sig-name descname"><span class="pre">bayesian_blocks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fitness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'events'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L67"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.stats.bayesian_blocks" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.stats.</span></span><span class="sig-name descname"><span class="pre">bayesian_blocks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fitness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'events'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L67"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.stats.bayesian_blocks" title="Link to this definition">#</a></dt>
 <dd><p>Compute optimal segmentation of data with Scargle’s Bayesian Blocks.</p>
 <p>This is a flexible implementation of the Bayesian Blocks algorithm
 described in Scargle 2013 <a class="reference internal" href="#refb3b6bccc47-1" id="id1">[1]</a>.</p>
@@ -1390,8 +1404,8 @@ straight lines. J. Amer. Statist. Assoc. 64, 1079–1084.
 </div>
 </div>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="5fcdddc8-bf75-4c84-9e38-cc6bf71a40ea">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('5fcdddc8-bf75-4c84-9e38-cc6bf71a40ea','d6666ac1-b395-4f5f-9f05-80959b4e7364','b54c64e2-3f96-43cb-b983-3a45d225a94a','../../lite/tree/../notebooks/index.html?path=5ad65190_0aaa_4f5d_8672_28dd689a111b.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="3bc49a8c-b57c-4252-940a-7dfc2ea9a1e3">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('3bc49a8c-b57c-4252-940a-7dfc2ea9a1e3','8729d3e2-d8a5-472e-9287-5274abb3fea1','352a2cd6-1740-441d-a7de-85a2cd65db72','../../lite/tree/../notebooks/index.html?path=165028fe_0b30_4173_9b97_008bfd85745e.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Event data:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">edges</span> <span class="o">=</span> <span class="n">bayesian_blocks</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">fitness</span><span class="o">=</span><span class="s1">&#39;events&#39;</span><span class="p">,</span> <span class="n">p0</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
@@ -1421,7 +1435,7 @@ straight lines. J. Amer. Statist. Assoc. 64, 1079–1084.
 </div>
 </div>
 </div>
-<div id="b54c64e2-3f96-43cb-b983-3a45d225a94a" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('5fcdddc8-bf75-4c84-9e38-cc6bf71a40ea','b54c64e2-3f96-43cb-b983-3a45d225a94a')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('5fcdddc8-bf75-4c84-9e38-cc6bf71a40ea','b54c64e2-3f96-43cb-b983-3a45d225a94a')">Open In Tab</button></div><div id="d6666ac1-b395-4f5f-9f05-80959b4e7364" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="352a2cd6-1740-441d-a7de-85a2cd65db72" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('3bc49a8c-b57c-4252-940a-7dfc2ea9a1e3','352a2cd6-1740-441d-a7de-85a2cd65db72')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('3bc49a8c-b57c-4252-940a-7dfc2ea9a1e3','352a2cd6-1740-441d-a7de-85a2cd65db72')">Open In Tab</button></div><div id="8729d3e2-d8a5-472e-9287-5274abb3fea1" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1524,7 +1538,7 @@ straight lines. J. Amer. Statist. Assoc. 64, 1079–1084.
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260421.25a82c5 2026-04-21T21:14Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260422.ee25698 2026-04-22T13:28Z.
       <br/>
     
   </p>

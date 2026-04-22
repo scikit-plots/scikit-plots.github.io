@@ -1,6 +1,6 @@
 # session\_from\_file[#](#session-from-file "Link to this heading")
 
-scikitplot.mlflow.session\_from\_file(**config\_path**, **\***, **profile='local'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/mlflow/_session.py#L525)[#](#scikitplot.mlflow.session_from_file "Link to this definition")
+scikitplot.mlflow.session\_from\_file(**config\_path**, **\***, **profile='local'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/mlflow/_session.py#L525)[#](#scikitplot.mlflow.session_from_file "Link to this definition")
 :   Create an MLflow session using a shared project config file (TOML or YAML).
 
     Parameters:

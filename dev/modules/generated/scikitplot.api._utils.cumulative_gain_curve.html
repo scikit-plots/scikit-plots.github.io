@@ -268,6 +268,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../resources/index.html">
+    Resources
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../project/roadmap.html">
     Roadmap
   </a>
@@ -487,6 +494,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../whats_new/index.html">
     Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../resources/index.html">
+    Resources
   </a>
 </li>
 
@@ -1301,7 +1315,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>cumulative_gain_curve<a class="headerlink" href="#cumulative-gain-curve" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.api._utils.cumulative_gain_curve">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.api._utils.</span></span><span class="sig-name descname"><span class="pre">cumulative_gain_curve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/25a82c5/scikitplot/api/_utils/_helpers.py#L80"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.api._utils.cumulative_gain_curve" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.api._utils.</span></span><span class="sig-name descname"><span class="pre">cumulative_gain_curve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/api/_utils/_helpers.py#L80"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.api._utils.cumulative_gain_curve" title="Link to this definition">#</a></dt>
 <dd><p>Generate the data points necessary to plot the Cumulative Gain curve for binary classification tasks.</p>
 <p>The Cumulative Gain curve helps in visualizing how well a binary classifier identifies the positive class
 as more instances are considered based on predicted scores. It shows the proportion of true positives
@@ -1367,8 +1381,8 @@ representation of the gain from zero instances considered.</p></li>
 will raise a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>, as a cumulative gain curve would not be meaningful.</p></li>
 </ul>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="7dc399c3-e4ef-42c3-86ed-7c6a1fd5ba13">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('7dc399c3-e4ef-42c3-86ed-7c6a1fd5ba13','5ac5c81b-ecbe-4b47-87ae-b24768c5ab4b','e18c8adf-a20f-4ae8-8f1b-454da70b5693','../../lite/tree/../notebooks/index.html?path=65d74dcd_1b61_4644_8f91_899a0b92b1ec.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="0c91787a-77b6-4277-afed-d65bececab5b">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('0c91787a-77b6-4277-afed-d65bececab5b','6e210662-e381-4afc-a2b7-d55b7cd247b4','80ea559c-9085-43cc-ac21-c04b9f2b1a12','../../lite/tree/../notebooks/index.html?path=0ffbccbd_7e98_43da_a6fe_58cb0d503d0f.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_classification</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
@@ -1407,7 +1421,7 @@ will raise a <code class="docutils literal notranslate"><span class="pre">ValueE
 </figure>
 </div>
 </div>
-<div id="e18c8adf-a20f-4ae8-8f1b-454da70b5693" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('7dc399c3-e4ef-42c3-86ed-7c6a1fd5ba13','e18c8adf-a20f-4ae8-8f1b-454da70b5693')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('7dc399c3-e4ef-42c3-86ed-7c6a1fd5ba13','e18c8adf-a20f-4ae8-8f1b-454da70b5693')">Open In Tab</button></div><div id="5ac5c81b-ecbe-4b47-87ae-b24768c5ab4b" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="80ea559c-9085-43cc-ac21-c04b9f2b1a12" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('0c91787a-77b6-4277-afed-d65bececab5b','80ea559c-9085-43cc-ac21-c04b9f2b1a12')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('0c91787a-77b6-4277-afed-d65bececab5b','80ea559c-9085-43cc-ac21-c04b9f2b1a12')">Open In Tab</button></div><div id="6e210662-e381-4afc-a2b7-d55b7cd247b4" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1510,7 +1524,7 @@ will raise a <code class="docutils literal notranslate"><span class="pre">ValueE
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260421.25a82c5 2026-04-21T21:14Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260422.ee25698 2026-04-22T13:28Z.
       <br/>
     
   </p>

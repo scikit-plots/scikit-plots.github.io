@@ -50,8 +50,8 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/index.css?v=e49e61c4" />
-    <link rel="stylesheet" type="text/css" href="_static/shell_styles.css?v=e10b8129" />
-    <link rel="stylesheet" type="text/css" href="_static/shell_code_styles.css?v=ca936495" />
+    <link rel="stylesheet" type="text/css" href="_static/shell_styles.css?v=a7a7ed8b" />
+    <link rel="stylesheet" type="text/css" href="_static/shell_code_styles.css?v=b221eea3" />
     <link rel="stylesheet" type="text/css" href="_static/styles/colors.css?v=14208072" />
     <link rel="stylesheet" type="text/css" href="_static/styles/custom.css?v=e4cb1417" />
   
@@ -261,6 +261,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="whats_new/index.html">
     Release History
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="resources/index.html">
+    Resources
   </a>
 </li>
 
@@ -506,6 +513,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="whats_new/index.html">
     Release History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="resources/index.html">
+    Resources
   </a>
 </li>
 
@@ -772,24 +786,40 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
   <!-- Include title section -->
   <div class="flex-column shell-title-container">
-    <div class="shell-title">Try scikit-plots</div>
+    <div class="shell-title">
+      <!-- https://www.w3schools.com/tags/att_a_target.asp -->
+      <a href="#try-scikit-plots"
+        target="_self"
+        title="Try scikit-plots directly in your browser—no installation required.">
+        <h2>Try scikit-plots</h2>
+      </a>
+    </div>
     <div class="shell-content-message">
       <!-- Don’t inject HTML without | safe → will render as text -->
         <!-- Use the interactive shell to try <strong>scikit-plots</strong> in the browser. -->
       <p>
-        <span>Use the interactive shell to try <strong>scikit-plots</strong> in the browser.</span>
+        <span>Use the interactive shell to try <a href='https://scikit-plots.github.io/' target='_blank'><strong>scikit-plots</strong></a> in the browser.</span>
       </p>
       <!-- 🔔 &#x1F514; -->
       <p style="font-size:12.5px;">🔔
         <b>Note:</b>
-        <span style="color:turquoise;">Pyodide</span> uses older, compatible versions of some PyPI packages;
+        <a href="https://pyodide.org/en/stable"
+          target="_blank"
+          title="Pyodide is a Python distribution for the browser and Node.js based on WebAssembly. WebAssembly describes a memory-safe, sandboxed execution environment that may even be implemented inside existing JavaScript virtual machines. When embedded in the web, WebAssembly will enforce the same-origin and permissions security policies of the browser.">
+          <span style="color:turquoise;">Pyodide</span>
+        </a>
+        <a href="https://webassembly.org/docs/security"
+          target="_blank"
+          title="The security model of WebAssembly has two important goals: (1) protect users from buggy or malicious modules, and (2) provide developers with useful primitives and mitigations for developing safe applications, within the constraints of (1).">
+          <span style="color:turquoise;">(security note)</span>
+        </a>uses older, compatible versions of some PyPI packages;
         <span style="color:red;">latest versions may not be supported</span>.
       </p>
     </div>
   </div>
 
   <!-- Open in new tab -->
-  <div>
+  <div class="demo-links-container">
     <!-- Import Font Awesome icons for the link buttons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
@@ -843,7 +873,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
       }
     </style>
     <!-- Start of the visual list -->
-    <div class="demo-links-wrapper">
+    <div class="demo-links-container links-content">
       <ul class="demo-links">
         <!-- Non-clickable label-style item -->
         <li>
@@ -927,9 +957,9 @@ ax, features = sp.estimators.plot_feature_importances(
     figsize=(12,5)
 ); -->
 
-<div class="shell-lesson code-content">
+<div class="shell-lesson code-container">
   <!-- First Code block with copy button -->
-  <div class="code-container">
+  <div class="code-content">
     <pre><code class="language-python" id="code-block-1"
 ># Example code to try:
 import micropip; await micropip.install("ipywidgets")
@@ -964,7 +994,7 @@ X</code></pre>
     <button class="copy-btn" data-copy-target="code-block-1">&#128203; Copy</button>
   </div>
 
-  <div>
+  <div class="note-content">
   <p>To try the examples in the browser:</p>
   <ul>
     <li>Type code in the input cell and press <code>Shift + Enter</code> to execute</li>
@@ -974,7 +1004,7 @@ X</code></pre>
   </div>
 
   <!-- Second Code block with copy button -->
-  <div class="code-container">
+  <div class="code-content">
     <pre><code class="language-python" id="code-block-2"
 ># Check installed packages:
 # import micropip; micropip.list()
@@ -998,11 +1028,11 @@ await micropip.install('scikit-plots')</code></pre> -->
     <!-- Include interactive shell section -->
     
 
-<div class="shell-lesson shell-content">
+<div class="shell-lesson shell-container">
   <!-- Interactive Shell -->
   <!-- src="https://jupyterlite.github.io/demo/repl/?toolbar=1&kernel=python&code=import%20numpy%20as%20np" -->
   <iframe
-    class="numpy-shell"
+    class="numpy-shell-frame"
     src=https://jupyterlite.github.io/demo/repl?toolbar=1&execute=1&kernel=python&code=import+micropip%0Afrom+itertools+import+combinations%2C+product%0AVERSIONS+++%3D+%5B%220.5.dev0%22%2C+%220.4.0.post11%22%5D%0ABUILD_TAGS+%3D+%5B%0A++++%22cp312-cp312-pyodide_2024_0_wasm32%22%2C%0A++++%22cp313-cp313-pyodide_2025_0_wasm32%22%2C%0A%5D%0AURL_TEMPLATE+%3D+%28%0A++++%23+%22https%3A%2F%2Fanaconda.org%2Fscikit-plots-wheels-staging-nightly%2Fscikit-plots%2F%7Bv%7D%2Fdownload%2F%22%0A++++%22https%3A%2F%2Fpypi.anaconda.org%2Fscikit-plots-wheels-staging-nightly%2Fsimple%2Fscikit-plots%2F%7Bv%7D%2F%22%0A++++%22scikit_plots-%7Bv%7D-%7Btag%7D.whl%22%0A%29%0Afor+v%2C+tag+in+product%28VERSIONS%2C+BUILD_TAGS%29%3A%0A++++url+%3D+URL_TEMPLATE.format%28v%3Dv%2C+tag%3Dtag%29%0A++++try%3A%0A++++++++await+micropip.install%28url%2C+keep_going%3DTrue%29%0A++++++++break++%23+success+-%3E+stop+trying%0A++++except+Exception+as+e%3A%0A++++++++print%28f%22install+failed+for+%7Bv%7D+%7Btag%7D%3A+%7Be%7D%22%29%0Aelse%3A%0A++++%23+Pure+python+runs+only+if+the+loop+never+hit+%27break%27+%28i.e.%2C+all+installs+failed%29%0A++++await+micropip.install%28%22scikit-plots%3D%3D0.3.9rc3%22%2C+keep_going%3DTrue%29%0Aimport+scikitplot+as+sp%0Aprint%28%22scikit-plots+version%3A%22%2C+sp.__version__%29%0Asp.show_versions%28%29%0A
     width="100%" height="auto"
   >Try the REPL!
