@@ -1,6 +1,6 @@
 # export\_cached[#](#export-cached "Link to this heading")
 
-scikitplot.cython.export\_cached(**key**, **\***, **dest\_dir**, **cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/cython/_public.py#L940)[#](#scikitplot.cython.export_cached "Link to this definition")
+scikitplot.cython.export\_cached(**key**, **\***, **dest\_dir**, **cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/cython/_public.py#L940)[#](#scikitplot.cython.export_cached "Link to this definition")
 :   Export a cache entry directory to a destination folder.
 
     Parameters:

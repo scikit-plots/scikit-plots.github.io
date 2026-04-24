@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 
 <script>
-window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true}, "providers": {"claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Claude about this documentation page.", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask ChatGPT about this documentation page.", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Read {url} so I can ask questions about it.", "model": "gpt-4o", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this documentation page.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Please review this documentation: {url}\n\nI have questions.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
+window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true}, "providers": {"chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask OpenAI ChatGPT about this page", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "gpt-4o", "type": "web"}, "claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Anthropic Claude about this page", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this page", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Hi! Please review this documentation content: {url}\n\nI have questions about it.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}, "cursor": {"enabled": false, "type": "cursor", "label": "Connect to Cursor", "description": "Connect the MCP server to Cursor IDE.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
 </script>
 
     <title>tweedie &#8212; scikit-plots 0.5.dev0 documentation</title>
@@ -50,7 +50,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
@@ -70,6 +70,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
+    <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="../../_static/ai-assistant.js?v=cb662cc4"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
@@ -1315,7 +1316,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>tweedie<a class="headerlink" href="#tweedie" title="Link to this heading">#</a></h1>
 <dl class="py data">
 <dt class="sig sig-object py" id="scikitplot.externals._tweedie.tweedie">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.externals._tweedie.</span></span><span class="sig-name descname"><span class="pre">tweedie</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;scikitplot.externals._tweedie._tweedie_dist.tweedie_gen</span> <span class="pre">object&gt;</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/externals/_tweedie/_tweedie_dist.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.externals._tweedie.tweedie" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.externals._tweedie.</span></span><span class="sig-name descname"><span class="pre">tweedie</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;scikitplot.externals._tweedie._tweedie_dist.tweedie_gen</span> <span class="pre">object&gt;</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/externals/_tweedie/_tweedie_dist.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.externals._tweedie.tweedie" title="Link to this definition">#</a></dt>
 <dd><p>An instance of <a class="reference internal" href="scikitplot.externals._tweedie.tweedie_gen.html#scikitplot.externals._tweedie.tweedie_gen" title="scikitplot.externals._tweedie.tweedie_gen"><code class="xref py py-class docutils literal notranslate"><span class="pre">tweedie_gen</span></code></a>, providing Tweedie distribution functionality.</p>
 <p>This instance provides:</p>
 <ul class="simple">
@@ -1353,8 +1354,8 @@ by a <code class="docutils literal notranslate"><span class="pre">p</span></code
 </dl>
 </div>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="b565ebc4-1b68-4bed-bb44-694d5f8f26ef">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('b565ebc4-1b68-4bed-bb44-694d5f8f26ef','e68cd182-9105-4fc4-9991-172104becd4d','db000861-bb01-4a5b-8c33-2c681ed8e139','../../lite/tree/../notebooks/index.html?path=197869cf_83e4_488b_ad07_50ff42a621c2.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="c49a3737-bbe2-49d2-9c2a-cfcbd6496dbe">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('c49a3737-bbe2-49d2-9c2a-cfcbd6496dbe','72f30c17-6672-40ec-8045-3b581a3ce92d','d939b00b-b136-40f1-83a4-c5c2b2d8f76c','../../lite/tree/../notebooks/index.html?path=3abb2487_ec81_401d_a5aa_d9da7a182533.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Compute the pdf and cdf at a given point:</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
@@ -1391,10 +1392,10 @@ by a <code class="docutils literal notranslate"><span class="pre">p</span></code
 </div></div>
 <div class="cell_output docutils container">
 <div class="thebelab-output" data-output="true"><div class="docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([3.32576667, 0.68215099, 1.41298753, 0.60769443, 1.67165245,
-       0.12002265, 1.8843957 , 0.55689575, 0.        , 1.94841947,
-       0.        , 0.91368588, 0.59673716, 1.42472581, 0.35862718,
-       1.74042351])
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([0.52751565, 1.49565316, 1.09848346, 0.06743845, 0.5329129 ,
+       1.45587235, 0.        , 0.54885497, 1.99319733, 1.7450749 ,
+       0.638869  , 0.        , 0.87779231, 1.3048492 , 1.07100454,
+       0.81339886])
 </pre></div>
 </div>
 </div>
@@ -1430,12 +1431,12 @@ by a <code class="docutils literal notranslate"><span class="pre">p</span></code
 </figure>
 </div>
 </div>
-<div id="db000861-bb01-4a5b-8c33-2c681ed8e139" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('b565ebc4-1b68-4bed-bb44-694d5f8f26ef','db000861-bb01-4a5b-8c33-2c681ed8e139')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('b565ebc4-1b68-4bed-bb44-694d5f8f26ef','db000861-bb01-4a5b-8c33-2c681ed8e139')">Open In Tab</button></div><div id="e68cd182-9105-4fc4-9991-172104becd4d" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="d939b00b-b136-40f1-83a4-c5c2b2d8f76c" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('c49a3737-bbe2-49d2-9c2a-cfcbd6496dbe','d939b00b-b136-40f1-83a4-c5c2b2d8f76c')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('c49a3737-bbe2-49d2-9c2a-cfcbd6496dbe','d939b00b-b136-40f1-83a4-c5c2b2d8f76c')">Open In Tab</button></div><div id="72f30c17-6672-40ec-8045-3b581a3ce92d" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 <button title="Make live" class="thebelab-button" id="thebelab-activate-button" onclick="initThebelab()">Make live</button>
 <script type="text/x-thebe-config">
-{"binderOptions": {"org": "scikit-plots", "repo": "scikit-plots", "branch": "main", "dependencies": "./binder/requirements.txt"}, "predefinedOutput": true, "requestKernel": true}
+{"binderOptions": {"dependencies": "./binder/requirements.txt", "org": "scikit-plots", "repo": "scikit-plots", "branch": "main"}, "requestKernel": true, "selector": "div.highlight", "kernelOptions": {"name": "python3", "path": "."}, "predefinedOutput": true}
 </script>
 <script type="text/javascript" src="https://unpkg.com/thebelab@^0.4.0"></script>
 
@@ -1537,7 +1538,7 @@ by a <code class="docutils literal notranslate"><span class="pre">p</span></code
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260422.ee25698 2026-04-22T13:28Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260424.e4af755 2026-04-24T20:44Z.
       <br/>
     
   </p>

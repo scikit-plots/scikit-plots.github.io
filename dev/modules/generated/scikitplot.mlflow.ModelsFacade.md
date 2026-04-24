@@ -1,6 +1,6 @@
 # ModelsFacade[#](#modelsfacade "Link to this heading")
 
-class scikitplot.mlflow.ModelsFacade(**mlflow\_module=None**, **client=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/mlflow/_facade.py#L161)[#](#scikitplot.mlflow.ModelsFacade "Link to this definition")
+class scikitplot.mlflow.ModelsFacade(**mlflow\_module=None**, **client=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/mlflow/_facade.py#L161)[#](#scikitplot.mlflow.ModelsFacade "Link to this definition")
 :   Model helper facade bound to a session-bound MLflow client.
 
     Parameters:
@@ -20,7 +20,7 @@ class scikitplot.mlflow.ModelsFacade(**mlflow\_module=None**, **client=None**)[[
 
     client: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") = None[#](#scikitplot.mlflow.ModelsFacade.client "Link to this definition")
 
-    load\_model(**model\_uri**, **\***, **flavor=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/mlflow/_facade.py#L181)[#](#scikitplot.mlflow.ModelsFacade.load_model "Link to this definition")
+    load\_model(**model\_uri**, **\***, **flavor=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/mlflow/_facade.py#L181)[#](#scikitplot.mlflow.ModelsFacade.load_model "Link to this definition")
     :   Load a model by URI.
 
         Parameters:
@@ -48,7 +48,7 @@ class scikitplot.mlflow.ModelsFacade(**mlflow\_module=None**, **client=None**)[[
 
     mlflow\_module: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") = None[#](#scikitplot.mlflow.ModelsFacade.mlflow_module "Link to this definition")
 
-    register\_model(**model\_uri**, **name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/mlflow/_facade.py#L210)[#](#scikitplot.mlflow.ModelsFacade.register_model "Link to this definition")
+    register\_model(**model\_uri**, **name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/mlflow/_facade.py#L210)[#](#scikitplot.mlflow.ModelsFacade.register_model "Link to this definition")
     :   Register a model version.
 
         Parameters:

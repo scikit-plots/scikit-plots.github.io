@@ -1,6 +1,6 @@
 # get\_include[#](#get-include "Link to this heading")
 
-scikitplot.cexternals.\_f2py.get\_include()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/cexternals/_f2py/__init__.py#L33)[#](#scikitplot.cexternals._f2py.get_include "Link to this definition")
+scikitplot.cexternals.\_f2py.get\_include()[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/cexternals/_f2py/__init__.py#L33)[#](#scikitplot.cexternals._f2py.get_include "Link to this definition")
 :   Return the directory that contains the `fortranobject.c` and `.h` files.
 
     > **Note**

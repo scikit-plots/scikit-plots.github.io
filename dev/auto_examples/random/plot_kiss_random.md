@@ -153,37 +153,37 @@ for method in ["random", "uniform"]:
 Numpy
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.0036471740022534505,
- 'time_mean': 0.00458674640103709,
- 'time_max': 0.005859600998519454,
- 'time_std': 0.001059165136310211,
+ 'time_min': 0.003787213001487544,
+ 'time_mean': 0.01086211999936495,
+ 'time_max': 0.0372740029997658,
+ 'time_std': 0.014779872085039104,
  'output_mean': 0.5000264761740889,
  'output_std': 0.2886354529025341}
 Kiss Customized 64
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.012345599003310781,
- 'time_mean': 0.013697383800899843,
- 'time_max': 0.014501991001452552,
- 'time_std': 0.0008022955286387653,
+ 'time_min': 0.014524555001116823,
+ 'time_mean': 0.015126423799665644,
+ 'time_max': 0.016485880998516222,
+ 'time_std': 0.0008035118547988885,
  'output_mean': 0.4994983951235817,
  'output_std': 0.28868033687878636}
 Numpy
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.004869038999459008,
- 'time_mean': 0.00574611880001612,
- 'time_max': 0.007328924002649728,
- 'time_std': 0.001194665487789978,
+ 'time_min': 0.005207113998039858,
+ 'time_mean': 0.006663199800095753,
+ 'time_max': 0.007320523000089452,
+ 'time_std': 0.0008562584826614764,
  'output_mean': 0.5000264761740889,
  'output_std': 0.2886354529025341}
 Kiss Customized 64
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.015103586996701779,
- 'time_mean': 0.01795927999919513,
- 'time_max': 0.021575460999883944,
- 'time_std': 0.0023824125455348733,
+ 'time_min': 0.01740340000105789,
+ 'time_mean': 0.01824049999922863,
+ 'time_max': 0.019785508997301804,
+ 'time_std': 0.0009206480549552072,
  'output_mean': 0.4994983951235817,
  'output_std': 0.28868033687878636}
 
@@ -404,13 +404,13 @@ Generator from seed: KissGenerator
 Generator from BitGenerator: KissGenerator
 
 Generator methods:
-  random(5):         [0.05932318 0.80132134 0.12010023 0.25258623 0.88355195]
-  integers(0, 100):  [70 89  1 86 64]
-  normal(0, 1):      [-0.53534799 -1.34093475 -0.08929667  0.09779552 -0.18377592]
-  uniform(10, 20):   [14.94555694 16.56843487 18.55241423 18.32286892 14.35171048]
-  choice(['A','B','C']): ['A' 'A' 'B' 'A' 'A' 'B' 'A' 'C' 'C' 'A']
-  Weighted choice A: 44% (✅ expected ~50%)
-  shuffle([0..9]):   [9 1 0 3 2 6 5 8 4 7]
+  random(5):         [0.34890849 0.03366384 0.2319675  0.18058386 0.6257975 ]
+  integers(0, 100):  [ 4 33 80 85 24]
+  normal(0, 1):      [-0.32774552 -1.69659004  2.08603724 -0.5519824   0.39478801]
+  uniform(10, 20):   [17.1636199  16.99090399 12.29079059 11.28659635 15.49885005]
+  choice(['A','B','C']): ['B' 'B' 'C' 'A' 'B' 'C' 'B' 'C' 'A' 'C']
+  Weighted choice A: 49% (✅ expected ~50%)
+  shuffle([0..9]):   [3 0 8 2 5 4 1 6 9 7]
 
 ```
 ```
@@ -681,8 +681,8 @@ print(f"Beta(2, 5):           {beta_samples}")
 ======================================================================
 10. ADVANCED USAGE - CUSTOM DISTRIBUTIONS
 ======================================================================
-Exponential(scale=2): [0.15140673 1.41553883 0.0596283  4.1751951  0.95789009]
-Beta(2, 5):           [0.17685402 0.03081515 0.11057801 0.35490363 0.07763638]
+Exponential(scale=2): [0.49203143 5.37083346 1.7406847  1.03240242 1.93260113]
+Beta(2, 5):           [0.06775964 0.43165995 0.05346611 0.29251156 0.28884233]
 
 ```
 ```
@@ -927,7 +927,7 @@ RECOMMENDED USAGE:
 
 ```
 
-****Total running time of the script:**** (0 minutes 2.198 seconds)
+****Total running time of the script:**** (0 minutes 2.636 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo14.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/random/plot_kiss_random.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo14.svg)](../../lite/lab/index.html?path=auto_examples/random/plot_kiss_random.ipynb)
 

@@ -18,7 +18,7 @@
 <meta name="description" content="Gallery examples: Enhanced KISS Random Generator - Complete Usage Examples" />
 
 <script>
-window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true}, "providers": {"claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Claude about this documentation page.", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask ChatGPT about this documentation page.", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Read {url} so I can ask questions about it.", "model": "gpt-4o", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this documentation page.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Please review this documentation: {url}\n\nI have questions.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
+window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true}, "providers": {"chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask OpenAI ChatGPT about this page", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "gpt-4o", "type": "web"}, "claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Anthropic Claude about this page", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this page", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Hi! Please review this documentation content: {url}\n\nI have questions about it.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}, "cursor": {"enabled": false, "type": "cursor", "label": "Connect to Cursor", "description": "Connect the MCP server to Cursor IDE.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
 </script>
 
     <title>KissGenerator &#8212; scikit-plots 0.5.dev0 documentation</title>
@@ -52,7 +52,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
@@ -72,6 +72,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
+    <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="../../_static/ai-assistant.js?v=cb662cc4"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
@@ -1317,7 +1318,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>KissGenerator<a class="headerlink" href="#kissgenerator" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.random.KissGenerator">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.random.</span></span><span class="sig-name descname"><span class="pre">KissGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bit_generator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/random/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.random.KissGenerator" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.random.</span></span><span class="sig-name descname"><span class="pre">KissGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bit_generator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/random/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.random.KissGenerator" title="Link to this definition">#</a></dt>
 <dd><p>High-level random number generator using KISS algorithm.</p>
 <p>Provides NumPy-compatible interface for common distributions
 with complete serialization support.
@@ -1369,8 +1370,8 @@ Provides methods similar to numpy.random.Generator.</p>
 </div>
 </div>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="2c61a5bb-4f59-432b-85c7-9a09c0aeebfe">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('2c61a5bb-4f59-432b-85c7-9a09c0aeebfe','d1b27465-60d3-46f5-868f-6f257a11cd51','0c189b61-bb84-4536-b441-4395dc1699b3','../../lite/tree/../notebooks/index.html?path=dc3fc7b9_50e2_4532_b4d5_5e63a8c17e42.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="09aebe61-0d6b-4f5e-9a75-0d37d8891fa4">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('09aebe61-0d6b-4f5e-9a75-0d37d8891fa4','41e2b392-ad7f-4728-9ab5-3c66de3bd6ed','90fe8b71-b5ab-424b-ab66-53c4a507834b','../../lite/tree/../notebooks/index.html?path=23e8e448_886f_442d_b6c1_ee92d2129c54.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
@@ -1387,7 +1388,7 @@ Provides methods similar to numpy.random.Generator.</p>
 </div>
 </div>
 </div>
-<div id="0c189b61-bb84-4536-b441-4395dc1699b3" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('2c61a5bb-4f59-432b-85c7-9a09c0aeebfe','0c189b61-bb84-4536-b441-4395dc1699b3')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('2c61a5bb-4f59-432b-85c7-9a09c0aeebfe','0c189b61-bb84-4536-b441-4395dc1699b3')">Open In Tab</button></div><div id="d1b27465-60d3-46f5-868f-6f257a11cd51" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
+<div id="90fe8b71-b5ab-424b-ab66-53c4a507834b" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('09aebe61-0d6b-4f5e-9a75-0d37d8891fa4','90fe8b71-b5ab-424b-ab66-53c4a507834b')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('09aebe61-0d6b-4f5e-9a75-0d37d8891fa4','90fe8b71-b5ab-424b-ab66-53c4a507834b')">Open In Tab</button></div><div id="41e2b392-ad7f-4728-9ab5-3c66de3bd6ed" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.random.KissGenerator.bit_generator">
 <span class="sig-name descname"><span class="pre">bit_generator</span></span><a class="headerlink" href="#scikitplot.random.KissGenerator.bit_generator" title="Link to this definition">#</a></dt>
 <dd><p>Gets the bit generator instance used by the generator</p>
@@ -1400,8 +1401,8 @@ Provides methods similar to numpy.random.Generator.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="e410c2c3-e842-4163-bd1e-f72c03bef14f">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('e410c2c3-e842-4163-bd1e-f72c03bef14f','256c7d3c-397e-4ee8-9acf-67bcf57d1296','bf7566a2-08a8-4e03-a7fd-0692583ff218','../../lite/tree/../notebooks/index.html?path=28779da3_3e1a_47bf_bc13_80722bf5e974.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="b9dc0019-e40f-4618-8550-8e3a84695bf1">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('b9dc0019-e40f-4618-8550-8e3a84695bf1','1a2ff12c-036b-43a3-a29c-951c5cb083a9','d4432ca4-45a7-4547-9305-6290a4516b62','../../lite/tree/../notebooks/index.html?path=dbfc86d3_eda1_4ca8_96be_9af7d4ce9f28.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bg</span> <span class="o">=</span> <span class="n">gen</span><span class="o">.</span><span class="n">get_bit_generator</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">bg</span><span class="p">))</span>
@@ -1410,7 +1411,7 @@ Provides methods similar to numpy.random.Generator.</p>
 </div>
 </div>
 </div>
-<div id="bf7566a2-08a8-4e03-a7fd-0692583ff218" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('e410c2c3-e842-4163-bd1e-f72c03bef14f','bf7566a2-08a8-4e03-a7fd-0692583ff218')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('e410c2c3-e842-4163-bd1e-f72c03bef14f','bf7566a2-08a8-4e03-a7fd-0692583ff218')">Open In Tab</button></div><div id="256c7d3c-397e-4ee8-9acf-67bcf57d1296" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="d4432ca4-45a7-4547-9305-6290a4516b62" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('b9dc0019-e40f-4618-8550-8e3a84695bf1','d4432ca4-45a7-4547-9305-6290a4516b62')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('b9dc0019-e40f-4618-8550-8e3a84695bf1','d4432ca4-45a7-4547-9305-6290a4516b62')">Open In Tab</button></div><div id="1a2ff12c-036b-43a3-a29c-951c5cb083a9" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissGenerator.choice">
@@ -1437,8 +1438,8 @@ Provides methods similar to numpy.random.Generator.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="b667450e-cd7f-47cb-ad48-68e25b5de019">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('b667450e-cd7f-47cb-ad48-68e25b5de019','8e784a8a-f2e7-488e-b2fc-ea6ae86dc13c','1bd6677d-89bd-48f4-8cca-b0adedbba3d3','../../lite/tree/../notebooks/index.html?path=fe4b73f3_271d_426a_af76_85becd6ecc83.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="5413c648-a33d-4844-8cc1-ea0468c68828">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('5413c648-a33d-4844-8cc1-ea0468c68828','ecc24731-2060-4509-b351-e85b2632338f','485fb60f-b871-4982-927e-e94c9b29e8cc','../../lite/tree/../notebooks/index.html?path=c5d0cfcf_fafc_4073_b99e_5ca0ef43ead3.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="go">array([...])</span>
@@ -1446,7 +1447,7 @@ Provides methods similar to numpy.random.Generator.</p>
 </div>
 </div>
 </div>
-<div id="1bd6677d-89bd-48f4-8cca-b0adedbba3d3" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('b667450e-cd7f-47cb-ad48-68e25b5de019','1bd6677d-89bd-48f4-8cca-b0adedbba3d3')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('b667450e-cd7f-47cb-ad48-68e25b5de019','1bd6677d-89bd-48f4-8cca-b0adedbba3d3')">Open In Tab</button></div><div id="8e784a8a-f2e7-488e-b2fc-ea6ae86dc13c" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="485fb60f-b871-4982-927e-e94c9b29e8cc" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('5413c648-a33d-4844-8cc1-ea0468c68828','485fb60f-b871-4982-927e-e94c9b29e8cc')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('5413c648-a33d-4844-8cc1-ea0468c68828','485fb60f-b871-4982-927e-e94c9b29e8cc')">Open In Tab</button></div><div id="ecc24731-2060-4509-b351-e85b2632338f" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissGenerator.deserialize">
@@ -1477,8 +1478,8 @@ Provides methods similar to numpy.random.Generator.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="dd25d0a8-0d13-4b73-ad3e-5f848c8f4d98">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('dd25d0a8-0d13-4b73-ad3e-5f848c8f4d98','0dd1e0c5-17ae-4431-bd8e-7ef26b6f0ed2','4789fddd-3b8b-468c-b747-450e48e9c8fd','../../lite/tree/../notebooks/index.html?path=81296d70_6800_4aa6_9d66_1003bbbb1ce8.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="9deee0eb-1574-4b6a-8982-d575e0926943">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('9deee0eb-1574-4b6a-8982-d575e0926943','00a82788-69f8-400e-9b71-215796fbf09d','78d22eea-a773-4cce-88af-8c5c61c39829','../../lite/tree/../notebooks/index.html?path=db4053a6_cadd_4fc2_b006_9a9878f1b759.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">json_str</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">gen</span><span class="o">.</span><span class="n">serialize</span><span class="p">())</span>
@@ -1488,7 +1489,7 @@ Provides methods similar to numpy.random.Generator.</p>
 </div>
 </div>
 </div>
-<div id="4789fddd-3b8b-468c-b747-450e48e9c8fd" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('dd25d0a8-0d13-4b73-ad3e-5f848c8f4d98','4789fddd-3b8b-468c-b747-450e48e9c8fd')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('dd25d0a8-0d13-4b73-ad3e-5f848c8f4d98','4789fddd-3b8b-468c-b747-450e48e9c8fd')">Open In Tab</button></div><div id="0dd1e0c5-17ae-4431-bd8e-7ef26b6f0ed2" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="78d22eea-a773-4cce-88af-8c5c61c39829" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('9deee0eb-1574-4b6a-8982-d575e0926943','78d22eea-a773-4cce-88af-8c5c61c39829')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('9deee0eb-1574-4b6a-8982-d575e0926943','78d22eea-a773-4cce-88af-8c5c61c39829')">Open In Tab</button></div><div id="00a82788-69f8-400e-9b71-215796fbf09d" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissGenerator.from_dict">
@@ -1509,8 +1510,8 @@ Provides methods similar to numpy.random.Generator.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="995682bc-75f8-4805-b4bd-d3b4b6f65355">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('995682bc-75f8-4805-b4bd-d3b4b6f65355','c277d678-c23b-4b2d-bf0d-1b27a3855a59','4ad527d4-fd16-4c5d-8d27-69da10b97168','../../lite/tree/../notebooks/index.html?path=2aff3df3_430c_4c4f_bcee_b560d7257cec.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="e3fefbc7-b2d4-43d7-9785-d5810c1f4ecf">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('e3fefbc7-b2d4-43d7-9785-d5810c1f4ecf','c4e02a92-5748-4bc5-bfce-8576cd3c62e6','8ddd73e5-e586-4b1c-af4c-d7db27903098','../../lite/tree/../notebooks/index.html?path=5e7035f6_ba3e_43ca_9988_44b4d412c133.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bg</span> <span class="o">=</span> <span class="n">gen</span><span class="o">.</span><span class="n">get_bit_generator</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">bg</span><span class="p">))</span>
@@ -1519,7 +1520,7 @@ Provides methods similar to numpy.random.Generator.</p>
 </div>
 </div>
 </div>
-<div id="4ad527d4-fd16-4c5d-8d27-69da10b97168" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('995682bc-75f8-4805-b4bd-d3b4b6f65355','4ad527d4-fd16-4c5d-8d27-69da10b97168')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('995682bc-75f8-4805-b4bd-d3b4b6f65355','4ad527d4-fd16-4c5d-8d27-69da10b97168')">Open In Tab</button></div><div id="c277d678-c23b-4b2d-bf0d-1b27a3855a59" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="8ddd73e5-e586-4b1c-af4c-d7db27903098" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('e3fefbc7-b2d4-43d7-9785-d5810c1f4ecf','8ddd73e5-e586-4b1c-af4c-d7db27903098')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('e3fefbc7-b2d4-43d7-9785-d5810c1f4ecf','8ddd73e5-e586-4b1c-af4c-d7db27903098')">Open In Tab</button></div><div id="c4e02a92-5748-4bc5-bfce-8576cd3c62e6" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissGenerator.get_params">
@@ -1540,15 +1541,15 @@ Provides methods similar to numpy.random.Generator.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="c62e8d40-398e-4078-8c0d-b6dbfc0706ed">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('c62e8d40-398e-4078-8c0d-b6dbfc0706ed','c62149b4-adcd-4e03-842d-552a65fe833b','11022685-30d2-4f09-a3e5-8261847fb93c','../../lite/tree/../notebooks/index.html?path=c427d62d_a227_44b4_8ae4_397a0a45d1a0.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="fa584095-a0c9-4e48-94e8-adc81edc1876">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('fa584095-a0c9-4e48-94e8-adc81edc1876','086e7747-a581-4a2f-a268-d5491865a8a1','d09003ce-0439-40f1-8eab-8e7c86164363','../../lite/tree/../notebooks/index.html?path=dc1f08d7_398b_43af_a42c_d178e8c5c715.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">params</span> <span class="o">=</span> <span class="n">gen</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div id="11022685-30d2-4f09-a3e5-8261847fb93c" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('c62e8d40-398e-4078-8c0d-b6dbfc0706ed','11022685-30d2-4f09-a3e5-8261847fb93c')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('c62e8d40-398e-4078-8c0d-b6dbfc0706ed','11022685-30d2-4f09-a3e5-8261847fb93c')">Open In Tab</button></div><div id="c62149b4-adcd-4e03-842d-552a65fe833b" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="d09003ce-0439-40f1-8eab-8e7c86164363" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('fa584095-a0c9-4e48-94e8-adc81edc1876','d09003ce-0439-40f1-8eab-8e7c86164363')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('fa584095-a0c9-4e48-94e8-adc81edc1876','d09003ce-0439-40f1-8eab-8e7c86164363')">Open In Tab</button></div><div id="086e7747-a581-4a2f-a268-d5491865a8a1" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissGenerator.get_state">
@@ -1563,8 +1564,8 @@ Provides methods similar to numpy.random.Generator.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="97e91dad-dae7-4bbf-9216-e812b4dae29b">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('97e91dad-dae7-4bbf-9216-e812b4dae29b','20d08f0c-eb3d-4745-afd4-6303f984ee14','42b51100-4ac7-4e09-bfcc-280871acffe4','../../lite/tree/../notebooks/index.html?path=945d1184_6705_45d5_90b1_833df94e8d01.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="a838e116-78f3-4b2f-90f7-f2a9ba421415">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('a838e116-78f3-4b2f-90f7-f2a9ba421415','a0f18aa8-3629-4d31-b11c-afed3cd144ce','7ab5c2f2-c970-4904-b0d9-36f935752a46','../../lite/tree/../notebooks/index.html?path=7a707831_d93a_4aa7_973c_f666445728aa.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">state</span> <span class="o">=</span> <span class="n">gen</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;bit_generator_state&quot;</span> <span class="ow">in</span> <span class="n">state</span><span class="p">)</span>
@@ -1573,7 +1574,7 @@ Provides methods similar to numpy.random.Generator.</p>
 </div>
 </div>
 </div>
-<div id="42b51100-4ac7-4e09-bfcc-280871acffe4" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('97e91dad-dae7-4bbf-9216-e812b4dae29b','42b51100-4ac7-4e09-bfcc-280871acffe4')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('97e91dad-dae7-4bbf-9216-e812b4dae29b','42b51100-4ac7-4e09-bfcc-280871acffe4')">Open In Tab</button></div><div id="20d08f0c-eb3d-4745-afd4-6303f984ee14" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="7ab5c2f2-c970-4904-b0d9-36f935752a46" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('a838e116-78f3-4b2f-90f7-f2a9ba421415','7ab5c2f2-c970-4904-b0d9-36f935752a46')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('a838e116-78f3-4b2f-90f7-f2a9ba421415','7ab5c2f2-c970-4904-b0d9-36f935752a46')">Open In Tab</button></div><div id="a0f18aa8-3629-4d31-b11c-afed3cd144ce" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissGenerator.integers">
@@ -1602,8 +1603,8 @@ Provides methods similar to numpy.random.Generator.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="9d0c4a79-423f-4a19-ae30-4224ac07a968">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('9d0c4a79-423f-4a19-ae30-4224ac07a968','e5a95606-e592-4b0c-9fb3-2c46a580d775','d2fc205f-333a-40e6-bf55-5e6942aabae7','../../lite/tree/../notebooks/index.html?path=27bca30a_b932_42bb_89c5_2e0cccb8049a.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="bad75212-26fa-477d-87fc-aef30cd4e701">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('bad75212-26fa-477d-87fc-aef30cd4e701','4670de7e-b7a2-4eb4-900f-8cef05f6554a','178b8b1c-0e7c-462f-b436-fca7137c0e81','../../lite/tree/../notebooks/index.html?path=83aecf53_65f5_4c63_8449_637e33100d04.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="go">array([...])</span>
@@ -1611,7 +1612,7 @@ Provides methods similar to numpy.random.Generator.</p>
 </div>
 </div>
 </div>
-<div id="d2fc205f-333a-40e6-bf55-5e6942aabae7" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('9d0c4a79-423f-4a19-ae30-4224ac07a968','d2fc205f-333a-40e6-bf55-5e6942aabae7')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('9d0c4a79-423f-4a19-ae30-4224ac07a968','d2fc205f-333a-40e6-bf55-5e6942aabae7')">Open In Tab</button></div><div id="e5a95606-e592-4b0c-9fb3-2c46a580d775" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="178b8b1c-0e7c-462f-b436-fca7137c0e81" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('bad75212-26fa-477d-87fc-aef30cd4e701','178b8b1c-0e7c-462f-b436-fca7137c0e81')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('bad75212-26fa-477d-87fc-aef30cd4e701','178b8b1c-0e7c-462f-b436-fca7137c0e81')">Open In Tab</button></div><div id="4670de7e-b7a2-4eb4-900f-8cef05f6554a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissGenerator.normal">
@@ -1636,8 +1637,8 @@ Provides methods similar to numpy.random.Generator.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="9543fdf5-c8ea-4ead-b27a-08cf48fb76dc">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('9543fdf5-c8ea-4ead-b27a-08cf48fb76dc','0bf5c483-1dfb-48a0-81e5-ca911ee4362d','821faf63-8236-49a6-b3e9-98a7de854c38','../../lite/tree/../notebooks/index.html?path=cac27c97_a084_4c21_8e7e_3b640115c433.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="b613046e-5c1c-4ec4-8fec-91518edb524d">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('b613046e-5c1c-4ec4-8fec-91518edb524d','0ade51e6-7937-415f-82e8-be97b0d56d6b','5e35dbe4-22c6-4337-b202-314ad93ea9bc','../../lite/tree/../notebooks/index.html?path=ec5ded7e_9b39_49d4_a10c_87685e219b79.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 <span class="go">array([...])</span>
@@ -1645,7 +1646,7 @@ Provides methods similar to numpy.random.Generator.</p>
 </div>
 </div>
 </div>
-<div id="821faf63-8236-49a6-b3e9-98a7de854c38" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('9543fdf5-c8ea-4ead-b27a-08cf48fb76dc','821faf63-8236-49a6-b3e9-98a7de854c38')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('9543fdf5-c8ea-4ead-b27a-08cf48fb76dc','821faf63-8236-49a6-b3e9-98a7de854c38')">Open In Tab</button></div><div id="0bf5c483-1dfb-48a0-81e5-ca911ee4362d" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="5e35dbe4-22c6-4337-b202-314ad93ea9bc" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('b613046e-5c1c-4ec4-8fec-91518edb524d','5e35dbe4-22c6-4337-b202-314ad93ea9bc')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('b613046e-5c1c-4ec4-8fec-91518edb524d','5e35dbe4-22c6-4337-b202-314ad93ea9bc')">Open In Tab</button></div><div id="0ade51e6-7937-415f-82e8-be97b0d56d6b" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissGenerator.permutation">
@@ -1681,8 +1682,8 @@ If array-like, permute copy of array.</p>
 <p>Unlike shuffle(), this returns a permuted copy without
 modifying the input.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="3aba4652-6b40-49de-828e-81e4474ed67f">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('3aba4652-6b40-49de-828e-81e4474ed67f','7132cd76-b98f-4321-a8a7-86d0e91c0b07','4e96118f-d51b-4806-bf43-1201bb0788f3','../../lite/tree/../notebooks/index.html?path=4fda88d2_12c5_416c_af84_231360e55b92.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="2d49c13d-12b9-49d9-a9e2-f876ccbd5d2e">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('2d49c13d-12b9-49d9-a9e2-f876ccbd5d2e','237aa142-110b-40d2-a661-8695a60ef353','558fe3ef-2c67-4663-9a5b-d064bc68706c','../../lite/tree/../notebooks/index.html?path=e4114825_1a45_4205_99aa_57693f9e3e9d.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># Permuted [0, 1, ..., 9]</span>
 <span class="go">array([3, 7, 1, 9, 2, 5, 8, 0, 6, 4])</span>
@@ -1697,7 +1698,7 @@ modifying the input.</p>
 </div>
 </div>
 </div>
-<div id="4e96118f-d51b-4806-bf43-1201bb0788f3" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('3aba4652-6b40-49de-828e-81e4474ed67f','4e96118f-d51b-4806-bf43-1201bb0788f3')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('3aba4652-6b40-49de-828e-81e4474ed67f','4e96118f-d51b-4806-bf43-1201bb0788f3')">Open In Tab</button></div><div id="7132cd76-b98f-4321-a8a7-86d0e91c0b07" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="558fe3ef-2c67-4663-9a5b-d064bc68706c" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('2d49c13d-12b9-49d9-a9e2-f876ccbd5d2e','558fe3ef-2c67-4663-9a5b-d064bc68706c')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('2d49c13d-12b9-49d9-a9e2-f876ccbd5d2e','558fe3ef-2c67-4663-9a5b-d064bc68706c')">Open In Tab</button></div><div id="237aa142-110b-40d2-a661-8695a60ef353" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissGenerator.random">
@@ -1722,8 +1723,8 @@ modifying the input.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="7bfc8234-e783-47a9-b920-0dfe27f30d57">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('7bfc8234-e783-47a9-b920-0dfe27f30d57','21c47e47-200d-46bd-b4a6-889efe87efd3','8f22b9f8-97f5-4574-ac80-a063ad57fc47','../../lite/tree/../notebooks/index.html?path=ef77098a_3b83_4599_b066_b8faea9d389c.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="f5df13b2-1ebd-45b9-8f23-84c869e552c3">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('f5df13b2-1ebd-45b9-8f23-84c869e552c3','c34e6c78-11a6-4770-85a0-ac24e772a0a8','273b341a-01cb-4c3e-a634-ba531abb3988','../../lite/tree/../notebooks/index.html?path=035f8fab_e009_4765_8941_bfc024492bc7.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="go">array([...])</span>
@@ -1731,7 +1732,7 @@ modifying the input.</p>
 </div>
 </div>
 </div>
-<div id="8f22b9f8-97f5-4574-ac80-a063ad57fc47" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('7bfc8234-e783-47a9-b920-0dfe27f30d57','8f22b9f8-97f5-4574-ac80-a063ad57fc47')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('7bfc8234-e783-47a9-b920-0dfe27f30d57','8f22b9f8-97f5-4574-ac80-a063ad57fc47')">Open In Tab</button></div><div id="21c47e47-200d-46bd-b4a6-889efe87efd3" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="273b341a-01cb-4c3e-a634-ba531abb3988" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('f5df13b2-1ebd-45b9-8f23-84c869e552c3','273b341a-01cb-4c3e-a634-ba531abb3988')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('f5df13b2-1ebd-45b9-8f23-84c869e552c3','273b341a-01cb-4c3e-a634-ba531abb3988')">Open In Tab</button></div><div id="c34e6c78-11a6-4770-85a0-ac24e772a0a8" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissGenerator.serialize">
@@ -1746,8 +1747,8 @@ modifying the input.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="3d573eae-39ba-487f-8594-830141b4577c">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('3d573eae-39ba-487f-8594-830141b4577c','e699f67d-e65d-4a75-87c5-16a3041f405a','f6b8ce7f-8294-4af5-aae4-37382c21f6a2','../../lite/tree/../notebooks/index.html?path=a057c541_69b6_4c08_84ca_271b8015d737.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="a9e00605-5c56-4fa3-8119-171793e8dd7e">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('a9e00605-5c56-4fa3-8119-171793e8dd7e','b1fecc50-3485-4eff-bd5f-441a43c86c4b','c934a532-b349-4e29-95c7-425acbe1c2f1','../../lite/tree/../notebooks/index.html?path=1fcdf10a_82cf_4ffc_aa4c_24f24879f43e.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">gen</span><span class="o">.</span><span class="n">serialize</span><span class="p">()</span>
@@ -1756,7 +1757,7 @@ modifying the input.</p>
 </div>
 </div>
 </div>
-<div id="f6b8ce7f-8294-4af5-aae4-37382c21f6a2" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('3d573eae-39ba-487f-8594-830141b4577c','f6b8ce7f-8294-4af5-aae4-37382c21f6a2')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('3d573eae-39ba-487f-8594-830141b4577c','f6b8ce7f-8294-4af5-aae4-37382c21f6a2')">Open In Tab</button></div><div id="e699f67d-e65d-4a75-87c5-16a3041f405a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="c934a532-b349-4e29-95c7-425acbe1c2f1" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('a9e00605-5c56-4fa3-8119-171793e8dd7e','c934a532-b349-4e29-95c7-425acbe1c2f1')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('a9e00605-5c56-4fa3-8119-171793e8dd7e','c934a532-b349-4e29-95c7-425acbe1c2f1')">Open In Tab</button></div><div id="b1fecc50-3485-4eff-bd5f-441a43c86c4b" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissGenerator.set_bit_generator">
@@ -1777,8 +1778,8 @@ modifying the input.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="72f54dc9-f2b1-41ff-a5cb-e028e769bb2d">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('72f54dc9-f2b1-41ff-a5cb-e028e769bb2d','71264814-4f8f-4a93-8410-1e3706592810','1f962d3b-8e54-4465-83dc-0be137baa1b9','../../lite/tree/../notebooks/index.html?path=b8f42fe7_0867_4543_9d3f_d5e59718c503.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="e053ca0b-83ea-4d95-a74c-2f18b938eca1">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('e053ca0b-83ea-4d95-a74c-2f18b938eca1','d10e9398-e5f4-41b4-b710-e3227a578175','30f10b65-d36b-4555-9830-4a05b84dac61','../../lite/tree/../notebooks/index.html?path=8871c8f6_dcab_4e07_a7f1_e3224e7e55ac.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">new_bg</span> <span class="o">=</span> <span class="n">KissBitGenerator</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span><span class="o">.</span><span class="n">set_bit_generator</span><span class="p">(</span><span class="n">new_bg</span><span class="p">)</span>
@@ -1786,7 +1787,7 @@ modifying the input.</p>
 </div>
 </div>
 </div>
-<div id="1f962d3b-8e54-4465-83dc-0be137baa1b9" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('72f54dc9-f2b1-41ff-a5cb-e028e769bb2d','1f962d3b-8e54-4465-83dc-0be137baa1b9')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('72f54dc9-f2b1-41ff-a5cb-e028e769bb2d','1f962d3b-8e54-4465-83dc-0be137baa1b9')">Open In Tab</button></div><div id="71264814-4f8f-4a93-8410-1e3706592810" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="30f10b65-d36b-4555-9830-4a05b84dac61" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('e053ca0b-83ea-4d95-a74c-2f18b938eca1','30f10b65-d36b-4555-9830-4a05b84dac61')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('e053ca0b-83ea-4d95-a74c-2f18b938eca1','30f10b65-d36b-4555-9830-4a05b84dac61')">Open In Tab</button></div><div id="d10e9398-e5f4-41b4-b710-e3227a578175" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissGenerator.set_params">
@@ -1806,15 +1807,15 @@ modifying the input.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="f43a53fb-6e27-40de-9ade-145dc8ded860">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('f43a53fb-6e27-40de-9ade-145dc8ded860','d23667f3-c003-4ecb-a039-5541f50a4339','ea9171da-c9df-48ab-8b1f-4143de188fb5','../../lite/tree/../notebooks/index.html?path=4fb6f2f3_abd6_4de3_9ce8_755361ee4f5c.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="6f57c1a1-2acb-4539-99a5-950fdaac7061">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('6f57c1a1-2acb-4539-99a5-950fdaac7061','8e8d8f53-0f42-4185-bce1-3ac22539b34e','c46186db-b212-4bb3-8fae-a8e08d2c2903','../../lite/tree/../notebooks/index.html?path=678e4c5b_b6da_493e_9fdc_876cb72301cf.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">bit_generator</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div id="ea9171da-c9df-48ab-8b1f-4143de188fb5" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('f43a53fb-6e27-40de-9ade-145dc8ded860','ea9171da-c9df-48ab-8b1f-4143de188fb5')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('f43a53fb-6e27-40de-9ade-145dc8ded860','ea9171da-c9df-48ab-8b1f-4143de188fb5')">Open In Tab</button></div><div id="d23667f3-c003-4ecb-a039-5541f50a4339" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="c46186db-b212-4bb3-8fae-a8e08d2c2903" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('6f57c1a1-2acb-4539-99a5-950fdaac7061','c46186db-b212-4bb3-8fae-a8e08d2c2903')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('6f57c1a1-2acb-4539-99a5-950fdaac7061','c46186db-b212-4bb3-8fae-a8e08d2c2903')">Open In Tab</button></div><div id="8e8d8f53-0f42-4185-bce1-3ac22539b34e" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissGenerator.set_state">
@@ -1829,8 +1830,8 @@ modifying the input.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="c8ce3920-8a09-4239-bf63-cba1d638ab33">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('c8ce3920-8a09-4239-bf63-cba1d638ab33','6ac5b3da-f505-4078-bedb-487b6af9fe14','2e9b8f1e-d67c-48b0-8b2c-1db1fd1c63ce','../../lite/tree/../notebooks/index.html?path=e86a434b_d296_428f_8cd7_7a79343effcb.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="2233aa26-9d7f-4813-8be0-6a06298e7730">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('2233aa26-9d7f-4813-8be0-6a06298e7730','dc974623-0d85-4dfb-8eb6-8b190c3ca4be','586f5878-3546-4bdf-83f3-70aedf3f8b01','../../lite/tree/../notebooks/index.html?path=e5b46559_f625_455b_ac5d_2699ce161540.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen1</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">state</span> <span class="o">=</span> <span class="n">gen1</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen2</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -1839,7 +1840,7 @@ modifying the input.</p>
 </div>
 </div>
 </div>
-<div id="2e9b8f1e-d67c-48b0-8b2c-1db1fd1c63ce" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('c8ce3920-8a09-4239-bf63-cba1d638ab33','2e9b8f1e-d67c-48b0-8b2c-1db1fd1c63ce')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('c8ce3920-8a09-4239-bf63-cba1d638ab33','2e9b8f1e-d67c-48b0-8b2c-1db1fd1c63ce')">Open In Tab</button></div><div id="6ac5b3da-f505-4078-bedb-487b6af9fe14" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="586f5878-3546-4bdf-83f3-70aedf3f8b01" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('2233aa26-9d7f-4813-8be0-6a06298e7730','586f5878-3546-4bdf-83f3-70aedf3f8b01')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('2233aa26-9d7f-4813-8be0-6a06298e7730','586f5878-3546-4bdf-83f3-70aedf3f8b01')">Open In Tab</button></div><div id="dc974623-0d85-4dfb-8eb6-8b190c3ca4be" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissGenerator.shuffle">
@@ -1854,8 +1855,8 @@ modifying the input.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="d7cff8c0-b68d-4542-9789-2c6524f7d803">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('d7cff8c0-b68d-4542-9789-2c6524f7d803','4ba6fecc-dba6-49b1-96bf-f35662e75a26','e448d4f0-dbdc-4b44-be23-0deec40058e5','../../lite/tree/../notebooks/index.html?path=a4236a19_0c9a_4dc7_89fe_718ce14aaecf.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="413c1107-5939-449b-a439-8e0737f84155">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('413c1107-5939-449b-a439-8e0737f84155','aa7f51cf-8c3d-49b7-b7a0-4811c10ef712','7d55523c-c75e-4eea-9a72-9cc4d91ba845','../../lite/tree/../notebooks/index.html?path=851591da_017a_4c70_bd3d_7fac910fa6cd.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
@@ -1864,7 +1865,7 @@ modifying the input.</p>
 </div>
 </div>
 </div>
-<div id="e448d4f0-dbdc-4b44-be23-0deec40058e5" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('d7cff8c0-b68d-4542-9789-2c6524f7d803','e448d4f0-dbdc-4b44-be23-0deec40058e5')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('d7cff8c0-b68d-4542-9789-2c6524f7d803','e448d4f0-dbdc-4b44-be23-0deec40058e5')">Open In Tab</button></div><div id="4ba6fecc-dba6-49b1-96bf-f35662e75a26" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="7d55523c-c75e-4eea-9a72-9cc4d91ba845" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('413c1107-5939-449b-a439-8e0737f84155','7d55523c-c75e-4eea-9a72-9cc4d91ba845')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('413c1107-5939-449b-a439-8e0737f84155','7d55523c-c75e-4eea-9a72-9cc4d91ba845')">Open In Tab</button></div><div id="aa7f51cf-8c3d-49b7-b7a0-4811c10ef712" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissGenerator.spawn">
@@ -1903,8 +1904,8 @@ Each child generator has its own independent random stream.</p>
 <p>Useful for parallel computation where each worker needs an
 independent RNG.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="5b816659-eefd-41ef-bcbd-6eeeb3528489">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('5b816659-eefd-41ef-bcbd-6eeeb3528489','7a5c088c-3c96-4cff-b5f4-fd1849361da2','3bec2592-10b4-476e-a6de-428fdde3d2b7','../../lite/tree/../notebooks/index.html?path=0ba81616_c739_4e55_b634_ecd9040052bd.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="f8cfc42a-4570-46fa-9875-bd3341fecad9">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('f8cfc42a-4570-46fa-9875-bd3341fecad9','9fe40740-3ef8-4df8-ae6d-0df2d8266e63','4c6dd9ac-030e-4069-94fa-48389169858d','../../lite/tree/../notebooks/index.html?path=8f01ecef_8aeb_4a00_a6c7_385cfaded31b.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">children</span> <span class="o">=</span> <span class="n">gen</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">children</span><span class="p">))</span>
@@ -1922,7 +1923,7 @@ independent RNG.</p>
 </div>
 </div>
 </div>
-<div id="3bec2592-10b4-476e-a6de-428fdde3d2b7" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('5b816659-eefd-41ef-bcbd-6eeeb3528489','3bec2592-10b4-476e-a6de-428fdde3d2b7')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('5b816659-eefd-41ef-bcbd-6eeeb3528489','3bec2592-10b4-476e-a6de-428fdde3d2b7')">Open In Tab</button></div><div id="7a5c088c-3c96-4cff-b5f4-fd1849361da2" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="4c6dd9ac-030e-4069-94fa-48389169858d" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('f8cfc42a-4570-46fa-9875-bd3341fecad9','4c6dd9ac-030e-4069-94fa-48389169858d')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('f8cfc42a-4570-46fa-9875-bd3341fecad9','4c6dd9ac-030e-4069-94fa-48389169858d')">Open In Tab</button></div><div id="9fe40740-3ef8-4df8-ae6d-0df2d8266e63" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissGenerator.to_dict">
@@ -1953,8 +1954,8 @@ independent RNG.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="781afbd7-070d-4b19-a735-a009bfcc10ea">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('781afbd7-070d-4b19-a735-a009bfcc10ea','0c22d84e-01e7-406c-a185-5187591375f2','6c5e020d-7fcd-4172-bcd0-510d328692bc','../../lite/tree/../notebooks/index.html?path=f6d564da_cc33_47b5_b6c0_a9d55c0cacd7.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="4f418bd0-27be-4106-99da-1e5daf1f71ea">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('4f418bd0-27be-4106-99da-1e5daf1f71ea','3ec4e8e2-b014-4ab9-b510-84109159c046','78879256-75b2-427d-961c-1d2def8d899a','../../lite/tree/../notebooks/index.html?path=4761e6e4_2b37_49fe_91f0_a35a10598604.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="go">array([...])</span>
@@ -1962,7 +1963,7 @@ independent RNG.</p>
 </div>
 </div>
 </div>
-<div id="6c5e020d-7fcd-4172-bcd0-510d328692bc" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('781afbd7-070d-4b19-a735-a009bfcc10ea','6c5e020d-7fcd-4172-bcd0-510d328692bc')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('781afbd7-070d-4b19-a735-a009bfcc10ea','6c5e020d-7fcd-4172-bcd0-510d328692bc')">Open In Tab</button></div><div id="0c22d84e-01e7-406c-a185-5187591375f2" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="78879256-75b2-427d-961c-1d2def8d899a" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('4f418bd0-27be-4106-99da-1e5daf1f71ea','78879256-75b2-427d-961c-1d2def8d899a')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('4f418bd0-27be-4106-99da-1e5daf1f71ea','78879256-75b2-427d-961c-1d2def8d899a')">Open In Tab</button></div><div id="3ec4e8e2-b014-4ab9-b510-84109159c046" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </dd></dl>
 
@@ -2095,7 +2096,7 @@ independent RNG.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260422.ee25698 2026-04-22T13:28Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260424.e4af755 2026-04-24T20:44Z.
       <br/>
     
   </p>

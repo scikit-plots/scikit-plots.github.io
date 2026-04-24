@@ -1,6 +1,6 @@
 # plot\_lift[#](#plot-lift "Link to this heading")
 
-scikitplot.decile.kds.plot\_lift(**y\_true**, **y\_score**, **\***, **pos\_label=None**, **class\_index=1**, **title='Lift Curves'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **data=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/decile/kds/_kds.py#L320)[#](#scikitplot.decile.kds.plot_lift "Link to this definition")
+scikitplot.decile.kds.plot\_lift(**y\_true**, **y\_score**, **\***, **pos\_label=None**, **class\_index=1**, **title='Lift Curves'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **data=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/decile/kds/_kds.py#L320)[#](#scikitplot.decile.kds.plot_lift "Link to this definition")
 :   Generate the Decile based cumulative Lift Plot from labels and probabilities.
 
     The lift curve is used to determine the effectiveness of a

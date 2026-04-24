@@ -1,6 +1,6 @@
 # build\_package\_example[#](#build-package-example "Link to this heading")
 
-scikitplot.cython.build\_package\_example(**name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/cython/_templates_api.py#L938)[#](#scikitplot.cython.build_package_example "Link to this definition")
+scikitplot.cython.build\_package\_example(**name**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/cython/_templates_api.py#L938)[#](#scikitplot.cython.build_package_example "Link to this definition")
 :   Build and import a multi-module package example and return loaded modules.
 
     Parameters:

@@ -18,7 +18,7 @@
 <meta name="description" content="You’ve discovered a bug or something else you want to change in scikit-plots — excellent! You’ve worked out a way to fix it — even better! You want to tell us about it — best of all! Below, you can..." />
 
 <script>
-window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true}, "providers": {"claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Claude about this documentation page.", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask ChatGPT about this documentation page.", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Read {url} so I can ask questions about it.", "model": "gpt-4o", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this documentation page.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Please review this documentation: {url}\n\nI have questions.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
+window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true}, "providers": {"chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask OpenAI ChatGPT about this page", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "gpt-4o", "type": "web"}, "claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Anthropic Claude about this page", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this page", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Hi! Please review this documentation content: {url}\n\nI have questions about it.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}, "cursor": {"enabled": false, "type": "cursor", "label": "Connect to Cursor", "description": "Connect the MCP server to Cursor IDE.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
 </script>
 
     <title>Getting Started Contributing Guidelines &#8212; scikit-plots 0.5.dev0 documentation</title>
@@ -52,7 +52,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
     <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
@@ -71,6 +71,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=eaa0aa5c"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="../_static/ai-assistant.js?v=cb662cc4"></script>
     <script src="../_static/thebelab-helper.js"></script>
     <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
@@ -821,7 +822,7 @@ appreciated! Our library source code is found in:</p>
 our code consistent and mitigating the impact of changes.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="guide_code_style_write.html#coding-guidelines"><span class="std std-ref">Code Style and Writing Guidelines</span></a></p></li>
-<li><p><a class="reference external" href="https://matplotlib.org/devdocs/devel/api_changes.html#api-changes" title="(in Matplotlib v3.11.0.dev2342+g106899233)"><span>API guidelines</span></a></p></li>
+<li><p><a class="reference external" href="https://matplotlib.org/devdocs/devel/api_changes.html#api-changes" title="(in Matplotlib v3.11.0.dev2354+gea362ab57)"><span>API guidelines</span></a></p></li>
 <li><p><a class="reference internal" href="guide_pr.html#pr-guidelines"><span class="std std-ref">Pull Request Guidelines</span></a></p></li>
 </ul>
 <p>Code is contributed through pull requests, so we recommend that you start at
@@ -836,8 +837,8 @@ you can:</p>
 <ul class="simple">
 <li><p>Fix a typo</p></li>
 <li><p>Clarify a docstring</p></li>
-<li><p>Write or update an <a class="reference external" href="https://matplotlib.org/devdocs/gallery/index.html#gallery" title="(in Matplotlib v3.11.0.dev2342+g106899233)"><span class="xref std std-ref">example plot</span></a></p></li>
-<li><p>Write or update a comprehensive <a class="reference external" href="https://matplotlib.org/devdocs/tutorials/index.html#tutorials" title="(in Matplotlib v3.11.0.dev2342+g106899233)"><span class="xref std std-ref">tutorial</span></a></p></li>
+<li><p>Write or update an <a class="reference external" href="https://matplotlib.org/devdocs/gallery/index.html#gallery" title="(in Matplotlib v3.11.0.dev2354+gea362ab57)"><span class="xref std std-ref">example plot</span></a></p></li>
+<li><p>Write or update a comprehensive <a class="reference external" href="https://matplotlib.org/devdocs/tutorials/index.html#tutorials" title="(in Matplotlib v3.11.0.dev2354+gea362ab57)"><span class="xref std std-ref">tutorial</span></a></p></li>
 </ul>
 <p>Our code is documented inline in the source code files in <code class="file docutils literal notranslate"><span class="pre">matplotlib/lib</span></code>.
 Our website structure mirrors our folder structure, meaning that a narrative
@@ -903,7 +904,7 @@ we mean by triage are:</p>
 <section id="community">
 <span id="other-ways-to-contribute"></span><h3>Community<a class="headerlink" href="#community" title="Link to this heading">#</a></h3>
 <p>Matplotlib’s community is built by its members, if you would like to help out
-see our <a class="reference external" href="https://matplotlib.org/devdocs/devel/communication_guide.html#communications-guidelines" title="(in Matplotlib v3.11.0.dev2342+g106899233)"><span>Community management guide</span></a>.</p>
+see our <a class="reference external" href="https://matplotlib.org/devdocs/devel/communication_guide.html#communications-guidelines" title="(in Matplotlib v3.11.0.dev2354+gea362ab57)"><span>Community management guide</span></a>.</p>
 <p>It helps us if you spread the word: reference the project from your blog
 and articles or link to it from your website!</p>
 <p>If Matplotlib contributes to a project that leads to a scientific publication,
@@ -1063,7 +1064,7 @@ to hear back on your PR.--&gt;
 <p>When in doubt, we recommend going together! Get connected with our community of
 active contributors, many of whom felt just like you when they started out and
 are happy to welcome you and support you as you get to know how we work, and
-where things are. You can reach out on any of our <a class="reference external" href="https://matplotlib.org/devdocs/devel/communication_guide.html#communication-channels" title="(in Matplotlib v3.11.0.dev2342+g106899233)"><span>Official project platforms</span></a>.
+where things are. You can reach out on any of our <a class="reference external" href="https://matplotlib.org/devdocs/devel/communication_guide.html#communication-channels" title="(in Matplotlib v3.11.0.dev2354+gea362ab57)"><span>Official project platforms</span></a>.
 For development questions we recommend reaching out on our development <a class="reference external" href="https://gitter.im/matplotlib/matplotlib">gitter</a>
 chat room and for community questions reach out at <a class="reference external" href="https://gitter.im/matplotlib/community">community</a>.</p>
 </section>
@@ -1213,7 +1214,7 @@ the <a class="reference internal" href="#new-contributors-meeting"><span class="
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260422.ee25698 2026-04-22T13:28Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260424.e4af755 2026-04-24T20:44Z.
       <br/>
     
   </p>

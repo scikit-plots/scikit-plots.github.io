@@ -1,3 +1,3 @@
 📚 Scikit-plots Documentation
   
- 0.5.dev0+git.20260422.ee25698 - April 22, 2026 13:28 UTC
+ 0.5.dev0+git.20260424.e4af755 - April 24, 2026 20:44 UTC

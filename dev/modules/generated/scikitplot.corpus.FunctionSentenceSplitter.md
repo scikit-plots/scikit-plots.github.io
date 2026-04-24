@@ -1,6 +1,6 @@
 # FunctionSentenceSplitter[#](#functionsentencesplitter "Link to this heading")
 
-class scikitplot.corpus.FunctionSentenceSplitter(**fn**, **name='custom'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L342)[#](#scikitplot.corpus.FunctionSentenceSplitter "Link to this definition")
+class scikitplot.corpus.FunctionSentenceSplitter(**fn**, **name='custom'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L342)[#](#scikitplot.corpus.FunctionSentenceSplitter "Link to this definition")
 :   Wrap any `Callable[[str], list[str]]` as a [`SentenceSplitterProtocol`](scikitplot.corpus.SentenceSplitterProtocol.html#scikitplot.corpus.SentenceSplitterProtocol "scikitplot.corpus.SentenceSplitterProtocol").
 
     Parameters:
@@ -25,7 +25,7 @@ class scikitplot.corpus.FunctionSentenceSplitter(**fn**, **name='custom'**)[[sou
     ```
     Go BackOpen In Tab
 
-    split(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L372)[#](#scikitplot.corpus.FunctionSentenceSplitter.split "Link to this definition")
+    split(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L372)[#](#scikitplot.corpus.FunctionSentenceSplitter.split "Link to this definition")
     :   Split **text** into sentences.
 
         Parameters:

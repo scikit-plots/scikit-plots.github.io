@@ -14,7 +14,7 @@
 <meta content="scikit-plots" property="og:image:alt"/>
 <meta content="The DummyCodeEncoder to encode each categorical features into dummy/indicator 0/1 variables. In this example, we will compare various different approaches for handling categorical features: GetDumm..." name="description"/>
 <script>
-window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true}, "providers": {"claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Claude about this documentation page.", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask ChatGPT about this documentation page.", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Read {url} so I can ask questions about it.", "model": "gpt-4o", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this documentation page.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Please review this documentation: {url}\n\nI have questions.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
+window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true}, "providers": {"chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask OpenAI ChatGPT about this page", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "gpt-4o", "type": "web"}, "claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Anthropic Claude about this page", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this page", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Hi! Please review this documentation content: {url}\n\nI have questions about it.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}, "cursor": {"enabled": false, "type": "cursor", "label": "Connect to Cursor", "description": "Connect the MCP server to Cursor IDE.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
 </script>
 <title>Comparing DummyCode Encoder with Other Encoders — scikit-plots 0.5.dev0 documentation</title>
 <script data-cfasync="false">
@@ -42,7 +42,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <link href="../../_static/thebelab.css" rel="stylesheet" type="text/css"/>
 <link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
 <link href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
-<link href="../../_static/sg_gallery.css?v=d2d258e8" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery.css?v=fd6457a4" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-binder.css?v=f4aeca0c" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" rel="stylesheet" type="text/css"/>
@@ -59,6 +59,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
 <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
+<script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
 <script src="../../_static/ai-assistant.js?v=cb662cc4"></script>
 <script src="../../_static/thebelab-helper.js"></script>
 <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
@@ -4408,7 +4409,7 @@ a.param-doc-link::before {
                                                                  unknown_value=-1),
                                                   Index(['make', 'body_type', 'fuel_category'], dtype='object')),
                                                  ('equipment',
-                                                  DummyCodeEncoder(sep=&lt;function &lt;lambda&gt; at 0x7fce67a94400&gt;,
+                                                  DummyCodeEncoder(sep=&lt;function &lt;lambda&gt; at 0x71b9506662a0&gt;,
                                                                    sparse_output=False),
                                                   ['equipment_comfort',
                                                    'equipment_entertainment',
@@ -4757,7 +4758,7 @@ a.param-doc-link::before {
             <span class="param-doc-description">sep: callable or str, default='|'<br/><br/>String regex or literal separator to split on (e.g., "a,b,c").<br/><br/>- sep=',',<br/>- sep=r'\s*[,;|]\s*',<br/>- sep=lambda s: re.split(r'\s*[,;|]\s*', s.lower()),</span>
 </a>
 </td>
-<td class="value">&lt;function &lt;la...x7fce67a94400&gt;</td>
+<td class="value">&lt;function &lt;la...x71b9506662a0&gt;</td>
 </tr>
 <tr class="default">
 <td><i class="copy-paste-icon" onclick="copyToClipboard('regex',
@@ -5329,7 +5330,7 @@ makes sense and leads to good results: the combination of smoothed target
 encoding and binning works as a good regularizing strategy against
 overfitting while not limiting the expressiveness of the pipeline too much.</p></li>
 </ul>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 4.262 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 5.171 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.seaborn.decileplot function with a scikit-learn classifier (e.g., :py~sklearn.linear_model.LogisticRegression) instance."><img alt="" src="../../_images/sphx_glr_plot_decileplot_script_thumb.png"/>
@@ -5401,7 +5402,7 @@ overfitting while not limiting the expressiveness of the pipeline too much.</p><
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260422.ee25698 2026-04-22T13:28Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260424.e4af755 2026-04-24T20:44Z.
       <br>
 </br></p>
 </div>

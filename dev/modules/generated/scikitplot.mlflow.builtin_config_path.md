@@ -1,6 +1,6 @@
 # builtin\_config\_path[#](#builtin-config-path "Link to this heading")
 
-scikitplot.mlflow.builtin\_config\_path(**fmt='toml'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/mlflow/_workflow.py#L78)[#](#scikitplot.mlflow.builtin_config_path "Link to this definition")
+scikitplot.mlflow.builtin\_config\_path(**fmt='toml'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/mlflow/_workflow.py#L78)[#](#scikitplot.mlflow.builtin_config_path "Link to this definition")
 :   Return the path to the built-in demo config shipped with the package.
 
     Parameters:

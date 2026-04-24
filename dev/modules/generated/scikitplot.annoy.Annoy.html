@@ -18,7 +18,7 @@
 <meta name="description" content="Gallery examples: annoy.Annoy legacy c-api with examples annoy.Index python-api with examples" />
 
 <script>
-window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true}, "providers": {"claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Claude about this documentation page.", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask ChatGPT about this documentation page.", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Read {url} so I can ask questions about it.", "model": "gpt-4o", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this documentation page.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Please review this documentation: {url}\n\nI have questions.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
+window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true}, "providers": {"chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask OpenAI ChatGPT about this page", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "gpt-4o", "type": "web"}, "claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Anthropic Claude about this page", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this page", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Hi! Please review this documentation content: {url}\n\nI have questions about it.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}, "cursor": {"enabled": false, "type": "cursor", "label": "Connect to Cursor", "description": "Connect the MCP server to Cursor IDE.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
 </script>
 
     <title>Annoy &#8212; scikit-plots 0.5.dev0 documentation</title>
@@ -52,7 +52,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
@@ -72,6 +72,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
+    <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
     <script src="../../_static/ai-assistant.js?v=cb662cc4"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
@@ -1317,7 +1318,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>Annoy<a class="headerlink" href="#annoy" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.annoy.Annoy">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">Annoy</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/cexternals/_annoy/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Annoy" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.annoy.</span></span><span class="sig-name descname"><span class="pre">Annoy</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/cexternals/_annoy/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.annoy.Annoy" title="Link to this definition">#</a></dt>
 <dd><p>Compiled with GCC/Clang. Using 512-bit AVX instructions.</p>
 <p>Approximate Nearest Neighbors index (Annoy) with a small, lazy C-extension wrapper.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Annoy</span><span class="p">(</span>
@@ -1498,8 +1499,8 @@ C++ index exists and applies it deterministically upon construction.</p></li>
 </li>
 </ul>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="31db6f80-c209-4940-b8a9-e1dc0f349c06">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('31db6f80-c209-4940-b8a9-e1dc0f349c06','7e632282-d5bf-4450-ac14-d8c2e649dd90','ff22b127-0ace-4796-ac84-0fb13e209870','../../lite/tree/../notebooks/index.html?path=8b9d5cef_817f_402e_a603_b71c618769c9.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="f78dda0d-4447-4359-afd1-9f255e3510dd">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('f78dda0d-4447-4359-afd1-9f255e3510dd','682ee071-2515-4756-9eb0-fd6f694bf325','3117bbe9-f045-4512-a9ad-cbabeae4dc5f','../../lite/tree/../notebooks/index.html?path=fcdc0861_74e8_427e_9bde_7995bea4c885.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annoy</span><span class="p">,</span> <span class="n">AnnoyIndex</span>
 </pre></div>
 </div>
@@ -1588,7 +1589,7 @@ query, save, load and serialize it.</p>
 current forest with <a class="reference internal" href="#scikitplot.annoy.Annoy.unbuild" title="scikitplot.annoy.Annoy.unbuild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">unbuild</span></code></a>.</p>
 </div>
 </div>
-<div id="ff22b127-0ace-4796-ac84-0fb13e209870" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('31db6f80-c209-4940-b8a9-e1dc0f349c06','ff22b127-0ace-4796-ac84-0fb13e209870')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('31db6f80-c209-4940-b8a9-e1dc0f349c06','ff22b127-0ace-4796-ac84-0fb13e209870')">Open In Tab</button></div><div id="7e632282-d5bf-4450-ac14-d8c2e649dd90" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="3117bbe9-f045-4512-a9ad-cbabeae4dc5f" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('f78dda0d-4447-4359-afd1-9f255e3510dd','3117bbe9-f045-4512-a9ad-cbabeae4dc5f')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('f78dda0d-4447-4359-afd1-9f255e3510dd','3117bbe9-f045-4512-a9ad-cbabeae4dc5f')">Open In Tab</button></div><div id="682ee071-2515-4756-9eb0-fd6f694bf325" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Annoy.add_item">
 <span class="sig-name descname"><span class="pre">add_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vector</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.annoy.Annoy.add_item" title="Link to this definition">#</a></dt>
 <dd><p>Add a single embedding vector to the index.</p>
@@ -1626,8 +1627,8 @@ If <code class="docutils literal notranslate"><span class="pre">f</span> <span c
 <p>Items must be added <em>before</em> calling <a class="reference internal" href="#scikitplot.annoy.Annoy.build" title="scikitplot.annoy.Annoy.build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">build</span></code></a>. After building
 the forest, further calls to <a class="reference internal" href="#scikitplot.annoy.Annoy.add_item" title="scikitplot.annoy.Annoy.add_item"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_item</span></code></a> are not supported.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="c6aa4d51-ddf5-4df6-92ad-66e79a6a533f">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('c6aa4d51-ddf5-4df6-92ad-66e79a6a533f','3e3636a3-2e9b-45a2-b869-27177864d037','4d779d7b-fed2-4eab-9821-a1ddb2f9e202','../../lite/tree/../notebooks/index.html?path=46cc82cb_213e_47ae_8d58_c9c606fa58b9.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="494598d6-1820-443f-83e8-739d7d4e2f1c">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('494598d6-1820-443f-83e8-739d7d4e2f1c','a8c3a528-59a8-4823-847c-7c2906422f96','ebdf8d5e-049f-430c-8b4b-ec455f3651bd','../../lite/tree/../notebooks/index.html?path=4cbe5dd9_cd84_4bb1_a596_35571211fe48.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.cexternals._annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annoy</span><span class="p">,</span> <span class="n">AnnoyIndex</span>
 <span class="gp">...</span>
@@ -1642,7 +1643,7 @@ the forest, further calls to <a class="reference internal" href="#scikitplot.ann
 </div>
 </div>
 </div>
-<div id="4d779d7b-fed2-4eab-9821-a1ddb2f9e202" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('c6aa4d51-ddf5-4df6-92ad-66e79a6a533f','4d779d7b-fed2-4eab-9821-a1ddb2f9e202')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('c6aa4d51-ddf5-4df6-92ad-66e79a6a533f','4d779d7b-fed2-4eab-9821-a1ddb2f9e202')">Open In Tab</button></div><div id="3e3636a3-2e9b-45a2-b869-27177864d037" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="ebdf8d5e-049f-430c-8b4b-ec455f3651bd" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('494598d6-1820-443f-83e8-739d7d4e2f1c','ebdf8d5e-049f-430c-8b4b-ec455f3651bd')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('494598d6-1820-443f-83e8-739d7d4e2f1c','ebdf8d5e-049f-430c-8b4b-ec455f3651bd')">Open In Tab</button></div><div id="a8c3a528-59a8-4823-847c-7c2906422f96" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Annoy.build">
@@ -1705,8 +1706,8 @@ To add more items, call <a class="reference internal" href="#scikitplot.annoy.An
 </div>
 </div>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="8b3c6937-b7d2-4bad-9ad3-21536e00314b">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('8b3c6937-b7d2-4bad-9ad3-21536e00314b','6e5e7bc4-0df6-4de5-8b9b-a1761555400a','3fa5fee5-6616-45a1-8586-2dec67bc754e','../../lite/tree/../notebooks/index.html?path=9d1cf383_6289_4c6c_bb28_8df58199208b.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="696d52d5-a066-4c0c-8b8c-49e6cc41d1d4">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('696d52d5-a066-4c0c-8b8c-49e6cc41d1d4','1b6eee41-5b6b-4287-a033-fed855b2de1f','18cce19b-7614-40bc-a4bc-c948bf904ecd','../../lite/tree/../notebooks/index.html?path=c797690b_668a_4811_bdc6_c257d6869972.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.cexternals._annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annoy</span><span class="p">,</span> <span class="n">AnnoyIndex</span>
 <span class="gp">...</span>
@@ -1722,7 +1723,7 @@ To add more items, call <a class="reference internal" href="#scikitplot.annoy.An
 </div>
 </div>
 </div>
-<div id="3fa5fee5-6616-45a1-8586-2dec67bc754e" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('8b3c6937-b7d2-4bad-9ad3-21536e00314b','3fa5fee5-6616-45a1-8586-2dec67bc754e')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('8b3c6937-b7d2-4bad-9ad3-21536e00314b','3fa5fee5-6616-45a1-8586-2dec67bc754e')">Open In Tab</button></div><div id="6e5e7bc4-0df6-4de5-8b9b-a1761555400a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="18cce19b-7614-40bc-a4bc-c948bf904ecd" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('696d52d5-a066-4c0c-8b8c-49e6cc41d1d4','18cce19b-7614-40bc-a4bc-c948bf904ecd')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('696d52d5-a066-4c0c-8b8c-49e6cc41d1d4','18cce19b-7614-40bc-a4bc-c948bf904ecd')">Open In Tab</button></div><div id="1b6eee41-5b6b-4287-a033-fed855b2de1f" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Annoy.deserialize">
@@ -1876,8 +1877,8 @@ otherwise uses current n_items when reset=False.</p>
 </dl>
 </div>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="febf956a-d026-4150-b476-b78e42bc9e00">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('febf956a-d026-4150-b476-b78e42bc9e00','40b0d39c-a6d6-40bf-a74b-4a28576451a0','fd63e3a0-2cf9-4a46-8460-6b8cd9302efb','../../lite/tree/../notebooks/index.html?path=82d2b868_d62d_4c27_808d_973f17e261a2.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="647c89b0-28f0-485b-a41f-464a3754fc3a">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('647c89b0-28f0-485b-a41f-464a3754fc3a','dc81b946-e2fc-45bb-b99e-cd3b1a37318b','a8cd14d6-b700-41f7-b11d-c6453be0b7c6','../../lite/tree/../notebooks/index.html?path=89bcecf3_a6f5_4bd0_b355_570ab1918f93.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.cexternals._annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annoy</span><span class="p">,</span> <span class="n">AnnoyIndex</span>
 <span class="gp">...</span>
@@ -1897,7 +1898,7 @@ otherwise uses current n_items when reset=False.</p>
 </div>
 </div>
 </div>
-<div id="fd63e3a0-2cf9-4a46-8460-6b8cd9302efb" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('febf956a-d026-4150-b476-b78e42bc9e00','fd63e3a0-2cf9-4a46-8460-6b8cd9302efb')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('febf956a-d026-4150-b476-b78e42bc9e00','fd63e3a0-2cf9-4a46-8460-6b8cd9302efb')">Open In Tab</button></div><div id="40b0d39c-a6d6-40bf-a74b-4a28576451a0" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="a8cd14d6-b700-41f7-b11d-c6453be0b7c6" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('647c89b0-28f0-485b-a41f-464a3754fc3a','a8cd14d6-b700-41f7-b11d-c6453be0b7c6')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('647c89b0-28f0-485b-a41f-464a3754fc3a','a8cd14d6-b700-41f7-b11d-c6453be0b7c6')">Open In Tab</button></div><div id="dc81b946-e2fc-45bb-b99e-cd3b1a37318b" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Annoy.fit_transform">
@@ -1943,8 +1944,8 @@ of <code class="docutils literal notranslate"><span class="pre">y</span></code> 
 </dl>
 </div>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="cbaf6df0-6091-4745-9d16-94cdfe7504af">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('cbaf6df0-6091-4745-9d16-94cdfe7504af','5671af0e-4c95-45bb-92dc-56a553c0199e','711d4d97-b0cc-43f1-a1e8-56cdda29d0fd','../../lite/tree/../notebooks/index.html?path=b639a885_057e_4768_a54d_13ed18db338b.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="877b952b-38d7-4c20-9e61-911646a0b3f1">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('877b952b-38d7-4c20-9e61-911646a0b3f1','db557dd3-45c3-477e-b506-8c9c1f2f7aca','01543aef-dcb5-4c8c-bcd3-709b5cbf7a20','../../lite/tree/../notebooks/index.html?path=63185a3b_64c9_4179_b161_d80b100f1bd7.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.cexternals._annoy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annoy</span><span class="p">,</span> <span class="n">AnnoyIndex</span>
 <span class="gp">...</span>
@@ -1958,7 +1959,7 @@ of <code class="docutils literal notranslate"><span class="pre">y</span></code> 
 </div>
 </div>
 </div>
-<div id="711d4d97-b0cc-43f1-a1e8-56cdda29d0fd" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('cbaf6df0-6091-4745-9d16-94cdfe7504af','711d4d97-b0cc-43f1-a1e8-56cdda29d0fd')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('cbaf6df0-6091-4745-9d16-94cdfe7504af','711d4d97-b0cc-43f1-a1e8-56cdda29d0fd')">Open In Tab</button></div><div id="5671af0e-4c95-45bb-92dc-56a553c0199e" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="01543aef-dcb5-4c8c-bcd3-709b5cbf7a20" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('877b952b-38d7-4c20-9e61-911646a0b3f1','01543aef-dcb5-4c8c-bcd3-709b5cbf7a20')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('877b952b-38d7-4c20-9e61-911646a0b3f1','01543aef-dcb5-4c8c-bcd3-709b5cbf7a20')">Open In Tab</button></div><div id="db557dd3-45c3-477e-b506-8c9c1f2f7aca" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Annoy.get_distance">
@@ -2329,8 +2330,8 @@ Logging level inspired by gradient-boosting libraries:</p>
 </li>
 </ul>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="ce7c7b6b-843b-4344-922c-984d33ce718f">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('ce7c7b6b-843b-4344-922c-984d33ce718f','4e6cc6d5-0c98-4b03-9f47-804f6e05d952','c3230ae7-e57d-437a-bca1-7d427c972bac','../../lite/tree/../notebooks/index.html?path=b880f95e_19ff_4d58_9273_323559185e37.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="b3e00332-7d5e-4f48-80ea-6c314df11315">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('b3e00332-7d5e-4f48-80ea-6c314df11315','2270fdff-2549-43ac-bc88-e63c6d427d9b','a4250dc3-da6e-42fc-b3b6-42e076d1adb7','../../lite/tree/../notebooks/index.html?path=faf7d72c_6e76_4012_ac91_4ffc33867239.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">info</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;f&#39;</span><span class="p">]</span>
 <span class="go">100</span>
@@ -2340,7 +2341,7 @@ Logging level inspired by gradient-boosting libraries:</p>
 </div>
 </div>
 </div>
-<div id="c3230ae7-e57d-437a-bca1-7d427c972bac" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('ce7c7b6b-843b-4344-922c-984d33ce718f','c3230ae7-e57d-437a-bca1-7d427c972bac')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('ce7c7b6b-843b-4344-922c-984d33ce718f','c3230ae7-e57d-437a-bca1-7d427c972bac')">Open In Tab</button></div><div id="4e6cc6d5-0c98-4b03-9f47-804f6e05d952" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="a4250dc3-da6e-42fc-b3b6-42e076d1adb7" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('b3e00332-7d5e-4f48-80ea-6c314df11315','a4250dc3-da6e-42fc-b3b6-42e076d1adb7')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('b3e00332-7d5e-4f48-80ea-6c314df11315','a4250dc3-da6e-42fc-b3b6-42e076d1adb7')">Open In Tab</button></div><div id="2270fdff-2549-43ac-bc88-e63c6d427d9b" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Annoy.load">
@@ -2997,8 +2998,8 @@ missing keys / None values in dict rows). If None, missing entries raise.</p>
 <li><p>If exclusions prevent returning exactly <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> results, this method raises ValueError.</p></li>
 </ul>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="33352472-34fa-47c0-9117-ef57125fdd3e">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('33352472-34fa-47c0-9117-ef57125fdd3e','6b6b53c2-1c56-4ede-82e0-a03343bc411e','4543b8e5-e640-43c3-b4b3-ab672b20d489','../../lite/tree/../notebooks/index.html?path=fff5a85f_f0d9_4aeb_994a_deda917f47e7.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="01996b2b-665f-49ac-9c17-f83375acfe72">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('01996b2b-665f-49ac-9c17-f83375acfe72','c44a34e5-45a4-4aef-9aad-a753b461ebd3','cb0c2a5b-5e30-451c-8ae2-39b407813180','../../lite/tree/../notebooks/index.html?path=abdac2fd_a6f4_4c08_8126_697803a4fe7d.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Item queries (exclude the query id itself):</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span><span class="o">.</span><span class="n">transform</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="n">input_type</span><span class="o">=</span><span class="s1">&#39;item&#39;</span><span class="p">,</span> <span class="n">output_type</span><span class="o">=</span><span class="s1">&#39;item&#39;</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">exclude_self</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -3013,7 +3014,7 @@ missing keys / None values in dict rows). If None, missing entries raise.</p>
 </div>
 </div>
 </div>
-<div id="4543b8e5-e640-43c3-b4b3-ab672b20d489" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('33352472-34fa-47c0-9117-ef57125fdd3e','4543b8e5-e640-43c3-b4b3-ab672b20d489')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('33352472-34fa-47c0-9117-ef57125fdd3e','4543b8e5-e640-43c3-b4b3-ab672b20d489')">Open In Tab</button></div><div id="6b6b53c2-1c56-4ede-82e0-a03343bc411e" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="cb0c2a5b-5e30-451c-8ae2-39b407813180" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('01996b2b-665f-49ac-9c17-f83375acfe72','cb0c2a5b-5e30-451c-8ae2-39b407813180')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('01996b2b-665f-49ac-9c17-f83375acfe72','cb0c2a5b-5e30-451c-8ae2-39b407813180')">Open In Tab</button></div><div id="c44a34e5-45a4-4aef-9aad-a753b461ebd3" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.annoy.Annoy.unbuild">
@@ -3336,7 +3337,7 @@ become <code class="docutils literal notranslate"><span class="pre">None</span><
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260422.ee25698 2026-04-22T13:28Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260424.e4af755 2026-04-24T20:44Z.
       <br/>
     
   </p>

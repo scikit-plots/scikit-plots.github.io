@@ -14,7 +14,7 @@
 <meta content="scikit-plots" property="og:image:alt"/>
 <meta content="An example showing the visualkeras function used by a tf.keras.Model model. create VGG16 Now visualize the model! Tags: model-type: classification model-workflow: model building plot-type: visualke..." name="description"/>
 <script>
-window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true}, "providers": {"claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Claude about this documentation page.", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask ChatGPT about this documentation page.", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Read {url} so I can ask questions about it.", "model": "gpt-4o", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this documentation page.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Please review this documentation: {url}\n\nI have questions.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
+window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true}, "providers": {"chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask OpenAI ChatGPT about this page", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "gpt-4o", "type": "web"}, "claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Anthropic Claude about this page", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this page", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Hi! Please review this documentation content: {url}\n\nI have questions about it.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}, "cursor": {"enabled": false, "type": "cursor", "label": "Connect to Cursor", "description": "Connect the MCP server to Cursor IDE.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
 </script>
 <title>visualkeras: custom vgg16 example — scikit-plots 0.5.dev0 documentation</title>
 <script data-cfasync="false">
@@ -42,7 +42,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <link href="../../_static/thebelab.css" rel="stylesheet" type="text/css"/>
 <link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
 <link href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
-<link href="../../_static/sg_gallery.css?v=d2d258e8" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sg_gallery.css?v=fd6457a4" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-binder.css?v=f4aeca0c" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" rel="stylesheet" type="text/css"/>
@@ -59,6 +59,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
 <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
+<script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
 <script src="../../_static/ai-assistant.js?v=cb662cc4"></script>
 <script src="../../_static/thebelab-helper.js"></script>
 <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
@@ -631,7 +632,7 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <a class="sphx-glr-backref-module-PIL-ImageFont sphx-glr-backref-type-py-function" href="https://pillow.readthedocs.io/en/stable/reference/ImageFont.html#PIL.ImageFont.load_default" title="PIL.ImageFont.load_default"><span class="n">ImageFont</span><span class="o">.</span><span class="n">load_default</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;PIL.ImageFont.FreeTypeFont object at 0x74d02041d6d0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;PIL.ImageFont.FreeTypeFont object at 0x7ce527da51d0&gt;
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">img_vgg16</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
@@ -643,12 +644,7 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <span class="p">)</span>
 </pre></div>
 </div>
-<img alt="plot dl cnn custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_001.png" srcset="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_001.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2026-04-22 13:37:33.373993: W scikitplot 128439561939840 _pil.py:204:load_font] Error loading system font: cannot open resource
-2026-04-22 13:37:33.374158: W scikitplot 128439561939840 _pil.py:206:load_font] Falling back to PIL default font.
-2026-04-22 13:37:33.374295: W scikitplot 128439561939840 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
-</pre></div>
-</div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">img_vgg16_legend</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
+<img alt="plot dl cnn custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_001.png" srcset="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_001.png"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">img_vgg16_legend</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
     <span class="n">model</span><span class="p">,</span>
     <span class="n">type_ignore</span><span class="o">=</span><span class="p">[</span><a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-class sphx-glr-backref-instance" href="../../modules/generated/scikitplot.visualkeras.SpacingDummyLayer.html#scikitplot.visualkeras.SpacingDummyLayer" title="scikitplot.visualkeras.SpacingDummyLayer"><span class="n">visualkeras</span><span class="o">.</span><span class="n">SpacingDummyLayer</span></a><span class="p">],</span>
     <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -664,11 +660,7 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <span class="n">img_vgg16_legend</span>
 </pre></div>
 </div>
-<img alt="plot dl cnn custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_002.png" srcset="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_002.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2026-04-22 13:37:34.279958: W scikitplot 128439561939840 _pil.py:204:load_font] Error loading system font: cannot open resource
-2026-04-22 13:37:34.280084: W scikitplot 128439561939840 _pil.py:206:load_font] Falling back to PIL default font.
-2026-04-22 13:37:34.280192: W scikitplot 128439561939840 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
-
-&lt;matplotlib.image.AxesImage object at 0x74d018325c50&gt;
+<img alt="plot dl cnn custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_002.png" srcset="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_002.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage object at 0x7ce514425d90&gt;
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">img_vgg16_spacing_layers</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
@@ -682,11 +674,7 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <span class="n">img_vgg16_spacing_layers</span>
 </pre></div>
 </div>
-<img alt="plot dl cnn custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_003.png" srcset="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_003.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2026-04-22 13:37:35.242621: W scikitplot 128439561939840 _pil.py:204:load_font] Error loading system font: cannot open resource
-2026-04-22 13:37:35.242739: W scikitplot 128439561939840 _pil.py:206:load_font] Falling back to PIL default font.
-2026-04-22 13:37:35.242867: W scikitplot 128439561939840 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
-
-&lt;matplotlib.image.AxesImage object at 0x74d0183d0fd0&gt;
+<img alt="plot dl cnn custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_003.png" srcset="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_003.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage object at 0x7ce4fc7153d0&gt;
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">img_vgg16_type_ignore</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
@@ -704,11 +692,7 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <span class="n">img_vgg16_type_ignore</span>
 </pre></div>
 </div>
-<img alt="plot dl cnn custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_004.png" srcset="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_004.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2026-04-22 13:37:36.031335: W scikitplot 128439561939840 _pil.py:204:load_font] Error loading system font: cannot open resource
-2026-04-22 13:37:36.031423: W scikitplot 128439561939840 _pil.py:206:load_font] Falling back to PIL default font.
-2026-04-22 13:37:36.031513: W scikitplot 128439561939840 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
-
-&lt;matplotlib.image.AxesImage object at 0x74d01826f410&gt;
+<img alt="plot dl cnn custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_004.png" srcset="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_004.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage object at 0x7ce4fc7ccbd0&gt;
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">img_vgg16_color_map</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
@@ -722,11 +706,7 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <span class="n">img_vgg16_color_map</span>
 </pre></div>
 </div>
-<img alt="plot dl cnn custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_005.png" srcset="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_005.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2026-04-22 13:37:36.576918: W scikitplot 128439561939840 _pil.py:204:load_font] Error loading system font: cannot open resource
-2026-04-22 13:37:36.577006: W scikitplot 128439561939840 _pil.py:206:load_font] Falling back to PIL default font.
-2026-04-22 13:37:36.577099: W scikitplot 128439561939840 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
-
-&lt;matplotlib.image.AxesImage object at 0x74d018280fd0&gt;
+<img alt="plot dl cnn custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_005.png" srcset="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_005.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage object at 0x7ce4fc63d3d0&gt;
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">img_vgg16_flat</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
@@ -740,11 +720,7 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <span class="n">img_vgg16_flat</span>
 </pre></div>
 </div>
-<img alt="plot dl cnn custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_006.png" srcset="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_006.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2026-04-22 13:37:37.423867: W scikitplot 128439561939840 _pil.py:204:load_font] Error loading system font: cannot open resource
-2026-04-22 13:37:37.423961: W scikitplot 128439561939840 _pil.py:206:load_font] Falling back to PIL default font.
-2026-04-22 13:37:37.424054: W scikitplot 128439561939840 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
-
-&lt;matplotlib.image.AxesImage object at 0x74d01814f910&gt;
+<img alt="plot dl cnn custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_006.png" srcset="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_006.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage object at 0x7ce4fc6b1910&gt;
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">img_vgg16_scaling</span> <span class="o">=</span> <a class="sphx-glr-backref-module-scikitplot-visualkeras sphx-glr-backref-type-py-function" href="../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view" title="scikitplot.visualkeras.layered_view"><span class="n">visualkeras</span><span class="o">.</span><span class="n">layered_view</span></a><span class="p">(</span>
@@ -765,15 +741,11 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <span class="n">img_vgg16_scaling</span>
 </pre></div>
 </div>
-<img alt="plot dl cnn custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_007.png" srcset="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_007.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2026-04-22 13:37:38.033668: W scikitplot 128439561939840 _pil.py:204:load_font] Error loading system font: cannot open resource
-2026-04-22 13:37:38.033760: W scikitplot 128439561939840 _pil.py:206:load_font] Falling back to PIL default font.
-2026-04-22 13:37:38.033869: W scikitplot 128439561939840 _layered.py:216:layered_view] The legend_text_spacing_offset parameter is deprecated andwill be removed in a future release.
-
-&lt;matplotlib.image.AxesImage object at 0x74d0181ae850&gt;
+<img alt="plot dl cnn custom vgg16" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_007.png" srcset="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_007.png"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage object at 0x7ce4fc296cd0&gt;
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-model-building.html"><span class="doc">model-workflow: model building</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-visualkeras.html"><span class="doc">plot-type: visualkeras</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger reference internal" href="../../_tags/domain-neural-network.html"><span class="doc">domain: neural network</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-intermediate.html"><span class="doc">level: intermediate</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 14.977 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 17.136 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.visualkeras function used by a :py~tensorflow.keras.Model model."><img alt="" src="../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_show_dimension_thumb.png"/>
@@ -832,7 +804,7 @@ used by a <a class="reference external" href="https://www.tensorflow.org/api_doc
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260422.ee25698 2026-04-22T13:28Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260424.e4af755 2026-04-24T20:44Z.
       <br/>
 </p>
 </div>

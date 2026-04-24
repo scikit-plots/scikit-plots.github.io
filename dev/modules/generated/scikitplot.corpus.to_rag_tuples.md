@@ -1,6 +1,6 @@
 # to\_rag\_tuples[#](#to-rag-tuples "Link to this heading")
 
-scikitplot.corpus.to\_rag\_tuples(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ee25698/scikitplot/corpus/_adapters.py#L444)[#](#scikitplot.corpus.to_rag_tuples "Link to this definition")
+scikitplot.corpus.to\_rag\_tuples(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/corpus/_adapters.py#L444)[#](#scikitplot.corpus.to_rag_tuples "Link to this definition")
 :   Convert documents to `(text, metadata, embedding)` tuples.
 
     Parameters:

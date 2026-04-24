@@ -17,7 +17,7 @@ Ensure that the correct python.pythonPath is set in your `.vscode/settings.json`
 Matplotlib uses the [pytest](https://docs.pytest.org/en/stable/) framework.
 
 The tests are in `lib/matplotlib/tests`, and customizations to the pytest
-testing infrastructure are in [`matplotlib.testing`](https://matplotlib.org/devdocs/api/testing_api.html#module-matplotlib.testing "(in Matplotlib v3.11.0.dev2342+g106899233)").
+testing infrastructure are in [`matplotlib.testing`](https://matplotlib.org/devdocs/api/testing_api.html#module-matplotlib.testing "(in Matplotlib v3.11.0.dev2354+gea362ab57)").
 
 ## Requirements[#](#requirements "Link to this heading")
 
