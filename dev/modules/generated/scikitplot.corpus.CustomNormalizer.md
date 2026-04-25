@@ -1,6 +1,6 @@
 # CustomNormalizer[#](#customnormalizer "Link to this heading")
 
-class scikitplot.corpus.CustomNormalizer(**fn**, **\***, **name=None**, **text\_mode=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/corpus/_custom_hooks.py#L369)[#](#scikitplot.corpus.CustomNormalizer "Link to this definition")
+class scikitplot.corpus.CustomNormalizer(**fn**, **\***, **name=None**, **text\_mode=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_custom_hooks.py#L369)[#](#scikitplot.corpus.CustomNormalizer "Link to this definition")
 :   Wrap any callable as a `NormalizerBase`.
 
     Parameters:
@@ -75,7 +75,7 @@ class scikitplot.corpus.CustomNormalizer(**fn**, **\***, **name=None**, **text\_
     ```
     Go BackOpen In Tab
 
-    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/corpus/_custom_hooks.py#L466)[#](#scikitplot.corpus.CustomNormalizer.normalize_doc "Link to this definition")
+    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_custom_hooks.py#L466)[#](#scikitplot.corpus.CustomNormalizer.normalize_doc "Link to this definition")
     :   Apply the user-supplied callable to `doc`.
 
         Parameters:

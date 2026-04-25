@@ -1,6 +1,6 @@
 # get\_provider[#](#get-provider "Link to this heading")
 
-scikitplot.mlflow.get\_provider()[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/mlflow/_custom.py#L79)[#](#scikitplot.mlflow.get_provider "Link to this definition")
+scikitplot.mlflow.get\_provider()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/mlflow/_custom.py#L79)[#](#scikitplot.mlflow.get_provider "Link to this definition")
 :   Retrieve the currently active MLflow provider.
 
     Return type:

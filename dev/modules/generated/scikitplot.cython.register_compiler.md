@@ -1,6 +1,6 @@
 # register\_compiler[#](#register-compiler "Link to this heading")
 
-scikitplot.cython.register\_compiler(**compiler**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/cython/_custom_compiler.py#L338)[#](#scikitplot.cython.register_compiler "Link to this definition")
+scikitplot.cython.register\_compiler(**compiler**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/cython/_custom_compiler.py#L338)[#](#scikitplot.cython.register_compiler "Link to this definition")
 :   Register a custom compiler in the module-level registry.
 
     Parameters:

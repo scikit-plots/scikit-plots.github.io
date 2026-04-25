@@ -47,7 +47,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=9781a02e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=ecbb7725" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
@@ -73,7 +73,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=cb662cc4"></script>
+    <script src="../../_static/ai-assistant.js?v=d37731b0"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -1318,7 +1318,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>WordChunker<a class="headerlink" href="#wordchunker" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.WordChunker">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">WordChunker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gensim_dictionary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/corpus/_chunkers/_word.py#L1035"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.WordChunker" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">WordChunker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gensim_dictionary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_word.py#L1035"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.WordChunker" title="Link to this definition">#</a></dt>
 <dd><p>Process a document at word level, producing normalised token chunks.</p>
 <p>Each output <code class="xref py py-class docutils literal notranslate"><span class="pre">Chunk</span></code> contains:</p>
 <ul class="simple">
@@ -1345,8 +1345,8 @@ includes a <code class="docutils literal notranslate"><span class="pre">&quot;bo
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="b378c633-bac1-48e3-8009-353b7cbf3a7c">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('b378c633-bac1-48e3-8009-353b7cbf3a7c','b37ceac1-1b80-4df1-b983-076014cc0d1e','710e95cf-0c2a-4f4d-a2ea-ea19135fae41','../../lite/tree/../notebooks/index.html?path=7b2b2089_e9ed_4d1e_8bd4_496889ead85a.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="5e5b4b0d-db72-4cd2-937e-3b4fa2a3cf8e">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('5e5b4b0d-db72-4cd2-937e-3b4fa2a3cf8e','e2c44e37-f667-4782-8dae-6bd731fa6d92','176d783a-7cfd-4437-9de2-af4b3267ea18','../../lite/tree/../notebooks/index.html?path=75bf2cb0_88f2_4a49_9396_fd3d5d6cf849.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cfg</span> <span class="o">=</span> <span class="n">WordChunkerConfig</span><span class="p">(</span><span class="n">stemmer</span><span class="o">=</span><span class="n">StemmingBackend</span><span class="o">.</span><span class="n">PORTER</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">chunker</span> <span class="o">=</span> <span class="n">WordChunker</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">chunker</span><span class="o">.</span><span class="n">chunk</span><span class="p">(</span><span class="s2">&quot;The quick brown foxes are jumping over lazy dogs.&quot;</span><span class="p">)</span>
@@ -1356,9 +1356,9 @@ includes a <code class="docutils literal notranslate"><span class="pre">&quot;bo
 </div>
 </div>
 </div>
-<div id="710e95cf-0c2a-4f4d-a2ea-ea19135fae41" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('b378c633-bac1-48e3-8009-353b7cbf3a7c','710e95cf-0c2a-4f4d-a2ea-ea19135fae41')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('b378c633-bac1-48e3-8009-353b7cbf3a7c','710e95cf-0c2a-4f4d-a2ea-ea19135fae41')">Open In Tab</button></div><div id="b37ceac1-1b80-4df1-b983-076014cc0d1e" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="176d783a-7cfd-4437-9de2-af4b3267ea18" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('5e5b4b0d-db72-4cd2-937e-3b4fa2a3cf8e','176d783a-7cfd-4437-9de2-af4b3267ea18')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('5e5b4b0d-db72-4cd2-937e-3b4fa2a3cf8e','176d783a-7cfd-4437-9de2-af4b3267ea18')">Open In Tab</button></div><div id="e2c44e37-f667-4782-8dae-6bd731fa6d92" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.WordChunker.build_gensim_dictionary">
-<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">build_gensim_dictionary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token_lists</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_below</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_above</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/corpus/_chunkers/_word.py#L1395"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.WordChunker.build_gensim_dictionary" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">build_gensim_dictionary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token_lists</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_below</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_above</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_word.py#L1395"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.WordChunker.build_gensim_dictionary" title="Link to this definition">#</a></dt>
 <dd><p>Build a <code class="xref py py-class docutils literal notranslate"><span class="pre">gensim.corpora.Dictionary</span></code> from token lists.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1404,7 +1404,7 @@ documents (0.0-1.0).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.WordChunker.chunk">
-<span class="sig-name descname"><span class="pre">chunk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/corpus/_chunkers/_word.py#L1277"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.WordChunker.chunk" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">chunk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_word.py#L1277"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.WordChunker.chunk" title="Link to this definition">#</a></dt>
 <dd><p>Process <em>text</em> into word-level chunks.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1446,7 +1446,7 @@ documents (0.0-1.0).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.WordChunker.chunk_batch">
-<span class="sig-name descname"><span class="pre">chunk_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/corpus/_chunkers/_word.py#L1346"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.WordChunker.chunk_batch" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">chunk_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_word.py#L1346"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.WordChunker.chunk_batch" title="Link to this definition">#</a></dt>
 <dd><p>Process a list of documents into word-level chunks.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1488,7 +1488,7 @@ documents (0.0-1.0).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.WordChunker.vocabulary_stats">
-<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">vocabulary_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token_lists</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/corpus/_chunkers/_word.py#L1448"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.WordChunker.vocabulary_stats" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">vocabulary_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token_lists</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_word.py#L1448"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.WordChunker.vocabulary_stats" title="Link to this definition">#</a></dt>
 <dd><p>Compute vocabulary statistics over a corpus.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1636,7 +1636,7 @@ documents (0.0-1.0).</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260424.e4af755 2026-04-24T20:44Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260425.f4129c4 2026-04-25T14:26Z.
       <br/>
     
   </p>

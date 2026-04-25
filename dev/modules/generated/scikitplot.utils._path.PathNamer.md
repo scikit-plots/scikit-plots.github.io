@@ -1,6 +1,6 @@
 # PathNamer[#](#pathnamer "Link to this heading")
 
-class scikitplot.utils.\_path.PathNamer(**root=PosixPath('scikitplot-artifacts')**, **prefix=''**, **suffix=''**, **ext=''**, **by\_day=False**, **add\_secret=False**, **private=False**, **mkdir=True**, **directory=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/utils/_path.py#L319)[#](#scikitplot.utils._path.PathNamer "Link to this definition")
+class scikitplot.utils.\_path.PathNamer(**root=PosixPath('scikitplot-artifacts')**, **prefix=''**, **suffix=''**, **ext=''**, **by\_day=False**, **add\_secret=False**, **private=False**, **mkdir=True**, **directory=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/utils/_path.py#L319)[#](#scikitplot.utils._path.PathNamer "Link to this definition")
 :   Generate portable, collision-resistant filenames and paths.
 
     Parameters:
@@ -174,7 +174,7 @@ class scikitplot.utils.\_path.PathNamer(**root=PosixPath('scikitplot-artifacts')
 
     ext: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = ''[#](#scikitplot.utils._path.PathNamer.ext "Link to this definition")
 
-    make\_filename(**prefix=None**, **suffix=None**, **ext=None**, **\***, **now=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/utils/_path.py#L467)[#](#scikitplot.utils._path.PathNamer.make_filename "Link to this definition")
+    make\_filename(**prefix=None**, **suffix=None**, **ext=None**, **\***, **now=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/utils/_path.py#L467)[#](#scikitplot.utils._path.PathNamer.make_filename "Link to this definition")
     :   Create a unique, portable filename.
 
         Parameters:
@@ -204,7 +204,7 @@ class scikitplot.utils.\_path.PathNamer(**root=PosixPath('scikitplot-artifacts')
         Return type:
         :   [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")
 
-    make\_path(**prefix=None**, **suffix=None**, **ext=None**, **\***, **subdir=None**, **now=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/utils/_path.py#L520)[#](#scikitplot.utils._path.PathNamer.make_path "Link to this definition")
+    make\_path(**prefix=None**, **suffix=None**, **ext=None**, **\***, **subdir=None**, **now=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/utils/_path.py#L520)[#](#scikitplot.utils._path.PathNamer.make_path "Link to this definition")
     :   Create a full path (folder + unique filename).
 
         Parameters:
@@ -256,6 +256,6 @@ class scikitplot.utils.\_path.PathNamer(**root=PosixPath('scikitplot-artifacts')
 
     private: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.utils._path.PathNamer.private "Link to this definition")
 
-    root: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") = PosixPath('scikitplot-artifacts')[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/../../pathlib.py#L)[#](#scikitplot.utils._path.PathNamer.root "Link to this definition")
+    root: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") = PosixPath('scikitplot-artifacts')[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/../../pathlib.py#L)[#](#scikitplot.utils._path.PathNamer.root "Link to this definition")
 
     suffix: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = ''[#](#scikitplot.utils._path.PathNamer.suffix "Link to this definition")

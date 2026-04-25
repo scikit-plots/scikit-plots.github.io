@@ -45,7 +45,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=9781a02e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=ecbb7725" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
@@ -71,7 +71,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=cb662cc4"></script>
+    <script src="../../_static/ai-assistant.js?v=d37731b0"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -1316,7 +1316,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>TokenizerProtocol<a class="headerlink" href="#tokenizerprotocol" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.TokenizerProtocol">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">TokenizerProtocol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L121"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.TokenizerProtocol" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">TokenizerProtocol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L121"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.TokenizerProtocol" title="Link to this definition">#</a></dt>
 <dd><p>Structural protocol for word tokenizers.</p>
 <p>Any object with a <code class="docutils literal notranslate"><span class="pre">tokenize(text:</span> <span class="pre">str)</span> <span class="pre">-&gt;</span> <span class="pre">list[str]</span></code> method satisfies
 this protocol, regardless of inheritance.  This includes MeCab wrappers,
@@ -1330,8 +1330,8 @@ fast tokenizers, and plain callable wrappers via <a class="reference internal" h
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="3f913353-4142-4bcd-b029-22ab29c0a7f7">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('3f913353-4142-4bcd-b029-22ab29c0a7f7','0418f517-f71b-4e77-b272-3eda99e3ac3e','ed915a71-3d62-43ae-afba-e5a5389662cf','../../lite/tree/../notebooks/index.html?path=842c53d5_d2d4_4d22_b6d0_ebb958eb4a50.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="4b024e4d-d047-49fa-9cf5-bc91a1a3da9a">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('4b024e4d-d047-49fa-9cf5-bc91a1a3da9a','e9e1349d-b194-46c9-b6a8-60235bb1a7a6','08fc7eb4-40f1-422c-8d02-15786bfcd060','../../lite/tree/../notebooks/index.html?path=7a263221_d9a1_42ee_96cd_7242d27c1dbc.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">MyTok</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">tokenize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 <span class="gp">... </span>        <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
@@ -1341,9 +1341,9 @@ fast tokenizers, and plain callable wrappers via <a class="reference internal" h
 </div>
 </div>
 </div>
-<div id="ed915a71-3d62-43ae-afba-e5a5389662cf" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('3f913353-4142-4bcd-b029-22ab29c0a7f7','ed915a71-3d62-43ae-afba-e5a5389662cf')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('3f913353-4142-4bcd-b029-22ab29c0a7f7','ed915a71-3d62-43ae-afba-e5a5389662cf')">Open In Tab</button></div><div id="0418f517-f71b-4e77-b272-3eda99e3ac3e" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="08fc7eb4-40f1-422c-8d02-15786bfcd060" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('4b024e4d-d047-49fa-9cf5-bc91a1a3da9a','08fc7eb4-40f1-422c-8d02-15786bfcd060')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('4b024e4d-d047-49fa-9cf5-bc91a1a3da9a','08fc7eb4-40f1-422c-8d02-15786bfcd060')">Open In Tab</button></div><div id="e9e1349d-b194-46c9-b6a8-60235bb1a7a6" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.TokenizerProtocol.tokenize">
-<span class="sig-name descname"><span class="pre">tokenize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L143"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.TokenizerProtocol.tokenize" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">tokenize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L143"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.TokenizerProtocol.tokenize" title="Link to this definition">#</a></dt>
 <dd><p>Tokenize <em>text</em> into a list of token strings.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1473,7 +1473,7 @@ fast tokenizers, and plain callable wrappers via <a class="reference internal" h
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260424.e4af755 2026-04-24T20:44Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260425.f4129c4 2026-04-25T14:26Z.
       <br/>
     
   </p>

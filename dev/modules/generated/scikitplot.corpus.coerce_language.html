@@ -45,7 +45,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=9781a02e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=ecbb7725" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
@@ -71,7 +71,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=cb662cc4"></script>
+    <script src="../../_static/ai-assistant.js?v=d37731b0"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -1316,7 +1316,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>coerce_language<a class="headerlink" href="#coerce-language" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.coerce_language">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">coerce_language</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lang</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'english'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/corpus/_chunkers/_language_data.py#L1285"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.coerce_language" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">coerce_language</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lang</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'english'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_language_data.py#L1285"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.coerce_language" title="Link to this definition">#</a></dt>
 <dd><p>Normalise any language specifier into a list of canonical NLTK names.</p>
 <p>Accepts all three forms used by chunkers and the enricher:</p>
 <ul class="simple">
@@ -1362,8 +1362,8 @@ Duplicates are removed while preserving order.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="d47fb7c3-1e0b-4a9f-bfe5-bc2feb23d7be">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('d47fb7c3-1e0b-4a9f-bfe5-bc2feb23d7be','92f8141e-d802-4d91-89a9-6501b6914369','86d1582a-2f7c-4bdf-b9bd-6f048bd4bf6a','../../lite/tree/../notebooks/index.html?path=d8bc1b94_bbd6_4191_8422_be7ffde778c6.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="e2e502c6-5ff7-469e-8079-21f3e8d0c0e3">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('e2e502c6-5ff7-469e-8079-21f3e8d0c0e3','8da8aa13-ca65-4a1d-b69e-08bf4744a822','3c5d8eb3-9d04-486e-84b1-917f54a08e07','../../lite/tree/../notebooks/index.html?path=1d38f22c_d1a5_4ebf_aba5_5a4b48f4bfdd.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">coerce_language</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 <span class="go">[&#39;english&#39;]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">coerce_language</span><span class="p">(</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
@@ -1376,7 +1376,7 @@ Duplicates are removed while preserving order.</p>
 </div>
 </div>
 </div>
-<div id="86d1582a-2f7c-4bdf-b9bd-6f048bd4bf6a" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('d47fb7c3-1e0b-4a9f-bfe5-bc2feb23d7be','86d1582a-2f7c-4bdf-b9bd-6f048bd4bf6a')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('d47fb7c3-1e0b-4a9f-bfe5-bc2feb23d7be','86d1582a-2f7c-4bdf-b9bd-6f048bd4bf6a')">Open In Tab</button></div><div id="92f8141e-d802-4d91-89a9-6501b6914369" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="3c5d8eb3-9d04-486e-84b1-917f54a08e07" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('e2e502c6-5ff7-469e-8079-21f3e8d0c0e3','3c5d8eb3-9d04-486e-84b1-917f54a08e07')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('e2e502c6-5ff7-469e-8079-21f3e8d0c0e3','3c5d8eb3-9d04-486e-84b1-917f54a08e07')">Open In Tab</button></div><div id="8da8aa13-ca65-4a1d-b69e-08bf4744a822" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1479,7 +1479,7 @@ Duplicates are removed while preserving order.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260424.e4af755 2026-04-24T20:44Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260425.f4129c4 2026-04-25T14:26Z.
       <br/>
     
   </p>

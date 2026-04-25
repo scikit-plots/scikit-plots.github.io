@@ -8,7 +8,7 @@ consistency, and maintainability of the code base.
 
 > **API guidelines**
 > If adding new features, changing behavior or function signatures, or removing
-public interfaces, please consult the [API guidelines](https://matplotlib.org/devdocs/devel/api_changes.html#api-changes "(in Matplotlib v3.11.0.dev2354+gea362ab57)").
+public interfaces, please consult the [API guidelines](https://matplotlib.org/devdocs/devel/api_changes.html#api-changes "(in Matplotlib v3.11.0.dev2357+g05b91794a)").
 
 ## PEP8, as enforced by flake8[#](#pep8-as-enforced-by-flake8 "Link to this heading")
 
@@ -150,7 +150,7 @@ function, and let others pass through. Instead of popping arguments to
 use off `**kwargs`, specify them as keyword-only arguments to the local
 function. This makes it obvious at a glance which arguments will be
 consumed in the function. For example, in
-[`plot`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot "(in Matplotlib v3.11.0.dev2354+gea362ab57)"), `scalex` and `scaley` are
+[`plot`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot "(in Matplotlib v3.11.0.dev2357+g05b91794a)"), `scalex` and `scaley` are
 local arguments and the rest are passed on as
 `Line2D` keyword arguments:
 

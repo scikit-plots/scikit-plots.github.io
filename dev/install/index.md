@@ -87,7 +87,7 @@ python -m pip install \
 > **Installing for Development**
 > If you would like to contribute to Matplotlib or otherwise need to
 install the latest development code, please follow the instructions in
-[Development setup](https://matplotlib.org/devdocs/devel/development_setup.html#installing-for-devs "(in Matplotlib v3.11.0.dev2354+gea362ab57)").
+[Development setup](https://matplotlib.org/devdocs/devel/development_setup.html#installing-for-devs "(in Matplotlib v3.11.0.dev2357+g05b91794a)").
 
 The following instructions are for installing from source for production use.
 This is generally **not** recommended; please use prebuilt packages when possible.
@@ -116,7 +116,7 @@ Aspects of some behaviorial defaults of the library can be configured via:
   * [Setting environment variables in Windows](environment_variables_faq.html#setting-environment-variables-in-windows)
 
 Default plotting appearance and behavior can be configured via the
-[rcParams file](https://matplotlib.org/devdocs/users/explain/customizing.html#customizing-with-matplotlibrc-files "(in Matplotlib v3.11.0.dev2354+gea362ab57)")
+[rcParams file](https://matplotlib.org/devdocs/users/explain/customizing.html#customizing-with-matplotlibrc-files "(in Matplotlib v3.11.0.dev2357+g05b91794a)")
 
 ## Dependencies[#](#dependencies "Link to this heading")
 
@@ -134,11 +134,11 @@ reference and troubleshooting.
 
 ### Report a compilation problem[#](#report-a-compilation-problem "Link to this heading")
 
-See [Get help](https://matplotlib.org/devdocs/users/faq.html#reporting-problems "(in Matplotlib v3.11.0.dev2354+gea362ab57)").
+See [Get help](https://matplotlib.org/devdocs/users/faq.html#reporting-problems "(in Matplotlib v3.11.0.dev2357+g05b91794a)").
 
 ### Matplotlib compiled fine, but nothing shows up when I use it[#](#matplotlib-compiled-fine-but-nothing-shows-up-when-i-use-it "Link to this heading")
 
-The first thing to try is a [clean install](https://matplotlib.org/devdocs/install/index.html#clean-install "(in Matplotlib v3.11.0.dev2354+gea362ab57)") and see if
+The first thing to try is a [clean install](https://matplotlib.org/devdocs/install/index.html#clean-install "(in Matplotlib v3.11.0.dev2357+g05b91794a)") and see if
 that helps. If not, the best way to test your install is by running a script,
 rather than working interactively from a python shell or an integrated
 development environment such as ****IDLE**** which add additional
@@ -152,19 +152,19 @@ python -c "from pylab import *; set_loglevel('debug'); plot(); show()"
 
 This will give you additional information about which backends Matplotlib is
 loading, version information, and more. At this point you might want to make
-sure you understand Matplotlib’s [configuration](https://matplotlib.org/devdocs/users/explain/customizing.html#customizing "(in Matplotlib v3.11.0.dev2354+gea362ab57)")
+sure you understand Matplotlib’s [configuration](https://matplotlib.org/devdocs/users/explain/customizing.html#customizing "(in Matplotlib v3.11.0.dev2357+g05b91794a)")
 process, governed by the `matplotlibrc` configuration file which contains
 instructions within and the concept of the Matplotlib backend.
 
-If you are still having trouble, see [Get help](https://matplotlib.org/devdocs/users/faq.html#reporting-problems "(in Matplotlib v3.11.0.dev2354+gea362ab57)").
+If you are still having trouble, see [Get help](https://matplotlib.org/devdocs/users/faq.html#reporting-problems "(in Matplotlib v3.11.0.dev2357+g05b91794a)").
 
 ### How to completely remove Matplotlib[#](#how-to-completely-remove-matplotlib "Link to this heading")
 
 Occasionally, problems with Matplotlib can be solved with a clean
 installation of the package. In order to fully remove an installed Matplotlib:
 
-1. Delete the caches from your [Matplotlib configuration directory](https://matplotlib.org/devdocs/install/index.html#locating-matplotlib-config-dir "(in Matplotlib v3.11.0.dev2354+gea362ab57)").
-2. Delete any Matplotlib directories or eggs from your [installation directory](https://matplotlib.org/devdocs/install/index.html#locating-matplotlib-install "(in Matplotlib v3.11.0.dev2354+gea362ab57)").
+1. Delete the caches from your [Matplotlib configuration directory](https://matplotlib.org/devdocs/install/index.html#locating-matplotlib-config-dir "(in Matplotlib v3.11.0.dev2357+g05b91794a)").
+2. Delete any Matplotlib directories or eggs from your [installation directory](https://matplotlib.org/devdocs/install/index.html#locating-matplotlib-install "(in Matplotlib v3.11.0.dev2357+g05b91794a)").
 
 ### macOS Notes[#](#macos-notes "Link to this heading")
 
@@ -256,7 +256,7 @@ and restarting Terminal.app before running the check again. If that doesn’t fi
 the problem, depending on which Python you wanted to use, consider reinstalling
 Python.org Python, or check your homebrew or macports setup. Remember that
 the disk image installer only works for Python.org Python, and will not get
-picked up by other Pythons. If all these fail, please [let us know](https://matplotlib.org/devdocs/users/faq.html#reporting-problems "(in Matplotlib v3.11.0.dev2354+gea362ab57)").
+picked up by other Pythons. If all these fail, please [let us know](https://matplotlib.org/devdocs/users/faq.html#reporting-problems "(in Matplotlib v3.11.0.dev2357+g05b91794a)").
 
 ## Troubleshooting[#](#troubleshooting "Link to this heading")
 
@@ -287,9 +287,9 @@ and printing the `__file__` attribute:
 ### `matplotlib` configuration and cache directory locations[#](#matplotlib-configuration-and-cache-directory-locations "Link to this heading")
 
 Each user has a Matplotlib configuration directory which may contain a
-[matplotlibrc](https://matplotlib.org/devdocs/users/explain/customizing.html#customizing-with-matplotlibrc-files "(in Matplotlib v3.11.0.dev2354+gea362ab57)") file. To
+[matplotlibrc](https://matplotlib.org/devdocs/users/explain/customizing.html#customizing-with-matplotlibrc-files "(in Matplotlib v3.11.0.dev2357+g05b91794a)") file. To
 locate your `matplotlib/` configuration directory, use
-[`matplotlib.get_configdir`](https://matplotlib.org/devdocs/api/matplotlib_configuration_api.html#matplotlib.get_configdir "(in Matplotlib v3.11.0.dev2354+gea362ab57)"):
+[`matplotlib.get_configdir`](https://matplotlib.org/devdocs/api/matplotlib_configuration_api.html#matplotlib.get_configdir "(in Matplotlib v3.11.0.dev2357+g05b91794a)"):
 
 ```
 >>> import matplotlib as mpl
@@ -303,7 +303,7 @@ On Unix-like systems, this directory is generally located in your
 
 In addition, users have a cache directory. On Unix-like systems, this is
 separate from the configuration directory by default. To locate your
-`.cache/` directory, use [`matplotlib.get_cachedir`](https://matplotlib.org/devdocs/api/matplotlib_configuration_api.html#matplotlib.get_cachedir "(in Matplotlib v3.11.0.dev2354+gea362ab57)"):
+`.cache/` directory, use [`matplotlib.get_cachedir`](https://matplotlib.org/devdocs/api/matplotlib_configuration_api.html#matplotlib.get_cachedir "(in Matplotlib v3.11.0.dev2357+g05b91794a)"):
 
 ```
 >>> import matplotlib as mpl
@@ -328,6 +328,6 @@ directory by default:
 If you would like to use a different configuration directory, you can
 do so by specifying the location in your [`MPLCONFIGDIR`](environment_variables_faq.html#envvar-MPLCONFIGDIR)
 environment variable – see
-[Setting environment variables in Linux and macOS](https://matplotlib.org/devdocs/install/environment_variables_faq.html#setting-linux-macos-environment-variables "(in Matplotlib v3.11.0.dev2354+gea362ab57)"). Note that
+[Setting environment variables in Linux and macOS](https://matplotlib.org/devdocs/install/environment_variables_faq.html#setting-linux-macos-environment-variables "(in Matplotlib v3.11.0.dev2357+g05b91794a)"). Note that
 [`MPLCONFIGDIR`](environment_variables_faq.html#envvar-MPLCONFIGDIR) sets the location of both the configuration
 directory and the cache directory.

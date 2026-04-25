@@ -1,6 +1,6 @@
 # \_is\_url[#](#is-url "Link to this heading")
 
-scikitplot.corpus.\_is\_url(**s**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/corpus/_base.py#L145)[#](#scikitplot.corpus._is_url "Link to this definition")
+scikitplot.corpus.\_is\_url(**s**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_base.py#L145)[#](#scikitplot.corpus._is_url "Link to this definition")
 :   Return `True` if **s** is a string that looks like an HTTP(S) URL.
 
     Parameters:

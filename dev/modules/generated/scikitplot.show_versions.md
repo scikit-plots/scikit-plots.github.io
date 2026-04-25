@@ -1,6 +1,6 @@
 # show\_versions[#](#show-versions "Link to this heading")
 
-scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/utils/_show_versions.py#L214)[#](#scikitplot.show_versions "Link to this definition")
+scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/utils/_show_versions.py#L214)[#](#scikitplot.show_versions "Link to this definition")
 :   Print or return debugging information about the system, Python, dependencies, and hardware.
 
     Parameters:
@@ -48,7 +48,7 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                        ci: true
 
     Python Dependencies:
-               scikitplot: 0.5.dev0+git.20260424.e4af755
+               scikitplot: 0.5.dev0+git.20260425.f4129c4
                       pip: 26.0.1
              meson-python: 0.19.0
                setuptools: 79.0.1
@@ -107,7 +107,7 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
       'architecture': 'x86_64',
       'OS': 'Linux-6.17.0-1007-aws-x86_64-with-glibc2.35',
       'ci': 'true'},
-     'dependencies': {'scikitplot': '0.5.dev0+git.20260424.e4af755',
+     'dependencies': {'scikitplot': '0.5.dev0+git.20260425.f4129c4',
       'pip': '26.0.1',
       'meson-python': '0.19.0',
       'setuptools': '79.0.1',
@@ -165,7 +165,7 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                        ci: true
 
     Python Dependencies:
-               scikitplot: 0.5.dev0+git.20260424.e4af755
+               scikitplot: 0.5.dev0+git.20260425.f4129c4
                       pip: 26.0.1
              meson-python: 0.19.0
                setuptools: 79.0.1

@@ -1,6 +1,6 @@
 # plot\_roc[#](#plot-roc "Link to this heading")
 
-scikitplot.api.metrics.plot\_roc(**y\_true**, **y\_probas**, **\***, **class\_index=None**, **class\_names=None**, **multi\_class=None**, **to\_plot\_class\_index=None**, **title='ROC AUC Curves'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **cmap=None**, **show\_labels=True**, **digits=4**, **plot\_micro=True**, **plot\_macro=False**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/api/metrics/_classification/_roc_curve.py#L216)[#](#scikitplot.api.metrics.plot_roc "Link to this definition")
+scikitplot.api.metrics.plot\_roc(**y\_true**, **y\_probas**, **\***, **class\_index=None**, **class\_names=None**, **multi\_class=None**, **to\_plot\_class\_index=None**, **title='ROC AUC Curves'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **cmap=None**, **show\_labels=True**, **digits=4**, **plot\_micro=True**, **plot\_macro=False**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/api/metrics/_classification/_roc_curve.py#L216)[#](#scikitplot.api.metrics.plot_roc "Link to this definition")
 :   Generates the ROC AUC curves from labels and predicted scores/probabilities.
 
     ROC (Receiver Operating Characteristic) curve plots the true positive rate

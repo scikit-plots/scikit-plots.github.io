@@ -1,6 +1,6 @@
 # scott\_bin\_width[#](#scott-bin-width "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.scott\_bin\_width(**data**, **return\_bins=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/cexternals/_astropy/stats/histogram.py#L171)[#](#scikitplot.cexternals._astropy.stats.scott_bin_width "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.scott\_bin\_width(**data**, **return\_bins=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/cexternals/_astropy/stats/histogram.py#L171)[#](#scikitplot.cexternals._astropy.stats.scott_bin_width "Link to this definition")
 :   Return the optimal histogram bin width using Scott’s rule.
 
     Scott’s rule is a normal reference rule: it minimizes the integrated

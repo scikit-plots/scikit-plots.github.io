@@ -165,7 +165,7 @@ except Exception as e:
 
   --- Source ①: Web Article (text proxy for HTML URL) ---
 
-  ✓ Web article: 92 chunks ingested
+  ✓ Web article: 91 chunks ingested
   [  0] doc_id=9432e3e0cdf3…  source_type=web
         text: 'Out-of-pocket payments for primary health care unaffordable for millions in Europe, new WHO report s'…
 
@@ -175,7 +175,7 @@ docs[60].text
 
 ```
 ```
-'Out-of-pocket payments lead to catastrophic health spending for between 1% and 20% of households on average. This rises to between 2% and 69% of households in the poorest fifth of the population. People who experience catastrophic health spending may not be able to pay for other basic needs such as food, housing and heating.'
+'Catastrophic out-of-pocket payments are mainly driven by household spending on services that are commonly delivered or managed in primary-care settings, indicating important gaps in the coverage of primary care in many countries.'
 
 ```
 ```
@@ -183,7 +183,7 @@ all_documents[60].text
 
 ```
 ```
-'Out-of-pocket payments lead to catastrophic health spending for between 1% and 20% of households on average. This rises to between 2% and 69% of households in the poorest fifth of the population. People who experience catastrophic health spending may not be able to pay for other basic needs such as food, housing and heating.'
+'Catastrophic out-of-pocket payments are mainly driven by household spending on services that are commonly delivered or managed in primary-care settings, indicating important gaps in the coverage of primary care in many countries.'
 
 ```
 ```
@@ -399,7 +399,7 @@ print(f"\n  Total documents in corpus: {len(all_documents)}")
 ```
   --- Ingestion Summary ---
 
-  ✓ web_article               →  92 docs  [OK]
+  ✓ web_article               →  91 docs  [OK]
   ⚠ youtube_transcript        →   0 docs  [ERROR: YouTubeReader: could not retrieve transcripts for video 'rwPISgZcYIk':
 Could not retrieve a transcript for the video https://www.youtube.com/watch?v=rwPISgZcYIk! This is most likely caused by:
 
@@ -418,7 +418,7 @@ If you are sure that the described cause is not responsible for this error and t
   ✓ image_ocr                 →   1 docs  [OK]
   ✓ audio_asr                 →   5 docs  [OK]
 
-  Total documents in corpus: 98
+  Total documents in corpus: 97
 
 ```
 ```
@@ -448,7 +448,7 @@ if all_documents:
   PHASE 2: NORMALIZE — Unicode + Whitespace cleanup
 ========================================================================
 
-  ✓ Normalised 98/98 documents
+  ✓ Normalised 97/97 documents
   Example (doc 0):
     text[:80]:           'Out-of-pocket payments for primary health care unaffordable for millions in Euro'
     normalized_text[:80]: 'Out-of-pocket payments for primary health care unaffordable for millions in Euro'
@@ -484,7 +484,7 @@ if all_documents:
   PHASE 3: ENRICH — Tokens + Keywords (NLPEnricher)
 ========================================================================
 
-  ✓ Enriched 98/98 documents
+  ✓ Enriched 97/97 documents
   Example (doc 0):
     tokens(11): ['pocket', 'payments', 'primary', 'health', 'care', 'unaffordable', 'millions', 'europe', 'new', 'report']…
     keywords: ['pocket', 'payments', 'primary', 'health', 'care', 'unaffordable', 'millions', 'europe']
@@ -507,7 +507,7 @@ print(f"  ✓ Index built: {index.n_documents} documents, dense={index.has_embed
   PHASE 4: INDEX — Build SimilarityIndex (BM25 keyword mode)
 ========================================================================
 
-  ✓ Index built: 98 documents, dense=False
+  ✓ Index built: 97 documents, dense=False
 
 ```
 ```
@@ -546,29 +546,29 @@ for query, mode in queries:
 
   --- Search: "catastrophic health spending Greece" (mode=keyword) ---
 
-  [1] score=6.3643  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [1] score=6.3942  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'Out-of-pocket payments lead to catastrophic health spending for between 1% and 20% of hous'…
-  [2] score=5.3779  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [2] score=5.4036  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'The report provides an assessment of financial protection for 40 countries (including all '…
-  [3] score=3.9937  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [3] score=3.9819  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'Catastrophic out-of-pocket payments are mainly driven by household spending on services th'…
 
   --- Search: "poorest households" (mode=keyword) ---
 
-  [1] score=5.8936  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [1] score=5.8803  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'Out-of-pocket payments lead to catastrophic health spending for between 1% and 20% of hous'…
-  [2] score=2.6582  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [2] score=2.6516  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'Using new pre-pandemic data from 2019, the report finds that out-of-pocket payments for ou'…
-  [3] score=1.3229  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [3] score=1.3198  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'Financial hardship caused by out-of-pocket payments for medicines, medical products such a'…
 
   --- Search: "out-of-pocket payments medicines" (mode=keyword) ---
 
-  [1] score=6.4772  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [1] score=6.4551  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'Primary-care coverage should include treatment, not just consultation and diagnosis. This '…
-  [2] score=5.3535  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [2] score=5.3309  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'Redesigning health coverage policy to reduce out-of-pocket payments'…
-  [3] score=5.1495  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [3] score=5.1315  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'Using new pre-pandemic data from 2019, the report finds that out-of-pocket payments for ou'…
 
   --- Search: "dental care" (mode=strict) ---
@@ -684,7 +684,7 @@ for i, line in enumerate(lines[:2]):
 
   --- 6a: LangChain Documents ---
 
-  ✓ 98 LangChain docs (dict fallback — langchain not installed)
+  ✓ 97 LangChain docs (dict fallback — langchain not installed)
     keys: ['page_content', 'metadata']
     page_content[:80]: 'Out-of-pocket payments for primary health care unaffordable for millions in Euro'
     metadata keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'input_path', 'section_type', 'source_type']
@@ -693,7 +693,7 @@ for i, line in enumerate(lines[:2]):
 
   ✓ LangGraph state dict:
     keys: ['documents', 'match_mode', 'n_results', 'query']
-    n_results: 98
+    n_results: 97
     query: 'catastrophic health spending'
 
   --- 6c: MCP Resources (Model Context Protocol) ---
@@ -704,10 +704,10 @@ for i, line in enumerate(lines[:2]):
     mimeType: text/plain
     text[:60]: 'Out-of-pocket payments for primary health care unaffordable '…
   resource:
-    uri:      corpus://6dea39b15d95a31f
+    uri:      corpus://d4100a2a7807259d
     name:     https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
     mimeType: text/plain
-    text[:60]: 'World Health Organization Global'…
+    text[:60]: 'Regions WHO Regional websites Africa Americas South-East Asi'…
 
   --- 6d: MCP Tool Result (tools/call response) ---
 
@@ -716,12 +716,12 @@ for i, line in enumerate(lines[:2]):
     content items: 3
     [text] text[:60]: 'Out-of-pocket payments for primary health care unaffordable '…
          annotations: {'doc_id': '9432e3e0cdf3de0d', 'input_path': 'https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows', 'source_title': None, 'chunk_index': 0, 'score': None}
-    [text] text[:60]: 'World Health Organization Global'…
-         annotations: {'doc_id': '6dea39b15d95a31f', 'input_path': 'https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows', 'source_title': None, 'chunk_index': 1, 'score': None}
+    [text] text[:60]: 'Regions WHO Regional websites Africa Americas South-East Asi'…
+         annotations: {'doc_id': 'd4100a2a7807259d', 'input_path': 'https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows', 'source_title': None, 'chunk_index': 2, 'score': None}
 
   --- 6e: MCP Server Adapter ---
 
-  ✓ MCPCorpusServer: MCPCorpusServer(name='who-corpus', n_docs=98)
+  ✓ MCPCorpusServer: MCPCorpusServer(name='who-corpus', n_docs=97)
     tools: ['corpus_search']
     tool schema: {
       "type": "object",
@@ -737,17 +737,17 @@ for i, line in enumerate(lines[:2]):
 
   ✓ HuggingFace column dict (datasets lib not installed)
     columns: ['chunk_index', 'doc_id', 'input_path', 'language', 'metadata_json', 'source_title', 'source_type', 'text']
-    rows: 98
+    rows: 97
 
   --- 6g: RAG Tuples (text, metadata, embedding) ---
 
   [0] text[:50]: 'Out-of-pocket payments for primary health care una'
       meta keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'input_path']
       embedding: NoneType
-  [1] text[:50]: 'World Health Organization Global'
+  [1] text[:50]: 'Regions WHO Regional websites Africa Americas Sout'
       meta keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'input_path']
       embedding: NoneType
-  [2] text[:50]: 'Regions World Health Organization WHO Regional web'
+  [2] text[:50]: 'Countries Albania Andorra Armenia Austria Azerbaij'
       meta keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'input_path']
       embedding: NoneType
 
@@ -755,7 +755,7 @@ for i, line in enumerate(lines[:2]):
 
   ✓ 3 JSONL lines
   [0] keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'input_path']…  text[:50]: 'Out-of-pocket payments for primary health care una'
-  [1] keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'input_path']…  text[:50]: 'World Health Organization Global'
+  [1] keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'input_path']…  text[:50]: 'Regions WHO Regional websites Africa Americas Sout'
 
 ```
 ```
@@ -956,10 +956,10 @@ print("  Pipeline complete. All 5 source types → unified corpus → any consum
 ========================================================================
 
   Sources processed:  5
-  Total documents:    98
-  Normalised:         98
-  Enriched (tokens):  98
-  Index documents:    98
+  Total documents:    97
+  Normalised:         97
+  Enriched (tokens):  97
+  Index documents:    97
   Dense embeddings:   False
 
   Adapter outputs demonstrated:
@@ -1016,7 +1016,7 @@ print("  Pipeline complete. All 5 source types → unified corpus → any consum
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: bar](../../_tags/plot-type-bar.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 12.388 seconds)
+****Total running time of the script:**** (0 minutes 9.781 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_who_per_file_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_who_per_file_script.ipynb)
 

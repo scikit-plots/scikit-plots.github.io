@@ -1,6 +1,6 @@
 # WebReader[#](#webreader "Link to this heading")
 
-class scikitplot.corpus.WebReader(**input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_uri=None**, **source\_provenance=<factory>**, **custom\_extractor=None**, **custom\_extractor\_kwargs=<factory>**, **timeout=30**, **max\_response\_bytes=10485760**, **headers=None**, **extract\_tags=None**, **allow\_private\_networks=False**, **max\_content\_bytes=50000000**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/corpus/_readers/_web.py#L248)[#](#scikitplot.corpus.WebReader "Link to this definition")
+class scikitplot.corpus.WebReader(**input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_uri=None**, **source\_provenance=<factory>**, **custom\_extractor=None**, **custom\_extractor\_kwargs=<factory>**, **timeout=30**, **max\_response\_bytes=10485760**, **headers=None**, **extract\_tags=None**, **allow\_private\_networks=False**, **max\_content\_bytes=50000000**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_readers/_web.py#L248)[#](#scikitplot.corpus.WebReader "Link to this definition")
 :   Fetch a web page and extract structured text via BeautifulSoup.
 
     Each HTML element (title, headings, paragraphs, list items) is
@@ -135,7 +135,7 @@ class scikitplot.corpus.WebReader(**input\_path**, **chunker=None**, **filter\_=
     :   Chunker to apply to each raw text block. `None` means each raw chunk
         is used as-is (one CorpusDocument per raw chunk).
 
-    classmethod create(**\*input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/corpus/_base.py#L1239)[#](#scikitplot.corpus.WebReader.create "Link to this definition")
+    classmethod create(**\*input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_base.py#L1238)[#](#scikitplot.corpus.WebReader.create "Link to this definition")
     :   Instantiate the appropriate reader for one or more sources.
 
         Accepts any mix of file paths, URL strings, and
@@ -322,6 +322,16 @@ class scikitplot.corpus.WebReader(**input\_path**, **chunker=None**, **filter\_=
         (`ALTOReader`, `TextReader`, `PDFReader`, `ImageReader`, etc.)
         without any subclassing — simply pass a callable at construction time.
 
+        Callable contract
+
+        ```
+        def my_extractor(path: pathlib.Path, **kwargs) -> ExtractorOutput
+
+        ```
+
+        where `ExtractorOutput` is `str`, `list[str]`, `dict`, or
+        `list[dict]` — the same contract as `CustomReader`.
+
         Examples
 
         Try it in your browser!
@@ -347,7 +357,7 @@ class scikitplot.corpus.WebReader(**input\_path**, **chunker=None**, **filter\_=
         ```
         Go BackOpen In Tab
 
-    custom\_extractor\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/corpus/_readers/_web.py#L248)[#](#scikitplot.corpus.WebReader.custom_extractor_kwargs "Link to this definition")
+    custom\_extractor\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_readers/_web.py#L248)[#](#scikitplot.corpus.WebReader.custom_extractor_kwargs "Link to this definition")
     :   Extra keyword arguments forwarded to [`custom_extractor`](#scikitplot.corpus.WebReader.custom_extractor "scikitplot.corpus.WebReader.custom_extractor") on every
         invocation. Merged into the call as `**custom_extractor_kwargs`.
 
@@ -396,7 +406,7 @@ class scikitplot.corpus.WebReader(**input\_path**, **chunker=None**, **filter\_=
     filter\_: [FilterBase](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.WebReader.filter_ "Link to this definition")
     :   Filter applied after chunking. `None` triggers the [`DefaultFilter`](scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus.DefaultFilter").
 
-    classmethod from\_manifest(**manifest\_path**, **\***, **chunker=None**, **filter\_=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **encoding='utf-8'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/corpus/_base.py#L1556)[#](#scikitplot.corpus.WebReader.from_manifest "Link to this definition")
+    classmethod from\_manifest(**manifest\_path**, **\***, **chunker=None**, **filter\_=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **encoding='utf-8'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_base.py#L1555)[#](#scikitplot.corpus.WebReader.from_manifest "Link to this definition")
     :   Build a [`_MultiSourceReader`](scikitplot.corpus._MultiSourceReader.html#scikitplot.corpus._MultiSourceReader "scikitplot.corpus._MultiSourceReader") from a manifest file.
 
         The manifest is a text file with one source per line — either a
@@ -523,7 +533,7 @@ class scikitplot.corpus.WebReader(**input\_path**, **chunker=None**, **filter\_=
         ```
         Go BackOpen In Tab
 
-    classmethod from\_url(**url**, **\***, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/corpus/_base.py#L1752)[#](#scikitplot.corpus.WebReader.from_url "Link to this definition")
+    classmethod from\_url(**url**, **\***, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_base.py#L1751)[#](#scikitplot.corpus.WebReader.from_url "Link to this definition")
     :   Instantiate the appropriate reader for a URL source.
 
         Dispatches to `YouTubeReader`
@@ -624,7 +634,7 @@ class scikitplot.corpus.WebReader(**input\_path**, **chunker=None**, **filter\_=
         ```
         Go BackOpen In Tab
 
-    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/corpus/_base.py#L940)[#](#scikitplot.corpus.WebReader.get_documents "Link to this definition")
+    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_base.py#L939)[#](#scikitplot.corpus.WebReader.get_documents "Link to this definition")
     :   Yield validated [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
         instances for the input file.
 
@@ -669,7 +679,7 @@ class scikitplot.corpus.WebReader(**input\_path**, **chunker=None**, **filter\_=
         ```
         Go BackOpen In Tab
 
-    get\_raw\_chunks()[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/corpus/_readers/_web.py#L435)[#](#scikitplot.corpus.WebReader.get_raw_chunks "Link to this definition")
+    get\_raw\_chunks()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_readers/_web.py#L435)[#](#scikitplot.corpus.WebReader.get_raw_chunks "Link to this definition")
     :   Fetch the URL and yield one chunk per HTML text element.
 
         Yields:
@@ -712,7 +722,7 @@ class scikitplot.corpus.WebReader(**input\_path**, **chunker=None**, **filter\_=
     headers: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.WebReader.headers "Link to this definition")
     :   Extra HTTP request headers.
 
-    input\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/corpus/_readers/_web.py#L248)[#](#scikitplot.corpus.WebReader.input_path "Link to this definition")
+    input\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_readers/_web.py#L248)[#](#scikitplot.corpus.WebReader.input_path "Link to this definition")
     :   Path to the source file.
 
         For URL-based readers ([`WebReader`](#scikitplot.corpus.WebReader "scikitplot.corpus.WebReader"), [`YouTubeReader`](scikitplot.corpus.YouTubeReader.html#scikitplot.corpus.YouTubeReader "scikitplot.corpus.YouTubeReader")),
@@ -729,7 +739,7 @@ class scikitplot.corpus.WebReader(**input\_path**, **chunker=None**, **filter\_=
         Type:
         :   Maximum response body size. Default
 
-    source\_provenance: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/corpus/_readers/_web.py#L248)[#](#scikitplot.corpus.WebReader.source_provenance "Link to this definition")
+    source\_provenance: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_readers/_web.py#L248)[#](#scikitplot.corpus.WebReader.source_provenance "Link to this definition")
     :   Provenance overrides propagated into every yielded `CorpusDocument`.
 
         Keys may include `"source_type"`, `"source_title"`,
@@ -756,7 +766,7 @@ class scikitplot.corpus.WebReader(**input\_path**, **chunker=None**, **filter\_=
         ```
         Go BackOpen In Tab
 
-    classmethod subclass\_by\_type()[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/corpus/_base.py#L1128)[#](#scikitplot.corpus.WebReader.subclass_by_type "Link to this definition")
+    classmethod subclass\_by\_type()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_base.py#L1127)[#](#scikitplot.corpus.WebReader.subclass_by_type "Link to this definition")
     :   Return a copy of the extension → reader class registry.
 
         Returns:
@@ -778,7 +788,7 @@ class scikitplot.corpus.WebReader(**input\_path**, **chunker=None**, **filter\_=
         ```
         Go BackOpen In Tab
 
-    classmethod supported\_types()[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/corpus/_base.py#L1110)[#](#scikitplot.corpus.WebReader.supported_types "Link to this definition")
+    classmethod supported\_types()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_base.py#L1109)[#](#scikitplot.corpus.WebReader.supported_types "Link to this definition")
     :   Return a sorted list of file extensions supported by registered readers.
 
         Returns:
@@ -802,7 +812,7 @@ class scikitplot.corpus.WebReader(**input\_path**, **chunker=None**, **filter\_=
     timeout: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 30[#](#scikitplot.corpus.WebReader.timeout "Link to this definition")
     :   HTTP request timeout in seconds.
 
-    validate\_input()[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/corpus/_readers/_web.py#L386)[#](#scikitplot.corpus.WebReader.validate_input "Link to this definition")
+    validate\_input()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_readers/_web.py#L386)[#](#scikitplot.corpus.WebReader.validate_input "Link to this definition")
     :   Validate the URL format instead of checking for a local file.
 
         Raises:

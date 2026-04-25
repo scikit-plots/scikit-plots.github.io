@@ -1,6 +1,6 @@
 # probplot[#](#probplot "Link to this heading")
 
-scikitplot.externals.\_probscale.probplot(**data**, **ax=None**, **plottype='prob'**, **dist=None**, **probax='x'**, **problabel=None**, **datascale='linear'**, **datalabel=None**, **bestfit=False**, **return\_best\_fit\_results=False**, **estimate\_ci=False**, **ci\_kws=None**, **pp\_kws=None**, **scatter\_kws=None**, **line\_kws=None**, **\*\*fgkwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/externals/_probscale/viz.py#L13)[#](#scikitplot.externals._probscale.probplot "Link to this definition")
+scikitplot.externals.\_probscale.probplot(**data**, **ax=None**, **plottype='prob'**, **dist=None**, **probax='x'**, **problabel=None**, **datascale='linear'**, **datalabel=None**, **bestfit=False**, **return\_best\_fit\_results=False**, **estimate\_ci=False**, **ci\_kws=None**, **pp\_kws=None**, **scatter\_kws=None**, **line\_kws=None**, **\*\*fgkwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/externals/_probscale/viz.py#L13)[#](#scikitplot.externals._probscale.probplot "Link to this definition")
 :   Probability, percentile, and quantile plots.
 
     Parameters:

@@ -1,6 +1,6 @@
 # is\_mlflow\_installed[#](#is-mlflow-installed "Link to this heading")
 
-scikitplot.mlflow.is\_mlflow\_installed()[[source]](https://github.com/scikit-plots/scikit-plots/blob/e4af755/scikitplot/mlflow/_utils.py#L62)[#](#scikitplot.mlflow.is_mlflow_installed "Link to this definition")
+scikitplot.mlflow.is\_mlflow\_installed()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/mlflow/_utils.py#L62)[#](#scikitplot.mlflow.is_mlflow_installed "Link to this definition")
 :   Check whether MLflow is installed in the current Python environment.
 
     Returns:

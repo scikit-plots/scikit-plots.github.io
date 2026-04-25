@@ -73,8 +73,8 @@ ax = sp.metrics.plot_residuals_distribution(
 ```
 Fitted mean-mu (μ): -4.4509
 Fitted std (σ)    : 55.2768
-[INFO] Saving path to: /home/circleci/repo/galleries/examples/regression/result_images/plot_residuals_distribution_20260424_205418Z.png
-[INFO] Plot saved to: /home/circleci/repo/galleries/examples/regression/result_images/plot_residuals_distribution_20260424_205418Z.png
+[INFO] Saving path to: /home/circleci/repo/galleries/examples/regression/result_images/plot_residuals_distribution_20260425_143458Z.png
+[INFO] Plot saved to: /home/circleci/repo/galleries/examples/regression/result_images/plot_residuals_distribution_20260425_143458Z.png
 
 ```
 > **References**
@@ -86,7 +86,7 @@ in this example:
 
 Tags: [model-type: regression](../../_tags/model-type-regression.html) [model-workflow: model evaluation](../../_tags/model-workflow-model-evaluation.html) [plot-type: histogram](../../_tags/plot-type-histogram.html) [plot-type: qqplot](../../_tags/plot-type-qqplot.html) [domain: statistics](../../_tags/domain-statistics.html) [level: intermediate](../../_tags/level-intermediate.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.873 seconds)
+****Total running time of the script:**** (0 minutes 0.714 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo15.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/regression/plot_residuals_distribution_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo15.svg)](../../lite/lab/index.html?path=auto_examples/regression/plot_residuals_distribution_script.ipynb)
 
