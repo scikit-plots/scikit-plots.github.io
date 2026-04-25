@@ -1,6 +1,6 @@
 # median\_absolute\_deviation[#](#median-absolute-deviation "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.median\_absolute\_deviation(**data**, **axis=None**, **func=None**, **ignore\_nan=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/cexternals/_astropy/stats/funcs.py#L788)[#](#scikitplot.cexternals._astropy.stats.median_absolute_deviation "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.median\_absolute\_deviation(**data**, **axis=None**, **func=None**, **ignore\_nan=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/cexternals/_astropy/stats/funcs.py#L788)[#](#scikitplot.cexternals._astropy.stats.median_absolute_deviation "Link to this definition")
 :   Calculate the median absolute deviation (MAD).
 
     The MAD is defined as `median(abs(a - median(a)))`.

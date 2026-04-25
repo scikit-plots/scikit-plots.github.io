@@ -1,6 +1,6 @@
 # NormalizerConfig[#](#normalizerconfig "Link to this heading")
 
-class scikitplot.corpus.NormalizerConfig(**unicode\_form='NFKC'**, **expand\_ligatures=True**, **fix\_hyphenation=True**, **collapse\_whitespace=True**, **strip\_control\_chars=True**, **lowercase=False**, **min\_length=1**, **custom\_pipeline=<factory>**, **steps=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_normalizers/_text_normalizer.py#L54)[#](#scikitplot.corpus.NormalizerConfig "Link to this definition")
+class scikitplot.corpus.NormalizerConfig(**unicode\_form='NFKC'**, **expand\_ligatures=True**, **fix\_hyphenation=True**, **collapse\_whitespace=True**, **strip\_control\_chars=True**, **lowercase=False**, **min\_length=1**, **custom\_pipeline=<factory>**, **steps=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_normalizers/_text_normalizer.py#L54)[#](#scikitplot.corpus.NormalizerConfig "Link to this definition")
 :   Configuration for [`TextNormalizer`](scikitplot.corpus.TextNormalizer.html#scikitplot.corpus.TextNormalizer "scikitplot.corpus.TextNormalizer").
 
     Parameters:
@@ -71,7 +71,7 @@ class scikitplot.corpus.NormalizerConfig(**unicode\_form='NFKC'**, **expand\_lig
 
     collapse\_whitespace: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.NormalizerConfig.collapse_whitespace "Link to this definition")
 
-    custom\_pipeline: [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")], [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")], ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_normalizers/_text_normalizer.py#L54)[#](#scikitplot.corpus.NormalizerConfig.custom_pipeline "Link to this definition")
+    custom\_pipeline: [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")], [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")], ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_normalizers/_text_normalizer.py#L54)[#](#scikitplot.corpus.NormalizerConfig.custom_pipeline "Link to this definition")
 
     expand\_ligatures: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.NormalizerConfig.expand_ligatures "Link to this definition")
 
@@ -90,6 +90,31 @@ class scikitplot.corpus.NormalizerConfig(**unicode\_form='NFKC'**, **expand\_lig
         `"whitespace"`, `"lowercase"`, `"custom"`.
         Pass an explicit list to run only a named subset, e.g.
         `steps=["unicode", "whitespace"]`.
+
+        Notes
+
+        Valid step names:
+
+        `"unicode"` :
+        :   Apply `unicode_form` normalisation.
+
+        `"ligatures"` :
+        :   Expand typographic ligatures (requires `expand_ligatures=True`).
+
+        `"control_chars"` :
+        :   Strip Unicode control characters (requires `strip_control_chars=True`).
+
+        `"hyphenation"` :
+        :   Re-join hyphenated line-breaks (requires `fix_hyphenation=True`).
+
+        `"whitespace"` :
+        :   Collapse runs of whitespace (requires `collapse_whitespace=True`).
+
+        `"lowercase"` :
+        :   Convert to lowercase (requires `lowercase=True`).
+
+        `"custom"` :
+        :   Apply `custom_pipeline` callables.
 
     strip\_control\_chars: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.NormalizerConfig.strip_control_chars "Link to this definition")
 

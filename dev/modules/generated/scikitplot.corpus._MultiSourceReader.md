@@ -1,6 +1,6 @@
 # \_MultiSourceReader[#](#multisourcereader "Link to this heading")
 
-class scikitplot.corpus.\_MultiSourceReader(**readers**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_base.py#L2071)[#](#scikitplot.corpus._MultiSourceReader "Link to this definition")
+class scikitplot.corpus.\_MultiSourceReader(**readers**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_base.py#L2071)[#](#scikitplot.corpus._MultiSourceReader "Link to this definition")
 :   Chains multiple [`DocumentReader`](scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader "scikitplot.corpus.DocumentReader") instances into one stream.
 
     Returned by [`DocumentReader.create`](scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader.create "scikitplot.corpus.DocumentReader.create") when more than one source
@@ -47,7 +47,7 @@ class scikitplot.corpus.\_MultiSourceReader(**readers**)[[source]](https://githu
     ```
     Go BackOpen In Tab
 
-    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_base.py#L2177)[#](#scikitplot.corpus._MultiSourceReader.close "Link to this definition")
+    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_base.py#L2177)[#](#scikitplot.corpus._MultiSourceReader.close "Link to this definition")
     :   Release temporary directories created by `from_url()` downloads.
 
         Each sub-reader that downloaded a file has a `_from_url_tmp_dir`
@@ -58,7 +58,7 @@ class scikitplot.corpus.\_MultiSourceReader(**readers**)[[source]](https://githu
         Return type:
         :   None
 
-    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_base.py#L2131)[#](#scikitplot.corpus._MultiSourceReader.get_documents "Link to this definition")
+    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_base.py#L2131)[#](#scikitplot.corpus._MultiSourceReader.get_documents "Link to this definition")
     :   Yield all documents from all sub-readers in order.
 
         Yields:

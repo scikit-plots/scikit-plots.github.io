@@ -6,7 +6,7 @@ inheritance diagram support (the same approach used in Matplotlib’s docs).
 
 ## Index + mixins[#](#index-mixins "Link to this heading")
 
-![Inheritance diagram of scikitplot.cexternals._annoy.Annoy, scikitplot.annoy._mixins._meta.MetaMixin, scikitplot.annoy._mixins._io.IndexIOMixin, scikitplot.annoy._mixins._pickle.PickleMixin, scikitplot.annoy._mixins._vectors.VectorOpsMixin, scikitplot.annoy._mixins._ndarray.NDArrayMixin, scikitplot.annoy._mixins._plotting.PlottingMixin, scikitplot.annoy.Index](../../_images/inheritance-76d3b2547a20a4ce0ad38ddaa272372e1f5ba4df.png)
+![Inheritance diagram of scikitplot.cexternals._annoy.Annoy, scikitplot.annoy._mixins._meta.MetaMixin, scikitplot.annoy._mixins._io.IndexIOMixin, scikitplot.annoy._mixins._pickle.PickleMixin, scikitplot.annoy._mixins._vectors.VectorOpsMixin, scikitplot.annoy._mixins._ndarray.NDArrayMixin, scikitplot.annoy._mixins._plotting.PlottingMixin, scikitplot.annoy.Index](../../_images/inheritance-be13f94b3b1111369439e677748c5f0e9930b1d6.png)
 
 
 

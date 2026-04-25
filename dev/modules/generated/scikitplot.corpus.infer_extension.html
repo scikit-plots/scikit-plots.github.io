@@ -45,7 +45,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=ecbb7725" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=62f328ba" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
@@ -71,7 +71,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=d37731b0"></script>
+    <script src="../../_static/ai-assistant.js?v=cb662cc4"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -1316,7 +1316,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>infer_extension<a class="headerlink" href="#infer-extension" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.infer_extension">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">infer_extension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">headers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_url_handler.py#L1235"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.infer_extension" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">infer_extension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">headers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_url_handler.py#L1235"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.infer_extension" title="Link to this definition">#</a></dt>
 <dd><p>Infer a file extension from HTTP response headers and URL path.</p>
 <p>Public wrapper around <code class="xref py py-func docutils literal notranslate"><span class="pre">_infer_extension_from_headers</span></code>.  Call
 this when you already hold response headers (e.g. after a manual
@@ -1359,8 +1359,8 @@ Returns <code class="docutils literal notranslate"><span class="pre">&quot;.bin&
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="91fa1b3c-b805-46ce-90c8-48512677ddc8">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('91fa1b3c-b805-46ce-90c8-48512677ddc8','f2796c86-368b-4162-ab1a-537199292a22','3fe90570-1548-40fb-9ab1-ba6a865044fc','../../lite/tree/../notebooks/index.html?path=63991ec4_42aa_41a9_b03e_a69904c4a64c.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="e86a4110-213f-455b-ac6d-696f04a16e27">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('e86a4110-213f-455b-ac6d-696f04a16e27','7801d55d-be1e-4d5e-8680-a3b4ca071f71','64bb9f91-92c2-4be9-898c-5151daaa13a4','../../lite/tree/../notebooks/index.html?path=fbb6efa7_11d8_4b25_b35d_618253c55032.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">infer_extension</span><span class="p">({</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;audio/mpeg&quot;</span><span class="p">},</span> <span class="s2">&quot;https://host/dl&quot;</span><span class="p">)</span>
 <span class="go">&#39;.mp3&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">infer_extension</span><span class="p">({},</span> <span class="s2">&quot;https://host/report.pdf&quot;</span><span class="p">)</span>
@@ -1374,7 +1374,7 @@ Returns <code class="docutils literal notranslate"><span class="pre">&quot;.bin&
 </div>
 </div>
 </div>
-<div id="3fe90570-1548-40fb-9ab1-ba6a865044fc" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('91fa1b3c-b805-46ce-90c8-48512677ddc8','3fe90570-1548-40fb-9ab1-ba6a865044fc')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('91fa1b3c-b805-46ce-90c8-48512677ddc8','3fe90570-1548-40fb-9ab1-ba6a865044fc')">Open In Tab</button></div><div id="f2796c86-368b-4162-ab1a-537199292a22" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="64bb9f91-92c2-4be9-898c-5151daaa13a4" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('e86a4110-213f-455b-ac6d-696f04a16e27','64bb9f91-92c2-4be9-898c-5151daaa13a4')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('e86a4110-213f-455b-ac6d-696f04a16e27','64bb9f91-92c2-4be9-898c-5151daaa13a4')">Open In Tab</button></div><div id="7801d55d-be1e-4d5e-8680-a3b4ca071f71" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1477,7 +1477,7 @@ Returns <code class="docutils literal notranslate"><span class="pre">&quot;.bin&
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260425.f4129c4 2026-04-25T14:26Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260425.2e65b07 2026-04-25T19:16Z.
       <br/>
     
   </p>

@@ -47,7 +47,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=ecbb7725" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=62f328ba" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
@@ -73,7 +73,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=d37731b0"></script>
+    <script src="../../_static/ai-assistant.js?v=cb662cc4"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -1318,7 +1318,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>UnicodeNormalizer<a class="headerlink" href="#unicodenormalizer" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.UnicodeNormalizer">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">UnicodeNormalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">form</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NFC'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_normalizers/_normalizer.py#L151"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.UnicodeNormalizer" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">UnicodeNormalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">form</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NFC'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_normalizers/_normalizer.py#L151"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.UnicodeNormalizer" title="Link to this definition">#</a></dt>
 <dd><p>Apply Unicode normalisation (NFC, NFD, NFKC, or NFKD).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1334,8 +1334,8 @@ Default: <code class="docutils literal notranslate"><span class="pre">\&quot;NFC
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="0b2ed750-a100-46d6-b72d-56230f698172">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('0b2ed750-a100-46d6-b72d-56230f698172','c5539368-5c78-41b2-b091-d726c869c8bf','607dd238-a40a-4c74-b60b-dfce0abb9bb8','../../lite/tree/../notebooks/index.html?path=793a303b_245b_4583_81f4_df5e629ed347.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="0e2e61ac-5d52-445f-9485-d4c6c61409ab">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('0e2e61ac-5d52-445f-9485-d4c6c61409ab','50bb9b1f-44a3-4a63-99cc-85d9c0ac6b52','822e9944-da79-4694-87a7-2dc85fb37053','../../lite/tree/../notebooks/index.html?path=77d3a1f0_ca5e_4fb7_8dab_63857d95f974.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus._normalizers</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnicodeNormalizer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">norm</span> <span class="o">=</span> <span class="n">UnicodeNormalizer</span><span class="p">(</span><span class="n">form</span><span class="o">=</span><span class="s2">&quot;NFKC&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">doc</span> <span class="o">=</span> <span class="n">CorpusDocument</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&quot;f.txt&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;ﬁle&quot;</span><span class="p">)</span>  <span class="c1"># fi ligature</span>
@@ -1345,9 +1345,9 @@ Default: <code class="docutils literal notranslate"><span class="pre">\&quot;NFC
 </div>
 </div>
 </div>
-<div id="607dd238-a40a-4c74-b60b-dfce0abb9bb8" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('0b2ed750-a100-46d6-b72d-56230f698172','607dd238-a40a-4c74-b60b-dfce0abb9bb8')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('0b2ed750-a100-46d6-b72d-56230f698172','607dd238-a40a-4c74-b60b-dfce0abb9bb8')">Open In Tab</button></div><div id="c5539368-5c78-41b2-b091-d726c869c8bf" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="822e9944-da79-4694-87a7-2dc85fb37053" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('0e2e61ac-5d52-445f-9485-d4c6c61409ab','822e9944-da79-4694-87a7-2dc85fb37053')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('0e2e61ac-5d52-445f-9485-d4c6c61409ab','822e9944-da79-4694-87a7-2dc85fb37053')">Open In Tab</button></div><div id="50bb9b1f-44a3-4a63-99cc-85d9c0ac6b52" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.UnicodeNormalizer.normalize_doc">
-<span class="sig-name descname"><span class="pre">normalize_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_normalizers/_normalizer.py#L181"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.UnicodeNormalizer.normalize_doc" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">normalize_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_normalizers/_normalizer.py#L181"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.UnicodeNormalizer.normalize_doc" title="Link to this definition">#</a></dt>
 <dd><p>Apply Unicode normalisation to the document text.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1482,7 +1482,7 @@ Default: <code class="docutils literal notranslate"><span class="pre">\&quot;NFC
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260425.f4129c4 2026-04-25T14:26Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260425.2e65b07 2026-04-25T19:16Z.
       <br/>
     
   </p>

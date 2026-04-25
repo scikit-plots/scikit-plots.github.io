@@ -1,6 +1,6 @@
 # to\_torch\_dataloader[#](#to-torch-dataloader "Link to this heading")
 
-scikitplot.corpus.to\_torch\_dataloader(**documents**, **\***, **text\_feature=True**, **raw\_tensor\_feature=False**, **embedding\_feature=False**, **label\_field=None**, **label\_map=None**, **batch\_size=32**, **shuffle=False**, **num\_workers=0**, **dtype\_map=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_adapters.py#L1058)[#](#scikitplot.corpus.to_torch_dataloader "Link to this definition")
+scikitplot.corpus.to\_torch\_dataloader(**documents**, **\***, **text\_feature=True**, **raw\_tensor\_feature=False**, **embedding\_feature=False**, **label\_field=None**, **label\_map=None**, **batch\_size=32**, **shuffle=False**, **num\_workers=0**, **dtype\_map=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_adapters.py#L1058)[#](#scikitplot.corpus.to_torch_dataloader "Link to this definition")
 :   Convert documents to a `torch.utils.data.DataLoader`.
 
     Parameters:

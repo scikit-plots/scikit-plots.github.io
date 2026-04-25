@@ -45,7 +45,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=ecbb7725" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=62f328ba" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
@@ -71,7 +71,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=d37731b0"></script>
+    <script src="../../_static/ai-assistant.js?v=cb662cc4"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -1316,7 +1316,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>html_to_markdown_converter<a class="headerlink" href="#html-to-markdown-converter" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot._externals._sphinx_ext._sphinx_ai_assistant.html_to_markdown_converter">
-<span class="sig-prename descclassname"><span class="pre">scikitplot._externals._sphinx_ext._sphinx_ai_assistant.</span></span><span class="sig-name descname"><span class="pre">html_to_markdown_converter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">html_content</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strip_tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L1784"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.html_to_markdown_converter" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot._externals._sphinx_ext._sphinx_ai_assistant.</span></span><span class="sig-name descname"><span class="pre">html_to_markdown_converter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">html_content</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strip_tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L1784"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.html_to_markdown_converter" title="Link to this definition">#</a></dt>
 <dd><p>Convert an HTML string to Markdown using the Sphinx-tuned converter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1357,15 +1357,15 @@ single-element list.  Defaults to <code class="docutils literal notranslate"><sp
 available the stripping step is skipped; <code class="docutils literal notranslate"><span class="pre">markdownify</span></code>’s own
 <code class="docutils literal notranslate"><span class="pre">strip=</span></code> option still removes the listed tags from the output.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="89b085ef-e306-4ca2-b5bc-b9d5920aa034">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('89b085ef-e306-4ca2-b5bc-b9d5920aa034','5a788a4e-86ba-4170-91c6-1281d4f4a6c0','54e99283-258d-4b3a-a683-f423d034fb45','../../lite/tree/../notebooks/index.html?path=5fe5d58b_9535_44e5_8053_553e2e5b17ea.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="ce829515-a58a-41df-ae63-671fb97277e3">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('ce829515-a58a-41df-ae63-671fb97277e3','d0f01f9a-1e33-48c0-a25b-c2b0372e2096','c9a04a32-caf9-47b6-8648-ecc8207179fb','../../lite/tree/../notebooks/index.html?path=c9a5b5eb_f797_41bd_9561_e7c11662fbaf.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">html_to_markdown</span><span class="p">(</span><span class="s2">&quot;&lt;h1&gt;Hello&lt;/h1&gt;&lt;p&gt;World&lt;/p&gt;&quot;</span><span class="p">)</span>
 <span class="go">&#39;# Hello\n\nWorld\n\n&#39;</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div id="54e99283-258d-4b3a-a683-f423d034fb45" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('89b085ef-e306-4ca2-b5bc-b9d5920aa034','54e99283-258d-4b3a-a683-f423d034fb45')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('89b085ef-e306-4ca2-b5bc-b9d5920aa034','54e99283-258d-4b3a-a683-f423d034fb45')">Open In Tab</button></div><div id="5a788a4e-86ba-4170-91c6-1281d4f4a6c0" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="c9a04a32-caf9-47b6-8648-ecc8207179fb" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('ce829515-a58a-41df-ae63-671fb97277e3','c9a04a32-caf9-47b6-8648-ecc8207179fb')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('ce829515-a58a-41df-ae63-671fb97277e3','c9a04a32-caf9-47b6-8648-ecc8207179fb')">Open In Tab</button></div><div id="d0f01f9a-1e33-48c0-a25b-c2b0372e2096" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1468,7 +1468,7 @@ available the stripping step is skipped; <code class="docutils literal notransla
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260425.f4129c4 2026-04-25T14:26Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260425.2e65b07 2026-04-25T19:16Z.
       <br/>
     
   </p>

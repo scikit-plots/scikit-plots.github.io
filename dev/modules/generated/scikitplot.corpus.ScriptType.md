@@ -1,6 +1,6 @@
 # ScriptType[#](#scripttype "Link to this heading")
 
-class scikitplot.corpus.ScriptType(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L803)[#](#scikitplot.corpus.ScriptType "Link to this definition")
+class scikitplot.corpus.ScriptType(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L803)[#](#scikitplot.corpus.ScriptType "Link to this definition")
 :   Dominant Unicode script detected in a text sample.
 
     Attributes:
@@ -60,39 +60,39 @@ class scikitplot.corpus.ScriptType(**value**)[[source]](https://github.com/sciki
         ****UNKNOWN****
         :   No script characters detected (empty, purely numeric, symbols).
 
-    ARABIC = 'arabic'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.ARABIC "Link to this definition")
+    ARABIC = 'arabic'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.ARABIC "Link to this definition")
 
-    ARMENIAN = 'armenian'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.ARMENIAN "Link to this definition")
+    ARMENIAN = 'armenian'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.ARMENIAN "Link to this definition")
 
-    CJK = 'cjk'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.CJK "Link to this definition")
+    CJK = 'cjk'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.CJK "Link to this definition")
 
-    CYRILLIC = 'cyrillic'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.CYRILLIC "Link to this definition")
+    CYRILLIC = 'cyrillic'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.CYRILLIC "Link to this definition")
 
-    DEVANAGARI = 'devanagari'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.DEVANAGARI "Link to this definition")
+    DEVANAGARI = 'devanagari'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.DEVANAGARI "Link to this definition")
 
-    EGYPTIAN = 'egyptian'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.EGYPTIAN "Link to this definition")
+    EGYPTIAN = 'egyptian'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.EGYPTIAN "Link to this definition")
 
-    ETHIOPIC = 'ethiopic'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.ETHIOPIC "Link to this definition")
+    ETHIOPIC = 'ethiopic'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.ETHIOPIC "Link to this definition")
 
-    GEORGIAN = 'georgian'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.GEORGIAN "Link to this definition")
+    GEORGIAN = 'georgian'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.GEORGIAN "Link to this definition")
 
-    GREEK = 'greek'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.GREEK "Link to this definition")
+    GREEK = 'greek'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.GREEK "Link to this definition")
 
-    HEBREW = 'hebrew'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.HEBREW "Link to this definition")
+    HEBREW = 'hebrew'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.HEBREW "Link to this definition")
 
-    LATIN = 'latin'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.LATIN "Link to this definition")
+    LATIN = 'latin'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.LATIN "Link to this definition")
 
-    MIXED = 'mixed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.MIXED "Link to this definition")
+    MIXED = 'mixed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.MIXED "Link to this definition")
 
-    SOUTHEAST\_ASIAN = 'southeast\_asian'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.SOUTHEAST_ASIAN "Link to this definition")
+    SOUTHEAST\_ASIAN = 'southeast\_asian'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.SOUTHEAST_ASIAN "Link to this definition")
 
-    SOUTH\_ASIAN = 'south\_asian'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.SOUTH_ASIAN "Link to this definition")
+    SOUTH\_ASIAN = 'south\_asian'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.SOUTH_ASIAN "Link to this definition")
 
-    THAI = 'thai'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.THAI "Link to this definition")
+    THAI = 'thai'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.THAI "Link to this definition")
 
-    TIBETAN = 'tibetan'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.TIBETAN "Link to this definition")
+    TIBETAN = 'tibetan'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.TIBETAN "Link to this definition")
 
-    UNKNOWN = 'unknown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.UNKNOWN "Link to this definition")
+    UNKNOWN = 'unknown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L)[#](#scikitplot.corpus.ScriptType.UNKNOWN "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.corpus.ScriptType.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

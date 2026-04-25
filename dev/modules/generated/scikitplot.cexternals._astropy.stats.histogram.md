@@ -1,6 +1,6 @@
 # histogram[#](#histogram "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.histogram(**a**, **bins=10**, **range=None**, **weights=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/cexternals/_astropy/stats/histogram.py#L108)[#](#scikitplot.cexternals._astropy.stats.histogram "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.histogram(**a**, **bins=10**, **range=None**, **weights=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/cexternals/_astropy/stats/histogram.py#L108)[#](#scikitplot.cexternals._astropy.stats.histogram "Link to this definition")
 :   Enhanced histogram function, providing adaptive binnings.
 
     This is a histogram function that enables the use of more sophisticated

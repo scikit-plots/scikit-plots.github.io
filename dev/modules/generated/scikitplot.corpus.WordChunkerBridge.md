@@ -1,6 +1,6 @@
 # WordChunkerBridge[#](#wordchunkerbridge "Link to this heading")
 
-class scikitplot.corpus.WordChunkerBridge(**inner**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_chunker_bridge.py#L235)[#](#scikitplot.corpus.WordChunkerBridge "Link to this definition")
+class scikitplot.corpus.WordChunkerBridge(**inner**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_chunkers/_chunker_bridge.py#L235)[#](#scikitplot.corpus.WordChunkerBridge "Link to this definition")
 :   Bridge for `WordChunker` → `ChunkerBase` contract.
 
     Notes
@@ -14,7 +14,7 @@ class scikitplot.corpus.WordChunkerBridge(**inner**)[[source]](https://github.co
     Parameters:
     :   ****inner**** (**Any**)
 
-    chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_chunkers/_chunker_bridge.py#L98)[#](#scikitplot.corpus.WordChunkerBridge.chunk "Link to this definition")
+    chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_chunkers/_chunker_bridge.py#L98)[#](#scikitplot.corpus.WordChunkerBridge.chunk "Link to this definition")
     :   Chunk **text** and return `(char_start, chunk_text)` pairs.
 
         Parameters:
@@ -39,4 +39,4 @@ class scikitplot.corpus.WordChunkerBridge(**inner**)[[source]](https://github.co
         Return type:
         :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"), [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]]
 
-    strategy: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")] = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.WordChunkerBridge.strategy "Link to this definition")
+    strategy: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")] = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.WordChunkerBridge.strategy "Link to this definition")

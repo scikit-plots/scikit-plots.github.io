@@ -1,6 +1,6 @@
 # dot[#](#dot "Link to this heading")
 
-scikitplot.nc.dot(**a: [numpy.ndarray](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")**, **b: [numpy.ndarray](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")**) → [numpy.ndarray](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/nc/_wrappers.py#L193)[#](#scikitplot.nc.dot "Link to this definition")
+scikitplot.nc.dot(**a: [numpy.ndarray](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")**, **b: [numpy.ndarray](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")**) → [numpy.ndarray](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/nc/_wrappers.py#L193)[#](#scikitplot.nc.dot "Link to this definition")
 :   Dot product of two arrays using the C++ NumCpp backend.
 
     This function behaves similarly to [`numpy.dot`](https://numpy.org/devdocs/reference/generated/numpy.dot.html#numpy.dot "(in NumPy v2.5.dev0)") for 1-D and 2-D

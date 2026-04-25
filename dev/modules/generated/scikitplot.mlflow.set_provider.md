@@ -1,6 +1,6 @@
 # set\_provider[#](#set-provider "Link to this heading")
 
-scikitplot.mlflow.set\_provider(**provider**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/mlflow/_custom.py#L84)[#](#scikitplot.mlflow.set_provider "Link to this definition")
+scikitplot.mlflow.set\_provider(**provider**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/mlflow/_custom.py#L84)[#](#scikitplot.mlflow.set_provider "Link to this definition")
 :   Set the active MLflow provider globally.
 
     Parameters:

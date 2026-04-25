@@ -45,7 +45,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=ecbb7725" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=62f328ba" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
@@ -71,7 +71,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=d37731b0"></script>
+    <script src="../../_static/ai-assistant.js?v=cb662cc4"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -1316,7 +1316,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>_MultiSourceReader<a class="headerlink" href="#multisourcereader" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus._MultiSourceReader">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">_MultiSourceReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">readers</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_base.py#L2071"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus._MultiSourceReader" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">_MultiSourceReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">readers</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_base.py#L2071"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus._MultiSourceReader" title="Link to this definition">#</a></dt>
 <dd><p>Chains multiple <a class="reference internal" href="scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader" title="scikitplot.corpus.DocumentReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">DocumentReader</span></code></a> instances into one stream.</p>
 <p>Returned by <a class="reference internal" href="scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader.create" title="scikitplot.corpus.DocumentReader.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DocumentReader.create</span></code></a> when more than one source
 is supplied, and by <a class="reference internal" href="scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader.from_manifest" title="scikitplot.corpus.DocumentReader.from_manifest"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DocumentReader.from_manifest</span></code></a>.</p>
@@ -1346,8 +1346,8 @@ is supplied, and by <a class="reference internal" href="scikitplot.corpus.Docume
 <a class="reference internal" href="scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader" title="scikitplot.corpus.DocumentReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">DocumentReader</span></code></a> so it works anywhere a single reader is
 accepted.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="66361acf-7c92-46c8-bc62-c58e3bdebe33">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('66361acf-7c92-46c8-bc62-c58e3bdebe33','516220e5-6611-4d61-bedd-598f2590c6c6','9fd39135-0021-4f7b-b4cf-71723670079f','../../lite/tree/../notebooks/index.html?path=854b672d_72ef_40b4_85e1_e39db7068aa1.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="a8383772-9261-45a7-962b-878f661bb5af">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('a8383772-9261-45a7-962b-878f661bb5af','472d11e3-2f03-45c6-aa15-004b39a74f5a','d2144ea7-1c29-45e1-a03a-b1c8f36a8487','../../lite/tree/../notebooks/index.html?path=16ec76c7_7d88_4a00_92f0_a6fb633a5d3d.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot.corpus._readers</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">reader</span> <span class="o">=</span> <span class="n">DocumentReader</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;a.txt&quot;</span><span class="p">),</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;b.pdf&quot;</span><span class="p">))</span>
@@ -1358,9 +1358,9 @@ accepted.</p>
 </div>
 </div>
 </div>
-<div id="9fd39135-0021-4f7b-b4cf-71723670079f" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('66361acf-7c92-46c8-bc62-c58e3bdebe33','9fd39135-0021-4f7b-b4cf-71723670079f')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('66361acf-7c92-46c8-bc62-c58e3bdebe33','9fd39135-0021-4f7b-b4cf-71723670079f')">Open In Tab</button></div><div id="516220e5-6611-4d61-bedd-598f2590c6c6" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="d2144ea7-1c29-45e1-a03a-b1c8f36a8487" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('a8383772-9261-45a7-962b-878f661bb5af','d2144ea7-1c29-45e1-a03a-b1c8f36a8487')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('a8383772-9261-45a7-962b-878f661bb5af','d2144ea7-1c29-45e1-a03a-b1c8f36a8487')">Open In Tab</button></div><div id="472d11e3-2f03-45c6-aa15-004b39a74f5a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus._MultiSourceReader.close">
-<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_base.py#L2177"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus._MultiSourceReader.close" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_base.py#L2177"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus._MultiSourceReader.close" title="Link to this definition">#</a></dt>
 <dd><p>Release temporary directories created by <code class="docutils literal notranslate"><span class="pre">from_url()</span></code> downloads.</p>
 <p>Each sub-reader that downloaded a file has a <code class="docutils literal notranslate"><span class="pre">_from_url_tmp_dir</span></code>
 attribute set by <a class="reference internal" href="scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader.from_url" title="scikitplot.corpus.DocumentReader.from_url"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DocumentReader.from_url</span></code></a>.  This method
@@ -1375,7 +1375,7 @@ context manager; call manually otherwise.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus._MultiSourceReader.get_documents">
-<span class="sig-name descname"><span class="pre">get_documents</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/corpus/_base.py#L2131"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus._MultiSourceReader.get_documents" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_documents</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_base.py#L2131"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus._MultiSourceReader.get_documents" title="Link to this definition">#</a></dt>
 <dd><p>Yield all documents from all sub-readers in order.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Yields<span class="colon">:</span></dt>
@@ -1518,7 +1518,7 @@ context manager; call manually otherwise.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260425.f4129c4 2026-04-25T14:26Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260425.2e65b07 2026-04-25T19:16Z.
       <br/>
     
   </p>

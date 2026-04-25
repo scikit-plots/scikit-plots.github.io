@@ -45,7 +45,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=ecbb7725" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=62f328ba" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
@@ -71,7 +71,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=d37731b0"></script>
+    <script src="../../_static/ai-assistant.js?v=cb662cc4"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -1316,7 +1316,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>pybind11_only_prereqs<a class="headerlink" href="#pybind11-only-prereqs" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cython.pybind11_only_prereqs">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">pybind11_only_prereqs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/cython/_custom_compiler.py#L520"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.pybind11_only_prereqs" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">pybind11_only_prereqs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/cython/_custom_compiler.py#L520"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.pybind11_only_prereqs" title="Link to this definition">#</a></dt>
 <dd><p>Check prerequisites pybind11 only.</p>
 <p>Only pybind11 is required.  Cython and setuptools are NOT required
 for header-only pybind11 projects that use CMake or a custom build.</p>
@@ -1336,8 +1336,8 @@ for header-only pybind11 projects that use CMake or a custom build.</p>
 Use <a class="reference internal" href="scikitplot.cython.pybind11_include.html#scikitplot.cython.pybind11_include" title="scikitplot.cython.pybind11_include"><code class="xref py py-func docutils literal notranslate"><span class="pre">pybind11_include</span></code></a> to get the header directory, then pass it
 to your C++ compiler as <code class="docutils literal notranslate"><span class="pre">-I&lt;dir&gt;</span></code>.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="d7c227e4-f8a6-4eb2-acd4-6ab389c4e2c1">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('d7c227e4-f8a6-4eb2-acd4-6ab389c4e2c1','66409d8a-33a3-4187-bdad-5792ecc7c6ce','a351b887-f7ed-4e0f-a212-46d8e769654e','../../lite/tree/../notebooks/index.html?path=bc793ae5_47b3_48f4_ae06_92d3ef64cf33.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="c13b2eb0-ccd3-48ae-b7ab-358923744f10">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('c13b2eb0-ccd3-48ae-b7ab-358923744f10','e4434a8d-d23b-46f9-8b93-d97f38e63303','e6f5ff9b-bb47-4c0f-b3e6-5d11e96424e7','../../lite/tree/../notebooks/index.html?path=708ff892_596e_46ba_9bb3_3555aee93871.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">pybind11_only_prereqs</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;pybind11&quot;</span> <span class="ow">in</span> <span class="n">result</span>
 <span class="go">True</span>
@@ -1345,7 +1345,7 @@ to your C++ compiler as <code class="docutils literal notranslate"><span class="
 </div>
 </div>
 </div>
-<div id="a351b887-f7ed-4e0f-a212-46d8e769654e" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('d7c227e4-f8a6-4eb2-acd4-6ab389c4e2c1','a351b887-f7ed-4e0f-a212-46d8e769654e')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('d7c227e4-f8a6-4eb2-acd4-6ab389c4e2c1','a351b887-f7ed-4e0f-a212-46d8e769654e')">Open In Tab</button></div><div id="66409d8a-33a3-4187-bdad-5792ecc7c6ce" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="e6f5ff9b-bb47-4c0f-b3e6-5d11e96424e7" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('c13b2eb0-ccd3-48ae-b7ab-358923744f10','e6f5ff9b-bb47-4c0f-b3e6-5d11e96424e7')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('c13b2eb0-ccd3-48ae-b7ab-358923744f10','e6f5ff9b-bb47-4c0f-b3e6-5d11e96424e7')">Open In Tab</button></div><div id="e4434a8d-d23b-46f9-8b93-d97f38e63303" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1448,7 +1448,7 @@ to your C++ compiler as <code class="docutils literal notranslate"><span class="
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260425.f4129c4 2026-04-25T14:26Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260425.2e65b07 2026-04-25T19:16Z.
       <br/>
     
   </p>

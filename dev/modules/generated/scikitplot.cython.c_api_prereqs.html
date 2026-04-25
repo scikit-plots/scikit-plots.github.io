@@ -45,7 +45,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=ecbb7725" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=62f328ba" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
@@ -71,7 +71,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=d37731b0"></script>
+    <script src="../../_static/ai-assistant.js?v=cb662cc4"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -1316,7 +1316,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>c_api_prereqs<a class="headerlink" href="#c-api-prereqs" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cython.c_api_prereqs">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">c_api_prereqs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/cython/_custom_compiler.py#L547"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.c_api_prereqs" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">c_api_prereqs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/cython/_custom_compiler.py#L547"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.c_api_prereqs" title="Link to this definition">#</a></dt>
 <dd><p>Check prerequisites own custom C-API.</p>
 <p>Validates Cython (for <code class="docutils literal notranslate"><span class="pre">.pyx</span></code> transpilation), NumPy (for
 <code class="docutils literal notranslate"><span class="pre">numpy/arrayobject.h</span></code>), and setuptools (for the build extension
@@ -1337,8 +1337,8 @@ infrastructure).</p>
 source trees.  Pass the result as <code class="docutils literal notranslate"><span class="pre">extra_sources</span></code> to
 <a class="reference internal" href="scikitplot.cython.compile_and_load.html#scikitplot.cython.compile_and_load" title="scikitplot.cython.compile_and_load"><code class="xref py py-func docutils literal notranslate"><span class="pre">scikitplot.cython.compile_and_load</span></code></a>.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="4cedf010-769b-41d8-b12e-3193b602dfd2">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('4cedf010-769b-41d8-b12e-3193b602dfd2','ea0ad77d-f7f9-4eda-8a07-638519080579','96e136e2-778f-4424-b03d-125b510cd228','../../lite/tree/../notebooks/index.html?path=d2b9dad6_1709_4a15_b0d3_6533e848e81c.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="2146ac61-8030-4948-82ab-58e6301faa0d">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('2146ac61-8030-4948-82ab-58e6301faa0d','6b038ce1-7810-46ab-8b52-45ce94510053','4f146342-9360-40c5-882d-25ee9793111b','../../lite/tree/../notebooks/index.html?path=4ff82f4c_60db_4476_9348_8efac35949c2.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">c_api_prereqs</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">all</span><span class="p">(</span><span class="n">k</span> <span class="ow">in</span> <span class="n">result</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;cython&quot;</span><span class="p">,</span> <span class="s2">&quot;numpy&quot;</span><span class="p">,</span> <span class="s2">&quot;setuptools&quot;</span><span class="p">))</span>
 <span class="go">True</span>
@@ -1346,7 +1346,7 @@ source trees.  Pass the result as <code class="docutils literal notranslate"><sp
 </div>
 </div>
 </div>
-<div id="96e136e2-778f-4424-b03d-125b510cd228" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('4cedf010-769b-41d8-b12e-3193b602dfd2','96e136e2-778f-4424-b03d-125b510cd228')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('4cedf010-769b-41d8-b12e-3193b602dfd2','96e136e2-778f-4424-b03d-125b510cd228')">Open In Tab</button></div><div id="ea0ad77d-f7f9-4eda-8a07-638519080579" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="4f146342-9360-40c5-882d-25ee9793111b" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('2146ac61-8030-4948-82ab-58e6301faa0d','4f146342-9360-40c5-882d-25ee9793111b')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('2146ac61-8030-4948-82ab-58e6301faa0d','4f146342-9360-40c5-882d-25ee9793111b')">Open In Tab</button></div><div id="6b038ce1-7810-46ab-8b52-45ce94510053" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1449,7 +1449,7 @@ source trees.  Pass the result as <code class="docutils literal notranslate"><sp
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260425.f4129c4 2026-04-25T14:26Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260425.2e65b07 2026-04-25T19:16Z.
       <br/>
     
   </p>

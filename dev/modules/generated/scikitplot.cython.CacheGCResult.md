@@ -1,6 +1,6 @@
 # CacheGCResult[#](#cachegcresult "Link to this heading")
 
-class scikitplot.cython.CacheGCResult(**cache\_root=<factory>**, **deleted\_keys=<factory>**, **skipped\_pinned\_keys=<factory>**, **skipped\_missing\_keys=<factory>**, **freed\_bytes=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/cython/_result.py#L244)[#](#scikitplot.cython.CacheGCResult "Link to this definition")
+class scikitplot.cython.CacheGCResult(**cache\_root=<factory>**, **deleted\_keys=<factory>**, **skipped\_pinned\_keys=<factory>**, **skipped\_missing\_keys=<factory>**, **freed\_bytes=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/cython/_result.py#L244)[#](#scikitplot.cython.CacheGCResult "Link to this definition")
 :   Result of a cache garbage-collection operation.
 
     Parameters:

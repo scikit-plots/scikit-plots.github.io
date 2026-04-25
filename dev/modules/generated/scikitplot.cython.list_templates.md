@@ -1,6 +1,6 @@
 # list\_templates[#](#list-templates "Link to this heading")
 
-scikitplot.cython.list\_templates(**\***, **kind='cython'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f4129c4/scikitplot/cython/_templates_api.py#L304)[#](#scikitplot.cython.list_templates "Link to this definition")
+scikitplot.cython.list\_templates(**\***, **kind='cython'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/cython/_templates_api.py#L304)[#](#scikitplot.cython.list_templates "Link to this definition")
 :   List available templates.
 
     Parameters:
