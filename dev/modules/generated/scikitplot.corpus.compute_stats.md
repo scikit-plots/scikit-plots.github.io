@@ -1,6 +1,6 @@
 # compute\_stats[#](#compute-stats "Link to this heading")
 
-scikitplot.corpus.compute\_stats(**docs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_metadata/_metadata.py#L355)[#](#scikitplot.corpus.compute_stats "Link to this definition")
+scikitplot.corpus.compute\_stats(**docs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_metadata/_metadata.py#L355)[#](#scikitplot.corpus.compute_stats "Link to this definition")
 :   Compute aggregate statistics over a document collection.
 
     Parameters:

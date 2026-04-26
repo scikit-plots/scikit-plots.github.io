@@ -1,6 +1,6 @@
 # session[#](#session "Link to this heading")
 
-scikitplot.mlflow.session(**\***, **config=None**, **server=None**, **start\_server=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/mlflow/_session.py#L316)[#](#scikitplot.mlflow.session "Link to this definition")
+scikitplot.mlflow.session(**\***, **config=None**, **server=None**, **start\_server=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/mlflow/_session.py#L316)[#](#scikitplot.mlflow.session "Link to this definition")
 :   Create a strict, context-managed MLflow session.
 
     Parameters:

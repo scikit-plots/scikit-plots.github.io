@@ -1,6 +1,6 @@
 # KissBitGenerator[#](#kissbitgenerator "Link to this heading")
 
-class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSeedSequence]]=None**, **int bit\_width: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissBitGenerator "Link to this definition")
+class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSeedSequence]]=None**, **int bit\_width: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissBitGenerator "Link to this definition")
 :   NumPy-compatible BitGenerator using KISS algorithm with complete serialization.
 
     Parameters:
@@ -80,7 +80,24 @@ class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSee
     Go BackOpen In Tab
 
     capsule[#](#scikitplot.random.KissBitGenerator.capsule "Link to this definition")
-    :   Get PyCapsule for NumPy C API (protocol requirement).
+    :   PyCapsule for NumPy C API (BitGenerator protocol requirement).
+
+        Returns:
+        :   PyCapsule
+            :   Wraps the internal `bitgen_t` struct pointer under the name
+                `"BitGenerator"`.
+
+        Notes
+
+        * The same capsule object is returned on every access. NumPy’s
+          `Generator` caches the pointer; a new capsule per call would
+          break pointer identity checks and could expose a dangling pointer
+          if the previous capsule were retained after the generator’s state
+          changed.
+        * The capsule does ****not**** own `_bitgen`. The `KissBitGenerator`
+          extension-type object owns it, and Python’s reference counting keeps
+          the object alive as long as any `numpy.random.Generator` built on
+          top of it is alive.
 
     classmethod deserialize(**cls**, **data**)[#](#scikitplot.random.KissBitGenerator.deserialize "Link to this definition")
     :   Deserialize from dict.

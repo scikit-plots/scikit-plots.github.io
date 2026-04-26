@@ -1,6 +1,6 @@
 # get\_project\_markers[#](#get-project-markers "Link to this heading")
 
-scikitplot.mlflow.get\_project\_markers(**\***, **config\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/mlflow/_project.py#L206)[#](#scikitplot.mlflow.get_project_markers "Link to this definition")
+scikitplot.mlflow.get\_project\_markers(**\***, **config\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/mlflow/_project.py#L206)[#](#scikitplot.mlflow.get_project_markers "Link to this definition")
 :   Resolve project markers deterministically.
 
     Resolution order:

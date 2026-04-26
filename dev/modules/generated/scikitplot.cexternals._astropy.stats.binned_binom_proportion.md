@@ -1,6 +1,6 @@
 # binned\_binom\_proportion[#](#binned-binom-proportion "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.binned\_binom\_proportion(**x**, **success**, **bins=10**, **range=None**, **confidence\_level=0.68269**, **interval='wilson'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/cexternals/_astropy/stats/funcs.py#L298)[#](#scikitplot.cexternals._astropy.stats.binned_binom_proportion "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.binned\_binom\_proportion(**x**, **success**, **bins=10**, **range=None**, **confidence\_level=0.68269**, **interval='wilson'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/cexternals/_astropy/stats/funcs.py#L298)[#](#scikitplot.cexternals._astropy.stats.binned_binom_proportion "Link to this definition")
 :   Binomial proportion and confidence interval in bins of a continuous
     variable `x`.
 

@@ -71,7 +71,7 @@ ax = sp.metrics.plot_silhouette(
 
 Tags: [model-type: clustering](../../_tags/model-type-clustering.html) [model-workflow: model evaluation](../../_tags/model-workflow-model-evaluation.html) [plot-type: bar](../../_tags/plot-type-bar.html) [plot-type: silhouette](../../_tags/plot-type-silhouette.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.397 seconds)
+****Total running time of the script:**** (0 minutes 0.305 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo3.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/clustering/plot_silhouette_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo3.svg)](../../lite/lab/index.html?path=auto_examples/clustering/plot_silhouette_script.ipynb)
 

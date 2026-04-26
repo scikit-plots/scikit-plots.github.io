@@ -1,6 +1,6 @@
 # PipelineHooks[#](#pipelinehooks "Link to this heading")
 
-class scikitplot.corpus.PipelineHooks(**pre\_read\_hook=None**, **post\_read\_hook=None**, **post\_filter\_hook=None**, **post\_embed\_hook=None**, **pre\_export\_hook=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_custom_hooks.py#L843)[#](#scikitplot.corpus.PipelineHooks "Link to this definition")
+class scikitplot.corpus.PipelineHooks(**pre\_read\_hook=None**, **post\_read\_hook=None**, **post\_filter\_hook=None**, **post\_embed\_hook=None**, **pre\_export\_hook=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_custom_hooks.py#L843)[#](#scikitplot.corpus.PipelineHooks "Link to this definition")
 :   Lifecycle callbacks for [`HookableCorpusPipeline`](scikitplot.corpus.HookableCorpusPipeline.html#scikitplot.corpus.HookableCorpusPipeline "scikitplot.corpus.HookableCorpusPipeline").
 
     Every hook is optional (`None` = no-op). Hooks are called in the order

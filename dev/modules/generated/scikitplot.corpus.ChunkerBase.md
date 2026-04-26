@@ -1,6 +1,6 @@
 # ChunkerBase[#](#chunkerbase "Link to this heading")
 
-class scikitplot.corpus.ChunkerBase[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_base.py#L164)[#](#scikitplot.corpus.ChunkerBase "Link to this definition")
+class scikitplot.corpus.ChunkerBase[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_base.py#L164)[#](#scikitplot.corpus.ChunkerBase "Link to this definition")
 :   Abstract base class for all text chunkers.
 
     A chunker receives a block of raw text (one logical unit from the
@@ -51,7 +51,7 @@ class scikitplot.corpus.ChunkerBase[[source]](https://github.com/scikit-plots/sc
     ```
     Go BackOpen In Tab
 
-    abstractmethod chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_base.py#L215)[#](#scikitplot.corpus.ChunkerBase.chunk "Link to this definition")
+    abstractmethod chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_base.py#L215)[#](#scikitplot.corpus.ChunkerBase.chunk "Link to this definition")
     :   Segment `text` into a list of `(char_start, chunk_text)` tuples.
 
         Parameters:

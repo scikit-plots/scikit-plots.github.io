@@ -1,6 +1,6 @@
 # apply\_env[#](#apply-env "Link to this heading")
 
-scikitplot.mlflow.apply\_env(**\***, **env\_file**, **extra\_env**, **set\_defaults\_only=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/mlflow/_env.py#L123)[#](#scikitplot.mlflow.apply_env "Link to this definition")
+scikitplot.mlflow.apply\_env(**\***, **env\_file**, **extra\_env**, **set\_defaults\_only=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/mlflow/_env.py#L123)[#](#scikitplot.mlflow.apply_env "Link to this definition")
 :   Apply `.env` and explicit overrides to `os.environ`.
 
     Parameters:

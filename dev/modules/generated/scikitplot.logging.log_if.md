@@ -1,6 +1,6 @@
 # log\_if[#](#log-if "Link to this heading")
 
-scikitplot.logging.log\_if(**level**, **msg**, **condition**, **\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/logging.py#L1577)[#](#scikitplot.logging.log_if "Link to this definition")
+scikitplot.logging.log\_if(**level**, **msg**, **condition**, **\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/logging.py#L1577)[#](#scikitplot.logging.log_if "Link to this definition")
 :   Log only if a condition is True.
 
     Parameters:

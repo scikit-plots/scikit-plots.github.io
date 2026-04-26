@@ -1,6 +1,6 @@
 # CustomNLPEnricher[#](#customnlpenricher "Link to this heading")
 
-class scikitplot.corpus.CustomNLPEnricher(**config=None**, **\***, **custom\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_custom_hooks.py#L617)[#](#scikitplot.corpus.CustomNLPEnricher "Link to this definition")
+class scikitplot.corpus.CustomNLPEnricher(**config=None**, **\***, **custom\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_custom_hooks.py#L617)[#](#scikitplot.corpus.CustomNLPEnricher "Link to this definition")
 :   `NLPEnricher` extended with
     fully-replaceable NLP backends.
 
@@ -64,7 +64,7 @@ class scikitplot.corpus.CustomNLPEnricher(**config=None**, **\***, **custom\_con
     ```
     Go BackOpen In Tab
 
-    enrich\_documents(**documents**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/2e65b07/scikitplot/corpus/_custom_hooks.py#L702)[#](#scikitplot.corpus.CustomNLPEnricher.enrich_documents "Link to this definition")
+    enrich\_documents(**documents**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_custom_hooks.py#L702)[#](#scikitplot.corpus.CustomNLPEnricher.enrich_documents "Link to this definition")
     :   Enrich a batch of `CorpusDocument` instances using custom or
         built-in backends per stage.
 
