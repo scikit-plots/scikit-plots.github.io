@@ -1,6 +1,6 @@
 # annoylib[#](#annoylib "Link to this heading")
 
-Compiled with GCC/Clang(Not using AVX instructions).
+Compiled with GCC/Clang(Using 512-bit AVX instructions).
 
 High-performance approximate nearest neighbours (Annoy) C++ core.
 

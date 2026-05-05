@@ -1,6 +1,6 @@
 # classify\_url[#](#classify-url "Link to this heading")
 
-scikitplot.corpus.classify\_url(**url**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_url_handler.py#L390)[#](#scikitplot.corpus.classify_url "Link to this definition")
+scikitplot.corpus.classify\_url(**url**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_url_handler.py#L390)[#](#scikitplot.corpus.classify_url "Link to this definition")
 :   Classify a URL into one of the known [`URLKind`](scikitplot.corpus.URLKind.html#scikitplot.corpus.URLKind "scikitplot.corpus.URLKind") categories.
 
     Parameters:

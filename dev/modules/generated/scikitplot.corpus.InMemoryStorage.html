@@ -1316,7 +1316,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>InMemoryStorage<a class="headerlink" href="#inmemorystorage" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.InMemoryStorage">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">InMemoryStorage</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_storage/_storage.py#L251"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.InMemoryStorage" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">InMemoryStorage</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_storage/_storage.py#L251"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.InMemoryStorage" title="Link to this definition">#</a></dt>
 <dd><p>Thread-safe in-memory dict store.</p>
 <p>Stores documents as <a class="reference internal" href="scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument" title="scikitplot.corpus._schema.CorpusDocument"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusDocument</span></code></a>
 objects directly in a <code class="docutils literal notranslate"><span class="pre">dict</span></code> keyed by <code class="docutils literal notranslate"><span class="pre">doc_id</span></code>. Insertion order is
@@ -1334,8 +1334,8 @@ lost when the process exits.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="6e981802-e561-4ecc-8e0f-21de544dcccf">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('6e981802-e561-4ecc-8e0f-21de544dcccf','c974d7fd-c156-419a-8d9d-8eb13b043762','dd4211df-bdc2-4c2f-a72d-33b9e1e291c4','../../lite/tree/../notebooks/index.html?path=432b3997_f990_425d_afd9_56a300bcea19.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="93fa0d6f-c3af-4e93-af26-95b5ed2b119e">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('93fa0d6f-c3af-4e93-af26-95b5ed2b119e','3affaeea-59fc-4e81-9402-9a4dcaacaa5a','8e72d647-39bb-40b6-8301-0d176d30099f','../../lite/tree/../notebooks/index.html?path=d251708a_99fe_4e03_93f4_3f58bd590a6c.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">InMemoryStorage</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
@@ -1346,9 +1346,9 @@ lost when the process exits.</p>
 </div>
 </div>
 </div>
-<div id="dd4211df-bdc2-4c2f-a72d-33b9e1e291c4" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('6e981802-e561-4ecc-8e0f-21de544dcccf','dd4211df-bdc2-4c2f-a72d-33b9e1e291c4')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('6e981802-e561-4ecc-8e0f-21de544dcccf','dd4211df-bdc2-4c2f-a72d-33b9e1e291c4')">Open In Tab</button></div><div id="c974d7fd-c156-419a-8d9d-8eb13b043762" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="8e72d647-39bb-40b6-8301-0d176d30099f" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('93fa0d6f-c3af-4e93-af26-95b5ed2b119e','8e72d647-39bb-40b6-8301-0d176d30099f')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('93fa0d6f-c3af-4e93-af26-95b5ed2b119e','8e72d647-39bb-40b6-8301-0d176d30099f')">Open In Tab</button></div><div id="3affaeea-59fc-4e81-9402-9a4dcaacaa5a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.InMemoryStorage.clear">
-<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_storage/_storage.py#L350"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.InMemoryStorage.clear" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_storage/_storage.py#L350"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.InMemoryStorage.clear" title="Link to this definition">#</a></dt>
 <dd><p>Remove all documents from the store.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -1359,7 +1359,7 @@ lost when the process exits.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.InMemoryStorage.count">
-<span class="sig-name descname"><span class="pre">count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_storage/_storage.py#L345"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.InMemoryStorage.count" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_storage/_storage.py#L345"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.InMemoryStorage.count" title="Link to this definition">#</a></dt>
 <dd><p>Return total stored document count in O(1).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -1370,7 +1370,7 @@ lost when the process exits.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.InMemoryStorage.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc_id</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_storage/_storage.py#L311"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.InMemoryStorage.get" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc_id</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_storage/_storage.py#L311"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.InMemoryStorage.get" title="Link to this definition">#</a></dt>
 <dd><p>Return the document with the given <code class="docutils literal notranslate"><span class="pre">doc_id</span></code>, or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1389,7 +1389,7 @@ lost when the process exits.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.InMemoryStorage.query">
-<span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_storage/_storage.py#L322"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.InMemoryStorage.query" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_storage/_storage.py#L322"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.InMemoryStorage.query" title="Link to this definition">#</a></dt>
 <dd><p>Filter documents by the query parameters.</p>
 <p>Full-text search (<code class="docutils literal notranslate"><span class="pre">q.full_text</span></code>) is not supported — the
 <code class="docutils literal notranslate"><span class="pre">full_text</span></code> field is ignored silently.</p>
@@ -1415,7 +1415,7 @@ lost when the process exits.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.InMemoryStorage.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_storage/_storage.py#L281"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.InMemoryStorage.save" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_storage/_storage.py#L281"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.InMemoryStorage.save" title="Link to this definition">#</a></dt>
 <dd><p>Store <code class="docutils literal notranslate"><span class="pre">doc</span></code> by <code class="docutils literal notranslate"><span class="pre">doc_id</span></code>. Overwrites if already present.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1434,7 +1434,7 @@ lost when the process exits.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.InMemoryStorage.save_batch">
-<span class="sig-name descname"><span class="pre">save_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">docs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_storage/_storage.py#L297"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.InMemoryStorage.save_batch" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">save_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">docs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_storage/_storage.py#L297"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.InMemoryStorage.save_batch" title="Link to this definition">#</a></dt>
 <dd><p>Store a batch of documents atomically (single lock acquisition).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1522,15 +1522,6 @@ lost when the process exits.</p>
 
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../../_sources/modules/generated/scikitplot.corpus.InMemoryStorage.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
 </div></div>
               
             
@@ -1562,7 +1553,7 @@ lost when the process exits.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260426.0ee15ed 2026-04-26T19:22Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260505.33a338a 2026-05-05T14:26Z.
       <br/>
     
   </p>

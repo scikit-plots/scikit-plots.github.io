@@ -1316,7 +1316,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>PybindCompiler<a class="headerlink" href="#pybindcompiler" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.cython.PybindCompiler">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">PybindCompiler</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/cython/_custom_compiler.py#L862"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.PybindCompiler" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">PybindCompiler</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/cython/_custom_compiler.py#L862"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.PybindCompiler" title="Link to this definition">#</a></dt>
 <dd><p>Built-in custom compiler: pybind11-only projects.</p>
 <p>This compiler wraps the standard Cython+setuptools pipeline but
 automatically injects the pybind11 include directory and sets
@@ -1341,8 +1341,8 @@ standard C++ with pybind11 macros; this compiler handles the rest:</p>
 <p>The compiler requires <code class="docutils literal notranslate"><span class="pre">pybind11</span></code> to be importable.  Check with
 <a class="reference internal" href="scikitplot.cython.pybind11_only_prereqs.html#scikitplot.cython.pybind11_only_prereqs" title="scikitplot.cython.pybind11_only_prereqs"><code class="xref py py-func docutils literal notranslate"><span class="pre">pybind11_only_prereqs</span></code></a>.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="abd8e6b4-a592-4d81-a304-2b329fcac94b">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('abd8e6b4-a592-4d81-a304-2b329fcac94b','2d17cadf-0fa7-413e-849b-8306d14740cb','9d2f1280-ce0e-49d4-b83a-6ad0037f4e45','../../lite/tree/../notebooks/index.html?path=cefca6a5_2c38_4f69_84df_dd930d32090d.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="06f98288-387c-4891-8b15-2639b253a7a5">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('06f98288-387c-4891-8b15-2639b253a7a5','0f45cacd-b239-4383-96cb-13b83cda3440','6a8daee8-c84c-498e-b883-5f23aa59a345','../../lite/tree/../notebooks/index.html?path=5bdb9db9_02e7_408d_a50d_066f87d182af.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pc</span> <span class="o">=</span> <span class="n">PybindCompiler</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pc</span><span class="o">.</span><span class="n">name</span>
 <span class="go">&#39;custom_pybind11&#39;</span>
@@ -1352,9 +1352,9 @@ standard C++ with pybind11 macros; this compiler handles the rest:</p>
 </div>
 </div>
 </div>
-<div id="9d2f1280-ce0e-49d4-b83a-6ad0037f4e45" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('abd8e6b4-a592-4d81-a304-2b329fcac94b','9d2f1280-ce0e-49d4-b83a-6ad0037f4e45')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('abd8e6b4-a592-4d81-a304-2b329fcac94b','9d2f1280-ce0e-49d4-b83a-6ad0037f4e45')">Open In Tab</button></div><div id="2d17cadf-0fa7-413e-849b-8306d14740cb" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="6a8daee8-c84c-498e-b883-5f23aa59a345" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('06f98288-387c-4891-8b15-2639b253a7a5','6a8daee8-c84c-498e-b883-5f23aa59a345')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('06f98288-387c-4891-8b15-2639b253a7a5','6a8daee8-c84c-498e-b883-5f23aa59a345')">Open In Tab</button></div><div id="0f45cacd-b239-4383-96cb-13b83cda3440" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cython.PybindCompiler.__call__">
-<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">build_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_dirs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_compile_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_link_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/cython/_custom_compiler.py#L899"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.PybindCompiler.__call__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">build_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_dirs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_compile_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_link_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/cython/_custom_compiler.py#L899"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.PybindCompiler.__call__" title="Link to this definition">#</a></dt>
 <dd><p>Compile a pybind11 C++ extension from source text.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1478,15 +1478,6 @@ standard C++ with pybind11 macros; this compiler handles the rest:</p>
 
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../../_sources/modules/generated/scikitplot.cython.PybindCompiler.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
 </div></div>
               
             
@@ -1518,7 +1509,7 @@ standard C++ with pybind11 macros; this compiler handles the rest:</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260426.0ee15ed 2026-04-26T19:22Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260505.33a338a 2026-05-05T14:26Z.
       <br/>
     
   </p>

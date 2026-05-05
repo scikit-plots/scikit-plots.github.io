@@ -148,20 +148,20 @@ else:
 ```
 ```
 Workflows: ['churn_basic']
-Copied workflow to: tmppilx7vgu/workflow_copy
+Copied workflow to: tmppn3zoxtb/workflow_copy
 Files: ['cli.py', 'hpo.py', 'predict.py', 'train.py']
 
 Run:
-  python tmppilx7vgu/workflow_copy/cli.py train --help
-  python tmppilx7vgu/workflow_copy/cli.py hpo --help
-  python tmppilx7vgu/workflow_copy/cli.py predict --help
+  python tmppn3zoxtb/workflow_copy/cli.py train --help
+  python tmppn3zoxtb/workflow_copy/cli.py hpo --help
+  python tmppn3zoxtb/workflow_copy/cli.py predict --help
 
 Single-module extension imported from copied folder:
   m.square(12) = 144
-Compiling /home/circleci/.cache/scikitplot/cython/8d086b909b14f5b8e33ee0a76dabd81d4978ca59aaed8b661fc755428cf70904/wf_ext_pkg/alpha.pyx because it changed.
-Compiling /home/circleci/.cache/scikitplot/cython/8d086b909b14f5b8e33ee0a76dabd81d4978ca59aaed8b661fc755428cf70904/wf_ext_pkg/beta.pyx because it changed.
-[1/2] Cythonizing /home/circleci/.cache/scikitplot/cython/8d086b909b14f5b8e33ee0a76dabd81d4978ca59aaed8b661fc755428cf70904/wf_ext_pkg/alpha.pyx
-[2/2] Cythonizing /home/circleci/.cache/scikitplot/cython/8d086b909b14f5b8e33ee0a76dabd81d4978ca59aaed8b661fc755428cf70904/wf_ext_pkg/beta.pyx
+Compiling /home/circleci/.cache/scikitplot/cython/bbe5b19a129fd96604742f9985c2deb95c47bd302761e65a2764d19c4fff0afa/wf_ext_pkg/alpha.pyx because it changed.
+Compiling /home/circleci/.cache/scikitplot/cython/bbe5b19a129fd96604742f9985c2deb95c47bd302761e65a2764d19c4fff0afa/wf_ext_pkg/beta.pyx because it changed.
+[1/2] Cythonizing /home/circleci/.cache/scikitplot/cython/bbe5b19a129fd96604742f9985c2deb95c47bd302761e65a2764d19c4fff0afa/wf_ext_pkg/alpha.pyx
+[2/2] Cythonizing /home/circleci/.cache/scikitplot/cython/bbe5b19a129fd96604742f9985c2deb95c47bd302761e65a2764d19c4fff0afa/wf_ext_pkg/beta.pyx
 
 Package extension imported from copied folder:
   alpha.inc(10) = 11
@@ -171,7 +171,7 @@ Package extension imported from copied folder:
 
 Tags: [domain: cython](../../_tags/domain-cython.html) [plot-type: cython](../../_tags/plot-type-cython.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 1.413 seconds)
+****Total running time of the script:**** (0 minutes 1.104 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_09_workflow_templates_cli.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/cython/plot_09_workflow_templates_cli.ipynb)
 

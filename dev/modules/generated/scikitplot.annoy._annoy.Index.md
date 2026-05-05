@@ -1,6 +1,6 @@
 # Index[#](#index "Link to this heading")
 
-class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **str metric: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int n\_neighbors: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 5**, **\***, **str on\_disk\_path: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **bool prefault: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False**, **int seed: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int verbose: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int schema\_version: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 0**, **str dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'float32'**, **str index\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'int32'**, **str wrapper\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'uint64'**, **str random\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'uint64'**, **int n\_jobs: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/annoy/_annoy/__init__.py#L)[#](#scikitplot.annoy._annoy.Index "Link to this definition")
+class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **str metric: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int n\_neighbors: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 5**, **\***, **str on\_disk\_path: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **bool prefault: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False**, **int seed: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int verbose: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **int schema\_version: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 0**, **str dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'float32'**, **str index\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'int32'**, **str wrapper\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'uint64'**, **str random\_dtype: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'uint64'**, **int n\_jobs: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/annoy/_annoy/__init__.py#L)[#](#scikitplot.annoy._annoy.Index "Link to this definition")
 :   Annoy Approximate Nearest Neighbors Index.
 
     This is a Cython-powered Python wrapper around the Annoy C++ library.
@@ -219,7 +219,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
             :   New index with same parameters (but no data)
 
         Return type:
-        :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.14)")
+        :   Self
 
         Examples
 
@@ -231,7 +231,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         ```
         Go BackOpen In Tab
 
-    classmethod deserialize(**cls, dict data: Dict[str, Any]**) → Self[#](#scikitplot.annoy._annoy.Index.deserialize "Link to this definition")
+    classmethod deserialize(**cls, dict data: dict[str, Any]**) → Self[#](#scikitplot.annoy._annoy.Index.deserialize "Link to this definition")
     :   Deserialize from dictionary.
 
         Parameters:
@@ -250,10 +250,10 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
             :   If data format is invalid
 
         Parameters:
-        :   ****data**** ([**Dict**](https://docs.python.org/3/library/typing.html#typing.Dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
+        :   ****data**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **Any****]**)
 
         Return type:
-        :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.14)")
+        :   Self
 
         Examples
 
@@ -285,7 +285,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         Type:
         :   [Index.f](#scikitplot.annoy._annoy.Index.f "scikitplot.annoy._annoy.Index.f")
 
-    classmethod from\_dict(**cls, dict data: Dict[str, Any]**) → Self[#](#scikitplot.annoy._annoy.Index.from_dict "Link to this definition")
+    classmethod from\_dict(**cls, dict data: dict[str, Any]**) → Self[#](#scikitplot.annoy._annoy.Index.from_dict "Link to this definition")
     :   Alias for deserialize().
 
         Parameters:
@@ -297,10 +297,10 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
             :   Restored instance
 
         Parameters:
-        :   ****data**** ([**Dict**](https://docs.python.org/3/library/typing.html#typing.Dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
+        :   ****data**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **Any****]**)
 
         Return type:
-        :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.14)")
+        :   Self
 
     get\_distance(**self**, **i**, **j**)[#](#scikitplot.annoy._annoy.Index.get_distance "Link to this definition")
     :   Compute distance between two stored items.
@@ -505,7 +505,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
             ValueError
             :   If n <= 0, or if vector length does not match index dimension f
 
-    get\_params(**self**, **bool deep: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True**) → Dict[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any][#](#scikitplot.annoy._annoy.Index.get_params "Link to this definition")
+    get\_params(**self**, **bool deep: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True**) → [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any][#](#scikitplot.annoy._annoy.Index.get_params "Link to this definition")
     :   Get parameters (sklearn-style).
 
         Parameters:
@@ -520,7 +520,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         :   ****deep**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
 
         Return type:
-        :   [**Dict**](https://docs.python.org/3/library/typing.html#typing.Dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
+        :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any]
 
         Examples
 
@@ -536,7 +536,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         ```
         Go BackOpen In Tab
 
-    get\_state(**self**) → Dict[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any][#](#scikitplot.annoy._annoy.Index.get_state "Link to this definition")
+    get\_state(**self**) → [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any][#](#scikitplot.annoy._annoy.Index.get_state "Link to this definition")
     :   Get complete state dictionary.
 
         Returns:
@@ -547,7 +547,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
                 \* Configuration
 
         Return type:
-        :   [**Dict**](https://docs.python.org/3/library/typing.html#typing.Dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
+        :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any]
 
         Examples
 
@@ -673,7 +673,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
             :   If the index cannot be constructed (`f` or `metric` not set).
 
         Return type:
-        :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.14)")
+        :   Self
 
         Notes
 
@@ -747,7 +747,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         Return type:
         :   None
 
-    serialize(**self**) → Dict[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any][#](#scikitplot.annoy._annoy.Index.serialize "Link to this definition")
+    serialize(**self**) → [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any][#](#scikitplot.annoy._annoy.Index.serialize "Link to this definition")
     :   Serialize to JSON-compatible dictionary.
 
         Returns:
@@ -755,7 +755,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
             :   JSON-serializable state
 
         Return type:
-        :   [**Dict**](https://docs.python.org/3/library/typing.html#typing.Dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
+        :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any]
 
         Examples
 
@@ -787,7 +787,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
             :   If trying to set immutable parameters after construction
 
         Return type:
-        :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.14)")
+        :   Self
 
         Notes
 
@@ -833,7 +833,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
           set\_seed\_w(uint64\_t) bridge is used for all concrete index types.
         * Seed 0 triggers Annoy’s deterministic default (Kiss64Random::default\_seed).
 
-    set\_state(**self, dict state: Dict[str, Any]**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.annoy._annoy.Index.set_state "Link to this definition")
+    set\_state(**self, dict state: dict[str, Any]**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.annoy._annoy.Index.set_state "Link to this definition")
     :   Restore state from dictionary.
 
         Parameters:
@@ -841,7 +841,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
             :   State dictionary from get\_state()
 
         Parameters:
-        :   ****state**** ([**Dict**](https://docs.python.org/3/library/typing.html#typing.Dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
+        :   ****state**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **Any****]**)
 
         Return type:
         :   None
@@ -872,7 +872,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
         Return type:
         :   None
 
-    to\_dict(**self**) → Dict[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any][#](#scikitplot.annoy._annoy.Index.to_dict "Link to this definition")
+    to\_dict(**self**) → [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any][#](#scikitplot.annoy._annoy.Index.to_dict "Link to this definition")
     :   Alias for serialize().
 
         Returns:
@@ -880,7 +880,7 @@ class scikitplot.annoy.\_annoy.Index(**int f: [int](https://docs.python.org/3/li
             :   Serialized state
 
         Return type:
-        :   [**Dict**](https://docs.python.org/3/library/typing.html#typing.Dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
+        :   [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), Any]
 
     unbuild(**self**) → [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")[#](#scikitplot.annoy._annoy.Index.unbuild "Link to this definition")
     :   Remove all trees to allow adding more items.

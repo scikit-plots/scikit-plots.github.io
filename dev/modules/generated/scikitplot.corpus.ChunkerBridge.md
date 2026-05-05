@@ -1,6 +1,6 @@
 # ChunkerBridge[#](#chunkerbridge "Link to this heading")
 
-class scikitplot.corpus.ChunkerBridge(**inner**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_chunkers/_chunker_bridge.py#L59)[#](#scikitplot.corpus.ChunkerBridge "Link to this definition")
+class scikitplot.corpus.ChunkerBridge(**inner**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_chunkers/_chunker_bridge.py#L59)[#](#scikitplot.corpus.ChunkerBridge "Link to this definition")
 :   Adapter that wraps a new-style chunker as a `ChunkerBase`-
     compatible object.
 
@@ -34,7 +34,7 @@ class scikitplot.corpus.ChunkerBridge(**inner**)[[source]](https://github.com/sc
     This bridge satisfies both without touching `ChunkerBase` or
     the new chunkers.
 
-    chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_chunkers/_chunker_bridge.py#L98)[#](#scikitplot.corpus.ChunkerBridge.chunk "Link to this definition")
+    chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_chunkers/_chunker_bridge.py#L98)[#](#scikitplot.corpus.ChunkerBridge.chunk "Link to this definition")
     :   Chunk **text** and return `(char_start, chunk_text)` pairs.
 
         Parameters:

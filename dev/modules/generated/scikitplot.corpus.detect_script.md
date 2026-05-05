@@ -1,6 +1,6 @@
 # detect\_script[#](#detect-script "Link to this heading")
 
-scikitplot.corpus.detect\_script(**text**, **\***, **sample\_size=500**, **majority\_threshold=0.55**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L868)[#](#scikitplot.corpus.detect_script "Link to this definition")
+scikitplot.corpus.detect\_script(**text**, **\***, **sample\_size=500**, **majority\_threshold=0.55**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L884)[#](#scikitplot.corpus.detect_script "Link to this definition")
 :   Detect the dominant Unicode script in **text**.
 
     Samples up to **sample\_size** characters for efficiency on long documents.

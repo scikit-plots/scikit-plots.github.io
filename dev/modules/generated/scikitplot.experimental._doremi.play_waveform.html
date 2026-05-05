@@ -1316,7 +1316,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>play_waveform<a class="headerlink" href="#play-waveform" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.experimental._doremi.play_waveform">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.experimental._doremi.</span></span><span class="sig-name descname"><span class="pre">play_waveform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blocking</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_generated</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/experimental/_doremi/waveform_playback.py#L62"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.experimental._doremi.play_waveform" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.experimental._doremi.</span></span><span class="sig-name descname"><span class="pre">play_waveform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blocking</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_generated</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/experimental/_doremi/waveform_playback.py#L62"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.experimental._doremi.play_waveform" title="Link to this definition">#</a></dt>
 <dd><p>Play audio from a NumPy array using either IPython (for Jupyter) or sounddevice.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1386,8 +1386,8 @@ To install sounddevice and its backend:</p>
 - Mount PulseAudio socket or use –device /dev/snd and libasound2
 - Or avoid using sounddevice and stick to IPython.display.Audio or exporting .wav files</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="08cd7d87-f250-4d44-bee5-d6a3db5cab53">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('08cd7d87-f250-4d44-bee5-d6a3db5cab53','5a334907-f7e4-4cd3-bd3f-4c07f087337e','35bfa27e-3f4a-46d4-86f4-7a1ef185878c','../../lite/tree/../notebooks/index.html?path=52350082_b091_4eab_8e1f_b403d5585990.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="de841e68-35e3-4611-bd1b-876f7ed1b7c7">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('de841e68-35e3-4611-bd1b-876f7ed1b7c7','8c1b1bee-1dd9-4bd1-ad48-f23709c83584','0ef53610-917b-4646-85e5-5730fc4cba65','../../lite/tree/../notebooks/index.html?path=39bd7118_d15d_45f6_b850_80e754a60c86.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">duration</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># seconds</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rate</span> <span class="o">=</span> <span class="mi">44100</span>
@@ -1410,7 +1410,7 @@ To install sounddevice and its backend:</p>
 </div>
 </div>
 </div>
-<div id="35bfa27e-3f4a-46d4-86f4-7a1ef185878c" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('08cd7d87-f250-4d44-bee5-d6a3db5cab53','35bfa27e-3f4a-46d4-86f4-7a1ef185878c')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('08cd7d87-f250-4d44-bee5-d6a3db5cab53','35bfa27e-3f4a-46d4-86f4-7a1ef185878c')">Open In Tab</button></div><div id="5a334907-f7e4-4cd3-bd3f-4c07f087337e" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="0ef53610-917b-4646-85e5-5730fc4cba65" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('de841e68-35e3-4611-bd1b-876f7ed1b7c7','0ef53610-917b-4646-85e5-5730fc4cba65')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('de841e68-35e3-4611-bd1b-876f7ed1b7c7','0ef53610-917b-4646-85e5-5730fc4cba65')">Open In Tab</button></div><div id="8c1b1bee-1dd9-4bd1-ad48-f23709c83584" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1473,15 +1473,6 @@ To install sounddevice and its backend:</p>
 
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../../_sources/modules/generated/scikitplot.experimental._doremi.play_waveform.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
 </div></div>
               
             
@@ -1513,7 +1504,7 @@ To install sounddevice and its backend:</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260426.0ee15ed 2026-04-26T19:22Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260505.33a338a 2026-05-05T14:26Z.
       <br/>
     
   </p>

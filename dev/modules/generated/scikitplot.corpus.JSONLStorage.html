@@ -1316,7 +1316,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>JSONLStorage<a class="headerlink" href="#jsonlstorage" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.JSONLStorage">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">JSONLStorage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_storage/_storage.py#L364"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.JSONLStorage" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">JSONLStorage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_storage/_storage.py#L364"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.JSONLStorage" title="Link to this definition">#</a></dt>
 <dd><p>Append-friendly JSONL (newline-delimited JSON) flat-file store.</p>
 <p>Documents are written one JSON object per line. On construction the
 file is read into an in-memory index keyed by <code class="docutils literal notranslate"><span class="pre">doc_id</span></code> for O(1)
@@ -1340,8 +1340,8 @@ corrupt the file; use one writer at a time.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="6ca3b680-2522-41bb-aaad-83f3efb8e6c5">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('6ca3b680-2522-41bb-aaad-83f3efb8e6c5','dc5d4853-f7d3-4123-a430-6376bebc657a','3e53c648-149c-4f13-b7f7-396086d041af','../../lite/tree/../notebooks/index.html?path=bce4240b_9895_4d56_8460_bc5065d3d807.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="122db297-81e8-4e56-82f2-5984f28c06a1">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('122db297-81e8-4e56-82f2-5984f28c06a1','b2092556-0fa1-4dcf-a8d2-ed538ede68cf','838950d3-f70b-4d5b-b9ba-89c00407a7a1','../../lite/tree/../notebooks/index.html?path=5b0b657d_5445_4428_9a75_fd8b56f1a0c0.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">JSONLStorage</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;corpus.jsonl&quot;</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
@@ -1350,9 +1350,9 @@ corrupt the file; use one writer at a time.</p>
 </div>
 </div>
 </div>
-<div id="3e53c648-149c-4f13-b7f7-396086d041af" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('6ca3b680-2522-41bb-aaad-83f3efb8e6c5','3e53c648-149c-4f13-b7f7-396086d041af')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('6ca3b680-2522-41bb-aaad-83f3efb8e6c5','3e53c648-149c-4f13-b7f7-396086d041af')">Open In Tab</button></div><div id="dc5d4853-f7d3-4123-a430-6376bebc657a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="838950d3-f70b-4d5b-b9ba-89c00407a7a1" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('122db297-81e8-4e56-82f2-5984f28c06a1','838950d3-f70b-4d5b-b9ba-89c00407a7a1')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('122db297-81e8-4e56-82f2-5984f28c06a1','838950d3-f70b-4d5b-b9ba-89c00407a7a1')">Open In Tab</button></div><div id="b2092556-0fa1-4dcf-a8d2-ed538ede68cf" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.JSONLStorage.count">
-<span class="sig-name descname"><span class="pre">count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_storage/_storage.py#L533"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.JSONLStorage.count" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_storage/_storage.py#L533"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.JSONLStorage.count" title="Link to this definition">#</a></dt>
 <dd><p>Return total stored document count in O(1).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -1363,7 +1363,7 @@ corrupt the file; use one writer at a time.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.JSONLStorage.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc_id</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_storage/_storage.py#L489"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.JSONLStorage.get" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc_id</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_storage/_storage.py#L489"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.JSONLStorage.get" title="Link to this definition">#</a></dt>
 <dd><p>Retrieve a document by <code class="docutils literal notranslate"><span class="pre">doc_id</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1382,7 +1382,7 @@ corrupt the file; use one writer at a time.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.JSONLStorage.query">
-<span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_storage/_storage.py#L503"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.JSONLStorage.query" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_storage/_storage.py#L503"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.JSONLStorage.query" title="Link to this definition">#</a></dt>
 <dd><p>Filter documents by query parameters.</p>
 <p>Full-text search is not supported and is ignored.</p>
 <dl class="field-list simple">
@@ -1402,7 +1402,7 @@ corrupt the file; use one writer at a time.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.JSONLStorage.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_storage/_storage.py#L449"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.JSONLStorage.save" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_storage/_storage.py#L449"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.JSONLStorage.save" title="Link to this definition">#</a></dt>
 <dd><p>Append or update a document.</p>
 <p>If the <code class="docutils literal notranslate"><span class="pre">doc_id</span></code> already exists, the file is rewritten (update
 semantics). If new, the doc is appended (O(1) write).</p>
@@ -1423,7 +1423,7 @@ semantics). If new, the doc is appended (O(1) write).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.JSONLStorage.save_batch">
-<span class="sig-name descname"><span class="pre">save_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">docs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_storage/_storage.py#L473"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.JSONLStorage.save_batch" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">save_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">docs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_storage/_storage.py#L473"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.JSONLStorage.save_batch" title="Link to this definition">#</a></dt>
 <dd><p>Save a batch, rewriting the file atomically once.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1510,15 +1510,6 @@ semantics). If new, the doc is appended (O(1) write).</p>
 
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../../_sources/modules/generated/scikitplot.corpus.JSONLStorage.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
 </div></div>
               
             
@@ -1550,7 +1541,7 @@ semantics). If new, the doc is appended (O(1) write).</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260426.0ee15ed 2026-04-26T19:22Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260505.33a338a 2026-05-05T14:26Z.
       <br/>
     
   </p>

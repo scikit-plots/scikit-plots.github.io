@@ -1317,7 +1317,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>logsumexp<a class="headerlink" href="#logsumexp" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cexperimental._logsumexp.logsumexp">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cexperimental._logsumexp.</span></span><span class="sig-name descname"><span class="pre">logsumexp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdims</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_sign</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/cexperimental/_logsumexp.py#L58"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexperimental._logsumexp.logsumexp" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cexperimental._logsumexp.</span></span><span class="sig-name descname"><span class="pre">logsumexp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdims</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_sign</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/cexperimental/_logsumexp.py#L58"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexperimental._logsumexp.logsumexp" title="Link to this definition">#</a></dt>
 <dd><p>Compute the log of the sum of exponentials of input elements.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1383,8 +1383,8 @@ function, but may be less stable.</p>
 infinite number of <span class="math notranslate nohighlight">\(z\)</span> such that <span class="math notranslate nohighlight">\(exp(z) = x\)</span>. The convention
 is to return the <span class="math notranslate nohighlight">\(z\)</span> whose imaginary part lies in <span class="math notranslate nohighlight">\((-pi, pi]\)</span>.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="78e81995-9291-4ad4-a291-1950a82afbf7">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('78e81995-9291-4ad4-a291-1950a82afbf7','fa70535d-cfa7-46dd-936c-ffaed625c38a','300e02e8-118d-4990-9f03-02231ac17663','../../lite/tree/../notebooks/index.html?path=9a067747_ae9c_4b3d_bf11_11d0f9416e6d.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="248b73c1-b552-4fbf-a9e6-259347c1af6b">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('248b73c1-b552-4fbf-a9e6-259347c1af6b','c7915ab0-b430-47af-a427-ab4d1dca29be','f8f8a50c-14d3-459f-994d-2e19701320b9','../../lite/tree/../notebooks/index.html?path=ea6010ea_8f53_4ec2_bcde_3e5eb1107a79.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.special</span><span class="w"> </span><span class="kn">import</span> <span class="n">logsumexp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -1418,7 +1418,7 @@ on a masked array, convert the mask into zero weights:</p>
 </div>
 </div>
 </div>
-<div id="300e02e8-118d-4990-9f03-02231ac17663" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('78e81995-9291-4ad4-a291-1950a82afbf7','300e02e8-118d-4990-9f03-02231ac17663')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('78e81995-9291-4ad4-a291-1950a82afbf7','300e02e8-118d-4990-9f03-02231ac17663')">Open In Tab</button></div><div id="fa70535d-cfa7-46dd-936c-ffaed625c38a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="f8f8a50c-14d3-459f-994d-2e19701320b9" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('248b73c1-b552-4fbf-a9e6-259347c1af6b','f8f8a50c-14d3-459f-994d-2e19701320b9')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('248b73c1-b552-4fbf-a9e6-259347c1af6b','f8f8a50c-14d3-459f-994d-2e19701320b9')">Open In Tab</button></div><div id="c7915ab0-b430-47af-a427-ab4d1dca29be" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1481,15 +1481,6 @@ on a masked array, convert the mask into zero weights:</p>
 
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../../_sources/modules/generated/scikitplot.cexperimental._logsumexp.logsumexp.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
 </div></div>
               
             
@@ -1521,7 +1512,7 @@ on a masked array, convert the mask into zero weights:</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260426.0ee15ed 2026-04-26T19:22Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260505.33a338a 2026-05-05T14:26Z.
       <br/>
     
   </p>

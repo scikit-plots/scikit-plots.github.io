@@ -1316,7 +1316,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>to_torch_dataloader<a class="headerlink" href="#to-torch-dataloader" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.to_torch_dataloader">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">to_torch_dataloader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_feature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw_tensor_feature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_feature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_adapters.py#L1058"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.to_torch_dataloader" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">to_torch_dataloader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_feature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw_tensor_feature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_feature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_adapters.py#L1058"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.to_torch_dataloader" title="Link to this definition">#</a></dt>
 <dd><p>Convert documents to a <code class="docutils literal notranslate"><span class="pre">torch.utils.data.DataLoader</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1383,8 +1383,8 @@ NumPy arrays so pipelines can test without GPU hardware.</p>
 <code class="docutils literal notranslate"><span class="pre">(C,</span> <span class="pre">H,</span> <span class="pre">W)</span></code> float32 in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code> (channels-first, PyTorch
 convention) when <code class="docutils literal notranslate"><span class="pre">dtype_map</span></code> is not set.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="f52fcdcf-7f69-4536-884f-de17d47feeb8">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('f52fcdcf-7f69-4536-884f-de17d47feeb8','668abdc9-d32e-47e8-a1b6-a5c052a9dfee','7df3e718-d39d-474c-bfa9-2fcb7a5c7b1d','../../lite/tree/../notebooks/index.html?path=693a6666_fe0f_482e_a7d4_7edde3c5fc67.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="38afb753-97a2-40cf-89b7-ab61e29af759">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('38afb753-97a2-40cf-89b7-ab61e29af759','4e4600ce-0ce2-4ce7-879d-7464bedf00c1','291159dc-a0e3-4509-8271-bf83e38b0d02','../../lite/tree/../notebooks/index.html?path=dcec8ac5_44a5_4da2_b806_cc3a7b3d47aa.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Image classification loader:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">loader</span> <span class="o">=</span> <span class="n">to_torch_dataloader</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">docs</span><span class="p">,</span>
@@ -1400,7 +1400,7 @@ convention) when <code class="docutils literal notranslate"><span class="pre">dt
 </div>
 </div>
 </div>
-<div id="7df3e718-d39d-474c-bfa9-2fcb7a5c7b1d" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('f52fcdcf-7f69-4536-884f-de17d47feeb8','7df3e718-d39d-474c-bfa9-2fcb7a5c7b1d')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('f52fcdcf-7f69-4536-884f-de17d47feeb8','7df3e718-d39d-474c-bfa9-2fcb7a5c7b1d')">Open In Tab</button></div><div id="668abdc9-d32e-47e8-a1b6-a5c052a9dfee" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="291159dc-a0e3-4509-8271-bf83e38b0d02" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('38afb753-97a2-40cf-89b7-ab61e29af759','291159dc-a0e3-4509-8271-bf83e38b0d02')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('38afb753-97a2-40cf-89b7-ab61e29af759','291159dc-a0e3-4509-8271-bf83e38b0d02')">Open In Tab</button></div><div id="4e4600ce-0ce2-4ce7-879d-7464bedf00c1" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1463,15 +1463,6 @@ convention) when <code class="docutils literal notranslate"><span class="pre">dt
 
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../../_sources/modules/generated/scikitplot.corpus.to_torch_dataloader.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
 </div></div>
               
             
@@ -1503,7 +1494,7 @@ convention) when <code class="docutils literal notranslate"><span class="pre">dt
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260426.0ee15ed 2026-04-26T19:22Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260505.33a338a 2026-05-05T14:26Z.
       <br/>
     
   </p>

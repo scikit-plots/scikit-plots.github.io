@@ -1316,7 +1316,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>LanguageDetectionNormalizer<a class="headerlink" href="#languagedetectionnormalizer" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.LanguageDetectionNormalizer">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">LanguageDetectionNormalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fallback_language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_confidence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_normalizers/_normalizer.py#L507"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.LanguageDetectionNormalizer" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">LanguageDetectionNormalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fallback_language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_confidence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_normalizers/_normalizer.py#L507"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.LanguageDetectionNormalizer" title="Link to this definition">#</a></dt>
 <dd><p>Detect document language and set <code class="docutils literal notranslate"><span class="pre">CorpusDocument.language</span></code>.</p>
 <p>Uses <code class="docutils literal notranslate"><span class="pre">langdetect</span></code> (<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">langdetect</span></code>) which is a port of
 Google’s language-detection library. Falls back to the provided
@@ -1346,8 +1346,8 @@ non-<code class="docutils literal notranslate"><span class="pre">None</span></co
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="71f3234f-fae3-4200-ac2c-e829d63f67da">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('71f3234f-fae3-4200-ac2c-e829d63f67da','3b8c66f1-c53f-4963-a5a6-d8a758eedd5a','8d79ce30-89f0-4952-93d1-a49db5ce00f3','../../lite/tree/../notebooks/index.html?path=4d6f931d_3ac6_4f5f_ae36_1031dffc99b9.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="bdb3e784-7ed0-45c3-971f-4f7e221fc939">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('bdb3e784-7ed0-45c3-971f-4f7e221fc939','efb59088-43b1-4e24-965d-c8d40ee36017','79a5583d-2381-4445-9ac5-bdce6bd96156','../../lite/tree/../notebooks/index.html?path=8ec87aa9_73eb_454f_91c2_1853b348d9ad.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">norm</span> <span class="o">=</span> <span class="n">LanguageDetectionNormalizer</span><span class="p">(</span><span class="n">fallback_language</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">doc</span> <span class="o">=</span> <span class="n">CorpusDocument</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&quot;f.txt&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;The quick brown fox.&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">normalize_doc</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
@@ -1357,9 +1357,9 @@ non-<code class="docutils literal notranslate"><span class="pre">None</span></co
 </div>
 </div>
 </div>
-<div id="8d79ce30-89f0-4952-93d1-a49db5ce00f3" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('71f3234f-fae3-4200-ac2c-e829d63f67da','8d79ce30-89f0-4952-93d1-a49db5ce00f3')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('71f3234f-fae3-4200-ac2c-e829d63f67da','8d79ce30-89f0-4952-93d1-a49db5ce00f3')">Open In Tab</button></div><div id="3b8c66f1-c53f-4963-a5a6-d8a758eedd5a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="79a5583d-2381-4445-9ac5-bdce6bd96156" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('bdb3e784-7ed0-45c3-971f-4f7e221fc939','79a5583d-2381-4445-9ac5-bdce6bd96156')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('bdb3e784-7ed0-45c3-971f-4f7e221fc939','79a5583d-2381-4445-9ac5-bdce6bd96156')">Open In Tab</button></div><div id="efb59088-43b1-4e24-965d-c8d40ee36017" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.LanguageDetectionNormalizer.normalize_doc">
-<span class="sig-name descname"><span class="pre">normalize_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_normalizers/_normalizer.py#L553"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.LanguageDetectionNormalizer.normalize_doc" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">normalize_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_normalizers/_normalizer.py#L553"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.LanguageDetectionNormalizer.normalize_doc" title="Link to this definition">#</a></dt>
 <dd><p>Detect language and update <code class="docutils literal notranslate"><span class="pre">doc.language</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1454,15 +1454,6 @@ non-<code class="docutils literal notranslate"><span class="pre">None</span></co
 
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../../_sources/modules/generated/scikitplot.corpus.LanguageDetectionNormalizer.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
 </div></div>
               
             
@@ -1494,7 +1485,7 @@ non-<code class="docutils literal notranslate"><span class="pre">None</span></co
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260426.0ee15ed 2026-04-26T19:22Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260505.33a338a 2026-05-05T14:26Z.
       <br/>
     
   </p>

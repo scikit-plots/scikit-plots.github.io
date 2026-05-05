@@ -1316,7 +1316,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>documents_to_polars<a class="headerlink" href="#documents-to-polars" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.documents_to_polars">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">documents_to_polars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">docs</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_embedding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_schema.py#L2304"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.documents_to_polars" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">documents_to_polars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">docs</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_embedding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_schema.py#L2311"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.documents_to_polars" title="Link to this definition">#</a></dt>
 <dd><p>Convert a list of <a class="reference internal" href="scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument" title="scikitplot.corpus.CorpusDocument"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusDocument</span></code></a> instances to a
 <code class="docutils literal notranslate"><span class="pre">polars.DataFrame</span></code>.</p>
 <dl class="field-list simple">
@@ -1354,8 +1354,8 @@ values. Default: <code class="docutils literal notranslate"><span class="pre">Fa
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="0f70eeaf-219f-44e8-a8f3-90604380ca2b">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('0f70eeaf-219f-44e8-a8f3-90604380ca2b','87055c85-edbd-48c1-b435-20e1f07ee6fc','d7a4a672-ecb4-4e0a-ba02-2e2e27b8b74f','../../lite/tree/../notebooks/index.html?path=f42e4328_836a_4fcb_8d63_1246a73271dc.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="e715516c-3cd5-4667-9320-71dc5a7bfdc6">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('e715516c-3cd5-4667-9320-71dc5a7bfdc6','8a057808-355a-48e3-adfb-c81b3103b72c','4954f30c-02a5-4c50-9e25-6a2d2946a5ac','../../lite/tree/../notebooks/index.html?path=4473c7d9_469f_4a6d_8c1f_332a650792d0.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">docs</span> <span class="o">=</span> <span class="p">[</span><span class="n">CorpusDocument</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&quot;f.txt&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Sentence </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">documents_to_polars</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
@@ -1364,7 +1364,7 @@ values. Default: <code class="docutils literal notranslate"><span class="pre">Fa
 </div>
 </div>
 </div>
-<div id="d7a4a672-ecb4-4e0a-ba02-2e2e27b8b74f" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('0f70eeaf-219f-44e8-a8f3-90604380ca2b','d7a4a672-ecb4-4e0a-ba02-2e2e27b8b74f')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('0f70eeaf-219f-44e8-a8f3-90604380ca2b','d7a4a672-ecb4-4e0a-ba02-2e2e27b8b74f')">Open In Tab</button></div><div id="87055c85-edbd-48c1-b435-20e1f07ee6fc" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="4954f30c-02a5-4c50-9e25-6a2d2946a5ac" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('e715516c-3cd5-4667-9320-71dc5a7bfdc6','4954f30c-02a5-4c50-9e25-6a2d2946a5ac')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('e715516c-3cd5-4667-9320-71dc5a7bfdc6','4954f30c-02a5-4c50-9e25-6a2d2946a5ac')">Open In Tab</button></div><div id="8a057808-355a-48e3-adfb-c81b3103b72c" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1427,15 +1427,6 @@ values. Default: <code class="docutils literal notranslate"><span class="pre">Fa
 
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../../_sources/modules/generated/scikitplot.corpus.documents_to_polars.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
 </div></div>
               
             
@@ -1467,7 +1458,7 @@ values. Default: <code class="docutils literal notranslate"><span class="pre">Fa
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260426.0ee15ed 2026-04-26T19:22Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260505.33a338a 2026-05-05T14:26Z.
       <br/>
     
   </p>

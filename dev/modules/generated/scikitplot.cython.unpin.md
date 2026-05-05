@@ -1,6 +1,6 @@
 # unpin[#](#unpin "Link to this heading")
 
-scikitplot.cython.unpin(**alias**, **\***, **cache\_dir=None**, **lock\_timeout\_s=60.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/cython/_pins.py#L165)[#](#scikitplot.cython.unpin "Link to this definition")
+scikitplot.cython.unpin(**alias**, **\***, **cache\_dir=None**, **lock\_timeout\_s=60.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/cython/_pins.py#L165)[#](#scikitplot.cython.unpin "Link to this definition")
 :   Remove an alias pin.
 
     Parameters:

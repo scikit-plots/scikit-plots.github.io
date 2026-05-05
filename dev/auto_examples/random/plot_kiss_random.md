@@ -153,37 +153,37 @@ for method in ["random", "uniform"]:
 Numpy
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.005837286998939817,
- 'time_mean': 0.007191801399676479,
- 'time_max': 0.00876371999947878,
- 'time_std': 0.0013531506332894398,
+ 'time_min': 0.003768986000068253,
+ 'time_mean': 0.0053887152000243075,
+ 'time_max': 0.007685556000069482,
+ 'time_std': 0.0014848441704749524,
  'output_mean': 0.5000264761740889,
  'output_std': 0.2886354529025341}
 Kiss Customized 64
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.01245336699867039,
- 'time_mean': 0.013813642199602327,
- 'time_max': 0.015173190999121289,
- 'time_std': 0.0012026995106697784,
+ 'time_min': 0.012588004999997793,
+ 'time_mean': 0.013453247400138934,
+ 'time_max': 0.01500925600021219,
+ 'time_std': 0.0010998154672641066,
  'output_mean': 0.4994983951235817,
  'output_std': 0.28868033687878636}
 Numpy
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.00521821300026204,
- 'time_mean': 0.006288307399881887,
- 'time_max': 0.007039290998363867,
- 'time_std': 0.0009604709501277473,
+ 'time_min': 0.004949180000039632,
+ 'time_mean': 0.005977245599933667,
+ 'time_max': 0.006668169000022317,
+ 'time_std': 0.0009360696838991191,
  'output_mean': 0.5000264761740889,
  'output_std': 0.2886354529025341}
 Kiss Customized 64
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.016486809001435176,
- 'time_mean': 0.019717275600487482,
- 'time_max': 0.023164207999798236,
- 'time_std': 0.0027385805717171367,
+ 'time_min': 0.014958366999962891,
+ 'time_mean': 0.015772220600047147,
+ 'time_max': 0.017168761999982962,
+ 'time_std': 0.0009747333663345016,
  'output_mean': 0.4994983951235817,
  'output_std': 0.28868033687878636}
 
@@ -342,8 +342,8 @@ Raw array: [  421217147685971266 15020224898898924438 16951546275468841018
 ✅ Generator Integration:
   Random floats: [0.57358203 0.55408423 0.63089841 0.04077134 0.13284327]
   Random ints:   [77 88 38  2 91]
-  Normal:   [ 0.35713156 -0.38265306 -0.36348331  0.94098378 -1.65821998]
-  Uniform:  [0.2203807  0.96561967 0.39410862 0.78222871 0.12790767]
+  Normal:   [-0.4538932   0.09784759  0.98530244 -1.20625406  0.38458092]
+  Uniform:  [0.12790767 0.28756121 0.40054907 0.37500545 0.80963298]
 
 ```
 ```
@@ -404,13 +404,13 @@ Generator from seed: KissGenerator
 Generator from BitGenerator: KissGenerator
 
 Generator methods:
-  random(5):         [0.97337691 0.82169817 0.90475915 0.45943854 0.85266455]
-  integers(0, 100):  [48 16 55 21 33]
-  normal(0, 1):      [-0.48773368  1.52586761 -0.60200597 -0.74724739 -0.59112938]
-  uniform(10, 20):   [12.1066697  12.98118022 10.23330197 14.7914558  14.59656123]
-  choice(['A','B','C']): ['A' 'A' 'A' 'A' 'C' 'C' 'B' 'C' 'A' 'A']
-  Weighted choice A: 53% (✅ expected ~50%)
-  shuffle([0..9]):   [2 7 0 6 8 9 3 5 1 4]
+  random(5):         [0.96780875 0.52380667 0.62240565 0.50055549 0.48311973]
+  integers(0, 100):  [23 49 85 70  9]
+  normal(0, 1):      [-1.31189675  0.77951156 -0.15715689 -1.22785076 -0.60644554]
+  uniform(10, 20):   [11.10846438 15.50243096 19.28589377 10.00900165 17.40653325]
+  choice(['A','B','C']): ['B' 'B' 'C' 'B' 'C' 'B' 'B' 'B' 'A' 'C']
+  Weighted choice A: 42% (✅ expected ~50%)
+  shuffle([0..9]):   [5 8 0 2 6 7 4 9 3 1]
 
 ```
 ```
@@ -442,7 +442,7 @@ Default RNG: KissGenerator
 Usage:
   Random floats: [0.30795703 0.02283423 0.81424802 0.91894516 0.68575694]
   Random ints:   [1 9 6 4 2]
-  Normal:        [-2.43821743 -0.90688695  0.67830116 -0.09502604  1.004278  ]
+  Normal:        [ 1.65105291  0.42244439 -0.27256396  0.16929254 -1.41358956]
 
 ```
 ```
@@ -681,8 +681,8 @@ print(f"Beta(2, 5):           {beta_samples}")
 ======================================================================
 10. ADVANCED USAGE - CUSTOM DISTRIBUTIONS
 ======================================================================
-Exponential(scale=2): [0.55196949 0.1967281  0.04997201 0.63245272 0.02001033]
-Beta(2, 5):           [0.27448484 0.16414432 0.08963298 0.15368067 0.12061532]
+Exponential(scale=2): [1.72503895 0.49716254 4.16048727 3.02602525 1.96508613]
+Beta(2, 5):           [0.33724587 0.11254241 0.17809922 0.17858162 0.16731426]
 
 ```
 ```
@@ -927,7 +927,7 @@ RECOMMENDED USAGE:
 
 ```
 
-****Total running time of the script:**** (0 minutes 3.060 seconds)
+****Total running time of the script:**** (0 minutes 2.316 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo14.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/random/plot_kiss_random.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo14.svg)](../../lite/lab/index.html?path=auto_examples/random/plot_kiss_random.ipynb)
 

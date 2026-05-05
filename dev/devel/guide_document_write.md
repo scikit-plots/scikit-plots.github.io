@@ -258,7 +258,7 @@ will render as:
 >
 > See the tutorial [Quick Start Guide](../introduction/quick_start.html#quick-start)
 >
-> See the example [Line plot](https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/simple_plot.html "(in Matplotlib v3.11.0.dev2357+g05b91794a)")
+> See the example [Line plot](https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/simple_plot.html "(in Matplotlib v3.12.0.dev26+gf4cc437d1)")
 
 Sections can also be given reference labels. For instance from the
 [Installation](../install/index.html) link:
@@ -410,7 +410,7 @@ In rare cases we want the rendering of the mathematical text in the
 documentation html to exactly match with the rendering of the mathematical
 expression in the Matplotlib figure. In these cases, you can use the
 `matplotlib.sphinxext.mathmpl` Sphinx extension (See also the
-[Writing mathematical expressions](https://matplotlib.org/devdocs/users/explain/text/mathtext.html "(in Matplotlib v3.11.0.dev2357+g05b91794a)") tutorial.)
+[Writing mathematical expressions](https://matplotlib.org/devdocs/users/explain/text/mathtext.html "(in Matplotlib v3.12.0.dev26+gf4cc437d1)") tutorial.)
 
 ## Write docstrings[#](#write-docstrings "Link to this heading")
 
@@ -868,7 +868,7 @@ Note that `examples/text_labels_and_annotations/legend.py` has been mapped to
 fixed in future re-organization of the docs.
 
 Plots can also be directly placed inside docstrings. Details are in
-[matplotlib.sphinxext.plot\_directive](https://matplotlib.org/devdocs/api/sphinxext_plot_directive_api.html "(in Matplotlib v3.11.0.dev2357+g05b91794a)"). A short example is:
+[matplotlib.sphinxext.plot\_directive](https://matplotlib.org/devdocs/api/sphinxext_plot_directive_api.html "(in Matplotlib v3.12.0.dev26+gf4cc437d1)"). A short example is:
 
 ```
 """
@@ -919,7 +919,7 @@ displayed, and figures are put into the built page. Matplotlib uses the
 `# %%` section separator so that IDEs will identify “code cells” to make
 it easy to re-run sub-sections of the example.
 
-For instance the example [Line plot](https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/simple_plot.html "(in Matplotlib v3.11.0.dev2357+g05b91794a)")
+For instance the example [Line plot](https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/simple_plot.html "(in Matplotlib v3.12.0.dev26+gf4cc437d1)")
 example is generated from
 `/galleries/examples/lines_bars_and_markers/simple_plot.py`, which looks
 like:
@@ -952,7 +952,7 @@ plt.show()
 ```
 
 The first comment block is treated as [docutils](https://docutils.sourceforge.io/rst.html) text. The other comment blocks
-render as comments in [Line plot](https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/simple_plot.html "(in Matplotlib v3.11.0.dev2357+g05b91794a)").
+render as comments in [Line plot](https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/simple_plot.html "(in Matplotlib v3.12.0.dev26+gf4cc437d1)").
 
 Tutorials are made with the exact same mechanism, except they are longer and
 typically have more than one comment block (i.e. [Quick Start Guide](../introduction/quick_start.html#quick-start)). The
@@ -1030,7 +1030,7 @@ reference should always be the second to mention; see the example above.
 
 ### Order examples[#](#order-examples "Link to this heading")
 
-The order of the sections of the [Tutorials](https://matplotlib.org/devdocs/tutorials/index.html#tutorials "(in Matplotlib v3.11.0.dev2357+g05b91794a)") and the [Examples](https://matplotlib.org/devdocs/gallery/index.html#gallery "(in Matplotlib v3.11.0.dev2357+g05b91794a)"), as
+The order of the sections of the [Tutorials](https://matplotlib.org/devdocs/tutorials/index.html#tutorials "(in Matplotlib v3.12.0.dev26+gf4cc437d1)") and the [Examples](https://matplotlib.org/devdocs/gallery/index.html#gallery "(in Matplotlib v3.12.0.dev26+gf4cc437d1)"), as
 well as the order of the examples within each section are determined in a
 two step process from within the `/doc/sphinxext/gallery_order.py`:
 
@@ -1108,15 +1108,15 @@ Code:
     doing. When more context or explanation is required, add a text paragraph before
     the code example.
 
-[Identify whether artists intersect](https://matplotlib.org/devdocs/gallery/misc/bbox_intersect.html "(in Matplotlib v3.11.0.dev2357+g05b91794a)") demonstrates the point of visual examples.
+[Identify whether artists intersect](https://matplotlib.org/devdocs/gallery/misc/bbox_intersect.html "(in Matplotlib v3.12.0.dev26+gf4cc437d1)") demonstrates the point of visual examples.
 This example is “messy” in that it’s hard to categorize, but the gallery is the right
 spot for it because it makes sense to find it by visual search
 
-[Interactive adjustment of colormap range](https://matplotlib.org/devdocs/gallery/images_contours_and_fields/colormap_interactive_adjustment.html "(in Matplotlib v3.11.0.dev2357+g05b91794a)") is an
+[Interactive adjustment of colormap range](https://matplotlib.org/devdocs/gallery/images_contours_and_fields/colormap_interactive_adjustment.html "(in Matplotlib v3.12.0.dev26+gf4cc437d1)") is an
 example of a good descriptive title that briefly summarizes how the showcased
 library features are used to implement the demonstrated visualization technique.
 
-[Lines with a ticked patheffect](https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/lines_with_ticks_demo.html "(in Matplotlib v3.11.0.dev2357+g05b91794a)") is an example of having a
+[Lines with a ticked patheffect](https://matplotlib.org/devdocs/gallery/lines_bars_and_markers/lines_with_ticks_demo.html "(in Matplotlib v3.12.0.dev26+gf4cc437d1)") is an example of having a
 minimal amount of code necessary to showcase the feature. The lack of extraneous code
 makes it easier for the reader to map which parts of code correspond to which parts of
 the plot.

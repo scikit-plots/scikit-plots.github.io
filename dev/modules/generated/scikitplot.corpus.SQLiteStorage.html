@@ -1316,7 +1316,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>SQLiteStorage<a class="headerlink" href="#sqlitestorage" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.SQLiteStorage">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">SQLiteStorage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">':memory:'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_storage/_storage.py#L574"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.SQLiteStorage" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">SQLiteStorage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">':memory:'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_storage/_storage.py#L574"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.SQLiteStorage" title="Link to this definition">#</a></dt>
 <dd><p>SQLite-backed corpus store with FTS5 full-text search.</p>
 <p>Uses stdlib <code class="docutils literal notranslate"><span class="pre">sqlite3</span></code> — no external dependencies. Full-text search
 is available via FTS5 (<code class="docutils literal notranslate"><span class="pre">StorageQuery.full_text</span></code>).</p>
@@ -1336,8 +1336,8 @@ Pass <code class="docutils literal notranslate"><span class="pre">\&quot;:memory
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="7724b0ba-5500-48f0-89a5-7339800232a4">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('7724b0ba-5500-48f0-89a5-7339800232a4','a6625cdb-c70e-4711-a349-18b07722baf7','edbc0d8d-c6d2-43fc-985d-029f1ce14593','../../lite/tree/../notebooks/index.html?path=16e6ee17_94d7_4439_a666_af4f6d6e7c90.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="6824336d-2976-43b9-8575-488c28314d8f">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('6824336d-2976-43b9-8575-488c28314d8f','8bf59640-99de-4035-b30b-f3cb316f613f','59aa1b03-a443-497c-8822-9b6d71e100ca','../../lite/tree/../notebooks/index.html?path=575eff04_24ce_4596_bf8c_5b7dc6b0c662.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">SQLiteStorage</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;corpus.db&quot;</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="o">.</span><span class="n">save_batch</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">StorageQuery</span><span class="p">(</span><span class="n">source_type</span><span class="o">=</span><span class="s2">&quot;book&quot;</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
@@ -1347,9 +1347,9 @@ Pass <code class="docutils literal notranslate"><span class="pre">\&quot;:memory
 </div>
 </div>
 </div>
-<div id="edbc0d8d-c6d2-43fc-985d-029f1ce14593" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('7724b0ba-5500-48f0-89a5-7339800232a4','edbc0d8d-c6d2-43fc-985d-029f1ce14593')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('7724b0ba-5500-48f0-89a5-7339800232a4','edbc0d8d-c6d2-43fc-985d-029f1ce14593')">Open In Tab</button></div><div id="a6625cdb-c70e-4711-a349-18b07722baf7" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="59aa1b03-a443-497c-8822-9b6d71e100ca" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('6824336d-2976-43b9-8575-488c28314d8f','59aa1b03-a443-497c-8822-9b6d71e100ca')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('6824336d-2976-43b9-8575-488c28314d8f','59aa1b03-a443-497c-8822-9b6d71e100ca')">Open In Tab</button></div><div id="8bf59640-99de-4035-b30b-f3cb316f613f" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.SQLiteStorage.close">
-<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_storage/_storage.py#L790"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.SQLiteStorage.close" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_storage/_storage.py#L790"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.SQLiteStorage.close" title="Link to this definition">#</a></dt>
 <dd><p>Close the database connection.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -1360,7 +1360,7 @@ Pass <code class="docutils literal notranslate"><span class="pre">\&quot;:memory
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.SQLiteStorage.count">
-<span class="sig-name descname"><span class="pre">count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_storage/_storage.py#L783"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.SQLiteStorage.count" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_storage/_storage.py#L783"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.SQLiteStorage.count" title="Link to this definition">#</a></dt>
 <dd><p>Return total stored document count via fast SQL COUNT.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -1371,7 +1371,7 @@ Pass <code class="docutils literal notranslate"><span class="pre">\&quot;:memory
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.SQLiteStorage.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc_id</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_storage/_storage.py#L706"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.SQLiteStorage.get" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc_id</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_storage/_storage.py#L706"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.SQLiteStorage.get" title="Link to this definition">#</a></dt>
 <dd><p>Retrieve a document by <code class="docutils literal notranslate"><span class="pre">doc_id</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1390,7 +1390,7 @@ Pass <code class="docutils literal notranslate"><span class="pre">\&quot;:memory
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.SQLiteStorage.query">
-<span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_storage/_storage.py#L724"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.SQLiteStorage.query" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_storage/_storage.py#L724"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.SQLiteStorage.query" title="Link to this definition">#</a></dt>
 <dd><p>Query documents with optional full-text search (FTS5).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1409,7 +1409,7 @@ Pass <code class="docutils literal notranslate"><span class="pre">\&quot;:memory
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.SQLiteStorage.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_storage/_storage.py#L678"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.SQLiteStorage.save" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_storage/_storage.py#L678"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.SQLiteStorage.save" title="Link to this definition">#</a></dt>
 <dd><p>Persist a single document (upsert by <code class="docutils literal notranslate"><span class="pre">doc_id</span></code>).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1428,7 +1428,7 @@ Pass <code class="docutils literal notranslate"><span class="pre">\&quot;:memory
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.SQLiteStorage.save_batch">
-<span class="sig-name descname"><span class="pre">save_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">docs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_storage/_storage.py#L690"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.SQLiteStorage.save_batch" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">save_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">docs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_storage/_storage.py#L690"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.SQLiteStorage.save_batch" title="Link to this definition">#</a></dt>
 <dd><p>Persist a batch of documents in a single transaction.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1516,15 +1516,6 @@ Pass <code class="docutils literal notranslate"><span class="pre">\&quot;:memory
 
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../../_sources/modules/generated/scikitplot.corpus.SQLiteStorage.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
 </div></div>
               
             
@@ -1556,7 +1547,7 @@ Pass <code class="docutils literal notranslate"><span class="pre">\&quot;:memory
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260426.0ee15ed 2026-04-26T19:22Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260505.33a338a 2026-05-05T14:26Z.
       <br/>
     
   </p>

@@ -12,10 +12,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/devel/index.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="Scikit-plots Contributing 0.5.dev0+git.20260426.0ee15ed- April 26, 2026 19:22 UTC Thank you for your interest in helping to improve scikit-plots! This project is a community effort, and everyone is..." />
+<meta property="og:description" content="Scikit-plots Contributing 0.5.dev0+git.20260505.33a338a- May 05, 2026 14:26 UTC Thank you for your interest in helping to improve scikit-plots! This project is a community effort, and everyone is w..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="Scikit-plots Contributing 0.5.dev0+git.20260426.0ee15ed- April 26, 2026 19:22 UTC Thank you for your interest in helping to improve scikit-plots! This project is a community effort, and everyone is..." />
+<meta name="description" content="Scikit-plots Contributing 0.5.dev0+git.20260505.33a338a- May 05, 2026 14:26 UTC Thank you for your interest in helping to improve scikit-plots! This project is a community effort, and everyone is w..." />
 
 <script>
 window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": false}, "providers": {"chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask OpenAI ChatGPT about this page", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "gpt-4o", "type": "web"}, "claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Anthropic Claude about this page", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this page", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Hi! Please review this documentation content: {url}\n\nI have questions about it.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}, "cursor": {"enabled": false, "type": "cursor", "label": "Connect to Cursor", "description": "Connect the MCP server to Cursor IDE.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
@@ -620,6 +620,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">docker</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="guide_docker.html">Docker Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide_docker_wsl_recovery_sphinx.html">Docker Recovery Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guide_python_env_manager.html">Python Env Manager Guide</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">getting started</span></p>
@@ -747,7 +748,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
                 <article class="bd-article">
                   
   <span class="target" id="scikit-plots-contributing"></span><p><span class="raw-html"><div style="text-align: center"><strong></span> Scikit-plots Contributing
-<br/> 0.5.dev0+git.20260426.0ee15ed - April 26, 2026 19:22 UTC
+<br/> 0.5.dev0+git.20260505.33a338a - May 05, 2026 14:26 UTC
 <span class="raw-html"></strong></div></span></p>
 <section id="contributing-guidelines-to-scikit-plots">
 <span id="developers-guide-index"></span><h1>Contributing Guidelines to scikit-plots<a class="headerlink" href="#contributing-guidelines-to-scikit-plots" title="Link to this heading">#</a></h1>
@@ -837,6 +838,26 @@ Scikit-plots is grateful to the these teams for their documentation efforts.</p>
 <li class="toctree-l2"><a class="reference internal" href="guide_docker.html#custom-docker-commands">🛠️ Custom Docker Commands</a></li>
 <li class="toctree-l2"><a class="reference internal" href="guide_docker.html#folder-structure">📂 Folder Structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="guide_docker.html#useful-references">🖥️ Useful References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guide_docker_wsl_recovery_sphinx.html">Docker Recovery Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide_docker_wsl_recovery_sphinx.html#windows-wsl-cross-platform-notes">Windows WSL + Cross-Platform Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_docker_wsl_recovery_sphinx.html#situation-overview-windows-wsl2-case">1. Situation Overview (Windows WSL2 Case)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_docker_wsl_recovery_sphinx.html#architecture-model-critical-understanding">2. Architecture Model (Critical Understanding)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_docker_wsl_recovery_sphinx.html#critical-safety-rules">3. Critical Safety Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_docker_wsl_recovery_sphinx.html#pre-check-system-validation">4. Pre-check (System Validation)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_docker_wsl_recovery_sphinx.html#recovery-strategy-preferred-method">5. Recovery Strategy (Preferred Method)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_docker_wsl_recovery_sphinx.html#fallback-method-compatibility-mode">6. Fallback Method (Compatibility Mode)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_docker_wsl_recovery_sphinx.html#verification">7. Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_docker_wsl_recovery_sphinx.html#restart-docker">8. Restart Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_docker_wsl_recovery_sphinx.html#root-causes">9. Root Causes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_docker_wsl_recovery_sphinx.html#failure-handling">10. Failure Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_docker_wsl_recovery_sphinx.html#recovery-outcome">11. Recovery Outcome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_docker_wsl_recovery_sphinx.html#key-principle">12. Key Principle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_docker_wsl_recovery_sphinx.html#summary-flow">13. Summary Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_docker_wsl_recovery_sphinx.html#linux-recovery-notes">14. Linux Recovery Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_docker_wsl_recovery_sphinx.html#macos-recovery-notes">15. macOS Recovery Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_docker_wsl_recovery_sphinx.html#final-warning">Final Warning</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="guide_python_env_manager.html">Python Env Manager Guide</a><ul>
@@ -1300,15 +1321,6 @@ manage, or release manage, these guidelines describe how our current process wor
 </ul>
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../_sources/devel/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
 </div></div>
               
             
@@ -1340,7 +1352,7 @@ manage, or release manage, these guidelines describe how our current process wor
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260426.0ee15ed 2026-04-26T19:22Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260505.33a338a 2026-05-05T14:26Z.
       <br/>
     
   </p>

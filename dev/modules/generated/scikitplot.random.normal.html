@@ -1336,9 +1336,22 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Uses the Box-Muller transform:</dt><dd><p>z = sqrt(-2 * log(u1)) * cos(2 * pi * u2)</p>
+</dd>
+</dl>
+<p>where u1, u2 are i.i.d. Uniform(0, 1).</p>
+<p>u1 is clamped away from zero to prevent log(0) = -inf.  Since
+KissBitGenerator.random() maps [0, 2^64-1] onto [0.0, 1.0) and zero
+is a valid raw value, u1 == 0.0 is possible (probability 1/2^64).</p>
+<p>The size != None path is fully vectorized in NumPy’s C layer.
+No Python list or scalar boxing is performed, which avoids the
+GCC -Wstringop-overflow false positives triggered by Python 3.13t’s
+free-threaded Py_INCREF atomic operations.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="502b66c0-c08f-4a56-ae59-743e805b8209">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('502b66c0-c08f-4a56-ae59-743e805b8209','c9ea5bd8-0e06-4f0b-a552-6fcf8c9847a7','6508be75-68ae-4d6c-b66a-e5c3d6acc2ba','../../lite/tree/../notebooks/index.html?path=065b6615_ead9_4830_a044_8043ba63f43f.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="756c9df6-cce5-47fe-9fa0-fc58d069f857">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('756c9df6-cce5-47fe-9fa0-fc58d069f857','7edb685f-241f-4b6c-8851-7c5917fc5792','94536410-3414-497f-8050-a5e80864a8d7','../../lite/tree/../notebooks/index.html?path=ff77d7d1_67a7_4760_9d85_12a6f4f09629.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 <span class="go">array([...])</span>
@@ -1346,7 +1359,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 </div>
 </div>
 </div>
-<div id="6508be75-68ae-4d6c-b66a-e5c3d6acc2ba" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('502b66c0-c08f-4a56-ae59-743e805b8209','6508be75-68ae-4d6c-b66a-e5c3d6acc2ba')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('502b66c0-c08f-4a56-ae59-743e805b8209','6508be75-68ae-4d6c-b66a-e5c3d6acc2ba')">Open In Tab</button></div><div id="c9ea5bd8-0e06-4f0b-a552-6fcf8c9847a7" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="94536410-3414-497f-8050-a5e80864a8d7" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('756c9df6-cce5-47fe-9fa0-fc58d069f857','94536410-3414-497f-8050-a5e80864a8d7')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('756c9df6-cce5-47fe-9fa0-fc58d069f857','94536410-3414-497f-8050-a5e80864a8d7')">Open In Tab</button></div><div id="7edb685f-241f-4b6c-8851-7c5917fc5792" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1409,15 +1422,6 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../../_sources/modules/generated/scikitplot.random.normal.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
 </div></div>
               
             
@@ -1449,7 +1453,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260426.0ee15ed 2026-04-26T19:22Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260505.33a338a 2026-05-05T14:26Z.
       <br/>
     
   </p>

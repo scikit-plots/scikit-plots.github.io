@@ -1,6 +1,6 @@
 # get\_sentence\_splitter[#](#get-sentence-splitter "Link to this heading")
 
-scikitplot.corpus.get\_sentence\_splitter(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L706)[#](#scikitplot.corpus.get_sentence_splitter "Link to this definition")
+scikitplot.corpus.get\_sentence\_splitter(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L722)[#](#scikitplot.corpus.get_sentence_splitter "Link to this definition")
 :   Retrieve a registered sentence splitter by name.
 
     Parameters:

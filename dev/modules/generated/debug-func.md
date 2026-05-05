@@ -1,6 +1,6 @@
 # debug[#](#debug "Link to this heading")
 
-scikitplot.logging.debug(**msg**, **\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/logging.py#L1537)[#](#scikitplot.logging.debug "Link to this definition")
+scikitplot.logging.debug(**msg**, **\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/logging.py#L1537)[#](#scikitplot.logging.debug "Link to this definition")
 :   Log a message at the DEBUG log level.
 
     Parameters:

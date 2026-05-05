@@ -1,6 +1,6 @@
 # HookableCorpusPipeline[#](#hookablecorpuspipeline "Link to this heading")
 
-class scikitplot.corpus.HookableCorpusPipeline(**hooks=None**, **chunker=None**, **filter\_=None**, **embedding\_engine=None**, **output\_path=None**, **export\_format=None**, **default\_language=None**, **progress\_callback=None**, **reader\_kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_custom_hooks.py#L955)[#](#scikitplot.corpus.HookableCorpusPipeline "Link to this definition")
+class scikitplot.corpus.HookableCorpusPipeline(**hooks=None**, **chunker=None**, **filter\_=None**, **embedding\_engine=None**, **output\_path=None**, **export\_format=None**, **default\_language=None**, **progress\_callback=None**, **reader\_kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_custom_hooks.py#L976)[#](#scikitplot.corpus.HookableCorpusPipeline "Link to this definition")
 :   [`CorpusPipeline`](scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline "scikitplot.corpus._pipeline.CorpusPipeline") extended with
     per-stage lifecycle hooks.
 
@@ -84,7 +84,7 @@ class scikitplot.corpus.HookableCorpusPipeline(**hooks=None**, **chunker=None**,
     ```
     Go BackOpen In Tab
 
-    run(**input\_path**, **\***, **output\_path=None**, **export\_format=None**, **filename\_override=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_custom_hooks.py#L1098)[#](#scikitplot.corpus.HookableCorpusPipeline.run "Link to this definition")
+    run(**input\_path**, **\***, **output\_path=None**, **export\_format=None**, **filename\_override=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_custom_hooks.py#L1119)[#](#scikitplot.corpus.HookableCorpusPipeline.run "Link to this definition")
     :   Process a single source with lifecycle hooks applied.
 
         Parameters:
@@ -104,15 +104,15 @@ class scikitplot.corpus.HookableCorpusPipeline(**hooks=None**, **chunker=None**,
         :   PipelineResult
 
         Parameters:
-        :   * ****input\_path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
-            * ****output\_path**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") **|** **None**)
-            * ****export\_format**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") **|** **None**)
+        :   * ****input\_path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**pathlib.Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
+            * ****output\_path**** (**Any** **|** **None**)
+            * ****export\_format**** (**Any** **|** **None**)
             * ****filename\_override**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
 
         Return type:
-        :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")
+        :   Any
 
-    run\_batch(**input\_files**, **\***, **stop\_on\_error=False**, **export\_format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_custom_hooks.py#L1144)[#](#scikitplot.corpus.HookableCorpusPipeline.run_batch "Link to this definition")
+    run\_batch(**input\_files**, **\***, **stop\_on\_error=False**, **export\_format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_custom_hooks.py#L1165)[#](#scikitplot.corpus.HookableCorpusPipeline.run_batch "Link to this definition")
     :   Process multiple sources with hooks applied to each.
 
         Parameters:
@@ -129,14 +129,14 @@ class scikitplot.corpus.HookableCorpusPipeline(**hooks=None**, **chunker=None**,
         :   list[PipelineResult]
 
         Parameters:
-        :   * ****input\_files**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
+        :   * ****input\_files**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[****Any****]**)
             * ****stop\_on\_error**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-            * ****export\_format**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") **|** **None**)
+            * ****export\_format**** (**Any** **|** **None**)
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
+        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[Any]
 
-    run\_url(**url**, **\***, **output\_path=None**, **export\_format=None**, **stop\_on\_error=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_custom_hooks.py#L1181)[#](#scikitplot.corpus.HookableCorpusPipeline.run_url "Link to this definition")
+    run\_url(**url**, **\***, **output\_path=None**, **export\_format=None**, **stop\_on\_error=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_custom_hooks.py#L1202)[#](#scikitplot.corpus.HookableCorpusPipeline.run_url "Link to this definition")
     :   Process one URL or a list of URLs with hooks applied.
 
         Parameters:
@@ -156,10 +156,10 @@ class scikitplot.corpus.HookableCorpusPipeline(**hooks=None**, **chunker=None**,
         :   PipelineResult or list[PipelineResult]
 
         Parameters:
-        :   * ****url**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-            * ****output\_path**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") **|** **None**)
-            * ****export\_format**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") **|** **None**)
+        :   * ****url**** (**Any**)
+            * ****output\_path**** (**Any** **|** **None**)
+            * ****export\_format**** (**Any** **|** **None**)
             * ****stop\_on\_error**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
 
         Return type:
-        :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")
+        :   Any

@@ -1,6 +1,6 @@
 # CustomNLPEnricher[#](#customnlpenricher "Link to this heading")
 
-class scikitplot.corpus.CustomNLPEnricher(**config=None**, **\***, **custom\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_custom_hooks.py#L617)[#](#scikitplot.corpus.CustomNLPEnricher "Link to this definition")
+class scikitplot.corpus.CustomNLPEnricher(**config=None**, **\***, **custom\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_custom_hooks.py#L638)[#](#scikitplot.corpus.CustomNLPEnricher "Link to this definition")
 :   `NLPEnricher` extended with
     fully-replaceable NLP backends.
 
@@ -64,7 +64,7 @@ class scikitplot.corpus.CustomNLPEnricher(**config=None**, **\***, **custom\_con
     ```
     Go BackOpen In Tab
 
-    enrich\_documents(**documents**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_custom_hooks.py#L702)[#](#scikitplot.corpus.CustomNLPEnricher.enrich_documents "Link to this definition")
+    enrich\_documents(**documents**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_custom_hooks.py#L723)[#](#scikitplot.corpus.CustomNLPEnricher.enrich_documents "Link to this definition")
     :   Enrich a batch of `CorpusDocument` instances using custom or
         built-in backends per stage.
 
@@ -79,8 +79,8 @@ class scikitplot.corpus.CustomNLPEnricher(**config=None**, **\***, **custom\_con
         :   list[CorpusDocument]
 
         Parameters:
-        :   * ****documents**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
+        :   * ****documents**** (**Sequence****[****Any****]**)
             * ****overwrite**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
 
         Return type:
-        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
+        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[Any]

@@ -1,6 +1,6 @@
 # is\_windows[#](#is-windows "Link to this heading")
 
-scikitplot.cython.is\_windows()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/cython/_profiles.py#L86)[#](#scikitplot.cython.is_windows "Link to this definition")
+scikitplot.cython.is\_windows()[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/cython/_profiles.py#L86)[#](#scikitplot.cython.is_windows "Link to this definition")
 :   Return True if running on Windows.
 
     Return type:

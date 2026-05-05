@@ -1316,7 +1316,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>save_waveform_as_mp3<a class="headerlink" href="#save-waveform-as-mp3" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.experimental._doremi.save_waveform_as_mp3">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.experimental._doremi.</span></span><span class="sig-name descname"><span class="pre">save_waveform_as_mp3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waveform</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'output.mp3'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">44100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amplitude_int</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32767</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bitrate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'192k'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/experimental/_doremi/note_io.py#L167"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.experimental._doremi.save_waveform_as_mp3" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.experimental._doremi.</span></span><span class="sig-name descname"><span class="pre">save_waveform_as_mp3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waveform</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'output.mp3'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">44100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amplitude_int</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32767</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bitrate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'192k'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/experimental/_doremi/note_io.py#L167"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.experimental._doremi.save_waveform_as_mp3" title="Link to this definition">#</a></dt>
 <dd><p>Save waveform as an MP3 file using pydub and ffmpeg, with support for mono or stereo.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1354,8 +1354,8 @@ Defaults to 32767 (16-bit max).</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="3b2416a1-5351-46d1-9def-22f3a6039e03">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('3b2416a1-5351-46d1-9def-22f3a6039e03','5993778c-d407-4a9a-9e8c-bc9fbebbb099','99329a89-a31b-45b1-98f4-f29d581696d9','../../lite/tree/../notebooks/index.html?path=73d98651_e85b_42d4_a8a5_14c37d4099ed.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="3b3c494f-2f37-4ab5-95ce-a7a276306930">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('3b3c494f-2f37-4ab5-95ce-a7a276306930','dec825f5-c1af-4e5e-b09a-41fa77bde522','dddaf906-1ed6-4f89-98f3-3d64b770f933','../../lite/tree/../notebooks/index.html?path=694b1e28_131a_4728_87dd_7e614943753a.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">save_waveform_as_mp3</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">tone</span><span class="p">,</span> <span class="s2">&quot;Do4.mp3&quot;</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Do4&quot;</span><span class="p">,</span> <span class="s2">&quot;artist&quot;</span><span class="p">:</span> <span class="s2">&quot;NoteGen&quot;</span><span class="p">}</span>
 <span class="gp">... </span><span class="p">)</span>
@@ -1363,7 +1363,7 @@ Defaults to 32767 (16-bit max).</p>
 </div>
 </div>
 </div>
-<div id="99329a89-a31b-45b1-98f4-f29d581696d9" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('3b2416a1-5351-46d1-9def-22f3a6039e03','99329a89-a31b-45b1-98f4-f29d581696d9')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('3b2416a1-5351-46d1-9def-22f3a6039e03','99329a89-a31b-45b1-98f4-f29d581696d9')">Open In Tab</button></div><div id="5993778c-d407-4a9a-9e8c-bc9fbebbb099" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="dddaf906-1ed6-4f89-98f3-3d64b770f933" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('3b3c494f-2f37-4ab5-95ce-a7a276306930','dddaf906-1ed6-4f89-98f3-3d64b770f933')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('3b3c494f-2f37-4ab5-95ce-a7a276306930','dddaf906-1ed6-4f89-98f3-3d64b770f933')">Open In Tab</button></div><div id="dec825f5-c1af-4e5e-b09a-41fa77bde522" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1426,15 +1426,6 @@ Defaults to 32767 (16-bit max).</p>
 
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../../_sources/modules/generated/scikitplot.experimental._doremi.save_waveform_as_mp3.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
 </div></div>
               
             
@@ -1466,7 +1457,7 @@ Defaults to 32767 (16-bit max).</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260426.0ee15ed 2026-04-26T19:22Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260505.33a338a 2026-05-05T14:26Z.
       <br/>
     
   </p>

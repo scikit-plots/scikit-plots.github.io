@@ -1,6 +1,6 @@
 # show\_versions[#](#show-versions "Link to this heading")
 
-scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/utils/_show_versions.py#L214)[#](#scikitplot.show_versions "Link to this definition")
+scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/utils/_show_versions.py#L214)[#](#scikitplot.show_versions "Link to this definition")
 :   Print or return debugging information about the system, Python, dependencies, and hardware.
 
     Parameters:
@@ -44,11 +44,11 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                       CPU: x86_64
                     cores: 36
              architecture: x86_64
-                       OS: Linux-6.17.0-1007-aws-x86_64-with-glibc2.35
+                       OS: Linux-6.17.0-1013-aws-x86_64-with-glibc2.35
                        ci: true
 
     Python Dependencies:
-               scikitplot: 0.5.dev0+git.20260426.0ee15ed
+               scikitplot: 0.5.dev0+git.20260505.33a338a
                       pip: 26.0.1
              meson-python: 0.19.0
                setuptools: 79.0.1
@@ -105,9 +105,9 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
       'CPU': 'x86_64',
       'cores': 36,
       'architecture': 'x86_64',
-      'OS': 'Linux-6.17.0-1007-aws-x86_64-with-glibc2.35',
+      'OS': 'Linux-6.17.0-1013-aws-x86_64-with-glibc2.35',
       'ci': 'true'},
-     'dependencies': {'scikitplot': '0.5.dev0+git.20260426.0ee15ed',
+     'dependencies': {'scikitplot': '0.5.dev0+git.20260505.33a338a',
       'pip': '26.0.1',
       'meson-python': '0.19.0',
       'setuptools': '79.0.1',
@@ -147,11 +147,11 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
     ```
     ```
     [32m[1mChanged logging level: WARNING[0m
+
+    ```
+    ```
     [1;36mScikit-plot Version Information:[0m
 
-
-    ```
-    ```
 
     System Information:
                    python: 3.11.15 (main, Mar  4 2026, 16:25:54) [GCC 11.4.0]
@@ -161,11 +161,11 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                       CPU: x86_64
                     cores: 36
              architecture: x86_64
-                       OS: Linux-6.17.0-1007-aws-x86_64-with-glibc2.35
+                       OS: Linux-6.17.0-1013-aws-x86_64-with-glibc2.35
                        ci: true
 
     Python Dependencies:
-               scikitplot: 0.5.dev0+git.20260426.0ee15ed
+               scikitplot: 0.5.dev0+git.20260505.33a338a
                       pip: 26.0.1
              meson-python: 0.19.0
                setuptools: 79.0.1

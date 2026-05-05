@@ -1316,7 +1316,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>split_cjk_chars<a class="headerlink" href="#split-cjk-chars" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.split_cjk_chars">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">split_cjk_chars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1133"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.split_cjk_chars" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">split_cjk_chars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1149"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.split_cjk_chars" title="Link to this definition">#</a></dt>
 <dd><p>Split <em>text</em> into individual CJK character tokens.</p>
 <p>Non-CJK runs (Latin words, numbers, spaces) are kept as contiguous
 tokens split on whitespace.  This produces a mixed token list where
@@ -1352,8 +1352,8 @@ splitters.</p>
 <p><strong>Developer note:</strong> Used by <code class="xref py py-func docutils literal notranslate"><span class="pre">_tokenize_whitespace</span></code>
 when <code class="docutils literal notranslate"><span class="pre">unit=TOKENS</span></code> and the text is detected as CJK.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="14529de3-0303-4ae8-9cad-4a5a0b036bab">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('14529de3-0303-4ae8-9cad-4a5a0b036bab','2180fa9f-4a01-4b08-9714-31a7bda01162','9ed12527-4bb5-429d-9734-a36d995d22e7','../../lite/tree/../notebooks/index.html?path=8ec855d6_6043_4d04_ae18_c092085acc67.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="b4db1756-988e-4418-93c6-0d5b58e30006">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('b4db1756-988e-4418-93c6-0d5b58e30006','15f5b934-a9d1-439f-b6c5-a99e5b3ce20f','dc9a7a57-5745-4633-a3c2-2ac706fcd91d','../../lite/tree/../notebooks/index.html?path=4380fb24_c0ab_4f08_b3b2_64d1b5a962c0.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">split_cjk_chars</span><span class="p">(</span><span class="s2">&quot;你好 world 再见&quot;</span><span class="p">)</span>
 <span class="go">[&#39;你&#39;, &#39;好&#39;, &#39;world&#39;, &#39;再&#39;, &#39;见&#39;]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">split_cjk_chars</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">)</span>
@@ -1364,7 +1364,7 @@ when <code class="docutils literal notranslate"><span class="pre">unit=TOKENS</s
 </div>
 </div>
 </div>
-<div id="9ed12527-4bb5-429d-9734-a36d995d22e7" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('14529de3-0303-4ae8-9cad-4a5a0b036bab','9ed12527-4bb5-429d-9734-a36d995d22e7')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('14529de3-0303-4ae8-9cad-4a5a0b036bab','9ed12527-4bb5-429d-9734-a36d995d22e7')">Open In Tab</button></div><div id="2180fa9f-4a01-4b08-9714-31a7bda01162" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="dc9a7a57-5745-4633-a3c2-2ac706fcd91d" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('b4db1756-988e-4418-93c6-0d5b58e30006','dc9a7a57-5745-4633-a3c2-2ac706fcd91d')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('b4db1756-988e-4418-93c6-0d5b58e30006','dc9a7a57-5745-4633-a3c2-2ac706fcd91d')">Open In Tab</button></div><div id="15f5b934-a9d1-439f-b6c5-a99e5b3ce20f" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1427,15 +1427,6 @@ when <code class="docutils literal notranslate"><span class="pre">unit=TOKENS</s
 
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../../_sources/modules/generated/scikitplot.corpus.split_cjk_chars.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
 </div></div>
               
             
@@ -1467,7 +1458,7 @@ when <code class="docutils literal notranslate"><span class="pre">unit=TOKENS</s
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260426.0ee15ed 2026-04-26T19:22Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260505.33a338a 2026-05-05T14:26Z.
       <br/>
     
   </p>

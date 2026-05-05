@@ -1316,7 +1316,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>registry<a class="headerlink" href="#registry" title="Link to this heading">#</a></h1>
 <dl class="py data">
 <dt class="sig sig-object py" id="scikitplot.corpus.registry">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">registry</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">ComponentRegistry(chunkers=0,</span> <span class="pre">filters=0,</span> <span class="pre">readers=0,</span> <span class="pre">normalizers=0)</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_registry/_registry.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.registry" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">registry</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">ComponentRegistry(chunkers=0,</span> <span class="pre">filters=0,</span> <span class="pre">readers=0,</span> <span class="pre">normalizers=0)</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_registry/_registry.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.registry" title="Link to this definition">#</a></dt>
 <dd><p>Central look-up table for corpus pipeline components.</p>
 <p>Stores class references (not instances) for four component types:
 chunkers, filters, readers, and normalizers. Callers retrieve a class
@@ -1326,8 +1326,8 @@ and instantiate it with their own parameters.</p>
 built-in components via <code class="xref py py-meth docutils literal notranslate"><span class="pre">register_builtins</span></code>. Third-party
 packages can register additional components after import.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="f0677a19-293a-4f3d-a74d-79fb7588933b">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('f0677a19-293a-4f3d-a74d-79fb7588933b','2c7ba20e-7b34-4af8-9211-7a1a96ed0b17','21323d6d-27ae-4a26-86ce-1dc8cf37288f','../../lite/tree/../notebooks/index.html?path=008bdefa_8409_42c7_a3ff_31e5fc720297.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="78e8cd20-b688-42e8-8559-150f8f684bb3">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('78e8cd20-b688-42e8-8559-150f8f684bb3','9540284d-0cfc-4bd5-8b0b-95b56ed8a58c','1d806964-4710-4a95-a8b4-a1d1688ad7f9','../../lite/tree/../notebooks/index.html?path=30b7c969_5a1d_4f5b_8ca7_c87a36588a21.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus._registry</span><span class="w"> </span><span class="kn">import</span> <span class="n">registry</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">registry</span><span class="o">.</span><span class="n">register_builtins</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="bp">cls</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">get_chunker</span><span class="p">(</span><span class="s2">&quot;paragraph&quot;</span><span class="p">)</span>
@@ -1336,7 +1336,7 @@ packages can register additional components after import.</p>
 </div>
 </div>
 </div>
-<div id="21323d6d-27ae-4a26-86ce-1dc8cf37288f" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('f0677a19-293a-4f3d-a74d-79fb7588933b','21323d6d-27ae-4a26-86ce-1dc8cf37288f')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('f0677a19-293a-4f3d-a74d-79fb7588933b','21323d6d-27ae-4a26-86ce-1dc8cf37288f')">Open In Tab</button></div><div id="2c7ba20e-7b34-4af8-9211-7a1a96ed0b17" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="1d806964-4710-4a95-a8b4-a1d1688ad7f9" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('78e8cd20-b688-42e8-8559-150f8f684bb3','1d806964-4710-4a95-a8b4-a1d1688ad7f9')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('78e8cd20-b688-42e8-8559-150f8f684bb3','1d806964-4710-4a95-a8b4-a1d1688ad7f9')">Open In Tab</button></div><div id="9540284d-0cfc-4bd5-8b0b-95b56ed8a58c" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1399,15 +1399,6 @@ packages can register additional components after import.</p>
 
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../../_sources/modules/generated/scikitplot.corpus.registry.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
 </div></div>
               
             
@@ -1439,7 +1430,7 @@ packages can register additional components after import.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260426.0ee15ed 2026-04-26T19:22Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260505.33a338a 2026-05-05T14:26Z.
       <br/>
     
   </p>

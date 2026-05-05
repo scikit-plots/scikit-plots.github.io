@@ -168,7 +168,7 @@ plot\_srcset
     e.g. [“2.0x”, “1.5x”]. “2.0x” will create a png with the default “png”
     resolution from plot\_formats, multiplied by 2. If plot\_srcset is
     specified, the plot directive uses the
-    [matplotlib.sphinxext.figmpl\_directive](https://matplotlib.org/devdocs/api/sphinxext_figmpl_directive_api.html "(in Matplotlib v3.11.0.dev2357+g05b91794a)")
+    [matplotlib.sphinxext.figmpl\_directive](https://matplotlib.org/devdocs/api/sphinxext_figmpl_directive_api.html "(in Matplotlib v3.12.0.dev26+gf4cc437d1)")
     (instead of the usual figure directive) in the intermediary rst file that is generated.
     The plot\_srcset option is incompatible with **singlehtml** builds, and an
     error will be raised.
@@ -182,5 +182,5 @@ an intermediate rst file that calls a `.. figure:` directive (or
 `.. figmpl::` directive if `plot_srcset` is being used) and has links to
 the `*.png` files in the `plot_directive` directory. These translations can
 be customized by changing the **plot\_template**. See the source of
-[matplotlib.sphinxext.plot\_directive](https://matplotlib.org/devdocs/api/sphinxext_plot_directive_api.html "(in Matplotlib v3.11.0.dev2357+g05b91794a)")
+[matplotlib.sphinxext.plot\_directive](https://matplotlib.org/devdocs/api/sphinxext_plot_directive_api.html "(in Matplotlib v3.12.0.dev26+gf4cc437d1)")
 for the templates defined in **TEMPLATE** and **TEMPLATE\_SRCSET**.

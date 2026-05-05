@@ -1316,7 +1316,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>register_tokenizer<a class="headerlink" href="#register-tokenizer" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.register_tokenizer">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">register_tokenizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenizer</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L647"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.register_tokenizer" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">register_tokenizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenizer</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L663"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.register_tokenizer" title="Link to this definition">#</a></dt>
 <dd><p>Register a named <a class="reference internal" href="scikitplot.corpus.TokenizerProtocol.html#scikitplot.corpus.TokenizerProtocol" title="scikitplot.corpus.TokenizerProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">TokenizerProtocol</span></code></a> implementation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1338,8 +1338,8 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="376b98a7-82bd-491f-8bed-5eb098cdfdbc">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('376b98a7-82bd-491f-8bed-5eb098cdfdbc','b15348da-a03c-46e2-924f-cd588cb7ea10','d18441d1-50cd-4e7f-974a-4502051c1a18','../../lite/tree/../notebooks/index.html?path=a09b41c3_d63f_4e64_96b5_6fe1a8d5b420.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="9da14fa3-8aaf-44c3-ad8a-8f0e07cd1af4">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('9da14fa3-8aaf-44c3-ad8a-8f0e07cd1af4','edc6d259-e224-412c-9530-e82b9743d470','d2021414-d59c-430c-aea2-4dfc19079463','../../lite/tree/../notebooks/index.html?path=759846cd_b056_437f_8adb_7ab962f41c19.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">register_tokenizer</span><span class="p">(</span><span class="s2">&quot;jieba&quot;</span><span class="p">,</span> <span class="n">FunctionTokenizer</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">get_tokenizer</span><span class="p">(</span><span class="s2">&quot;jieba&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
 <span class="go">[&#39;hello&#39;, &#39;world&#39;]</span>
@@ -1347,7 +1347,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 </div>
 </div>
 </div>
-<div id="d18441d1-50cd-4e7f-974a-4502051c1a18" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('376b98a7-82bd-491f-8bed-5eb098cdfdbc','d18441d1-50cd-4e7f-974a-4502051c1a18')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('376b98a7-82bd-491f-8bed-5eb098cdfdbc','d18441d1-50cd-4e7f-974a-4502051c1a18')">Open In Tab</button></div><div id="b15348da-a03c-46e2-924f-cd588cb7ea10" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="d2021414-d59c-430c-aea2-4dfc19079463" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('9da14fa3-8aaf-44c3-ad8a-8f0e07cd1af4','d2021414-d59c-430c-aea2-4dfc19079463')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('9da14fa3-8aaf-44c3-ad8a-8f0e07cd1af4','d2021414-d59c-430c-aea2-4dfc19079463')">Open In Tab</button></div><div id="edc6d259-e224-412c-9530-e82b9743d470" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1410,15 +1410,6 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../../_sources/modules/generated/scikitplot.corpus.register_tokenizer.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
 </div></div>
               
             
@@ -1450,7 +1441,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260426.0ee15ed 2026-04-26T19:22Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260505.33a338a 2026-05-05T14:26Z.
       <br/>
     
   </p>

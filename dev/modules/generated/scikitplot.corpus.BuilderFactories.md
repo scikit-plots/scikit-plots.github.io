@@ -1,6 +1,6 @@
 # BuilderFactories[#](#builderfactories "Link to this heading")
 
-class scikitplot.corpus.BuilderFactories(**reader\_factory=None**, **chunker\_factory=None**, **filter\_factory=None**, **normalizer\_factory=None**, **enricher\_factory=None**, **embedding\_engine\_factory=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_custom_hooks.py#L1311)[#](#scikitplot.corpus.BuilderFactories "Link to this definition")
+class scikitplot.corpus.BuilderFactories(**reader\_factory=None**, **chunker\_factory=None**, **filter\_factory=None**, **normalizer\_factory=None**, **enricher\_factory=None**, **embedding\_engine\_factory=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_custom_hooks.py#L1332)[#](#scikitplot.corpus.BuilderFactories "Link to this definition")
 :   Component factory callables for [`FactoryCorpusBuilder`](scikitplot.corpus.FactoryCorpusBuilder.html#scikitplot.corpus.FactoryCorpusBuilder "scikitplot.corpus.FactoryCorpusBuilder").
 
     Each factory replaces the corresponding lazy-creation method in
@@ -69,12 +69,12 @@ class scikitplot.corpus.BuilderFactories(**reader\_factory=None**, **chunker\_fa
             ```
 
     Parameters:
-    :   * ****reader\_factory**** ([**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")**[****[****...****]****,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
-        * ****chunker\_factory**** ([**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")**[****[****]****,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
-        * ****filter\_factory**** ([**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")**[****[****]****,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
-        * ****normalizer\_factory**** ([**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")**[****[****]****,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
-        * ****enricher\_factory**** ([**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")**[****[****]****,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
-        * ****embedding\_engine\_factory**** ([**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")**[****[****]****,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
+    :   * ****reader\_factory**** (**Callable****[****...****,** **Any****]** **|** **None**)
+        * ****chunker\_factory**** (**Callable****[****[****]****,** **Any****]** **|** **None**)
+        * ****filter\_factory**** (**Callable****[****[****]****,** **Any****]** **|** **None**)
+        * ****normalizer\_factory**** (**Callable****[****[****]****,** **Any****]** **|** **None**)
+        * ****enricher\_factory**** (**Callable****[****[****]****,** **Any****]** **|** **None**)
+        * ****embedding\_engine\_factory**** (**Callable****[****[****]****,** **Any****]** **|** **None**)
 
     Notes
 
@@ -102,14 +102,14 @@ class scikitplot.corpus.BuilderFactories(**reader\_factory=None**, **chunker\_fa
     ```
     Go BackOpen In Tab
 
-    chunker\_factory: [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[], [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.BuilderFactories.chunker_factory "Link to this definition")
+    chunker\_factory: Callable[[], Any] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.BuilderFactories.chunker_factory "Link to this definition")
 
-    embedding\_engine\_factory: [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[], [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.BuilderFactories.embedding_engine_factory "Link to this definition")
+    embedding\_engine\_factory: Callable[[], Any] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.BuilderFactories.embedding_engine_factory "Link to this definition")
 
-    enricher\_factory: [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[], [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.BuilderFactories.enricher_factory "Link to this definition")
+    enricher\_factory: Callable[[], Any] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.BuilderFactories.enricher_factory "Link to this definition")
 
-    filter\_factory: [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[], [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.BuilderFactories.filter_factory "Link to this definition")
+    filter\_factory: Callable[[], Any] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.BuilderFactories.filter_factory "Link to this definition")
 
-    normalizer\_factory: [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[], [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.BuilderFactories.normalizer_factory "Link to this definition")
+    normalizer\_factory: Callable[[], Any] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.BuilderFactories.normalizer_factory "Link to this definition")
 
-    reader\_factory: [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[...], [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.BuilderFactories.reader_factory "Link to this definition")
+    reader\_factory: Callable[..., Any] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.BuilderFactories.reader_factory "Link to this definition")

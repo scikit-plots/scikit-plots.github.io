@@ -447,7 +447,7 @@ idx.query_by_item(item=999, n_neighbors=10, include_distances=True)
 
 ```
 ```
-([999, 4, 805, 985, 503, 705, 483, 614, 765, 11], [0.0, 0.5096477270126343, 0.5483973622322083, 0.640846848487854, 0.6939642429351807, 0.7039787173271179, 0.7314350605010986, 0.7961425185203552, 0.8021402955055237, 0.811093807220459])
+([999, 4, 805, 985, 503, 705, 483, 614, 765, 11], [0.0, 0.5096477270126343, 0.5483975410461426, 0.640846848487854, 0.6939642429351807, 0.7039787173271179, 0.7314350605010986, 0.7961425185203552, 0.8021402955055237, 0.811093807220459])
 
 ```
 ```
@@ -455,8 +455,8 @@ idx.query_by_vector(v, n_neighbors=10, include_distances=True)
 
 ```
 ```
-(array([  2, 607, 545, 230, 708, 113, 830, 593, 814, 553]), array([0.5118975 , 0.7083861 , 0.7152002 , 0.7458864 , 0.7494969 ,
-       0.7635894 , 0.76915646, 0.77210677, 0.77473843, 0.78286034],
+(array([  2, 607, 545, 230, 708, 113, 830, 593, 814, 553]), array([0.51189727, 0.7083861 , 0.7152001 , 0.7458863 , 0.74949676,
+       0.7635894 , 0.76915634, 0.7721067 , 0.77473843, 0.78286034],
       dtype=float32))
 
 ```
@@ -494,8 +494,8 @@ idx.kneighbors(v, n_neighbors=10, include_distances=True)
           6.8151496e-02, -7.2500211e-01],
         [ 1.2632313e+00,  9.7530079e-01,  6.4274698e-01,  1.4165179e+00,
           9.3050772e-01, -1.0064713e+00,  6.4645040e-01, -6.3877535e-01,
-          8.1640345e-01, -1.1055323e+00]]], dtype=float32), array([[0.5118975 , 0.7083861 , 0.7152002 , 0.7458864 , 0.7494969 ,
-        0.7635894 , 0.76915646, 0.77210677, 0.77473843, 0.78286034]],
+          8.1640345e-01, -1.1055323e+00]]], dtype=float32), array([[0.51189727, 0.7083861 , 0.7152001 , 0.7458863 , 0.74949676,
+        0.7635894 , 0.76915634, 0.7721067 , 0.77473843, 0.78286034]],
       dtype=float32))
 
 ```
@@ -581,7 +581,7 @@ array([[0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
 
 Tags: [model-workflow: vector-db](../../_tags/model-workflow-vector-db.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.527 seconds)
+****Total running time of the script:**** (0 minutes 0.472 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/annoy/plot_annoy_to_NPY_CSV.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo.svg)](../../lite/lab/index.html?path=auto_examples/annoy/plot_annoy_to_NPY_CSV.ipynb)
 

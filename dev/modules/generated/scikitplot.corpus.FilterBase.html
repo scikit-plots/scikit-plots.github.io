@@ -1316,7 +1316,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>FilterBase<a class="headerlink" href="#filterbase" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.FilterBase">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">FilterBase</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_base.py#L276"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FilterBase" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">FilterBase</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_base.py#L284"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FilterBase" title="Link to this definition">#</a></dt>
 <dd><p>Abstract base class for corpus document filters.</p>
 <p>A filter receives a fully-constructed <a class="reference internal" href="scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument" title="scikitplot.corpus._schema.CorpusDocument"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusDocument</span></code></a>
 and returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if it should be included in the output corpus,
@@ -1339,8 +1339,8 @@ discard noise tokens, very short fragments, duplicate content, etc.</p>
 <p>Filters must be <strong>side-effect free</strong> — calling <code class="docutils literal notranslate"><span class="pre">include()</span></code> must not
 modify the document or any shared state.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="6cd95a8e-7efa-4dd9-9cab-7ece8b2c2cc9">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('6cd95a8e-7efa-4dd9-9cab-7ece8b2c2cc9','d6a1e051-bb7d-4fec-8337-4e57f75ef79e','dddfbd66-7f58-4f62-8b06-b5c2c90bab13','../../lite/tree/../notebooks/index.html?path=5180c30b_a25b_4cc6_af9f_dc219c5fc9d0.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="2d9c5cb9-b9dd-4f08-a736-0a1ad8d8d074">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('2d9c5cb9-b9dd-4f08-a736-0a1ad8d8d074','f06c534c-f25b-4840-900d-ea9dfbc65704','24f4ef8b-9743-4643-b595-97595aee24a4','../../lite/tree/../notebooks/index.html?path=bd66e080_a1a1_485c_a3cb_a9fed296c25d.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Implementing a length filter:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">LengthFilter</span><span class="p">(</span><span class="n">FilterBase</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">min_chars</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">):</span>
@@ -1352,9 +1352,9 @@ modify the document or any shared state.</p>
 </div>
 </div>
 </div>
-<div id="dddfbd66-7f58-4f62-8b06-b5c2c90bab13" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('6cd95a8e-7efa-4dd9-9cab-7ece8b2c2cc9','dddfbd66-7f58-4f62-8b06-b5c2c90bab13')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('6cd95a8e-7efa-4dd9-9cab-7ece8b2c2cc9','dddfbd66-7f58-4f62-8b06-b5c2c90bab13')">Open In Tab</button></div><div id="d6a1e051-bb7d-4fec-8337-4e57f75ef79e" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="24f4ef8b-9743-4643-b595-97595aee24a4" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('2d9c5cb9-b9dd-4f08-a736-0a1ad8d8d074','24f4ef8b-9743-4643-b595-97595aee24a4')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('2d9c5cb9-b9dd-4f08-a736-0a1ad8d8d074','24f4ef8b-9743-4643-b595-97595aee24a4')">Open In Tab</button></div><div id="f06c534c-f25b-4840-900d-ea9dfbc65704" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FilterBase.include">
-<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">include</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_base.py#L311"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FilterBase.include" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">include</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_base.py#L319"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FilterBase.include" title="Link to this definition">#</a></dt>
 <dd><p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> if <code class="docutils literal notranslate"><span class="pre">doc</span></code> should be included in the corpus.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1449,15 +1449,6 @@ a document).</p>
 
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../../_sources/modules/generated/scikitplot.corpus.FilterBase.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
 </div></div>
               
             
@@ -1489,7 +1480,7 @@ a document).</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260426.0ee15ed 2026-04-26T19:22Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260505.33a338a 2026-05-05T14:26Z.
       <br/>
     
   </p>

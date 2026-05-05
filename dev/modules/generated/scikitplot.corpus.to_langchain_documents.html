@@ -1318,7 +1318,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>to_langchain_documents<a class="headerlink" href="#to-langchain-documents" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.to_langchain_documents">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">to_langchain_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/corpus/_adapters.py#L165"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.to_langchain_documents" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">to_langchain_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_adapters.py#L165"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.to_langchain_documents" title="Link to this definition">#</a></dt>
 <dd><p>Convert <code class="docutils literal notranslate"><span class="pre">CorpusDocument</span></code> instances to LangChain <code class="docutils literal notranslate"><span class="pre">Document</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1351,8 +1351,8 @@ LangChain retriever, chain, or agent:</p>
 </pre></div>
 </div>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="1af205db-7e32-4f71-b6fa-9e5c6f822364">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('1af205db-7e32-4f71-b6fa-9e5c6f822364','539362fe-b89f-4207-bfb5-9066073d6ff0','20f7f540-f453-494e-bd9f-fc7fd6b34659','../../lite/tree/../notebooks/index.html?path=99f2debe_5d06_4c3c_8572_7e95c5bae341.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="c9087611-1e3b-4380-8144-e109de73cb69">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('c9087611-1e3b-4380-8144-e109de73cb69','d6824148-cda0-4ee4-8db2-81944eca1d2e','48b40b86-c026-4f93-a88a-649c9b0e31ad','../../lite/tree/../notebooks/index.html?path=9729db95_0754_4df4_85d5_55c31d3e4473.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lc_docs</span> <span class="o">=</span> <span class="n">to_langchain_documents</span><span class="p">(</span><span class="n">corpus_docs</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">lc_docs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="vm">__name__</span>
 <span class="go">&#39;Document&#39;</span>
@@ -1360,7 +1360,7 @@ LangChain retriever, chain, or agent:</p>
 </div>
 </div>
 </div>
-<div id="20f7f540-f453-494e-bd9f-fc7fd6b34659" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('1af205db-7e32-4f71-b6fa-9e5c6f822364','20f7f540-f453-494e-bd9f-fc7fd6b34659')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('1af205db-7e32-4f71-b6fa-9e5c6f822364','20f7f540-f453-494e-bd9f-fc7fd6b34659')">Open In Tab</button></div><div id="539362fe-b89f-4207-bfb5-9066073d6ff0" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="48b40b86-c026-4f93-a88a-649c9b0e31ad" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('c9087611-1e3b-4380-8144-e109de73cb69','48b40b86-c026-4f93-a88a-649c9b0e31ad')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('c9087611-1e3b-4380-8144-e109de73cb69','48b40b86-c026-4f93-a88a-649c9b0e31ad')">Open In Tab</button></div><div id="d6824148-cda0-4ee4-8db2-81944eca1d2e" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <section id="gallery-examples">
 <h2>Gallery examples<a class="headerlink" href="#gallery-examples" title="Link to this heading">#</a></h2>
@@ -1430,15 +1430,6 @@ LangChain retriever, chain, or agent:</p>
 
   </nav></div>
 
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../../_sources/modules/generated/scikitplot.corpus.to_langchain_documents.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
 </div></div>
               
             
@@ -1470,7 +1461,7 @@ LangChain retriever, chain, or agent:</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260426.0ee15ed 2026-04-26T19:22Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260505.33a338a 2026-05-05T14:26Z.
       <br/>
     
   </p>

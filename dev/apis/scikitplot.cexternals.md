@@ -61,7 +61,7 @@ Go BackOpen In Tab
 |  |  |
 | --- | --- |
 | [`_annoy`](../modules/generated/scikitplot.cexternals._annoy.html#module-scikitplot.cexternals._annoy "scikitplot.cexternals._annoy") | High-level Python interface for the C++ ANNoy backend. |
-| [`_annoy.annoylib`](../modules/generated/scikitplot.cexternals._annoy.annoylib.html#module-scikitplot.cexternals._annoy.annoylib "scikitplot.cexternals._annoy.annoylib") | Compiled with GCC/Clang(Not using AVX instructions). |
+| [`_annoy.annoylib`](../modules/generated/scikitplot.cexternals._annoy.annoylib.html#module-scikitplot.cexternals._annoy.annoylib "scikitplot.cexternals._annoy.annoylib") | Compiled with GCC/Clang(Using 512-bit AVX instructions). |
 | [`_annoy.Annoy`](../modules/generated/scikitplot.cexternals._annoy.Annoy.html#scikitplot.cexternals._annoy.Annoy "scikitplot.cexternals._annoy.Annoy") | Compiled with GCC/Clang. |
 | [`_annoy.AnnoyIndex`](../modules/generated/scikitplot.cexternals._annoy.AnnoyIndex.html#scikitplot.cexternals._annoy.AnnoyIndex "scikitplot.cexternals._annoy.AnnoyIndex") |  |
 

@@ -1,6 +1,6 @@
 # KissRandomState[#](#kissrandomstate "Link to this heading")
 
-class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissRandomState "Link to this definition")
+class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissRandomState "Link to this definition")
 :   NumPy RandomState-compatible interface with complete serialization.
 
     KissRandomState : Inherites from KissGenerator.
@@ -258,6 +258,22 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
         Returns:
         :   float or ndarray
             :   Normal samples
+
+        Notes
+
+        Uses the Box-Muller transform:
+        :   z = sqrt(-2 \* log(u1)) \* cos(2 \* pi \* u2)
+
+        where u1, u2 are i.i.d. Uniform(0, 1).
+
+        u1 is clamped away from zero to prevent log(0) = -inf. Since
+        KissBitGenerator.random() maps [0, 2^64-1] onto [0.0, 1.0) and zero
+        is a valid raw value, u1 == 0.0 is possible (probability 1/2^64).
+
+        The size != None path is fully vectorized in NumPy’s C layer.
+        No Python list or scalar boxing is performed, which avoids the
+        GCC -Wstringop-overflow false positives triggered by Python 3.13t’s
+        free-threaded Py\_INCREF atomic operations.
 
         Examples
 

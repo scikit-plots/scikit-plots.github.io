@@ -1,6 +1,6 @@
 # is\_safe\_macro\_name[#](#is-safe-macro-name "Link to this heading")
 
-scikitplot.cython.is\_safe\_macro\_name(**name**, **\***, **allow\_reserved=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ee15ed/scikitplot/cython/_security.py#L365)[#](#scikitplot.cython.is_safe_macro_name "Link to this definition")
+scikitplot.cython.is\_safe\_macro\_name(**name**, **\***, **allow\_reserved=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/cython/_security.py#L365)[#](#scikitplot.cython.is_safe_macro_name "Link to this definition")
 :   Return `True` when a C preprocessor macro name is safe to define.
 
     Parameters:
