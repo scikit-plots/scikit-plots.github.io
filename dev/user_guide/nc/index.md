@@ -8,6 +8,9 @@ Examples relevant to the [`nc`](../../apis/scikitplot.nc.html#module-scikitplot.
 > * [dpilger26/NumCpp](https://github.com/dpilger26/NumCpp)
 * <https://numcpp.readthedocs.io/en/latest/>
 * <https://numcpp.readthedocs.io/en/latest/commandTable.html>
+
+Examples
+
 ```
 from scikitplot import nc
 nc.get_include()

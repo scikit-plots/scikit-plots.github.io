@@ -1,6 +1,6 @@
 # is\_cjk\_char[#](#is-cjk-char "Link to this heading")
 
-scikitplot.corpus.is\_cjk\_char(**ch**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1074)[#](#scikitplot.corpus.is_cjk_char "Link to this definition")
+scikitplot.corpus.is\_cjk\_char(**ch**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1197)[#](#scikitplot.corpus.is_cjk_char "Link to this definition")
 :   Return `True` if **ch** is a CJK / Japanese / Korean character.
 
     Parameters:

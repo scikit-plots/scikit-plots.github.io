@@ -1,6 +1,6 @@
 # MULTI\_SCRIPT\_SENTENCE\_RE\_PATTERN[#](#multi-script-sentence-re-pattern "Link to this heading")
 
-scikitplot.corpus.MULTI\_SCRIPT\_SENTENCE\_RE\_PATTERN = '(?<=[.!?。！？؟।۔።…‼⁉])[\\s\\u200b\\u00a0]\*(?=\\S)'[#](#scikitplot.corpus.MULTI_SCRIPT_SENTENCE_RE_PATTERN "Link to this definition")
+scikitplot.corpus.MULTI\_SCRIPT\_SENTENCE\_RE\_PATTERN = '(?<=[.!?。！？؟।۔።…‼⁉։។၊။])[\\s\\u200b\\u00a0]\*(?=\\S)'[#](#scikitplot.corpus.MULTI_SCRIPT_SENTENCE_RE_PATTERN "Link to this definition")
 :   str(object=’’) -> str
     str(bytes\_or\_buffer[, encoding[, errors]]) -> str
 

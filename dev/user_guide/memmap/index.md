@@ -66,7 +66,7 @@ available RAM.
 * Fail fast with clear, actionable errors
 * Explicit ownership and lifetime control
 
-## Basic example[#](#basic-example "Link to this heading")
+Examples
 
 Map a file and access its contents without loading it fully:
 

@@ -1,6 +1,6 @@
 # CorpusDocument[#](#corpusdocument "Link to this heading")
 
-class scikitplot.corpus.CorpusDocument(**doc\_id**, **input\_path**, **chunk\_index**, **text**, **section\_type=SectionType.TEXT**, **chunking\_strategy=ChunkingStrategy.SENTENCE**, **language=None**, **char\_start=None**, **char\_end=None**, **embedding=None**, **modality=<factory>**, **raw\_bytes=None**, **raw\_tensor=None**, **raw\_shape=None**, **raw\_dtype=None**, **frame\_index=None**, **content\_hash=None**, **metadata=<factory>**, **source\_type=SourceType.UNKNOWN**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **url=None**, **doi=None**, **isbn=None**, **page\_number=None**, **paragraph\_index=None**, **line\_number=None**, **parent\_doc\_id=None**, **act=None**, **scene\_number=None**, **timecode\_start=None**, **timecode\_end=None**, **confidence=None**, **ocr\_engine=None**, **bbox=None**, **normalized\_text=None**, **tokens=None**, **lemmas=None**, **stems=None**, **keywords=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_schema.py#L907)[#](#scikitplot.corpus.CorpusDocument "Link to this definition")
+class scikitplot.corpus.CorpusDocument(**doc\_id**, **input\_path**, **chunk\_index**, **text**, **section\_type=SectionType.TEXT**, **chunking\_strategy=ChunkingStrategy.SENTENCE**, **language=None**, **char\_start=None**, **char\_end=None**, **embedding=None**, **modality=<factory>**, **raw\_bytes=None**, **raw\_tensor=None**, **raw\_shape=None**, **raw\_dtype=None**, **frame\_index=None**, **content\_hash=None**, **metadata=<factory>**, **source\_type=SourceType.UNKNOWN**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **url=None**, **doi=None**, **isbn=None**, **page\_number=None**, **paragraph\_index=None**, **line\_number=None**, **parent\_doc\_id=None**, **act=None**, **scene\_number=None**, **timecode\_start=None**, **timecode\_end=None**, **confidence=None**, **ocr\_engine=None**, **bbox=None**, **raw\_text=None**, **normalized\_text=None**, **tokens=None**, **lemmas=None**, **stems=None**, **keywords=None**, **script=None**, **script\_direction=None**, **grapheme\_count=None**, **codepoint\_count=None**, **is\_mixed\_script=None**, **script\_spans=None**, **chunking\_unit=None**, **semanteme\_count=None**, **morphemes=None**, **determinative\_groups=None**, **script\_model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L920)[#](#scikitplot.corpus.CorpusDocument "Link to this definition")
 :   Canonical representation of a single text chunk in a processed corpus.
 
     A `CorpusDocument` is the unit of data that flows between every stage of
@@ -179,11 +179,23 @@ class scikitplot.corpus.CorpusDocument(**doc\_id**, **input\_path**, **chunk\_in
         * ****confidence**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") **|** **None**)
         * ****ocr\_engine**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
         * ****bbox**** ([**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**,** **...****]** **|** **None**)
+        * ****raw\_text**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
         * ****normalized\_text**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
         * ****tokens**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
         * ****lemmas**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
         * ****stems**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
         * ****keywords**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
+        * ****script**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+        * ****script\_direction**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+        * ****grapheme\_count**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
+        * ****codepoint\_count**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
+        * ****is\_mixed\_script**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)
+        * ****script\_spans**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)") **|** **None**)
+        * ****chunking\_unit**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+        * ****semanteme\_count**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
+        * ****morphemes**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
+        * ****determinative\_groups**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)") **|** **None**)
+        * ****script\_model\_version**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
 
     > **See also**
     > [`scikitplot.corpus._base.DocumentReader`](scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader "scikitplot.corpus._base.DocumentReader")
@@ -269,11 +281,26 @@ class scikitplot.corpus.CorpusDocument(**doc\_id**, **input\_path**, **chunk\_in
     char\_start: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusDocument.char_start "Link to this definition")
     :   Character offset of chunk start in source, or `None`.
 
-    chunk\_index: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_schema.py#L907)[#](#scikitplot.corpus.CorpusDocument.chunk_index "Link to this definition")
+    chunk\_index: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L920)[#](#scikitplot.corpus.CorpusDocument.chunk_index "Link to this definition")
     :   Zero-based position of this chunk within the source document.
 
-    chunking\_strategy: [ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy") = 'sentence'[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.CorpusDocument.chunking_strategy "Link to this definition")
+    chunking\_strategy: [ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy") = 'sentence'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.CorpusDocument.chunking_strategy "Link to this definition")
     :   Strategy used to produce this chunk.
+
+    chunking\_unit: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusDocument.chunking_unit "Link to this definition")
+    :   Granularity at which this chunk was produced.
+
+        One of `"sentence"`, `"paragraph"`, `"word"`,
+        `"grapheme_cluster"`, `"semanteme"`, `"morpheme"`,
+        `"character"`, `"fixed_window"`. `None` for legacy chunks
+        produced before this field was introduced.
+
+    codepoint\_count: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusDocument.codepoint_count "Link to this definition")
+    :   Number of Unicode codepoints in [`text`](#scikitplot.corpus.CorpusDocument.text "scikitplot.corpus.CorpusDocument.text").
+
+        Equal to `len(text)`. Stored explicitly so downstream consumers can
+        compare grapheme vs. codepoint lengths without re-reading the text.
+        `None` if not computed.
 
     collection\_id: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusDocument.collection_id "Link to this definition")
     :   Identifier grouping related sources into one corpus.
@@ -284,7 +311,7 @@ class scikitplot.corpus.CorpusDocument(**doc\_id**, **input\_path**, **chunk\_in
     content\_hash: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusDocument.content_hash "Link to this definition")
     :   SHA-256 hex digest (32 chars) of canonical content. Dedup key.
 
-    classmethod create(**input\_path**, **chunk\_index**, **text**, **section\_type=SectionType.TEXT**, **chunking\_strategy=ChunkingStrategy.SENTENCE**, **language=None**, **char\_start=None**, **char\_end=None**, **embedding=None**, **metadata=None**, **doc\_id=None**, **source\_type=SourceType.UNKNOWN**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **url=None**, **doi=None**, **isbn=None**, **page\_number=None**, **paragraph\_index=None**, **line\_number=None**, **parent\_doc\_id=None**, **act=None**, **scene\_number=None**, **timecode\_start=None**, **timecode\_end=None**, **confidence=None**, **ocr\_engine=None**, **bbox=None**, **normalized\_text=None**, **tokens=None**, **lemmas=None**, **stems=None**, **keywords=None**, **modality=None**, **raw\_bytes=None**, **raw\_tensor=None**, **raw\_shape=None**, **raw\_dtype=None**, **frame\_index=None**, **content\_hash=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_schema.py#L1612)[#](#scikitplot.corpus.CorpusDocument.create "Link to this definition")
+    classmethod create(**input\_path**, **chunk\_index**, **text**, **section\_type=SectionType.TEXT**, **chunking\_strategy=ChunkingStrategy.SENTENCE**, **language=None**, **char\_start=None**, **char\_end=None**, **embedding=None**, **metadata=None**, **doc\_id=None**, **source\_type=SourceType.UNKNOWN**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **url=None**, **doi=None**, **isbn=None**, **page\_number=None**, **paragraph\_index=None**, **line\_number=None**, **parent\_doc\_id=None**, **act=None**, **scene\_number=None**, **timecode\_start=None**, **timecode\_end=None**, **confidence=None**, **ocr\_engine=None**, **bbox=None**, **normalized\_text=None**, **raw\_text=None**, **tokens=None**, **lemmas=None**, **stems=None**, **keywords=None**, **modality=None**, **raw\_bytes=None**, **raw\_tensor=None**, **raw\_shape=None**, **raw\_dtype=None**, **frame\_index=None**, **content\_hash=None**, **script=None**, **script\_direction=None**, **grapheme\_count=None**, **codepoint\_count=None**, **is\_mixed\_script=None**, **script\_spans=None**, **chunking\_unit=None**, **semanteme\_count=None**, **morphemes=None**, **determinative\_groups=None**, **script\_model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L1784)[#](#scikitplot.corpus.CorpusDocument.create "Link to this definition")
     :   Validate factory constructor for [`CorpusDocument`](#scikitplot.corpus.CorpusDocument "scikitplot.corpus.CorpusDocument").
 
         Preferred over direct dataclass instantiation because it
@@ -438,6 +465,7 @@ class scikitplot.corpus.CorpusDocument(**doc\_id**, **input\_path**, **chunk\_in
             * ****ocr\_engine**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
             * ****bbox**** ([**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**,** **...****]** **|** **None**)
             * ****normalized\_text**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+            * ****raw\_text**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
             * ****tokens**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
             * ****lemmas**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
             * ****stems**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
@@ -449,6 +477,17 @@ class scikitplot.corpus.CorpusDocument(**doc\_id**, **input\_path**, **chunk\_in
             * ****raw\_dtype**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
             * ****frame\_index**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
             * ****content\_hash**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+            * ****script**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+            * ****script\_direction**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+            * ****grapheme\_count**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
+            * ****codepoint\_count**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
+            * ****is\_mixed\_script**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") **|** **None**)
+            * ****script\_spans**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)") **|** **None**)
+            * ****chunking\_unit**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+            * ****semanteme\_count**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
+            * ****morphemes**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
+            * ****determinative\_groups**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)") **|** **None**)
+            * ****script\_model\_version**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
 
         Return type:
         :   [**CorpusDocument**](#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
@@ -471,7 +510,26 @@ class scikitplot.corpus.CorpusDocument(**doc\_id**, **input\_path**, **chunk\_in
         ```
         Go BackOpen In Tab
 
-    doc\_id: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_schema.py#L907)[#](#scikitplot.corpus.CorpusDocument.doc_id "Link to this definition")
+    determinative\_groups: [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusDocument.determinative_groups "Link to this definition")
+    :   list of determinative group dicts.
+
+        Each element is a dict:
+
+        ```
+        {
+            "glyphs": str,          # raw glyph codepoints
+            "determinative": str,   # semantic category glyph
+            "category": str,        # human-readable category label
+        }
+
+        ```
+
+        `None` for all non-hieroglyphic scripts.
+
+        Type:
+        :   For Egyptian hieroglyphic chunks
+
+    doc\_id: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L920)[#](#scikitplot.corpus.CorpusDocument.doc_id "Link to this definition")
     :   Stable 16-character hex identifier for this chunk.
 
     doi: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusDocument.doi "Link to this definition")
@@ -486,7 +544,7 @@ class scikitplot.corpus.CorpusDocument(**doc\_id**, **input\_path**, **chunk\_in
         Type:
         :   Zero-based frame index in a video or multi-frame image. Default
 
-    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_schema.py#L2111)[#](#scikitplot.corpus.CorpusDocument.from_dict "Link to this definition")
+    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L2328)[#](#scikitplot.corpus.CorpusDocument.from_dict "Link to this definition")
     :   Reconstruct a [`CorpusDocument`](#scikitplot.corpus.CorpusDocument "scikitplot.corpus.CorpusDocument") from a plain dictionary.
 
         Parameters:
@@ -522,6 +580,15 @@ class scikitplot.corpus.CorpusDocument(**doc\_id**, **input\_path**, **chunk\_in
         ```
         Go BackOpen In Tab
 
+    grapheme\_count: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusDocument.grapheme_count "Link to this definition")
+    :   Number of grapheme clusters in [`text`](#scikitplot.corpus.CorpusDocument.text "scikitplot.corpus.CorpusDocument.text").
+
+        This is the correct user-perceived character count as defined by
+        Unicode UAX #29. Always `<= len(text)` because each grapheme
+        cluster is at least one codepoint. `None` if
+        `GraphemeClusterNormalizer` has not
+        been applied.
+
     property has\_embedding: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")[#](#scikitplot.corpus.CorpusDocument.has_embedding "Link to this definition")
     :   Return `True` if an embedding has been attached to this document.
 
@@ -540,8 +607,12 @@ class scikitplot.corpus.CorpusDocument(**doc\_id**, **input\_path**, **chunk\_in
         ```
         Go BackOpen In Tab
 
-    input\_path: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_schema.py#L907)[#](#scikitplot.corpus.CorpusDocument.input_path "Link to this definition")
+    input\_path: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L920)[#](#scikitplot.corpus.CorpusDocument.input_path "Link to this definition")
     :   Name of the original source file (not an absolute path).
+
+    is\_mixed\_script: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusDocument.is_mixed_script "Link to this definition")
+    :   `True` if the chunk contains codepoints from more than one Unicode
+        script block above a noise threshold. `None` if not analysed.
 
     isbn: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusDocument.isbn "Link to this definition")
     :   International Standard Book Number of the source.
@@ -558,7 +629,7 @@ class scikitplot.corpus.CorpusDocument(**doc\_id**, **input\_path**, **chunk\_in
     line\_number: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusDocument.line_number "Link to this definition")
     :   Zero-based line number within the document.
 
-    static make\_content\_hash(**text=None**, **raw\_bytes=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_schema.py#L1578)[#](#scikitplot.corpus.CorpusDocument.make_content_hash "Link to this definition")
+    static make\_content\_hash(**text=None**, **raw\_bytes=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L1750)[#](#scikitplot.corpus.CorpusDocument.make_content_hash "Link to this definition")
     :   Compute a 32-char SHA-256 hex digest for deduplication.
 
         Parameters:
@@ -585,7 +656,7 @@ class scikitplot.corpus.CorpusDocument(**doc\_id**, **input\_path**, **chunk\_in
         `"0" * 32` (32 zeros) to ensure `content_hash` is always
         populated and the dedup logic is deterministic.
 
-    classmethod make\_doc\_id(**input\_path**, **chunk\_index**, **text**, **source\_type=SourceType.UNKNOWN**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_schema.py#L1515)[#](#scikitplot.corpus.CorpusDocument.make_doc_id "Link to this definition")
+    classmethod make\_doc\_id(**input\_path**, **chunk\_index**, **text**, **source\_type=SourceType.UNKNOWN**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L1687)[#](#scikitplot.corpus.CorpusDocument.make_doc_id "Link to this definition")
     :   Compute a deterministic 16-character hex document identifier.
 
         The id is a SHA-1 prefix of
@@ -643,14 +714,21 @@ class scikitplot.corpus.CorpusDocument(**doc\_id**, **input\_path**, **chunk\_in
         ```
         Go BackOpen In Tab
 
-    metadata: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_schema.py#L907)[#](#scikitplot.corpus.CorpusDocument.metadata "Link to this definition")
+    metadata: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L920)[#](#scikitplot.corpus.CorpusDocument.metadata "Link to this definition")
     :   Truly ad-hoc format-specific metadata.
 
-    modality: [Modality](scikitplot.corpus.Modality.html#scikitplot.corpus.Modality "scikitplot.corpus._schema.Modality")[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_schema.py#L907)[#](#scikitplot.corpus.CorpusDocument.modality "Link to this definition")
+    modality: [Modality](scikitplot.corpus.Modality.html#scikitplot.corpus.Modality "scikitplot.corpus._schema.Modality")[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L920)[#](#scikitplot.corpus.CorpusDocument.modality "Link to this definition")
     :   [`Modality.TEXT`](scikitplot.corpus.Modality.html#scikitplot.corpus.Modality.TEXT "scikitplot.corpus.Modality.TEXT").
 
         Type:
         :   Primary content modality. Default
+
+    morphemes: [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusDocument.morphemes "Link to this definition")
+    :   Morpheme list if `MORPHOLOGICAL` or `HYBRID` backend was used.
+
+        Excluded from `repr` and equality comparisons (like `tokens` /
+        `lemmas`). `None` if semantic chunking was not applied or a
+        non-morphological backend was selected.
 
     normalized\_text: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusDocument.normalized_text "Link to this definition")
     :   Normalised text used by the embedding engine.
@@ -687,7 +765,59 @@ class scikitplot.corpus.CorpusDocument(**doc\_id**, **input\_path**, **chunk\_in
         image `(H,W,C)` uint8; audio `(samples,)` float32;
         video `(T,H,W,C)` uint8. `None` for text-only.
 
-    replace(**\*\*changes**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_schema.py#L1850)[#](#scikitplot.corpus.CorpusDocument.replace "Link to this definition")
+    raw\_text: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusDocument.raw_text "Link to this definition")
+    :   Verbatim source text before any normalisation or NLP processing.
+
+        Populated by every reader in the corpus pipeline so that the
+        before/after transformation can always be compared at the document
+        level:
+
+        * [`ImageReader`](scikitplot.corpus.ImageReader.html#scikitplot.corpus.ImageReader "scikitplot.corpus._readers._image.ImageReader") — exact Tesseract / easyocr
+          output bytes before any chunker or NLP step.
+        * [`AudioReader`](scikitplot.corpus.AudioReader.html#scikitplot.corpus.AudioReader "scikitplot.corpus._readers._audio.AudioReader") — pre-LRC-inline-tag-strip
+          or pre-VTT-HTML-strip cue text; verbatim Whisper/NeMo ASR output;
+          classifier label text (no pre-processing, equals `text`).
+        * [`VideoReader`](scikitplot.corpus.VideoReader.html#scikitplot.corpus.VideoReader "scikitplot.corpus._readers._video.VideoReader") — pre-HTML-strip SRT/SBV/VTT
+          cue text; verbatim Whisper ASR output.
+        * [`PDFReader`](scikitplot.corpus.PDFReader.html#scikitplot.corpus.PDFReader "scikitplot.corpus._readers._pdf.PDFReader") — backend extraction result
+          before `.strip()` (preserves original page boundary whitespace).
+        * [`TextReader`](scikitplot.corpus.TextReader.html#scikitplot.corpus.TextReader "scikitplot.corpus._readers._text.TextReader") — full file content as read;
+          no pre-processing occurs so `raw_text == text`.
+        * [`XMLReader`](scikitplot.corpus.XMLReader.html#scikitplot.corpus.XMLReader "scikitplot.corpus._readers._xml.XMLReader") /
+          [`TEIReader`](scikitplot.corpus.TEIReader.html#scikitplot.corpus.TEIReader "scikitplot.corpus._readers._xml.TEIReader") — `itertext()` join before
+          `_WS_RE` whitespace collapsing.
+        * [`ALTOReader`](scikitplot.corpus.ALTOReader.html#scikitplot.corpus.ALTOReader "scikitplot.corpus._readers._alto.ALTOReader") — verbatim ALTO `CONTENT`
+          attribute tokens; no additional normalisation, so `raw_text == text`.
+        * [`WebReader`](scikitplot.corpus.WebReader.html#scikitplot.corpus.WebReader "scikitplot.corpus._readers._web.WebReader") — inner HTML of the matched
+          element (tags included) before `get_text()` strips them.
+        * [`YouTubeReader`](scikitplot.corpus.YouTubeReader.html#scikitplot.corpus.YouTubeReader "scikitplot.corpus._readers._web.YouTubeReader") — pre-HTML-strip cue text
+          from the transcript API (may contain `<c>` tags or HTML entities).
+
+        Use this field to compare what each reader returned against:
+
+        * [`text`](#scikitplot.corpus.CorpusDocument.text "scikitplot.corpus.CorpusDocument.text") — the chunked form (post-chunker, no NLP)
+        * [`normalized_text`](#scikitplot.corpus.CorpusDocument.normalized_text "scikitplot.corpus.CorpusDocument.normalized_text") — the post-[`TextNormalizer`](scikitplot.corpus.TextNormalizer.html#scikitplot.corpus.TextNormalizer "scikitplot.corpus.TextNormalizer") form used
+          :   for embedding
+
+        Three-tier comparison for quality audit:
+
+        ```
+        raw_text        →  verbatim reader output before any cleaning
+        text            →  cleaned / chunked form
+        normalized_text →  NFKC + ligature expansion + hyphen-join + whitespace collapse
+
+        ```
+
+        Notes
+
+        For multilingual images, accuracy requires Tesseract to be invoked with
+        the correct `ocr_lang` string (e.g. `"eng+deu+ara+heb+tur+ell"`).
+        With `ocr_lang=None` (the default), Tesseract uses English-only and
+        silently transliterates Arabic / Hebrew / Greek glyphs into Latin
+        lookalikes. `raw_text` then reflects that garbled output, NOT the
+        original script — the problem belongs to the pipeline caller, not here.
+
+    replace(**\*\*changes**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L2048)[#](#scikitplot.corpus.CorpusDocument.replace "Link to this definition")
     :   Return a new [`CorpusDocument`](#scikitplot.corpus.CorpusDocument "scikitplot.corpus.CorpusDocument") with the specified fields
         replaced.
 
@@ -728,8 +858,60 @@ class scikitplot.corpus.CorpusDocument(**doc\_id**, **input\_path**, **chunk\_in
     scene\_number: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusDocument.scene_number "Link to this definition")
     :   Scene number (one-based) within an act.
 
-    section\_type: [SectionType](scikitplot.corpus.SectionType.html#scikitplot.corpus.SectionType "scikitplot.corpus._schema.SectionType") = 'text'[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.CorpusDocument.section_type "Link to this definition")
+    script: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusDocument.script "Link to this definition")
+    :   Dominant script of this chunk.
+
+        Set to a [`ScriptType`](scikitplot.corpus.ScriptType.html#scikitplot.corpus.ScriptType "scikitplot.corpus._chunkers._custom_tokenizer.ScriptType") value string
+        (e.g. `"latin"`, `"arabic"`, `"han"`). `None` if the chunker was
+        script-unaware or no script was detected.
+
+    script\_direction: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusDocument.script_direction "Link to this definition")
+    :   Writing direction of the dominant script.
+
+        One of `"ltr"` (left-to-right), `"rtl"` (right-to-left), or
+        `"ttb"` (top-to-bottom, traditional Mongolian). `None` if not detected.
+
+    script\_model\_version: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusDocument.script_model_version "Link to this definition")
+    :   Version of the embedding or dictionary model used during semantic
+        chunking.
+
+        Required for idempotency verification on pipeline re-runs.
+        Format: `"<model_name>@<version>"`, e.g.
+        `"paraphrase-multilingual-mpnet-base-v2@1.2.0"`.
+        `None` when the `MORPHOLOGICAL` backend was used (always idempotent)
+        or when semantic chunking was not applied.
+
+    script\_spans: [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusDocument.script_spans "Link to this definition")
+    :   list of ScriptSpan dicts.
+
+        Each element is a dict:
+
+        ```
+        {
+            "text": str,        # span text (NFC)
+            "script": str,      # ScriptType value string
+            "direction": str,   # "ltr" | "rtl" | "ttb"
+            "start": int,       # grapheme cluster index (inclusive)
+            "end": int,         # grapheme cluster index (exclusive)
+        }
+
+        ```
+
+        Integer indices refer to the grapheme cluster list produced by
+        `GraphemeClusterNormalizer`.
+        `None` for single-script chunks or when script analysis was skipped.
+
+        Type:
+        :   For mixed-script chunks
+
+    section\_type: [SectionType](scikitplot.corpus.SectionType.html#scikitplot.corpus.SectionType "scikitplot.corpus._schema.SectionType") = 'text'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.CorpusDocument.section_type "Link to this definition")
     :   Semantic role of this chunk.
+
+    semanteme\_count: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusDocument.semanteme_count "Link to this definition")
+    :   Number of semantemes identified in this chunk.
+
+        Set by `SemanticChunker` only.
+        `None` if semantic chunking was not used.
 
     source\_author: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusDocument.source_author "Link to this definition")
     :   Primary author of the source.
@@ -740,13 +922,13 @@ class scikitplot.corpus.CorpusDocument(**doc\_id**, **input\_path**, **chunk\_in
     source\_title: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusDocument.source_title "Link to this definition")
     :   Title of the source work.
 
-    source\_type: [SourceType](scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType "scikitplot.corpus._schema.SourceType") = 'unknown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.CorpusDocument.source_type "Link to this definition")
+    source\_type: [SourceType](scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType "scikitplot.corpus._schema.SourceType") = 'unknown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.CorpusDocument.source_type "Link to this definition")
     :   Kind of source (BOOK, MOVIE, RESEARCH, WIKI, …).
 
     stems: [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusDocument.stems "Link to this definition")
     :   Stemmed token list.
 
-    text: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_schema.py#L907)[#](#scikitplot.corpus.CorpusDocument.text "Link to this definition")
+    text: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L920)[#](#scikitplot.corpus.CorpusDocument.text "Link to this definition")
     :   Cleaned, segmented text content.
 
     timecode\_end: [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusDocument.timecode_end "Link to this definition")
@@ -755,7 +937,7 @@ class scikitplot.corpus.CorpusDocument(**doc\_id**, **input\_path**, **chunk\_in
     timecode\_start: [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusDocument.timecode_start "Link to this definition")
     :   Start timecode in seconds for subtitle / video / audio sources.
 
-    to\_dict(**\***, **include\_embedding=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_schema.py#L1907)[#](#scikitplot.corpus.CorpusDocument.to_dict "Link to this definition")
+    to\_dict(**\***, **include\_embedding=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L2105)[#](#scikitplot.corpus.CorpusDocument.to_dict "Link to this definition")
     :   Serialise to a plain Python dictionary.
 
         Parameters:
@@ -796,7 +978,7 @@ class scikitplot.corpus.CorpusDocument(**doc\_id**, **input\_path**, **chunk\_in
         ```
         Go BackOpen In Tab
 
-    to\_flat\_dict(**\***, **include\_embedding=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_schema.py#L2008)[#](#scikitplot.corpus.CorpusDocument.to_flat_dict "Link to this definition")
+    to\_flat\_dict(**\***, **include\_embedding=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L2225)[#](#scikitplot.corpus.CorpusDocument.to_flat_dict "Link to this definition")
     :   Serialise to a flat dictionary with metadata fields promoted to the
         top level.
 
@@ -837,7 +1019,7 @@ class scikitplot.corpus.CorpusDocument(**doc\_id**, **input\_path**, **chunk\_in
         ```
         Go BackOpen In Tab
 
-    to\_pandas\_row(**\***, **include\_embedding=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_schema.py#L2052)[#](#scikitplot.corpus.CorpusDocument.to_pandas_row "Link to this definition")
+    to\_pandas\_row(**\***, **include\_embedding=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L2269)[#](#scikitplot.corpus.CorpusDocument.to_pandas_row "Link to this definition")
     :   Return a dict formatted for a single row in a `pandas.DataFrame`.
 
         Parameters:
@@ -870,7 +1052,7 @@ class scikitplot.corpus.CorpusDocument(**doc\_id**, **input\_path**, **chunk\_in
         ```
         Go BackOpen In Tab
 
-    to\_polars\_row(**\***, **include\_embedding=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_schema.py#L2082)[#](#scikitplot.corpus.CorpusDocument.to_polars_row "Link to this definition")
+    to\_polars\_row(**\***, **include\_embedding=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L2299)[#](#scikitplot.corpus.CorpusDocument.to_polars_row "Link to this definition")
     :   Return a dict formatted for a single row in a `polars.DataFrame`.
 
         Parameters:
@@ -907,7 +1089,7 @@ class scikitplot.corpus.CorpusDocument(**doc\_id**, **input\_path**, **chunk\_in
     url: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.CorpusDocument.url "Link to this definition")
     :   Source URL for web-fetched documents.
 
-    validate()[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_schema.py#L1294)[#](#scikitplot.corpus.CorpusDocument.validate "Link to this definition")
+    validate()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L1466)[#](#scikitplot.corpus.CorpusDocument.validate "Link to this definition")
     :   Assert that all invariants hold. Raises on the first violation.
 
         Raises:

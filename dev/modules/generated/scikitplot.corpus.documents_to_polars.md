@@ -1,6 +1,6 @@
 # documents\_to\_polars[#](#documents-to-polars "Link to this heading")
 
-scikitplot.corpus.documents\_to\_polars(**docs**, **\***, **include\_embedding=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_schema.py#L2311)[#](#scikitplot.corpus.documents_to_polars "Link to this definition")
+scikitplot.corpus.documents\_to\_polars(**docs**, **\***, **include\_embedding=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L2562)[#](#scikitplot.corpus.documents_to_polars "Link to this definition")
 :   Convert a list of [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus.CorpusDocument") instances to a
     `polars.DataFrame`.
 
@@ -15,13 +15,12 @@ scikitplot.corpus.documents\_to\_polars(**docs**, **\***, **include\_embedding=F
     Returns:
     :   polars.DataFrame
         :   One row per document. Metadata fields are promoted to columns.
+            An empty DataFrame with schema columns is returned when `docs` is
+            empty rather than raising — an empty corpus is a valid pipeline result.
 
     Raises:
     :   ImportError
         :   If `polars` is not installed.
-
-        ValueError
-        :   If `docs` is empty.
 
     Parameters:
     :   * ****docs**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus.CorpusDocument")**]**)

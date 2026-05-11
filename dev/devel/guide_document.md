@@ -32,7 +32,7 @@ This section describes the standards for documentation that any contribution
 being considered for integration into the core package should follow, as well as
 the standard Astropy docstring format.
 
-* Documentation text should follow the [Astropy Narrative Style Guide](https://docs.astropy.org/en/latest/development/style-guide.html#astropy-style-guide "(in Astropy v8.0)").
+* Documentation text should follow the [Astropy Narrative Style Guide](https://docs.astropy.org/en/latest/development/style-guide.html#astropy-style-guide "(in Astropy v8.1)").
 * Docstrings must be provided for all public classes, methods, and functions, and be
   written using the [numpydoc format](https://numpydoc.readthedocs.io/en/latest/format.html).
 * References in docstrings, ****including internal Astropy links****, should use the
@@ -46,7 +46,7 @@ the standard Astropy docstring format.
 * Examples and/or tutorials are strongly encouraged for typical use-cases of a
   particular module or class.
 * Optional package dependencies should be documented where feasible.
-* Configuration options using the [`astropy.config`](https://docs.astropy.org/en/latest/config/ref_api.html#module-astropy.config "(in Astropy v8.0)") mechanisms must be
+* Configuration options using the [`astropy.config`](https://docs.astropy.org/en/latest/config/ref_api.html#module-astropy.config "(in Astropy v8.1)") mechanisms must be
   explicitly mentioned in the documentation.
 
 ## Building the Documentation from Source[#](#building-the-documentation-from-source "Link to this heading")

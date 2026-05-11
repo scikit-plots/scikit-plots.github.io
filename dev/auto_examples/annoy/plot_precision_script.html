@@ -9,10 +9,10 @@
 <meta content="website" property="og:type"/>
 <meta content="https://scikit-plots.github.io/stable/auto_examples/annoy/plot_precision_script.html" property="og:url"/>
 <meta content="scikit-plots" property="og:site_name"/>
-<meta content="An example showing the AnnoyIndex class. n, f = 1_000_000, 100 # 100~2.5GB Tags: model-workflow: vector-db plot-type: bar level: beginner purpose: showcase Total running time of the script:(1 minut..." property="og:description"/>
+<meta content="An example showing the AnnoyIndex class. n, f = 1_000_000, 100 # 100~2.5GB Tags: model-workflow: vector-db plot-type: bar level: beginner purpose: showcase Total running time of the script:(2 minut..." property="og:description"/>
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
-<meta content="An example showing the AnnoyIndex class. n, f = 1_000_000, 100 # 100~2.5GB Tags: model-workflow: vector-db plot-type: bar level: beginner purpose: showcase Total running time of the script:(1 minut..." name="description"/>
+<meta content="An example showing the AnnoyIndex class. n, f = 1_000_000, 100 # 100~2.5GB Tags: model-workflow: vector-db plot-type: bar level: beginner purpose: showcase Total running time of the script:(2 minut..." name="description"/>
 <script>
 window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": false}, "providers": {"chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask OpenAI ChatGPT about this page", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "gpt-4o", "type": "web"}, "claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Anthropic Claude about this page", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this page", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Hi! Please review this documentation content: {url}\n\nI have questions about it.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}, "cursor": {"enabled": false, "type": "cursor", "label": "Connect to Cursor", "description": "Connect the MCP server to Cursor IDE.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
 </script>
@@ -580,73 +580,74 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
   0%|          | 0/100000 [00:00&lt;?, ?it/s]0 / 100000 = 0.0
 
-  2%|▏         | 1746/100000 [00:00&lt;00:05, 17451.07it/s]
-  3%|▎         | 3493/100000 [00:00&lt;00:05, 17458.25it/s]
-  5%|▌         | 5239/100000 [00:00&lt;00:05, 17454.10it/s]
-  7%|▋         | 6985/100000 [00:00&lt;00:05, 17431.53it/s]
-  9%|▊         | 8735/100000 [00:00&lt;00:05, 17455.47it/s]10000 / 100000 = 0.1
+  2%|▏         | 1662/100000 [00:00&lt;00:05, 16615.18it/s]
+  3%|▎         | 3324/100000 [00:00&lt;00:05, 16597.85it/s]
+  5%|▌         | 5021/100000 [00:00&lt;00:05, 16766.51it/s]
+  7%|▋         | 6721/100000 [00:00&lt;00:05, 16857.19it/s]
+  8%|▊         | 8407/100000 [00:00&lt;00:05, 16514.45it/s]10000 / 100000 = 0.1
 
- 10%|█         | 10481/100000 [00:00&lt;00:05, 17440.70it/s]
- 12%|█▏        | 12227/100000 [00:00&lt;00:05, 17445.40it/s]
- 14%|█▍        | 13991/100000 [00:00&lt;00:04, 17504.93it/s]
- 16%|█▌        | 15742/100000 [00:00&lt;00:04, 17265.60it/s]
- 17%|█▋        | 17470/100000 [00:01&lt;00:05, 15857.59it/s]
- 19%|█▉        | 19078/100000 [00:01&lt;00:05, 15733.65it/s]20000 / 100000 = 0.2
+ 10%|█         | 10060/100000 [00:00&lt;00:05, 16338.89it/s]
+ 12%|█▏        | 11748/100000 [00:00&lt;00:05, 16510.37it/s]
+ 13%|█▎        | 13400/100000 [00:00&lt;00:05, 16473.08it/s]
+ 15%|█▌        | 15090/100000 [00:00&lt;00:05, 16602.37it/s]
+ 17%|█▋        | 16819/100000 [00:01&lt;00:04, 16810.40it/s]
+ 19%|█▊        | 18572/100000 [00:01&lt;00:04, 17026.85it/s]20000 / 100000 = 0.2
 
- 21%|██        | 20808/100000 [00:01&lt;00:04, 16182.72it/s]
- 23%|██▎       | 22577/100000 [00:01&lt;00:04, 16619.92it/s]
- 24%|██▍       | 24348/100000 [00:01&lt;00:04, 16938.96it/s]
- 26%|██▌       | 26080/100000 [00:01&lt;00:04, 17049.40it/s]
- 28%|██▊       | 27791/100000 [00:01&lt;00:04, 16392.80it/s]
- 30%|██▉       | 29560/100000 [00:01&lt;00:04, 16766.76it/s]30000 / 100000 = 0.3
+ 20%|██        | 20276/100000 [00:01&lt;00:05, 15871.95it/s]
+ 22%|██▏       | 21923/100000 [00:01&lt;00:04, 16043.51it/s]
+ 24%|██▎       | 23540/100000 [00:01&lt;00:04, 16069.74it/s]
+ 25%|██▌       | 25156/100000 [00:01&lt;00:04, 15845.06it/s]
+ 27%|██▋       | 26747/100000 [00:01&lt;00:04, 15309.02it/s]
+ 29%|██▊       | 28502/100000 [00:01&lt;00:04, 15952.20it/s]30000 / 100000 = 0.3
 
- 31%|███▏      | 31320/100000 [00:01&lt;00:04, 17010.05it/s]
- 33%|███▎      | 33085/100000 [00:01&lt;00:03, 17197.26it/s]
- 35%|███▍      | 34810/100000 [00:02&lt;00:03, 17197.94it/s]
- 37%|███▋      | 36575/100000 [00:02&lt;00:03, 17331.23it/s]
- 38%|███▊      | 38340/100000 [00:02&lt;00:03, 17423.47it/s]40000 / 100000 = 0.4
+ 30%|███       | 30106/100000 [00:01&lt;00:04, 14912.14it/s]
+ 32%|███▏      | 31615/100000 [00:01&lt;00:04, 14244.24it/s]
+ 33%|███▎      | 33339/100000 [00:02&lt;00:04, 15068.63it/s]
+ 35%|███▌      | 35054/100000 [00:02&lt;00:04, 15653.96it/s]
+ 37%|███▋      | 36816/100000 [00:02&lt;00:03, 16216.50it/s]
+ 39%|███▊      | 38576/100000 [00:02&lt;00:03, 16618.98it/s]40000 / 100000 = 0.4
 
- 40%|████      | 40108/100000 [00:02&lt;00:03, 17497.27it/s]
- 42%|████▏     | 41876/100000 [00:02&lt;00:03, 17550.01it/s]
- 44%|████▎     | 43650/100000 [00:02&lt;00:03, 17605.97it/s]
- 45%|████▌     | 45412/100000 [00:02&lt;00:03, 17458.69it/s]
- 47%|████▋     | 47168/100000 [00:02&lt;00:03, 17487.51it/s]
- 49%|████▉     | 48939/100000 [00:02&lt;00:02, 17552.49it/s]50000 / 100000 = 0.5
+ 40%|████      | 40338/100000 [00:02&lt;00:03, 16910.93it/s]
+ 42%|████▏     | 42096/100000 [00:02&lt;00:03, 17106.32it/s]
+ 44%|████▍     | 43854/100000 [00:02&lt;00:03, 17246.37it/s]
+ 46%|████▌     | 45584/100000 [00:02&lt;00:03, 17167.78it/s]
+ 47%|████▋     | 47343/100000 [00:02&lt;00:03, 17290.95it/s]
+ 49%|████▉     | 49091/100000 [00:02&lt;00:02, 17346.70it/s]50000 / 100000 = 0.5
 
- 51%|█████     | 50695/100000 [00:02&lt;00:02, 17218.30it/s]
- 52%|█████▏    | 52419/100000 [00:03&lt;00:02, 17074.52it/s]
- 54%|█████▍    | 54168/100000 [00:03&lt;00:02, 17195.30it/s]
- 56%|█████▌    | 55936/100000 [00:03&lt;00:02, 17337.65it/s]
- 58%|█████▊    | 57708/100000 [00:03&lt;00:02, 17450.38it/s]
- 59%|█████▉    | 59454/100000 [00:03&lt;00:02, 17296.00it/s]60000 / 100000 = 0.6
+ 51%|█████     | 50847/100000 [00:03&lt;00:02, 17408.16it/s]
+ 53%|█████▎    | 52605/100000 [00:03&lt;00:02, 17458.81it/s]
+ 54%|█████▍    | 54358/100000 [00:03&lt;00:02, 17478.61it/s]
+ 56%|█████▌    | 56107/100000 [00:03&lt;00:02, 17475.23it/s]
+ 58%|█████▊    | 57858/100000 [00:03&lt;00:02, 17485.49it/s]
+ 60%|█████▉    | 59607/100000 [00:03&lt;00:02, 17280.81it/s]60000 / 100000 = 0.6
 
- 61%|██████    | 61225/100000 [00:03&lt;00:02, 17418.46it/s]
- 63%|██████▎   | 62996/100000 [00:03&lt;00:02, 17504.97it/s]
- 65%|██████▍   | 64764/100000 [00:03&lt;00:02, 17555.48it/s]
- 67%|██████▋   | 66520/100000 [00:03&lt;00:01, 17331.62it/s]
- 68%|██████▊   | 68255/100000 [00:03&lt;00:01, 17171.33it/s]70000 / 100000 = 0.7
+ 61%|██████▏   | 61367/100000 [00:03&lt;00:02, 17374.61it/s]
+ 63%|██████▎   | 63124/100000 [00:03&lt;00:02, 17431.16it/s]
+ 65%|██████▍   | 64868/100000 [00:03&lt;00:02, 17394.16it/s]
+ 67%|██████▋   | 66623/100000 [00:04&lt;00:01, 17440.28it/s]
+ 68%|██████▊   | 68379/100000 [00:04&lt;00:01, 17474.91it/s]70000 / 100000 = 0.7
 
- 70%|███████   | 70020/100000 [00:04&lt;00:01, 17311.19it/s]
- 72%|███████▏  | 71792/100000 [00:04&lt;00:01, 17431.89it/s]
- 74%|███████▎  | 73562/100000 [00:04&lt;00:01, 17511.57it/s]
- 75%|███████▌  | 75333/100000 [00:04&lt;00:01, 17569.73it/s]
- 77%|███████▋  | 77091/100000 [00:04&lt;00:01, 17316.57it/s]
- 79%|███████▉  | 78861/100000 [00:04&lt;00:01, 17428.91it/s]80000 / 100000 = 0.8
+ 70%|███████   | 70127/100000 [00:04&lt;00:01, 16977.60it/s]
+ 72%|███████▏  | 71835/100000 [00:04&lt;00:01, 17005.43it/s]
+ 74%|███████▎  | 73538/100000 [00:04&lt;00:01, 16875.24it/s]
+ 75%|███████▌  | 75228/100000 [00:04&lt;00:01, 15561.29it/s]
+ 77%|███████▋  | 76805/100000 [00:04&lt;00:01, 15088.47it/s]
+ 79%|███████▊  | 78527/100000 [00:04&lt;00:01, 15680.64it/s]80000 / 100000 = 0.8
 
- 81%|████████  | 80630/100000 [00:04&lt;00:01, 17505.29it/s]
- 82%|████████▏ | 82391/100000 [00:04&lt;00:01, 17533.94it/s]
- 84%|████████▍ | 84145/100000 [00:04&lt;00:00, 17203.87it/s]
- 86%|████████▌ | 85871/100000 [00:04&lt;00:00, 17219.01it/s]
- 88%|████████▊ | 87603/100000 [00:05&lt;00:00, 17247.99it/s]
- 89%|████████▉ | 89370/100000 [00:05&lt;00:00, 17371.14it/s]90000 / 100000 = 0.9
+ 80%|████████  | 80168/100000 [00:04&lt;00:01, 15886.89it/s]
+ 82%|████████▏ | 81896/100000 [00:04&lt;00:01, 16287.36it/s]
+ 84%|████████▎ | 83643/100000 [00:05&lt;00:00, 16629.95it/s]
+ 85%|████████▌ | 85400/100000 [00:05&lt;00:00, 16905.55it/s]
+ 87%|████████▋ | 87127/100000 [00:05&lt;00:00, 17011.55it/s]
+ 89%|████████▉ | 88833/100000 [00:05&lt;00:00, 17017.64it/s]90000 / 100000 = 0.9
 
- 91%|█████████ | 91115/100000 [00:05&lt;00:00, 17392.76it/s]
- 93%|█████████▎| 92874/100000 [00:05&lt;00:00, 17450.28it/s]
- 95%|█████████▍| 94633/100000 [00:05&lt;00:00, 17489.75it/s]
- 96%|█████████▋| 96393/100000 [00:05&lt;00:00, 17520.24it/s]
- 98%|█████████▊| 98157/100000 [00:05&lt;00:00, 17554.00it/s]
-100%|█████████▉| 99913/100000 [00:05&lt;00:00, 17191.19it/s]
-100%|██████████| 100000/100000 [00:05&lt;00:00, 17239.69it/s]
+ 91%|█████████ | 90588/100000 [00:05&lt;00:00, 17173.88it/s]
+ 92%|█████████▏| 92308/100000 [00:05&lt;00:00, 17157.71it/s]
+ 94%|█████████▍| 94026/100000 [00:05&lt;00:00, 16912.35it/s]
+ 96%|█████████▌| 95754/100000 [00:05&lt;00:00, 17019.98it/s]
+ 98%|█████████▊| 97511/100000 [00:05&lt;00:00, 17181.18it/s]
+ 99%|█████████▉| 99231/100000 [00:05&lt;00:00, 16224.64it/s]
+100%|██████████| 100000/100000 [00:06&lt;00:00, 16520.70it/s]
 
 {'f': 100, 'metric': 'angular', 'n_neighbors': 5, 'on_disk_path': 'test.annoy', 'prefault': False, 'seed': None, 'verbose': None, 'schema_version': 0, 'n_items': 100000, 'n_trees': 200, 'memory_usage_byte': 499984128, 'memory_usage_mib': 476.822021484375}
 </pre></div>
@@ -717,16 +718,16 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
   q.set_seed(0)
 
   0%|          | 0/10 [00:00&lt;?, ?it/s]
- 70%|███████   | 7/10 [00:00&lt;00:00, 61.07it/s]
-100%|██████████| 10/10 [00:00&lt;00:00, 62.20it/s]
-limit: 10        precision:  10.00% avg time: 0.000128s
-limit: 100       precision:  16.00% avg time: 0.000112s
-limit: 1000      precision:  33.00% avg time: 0.000333s
-limit: 10000     precision:  86.00% avg time: 0.001963s
+ 60%|██████    | 6/10 [00:00&lt;00:00, 52.15it/s]
+100%|██████████| 10/10 [00:00&lt;00:00, 55.48it/s]
+limit: 10        precision:  10.00% avg time: 0.000142s
+limit: 100       precision:  16.00% avg time: 0.000131s
+limit: 1000      precision:  33.00% avg time: 0.000382s
+limit: 10000     precision:  86.00% avg time: 0.002268s
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-vector-db.html"><span class="doc">model-workflow: vector-db</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-bar.html"><span class="doc">plot-type: bar</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 55.571 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (2 minutes 14.744 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_simple_script_thumb.png"/>
@@ -768,6 +769,7 @@ limit: 10000     precision:  86.00% avg time: 0.001963s
 </div>
 <dialog id="pst-secondary-sidebar-modal"></dialog>
 <div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 <div class="sidebar-secondary-item">
 <div class="sphx-glr-sidebar-component">
 <div class="sphx-glr-sidebar-item sphx-glr-download-python-sidebar" title="plot_precision_script.py">
@@ -790,20 +792,6 @@ limit: 10000     precision:  86.00% avg time: 0.001963s
 </div>
 </div>
 </div>
-<div class="sidebar-secondary-item">
-<div class="sphx-glr-sidebar-component">
-<div class="sphx-glr-sidebar-item lite-badge-sidebar">
-<a href="../../lite/lab/index.html?path=auto_examples/annoy/plot_precision_script.ipynb">
-<img alt="Launch JupyterLite" src="../../_images/jupyterlite_badge_logo.svg"/>
-</a>
-</div>
-<div class="sphx-glr-sidebar-item binder-badge-sidebar">
-<a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/annoy/plot_precision_script.ipynb">
-<img alt="Launch binder" src="../../_images/binder_badge_logo.svg"/>
-</a>
-</div>
-</div>
-</div>
 <div class="sidebar-secondary-item"><div title="plot_precision_script.py"><a download="" href="../../_downloads/c2d2f0a185e42e4309a9e8e17501ce87/plot_precision_script.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_precision_script.ipynb"><a download="" href="../../_downloads/07d5582f4876eb3715769a9aead8056c/plot_precision_script.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/annoy/plot_precision_script.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/annoy/plot_precision_script.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo.svg"/></a></div></div></div></div>
 </div>
 <footer class="bd-footer-content">
@@ -820,7 +808,7 @@ limit: 10000     precision:  86.00% avg time: 0.001963s
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260505.33a338a 2026-05-05T14:26Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260511.f02632e 2026-05-11T19:08Z.
       <br/>
 </p>
 </div>

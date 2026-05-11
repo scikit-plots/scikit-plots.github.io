@@ -1,6 +1,6 @@
 # split\_cjk\_chars[#](#split-cjk-chars "Link to this heading")
 
-scikitplot.corpus.split\_cjk\_chars(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1149)[#](#scikitplot.corpus.split_cjk_chars "Link to this definition")
+scikitplot.corpus.split\_cjk\_chars(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1272)[#](#scikitplot.corpus.split_cjk_chars "Link to this definition")
 :   Split **text** into individual CJK character tokens.
 
     Non-CJK runs (Latin words, numbers, spaces) are kept as contiguous
@@ -8,13 +8,21 @@ scikitplot.corpus.split\_cjk\_chars(**text**)[[source]](https://github.com/sciki
     each CJK ideograph is its own token and each Latin/numeric word is
     its own token.
 
+    When the `regex` library (PyPI) is installed, iteration is over
+    grapheme clusters (`\X`), which is safe for ZWJ emoji sequences,
+    Devanagari conjuncts, and any multi-codepoint grapheme that might
+    occur in mixed-script text. When `regex` is unavailable the
+    legacy codepoint-level implementation is used automatically via
+    `_split_cjk_chars_legacy`.
+
     Parameters:
     :   ****text****str
-        :   Input text that may contain CJK characters.
+        :   Input text that may contain CJK characters (NFC normalized for
+            best results when non-CJK grapheme clusters are present).
 
     Returns:
     :   list[str]
-        :   Mixed token list.
+        :   Mixed token list; external API is unchanged from the legacy version.
 
     Parameters:
     :   ****text**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
@@ -31,8 +39,11 @@ scikitplot.corpus.split\_cjk\_chars(**text**)[[source]](https://github.com/sciki
     that CJK text is not treated as one giant “word” by whitespace
     splitters.
 
-    ****Developer note:**** Used by `_tokenize_whitespace`
-    when `unit=TOKENS` and the text is detected as CJK.
+    ****Developer note:**** Bug 3 fix — the original implementation iterated
+    raw codepoints via `for ch in text:`, which is not grapheme-cluster-
+    safe. After Layer 0 (GraphemeClusterNormalizer) is applied, use the
+    `regex` path. The legacy path is preserved as
+    `_split_cjk_chars_legacy` for environments without `regex`.
 
     Examples
 

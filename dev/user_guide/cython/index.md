@@ -8,7 +8,15 @@ garbage collection, and templating support. `"Simple Foundation. Truly Sovereign
 [`scikitplot.cython`](../../apis/scikitplot.cython.html#module-scikitplot.cython "scikitplot.cython") enables real-time, in-place (in-situ) live, on demand
 generation of low-level Cython packages and modules for immediate use and testing, at runtime.
 
-Quiskstart
+* [Cython: Realtime compile\_and\_load (.pyx)](../../auto_examples/cython/plot_cython_template.html#sphx-glr-auto-examples-cython-plot-cython-template-py): Example usage of
+  [`compile_and_load`](../../modules/generated/scikitplot.cython.compile_and_load.html#scikitplot.cython.compile_and_load "scikitplot.cython.compile_and_load") using template.
+
+> **See also**
+> * <https://doc.sagemath.org/html/en/reference/misc/sage/misc/cython.html>
+* [cython/cython](https://github.com/cython/cython)
+* <https://cython.readthedocs.io/en/latest/index.html>
+
+Examples
 
 ```
 from scikitplot.cython import compile_and_load
@@ -17,16 +25,6 @@ m = compile_and_load("def f(int n):\n    return n*n")
 m.f(10)
 
 ```
-
-Examples
-
-* [Cython: Realtime compile\_and\_load (.pyx)](../../auto_examples/cython/plot_cython_template.html#sphx-glr-auto-examples-cython-plot-cython-template-py): Example usage of
-  [`compile_and_load`](../../modules/generated/scikitplot.cython.compile_and_load.html#scikitplot.cython.compile_and_load "scikitplot.cython.compile_and_load") using template.
-
-> **See also**
-> * <https://doc.sagemath.org/html/en/reference/misc/sage/misc/cython.html>
-* [cython/cython](https://github.com/cython/cython)
-* <https://cython.readthedocs.io/en/latest/index.html>
 
 ****cython templates****
 

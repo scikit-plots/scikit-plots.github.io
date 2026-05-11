@@ -1,6 +1,6 @@
 # detect\_script[#](#detect-script "Link to this heading")
 
-scikitplot.corpus.detect\_script(**text**, **\***, **sample\_size=500**, **majority\_threshold=0.55**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L884)[#](#scikitplot.corpus.detect_script "Link to this definition")
+scikitplot.corpus.detect\_script(**text**, **\***, **sample\_size=500**, **majority\_threshold=0.55**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L929)[#](#scikitplot.corpus.detect_script "Link to this definition")
 :   Detect the dominant Unicode script in **text**.
 
     Samples up to **sample\_size** characters for efficiency on long documents.
@@ -59,11 +59,17 @@ scikitplot.corpus.detect\_script(**text**, **\***, **sample\_size=500**, **major
     >>> detect_script("مرحبا بالعالم")
     <ScriptType.ARABIC: 'arabic'>
     >>> detect_script("こんにちは世界")
-    <ScriptType.CJK: 'cjk'>
+    <ScriptType.HIRAGANA: 'hiragana'>
     >>> detect_script("Ἡ γλῶσσα")
     <ScriptType.GREEK: 'greek'>
     >>> detect_script("12345 !@#$%")
     <ScriptType.UNKNOWN: 'unknown'>
+    >>> detect_script("😀🎉")
+    <ScriptType.EMOJI: 'emoji'>
+    >>> detect_script("你好世界")
+    <ScriptType.HAN: 'han'>
+    >>> detect_script("안녕하세요")
+    <ScriptType.HANGUL: 'hangul'>
 
     ```
     Go BackOpen In Tab

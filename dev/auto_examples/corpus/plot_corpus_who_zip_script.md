@@ -79,7 +79,7 @@ result_zip
 ```
 Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
 
-PipelineResult(input_path='data/WHO-EURO-2025-12555-52329-80560-eng.zip', output_path=output/WHO-EURO-2025-12555-52329-80560-eng.csv, export_format=csv, n_documents=7, n_read=8, n_omitted=1, n_embedded=0, elapsed_seconds=17.1s)
+PipelineResult(input_path='data/WHO-EURO-2025-12555-52329-80560-eng.zip', output_path=output/WHO-EURO-2025-12555-52329-80560-eng.csv, export_format=csv, n_documents=7, n_read=8, n_omitted=1, n_embedded=0, elapsed_seconds=18.4s)
 
 ```
 ```
@@ -100,6 +100,12 @@ pprint(pd.read_csv(result_zip.output_path).head().to_dict())
                        2: 'sentence',
                        3: 'sentence',
                        4: 'sentence'},
+ 'chunking_unit': {0: 'sentence',
+                   1: 'sentence',
+                   2: 'sentence',
+                   3: 'sentence',
+                   4: 'sentence'},
+ 'codepoint_count': {0: 50, 1: 33, 2: 60, 3: 78, 4: 61},
  'collection_id': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'confidence': {0: 0.8465, 1: 0.8465, 2: 0.8465, 3: 0.8465, 4: 0.8465},
  'content_hash': {0: '28540b9739ee232fb67a4e1088555ddd',
@@ -107,6 +113,7 @@ pprint(pd.read_csv(result_zip.output_path).head().to_dict())
                   2: '31a24d3e03ce1119627d5bff9a29dfa6',
                   3: '14312e5e9f2c77936f3da344dc9d8869',
                   4: '7c2b137120a08fcffd38c67e655cb899'},
+ 'determinative_groups': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'doc_id': {0: '63533d90661689f9',
             1: 'af4a96b6f8cccd60',
             2: 'adb1682d7e30a156',
@@ -114,6 +121,7 @@ pprint(pd.read_csv(result_zip.output_path).head().to_dict())
             4: 'da326479e13bf3ce'},
  'doi': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'frame_index': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'grapheme_count': {0: 50, 1: 33, 2: 60, 3: 78, 4: 61},
  'image_height': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'image_width': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'input_path': {0: 'WHO-EURO-2025-12555-52329-80560-eng.zip',
@@ -121,12 +129,14 @@ pprint(pd.read_csv(result_zip.output_path).head().to_dict())
                 2: 'WHO-EURO-2025-12555-52329-80560-eng.zip',
                 3: 'WHO-EURO-2025-12555-52329-80560-eng.zip',
                 4: 'WHO-EURO-2025-12555-52329-80560-eng.zip'},
+ 'is_mixed_script': {0: False, 1: False, 2: False, 3: False, 4: False},
  'isbn': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'keywords': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'language': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'lemmas': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'line_number': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'modality': {0: 'text', 1: 'text', 2: 'text', 3: 'text', 4: 'text'},
+ 'morphemes': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'normalized_text': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'ocr_engine': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'page_number': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
@@ -134,12 +144,24 @@ pprint(pd.read_csv(result_zip.output_path).head().to_dict())
  'parent_doc_id': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'raw_dtype': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'raw_shape': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'raw_text': {0: 'Can people afford to pay for healthcare in Europe?',
+              1: 'The short answer is not everyone.',
+              2: 'No country in Europe has achieved universal health coverage.',
+              3: 'When people have to pay out of pocket for healthcare and '
+                 "they can't afford it,",
+              4: 'they either have to cut spending on other basic needs '
+                 'like...'},
  'scene_number': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'script': {0: 'latin', 1: 'latin', 2: 'latin', 3: 'latin', 4: 'latin'},
+ 'script_direction': {0: 'ltr', 1: 'ltr', 2: 'ltr', 3: 'ltr', 4: 'ltr'},
+ 'script_model_version': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'script_spans': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'section_type': {0: 'transcript',
                   1: 'transcript',
                   2: 'transcript',
                   3: 'transcript',
                   4: 'transcript'},
+ 'semanteme_count': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'source_author': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'source_date': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'source_title': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
@@ -161,7 +183,7 @@ pprint(pd.read_csv(result_zip.output_path).head().to_dict())
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 17.088 seconds)
+****Total running time of the script:**** (0 minutes 18.459 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_who_zip_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_who_zip_script.ipynb)
 

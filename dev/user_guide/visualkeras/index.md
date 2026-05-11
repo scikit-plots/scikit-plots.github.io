@@ -9,6 +9,8 @@ For visualkeras for Keras / TensorFlow Models [`tf.keras.Model`](https://www.ten
 Documentation is available in the docstrings and
 online at [paulgavrikov/visualkeras](https://github.com/paulgavrikov/visualkeras).
 
+Examples
+
 ```
 # (optionally)
 import visualkeras

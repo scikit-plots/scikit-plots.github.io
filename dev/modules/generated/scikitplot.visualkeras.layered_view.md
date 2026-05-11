@@ -1,6 +1,6 @@
 # layered\_view[#](#layered-view "Link to this heading")
 
-scikitplot.visualkeras.layered\_view(**model**, **to\_file=None**, **min\_z=20**, **min\_xy=20**, **max\_z=400**, **max\_xy=2000**, **scale\_z=0.1**, **scale\_xy=4**, **type\_ignore=None**, **index\_ignore=None**, **color\_map=None**, **one\_dim\_orientation='z'**, **index\_2d=None**, **background\_fill='white'**, **draw\_volume=True**, **draw\_reversed=False**, **padding=10**, **text\_callable=None**, **text\_vspacing=4**, **spacing=10**, **draw\_funnel=True**, **shade\_step=10**, **legend=False**, **legend\_text\_spacing\_offset=15**, **font=None**, **font\_color='black'**, **show\_dimension=False**, **backend=None**, **show\_os\_viewer=False**, **show\_fig=True**, **save\_fig=False**, **save\_fig\_filename=''**, **overwrite=True**, **add\_timestamp=False**, **verbose=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/visualkeras/_layered.py#L58)[#](#scikitplot.visualkeras.layered_view "Link to this definition")
+scikitplot.visualkeras.layered\_view(**model**, **to\_file=None**, **min\_z=20**, **min\_xy=20**, **max\_z=400**, **max\_xy=2000**, **scale\_z=0.1**, **scale\_xy=4**, **type\_ignore=None**, **index\_ignore=None**, **color\_map=None**, **one\_dim\_orientation='z'**, **index\_2d=None**, **background\_fill='white'**, **draw\_volume=True**, **draw\_reversed=False**, **padding=10**, **text\_callable=None**, **text\_vspacing=4**, **spacing=10**, **draw\_funnel=True**, **shade\_step=10**, **legend=False**, **legend\_text\_spacing\_offset=15**, **font=None**, **font\_color='black'**, **show\_dimension=False**, **backend=None**, **show\_os\_viewer=False**, **show\_fig=True**, **save\_fig=False**, **save\_fig\_filename=''**, **overwrite=True**, **add\_timestamp=False**, **verbose=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/visualkeras/_layered.py#L58)[#](#scikitplot.visualkeras.layered_view "Link to this definition")
 :   Generates an architectural visualization for a given linear Keras
     [`tf.keras.Model`](https://www.tensorflow.org/api_docs/python/tf/keras/Model "(in TensorFlow v2.8)") model
     (i.e., one input and output tensor for each layer) in a layered style,
@@ -211,7 +211,7 @@ scikitplot.visualkeras.layered\_view(**model**, **to\_file=None**, **min\_z=20**
         * ****verbose**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
 
     Return type:
-    :   [PIL.Image.Image](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image "(in Pillow (PIL Fork) v12.2.0)") | [matplotlib.image.AxesImage](https://matplotlib.org/devdocs/api/image_api.html#matplotlib.image.AxesImage "(in Matplotlib v3.12.0.dev26+gf4cc437d1)")
+    :   [PIL.Image.Image](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image "(in Pillow (PIL Fork) v12.2.0)") | [matplotlib.image.AxesImage](https://matplotlib.org/devdocs/api/image_api.html#matplotlib.image.AxesImage "(in Matplotlib v3.12.0.dev56+g93e7277ae)")
 
     Notes
 

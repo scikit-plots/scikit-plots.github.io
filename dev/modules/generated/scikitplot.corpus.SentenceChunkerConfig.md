@@ -1,6 +1,6 @@
 # SentenceChunkerConfig[#](#sentencechunkerconfig "Link to this heading")
 
-class scikitplot.corpus.SentenceChunkerConfig(**backend=SentenceBackend.REGEX**, **min\_length=1**, **overlap=0**, **spacy\_model=None**, **nltk\_language='english'**, **strip\_whitespace=True**, **include\_offsets=True**, **custom\_splitter=None**, **script\_hint=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_chunkers/_sentence.py#L192)[#](#scikitplot.corpus.SentenceChunkerConfig "Link to this definition")
+class scikitplot.corpus.SentenceChunkerConfig(**backend=SentenceBackend.REGEX**, **min\_length=1**, **overlap=0**, **spacy\_model=None**, **nltk\_language='english'**, **strip\_whitespace=True**, **include\_offsets=True**, **custom\_splitter=None**, **script\_hint=None**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_sentence.py#L267)[#](#scikitplot.corpus.SentenceChunkerConfig "Link to this definition")
 :   Configuration for [`SentenceChunker`](scikitplot.corpus.SentenceChunker.html#scikitplot.corpus.SentenceChunker "scikitplot.corpus.SentenceChunker").
 
     Parameters:
@@ -41,8 +41,9 @@ class scikitplot.corpus.SentenceChunkerConfig(**backend=SentenceBackend.REGEX**,
         * ****include\_offsets**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
         * ****custom\_splitter**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
         * ****script\_hint**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+        * ****multilang\_config**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
 
-    backend: [SentenceBackend](scikitplot.corpus.SentenceBackend.html#scikitplot.corpus.SentenceBackend "scikitplot.corpus._chunkers._sentence.SentenceBackend") = 'regex'[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_chunkers/_sentence.py#L)[#](#scikitplot.corpus.SentenceChunkerConfig.backend "Link to this definition")
+    backend: [SentenceBackend](scikitplot.corpus.SentenceBackend.html#scikitplot.corpus.SentenceBackend "scikitplot.corpus._chunkers._sentence.SentenceBackend") = 'regex'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_sentence.py#L)[#](#scikitplot.corpus.SentenceChunkerConfig.backend "Link to this definition")
 
     custom\_splitter: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") = None[#](#scikitplot.corpus.SentenceChunkerConfig.custom_splitter "Link to this definition")
     :   User-supplied splitter for `backend=SentenceBackend.CUSTOM`.
@@ -55,6 +56,14 @@ class scikitplot.corpus.SentenceChunkerConfig(**backend=SentenceBackend.REGEX**,
     include\_offsets: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.SentenceChunkerConfig.include_offsets "Link to this definition")
 
     min\_length: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 1[#](#scikitplot.corpus.SentenceChunkerConfig.min_length "Link to this definition")
+
+    multilang\_config: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") = None[#](#scikitplot.corpus.SentenceChunkerConfig.multilang_config "Link to this definition")
+    :   Multilang feature flags (`MultilangConfig` or `None`).
+
+        When set, each sentence chunk is enriched with a
+        `chunk.metadata["multilang"]` dict containing script detection,
+        grapheme counts, semanteme analysis, preprocessing trace, raw text,
+        and timing provenance fields.
 
     nltk\_language: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") = 'english'[#](#scikitplot.corpus.SentenceChunkerConfig.nltk_language "Link to this definition")
     :   Language(s) for the NLTK Punkt sentence tokenizer.

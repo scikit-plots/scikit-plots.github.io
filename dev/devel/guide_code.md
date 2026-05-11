@@ -44,7 +44,7 @@ for affiliated packages.
 * General utilities necessary for but not specific to the package or
   sub-package should be placed in a `packagename.utils` module (e.g.
   `astropy.utils` for the core package). If a utility is already present in
-  [`astropy.utils`](https://docs.astropy.org/en/latest/utils/ref_api.html#module-astropy.utils "(in Astropy v8.0)"), packages should always use that utility instead of
+  [`astropy.utils`](https://docs.astropy.org/en/latest/utils/ref_api.html#module-astropy.utils "(in Astropy v8.1)"), packages should always use that utility instead of
   re-implementing it in `packagename.utils` module.
 
 ## Documentation and Testing[#](#documentation-and-testing "Link to this heading")
@@ -64,17 +64,17 @@ for affiliated packages.
 
 * Packages can include data in a directory named `data` inside a subpackage
   source directory as long as it is less than about 100 kB. These data should
-  always be accessed via the [`get_pkg_data_fileobj`](https://docs.astropy.org/en/latest/api/astropy.utils.data.get_pkg_data_fileobj.html#astropy.utils.data.get_pkg_data_fileobj "(in Astropy v8.0)") or
-  [`get_pkg_data_filename`](https://docs.astropy.org/en/latest/api/astropy.utils.data.get_pkg_data_filename.html#astropy.utils.data.get_pkg_data_filename "(in Astropy v8.0)") functions. If the data
+  always be accessed via the [`get_pkg_data_fileobj`](https://docs.astropy.org/en/latest/api/astropy.utils.data.get_pkg_data_fileobj.html#astropy.utils.data.get_pkg_data_fileobj "(in Astropy v8.1)") or
+  [`get_pkg_data_filename`](https://docs.astropy.org/en/latest/api/astropy.utils.data.get_pkg_data_filename.html#astropy.utils.data.get_pkg_data_filename "(in Astropy v8.1)") functions. If the data
   exceeds this size, it should be hosted outside the source code repository,
   either at a third-party location on the internet or the [astropy data server](https://github.com/astropy/astropy-data).
   In either case, it should always be downloaded using the
-  [`get_pkg_data_fileobj`](https://docs.astropy.org/en/latest/api/astropy.utils.data.get_pkg_data_fileobj.html#astropy.utils.data.get_pkg_data_fileobj "(in Astropy v8.0)") or
-  [`get_pkg_data_filename`](https://docs.astropy.org/en/latest/api/astropy.utils.data.get_pkg_data_filename.html#astropy.utils.data.get_pkg_data_filename "(in Astropy v8.0)") functions. If a specific
+  [`get_pkg_data_fileobj`](https://docs.astropy.org/en/latest/api/astropy.utils.data.get_pkg_data_fileobj.html#astropy.utils.data.get_pkg_data_fileobj "(in Astropy v8.1)") or
+  [`get_pkg_data_filename`](https://docs.astropy.org/en/latest/api/astropy.utils.data.get_pkg_data_filename.html#astropy.utils.data.get_pkg_data_filename "(in Astropy v8.1)") functions. If a specific
   version of a data file is needed, the hash mechanism described in
-  [`astropy.utils.data`](https://docs.astropy.org/en/latest/utils/ref_api.html#module-astropy.utils.data "(in Astropy v8.0)") should be used.
+  [`astropy.utils.data`](https://docs.astropy.org/en/latest/utils/ref_api.html#module-astropy.utils.data "(in Astropy v8.1)") should be used.
 * All persistent configuration should use the
-  [Configuration System (astropy.config)](https://docs.astropy.org/en/latest/config/index.html#astropy-config "(in Astropy v8.0)") mechanism. Such configuration items
+  [Configuration System (astropy.config)](https://docs.astropy.org/en/latest/config/index.html#astropy-config "(in Astropy v8.1)") mechanism. Such configuration items
   should be placed at the top of the module or package that makes use of them,
   and supply a description sufficient for users to understand what the setting
   changes.
@@ -95,7 +95,7 @@ errors should follow these rules:
   warning_class)`. These get redirected to `log.warning()` by default,
   but one can still use the standard warning-catching mechanism and custom
   warning classes. The warning class should be either
-  [`AstropyUserWarning`](https://docs.astropy.org/en/latest/api/astropy.utils.exceptions.AstropyUserWarning.html#astropy.utils.exceptions.AstropyUserWarning "(in Astropy v8.0)") or inherit from it.
+  [`AstropyUserWarning`](https://docs.astropy.org/en/latest/api/astropy.utils.exceptions.AstropyUserWarning.html#astropy.utils.exceptions.AstropyUserWarning "(in Astropy v8.1)") or inherit from it.
 * For informational and debugging messages, one should always use
   `log.info(message)` and `log.debug(message)`.
 
@@ -212,7 +212,7 @@ This design generally follows [Postel’s Law](https://en.wikipedia.org/wiki/Rob
 accept, and conservative in what you send.”
 
 There is a test helper,
-[`assert_follows_unicode_guidelines`](https://docs.astropy.org/en/latest/api/astropy.tests.helper.assert_follows_unicode_guidelines.html#astropy.tests.helper.assert_follows_unicode_guidelines "(in Astropy v8.0)"),
+[`assert_follows_unicode_guidelines`](https://docs.astropy.org/en/latest/api/astropy.tests.helper.assert_follows_unicode_guidelines.html#astropy.tests.helper.assert_follows_unicode_guidelines "(in Astropy v8.1)"),
 to check compliance with the above guidelines.
 
 ## Including C Code[#](#including-c-code "Link to this heading")

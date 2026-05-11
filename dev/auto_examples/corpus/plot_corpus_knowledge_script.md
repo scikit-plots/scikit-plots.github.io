@@ -99,7 +99,33 @@ def _run(chunker: object, label: str) -> object:
     print(f"\n{'=' * 60}")
     print(label)
     print("=" * 60)
-    df = pd.read_csv(result.output_path)
+
+    # Guard 1: pipeline produced no documents — CSV is header-only.
+    # result.n_documents is always 0 in this case; skip pd.read_csv()
+    # so we never hit EmptyDataError even if the caller does not have
+    # the header-only fix deployed on the exporter side.
+    if result.n_documents == 0:
+        print("[WARNING] Pipeline produced 0 documents — CSV contains no data rows.")
+        return result
+
+    # Guard 2: output_path may be None when export is skipped (e.g. no
+    # output_path supplied to CorpusPipeline).  Should not happen in this
+    # script, but fail fast with a clear message rather than AttributeError.
+    if result.output_path is None:
+        print("[WARNING] No output_path in result — export was skipped.")
+        return result
+
+    # Guard 3: catch residual EmptyDataError for any edge-case where the
+    # exporter writes a zero-byte file (e.g. older exporter version).
+    try:
+        df = pd.read_csv(result.output_path)
+    except pd.errors.EmptyDataError:
+        print(
+            f"[WARNING] CSV at {result.output_path!s} is empty — "
+            "no rows to display.  Check exporter version."
+        )
+        return result
+
     pprint(df.head().to_dict())
     return result
 
@@ -140,21 +166,27 @@ Word chunker — chunk_by='document' (PORTER stemming)
  'char_start': {0: 0},
  'chunk_index': {0: 0},
  'chunking_strategy': {0: 'custom'},
+ 'chunking_unit': {0: 'word'},
+ 'codepoint_count': {0: 873},
  'collection_id': {0: nan},
  'confidence': {0: 0.6372},
  'content_hash': {0: '8db16ee6ad399ec05154ba6a29e2c8a6'},
+ 'determinative_groups': {0: nan},
  'doc_id': {0: 'cddbb4132e9ed33c'},
  'doi': {0: nan},
  'frame_index': {0: nan},
+ 'grapheme_count': {0: 873},
  'image_height': {0: 1024},
  'image_width': {0: 1024},
  'input_path': {0: 'AI_Generated_Image_1ix.png'},
+ 'is_mixed_script': {0: False},
  'isbn': {0: nan},
  'keywords': {0: nan},
  'language': {0: nan},
  'lemmas': {0: nan},
  'line_number': {0: nan},
  'modality': {0: 'text'},
+ 'morphemes': {0: nan},
  'normalized_text': {0: nan},
  'ocr_engine': {0: 'tesseract'},
  'page_number': {0: 0},
@@ -162,8 +194,121 @@ Word chunker — chunk_by='document' (PORTER stemming)
  'parent_doc_id': {0: nan},
  'raw_dtype': {0: nan},
  'raw_shape': {0: nan},
+ 'raw_text': {0: '  \n'
+                 ' \n'
+                 '\n'
+                 'ire uursacesced Caraga io\n'
+                 '10 Bi6doKew 8 Erna monet) 1b / aoe Maa ETT\n'
+                 'RCO RSP eo ere\n'
+                 '\n'
+                 'Memmnminsane(s)\n'
+                 'erklaren kannst, hast du\n'
+                 'Creerona eats\n'
+                 '\n'
+                 ' \n'
+                 ' \n'
+                 '      \n'
+                 '     \n'
+                 '   \n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 '  \n'
+                 ' \n'
+                 '\n'
+                 ' \n'
+                 '\n'
+                 'Brome ccrlhy | |\n'
+                 ' Petesercne | verstanden.\n'
+                 '>\n'
+                 'If you cannot explain\n'
+                 '» Sas ONAN Co oiag\n'
+                 'understand it well enough.\n'
+                 '\n'
+                 'ge VIDA ND TRON\n'
+                 '\n'
+                 'Sa eas\n'
+                 'aE Nia)\n'
+                 '\n'
+                 '   \n'
+                 '\n'
+                 '‘ApiotoréAnc + AASEavSp0¢ , Richard P. Feynman j Albert '
+                 'Einstein\n'
+                 '\n'
+                 '384-322 BC - 356-323 BC | Mieza, Macedonia 1918-1988 | New '
+                 'York, USA — Princeton — Pasadena 99-1955 | Ulm — Princeton\n'
+                 '\n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 '  \n'
+                 '  \n'
+                 ' \n'
+                 ' \n'
+                 '   \n'
+                 '\n'
+                 'ONSEN\n'
+                 'venient Cc ae\n'
+                 '| Crore mokoeoeri ae} A\n'
+                 '\n'
+                 'to a bartender. aa ve, r\n'
+                 'es Clenrecemnnc\n'
+                 'ahupiingao ka taea\n'
+                 'POMBELCUICIC IN\n'
+                 'SSRI LIC\n'
+                 '\n'
+                 ' \n'
+                 '\n'
+                 'Pye matterhow much you kaov\n'
+                 'your words reach only as far as the\n'
+                 'other person can understand,\n'
+                 '\n'
+                 ': ugh $9) glen a lat 9 CS lb cle Lage I y\n'
+                 '\n'
+                 ' \n'
+                 '\n'
+                 '       \n'
+                 ' \n'
+                 '\n'
+                 'Ernest Rutherford F Mevlana\n'
+                 '1871-1937 | Nelson, NZ > Cambridge _—_ warm, Ed 3 | Balkh > '
+                 'Konya\n'
+                 '\n'
+                 '           \n'
+                 ' \n'
+                 '\n'
+                 'Sato r le Scholar aCe Is\n'
+                 '\n'
+                 'Simplicity is the mark\n'
+                 '7 Os true knowledge.\n'
+                 '\n'
+                 '“ (Focused)  (Pocused) | (Distracted)\n'
+                 '\n'
+                 'cenit)\n'
+                 '(Innocent)\n'
+                 '\n'
+                 '   \n'
+                 '\n'
+                 'You may know all the worlds, but the conversation sto,\n'
+                 'j at the other person’s intelligence and vision. Knowledge '
+                 'is\n'
+                 'not limited by the speaker. It is limited by the listener.\n'
+                 '\n'
+                 "Mevlana's Wisdom\n"
+                 '1207-1273 | Balkh + Konya\n'
+                 '\n'
+                 ' \n'
+                 '\x0c'},
  'scene_number': {0: nan},
+ 'script': {0: 'latin'},
+ 'script_direction': {0: 'ltr'},
+ 'script_model_version': {0: nan},
+ 'script_spans': {0: nan},
  'section_type': {0: 'text'},
+ 'semanteme_count': {0: nan},
  'source_author': {0: nan},
  'source_date': {0: nan},
  'source_title': {0: nan},
@@ -227,30 +372,36 @@ Word chunker — chunk_by='sentence' (SNOWBALL stemming)
  'char_start': {0: 0, 1: 0, 2: 0, 3: 0},
  'chunk_index': {0: 0, 1: 1, 2: 2, 3: 4},
  'chunking_strategy': {0: 'custom', 1: 'custom', 2: 'custom', 3: 'custom'},
+ 'chunking_unit': {0: 'word', 1: 'word', 2: 'word', 3: 'word'},
+ 'codepoint_count': {0: 274, 1: 522, 2: 22, 3: 35},
  'collection_id': {0: nan, 1: nan, 2: nan, 3: nan},
  'confidence': {0: 0.6372, 1: 0.6372, 2: 0.6372, 3: 0.6372},
  'content_hash': {0: '33f68ead927ced8f1830ab83e041f48f',
                   1: 'b425c02b6305598e94c04a129e24f714',
                   2: '357043daf50f1a2c8969664f442c153e',
                   3: '0e3d11aeb9c648a124ea5a868a59f79e'},
+ 'determinative_groups': {0: nan, 1: nan, 2: nan, 3: nan},
  'doc_id': {0: 'cddbb4132e9ed33c',
             1: '373e950c24f9fe97',
             2: '8f7b55bd79324031',
             3: '999aca3ee85e1488'},
  'doi': {0: nan, 1: nan, 2: nan, 3: nan},
  'frame_index': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'grapheme_count': {0: 274, 1: 522, 2: 22, 3: 35},
  'image_height': {0: 1024, 1: 1024, 2: 1024, 3: 1024},
  'image_width': {0: 1024, 1: 1024, 2: 1024, 3: 1024},
  'input_path': {0: 'AI_Generated_Image_1ix.png',
                 1: 'AI_Generated_Image_1ix.png',
                 2: 'AI_Generated_Image_1ix.png',
                 3: 'AI_Generated_Image_1ix.png'},
+ 'is_mixed_script': {0: False, 1: False, 2: False, 3: False},
  'isbn': {0: nan, 1: nan, 2: nan, 3: nan},
  'keywords': {0: nan, 1: nan, 2: nan, 3: nan},
  'language': {0: nan, 1: nan, 2: nan, 3: nan},
  'lemmas': {0: nan, 1: nan, 2: nan, 3: nan},
  'line_number': {0: nan, 1: nan, 2: nan, 3: nan},
  'modality': {0: 'text', 1: 'text', 2: 'text', 3: 'text'},
+ 'morphemes': {0: nan, 1: nan, 2: nan, 3: nan},
  'normalized_text': {0: nan, 1: nan, 2: nan, 3: nan},
  'ocr_engine': {0: 'tesseract', 1: 'tesseract', 2: 'tesseract', 3: 'tesseract'},
  'page_number': {0: 0, 1: 0, 2: 0, 3: 0},
@@ -258,8 +409,112 @@ Word chunker — chunk_by='sentence' (SNOWBALL stemming)
  'parent_doc_id': {0: nan, 1: nan, 2: nan, 3: nan},
  'raw_dtype': {0: nan, 1: nan, 2: nan, 3: nan},
  'raw_shape': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'raw_text': {0: 'ire uursacesced Caraga io\n'
+                 '10 Bi6doKew 8 Erna monet) 1b / aoe Maa ETT\n'
+                 'RCO RSP eo ere\n'
+                 '\n'
+                 'Memmnminsane(s)\n'
+                 'erklaren kannst, hast du\n'
+                 'Creerona eats\n'
+                 '\n'
+                 ' \n'
+                 ' \n'
+                 '      \n'
+                 '     \n'
+                 '   \n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 '  \n'
+                 ' \n'
+                 '\n'
+                 ' \n'
+                 '\n'
+                 'Brome ccrlhy | |\n'
+                 ' Petesercne | verstanden.\n'
+                 '>\n'
+                 'If you cannot explain\n'
+                 '» Sas ONAN Co oiag\n'
+                 'understand it well enough.\n'
+                 '\n'
+                 'ge VIDA ND TRON\n'
+                 '\n'
+                 'Sa eas\n'
+                 'aE Nia)\n'
+                 '\n'
+                 '   \n'
+                 '\n'
+                 '‘ApiotoréAnc + AASEavSp0¢ , Richard P.',
+              1: 'Feynman j Albert Einstein\n'
+                 '\n'
+                 '384-322 BC - 356-323 BC | Mieza, Macedonia 1918-1988 | New '
+                 'York, USA — Princeton — Pasadena 99-1955 | Ulm — Princeton\n'
+                 '\n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 '  \n'
+                 '  \n'
+                 ' \n'
+                 ' \n'
+                 '   \n'
+                 '\n'
+                 'ONSEN\n'
+                 'venient Cc ae\n'
+                 '| Crore mokoeoeri ae} A\n'
+                 '\n'
+                 'to a bartender. aa ve, r\n'
+                 'es Clenrecemnnc\n'
+                 'ahupiingao ka taea\n'
+                 'POMBELCUICIC IN\n'
+                 'SSRI LIC\n'
+                 '\n'
+                 ' \n'
+                 '\n'
+                 'Pye matterhow much you kaov\n'
+                 'your words reach only as far as the\n'
+                 'other person can understand,\n'
+                 '\n'
+                 ': ugh $9) glen a lat 9 CS lb cle Lage I y\n'
+                 '\n'
+                 ' \n'
+                 '\n'
+                 '       \n'
+                 ' \n'
+                 '\n'
+                 'Ernest Rutherford F Mevlana\n'
+                 '1871-1937 | Nelson, NZ > Cambridge _—_ warm, Ed 3 | Balkh > '
+                 'Konya\n'
+                 '\n'
+                 '           \n'
+                 ' \n'
+                 '\n'
+                 'Sato r le Scholar aCe Is\n'
+                 '\n'
+                 'Simplicity is the mark\n'
+                 '7 Os true knowledge.\n'
+                 '\n'
+                 '“ (Focused)  (Pocused) | (Distracted)\n'
+                 '\n'
+                 'cenit)\n'
+                 '(Innocent)\n'
+                 '\n'
+                 '   \n'
+                 '\n'
+                 'You may know all the worlds, but the conversation sto,\n'
+                 'j at the other person’s intelligence and vision.',
+              2: 'Knowledge is\nnot limited by the speaker.',
+              3: "Mevlana's Wisdom\n1207-1273 | Balkh + Konya"},
  'scene_number': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'script': {0: 'latin', 1: 'latin', 2: 'latin', 3: 'latin'},
+ 'script_direction': {0: 'ltr', 1: 'ltr', 2: 'ltr', 3: 'ltr'},
+ 'script_model_version': {0: nan, 1: nan, 2: nan, 3: nan},
+ 'script_spans': {0: nan, 1: nan, 2: nan, 3: nan},
  'section_type': {0: 'text', 1: 'text', 2: 'text', 3: 'text'},
+ 'semanteme_count': {0: nan, 1: nan, 2: nan, 3: nan},
  'source_author': {0: nan, 1: nan, 2: nan, 3: nan},
  'source_date': {0: nan, 1: nan, 2: nan, 3: nan},
  'source_title': {0: nan, 1: nan, 2: nan, 3: nan},
@@ -321,6 +576,12 @@ Sentence chunker (NLTK backend)
                        2: 'sentence',
                        3: 'sentence',
                        4: 'sentence'},
+ 'chunking_unit': {0: 'sentence',
+                   1: 'sentence',
+                   2: 'sentence',
+                   3: 'sentence',
+                   4: 'sentence'},
+ 'codepoint_count': {0: 223, 1: 69, 2: 306, 3: 403, 4: 166},
  'collection_id': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'confidence': {0: 0.6372, 1: 0.6372, 2: 0.6372, 3: 0.6372, 4: 0.6372},
  'content_hash': {0: '72d9a66ad2010fe6f95c336e9b967aef',
@@ -328,6 +589,7 @@ Sentence chunker (NLTK backend)
                   2: '929db36bee285ec5d8f380cacba9e157',
                   3: '8fd437ea14514826c2c1dcae91e2c3c3',
                   4: '1890c9fdc4ee3b5ba62205dd8c1c7cf0'},
+ 'determinative_groups': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'doc_id': {0: '033fe979c6bb209c',
             1: '2829df524657858f',
             2: '4f3824727d6cf878',
@@ -335,6 +597,7 @@ Sentence chunker (NLTK backend)
             4: 'b203e048a59ee500'},
  'doi': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'frame_index': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'grapheme_count': {0: 223, 1: 69, 2: 306, 3: 403, 4: 166},
  'image_height': {0: 1024, 1: 1024, 2: 1024, 3: 1024, 4: 1024},
  'image_width': {0: 1024, 1: 1024, 2: 1024, 3: 1024, 4: 1024},
  'input_path': {0: 'AI_Generated_Image_1ix.png',
@@ -342,12 +605,14 @@ Sentence chunker (NLTK backend)
                 2: 'AI_Generated_Image_1ix.png',
                 3: 'AI_Generated_Image_1ix.png',
                 4: 'AI_Generated_Image_1ix.png'},
+ 'is_mixed_script': {0: False, 1: False, 2: False, 3: False, 4: False},
  'isbn': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'keywords': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'language': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'lemmas': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'line_number': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'modality': {0: 'text', 1: 'text', 2: 'text', 3: 'text', 4: 'text'},
+ 'morphemes': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'normalized_text': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'ocr_engine': {0: 'tesseract',
                 1: 'tesseract',
@@ -359,8 +624,109 @@ Sentence chunker (NLTK backend)
  'parent_doc_id': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'raw_dtype': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'raw_shape': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'raw_text': {0: 'ire uursacesced Caraga io\n'
+                 '10 Bi6doKew 8 Erna monet) 1b / aoe Maa ETT\n'
+                 'RCO RSP eo ere\n'
+                 '\n'
+                 'Memmnminsane(s)\n'
+                 'erklaren kannst, hast du\n'
+                 'Creerona eats\n'
+                 '\n'
+                 ' \n'
+                 ' \n'
+                 '      \n'
+                 '     \n'
+                 '   \n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 '  \n'
+                 ' \n'
+                 '\n'
+                 ' \n'
+                 '\n'
+                 'Brome ccrlhy | |\n'
+                 ' Petesercne | verstanden.',
+              1: '>\n'
+                 'If you cannot explain\n'
+                 '» Sas ONAN Co oiag\n'
+                 'understand it well enough.',
+              2: 'ge VIDA ND TRON\n'
+                 '\n'
+                 'Sa eas\n'
+                 'aE Nia)\n'
+                 '\n'
+                 '   \n'
+                 '\n'
+                 '‘ApiotoréAnc + AASEavSp0¢ , Richard P. Feynman j Albert '
+                 'Einstein\n'
+                 '\n'
+                 '384-322 BC - 356-323 BC | Mieza, Macedonia 1918-1988 | New '
+                 'York, USA — Princeton — Pasadena 99-1955 | Ulm — Princeton\n'
+                 '\n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 '  \n'
+                 '  \n'
+                 ' \n'
+                 ' \n'
+                 '   \n'
+                 '\n'
+                 'ONSEN\n'
+                 'venient Cc ae\n'
+                 '| Crore mokoeoeri ae} A\n'
+                 '\n'
+                 'to a bartender.',
+              3: 'aa ve, r\n'
+                 'es Clenrecemnnc\n'
+                 'ahupiingao ka taea\n'
+                 'POMBELCUICIC IN\n'
+                 'SSRI LIC\n'
+                 '\n'
+                 ' \n'
+                 '\n'
+                 'Pye matterhow much you kaov\n'
+                 'your words reach only as far as the\n'
+                 'other person can understand,\n'
+                 '\n'
+                 ': ugh $9) glen a lat 9 CS lb cle Lage I y\n'
+                 '\n'
+                 ' \n'
+                 '\n'
+                 '       \n'
+                 ' \n'
+                 '\n'
+                 'Ernest Rutherford F Mevlana\n'
+                 '1871-1937 | Nelson, NZ > Cambridge _—_ warm, Ed 3 | Balkh > '
+                 'Konya\n'
+                 '\n'
+                 '           \n'
+                 ' \n'
+                 '\n'
+                 'Sato r le Scholar aCe Is\n'
+                 '\n'
+                 'Simplicity is the mark\n'
+                 '7 Os true knowledge.',
+              4: '“ (Focused)  (Pocused) | (Distracted)\n'
+                 '\n'
+                 'cenit)\n'
+                 '(Innocent)\n'
+                 '\n'
+                 '   \n'
+                 '\n'
+                 'You may know all the worlds, but the conversation sto,\n'
+                 'j at the other person’s intelligence and vision.'},
  'scene_number': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'script': {0: 'latin', 1: 'latin', 2: 'latin', 3: 'latin', 4: 'latin'},
+ 'script_direction': {0: 'ltr', 1: 'ltr', 2: 'ltr', 3: 'ltr', 4: 'ltr'},
+ 'script_model_version': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'script_spans': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'section_type': {0: 'text', 1: 'text', 2: 'text', 3: 'text', 4: 'text'},
+ 'semanteme_count': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'source_author': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'source_date': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'source_title': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
@@ -502,6 +868,12 @@ Fixed Window chunker — unit=CHARS (window=512, step=256)
                        2: 'fixed_window',
                        3: 'fixed_window',
                        4: 'fixed_window'},
+ 'chunking_unit': {0: 'fixed_window',
+                   1: 'fixed_window',
+                   2: 'fixed_window',
+                   3: 'fixed_window',
+                   4: 'fixed_window'},
+ 'codepoint_count': {0: 506, 1: 512, 2: 511, 3: 511, 4: 269},
  'collection_id': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'confidence': {0: 0.6372, 1: 0.6372, 2: 0.6372, 3: 0.6372, 4: 0.6372},
  'content_hash': {0: '671592852b8acb95a8d8fc55b86a1d65',
@@ -509,6 +881,7 @@ Fixed Window chunker — unit=CHARS (window=512, step=256)
                   2: 'b2e1a3305d1a2c6cb62f0a85a9139004',
                   3: 'ed5fb80c57aa1440f5cdbff9c548ddae',
                   4: '94cbe0d3b596da3d27f721698e46d4d7'},
+ 'determinative_groups': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'doc_id': {0: '033fe979c6bb209c',
             1: 'f0beb35fc68a949b',
             2: '3dfc7e6e9304011c',
@@ -516,6 +889,7 @@ Fixed Window chunker — unit=CHARS (window=512, step=256)
             4: '0c3188c73ed9b48c'},
  'doi': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'frame_index': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'grapheme_count': {0: 506, 1: 512, 2: 511, 3: 511, 4: 269},
  'image_height': {0: 1024, 1: 1024, 2: 1024, 3: 1024, 4: 1024},
  'image_width': {0: 1024, 1: 1024, 2: 1024, 3: 1024, 4: 1024},
  'input_path': {0: 'AI_Generated_Image_1ix.png',
@@ -523,12 +897,14 @@ Fixed Window chunker — unit=CHARS (window=512, step=256)
                 2: 'AI_Generated_Image_1ix.png',
                 3: 'AI_Generated_Image_1ix.png',
                 4: 'AI_Generated_Image_1ix.png'},
+ 'is_mixed_script': {0: False, 1: False, 2: False, 3: False, 4: False},
  'isbn': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'keywords': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'language': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'lemmas': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'line_number': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'modality': {0: 'text', 1: 'text', 2: 'text', 3: 'text', 4: 'text'},
+ 'morphemes': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'normalized_text': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'ocr_engine': {0: 'tesseract',
                 1: 'tesseract',
@@ -540,8 +916,196 @@ Fixed Window chunker — unit=CHARS (window=512, step=256)
  'parent_doc_id': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'raw_dtype': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'raw_shape': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'raw_text': {0: '  \n'
+                 ' \n'
+                 '\n'
+                 'ire uursacesced Caraga io\n'
+                 '10 Bi6doKew 8 Erna monet) 1b / aoe Maa ETT\n'
+                 'RCO RSP eo ere\n'
+                 '\n'
+                 'Memmnminsane(s)\n'
+                 'erklaren kannst, hast du\n'
+                 'Creerona eats\n'
+                 '\n'
+                 ' \n'
+                 ' \n'
+                 '      \n'
+                 '     \n'
+                 '   \n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 '  \n'
+                 ' \n'
+                 '\n'
+                 ' \n'
+                 '\n'
+                 'Brome ccrlhy | |\n'
+                 ' Petesercne | verstanden.\n'
+                 '>\n'
+                 'If you cannot explain\n'
+                 '» Sas ONAN Co oiag\n'
+                 'understand it well enough.\n'
+                 '\n'
+                 'ge VIDA ND TRON\n'
+                 '\n'
+                 'Sa eas\n'
+                 'aE Nia)\n'
+                 '\n'
+                 '   \n'
+                 '\n'
+                 '‘ApiotoréAnc + AASEavSp0¢ , Richard P. Feynman j Albert '
+                 'Einstein\n'
+                 '\n'
+                 '384-322 BC - 356-323 BC | Mieza, Macedonia 1918-1988 | New '
+                 'York, USA — Princeton — Pasadena 99-1955 |',
+              1: 'Sas ONAN Co oiag\n'
+                 'understand it well enough.\n'
+                 '\n'
+                 'ge VIDA ND TRON\n'
+                 '\n'
+                 'Sa eas\n'
+                 'aE Nia)\n'
+                 '\n'
+                 '   \n'
+                 '\n'
+                 '‘ApiotoréAnc + AASEavSp0¢ , Richard P. Feynman j Albert '
+                 'Einstein\n'
+                 '\n'
+                 '384-322 BC - 356-323 BC | Mieza, Macedonia 1918-1988 | New '
+                 'York, USA — Princeton — Pasadena 99-1955 | Ulm — Princeton\n'
+                 '\n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 '  \n'
+                 '  \n'
+                 ' \n'
+                 ' \n'
+                 '   \n'
+                 '\n'
+                 'ONSEN\n'
+                 'venient Cc ae\n'
+                 '| Crore mokoeoeri ae} A\n'
+                 '\n'
+                 'to a bartender. aa ve, r\n'
+                 'es Clenrecemnnc\n'
+                 'ahupiingao ka taea\n'
+                 'POMBELCUICIC IN\n'
+                 'SSRI LIC\n'
+                 '\n'
+                 ' \n'
+                 '\n'
+                 'Pye matterhow much you kaov\n'
+                 'your words reach only as far as the\n'
+                 'other person can unders',
+              2: ' Princeton\n'
+                 '\n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 '  \n'
+                 '  \n'
+                 ' \n'
+                 ' \n'
+                 '   \n'
+                 '\n'
+                 'ONSEN\n'
+                 'venient Cc ae\n'
+                 '| Crore mokoeoeri ae} A\n'
+                 '\n'
+                 'to a bartender. aa ve, r\n'
+                 'es Clenrecemnnc\n'
+                 'ahupiingao ka taea\n'
+                 'POMBELCUICIC IN\n'
+                 'SSRI LIC\n'
+                 '\n'
+                 ' \n'
+                 '\n'
+                 'Pye matterhow much you kaov\n'
+                 'your words reach only as far as the\n'
+                 'other person can understand,\n'
+                 '\n'
+                 ': ugh $9) glen a lat 9 CS lb cle Lage I y\n'
+                 '\n'
+                 ' \n'
+                 '\n'
+                 '       \n'
+                 ' \n'
+                 '\n'
+                 'Ernest Rutherford F Mevlana\n'
+                 '1871-1937 | Nelson, NZ > Cambridge _—_ warm, Ed 3 | Balkh > '
+                 'Konya\n'
+                 '\n'
+                 '           \n'
+                 ' \n'
+                 '\n'
+                 'Sato r le Scholar aCe Is\n'
+                 '\n'
+                 'Simplicity is the mark\n'
+                 '7 Os true knowledge.\n'
+                 '\n'
+                 '“ (Focused',
+              3: 'tand,\n'
+                 '\n'
+                 ': ugh $9) glen a lat 9 CS lb cle Lage I y\n'
+                 '\n'
+                 ' \n'
+                 '\n'
+                 '       \n'
+                 ' \n'
+                 '\n'
+                 'Ernest Rutherford F Mevlana\n'
+                 '1871-1937 | Nelson, NZ > Cambridge _—_ warm, Ed 3 | Balkh > '
+                 'Konya\n'
+                 '\n'
+                 '           \n'
+                 ' \n'
+                 '\n'
+                 'Sato r le Scholar aCe Is\n'
+                 '\n'
+                 'Simplicity is the mark\n'
+                 '7 Os true knowledge.\n'
+                 '\n'
+                 '“ (Focused)  (Pocused) | (Distracted)\n'
+                 '\n'
+                 'cenit)\n'
+                 '(Innocent)\n'
+                 '\n'
+                 '   \n'
+                 '\n'
+                 'You may know all the worlds, but the conversation sto,\n'
+                 'j at the other person’s intelligence and vision. Knowledge '
+                 'is\n'
+                 'not limited by the speaker. It is limited by the listener.\n'
+                 '\n'
+                 "Mevlana's Wisdom\n"
+                 '1207-1273',
+              4: '  (Pocused) | (Distracted)\n'
+                 '\n'
+                 'cenit)\n'
+                 '(Innocent)\n'
+                 '\n'
+                 '   \n'
+                 '\n'
+                 'You may know all the worlds, but the conversation sto,\n'
+                 'j at the other person’s intelligence and vision. Knowledge '
+                 'is\n'
+                 'not limited by the speaker. It is limited by the listener.\n'
+                 '\n'
+                 "Mevlana's Wisdom\n"
+                 '1207-1273 | Balkh + Kon'},
  'scene_number': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'script': {0: 'latin', 1: 'latin', 2: 'latin', 3: 'latin', 4: 'latin'},
+ 'script_direction': {0: 'ltr', 1: 'ltr', 2: 'ltr', 3: 'ltr', 4: 'ltr'},
+ 'script_model_version': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'script_spans': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'section_type': {0: 'text', 1: 'text', 2: 'text', 3: 'text', 4: 'text'},
+ 'semanteme_count': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'source_author': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'source_date': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'source_title': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
@@ -766,6 +1330,12 @@ Fixed Window chunker — unit=TOKENS (window=64, step=32)
                        2: 'fixed_window',
                        3: 'fixed_window',
                        4: 'fixed_window'},
+ 'chunking_unit': {0: 'fixed_window',
+                   1: 'fixed_window',
+                   2: 'fixed_window',
+                   3: 'fixed_window',
+                   4: 'fixed_window'},
+ 'codepoint_count': {0: 346, 1: 330, 2: 341, 3: 317, 4: 321},
  'collection_id': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'confidence': {0: 0.6372, 1: 0.6372, 2: 0.6372, 3: 0.6372, 4: 0.6372},
  'content_hash': {0: '6ec041942787956ac51b4fe44674856b',
@@ -773,6 +1343,7 @@ Fixed Window chunker — unit=TOKENS (window=64, step=32)
                   2: '93c35634eb6d7e679f07d04429d07d85',
                   3: '7f2941cc0c1702425a21d38c343d735c',
                   4: '594f83ff7ed721cf3797cc954d9c6c70'},
+ 'determinative_groups': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'doc_id': {0: '14578619132abab9',
             1: 'a52bde7151592af4',
             2: 'efd17d43a8360abc',
@@ -780,6 +1351,7 @@ Fixed Window chunker — unit=TOKENS (window=64, step=32)
             4: '82c5d8c562da48a2'},
  'doi': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'frame_index': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'grapheme_count': {0: 346, 1: 330, 2: 341, 3: 317, 4: 321},
  'image_height': {0: 1024, 1: 1024, 2: 1024, 3: 1024, 4: 1024},
  'image_width': {0: 1024, 1: 1024, 2: 1024, 3: 1024, 4: 1024},
  'input_path': {0: 'AI_Generated_Image_1ix.png',
@@ -787,12 +1359,14 @@ Fixed Window chunker — unit=TOKENS (window=64, step=32)
                 2: 'AI_Generated_Image_1ix.png',
                 3: 'AI_Generated_Image_1ix.png',
                 4: 'AI_Generated_Image_1ix.png'},
+ 'is_mixed_script': {0: False, 1: False, 2: False, 3: False, 4: False},
  'isbn': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'keywords': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'language': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'lemmas': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'line_number': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'modality': {0: 'text', 1: 'text', 2: 'text', 3: 'text', 4: 'text'},
+ 'morphemes': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'normalized_text': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'ocr_engine': {0: 'tesseract',
                 1: 'tesseract',
@@ -804,8 +1378,164 @@ Fixed Window chunker — unit=TOKENS (window=64, step=32)
  'parent_doc_id': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'raw_dtype': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'raw_shape': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'raw_text': {0: 'ire uursacesced Caraga io\n'
+                 '10 Bi6doKew 8 Erna monet) 1b / aoe Maa ETT\n'
+                 'RCO RSP eo ere\n'
+                 '\n'
+                 'Memmnminsane(s)\n'
+                 'erklaren kannst, hast du\n'
+                 'Creerona eats\n'
+                 '\n'
+                 ' \n'
+                 ' \n'
+                 '      \n'
+                 '     \n'
+                 '   \n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 '  \n'
+                 ' \n'
+                 '\n'
+                 ' \n'
+                 '\n'
+                 'Brome ccrlhy | |\n'
+                 ' Petesercne | verstanden.\n'
+                 '>\n'
+                 'If you cannot explain\n'
+                 '» Sas ONAN Co oiag\n'
+                 'understand it well enough.\n'
+                 '\n'
+                 'ge VIDA ND TRON\n'
+                 '\n'
+                 'Sa eas\n'
+                 'aE Nia)\n'
+                 '\n'
+                 '   \n'
+                 '\n'
+                 '‘ApiotoréAnc ',
+              1: '>\n'
+                 'If you cannot explain\n'
+                 '» Sas ONAN Co oiag\n'
+                 'understand it well enough.\n'
+                 '\n'
+                 'ge VIDA ND TRON\n'
+                 '\n'
+                 'Sa eas\n'
+                 'aE Nia)\n'
+                 '\n'
+                 '   \n'
+                 '\n'
+                 '‘ApiotoréAnc + AASEavSp0¢ , Richard P. Feynman j Albert '
+                 'Einstein\n'
+                 '\n'
+                 '384-322 BC - 356-323 BC | Mieza, Macedonia 1918-1988 | New '
+                 'York, USA — Princeton — Pasadena 99-1955 | Ulm — Princeton\n'
+                 '\n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 '  \n'
+                 '  \n'
+                 ' \n'
+                 ' \n'
+                 '   \n'
+                 '\n'
+                 'ONSEN\n'
+                 'venient',
+              2: '384-322 BC - 356-323 BC | Mieza, Macedonia 1918-1988 | New '
+                 'York, USA — Princeton — Pasadena 99-1955 | Ulm — Princeton\n'
+                 '\n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 '  \n'
+                 '  \n'
+                 ' \n'
+                 ' \n'
+                 '   \n'
+                 '\n'
+                 'ONSEN\n'
+                 'venient Cc ae\n'
+                 '| Crore mokoeoeri ae} A\n'
+                 '\n'
+                 'to a bartender. aa ve, r\n'
+                 'es Clenrecemnnc\n'
+                 'ahupiingao ka taea\n'
+                 'POMBELCUICIC IN\n'
+                 'SSRI LIC\n'
+                 '\n'
+                 ' \n'
+                 '\n'
+                 'Pye matterhow much you kaov\n'
+                 'your words reach only as far as the\n'
+                 'o',
+              3: 'a, Macedonia 1918-1988 | New York, USA — Princeton — '
+                 'Pasadena 99-1955 | Ulm — Princeton\n'
+                 '\n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 ' \n'
+                 '  \n'
+                 '  \n'
+                 ' \n'
+                 ' \n'
+                 '   \n'
+                 '\n'
+                 'ONSEN\n'
+                 'venient Cc ae\n'
+                 '| Crore mokoeoeri ae} A\n'
+                 '\n'
+                 'to a bartender. aa ve, r\n'
+                 'es Clenrecemnnc\n'
+                 'ahupiingao ka taea\n'
+                 'POMBELCUICIC IN\n'
+                 'SSRI LIC\n'
+                 '\n'
+                 ' \n'
+                 '\n'
+                 'Pye matterhow much you kaov\n'
+                 'your words reach only as far as the\n'
+                 'other p',
+              4: 'ugh $9) glen a lat 9 CS lb cle Lage I y\n'
+                 '\n'
+                 ' \n'
+                 '\n'
+                 '       \n'
+                 ' \n'
+                 '\n'
+                 'Ernest Rutherford F Mevlana\n'
+                 '1871-1937 | Nelson, NZ > Cambridge _—_ warm, Ed 3 | Balkh > '
+                 'Konya\n'
+                 '\n'
+                 '           \n'
+                 ' \n'
+                 '\n'
+                 'Sato r le Scholar aCe Is\n'
+                 '\n'
+                 'Simplicity is the mark\n'
+                 '7 Os true knowledge.\n'
+                 '\n'
+                 '“ (Focused)  (Pocused) | (Distracted)\n'
+                 '\n'
+                 'cenit)\n'
+                 '(Innocent)\n'
+                 '\n'
+                 '   \n'
+                 '\n'
+                 'You may know all the w'},
  'scene_number': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'script': {0: 'latin', 1: 'latin', 2: 'latin', 3: 'latin', 4: 'latin'},
+ 'script_direction': {0: 'ltr', 1: 'ltr', 2: 'ltr', 3: 'ltr', 4: 'ltr'},
+ 'script_model_version': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
+ 'script_spans': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'section_type': {0: 'text', 1: 'text', 2: 'text', 3: 'text', 4: 'text'},
+ 'semanteme_count': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'source_author': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'source_date': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
  'source_title': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan},
@@ -849,6 +1579,55 @@ Fixed Window chunker — unit=TOKENS (window=64, step=32)
 
 ```
 
+## 6. Semantic Chunker with MultilangConfig[#](#semantic-chunker-with-multilangconfig "Link to this heading")
+
+Every chunk carries chunk.metadata[“multilang”] with:
+:   script, script\_direction, is\_rtl, grapheme\_count, codepoint\_count,
+    token\_count, stopword\_count, unique\_token\_count, avg\_token\_length,
+    char\_count, chunking\_duration\_ms, preprocessing\_duration\_ms,
+    created\_at\_utc, layer2\_strategy,
+    semantemes[{surface, morphemes, lemma, stem, pos\_tag, …}],
+    preprocessing\_trace[{steps, raw\_text, pipeline\_fingerprint}]
+
+```
+from scikitplot.corpus._chunkers import (
+    MultilangConfig,
+    SemanticChunker,
+    SemanticChunkerConfig,
+    SemanticBackend,
+)
+
+# Build MultilangConfig with all enhanced features enabled.
+ml = MultilangConfig(
+    include_raw_text=True,              # preserve pre-NFC raw text per chunk
+    include_preprocessing_trace=True,   # full audit trail: BOM strip, control strip, NFC
+    include_semantemes=True,            # SemantemeInfo per token
+    include_grapheme_counts=True,       # UAX #29 grapheme cluster counts
+    include_script_spans=True,          # per-script span list for mixed-script chunks
+)
+
+# Bug fix A: pass multilang_config=ml so the SemanticChunker uses the
+# configured feature flags, not its own default MultilangConfig.
+result_semantic = _run(                 # Bug fix B: renamed from result_fw_tokens
+    SemanticChunker(
+        SemanticChunkerConfig(
+            backend=SemanticBackend.HYBRID,
+            model_name="paraphrase-multilingual-mpnet-base-v2",
+            multilang_config=ml,        # <-- was missing: ml was built but discarded
+        )
+    ),
+    label="Semantic chunker (HYBRID backend, multilang enriched)",
+)
+
+```
+```
+============================================================
+Semantic chunker (HYBRID backend, multilang enriched)
+============================================================
+[WARNING] Pipeline produced 0 documents — CSV contains no data rows.
+
+```
+
 ## Display the source image[#](#display-the-source-image "Link to this heading")
 
 Renders inline in Jupyter; opens a matplotlib window otherwise.
@@ -863,15 +1642,16 @@ if _IN_JUPYTER:
 
     display(FileLink(str(result_fw_tokens.input_path)))  # noqa: F821
 
-# plt.figure(figsize=(8, 8), dpi=150)
-# img = mpimg.imread(result_fw_tokens.input_path)
-# plt.imshow(img)
-# plt.axis("off")
-# plt.title("Source image (OCR input)", fontsize=12)
-# plt.tight_layout()
-# plt.show()
+plt.figure(figsize=(4, 4), dpi=150)
+img = mpimg.imread(result_fw_tokens.input_path)
+plt.imshow(img)
+plt.axis("off")
+plt.title("Source image (OCR input)", fontsize=12)
+plt.tight_layout()
+plt.show()
 
 ```
+![Source image (OCR input)](../../_images/sphx_glr_plot_corpus_knowledge_script_001.png)
 ```
 Source image: /home/circleci/repo/galleries/examples/corpus/data/echo_of_the_wise/AI_Generated_Image_1ix.png
 
@@ -879,7 +1659,7 @@ Source image: /home/circleci/repo/galleries/examples/corpus/data/echo_of_the_wis
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 20.341 seconds)
+****Total running time of the script:**** (0 minutes 28.630 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_knowledge_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_knowledge_script.ipynb)
 
@@ -891,22 +1671,22 @@ Tags: [model-type: classification](../../_tags/model-type-classification.html) [
 
 Related examples
 
-![](../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png)
-
-[corpus A Tale of Two Cities .mp3 with examples](plot_corpus_a_tale_of_two_cities_mp3_script.html)
-
-corpus A Tale of Two Cities .mp3 with examples![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
+![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
 
 [corpus WHO European Region local .zip with examples](plot_corpus_who_zip_script.html)
 
-corpus WHO European Region local .zip with examples![](../../_images/sphx_glr_plot_corpus_who_youtube_shorts_script_thumb.png)
+corpus WHO European Region local .zip with examples![](../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png)
+
+[corpus A Tale of Two Cities .mp3 with examples](plot_corpus_a_tale_of_two_cities_mp3_script.html)
+
+corpus A Tale of Two Cities .mp3 with examples![](../../_images/sphx_glr_plot_corpus_who_youtube_shorts_script_thumb.png)
 
 [corpus WHO European Region YouTube shorts with examples](plot_corpus_who_youtube_shorts_script.html)
 
-corpus WHO European Region YouTube shorts with examples![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
+corpus WHO European Region YouTube shorts with examples![](../../_images/sphx_glr_plot_annoy_cython_0benchmark_thumb.png)
 
-[corpus WHO European Region local or url per file with examples](plot_corpus_who_per_file_script.html)
+[Index (cython) python-api benchmark with examples](../annoy/plot_annoy_cython_0benchmark.html)
 
-corpus WHO European Region local or url per file with examples
+Index (cython) python-api benchmark with examples
 
 [Gallery generated by Sphinx-Gallery](https://sphinx-gallery.github.io)

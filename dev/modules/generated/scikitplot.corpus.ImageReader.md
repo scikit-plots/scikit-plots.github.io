@@ -1,6 +1,6 @@
 # ImageReader[#](#imagereader "Link to this heading")
 
-class scikitplot.corpus.ImageReader(**input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_uri=None**, **source\_provenance=<factory>**, **custom\_extractor=None**, **custom\_extractor\_kwargs=<factory>**, **backend='tesseract'**, **ocr\_lang=None**, **min\_confidence=None**, **max\_file\_bytes=104857600**, **preprocess\_grayscale=False**, **yield\_raw=False**, **yield\_raw\_bytes=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_readers/_image.py#L255)[#](#scikitplot.corpus.ImageReader "Link to this definition")
+class scikitplot.corpus.ImageReader(**input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_uri=None**, **source\_provenance=<factory>**, **custom\_extractor=None**, **custom\_extractor\_kwargs=<factory>**, **backend='tesseract'**, **ocr\_lang=None**, **min\_confidence=None**, **max\_file\_bytes=104857600**, **preprocess\_grayscale=False**, **yield\_raw=False**, **yield\_raw\_bytes=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_readers/_image.py#L255)[#](#scikitplot.corpus.ImageReader "Link to this definition")
 :   OCR-based text extraction from raster image files.
 
     Iterates over all frames in the image (for multi-frame GIF and TIFF),
@@ -77,7 +77,7 @@ class scikitplot.corpus.ImageReader(**input\_path**, **chunker=None**, **filter\
         * ****default\_language**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
         * ****source\_uri**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
         * ****source\_provenance**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
-        * ****custom\_extractor**** ([**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")**[****[****...****]****,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
+        * ****custom\_extractor**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") **|** **None**)
         * ****custom\_extractor\_kwargs**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]**)
         * ****backend**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
         * ****ocr\_lang**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
@@ -140,7 +140,7 @@ class scikitplot.corpus.ImageReader(**input\_path**, **chunker=None**, **filter\
     :   Chunker to apply to each raw text block. `None` means each raw chunk
         is used as-is (one CorpusDocument per raw chunk).
 
-    classmethod create(**\*input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_base.py#L1246)[#](#scikitplot.corpus.ImageReader.create "Link to this definition")
+    classmethod create(**\*input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_base.py#L1420)[#](#scikitplot.corpus.ImageReader.create "Link to this definition")
     :   Instantiate the appropriate reader for one or more sources.
 
         Accepts any mix of file paths, URL strings, and
@@ -313,46 +313,71 @@ class scikitplot.corpus.ImageReader(**input\_path**, **chunker=None**, **filter\
         ```
         Go BackOpen In Tab
 
-    custom\_extractor: [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[...], [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.ImageReader.custom_extractor "Link to this definition")
-    :   User-supplied image extraction callable, active only when
-        `backend="custom"`.
+    custom\_extractor: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.ImageReader.custom_extractor "Link to this definition")
+    :   User-supplied extraction callable that ****replaces**** [`get_raw_chunks`](#scikitplot.corpus.ImageReader.get_raw_chunks "scikitplot.corpus.ImageReader.get_raw_chunks")
+        entirely for this reader instance.
 
-        Signature:
+        When set, `_iter_raw_chunks` calls
+        `custom_extractor(self.input_path, **custom_extractor_kwargs)` and
+        normalises the return value through
+        `normalize_extractor_output`.
+        The built-in [`get_raw_chunks`](#scikitplot.corpus.ImageReader.get_raw_chunks "scikitplot.corpus.ImageReader.get_raw_chunks") implementation is ****not**** called.
+
+        This hook is available on ****every**** reader class
+        (`ALTOReader`, `TextReader`, `PDFReader`, `ImageReader`, etc.)
+        without any subclassing — simply pass a callable at construction time.
+
+        Callable contract
 
         ```
-        def extractor(path: pathlib.Path, **kwargs) -> ExtractorOutput
+        def my_extractor(path: pathlib.Path, **kwargs) -> ExtractorOutput
 
         ```
 
         where `ExtractorOutput` is `str`, `list[str]`, `dict`, or
-        `list[dict]`. Every dict must contain a `"text"` key.
+        `list[dict]` — the same contract as `CustomReader`.
 
-        Common use-cases: `surya` (document layout + OCR), `docling`,
-        `azure-cognitiveservices-vision`, AWS Textract clients, or any
-        library not supported by Tesseract / easyocr. Ignored when
-        `backend` is not `"custom"`. Default: `None`.
+        Examples
+
+        Try it in your browser!
+
+        Override PDF extraction with `pdfplumber` for a single reader:
+
+        ```
+        import pdfplumber
+        from pathlib import Path
+        from scikitplot.corpus._base import DocumentReader
+
+        def plumber_fn(path, **kw):
+            with pdfplumber.open(path) as pdf:
+                return [{"text": p.extract_text() or "", "page_number": i}
+                        for i, p in enumerate(pdf.pages)]
+
+        reader = DocumentReader.create(
+            Path("report.pdf"),
+            custom_extractor=plumber_fn,
+        )
+        docs = list(reader.get_documents())
+
+        ```
+        Go BackOpen In Tab
+
+    custom\_extractor\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_readers/_image.py#L255)[#](#scikitplot.corpus.ImageReader.custom_extractor_kwargs "Link to this definition")
+    :   Extra keyword arguments forwarded to [`custom_extractor`](#scikitplot.corpus.ImageReader.custom_extractor "scikitplot.corpus.ImageReader.custom_extractor") on every
+        invocation. Merged into the call as `**custom_extractor_kwargs`.
 
         Examples
 
         Try it in your browser!
         ```
-        >>> def surya_extract(path, **kw):
-        ...     from surya.ocr import run_ocr
-        ...     result = run_ocr([str(path)], langs=[["en"]])[0]
-        ...     return [{"text": line.text, "confidence": line.confidence}
-        ...             for line in result.text_lines]
-        >>> reader = ImageReader(
-        ...     input_path=Path("scan.png"),
-        ...     backend="custom",
-        ...     custom_extractor=surya_extract,
-        ... )
+        reader = DocumentReader.create(
+            Path("report.pdf"),
+            custom_extractor=my_fn,
+            custom_extractor_kwargs={"password": "s3cret", "pages": [0, 1, 2]},
+        )
 
         ```
         Go BackOpen In Tab
-
-    custom\_extractor\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_readers/_image.py#L255)[#](#scikitplot.corpus.ImageReader.custom_extractor_kwargs "Link to this definition")
-    :   Extra keyword arguments forwarded to [`custom_extractor`](#scikitplot.corpus.ImageReader.custom_extractor "scikitplot.corpus.ImageReader.custom_extractor") on every
-        call. Only used when `backend="custom"`. Default: `{}`.
 
     default\_language: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.ImageReader.default_language "Link to this definition")
     :   ISO 639-1 language code to assign when the source has no language info.
@@ -402,7 +427,7 @@ class scikitplot.corpus.ImageReader(**input\_path**, **chunker=None**, **filter\
     filter\_: [FilterBase](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.ImageReader.filter_ "Link to this definition")
     :   Filter applied after chunking. `None` triggers the [`DefaultFilter`](scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus.DefaultFilter").
 
-    classmethod from\_manifest(**manifest\_path**, **\***, **chunker=None**, **filter\_=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **encoding='utf-8'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_base.py#L1563)[#](#scikitplot.corpus.ImageReader.from_manifest "Link to this definition")
+    classmethod from\_manifest(**manifest\_path**, **\***, **chunker=None**, **filter\_=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **encoding='utf-8'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_base.py#L1737)[#](#scikitplot.corpus.ImageReader.from_manifest "Link to this definition")
     :   Build a [`_MultiSourceReader`](scikitplot.corpus._MultiSourceReader.html#scikitplot.corpus._MultiSourceReader "scikitplot.corpus._MultiSourceReader") from a manifest file.
 
         The manifest is a text file with one source per line — either a
@@ -529,7 +554,7 @@ class scikitplot.corpus.ImageReader(**input\_path**, **chunker=None**, **filter\
         ```
         Go BackOpen In Tab
 
-    classmethod from\_url(**url**, **\***, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_base.py#L1759)[#](#scikitplot.corpus.ImageReader.from_url "Link to this definition")
+    classmethod from\_url(**url**, **\***, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_base.py#L1933)[#](#scikitplot.corpus.ImageReader.from_url "Link to this definition")
     :   Instantiate the appropriate reader for a URL source.
 
         Dispatches to `YouTubeReader`
@@ -630,7 +655,7 @@ class scikitplot.corpus.ImageReader(**input\_path**, **chunker=None**, **filter\
         ```
         Go BackOpen In Tab
 
-    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_base.py#L947)[#](#scikitplot.corpus.ImageReader.get_documents "Link to this definition")
+    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_base.py#L1012)[#](#scikitplot.corpus.ImageReader.get_documents "Link to this definition")
     :   Yield validated [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
         instances for the input file.
 
@@ -675,7 +700,7 @@ class scikitplot.corpus.ImageReader(**input\_path**, **chunker=None**, **filter\
         ```
         Go BackOpen In Tab
 
-    get\_raw\_chunks()[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_readers/_image.py#L466)[#](#scikitplot.corpus.ImageReader.get_raw_chunks "Link to this definition")
+    get\_raw\_chunks()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_readers/_image.py#L434)[#](#scikitplot.corpus.ImageReader.get_raw_chunks "Link to this definition")
     :   Run OCR on each frame of the image and yield one chunk per frame.
 
         When `backend="custom"` and [`custom_extractor`](#scikitplot.corpus.ImageReader.custom_extractor "scikitplot.corpus.ImageReader.custom_extractor") is set,
@@ -729,7 +754,7 @@ class scikitplot.corpus.ImageReader(**input\_path**, **chunker=None**, **filter\
         Return type:
         :   [**Generator**](https://docs.python.org/3/library/typing.html#typing.Generator "(in Python v3.14)")[[dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")], None, None]
 
-    input\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_readers/_image.py#L255)[#](#scikitplot.corpus.ImageReader.input_path "Link to this definition")
+    input\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_readers/_image.py#L255)[#](#scikitplot.corpus.ImageReader.input_path "Link to this definition")
     :   Path to the source file.
 
         For URL-based readers ([`WebReader`](scikitplot.corpus.WebReader.html#scikitplot.corpus.WebReader "scikitplot.corpus.WebReader"), [`YouTubeReader`](scikitplot.corpus.YouTubeReader.html#scikitplot.corpus.YouTubeReader "scikitplot.corpus.YouTubeReader")),
@@ -752,7 +777,7 @@ class scikitplot.corpus.ImageReader(**input\_path**, **chunker=None**, **filter\
     preprocess\_grayscale: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.corpus.ImageReader.preprocess_grayscale "Link to this definition")
     :   Convert frames to grayscale before OCR when `True`.
 
-    source\_provenance: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_readers/_image.py#L255)[#](#scikitplot.corpus.ImageReader.source_provenance "Link to this definition")
+    source\_provenance: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_readers/_image.py#L255)[#](#scikitplot.corpus.ImageReader.source_provenance "Link to this definition")
     :   Provenance overrides propagated into every yielded `CorpusDocument`.
 
         Keys may include `"source_type"`, `"source_title"`,
@@ -779,7 +804,7 @@ class scikitplot.corpus.ImageReader(**input\_path**, **chunker=None**, **filter\
         ```
         Go BackOpen In Tab
 
-    classmethod subclass\_by\_type()[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_base.py#L1135)[#](#scikitplot.corpus.ImageReader.subclass_by_type "Link to this definition")
+    classmethod subclass\_by\_type()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_base.py#L1309)[#](#scikitplot.corpus.ImageReader.subclass_by_type "Link to this definition")
     :   Return a copy of the extension → reader class registry.
 
         Returns:
@@ -801,7 +826,7 @@ class scikitplot.corpus.ImageReader(**input\_path**, **chunker=None**, **filter\
         ```
         Go BackOpen In Tab
 
-    classmethod supported\_types()[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_base.py#L1117)[#](#scikitplot.corpus.ImageReader.supported_types "Link to this definition")
+    classmethod supported\_types()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_base.py#L1291)[#](#scikitplot.corpus.ImageReader.supported_types "Link to this definition")
     :   Return a sorted list of file extensions supported by registered readers.
 
         Returns:
@@ -822,7 +847,7 @@ class scikitplot.corpus.ImageReader(**input\_path**, **chunker=None**, **filter\
         ```
         Go BackOpen In Tab
 
-    validate\_input()[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_base.py#L762)[#](#scikitplot.corpus.ImageReader.validate_input "Link to this definition")
+    validate\_input()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_base.py#L827)[#](#scikitplot.corpus.ImageReader.validate_input "Link to this definition")
     :   Assert that the input file exists and is readable.
 
         Raises:

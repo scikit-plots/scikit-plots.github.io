@@ -1,6 +1,6 @@
 # ParagraphChunkerConfig[#](#paragraphchunkerconfig "Link to this heading")
 
-class scikitplot.corpus.ParagraphChunkerConfig(**min\_length=0**, **max\_length=None**, **overlap=0**, **strip\_whitespace=True**, **include\_offsets=True**, **merge\_short=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_chunkers/_paragraph.py#L75)[#](#scikitplot.corpus.ParagraphChunkerConfig "Link to this definition")
+class scikitplot.corpus.ParagraphChunkerConfig(**min\_length=0**, **max\_length=None**, **overlap=0**, **strip\_whitespace=True**, **include\_offsets=True**, **merge\_short=False**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_paragraph.py#L77)[#](#scikitplot.corpus.ParagraphChunkerConfig "Link to this definition")
 :   Configuration for [`ParagraphChunker`](scikitplot.corpus.ParagraphChunker.html#scikitplot.corpus.ParagraphChunker "scikitplot.corpus.ParagraphChunker").
 
     Parameters:
@@ -31,6 +31,7 @@ class scikitplot.corpus.ParagraphChunkerConfig(**min\_length=0**, **max\_length=
         * ****strip\_whitespace**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
         * ****include\_offsets**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
         * ****merge\_short**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
+        * ****multilang\_config**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
 
     include\_offsets: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.ParagraphChunkerConfig.include_offsets "Link to this definition")
 
@@ -39,6 +40,8 @@ class scikitplot.corpus.ParagraphChunkerConfig(**min\_length=0**, **max\_length=
     merge\_short: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.corpus.ParagraphChunkerConfig.merge_short "Link to this definition")
 
     min\_length: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 0[#](#scikitplot.corpus.ParagraphChunkerConfig.min_length "Link to this definition")
+
+    multilang\_config: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") = None[#](#scikitplot.corpus.ParagraphChunkerConfig.multilang_config "Link to this definition")
 
     overlap: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 0[#](#scikitplot.corpus.ParagraphChunkerConfig.overlap "Link to this definition")
 

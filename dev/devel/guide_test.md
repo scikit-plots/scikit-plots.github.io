@@ -87,7 +87,7 @@ targeting the relevant sub-package or test file.
 
 The test suite can also be run directly from the native `pytest` command, which is
 much faster than using `tox` for iterative development. This assumes you are working
-in an [isolated development environment](https://docs.astropy.org/en/latest/development/quickstart.html#create-isolated-env "(in Astropy v8.0)").
+in an [isolated development environment](https://docs.astropy.org/en/latest/development/quickstart.html#create-isolated-env "(in Astropy v8.1)").
 
 In the uncommon situation that one or more compiled extensions have changed, you will
 need to rebuild them by re-running the usual editable install command:
@@ -351,7 +351,7 @@ location, or as a **decorator** that takes effect for an entire test function
 (not including setup or teardown, which would have to be decorated separately).
 
 Furthermore, it is possible to change the location of the cache directory
-for the duration of the test run via [Environment variables](https://docs.astropy.org/en/latest/environment_variables.html#environment-variables "(in Astropy v8.0)").
+for the duration of the test run via [Environment variables](https://docs.astropy.org/en/latest/environment_variables.html#environment-variables "(in Astropy v8.1)").
 
 ### Tests that create files[#](#tests-that-create-files "Link to this heading")
 
@@ -696,7 +696,7 @@ if this_rarely_happens:  # pragma: no cover
 We make use of the [pytest-mpl](https://pypi.org/project/pytest-mpl)
 plugin to write tests where we can compare the output of plotting commands
 with reference files on a pixel-by-pixel basis (this is used for instance in
-[astropy.visualization.wcsaxes](https://docs.astropy.org/en/latest/visualization/wcsaxes/index.html#wcsaxes "(in Astropy v8.0)")). We use the [hybrid mode](https://pytest-mpl.readthedocs.io/en/latest/hybrid_mode.html) with
+[astropy.visualization.wcsaxes](https://docs.astropy.org/en/latest/visualization/wcsaxes/index.html#wcsaxes "(in Astropy v8.1)")). We use the [hybrid mode](https://pytest-mpl.readthedocs.io/en/latest/hybrid_mode.html) with
 hashes and images.
 
 To run the Astropy tests with the image comparison, use e.g.:

@@ -620,10 +620,10 @@ Walk upward from <code class="docutils literal notranslate"><span class="pre">st
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2026/05/05 14:34:26 INFO mlflow.tracking.fluent: Experiment with name 'my-first-project' does not exist. Creating a new experiment.
-🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/795d6d4f48ad4abf9a4a36ed0858037d
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2026/05/11 19:18:03 INFO mlflow.tracking.fluent: Experiment with name 'my-first-project' does not exist. Creating a new experiment.
+🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/aba0b7aeca75456882ff20349e16301a
 🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
-🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/cfe95fd3f77f414baa90291fc3636e3b
+🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/0c16c8b612574cd986404c1a64f3f060
 🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
 
 WorkflowPaths(_project_root=PosixPath('/home/circleci/repo/galleries/examples/mlflow'), _config_dir=PosixPath('/home/circleci/repo/galleries/examples/mlflow/configs'), _toml_path=PosixPath('/home/circleci/repo/galleries/examples/mlflow/configs/mlflow.toml'), _yaml_path=PosixPath('/home/circleci/repo/galleries/examples/mlflow/configs/mlflow.yaml'))
@@ -659,15 +659,15 @@ WorkflowPaths(_project_root=PosixPath('/home/circleci/repo/galleries/examples/ml
         <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">"phase"</span><span class="p">,</span> <span class="s2">"predict"</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/d61c2bf5d34a41e098deea2a1d1f9295
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>🏃 View run train at: http://127.0.0.1:8891/#/experiments/1/runs/f1eb302b480845d4aacb1828b4f95d32
 🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
 Open MLflow UI: http://127.0.0.1:8891
-🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/7cb7816a3fd043dc8e0139f0b76d5e16
+🏃 View run predict at: http://127.0.0.1:8891/#/experiments/1/runs/82320713f0614035847c79bface1fa08
 🧪 View experiment at: http://127.0.0.1:8891/#/experiments/1
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-model-building.html"><span class="doc">model-workflow: model building</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-text.html"><span class="doc">plot-type: text</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-danger sd-bg-text-danger reference internal" href="../../_tags/domain-mlflow.html"><span class="doc">domain: mlflow</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 0.947 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 14.613 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Compile and run the C++ Annoy precision example."><img alt="" src="../../_images/sphx_glr_s_compile_cpp_thumb.png"/>
@@ -722,6 +722,7 @@ Open MLflow UI: http://127.0.0.1:8891
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-customized-settings">🛠️ How to use customized settings?</a></li>
 </ul>
 </nav></div>
+
 <div class="sidebar-secondary-item">
 <div class="sphx-glr-sidebar-component">
 <div class="sphx-glr-sidebar-item sphx-glr-download-python-sidebar" title="plot_mlflow.py">
@@ -744,20 +745,6 @@ Open MLflow UI: http://127.0.0.1:8891
 </div>
 </div>
 </div>
-<div class="sidebar-secondary-item">
-<div class="sphx-glr-sidebar-component">
-<div class="sphx-glr-sidebar-item lite-badge-sidebar">
-<a href="../../lite/lab/index.html?path=auto_examples/mlflow/plot_mlflow.ipynb">
-<img alt="Launch JupyterLite" src="../../_images/jupyterlite_badge_logo11.svg"/>
-</a>
-</div>
-<div class="sphx-glr-sidebar-item binder-badge-sidebar">
-<a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/mlflow/plot_mlflow.ipynb">
-<img alt="Launch binder" src="../../_images/binder_badge_logo11.svg"/>
-</a>
-</div>
-</div>
-</div>
 <div class="sidebar-secondary-item"><div title="plot_mlflow.py"><a download="" href="../../_downloads/5f793713f22d3c9ad64158df13e9ee69/plot_mlflow.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_mlflow.ipynb"><a download="" href="../../_downloads/f2b5691e338c880ded0a4446783fd670/plot_mlflow.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/mlflow/plot_mlflow.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo11.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/mlflow/plot_mlflow.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo11.svg"/></a></div></div></div></div>
 </div>
 <footer class="bd-footer-content">
@@ -774,7 +761,7 @@ Open MLflow UI: http://127.0.0.1:8891
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260505.33a338a 2026-05-05T14:26Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260511.f02632e 2026-05-11T19:08Z.
       <br/>
 </p>
 </div>

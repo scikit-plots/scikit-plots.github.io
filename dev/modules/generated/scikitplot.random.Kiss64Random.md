@@ -1,6 +1,6 @@
 # Kiss64Random[#](#kiss64random "Link to this heading")
 
-class scikitplot.random.Kiss64Random(**int seed: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/random/__init__.py#L)[#](#scikitplot.random.Kiss64Random "Link to this definition")
+class scikitplot.random.Kiss64Random(**int seed: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/random/__init__.py#L)[#](#scikitplot.random.Kiss64Random "Link to this definition")
 :   Low-level 64-bit KISS RNG with context manager support.
 
     This class provides direct access to the C++ Kiss64Random implementation.

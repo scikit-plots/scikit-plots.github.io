@@ -18,7 +18,7 @@ The internal implementation may live in `_logo`.
 If you are developing inside the repository you may see examples using
 `sp._logo`; user code should prefer `sp._logo` when available.
 
-## Quickstart[#](#quickstart "Link to this heading")
+Examples
 
 ```
 import scikitplot as sp
@@ -173,7 +173,7 @@ If you need a backend-stability check for SVG serialization,
 compare ****normalized**** SVG output rather than byte-for-byte equality.
 
 > **See also**
-> * [`matplotlib.figure.Figure.savefig`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.figure.Figure.savefig.html#matplotlib.figure.Figure.savefig "(in Matplotlib v3.12.0.dev26+gf4cc437d1)")
+> * [`matplotlib.figure.Figure.savefig`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.figure.Figure.savefig.html#matplotlib.figure.Figure.savefig "(in Matplotlib v3.12.0.dev56+g93e7277ae)")
 * `scikitplot._logo.create`
 * `scikitplot._logo.save`
 * `scikitplot._logo.list_variants`

@@ -11,6 +11,8 @@ This module defines a logging class based on the built-in logging module.
 
 ## Configuring the logging system[#](#configuring-the-logging-system "Link to this heading")
 
+Examples
+
 Get the root `logger` from `module attr`:
 
 ```

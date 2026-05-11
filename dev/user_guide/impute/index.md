@@ -45,7 +45,9 @@ Unlike exact KNN imputation [`KNNImputer`](https://scikit-learn.org/dev/modules/
 - Memory-efficient indexing of large datasets
 - Sharing of prebuilt indexes across processes
 
-Example: Your exact NumPy array example:
+Examples
+
+Your exact NumPy array example:
 
 ```
 import numpy as np

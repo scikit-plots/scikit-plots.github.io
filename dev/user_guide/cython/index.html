@@ -94,7 +94,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Cython templates" href="_templates/templates_index.html" />
-    <link rel="prev" title="Corpus (Remarks) Generation" href="../corpus/index.html" />
+    <link rel="prev" title="Corpus (Remarks Citation) Generation" href="../corpus/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.5" />
@@ -392,6 +392,10 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     </div>
   
 
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
   
 </div>
 
@@ -769,16 +773,6 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 garbage collection, and templating support. <code class="docutils literal notranslate"><span class="pre">&quot;Simple</span> <span class="pre">Foundation.</span> <span class="pre">Truly</span> <span class="pre">Sovereign.&quot;</span></code></p>
 <p><a class="reference internal" href="../../apis/scikitplot.cython.html#module-scikitplot.cython" title="scikitplot.cython"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.cython</span></code></a> enables real-time, in-place (in-situ) live, on demand
 generation of low-level Cython packages and modules for immediate use and testing, at runtime.</p>
-<p class="rubric">Quiskstart</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
-span.prompt1:before {
-  content: ">>> ";
-}
-</style><span class="prompt1"><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.cython</span><span class="w"> </span><span class="kn">import</span> <span class="n">compile_and_load</span></span>
-<span class="prompt1"></span>
-<span class="prompt1"><span class="n">m</span> <span class="o">=</span> <span class="n">compile_and_load</span><span class="p">(</span><span class="s2">&quot;def f(int n):</span><span class="se">\n</span><span class="s2">    return n*n&quot;</span><span class="p">)</span></span>
-<span class="prompt1"><span class="n">m</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span></span>
-</pre></div></div><p class="rubric">Examples</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../../auto_examples/cython/plot_cython_template.html#sphx-glr-auto-examples-cython-plot-cython-template-py"><span class="std std-ref">Cython: Realtime compile_and_load (.pyx)</span></a>: Example usage of
 <a class="reference internal" href="../../modules/generated/scikitplot.cython.compile_and_load.html#scikitplot.cython.compile_and_load" title="scikitplot.cython.compile_and_load"><code class="xref py py-func docutils literal notranslate"><span class="pre">compile_and_load</span></code></a> using template.</p></li>
@@ -791,7 +785,16 @@ span.prompt1:before {
 <li><p><a class="reference external" href="https://cython.readthedocs.io/en/latest/index.html">https://cython.readthedocs.io/en/latest/index.html</a></p></li>
 </ul>
 </div>
-<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: ">>> ";
+}
+</style><span class="prompt1"><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.cython</span><span class="w"> </span><span class="kn">import</span> <span class="n">compile_and_load</span></span>
+<span class="prompt1"></span>
+<span class="prompt1"><span class="n">m</span> <span class="o">=</span> <span class="n">compile_and_load</span><span class="p">(</span><span class="s2">&quot;def f(int n):</span><span class="se">\n</span><span class="s2">    return n*n&quot;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="n">m</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span></span>
+</pre></div></div><div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 docutils">
 <div class="sd-col sd-d-flex-row sd-p-3 docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none docutils">
@@ -848,7 +851,7 @@ span.prompt1:before {
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Corpus (Remarks) Generation</p>
+        <p class="prev-next-title">Corpus (Remarks Citation) Generation</p>
       </div>
     </a>
     <a class="right-next"
@@ -870,6 +873,21 @@ span.prompt1:before {
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/user_guide/cython/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
               
             
           </div>
@@ -900,7 +918,7 @@ span.prompt1:before {
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260505.33a338a 2026-05-05T14:26Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260511.f02632e 2026-05-11T19:08Z.
       <br/>
     
   </p>

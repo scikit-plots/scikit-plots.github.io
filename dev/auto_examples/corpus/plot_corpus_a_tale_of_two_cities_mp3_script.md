@@ -56,7 +56,7 @@ pipeline
 
 ```
 ```
-<scikitplot.corpus._pipeline.CorpusPipeline object at 0x77b5861bb990>
+<scikitplot.corpus._pipeline.CorpusPipeline object at 0x76f4724de090>
 
 ```
 ```
@@ -75,7 +75,7 @@ result
 ```
 Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
 
-PipelineResult(input_path='data/tale_of_two_cities_01_dickens_64kb.mp3', output_path=output/tale_of_two_cities_01_dickens_64kb.csv, export_format=csv, n_documents=5, n_read=5, n_omitted=0, n_embedded=0, elapsed_seconds=13.0s)
+PipelineResult(input_path='data/tale_of_two_cities_01_dickens_64kb.mp3', output_path=output/tale_of_two_cities_01_dickens_64kb.csv, export_format=csv, n_documents=5, n_read=5, n_omitted=0, n_embedded=0, elapsed_seconds=17.1s)
 
 ```
 ```
@@ -116,7 +116,7 @@ print(rich1[0].keywords, rich1[0].lemmas, rich1[0].stems)
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 13.052 seconds)
+****Total running time of the script:**** (0 minutes 17.262 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.ipynb)
 
@@ -128,15 +128,15 @@ Tags: [model-type: classification](../../_tags/model-type-classification.html) [
 
 Related examples
 
-![](../../_images/sphx_glr_plot_corpus_who_youtube_shorts_script_thumb.png)
-
-[corpus WHO European Region YouTube shorts with examples](plot_corpus_who_youtube_shorts_script.html)
-
-corpus WHO European Region YouTube shorts with examples![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
+![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
 
 [corpus WHO European Region local .zip with examples](plot_corpus_who_zip_script.html)
 
-corpus WHO European Region local .zip with examples![](../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png)
+corpus WHO European Region local .zip with examples![](../../_images/sphx_glr_plot_corpus_who_youtube_shorts_script_thumb.png)
+
+[corpus WHO European Region YouTube shorts with examples](plot_corpus_who_youtube_shorts_script.html)
+
+corpus WHO European Region YouTube shorts with examples![](../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png)
 
 [corpus Knowledge and Information local .png with examples](plot_corpus_knowledge_script.html)
 

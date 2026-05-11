@@ -795,7 +795,7 @@ like so:</p>
 <li><p>General utilities necessary for but not specific to the package or
 sub-package should be placed in a <code class="docutils literal notranslate"><span class="pre">packagename.utils</span></code> module (e.g.
 <code class="docutils literal notranslate"><span class="pre">astropy.utils</span></code> for the core package). If a utility is already present in
-<a class="reference external" href="https://docs.astropy.org/en/latest/utils/ref_api.html#module-astropy.utils" title="(in Astropy v8.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">astropy.utils</span></code></a>, packages should always use that utility instead of
+<a class="reference external" href="https://docs.astropy.org/en/latest/utils/ref_api.html#module-astropy.utils" title="(in Astropy v8.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">astropy.utils</span></code></a>, packages should always use that utility instead of
 re-implementing it in <code class="docutils literal notranslate"><span class="pre">packagename.utils</span></code> module.</p></li>
 </ul>
 </section>
@@ -819,17 +819,17 @@ document.</p></li>
 <ul class="simple">
 <li><p>Packages can include data in a directory named <code class="docutils literal notranslate"><span class="pre">data</span></code> inside a subpackage
 source directory as long as it is less than about 100 kB. These data should
-always be accessed via the <a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.utils.data.get_pkg_data_fileobj.html#astropy.utils.data.get_pkg_data_fileobj" title="(in Astropy v8.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_pkg_data_fileobj</span></code></a> or
-<a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.utils.data.get_pkg_data_filename.html#astropy.utils.data.get_pkg_data_filename" title="(in Astropy v8.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_pkg_data_filename</span></code></a> functions. If the data
+always be accessed via the <a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.utils.data.get_pkg_data_fileobj.html#astropy.utils.data.get_pkg_data_fileobj" title="(in Astropy v8.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_pkg_data_fileobj</span></code></a> or
+<a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.utils.data.get_pkg_data_filename.html#astropy.utils.data.get_pkg_data_filename" title="(in Astropy v8.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_pkg_data_filename</span></code></a> functions. If the data
 exceeds this size, it should be hosted outside the source code repository,
 either at a third-party location on the internet or the <a class="reference external" href="https://github.com/astropy/astropy-data">astropy data server</a>.
 In either case, it should always be downloaded using the
-<a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.utils.data.get_pkg_data_fileobj.html#astropy.utils.data.get_pkg_data_fileobj" title="(in Astropy v8.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_pkg_data_fileobj</span></code></a> or
-<a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.utils.data.get_pkg_data_filename.html#astropy.utils.data.get_pkg_data_filename" title="(in Astropy v8.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_pkg_data_filename</span></code></a> functions. If a specific
+<a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.utils.data.get_pkg_data_fileobj.html#astropy.utils.data.get_pkg_data_fileobj" title="(in Astropy v8.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_pkg_data_fileobj</span></code></a> or
+<a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.utils.data.get_pkg_data_filename.html#astropy.utils.data.get_pkg_data_filename" title="(in Astropy v8.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_pkg_data_filename</span></code></a> functions. If a specific
 version of a data file is needed, the hash mechanism described in
-<a class="reference external" href="https://docs.astropy.org/en/latest/utils/ref_api.html#module-astropy.utils.data" title="(in Astropy v8.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">astropy.utils.data</span></code></a> should be used.</p></li>
+<a class="reference external" href="https://docs.astropy.org/en/latest/utils/ref_api.html#module-astropy.utils.data" title="(in Astropy v8.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">astropy.utils.data</span></code></a> should be used.</p></li>
 <li><p>All persistent configuration should use the
-<a class="reference external" href="https://docs.astropy.org/en/latest/config/index.html#astropy-config" title="(in Astropy v8.0)"><span>Configuration System (astropy.config)</span></a> mechanism.  Such configuration items
+<a class="reference external" href="https://docs.astropy.org/en/latest/config/index.html#astropy-config" title="(in Astropy v8.1)"><span>Configuration System (astropy.config)</span></a> mechanism.  Such configuration items
 should be placed at the top of the module or package that makes use of them,
 and supply a description sufficient for users to understand what the setting
 changes.</p></li>
@@ -851,7 +851,7 @@ etc.).</p></li>
 <span class="pre">warning_class)</span></code>. These get redirected to <code class="docutils literal notranslate"><span class="pre">log.warning()</span></code> by default,
 but one can still use the standard warning-catching mechanism and custom
 warning classes. The warning class should be either
-<a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.utils.exceptions.AstropyUserWarning.html#astropy.utils.exceptions.AstropyUserWarning" title="(in Astropy v8.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstropyUserWarning</span></code></a> or inherit from it.</p></li>
+<a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.utils.exceptions.AstropyUserWarning.html#astropy.utils.exceptions.AstropyUserWarning" title="(in Astropy v8.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstropyUserWarning</span></code></a> or inherit from it.</p></li>
 <li><p>For informational and debugging messages, one should always use
 <code class="docutils literal notranslate"><span class="pre">log.info(message)</span></code> and <code class="docutils literal notranslate"><span class="pre">log.debug(message)</span></code>.</p></li>
 </ul>
@@ -972,7 +972,7 @@ accept the output of <code class="docutils literal notranslate"><span class="pre
 <p>This design generally follows <a class="reference external" href="https://en.wikipedia.org/wiki/Robustness_principle">Postel’s Law</a>: “Be liberal in what you
 accept, and conservative in what you send.”</p>
 <p>There is a test helper,
-<a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.tests.helper.assert_follows_unicode_guidelines.html#astropy.tests.helper.assert_follows_unicode_guidelines" title="(in Astropy v8.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">assert_follows_unicode_guidelines</span></code></a>,
+<a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.tests.helper.assert_follows_unicode_guidelines.html#astropy.tests.helper.assert_follows_unicode_guidelines" title="(in Astropy v8.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">assert_follows_unicode_guidelines</span></code></a>,
 to check compliance with the above guidelines.</p>
 </section>
 <section id="including-c-code">
@@ -1225,6 +1225,15 @@ the hierarchy.</p>
 </ul>
   </nav></div>
 
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/devel/guide_code.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
 </div></div>
               
             
@@ -1256,7 +1265,7 @@ the hierarchy.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260505.33a338a 2026-05-05T14:26Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260511.f02632e 2026-05-11T19:08Z.
       <br/>
     
   </p>

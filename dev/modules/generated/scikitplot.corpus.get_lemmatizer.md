@@ -1,6 +1,6 @@
 # get\_lemmatizer[#](#get-lemmatizer "Link to this heading")
 
-scikitplot.corpus.get\_lemmatizer(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L790)[#](#scikitplot.corpus.get_lemmatizer "Link to this definition")
+scikitplot.corpus.get\_lemmatizer(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L794)[#](#scikitplot.corpus.get_lemmatizer "Link to this definition")
 :   Retrieve a registered lemmatizer by name.
 
     Parameters:

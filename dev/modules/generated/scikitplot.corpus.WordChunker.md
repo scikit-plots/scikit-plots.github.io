@@ -1,6 +1,6 @@
 # WordChunker[#](#wordchunker "Link to this heading")
 
-class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_chunkers/_word.py#L1035)[#](#scikitplot.corpus.WordChunker "Link to this definition")
+class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_word.py#L1047)[#](#scikitplot.corpus.WordChunker "Link to this definition")
 :   Process a document at word level, producing normalised token chunks.
 
     Each output `Chunk` contains:
@@ -8,6 +8,9 @@ class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**
     * `text` — space-joined normalised tokens (with optional n-grams).
     * `metadata` — token list, n-grams, token count, processing flags,
       optional Gensim BoW vector.
+    * `metadata["multilang"]` — script detection, semanteme analysis,
+      stopword counts, grapheme counts, preprocessing trace, timing, and
+      raw text (when `MultilangConfig` is set).
 
     Parameters:
     :   ****config****WordChunkerConfig, optional
@@ -18,9 +21,27 @@ class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**
             `cfg.build_gensim_corpus` is `True`), each chunk’s metadata
             includes a `"bow"` Gensim BoW vector.
 
+        ****multilang\_config****MultilangConfig, optional
+        :   Multilang feature flags. Overrides `config.multilang_config`
+            when provided explicitly.
+
     Parameters:
     :   * ****config**** ([**WordChunkerConfig**](scikitplot.corpus.WordChunkerConfig.html#scikitplot.corpus.WordChunkerConfig "scikitplot.corpus.WordChunkerConfig") **|** **None**)
         * ****gensim\_dictionary**** (**Any** **|** **None**)
+        * ****multilang\_config**** (**MultilangConfig** **|** **None**)
+
+    Notes
+
+    ****User note (multilang):**** Set `multilang_config=MultilangConfig(
+    include_semantemes=True, include_raw_text=True,
+    include_preprocessing_trace=True)` to get the full per-token
+    semanteme analysis dict, preprocessing audit trail, and raw-vs-normalised
+    text comparison in every chunk.
+
+    ****Developer note:**** Inherits `MultilangMixin`. Token-level
+    metadata (`token_count`, `stopword_count`, `unique_token_count`)
+    is computed directly from the processed token list and forwarded to
+    `_ml_build_meta`.
 
     Examples
 
@@ -35,7 +56,86 @@ class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**
     ```
     Go BackOpen In Tab
 
-    static build\_gensim\_dictionary(**token\_lists**, **no\_below=2**, **no\_above=0.9**, **keep\_n=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_chunkers/_word.py#L1395)[#](#scikitplot.corpus.WordChunker.build_gensim_dictionary "Link to this definition")
+    attach\_embedding(**chunk**, **vector**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_multilang_mixin.py#L783)[#](#scikitplot.corpus.WordChunker.attach_embedding "Link to this definition")
+    :   Return a new `Chunk` with an embedding attached.
+
+        Does NOT mutate the original `Chunk` (frozen dataclass).
+
+        Parameters:
+        :   ****chunk****Chunk
+            :   Any chunk produced by this chunker.
+
+            ****vector****list[float]
+            :   Dense embedding vector.
+
+            ****model\_name****str, optional
+            :   Encoder model name.
+
+            ****model\_version****str, optional
+            :   Encoder model version.
+
+        Returns:
+        :   Chunk
+            :   New frozen instance with `metadata["multilang"]["embedding"]`
+                populated and `metadata["embedding"]` set at top level for
+                compatibility with `EmbeddedChunk`.
+
+        Parameters:
+        :   * ****chunk**** (**Chunk**)
+            * ****vector**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**]**)
+            * ****model\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+            * ****model\_version**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+
+        Return type:
+        :   **Chunk**
+
+        Notes
+
+        ****User note:**** For batch embedding, use
+        [`attach_embedding_batch`](#scikitplot.corpus.WordChunker.attach_embedding_batch "scikitplot.corpus.WordChunker.attach_embedding_batch") which avoids per-chunk dict copies.
+
+        ****Developer note:**** Two embedding locations are written:
+
+        1. `chunk.metadata["embedding"]` — top-level key compatible with
+           `EmbeddedChunk` and vector store adapters.
+        2. `chunk.metadata["multilang"]["embedding"]` — inside the
+           multilang bundle for model provenance tracking.
+
+    attach\_embedding\_batch(**chunks**, **vectors**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_multilang_mixin.py#L840)[#](#scikitplot.corpus.WordChunker.attach_embedding_batch "Link to this definition")
+    :   Return a new list of chunks with embeddings attached.
+
+        Parameters:
+        :   ****chunks****list[Chunk]
+            :   Chunks from this chunker.
+
+            ****vectors****list[list[float]]
+            :   One embedding vector per chunk. Must have same length as
+                `chunks`.
+
+            ****model\_name****str, optional
+            :   Encoder model name.
+
+            ****model\_version****str, optional
+            :   Encoder model version.
+
+        Returns:
+        :   list[Chunk]
+            :   New list; originals are unmodified.
+
+        Raises:
+        :   ValueError
+            :   If `len(chunks) != len(vectors)`.
+
+        Parameters:
+        :   * ****chunks**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[****Chunk****]**)
+            * ****vectors**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**]****]**)
+            * ****model\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+            * ****model\_version**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
+
+        Return type:
+        :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[**Chunk**]
+
+    static build\_gensim\_dictionary(**token\_lists**, **no\_below=2**, **no\_above=0.9**, **keep\_n=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_word.py#L1512)[#](#scikitplot.corpus.WordChunker.build_gensim_dictionary "Link to this definition")
     :   Build a `gensim.corpora.Dictionary` from token lists.
 
         Parameters:
@@ -72,7 +172,7 @@ class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**
         Return type:
         :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")
 
-    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_chunkers/_word.py#L1277)[#](#scikitplot.corpus.WordChunker.chunk "Link to this definition")
+    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_word.py#L1376)[#](#scikitplot.corpus.WordChunker.chunk "Link to this definition")
     :   Process **text** into word-level chunks.
 
         Parameters:
@@ -104,7 +204,7 @@ class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**
         Return type:
         :   **ChunkResult**
 
-    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_chunkers/_word.py#L1346)[#](#scikitplot.corpus.WordChunker.chunk_batch "Link to this definition")
+    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_word.py#L1463)[#](#scikitplot.corpus.WordChunker.chunk_batch "Link to this definition")
     :   Process a list of documents into word-level chunks.
 
         Parameters:
@@ -136,7 +236,7 @@ class scikitplot.corpus.WordChunker(**config=None**, **gensim\_dictionary=None**
         Return type:
         :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[**ChunkResult**]
 
-    static vocabulary\_stats(**token\_lists**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/33a338a/scikitplot/corpus/_chunkers/_word.py#L1448)[#](#scikitplot.corpus.WordChunker.vocabulary_stats "Link to this definition")
+    static vocabulary\_stats(**token\_lists**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_word.py#L1565)[#](#scikitplot.corpus.WordChunker.vocabulary_stats "Link to this definition")
     :   Compute vocabulary statistics over a corpus.
 
         Parameters:

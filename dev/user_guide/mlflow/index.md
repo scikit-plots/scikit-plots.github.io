@@ -6,7 +6,7 @@ Adds a ****project-level configuration**** mechanism so multiple scripts
 (e.g., `train.py`, `hpo.py`, `predict.py`) share the exact same MLflow settings,
 regardless of current working directory.
 
-Quiskstart Template: Beginner workflow demo
+Examples
 
 ```
 import os
@@ -27,7 +27,7 @@ sp.mlflow.workflow(
 
 ```
 
-Examples
+Quiskstart Template: Beginner workflow demo
 
 * [MLflow](../../auto_examples/mlflow/plot_mlflow.html#sphx-glr-auto-examples-mlflow-plot-mlflow-py): Example usage of
   [`workflow`](../../modules/generated/scikitplot.mlflow.workflow.html#scikitplot.mlflow.workflow "scikitplot.mlflow.workflow") using template.
