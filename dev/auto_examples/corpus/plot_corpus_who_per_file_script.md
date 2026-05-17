@@ -186,10 +186,16 @@ all_documents[60].text
 'Catastrophic out-of-pocket payments are mainly driven by household spending on services that are commonly delivered or managed in primary-care settings, indicating important gaps in the coverage of primary care in many countries.'
 
 ```
+
+### youtube[#](#youtube "Link to this heading")
+
+[`https://youtu.be/rwPISgZcYIk`\_\_](#id1), [`https://www.youtube.com/watch?v=rwPISgZcYIk`\_\_](#id1)
+
+
 ```
 # --- Source ②: YouTube Transcript ---
 # In production: DocumentReader.from_url("https://youtu.be/rwPISgZcYIk")
-# "https://youtu.be/rwPISgZcYIk",  # https://www.youtube.com/watch?v=rwPISgZcYIk
+
 mini_banner("Source ②: YouTube Transcript (text proxy)")
 try:
     if Path("who_video_transcript.txt").exists():
@@ -735,9 +741,10 @@ for i, line in enumerate(lines[:2]):
 
   --- 6f: HuggingFace Dataset ---
 
-  ✓ HuggingFace column dict (datasets lib not installed)
-    columns: ['chunk_index', 'doc_id', 'input_path', 'language', 'metadata_json', 'source_title', 'source_type', 'text']
-    rows: 97
+  ✓ HuggingFace Dataset: Dataset({
+    features: ['doc_id', 'text', 'input_path', 'source_type', 'source_title', 'chunk_index', 'language', 'metadata_json'],
+    num_rows: 97
+})
 
   --- 6g: RAG Tuples (text, metadata, embedding) ---
 
@@ -1016,7 +1023,7 @@ print("  Pipeline complete. All 5 source types → unified corpus → any consum
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: bar](../../_tags/plot-type-bar.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 11.924 seconds)
+****Total running time of the script:**** (0 minutes 11.176 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_who_per_file_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_who_per_file_script.ipynb)
 
@@ -1028,15 +1035,15 @@ Tags: [model-type: classification](../../_tags/model-type-classification.html) [
 
 Related examples
 
-![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
-
-[corpus WHO European Region local .zip with examples](plot_corpus_who_zip_script.html)
-
-corpus WHO European Region local .zip with examples![](../../_images/sphx_glr_plot_corpus_who_youtube_shorts_script_thumb.png)
+![](../../_images/sphx_glr_plot_corpus_who_youtube_shorts_script_thumb.png)
 
 [corpus WHO European Region YouTube shorts with examples](plot_corpus_who_youtube_shorts_script.html)
 
-corpus WHO European Region YouTube shorts with examples![](../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png)
+corpus WHO European Region YouTube shorts with examples![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
+
+[corpus WHO European Region local .zip with examples](plot_corpus_who_zip_script.html)
+
+corpus WHO European Region local .zip with examples![](../../_images/sphx_glr_plot_corpus_a_tale_of_two_cities_mp3_script_thumb.png)
 
 [corpus A Tale of Two Cities .mp3 with examples](plot_corpus_a_tale_of_two_cities_mp3_script.html)
 

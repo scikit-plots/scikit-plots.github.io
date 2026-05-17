@@ -685,8 +685,6 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DummyReader.html">DummyReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FilterBase.html">FilterBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineGuard.html">PipelineGuard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._MultiSourceReader.html">_MultiSourceReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._is_url.html">_is_url</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ChunkerBridge.html">ChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FixedWindowChunkerBridge.html">FixedWindowChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ParagraphChunkerBridge.html">ParagraphChunkerBridge</a></li>
@@ -1316,7 +1314,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>Modality<a class="headerlink" href="#modality" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.Modality">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">Modality</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L151"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.Modality" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">Modality</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_schema.py#L132"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.Modality" title="Link to this definition">#</a></dt>
 <dd><p>Primary content modality of a <a class="reference internal" href="scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument" title="scikitplot.corpus.CorpusDocument"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusDocument</span></code></a>.</p>
 <p class="rubric">Notes</p>
 <p><strong>TEXT</strong> — document carries non-empty <code class="docutils literal notranslate"><span class="pre">text</span></code>; <code class="docutils literal notranslate"><span class="pre">raw_tensor</span></code> is
@@ -1338,8 +1336,8 @@ OCR transcript alongside pixel array).</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">VideoReader(yield_frames=True)</span></code> → <code class="docutils literal notranslate"><span class="pre">VIDEO</span></code> or <code class="docutils literal notranslate"><span class="pre">MULTIMODAL</span></code></p></li>
 </ul>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="e0a6e946-0ca4-4693-97e4-1e1c2cc1f4fa">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('e0a6e946-0ca4-4693-97e4-1e1c2cc1f4fa','372d8ba7-a168-4b09-a59f-38121ac5eaf4','64e30929-644f-44ae-992c-6b74b0dfc46f','../../lite/tree/../notebooks/index.html?path=3946d06a_8488_4fff_8f2c_56c9bc746193.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="fb7bd171-5aa2-49e5-9e3b-2e368a9416e0">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('fb7bd171-5aa2-49e5-9e3b-2e368a9416e0','b22933ee-21cf-47f1-a8dc-a1a21e558a5c','7b9262cf-da00-4ab4-af8d-33b288b0e9c0','../../lite/tree/../notebooks/index.html?path=54ab9526_fd59_44bd_987a_3f61a271b8aa.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Modality</span><span class="o">.</span><span class="n">TEXT</span> <span class="o">==</span> <span class="s2">&quot;text&quot;</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Modality</span><span class="p">(</span><span class="s2">&quot;image&quot;</span><span class="p">)</span>
@@ -1348,33 +1346,33 @@ OCR transcript alongside pixel array).</p>
 </div>
 </div>
 </div>
-<div id="64e30929-644f-44ae-992c-6b74b0dfc46f" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('e0a6e946-0ca4-4693-97e4-1e1c2cc1f4fa','64e30929-644f-44ae-992c-6b74b0dfc46f')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('e0a6e946-0ca4-4693-97e4-1e1c2cc1f4fa','64e30929-644f-44ae-992c-6b74b0dfc46f')">Open In Tab</button></div><div id="372d8ba7-a168-4b09-a59f-38121ac5eaf4" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
+<div id="7b9262cf-da00-4ab4-af8d-33b288b0e9c0" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('fb7bd171-5aa2-49e5-9e3b-2e368a9416e0','7b9262cf-da00-4ab4-af8d-33b288b0e9c0')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('fb7bd171-5aa2-49e5-9e3b-2e368a9416e0','7b9262cf-da00-4ab4-af8d-33b288b0e9c0')">Open In Tab</button></div><div id="b22933ee-21cf-47f1-a8dc-a1a21e558a5c" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.Modality.AUDIO">
-<span class="sig-name descname"><span class="pre">AUDIO</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'audio'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.Modality.AUDIO" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">AUDIO</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'audio'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.Modality.AUDIO" title="Link to this definition">#</a></dt>
 <dd><p>Audio waveform — <code class="docutils literal notranslate"><span class="pre">raw_tensor</span></code> shape is <code class="docutils literal notranslate"><span class="pre">(samples,)</span></code> float32.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.Modality.IMAGE">
-<span class="sig-name descname"><span class="pre">IMAGE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'image'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.Modality.IMAGE" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">IMAGE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'image'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.Modality.IMAGE" title="Link to this definition">#</a></dt>
 <dd><p>Raster image tensor — <code class="docutils literal notranslate"><span class="pre">raw_tensor</span></code> shape is <code class="docutils literal notranslate"><span class="pre">(H,</span> <span class="pre">W,</span> <span class="pre">C)</span></code> uint8.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.Modality.MULTIMODAL">
-<span class="sig-name descname"><span class="pre">MULTIMODAL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'multimodal'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.Modality.MULTIMODAL" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">MULTIMODAL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'multimodal'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.Modality.MULTIMODAL" title="Link to this definition">#</a></dt>
 <dd><p>Both <code class="docutils literal notranslate"><span class="pre">text</span></code> and <code class="docutils literal notranslate"><span class="pre">raw_tensor</span></code> are present (e.g. image + OCR).</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.Modality.TEXT">
-<span class="sig-name descname"><span class="pre">TEXT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'text'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.Modality.TEXT" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">TEXT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'text'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.Modality.TEXT" title="Link to this definition">#</a></dt>
 <dd><p>Plain text content — <code class="docutils literal notranslate"><span class="pre">raw_tensor</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.Modality.VIDEO">
-<span class="sig-name descname"><span class="pre">VIDEO</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'video'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.Modality.VIDEO" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">VIDEO</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'video'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.Modality.VIDEO" title="Link to this definition">#</a></dt>
 <dd><p>Video frame tensor — <code class="docutils literal notranslate"><span class="pre">raw_tensor</span></code> shape is <code class="docutils literal notranslate"><span class="pre">(T,</span> <span class="pre">H,</span> <span class="pre">W,</span> <span class="pre">C)</span></code> uint8.</p>
 </dd></dl>
 
@@ -1946,7 +1944,7 @@ left untouched.  Characters mapped to None are deleted.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260511.f02632e 2026-05-11T19:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260517.dff5f00 2026-05-17T00:49Z.
       <br/>
     
   </p>

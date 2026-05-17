@@ -43,7 +43,7 @@ This project was started in 2024.
 * [Funding](funding.html)
   * [Donations in Kind](funding.html#donations-in-kind)
 * [Glossary](glossary/index.html)
-  * [1. scikit-learn Glossary](glossary/_glossary_sklearn.html)
+  * <https://scikit-learn.org/stable/glossary.html>
 * [Cheatsheet](../cheatsheet/index.html)
   * [Md Cheatsheet](../cheatsheet/cheatsheet_md.html)
   * [RST Cheatsheet](../cheatsheet/cheatsheet_rst.html)

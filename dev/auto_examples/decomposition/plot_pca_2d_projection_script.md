@@ -78,7 +78,7 @@ ax = sp.decomposition.plot_pca_2d_projection(
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: feature engineering](../../_tags/model-workflow-feature-engineering.html) [plot-type: scatter](../../_tags/plot-type-scatter.html) [plot-type: PCA](../../_tags/plot-type-pca.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.529 seconds)
+****Total running time of the script:**** (0 minutes 0.479 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo7.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/decomposition/plot_pca_2d_projection_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo7.svg)](../../lite/lab/index.html?path=auto_examples/decomposition/plot_pca_2d_projection_script.ipynb)
 

@@ -687,8 +687,6 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DummyReader.html">DummyReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FilterBase.html">FilterBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineGuard.html">PipelineGuard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._MultiSourceReader.html">_MultiSourceReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._is_url.html">_is_url</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ChunkerBridge.html">ChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FixedWindowChunkerBridge.html">FixedWindowChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ParagraphChunkerBridge.html">ParagraphChunkerBridge</a></li>
@@ -1318,7 +1316,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>check_build_prereqs<a class="headerlink" href="#check-build-prereqs" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cython.check_build_prereqs">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">check_build_prereqs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">numpy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pybind11</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/cython/_public.py#L183"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.check_build_prereqs" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">check_build_prereqs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">numpy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pybind11</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/cython/_public.py#L183"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.check_build_prereqs" title="Link to this definition">#</a></dt>
 <dd><p>Check whether build prerequisites are importable.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1351,8 +1349,8 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <strong>Pro/master</strong> (Scenarios 3-5): use the scenario-specific helpers in
 <code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.cython._custom_compiler</span></code> for targeted checks.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="087efcf8-ff31-4dde-ba60-ba7f25ec869e">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('087efcf8-ff31-4dde-ba60-ba7f25ec869e','bb54de84-a374-4e79-b859-47bc302a9347','3fb5367e-8622-4dca-89bc-6dc3403292b5','../../lite/tree/../notebooks/index.html?path=1478cd98_7b34_44aa_ae97_781af40e8683.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="ea2c2ffa-de8d-4807-aba0-abcd40665d82">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('ea2c2ffa-de8d-4807-aba0-abcd40665d82','c007bf12-9c0c-4cdd-b851-2a5da119858e','58bf846c-93d3-452b-ad92-a29a50de33c2','../../lite/tree/../notebooks/index.html?path=7978cd59_74f1_4d94_a25a_9dd30cc1933f.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">check_build_prereqs</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;cython&quot;</span> <span class="ow">in</span> <span class="n">result</span> <span class="ow">and</span> <span class="s2">&quot;setuptools&quot;</span> <span class="ow">in</span> <span class="n">result</span>
 <span class="go">True</span>
@@ -1363,7 +1361,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 </div>
 </div>
 </div>
-<div id="3fb5367e-8622-4dca-89bc-6dc3403292b5" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('087efcf8-ff31-4dde-ba60-ba7f25ec869e','3fb5367e-8622-4dca-89bc-6dc3403292b5')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('087efcf8-ff31-4dde-ba60-ba7f25ec869e','3fb5367e-8622-4dca-89bc-6dc3403292b5')">Open In Tab</button></div><div id="bb54de84-a374-4e79-b859-47bc302a9347" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="58bf846c-93d3-452b-ad92-a29a50de33c2" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('ea2c2ffa-de8d-4807-aba0-abcd40665d82','58bf846c-93d3-452b-ad92-a29a50de33c2')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('ea2c2ffa-de8d-4807-aba0-abcd40665d82','58bf846c-93d3-452b-ad92-a29a50de33c2')">Open In Tab</button></div><div id="c007bf12-9c0c-4cdd-b851-2a5da119858e" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <section id="gallery-examples">
 <h2>Gallery examples<a class="headerlink" href="#gallery-examples" title="Link to this heading">#</a></h2>
@@ -1500,7 +1498,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260511.f02632e 2026-05-11T19:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260517.dff5f00 2026-05-17T00:49Z.
       <br/>
     
   </p>

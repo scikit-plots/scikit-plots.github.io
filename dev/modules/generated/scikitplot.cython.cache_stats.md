@@ -1,6 +1,6 @@
 # cache\_stats[#](#cache-stats "Link to this heading")
 
-scikitplot.cython.cache\_stats(**cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/cython/_gc.py#L61)[#](#scikitplot.cython.cache_stats "Link to this definition")
+scikitplot.cython.cache\_stats(**cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/cython/_gc.py#L61)[#](#scikitplot.cython.cache_stats "Link to this definition")
 :   Compute cache statistics.
 
     Parameters:

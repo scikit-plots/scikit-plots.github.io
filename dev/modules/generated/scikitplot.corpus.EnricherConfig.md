@@ -1,6 +1,6 @@
 # EnricherConfig[#](#enricherconfig "Link to this heading")
 
-class scikitplot.corpus.EnricherConfig(**language=None**, **tokenizer='simple'**, **custom\_tokenizer=None**, **spacy\_model='en\_core\_web\_sm'**, **lemmatizer=None**, **custom\_lemmatizer=None**, **stemmer=None**, **custom\_stemmer=None**, **stemmer\_language='english'**, **keyword\_extractor='frequency'**, **keyword\_extractor\_kwargs=None**, **max\_keywords=20**, **save\_token\_scores=False**, **lowercase\_tokens=True**, **remove\_stopwords=True**, **extra\_stopwords=None**, **min\_token\_length=2**, **remove\_punctuation=True**, **strip\_unicode\_punctuation=False**, **pos\_tags=False**, **ner\_entities=False**, **sentence\_count=False**, **char\_count=False**, **type\_token\_ratio=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_enrichers/_nlp_enricher.py#L239)[#](#scikitplot.corpus.EnricherConfig "Link to this definition")
+class scikitplot.corpus.EnricherConfig(**language=None**, **tokenizer='simple'**, **custom\_tokenizer=None**, **spacy\_model='en\_core\_web\_sm'**, **lemmatizer=None**, **custom\_lemmatizer=None**, **stemmer=None**, **custom\_stemmer=None**, **stemmer\_language='english'**, **keyword\_extractor='frequency'**, **keyword\_extractor\_kwargs=None**, **max\_keywords=20**, **save\_token\_scores=False**, **lowercase\_tokens=True**, **remove\_stopwords=True**, **extra\_stopwords=None**, **min\_token\_length=2**, **remove\_punctuation=True**, **strip\_unicode\_punctuation=False**, **pos\_tags=False**, **ner\_entities=False**, **sentence\_count=False**, **char\_count=False**, **type\_token\_ratio=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_enrichers/_nlp_enricher.py#L246)[#](#scikitplot.corpus.EnricherConfig "Link to this definition")
 :   Configuration for [`NLPEnricher`](scikitplot.corpus.NLPEnricher.html#scikitplot.corpus.NLPEnricher "scikitplot.corpus.NLPEnricher").
 
     Parameters:
@@ -117,22 +117,22 @@ class scikitplot.corpus.EnricherConfig(**language=None**, **tokenizer='simple'**
             document metadata. Useful for LLM context quality assessment.
 
     Parameters:
-    :   * ****language**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-        * ****tokenizer**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****custom\_tokenizer**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
+    :   * ****language**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
+        * ****tokenizer**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'simple'****,** **'nltk'****,** **'spacy'****,** **'custom'****]**)
+        * ****custom\_tokenizer**** ([**TokenizerProtocol**](scikitplot.corpus.TokenizerProtocol.html#scikitplot.corpus.TokenizerProtocol "scikitplot.corpus._chunkers._custom_tokenizer.TokenizerProtocol") **|** [**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")**[****[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]****,** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]****]** **|** **None**)
         * ****spacy\_model**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****lemmatizer**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****custom\_lemmatizer**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-        * ****stemmer**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****custom\_stemmer**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-        * ****stemmer\_language**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
-        * ****keyword\_extractor**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
-        * ****keyword\_extractor\_kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
+        * ****lemmatizer**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'spacy'****,** **'nltk'****,** **'custom'****]** **|** **None**)
+        * ****custom\_lemmatizer**** ([**LemmatizerProtocol**](scikitplot.corpus.LemmatizerProtocol.html#scikitplot.corpus.LemmatizerProtocol "scikitplot.corpus._chunkers._custom_tokenizer.LemmatizerProtocol") **|** [**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")**[****[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None****]****,** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
+        * ****stemmer**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'porter'****,** **'snowball'****,** **'lancaster'****,** **'custom'****]** **|** **None**)
+        * ****custom\_stemmer**** ([**StemmerProtocol**](scikitplot.corpus.StemmerProtocol.html#scikitplot.corpus.StemmerProtocol "scikitplot.corpus._chunkers._custom_tokenizer.StemmerProtocol") **|** [**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")**[****[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]****,** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
+        * ****stemmer\_language**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
+        * ****keyword\_extractor**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'frequency'****,** **'tfidf'****,** **'yake'****,** **'keybert'****]** **|** **None**)
+        * ****keyword\_extractor\_kwargs**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
         * ****max\_keywords**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
         * ****save\_token\_scores**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
         * ****lowercase\_tokens**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
         * ****remove\_stopwords**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
-        * ****extra\_stopwords**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
+        * ****extra\_stopwords**** ([**frozenset**](https://docs.python.org/3/library/stdtypes.html#frozenset "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]** **|** **None**)
         * ****min\_token\_length**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
         * ****remove\_punctuation**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
         * ****strip\_unicode\_punctuation**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
@@ -162,21 +162,21 @@ class scikitplot.corpus.EnricherConfig(**language=None**, **tokenizer='simple'**
 
     char\_count: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.corpus.EnricherConfig.char_count "Link to this definition")
 
-    custom\_lemmatizer: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") = None[#](#scikitplot.corpus.EnricherConfig.custom_lemmatizer "Link to this definition")
+    custom\_lemmatizer: [LemmatizerProtocol](scikitplot.corpus.LemmatizerProtocol.html#scikitplot.corpus.LemmatizerProtocol "scikitplot.corpus._chunkers._custom_tokenizer.LemmatizerProtocol") | [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")], [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.EnricherConfig.custom_lemmatizer "Link to this definition")
 
-    custom\_stemmer: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") = None[#](#scikitplot.corpus.EnricherConfig.custom_stemmer "Link to this definition")
+    custom\_stemmer: [StemmerProtocol](scikitplot.corpus.StemmerProtocol.html#scikitplot.corpus.StemmerProtocol "scikitplot.corpus._chunkers._custom_tokenizer.StemmerProtocol") | [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")], [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.EnricherConfig.custom_stemmer "Link to this definition")
 
-    custom\_tokenizer: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") = None[#](#scikitplot.corpus.EnricherConfig.custom_tokenizer "Link to this definition")
+    custom\_tokenizer: [TokenizerProtocol](scikitplot.corpus.TokenizerProtocol.html#scikitplot.corpus.TokenizerProtocol "scikitplot.corpus._chunkers._custom_tokenizer.TokenizerProtocol") | [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")], [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.EnricherConfig.custom_tokenizer "Link to this definition")
 
-    extra\_stopwords: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") = None[#](#scikitplot.corpus.EnricherConfig.extra_stopwords "Link to this definition")
+    extra\_stopwords: [frozenset](https://docs.python.org/3/library/stdtypes.html#frozenset "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.EnricherConfig.extra_stopwords "Link to this definition")
 
-    keyword\_extractor: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = 'frequency'[#](#scikitplot.corpus.EnricherConfig.keyword_extractor "Link to this definition")
+    keyword\_extractor: [Literal](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")['frequency', 'tfidf', 'yake', 'keybert'] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = 'frequency'[#](#scikitplot.corpus.EnricherConfig.keyword_extractor "Link to this definition")
 
-    keyword\_extractor\_kwargs: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") = None[#](#scikitplot.corpus.EnricherConfig.keyword_extractor_kwargs "Link to this definition")
+    keyword\_extractor\_kwargs: [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.EnricherConfig.keyword_extractor_kwargs "Link to this definition")
 
-    language: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") = None[#](#scikitplot.corpus.EnricherConfig.language "Link to this definition")
+    language: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.EnricherConfig.language "Link to this definition")
 
-    lemmatizer: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.EnricherConfig.lemmatizer "Link to this definition")
+    lemmatizer: [Literal](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")['spacy', 'nltk', 'custom'] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.EnricherConfig.lemmatizer "Link to this definition")
 
     lowercase\_tokens: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.EnricherConfig.lowercase_tokens "Link to this definition")
 
@@ -198,13 +198,13 @@ class scikitplot.corpus.EnricherConfig(**language=None**, **tokenizer='simple'**
 
     spacy\_model: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'en\_core\_web\_sm'[#](#scikitplot.corpus.EnricherConfig.spacy_model "Link to this definition")
 
-    stemmer: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.EnricherConfig.stemmer "Link to this definition")
+    stemmer: [Literal](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")['porter', 'snowball', 'lancaster', 'custom'] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.EnricherConfig.stemmer "Link to this definition")
 
-    stemmer\_language: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") = 'english'[#](#scikitplot.corpus.EnricherConfig.stemmer_language "Link to this definition")
+    stemmer\_language: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = 'english'[#](#scikitplot.corpus.EnricherConfig.stemmer_language "Link to this definition")
 
     strip\_unicode\_punctuation: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.corpus.EnricherConfig.strip_unicode_punctuation "Link to this definition")
 
-    tokenizer: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'simple'[#](#scikitplot.corpus.EnricherConfig.tokenizer "Link to this definition")
+    tokenizer: [Literal](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")['simple', 'nltk', 'spacy', 'custom'] = 'simple'[#](#scikitplot.corpus.EnricherConfig.tokenizer "Link to this definition")
 
     type\_token\_ratio: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = False[#](#scikitplot.corpus.EnricherConfig.type_token_ratio "Link to this definition")
 

@@ -685,8 +685,6 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DummyReader.html">DummyReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FilterBase.html">FilterBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineGuard.html">PipelineGuard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._MultiSourceReader.html">_MultiSourceReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._is_url.html">_is_url</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ChunkerBridge.html">ChunkerBridge</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">FixedWindowChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ParagraphChunkerBridge.html">ParagraphChunkerBridge</a></li>
@@ -1316,7 +1314,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>FixedWindowChunkerBridge<a class="headerlink" href="#fixedwindowchunkerbridge" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.FixedWindowChunkerBridge">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">FixedWindowChunkerBridge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inner</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_chunker_bridge.py#L304"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FixedWindowChunkerBridge" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">FixedWindowChunkerBridge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inner</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_chunkers/_chunker_bridge.py#L307"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FixedWindowChunkerBridge" title="Link to this definition">#</a></dt>
 <dd><p>Bridge for <code class="docutils literal notranslate"><span class="pre">FixedWindowChunker</span></code> → <code class="docutils literal notranslate"><span class="pre">ChunkerBase</span></code> contract.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1325,29 +1323,26 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FixedWindowChunkerBridge.chunk">
-<span class="sig-name descname"><span class="pre">chunk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_chunker_bridge.py#L159"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FixedWindowChunkerBridge.chunk" title="Link to this definition">#</a></dt>
-<dd><p>Chunk <em>text</em> and return a <code class="xref py py-class docutils literal notranslate"><span class="pre">ChunkedTextList</span></code> of <code class="docutils literal notranslate"><span class="pre">(char_start,</span> <span class="pre">chunk_text)</span></code> pairs.</p>
-<p>Backward compatible — all existing callers that iterate <code class="docutils literal notranslate"><span class="pre">(start,</span> <span class="pre">text)</span></code>
-pairs continue to work unchanged.  Additionally, the
-<code class="docutils literal notranslate"><span class="pre">chunk_metadata_list</span></code> attribute on the returned object carries the
-per-chunk <code class="docutils literal notranslate"><span class="pre">chunk.metadata</span></code> dicts (including <code class="docutils literal notranslate"><span class="pre">&quot;multilang&quot;</span></code> when
-<code class="xref py py-class docutils literal notranslate"><span class="pre">MultilangConfig</span></code> is enabled) so
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">_base.DocumentReader.get_documents</span></code> can populate
-<a class="reference internal" href="scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument" title="scikitplot.corpus._schema.CorpusDocument"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusDocument</span></code></a> multilang fields.</p>
+<span class="sig-name descname"><span class="pre">chunk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_chunkers/_chunker_bridge.py#L160"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FixedWindowChunkerBridge.chunk" title="Link to this definition">#</a></dt>
+<dd><p>Chunk <em>text</em> and return a <code class="xref py py-class docutils literal notranslate"><span class="pre">ChunkResult</span></code>.</p>
+<p><strong>CRITICAL-02 (Phase 2):</strong> Returns <code class="docutils literal notranslate"><span class="pre">ChunkResult</span></code> directly.
+<a class="reference internal" href="scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader.get_documents" title="scikitplot.corpus.DocumentReader.get_documents"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DocumentReader.get_documents</span></code></a> now iterates
+<code class="docutils literal notranslate"><span class="pre">chunk_result.chunks</span></code> instead of <code class="docutils literal notranslate"><span class="pre">(char_start,</span> <span class="pre">chunk_text)</span></code>
+tuples.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>text</strong><span class="classifier">str</span></dt><dd><p>Raw text to chunk.</p>
 </dd>
 <dt><strong>metadata</strong><span class="classifier">dict[str, Any] or None, optional</span></dt><dd><p>Raw-chunk metadata dict passed by <code class="docutils literal notranslate"><span class="pre">get_documents()</span></code>.
-Forwarded as <code class="docutils literal notranslate"><span class="pre">extra_metadata</span></code> to the inner chunker
-where supported.</p>
+Forwarded as <code class="docutils literal notranslate"><span class="pre">extra_metadata</span></code> to the inner chunker.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>ChunkedTextList</dt><dd><p>Each element is <code class="docutils literal notranslate"><span class="pre">(char_offset,</span> <span class="pre">chunk_text)</span></code>.</p>
+<dt>ChunkResult</dt><dd><p>Ordered list of <code class="xref py py-class docutils literal notranslate"><span class="pre">Chunk</span></code> objects with
+<code class="docutils literal notranslate"><span class="pre">text</span></code>, <code class="docutils literal notranslate"><span class="pre">start_char</span></code>, <code class="docutils literal notranslate"><span class="pre">end_char</span></code>, and <code class="docutils literal notranslate"><span class="pre">metadata</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -1358,14 +1353,17 @@ where supported.</p>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><em>ChunkedTextList</em></p>
+<dd class="field-even"><p><em>ChunkResult</em></p>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Use <code class="xref py py-meth docutils literal notranslate"><span class="pre">_to_tuples</span></code> to convert to the legacy
+<code class="docutils literal notranslate"><span class="pre">list[tuple[int,</span> <span class="pre">str]]</span></code> format if needed for backward compat.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.FixedWindowChunkerBridge.strategy">
-<span class="sig-name descname"><span class="pre">strategy</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.ClassVar" title="(in Python v3.14)"><span class="pre">ClassVar</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy" title="scikitplot.corpus._schema.ChunkingStrategy"><span class="pre">ChunkingStrategy</span></a><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fixed_window'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FixedWindowChunkerBridge.strategy" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">strategy</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.ClassVar" title="(in Python v3.14)"><span class="pre">ClassVar</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy" title="scikitplot.corpus._schema.ChunkingStrategy"><span class="pre">ChunkingStrategy</span></a><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fixed_window'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_schema.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FixedWindowChunkerBridge.strategy" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1475,7 +1473,7 @@ where supported.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260511.f02632e 2026-05-11T19:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260517.dff5f00 2026-05-17T00:49Z.
       <br/>
     
   </p>

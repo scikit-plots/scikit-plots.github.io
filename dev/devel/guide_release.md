@@ -510,9 +510,9 @@ be squashed because the intent is to merge the branch histories.
 After the release is published to PyPI and conda, it should be announced
 through our communication channels:
 
-* Send a short version of the release notes and acknowledgments to all the [Mailing lists](https://matplotlib.org/devdocs/devel/communication_guide.html#mailing-lists "(in Matplotlib v3.12.0.dev56+g93e7277ae)")
-* Post highlights and link to [What’s new](https://matplotlib.org/devdocs/release/release_notes.html#release-notes "(in Matplotlib v3.12.0.dev56+g93e7277ae)") on the
-  active [social media accounts](https://matplotlib.org/devdocs/devel/communication_guide.html#social-media "(in Matplotlib v3.12.0.dev56+g93e7277ae)")
+* Send a short version of the release notes and acknowledgments to all the [Mailing lists](https://matplotlib.org/devdocs/devel/communication_guide.html#mailing-lists "(in Matplotlib v3.12.0.dev80+g7499f38d2)")
+* Post highlights and link to [What’s new](https://matplotlib.org/devdocs/release/release_notes.html#release-notes "(in Matplotlib v3.12.0.dev80+g7499f38d2)") on the
+  active [social media accounts](https://matplotlib.org/devdocs/devel/communication_guide.html#social-media "(in Matplotlib v3.12.0.dev80+g7499f38d2)")
 * Add a release announcement to the “News” section of
   [matplotlib.org](https://github.com/matplotlib/mpl-brochure-site) by editing
   `docs/body.html`. Link to the auto-generated announcement discourse post,

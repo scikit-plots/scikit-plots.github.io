@@ -1,6 +1,6 @@
 # register\_cached\_artifact\_bytes[#](#register-cached-artifact-bytes "Link to this heading")
 
-scikitplot.cython.register\_cached\_artifact\_bytes(**data**, **\***, **module\_name**, **artifact\_filename**, **cache\_dir=None**, **temp\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/cython/_public.py#L1060)[#](#scikitplot.cython.register_cached_artifact_bytes "Link to this definition")
+scikitplot.cython.register\_cached\_artifact\_bytes(**data**, **\***, **module\_name**, **artifact\_filename**, **cache\_dir=None**, **temp\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/cython/_public.py#L1060)[#](#scikitplot.cython.register_cached_artifact_bytes "Link to this definition")
 :   Register a compiled extension artifact from bytes and import it.
 
     Parameters:

@@ -56,7 +56,7 @@ pipeline
 
 ```
 ```
-<scikitplot.corpus._pipeline.CorpusPipeline object at 0x76f4724de090>
+<scikitplot.corpus._pipeline.CorpusPipeline object at 0x72ade9c32110>
 
 ```
 ```
@@ -75,7 +75,7 @@ result
 ```
 Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
 
-PipelineResult(input_path='data/tale_of_two_cities_01_dickens_64kb.mp3', output_path=output/tale_of_two_cities_01_dickens_64kb.csv, export_format=csv, n_documents=5, n_read=5, n_omitted=0, n_embedded=0, elapsed_seconds=17.1s)
+PipelineResult(input_path='data/tale_of_two_cities_01_dickens_64kb.mp3', output_path=output/tale_of_two_cities_01_dickens_64kb.csv, export_format=csv, n_documents=5, n_read=5, n_omitted=0, n_embedded=0, elapsed_seconds=13.2s)
 
 ```
 ```
@@ -83,7 +83,7 @@ print(result.documents)
 
 ```
 ```
-[CorpusDocument(doc_id='0ebc331b56884da7', input_path='tale_of_two_cities_01_dickens_64kb.mp3', chunk_index=0, source_type='audio', section_type='transcript', words=5), CorpusDocument(doc_id='ffc792ccefb8dcbb', input_path='tale_of_two_cities_01_dickens_64kb.mp3', chunk_index=1, source_type='audio', section_type='transcript', words=8), CorpusDocument(doc_id='bae9c18760f8b047', input_path='tale_of_two_cities_01_dickens_64kb.mp3', chunk_index=2, source_type='audio', section_type='transcript', words=9), CorpusDocument(doc_id='daf77219c79474ee', input_path='tale_of_two_cities_01_dickens_64kb.mp3', chunk_index=3, source_type='audio', section_type='transcript', words=5), CorpusDocument(doc_id='a5ad6c6785b63a4e', input_path='tale_of_two_cities_01_dickens_64kb.mp3', chunk_index=4, source_type='audio', section_type='transcript', words=8)]
+(CorpusDocument(doc_id='0ebc331b56884da7', input_path='tale_of_two_cities_01_dickens_64kb.mp3', chunk_index=0, source_type='audio', section_type='transcript', words=5), CorpusDocument(doc_id='ffc792ccefb8dcbb', input_path='tale_of_two_cities_01_dickens_64kb.mp3', chunk_index=1, source_type='audio', section_type='transcript', words=8), CorpusDocument(doc_id='bae9c18760f8b047', input_path='tale_of_two_cities_01_dickens_64kb.mp3', chunk_index=2, source_type='audio', section_type='transcript', words=9), CorpusDocument(doc_id='daf77219c79474ee', input_path='tale_of_two_cities_01_dickens_64kb.mp3', chunk_index=3, source_type='audio', section_type='transcript', words=5), CorpusDocument(doc_id='a5ad6c6785b63a4e', input_path='tale_of_two_cities_01_dickens_64kb.mp3', chunk_index=4, source_type='audio', section_type='transcript', words=8))
 
 ```
 ```
@@ -116,7 +116,7 @@ print(rich1[0].keywords, rich1[0].lemmas, rich1[0].stems)
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 17.262 seconds)
+****Total running time of the script:**** (0 minutes 13.323 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.ipynb)
 

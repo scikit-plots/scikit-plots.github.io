@@ -135,13 +135,13 @@ else:
 
 ```
 ```
-Compiling /home/circleci/.cache/scikitplot/cython/44f97c778447eb7c13687bd9a96837812cd1c3a710a97d386c7a499e6d49f624/scikitplot_cython_44f97c778447eb7c.pyx because it changed.
-[1/1] Cythonizing /home/circleci/.cache/scikitplot/cython/44f97c778447eb7c13687bd9a96837812cd1c3a710a97d386c7a499e6d49f624/scikitplot_cython_44f97c778447eb7c.pyx
-HTML: /home/circleci/.cache/scikitplot/cython/44f97c778447eb7c13687bd9a96837812cd1c3a710a97d386c7a499e6d49f624/scikitplot_cython_44f97c778447eb7c.html
+Compiling /home/circleci/.cache/scikitplot/cython/252c650436615e409023857f97569d4ae3ea62110a9820a1130a215f818ad9a6/scikitplot_cython_252c650436615e40.pyx because it changed.
+[1/1] Cythonizing /home/circleci/.cache/scikitplot/cython/252c650436615e409023857f97569d4ae3ea62110a9820a1130a215f818ad9a6/scikitplot_cython_252c650436615e40.pyx
+HTML: /home/circleci/.cache/scikitplot/cython/252c650436615e409023857f97569d4ae3ea62110a9820a1130a215f818ad9a6/scikitplot_cython_252c650436615e40.html
 exists: True
-fast-debug key: 952f0cee22c44ba2e0712b3289fd7b2a6e2e9b2c556f67c7897adb16271c7bb7
-release    key: de39ace50b923b2dee99c9add4132bc740851438edd8e09353c60de97c1834a0
-annotate   key: 44f97c778447eb7c13687bd9a96837812cd1c3a710a97d386c7a499e6d49f624
+fast-debug key: 139bc09930afcf1ccc10d57f8104b36dde3ccf30ba198cd56c7cc2c9bd6748d5
+release    key: 893ed2d715baf12334825fac505b431b43b7616082b6449f5403237c115082d1
+annotate   key: 252c650436615e409023857f97569d4ae3ea62110a9820a1130a215f818ad9a6
 
 Key comparisons:
   fast vs release : True
@@ -153,10 +153,10 @@ f(10) release   : 100
 f(10) annotate  : 100
 
 [fast-debug]
-  module_name : scikitplot_cython_952f0cee22c44ba2
-  key         : 952f0cee22c44ba2e0712b3289fd7b2a6e2e9b2c556f67c7897adb16271c7bb7
+  module_name : scikitplot_cython_139bc09930afcf1c
+  key         : 139bc09930afcf1ccc10d57f8104b36dde3ccf30ba198cd56c7cc2c9bd6748d5
   used_cache  : True
-  artifact    : /home/circleci/.cache/scikitplot/cython/952f0cee22c44ba2e0712b3289fd7b2a6e2e9b2c556f67c7897adb16271c7bb7/scikitplot_cython_952f0cee22c44ba2.cpython-311-x86_64-linux-gnu.so
+  artifact    : /home/circleci/.cache/scikitplot/cython/139bc09930afcf1ccc10d57f8104b36dde3ccf30ba198cd56c7cc2c9bd6748d5/scikitplot_cython_139bc09930afcf1c.cpython-311-x86_64-linux-gnu.so
   profile     : fast-debug
   annotate    : False
   language    : None
@@ -165,10 +165,10 @@ f(10) annotate  : 100
   compiler_directives (subset): {'boundscheck': True, 'cdivision': False, 'embedsignature': True, 'initializedcheck': True, 'language_level': 3, 'wraparound': True}
 
 [release]
-  module_name : scikitplot_cython_de39ace50b923b2d
-  key         : de39ace50b923b2dee99c9add4132bc740851438edd8e09353c60de97c1834a0
+  module_name : scikitplot_cython_893ed2d715baf123
+  key         : 893ed2d715baf12334825fac505b431b43b7616082b6449f5403237c115082d1
   used_cache  : False
-  artifact    : /home/circleci/.cache/scikitplot/cython/de39ace50b923b2dee99c9add4132bc740851438edd8e09353c60de97c1834a0/scikitplot_cython_de39ace50b923b2d.cpython-311-x86_64-linux-gnu.so
+  artifact    : /home/circleci/.cache/scikitplot/cython/893ed2d715baf12334825fac505b431b43b7616082b6449f5403237c115082d1/scikitplot_cython_893ed2d715baf123.cpython-311-x86_64-linux-gnu.so
   profile     : release
   annotate    : False
   language    : None
@@ -177,10 +177,10 @@ f(10) annotate  : 100
   compiler_directives (subset): {'boundscheck': False, 'cdivision': True, 'embedsignature': True, 'initializedcheck': False, 'language_level': 3, 'wraparound': False}
 
 [annotate]
-  module_name : scikitplot_cython_44f97c778447eb7c
-  key         : 44f97c778447eb7c13687bd9a96837812cd1c3a710a97d386c7a499e6d49f624
+  module_name : scikitplot_cython_252c650436615e40
+  key         : 252c650436615e409023857f97569d4ae3ea62110a9820a1130a215f818ad9a6
   used_cache  : False
-  artifact    : /home/circleci/.cache/scikitplot/cython/44f97c778447eb7c13687bd9a96837812cd1c3a710a97d386c7a499e6d49f624/scikitplot_cython_44f97c778447eb7c.cpython-311-x86_64-linux-gnu.so
+  artifact    : /home/circleci/.cache/scikitplot/cython/252c650436615e409023857f97569d4ae3ea62110a9820a1130a215f818ad9a6/scikitplot_cython_252c650436615e40.cpython-311-x86_64-linux-gnu.so
   profile     : annotate
   annotate    : True
   language    : None
@@ -189,10 +189,10 @@ f(10) annotate  : 100
   compiler_directives (subset): {'boundscheck': True, 'embedsignature': True, 'initializedcheck': True, 'language_level': 3, 'wraparound': True}
 
 Annotation HTML report:
-  /home/circleci/.cache/scikitplot/cython/44f97c778447eb7c13687bd9a96837812cd1c3a710a97d386c7a499e6d49f624/scikitplot_cython_44f97c778447eb7c.html
+  /home/circleci/.cache/scikitplot/cython/252c650436615e409023857f97569d4ae3ea62110a9820a1130a215f818ad9a6/scikitplot_cython_252c650436615e40.html
 
 Precedence demo: explicit annotate=False under release
-  key: de39ace50b923b2dee99c9add4132bc740851438edd8e09353c60de97c1834a0
+  key: 893ed2d715baf12334825fac505b431b43b7616082b6449f5403237c115082d1
   annotate in meta: False
 
 ```
@@ -218,14 +218,14 @@ if report.get('cython', {}).get('ok'):
 ```
 ```
 BuildResult (metadata):
-  module_name : scikitplot_cython_44f97c778447eb7c
-  cache key   : 44f97c778447eb7c13687bd9a96837812cd1c3a710a97d386c7a499e6d49f624
-  build dir   : /home/circleci/.cache/scikitplot/cython/44f97c778447eb7c13687bd9a96837812cd1c3a710a97d386c7a499e6d49f624
-  artifact    : /home/circleci/.cache/scikitplot/cython/44f97c778447eb7c13687bd9a96837812cd1c3a710a97d386c7a499e6d49f624/scikitplot_cython_44f97c778447eb7c.cpython-311-x86_64-linux-gnu.so
+  module_name : scikitplot_cython_252c650436615e40
+  cache key   : 252c650436615e409023857f97569d4ae3ea62110a9820a1130a215f818ad9a6
+  build dir   : /home/circleci/.cache/scikitplot/cython/252c650436615e409023857f97569d4ae3ea62110a9820a1130a215f818ad9a6
+  artifact    : /home/circleci/.cache/scikitplot/cython/252c650436615e409023857f97569d4ae3ea62110a9820a1130a215f818ad9a6/scikitplot_cython_252c650436615e40.cpython-311-x86_64-linux-gnu.so
   used_cache  : False
-  created_utc : 2026-05-11T19:13:41Z
+  created_utc : 2026-05-17T00:53:15Z
   Annotation  : True
-  HTML report : /home/circleci/.cache/scikitplot/cython/44f97c778447eb7c13687bd9a96837812cd1c3a710a97d386c7a499e6d49f624/scikitplot_cython_44f97c778447eb7c.html
+  HTML report : /home/circleci/.cache/scikitplot/cython/252c650436615e409023857f97569d4ae3ea62110a9820a1130a215f818ad9a6/scikitplot_cython_252c650436615e40.html
 
 ```
 
@@ -396,7 +396,7 @@ static PyObject *__pyx_pf_34scikitplot_cython_ddc7a5b27b5b1257_f(CYTHON_UNUSED P
 
 Tags: [domain: cython](../../_tags/domain-cython.html) [plot-type: cython](../../_tags/plot-type-cython.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 1.355 seconds)
+****Total running time of the script:**** (0 minutes 1.235 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_02_build_profiles.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/cython/plot_02_build_profiles.ipynb)
 

@@ -685,8 +685,6 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DummyReader.html">DummyReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FilterBase.html">FilterBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineGuard.html">PipelineGuard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._MultiSourceReader.html">_MultiSourceReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._is_url.html">_is_url</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ChunkerBridge.html">ChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FixedWindowChunkerBridge.html">FixedWindowChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ParagraphChunkerBridge.html">ParagraphChunkerBridge</a></li>
@@ -1316,10 +1314,13 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>CustomTokenizerRegistry<a class="headerlink" href="#customtokenizerregistry" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.CustomTokenizerRegistry">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">CustomTokenizerRegistry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L540"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.CustomTokenizerRegistry" title="Link to this definition">#</a></dt>
-<dd><p>Thread-safe(ish) module-level registry for named custom components.</p>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">CustomTokenizerRegistry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L541"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.CustomTokenizerRegistry" title="Link to this definition">#</a></dt>
+<dd><p>Thread-safe module-level registry for named custom components.</p>
 <p>Each registry holds a <code class="docutils literal notranslate"><span class="pre">dict[str,</span> <span class="pre">Protocol]</span></code> accessible via module-level
 helpers (<a class="reference internal" href="scikitplot.corpus.register_tokenizer.html#scikitplot.corpus.register_tokenizer" title="scikitplot.corpus.register_tokenizer"><code class="xref py py-func docutils literal notranslate"><span class="pre">register_tokenizer</span></code></a>, <a class="reference internal" href="scikitplot.corpus.get_tokenizer.html#scikitplot.corpus.get_tokenizer" title="scikitplot.corpus.get_tokenizer"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_tokenizer</span></code></a>, etc.).</p>
+<p>All <code class="docutils literal notranslate"><span class="pre">register</span></code>, <code class="docutils literal notranslate"><span class="pre">get</span></code>, <code class="docutils literal notranslate"><span class="pre">names</span></code>, and <code class="docutils literal notranslate"><span class="pre">__contains__</span></code> operations
+acquire an internal <a class="reference external" href="https://docs.python.org/3/library/threading.html#threading.RLock" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">threading.RLock</span></code></a> to guarantee safety when
+registering from worker threads (e.g. <code class="docutils literal notranslate"><span class="pre">ThreadPoolExecutor</span></code> batch jobs).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -1332,13 +1333,15 @@ helpers (<a class="reference internal" href="scikitplot.corpus.register_tokenize
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p><strong>Developer note:</strong> The registry is intentionally not thread-locked.
-Registration happens at import/startup time; concurrent reads during
-inference are safe because dict lookups in CPython are atomic under the
-GIL.  If you register from a worker thread, synchronize externally.</p>
+<p><strong>User note:</strong> Register all custom components at application startup, before
+spawning worker threads, to avoid any lock contention in hot paths.</p>
+<p><strong>Developer note:</strong> <a class="reference external" href="https://docs.python.org/3/library/threading.html#threading.RLock" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">threading.RLock</span></code></a> (reentrant) is used instead of
+<a class="reference external" href="https://docs.python.org/3/library/threading.html#threading.Lock" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">threading.Lock</span></code></a> so that the same thread can call <code class="docutils literal notranslate"><span class="pre">register</span></code> from
+within a <code class="docutils literal notranslate"><span class="pre">get</span></code> callback without deadlocking.  This is safe on CPython,
+PyPy, and GraalPy.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.CustomTokenizerRegistry.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L603"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.CustomTokenizerRegistry.get" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L613"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.CustomTokenizerRegistry.get" title="Link to this definition">#</a></dt>
 <dd><p>Retrieve the component registered under <em>name</em>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1370,7 +1373,7 @@ GIL.  If you register from a worker thread, synchronize externally.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.CustomTokenizerRegistry.names">
-<span class="sig-name descname"><span class="pre">names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L629"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.CustomTokenizerRegistry.names" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L640"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.CustomTokenizerRegistry.names" title="Link to this definition">#</a></dt>
 <dd><p>Return all registered names.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1387,7 +1390,7 @@ GIL.  If you register from a worker thread, synchronize externally.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.CustomTokenizerRegistry.register">
-<span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L563"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.CustomTokenizerRegistry.register" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L572"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.CustomTokenizerRegistry.register" title="Link to this definition">#</a></dt>
 <dd><p>Register <em>instance</em> under <em>name</em>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1526,7 +1529,7 @@ GIL.  If you register from a worker thread, synchronize externally.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260511.f02632e 2026-05-11T19:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260517.dff5f00 2026-05-17T00:49Z.
       <br/>
     
   </p>

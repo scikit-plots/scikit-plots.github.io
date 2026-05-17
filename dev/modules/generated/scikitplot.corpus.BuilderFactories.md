@@ -1,6 +1,6 @@
 # BuilderFactories[#](#builderfactories "Link to this heading")
 
-class scikitplot.corpus.BuilderFactories(**reader\_factory=None**, **chunker\_factory=None**, **filter\_factory=None**, **normalizer\_factory=None**, **enricher\_factory=None**, **embedding\_engine\_factory=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_custom_hooks.py#L1332)[#](#scikitplot.corpus.BuilderFactories "Link to this definition")
+class scikitplot.corpus.BuilderFactories(**reader\_factory=None**, **chunker\_factory=None**, **filter\_factory=None**, **normalizer\_factory=None**, **enricher\_factory=None**, **embedding\_engine\_factory=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_custom_hooks.py#L1332)[#](#scikitplot.corpus.BuilderFactories "Link to this definition")
 :   Component factory callables for [`FactoryCorpusBuilder`](scikitplot.corpus.FactoryCorpusBuilder.html#scikitplot.corpus.FactoryCorpusBuilder "scikitplot.corpus.FactoryCorpusBuilder").
 
     Each factory replaces the corresponding lazy-creation method in

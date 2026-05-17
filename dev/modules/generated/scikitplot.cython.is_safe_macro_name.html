@@ -685,8 +685,6 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DummyReader.html">DummyReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FilterBase.html">FilterBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineGuard.html">PipelineGuard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._MultiSourceReader.html">_MultiSourceReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._is_url.html">_is_url</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ChunkerBridge.html">ChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FixedWindowChunkerBridge.html">FixedWindowChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ParagraphChunkerBridge.html">ParagraphChunkerBridge</a></li>
@@ -1316,7 +1314,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>is_safe_macro_name<a class="headerlink" href="#is-safe-macro-name" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cython.is_safe_macro_name">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">is_safe_macro_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_reserved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/cython/_security.py#L365"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.is_safe_macro_name" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">is_safe_macro_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_reserved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/cython/_security.py#L365"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.is_safe_macro_name" title="Link to this definition">#</a></dt>
 <dd><p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> when a C preprocessor macro name is safe to define.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1348,8 +1346,8 @@ preprocessor guards are rejected.</p>
 <p>Valid macro names match the regex <code class="docutils literal notranslate"><span class="pre">[A-Za-z_][A-Za-z0-9_]*</span></code>.  The
 reserved-name check is independent of syntax validity.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="8500ce3a-a7f0-448d-b27b-d08c4cf29f55">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('8500ce3a-a7f0-448d-b27b-d08c4cf29f55','794628e7-d241-4628-9904-e56d59955c54','b7821f4c-50a2-401b-af38-0b01fabdfb05','../../lite/tree/../notebooks/index.html?path=101cc34c_057b_4aa0_b53b_0e54a746d4a1.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="2de8a93e-d59f-4e81-97f6-9e92078fadbc">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('2de8a93e-d59f-4e81-97f6-9e92078fadbc','ce914aba-8dec-4d5c-b5be-760809e6b8d0','85f51dc6-3f90-45b6-a646-3af5089769fb','../../lite/tree/../notebooks/index.html?path=d2cb7442_ad95_4d29_b4f7_2a8cd84acfe2.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">is_safe_macro_name</span><span class="p">(</span><span class="s2">&quot;MY_FLAG&quot;</span><span class="p">)</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">is_safe_macro_name</span><span class="p">(</span><span class="s2">&quot;Py_LIMITED_API&quot;</span><span class="p">)</span>
@@ -1362,7 +1360,7 @@ reserved-name check is independent of syntax validity.</p>
 </div>
 </div>
 </div>
-<div id="b7821f4c-50a2-401b-af38-0b01fabdfb05" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('8500ce3a-a7f0-448d-b27b-d08c4cf29f55','b7821f4c-50a2-401b-af38-0b01fabdfb05')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('8500ce3a-a7f0-448d-b27b-d08c4cf29f55','b7821f4c-50a2-401b-af38-0b01fabdfb05')">Open In Tab</button></div><div id="794628e7-d241-4628-9904-e56d59955c54" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="85f51dc6-3f90-45b6-a646-3af5089769fb" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('2de8a93e-d59f-4e81-97f6-9e92078fadbc','85f51dc6-3f90-45b6-a646-3af5089769fb')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('2de8a93e-d59f-4e81-97f6-9e92078fadbc','85f51dc6-3f90-45b6-a646-3af5089769fb')">Open In Tab</button></div><div id="ce914aba-8dec-4d5c-b5be-760809e6b8d0" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1465,7 +1463,7 @@ reserved-name check is independent of syntax validity.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260511.f02632e 2026-05-11T19:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260517.dff5f00 2026-05-17T00:49Z.
       <br/>
     
   </p>

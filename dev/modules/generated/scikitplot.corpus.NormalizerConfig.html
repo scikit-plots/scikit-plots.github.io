@@ -685,8 +685,6 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DummyReader.html">DummyReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FilterBase.html">FilterBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineGuard.html">PipelineGuard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._MultiSourceReader.html">_MultiSourceReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._is_url.html">_is_url</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ChunkerBridge.html">ChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FixedWindowChunkerBridge.html">FixedWindowChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ParagraphChunkerBridge.html">ParagraphChunkerBridge</a></li>
@@ -1316,137 +1314,32 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>NormalizerConfig<a class="headerlink" href="#normalizerconfig" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.NormalizerConfig">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">NormalizerConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unicode_form</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NFKC'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expand_ligatures</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fix_hyphenation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collapse_whitespace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strip_control_chars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowercase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_pipeline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_normalizers/_text_normalizer.py#L54"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.NormalizerConfig" title="Link to this definition">#</a></dt>
-<dd><p>Configuration for <a class="reference internal" href="scikitplot.corpus.TextNormalizer.html#scikitplot.corpus.TextNormalizer" title="scikitplot.corpus.TextNormalizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">TextNormalizer</span></code></a>.</p>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">NormalizerConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">normalizer_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">NormalizerType.CUSTOM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_types.py#L683"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.NormalizerConfig" title="Link to this definition">#</a></dt>
+<dd><p>Abstract base configuration for text normaliser implementations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>unicode_form</strong><span class="classifier">str</span></dt><dd><p>Unicode normalisation form: <code class="docutils literal notranslate"><span class="pre">&quot;NFKC&quot;</span></code> (default, canonical
-decomposition then compatibility composition) or <code class="docutils literal notranslate"><span class="pre">&quot;NFC&quot;</span></code>,
-<code class="docutils literal notranslate"><span class="pre">&quot;NFD&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;NFKD&quot;</span></code>.  Set to <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> to disable.</p>
+<dt><strong>normalizer_type</strong><span class="classifier">NormalizerType</span></dt><dd><p>The type of normalisation this config applies to.</p>
 </dd>
-<dt><strong>expand_ligatures</strong><span class="classifier">bool</span></dt><dd><p>Replace common ligatures (ﬁ → fi, ﬂ → fl, ﬀ → ff, etc.).</p>
-</dd>
-<dt><strong>fix_hyphenation</strong><span class="classifier">bool</span></dt><dd><p>Re-join words split across line breaks by a trailing hyphen
-(e.g., <code class="docutils literal notranslate"><span class="pre">&quot;compu-\\nter&quot;</span></code> → <code class="docutils literal notranslate"><span class="pre">&quot;computer&quot;</span></code>).</p>
-</dd>
-<dt><strong>collapse_whitespace</strong><span class="classifier">bool</span></dt><dd><p>Replace runs of whitespace (including <code class="docutils literal notranslate"><span class="pre">\\t</span></code>, <code class="docutils literal notranslate"><span class="pre">\\r</span></code>,
-<code class="docutils literal notranslate"><span class="pre">\\n</span></code>) with a single space, then strip leading/trailing.</p>
-</dd>
-<dt><strong>strip_control_chars</strong><span class="classifier">bool</span></dt><dd><p>Remove Unicode category Cc/Cf chars except <code class="docutils literal notranslate"><span class="pre">\\n</span></code> and
-<code class="docutils literal notranslate"><span class="pre">\\t</span></code>.  Removes zero-width joiners, BOM, soft hyphens, etc.</p>
-</dd>
-<dt><strong>lowercase</strong><span class="classifier">bool</span></dt><dd><p>Convert text to lowercase.  <strong>Default False</strong> — casing often
-matters for named-entity recognition in RAG contexts.</p>
-</dd>
-<dt><strong>min_length</strong><span class="classifier">int</span></dt><dd><p>If the normalised text is shorter than this (in chars),
-set <code class="docutils literal notranslate"><span class="pre">normalized_text</span> <span class="pre">=</span> <span class="pre">None</span></code> so the embedding engine
-falls back to raw <code class="docutils literal notranslate"><span class="pre">text</span></code>.</p>
-</dd>
-<dt><strong>custom_pipeline</strong><span class="classifier">tuple of Callable[[str], str]</span></dt><dd><p>Additional user-supplied <code class="docutils literal notranslate"><span class="pre">str</span> <span class="pre">→</span> <span class="pre">str</span></code> transforms applied
-<strong>after</strong> all built-in steps.  Order is preserved.</p>
-</dd>
-<dt><strong>steps</strong><span class="classifier">list of str or None, optional</span></dt><dd><p>Ordered list of step names to apply.  <code class="docutils literal notranslate"><span class="pre">None</span></code> (default)
-derives the list automatically from the boolean flags above.
-Pass an explicit list to run only a named subset, e.g.
-<code class="docutils literal notranslate"><span class="pre">steps=[&quot;unicode&quot;,</span> <span class="pre">&quot;whitespace&quot;]</span></code>.  Valid names:
-<code class="docutils literal notranslate"><span class="pre">&quot;unicode&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;ligatures&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;control_chars&quot;</span></code>,
-<code class="docutils literal notranslate"><span class="pre">&quot;hyphenation&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;whitespace&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;lowercase&quot;</span></code>,
-<code class="docutils literal notranslate"><span class="pre">&quot;custom&quot;</span></code>.  Used by <a class="reference internal" href="scikitplot.corpus.TextNormalizer.html#scikitplot.corpus.TextNormalizer.normalize" title="scikitplot.corpus.TextNormalizer.normalize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TextNormalizer.normalize</span></code></a>.</p>
+<dt><strong>enabled</strong><span class="classifier">bool</span></dt><dd><p>When <code class="docutils literal notranslate"><span class="pre">False</span></code>, the normaliser is skipped in the pipeline.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Parameters<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>unicode_form</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
-<li><p><strong>expand_ligatures</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
-<li><p><strong>fix_hyphenation</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
-<li><p><strong>collapse_whitespace</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
-<li><p><strong>strip_control_chars</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
-<li><p><strong>lowercase</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
-<li><p><strong>min_length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
-<li><p><strong>custom_pipeline</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.14)"><em>Callable</em></a><em>[</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em><em>, </em><em>...</em><em>]</em>)</p></li>
-<li><p><strong>steps</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>normalizer_type</strong> (<em>NormalizerType</em>)</p></li>
+<li><p><strong>enabled</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
 </ul>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
-<p><strong>User note:</strong> The default configuration is designed for
-English-language PDF and OCR sources.  For CJK text, set
-<code class="docutils literal notranslate"><span class="pre">fix_hyphenation=False</span></code> (CJK does not hyphenate) and
-<code class="docutils literal notranslate"><span class="pre">unicode_form=&quot;NFKC&quot;</span></code> (normalises full-width characters).</p>
-<p><strong>Developer note:</strong> <code class="docutils literal notranslate"><span class="pre">steps</span></code> is excluded from <code class="docutils literal notranslate"><span class="pre">__hash__</span></code> and
-<code class="docutils literal notranslate"><span class="pre">__eq__</span></code> so that two configs with identical boolean flags but
-different <code class="docutils literal notranslate"><span class="pre">steps</span></code> lists are treated as equal for caching.  If you
-need strict equality on <code class="docutils literal notranslate"><span class="pre">steps</span></code>, compare the lists explicitly.</p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="scikitplot.corpus.NormalizerConfig.collapse_whitespace">
-<span class="sig-name descname"><span class="pre">collapse_whitespace</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#scikitplot.corpus.NormalizerConfig.collapse_whitespace" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="scikitplot.corpus.NormalizerConfig.enabled">
+<span class="sig-name descname"><span class="pre">enabled</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#scikitplot.corpus.NormalizerConfig.enabled" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="scikitplot.corpus.NormalizerConfig.custom_pipeline">
-<span class="sig-name descname"><span class="pre">custom_pipeline</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.14)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_normalizers/_text_normalizer.py#L54"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.NormalizerConfig.custom_pipeline" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="scikitplot.corpus.NormalizerConfig.expand_ligatures">
-<span class="sig-name descname"><span class="pre">expand_ligatures</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#scikitplot.corpus.NormalizerConfig.expand_ligatures" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="scikitplot.corpus.NormalizerConfig.fix_hyphenation">
-<span class="sig-name descname"><span class="pre">fix_hyphenation</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#scikitplot.corpus.NormalizerConfig.fix_hyphenation" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="scikitplot.corpus.NormalizerConfig.lowercase">
-<span class="sig-name descname"><span class="pre">lowercase</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#scikitplot.corpus.NormalizerConfig.lowercase" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="scikitplot.corpus.NormalizerConfig.min_length">
-<span class="sig-name descname"><span class="pre">min_length</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#scikitplot.corpus.NormalizerConfig.min_length" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="scikitplot.corpus.NormalizerConfig.steps">
-<span class="sig-name descname"><span class="pre">steps</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#scikitplot.corpus.NormalizerConfig.steps" title="Link to this definition">#</a></dt>
-<dd><p>Ordered list of normalisation step names to apply.</p>
-<p>When <code class="docutils literal notranslate"><span class="pre">None</span></code> (default), the list is derived automatically from the
-boolean flags above in pipeline order:
-<code class="docutils literal notranslate"><span class="pre">&quot;unicode&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;ligatures&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;control_chars&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;hyphenation&quot;</span></code>,
-<code class="docutils literal notranslate"><span class="pre">&quot;whitespace&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;lowercase&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;custom&quot;</span></code>.
-Pass an explicit list to run only a named subset, e.g.
-<code class="docutils literal notranslate"><span class="pre">steps=[&quot;unicode&quot;,</span> <span class="pre">&quot;whitespace&quot;]</span></code>.</p>
-<p class="rubric">Notes</p>
-<p>Valid step names:</p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">&quot;unicode&quot;</span></code> :</dt><dd><p>Apply <code class="docutils literal notranslate"><span class="pre">unicode_form</span></code> normalisation.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">&quot;ligatures&quot;</span></code> :</dt><dd><p>Expand typographic ligatures (requires <code class="docutils literal notranslate"><span class="pre">expand_ligatures=True</span></code>).</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">&quot;control_chars&quot;</span></code> :</dt><dd><p>Strip Unicode control characters (requires <code class="docutils literal notranslate"><span class="pre">strip_control_chars=True</span></code>).</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">&quot;hyphenation&quot;</span></code> :</dt><dd><p>Re-join hyphenated line-breaks (requires <code class="docutils literal notranslate"><span class="pre">fix_hyphenation=True</span></code>).</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">&quot;whitespace&quot;</span></code> :</dt><dd><p>Collapse runs of whitespace (requires <code class="docutils literal notranslate"><span class="pre">collapse_whitespace=True</span></code>).</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">&quot;lowercase&quot;</span></code> :</dt><dd><p>Convert to lowercase (requires <code class="docutils literal notranslate"><span class="pre">lowercase=True</span></code>).</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">&quot;custom&quot;</span></code> :</dt><dd><p>Apply <code class="docutils literal notranslate"><span class="pre">custom_pipeline</span></code> callables.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="scikitplot.corpus.NormalizerConfig.strip_control_chars">
-<span class="sig-name descname"><span class="pre">strip_control_chars</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#scikitplot.corpus.NormalizerConfig.strip_control_chars" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="scikitplot.corpus.NormalizerConfig.unicode_form">
-<span class="sig-name descname"><span class="pre">unicode_form</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'NFKC'</span></span><a class="headerlink" href="#scikitplot.corpus.NormalizerConfig.unicode_form" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="scikitplot.corpus.NormalizerConfig.normalizer_type">
+<span class="sig-name descname"><span class="pre">normalizer_type</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">NormalizerType</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'custom'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_types.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.NormalizerConfig.normalizer_type" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1506,15 +1399,8 @@ Pass an explicit list to run only a named subset, e.g.
     
 <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.NormalizerConfig"><code class="docutils literal notranslate"><span class="pre">NormalizerConfig</span></code></a><ul class="nav section-nav flex-column visible">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.NormalizerConfig.collapse_whitespace"><code class="docutils literal notranslate"><span class="pre">collapse_whitespace</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.NormalizerConfig.custom_pipeline"><code class="docutils literal notranslate"><span class="pre">custom_pipeline</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.NormalizerConfig.expand_ligatures"><code class="docutils literal notranslate"><span class="pre">expand_ligatures</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.NormalizerConfig.fix_hyphenation"><code class="docutils literal notranslate"><span class="pre">fix_hyphenation</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.NormalizerConfig.lowercase"><code class="docutils literal notranslate"><span class="pre">lowercase</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.NormalizerConfig.min_length"><code class="docutils literal notranslate"><span class="pre">min_length</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.NormalizerConfig.steps"><code class="docutils literal notranslate"><span class="pre">steps</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.NormalizerConfig.strip_control_chars"><code class="docutils literal notranslate"><span class="pre">strip_control_chars</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.NormalizerConfig.unicode_form"><code class="docutils literal notranslate"><span class="pre">unicode_form</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.NormalizerConfig.enabled"><code class="docutils literal notranslate"><span class="pre">enabled</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.NormalizerConfig.normalizer_type"><code class="docutils literal notranslate"><span class="pre">normalizer_type</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -1563,7 +1449,7 @@ Pass an explicit list to run only a named subset, e.g.
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260511.f02632e 2026-05-11T19:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260517.dff5f00 2026-05-17T00:49Z.
       <br/>
     
   </p>

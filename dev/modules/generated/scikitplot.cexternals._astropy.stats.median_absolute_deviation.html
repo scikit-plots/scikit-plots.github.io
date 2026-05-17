@@ -685,8 +685,6 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DummyReader.html">DummyReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FilterBase.html">FilterBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineGuard.html">PipelineGuard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._MultiSourceReader.html">_MultiSourceReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._is_url.html">_is_url</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ChunkerBridge.html">ChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FixedWindowChunkerBridge.html">FixedWindowChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ParagraphChunkerBridge.html">ParagraphChunkerBridge</a></li>
@@ -1316,7 +1314,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>median_absolute_deviation<a class="headerlink" href="#median-absolute-deviation" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cexternals._astropy.stats.median_absolute_deviation">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cexternals._astropy.stats.</span></span><span class="sig-name descname"><span class="pre">median_absolute_deviation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/cexternals/_astropy/stats/funcs.py#L788"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexternals._astropy.stats.median_absolute_deviation" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cexternals._astropy.stats.</span></span><span class="sig-name descname"><span class="pre">median_absolute_deviation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/cexternals/_astropy/stats/funcs.py#L788"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexternals._astropy.stats.median_absolute_deviation" title="Link to this definition">#</a></dt>
 <dd><p>Calculate the median absolute deviation (MAD).</p>
 <p>The MAD is defined as <code class="docutils literal notranslate"><span class="pre">median(abs(a</span> <span class="pre">-</span> <span class="pre">median(a)))</span></code>.</p>
 <dl class="field-list">
@@ -1364,8 +1362,8 @@ is <code class="docutils literal notranslate"><span class="pre">None</span></cod
 </dl>
 </div>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="f7e7cb63-f5f3-432e-8a1b-1081d11f3f91">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('f7e7cb63-f5f3-432e-8a1b-1081d11f3f91','dfd85c03-2328-4afa-9e4c-59c7801645df','3589448e-83b8-4e4d-a16a-211781243277','../../lite/tree/../notebooks/index.html?path=8e480c56_3163_4978_b80d_6db9928f984a.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="770e2a85-3b15-42b8-a831-36de7bfc26fa">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('770e2a85-3b15-42b8-a831-36de7bfc26fa','0e01af47-2453-4b37-93d7-4282ed2f928e','153e3ce2-16a9-4802-89f2-430e6b035086','../../lite/tree/../notebooks/index.html?path=012fbce6_9527_4a84_9491_57ff593c9df0.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Generate random variates from a Gaussian distribution and return the
 median absolute deviation for that distribution:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -1379,7 +1377,7 @@ median absolute deviation for that distribution:</p>
 </div>
 </div>
 </div>
-<div id="3589448e-83b8-4e4d-a16a-211781243277" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('f7e7cb63-f5f3-432e-8a1b-1081d11f3f91','3589448e-83b8-4e4d-a16a-211781243277')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('f7e7cb63-f5f3-432e-8a1b-1081d11f3f91','3589448e-83b8-4e4d-a16a-211781243277')">Open In Tab</button></div><div id="dfd85c03-2328-4afa-9e4c-59c7801645df" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="153e3ce2-16a9-4802-89f2-430e6b035086" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('770e2a85-3b15-42b8-a831-36de7bfc26fa','153e3ce2-16a9-4802-89f2-430e6b035086')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('770e2a85-3b15-42b8-a831-36de7bfc26fa','153e3ce2-16a9-4802-89f2-430e6b035086')">Open In Tab</button></div><div id="0e01af47-2453-4b37-93d7-4282ed2f928e" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1482,7 +1480,7 @@ median absolute deviation for that distribution:</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260511.f02632e 2026-05-11T19:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260517.dff5f00 2026-05-17T00:49Z.
       <br/>
     
   </p>

@@ -1,6 +1,6 @@
 # CustomChunker[#](#customchunker "Link to this heading")
 
-class scikitplot.corpus.CustomChunker(**chunk\_fn**, **\***, **name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_custom_hooks.py#L131)[#](#scikitplot.corpus.CustomChunker "Link to this definition")
+class scikitplot.corpus.CustomChunker(**chunk\_fn**, **\***, **name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_custom_hooks.py#L131)[#](#scikitplot.corpus.CustomChunker "Link to this definition")
 :   Wrap any callable as a [`ChunkerBase`](scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus._base.ChunkerBase").
 
     The caller provides a `chunk_fn` that accepts `(text: str,
@@ -83,7 +83,39 @@ class scikitplot.corpus.CustomChunker(**chunk\_fn**, **\***, **name=None**)[[sou
     ```
     Go BackOpen In Tab
 
-    chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_custom_hooks.py#L235)[#](#scikitplot.corpus.CustomChunker.chunk "Link to this definition")
+    assert\_modality(**doc\_modality**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_base.py#L352)[#](#scikitplot.corpus.CustomChunker.assert_modality "Link to this definition")
+    :   Raise `ValueError` if this chunker cannot handle **doc\_modality**.
+
+        Parameters:
+        :   ****doc\_modality****Modality
+            :   The modality of the document about to be chunked.
+
+        Raises:
+        :   ValueError
+            :   If **doc\_modality** is not in [`supported_modalities`](#scikitplot.corpus.CustomChunker.supported_modalities "scikitplot.corpus.CustomChunker.supported_modalities").
+
+        Parameters:
+        :   ****doc\_modality**** ([**Modality**](scikitplot.corpus.Modality.html#scikitplot.corpus.Modality "scikitplot.corpus._schema.Modality"))
+
+        Return type:
+        :   None
+
+        Notes
+
+        HIGH-03c fix: call this at the start of [`chunk`](#scikitplot.corpus.CustomChunker.chunk "scikitplot.corpus.CustomChunker.chunk") to prevent
+        silent garbage output when the wrong chunker is applied to a
+        non-TEXT document. Example:
+
+        ```
+        def chunk(self, text, metadata=None):
+            self.assert_modality(
+                Modality((metadata or {}).get("modality", Modality.TEXT))
+            )
+            ...
+
+        ```
+
+    chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_custom_hooks.py#L235)[#](#scikitplot.corpus.CustomChunker.chunk "Link to this definition")
     :   Delegate to the user-supplied `chunk_fn`.
 
         Parameters:
@@ -111,6 +143,22 @@ class scikitplot.corpus.CustomChunker(**chunk\_fn**, **\***, **name=None**)[[sou
         Return type:
         :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"), [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]]
 
-    strategy: [ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy") = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.CustomChunker.strategy "Link to this definition")
+    strategy: [ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy") = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.CustomChunker.strategy "Link to this definition")
     :   Identifies which [`ChunkingStrategy`](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")
         this implementation provides. ****Must**** be defined on every concrete subclass.
+
+    supported\_modalities: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[frozenset](https://docs.python.org/3/library/stdtypes.html#frozenset "(in Python v3.14)")[[Modality](scikitplot.corpus.Modality.html#scikitplot.corpus.Modality "scikitplot.corpus._schema.Modality")]] = frozenset({Modality.TEXT})[#](#scikitplot.corpus.CustomChunker.supported_modalities "Link to this definition")
+    :   `{Modality.TEXT}`.
+        Subclasses that support additional modalities (e.g. AUDIO transcripts)
+        must override this set.
+
+        Type:
+        :   Modalities this chunker can handle. Default
+
+    version: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")] = '1.0.0'[#](#scikitplot.corpus.CustomChunker.version "Link to this definition")
+    :   `"1.0.0"`.
+        Subclasses must override to reflect their actual version so that corpus
+        snapshots remain reproducible after upgrades.
+
+        Type:
+        :   SemVer string for this chunker implementation. Default

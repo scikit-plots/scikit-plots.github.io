@@ -9,6 +9,7 @@ pip install -r requirements/corpus.txt
 pip install scikit-plots[corpus]
 
 # (Recommended)
+# !pip install datasets transformers
 # !pip install nltk gensim langdetect faster-whisper openai-whisper pytesseract youtube-transcript-api
 # sudo apt-get install tesseract-ocr
 

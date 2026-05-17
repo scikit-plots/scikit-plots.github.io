@@ -1,6 +1,6 @@
 # sheet\_converter[#](#sheet-converter "Link to this heading")
 
-scikitplot.experimental.\_doremi.sheet\_converter(**sheet=None**, **add\_frequency=True**, **return\_mode='dict'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/experimental/_doremi/note.py#L323)[#](#scikitplot.experimental._doremi.sheet_converter "Link to this definition")
+scikitplot.experimental.\_doremi.sheet\_converter(**sheet=None**, **add\_frequency=True**, **return\_mode='dict'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/experimental/_doremi/note.py#L323)[#](#scikitplot.experimental._doremi.sheet_converter "Link to this definition")
 :   Display parsed notes or note frequencies from a musical sheet.
 
     Parameters:

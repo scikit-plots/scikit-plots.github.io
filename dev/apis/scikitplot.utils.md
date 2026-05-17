@@ -12,9 +12,9 @@ Lightweight timing context manager with [`logger`](../modules/generated/scikitpl
 | --- | --- |
 | [`_time.Timer`](../modules/generated/scikitplot.utils._time.Timer.html#scikitplot.utils._time.Timer "scikitplot.utils._time.Timer") | Lightweight ⏱ timing context manager with [`logger`](../modules/generated/scikitplot.logger.html#module-scikitplot.logger "scikitplot.logger") support. |
 
-## File/Folder Utilities[#](#module-scikitplot.utils._path "Link to this heading")
+## Path Utilities[#](#module-scikitplot.utils._path "Link to this heading")
 
-Path and filename utilities.
+Path and filename (File/Folder) utilities.
 
 This module provides small, robust helpers for generating portable and
 collision-resistant file and folder names. The default format is designed to be:

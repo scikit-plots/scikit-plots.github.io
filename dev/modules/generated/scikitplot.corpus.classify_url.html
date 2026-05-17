@@ -685,8 +685,6 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DummyReader.html">DummyReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FilterBase.html">FilterBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineGuard.html">PipelineGuard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._MultiSourceReader.html">_MultiSourceReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._is_url.html">_is_url</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ChunkerBridge.html">ChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FixedWindowChunkerBridge.html">FixedWindowChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ParagraphChunkerBridge.html">ParagraphChunkerBridge</a></li>
@@ -1316,7 +1314,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>classify_url<a class="headerlink" href="#classify-url" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.classify_url">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">classify_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_url_handler.py#L390"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.classify_url" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">classify_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_url_handler.py#L379"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.classify_url" title="Link to this definition">#</a></dt>
 <dd><p>Classify a URL into one of the known <a class="reference internal" href="scikitplot.corpus.URLKind.html#scikitplot.corpus.URLKind" title="scikitplot.corpus.URLKind"><code class="xref py py-class docutils literal notranslate"><span class="pre">URLKind</span></code></a> categories.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1362,8 +1360,8 @@ are on <code class="docutils literal notranslate"><span class="pre">github.com</
 <li><p>Web page (default fallback).</p></li>
 </ol>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="6facd272-9560-4d68-9435-e411b1c50280">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('6facd272-9560-4d68-9435-e411b1c50280','fde4c58a-b714-4976-9e91-c26bff069e2f','7b752319-ec7a-4f70-8076-dcc6705483ab','../../lite/tree/../notebooks/index.html?path=47cdc7f7_9b43_4c92_8f05_b2e155c239e1.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="ef2eadc5-caeb-4faa-a0dd-36e943b0b51e">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('ef2eadc5-caeb-4faa-a0dd-36e943b0b51e','419c6947-675b-4612-bc4d-2fefa1ffff57','51fb7b8c-a522-4c67-beff-b529bbdf5db0','../../lite/tree/../notebooks/index.html?path=da8bd830_b863_4902_8318_e202567c797c.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">classify_url</span><span class="p">(</span><span class="s2">&quot;https://youtu.be/rwPISgZcYIk&quot;</span><span class="p">)</span>
 <span class="go">&lt;URLKind.YOUTUBE: &#39;youtube&#39;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">classify_url</span><span class="p">(</span><span class="s2">&quot;https://www.youtube.com/watch?v=4nMSvDEYl1c&quot;</span><span class="p">)</span>
@@ -1388,7 +1386,7 @@ are on <code class="docutils literal notranslate"><span class="pre">github.com</
 </div>
 </div>
 </div>
-<div id="7b752319-ec7a-4f70-8076-dcc6705483ab" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('6facd272-9560-4d68-9435-e411b1c50280','7b752319-ec7a-4f70-8076-dcc6705483ab')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('6facd272-9560-4d68-9435-e411b1c50280','7b752319-ec7a-4f70-8076-dcc6705483ab')">Open In Tab</button></div><div id="fde4c58a-b714-4976-9e91-c26bff069e2f" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="51fb7b8c-a522-4c67-beff-b529bbdf5db0" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('ef2eadc5-caeb-4faa-a0dd-36e943b0b51e','51fb7b8c-a522-4c67-beff-b529bbdf5db0')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('ef2eadc5-caeb-4faa-a0dd-36e943b0b51e','51fb7b8c-a522-4c67-beff-b529bbdf5db0')">Open In Tab</button></div><div id="419c6947-675b-4612-bc4d-2fefa1ffff57" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1491,7 +1489,7 @@ are on <code class="docutils literal notranslate"><span class="pre">github.com</
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260511.f02632e 2026-05-11T19:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260517.dff5f00 2026-05-17T00:49Z.
       <br/>
     
   </p>

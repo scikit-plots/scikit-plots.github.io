@@ -1,21 +1,18 @@
 # ParagraphChunkerBridge[#](#paragraphchunkerbridge "Link to this heading")
 
-class scikitplot.corpus.ParagraphChunkerBridge(**inner**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_chunker_bridge.py#L291)[#](#scikitplot.corpus.ParagraphChunkerBridge "Link to this definition")
+class scikitplot.corpus.ParagraphChunkerBridge(**inner**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_chunkers/_chunker_bridge.py#L294)[#](#scikitplot.corpus.ParagraphChunkerBridge "Link to this definition")
 :   Bridge for `ParagraphChunker` → `ChunkerBase` contract.
 
     Parameters:
     :   ****inner**** (**Any**)
 
-    chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_chunker_bridge.py#L159)[#](#scikitplot.corpus.ParagraphChunkerBridge.chunk "Link to this definition")
-    :   Chunk **text** and return a `ChunkedTextList` of `(char_start, chunk_text)` pairs.
+    chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_chunkers/_chunker_bridge.py#L160)[#](#scikitplot.corpus.ParagraphChunkerBridge.chunk "Link to this definition")
+    :   Chunk **text** and return a `ChunkResult`.
 
-        Backward compatible — all existing callers that iterate `(start, text)`
-        pairs continue to work unchanged. Additionally, the
-        `chunk_metadata_list` attribute on the returned object carries the
-        per-chunk `chunk.metadata` dicts (including `"multilang"` when
-        `MultilangConfig` is enabled) so
-        `_base.DocumentReader.get_documents` can populate
-        [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument") multilang fields.
+        ****CRITICAL-02 (Phase 2):**** Returns `ChunkResult` directly.
+        [`DocumentReader.get_documents`](scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader.get_documents "scikitplot.corpus.DocumentReader.get_documents") now iterates
+        `chunk_result.chunks` instead of `(char_start, chunk_text)`
+        tuples.
 
         Parameters:
         :   ****text****str
@@ -23,18 +20,23 @@ class scikitplot.corpus.ParagraphChunkerBridge(**inner**)[[source]](https://gith
 
             ****metadata****dict[str, Any] or None, optional
             :   Raw-chunk metadata dict passed by `get_documents()`.
-                Forwarded as `extra_metadata` to the inner chunker
-                where supported.
+                Forwarded as `extra_metadata` to the inner chunker.
 
         Returns:
-        :   ChunkedTextList
-            :   Each element is `(char_offset, chunk_text)`.
+        :   ChunkResult
+            :   Ordered list of `Chunk` objects with
+                `text`, `start_char`, `end_char`, and `metadata`.
 
         Parameters:
         :   * ****text**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
             * ****metadata**** ([**dict**](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
 
         Return type:
-        :   **ChunkedTextList**
+        :   **ChunkResult**
 
-    strategy: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")] = 'paragraph'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ParagraphChunkerBridge.strategy "Link to this definition")
+        Notes
+
+        Use `_to_tuples` to convert to the legacy
+        `list[tuple[int, str]]` format if needed for backward compat.
+
+    strategy: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.14)")[[ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")] = 'paragraph'[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ParagraphChunkerBridge.strategy "Link to this definition")

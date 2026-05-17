@@ -1,4 +1,4 @@
-# 1. Glossary of Common Terms and API Elements[#](#glossary-of-common-terms-and-api-elements "Link to this heading")
+# Glossary of Common Terms and API Elements[#](#glossary-of-common-terms-and-api-elements "Link to this heading")
 
 This glossary hopes to definitively represent the tacit and explicit
 conventions applied in Scikit-learn and its API, while providing a reference
@@ -13,7 +13,7 @@ more specific sets of related terms are listed below:
 [Methods](#glossary-methods), [Parameters](#glossary-parameters),
 [Attributes](#glossary-attributes), [Data and sample properties](#glossary-sample-props).
 
-## 1.1. General Concepts[#](#general-concepts "Link to this heading")
+## General Concepts[#](#general-concepts "Link to this heading")
 
 1d[#](#term-1d "Link to this term")
 
@@ -873,7 +873,7 @@ unsupervised learning[#](#term-unsupervised-learning "Link to this term")
     [clusterers](#term-clusterers) and [outlier detectors](#term-outlier-detectors). Unsupervised
     estimators ignore any [y](#term-y) passed to [fit](#term-fit).
 
-## 1.2. Class APIs and Estimator Types[#](#class-apis-and-estimator-types "Link to this heading")
+## Class APIs and Estimator Types[#](#class-apis-and-estimator-types "Link to this heading")
 
 classifier[#](#term-classifier "Link to this term")
 
@@ -1111,7 +1111,7 @@ Further examples:
 * [`gaussian_process.kernels.Kernel`](https://scikit-learn.org/dev/modules/generated/sklearn.gaussian_process.kernels.Kernel.html#sklearn.gaussian_process.kernels.Kernel "(in scikit-learn v1.9)")
 * `tree.Criterion`
 
-## 1.3. Metadata Routing[#](#metadata-routing "Link to this heading")
+## Metadata Routing[#](#metadata-routing "Link to this heading")
 
 consumer[#](#term-consumer "Link to this term")
 :   An object which consumes [metadata](#term-metadata). This object is usually an
@@ -1138,7 +1138,7 @@ router[#](#term-router "Link to this term")
 Please refer to [Metadata Routing User Guide](https://scikit-learn.org/dev/metadata_routing.html#metadata-routing "(in scikit-learn v1.9)") for more
 information.
 
-## 1.4. Target Types[#](#target-types "Link to this heading")
+## Target Types[#](#target-types "Link to this heading")
 
 binary[#](#term-binary "Link to this term")
 :   A classification problem consisting of two classes. A binary target
@@ -1274,7 +1274,7 @@ multi-output[#](#term-multi-output "Link to this term")
     multioutput](#term-continuous-multioutput). We do not currently support modelling mixed
     classification and regression targets.
 
-## 1.5. Methods[#](#methods "Link to this heading")
+## Methods[#](#methods "Link to this heading")
 
 `decision_function`[#](#term-decision_function "Link to this term")
 :   In a fitted [classifier](#term-classifier) or [outlier detector](#term-outlier-detector), predicts a
@@ -1541,7 +1541,7 @@ multi-output[#](#term-multi-output "Link to this term")
     If the estimator was not already [fitted](#term-fitted), calling this method
     should raise a [`exceptions.NotFittedError`](https://scikit-learn.org/dev/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError "(in scikit-learn v1.9)").
 
-## 1.6. Parameters[#](#parameters "Link to this heading")
+## Parameters[#](#parameters "Link to this heading")
 
 These common parameter names, specifically used in estimator construction
 (see concept [parameter](#term-parameter)), sometimes also appear as parameters of
@@ -1801,7 +1801,7 @@ functions or non-estimator constructors.
     full dataset. For classification, all data in a sequence of
     `warm_start` calls to `fit` must include samples from each class.
 
-## 1.7. Attributes[#](#attributes "Link to this heading")
+## Attributes[#](#attributes "Link to this heading")
 
 See concept [attribute](#term-attribute).
 
@@ -1860,7 +1860,7 @@ See concept [attribute](#term-attribute).
     data in [clusterers](#term-clusterers), identical to the output of
     [fit\_predict](#term-fit_predict). See also [embedding\_](#term-embedding_).
 
-## 1.8. Data and sample properties[#](#data-and-sample-properties "Link to this heading")
+## Data and sample properties[#](#data-and-sample-properties "Link to this heading")
 
 See concept [sample property](#term-sample-property).
 

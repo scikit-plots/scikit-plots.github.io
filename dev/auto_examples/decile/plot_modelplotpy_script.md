@@ -152,7 +152,7 @@ sp.__version__
 
 ```
 ```
-'0.5.dev0+git.20260511.f02632e'
+'0.5.dev0+git.20260517.dff5f00'
 
 ```
 
@@ -231,12 +231,12 @@ with Timer("CatBoostClassifier"):
 [300]   validation_0-logloss:0.19339
 [400]   validation_0-logloss:0.19815
 [499]   validation_0-logloss:0.20117
-0:      learn: 0.4927453        test: 0.4923715 best: 0.4923715 (0)     total: 51.7ms   remaining: 25.8s
-100:    learn: 0.1676717        test: 0.1816126 best: 0.1815845 (99)    total: 494ms    remaining: 1.95s
-200:    learn: 0.1558113        test: 0.1821743 best: 0.1810643 (134)   total: 913ms    remaining: 1.36s
-300:    learn: 0.1470072        test: 0.1834927 best: 0.1810643 (134)   total: 1.4s     remaining: 925ms
-400:    learn: 0.1397645        test: 0.1855101 best: 0.1810643 (134)   total: 1.86s    remaining: 459ms
-499:    learn: 0.1339617        test: 0.1875986 best: 0.1810643 (134)   total: 2.31s    remaining: 0us
+0:      learn: 0.4927453        test: 0.4923715 best: 0.4923715 (0)     total: 51.6ms   remaining: 25.7s
+100:    learn: 0.1676717        test: 0.1816126 best: 0.1815845 (99)    total: 456ms    remaining: 1.8s
+200:    learn: 0.1558113        test: 0.1821743 best: 0.1810643 (134)   total: 846ms    remaining: 1.26s
+300:    learn: 0.1470072        test: 0.1834927 best: 0.1810643 (134)   total: 1.24s    remaining: 819ms
+400:    learn: 0.1397645        test: 0.1855101 best: 0.1810643 (134)   total: 1.64s    remaining: 405ms
+499:    learn: 0.1339617        test: 0.1875986 best: 0.1810643 (134)   total: 2.03s    remaining: 0us
 
 bestTest = 0.1810643099
 bestIteration = 134
@@ -856,7 +856,7 @@ or [jurriaan.nagelkerke](mailto:jurriaan.nagelkerke%40gmail.com).
 
 Happy modelplotting!
 
-****Total running time of the script:**** (0 minutes 14.732 seconds)
+****Total running time of the script:**** (0 minutes 14.321 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo6.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/decile/plot_modelplotpy_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo6.svg)](../../lite/lab/index.html?path=auto_examples/decile/plot_modelplotpy_script.ipynb)
 

@@ -685,8 +685,6 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DummyReader.html">DummyReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FilterBase.html">FilterBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineGuard.html">PipelineGuard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._MultiSourceReader.html">_MultiSourceReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._is_url.html">_is_url</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ChunkerBridge.html">ChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FixedWindowChunkerBridge.html">FixedWindowChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ParagraphChunkerBridge.html">ParagraphChunkerBridge</a></li>
@@ -1316,7 +1314,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>resolve_url<a class="headerlink" href="#resolve-url" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.resolve_url">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">resolve_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_url_handler.py#L759"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.resolve_url" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">resolve_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_url_handler.py#L761"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.resolve_url" title="Link to this definition">#</a></dt>
 <dd><p>Resolve a provider-specific URL to a direct-download URL.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1356,8 +1354,8 @@ is returned.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="ab334c73-c538-410f-8be5-fcfe8a570a47">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('ab334c73-c538-410f-8be5-fcfe8a570a47','7d8041ea-03e0-4aa9-97c4-bdf624556842','def18656-9d80-4b17-9112-5d8d0ee479e0','../../lite/tree/../notebooks/index.html?path=d1f54cf8_5183_4bd8_95d5_07042e0c6df0.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="7b3d34da-0457-4790-8f50-11c8f26d21cc">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('7b3d34da-0457-4790-8f50-11c8f26d21cc','d4c3797b-ef28-4e23-a71c-014d7cc73342','c0d00e4d-cff3-4903-8718-6f9d14394cdb','../../lite/tree/../notebooks/index.html?path=08055980_7c5b_473c_88fc_9e1759a3733e.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resolve_url</span><span class="p">(</span><span class="s2">&quot;https://drive.google.com/file/d/abc123/view&quot;</span><span class="p">)</span>
 <span class="go">&#39;https://drive.google.com/uc?export=download&amp;id=abc123&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">resolve_url</span><span class="p">(</span><span class="s2">&quot;https://github.com/user/repo/blob/main/data.csv&quot;</span><span class="p">)</span>
@@ -1366,7 +1364,7 @@ is returned.</p>
 </div>
 </div>
 </div>
-<div id="def18656-9d80-4b17-9112-5d8d0ee479e0" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('ab334c73-c538-410f-8be5-fcfe8a570a47','def18656-9d80-4b17-9112-5d8d0ee479e0')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('ab334c73-c538-410f-8be5-fcfe8a570a47','def18656-9d80-4b17-9112-5d8d0ee479e0')">Open In Tab</button></div><div id="7d8041ea-03e0-4aa9-97c4-bdf624556842" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="c0d00e4d-cff3-4903-8718-6f9d14394cdb" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('7b3d34da-0457-4790-8f50-11c8f26d21cc','c0d00e4d-cff3-4903-8718-6f9d14394cdb')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('7b3d34da-0457-4790-8f50-11c8f26d21cc','c0d00e4d-cff3-4903-8718-6f9d14394cdb')">Open In Tab</button></div><div id="d4c3797b-ef28-4e23-a71c-014d7cc73342" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1469,7 +1467,7 @@ is returned.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260511.f02632e 2026-05-11T19:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260517.dff5f00 2026-05-17T00:49Z.
       <br/>
     
   </p>

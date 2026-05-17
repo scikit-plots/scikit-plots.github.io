@@ -1,0 +1,16 @@
+# Gallery of sites using this theme[#](#gallery-of-sites-using-this-theme "Link to this heading")
+
+This is a gallery of documentation sites built with `pydata-sphinx-theme`. If you’d like
+to add your documentation to this list, add an entry (in alphabetical order) to the list
+at the end of [this page](https://github.com/pydata/pydata-sphinx-theme/blob/main/docs/examples/gallery.md)
+and open a Pull Request to add it.
+
+## Featured projects[#](#featured-projects "Link to this heading")
+
+These projects are our earliest adopters and/or present some interesting customization.
+Check their repositories for more information.
+
+## Other projects using this theme[#](#other-projects-using-this-theme "Link to this heading")
+
+Here are some other projects using `pydata-sphinx-theme` for their documentation.
+Thanks for your support!

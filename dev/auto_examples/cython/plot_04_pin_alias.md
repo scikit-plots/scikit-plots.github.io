@@ -100,32 +100,32 @@ else:
 
 ```
 ```
-Built key: 952f0cee22c44ba2e0712b3289fd7b2a6e2e9b2c556f67c7897adb16271c7bb7
+Built key: 139bc09930afcf1ccc10d57f8104b36dde3ccf30ba198cd56c7cc2c9bd6748d5
 Pin alias: demo_square
 
 Imported via alias (result API):
-  module_name: scikitplot_cython_952f0cee22c44ba2
-  key        : 952f0cee22c44ba2e0712b3289fd7b2a6e2e9b2c556f67c7897adb16271c7bb7
+  module_name: scikitplot_cython_139bc09930afcf1c
+  key        : 139bc09930afcf1ccc10d57f8104b36dde3ccf30ba198cd56c7cc2c9bd6748d5
   used_cache : True
 demo_square.f(9) = 81
 Expected: 81
 Correct: True
 
-Pins: {'demo_square': '952f0cee22c44ba2e0712b3289fd7b2a6e2e9b2c556f67c7897adb16271c7bb7', 'quickstart_g': '1b7c50b38d1a69321fc6c1fb77cacb561c9c3b4f686a843672d3867532a53486'}
-Alias resolves to this key: 952f0cee22c44ba2e0712b3289fd7b2a6e2e9b2c556f67c7897adb16271c7bb7
+Pins: {'demo_square': '139bc09930afcf1ccc10d57f8104b36dde3ccf30ba198cd56c7cc2c9bd6748d5', 'quickstart_g': 'b2428be0d962a858fba8b09e2bf102d839351d7527d68d10e4fdbb4ee4d388ed'}
+Alias resolves to this key: 139bc09930afcf1ccc10d57f8104b36dde3ccf30ba198cd56c7cc2c9bd6748d5
 
 Strict collision demo:
 As expected, pin without overwrite failed:
-  ValueError: Alias collision: alias 'demo_square' already points to a different key (952f0cee22c44ba2...). Use overwrite=True to replace.
+  ValueError: Alias collision: alias 'demo_square' already points to a different key (139bc09930afcf1c...). Use overwrite=True to replace.
 After overwrite, demo_square.f(9) = 82
 
-After unpin, pins: {'quickstart_g': '1b7c50b38d1a69321fc6c1fb77cacb561c9c3b4f686a843672d3867532a53486'}
+After unpin, pins: {'quickstart_g': 'b2428be0d962a858fba8b09e2bf102d839351d7527d68d10e4fdbb4ee4d388ed'}
 
 ```
 
 Tags: [domain: cython](../../_tags/domain-cython.html) [plot-type: cython](../../_tags/plot-type-cython.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.499 seconds)
+****Total running time of the script:**** (0 minutes 0.412 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_04_pin_alias.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/cython/plot_04_pin_alias.ipynb)
 

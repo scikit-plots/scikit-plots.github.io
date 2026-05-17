@@ -686,8 +686,6 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DummyReader.html">DummyReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FilterBase.html">FilterBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineGuard.html">PipelineGuard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._MultiSourceReader.html">_MultiSourceReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._is_url.html">_is_url</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ChunkerBridge.html">ChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FixedWindowChunkerBridge.html">FixedWindowChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ParagraphChunkerBridge.html">ParagraphChunkerBridge</a></li>
@@ -1317,7 +1315,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>binom_conf_interval<a class="headerlink" href="#binom-conf-interval" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cexternals._astropy.stats.binom_conf_interval">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cexternals._astropy.stats.</span></span><span class="sig-name descname"><span class="pre">binom_conf_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confidence_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.68269</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'wilson'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/cexternals/_astropy/stats/funcs.py#L64"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexternals._astropy.stats.binom_conf_interval" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cexternals._astropy.stats.</span></span><span class="sig-name descname"><span class="pre">binom_conf_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confidence_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.68269</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'wilson'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/cexternals/_astropy/stats/funcs.py#L64"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexternals._astropy.stats.binom_conf_interval" title="Link to this definition">#</a></dt>
 <dd><p>Binomial proportion confidence interval given k successes,
 n trials.</p>
 <dl class="field-list simple">
@@ -1449,8 +1447,8 @@ University Press, 3rd edition. ISBN 978-0198503682</p>
 </div>
 </div>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="4dad65a1-00ee-4d98-addd-cdf6b15fc12b">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('4dad65a1-00ee-4d98-addd-cdf6b15fc12b','6997ee0b-89a1-4aa0-9bba-6b4b9e8bb2fe','6e39615e-b040-48e2-abb0-e6801dcdc556','../../lite/tree/../notebooks/index.html?path=a18c2a82_6baf_490e_adf6_c91937d37f2b.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="0890c494-60cc-4b10-a351-7d68cb2b627f">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('0890c494-60cc-4b10-a351-7d68cb2b627f','9cf3f8e9-e407-4623-b6c7-dca595b6ff3f','d3fa9f6e-7bb5-4652-af86-b797fe2c1f07','../../lite/tree/../notebooks/index.html?path=aae62f82_13fd_4989_b92a_d195f3aa8dec.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Integer inputs return an array with shape (2,):</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">binom_conf_interval</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="s1">&#39;wilson&#39;</span><span class="p">)</span>
 <span class="go">array([0.57921724, 0.92078259])</span>
@@ -1489,7 +1487,7 @@ For k = 0 or k = n, the interval always has zero length.</p>
 </div>
 </div>
 </div>
-<div id="6e39615e-b040-48e2-abb0-e6801dcdc556" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('4dad65a1-00ee-4d98-addd-cdf6b15fc12b','6e39615e-b040-48e2-abb0-e6801dcdc556')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('4dad65a1-00ee-4d98-addd-cdf6b15fc12b','6e39615e-b040-48e2-abb0-e6801dcdc556')">Open In Tab</button></div><div id="6997ee0b-89a1-4aa0-9bba-6b4b9e8bb2fe" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="d3fa9f6e-7bb5-4652-af86-b797fe2c1f07" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('0890c494-60cc-4b10-a351-7d68cb2b627f','d3fa9f6e-7bb5-4652-af86-b797fe2c1f07')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('0890c494-60cc-4b10-a351-7d68cb2b627f','d3fa9f6e-7bb5-4652-af86-b797fe2c1f07')">Open In Tab</button></div><div id="9cf3f8e9-e407-4623-b6c7-dca595b6ff3f" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1592,7 +1590,7 @@ For k = 0 or k = n, the interval always has zero length.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260511.f02632e 2026-05-11T19:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260517.dff5f00 2026-05-17T00:49Z.
       <br/>
     
   </p>

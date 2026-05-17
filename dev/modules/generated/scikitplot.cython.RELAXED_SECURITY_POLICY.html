@@ -685,8 +685,6 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DummyReader.html">DummyReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FilterBase.html">FilterBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineGuard.html">PipelineGuard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._MultiSourceReader.html">_MultiSourceReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._is_url.html">_is_url</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ChunkerBridge.html">ChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FixedWindowChunkerBridge.html">FixedWindowChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ParagraphChunkerBridge.html">ParagraphChunkerBridge</a></li>
@@ -1316,7 +1314,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>RELAXED_SECURITY_POLICY<a class="headerlink" href="#relaxed-security-policy" title="Link to this heading">#</a></h1>
 <dl class="py data">
 <dt class="sig sig-object py" id="scikitplot.cython.RELAXED_SECURITY_POLICY">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">RELAXED_SECURITY_POLICY</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">SecurityPolicy(strict=False,</span> <span class="pre">allow_absolute_include_dirs=True,</span> <span class="pre">allow_shell_metacharacters=True,</span> <span class="pre">allow_reserved_macros=True,</span> <span class="pre">allow_dangerous_compiler_args=True,</span> <span class="pre">max_source_bytes=None,</span> <span class="pre">max_extra_compile_args=1024,</span> <span class="pre">max_extra_link_args=1024,</span> <span class="pre">max_include_dirs=512,</span> <span class="pre">max_libraries=512)</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/cython/_security.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.RELAXED_SECURITY_POLICY" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">RELAXED_SECURITY_POLICY</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">SecurityPolicy(strict=False,</span> <span class="pre">allow_absolute_include_dirs=True,</span> <span class="pre">allow_shell_metacharacters=True,</span> <span class="pre">allow_reserved_macros=True,</span> <span class="pre">allow_dangerous_compiler_args=True,</span> <span class="pre">max_source_bytes=None,</span> <span class="pre">max_extra_compile_args=1024,</span> <span class="pre">max_extra_link_args=1024,</span> <span class="pre">max_include_dirs=512,</span> <span class="pre">max_libraries=512)</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/cython/_security.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.RELAXED_SECURITY_POLICY" title="Link to this definition">#</a></dt>
 <dd><p>Immutable security policy applied to build inputs before compilation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1382,8 +1380,8 @@ relaxes only the specific checks you need:</p>
 <code class="docutils literal notranslate"><span class="pre">SCIKITPLOT_CYTHON_ALLOW_ABSOLUTE_DIRS=1</span></code> in the environment to
 temporarily enable absolute include dirs without code changes.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="45f126f6-b393-43fd-a616-712e4600ab22">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('45f126f6-b393-43fd-a616-712e4600ab22','0b590c44-5f75-48e5-ae57-9dc852838167','fc19e37f-be20-45f3-9a28-1bf0c46fe42b','../../lite/tree/../notebooks/index.html?path=b1bd84d8_d48b_42ea_9491_be7d2998e64d.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="35e1fc7b-15db-476e-95ec-ab996e1734ad">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('35e1fc7b-15db-476e-95ec-ab996e1734ad','53bda60f-5a75-466e-8e97-350d629adfe3','a927a3c3-a45d-4e73-93ba-b693389c6ba2','../../lite/tree/../notebooks/index.html?path=cbfeae46_2daf_48da_94d3_657402ef2eff.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Default (strict) policy:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">policy</span> <span class="o">=</span> <span class="n">SecurityPolicy</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">policy</span><span class="o">.</span><span class="n">strict</span>
@@ -1400,7 +1398,7 @@ temporarily enable absolute include dirs without code changes.</p>
 </div>
 </div>
 </div>
-<div id="fc19e37f-be20-45f3-9a28-1bf0c46fe42b" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('45f126f6-b393-43fd-a616-712e4600ab22','fc19e37f-be20-45f3-9a28-1bf0c46fe42b')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('45f126f6-b393-43fd-a616-712e4600ab22','fc19e37f-be20-45f3-9a28-1bf0c46fe42b')">Open In Tab</button></div><div id="0b590c44-5f75-48e5-ae57-9dc852838167" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="a927a3c3-a45d-4e73-93ba-b693389c6ba2" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('35e1fc7b-15db-476e-95ec-ab996e1734ad','a927a3c3-a45d-4e73-93ba-b693389c6ba2')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('35e1fc7b-15db-476e-95ec-ab996e1734ad','a927a3c3-a45d-4e73-93ba-b693389c6ba2')">Open In Tab</button></div><div id="53bda60f-5a75-466e-8e97-350d629adfe3" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1503,7 +1501,7 @@ temporarily enable absolute include dirs without code changes.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260511.f02632e 2026-05-11T19:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260517.dff5f00 2026-05-17T00:49Z.
       <br/>
     
   </p>

@@ -685,8 +685,6 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DummyReader.html">DummyReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FilterBase.html">FilterBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineGuard.html">PipelineGuard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._MultiSourceReader.html">_MultiSourceReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._is_url.html">_is_url</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ChunkerBridge.html">ChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FixedWindowChunkerBridge.html">FixedWindowChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ParagraphChunkerBridge.html">ParagraphChunkerBridge</a></li>
@@ -1316,7 +1314,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>coerce_language<a class="headerlink" href="#coerce-language" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.coerce_language">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">coerce_language</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lang</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'english'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_language_data.py#L1285"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.coerce_language" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">coerce_language</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lang</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'english'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_chunkers/_language_data.py#L1285"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.coerce_language" title="Link to this definition">#</a></dt>
 <dd><p>Normalise any language specifier into a list of canonical NLTK names.</p>
 <p>Accepts all three forms used by chunkers and the enricher:</p>
 <ul class="simple">
@@ -1362,8 +1360,8 @@ Duplicates are removed while preserving order.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="4edb6bf2-df16-4eb5-869e-90e068d368b0">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('4edb6bf2-df16-4eb5-869e-90e068d368b0','24e52f8c-1afc-4910-acab-f36951048211','6f6d12b7-dbad-439a-81dc-14d1a66975e1','../../lite/tree/../notebooks/index.html?path=14ea6035_1243_4ccc_a3e2_a796817903c2.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="6021baa2-125b-4e08-8175-a01bd6373534">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('6021baa2-125b-4e08-8175-a01bd6373534','bf534920-c571-4768-b63c-b3efe870ea4d','bb9a8bed-ab0e-4639-8f64-b2deb092aa6c','../../lite/tree/../notebooks/index.html?path=c2f94534_7989_4dd7_be42_b0f79dce829a.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">coerce_language</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 <span class="go">[&#39;english&#39;]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">coerce_language</span><span class="p">(</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
@@ -1376,7 +1374,7 @@ Duplicates are removed while preserving order.</p>
 </div>
 </div>
 </div>
-<div id="6f6d12b7-dbad-439a-81dc-14d1a66975e1" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('4edb6bf2-df16-4eb5-869e-90e068d368b0','6f6d12b7-dbad-439a-81dc-14d1a66975e1')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('4edb6bf2-df16-4eb5-869e-90e068d368b0','6f6d12b7-dbad-439a-81dc-14d1a66975e1')">Open In Tab</button></div><div id="24e52f8c-1afc-4910-acab-f36951048211" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="bb9a8bed-ab0e-4639-8f64-b2deb092aa6c" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('6021baa2-125b-4e08-8175-a01bd6373534','bb9a8bed-ab0e-4639-8f64-b2deb092aa6c')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('6021baa2-125b-4e08-8175-a01bd6373534','bb9a8bed-ab0e-4639-8f64-b2deb092aa6c')">Open In Tab</button></div><div id="bf534920-c571-4768-b63c-b3efe870ea4d" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1479,7 +1477,7 @@ Duplicates are removed while preserving order.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260511.f02632e 2026-05-11T19:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260517.dff5f00 2026-05-17T00:49Z.
       <br/>
     
   </p>

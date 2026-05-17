@@ -1,6 +1,6 @@
 # plot\_ks\_statistic[#](#plot-ks-statistic "Link to this heading")
 
-scikitplot.decile.kds.plot\_ks\_statistic(**y\_true**, **y\_score**, **\***, **pos\_label=None**, **class\_index=1**, **title='KS Statistic Plot'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **digits=2**, **data=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/decile/kds/_kds.py#L756)[#](#scikitplot.decile.kds.plot_ks_statistic "Link to this definition")
+scikitplot.decile.kds.plot\_ks\_statistic(**y\_true**, **y\_score**, **\***, **pos\_label=None**, **class\_index=1**, **title='KS Statistic Plot'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **digits=2**, **data=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/decile/kds/_kds.py#L756)[#](#scikitplot.decile.kds.plot_ks_statistic "Link to this definition")
 :   Generate the KS Statistic Plot from labels and probabilities.
 
     Kolmogorov-Smirnov (KS) statistic is used to measure how well the

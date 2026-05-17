@@ -284,14 +284,22 @@ First we download the media preproccess libraries (text, image, audio or video).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 167-196
+.. GENERATED FROM PYTHON SOURCE LINES 167-172
+
+youtube
+-------
+`https://youtu.be/rwPISgZcYIk`__, `https://www.youtube.com/watch?v=rwPISgZcYIk`__
+
+..  youtube:: rwPISgZcYIk
+
+.. GENERATED FROM PYTHON SOURCE LINES 172-201
 
 .. code-block:: Python
 
 
     # --- Source ②: YouTube Transcript ---
     # In production: DocumentReader.from_url("https://youtu.be/rwPISgZcYIk")
-    # "https://youtu.be/rwPISgZcYIk",  # https://www.youtube.com/watch?v=rwPISgZcYIk
+
     mini_banner("Source ②: YouTube Transcript (text proxy)")
     try:
         if Path("who_video_transcript.txt").exists():
@@ -344,7 +352,7 @@ First we download the media preproccess libraries (text, image, audio or video).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 197-200
+.. GENERATED FROM PYTHON SOURCE LINES 202-205
 
 .. code-block:: Python
 
@@ -358,7 +366,7 @@ First we download the media preproccess libraries (text, image, audio or video).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 201-233
+.. GENERATED FROM PYTHON SOURCE LINES 206-238
 
 .. code-block:: Python
 
@@ -412,7 +420,7 @@ First we download the media preproccess libraries (text, image, audio or video).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 234-237
+.. GENERATED FROM PYTHON SOURCE LINES 239-242
 
 .. code-block:: Python
 
@@ -426,7 +434,7 @@ First we download the media preproccess libraries (text, image, audio or video).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 238-272
+.. GENERATED FROM PYTHON SOURCE LINES 243-277
 
 .. code-block:: Python
 
@@ -484,7 +492,7 @@ First we download the media preproccess libraries (text, image, audio or video).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 273-276
+.. GENERATED FROM PYTHON SOURCE LINES 278-281
 
 .. code-block:: Python
 
@@ -498,7 +506,7 @@ First we download the media preproccess libraries (text, image, audio or video).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 277-318
+.. GENERATED FROM PYTHON SOURCE LINES 282-323
 
 .. code-block:: Python
 
@@ -563,7 +571,7 @@ First we download the media preproccess libraries (text, image, audio or video).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 319-322
+.. GENERATED FROM PYTHON SOURCE LINES 324-327
 
 .. code-block:: Python
 
@@ -577,7 +585,7 @@ First we download the media preproccess libraries (text, image, audio or video).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 323-331
+.. GENERATED FROM PYTHON SOURCE LINES 328-336
 
 .. code-block:: Python
 
@@ -624,7 +632,7 @@ First we download the media preproccess libraries (text, image, audio or video).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 332-353
+.. GENERATED FROM PYTHON SOURCE LINES 337-358
 
 .. code-block:: Python
 
@@ -670,7 +678,7 @@ First we download the media preproccess libraries (text, image, audio or video).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 354-378
+.. GENERATED FROM PYTHON SOURCE LINES 359-383
 
 .. code-block:: Python
 
@@ -719,7 +727,7 @@ First we download the media preproccess libraries (text, image, audio or video).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 379-390
+.. GENERATED FROM PYTHON SOURCE LINES 384-395
 
 .. code-block:: Python
 
@@ -752,7 +760,7 @@ First we download the media preproccess libraries (text, image, audio or video).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 391-418
+.. GENERATED FROM PYTHON SOURCE LINES 396-423
 
 .. code-block:: Python
 
@@ -845,7 +853,7 @@ First we download the media preproccess libraries (text, image, audio or video).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 419-504
+.. GENERATED FROM PYTHON SOURCE LINES 424-509
 
 .. code-block:: Python
 
@@ -1001,9 +1009,10 @@ First we download the media preproccess libraries (text, image, audio or video).
 
       --- 6f: HuggingFace Dataset ---
 
-      ✓ HuggingFace column dict (datasets lib not installed)
-        columns: ['chunk_index', 'doc_id', 'input_path', 'language', 'metadata_json', 'source_title', 'source_type', 'text']
-        rows: 97
+      ✓ HuggingFace Dataset: Dataset({
+        features: ['doc_id', 'text', 'input_path', 'source_type', 'source_title', 'chunk_index', 'language', 'metadata_json'],
+        num_rows: 97
+    })
 
       --- 6g: RAG Tuples (text, metadata, embedding) ---
 
@@ -1026,7 +1035,7 @@ First we download the media preproccess libraries (text, image, audio or video).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 505-587
+.. GENERATED FROM PYTHON SOURCE LINES 510-592
 
 .. code-block:: Python
 
@@ -1201,7 +1210,7 @@ First we download the media preproccess libraries (text, image, audio or video).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 588-618
+.. GENERATED FROM PYTHON SOURCE LINES 593-623
 
 .. code-block:: Python
 
@@ -1308,7 +1317,7 @@ First we download the media preproccess libraries (text, image, audio or video).
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 619-626
+.. GENERATED FROM PYTHON SOURCE LINES 624-631
 
 .. tags::
 
@@ -1321,7 +1330,7 @@ First we download the media preproccess libraries (text, image, audio or video).
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 11.924 seconds)
+   **Total running time of the script:** (0 minutes 11.176 seconds)
 
 
 .. _sphx_glr_download_auto_examples_corpus_plot_corpus_who_per_file_script.py:

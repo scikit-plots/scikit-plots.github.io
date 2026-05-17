@@ -685,8 +685,6 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DummyReader.html">DummyReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FilterBase.html">FilterBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineGuard.html">PipelineGuard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._MultiSourceReader.html">_MultiSourceReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._is_url.html">_is_url</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ChunkerBridge.html">ChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FixedWindowChunkerBridge.html">FixedWindowChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ParagraphChunkerBridge.html">ParagraphChunkerBridge</a></li>
@@ -1316,7 +1314,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>html_to_markdown<a class="headerlink" href="#html-to-markdown" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot._externals._sphinx_ext._sphinx_ai_assistant.html_to_markdown">
-<span class="sig-prename descclassname"><span class="pre">scikitplot._externals._sphinx_ext._sphinx_ai_assistant.</span></span><span class="sig-name descname"><span class="pre">html_to_markdown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">html_content</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strip_tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L1784"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.html_to_markdown" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot._externals._sphinx_ext._sphinx_ai_assistant.</span></span><span class="sig-name descname"><span class="pre">html_to_markdown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">html_content</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strip_tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/_externals/_sphinx_ext/_sphinx_ai_assistant/__init__.py#L1784"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot._externals._sphinx_ext._sphinx_ai_assistant.html_to_markdown" title="Link to this definition">#</a></dt>
 <dd><p>Convert an HTML string to Markdown using the Sphinx-tuned converter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1357,15 +1355,15 @@ single-element list.  Defaults to <code class="docutils literal notranslate"><sp
 available the stripping step is skipped; <code class="docutils literal notranslate"><span class="pre">markdownify</span></code>’s own
 <code class="docutils literal notranslate"><span class="pre">strip=</span></code> option still removes the listed tags from the output.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="e55b9857-2a56-4c03-aaa7-ecb7d7bbaa61">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('e55b9857-2a56-4c03-aaa7-ecb7d7bbaa61','ed45fce7-2c2e-49ef-bf4a-c3ff8ce38d51','d390f719-7626-49d3-a979-08651b5379f9','../../lite/tree/../notebooks/index.html?path=67c1bc1d_4a7e_4e53_b7a0_206e5089a16e.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="9c2b9640-1dd2-4c15-9f7a-6334a860cafe">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('9c2b9640-1dd2-4c15-9f7a-6334a860cafe','c8b65248-4293-4c8d-8566-ab49e89b3c7c','13c586ef-84ac-4b90-8786-f410a2e39baa','../../lite/tree/../notebooks/index.html?path=4581874b_8f53_42ba_a2c4_b8015690ab8e.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">html_to_markdown</span><span class="p">(</span><span class="s2">&quot;&lt;h1&gt;Hello&lt;/h1&gt;&lt;p&gt;World&lt;/p&gt;&quot;</span><span class="p">)</span>
 <span class="go">&#39;# Hello\n\nWorld\n\n&#39;</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div id="d390f719-7626-49d3-a979-08651b5379f9" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('e55b9857-2a56-4c03-aaa7-ecb7d7bbaa61','d390f719-7626-49d3-a979-08651b5379f9')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('e55b9857-2a56-4c03-aaa7-ecb7d7bbaa61','d390f719-7626-49d3-a979-08651b5379f9')">Open In Tab</button></div><div id="ed45fce7-2c2e-49ef-bf4a-c3ff8ce38d51" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="13c586ef-84ac-4b90-8786-f410a2e39baa" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('9c2b9640-1dd2-4c15-9f7a-6334a860cafe','13c586ef-84ac-4b90-8786-f410a2e39baa')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('9c2b9640-1dd2-4c15-9f7a-6334a860cafe','13c586ef-84ac-4b90-8786-f410a2e39baa')">Open In Tab</button></div><div id="c8b65248-4293-4c8d-8566-ab49e89b3c7c" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1468,7 +1466,7 @@ available the stripping step is skipped; <code class="docutils literal notransla
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260511.f02632e 2026-05-11T19:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260517.dff5f00 2026-05-17T00:49Z.
       <br/>
     
   </p>

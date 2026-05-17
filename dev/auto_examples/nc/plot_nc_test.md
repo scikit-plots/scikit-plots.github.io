@@ -34,7 +34,7 @@ print(nc.__doc__)
 
 ```
 
-****Total running time of the script:**** (0 minutes 0.003 seconds)
+****Total running time of the script:**** (0 minutes 0.005 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo12.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/nc/plot_nc_test.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo12.svg)](../../lite/lab/index.html?path=auto_examples/nc/plot_nc_test.ipynb)
 

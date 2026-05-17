@@ -580,7 +580,7 @@ constructor — for both <a class="reference internal" href="../../modules/gener
 <span class="n">pipeline</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;scikitplot.corpus._pipeline.CorpusPipeline object at 0x76f4724de090&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;scikitplot.corpus._pipeline.CorpusPipeline object at 0x72ade9c32110&gt;
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://archive.org/compress/tale_two_cities_librivox/formats=128KBPS%20MP3&amp;file=/tale_two_cities_librivox.zip</span>
@@ -597,13 +597,13 @@ constructor — for both <a class="reference internal" href="../../modules/gener
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
 
-PipelineResult(input_path='data/tale_of_two_cities_01_dickens_64kb.mp3', output_path=output/tale_of_two_cities_01_dickens_64kb.csv, export_format=csv, n_documents=5, n_read=5, n_omitted=0, n_embedded=0, elapsed_seconds=17.1s)
+PipelineResult(input_path='data/tale_of_two_cities_01_dickens_64kb.mp3', output_path=output/tale_of_two_cities_01_dickens_64kb.csv, export_format=csv, n_documents=5, n_read=5, n_omitted=0, n_embedded=0, elapsed_seconds=13.2s)
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">documents</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[CorpusDocument(doc_id='0ebc331b56884da7', input_path='tale_of_two_cities_01_dickens_64kb.mp3', chunk_index=0, source_type='audio', section_type='transcript', words=5), CorpusDocument(doc_id='ffc792ccefb8dcbb', input_path='tale_of_two_cities_01_dickens_64kb.mp3', chunk_index=1, source_type='audio', section_type='transcript', words=8), CorpusDocument(doc_id='bae9c18760f8b047', input_path='tale_of_two_cities_01_dickens_64kb.mp3', chunk_index=2, source_type='audio', section_type='transcript', words=9), CorpusDocument(doc_id='daf77219c79474ee', input_path='tale_of_two_cities_01_dickens_64kb.mp3', chunk_index=3, source_type='audio', section_type='transcript', words=5), CorpusDocument(doc_id='a5ad6c6785b63a4e', input_path='tale_of_two_cities_01_dickens_64kb.mp3', chunk_index=4, source_type='audio', section_type='transcript', words=8)]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(CorpusDocument(doc_id='0ebc331b56884da7', input_path='tale_of_two_cities_01_dickens_64kb.mp3', chunk_index=0, source_type='audio', section_type='transcript', words=5), CorpusDocument(doc_id='ffc792ccefb8dcbb', input_path='tale_of_two_cities_01_dickens_64kb.mp3', chunk_index=1, source_type='audio', section_type='transcript', words=8), CorpusDocument(doc_id='bae9c18760f8b047', input_path='tale_of_two_cities_01_dickens_64kb.mp3', chunk_index=2, source_type='audio', section_type='transcript', words=9), CorpusDocument(doc_id='daf77219c79474ee', input_path='tale_of_two_cities_01_dickens_64kb.mp3', chunk_index=3, source_type='audio', section_type='transcript', words=5), CorpusDocument(doc_id='a5ad6c6785b63a4e', input_path='tale_of_two_cities_01_dickens_64kb.mp3', chunk_index=4, source_type='audio', section_type='transcript', words=8))
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">documents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">documents</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
@@ -628,7 +628,7 @@ PipelineResult(input_path='data/tale_of_two_cities_01_dickens_64kb.mp3', output_
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary reference internal" href="../../_tags/model-type-classification.html"><span class="doc">model-type: classification</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-corpus.html"><span class="doc">model-workflow: corpus</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-text.html"><span class="doc">plot-type: text</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 17.262 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 13.323 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Examples related to the :py~scikitplot.corpus submodule."><img alt="" src="../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png"/>
@@ -719,7 +719,7 @@ PipelineResult(input_path='data/tale_of_two_cities_01_dickens_64kb.mp3', output_
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260511.f02632e 2026-05-11T19:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260517.dff5f00 2026-05-17T00:49Z.
       <br/>
 </p>
 </div>

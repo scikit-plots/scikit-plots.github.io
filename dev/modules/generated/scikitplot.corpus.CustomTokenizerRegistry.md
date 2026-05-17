@@ -1,10 +1,14 @@
 # CustomTokenizerRegistry[#](#customtokenizerregistry "Link to this heading")
 
-class scikitplot.corpus.CustomTokenizerRegistry(**kind**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L540)[#](#scikitplot.corpus.CustomTokenizerRegistry "Link to this definition")
-:   Thread-safe(ish) module-level registry for named custom components.
+class scikitplot.corpus.CustomTokenizerRegistry(**kind**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L541)[#](#scikitplot.corpus.CustomTokenizerRegistry "Link to this definition")
+:   Thread-safe module-level registry for named custom components.
 
     Each registry holds a `dict[str, Protocol]` accessible via module-level
     helpers ([`register_tokenizer`](scikitplot.corpus.register_tokenizer.html#scikitplot.corpus.register_tokenizer "scikitplot.corpus.register_tokenizer"), [`get_tokenizer`](scikitplot.corpus.get_tokenizer.html#scikitplot.corpus.get_tokenizer "scikitplot.corpus.get_tokenizer"), etc.).
+
+    All `register`, `get`, `names`, and `__contains__` operations
+    acquire an internal [`threading.RLock`](https://docs.python.org/3/library/threading.html#threading.RLock "(in Python v3.14)") to guarantee safety when
+    registering from worker threads (e.g. `ThreadPoolExecutor` batch jobs).
 
     Raises:
     :   KeyError
@@ -15,12 +19,15 @@ class scikitplot.corpus.CustomTokenizerRegistry(**kind**)[[source]](https://gith
 
     Notes
 
-    ****Developer note:**** The registry is intentionally not thread-locked.
-    Registration happens at import/startup time; concurrent reads during
-    inference are safe because dict lookups in CPython are atomic under the
-    GIL. If you register from a worker thread, synchronize externally.
+    ****User note:**** Register all custom components at application startup, before
+    spawning worker threads, to avoid any lock contention in hot paths.
 
-    get(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L603)[#](#scikitplot.corpus.CustomTokenizerRegistry.get "Link to this definition")
+    ****Developer note:**** [`threading.RLock`](https://docs.python.org/3/library/threading.html#threading.RLock "(in Python v3.14)") (reentrant) is used instead of
+    [`threading.Lock`](https://docs.python.org/3/library/threading.html#threading.Lock "(in Python v3.14)") so that the same thread can call `register` from
+    within a `get` callback without deadlocking. This is safe on CPython,
+    PyPy, and GraalPy.
+
+    get(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L613)[#](#scikitplot.corpus.CustomTokenizerRegistry.get "Link to this definition")
     :   Retrieve the component registered under **name**.
 
         Parameters:
@@ -41,7 +48,7 @@ class scikitplot.corpus.CustomTokenizerRegistry(**kind**)[[source]](https://gith
         Return type:
         :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")
 
-    names()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L629)[#](#scikitplot.corpus.CustomTokenizerRegistry.names "Link to this definition")
+    names()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L640)[#](#scikitplot.corpus.CustomTokenizerRegistry.names "Link to this definition")
     :   Return all registered names.
 
         Returns:
@@ -51,7 +58,7 @@ class scikitplot.corpus.CustomTokenizerRegistry(**kind**)[[source]](https://gith
         Return type:
         :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
 
-    register(**name**, **instance**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L563)[#](#scikitplot.corpus.CustomTokenizerRegistry.register "Link to this definition")
+    register(**name**, **instance**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L572)[#](#scikitplot.corpus.CustomTokenizerRegistry.register "Link to this definition")
     :   Register **instance** under **name**.
 
         Parameters:

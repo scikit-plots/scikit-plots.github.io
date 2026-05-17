@@ -685,8 +685,6 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DummyReader.html">DummyReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FilterBase.html">FilterBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineGuard.html">PipelineGuard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._MultiSourceReader.html">_MultiSourceReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._is_url.html">_is_url</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ChunkerBridge.html">ChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FixedWindowChunkerBridge.html">FixedWindowChunkerBridge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ParagraphChunkerBridge.html">ParagraphChunkerBridge</a></li>
@@ -1316,7 +1314,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>validate_labels<a class="headerlink" href="#validate-labels" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.api._utils.validate_labels">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.api._utils.</span></span><span class="sig-name descname"><span class="pre">validate_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">known_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">passed_labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">argument_name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f02632e/scikitplot/api/_utils/_helpers.py#L22"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.api._utils.validate_labels" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.api._utils.</span></span><span class="sig-name descname"><span class="pre">validate_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">known_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">passed_labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">argument_name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/api/_utils/_helpers.py#L22"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.api._utils.validate_labels" title="Link to this definition">#</a></dt>
 <dd><p>Validates the labels passed into arguments such as <code class="docutils literal notranslate"><span class="pre">true_labels</span></code> or <code class="docutils literal notranslate"><span class="pre">pred_labels</span></code>
 in functions like <code class="docutils literal notranslate"><span class="pre">plot_confusion_matrix</span></code>.</p>
 <p>This function checks for any duplicate labels and ensures that all passed labels
@@ -1341,8 +1339,8 @@ in <code class="docutils literal notranslate"><span class="pre">passed_labels</s
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="43e997d1-748a-4b6a-b1d9-bbe03673c055">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('43e997d1-748a-4b6a-b1d9-bbe03673c055','8743a2c8-7aaa-4af0-bc89-6879339d225d','61843914-5624-4a2b-a147-4479fe19688b','../../lite/tree/../notebooks/index.html?path=9aa482a4_2a8e_41f7_8423_feb5103dbb82.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="26e4d371-6a7b-423b-aa36-e003b12a7076">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('26e4d371-6a7b-423b-aa36-e003b12a7076','39c59364-97e5-4bbc-9a83-19afe1532e56','980e5fc8-5479-40be-bd25-4e4f6f1fa87a','../../lite/tree/../notebooks/index.html?path=2a94c4b7_285c_4921_87e3_76f93978b7cd.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">known_classes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">passed_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
@@ -1351,7 +1349,7 @@ in <code class="docutils literal notranslate"><span class="pre">passed_labels</s
 </div>
 </div>
 </div>
-<div id="61843914-5624-4a2b-a147-4479fe19688b" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('43e997d1-748a-4b6a-b1d9-bbe03673c055','61843914-5624-4a2b-a147-4479fe19688b')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('43e997d1-748a-4b6a-b1d9-bbe03673c055','61843914-5624-4a2b-a147-4479fe19688b')">Open In Tab</button></div><div id="8743a2c8-7aaa-4af0-bc89-6879339d225d" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="980e5fc8-5479-40be-bd25-4e4f6f1fa87a" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('26e4d371-6a7b-423b-aa36-e003b12a7076','980e5fc8-5479-40be-bd25-4e4f6f1fa87a')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('26e4d371-6a7b-423b-aa36-e003b12a7076','980e5fc8-5479-40be-bd25-4e4f6f1fa87a')">Open In Tab</button></div><div id="39c59364-97e5-4bbc-9a83-19afe1532e56" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1454,7 +1452,7 @@ in <code class="docutils literal notranslate"><span class="pre">passed_labels</s
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260511.f02632e 2026-05-11T19:08Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260517.dff5f00 2026-05-17T00:49Z.
       <br/>
     
   </p>
