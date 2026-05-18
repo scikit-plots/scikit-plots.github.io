@@ -1,6 +1,6 @@
 # binom\_conf\_interval[#](#binom-conf-interval "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.binom\_conf\_interval(**k**, **n**, **confidence\_level=0.68269**, **interval='wilson'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/cexternals/_astropy/stats/funcs.py#L64)[#](#scikitplot.cexternals._astropy.stats.binom_conf_interval "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.binom\_conf\_interval(**k**, **n**, **confidence\_level=0.68269**, **interval='wilson'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/cexternals/_astropy/stats/funcs.py#L64)[#](#scikitplot.cexternals._astropy.stats.binom_conf_interval "Link to this definition")
 :   Binomial proportion confidence interval given k successes,
     n trials.
 

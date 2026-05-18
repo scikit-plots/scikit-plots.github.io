@@ -1,15 +1,15 @@
 # StopwordSource[#](#stopwordsource "Link to this heading")
 
-class scikitplot.corpus.StopwordSource(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/corpus/_chunkers/_word.py#L280)[#](#scikitplot.corpus.StopwordSource "Link to this definition")
+class scikitplot.corpus.StopwordSource(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/corpus/_chunkers/_word.py#L280)[#](#scikitplot.corpus.StopwordSource "Link to this definition")
 :   Stopword list source.
 
-    BUILTIN = 'builtin'[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StopwordSource.BUILTIN "Link to this definition")
+    BUILTIN = 'builtin'[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StopwordSource.BUILTIN "Link to this definition")
 
-    NLTK = 'nltk'[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StopwordSource.NLTK "Link to this definition")
+    NLTK = 'nltk'[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StopwordSource.NLTK "Link to this definition")
 
-    NONE = 'none'[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StopwordSource.NONE "Link to this definition")
+    NONE = 'none'[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StopwordSource.NONE "Link to this definition")
 
-    SPACY = 'spacy'[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StopwordSource.SPACY "Link to this definition")
+    SPACY = 'spacy'[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StopwordSource.SPACY "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.corpus.StopwordSource.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

@@ -1,6 +1,6 @@
 # ErrorPolicy[#](#errorpolicy "Link to this heading")
 
-class scikitplot.corpus.ErrorPolicy(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/corpus/_schema.py#L188)[#](#scikitplot.corpus.ErrorPolicy "Link to this definition")
+class scikitplot.corpus.ErrorPolicy(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/corpus/_schema.py#L188)[#](#scikitplot.corpus.ErrorPolicy "Link to this definition")
 :   Per-document error handling strategy for [`PipelineGuard`](scikitplot.corpus.PipelineGuard.html#scikitplot.corpus.PipelineGuard "scikitplot.corpus.PipelineGuard").
 
     Notes
@@ -21,16 +21,16 @@ class scikitplot.corpus.ErrorPolicy(**value**)[[source]](https://github.com/scik
     ```
     Go BackOpen In Tab
 
-    LOG = 'log'[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.LOG "Link to this definition")
+    LOG = 'log'[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.LOG "Link to this definition")
     :   Log failures at WARNING level and discard.
 
-    RAISE = 'raise'[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.RAISE "Link to this definition")
+    RAISE = 'raise'[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.RAISE "Link to this definition")
     :   Propagate exceptions immediately (default, strictest).
 
-    RETRY = 'retry'[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.RETRY "Link to this definition")
+    RETRY = 'retry'[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.RETRY "Link to this definition")
     :   Retry transient failures up to `max_retries` times, then LOG.
 
-    SKIP = 'skip'[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.SKIP "Link to this definition")
+    SKIP = 'skip'[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ErrorPolicy.SKIP "Link to this definition")
     :   Discard failing documents silently.
 
     capitalize(**/**)[#](#scikitplot.corpus.ErrorPolicy.capitalize "Link to this definition")

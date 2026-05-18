@@ -1,6 +1,6 @@
 # is\_archive[#](#is-archive "Link to this heading")
 
-scikitplot.corpus.is\_archive(**path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/corpus/_archive_handler.py#L115)[#](#scikitplot.corpus.is_archive "Link to this definition")
+scikitplot.corpus.is\_archive(**path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/corpus/_archive_handler.py#L115)[#](#scikitplot.corpus.is_archive "Link to this definition")
 :   Check if a file path has a supported archive extension.
 
     Parameters:

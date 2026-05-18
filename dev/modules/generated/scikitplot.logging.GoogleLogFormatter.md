@@ -1,6 +1,6 @@
 # GoogleLogFormatter[#](#googlelogformatter "Link to this heading")
 
-class scikitplot.logging.GoogleLogFormatter(**datefmt='%Y-%m-%d %H:%M:%S'**, **default\_time\_format='%Y-%m-%d %H:%M:%S'**, **default\_msec\_format='%s,%03d'**, **backend=None**, **use\_datetime=True**, **use\_utc=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/logging.py#L671)[#](#scikitplot.logging.GoogleLogFormatter "Link to this definition")
+class scikitplot.logging.GoogleLogFormatter(**datefmt='%Y-%m-%d %H:%M:%S'**, **default\_time\_format='%Y-%m-%d %H:%M:%S'**, **default\_msec\_format='%s,%03d'**, **backend=None**, **use\_datetime=True**, **use\_utc=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/logging.py#L671)[#](#scikitplot.logging.GoogleLogFormatter "Link to this definition")
 :   A custom logging formatter inherited from [`Formatter`](https://docs.python.org/3/library/logging.html#logging.Formatter "(in Python v3.14)").
 
     That formats log messages in a Google-style format:
@@ -55,7 +55,7 @@ class scikitplot.logging.GoogleLogFormatter(**datefmt='%Y-%m-%d %H:%M:%S'**, **d
 
     default\_time\_format = '%Y-%m-%d %H:%M:%S'[#](#scikitplot.logging.GoogleLogFormatter.default_time_format "Link to this definition")
 
-    format(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/logging.py#L770)[#](#scikitplot.logging.GoogleLogFormatter.format "Link to this definition")
+    format(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/logging.py#L770)[#](#scikitplot.logging.GoogleLogFormatter.format "Link to this definition")
     :   Format the log record into a JSON string or a pretty-printed dictionary.
 
         Parameters:
@@ -72,15 +72,15 @@ class scikitplot.logging.GoogleLogFormatter(**datefmt='%Y-%m-%d %H:%M:%S'**, **d
         Return type:
         :   [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")
 
-    formatException(**ei**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/../../logging/__init__.py#L633)[#](#scikitplot.logging.GoogleLogFormatter.formatException "Link to this definition")
+    formatException(**ei**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../../logging/__init__.py#L633)[#](#scikitplot.logging.GoogleLogFormatter.formatException "Link to this definition")
     :   Format and return the specified exception information as a string.
 
         This default implementation just uses
         traceback.print\_exception()
 
-    formatMessage(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/../../logging/__init__.py#L658)[#](#scikitplot.logging.GoogleLogFormatter.formatMessage "Link to this definition")
+    formatMessage(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../../logging/__init__.py#L658)[#](#scikitplot.logging.GoogleLogFormatter.formatMessage "Link to this definition")
 
-    formatStack(**stack\_info**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/../../logging/__init__.py#L661)[#](#scikitplot.logging.GoogleLogFormatter.formatStack "Link to this definition")
+    formatStack(**stack\_info**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../../logging/__init__.py#L661)[#](#scikitplot.logging.GoogleLogFormatter.formatStack "Link to this definition")
     :   This method is provided as an extension point for specialized
         formatting of stack information.
 
@@ -90,7 +90,7 @@ class scikitplot.logging.GoogleLogFormatter(**datefmt='%Y-%m-%d %H:%M:%S'**, **d
 
         The base implementation just returns the value passed in.
 
-    formatTime(**record**, **datefmt=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/logging.py#L749)[#](#scikitplot.logging.GoogleLogFormatter.formatTime "Link to this definition")
+    formatTime(**record**, **datefmt=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/logging.py#L749)[#](#scikitplot.logging.GoogleLogFormatter.formatTime "Link to this definition")
     :   Format time.
 
         <https://docs.python.org/3/library/logging.html#logging.Formatter.formatTime>
@@ -102,5 +102,5 @@ class scikitplot.logging.GoogleLogFormatter(**datefmt='%Y-%m-%d %H:%M:%S'**, **d
         Return type:
         :   [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")
 
-    usesTime()[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/../../logging/__init__.py#L652)[#](#scikitplot.logging.GoogleLogFormatter.usesTime "Link to this definition")
+    usesTime()[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../../logging/__init__.py#L652)[#](#scikitplot.logging.GoogleLogFormatter.usesTime "Link to this definition")
     :   Check if the format uses the creation time of the record.

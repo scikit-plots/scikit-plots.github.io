@@ -1,6 +1,6 @@
 # plot\_waveform[#](#plot-waveform "Link to this heading")
 
-scikitplot.experimental.\_doremi.plot\_waveform(**data**, **sample\_rate=None**, **normalize=False**, **title='Audio Waveform (Normalized 440Hz Tone)'**, **figsize=(10, 4)**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/experimental/_doremi/waveform_viz.py#L23)[#](#scikitplot.experimental._doremi.plot_waveform "Link to this definition")
+scikitplot.experimental.\_doremi.plot\_waveform(**data**, **sample\_rate=None**, **normalize=False**, **title='Audio Waveform (Normalized 440Hz Tone)'**, **figsize=(10, 4)**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/experimental/_doremi/waveform_viz.py#L23)[#](#scikitplot.experimental._doremi.plot_waveform "Link to this definition")
 :   Plot the waveform of mono or multi-channel audio data.
 
     Parameters:

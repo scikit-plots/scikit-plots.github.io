@@ -1,6 +1,6 @@
 # plot\_calibration[#](#plot-calibration "Link to this heading")
 
-scikitplot.api.metrics.plot\_calibration(**y\_true**, **y\_probas\_list**, **\***, **pos\_label=None**, **class\_index=None**, **class\_names=None**, **to\_plot\_class\_index=1**, **estimator\_names=None**, **n\_bins=10**, **strategy='uniform'**, **title='Calibration Curves (Reliability Diagrams)'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **cmap='inferno'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/api/metrics/_classification/_calibration.py#L43)[#](#scikitplot.api.metrics.plot_calibration "Link to this definition")
+scikitplot.api.metrics.plot\_calibration(**y\_true**, **y\_probas\_list**, **\***, **pos\_label=None**, **class\_index=None**, **class\_names=None**, **to\_plot\_class\_index=1**, **estimator\_names=None**, **n\_bins=10**, **strategy='uniform'**, **title='Calibration Curves (Reliability Diagrams)'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **cmap='inferno'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/api/metrics/_classification/_calibration.py#L43)[#](#scikitplot.api.metrics.plot_calibration "Link to this definition")
 :   Plot calibration curves for a set of classifier probability estimates.
 
     This function plots calibration curves, also known as reliability curves,

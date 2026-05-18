@@ -82,7 +82,7 @@ print(result.stderr)
 ```
 Return code: 4
 
-2026-05-18 17:17:08.280934: W scikitplot 133987479489408 __init__.py:84:<module>] ⚠︎ BOOM! :: Error importing scikitplot: you cannot import scikitplot while being in scikitplot source directory; please exit the scikitplot source tree first and relaunch your Python interpreter.
+2026-05-18 22:26:20.209878: W scikitplot 140039288531840 __init__.py:84:<module>] ⚠︎ BOOM! :: Error importing scikitplot: you cannot import scikitplot while being in scikitplot source directory; please exit the scikitplot source tree first and relaunch your Python interpreter.
 ImportError while loading conftest '/home/circleci/repo/scikitplot/conftest.py'.
 scikitplot/conftest.py:31: in <module>
     from ._lib import _pep440
@@ -94,7 +94,7 @@ E   ImportError: cannot import name '_ccallback_c' from partially initialized mo
 
 Tags: [model-workflow: vector-db](../../_tags/model-workflow-vector-db.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 4.265 seconds)
+****Total running time of the script:**** (0 minutes 3.879 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/annoy/plot_annoy_cython_0benchmark.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo.svg)](../../lite/lab/index.html?path=auto_examples/annoy/plot_annoy_cython_0benchmark.ipynb)
 
