@@ -116,6 +116,11 @@ def show_doc(doc: CorpusDocument, index: int = 0) -> None:
 
 ```
 ```
+## (Optionally) Use `%pip` inside Wasm Pyodide instead of `!pip`
+# !pip install requests beautifulsoup4
+
+```
+```
 # ===========================================================================
 # PHASE 1: INGEST — Process all 5 source types via DocumentReader
 # ===========================================================================
@@ -145,6 +150,7 @@ try:
         # from url raw html page DocumentReader.from_url for raw html
         reader = DocumentReader.from_url(
             "https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows",
+            allow_private_networks=True,
         )
     docs = list(reader.get_documents())
     all_documents.extend(docs)
@@ -263,6 +269,7 @@ try:
         # TODO: Not implemented pdf from DocumentReader.from_url pdf url link
         reader = DocumentReader.from_url(
             "https://iris.who.int/server/api/core/bitstreams/7ad66865-7f23-4485-8cf5-7b3d78bdf4f9/content",
+            allow_private_networks=True,
         )
         pass
     docs = list(reader.get_documents())
@@ -279,9 +286,7 @@ except Exception as e:
 ```
 --- Source ③: PDF Report (text proxy) ---
 
-✗ PDF report: Neither pdfminer.six nor pypdf is installed. Install at least one:
-pip install pdfminer.six
-pip install pypdf
+✗ PDF report: PDFReader.__init__() got an unexpected keyword argument 'allow_private_networks'
 
 ```
 ```
@@ -305,6 +310,7 @@ try:
         # TODO: Not implemented for image DocumentReader.from_url image url link
         reader = DocumentReader.from_url(
             "https://iris.who.int/server/api/core/bitstreams/d57241c0-512d-4cfc-9ead-91a83eea83f0/content",
+            allow_private_networks=True,
             source_type=SourceType.IMAGE,
         )
         pass
@@ -326,11 +332,7 @@ except Exception as e:
 ```
 --- Source ④: Document Scan (JPG → OCR) ---
 
-✓ Image OCR: 1 chunks ingested
-[  0] doc_id=54c988bceb4a…  source_type=image
-      text: '= re can people afford topay for health care?  New evidence on financial protection  InGreece! summa'…
-      confidence: 0.598
-      page: 0
+✗ Image OCR: ImageReader.__init__() got an unexpected keyword argument 'allow_private_networks'
 
 ```
 ```
@@ -418,13 +420,11 @@ There are two things you can do to work around this:
 2. (NOT RECOMMENDED) If you authenticate your requests using cookies, you will be able to continue doing requests for a while. However, YouTube will eventually permanently ban the account that you have used to authenticate with! So only do this if you don't mind your account being banned!
 
 If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!]
-  ⚠ pdf_report                →   0 docs  [ERROR: Neither pdfminer.six nor pypdf is installed. Install at least one:
-  pip install pdfminer.six
-  pip install pypdf]
-  ✓ image_ocr                 →   1 docs  [OK]
+  ⚠ pdf_report                →   0 docs  [ERROR: PDFReader.__init__() got an unexpected keyword argument 'allow_private_networks']
+  ⚠ image_ocr                 →   0 docs  [ERROR: ImageReader.__init__() got an unexpected keyword argument 'allow_private_networks']
   ✓ audio_asr                 →   5 docs  [OK]
 
-  Total documents in corpus: 97
+  Total documents in corpus: 96
 
 ```
 ```
@@ -454,7 +454,7 @@ if all_documents:
   PHASE 2: NORMALIZE — Unicode + Whitespace cleanup
 ========================================================================
 
-  ✓ Normalised 97/97 documents
+  ✓ Normalised 96/96 documents
   Example (doc 0):
     text[:80]:           'Out-of-pocket payments for primary health care unaffordable for millions in Euro'
     normalized_text[:80]: 'Out-of-pocket payments for primary health care unaffordable for millions in Euro'
@@ -490,7 +490,7 @@ if all_documents:
   PHASE 3: ENRICH — Tokens + Keywords (NLPEnricher)
 ========================================================================
 
-  ✓ Enriched 97/97 documents
+  ✓ Enriched 96/96 documents
   Example (doc 0):
     tokens(11): ['pocket', 'payments', 'primary', 'health', 'care', 'unaffordable', 'millions', 'europe', 'new', 'report']…
     keywords: ['pocket', 'payments', 'primary', 'health', 'care', 'unaffordable', 'millions', 'europe']
@@ -513,7 +513,7 @@ print(f"  ✓ Index built: {index.n_documents} documents, dense={index.has_embed
   PHASE 4: INDEX — Build SimilarityIndex (BM25 keyword mode)
 ========================================================================
 
-  ✓ Index built: 97 documents, dense=False
+  ✓ Index built: 96 documents, dense=False
 
 ```
 ```
@@ -552,29 +552,29 @@ for query, mode in queries:
 
   --- Search: "catastrophic health spending Greece" (mode=keyword) ---
 
-  [1] score=6.3942  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [1] score=6.3834  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'Out-of-pocket payments lead to catastrophic health spending for between 1% and 20% of hous'…
-  [2] score=5.4036  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [2] score=5.3944  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'The report provides an assessment of financial protection for 40 countries (including all '…
-  [3] score=3.9819  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [3] score=3.9677  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'Catastrophic out-of-pocket payments are mainly driven by household spending on services th'…
 
   --- Search: "poorest households" (mode=keyword) ---
 
-  [1] score=5.8803  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [1] score=5.8636  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'Out-of-pocket payments lead to catastrophic health spending for between 1% and 20% of hous'…
-  [2] score=2.6516  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [2] score=2.6434  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'Using new pre-pandemic data from 2019, the report finds that out-of-pocket payments for ou'…
-  [3] score=1.3198  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [3] score=1.3157  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'Financial hardship caused by out-of-pocket payments for medicines, medical products such a'…
 
   --- Search: "out-of-pocket payments medicines" (mode=keyword) ---
 
-  [1] score=6.4551  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [1] score=6.4295  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'Primary-care coverage should include treatment, not just consultation and diagnosis. This '…
-  [2] score=5.3309  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [2] score=5.3063  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'Redesigning health coverage policy to reduce out-of-pocket payments'…
-  [3] score=5.1315  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
+  [3] score=5.1102  src=https://www.who.int/europe/news/item/12-12-2023-out-of-pocket-payments-for-primary-health-care-unaffordable-for-millions-in-europe-new-who-report-shows
       'Using new pre-pandemic data from 2019, the report finds that out-of-pocket payments for ou'…
 
   --- Search: "dental care" (mode=strict) ---
@@ -690,7 +690,7 @@ for i, line in enumerate(lines[:2]):
 
   --- 6a: LangChain Documents ---
 
-  ✓ 97 LangChain docs (dict fallback — langchain not installed)
+  ✓ 96 LangChain docs (dict fallback — langchain not installed)
     keys: ['page_content', 'metadata']
     page_content[:80]: 'Out-of-pocket payments for primary health care unaffordable for millions in Euro'
     metadata keys: ['char_end', 'char_start', 'chunk_index', 'chunking_strategy', 'doc_id', 'element_index', 'html_tag', 'input_path', 'section_type', 'source_type']
@@ -699,7 +699,7 @@ for i, line in enumerate(lines[:2]):
 
   ✓ LangGraph state dict:
     keys: ['documents', 'match_mode', 'n_results', 'query']
-    n_results: 97
+    n_results: 96
     query: 'catastrophic health spending'
 
   --- 6c: MCP Resources (Model Context Protocol) ---
@@ -727,7 +727,7 @@ for i, line in enumerate(lines[:2]):
 
   --- 6e: MCP Server Adapter ---
 
-  ✓ MCPCorpusServer: MCPCorpusServer(name='who-corpus', n_docs=97)
+  ✓ MCPCorpusServer: MCPCorpusServer(name='who-corpus', n_docs=96)
     tools: ['corpus_search']
     tool schema: {
       "type": "object",
@@ -743,7 +743,7 @@ for i, line in enumerate(lines[:2]):
 
   ✓ HuggingFace Dataset: Dataset({
     features: ['doc_id', 'text', 'input_path', 'source_type', 'source_title', 'chunk_index', 'language', 'metadata_json'],
-    num_rows: 97
+    num_rows: 96
 })
 
   --- 6g: RAG Tuples (text, metadata, embedding) ---
@@ -963,10 +963,10 @@ print("  Pipeline complete. All 5 source types → unified corpus → any consum
 ========================================================================
 
   Sources processed:  5
-  Total documents:    97
-  Normalised:         97
-  Enriched (tokens):  97
-  Index documents:    97
+  Total documents:    96
+  Normalised:         96
+  Enriched (tokens):  96
+  Index documents:    96
   Dense embeddings:   False
 
   Adapter outputs demonstrated:
@@ -1023,7 +1023,7 @@ print("  Pipeline complete. All 5 source types → unified corpus → any consum
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: bar](../../_tags/plot-type-bar.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 11.176 seconds)
+****Total running time of the script:**** (0 minutes 10.532 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo4.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_who_per_file_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo4.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_who_per_file_script.ipynb)
 

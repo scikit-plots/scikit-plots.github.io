@@ -1,6 +1,6 @@
 # YouTubeDownloader[#](#youtubedownloader "Link to this heading")
 
-class scikitplot.corpus.YouTubeDownloader(**input\_url**, **output\_path=None**, **timeout=30.0**, **max\_bytes=104857600**, **verify\_ssl=True**, **block\_private\_ips=True**, **max\_redirects=5**, **user\_agent='Mozilla/5.0 (compatible; scikitplot-corpus/1.0; +https://github.com/scikit-plots/scikit-plots)'**, **mode='transcript'**, **language='en'**, **include\_auto\_generated=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_downloader/_youtube.py#L93)[#](#scikitplot.corpus.YouTubeDownloader "Link to this definition")
+class scikitplot.corpus.YouTubeDownloader(**input\_url**, **output\_path=None**, **timeout=30.0**, **max\_bytes=104857600**, **verify\_ssl=True**, **block\_private\_ips=True**, **max\_redirects=5**, **user\_agent='Mozilla/5.0 (compatible; scikitplot-corpus/1.0; +https://github.com/scikit-plots/scikit-plots)'**, **mode='transcript'**, **language='en'**, **include\_auto\_generated=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/corpus/_downloader/_youtube.py#L93)[#](#scikitplot.corpus.YouTubeDownloader "Link to this definition")
 :   YouTube content downloader.
 
     Downloads a transcript, audio track, or video from a single YouTube
@@ -105,7 +105,7 @@ class scikitplot.corpus.YouTubeDownloader(**input\_url**, **output\_path=None**,
 
     block\_private\_ips: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.YouTubeDownloader.block_private_ips "Link to this definition")
 
-    cleanup()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_downloader/_base.py#L481)[#](#scikitplot.corpus.YouTubeDownloader.cleanup "Link to this definition")
+    cleanup()[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/corpus/_downloader/_base.py#L481)[#](#scikitplot.corpus.YouTubeDownloader.cleanup "Link to this definition")
     :   Remove the temporary directory owned by this instance, if any.
 
         Safe to call multiple times. If `output_path` was supplied at
@@ -114,7 +114,7 @@ class scikitplot.corpus.YouTubeDownloader(**input\_url**, **output\_path=None**,
         Return type:
         :   None
 
-    download()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_downloader/_youtube.py#L207)[#](#scikitplot.corpus.YouTubeDownloader.download "Link to this definition")
+    download()[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/corpus/_downloader/_youtube.py#L207)[#](#scikitplot.corpus.YouTubeDownloader.download "Link to this definition")
     :   Download the requested content and return a [`DownloadResult`](scikitplot.corpus.DownloadResult.html#scikitplot.corpus.DownloadResult "scikitplot.corpus.DownloadResult").
 
         Dispatches to `_download_transcript`,
@@ -138,7 +138,7 @@ class scikitplot.corpus.YouTubeDownloader(**input\_url**, **output\_path=None**,
 
     include\_auto\_generated: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.YouTubeDownloader.include_auto_generated "Link to this definition")
 
-    input\_url: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_downloader/_youtube.py#L93)[#](#scikitplot.corpus.YouTubeDownloader.input_url "Link to this definition")
+    input\_url: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/corpus/_downloader/_youtube.py#L93)[#](#scikitplot.corpus.YouTubeDownloader.input_url "Link to this definition")
 
     language: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") = 'en'[#](#scikitplot.corpus.YouTubeDownloader.language "Link to this definition")
 

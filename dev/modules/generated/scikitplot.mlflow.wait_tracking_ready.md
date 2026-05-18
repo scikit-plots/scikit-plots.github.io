@@ -1,6 +1,6 @@
 # wait\_tracking\_ready[#](#wait-tracking-ready "Link to this heading")
 
-scikitplot.mlflow.wait\_tracking\_ready(**tracking\_uri**, **timeout\_s**, **\***, **server=None**, **poll\_interval\_s=0.2**, **request\_timeout\_s=2.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/mlflow/_readiness.py#L61)[#](#scikitplot.mlflow.wait_tracking_ready "Link to this definition")
+scikitplot.mlflow.wait\_tracking\_ready(**tracking\_uri**, **timeout\_s**, **\***, **server=None**, **poll\_interval\_s=0.2**, **request\_timeout\_s=2.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/mlflow/_readiness.py#L61)[#](#scikitplot.mlflow.wait_tracking_ready "Link to this definition")
 :   Wait until the MLflow tracking REST API responds.
 
     Parameters:

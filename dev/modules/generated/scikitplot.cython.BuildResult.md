@@ -1,6 +1,6 @@
 # BuildResult[#](#buildresult "Link to this heading")
 
-class scikitplot.cython.BuildResult(**module=<factory>**, **key=''**, **module\_name=''**, **build\_dir=<factory>**, **artifact\_path=<factory>**, **used\_cache=False**, **created\_utc=None**, **fingerprint=None**, **source\_sha256=None**, **meta=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/cython/_result.py#L51)[#](#scikitplot.cython.BuildResult "Link to this definition")
+class scikitplot.cython.BuildResult(**module=<factory>**, **key=''**, **module\_name=''**, **build\_dir=<factory>**, **artifact\_path=<factory>**, **used\_cache=False**, **created\_utc=None**, **fingerprint=None**, **source\_sha256=None**, **meta=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/cython/_result.py#L51)[#](#scikitplot.cython.BuildResult "Link to this definition")
 :   Result of compiling/importing a single Cython extension module.
 
     Parameters:

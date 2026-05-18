@@ -1,6 +1,6 @@
 # iso\_to\_nltk[#](#iso-to-nltk "Link to this heading")
 
-scikitplot.corpus.iso\_to\_nltk(**code**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_chunkers/_language_data.py#L1220)[#](#scikitplot.corpus.iso_to_nltk "Link to this definition")
+scikitplot.corpus.iso\_to\_nltk(**code**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/corpus/_chunkers/_language_data.py#L1220)[#](#scikitplot.corpus.iso_to_nltk "Link to this definition")
 :   Resolve an ISO 639-1/639-3 code to a canonical NLTK language name.
 
     Parameters:

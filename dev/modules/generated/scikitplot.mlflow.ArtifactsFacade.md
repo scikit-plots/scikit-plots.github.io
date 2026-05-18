@@ -1,6 +1,6 @@
 # ArtifactsFacade[#](#artifactsfacade "Link to this heading")
 
-class scikitplot.mlflow.ArtifactsFacade(**mlflow\_module=None**, **client=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/mlflow/_facade.py#L30)[#](#scikitplot.mlflow.ArtifactsFacade "Link to this definition")
+class scikitplot.mlflow.ArtifactsFacade(**mlflow\_module=None**, **client=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/mlflow/_facade.py#L30)[#](#scikitplot.mlflow.ArtifactsFacade "Link to this definition")
 :   Artifact helper facade bound to a specific MLflow client/URI.
 
     Parameters:
@@ -26,7 +26,7 @@ class scikitplot.mlflow.ArtifactsFacade(**mlflow\_module=None**, **client=None**
 
     client: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") = None[#](#scikitplot.mlflow.ArtifactsFacade.client "Link to this definition")
 
-    download(**run\_id**, **artifact\_path**, **dst\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/mlflow/_facade.py#L76)[#](#scikitplot.mlflow.ArtifactsFacade.download "Link to this definition")
+    download(**run\_id**, **artifact\_path**, **dst\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/mlflow/_facade.py#L76)[#](#scikitplot.mlflow.ArtifactsFacade.download "Link to this definition")
     :   Download an artifact from a run.
 
         Parameters:
@@ -61,7 +61,7 @@ class scikitplot.mlflow.ArtifactsFacade(**mlflow\_module=None**, **client=None**
         which applies the same preference order: modern public API first, then
         session-bound client fallback.
 
-    list(**run\_id**, **artifact\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/mlflow/_facade.py#L56)[#](#scikitplot.mlflow.ArtifactsFacade.list "Link to this definition")
+    list(**run\_id**, **artifact\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/mlflow/_facade.py#L56)[#](#scikitplot.mlflow.ArtifactsFacade.list "Link to this definition")
     :   List artifacts for a run.
 
         Parameters:
@@ -82,7 +82,7 @@ class scikitplot.mlflow.ArtifactsFacade(**mlflow\_module=None**, **client=None**
         Return type:
         :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
 
-    log\_file(**local\_path**, **artifact\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/mlflow/_facade.py#L117)[#](#scikitplot.mlflow.ArtifactsFacade.log_file "Link to this definition")
+    log\_file(**local\_path**, **artifact\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/mlflow/_facade.py#L117)[#](#scikitplot.mlflow.ArtifactsFacade.log_file "Link to this definition")
     :   Log a local file as an artifact.
 
         Parameters:
@@ -102,7 +102,7 @@ class scikitplot.mlflow.ArtifactsFacade(**mlflow\_module=None**, **client=None**
         Return type:
         :   None
 
-    log\_files(**local\_paths**, **artifact\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/mlflow/_facade.py#L140)[#](#scikitplot.mlflow.ArtifactsFacade.log_files "Link to this definition")
+    log\_files(**local\_paths**, **artifact\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/mlflow/_facade.py#L140)[#](#scikitplot.mlflow.ArtifactsFacade.log_files "Link to this definition")
     :   Log multiple local files as artifacts.
 
         Parameters:

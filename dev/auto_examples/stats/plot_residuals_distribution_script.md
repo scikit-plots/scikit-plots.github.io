@@ -73,8 +73,8 @@ ax = sp.metrics.plot_residuals_distribution(
 ```
 Fitted mean-mu (μ): -4.4509
 Fitted std (σ)    : 55.2768
-[INFO] Saving path to: /home/circleci/repo/galleries/examples/stats/result_images/plot_residuals_distribution_20260517_005852Z.png
-[INFO] Plot saved to: /home/circleci/repo/galleries/examples/stats/result_images/plot_residuals_distribution_20260517_005852Z.png
+[INFO] Saving path to: /home/circleci/repo/galleries/examples/stats/result_images/plot_residuals_distribution_20260518_172544Z.png
+[INFO] Plot saved to: /home/circleci/repo/galleries/examples/stats/result_images/plot_residuals_distribution_20260518_172544Z.png
 
 ```
 > **References**

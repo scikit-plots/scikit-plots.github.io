@@ -14,7 +14,7 @@
 <meta content="scikit-plots" property="og:image:alt"/>
 <meta content="Demonstrates all new features: 1. Auto-detection (Kiss64Random with None, 32, or 64) 2. Context manager support (with statement) 3. NumPy-like BitGenerator and Generator 4. State serialization/dese..." name="description"/>
 <script>
-window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": false}, "providers": {"chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask OpenAI ChatGPT about this page", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "gpt-4o", "type": "web"}, "claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Anthropic Claude about this page", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this page", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Hi! Please review this documentation content: {url}\n\nI have questions about it.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}, "cursor": {"enabled": false, "type": "cursor", "label": "Connect to Cursor", "description": "Connect the MCP server to Cursor IDE.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
+window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true, "theme_toggle": true, "pdf_export": true, "ai_panel": true}, "providers": {"chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask OpenAI ChatGPT about this page", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "gpt-4o", "type": "web"}, "claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Anthropic Claude about this page", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this page", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Hi! Please review this documentation content: {url}\n\nI have questions about it.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}, "cursor": {"enabled": false, "type": "cursor", "label": "Connect to Cursor", "description": "Connect the MCP server to Cursor IDE.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false, "pdfExportUrl": "", "pdfUrlModeToggle": true, "panelTitle": "AI Assistant", "panelPlaceholder": "Ask a question about this page\u2026", "panelApiEnabled": false};
 </script>
 <title>Enhanced KISS Random Generator - Complete Usage Examples — scikit-plots 0.5.dev0 documentation</title>
 <script data-cfasync="false">
@@ -37,7 +37,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <link href="../../_static/graphviz.css?v=4ae1632d" rel="stylesheet" type="text/css"/>
 <link href="../../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
-<link href="../../_static/ai-assistant.css?v=62f328ba" rel="stylesheet" type="text/css"/>
+<link href="../../_static/ai-assistant.css?v=8dc52422" rel="stylesheet" type="text/css"/>
 <link href="../../_static/jupyter-sphinx.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/thebelab.css" rel="stylesheet" type="text/css"/>
 <link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
@@ -60,7 +60,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
 <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
 <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-<script src="../../_static/ai-assistant.js?v=cb662cc4"></script>
+<script src="../../_static/ai-assistant.js?v=d8d38703"></script>
 <script src="../../_static/thebelab-helper.js"></script>
 <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
 <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -679,37 +679,37 @@ ENHANCED KISS RANDOM - NEW FEATURES DEMONSTRATION
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Numpy
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.0036873630015179515,
- 'time_mean': 0.004834250602289103,
- 'time_max': 0.006134410010417923,
- 'time_std': 0.0010943209736252982,
+ 'time_min': 0.0035951239988207817,
+ 'time_mean': 0.004009801999563934,
+ 'time_max': 0.005400916999860783,
+ 'time_std': 0.0007788244604317095,
  'output_mean': 0.5000264761740889,
  'output_std': 0.2886354529025341}
 Kiss Customized 64
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.013838055994710885,
- 'time_mean': 0.014411185396602378,
- 'time_max': 0.015704190998803824,
- 'time_std': 0.0007836094315360326,
+ 'time_min': 0.013560845000029076,
+ 'time_mean': 0.014258754799811868,
+ 'time_max': 0.015778422999574104,
+ 'time_std': 0.0009250185876954746,
  'output_mean': 0.4994983951235817,
  'output_std': 0.28868033687878636}
 Numpy
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.004849160002777353,
- 'time_mean': 0.006232755599194206,
- 'time_max': 0.0070654390001436695,
- 'time_std': 0.0008229891254955352,
+ 'time_min': 0.004793825000888319,
+ 'time_mean': 0.006635107999682077,
+ 'time_max': 0.008147789998474764,
+ 'time_std': 0.0014179279143956111,
  'output_mean': 0.5000264761740889,
  'output_std': 0.2886354529025341}
 Kiss Customized 64
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.015946322993841022,
- 'time_mean': 0.016499476597527974,
- 'time_max': 0.017765041993698105,
- 'time_std': 0.0007992996648410282,
+ 'time_min': 0.015304965998439002,
+ 'time_mean': 0.01595473180022964,
+ 'time_max': 0.017487577000792953,
+ 'time_std': 0.0009102776707979286,
  'output_mean': 0.4994983951235817,
  'output_std': 0.28868033687878636}
 </pre></div>
@@ -922,13 +922,13 @@ Generator from seed: KissGenerator
 Generator from BitGenerator: KissGenerator
 
 Generator methods:
-  random(5):         [0.11537781 0.68906236 0.3993421  0.48319906 0.83727793]
-  integers(0, 100):  [ 4 18 20  3 13]
-  normal(0, 1):      [ 0.15616969 -0.86215747  0.90755956  0.02410962  0.42781291]
-  uniform(10, 20):   [12.01225623 17.05193621 15.69327077 13.15933967 15.50073653]
-  choice(['A','B','C']): ['C' 'A' 'B' 'C' 'B' 'B' 'A' 'B' 'C' 'C']
-  Weighted choice A: 52% (✅ expected ~50%)
-  shuffle([0..9]):   [9 8 3 7 6 4 1 5 0 2]
+  random(5):         [0.6127774  0.84022992 0.18328153 0.87887548 0.79207841]
+  integers(0, 100):  [70  7  7 10 26]
+  normal(0, 1):      [-3.43175209 -1.61477413  0.6812864   1.00069649  0.42073083]
+  uniform(10, 20):   [11.63518479 14.49058686 18.59477968 15.7083275  14.34506044]
+  choice(['A','B','C']): ['C' 'B' 'B' 'B' 'C' 'A' 'A' 'A' 'C' 'A']
+  Weighted choice A: 53% (✅ expected ~50%)
+  shuffle([0..9]):   [1 3 8 0 4 6 7 5 9 2]
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
@@ -1187,8 +1187,8 @@ Chi-square uniformity test:
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>======================================================================
 10. ADVANCED USAGE - CUSTOM DISTRIBUTIONS
 ======================================================================
-Exponential(scale=2): [0.24446107 0.81512845 2.31437558 1.0369648  1.03420274]
-Beta(2, 5):           [0.36821576 0.6362339  0.43488714 0.12909492 0.3151545 ]
+Exponential(scale=2): [1.37732314 4.771449   0.57331735 2.84081588 0.37897748]
+Beta(2, 5):           [0.46996262 0.04215232 0.1426769  0.21704811 0.11321251]
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===========================================================================</span>
@@ -1425,7 +1425,7 @@ RECOMMENDED USAGE:
 ======================================================================
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.066 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.993 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This gallery example demonstrates the :py~scikitplot.memmap.MemoryMap module at three levels of complexity."><img alt="" src="../../_images/sphx_glr_plot_mman_thumb.png"/>
@@ -1467,7 +1467,19 @@ RECOMMENDED USAGE:
 </div>
 <dialog id="pst-secondary-sidebar-modal"></dialog>
 <div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
+<div class="sidebar-secondary-item">
+<div class="tocsection editthispage">
+<a href="https://github.com/scikit-plots/scikit-plots/edit/main/auto_examples/random/plot_kiss_random.rst"></a>
+<i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    
+</div>
+</div>
 <div class="sidebar-secondary-item">
 <div class="sphx-glr-sidebar-component">
 <div class="sphx-glr-sidebar-item sphx-glr-download-python-sidebar" title="plot_kiss_random.py">
@@ -1490,6 +1502,20 @@ RECOMMENDED USAGE:
 </div>
 </div>
 </div>
+<div class="sidebar-secondary-item">
+<div class="sphx-glr-sidebar-component">
+<div class="sphx-glr-sidebar-item lite-badge-sidebar">
+<a href="../../lite/lab/index.html?path=auto_examples/random/plot_kiss_random.ipynb">
+<img alt="Launch JupyterLite" src="../../_images/jupyterlite_badge_logo14.svg"/>
+</a>
+</div>
+<div class="sphx-glr-sidebar-item binder-badge-sidebar">
+<a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/random/plot_kiss_random.ipynb">
+<img alt="Launch binder" src="../../_images/binder_badge_logo14.svg"/>
+</a>
+</div>
+</div>
+</div>
 <div class="sidebar-secondary-item"><div title="plot_kiss_random.py"><a download="" href="../../_downloads/2117d7c9103999425b903c0e48303995/plot_kiss_random.py"><i class="fa-solid fa-download"></i> Download source code</a></div><div title="plot_kiss_random.ipynb"><a download="" href="../../_downloads/ce3f634011a2324c237757c468b6c928/plot_kiss_random.ipynb"><i class="fa-solid fa-download"></i> Download Jupyter notebook</a></div></div><div class="sidebar-secondary-item"><div><a href="../../lite/lab/index.html?path=auto_examples/random/plot_kiss_random.ipynb"><img alt="Launch JupyterLite" height="20" src="../../_images/jupyterlite_badge_logo14.svg"/></a></div><div><a href="https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/random/plot_kiss_random.ipynb"><img alt="Launch binder" height="20" src="../../_images/binder_badge_logo14.svg"/></a></div></div></div></div>
 </div>
 <footer class="bd-footer-content">
@@ -1506,7 +1532,7 @@ RECOMMENDED USAGE:
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260517.dff5f00 2026-05-17T00:49Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260518.a80a5f3 2026-05-18T17:16Z.
       <br/>
 </p>
 </div>

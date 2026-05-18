@@ -1,6 +1,6 @@
 # load\_documents[#](#load-documents "Link to this heading")
 
-scikitplot.corpus.load\_documents(**path**, **fmt=None**, **\***, **trusted=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_export/_export.py#L940)[#](#scikitplot.corpus.load_documents "Link to this definition")
+scikitplot.corpus.load\_documents(**path**, **fmt=None**, **\***, **trusted=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/corpus/_export/_export.py#L940)[#](#scikitplot.corpus.load_documents "Link to this definition")
 :   Load [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument") instances
     from a previously exported file.
 

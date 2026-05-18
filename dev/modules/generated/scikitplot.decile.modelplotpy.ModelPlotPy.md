@@ -1,6 +1,6 @@
 # ModelPlotPy[#](#modelplotpy "Link to this heading")
 
-class scikitplot.decile.modelplotpy.ModelPlotPy(**feature\_data=None**, **label\_data=None**, **dataset\_labels=None**, **models=None**, **model\_labels=None**, **ntiles=10**, **seed=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/decile/modelplotpy/_modelplotpy.py#L167)[#](#scikitplot.decile.modelplotpy.ModelPlotPy "Link to this definition")
+class scikitplot.decile.modelplotpy.ModelPlotPy(**feature\_data=None**, **label\_data=None**, **dataset\_labels=None**, **models=None**, **model\_labels=None**, **ntiles=10**, **seed=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/decile/modelplotpy/_modelplotpy.py#L167)[#](#scikitplot.decile.modelplotpy.ModelPlotPy "Link to this definition")
 :   ModelPlotPy decile analysis.
 
     Parameters:
@@ -36,7 +36,7 @@ class scikitplot.decile.modelplotpy.ModelPlotPy(**feature\_data=None**, **label\
     :   ValueError
         :   If there is no match with the complete list or the input list again
 
-    aggregate\_over\_ntiles()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/decile/modelplotpy/_modelplotpy.py#L400)[#](#scikitplot.decile.modelplotpy.ModelPlotPy.aggregate_over_ntiles "Link to this definition")
+    aggregate\_over\_ntiles()[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/decile/modelplotpy/_modelplotpy.py#L400)[#](#scikitplot.decile.modelplotpy.ModelPlotPy.aggregate_over_ntiles "Link to this definition")
     :   Create eval\_t\_tot.
 
         This function builds the pandas dataframe eval\_t\_tot and contains the aggregated output.
@@ -78,12 +78,12 @@ class scikitplot.decile.modelplotpy.ModelPlotPy(**feature\_data=None**, **label\
         :   ValueError
             :   If there is no match with the complete list or the input list again.
 
-    get\_params()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/decile/modelplotpy/_modelplotpy.py#L243)[#](#scikitplot.decile.modelplotpy.ModelPlotPy.get_params "Link to this definition")
+    get\_params()[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/decile/modelplotpy/_modelplotpy.py#L243)[#](#scikitplot.decile.modelplotpy.ModelPlotPy.get_params "Link to this definition")
     :   Get parameters of the model plots object.
 
         Added in version 0.3.9.
 
-    plotting\_scope(**scope='no\_comparison'**, **select\_model\_label=[]**, **select\_dataset\_label=[]**, **select\_targetclass=[]**, **select\_smallest\_targetclass=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/decile/modelplotpy/_modelplotpy.py#L551)[#](#scikitplot.decile.modelplotpy.ModelPlotPy.plotting_scope "Link to this definition")
+    plotting\_scope(**scope='no\_comparison'**, **select\_model\_label=[]**, **select\_dataset\_label=[]**, **select\_targetclass=[]**, **select\_smallest\_targetclass=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/decile/modelplotpy/_modelplotpy.py#L551)[#](#scikitplot.decile.modelplotpy.ModelPlotPy.plotting_scope "Link to this definition")
     :   Create plot\_input.
 
         This function builds the pandas dataframe plot\_input which is a subset of scores\_and\_ntiles.
@@ -147,7 +147,7 @@ class scikitplot.decile.modelplotpy.ModelPlotPy(**feature\_data=None**, **label\
         Return type:
         :   [pandas.DataFrame](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas)")
 
-    prepare\_scores\_and\_ntiles()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/decile/modelplotpy/_modelplotpy.py#L285)[#](#scikitplot.decile.modelplotpy.ModelPlotPy.prepare_scores_and_ntiles "Link to this definition")
+    prepare\_scores\_and\_ntiles()[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/decile/modelplotpy/_modelplotpy.py#L285)[#](#scikitplot.decile.modelplotpy.ModelPlotPy.prepare_scores_and_ntiles "Link to this definition")
     :   Create eval\_tot.
 
         This function builds the pandas dataframe eval\_tot that contains for each feature
@@ -191,12 +191,12 @@ class scikitplot.decile.modelplotpy.ModelPlotPy(**feature\_data=None**, **label\
         :   ValueError
             :   If there is no match with the complete list or the input list again
 
-    reset\_params()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/decile/modelplotpy/_modelplotpy.py#L271)[#](#scikitplot.decile.modelplotpy.ModelPlotPy.reset_params "Link to this definition")
+    reset\_params()[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/decile/modelplotpy/_modelplotpy.py#L271)[#](#scikitplot.decile.modelplotpy.ModelPlotPy.reset_params "Link to this definition")
     :   Reset all parameters to default values.
 
         Added in version 0.3.9.
 
-    set\_params(**\*\*params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/decile/modelplotpy/_modelplotpy.py#L259)[#](#scikitplot.decile.modelplotpy.ModelPlotPy.set_params "Link to this definition")
+    set\_params(**\*\*params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/decile/modelplotpy/_modelplotpy.py#L259)[#](#scikitplot.decile.modelplotpy.ModelPlotPy.set_params "Link to this definition")
     :   Set parameters of the model plots object.
 
         Added in version 0.3.9.

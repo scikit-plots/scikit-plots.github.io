@@ -16,7 +16,7 @@
 <meta property="og:image:alt" content="scikit-plots" />
 
 <script>
-window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": false}, "providers": {"chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask OpenAI ChatGPT about this page", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "gpt-4o", "type": "web"}, "claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Anthropic Claude about this page", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this page", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Hi! Please review this documentation content: {url}\n\nI have questions about it.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}, "cursor": {"enabled": false, "type": "cursor", "label": "Connect to Cursor", "description": "Connect the MCP server to Cursor IDE.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false};
+window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true, "theme_toggle": true, "pdf_export": true, "ai_panel": true}, "providers": {"chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask OpenAI ChatGPT about this page", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "gpt-4o", "type": "web"}, "claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Anthropic Claude about this page", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this page", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Hi! Please review this documentation content: {url}\n\nI have questions about it.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}, "cursor": {"enabled": false, "type": "cursor", "label": "Connect to Cursor", "description": "Connect the MCP server to Cursor IDE.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false, "pdfExportUrl": "", "pdfUrlModeToggle": true, "panelTitle": "AI Assistant", "panelPlaceholder": "Ask a question about this page\u2026", "panelApiEnabled": false};
 </script>
 
     <title>show_versions &#8212; scikit-plots 0.5.dev0 documentation</title>
@@ -45,7 +45,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=62f328ba" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ai-assistant.css?v=8dc52422" />
     <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
@@ -71,7 +71,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=cb662cc4"></script>
+    <script src="../../_static/ai-assistant.js?v=d8d38703"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>show_versions<a class="headerlink" href="#show-versions" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.show_versions">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.</span></span><span class="sig-name descname"><span class="pre">show_versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'stdout'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/utils/_show_versions.py#L214"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.show_versions" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.</span></span><span class="sig-name descname"><span class="pre">show_versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'stdout'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/utils/_show_versions.py#L298"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.show_versions" title="Link to this definition">#</a></dt>
 <dd><p>Print or return debugging information about the system, Python, dependencies, and hardware.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1345,9 +1345,23 @@ Otherwise, returns None.</p>
 </dl>
 <p class="rubric">Notes</p>
 <p>Useful for debugging and issue reporting.</p>
+<ul class="simple">
+<li><p>is_free_threaded_build -&gt; capability / ABI</p></li>
+<li><p>is_gil_enabled         -&gt; runtime state</p></li>
+<li><p>is_running_no_gil      -&gt; effective execution mode</p></li>
+</ul>
+<div class="line-block">
+<div class="line">Python                 | <code class="docutils literal notranslate"><span class="pre">is_free_threaded_build</span></code> | <code class="docutils literal notranslate"><span class="pre">is_gil_enabled</span></code> | <code class="docutils literal notranslate"><span class="pre">is_running_no_gil</span></code> |</div>
+<div class="line">———————- | ———————–: | —————: | ——————: |</div>
+<div class="line">3.8-3.12               |                    False |             True |               False |</div>
+<div class="line">3.13-3.14 regular      |                    False |             True |               False |</div>
+<div class="line">3.13-3.14 FT + GIL ON  |                     True |             True |               False |</div>
+<div class="line">3.13-3.14 FT + GIL OFF |                     True |            False |                True |</div>
+<div class="line">3.15+ FT + GIL OFF     |                     True |            False |                True |</div>
+</div>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="385b4a35-c768-46a2-888e-8f358f6e14e1">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('385b4a35-c768-46a2-888e-8f358f6e14e1','888f5bd7-5790-4475-a14f-892e13919804','5e4996b9-eb31-4454-a715-98ffeb79defc','../../lite/tree/../notebooks/index.html?path=34d08f07_e04a_4bf8_959d_7f06cb8ae3b4.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="625fd83f-e654-4cbe-9805-971c465eb8a9">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('625fd83f-e654-4cbe-9805-971c465eb8a9','58e211ca-f5fc-412d-a8c2-77303f0b94ab','877d90b7-5420-4e28-8572-045cb1aa5303','../../lite/tree/../notebooks/index.html?path=d9b52046_5841_4d97_aab9_7ad661f05b69.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
 <div class="thebelab-code" data-executable="true" data-language="ipython"><div class="docutils container">
@@ -1361,58 +1375,56 @@ Otherwise, returns None.</p>
 <div class="thebelab-output" data-output="true"><div class="docutils container">
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
 System Information:
-               python: 3.11.15 (main, Mar  4 2026, 16:25:54) [GCC 11.4.0]
-           executable: /home/circleci/.pyenv/versions/3.11.15/bin/python3.11
-     is_free_threaded: False
-python_implementation: CPython
-                  CPU: x86_64
-                cores: 36
-         architecture: x86_64
-                   OS: Linux-6.17.0-1013-aws-x86_64-with-glibc2.35
-                   ci: true
+                   python: 3.11.15 (main, Mar  4 2026, 16:25:54) [GCC 11.4.0]
+               executable: /home/circleci/.pyenv/versions/3.11.15/bin/python3.11
+    python_implementation: CPython
+                 libc_ver: (&#39;glibc&#39;, &#39;2.35&#39;)
+                       OS: Linux-6.17.0-1013-aws-x86_64-with-glibc2.35
+             architecture: x86_64
+                      CPU: x86_64
+                    cores: 36
+   is_free_threaded_build: False
+           is_gil_enabled: True
+        is_running_no_gil: False
 
 Python Dependencies:
-           scikitplot: 0.5.dev0+git.20260517.dff5f00
-                  pip: 26.0.1
-         meson-python: 0.19.0
-           setuptools: 79.0.1
-               cython: 3.2.4
-                numpy: 2.4.5
-                scipy: 1.17.1
-               pandas: 2.3.3
-           matplotlib: 3.10.9
-         scikit-learn: 1.8.0
-               joblib: 1.5.3
-        threadpoolctl: 3.6.0
-              aggdraw: 1.4.1
-              seaborn: 0.13.2
-                bokeh: None
-               plotly: 6.7.0
-            streamlit: None
-               gradio: None
-               pyyaml: 6.0.3
+               scikitplot: 0.5.dev0+git.20260518.a80a5f3
+                      pip: 26.0.1
+               setuptools: 79.0.1
+                   cython: 3.2.4
+                    numpy: 2.4.5
+                    scipy: 1.17.1
+                  aggdraw: 1.4.1
+                   pandas: 2.3.3
+               matplotlib: 3.10.9
+                   joblib: 1.5.3
+            threadpoolctl: 3.6.0
+             scikit-learn: 1.8.0
+                  seaborn: 0.13.2
 
 Environment Variables:
-      MKL_NUM_THREADS: None
-      OMP_NUM_THREADS: None
- OPENBLAS_NUM_THREADS: None
+             runtime_envs: [&#39;docker&#39;]
+                       CI: true
+          MKL_NUM_THREADS: None
+          OMP_NUM_THREADS: None
+     OPENBLAS_NUM_THREADS: None
 
 GPU Information:
-                 cuda: None
-                  gpu: None
-                  mps: None
-                  xla: None
-                  xpu: None
+                     cuda: None
+                      gpu: None
+                      mps: None
+                      xla: None
+                      xpu: None
 
 Threadpoolctl Information:
-             user_api: blas
-         internal_api: openblas
-          num_threads: 36
-               prefix: libscipy_openblas
-             filepath: /home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-32a4b2a6.so
-              version: 0.3.31.188.0
-      threading_layer: pthreads
-         architecture: SkylakeX
+                 user_api: blas
+             internal_api: openblas
+              num_threads: 36
+                   prefix: libscipy_openblas
+                 filepath: /home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-32a4b2a6.so
+                  version: 0.3.31.188.0
+          threading_layer: pthreads
+             architecture: SkylakeX
 
 </pre></div>
 </div>
@@ -1432,33 +1444,31 @@ Threadpoolctl Information:
 <div class="thebelab-output" data-output="true"><div class="docutils container">
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;system&#39;: {&#39;python&#39;: &#39;3.11.15 (main, Mar  4 2026, 16:25:54) [GCC 11.4.0]&#39;,
   &#39;executable&#39;: &#39;/home/circleci/.pyenv/versions/3.11.15/bin/python3.11&#39;,
-  &#39;is_free_threaded&#39;: False,
   &#39;python_implementation&#39;: &#39;CPython&#39;,
+  &#39;libc_ver&#39;: (&#39;glibc&#39;, &#39;2.35&#39;),
+  &#39;OS&#39;: &#39;Linux-6.17.0-1013-aws-x86_64-with-glibc2.35&#39;,
+  &#39;architecture&#39;: &#39;x86_64&#39;,
   &#39;CPU&#39;: &#39;x86_64&#39;,
   &#39;cores&#39;: 36,
-  &#39;architecture&#39;: &#39;x86_64&#39;,
-  &#39;OS&#39;: &#39;Linux-6.17.0-1013-aws-x86_64-with-glibc2.35&#39;,
-  &#39;ci&#39;: &#39;true&#39;},
- &#39;dependencies&#39;: {&#39;scikitplot&#39;: &#39;0.5.dev0+git.20260517.dff5f00&#39;,
+  &#39;is_free_threaded_build&#39;: False,
+  &#39;is_gil_enabled&#39;: True,
+  &#39;is_running_no_gil&#39;: False},
+ &#39;dependencies&#39;: {&#39;scikitplot&#39;: &#39;0.5.dev0+git.20260518.a80a5f3&#39;,
   &#39;pip&#39;: &#39;26.0.1&#39;,
-  &#39;meson-python&#39;: &#39;0.19.0&#39;,
   &#39;setuptools&#39;: &#39;79.0.1&#39;,
   &#39;cython&#39;: &#39;3.2.4&#39;,
   &#39;numpy&#39;: &#39;2.4.5&#39;,
   &#39;scipy&#39;: &#39;1.17.1&#39;,
+  &#39;aggdraw&#39;: &#39;1.4.1&#39;,
   &#39;pandas&#39;: &#39;2.3.3&#39;,
   &#39;matplotlib&#39;: &#39;3.10.9&#39;,
-  &#39;scikit-learn&#39;: &#39;1.8.0&#39;,
   &#39;joblib&#39;: &#39;1.5.3&#39;,
   &#39;threadpoolctl&#39;: &#39;3.6.0&#39;,
-  &#39;aggdraw&#39;: &#39;1.4.1&#39;,
-  &#39;seaborn&#39;: &#39;0.13.2&#39;,
-  &#39;bokeh&#39;: None,
-  &#39;plotly&#39;: &#39;6.7.0&#39;,
-  &#39;streamlit&#39;: None,
-  &#39;gradio&#39;: None,
-  &#39;pyyaml&#39;: &#39;6.0.3&#39;},
- &#39;environment&#39;: {&#39;MKL_NUM_THREADS&#39;: None,
+  &#39;scikit-learn&#39;: &#39;1.8.0&#39;,
+  &#39;seaborn&#39;: &#39;0.13.2&#39;},
+ &#39;environment&#39;: {&#39;runtime_envs&#39;: [&#39;docker&#39;],
+  &#39;CI&#39;: &#39;true&#39;,
+  &#39;MKL_NUM_THREADS&#39;: None,
   &#39;OMP_NUM_THREADS&#39;: None,
   &#39;OPENBLAS_NUM_THREADS&#39;: None},
  &#39;gpu&#39;: {&#39;cuda&#39;: None, &#39;gpu&#39;: None, &#39;mps&#39;: None, &#39;xla&#39;: None, &#39;xpu&#39;: None},
@@ -1489,76 +1499,76 @@ Threadpoolctl Information:
 <div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>[32m[1mChanged logging level: WARNING[0m
 [1;36mScikit-plot Version Information:[0m
 
-
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
 System Information:
-               python: 3.11.15 (main, Mar  4 2026, 16:25:54) [GCC 11.4.0]
-           executable: /home/circleci/.pyenv/versions/3.11.15/bin/python
-     is_free_threaded: False
-python_implementation: CPython
-                  CPU: x86_64
-                cores: 36
-         architecture: x86_64
-                   OS: Linux-6.17.0-1013-aws-x86_64-with-glibc2.35
-                   ci: true
+                   python: 3.11.15 (main, Mar  4 2026, 16:25:54) [GCC 11.4.0]
+               executable: /home/circleci/.pyenv/versions/3.11.15/bin/python
+    python_implementation: CPython
+                 libc_ver: (&#39;glibc&#39;, &#39;2.35&#39;)
+                       OS: Linux-6.17.0-1013-aws-x86_64-with-glibc2.35
+             architecture: x86_64
+                      CPU: x86_64
+                    cores: 36
+   is_free_threaded_build: False
+           is_gil_enabled: True
+        is_running_no_gil: False
 
 Python Dependencies:
-           scikitplot: 0.5.dev0+git.20260517.dff5f00
-                  pip: 26.0.1
-         meson-python: 0.19.0
-           setuptools: 79.0.1
-               cython: 3.2.4
-                numpy: 2.4.5
-                scipy: 1.17.1
-               pandas: 2.3.3
-           matplotlib: 3.10.9
-         scikit-learn: 1.8.0
-               joblib: 1.5.3
-        threadpoolctl: 3.6.0
-              aggdraw: 1.4.1
-              seaborn: 0.13.2
-                bokeh: None
-               plotly: 6.7.0
-            streamlit: None
-               gradio: None
-               pyyaml: 6.0.3
+               scikitplot: 0.5.dev0+git.20260518.a80a5f3
+                      pip: 26.0.1
+               setuptools: 79.0.1
+                   cython: 3.2.4
+                    numpy: 2.4.5
+                    scipy: 1.17.1
+                  aggdraw: 1.4.1
+                   pandas: 2.3.3
+               matplotlib: 3.10.9
+                   joblib: 1.5.3
+            threadpoolctl: 3.6.0
+             scikit-learn: 1.8.0
+                  seaborn: 0.13.2
 
 Environment Variables:
-      MKL_NUM_THREADS: None
-      OMP_NUM_THREADS: None
- OPENBLAS_NUM_THREADS: None
+             runtime_envs: [&#39;docker&#39;]
+                       CI: true
+          MKL_NUM_THREADS: None
+          OMP_NUM_THREADS: None
+     OPENBLAS_NUM_THREADS: None
 
 GPU Information:
-                 cuda: None
-                  gpu: None
-                  mps: None
-                  xla: None
-                  xpu: None
+                     cuda: None
+                      gpu: None
+                      mps: None
+                      xla: None
+                      xpu: None
 
 Threadpoolctl Information:
-             user_api: blas
-         internal_api: openblas
-          num_threads: 36
-               prefix: libscipy_openblas
-             filepath: /home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-32a4b2a6.so
-              version: 0.3.31.188.0
-      threading_layer: pthreads
-         architecture: SkylakeX
+                 user_api: blas
+             internal_api: openblas
+              num_threads: 36
+                   prefix: libscipy_openblas
+                 filepath: /home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-32a4b2a6.so
+                  version: 0.3.31.188.0
+          threading_layer: pthreads
+             architecture: SkylakeX
 
-             user_api: blas
-         internal_api: openblas
-          num_threads: 36
-               prefix: libscipy_openblas
-             filepath: /home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-6cdc3b4a.so
-              version: 0.3.30
-      threading_layer: pthreads
-         architecture: SkylakeX
+                 user_api: blas
+             internal_api: openblas
+              num_threads: 36
+                   prefix: libscipy_openblas
+                 filepath: /home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-6cdc3b4a.so
+                  version: 0.3.30
+          threading_layer: pthreads
+             architecture: SkylakeX
 
-             user_api: openmp
-         internal_api: openmp
-          num_threads: 36
-               prefix: libgomp
-             filepath: /home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0
-              version: None
+                 user_api: openmp
+             internal_api: openmp
+              num_threads: 36
+                   prefix: libgomp
+                 filepath: /home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0
+                  version: None
 
 </pre></div>
 </div>
@@ -1567,7 +1577,7 @@ Threadpoolctl Information:
 </div>
 </div>
 </div>
-<div id="5e4996b9-eb31-4454-a715-98ffeb79defc" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('385b4a35-c768-46a2-888e-8f358f6e14e1','5e4996b9-eb31-4454-a715-98ffeb79defc')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('385b4a35-c768-46a2-888e-8f358f6e14e1','5e4996b9-eb31-4454-a715-98ffeb79defc')">Open In Tab</button></div><div id="888f5bd7-5790-4475-a14f-892e13919804" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="877d90b7-5420-4e28-8572-045cb1aa5303" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('625fd83f-e654-4cbe-9805-971c465eb8a9','877d90b7-5420-4e28-8572-045cb1aa5303')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('625fd83f-e654-4cbe-9805-971c465eb8a9','877d90b7-5420-4e28-8572-045cb1aa5303')">Open In Tab</button></div><div id="58e211ca-f5fc-412d-a8c2-77303f0b94ab" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 <button title="Make live" class="thebelab-button" id="thebelab-activate-button" onclick="initThebelab()">Make live</button>
@@ -1619,6 +1629,21 @@ Threadpoolctl Information:
 
 
   <div class="sidebar-secondary-item">
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/scikit-plots/scikit-plots/edit/main/modules/generated/scikitplot.show_versions.rst"></a>
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
 <div
     id="pst-page-navigation-heading-2"
     class="page-toc tocsection onthispage">
@@ -1633,15 +1658,6 @@ Threadpoolctl Information:
 
 
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../../_sources/modules/generated/scikitplot.show_versions.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               
@@ -1674,7 +1690,7 @@ Threadpoolctl Information:
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260517.dff5f00 2026-05-17T00:49Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260518.a80a5f3 2026-05-18T17:16Z.
       <br/>
     
   </p>

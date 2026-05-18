@@ -1,6 +1,6 @@
 # show\_versions[#](#show-versions "Link to this heading")
 
-scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/utils/_show_versions.py#L214)[#](#scikitplot.show_versions "Link to this definition")
+scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/utils/_show_versions.py#L298)[#](#scikitplot.show_versions "Link to this definition")
 :   Print or return debugging information about the system, Python, dependencies, and hardware.
 
     Parameters:
@@ -26,6 +26,12 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
 
     Useful for debugging and issue reporting.
 
+    * is\_free\_threaded\_build -> capability / ABI
+    * is\_gil\_enabled -> runtime state
+    * is\_running\_no\_gil -> effective execution mode
+
+    Python | `is_free_threaded_build` | `is_gil_enabled` | `is_running_no_gil` |———————- | ———————–: | —————: | ——————: |3.8-3.12 | False | True | False |3.13-3.14 regular | False | True | False |3.13-3.14 FT + GIL ON | True | True | False |3.13-3.14 FT + GIL OFF | True | False | True |3.15+ FT + GIL OFF | True | False | True |
+
     Examples
 
     Try it in your browser!
@@ -37,58 +43,56 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
     ```
 
     System Information:
-                   python: 3.11.15 (main, Mar  4 2026, 16:25:54) [GCC 11.4.0]
-               executable: /home/circleci/.pyenv/versions/3.11.15/bin/python3.11
-         is_free_threaded: False
-    python_implementation: CPython
-                      CPU: x86_64
-                    cores: 36
-             architecture: x86_64
-                       OS: Linux-6.17.0-1013-aws-x86_64-with-glibc2.35
-                       ci: true
+                       python: 3.11.15 (main, Mar  4 2026, 16:25:54) [GCC 11.4.0]
+                   executable: /home/circleci/.pyenv/versions/3.11.15/bin/python3.11
+        python_implementation: CPython
+                     libc_ver: ('glibc', '2.35')
+                           OS: Linux-6.17.0-1013-aws-x86_64-with-glibc2.35
+                 architecture: x86_64
+                          CPU: x86_64
+                        cores: 36
+       is_free_threaded_build: False
+               is_gil_enabled: True
+            is_running_no_gil: False
 
     Python Dependencies:
-               scikitplot: 0.5.dev0+git.20260517.dff5f00
-                      pip: 26.0.1
-             meson-python: 0.19.0
-               setuptools: 79.0.1
-                   cython: 3.2.4
-                    numpy: 2.4.5
-                    scipy: 1.17.1
-                   pandas: 2.3.3
-               matplotlib: 3.10.9
-             scikit-learn: 1.8.0
-                   joblib: 1.5.3
-            threadpoolctl: 3.6.0
-                  aggdraw: 1.4.1
-                  seaborn: 0.13.2
-                    bokeh: None
-                   plotly: 6.7.0
-                streamlit: None
-                   gradio: None
-                   pyyaml: 6.0.3
+                   scikitplot: 0.5.dev0+git.20260518.a80a5f3
+                          pip: 26.0.1
+                   setuptools: 79.0.1
+                       cython: 3.2.4
+                        numpy: 2.4.5
+                        scipy: 1.17.1
+                      aggdraw: 1.4.1
+                       pandas: 2.3.3
+                   matplotlib: 3.10.9
+                       joblib: 1.5.3
+                threadpoolctl: 3.6.0
+                 scikit-learn: 1.8.0
+                      seaborn: 0.13.2
 
     Environment Variables:
-          MKL_NUM_THREADS: None
-          OMP_NUM_THREADS: None
-     OPENBLAS_NUM_THREADS: None
+                 runtime_envs: ['docker']
+                           CI: true
+              MKL_NUM_THREADS: None
+              OMP_NUM_THREADS: None
+         OPENBLAS_NUM_THREADS: None
 
     GPU Information:
-                     cuda: None
-                      gpu: None
-                      mps: None
-                      xla: None
-                      xpu: None
+                         cuda: None
+                          gpu: None
+                          mps: None
+                          xla: None
+                          xpu: None
 
     Threadpoolctl Information:
-                 user_api: blas
-             internal_api: openblas
-              num_threads: 36
-                   prefix: libscipy_openblas
-                 filepath: /home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-32a4b2a6.so
-                  version: 0.3.31.188.0
-          threading_layer: pthreads
-             architecture: SkylakeX
+                     user_api: blas
+                 internal_api: openblas
+                  num_threads: 36
+                       prefix: libscipy_openblas
+                     filepath: /home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-32a4b2a6.so
+                      version: 0.3.31.188.0
+              threading_layer: pthreads
+                 architecture: SkylakeX
 
 
     ```
@@ -100,33 +104,31 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
     ```
     {'system': {'python': '3.11.15 (main, Mar  4 2026, 16:25:54) [GCC 11.4.0]',
       'executable': '/home/circleci/.pyenv/versions/3.11.15/bin/python3.11',
-      'is_free_threaded': False,
       'python_implementation': 'CPython',
+      'libc_ver': ('glibc', '2.35'),
+      'OS': 'Linux-6.17.0-1013-aws-x86_64-with-glibc2.35',
+      'architecture': 'x86_64',
       'CPU': 'x86_64',
       'cores': 36,
-      'architecture': 'x86_64',
-      'OS': 'Linux-6.17.0-1013-aws-x86_64-with-glibc2.35',
-      'ci': 'true'},
-     'dependencies': {'scikitplot': '0.5.dev0+git.20260517.dff5f00',
+      'is_free_threaded_build': False,
+      'is_gil_enabled': True,
+      'is_running_no_gil': False},
+     'dependencies': {'scikitplot': '0.5.dev0+git.20260518.a80a5f3',
       'pip': '26.0.1',
-      'meson-python': '0.19.0',
       'setuptools': '79.0.1',
       'cython': '3.2.4',
       'numpy': '2.4.5',
       'scipy': '1.17.1',
+      'aggdraw': '1.4.1',
       'pandas': '2.3.3',
       'matplotlib': '3.10.9',
-      'scikit-learn': '1.8.0',
       'joblib': '1.5.3',
       'threadpoolctl': '3.6.0',
-      'aggdraw': '1.4.1',
-      'seaborn': '0.13.2',
-      'bokeh': None,
-      'plotly': '6.7.0',
-      'streamlit': None,
-      'gradio': None,
-      'pyyaml': '6.0.3'},
-     'environment': {'MKL_NUM_THREADS': None,
+      'scikit-learn': '1.8.0',
+      'seaborn': '0.13.2'},
+     'environment': {'runtime_envs': ['docker'],
+      'CI': 'true',
+      'MKL_NUM_THREADS': None,
       'OMP_NUM_THREADS': None,
       'OPENBLAS_NUM_THREADS': None},
      'gpu': {'cuda': None, 'gpu': None, 'mps': None, 'xla': None, 'xpu': None},
@@ -150,75 +152,76 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
     [1;36mScikit-plot Version Information:[0m
 
 
+    ```
+    ```
+
     System Information:
-                   python: 3.11.15 (main, Mar  4 2026, 16:25:54) [GCC 11.4.0]
-               executable: /home/circleci/.pyenv/versions/3.11.15/bin/python
-         is_free_threaded: False
-    python_implementation: CPython
-                      CPU: x86_64
-                    cores: 36
-             architecture: x86_64
-                       OS: Linux-6.17.0-1013-aws-x86_64-with-glibc2.35
-                       ci: true
+                       python: 3.11.15 (main, Mar  4 2026, 16:25:54) [GCC 11.4.0]
+                   executable: /home/circleci/.pyenv/versions/3.11.15/bin/python
+        python_implementation: CPython
+                     libc_ver: ('glibc', '2.35')
+                           OS: Linux-6.17.0-1013-aws-x86_64-with-glibc2.35
+                 architecture: x86_64
+                          CPU: x86_64
+                        cores: 36
+       is_free_threaded_build: False
+               is_gil_enabled: True
+            is_running_no_gil: False
 
     Python Dependencies:
-               scikitplot: 0.5.dev0+git.20260517.dff5f00
-                      pip: 26.0.1
-             meson-python: 0.19.0
-               setuptools: 79.0.1
-                   cython: 3.2.4
-                    numpy: 2.4.5
-                    scipy: 1.17.1
-                   pandas: 2.3.3
-               matplotlib: 3.10.9
-             scikit-learn: 1.8.0
-                   joblib: 1.5.3
-            threadpoolctl: 3.6.0
-                  aggdraw: 1.4.1
-                  seaborn: 0.13.2
-                    bokeh: None
-                   plotly: 6.7.0
-                streamlit: None
-                   gradio: None
-                   pyyaml: 6.0.3
+                   scikitplot: 0.5.dev0+git.20260518.a80a5f3
+                          pip: 26.0.1
+                   setuptools: 79.0.1
+                       cython: 3.2.4
+                        numpy: 2.4.5
+                        scipy: 1.17.1
+                      aggdraw: 1.4.1
+                       pandas: 2.3.3
+                   matplotlib: 3.10.9
+                       joblib: 1.5.3
+                threadpoolctl: 3.6.0
+                 scikit-learn: 1.8.0
+                      seaborn: 0.13.2
 
     Environment Variables:
-          MKL_NUM_THREADS: None
-          OMP_NUM_THREADS: None
-     OPENBLAS_NUM_THREADS: None
+                 runtime_envs: ['docker']
+                           CI: true
+              MKL_NUM_THREADS: None
+              OMP_NUM_THREADS: None
+         OPENBLAS_NUM_THREADS: None
 
     GPU Information:
-                     cuda: None
-                      gpu: None
-                      mps: None
-                      xla: None
-                      xpu: None
+                         cuda: None
+                          gpu: None
+                          mps: None
+                          xla: None
+                          xpu: None
 
     Threadpoolctl Information:
-                 user_api: blas
-             internal_api: openblas
-              num_threads: 36
-                   prefix: libscipy_openblas
-                 filepath: /home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-32a4b2a6.so
-                  version: 0.3.31.188.0
-          threading_layer: pthreads
-             architecture: SkylakeX
+                     user_api: blas
+                 internal_api: openblas
+                  num_threads: 36
+                       prefix: libscipy_openblas
+                     filepath: /home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-32a4b2a6.so
+                      version: 0.3.31.188.0
+              threading_layer: pthreads
+                 architecture: SkylakeX
 
-                 user_api: blas
-             internal_api: openblas
-              num_threads: 36
-                   prefix: libscipy_openblas
-                 filepath: /home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-6cdc3b4a.so
-                  version: 0.3.30
-          threading_layer: pthreads
-             architecture: SkylakeX
+                     user_api: blas
+                 internal_api: openblas
+                  num_threads: 36
+                       prefix: libscipy_openblas
+                     filepath: /home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-6cdc3b4a.so
+                      version: 0.3.30
+              threading_layer: pthreads
+                 architecture: SkylakeX
 
-                 user_api: openmp
-             internal_api: openmp
-              num_threads: 36
-                   prefix: libgomp
-                 filepath: /home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0
-                  version: None
+                     user_api: openmp
+                 internal_api: openmp
+                  num_threads: 36
+                       prefix: libgomp
+                     filepath: /home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0
+                      version: None
 
 
     ```

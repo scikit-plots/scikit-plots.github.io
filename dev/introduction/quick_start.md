@@ -28,7 +28,7 @@ A common way to assess a classifier’s performance is through its confusion mat
 4. ****Plot the Confusion Matrix****:
    Use [`plot_classifier_eval`](../modules/generated/scikitplot.api.metrics.plot_classifier_eval.html#scikitplot.api.metrics.plot_classifier_eval "scikitplot.api.metrics.plot_classifier_eval") to visualize the confusion matrix.
 5. ****Display the Plot****:
-   Optionally, use [`show`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show "(in Matplotlib v3.12.0.dev80+g7499f38d2)") to display the plot.
+   Optionally, use [`show`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show "(in Matplotlib v3.12.0.dev86+g67cbe922d)") to display the plot.
 
 Here’s the code to illustrate the process:
 

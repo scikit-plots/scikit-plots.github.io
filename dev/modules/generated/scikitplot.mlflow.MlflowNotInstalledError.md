@@ -1,6 +1,6 @@
 # MlflowNotInstalledError[#](#mlflownotinstallederror "Link to this heading")
 
-exception scikitplot.mlflow.MlflowNotInstalledError[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/mlflow/_errors.py#L18)[#](#scikitplot.mlflow.MlflowNotInstalledError "Link to this definition")
+exception scikitplot.mlflow.MlflowNotInstalledError[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/mlflow/_errors.py#L18)[#](#scikitplot.mlflow.MlflowNotInstalledError "Link to this definition")
 :   Raised when MLflow is required but not installed.
 
     Annotation:

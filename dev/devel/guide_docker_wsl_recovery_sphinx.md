@@ -215,6 +215,10 @@ Actions:
 
 Cross-platform model:
 
+| OS | Storage model |
+| --- | --- |
+| Windows Linux macOS | WSL2 + VHDX Native filesystem VM disk image |
+
 ## Final Warning[#](#final-warning "Link to this heading")
 
 Do not reinstall or clean Docker before recovery is confirmed.

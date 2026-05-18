@@ -1,6 +1,6 @@
 # normalize\_text[#](#normalize-text "Link to this heading")
 
-scikitplot.corpus.normalize\_text(**text**, **\***, **config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_normalizers/_text_normalizer.py#L225)[#](#scikitplot.corpus.normalize_text "Link to this definition")
+scikitplot.corpus.normalize\_text(**text**, **\***, **config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/corpus/_normalizers/_text_normalizer.py#L225)[#](#scikitplot.corpus.normalize_text "Link to this definition")
 :   Normalise **text** according to **config**.
 
     Parameters:

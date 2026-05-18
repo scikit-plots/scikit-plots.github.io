@@ -1,6 +1,6 @@
 # bayesian\_info\_criterion\_lsq[#](#bayesian-info-criterion-lsq "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.bayesian\_info\_criterion\_lsq(**ssr**, **n\_params**, **n\_samples**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/cexternals/_astropy/stats/info_theory.py#L128)[#](#scikitplot.cexternals._astropy.stats.bayesian_info_criterion_lsq "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.bayesian\_info\_criterion\_lsq(**ssr**, **n\_params**, **n\_samples**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/cexternals/_astropy/stats/info_theory.py#L128)[#](#scikitplot.cexternals._astropy.stats.bayesian_info_criterion_lsq "Link to this definition")
 :   Computes the Bayesian Information Criterion (BIC) assuming that the
     observations come from a Gaussian distribution.
 

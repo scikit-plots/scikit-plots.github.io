@@ -1,6 +1,6 @@
 # PybindCompiler[#](#pybindcompiler "Link to this heading")
 
-class scikitplot.cython.PybindCompiler[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/cython/_custom_compiler.py#L862)[#](#scikitplot.cython.PybindCompiler "Link to this definition")
+class scikitplot.cython.PybindCompiler[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/cython/_custom_compiler.py#L862)[#](#scikitplot.cython.PybindCompiler "Link to this definition")
 :   Built-in custom compiler: pybind11-only projects.
 
     This compiler wraps the standard Cython+setuptools pipeline but
@@ -40,7 +40,7 @@ class scikitplot.cython.PybindCompiler[[source]](https://github.com/scikit-plots
     ```
     Go BackOpen In Tab
 
-    \_\_call\_\_(**source**, **\***, **build\_dir**, **module\_name**, **include\_dirs=None**, **extra\_compile\_args=None**, **extra\_link\_args=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/cython/_custom_compiler.py#L899)[#](#scikitplot.cython.PybindCompiler.__call__ "Link to this definition")
+    \_\_call\_\_(**source**, **\***, **build\_dir**, **module\_name**, **include\_dirs=None**, **extra\_compile\_args=None**, **extra\_link\_args=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/cython/_custom_compiler.py#L899)[#](#scikitplot.cython.PybindCompiler.__call__ "Link to this definition")
     :   Compile a pybind11 C++ extension from source text.
 
         Parameters:

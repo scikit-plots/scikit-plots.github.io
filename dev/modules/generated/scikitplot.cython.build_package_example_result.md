@@ -1,6 +1,6 @@
 # build\_package\_example\_result[#](#build-package-example-result "Link to this heading")
 
-scikitplot.cython.build\_package\_example\_result(**name**, **\***, **cache\_dir=None**, **use\_cache=True**, **force\_rebuild=False**, **verbose=0**, **profile=None**, **numpy\_support=True**, **numpy\_required=False**, **include\_dirs=None**, **extra\_compile\_args=None**, **extra\_link\_args=None**, **compiler\_directives=None**, **include\_cwd=True**, **lock\_timeout\_s=60.0**, **language=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/cython/_templates_api.py#L839)[#](#scikitplot.cython.build_package_example_result "Link to this definition")
+scikitplot.cython.build\_package\_example\_result(**name**, **\***, **cache\_dir=None**, **use\_cache=True**, **force\_rebuild=False**, **verbose=0**, **profile=None**, **numpy\_support=True**, **numpy\_required=False**, **include\_dirs=None**, **extra\_compile\_args=None**, **extra\_link\_args=None**, **compiler\_directives=None**, **include\_cwd=True**, **lock\_timeout\_s=60.0**, **language=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/cython/_templates_api.py#L839)[#](#scikitplot.cython.build_package_example_result "Link to this definition")
 :   Build and import a multi-module **package example** and return a structured result.
 
     Parameters:

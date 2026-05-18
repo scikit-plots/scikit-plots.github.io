@@ -1,6 +1,6 @@
 # normalize\_mlflow\_store\_values[#](#normalize-mlflow-store-values "Link to this heading")
 
-scikitplot.mlflow.normalize\_mlflow\_store\_values(**\***, **backend\_store\_uri**, **default\_artifact\_root**, **base\_dir**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/mlflow/_project.py#L421)[#](#scikitplot.mlflow.normalize_mlflow_store_values "Link to this definition")
+scikitplot.mlflow.normalize\_mlflow\_store\_values(**\***, **backend\_store\_uri**, **default\_artifact\_root**, **base\_dir**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/mlflow/_project.py#L421)[#](#scikitplot.mlflow.normalize_mlflow_store_values "Link to this definition")
 :   Normalize local store values for consistent multi-script usage.
 
     Deterministic normalization rules:

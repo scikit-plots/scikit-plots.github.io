@@ -1,6 +1,6 @@
 # GoogleDriveDownloader[#](#googledrivedownloader "Link to this heading")
 
-class scikitplot.corpus.GoogleDriveDownloader(**input\_url**, **output\_path=None**, **timeout=30.0**, **max\_bytes=104857600**, **verify\_ssl=True**, **block\_private\_ips=True**, **max\_redirects=5**, **user\_agent='Mozilla/5.0 (compatible; scikitplot-corpus/1.0; +https://github.com/scikit-plots/scikit-plots)'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_downloader/_gdrive.py#L129)[#](#scikitplot.corpus.GoogleDriveDownloader "Link to this definition")
+class scikitplot.corpus.GoogleDriveDownloader(**input\_url**, **output\_path=None**, **timeout=30.0**, **max\_bytes=104857600**, **verify\_ssl=True**, **block\_private\_ips=True**, **max\_redirects=5**, **user\_agent='Mozilla/5.0 (compatible; scikitplot-corpus/1.0; +https://github.com/scikit-plots/scikit-plots)'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/corpus/_downloader/_gdrive.py#L129)[#](#scikitplot.corpus.GoogleDriveDownloader "Link to this definition")
 :   Google Drive share-link downloader.
 
     Resolves any public Google Drive share URL to a direct download URL
@@ -81,7 +81,7 @@ class scikitplot.corpus.GoogleDriveDownloader(**input\_url**, **output\_path=Non
 
     block\_private\_ips: [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)") = True[#](#scikitplot.corpus.GoogleDriveDownloader.block_private_ips "Link to this definition")
 
-    cleanup()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_downloader/_base.py#L481)[#](#scikitplot.corpus.GoogleDriveDownloader.cleanup "Link to this definition")
+    cleanup()[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/corpus/_downloader/_base.py#L481)[#](#scikitplot.corpus.GoogleDriveDownloader.cleanup "Link to this definition")
     :   Remove the temporary directory owned by this instance, if any.
 
         Safe to call multiple times. If `output_path` was supplied at
@@ -90,7 +90,7 @@ class scikitplot.corpus.GoogleDriveDownloader(**input\_url**, **output\_path=Non
         Return type:
         :   None
 
-    download()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_downloader/_gdrive.py#L220)[#](#scikitplot.corpus.GoogleDriveDownloader.download "Link to this definition")
+    download()[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/corpus/_downloader/_gdrive.py#L220)[#](#scikitplot.corpus.GoogleDriveDownloader.download "Link to this definition")
     :   Download the Google Drive file and return a [`DownloadResult`](scikitplot.corpus.DownloadResult.html#scikitplot.corpus.DownloadResult "scikitplot.corpus.DownloadResult").
 
         Handles the large-file virus-warning interstitial by inspecting
@@ -115,7 +115,7 @@ class scikitplot.corpus.GoogleDriveDownloader(**input\_url**, **output\_path=Non
         Return type:
         :   [**DownloadResult**](scikitplot.corpus.DownloadResult.html#scikitplot.corpus.DownloadResult "scikitplot.corpus._downloader._base.DownloadResult")
 
-    input\_url: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_downloader/_gdrive.py#L129)[#](#scikitplot.corpus.GoogleDriveDownloader.input_url "Link to this definition")
+    input\_url: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/corpus/_downloader/_gdrive.py#L129)[#](#scikitplot.corpus.GoogleDriveDownloader.input_url "Link to this definition")
 
     max\_bytes: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 104857600[#](#scikitplot.corpus.GoogleDriveDownloader.max_bytes "Link to this definition")
 
@@ -123,7 +123,7 @@ class scikitplot.corpus.GoogleDriveDownloader(**input\_url**, **output\_path=Non
 
     output\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.GoogleDriveDownloader.output_path "Link to this definition")
 
-    resolve\_download\_url()[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_downloader/_gdrive.py#L202)[#](#scikitplot.corpus.GoogleDriveDownloader.resolve_download_url "Link to this definition")
+    resolve\_download\_url()[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/corpus/_downloader/_gdrive.py#L202)[#](#scikitplot.corpus.GoogleDriveDownloader.resolve_download_url "Link to this definition")
     :   Resolve the share URL to a direct Google Drive download URL.
 
         Returns:

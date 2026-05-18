@@ -1,6 +1,6 @@
 # to\_mcp\_resources[#](#to-mcp-resources "Link to this heading")
 
-scikitplot.corpus.to\_mcp\_resources(**documents**, **\***, **uri\_prefix='corpus://'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/dff5f00/scikitplot/corpus/_adapters.py#L271)[#](#scikitplot.corpus.to_mcp_resources "Link to this definition")
+scikitplot.corpus.to\_mcp\_resources(**documents**, **\***, **uri\_prefix='corpus://'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/a80a5f3/scikitplot/corpus/_adapters.py#L271)[#](#scikitplot.corpus.to_mcp_resources "Link to this definition")
 :   Convert documents to MCP `resources/read` response format.
 
     Parameters:
