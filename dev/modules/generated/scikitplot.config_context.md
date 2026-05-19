@@ -1,6 +1,6 @@
 # config\_context[#](#config-context "Link to this heading")
 
-scikitplot.config\_context(**\***, **assume\_finite=None**, **working\_memory=None**, **display=None**, **array\_api\_dispatch=None**, **transform\_output=None**, **skip\_parameter\_validation=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/config/_config.py#L240)[#](#scikitplot.config_context "Link to this definition")
+scikitplot.config\_context(**\***, **assume\_finite=None**, **working\_memory=None**, **display=None**, **array\_api\_dispatch=None**, **transform\_output=None**, **skip\_parameter\_validation=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/config/_config.py#L240)[#](#scikitplot.config_context "Link to this definition")
 :   Context manager for global scikit-plots configuration.
 
     Parameters:

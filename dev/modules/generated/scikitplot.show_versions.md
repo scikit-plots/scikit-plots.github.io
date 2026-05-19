@@ -1,6 +1,6 @@
 # show\_versions[#](#show-versions "Link to this heading")
 
-scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/utils/_show_versions.py#L298)[#](#scikitplot.show_versions "Link to this definition")
+scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/utils/_show_versions.py#L298)[#](#scikitplot.show_versions "Link to this definition")
 :   Print or return debugging information about the system, Python, dependencies, and hardware.
 
     Parameters:
@@ -56,11 +56,11 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
             is_running_no_gil: False
 
     Python Dependencies:
-                   scikitplot: 0.5.dev0+git.20260518.7ef1ffb
+                   scikitplot: 0.5.dev0+git.20260519.5fb281e
                           pip: 26.0.1
                    setuptools: 79.0.1
                        cython: 3.2.4
-                        numpy: 2.4.5
+                        numpy: 2.4.6
                         scipy: 1.17.1
                       aggdraw: 1.4.1
                        pandas: 2.3.3
@@ -113,11 +113,11 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
       'is_free_threaded_build': False,
       'is_gil_enabled': True,
       'is_running_no_gil': False},
-     'dependencies': {'scikitplot': '0.5.dev0+git.20260518.7ef1ffb',
+     'dependencies': {'scikitplot': '0.5.dev0+git.20260519.5fb281e',
       'pip': '26.0.1',
       'setuptools': '79.0.1',
       'cython': '3.2.4',
-      'numpy': '2.4.5',
+      'numpy': '2.4.6',
       'scipy': '1.17.1',
       'aggdraw': '1.4.1',
       'pandas': '2.3.3',
@@ -169,11 +169,11 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
             is_running_no_gil: False
 
     Python Dependencies:
-                   scikitplot: 0.5.dev0+git.20260518.7ef1ffb
+                   scikitplot: 0.5.dev0+git.20260519.5fb281e
                           pip: 26.0.1
                    setuptools: 79.0.1
                        cython: 3.2.4
-                        numpy: 2.4.5
+                        numpy: 2.4.6
                         scipy: 1.17.1
                       aggdraw: 1.4.1
                        pandas: 2.3.3

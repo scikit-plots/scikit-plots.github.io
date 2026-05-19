@@ -71,7 +71,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=88ebf3eb"></script>
+    <script src="../../_static/ai-assistant.js?v=bd6c8cb8"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>extract_archive<a class="headerlink" href="#extract-archive" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.extract_archive">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">extract_archive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">archive_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">supported_extensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_total_bytes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2147483648</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/corpus/_archive_handler.py#L156"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.extract_archive" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">extract_archive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">archive_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">supported_extensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_total_bytes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2147483648</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_archive_handler.py#L156"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.extract_archive" title="Link to this definition">#</a></dt>
 <dd><p>Extract an archive to a destination directory.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1374,8 +1374,8 @@ verified to fall within <em>output_path</em>. Members with path-traversal
 components (<code class="docutils literal notranslate"><span class="pre">../</span></code>) are logged as warnings and skipped.</p>
 <p><strong>Symlinks:</strong> Symbolic links inside archives are always skipped.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="19dad219-9b43-4151-a5b6-7b8a410a00b8">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('19dad219-9b43-4151-a5b6-7b8a410a00b8','ce5ed22b-c107-4c34-a844-4d6a19d67e92','e1bc0fd3-849b-47f2-807e-0db72c91b48a','../../lite/tree/../notebooks/index.html?path=a49cf333_7407_4d22_897e_62b7b135f461.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="76fa89a9-80ff-4ba3-a339-d1d6a844c300">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('76fa89a9-80ff-4ba3-a339-d1d6a844c300','8a9ecd3c-471c-4e17-b48d-ee71b5298f1c','0be0a254-31c8-4dc2-8f7e-d2a4efe0310b','../../lite/tree/../notebooks/index.html?path=382f7557_504b_4b76_84f6_423976444b8a.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">files</span> <span class="o">=</span> <span class="n">extract_archive</span><span class="p">(</span><span class="s2">&quot;corpus.zip&quot;</span><span class="p">,</span> <span class="s2">&quot;/tmp/corpus_extract&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">suffix</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">]</span>
@@ -1384,7 +1384,7 @@ components (<code class="docutils literal notranslate"><span class="pre">../</sp
 </div>
 </div>
 </div>
-<div id="e1bc0fd3-849b-47f2-807e-0db72c91b48a" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('19dad219-9b43-4151-a5b6-7b8a410a00b8','e1bc0fd3-849b-47f2-807e-0db72c91b48a')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('19dad219-9b43-4151-a5b6-7b8a410a00b8','e1bc0fd3-849b-47f2-807e-0db72c91b48a')">Open In Tab</button></div><div id="ce5ed22b-c107-4c34-a844-4d6a19d67e92" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="0be0a254-31c8-4dc2-8f7e-d2a4efe0310b" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('76fa89a9-80ff-4ba3-a339-d1d6a844c300','0be0a254-31c8-4dc2-8f7e-d2a4efe0310b')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('76fa89a9-80ff-4ba3-a339-d1d6a844c300','0be0a254-31c8-4dc2-8f7e-d2a4efe0310b')">Open In Tab</button></div><div id="8a9ecd3c-471c-4e17-b48d-ee71b5298f1c" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1493,7 +1493,7 @@ components (<code class="docutils literal notranslate"><span class="pre">../</sp
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260518.7ef1ffb 2026-05-18T22:25Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260519.5fb281e 2026-05-19T13:35Z.
       <br/>
     
   </p>

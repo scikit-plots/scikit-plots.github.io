@@ -1,6 +1,6 @@
 # tweedie\_gen[#](#tweedie-gen "Link to this heading")
 
-class scikitplot.externals.\_tweedie.tweedie\_gen(**momtype=1**, **a=None**, **b=None**, **xtol=1e-14**, **badvalue=None**, **name=None**, **longname=None**, **shapes=None**, **seed=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/externals/_tweedie/_tweedie_dist.py#L59)[#](#scikitplot.externals._tweedie.tweedie_gen "Link to this definition")
+class scikitplot.externals.\_tweedie.tweedie\_gen(**momtype=1**, **a=None**, **b=None**, **xtol=1e-14**, **badvalue=None**, **name=None**, **longname=None**, **shapes=None**, **seed=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/externals/_tweedie/_tweedie_dist.py#L59)[#](#scikitplot.externals._tweedie.tweedie_gen "Link to this definition")
 :   A Tweedie continuous random variable inherited [`scipy.stats.rv_continuous`](https://scipy.github.io/devdocs/reference/generated/scipy.stats.rv_continuous.html#scipy.stats.rv_continuous "(in SciPy v1.18.0.dev)").
 
     > **See also**
@@ -78,7 +78,7 @@ class scikitplot.externals.\_tweedie.tweedie\_gen(**momtype=1**, **a=None**, **b
     ```
     Go BackOpen In Tab
 
-    \_\_call\_\_(**\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../scipy/stats/_distn_infrastructure.py#L912)[#](#scikitplot.externals._tweedie.tweedie_gen.__call__ "Link to this definition")
+    \_\_call\_\_(**\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/../scipy/stats/_distn_infrastructure.py#L912)[#](#scikitplot.externals._tweedie.tweedie_gen.__call__ "Link to this definition")
     :   Freeze the distribution for the given arguments.
 
         Parameters:
@@ -90,7 +90,7 @@ class scikitplot.externals.\_tweedie.tweedie\_gen(**momtype=1**, **a=None**, **b
         :   ****rv\_frozen****rv\_frozen instance
             :   The frozen distribution.
 
-    cdf(**x**, **\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../scipy/stats/_distn_infrastructure.py#L2132)[#](#scikitplot.externals._tweedie.tweedie_gen.cdf "Link to this definition")
+    cdf(**x**, **\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/../scipy/stats/_distn_infrastructure.py#L2132)[#](#scikitplot.externals._tweedie.tweedie_gen.cdf "Link to this definition")
     :   Cumulative distribution function of the given RV.
 
         Parameters:
@@ -111,7 +111,7 @@ class scikitplot.externals.\_tweedie.tweedie\_gen(**momtype=1**, **a=None**, **b
         :   ****cdf****ndarray
             :   Cumulative distribution function evaluated at `x`
 
-    entropy(**\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../scipy/stats/_distn_infrastructure.py#L1261)[#](#scikitplot.externals._tweedie.tweedie_gen.entropy "Link to this definition")
+    entropy(**\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/../scipy/stats/_distn_infrastructure.py#L1261)[#](#scikitplot.externals._tweedie.tweedie_gen.entropy "Link to this definition")
     :   Differential entropy of the RV.
 
         Parameters:
@@ -138,7 +138,7 @@ class scikitplot.externals.\_tweedie.tweedie\_gen(**momtype=1**, **a=None**, **b
 
         ```
 
-    expect(**func=None**, **args=()**, **loc=0**, **scale=1**, **lb=None**, **ub=None**, **conditional=False**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../scipy/stats/_distn_infrastructure.py#L2919)[#](#scikitplot.externals._tweedie.tweedie_gen.expect "Link to this definition")
+    expect(**func=None**, **args=()**, **loc=0**, **scale=1**, **lb=None**, **ub=None**, **conditional=False**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/../scipy/stats/_distn_infrastructure.py#L2919)[#](#scikitplot.externals._tweedie.tweedie_gen.expect "Link to this definition")
     :   Calculate expected value of a function with respect to the
         distribution by numerical integration.
 
@@ -257,7 +257,7 @@ class scikitplot.externals.\_tweedie.tweedie\_gen(**momtype=1**, **a=None**, **b
         ```
         Go BackOpen In Tab
 
-    fit(**data**, **\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../scipy/stats/_distn_infrastructure.py#L2549)[#](#scikitplot.externals._tweedie.tweedie_gen.fit "Link to this definition")
+    fit(**data**, **\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/../scipy/stats/_distn_infrastructure.py#L2549)[#](#scikitplot.externals._tweedie.tweedie_gen.fit "Link to this definition")
     :   Return estimates of shape (if applicable), location, and scale
         parameters from data. The default estimation method is Maximum
         Likelihood Estimation (MLE), but Method of Moments (MM)
@@ -447,7 +447,7 @@ class scikitplot.externals.\_tweedie.tweedie\_gen(**momtype=1**, **a=None**, **b
         ```
         Go BackOpen In Tab
 
-    fit\_loc\_scale(**data**, **\*args**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../scipy/stats/_distn_infrastructure.py#L2861)[#](#scikitplot.externals._tweedie.tweedie_gen.fit_loc_scale "Link to this definition")
+    fit\_loc\_scale(**data**, **\*args**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/../scipy/stats/_distn_infrastructure.py#L2861)[#](#scikitplot.externals._tweedie.tweedie_gen.fit_loc_scale "Link to this definition")
     :   Estimate loc and scale parameters from data using 1st and 2nd moments.
 
         Parameters:
@@ -465,7 +465,7 @@ class scikitplot.externals.\_tweedie.tweedie\_gen(**momtype=1**, **a=None**, **b
             ****Shat****float
             :   Estimated scale parameter for the data.
 
-    freeze(**\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../scipy/stats/_distn_infrastructure.py#L892)[#](#scikitplot.externals._tweedie.tweedie_gen.freeze "Link to this definition")
+    freeze(**\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/../scipy/stats/_distn_infrastructure.py#L892)[#](#scikitplot.externals._tweedie.tweedie_gen.freeze "Link to this definition")
     :   Freeze the distribution for the given arguments.
 
         Parameters:
@@ -477,7 +477,7 @@ class scikitplot.externals.\_tweedie.tweedie\_gen(**momtype=1**, **a=None**, **b
         :   ****rv\_frozen****rv\_frozen instance
             :   The frozen distribution.
 
-    interval(**confidence**, **\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../scipy/stats/_distn_infrastructure.py#L1474)[#](#scikitplot.externals._tweedie.tweedie_gen.interval "Link to this definition")
+    interval(**confidence**, **\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/../scipy/stats/_distn_infrastructure.py#L1474)[#](#scikitplot.externals._tweedie.tweedie_gen.interval "Link to this definition")
     :   Confidence interval with equal areas around the median.
 
         Parameters:
@@ -512,7 +512,7 @@ class scikitplot.externals.\_tweedie.tweedie\_gen(**momtype=1**, **a=None**, **b
         in each tail to be less than or equal to `p_tail` (usually
         strictly less).
 
-    isf(**q**, **\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../scipy/stats/_distn_infrastructure.py#L2347)[#](#scikitplot.externals._tweedie.tweedie_gen.isf "Link to this definition")
+    isf(**q**, **\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/../scipy/stats/_distn_infrastructure.py#L2347)[#](#scikitplot.externals._tweedie.tweedie_gen.isf "Link to this definition")
     :   Inverse survival function (inverse of `sf`) at q of the given RV.
 
         Parameters:
@@ -533,7 +533,7 @@ class scikitplot.externals.\_tweedie.tweedie\_gen(**momtype=1**, **a=None**, **b
         :   ****x****ndarray or scalar
             :   Quantile corresponding to the upper tail probability q.
 
-    logcdf(**x**, **\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../scipy/stats/_distn_infrastructure.py#L2174)[#](#scikitplot.externals._tweedie.tweedie_gen.logcdf "Link to this definition")
+    logcdf(**x**, **\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/../scipy/stats/_distn_infrastructure.py#L2174)[#](#scikitplot.externals._tweedie.tweedie_gen.logcdf "Link to this definition")
     :   Log of the cumulative distribution function at x of the given RV.
 
         Parameters:
@@ -554,7 +554,7 @@ class scikitplot.externals.\_tweedie.tweedie\_gen(**momtype=1**, **a=None**, **b
         :   ****logcdf****array\_like
             :   Log of the cumulative distribution function evaluated at x
 
-    logpdf(**x**, **\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../scipy/stats/_distn_infrastructure.py#L2090)[#](#scikitplot.externals._tweedie.tweedie_gen.logpdf "Link to this definition")
+    logpdf(**x**, **\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/../scipy/stats/_distn_infrastructure.py#L2090)[#](#scikitplot.externals._tweedie.tweedie_gen.logpdf "Link to this definition")
     :   Log of the probability density function at x of the given RV.
 
         This uses a more numerically accurate calculation if available.
@@ -577,7 +577,7 @@ class scikitplot.externals.\_tweedie.tweedie\_gen(**momtype=1**, **a=None**, **b
         :   ****logpdf****array\_like
             :   Log of the probability density function evaluated at x
 
-    logsf(**x**, **\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../scipy/stats/_distn_infrastructure.py#L2257)[#](#scikitplot.externals._tweedie.tweedie_gen.logsf "Link to this definition")
+    logsf(**x**, **\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/../scipy/stats/_distn_infrastructure.py#L2257)[#](#scikitplot.externals._tweedie.tweedie_gen.logsf "Link to this definition")
     :   Log of the survival function of the given RV.
 
         Returns the log of the “survival function,” defined as (1 - `cdf`),
@@ -601,7 +601,7 @@ class scikitplot.externals.\_tweedie.tweedie\_gen(**momtype=1**, **a=None**, **b
         :   ****logsf****ndarray
             :   Log of the survival function evaluated at `x`.
 
-    mean(**\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../scipy/stats/_distn_infrastructure.py#L1401)[#](#scikitplot.externals._tweedie.tweedie_gen.mean "Link to this definition")
+    mean(**\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/../scipy/stats/_distn_infrastructure.py#L1401)[#](#scikitplot.externals._tweedie.tweedie_gen.mean "Link to this definition")
     :   Mean of the distribution.
 
         Parameters:
@@ -619,7 +619,7 @@ class scikitplot.externals.\_tweedie.tweedie\_gen(**momtype=1**, **a=None**, **b
         :   ****mean****float
             :   the mean of the distribution
 
-    median(**\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../scipy/stats/_distn_infrastructure.py#L1375)[#](#scikitplot.externals._tweedie.tweedie_gen.median "Link to this definition")
+    median(**\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/../scipy/stats/_distn_infrastructure.py#L1375)[#](#scikitplot.externals._tweedie.tweedie_gen.median "Link to this definition")
     :   Median of the distribution.
 
         Parameters:
@@ -641,7 +641,7 @@ class scikitplot.externals.\_tweedie.tweedie\_gen(**momtype=1**, **a=None**, **b
         > `rv_discrete.ppf`
         :   Inverse of the CDF
 
-    moment(**order**, **\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../scipy/stats/_distn_infrastructure.py#L1298)[#](#scikitplot.externals._tweedie.tweedie_gen.moment "Link to this definition")
+    moment(**order**, **\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/../scipy/stats/_distn_infrastructure.py#L1298)[#](#scikitplot.externals._tweedie.tweedie_gen.moment "Link to this definition")
     :   non-central moment of distribution of specified order.
 
         Parameters:
@@ -658,14 +658,14 @@ class scikitplot.externals.\_tweedie.tweedie\_gen(**momtype=1**, **a=None**, **b
             ****scale****array\_like, optional
             :   scale parameter (default=1)
 
-    nnlf(**theta**, **x**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../scipy/stats/_distn_infrastructure.py#L1555)[#](#scikitplot.externals._tweedie.tweedie_gen.nnlf "Link to this definition")
+    nnlf(**theta**, **x**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/../scipy/stats/_distn_infrastructure.py#L1555)[#](#scikitplot.externals._tweedie.tweedie_gen.nnlf "Link to this definition")
     :   Negative loglikelihood function.
         .. rubric:: Notes
 
         This is `-sum(log pdf(x, theta), axis=0)` where `theta` are the
         parameters (including loc and scale).
 
-    pdf(**x**, **\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../scipy/stats/_distn_infrastructure.py#L2051)[#](#scikitplot.externals._tweedie.tweedie_gen.pdf "Link to this definition")
+    pdf(**x**, **\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/../scipy/stats/_distn_infrastructure.py#L2051)[#](#scikitplot.externals._tweedie.tweedie_gen.pdf "Link to this definition")
     :   Probability density function at x of the given RV.
 
         Parameters:
@@ -686,7 +686,7 @@ class scikitplot.externals.\_tweedie.tweedie\_gen(**momtype=1**, **a=None**, **b
         :   ****pdf****ndarray
             :   Probability density function evaluated at x
 
-    ppf(**q**, **\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../scipy/stats/_distn_infrastructure.py#L2302)[#](#scikitplot.externals._tweedie.tweedie_gen.ppf "Link to this definition")
+    ppf(**q**, **\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/../scipy/stats/_distn_infrastructure.py#L2302)[#](#scikitplot.externals._tweedie.tweedie_gen.ppf "Link to this definition")
     :   Percent point function (inverse of `cdf`) at q of the given RV.
 
         Parameters:
@@ -717,7 +717,7 @@ class scikitplot.externals.\_tweedie.tweedie\_gen(**momtype=1**, **a=None**, **b
         If `random_state` is already a `Generator` or `RandomState`
         instance, that instance is used.
 
-    rvs(**\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../scipy/stats/_distn_infrastructure.py#L1079)[#](#scikitplot.externals._tweedie.tweedie_gen.rvs "Link to this definition")
+    rvs(**\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/../scipy/stats/_distn_infrastructure.py#L1079)[#](#scikitplot.externals._tweedie.tweedie_gen.rvs "Link to this definition")
     :   Random variates of given type.
 
         Parameters:
@@ -748,7 +748,7 @@ class scikitplot.externals.\_tweedie.tweedie\_gen(**momtype=1**, **a=None**, **b
         :   ****rvs****ndarray or scalar
             :   Random variates of given `size`.
 
-    sf(**x**, **\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../scipy/stats/_distn_infrastructure.py#L2216)[#](#scikitplot.externals._tweedie.tweedie_gen.sf "Link to this definition")
+    sf(**x**, **\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/../scipy/stats/_distn_infrastructure.py#L2216)[#](#scikitplot.externals._tweedie.tweedie_gen.sf "Link to this definition")
     :   Survival function (1 - `cdf`) at x of the given RV.
 
         Parameters:
@@ -769,7 +769,7 @@ class scikitplot.externals.\_tweedie.tweedie\_gen(**momtype=1**, **a=None**, **b
         :   ****sf****array\_like
             :   Survival function evaluated at x
 
-    stats(**\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../scipy/stats/_distn_infrastructure.py#L1148)[#](#scikitplot.externals._tweedie.tweedie_gen.stats "Link to this definition")
+    stats(**\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/../scipy/stats/_distn_infrastructure.py#L1148)[#](#scikitplot.externals._tweedie.tweedie_gen.stats "Link to this definition")
     :   Some statistics of the given RV.
 
         Parameters:
@@ -795,7 +795,7 @@ class scikitplot.externals.\_tweedie.tweedie\_gen(**momtype=1**, **a=None**, **b
         :   ****stats****sequence
             :   of requested moments.
 
-    std(**\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../scipy/stats/_distn_infrastructure.py#L1451)[#](#scikitplot.externals._tweedie.tweedie_gen.std "Link to this definition")
+    std(**\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/../scipy/stats/_distn_infrastructure.py#L1451)[#](#scikitplot.externals._tweedie.tweedie_gen.std "Link to this definition")
     :   Standard deviation of the distribution.
 
         Parameters:
@@ -813,7 +813,7 @@ class scikitplot.externals.\_tweedie.tweedie\_gen(**momtype=1**, **a=None**, **b
         :   ****std****float
             :   standard deviation of the distribution
 
-    support(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../scipy/stats/_distn_infrastructure.py#L1520)[#](#scikitplot.externals._tweedie.tweedie_gen.support "Link to this definition")
+    support(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/../scipy/stats/_distn_infrastructure.py#L1520)[#](#scikitplot.externals._tweedie.tweedie_gen.support "Link to this definition")
     :   Support of the distribution.
 
         Parameters:
@@ -831,7 +831,7 @@ class scikitplot.externals.\_tweedie.tweedie\_gen(**momtype=1**, **a=None**, **b
         :   ****a, b****array\_like
             :   end-points of the distribution’s support.
 
-    var(**\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/../scipy/stats/_distn_infrastructure.py#L1426)[#](#scikitplot.externals._tweedie.tweedie_gen.var "Link to this definition")
+    var(**\*args**, **\*\*kwds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/../scipy/stats/_distn_infrastructure.py#L1426)[#](#scikitplot.externals._tweedie.tweedie_gen.var "Link to this definition")
     :   Variance of the distribution.
 
         Parameters:

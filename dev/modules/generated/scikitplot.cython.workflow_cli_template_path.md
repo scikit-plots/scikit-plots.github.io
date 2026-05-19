@@ -1,6 +1,6 @@
 # workflow\_cli\_template\_path[#](#workflow-cli-template-path "Link to this heading")
 
-scikitplot.cython.workflow\_cli\_template\_path()[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/cython/_templates_api.py#L708)[#](#scikitplot.cython.workflow_cli_template_path "Link to this definition")
+scikitplot.cython.workflow\_cli\_template\_path()[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/cython/_templates_api.py#L708)[#](#scikitplot.cython.workflow_cli_template_path "Link to this definition")
 :   Return the workflow CLI template path.
 
     Returns:

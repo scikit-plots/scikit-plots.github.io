@@ -1,6 +1,6 @@
 # save\_waveform[#](#save-waveform "Link to this heading")
 
-scikitplot.experimental.\_doremi.save\_waveform(**waveform**, **file\_path='output.wav'**, **ext=None**, **sample\_rate=44100**, **backend=None**, **dtype='float32'**, **normalize=True**, **stereo\_out=True**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/experimental/_doremi/note_io.py#L39)[#](#scikitplot.experimental._doremi.save_waveform "Link to this definition")
+scikitplot.experimental.\_doremi.save\_waveform(**waveform**, **file\_path='output.wav'**, **ext=None**, **sample\_rate=44100**, **backend=None**, **dtype='float32'**, **normalize=True**, **stereo\_out=True**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/experimental/_doremi/note_io.py#L39)[#](#scikitplot.experimental._doremi.save_waveform "Link to this definition")
 :   Save waveform to an audio file using specified or auto-selected backend.
 
     Parameters:

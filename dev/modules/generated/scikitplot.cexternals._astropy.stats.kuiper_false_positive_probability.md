@@ -1,6 +1,6 @@
 # kuiper\_false\_positive\_probability[#](#kuiper-false-positive-probability "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.kuiper\_false\_positive\_probability(**D**, **N**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/cexternals/_astropy/stats/funcs.py#L1331)[#](#scikitplot.cexternals._astropy.stats.kuiper_false_positive_probability "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.kuiper\_false\_positive\_probability(**D**, **N**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/cexternals/_astropy/stats/funcs.py#L1331)[#](#scikitplot.cexternals._astropy.stats.kuiper_false_positive_probability "Link to this definition")
 :   Compute the false positive probability for the Kuiper statistic.
 
     Uses the set of four formulas described in Paltani 2004; they report

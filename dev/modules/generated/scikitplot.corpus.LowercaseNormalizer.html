@@ -71,7 +71,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=88ebf3eb"></script>
+    <script src="../../_static/ai-assistant.js?v=bd6c8cb8"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>LowercaseNormalizer<a class="headerlink" href="#lowercasenormalizer" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.LowercaseNormalizer">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">LowercaseNormalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">locale_aware</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/corpus/_normalizers/_normalizer.py#L384"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.LowercaseNormalizer" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">LowercaseNormalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">locale_aware</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_normalizers/_normalizer.py#L384"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.LowercaseNormalizer" title="Link to this definition">#</a></dt>
 <dd><p>Convert the document text to lowercase.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1330,8 +1330,8 @@ Default: <code class="docutils literal notranslate"><span class="pre">False</spa
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="7e0aef93-ce27-4d26-8243-82f9ca875651">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('7e0aef93-ce27-4d26-8243-82f9ca875651','6d59feac-3d2b-4bf4-9f9d-e84353d7b680','1c7b7820-1cc4-4825-9aaf-479aa11e7264','../../lite/tree/../notebooks/index.html?path=8d8ce4fa_8367_4513_9e9a_e9b6d81d7c50.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="5c4d730c-1f3e-4c16-9b03-35c4d97de8af">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('5c4d730c-1f3e-4c16-9b03-35c4d97de8af','076fdb88-ae7b-4784-b9fe-9eef95124bfe','3b8513ce-de11-4d7f-b8d3-20941d6eb093','../../lite/tree/../notebooks/index.html?path=6367f972_ed2c_4398_a5a8_b7947d06dfab.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">norm</span> <span class="o">=</span> <span class="n">LowercaseNormalizer</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">doc</span> <span class="o">=</span> <span class="n">CorpusDocument</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&quot;f.txt&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Hello World.&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">norm</span><span class="o">.</span><span class="n">normalize_doc</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span><span class="o">.</span><span class="n">normalized_text</span>
@@ -1340,9 +1340,9 @@ Default: <code class="docutils literal notranslate"><span class="pre">False</spa
 </div>
 </div>
 </div>
-<div id="1c7b7820-1cc4-4825-9aaf-479aa11e7264" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('7e0aef93-ce27-4d26-8243-82f9ca875651','1c7b7820-1cc4-4825-9aaf-479aa11e7264')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('7e0aef93-ce27-4d26-8243-82f9ca875651','1c7b7820-1cc4-4825-9aaf-479aa11e7264')">Open In Tab</button></div><div id="6d59feac-3d2b-4bf4-9f9d-e84353d7b680" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="3b8513ce-de11-4d7f-b8d3-20941d6eb093" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('5c4d730c-1f3e-4c16-9b03-35c4d97de8af','3b8513ce-de11-4d7f-b8d3-20941d6eb093')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('5c4d730c-1f3e-4c16-9b03-35c4d97de8af','3b8513ce-de11-4d7f-b8d3-20941d6eb093')">Open In Tab</button></div><div id="076fdb88-ae7b-4784-b9fe-9eef95124bfe" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.LowercaseNormalizer.normalize_doc">
-<span class="sig-name descname"><span class="pre">normalize_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/corpus/_normalizers/_normalizer.py#L406"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.LowercaseNormalizer.normalize_doc" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">normalize_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_normalizers/_normalizer.py#L406"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.LowercaseNormalizer.normalize_doc" title="Link to this definition">#</a></dt>
 <dd><p>Lowercase the document text.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1476,7 +1476,7 @@ Default: <code class="docutils literal notranslate"><span class="pre">False</spa
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260518.7ef1ffb 2026-05-18T22:25Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260519.5fb281e 2026-05-19T13:35Z.
       <br/>
     
   </p>

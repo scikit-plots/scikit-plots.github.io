@@ -1,6 +1,6 @@
 # iter\_all\_entry\_dirs[#](#iter-all-entry-dirs "Link to this heading")
 
-scikitplot.cython.iter\_all\_entry\_dirs(**cache\_root**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/cython/_cache.py#L411)[#](#scikitplot.cython.iter_all_entry_dirs "Link to this definition")
+scikitplot.cython.iter\_all\_entry\_dirs(**cache\_root**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/cython/_cache.py#L411)[#](#scikitplot.cython.iter_all_entry_dirs "Link to this definition")
 :   Return all cache entry directories whose name is a valid cache key.
 
     Parameters:

@@ -71,7 +71,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=88ebf3eb"></script>
+    <script src="../../_static/ai-assistant.js?v=bd6c8cb8"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>CustomNLPEnricher<a class="headerlink" href="#customnlpenricher" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.CustomNLPEnricher">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">CustomNLPEnricher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/corpus/_custom_hooks.py#L638"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.CustomNLPEnricher" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">CustomNLPEnricher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_custom_hooks.py#L638"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.CustomNLPEnricher" title="Link to this definition">#</a></dt>
 <dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">NLPEnricher</span></code> extended with
 fully-replaceable NLP backends.</p>
 <p>Wraps a standard <code class="xref py py-class docutils literal notranslate"><span class="pre">NLPEnricher</span></code> and
@@ -1359,8 +1359,8 @@ The same <code class="docutils literal notranslate"><span class="pre">enrich_doc
 <p>This keeps the built-in lazy-loading cache (spaCy, NLTK, stemmer)
 intact for any stage that does not have a custom override.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="ccbba37c-9f0d-4cc6-adb5-999f1522e816">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('ccbba37c-9f0d-4cc6-adb5-999f1522e816','3bb30dcc-7787-44eb-99b8-3e6bb8ea8809','4c6d6a8a-cae8-489a-8151-f592a5fa781f','../../lite/tree/../notebooks/index.html?path=f944e829_9ce0_4f03_8557_0476e3b8846a.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="f4e69051-dea9-4785-9185-fb5601a52ef3">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('f4e69051-dea9-4785-9185-fb5601a52ef3','4bc94f6f-c249-4fab-bd2b-a15e2481661b','84268897-860a-4c3d-bac3-6215f7e3d17b','../../lite/tree/../notebooks/index.html?path=4fc7ab17_4c2e_4ed8_ba9b_3a4825c3cb42.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Integrate a custom tokenizer (e.g. SentencePiece):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sentencepiece</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">spm</span>
 
@@ -1377,9 +1377,9 @@ intact for any stage that does not have a custom override.</p>
 </div>
 </div>
 </div>
-<div id="4c6d6a8a-cae8-489a-8151-f592a5fa781f" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('ccbba37c-9f0d-4cc6-adb5-999f1522e816','4c6d6a8a-cae8-489a-8151-f592a5fa781f')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('ccbba37c-9f0d-4cc6-adb5-999f1522e816','4c6d6a8a-cae8-489a-8151-f592a5fa781f')">Open In Tab</button></div><div id="3bb30dcc-7787-44eb-99b8-3e6bb8ea8809" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="84268897-860a-4c3d-bac3-6215f7e3d17b" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('f4e69051-dea9-4785-9185-fb5601a52ef3','84268897-860a-4c3d-bac3-6215f7e3d17b')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('f4e69051-dea9-4785-9185-fb5601a52ef3','84268897-860a-4c3d-bac3-6215f7e3d17b')">Open In Tab</button></div><div id="4bc94f6f-c249-4fab-bd2b-a15e2481661b" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.CustomNLPEnricher.enrich_documents">
-<span class="sig-name descname"><span class="pre">enrich_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/corpus/_custom_hooks.py#L723"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.CustomNLPEnricher.enrich_documents" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">enrich_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_custom_hooks.py#L723"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.CustomNLPEnricher.enrich_documents" title="Link to this definition">#</a></dt>
 <dd><p>Enrich a batch of <code class="docutils literal notranslate"><span class="pre">CorpusDocument</span></code> instances using custom or
 built-in backends per stage.</p>
 <dl class="field-list simple">
@@ -1520,7 +1520,7 @@ built-in backends per stage.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260518.7ef1ffb 2026-05-18T22:25Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260519.5fb281e 2026-05-19T13:35Z.
       <br/>
     
   </p>

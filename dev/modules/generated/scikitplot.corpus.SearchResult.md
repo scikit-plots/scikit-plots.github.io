@@ -1,6 +1,6 @@
 # SearchResult[#](#searchresult "Link to this heading")
 
-class scikitplot.corpus.SearchResult(**doc**, **score**, **match\_mode**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/corpus/_similarity/_similarity.py#L52)[#](#scikitplot.corpus.SearchResult "Link to this definition")
+class scikitplot.corpus.SearchResult(**doc**, **score**, **match\_mode**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_similarity/_similarity.py#L52)[#](#scikitplot.corpus.SearchResult "Link to this definition")
 :   A single search result.
 
     Parameters:
@@ -24,8 +24,8 @@ class scikitplot.corpus.SearchResult(**doc**, **score**, **match\_mode**)[[sourc
         * ****score**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
         * ****match\_mode**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
 
-    doc: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/corpus/_similarity/_similarity.py#L52)[#](#scikitplot.corpus.SearchResult.doc "Link to this definition")
+    doc: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_similarity/_similarity.py#L52)[#](#scikitplot.corpus.SearchResult.doc "Link to this definition")
 
-    match\_mode: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/corpus/_similarity/_similarity.py#L52)[#](#scikitplot.corpus.SearchResult.match_mode "Link to this definition")
+    match\_mode: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_similarity/_similarity.py#L52)[#](#scikitplot.corpus.SearchResult.match_mode "Link to this definition")
 
-    score: [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/corpus/_similarity/_similarity.py#L52)[#](#scikitplot.corpus.SearchResult.score "Link to this definition")
+    score: [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_similarity/_similarity.py#L52)[#](#scikitplot.corpus.SearchResult.score "Link to this definition")

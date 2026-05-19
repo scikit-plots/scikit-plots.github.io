@@ -34,7 +34,7 @@ Here’s a brief overview of the installation and setup process:
 
    ```
 2. ****Dependencies****:
-   - Ensure you have the required libraries installed, including [`matplotlib`](https://matplotlib.org/devdocs/index.html#module-matplotlib "(in Matplotlib v3.12.0.dev86+g67cbe922d)"), [`numpy`](https://numpy.org/devdocs/reference/index.html#module-numpy "(in NumPy v2.5.dev0)"), [`sklearn`](https://scikit-learn.org/dev/api/sklearn.html#module-sklearn "(in scikit-learn v1.9)"), and [`torch`](https://docs.pytorch.org/docs/stable/torch.html#module-torch "(in PyTorch v2.12)") or [`tf.keras`](https://www.tensorflow.org/api_docs/python/tf/keras "(in TensorFlow v2.8)") (if using TensorFlow models). You can install these using pip as well:
+   - Ensure you have the required libraries installed, including [`matplotlib`](https://matplotlib.org/devdocs/index.html#module-matplotlib "(in Matplotlib v3.12.0.dev87+g5ffcca935)"), [`numpy`](https://numpy.org/devdocs/reference/index.html#module-numpy "(in NumPy v2.5.dev0)"), [`sklearn`](https://scikit-learn.org/dev/api/sklearn.html#module-sklearn "(in scikit-learn v1.9)"), and [`torch`](https://docs.pytorch.org/docs/stable/torch.html#module-torch "(in PyTorch v2.12)") or [`tf.keras`](https://www.tensorflow.org/api_docs/python/tf/keras "(in TensorFlow v2.8)") (if using TensorFlow models). You can install these using pip as well:
 
    ```
    >>> pip install matplotlib numpy scikit-learn tensorflow

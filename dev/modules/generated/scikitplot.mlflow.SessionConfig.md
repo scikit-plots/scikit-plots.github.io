@@ -1,6 +1,6 @@
 # SessionConfig[#](#sessionconfig "Link to this heading")
 
-class scikitplot.mlflow.SessionConfig(**tracking\_uri=None**, **public\_tracking\_uri=None**, **registry\_uri=None**, **env\_file=None**, **extra\_env=None**, **startup\_timeout\_s=30.0**, **ensure\_reachable=False**, **experiment\_name=None**, **create\_experiment\_if\_missing=True**, **default\_run\_name=None**, **default\_run\_tags=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/7ef1ffb/scikitplot/mlflow/_config.py#L22)[#](#scikitplot.mlflow.SessionConfig "Link to this definition")
+class scikitplot.mlflow.SessionConfig(**tracking\_uri=None**, **public\_tracking\_uri=None**, **registry\_uri=None**, **env\_file=None**, **extra\_env=None**, **startup\_timeout\_s=30.0**, **ensure\_reachable=False**, **experiment\_name=None**, **create\_experiment\_if\_missing=True**, **default\_run\_name=None**, **default\_run\_tags=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/mlflow/_config.py#L22)[#](#scikitplot.mlflow.SessionConfig "Link to this definition")
 :   Session-level configuration for `scikitplot.mlflow.session`.
 
     Parameters:
