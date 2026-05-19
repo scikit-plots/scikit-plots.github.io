@@ -71,7 +71,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=bd6c8cb8"></script>
+    <script src="../../_static/ai-assistant.js?v=584f408e"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>documents_to_pandas<a class="headerlink" href="#documents-to-pandas" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.documents_to_pandas">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">documents_to_pandas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">docs</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_embedding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_schema.py#L2553"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.documents_to_pandas" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">documents_to_pandas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">docs</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_embedding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/corpus/_schema.py#L2553"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.documents_to_pandas" title="Link to this definition">#</a></dt>
 <dd><p>Convert a list of <a class="reference internal" href="scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument" title="scikitplot.corpus.CorpusDocument"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusDocument</span></code></a> instances to a
 <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>.</p>
 <dl class="field-list simple">
@@ -1352,8 +1352,8 @@ empty rather than raising — an empty corpus is a valid pipeline result.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="382c540b-8d84-4fda-ae6a-6890dc37716b">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('382c540b-8d84-4fda-ae6a-6890dc37716b','2076eca8-021f-4488-b5dc-5d3479dd183e','20558042-71a0-4511-8f5e-6e5f448d8a00','../../lite/tree/../notebooks/index.html?path=b7fd8790_513a_4f83_8899_7c02c282b7f5.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="8f29f4f2-64dc-41c8-a7b4-949eb90d4320">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('8f29f4f2-64dc-41c8-a7b4-949eb90d4320','1812bb8c-cf14-4087-9737-ea32f9de71b6','2b520578-ce78-4f06-806f-aa49ab222491','../../lite/tree/../notebooks/index.html?path=eafad70d_8bf4_495f_a710_d7c48b73d20e.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">docs</span> <span class="o">=</span> <span class="p">[</span><span class="n">CorpusDocument</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&quot;f.txt&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Sentence </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">documents_to_pandas</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
@@ -1362,7 +1362,7 @@ empty rather than raising — an empty corpus is a valid pipeline result.</p>
 </div>
 </div>
 </div>
-<div id="20558042-71a0-4511-8f5e-6e5f448d8a00" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('382c540b-8d84-4fda-ae6a-6890dc37716b','20558042-71a0-4511-8f5e-6e5f448d8a00')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('382c540b-8d84-4fda-ae6a-6890dc37716b','20558042-71a0-4511-8f5e-6e5f448d8a00')">Open In Tab</button></div><div id="2076eca8-021f-4488-b5dc-5d3479dd183e" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="2b520578-ce78-4f06-806f-aa49ab222491" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('8f29f4f2-64dc-41c8-a7b4-949eb90d4320','2b520578-ce78-4f06-806f-aa49ab222491')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('8f29f4f2-64dc-41c8-a7b4-949eb90d4320','2b520578-ce78-4f06-806f-aa49ab222491')">Open In Tab</button></div><div id="1812bb8c-cf14-4087-9737-ea32f9de71b6" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1471,7 +1471,7 @@ empty rather than raising — an empty corpus is a valid pipeline result.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260519.5fb281e 2026-05-19T13:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260519.287271b 2026-05-19T14:55Z.
       <br/>
     
   </p>

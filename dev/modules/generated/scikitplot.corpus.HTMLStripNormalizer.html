@@ -71,7 +71,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=bd6c8cb8"></script>
+    <script src="../../_static/ai-assistant.js?v=584f408e"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>HTMLStripNormalizer<a class="headerlink" href="#htmlstripnormalizer" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.HTMLStripNormalizer">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">HTMLStripNormalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_beautifulsoup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'html.parser'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decode_entities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_normalizers/_normalizer.py#L282"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.HTMLStripNormalizer" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">HTMLStripNormalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_beautifulsoup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'html.parser'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decode_entities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/corpus/_normalizers/_normalizer.py#L282"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.HTMLStripNormalizer" title="Link to this definition">#</a></dt>
 <dd><p>Remove HTML and XML tags from the document text.</p>
 <p>Two modes are available:</p>
 <ul class="simple">
@@ -1346,8 +1346,8 @@ Default: <code class="docutils literal notranslate"><span class="pre">\&quot;htm
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="e5ac1d63-9e20-46eb-a9f4-8f31032c61eb">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('e5ac1d63-9e20-46eb-a9f4-8f31032c61eb','50f5a01d-cf30-466b-b9a9-fc5f20a5ca7a','7d185648-16dc-48d5-ae92-f06778a7e430','../../lite/tree/../notebooks/index.html?path=0b36fce4_4d09_40b5_a85b_d81cd02589be.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="85cf5e7d-61f8-4124-a7b7-b05bb307e9dc">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('85cf5e7d-61f8-4124-a7b7-b05bb307e9dc','7addc122-6eec-4cf7-96ad-862fb4a790d3','c673d161-20b2-4387-8fbd-73c19d616de2','../../lite/tree/../notebooks/index.html?path=1c4b603f_09c2_4ae1_98de_226f0e3bced0.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">norm</span> <span class="o">=</span> <span class="n">HTMLStripNormalizer</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">doc</span> <span class="o">=</span> <span class="n">CorpusDocument</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&quot;f.txt&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;&lt;p&gt;Hello &lt;b&gt;world&lt;/b&gt;.&lt;/p&gt;&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">norm</span><span class="o">.</span><span class="n">normalize_doc</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span><span class="o">.</span><span class="n">normalized_text</span>
@@ -1356,9 +1356,9 @@ Default: <code class="docutils literal notranslate"><span class="pre">\&quot;htm
 </div>
 </div>
 </div>
-<div id="7d185648-16dc-48d5-ae92-f06778a7e430" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('e5ac1d63-9e20-46eb-a9f4-8f31032c61eb','7d185648-16dc-48d5-ae92-f06778a7e430')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('e5ac1d63-9e20-46eb-a9f4-8f31032c61eb','7d185648-16dc-48d5-ae92-f06778a7e430')">Open In Tab</button></div><div id="50f5a01d-cf30-466b-b9a9-fc5f20a5ca7a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="c673d161-20b2-4387-8fbd-73c19d616de2" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('85cf5e7d-61f8-4124-a7b7-b05bb307e9dc','c673d161-20b2-4387-8fbd-73c19d616de2')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('85cf5e7d-61f8-4124-a7b7-b05bb307e9dc','c673d161-20b2-4387-8fbd-73c19d616de2')">Open In Tab</button></div><div id="7addc122-6eec-4cf7-96ad-862fb4a790d3" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.HTMLStripNormalizer.normalize_doc">
-<span class="sig-name descname"><span class="pre">normalize_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_normalizers/_normalizer.py#L323"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.HTMLStripNormalizer.normalize_doc" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">normalize_doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/corpus/_normalizers/_normalizer.py#L323"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.HTMLStripNormalizer.normalize_doc" title="Link to this definition">#</a></dt>
 <dd><p>Strip HTML tags from the document text.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1498,7 +1498,7 @@ Default: <code class="docutils literal notranslate"><span class="pre">\&quot;htm
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260519.5fb281e 2026-05-19T13:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260519.287271b 2026-05-19T14:55Z.
       <br/>
     
   </p>

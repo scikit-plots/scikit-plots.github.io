@@ -9,10 +9,10 @@
 <meta content="website" property="og:type"/>
 <meta content="https://scikit-plots.github.io/stable/auto_examples/annoy/plot_precision_script.html" property="og:url"/>
 <meta content="scikit-plots" property="og:site_name"/>
-<meta content="An example showing the AnnoyIndex class. n, f = 1_000_000, 100 # 100~2.5GB Tags: model-workflow: vector-db plot-type: bar level: beginner purpose: showcase Total running time of the script:(2 minut..." property="og:description"/>
+<meta content="An example showing the AnnoyIndex class. n, f = 1_000_000, 100 # 100~2.5GB Tags: model-workflow: vector-db plot-type: bar level: beginner purpose: showcase Total running time of the script:(1 minut..." property="og:description"/>
 <meta content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" property="og:image"/>
 <meta content="scikit-plots" property="og:image:alt"/>
-<meta content="An example showing the AnnoyIndex class. n, f = 1_000_000, 100 # 100~2.5GB Tags: model-workflow: vector-db plot-type: bar level: beginner purpose: showcase Total running time of the script:(2 minut..." name="description"/>
+<meta content="An example showing the AnnoyIndex class. n, f = 1_000_000, 100 # 100~2.5GB Tags: model-workflow: vector-db plot-type: bar level: beginner purpose: showcase Total running time of the script:(1 minut..." name="description"/>
 <script>
 window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "article.bd-article", "features": {"markdown_export": true, "view_markdown": true, "ai_chat": true, "mcp_integration": true, "theme_toggle": true, "pdf_export": true, "ai_panel": true}, "providers": {"chatgpt": {"enabled": true, "label": "Ask ChatGPT", "description": "Ask OpenAI ChatGPT about this page", "icon": "chatgpt.svg", "url_template": "https://chatgpt.com/?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "gpt-4o", "type": "web"}, "claude": {"enabled": true, "label": "Ask Claude", "description": "Ask Anthropic Claude about this page", "icon": "claude.svg", "url_template": "https://claude.ai/new?q={prompt}", "prompt_template": "Hi! Please read this documentation page: {url}\n\nI have questions about it.", "model": "claude-sonnet-4-6", "type": "web"}, "gemini": {"enabled": true, "label": "Ask Gemini", "description": "Ask Google Gemini about this page", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=", "url_template": "https://gemini.google.com/app?q={prompt}", "prompt_template": "Hi! Please review this documentation content: {url}\n\nI have questions about it.", "model": "gemini-2.5-flash", "type": "web"}}, "mcp_tools": {"vscode": {"enabled": false, "type": "vscode", "label": "Connect to VS Code", "description": "Install your MCP server directly into VS Code.", "icon": "vscode.svg", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}, "claude_desktop": {"enabled": false, "type": "claude_desktop", "label": "Connect to Claude", "description": "Download and run the Claude MCP bundle.", "icon": "claude.svg", "mcpb_url": "https://docs.example.com/_static/your-mcpb-config.zip"}, "cursor": {"enabled": false, "type": "cursor", "label": "Connect to Cursor", "description": "Connect the MCP server to Cursor IDE.", "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+", "server_name": "your-docs-mcp-server", "server_url": "https://your-docs-mcp-server/sse", "transport": "sse"}}, "baseUrl": "https://scikit-plots.github.io", "intention": null, "customContext": null, "customPromptPrefix": null, "includeRawImage": false, "pdfExportUrl": "", "pdfUrlModeToggle": true, "panelTitle": "AI Assistant", "panelPlaceholder": "Ask a question about this page\u2026", "panelApiEnabled": false, "panelQuickQuestions": ["What does this page cover?", "Show me a quick usage example.", "What are the key parameters?"], "panelSpeakBanner": true, "panelTriggerLabel": "Ask Us"};
 </script>
@@ -60,7 +60,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
 <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
 <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-<script src="../../_static/ai-assistant.js?v=bd6c8cb8"></script>
+<script src="../../_static/ai-assistant.js?v=584f408e"></script>
 <script src="../../_static/thebelab-helper.js"></script>
 <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
 <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -580,73 +580,74 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 
   0%|          | 0/100000 [00:00&lt;?, ?it/s]0 / 100000 = 0.0
 
-  2%|▏         | 1745/100000 [00:00&lt;00:05, 17446.36it/s]
-  3%|▎         | 3491/100000 [00:00&lt;00:05, 17448.27it/s]
-  5%|▌         | 5243/100000 [00:00&lt;00:05, 17478.44it/s]
-  7%|▋         | 6991/100000 [00:00&lt;00:05, 17477.60it/s]
-  9%|▊         | 8739/100000 [00:00&lt;00:05, 17473.74it/s]10000 / 100000 = 0.1
+  2%|▏         | 1705/100000 [00:00&lt;00:05, 17047.21it/s]
+  3%|▎         | 3410/100000 [00:00&lt;00:05, 17048.10it/s]
+  5%|▌         | 5115/100000 [00:00&lt;00:05, 17040.96it/s]
+  7%|▋         | 6820/100000 [00:00&lt;00:05, 17040.17it/s]
+  9%|▊         | 8525/100000 [00:00&lt;00:05, 17028.03it/s]10000 / 100000 = 0.1
 
- 10%|█         | 10487/100000 [00:00&lt;00:05, 17434.41it/s]
- 12%|█▏        | 12231/100000 [00:00&lt;00:05, 17403.87it/s]
- 14%|█▍        | 13988/100000 [00:00&lt;00:04, 17454.15it/s]
- 16%|█▌        | 15747/100000 [00:00&lt;00:04, 17494.78it/s]
- 17%|█▋        | 17497/100000 [00:01&lt;00:04, 17427.28it/s]
- 19%|█▉        | 19258/100000 [00:01&lt;00:04, 17479.89it/s]20000 / 100000 = 0.2
+ 10%|█         | 10228/100000 [00:00&lt;00:05, 17019.77it/s]
+ 12%|█▏        | 11941/100000 [00:00&lt;00:05, 17055.14it/s]
+ 14%|█▎        | 13647/100000 [00:00&lt;00:05, 17020.30it/s]
+ 15%|█▌        | 15363/100000 [00:00&lt;00:04, 17062.99it/s]
+ 17%|█▋        | 17070/100000 [00:01&lt;00:04, 17001.10it/s]
+ 19%|█▉        | 18778/100000 [00:01&lt;00:04, 17023.11it/s]20000 / 100000 = 0.2
 
- 21%|██        | 21009/100000 [00:01&lt;00:04, 17488.11it/s]
- 23%|██▎       | 22767/100000 [00:01&lt;00:04, 17515.62it/s]
- 25%|██▍       | 24524/100000 [00:01&lt;00:04, 17530.67it/s]
- 26%|██▋       | 26281/100000 [00:01&lt;00:04, 17541.92it/s]
- 28%|██▊       | 28036/100000 [00:01&lt;00:04, 16954.38it/s]
- 30%|██▉       | 29759/100000 [00:01&lt;00:04, 17033.28it/s]30000 / 100000 = 0.3
+ 20%|██        | 20482/100000 [00:01&lt;00:04, 17025.41it/s]
+ 22%|██▏       | 22185/100000 [00:01&lt;00:04, 17012.64it/s]
+ 24%|██▍       | 23895/100000 [00:01&lt;00:04, 17036.14it/s]
+ 26%|██▌       | 25606/100000 [00:01&lt;00:04, 17055.41it/s]
+ 27%|██▋       | 27312/100000 [00:01&lt;00:04, 16509.56it/s]
+ 29%|██▉       | 29016/100000 [00:01&lt;00:04, 16664.25it/s]30000 / 100000 = 0.3
 
- 31%|███▏      | 31466/100000 [00:01&lt;00:04, 16917.74it/s]
- 33%|███▎      | 33168/100000 [00:01&lt;00:03, 16945.84it/s]
- 35%|███▍      | 34865/100000 [00:02&lt;00:03, 16285.59it/s]
- 37%|███▋      | 36629/100000 [00:02&lt;00:03, 16675.57it/s]
- 38%|███▊      | 38388/100000 [00:02&lt;00:03, 16940.09it/s]40000 / 100000 = 0.4
+ 31%|███       | 30721/100000 [00:01&lt;00:04, 16776.14it/s]
+ 32%|███▏      | 32426/100000 [00:01&lt;00:04, 16856.89it/s]
+ 34%|███▍      | 34132/100000 [00:02&lt;00:03, 16914.76it/s]
+ 36%|███▌      | 35825/100000 [00:02&lt;00:03, 16808.54it/s]
+ 38%|███▊      | 37531/100000 [00:02&lt;00:03, 16882.24it/s]
+ 39%|███▉      | 39239/100000 [00:02&lt;00:03, 16941.06it/s]40000 / 100000 = 0.4
 
- 40%|████      | 40146/100000 [00:02&lt;00:03, 17126.32it/s]
- 42%|████▏     | 41886/100000 [00:02&lt;00:03, 17206.51it/s]
- 44%|████▎     | 43650/100000 [00:02&lt;00:03, 17333.06it/s]
- 45%|████▌     | 45386/100000 [00:02&lt;00:03, 17191.21it/s]
- 47%|████▋     | 47132/100000 [00:02&lt;00:03, 17268.39it/s]
- 49%|████▉     | 48861/100000 [00:02&lt;00:02, 17263.97it/s]50000 / 100000 = 0.5
+ 41%|████      | 40955/100000 [00:02&lt;00:03, 17004.22it/s]
+ 43%|████▎     | 42665/100000 [00:02&lt;00:03, 17031.16it/s]
+ 44%|████▍     | 44373/100000 [00:02&lt;00:03, 17045.61it/s]
+ 46%|████▌     | 46078/100000 [00:02&lt;00:03, 16878.97it/s]
+ 48%|████▊     | 47785/100000 [00:02&lt;00:03, 16933.81it/s]
+ 49%|████▉     | 49489/100000 [00:02&lt;00:02, 16963.62it/s]50000 / 100000 = 0.5
 
- 51%|█████     | 50603/100000 [00:02&lt;00:02, 17309.04it/s]
- 52%|█████▏    | 52338/100000 [00:03&lt;00:02, 17320.03it/s]
- 54%|█████▍    | 54086/100000 [00:03&lt;00:02, 17365.38it/s]
- 56%|█████▌    | 55823/100000 [00:03&lt;00:02, 17351.30it/s]
- 58%|█████▊    | 57572/100000 [00:03&lt;00:02, 17391.15it/s]
- 59%|█████▉    | 59312/100000 [00:03&lt;00:02, 17129.71it/s]60000 / 100000 = 0.6
+ 51%|█████     | 51186/100000 [00:03&lt;00:02, 16892.09it/s]
+ 53%|█████▎    | 52892/100000 [00:03&lt;00:02, 16940.97it/s]
+ 55%|█████▍    | 54587/100000 [00:03&lt;00:02, 16941.48it/s]
+ 56%|█████▋    | 56283/100000 [00:03&lt;00:02, 16946.19it/s]
+ 58%|█████▊    | 57989/100000 [00:03&lt;00:02, 16979.60it/s]
+ 60%|█████▉    | 59688/100000 [00:03&lt;00:02, 16757.88it/s]60000 / 100000 = 0.6
 
- 61%|██████    | 61047/100000 [00:03&lt;00:02, 17192.49it/s]
- 63%|██████▎   | 62777/100000 [00:03&lt;00:02, 17221.68it/s]
- 65%|██████▍   | 64520/100000 [00:03&lt;00:02, 17283.58it/s]
- 66%|██████▋   | 66263/100000 [00:03&lt;00:01, 17326.07it/s]
- 68%|██████▊   | 68001/100000 [00:03&lt;00:01, 17341.81it/s]
- 70%|██████▉   | 69742/100000 [00:04&lt;00:01, 17361.17it/s]70000 / 100000 = 0.7
+ 61%|██████▏   | 61392/100000 [00:03&lt;00:02, 16839.21it/s]
+ 63%|██████▎   | 63095/100000 [00:03&lt;00:02, 16895.08it/s]
+ 65%|██████▍   | 64795/100000 [00:03&lt;00:02, 16922.88it/s]
+ 66%|██████▋   | 66495/100000 [00:03&lt;00:01, 16942.60it/s]
+ 68%|██████▊   | 68197/100000 [00:04&lt;00:01, 16963.20it/s]
+ 70%|██████▉   | 69899/100000 [00:04&lt;00:01, 16977.76it/s]70000 / 100000 = 0.7
 
- 71%|███████▏  | 71485/100000 [00:04&lt;00:01, 17379.73it/s]
- 73%|███████▎  | 73224/100000 [00:04&lt;00:01, 17371.46it/s]
- 75%|███████▍  | 74966/100000 [00:04&lt;00:01, 17384.12it/s]
- 77%|███████▋  | 76705/100000 [00:04&lt;00:01, 16921.35it/s]
- 78%|███████▊  | 78422/100000 [00:04&lt;00:01, 16994.10it/s]80000 / 100000 = 0.8
+ 72%|███████▏  | 71597/100000 [00:04&lt;00:01, 16952.54it/s]
+ 73%|███████▎  | 73300/100000 [00:04&lt;00:01, 16973.81it/s]
+ 75%|███████▌  | 75000/100000 [00:04&lt;00:01, 16980.10it/s]
+ 77%|███████▋  | 76699/100000 [00:04&lt;00:01, 16672.89it/s]
+ 78%|███████▊  | 78381/100000 [00:04&lt;00:01, 16715.07it/s]80000 / 100000 = 0.8
 
- 80%|████████  | 80129/100000 [00:04&lt;00:01, 17015.61it/s]
- 82%|████████▏ | 81883/100000 [00:04&lt;00:01, 17169.95it/s]
- 84%|████████▎ | 83634/100000 [00:04&lt;00:00, 17270.19it/s]
- 85%|████████▌ | 85384/100000 [00:04&lt;00:00, 17337.50it/s]
- 87%|████████▋ | 87146/100000 [00:05&lt;00:00, 17420.76it/s]
- 89%|████████▉ | 88907/100000 [00:05&lt;00:00, 17477.10it/s]90000 / 100000 = 0.9
+ 80%|████████  | 80076/100000 [00:04&lt;00:01, 16780.78it/s]
+ 82%|████████▏ | 81772/100000 [00:04&lt;00:01, 16833.78it/s]
+ 83%|████████▎ | 83474/100000 [00:04&lt;00:00, 16886.90it/s]
+ 85%|████████▌ | 85216/100000 [00:05&lt;00:00, 17044.47it/s]
+ 87%|████████▋ | 86973/100000 [00:05&lt;00:00, 17200.75it/s]
+ 89%|████████▊ | 88730/100000 [00:05&lt;00:00, 17309.77it/s]90000 / 100000 = 0.9
 
- 91%|█████████ | 90661/100000 [00:05&lt;00:00, 17492.89it/s]
- 92%|█████████▏| 92411/100000 [00:05&lt;00:00, 17489.52it/s]
- 94%|█████████▍| 94161/100000 [00:05&lt;00:00, 17478.80it/s]
- 96%|█████████▌| 95922/100000 [00:05&lt;00:00, 17517.83it/s]
- 98%|█████████▊| 97676/100000 [00:05&lt;00:00, 17522.81it/s]
- 99%|█████████▉| 99429/100000 [00:05&lt;00:00, 17122.66it/s]
-100%|██████████| 100000/100000 [00:05&lt;00:00, 17269.26it/s]
+ 90%|█████████ | 90488/100000 [00:05&lt;00:00, 17389.58it/s]
+ 92%|█████████▏| 92249/100000 [00:05&lt;00:00, 17453.51it/s]
+ 94%|█████████▍| 94008/100000 [00:05&lt;00:00, 17493.56it/s]
+ 96%|█████████▌| 95767/100000 [00:05&lt;00:00, 17521.97it/s]
+ 98%|█████████▊| 97520/100000 [00:05&lt;00:00, 17514.36it/s]
+ 99%|█████████▉| 99272/100000 [00:05&lt;00:00, 17124.49it/s]
+100%|██████████| 100000/100000 [00:05&lt;00:00, 16998.40it/s]
 
 {'f': 100, 'metric': 'angular', 'n_neighbors': 5, 'on_disk_path': 'test.annoy', 'prefault': False, 'seed': None, 'verbose': None, 'schema_version': 0, 'n_items': 100000, 'n_trees': 200, 'memory_usage_byte': 499984128, 'memory_usage_mib': 476.822021484375}
 </pre></div>
@@ -717,16 +718,16 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
   q.set_seed(0)
 
   0%|          | 0/10 [00:00&lt;?, ?it/s]
- 60%|██████    | 6/10 [00:00&lt;00:00, 55.33it/s]
-100%|██████████| 10/10 [00:00&lt;00:00, 56.81it/s]
-limit: 10        precision:  10.00% avg time: 0.000145s
-limit: 100       precision:  16.00% avg time: 0.000124s
-limit: 1000      precision:  33.00% avg time: 0.000365s
-limit: 10000     precision:  86.00% avg time: 0.002224s
+ 70%|███████   | 7/10 [00:00&lt;00:00, 63.41it/s]
+100%|██████████| 10/10 [00:00&lt;00:00, 64.56it/s]
+limit: 10        precision:  10.00% avg time: 0.000115s
+limit: 100       precision:  16.00% avg time: 0.000113s
+limit: 1000      precision:  33.00% avg time: 0.000315s
+limit: 10000     precision:  86.00% avg time: 0.001823s
 </pre></div>
 </div>
 <p class="tags"><span>Tags: </span><a class="sd-sphinx-override sd-badge sd-bg-secondary sd-bg-text-secondary reference internal" href="../../_tags/model-workflow-vector-db.html"><span class="doc">model-workflow: vector-db</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-success sd-bg-text-success reference internal" href="../../_tags/plot-type-bar.html"><span class="doc">plot-type: bar</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info reference internal" href="../../_tags/level-beginner.html"><span class="doc">level: beginner</span></a><span> </span><a class="sd-sphinx-override sd-badge sd-bg-light sd-bg-text-light reference internal" href="../../_tags/purpose-showcase.html"><span class="doc">purpose: showcase</span></a></p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (2 minutes 1.815 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 53.856 seconds)</p>
 
 <p class="rubric">Related examples</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An example showing the :py~scikitplot.annoy.AnnoyIndex class."><img alt="" src="../../_images/sphx_glr_plot_simple_script_thumb.png"/>
@@ -833,7 +834,7 @@ limit: 10000     precision:  86.00% avg time: 0.002224s
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260519.5fb281e 2026-05-19T13:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260519.287271b 2026-05-19T14:55Z.
       <br/>
 </p>
 </div>

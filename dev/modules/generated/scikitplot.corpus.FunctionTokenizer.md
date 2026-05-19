@@ -1,6 +1,6 @@
 # FunctionTokenizer[#](#functiontokenizer "Link to this heading")
 
-class scikitplot.corpus.FunctionTokenizer(**fn**, **name='custom'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L280)[#](#scikitplot.corpus.FunctionTokenizer "Link to this definition")
+class scikitplot.corpus.FunctionTokenizer(**fn**, **name='custom'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L280)[#](#scikitplot.corpus.FunctionTokenizer "Link to this definition")
 :   Wrap any `Callable[[str], list[str]]` as a [`TokenizerProtocol`](scikitplot.corpus.TokenizerProtocol.html#scikitplot.corpus.TokenizerProtocol "scikitplot.corpus.TokenizerProtocol").
 
     Parameters:
@@ -48,7 +48,7 @@ class scikitplot.corpus.FunctionTokenizer(**fn**, **name='custom'**)[[source]](h
     ```
     Go BackOpen In Tab
 
-    tokenize(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L331)[#](#scikitplot.corpus.FunctionTokenizer.tokenize "Link to this definition")
+    tokenize(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L331)[#](#scikitplot.corpus.FunctionTokenizer.tokenize "Link to this definition")
     :   Tokenize **text** using the wrapped callable.
 
         Parameters:

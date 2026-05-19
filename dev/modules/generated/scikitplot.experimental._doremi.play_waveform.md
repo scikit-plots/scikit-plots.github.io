@@ -1,6 +1,6 @@
 # play\_waveform[#](#play-waveform "Link to this heading")
 
-scikitplot.experimental.\_doremi.play\_waveform(**music**, **rate=None**, **file\_path=None**, **blocking=True**, **backend='auto'**, **save\_generated=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/experimental/_doremi/waveform_playback.py#L62)[#](#scikitplot.experimental._doremi.play_waveform "Link to this definition")
+scikitplot.experimental.\_doremi.play\_waveform(**music**, **rate=None**, **file\_path=None**, **blocking=True**, **backend='auto'**, **save\_generated=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/experimental/_doremi/waveform_playback.py#L62)[#](#scikitplot.experimental._doremi.play_waveform "Link to this definition")
 :   Play audio from a NumPy array using either IPython (for Jupyter) or sounddevice.
 
     Parameters:

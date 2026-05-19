@@ -1,6 +1,6 @@
 # StorageQuery[#](#storagequery "Link to this heading")
 
-class scikitplot.corpus.StorageQuery(**input\_path=None**, **source\_type=None**, **language=None**, **section\_type=None**, **collection\_id=None**, **full\_text=None**, **limit=100**, **offset=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_storage/_storage.py#L65)[#](#scikitplot.corpus.StorageQuery "Link to this definition")
+class scikitplot.corpus.StorageQuery(**input\_path=None**, **source\_type=None**, **language=None**, **section\_type=None**, **collection\_id=None**, **full\_text=None**, **limit=100**, **offset=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/corpus/_storage/_storage.py#L65)[#](#scikitplot.corpus.StorageQuery "Link to this definition")
 :   Query parameters for [`StorageBase.query`](scikitplot.corpus.StorageBase.html#scikitplot.corpus.StorageBase.query "scikitplot.corpus.StorageBase.query").
 
     Parameters:

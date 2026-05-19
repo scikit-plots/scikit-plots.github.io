@@ -71,7 +71,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=bd6c8cb8"></script>
+    <script src="../../_static/ai-assistant.js?v=584f408e"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>CustomSimilarityIndex<a class="headerlink" href="#customsimilarityindex" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.CustomSimilarityIndex">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">CustomSimilarityIndex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_scorer_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_custom_hooks.py#L1669"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.CustomSimilarityIndex" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">CustomSimilarityIndex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_scorer_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/corpus/_custom_hooks.py#L1669"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.CustomSimilarityIndex" title="Link to this definition">#</a></dt>
 <dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">SimilarityIndex</span></code> extended with a
 fully-replaceable custom scorer callable.</p>
 <p>When <code class="docutils literal notranslate"><span class="pre">custom_scorer_fn</span></code> is provided, <a class="reference internal" href="#scikitplot.corpus.CustomSimilarityIndex.search" title="scikitplot.corpus.CustomSimilarityIndex.search"><code class="xref py py-meth docutils literal notranslate"><span class="pre">search</span></code></a> calls it instead of
@@ -1362,8 +1362,8 @@ is wrapped, not subclassed, to avoid MRO conflicts with its lazy-import
 dependencies.  All <code class="docutils literal notranslate"><span class="pre">build()</span></code>, property, and <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> calls are
 delegated to the inner index.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="0b7fd3d1-4bfb-4432-87c9-a747dd2a2f69">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('0b7fd3d1-4bfb-4432-87c9-a747dd2a2f69','75078d72-104c-4f0f-97af-3fa1958d1338','8e0c5d7e-d966-4ee4-9b07-db2e6cac344d','../../lite/tree/../notebooks/index.html?path=d290556a_19b2_4edc_9bfd_9f977830bd2c.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="a0958624-35ae-4fb5-b16c-8766de454b35">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('a0958624-35ae-4fb5-b16c-8766de454b35','b6d52e05-b86f-4456-8a26-9ab98a9acdb2','fa280323-e3e5-45a1-9c9f-a430b8c35f42','../../lite/tree/../notebooks/index.html?path=e13aee05_f938_4e0d_bd2a_f871380c1069.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Plug in a Cohere reranker:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">cohere</span>
 
@@ -1386,9 +1386,9 @@ delegated to the inner index.</p>
 </div>
 </div>
 </div>
-<div id="8e0c5d7e-d966-4ee4-9b07-db2e6cac344d" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('0b7fd3d1-4bfb-4432-87c9-a747dd2a2f69','8e0c5d7e-d966-4ee4-9b07-db2e6cac344d')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('0b7fd3d1-4bfb-4432-87c9-a747dd2a2f69','8e0c5d7e-d966-4ee4-9b07-db2e6cac344d')">Open In Tab</button></div><div id="75078d72-104c-4f0f-97af-3fa1958d1338" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="fa280323-e3e5-45a1-9c9f-a430b8c35f42" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('a0958624-35ae-4fb5-b16c-8766de454b35','fa280323-e3e5-45a1-9c9f-a430b8c35f42')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('a0958624-35ae-4fb5-b16c-8766de454b35','fa280323-e3e5-45a1-9c9f-a430b8c35f42')">Open In Tab</button></div><div id="b6d52e05-b86f-4456-8a26-9ab98a9acdb2" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.CustomSimilarityIndex.build">
-<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_custom_hooks.py#L1782"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.CustomSimilarityIndex.build" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/corpus/_custom_hooks.py#L1782"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.CustomSimilarityIndex.build" title="Link to this definition">#</a></dt>
 <dd><p>Build the index from documents.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1426,7 +1426,7 @@ delegated to the inner index.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.CustomSimilarityIndex.search">
-<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_embedding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_custom_hooks.py#L1802"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.CustomSimilarityIndex.search" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_embedding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/corpus/_custom_hooks.py#L1802"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.CustomSimilarityIndex.search" title="Link to this definition">#</a></dt>
 <dd><p>Search the index using the custom scorer or built-in modes.</p>
 <p>When <code class="docutils literal notranslate"><span class="pre">custom_scorer_fn</span></code> is set it is called with
 <code class="docutils literal notranslate"><span class="pre">(query,</span> <span class="pre">documents,</span> <span class="pre">resolved_config)</span></code> and its return value is
@@ -1583,7 +1583,7 @@ is called on the inner index.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260519.5fb281e 2026-05-19T13:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260519.287271b 2026-05-19T14:55Z.
       <br/>
     
   </p>

@@ -71,7 +71,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=bd6c8cb8"></script>
+    <script src="../../_static/ai-assistant.js?v=584f408e"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -1314,7 +1314,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>split_cjk_chars<a class="headerlink" href="#split-cjk-chars" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.split_cjk_chars">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">split_cjk_chars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1286"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.split_cjk_chars" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">split_cjk_chars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1286"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.split_cjk_chars" title="Link to this definition">#</a></dt>
 <dd><p>Split <em>text</em> into individual CJK character tokens.</p>
 <p>Non-CJK runs (Latin words, numbers, spaces) are kept as contiguous
 tokens split on whitespace.  This produces a mixed token list where
@@ -1360,8 +1360,8 @@ safe.  After Layer 0 (GraphemeClusterNormalizer) is applied, use the
 <code class="docutils literal notranslate"><span class="pre">regex</span></code> path.  The legacy path is preserved as
 <code class="xref py py-func docutils literal notranslate"><span class="pre">_split_cjk_chars_legacy</span></code> for environments without <code class="docutils literal notranslate"><span class="pre">regex</span></code>.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="b1c408c1-0f8d-45ef-a48e-16da18a1b681">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('b1c408c1-0f8d-45ef-a48e-16da18a1b681','6247219b-1a21-41e0-8bd6-6694490f470a','b3f30f78-6e43-44ba-991c-38a89dc28336','../../lite/tree/../notebooks/index.html?path=65a4612f_c77b_4aad_819f_d84a3286aadd.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="b6ec796e-57b5-4805-835e-fa9dbdc2cec1">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('b6ec796e-57b5-4805-835e-fa9dbdc2cec1','a76e3c33-d1fe-4cb8-b7a7-560d7c69c444','158e1527-748b-44e1-955c-065d1a62525d','../../lite/tree/../notebooks/index.html?path=95693fa3_8238_434a_ba90_b18435b9abda.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">split_cjk_chars</span><span class="p">(</span><span class="s2">&quot;你好 world 再见&quot;</span><span class="p">)</span>
 <span class="go">[&#39;你&#39;, &#39;好&#39;, &#39;world&#39;, &#39;再&#39;, &#39;见&#39;]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">split_cjk_chars</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">)</span>
@@ -1372,7 +1372,7 @@ safe.  After Layer 0 (GraphemeClusterNormalizer) is applied, use the
 </div>
 </div>
 </div>
-<div id="b3f30f78-6e43-44ba-991c-38a89dc28336" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('b1c408c1-0f8d-45ef-a48e-16da18a1b681','b3f30f78-6e43-44ba-991c-38a89dc28336')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('b1c408c1-0f8d-45ef-a48e-16da18a1b681','b3f30f78-6e43-44ba-991c-38a89dc28336')">Open In Tab</button></div><div id="6247219b-1a21-41e0-8bd6-6694490f470a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="158e1527-748b-44e1-955c-065d1a62525d" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('b6ec796e-57b5-4805-835e-fa9dbdc2cec1','158e1527-748b-44e1-955c-065d1a62525d')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('b6ec796e-57b5-4805-835e-fa9dbdc2cec1','158e1527-748b-44e1-955c-065d1a62525d')">Open In Tab</button></div><div id="a76e3c33-d1fe-4cb8-b7a7-560d7c69c444" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1481,7 +1481,7 @@ safe.  After Layer 0 (GraphemeClusterNormalizer) is applied, use the
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260519.5fb281e 2026-05-19T13:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260519.287271b 2026-05-19T14:55Z.
       <br/>
     
   </p>

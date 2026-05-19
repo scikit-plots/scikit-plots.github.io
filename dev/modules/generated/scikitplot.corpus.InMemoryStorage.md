@@ -1,6 +1,6 @@
 # InMemoryStorage[#](#inmemorystorage "Link to this heading")
 
-class scikitplot.corpus.InMemoryStorage[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_storage/_storage.py#L251)[#](#scikitplot.corpus.InMemoryStorage "Link to this definition")
+class scikitplot.corpus.InMemoryStorage[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/corpus/_storage/_storage.py#L251)[#](#scikitplot.corpus.InMemoryStorage "Link to this definition")
 :   Thread-safe in-memory dict store.
 
     Stores documents as [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
@@ -28,19 +28,19 @@ class scikitplot.corpus.InMemoryStorage[[source]](https://github.com/scikit-plot
     ```
     Go BackOpen In Tab
 
-    clear()[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_storage/_storage.py#L350)[#](#scikitplot.corpus.InMemoryStorage.clear "Link to this definition")
+    clear()[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/corpus/_storage/_storage.py#L350)[#](#scikitplot.corpus.InMemoryStorage.clear "Link to this definition")
     :   Remove all documents from the store.
 
         Return type:
         :   None
 
-    count()[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_storage/_storage.py#L345)[#](#scikitplot.corpus.InMemoryStorage.count "Link to this definition")
+    count()[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/corpus/_storage/_storage.py#L345)[#](#scikitplot.corpus.InMemoryStorage.count "Link to this definition")
     :   Return total stored document count in O(1).
 
         Return type:
         :   [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")
 
-    get(**doc\_id**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_storage/_storage.py#L311)[#](#scikitplot.corpus.InMemoryStorage.get "Link to this definition")
+    get(**doc\_id**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/corpus/_storage/_storage.py#L311)[#](#scikitplot.corpus.InMemoryStorage.get "Link to this definition")
     :   Return the document with the given `doc_id`, or `None`.
 
         Parameters:
@@ -52,7 +52,7 @@ class scikitplot.corpus.InMemoryStorage[[source]](https://github.com/scikit-plot
         Return type:
         :   [**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument") | None
 
-    query(**q**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_storage/_storage.py#L322)[#](#scikitplot.corpus.InMemoryStorage.query "Link to this definition")
+    query(**q**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/corpus/_storage/_storage.py#L322)[#](#scikitplot.corpus.InMemoryStorage.query "Link to this definition")
     :   Filter documents by the query parameters.
 
         Full-text search (`q.full_text`) is not supported — the
@@ -70,7 +70,7 @@ class scikitplot.corpus.InMemoryStorage[[source]](https://github.com/scikit-plot
         Return type:
         :   [**QueryResult**](scikitplot.corpus.QueryResult.html#scikitplot.corpus.QueryResult "scikitplot.corpus._storage._storage.QueryResult")
 
-    save(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_storage/_storage.py#L281)[#](#scikitplot.corpus.InMemoryStorage.save "Link to this definition")
+    save(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/corpus/_storage/_storage.py#L281)[#](#scikitplot.corpus.InMemoryStorage.save "Link to this definition")
     :   Store `doc` by `doc_id`. Overwrites if already present.
 
         Parameters:
@@ -82,7 +82,7 @@ class scikitplot.corpus.InMemoryStorage[[source]](https://github.com/scikit-plot
         Return type:
         :   None
 
-    save\_batch(**docs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_storage/_storage.py#L297)[#](#scikitplot.corpus.InMemoryStorage.save_batch "Link to this definition")
+    save\_batch(**docs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/corpus/_storage/_storage.py#L297)[#](#scikitplot.corpus.InMemoryStorage.save_batch "Link to this definition")
     :   Store a batch of documents atomically (single lock acquisition).
 
         Parameters:

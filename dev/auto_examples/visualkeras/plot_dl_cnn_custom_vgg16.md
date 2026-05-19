@@ -112,7 +112,7 @@ ImageFont.load_default()
 
 ```
 ```
-<PIL.ImageFont.FreeTypeFont object at 0x79d04c536390>
+<PIL.ImageFont.FreeTypeFont object at 0x73e128609990>
 
 ```
 ```
@@ -145,7 +145,7 @@ img_vgg16_legend
 ```
 ![plot dl cnn custom vgg16](../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_002.png)
 ```
-<matplotlib.image.AxesImage object at 0x79d04c0eccd0>
+<matplotlib.image.AxesImage object at 0x73e128456c10>
 
 ```
 ```
@@ -162,7 +162,7 @@ img_vgg16_spacing_layers
 ```
 ![plot dl cnn custom vgg16](../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_003.png)
 ```
-<matplotlib.image.AxesImage object at 0x79d04c684350>
+<matplotlib.image.AxesImage object at 0x73e12833ec10>
 
 ```
 ```
@@ -183,7 +183,7 @@ img_vgg16_type_ignore
 ```
 ![plot dl cnn custom vgg16](../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_004.png)
 ```
-<matplotlib.image.AxesImage object at 0x79d05eed3e90>
+<matplotlib.image.AxesImage object at 0x73e12812b9d0>
 
 ```
 ```
@@ -200,7 +200,7 @@ img_vgg16_color_map
 ```
 ![plot dl cnn custom vgg16](../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_005.png)
 ```
-<matplotlib.image.AxesImage object at 0x79d03417f810>
+<matplotlib.image.AxesImage object at 0x73e12813c5d0>
 
 ```
 ```
@@ -217,7 +217,7 @@ img_vgg16_flat
 ```
 ![plot dl cnn custom vgg16](../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_006.png)
 ```
-<matplotlib.image.AxesImage object at 0x79d05ef54290>
+<matplotlib.image.AxesImage object at 0x73e12017cd50>
 
 ```
 ```
@@ -241,13 +241,13 @@ img_vgg16_scaling
 ```
 ![plot dl cnn custom vgg16](../../_images/sphx_glr_plot_dl_cnn_custom_vgg16_007.png)
 ```
-<matplotlib.image.AxesImage object at 0x79d034097810>
+<matplotlib.image.AxesImage object at 0x73e1201aec10>
 
 ```
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: model building](../../_tags/model-workflow-model-building.html) [plot-type: visualkeras](../../_tags/plot-type-visualkeras.html) [domain: neural network](../../_tags/domain-neural-network.html) [level: intermediate](../../_tags/level-intermediate.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 15.424 seconds)
+****Total running time of the script:**** (0 minutes 14.748 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo18.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/visualkeras/plot_dl_cnn_custom_vgg16.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo18.svg)](../../lite/lab/index.html?path=auto_examples/visualkeras/plot_dl_cnn_custom_vgg16.ipynb)
 

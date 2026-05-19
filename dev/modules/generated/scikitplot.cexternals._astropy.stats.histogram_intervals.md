@@ -1,6 +1,6 @@
 # histogram\_intervals[#](#histogram-intervals "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.histogram\_intervals(**n**, **breaks**, **totals**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/cexternals/_astropy/stats/funcs.py#L1655)[#](#scikitplot.cexternals._astropy.stats.histogram_intervals "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.histogram\_intervals(**n**, **breaks**, **totals**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/cexternals/_astropy/stats/funcs.py#L1655)[#](#scikitplot.cexternals._astropy.stats.histogram_intervals "Link to this definition")
 :   Histogram of a piecewise-constant weight function.
 
     This function takes a piecewise-constant weight function and

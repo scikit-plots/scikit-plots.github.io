@@ -1,6 +1,6 @@
 # fit\_line[#](#fit-line "Link to this heading")
 
-scikitplot.externals.\_probscale.fit\_line(**x**, **y**, **xhat=None**, **fitprobs=None**, **fitlogs=None**, **dist=None**, **estimate\_ci=False**, **niter=10000**, **alpha=0.05**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/externals/_probscale/viz.py#L455)[#](#scikitplot.externals._probscale.fit_line "Link to this definition")
+scikitplot.externals.\_probscale.fit\_line(**x**, **y**, **xhat=None**, **fitprobs=None**, **fitlogs=None**, **dist=None**, **estimate\_ci=False**, **niter=10000**, **alpha=0.05**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/externals/_probscale/viz.py#L455)[#](#scikitplot.externals._probscale.fit_line "Link to this definition")
 :   Fits a line to x-y data in various forms (linear, log, prob scales).
 
     Parameters:

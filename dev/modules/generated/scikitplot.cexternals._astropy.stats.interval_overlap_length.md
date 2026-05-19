@@ -1,6 +1,6 @@
 # interval\_overlap\_length[#](#interval-overlap-length "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.interval\_overlap\_length(**i1**, **i2**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/cexternals/_astropy/stats/funcs.py#L1623)[#](#scikitplot.cexternals._astropy.stats.interval_overlap_length "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.interval\_overlap\_length(**i1**, **i2**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/cexternals/_astropy/stats/funcs.py#L1623)[#](#scikitplot.cexternals._astropy.stats.interval_overlap_length "Link to this definition")
 :   Compute the length of overlap of two intervals.
 
     Parameters:

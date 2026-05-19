@@ -1,6 +1,6 @@
 # aucplot[#](#aucplot "Link to this heading")
 
-scikitplot.seaborn.aucplot(**data=None**, **\***, **x=None**, **y=None**, **hue=None**, **kind=None**, **weights=None**, **hue\_order=None**, **hue\_norm=None**, **palette=None**, **color=None**, **fill=False**, **baseline=False**, **line\_kws=None**, **log\_scale=None**, **legend=True**, **ax=None**, **annot=None**, **fmt='.4g'**, **annot\_kws=None**, **digits=None**, **common\_norm=None**, **verbose=False**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/seaborn/_auc.py#L1149)[#](#scikitplot.seaborn.aucplot "Link to this definition")
+scikitplot.seaborn.aucplot(**data=None**, **\***, **x=None**, **y=None**, **hue=None**, **kind=None**, **weights=None**, **hue\_order=None**, **hue\_norm=None**, **palette=None**, **color=None**, **fill=False**, **baseline=False**, **line\_kws=None**, **log\_scale=None**, **legend=True**, **ax=None**, **annot=None**, **fmt='.4g'**, **annot\_kws=None**, **digits=None**, **common\_norm=None**, **verbose=False**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/seaborn/_auc.py#L1149)[#](#scikitplot.seaborn.aucplot "Link to this definition")
 :   Plot PR or ROC curves with a seaborn-like API.
 
     Parameters:

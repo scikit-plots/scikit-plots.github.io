@@ -1,6 +1,6 @@
 # plot\_cumgains[#](#plot-cumgains "Link to this heading")
 
-scikitplot.decile.plot\_cumgains(**plot\_input**, **\***, **highlight\_ntile=None**, **highlight\_how='plot\_text'**, **autopct='%.2f%%'**, **line\_kws=None**, **ref\_line\_kws=None**, **legend\_kws=None**, **grid\_kws=None**, **axes\_kws=None**, **annotation\_kws=None**, **footer\_kws=None**, **save\_fig=True**, **save\_fig\_filename=''**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/decile/_decile_modelplotpy.py#L2964)[#](#scikitplot.decile.plot_cumgains "Link to this definition")
+scikitplot.decile.plot\_cumgains(**plot\_input**, **\***, **highlight\_ntile=None**, **highlight\_how='plot\_text'**, **autopct='%.2f%%'**, **line\_kws=None**, **ref\_line\_kws=None**, **legend\_kws=None**, **grid\_kws=None**, **axes\_kws=None**, **annotation\_kws=None**, **footer\_kws=None**, **save\_fig=True**, **save\_fig\_filename=''**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/decile/_decile_modelplotpy.py#L2964)[#](#scikitplot.decile.plot_cumgains "Link to this definition")
 :   Plot cumulative gains curve.
 
     Parameters:

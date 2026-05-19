@@ -1,6 +1,6 @@
 # Annoy[#](#annoy "Link to this heading")
 
-class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/cexternals/_annoy/__init__.py#L)[#](#scikitplot.cexternals._annoy.Annoy "Link to this definition")
+class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/cexternals/_annoy/__init__.py#L)[#](#scikitplot.cexternals._annoy.Annoy "Link to this definition")
 :   Compiled with GCC/Clang. Using 512-bit AVX instructions.
 
     Approximate Nearest Neighbors index (Annoy) with a small, lazy C-extension wrapper.

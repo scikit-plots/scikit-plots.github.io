@@ -71,7 +71,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=eaa0aa5c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
-    <script src="../../_static/ai-assistant.js?v=bd6c8cb8"></script>
+    <script src="../../_static/ai-assistant.js?v=584f408e"></script>
     <script src="../../_static/thebelab-helper.js"></script>
     <script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -1315,7 +1315,7 @@ window.AI_ASSISTANT_CONFIG = {"position": "sidebar", "content_selector": "articl
 <h1>poisson_conf_interval<a class="headerlink" href="#poisson-conf-interval" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cexternals._astropy.stats.poisson_conf_interval">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cexternals._astropy.stats.</span></span><span class="sig-name descname"><span class="pre">poisson_conf_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'root-n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confidence_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/cexternals/_astropy/stats/funcs.py#L508"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexternals._astropy.stats.poisson_conf_interval" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cexternals._astropy.stats.</span></span><span class="sig-name descname"><span class="pre">poisson_conf_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'root-n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confidence_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/cexternals/_astropy/stats/funcs.py#L508"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexternals._astropy.stats.poisson_conf_interval" title="Link to this definition">#</a></dt>
 <dd><p>Poisson parameter confidence interval given observed counts.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1434,8 +1434,8 @@ the other methods, in particular for large count numbers (above 1000
 even with <code class="docutils literal notranslate"><span class="pre">mpmath</span></code>). Fortunately, some of the other methods or a
 Gaussian approximation usually work well in this regime.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="cc615c8a-a4a1-43c6-88f4-43ccb1c3b444">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('cc615c8a-a4a1-43c6-88f4-43ccb1c3b444','8e602118-6659-40cb-91ab-64f34a869d62','348c37a4-73e5-48e6-8ae4-813b1d7d3574','../../lite/tree/../notebooks/index.html?path=a9e8ca72_26a4_4ca9_a4c9_c98081fc462d.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="093cf628-3fef-447f-aac3-3f8def98f2b4">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('093cf628-3fef-447f-aac3-3f8def98f2b4','226ea3d1-5144-48e5-959f-fc95314793a1','02a1c777-9c2b-423c-9da6-a7cf73389b90','../../lite/tree/../notebooks/index.html?path=52693592_f2a6_4373_b7d9_ccca36bd3fb9.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">poisson_conf_interval</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">interval</span><span class="o">=</span><span class="s1">&#39;root-n&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
 <span class="go">array([[  0.        ,   0.        ],</span>
 <span class="go">       [  0.        ,   2.        ],</span>
@@ -1502,7 +1502,7 @@ Gaussian approximation usually work well in this regime.</p>
 </div>
 </div>
 </div>
-<div id="348c37a4-73e5-48e6-8ae4-813b1d7d3574" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('cc615c8a-a4a1-43c6-88f4-43ccb1c3b444','348c37a4-73e5-48e6-8ae4-813b1d7d3574')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('cc615c8a-a4a1-43c6-88f4-43ccb1c3b444','348c37a4-73e5-48e6-8ae4-813b1d7d3574')">Open In Tab</button></div><div id="8e602118-6659-40cb-91ab-64f34a869d62" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="02a1c777-9c2b-423c-9da6-a7cf73389b90" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('093cf628-3fef-447f-aac3-3f8def98f2b4','02a1c777-9c2b-423c-9da6-a7cf73389b90')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('093cf628-3fef-447f-aac3-3f8def98f2b4','02a1c777-9c2b-423c-9da6-a7cf73389b90')">Open In Tab</button></div><div id="226ea3d1-5144-48e5-959f-fc95314793a1" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1611,7 +1611,7 @@ Gaussian approximation usually work well in this regime.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260519.5fb281e 2026-05-19T13:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20260519.287271b 2026-05-19T14:55Z.
       <br/>
     
   </p>

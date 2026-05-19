@@ -1,6 +1,6 @@
 # SearchConfig[#](#searchconfig "Link to this heading")
 
-class scikitplot.corpus.SearchConfig(**top\_k=10**, **match\_mode='semantic'**, **semantic\_threshold=0.0**, **keyword\_threshold=0.0**, **hybrid\_alpha=0.5**, **rrf\_k=60**, **use\_normalized\_text=True**, **case\_sensitive=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_similarity/_similarity.py#L77)[#](#scikitplot.corpus.SearchConfig "Link to this definition")
+class scikitplot.corpus.SearchConfig(**top\_k=10**, **match\_mode='semantic'**, **semantic\_threshold=0.0**, **keyword\_threshold=0.0**, **hybrid\_alpha=0.5**, **rrf\_k=60**, **use\_normalized\_text=True**, **case\_sensitive=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/corpus/_similarity/_similarity.py#L77)[#](#scikitplot.corpus.SearchConfig "Link to this definition")
 :   Configuration for similarity search.
 
     Parameters:

@@ -1,6 +1,6 @@
 # to\_huggingface\_dataset[#](#to-huggingface-dataset "Link to this heading")
 
-scikitplot.corpus.to\_huggingface\_dataset(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/5fb281e/scikitplot/corpus/_adapters.py#L385)[#](#scikitplot.corpus.to_huggingface_dataset "Link to this definition")
+scikitplot.corpus.to\_huggingface\_dataset(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/corpus/_adapters.py#L385)[#](#scikitplot.corpus.to_huggingface_dataset "Link to this definition")
 :   Convert documents to a HuggingFace `Dataset`.
 
     Parameters:
