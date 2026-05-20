@@ -14,7 +14,7 @@ and dropping the category.
 > **Note**
 > `fit(X, y).transform(X)` does not equal `fit_transform(X, y)` because a
 cross fitting scheme is used in `fit_transform` for encoding. See the
-[User Guide](https://scikit-learn.org/dev/modules/preprocessing.html#target-encoder "(in scikit-learn v1.9)") for details.
+[User Guide](https://scikit-learn.org/dev/modules/preprocessing.html#target-encoder "(in scikit-learn v1.10)") for details.
 ```
 # Authors: The scikit-plots developers
 # SPDX-License-Identifier: BSD-3-Clause
@@ -169,7 +169,7 @@ X.shape, y.shape, y.hist()
 ## Training and Evaluating Pipelines with Different Encoders[#](#training-and-evaluating-pipelines-with-different-encoders "Link to this heading")
 
 In this section, we will evaluate pipelines with
-[`HistGradientBoostingRegressor`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html#sklearn.ensemble.HistGradientBoostingRegressor "(in scikit-learn v1.9)") with different encoding
+[`HistGradientBoostingRegressor`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html#sklearn.ensemble.HistGradientBoostingRegressor "(in scikit-learn v1.10)") with different encoding
 strategies. First, we list out the encoders we will be using to preprocess
 the categorical features:
 
@@ -257,7 +257,7 @@ for name, categorical_preprocessor in categorical_preprocessors:
 ## Native Categorical Feature Support[#](#native-categorical-feature-support "Link to this heading")
 
 In this section, we build and evaluate a pipeline that uses native categorical
-feature support in [`HistGradientBoostingRegressor`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html#sklearn.ensemble.HistGradientBoostingRegressor "(in scikit-learn v1.9)"),
+feature support in [`HistGradientBoostingRegressor`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html#sklearn.ensemble.HistGradientBoostingRegressor "(in scikit-learn v1.10)"),
 which only supports up to 255 unique categories. In our dataset, the most of
 the categorical features have more than 255 unique categories:
 
@@ -491,7 +491,7 @@ Pipeline(steps=[('columntransformer',
                                                                  unknown_value=-1),
                                                   Index(['make', 'body_type', 'fuel_category'], dtype='object')),
                                                  ('equipment',
-                                                  DummyCodeEncoder(sep=<function <lambda> at 0x77e634882660>,
+                                                  DummyCodeEncoder(sep=<function <lambda> at 0x76d17cd19ee0>,
                                                                    sparse_output=False),
                                                   ['equipment_comfort',
                                                    'equipment_entertainment',
@@ -577,7 +577,7 @@ Parameters
 |  |  |  |
 | --- | --- | --- |
 |  | [columns columns: list-like, default=None  Column names in the DataFrame to be encoded. If `columns` is None then all the columns with `object`, `string`, or `category` dtype will be converted.](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=columns,-list-like%2C%20default%3DNone) | None |
-|  | [sep sep: callable or str, default='|'  String regex or literal separator to split on (e.g., "a,b,c").  - sep=',', - sep=r'\s\*[,;|]\s\*', - sep=lambda s: re.split(r'\s\*[,;|]\s\*', s.lower()),](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=sep,-callable%20or%20str%2C%20default%3D%27%7C%27) | <function <la...x77e634882660> |
+|  | [sep sep: callable or str, default='|'  String regex or literal separator to split on (e.g., "a,b,c").  - sep=',', - sep=r'\s\*[,;|]\s\*', - sep=lambda s: re.split(r'\s\*[,;|]\s\*', s.lower()),](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=sep,-callable%20or%20str%2C%20default%3D%27%7C%27) | <function <la...x76d17cd19ee0> |
 |  | [regex regex: bool, default=True  Use regex to split on (e.g., "a,b|C;") by ``sep`` like:  - ``pattern=r'\s\*[,;|]\s\*'``](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=regex,-bool%2C%20default%3DTrue) | False |
 |  | [prefix prefix: str, list of str, or dict of str, default=None  String to append DataFrame column names. Pass a list with length equal to the number of columns when calling get\_dummies on a DataFrame. Alternatively, `prefix` can be a dictionary mapping column names to prefixes.](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=prefix,-str%2C%20list%20of%20str%2C%20or%20dict%20of%20str%2C%20default%3DNone) | None |
 |  | [prefix\_sep prefix\_sep: str, default='\_'  If appending prefix, separator/delimiter to use. Or pass a list or dictionary as with `prefix` (e.g., "tags\_a").](https://scikit-plots.github.io/dev/modules/generated/scikitplot.preprocessing.DummyCodeEncoder.html#:~:text=prefix_sep,-str%2C%20default%3D%27_%27) | '\_' |
@@ -692,17 +692,17 @@ can be explained as follows:
   set only);
 * The ordinal encoding imposes an arbitrary order to the features which are then
   treated as numerical values by the
-  [`HistGradientBoostingRegressor`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html#sklearn.ensemble.HistGradientBoostingRegressor "(in scikit-learn v1.9)"). Since this
+  [`HistGradientBoostingRegressor`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html#sklearn.ensemble.HistGradientBoostingRegressor "(in scikit-learn v1.10)"). Since this
   model groups numerical features in 256 bins per feature, many unrelated categories
   can be grouped together and as a result overall pipeline can underfit;
 * When using the target encoder, the same binning happens, but since the encoded
   values are statistically ordered by marginal association with the target variable,
-  the binning use by the [`HistGradientBoostingRegressor`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html#sklearn.ensemble.HistGradientBoostingRegressor "(in scikit-learn v1.9)")
+  the binning use by the [`HistGradientBoostingRegressor`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html#sklearn.ensemble.HistGradientBoostingRegressor "(in scikit-learn v1.10)")
   makes sense and leads to good results: the combination of smoothed target
   encoding and binning works as a good regularizing strategy against
   overfitting while not limiting the expressiveness of the pipeline too much.
 
-****Total running time of the script:**** (0 minutes 4.053 seconds)
+****Total running time of the script:**** (0 minutes 3.995 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo13.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/preprocessing/plot_dummy_code_encoder.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo13.svg)](../../lite/lab/index.html?path=auto_examples/preprocessing/plot_dummy_code_encoder.ipynb)
 

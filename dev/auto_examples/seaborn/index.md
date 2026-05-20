@@ -1,7 +1,7 @@
 # Seaborn[#](#seaborn-examples "Link to this heading")
 
 Examples related to the [`seaborn`](../../apis/scikitplot.seaborn.html#module-scikitplot.seaborn "scikitplot.seaborn") submodule
-with a scikit-learn regressor (e.g., [`LinearRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression "(in scikit-learn v1.9)")) instance.
+with a scikit-learn regressor (e.g., [`LinearRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression "(in scikit-learn v1.10)")) instance.
 
 ![](../../_images/sphx_glr_plot_aucplot_script_thumb.png)
 

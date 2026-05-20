@@ -1,6 +1,6 @@
 # DummyCodeEncoder[#](#dummycodeencoder "Link to this heading")
 
-class scikitplot.preprocessing.DummyCodeEncoder(**\***, **columns=None**, **sep='|'**, **regex=False**, **prefix=None**, **prefix\_sep='\_'**, **dummy\_na=False**, **categories='auto'**, **drop=None**, **sparse\_output=True**, **dtype=<class 'numpy.float64'>**, **handle\_unknown='error'**, **min\_frequency=None**, **max\_categories=None**, **feature\_name\_combiner='concat'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/preprocessing/_encoders.py#L932)[#](#scikitplot.preprocessing.DummyCodeEncoder "Link to this definition")
+class scikitplot.preprocessing.DummyCodeEncoder(**\***, **columns=None**, **sep='|'**, **regex=False**, **prefix=None**, **prefix\_sep='\_'**, **dummy\_na=False**, **categories='auto'**, **drop=None**, **sparse\_output=True**, **dtype=<class 'numpy.float64'>**, **handle\_unknown='error'**, **min\_frequency=None**, **max\_categories=None**, **feature\_name\_combiner='concat'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/preprocessing/_encoders.py#L932)[#](#scikitplot.preprocessing.DummyCodeEncoder "Link to this definition")
 :   Encode categorical features into dummy/indicator 0/1 variables.
 
     Each string in Series is split by `sep` and returned as a DataFrame
@@ -28,9 +28,9 @@ class scikitplot.preprocessing.DummyCodeEncoder(**\***, **columns=None**, **sep=
     Compatible with sklearn pipelines, `set_output` API, and supports both
     dense and sparse output.
 
-    Read more in the [User Guide](https://scikit-learn.org/dev/modules/preprocessing.html#preprocessing-categorical-features "(in scikit-learn v1.9)").
+    Read more in the [User Guide](https://scikit-learn.org/dev/modules/preprocessing.html#preprocessing-categorical-features "(in scikit-learn v1.10)").
     For a comparison of different encoders, refer to:
-    [Comparing Target Encoder with Other Encoders](https://scikit-learn.org/dev/auto_examples/preprocessing/plot_target_encoder.html#sphx-glr-auto-examples-preprocessing-plot-target-encoder-py "(in scikit-learn v1.9)").
+    [Comparing Target Encoder with Other Encoders](https://scikit-learn.org/dev/auto_examples/preprocessing/plot_target_encoder.html#sphx-glr-auto-examples-preprocessing-plot-target-encoder-py "(in scikit-learn v1.10)").
 
     > **Caution**
     > ⚠️ These parameters are reserved for future use;
@@ -133,7 +133,7 @@ class scikitplot.preprocessing.DummyCodeEncoder(**\***, **columns=None**, **sep=
               [`inverse_transform`](#scikitplot.preprocessing.DummyCodeEncoder.inverse_transform "scikitplot.preprocessing.DummyCodeEncoder.inverse_transform") will handle an unknown category as with
               `handle_unknown='ignore'`. Infrequent categories exist based on
               `min_frequency` and `max_categories`. Read more in the
-              [User Guide](https://scikit-learn.org/dev/modules/preprocessing.html#encoder-infrequent-categories "(in scikit-learn v1.9)").
+              [User Guide](https://scikit-learn.org/dev/modules/preprocessing.html#encoder-infrequent-categories "(in scikit-learn v1.10)").
             * ‘warn’ : When an unknown category is encountered during transform
               a warning is issued, and the encoding then proceeds as described for
               `handle_unknown="infrequent_if_exist"`.
@@ -147,7 +147,7 @@ class scikitplot.preprocessing.DummyCodeEncoder(**\***, **columns=None**, **sep=
             * If `float`, categories with a smaller cardinality than
               `min_frequency * n_samples` will be considered infrequent.
 
-            Added in version 1.1: Read more in the [User Guide](https://scikit-learn.org/dev/modules/preprocessing.html#encoder-infrequent-categories "(in scikit-learn v1.9)").
+            Added in version 1.1: Read more in the [User Guide](https://scikit-learn.org/dev/modules/preprocessing.html#encoder-infrequent-categories "(in scikit-learn v1.10)").
 
         ****max\_categories****int, default=None
         :   Specifies an upper limit to the number of output features for each input
@@ -156,7 +156,7 @@ class scikitplot.preprocessing.DummyCodeEncoder(**\***, **columns=None**, **sep=
             infrequent categories along with the frequent categories. If `None`,
             there is no limit to the number of output features.
 
-            Added in version 1.1: Read more in the [User Guide](https://scikit-learn.org/dev/modules/preprocessing.html#encoder-infrequent-categories "(in scikit-learn v1.9)").
+            Added in version 1.1: Read more in the [User Guide](https://scikit-learn.org/dev/modules/preprocessing.html#encoder-infrequent-categories "(in scikit-learn v1.10)").
 
         ****feature\_name\_combiner****“concat” or callable, default=”concat”
         :   Callable with signature `def callable(input_feature, category)` that returns a
@@ -226,22 +226,22 @@ class scikitplot.preprocessing.DummyCodeEncoder(**\***, **columns=None**, **sep=
     [`pandas.from_dummies`](https://pandas.pydata.org/docs/dev/reference/api/pandas.from_dummies.html#pandas.from_dummies "(in pandas)")
     :   Convert dummy codes back to categorical DataFrame.
 
-    [`sklearn.preprocessing.OrdinalEncoder`](https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.OrdinalEncoder.html#sklearn.preprocessing.OrdinalEncoder "(in scikit-learn v1.9)")
+    [`sklearn.preprocessing.OrdinalEncoder`](https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.OrdinalEncoder.html#sklearn.preprocessing.OrdinalEncoder "(in scikit-learn v1.10)")
     :   Performs an ordinal (integer) encoding of the categorical features.
 
-    [`sklearn.preprocessing.TargetEncoder`](https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.TargetEncoder.html#sklearn.preprocessing.TargetEncoder "(in scikit-learn v1.9)")
+    [`sklearn.preprocessing.TargetEncoder`](https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.TargetEncoder.html#sklearn.preprocessing.TargetEncoder "(in scikit-learn v1.10)")
     :   Encodes categorical features using the target.
 
-    [`sklearn.feature_extraction.DictVectorizer`](https://scikit-learn.org/dev/modules/generated/sklearn.feature_extraction.DictVectorizer.html#sklearn.feature_extraction.DictVectorizer "(in scikit-learn v1.9)")
+    [`sklearn.feature_extraction.DictVectorizer`](https://scikit-learn.org/dev/modules/generated/sklearn.feature_extraction.DictVectorizer.html#sklearn.feature_extraction.DictVectorizer "(in scikit-learn v1.10)")
     :   Performs a one-hot encoding of dictionary items (also handles string-valued features).
 
-    [`sklearn.feature_extraction.FeatureHasher`](https://scikit-learn.org/dev/modules/generated/sklearn.feature_extraction.FeatureHasher.html#sklearn.feature_extraction.FeatureHasher "(in scikit-learn v1.9)")
+    [`sklearn.feature_extraction.FeatureHasher`](https://scikit-learn.org/dev/modules/generated/sklearn.feature_extraction.FeatureHasher.html#sklearn.feature_extraction.FeatureHasher "(in scikit-learn v1.10)")
     :   Performs an approximate one-hot encoding of dictionary items or strings.
 
-    [`sklearn.preprocessing.LabelBinarizer`](https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.LabelBinarizer.html#sklearn.preprocessing.LabelBinarizer "(in scikit-learn v1.9)")
+    [`sklearn.preprocessing.LabelBinarizer`](https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.LabelBinarizer.html#sklearn.preprocessing.LabelBinarizer "(in scikit-learn v1.10)")
     :   Binarizes labels in a one-vs-all fashion.
 
-    [`sklearn.preprocessing.MultiLabelBinarizer`](https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.MultiLabelBinarizer.html#sklearn.preprocessing.MultiLabelBinarizer "(in scikit-learn v1.9)")
+    [`sklearn.preprocessing.MultiLabelBinarizer`](https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.MultiLabelBinarizer.html#sklearn.preprocessing.MultiLabelBinarizer "(in scikit-learn v1.10)")
     :   Transforms between iterable of iterables and a multilabel format, e.g. a (samples x classes) binary matrix indicating the presence of a class label.
 
     References
@@ -325,7 +325,7 @@ class scikitplot.preprocessing.DummyCodeEncoder(**\***, **columns=None**, **sep=
     ```
     Go BackOpen In Tab
 
-    fit(**X**, **y=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/preprocessing/_encoders.py#L1707)[#](#scikitplot.preprocessing.DummyCodeEncoder.fit "Link to this definition")
+    fit(**X**, **y=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/preprocessing/_encoders.py#L1707)[#](#scikitplot.preprocessing.DummyCodeEncoder.fit "Link to this definition")
     :   Fit OneHotEncoder to X.
 
         Parameters:
@@ -334,13 +334,13 @@ class scikitplot.preprocessing.DummyCodeEncoder(**\***, **columns=None**, **sep=
 
             ****y****None
             :   Ignored. This parameter exists only for compatibility with
-                [`Pipeline`](https://scikit-learn.org/dev/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline "(in scikit-learn v1.9)").
+                [`Pipeline`](https://scikit-learn.org/dev/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline "(in scikit-learn v1.10)").
 
         Returns:
         :   self
             :   Fitted encoder.
 
-    fit\_transform(**X**, **y=None**, **\*\*fit\_params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/../sklearn/base.py#L851)[#](#scikitplot.preprocessing.DummyCodeEncoder.fit_transform "Link to this definition")
+    fit\_transform(**X**, **y=None**, **\*\*fit\_params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/../sklearn/base.py#L851)[#](#scikitplot.preprocessing.DummyCodeEncoder.fit_transform "Link to this definition")
     :   Fit to data, then transform it.
 
         Fits transformer to `X` and `y` with optional parameters `fit_params`
@@ -361,7 +361,7 @@ class scikitplot.preprocessing.DummyCodeEncoder(**\***, **columns=None**, **sep=
         :   ****X\_new****ndarray array of shape (n\_samples, n\_features\_new)
             :   Transformed array.
 
-    get\_feature\_names\_out(**input\_features=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/preprocessing/_encoders.py#L2116)[#](#scikitplot.preprocessing.DummyCodeEncoder.get_feature_names_out "Link to this definition")
+    get\_feature\_names\_out(**input\_features=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/preprocessing/_encoders.py#L2116)[#](#scikitplot.preprocessing.DummyCodeEncoder.get_feature_names_out "Link to this definition")
     :   Get output feature names for transformation.
 
         Parameters:
@@ -379,18 +379,18 @@ class scikitplot.preprocessing.DummyCodeEncoder(**\***, **columns=None**, **sep=
         :   ****feature\_names\_out****ndarray of str objects
             :   Transformed feature names.
 
-    get\_metadata\_routing()[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/../sklearn/utils/_metadata_requests.py#L1550)[#](#scikitplot.preprocessing.DummyCodeEncoder.get_metadata_routing "Link to this definition")
+    get\_metadata\_routing()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/../sklearn/utils/_metadata_requests.py#L1550)[#](#scikitplot.preprocessing.DummyCodeEncoder.get_metadata_routing "Link to this definition")
     :   Get metadata routing of this object.
 
-        Please check [User Guide](https://scikit-learn.org/dev/metadata_routing.html#metadata-routing "(in scikit-learn v1.9)") on how the routing
+        Please check [User Guide](https://scikit-learn.org/dev/metadata_routing.html#metadata-routing "(in scikit-learn v1.10)") on how the routing
         mechanism works.
 
         Returns:
         :   ****routing****MetadataRequest
-            :   A [`MetadataRequest`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.metadata_routing.MetadataRequest.html#sklearn.utils.metadata_routing.MetadataRequest "(in scikit-learn v1.9)") encapsulating
+            :   A [`MetadataRequest`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.metadata_routing.MetadataRequest.html#sklearn.utils.metadata_routing.MetadataRequest "(in scikit-learn v1.10)") encapsulating
                 routing information.
 
-    get\_params(**deep=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/../sklearn/base.py#L240)[#](#scikitplot.preprocessing.DummyCodeEncoder.get_params "Link to this definition")
+    get\_params(**deep=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/../sklearn/base.py#L240)[#](#scikitplot.preprocessing.DummyCodeEncoder.get_params "Link to this definition")
     :   Get parameters for this estimator.
 
         Parameters:
@@ -405,7 +405,7 @@ class scikitplot.preprocessing.DummyCodeEncoder(**\***, **columns=None**, **sep=
     property infrequent\_categories\_[#](#scikitplot.preprocessing.DummyCodeEncoder.infrequent_categories_ "Link to this definition")
     :   Infrequent categories for each feature.
 
-    inverse\_transform(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/preprocessing/_encoders.py#L2058)[#](#scikitplot.preprocessing.DummyCodeEncoder.inverse_transform "Link to this definition")
+    inverse\_transform(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/preprocessing/_encoders.py#L2058)[#](#scikitplot.preprocessing.DummyCodeEncoder.inverse_transform "Link to this definition")
     :   Convert the data back to the original representation.
 
         When unknown categories are encountered (all zeros in the
@@ -424,10 +424,10 @@ class scikitplot.preprocessing.DummyCodeEncoder(**\***, **columns=None**, **sep=
         :   ****X\_original****ndarray of shape (n\_samples, n\_features)
             :   Inverse transformed array.
 
-    set\_output(**\***, **transform=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/../sklearn/utils/_set_output.py#L389)[#](#scikitplot.preprocessing.DummyCodeEncoder.set_output "Link to this definition")
+    set\_output(**\***, **transform=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/../sklearn/utils/_set_output.py#L389)[#](#scikitplot.preprocessing.DummyCodeEncoder.set_output "Link to this definition")
     :   Set output container.
 
-        See [Introducing the set\_output API](https://scikit-learn.org/dev/auto_examples/miscellaneous/plot_set_output.html#sphx-glr-auto-examples-miscellaneous-plot-set-output-py "(in scikit-learn v1.9)")
+        See [Introducing the set\_output API](https://scikit-learn.org/dev/auto_examples/miscellaneous/plot_set_output.html#sphx-glr-auto-examples-miscellaneous-plot-set-output-py "(in scikit-learn v1.10)")
         for an example on how to use the API.
 
         Parameters:
@@ -445,11 +445,11 @@ class scikitplot.preprocessing.DummyCodeEncoder(**\***, **columns=None**, **sep=
         :   ****self****estimator instance
             :   Estimator instance.
 
-    set\_params(**\*\*params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/../sklearn/base.py#L338)[#](#scikitplot.preprocessing.DummyCodeEncoder.set_params "Link to this definition")
+    set\_params(**\*\*params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/../sklearn/base.py#L338)[#](#scikitplot.preprocessing.DummyCodeEncoder.set_params "Link to this definition")
     :   Set the parameters of this estimator.
 
         The method works on simple estimators as well as on nested objects
-        (such as [`Pipeline`](https://scikit-learn.org/dev/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline "(in scikit-learn v1.9)")). The latter have
+        (such as [`Pipeline`](https://scikit-learn.org/dev/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline "(in scikit-learn v1.10)")). The latter have
         parameters of the form `<component>__<parameter>` so that it’s
         possible to update each component of a nested object.
 
@@ -461,7 +461,7 @@ class scikitplot.preprocessing.DummyCodeEncoder(**\***, **columns=None**, **sep=
         :   ****self****estimator instance
             :   Estimator instance.
 
-    transform(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/preprocessing/_encoders.py#L1858)[#](#scikitplot.preprocessing.DummyCodeEncoder.transform "Link to this definition")
+    transform(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/preprocessing/_encoders.py#L1858)[#](#scikitplot.preprocessing.DummyCodeEncoder.transform "Link to this definition")
     :   Transform X using one-hot encoding.
 
         If `sparse_output=True` (default), it returns an instance of

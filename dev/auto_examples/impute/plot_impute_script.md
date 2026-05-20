@@ -5,7 +5,7 @@ to download the full example code or to run this example in your browser via Jup
 # annoy impute with examples[#](#annoy-impute-with-examples "Link to this heading")
 
 Examples related to the [`ANNImputer`](../../modules/generated/scikitplot.impute._ann.ANNImputer.html#scikitplot.impute._ann.ANNImputer "scikitplot.impute._ann.ANNImputer") class
-with a scikit-learn regressor (e.g., [`LinearRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression "(in scikit-learn v1.9)")) instance.
+with a scikit-learn regressor (e.g., [`LinearRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression "(in scikit-learn v1.10)")) instance.
 
 > **See also**
 > * <https://scikit-learn.org/stable/auto_examples/impute/plot_missing_values.html#sphx-glr-auto-examples-impute-plot-missing-values-py>
@@ -200,7 +200,7 @@ time_data[0] = T
 
 ```
 ```
-18.976797819137573
+18.553552389144897
 
 ```
 
@@ -229,7 +229,7 @@ time_data[1] = T
 
 ```
 ```
-19.898832321166992
+19.556472778320312
 
 ```
 
@@ -255,7 +255,7 @@ time_data[2] = T
 
 ```
 ```
-20.928159475326538
+20.82946801185608
 
 ```
 
@@ -285,13 +285,13 @@ time_data[3] = T
 
 ```
 ```
-20.87064218521118
+21.014113664627075
 
 ```
 
 ### kNN-imputation of the missing values[#](#knn-imputation-of-the-missing-values "Link to this heading")
 
-[`KNNImputer`](https://scikit-learn.org/dev/modules/generated/sklearn.impute.KNNImputer.html#sklearn.impute.KNNImputer "(in scikit-learn v1.9)") imputes missing values using the weighted
+[`KNNImputer`](https://scikit-learn.org/dev/modules/generated/sklearn.impute.KNNImputer.html#sklearn.impute.KNNImputer "(in scikit-learn v1.10)") imputes missing values using the weighted
 or unweighted mean of the desired number of nearest neighbors. If your features
 have vastly different scales (as in the California housing dataset),
 consider re-scaling them to potentially improve performance.
@@ -319,16 +319,16 @@ time_data[4] = T
 
 ```
 ```
-32.317240715026855
+32.423181772232056
 
 ```
 
 ### Iterative imputation of the missing values[#](#iterative-imputation-of-the-missing-values "Link to this heading")
 
-Another option is the [`IterativeImputer`](https://scikit-learn.org/dev/modules/generated/sklearn.impute.IterativeImputer.html#sklearn.impute.IterativeImputer "(in scikit-learn v1.9)"). This uses
+Another option is the [`IterativeImputer`](https://scikit-learn.org/dev/modules/generated/sklearn.impute.IterativeImputer.html#sklearn.impute.IterativeImputer "(in scikit-learn v1.10)"). This uses
 round-robin regression, modeling each feature with missing values as a
 function of other features, in turn. We use the class’s default choice
-of the regressor model ([`BayesianRidge`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.BayesianRidge.html#sklearn.linear_model.BayesianRidge "(in scikit-learn v1.9)"))
+of the regressor model ([`BayesianRidge`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.BayesianRidge.html#sklearn.linear_model.BayesianRidge "(in scikit-learn v1.10)"))
 to predict missing feature values. The performance of the predictor
 may be negatively affected by vastly different scales of the features,
 so we re-scale the features in the California housing dataset.
@@ -357,7 +357,7 @@ time_data[5] = T
 
 ```
 ```
-21.782448530197144
+22.44138789176941
 
 ```
 
@@ -378,7 +378,7 @@ from scikitplot.impute import ANNImputer
 
 ```
 ```
-0.5.dev0+git.20260519.287271b
+0.5.dev0+git.20260520.c2567fd
 
 ```
 ```
@@ -404,7 +404,7 @@ time_data[6] = T
 
 ```
 ```
-24.791797399520874
+24.929283618927002
 
 ```
 ```
@@ -438,7 +438,7 @@ time_data[7] = T
 
 ```
 ```
-23.495884895324707
+23.47979211807251
 
 ```
 
@@ -549,7 +549,7 @@ neighbor retrieval and degraded imputation quality.
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: impute](../../_tags/model-workflow-impute.html) [plot-type: bar](../../_tags/plot-type-bar.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (3 minutes 3.505 seconds)
+****Total running time of the script:**** (3 minutes 3.665 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo8.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/impute/plot_impute_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo8.svg)](../../lite/lab/index.html?path=auto_examples/impute/plot_impute_script.ipynb)
 

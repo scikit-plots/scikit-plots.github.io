@@ -1,13 +1,13 @@
 # plot\_elbow[#](#plot-elbow "Link to this heading")
 
-scikitplot.api.estimators.plot\_elbow(**clf**, **X**, **\***, **cluster\_ranges=None**, **show\_cluster\_time=True**, **n\_jobs=1**, **title='Elbow Curves'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/api/estimators/_cluster/_elbow.py#L92)[#](#scikitplot.api.estimators.plot_elbow "Link to this definition")
+scikitplot.api.estimators.plot\_elbow(**clf**, **X**, **\***, **cluster\_ranges=None**, **show\_cluster\_time=True**, **n\_jobs=1**, **title='Elbow Curves'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/api/estimators/_cluster/_elbow.py#L92)[#](#scikitplot.api.estimators.plot_elbow "Link to this definition")
 :   Plot the elbow curve for different values of K in KMeans clustering.
 
     Parameters:
     :   ****clf****object
         :   A clusterer instance with `fit`, `fit_predict`, and `score` methods,
             and an `n_clusters` hyperparameter. Typically an instance of
-            [`sklearn.cluster.KMeans`](https://scikit-learn.org/dev/modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans "(in scikit-learn v1.9)").
+            [`sklearn.cluster.KMeans`](https://scikit-learn.org/dev/modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans "(in scikit-learn v1.10)").
 
         ****X****array-like of shape (n\_samples, n\_features)
         :   The data to cluster, where `n_samples` is the number of samples and

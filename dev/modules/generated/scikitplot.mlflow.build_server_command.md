@@ -1,6 +1,6 @@
 # build\_server\_command[#](#build-server-command "Link to this heading")
 
-scikitplot.mlflow.build\_server\_command(**cfg**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/mlflow/_server.py#L180)[#](#scikitplot.mlflow.build_server_command "Link to this definition")
+scikitplot.mlflow.build\_server\_command(**cfg**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/mlflow/_server.py#L180)[#](#scikitplot.mlflow.build_server_command "Link to this definition")
 :   Build a deterministic `mlflow server` command.
 
     Parameters:

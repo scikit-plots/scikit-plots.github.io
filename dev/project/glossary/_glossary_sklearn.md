@@ -31,7 +31,7 @@ API[#](#term-API "Link to this term")
 :   Refers to both the **specific** interfaces for estimators implemented in
     Scikit-learn and the **generalized** conventions across types of
     estimators as described in this glossary and [overviewed in the
-    contributor documentation](https://scikit-learn.org/dev/developers/develop.html#api-overview "(in scikit-learn v1.9)").
+    contributor documentation](https://scikit-learn.org/dev/developers/develop.html#api-overview "(in scikit-learn v1.10)").
 
     The specific interfaces that constitute Scikit-learn’s public API are
     largely documented in [scikitplot.api](../../apis/scikitplot.api.html#api-ref). However, we less formally consider
@@ -65,7 +65,7 @@ array-like[#](#term-array-like "Link to this term")
 
     Note that **output** from scikit-learn estimators and functions (e.g.
     predictions) should generally be arrays or sparse matrices, or lists
-    thereof (as in multi-output [`tree.DecisionTreeClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier "(in scikit-learn v1.9)")’s
+    thereof (as in multi-output [`tree.DecisionTreeClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier "(in scikit-learn v1.10)")’s
     `predict_proba`). An estimator where `predict()` returns a list or
     a `pandas.Series` is not valid.
 
@@ -87,7 +87,7 @@ attributes[#](#term-attributes "Link to this term")
     A public attribute may have the same name as a constructor
     [parameter](#term-parameter), with a `_` appended. This is used to store a
     validated or estimated version of the user’s input. For example,
-    [`decomposition.PCA`](https://scikit-learn.org/dev/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA "(in scikit-learn v1.9)") is constructed with an `n_components`
+    [`decomposition.PCA`](https://scikit-learn.org/dev/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA "(in scikit-learn v1.10)") is constructed with an `n_components`
     parameter. From this, together with other parameters and the data,
     PCA estimates the attribute `n_components_`.
 
@@ -137,9 +137,9 @@ backwards compatibility[#](#term-backwards-compatibility "Link to this term")
         will allow it to be unpickled to an equivalent model in the
         subsequent version. (For estimators in the sklearn package, we
         issue a warning when this unpickling is attempted, even if it may
-        happen to work.) See [Security & Maintainability Limitations](https://scikit-learn.org/dev/model_persistence.html#persistence-limitations "(in scikit-learn v1.9)").
+        happen to work.) See [Security & Maintainability Limitations](https://scikit-learn.org/dev/model_persistence.html#persistence-limitations "(in scikit-learn v1.10)").
 
-    [`utils.estimator_checks.check_estimator`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.estimator_checks.check_estimator.html#sklearn.utils.estimator_checks.check_estimator "(in scikit-learn v1.9)")
+    [`utils.estimator_checks.check_estimator`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.estimator_checks.check_estimator.html#sklearn.utils.estimator_checks.check_estimator "(in scikit-learn v1.10)")
     :   We provide limited backwards compatibility assurances for the
         estimator checks: we may add extra requirements on estimators
         tested with this function, usually when these were informally
@@ -165,11 +165,11 @@ categorical feature[#](#term-categorical-feature "Link to this term")
     tree-based models such as random forests and gradient boosting
     models that often work better and faster with integer-coded
     categorical variables.
-    [`OrdinalEncoder`](https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.OrdinalEncoder.html#sklearn.preprocessing.OrdinalEncoder "(in scikit-learn v1.9)") helps encoding
+    [`OrdinalEncoder`](https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.OrdinalEncoder.html#sklearn.preprocessing.OrdinalEncoder "(in scikit-learn v1.10)") helps encoding
     string-valued categorical features as ordinal integers, and
-    [`OneHotEncoder`](https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder "(in scikit-learn v1.9)") can be used to
+    [`OneHotEncoder`](https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder "(in scikit-learn v1.10)") can be used to
     one-hot encode categorical features.
-    See also [Encoding categorical features](https://scikit-learn.org/dev/modules/preprocessing.html#preprocessing-categorical-features "(in scikit-learn v1.9)") and the
+    See also [Encoding categorical features](https://scikit-learn.org/dev/modules/preprocessing.html#preprocessing-categorical-features "(in scikit-learn v1.10)") and the
     [categorical-encoding](https://github.com/scikit-learn-contrib/category_encoders)
     package for tools related to encoding categorical features.
 
@@ -178,26 +178,26 @@ clone[#](#term-clone "Link to this term")
 cloned[#](#term-cloned "Link to this term")
 :   To copy an [estimator instance](#term-estimator-instance) and create a new one with
     identical [parameters](#term-parameters), but without any fitted
-    [attributes](#term-attributes), using [`clone`](https://scikit-learn.org/dev/modules/generated/sklearn.base.clone.html#sklearn.base.clone "(in scikit-learn v1.9)").
+    [attributes](#term-attributes), using [`clone`](https://scikit-learn.org/dev/modules/generated/sklearn.base.clone.html#sklearn.base.clone "(in scikit-learn v1.10)").
 
     When `fit` is called, a [meta-estimator](#term-meta-estimator) usually clones
     a wrapped estimator instance before fitting the cloned instance.
     (Exceptions, for legacy reasons, include
-    [`Pipeline`](https://scikit-learn.org/dev/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline "(in scikit-learn v1.9)") and
-    [`FeatureUnion`](https://scikit-learn.org/dev/modules/generated/sklearn.pipeline.FeatureUnion.html#sklearn.pipeline.FeatureUnion "(in scikit-learn v1.9)").)
+    [`Pipeline`](https://scikit-learn.org/dev/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline "(in scikit-learn v1.10)") and
+    [`FeatureUnion`](https://scikit-learn.org/dev/modules/generated/sklearn.pipeline.FeatureUnion.html#sklearn.pipeline.FeatureUnion "(in scikit-learn v1.10)").)
 
     If the estimator’s `random_state` parameter is an integer (or if the
     estimator doesn’t have a `random_state` parameter), an **exact clone**
     is returned: the clone and the original estimator will give the exact
     same results. Otherwise, **statistical clone** is returned: the clone
     might yield different results from the original estimator. More
-    details can be found in [Controlling randomness](https://scikit-learn.org/dev/common_pitfalls.html#randomness "(in scikit-learn v1.9)").
+    details can be found in [Controlling randomness](https://scikit-learn.org/dev/common_pitfalls.html#randomness "(in scikit-learn v1.10)").
 
 common tests[#](#term-common-tests "Link to this term")
 :   This refers to the tests run on almost every estimator class in
     Scikit-learn to check they comply with basic API conventions. They are
     available for external use through
-    [`utils.estimator_checks.check_estimator`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.estimator_checks.check_estimator.html#sklearn.utils.estimator_checks.check_estimator "(in scikit-learn v1.9)"), with most of the
+    [`utils.estimator_checks.check_estimator`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.estimator_checks.check_estimator.html#sklearn.utils.estimator_checks.check_estimator "(in scikit-learn v1.10)"), with most of the
     implementation in `sklearn/utils/estimator_checks.py`.
 
     Note: Some exceptions to the common testing regime are currently
@@ -215,10 +215,10 @@ cross fitting[#](#term-0 "Link to this term")
     used in the second stage. The objective is to avoid having any
     overfitting in the first stage introduce bias into the input data
     distribution of the second stage.
-    For examples of its use, see: [`TargetEncoder`](https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.TargetEncoder.html#sklearn.preprocessing.TargetEncoder "(in scikit-learn v1.9)"),
-    [`StackingClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.StackingClassifier.html#sklearn.ensemble.StackingClassifier "(in scikit-learn v1.9)"),
-    [`StackingRegressor`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.StackingRegressor.html#sklearn.ensemble.StackingRegressor "(in scikit-learn v1.9)") and
-    [`CalibratedClassifierCV`](https://scikit-learn.org/dev/modules/generated/sklearn.calibration.CalibratedClassifierCV.html#sklearn.calibration.CalibratedClassifierCV "(in scikit-learn v1.9)").
+    For examples of its use, see: [`TargetEncoder`](https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.TargetEncoder.html#sklearn.preprocessing.TargetEncoder "(in scikit-learn v1.10)"),
+    [`StackingClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.StackingClassifier.html#sklearn.ensemble.StackingClassifier "(in scikit-learn v1.10)"),
+    [`StackingRegressor`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.StackingRegressor.html#sklearn.ensemble.StackingRegressor "(in scikit-learn v1.10)") and
+    [`CalibratedClassifierCV`](https://scikit-learn.org/dev/modules/generated/sklearn.calibration.CalibratedClassifierCV.html#sklearn.calibration.CalibratedClassifierCV "(in scikit-learn v1.10)").
 
 cross-validation[#](#term-cross-validation "Link to this term")
 
@@ -228,7 +228,7 @@ cross validation[#](#term-1 "Link to this term")
     evaluated on unseen data. This conserves data as avoids the need to hold
     out a ‘validation’ dataset and accounts for variability as multiple
     rounds of cross validation are generally performed.
-    See [User Guide](https://scikit-learn.org/dev/modules/cross_validation.html#cross-validation "(in scikit-learn v1.9)") for more details.
+    See [User Guide](https://scikit-learn.org/dev/modules/cross_validation.html#cross-validation "(in scikit-learn v1.10)") for more details.
 
 deprecation[#](#term-deprecation "Link to this term")
 :   We use deprecation to slowly violate our [backwards
@@ -243,7 +243,7 @@ deprecation[#](#term-deprecation "Link to this term")
     may not when they access that parameter’s attribute on the estimator
     instance.
 
-    See the [Contributors’ Guide](https://scikit-learn.org/dev/developers/contributing.html#contributing-deprecation "(in scikit-learn v1.9)").
+    See the [Contributors’ Guide](https://scikit-learn.org/dev/developers/contributing.html#contributing-deprecation "(in scikit-learn v1.10)").
 
 dimensionality[#](#term-dimensionality "Link to this term")
 :   May be used to refer to the number of [features](#term-features) (i.e.
@@ -266,8 +266,8 @@ double underscore notation[#](#term-double-underscore-notation "Link to this ter
     used to separate between parent and child in some contexts. The most
     common use is when setting parameters through a meta-estimator with
     [set\_params](#term-set_params) and hence in specifying a search grid in
-    [parameter search](https://scikit-learn.org/dev/modules/grid_search.html#grid-search "(in scikit-learn v1.9)"). See [parameter](#term-parameter).
-    It is also used in [`pipeline.Pipeline.fit`](https://scikit-learn.org/dev/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline.fit "(in scikit-learn v1.9)") for passing
+    [parameter search](https://scikit-learn.org/dev/modules/grid_search.html#grid-search "(in scikit-learn v1.10)"). See [parameter](#term-parameter).
+    It is also used in [`pipeline.Pipeline.fit`](https://scikit-learn.org/dev/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline.fit "(in scikit-learn v1.10)") for passing
     [sample properties](#term-sample-properties) to the `fit` methods of estimators in
     the pipeline.
 
@@ -374,12 +374,12 @@ examples[#](#term-examples "Link to this term")
 
     * as doctests in their docstrings (i.e. within the `sklearn/` library
       code itself).
-    * as examples in the [example gallery](https://scikit-learn.org/dev/auto_examples/index.html#general-examples "(in scikit-learn v1.9)")
+    * as examples in the [example gallery](https://scikit-learn.org/dev/auto_examples/index.html#general-examples "(in scikit-learn v1.10)")
       rendered (using [sphinx-gallery](https://sphinx-gallery.readthedocs.io/)) from scripts in the
       `examples/` directory, exemplifying key features or parameters
       of the estimator/function. These should also be referenced from the
       User Guide.
-    * sometimes in the [User Guide](https://scikit-learn.org/dev/user_guide.html#user-guide "(in scikit-learn v1.9)") (built from `doc/`)
+    * sometimes in the [User Guide](https://scikit-learn.org/dev/user_guide.html#user-guide "(in scikit-learn v1.10)") (built from `doc/`)
       alongside a technical description of the estimator.
 
 experimental[#](#term-experimental "Link to this term")
@@ -392,10 +392,10 @@ evaluation metric[#](#term-evaluation-metric "Link to this term")
 
 evaluation metrics[#](#term-evaluation-metrics "Link to this term")
 :   Evaluation metrics give a measure of how well a model performs. We may
-    use this term specifically to refer to the functions in [`metrics`](https://scikit-learn.org/dev/api/sklearn.metrics.html#module-sklearn.metrics "(in scikit-learn v1.9)")
-    (disregarding [`pairwise`](https://scikit-learn.org/dev/api/sklearn.metrics.html#module-sklearn.metrics.pairwise "(in scikit-learn v1.9)")), as distinct from the
+    use this term specifically to refer to the functions in [`metrics`](https://scikit-learn.org/dev/api/sklearn.metrics.html#module-sklearn.metrics "(in scikit-learn v1.10)")
+    (disregarding [`pairwise`](https://scikit-learn.org/dev/api/sklearn.metrics.html#module-sklearn.metrics.pairwise "(in scikit-learn v1.10)")), as distinct from the
     [score](#term-score) method and the [scoring](#term-scoring) API used in cross
-    validation. See [Metrics and scoring: quantifying the quality of predictions](https://scikit-learn.org/dev/modules/model_evaluation.html#model-evaluation "(in scikit-learn v1.9)").
+    validation. See [Metrics and scoring: quantifying the quality of predictions](https://scikit-learn.org/dev/modules/model_evaluation.html#model-evaluation "(in scikit-learn v1.10)").
 
     These functions usually accept a ground truth (or the raw data
     where the metric evaluates clustering without a ground truth) and a
@@ -408,7 +408,7 @@ evaluation metrics[#](#term-evaluation-metrics "Link to this term")
     the scoring API.
 
     Note that some estimators can calculate metrics that are not included
-    in [`metrics`](https://scikit-learn.org/dev/api/sklearn.metrics.html#module-sklearn.metrics "(in scikit-learn v1.9)") and are estimator-specific, notably model
+    in [`metrics`](https://scikit-learn.org/dev/api/sklearn.metrics.html#module-sklearn.metrics "(in scikit-learn v1.10)") and are estimator-specific, notably model
     likelihoods.
 
 estimator tags[#](#term-estimator-tags "Link to this term")
@@ -424,11 +424,11 @@ estimator tags[#](#term-estimator-tags "Link to this term")
     `_estimator_type`[#](#term-_estimator_type "Link to this term")
     :   This string-valued attribute identifies an estimator as being a
         classifier, regressor, etc. It is set by mixins such as
-        [`base.ClassifierMixin`](https://scikit-learn.org/dev/modules/generated/sklearn.base.ClassifierMixin.html#sklearn.base.ClassifierMixin "(in scikit-learn v1.9)"), but needs to be more explicitly
+        [`base.ClassifierMixin`](https://scikit-learn.org/dev/modules/generated/sklearn.base.ClassifierMixin.html#sklearn.base.ClassifierMixin "(in scikit-learn v1.10)"), but needs to be more explicitly
         adopted on a [meta-estimator](#term-meta-estimator). Its value should usually be
-        checked by way of a helper such as [`base.is_classifier`](https://scikit-learn.org/dev/modules/generated/sklearn.base.is_classifier.html#sklearn.base.is_classifier "(in scikit-learn v1.9)").
+        checked by way of a helper such as [`base.is_classifier`](https://scikit-learn.org/dev/modules/generated/sklearn.base.is_classifier.html#sklearn.base.is_classifier "(in scikit-learn v1.10)").
 
-    For more detailed info, see [Estimator Tags](https://scikit-learn.org/dev/developers/develop.html#estimator-tags "(in scikit-learn v1.9)").
+    For more detailed info, see [Estimator Tags](https://scikit-learn.org/dev/developers/develop.html#estimator-tags "(in scikit-learn v1.10)").
 
 feature[#](#term-feature "Link to this term")
 
@@ -463,9 +463,9 @@ fitted[#](#term-fitted "Link to this term")
     There is no conventional procedure for checking if an estimator
     is fitted. However, an estimator that is not fitted:
 
-    * should raise [`exceptions.NotFittedError`](https://scikit-learn.org/dev/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError "(in scikit-learn v1.9)") when a prediction
+    * should raise [`exceptions.NotFittedError`](https://scikit-learn.org/dev/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError "(in scikit-learn v1.10)") when a prediction
       method ([predict](#term-predict), [transform](#term-transform), etc.) is called.
-      ([`utils.validation.check_is_fitted`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.validation.check_is_fitted.html#sklearn.utils.validation.check_is_fitted "(in scikit-learn v1.9)") is used internally
+      ([`utils.validation.check_is_fitted`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.validation.check_is_fitted.html#sklearn.utils.validation.check_is_fitted "(in scikit-learn v1.10)") is used internally
       for this purpose.)
     * should not have any [attributes](#term-attributes) beginning with an alphabetic
       character and ending with an underscore. (Note that a descriptor for
@@ -478,12 +478,12 @@ function[#](#term-function "Link to this term")
 
     In particular, Scikit-learn may provide a function interface that fits
     a model to some data and returns the learnt model parameters, as in
-    [`linear_model.enet_path`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.enet_path.html#sklearn.linear_model.enet_path "(in scikit-learn v1.9)"). For transductive models, this also
+    [`linear_model.enet_path`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.enet_path.html#sklearn.linear_model.enet_path "(in scikit-learn v1.10)"). For transductive models, this also
     returns the embedding or cluster labels, as in
-    [`manifold.spectral_embedding`](https://scikit-learn.org/dev/modules/generated/sklearn.manifold.spectral_embedding.html#sklearn.manifold.spectral_embedding "(in scikit-learn v1.9)") or [`cluster.dbscan`](https://scikit-learn.org/dev/modules/generated/dbscan-function.html#sklearn.cluster.dbscan "(in scikit-learn v1.9)"). Many
+    [`manifold.spectral_embedding`](https://scikit-learn.org/dev/modules/generated/sklearn.manifold.spectral_embedding.html#sklearn.manifold.spectral_embedding "(in scikit-learn v1.10)") or [`cluster.dbscan`](https://scikit-learn.org/dev/modules/generated/dbscan-function.html#sklearn.cluster.dbscan "(in scikit-learn v1.10)"). Many
     preprocessing transformers also provide a function interface, akin to
     calling [fit\_transform](#term-fit_transform), as in
-    [`preprocessing.maxabs_scale`](https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.maxabs_scale.html#sklearn.preprocessing.maxabs_scale "(in scikit-learn v1.9)"). Users should be careful to avoid
+    [`preprocessing.maxabs_scale`](https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.maxabs_scale.html#sklearn.preprocessing.maxabs_scale "(in scikit-learn v1.10)"). Users should be careful to avoid
     [data leakage](#term-data-leakage) when making use of these
     `fit_transform`-equivalent functions.
 
@@ -525,7 +525,7 @@ joblib[#](#term-joblib "Link to this term")
 :   A Python library (<https://joblib.readthedocs.io>) used in Scikit-learn to
     facilite simple parallelism and caching. Joblib is oriented towards
     efficiently working with numpy arrays, such as through use of
-    [memory mapping](#term-memory-mapping). See [Parallelism](https://scikit-learn.org/dev/computing/parallelism.html#parallelism "(in scikit-learn v1.9)") for more
+    [memory mapping](#term-memory-mapping). See [Parallelism](https://scikit-learn.org/dev/computing/parallelism.html#parallelism "(in scikit-learn v1.10)") for more
     information.
 
 label indicator matrix[#](#term-label-indicator-matrix "Link to this term")
@@ -547,8 +547,8 @@ data leakage[#](#term-data-leakage "Link to this term")
     applying a [transformer](#term-transformer) to the entirety of a dataset rather
     than each training portion in a cross validation split.
 
-    We aim to provide interfaces (such as [`pipeline`](https://scikit-learn.org/dev/api/sklearn.pipeline.html#module-sklearn.pipeline "(in scikit-learn v1.9)") and
-    [`model_selection`](https://scikit-learn.org/dev/api/sklearn.model_selection.html#module-sklearn.model_selection "(in scikit-learn v1.9)")) that shield the user from data leakage.
+    We aim to provide interfaces (such as [`pipeline`](https://scikit-learn.org/dev/api/sklearn.pipeline.html#module-sklearn.pipeline "(in scikit-learn v1.10)") and
+    [`model_selection`](https://scikit-learn.org/dev/api/sklearn.model_selection.html#module-sklearn.model_selection "(in scikit-learn v1.10)")) that shield the user from data leakage.
 
 memmapping[#](#term-memmapping "Link to this term")
 
@@ -564,7 +564,7 @@ memory mapping[#](#term-memory-mapping "Link to this term")
 
 missing values[#](#term-missing-values "Link to this term")
 :   Most Scikit-learn estimators do not work with missing values. When they
-    do (e.g. in [`impute.SimpleImputer`](https://scikit-learn.org/dev/modules/generated/sklearn.impute.SimpleImputer.html#sklearn.impute.SimpleImputer "(in scikit-learn v1.9)")), NaN is the preferred
+    do (e.g. in [`impute.SimpleImputer`](https://scikit-learn.org/dev/modules/generated/sklearn.impute.SimpleImputer.html#sklearn.impute.SimpleImputer "(in scikit-learn v1.10)")), NaN is the preferred
     representation of missing values in float arrays. If the array has
     integer dtype, NaN cannot be represented. For this reason, we support
     specifying another `missing_values` value when [imputation](#term-imputation) or
@@ -587,7 +587,7 @@ missing values[#](#term-missing-values "Link to this term")
 narrative docs[#](#term-narrative-docs "Link to this term")
 
 narrative documentation[#](#term-narrative-documentation "Link to this term")
-:   An alias for [User Guide](https://scikit-learn.org/dev/user_guide.html#user-guide "(in scikit-learn v1.9)"), i.e. documentation written
+:   An alias for [User Guide](https://scikit-learn.org/dev/user_guide.html#user-guide "(in scikit-learn v1.10)"), i.e. documentation written
     in `doc/modules/`. Unlike the [API reference](../../apis/scikitplot.api.html#api-ref) provided
     through docstrings, the User Guide aims to:
 
@@ -637,7 +637,7 @@ param[#](#term-param "Link to this term")
 params[#](#term-params "Link to this term")
 :   We mostly use **parameter** to refer to the aspects of an estimator that
     can be specified in its construction. For example, `max_depth` and
-    `random_state` are parameters of [`RandomForestClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier "(in scikit-learn v1.9)").
+    `random_state` are parameters of [`RandomForestClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier "(in scikit-learn v1.10)").
     Parameters to an estimator’s constructor are stored unmodified as
     attributes on the estimator instance, and conventionally start with an
     alphabetic character and end with an alphanumeric character. Each
@@ -680,16 +680,16 @@ pairwise metrics[#](#term-pairwise-metrics "Link to this term")
     similarity or dissimilarity between two samples (with each ordinarily
     represented as a [feature vector](#term-feature-vector)). We particularly provide
     implementations of distance metrics (as well as improper metrics like
-    Cosine Distance) through [`metrics.pairwise_distances`](https://scikit-learn.org/dev/modules/generated/sklearn.metrics.pairwise_distances.html#sklearn.metrics.pairwise_distances "(in scikit-learn v1.9)"), and of
+    Cosine Distance) through [`metrics.pairwise_distances`](https://scikit-learn.org/dev/modules/generated/sklearn.metrics.pairwise_distances.html#sklearn.metrics.pairwise_distances "(in scikit-learn v1.10)"), and of
     kernel functions (a constrained class of similarity functions) in
-    [`metrics.pairwise.pairwise_kernels`](https://scikit-learn.org/dev/modules/generated/sklearn.metrics.pairwise.pairwise_kernels.html#sklearn.metrics.pairwise.pairwise_kernels "(in scikit-learn v1.9)"). These can compute pairwise distance
+    [`metrics.pairwise.pairwise_kernels`](https://scikit-learn.org/dev/modules/generated/sklearn.metrics.pairwise.pairwise_kernels.html#sklearn.metrics.pairwise.pairwise_kernels "(in scikit-learn v1.10)"). These can compute pairwise distance
     matrices that are symmetric and hence store data redundantly.
 
     See also [precomputed](#term-precomputed) and [metric](#term-metric).
 
     Note that for most distance metrics, we rely on implementations from
     [`scipy.spatial.distance`](https://scipy.github.io/devdocs/reference/spatial.distance.html#module-scipy.spatial.distance "(in SciPy v1.18.0.dev)"), but may reimplement for efficiency in
-    our context. The [`metrics.DistanceMetric`](https://scikit-learn.org/dev/modules/generated/sklearn.metrics.DistanceMetric.html#sklearn.metrics.DistanceMetric "(in scikit-learn v1.9)") interface is used to implement
+    our context. The [`metrics.DistanceMetric`](https://scikit-learn.org/dev/modules/generated/sklearn.metrics.DistanceMetric.html#sklearn.metrics.DistanceMetric "(in scikit-learn v1.10)") interface is used to implement
     distance metrics for integration with efficient neighbors search.
 
 pd[#](#term-pd "Link to this term")
@@ -759,8 +759,8 @@ SLEP[#](#term-SLEP "Link to this term")
 
 SLEPs[#](#term-SLEPs "Link to this term")
 :   Changes to the API principles and changes to dependencies or supported
-    versions happen via a [SLEP](https://scikit-learn.org/dev/governance.html#slep "(in scikit-learn v1.9)") and follows the
-    decision-making process outlined in [Scikit-learn governance and decision-making](https://scikit-learn.org/dev/governance.html#governance "(in scikit-learn v1.9)").
+    versions happen via a [SLEP](https://scikit-learn.org/dev/governance.html#slep "(in scikit-learn v1.10)") and follows the
+    decision-making process outlined in [Scikit-learn governance and decision-making](https://scikit-learn.org/dev/governance.html#governance "(in scikit-learn v1.10)").
     For all votes, a proposal must have been made public and discussed before the
     vote. Such a proposal must be a consolidated document, in the form of a
     “Scikit-Learn Enhancement Proposal” (SLEP), rather than a long discussion on an
@@ -811,7 +811,7 @@ sparse graph[#](#term-sparse-graph "Link to this term")
         vertices of a graph, where an explicit value indicates an edge’s
         weight. This interpretation is adopted to represent connectivity
         in clustering, in representations of nearest neighborhoods
-        (e.g. [`neighbors.kneighbors_graph`](https://scikit-learn.org/dev/modules/generated/sklearn.neighbors.kneighbors_graph.html#sklearn.neighbors.kneighbors_graph "(in scikit-learn v1.9)")), and for precomputed
+        (e.g. [`neighbors.kneighbors_graph`](https://scikit-learn.org/dev/modules/generated/sklearn.neighbors.kneighbors_graph.html#sklearn.neighbors.kneighbors_graph "(in scikit-learn v1.10)")), and for precomputed
         distance representation where only distances in the neighborhood
         of each point are required.
 
@@ -854,9 +854,9 @@ transduction[#](#term-transduction "Link to this term")
 transductive[#](#term-transductive "Link to this term")
 :   A transductive (contrasted with [inductive](#term-inductive)) machine learning
     method is designed to model a specific dataset, but not to apply that
-    model to unseen data. Examples include [`manifold.TSNE`](https://scikit-learn.org/dev/modules/generated/sklearn.manifold.TSNE.html#sklearn.manifold.TSNE "(in scikit-learn v1.9)"),
-    [`cluster.AgglomerativeClustering`](https://scikit-learn.org/dev/modules/generated/sklearn.cluster.AgglomerativeClustering.html#sklearn.cluster.AgglomerativeClustering "(in scikit-learn v1.9)") and
-    [`neighbors.LocalOutlierFactor`](https://scikit-learn.org/dev/modules/generated/sklearn.neighbors.LocalOutlierFactor.html#sklearn.neighbors.LocalOutlierFactor "(in scikit-learn v1.9)").
+    model to unseen data. Examples include [`manifold.TSNE`](https://scikit-learn.org/dev/modules/generated/sklearn.manifold.TSNE.html#sklearn.manifold.TSNE "(in scikit-learn v1.10)"),
+    [`cluster.AgglomerativeClustering`](https://scikit-learn.org/dev/modules/generated/sklearn.cluster.AgglomerativeClustering.html#sklearn.cluster.AgglomerativeClustering "(in scikit-learn v1.10)") and
+    [`neighbors.LocalOutlierFactor`](https://scikit-learn.org/dev/modules/generated/sklearn.neighbors.LocalOutlierFactor.html#sklearn.neighbors.LocalOutlierFactor "(in scikit-learn v1.10)").
 
 unlabeled[#](#term-unlabeled "Link to this term")
 
@@ -888,11 +888,11 @@ classifiers[#](#term-classifiers "Link to this term")
     strategy over the binary classification problem.
 
     Classifiers must store a [classes\_](#term-classes_) attribute after fitting,
-    and usually inherit from [`base.ClassifierMixin`](https://scikit-learn.org/dev/modules/generated/sklearn.base.ClassifierMixin.html#sklearn.base.ClassifierMixin "(in scikit-learn v1.9)"), which sets
+    and usually inherit from [`base.ClassifierMixin`](https://scikit-learn.org/dev/modules/generated/sklearn.base.ClassifierMixin.html#sklearn.base.ClassifierMixin "(in scikit-learn v1.10)"), which sets
     their [\_estimator\_type](#term-_estimator_type) attribute.
 
     A classifier can be distinguished from other estimators with
-    [`is_classifier`](https://scikit-learn.org/dev/modules/generated/sklearn.base.is_classifier.html#sklearn.base.is_classifier "(in scikit-learn v1.9)").
+    [`is_classifier`](https://scikit-learn.org/dev/modules/generated/sklearn.base.is_classifier.html#sklearn.base.is_classifier "(in scikit-learn v1.10)").
 
     A classifier must implement:
 
@@ -922,9 +922,9 @@ density estimator[#](#term-density-estimator "Link to this term")
 :   An [unsupervised](#term-unsupervised) estimation of input probability density
     function. Commonly used techniques are:
 
-    * [Kernel Density Estimation](https://scikit-learn.org/dev/modules/density.html#kernel-density "(in scikit-learn v1.9)") - uses a kernel function, controlled by the
+    * [Kernel Density Estimation](https://scikit-learn.org/dev/modules/density.html#kernel-density "(in scikit-learn v1.10)") - uses a kernel function, controlled by the
       bandwidth parameter to represent density;
-    * [Gaussian mixture](https://scikit-learn.org/dev/modules/mixture.html#mixture "(in scikit-learn v1.9)") - uses mixture of Gaussian models
+    * [Gaussian mixture](https://scikit-learn.org/dev/modules/mixture.html#mixture "(in scikit-learn v1.10)") - uses mixture of Gaussian models
       to represent density.
 
 estimator[#](#term-estimator "Link to this term")
@@ -948,7 +948,7 @@ estimators[#](#term-estimators "Link to this term")
 
     Estimators must provide a [fit](#term-fit) method, and should provide
     [set\_params](#term-set_params) and [get\_params](#term-get_params), although these are usually
-    provided by inheritance from [`base.BaseEstimator`](https://scikit-learn.org/dev/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator "(in scikit-learn v1.9)").
+    provided by inheritance from [`base.BaseEstimator`](https://scikit-learn.org/dev/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator "(in scikit-learn v1.10)").
 
     The core functionality of some estimators may also be available as a
     [function](#term-function).
@@ -977,17 +977,17 @@ metaestimator[#](#term-metaestimator "Link to this term")
 
 metaestimators[#](#term-metaestimators "Link to this term")
 :   An [estimator](#term-estimator) which takes another estimator as a parameter.
-    Examples include [`pipeline.Pipeline`](https://scikit-learn.org/dev/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline "(in scikit-learn v1.9)"),
-    [`model_selection.GridSearchCV`](https://scikit-learn.org/dev/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV "(in scikit-learn v1.9)"),
-    [`feature_selection.SelectFromModel`](https://scikit-learn.org/dev/modules/generated/sklearn.feature_selection.SelectFromModel.html#sklearn.feature_selection.SelectFromModel "(in scikit-learn v1.9)") and
-    [`ensemble.BaggingClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.BaggingClassifier.html#sklearn.ensemble.BaggingClassifier "(in scikit-learn v1.9)").
+    Examples include [`pipeline.Pipeline`](https://scikit-learn.org/dev/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline "(in scikit-learn v1.10)"),
+    [`model_selection.GridSearchCV`](https://scikit-learn.org/dev/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV "(in scikit-learn v1.10)"),
+    [`feature_selection.SelectFromModel`](https://scikit-learn.org/dev/modules/generated/sklearn.feature_selection.SelectFromModel.html#sklearn.feature_selection.SelectFromModel "(in scikit-learn v1.10)") and
+    [`ensemble.BaggingClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.BaggingClassifier.html#sklearn.ensemble.BaggingClassifier "(in scikit-learn v1.10)").
 
     In a meta-estimator’s [fit](#term-fit) method, any contained estimators
     should be [cloned](#term-cloned) before they are fit (although FIXME: Pipeline
     and FeatureUnion do not do this currently). An exception to this is
     that an estimator may explicitly document that it accepts a pre-fitted
     estimator (e.g. using `prefit=True` in
-    [`feature_selection.SelectFromModel`](https://scikit-learn.org/dev/modules/generated/sklearn.feature_selection.SelectFromModel.html#sklearn.feature_selection.SelectFromModel "(in scikit-learn v1.9)")). One known issue with this
+    [`feature_selection.SelectFromModel`](https://scikit-learn.org/dev/modules/generated/sklearn.feature_selection.SelectFromModel.html#sklearn.feature_selection.SelectFromModel "(in scikit-learn v1.10)")). One known issue with this
     is that the pre-fitted estimator will lose its model if the
     meta-estimator is cloned. A meta-estimator should have `fit` called
     before prediction, even if all contained estimators are pre-fitted.
@@ -1000,7 +1000,7 @@ metaestimators[#](#term-metaestimators "Link to this term")
     possible to identify which methods are provided by the underlying
     estimator until the meta-estimator has been [fitted](#term-fitted) (see also
     [duck typing](#term-duck-typing)), for which
-    [`utils.metaestimators.available_if`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.metaestimators.available_if.html#sklearn.utils.metaestimators.available_if "(in scikit-learn v1.9)") may help. It
+    [`utils.metaestimators.available_if`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.metaestimators.available_if.html#sklearn.utils.metaestimators.available_if "(in scikit-learn v1.10)") may help. It
     should also provide (or modify) the [estimator tags](#term-estimator-tags) and
     [classes\_](#term-classes_) attribute provided by the base estimator.
 
@@ -1041,11 +1041,11 @@ regressors[#](#term-regressors "Link to this term")
 :   A [supervised](#term-supervised) (or [semi-supervised](#term-semi-supervised)) [predictor](#term-predictor)
     with [continuous](#term-continuous) output values.
 
-    Regressors usually inherit from [`base.RegressorMixin`](https://scikit-learn.org/dev/modules/generated/sklearn.base.RegressorMixin.html#sklearn.base.RegressorMixin "(in scikit-learn v1.9)"), which
+    Regressors usually inherit from [`base.RegressorMixin`](https://scikit-learn.org/dev/modules/generated/sklearn.base.RegressorMixin.html#sklearn.base.RegressorMixin "(in scikit-learn v1.10)"), which
     sets their [\_estimator\_type](#term-_estimator_type) attribute.
 
     A regressor can be distinguished from other estimators with
-    [`is_regressor`](https://scikit-learn.org/dev/modules/generated/sklearn.base.is_regressor.html#sklearn.base.is_regressor "(in scikit-learn v1.9)").
+    [`is_regressor`](https://scikit-learn.org/dev/modules/generated/sklearn.base.is_regressor.html#sklearn.base.is_regressor "(in scikit-learn v1.10)").
 
     A regressor must implement:
 
@@ -1058,7 +1058,7 @@ transformer[#](#term-transformer "Link to this term")
 transformers[#](#term-transformers "Link to this term")
 :   An estimator supporting [transform](#term-transform) and/or [fit\_transform](#term-fit_transform).
     A purely [transductive](#term-transductive) transformer, such as
-    [`manifold.TSNE`](https://scikit-learn.org/dev/modules/generated/sklearn.manifold.TSNE.html#sklearn.manifold.TSNE "(in scikit-learn v1.9)"), may not implement `transform`.
+    [`manifold.TSNE`](https://scikit-learn.org/dev/modules/generated/sklearn.manifold.TSNE.html#sklearn.manifold.TSNE "(in scikit-learn v1.10)"), may not implement `transform`.
 
 vectorizer[#](#term-vectorizer "Link to this term")
 
@@ -1074,7 +1074,7 @@ CV splitter[#](#term-CV-splitter "Link to this term")
 
 cross-validation generator[#](#term-cross-validation-generator "Link to this term")
 :   A non-estimator family of classes used to split a dataset into a
-    sequence of train and test portions (see [Cross-validation: evaluating estimator performance](https://scikit-learn.org/dev/modules/cross_validation.html#cross-validation "(in scikit-learn v1.9)")),
+    sequence of train and test portions (see [Cross-validation: evaluating estimator performance](https://scikit-learn.org/dev/modules/cross_validation.html#cross-validation "(in scikit-learn v1.10)")),
     by providing [split](#term-split) and [get\_n\_splits](#term-get_n_splits) methods.
     Note that unlike estimators, these do not have [fit](#term-fit) methods
     and do not provide [set\_params](#term-set_params) or [get\_params](#term-get_params).
@@ -1083,19 +1083,19 @@ cross-validation generator[#](#term-cross-validation-generator "Link to this ter
 cross-validation estimator[#](#term-cross-validation-estimator "Link to this term")
 :   An estimator that has built-in cross-validation capabilities to
     automatically select the best hyper-parameters (see the [User
-    Guide](https://scikit-learn.org/dev/modules/grid_search.html#grid-search "(in scikit-learn v1.9)")). Some example of cross-validation estimators
-    are [`ElasticNetCV`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.ElasticNetCV.html#sklearn.linear_model.ElasticNetCV "(in scikit-learn v1.9)") and
-    [`LogisticRegressionCV`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegressionCV.html#sklearn.linear_model.LogisticRegressionCV "(in scikit-learn v1.9)").
+    Guide](https://scikit-learn.org/dev/modules/grid_search.html#grid-search "(in scikit-learn v1.10)")). Some example of cross-validation estimators
+    are [`ElasticNetCV`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.ElasticNetCV.html#sklearn.linear_model.ElasticNetCV "(in scikit-learn v1.10)") and
+    [`LogisticRegressionCV`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegressionCV.html#sklearn.linear_model.LogisticRegressionCV "(in scikit-learn v1.10)").
     Cross-validation estimators are named `EstimatorCV` and tend to be
     roughly equivalent to `GridSearchCV(Estimator(), ...)`. The
     advantage of using a cross-validation estimator over the canonical
-    [estimator](#term-estimator) class along with [grid search](https://scikit-learn.org/dev/modules/grid_search.html#grid-search "(in scikit-learn v1.9)") is
+    [estimator](#term-estimator) class along with [grid search](https://scikit-learn.org/dev/modules/grid_search.html#grid-search "(in scikit-learn v1.10)") is
     that they can take advantage of warm-starting by reusing precomputed
     results in the previous steps of the cross-validation process. This
     generally leads to speed improvements. An exception is the
-    [`RidgeCV`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.RidgeCV.html#sklearn.linear_model.RidgeCV "(in scikit-learn v1.9)") class, which can instead
+    [`RidgeCV`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.RidgeCV.html#sklearn.linear_model.RidgeCV "(in scikit-learn v1.10)") class, which can instead
     perform efficient Leave-One-Out (LOO) CV. By default, all these
-    estimators, apart from [`RidgeCV`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.RidgeCV.html#sklearn.linear_model.RidgeCV "(in scikit-learn v1.9)") with an
+    estimators, apart from [`RidgeCV`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.RidgeCV.html#sklearn.linear_model.RidgeCV "(in scikit-learn v1.10)") with an
     LOO-CV, will be refitted on the full training dataset after finding the
     best combination of hyper-parameters.
 
@@ -1103,12 +1103,12 @@ scorer[#](#term-scorer "Link to this term")
 :   A non-estimator callable object which evaluates an estimator on given
     test data, returning a number. Unlike [evaluation metrics](#term-evaluation-metrics),
     a greater returned number must correspond with a **better** score.
-    See [The scoring parameter: defining model evaluation rules](https://scikit-learn.org/dev/modules/model_evaluation.html#scoring-parameter "(in scikit-learn v1.9)").
+    See [The scoring parameter: defining model evaluation rules](https://scikit-learn.org/dev/modules/model_evaluation.html#scoring-parameter "(in scikit-learn v1.10)").
 
 Further examples:
 
-* [`metrics.DistanceMetric`](https://scikit-learn.org/dev/modules/generated/sklearn.metrics.DistanceMetric.html#sklearn.metrics.DistanceMetric "(in scikit-learn v1.9)")
-* [`gaussian_process.kernels.Kernel`](https://scikit-learn.org/dev/modules/generated/sklearn.gaussian_process.kernels.Kernel.html#sklearn.gaussian_process.kernels.Kernel "(in scikit-learn v1.9)")
+* [`metrics.DistanceMetric`](https://scikit-learn.org/dev/modules/generated/sklearn.metrics.DistanceMetric.html#sklearn.metrics.DistanceMetric "(in scikit-learn v1.10)")
+* [`gaussian_process.kernels.Kernel`](https://scikit-learn.org/dev/modules/generated/sklearn.gaussian_process.kernels.Kernel.html#sklearn.gaussian_process.kernels.Kernel "(in scikit-learn v1.10)")
 * `tree.Criterion`
 
 ## Metadata Routing[#](#metadata-routing "Link to this heading")
@@ -1130,12 +1130,12 @@ metadata[#](#term-metadata "Link to this term")
 router[#](#term-router "Link to this term")
 :   An object which routes metadata to [consumers](#term-consumer). This
     object is usually a [meta-estimator](#term-meta-estimator), e.g.
-    [`Pipeline`](https://scikit-learn.org/dev/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline "(in scikit-learn v1.9)") or [`GridSearchCV`](https://scikit-learn.org/dev/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV "(in scikit-learn v1.9)").
+    [`Pipeline`](https://scikit-learn.org/dev/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline "(in scikit-learn v1.10)") or [`GridSearchCV`](https://scikit-learn.org/dev/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV "(in scikit-learn v1.10)").
     Some routers can also be a consumer. This happens for example when a
     meta-estimator uses the given [groups](#term-groups), and it also passes it
     along to some of its sub-objects, such as a [CV splitter](#term-CV-splitter).
 
-Please refer to [Metadata Routing User Guide](https://scikit-learn.org/dev/metadata_routing.html#metadata-routing "(in scikit-learn v1.9)") for more
+Please refer to [Metadata Routing User Guide](https://scikit-learn.org/dev/metadata_routing.html#metadata-routing "(in scikit-learn v1.10)") for more
 information.
 
 ## Target Types[#](#target-types "Link to this heading")
@@ -1157,7 +1157,7 @@ binary[#](#term-binary "Link to this term")
     Note that a dataset sampled from a multiclass `y` or a continuous
     `y` may appear to be binary.
 
-    [`type_of_target`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target "(in scikit-learn v1.9)") will return ‘binary’ for
+    [`type_of_target`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target "(in scikit-learn v1.10)") will return ‘binary’ for
     binary input, or a similar array with only a single class present.
 
 continuous[#](#term-continuous "Link to this term")
@@ -1165,7 +1165,7 @@ continuous[#](#term-continuous "Link to this term")
     point number represented as a 1-dimensional array of floats (or
     sometimes ints).
 
-    [`type_of_target`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target "(in scikit-learn v1.9)") will return ‘continuous’ for
+    [`type_of_target`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target "(in scikit-learn v1.10)") will return ‘continuous’ for
     continuous input, but if the data is all integers, it will be
     identified as ‘multiclass’.
 
@@ -1184,7 +1184,7 @@ multi-output continuous[#](#term-multi-output-continuous "Link to this term")
     [continuous](#term-continuous) targets, horizontally stacked into an array
     of shape `(n_samples, n_outputs)`.
 
-    [`type_of_target`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target "(in scikit-learn v1.9)") will return
+    [`type_of_target`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target "(in scikit-learn v1.10)") will return
     ‘continuous-multioutput’ for continuous multioutput input, but if the
     data is all integers, it will be identified as
     ‘multiclass-multioutput’.
@@ -1207,10 +1207,10 @@ multi-class[#](#term-multi-class "Link to this term")
     Within scikit-learn, all estimators supporting binary classification
     also support multiclass classification, using One-vs-Rest by default.
 
-    A [`preprocessing.LabelEncoder`](https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.LabelEncoder.html#sklearn.preprocessing.LabelEncoder "(in scikit-learn v1.9)") helps to canonicalize multiclass
+    A [`preprocessing.LabelEncoder`](https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.LabelEncoder.html#sklearn.preprocessing.LabelEncoder "(in scikit-learn v1.10)") helps to canonicalize multiclass
     targets as integers.
 
-    [`type_of_target`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target "(in scikit-learn v1.9)") will return ‘multiclass’ for
+    [`type_of_target`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target "(in scikit-learn v1.10)") will return ‘multiclass’ for
     multiclass input. The user may also want to handle ‘binary’ input
     identically to ‘multiclass’.
 
@@ -1236,13 +1236,13 @@ multi-output multi-class[#](#term-multi-output-multi-class "Link to this term")
     XXX: For simplicity, we may not always support string class labels
     for multiclass multioutput, and integer class labels should be used.
 
-    [`multioutput`](https://scikit-learn.org/dev/api/sklearn.multioutput.html#module-sklearn.multioutput "(in scikit-learn v1.9)") provides estimators which estimate multi-output
+    [`multioutput`](https://scikit-learn.org/dev/api/sklearn.multioutput.html#module-sklearn.multioutput "(in scikit-learn v1.10)") provides estimators which estimate multi-output
     problems using multiple single-output estimators. This may not fully
     account for dependencies among the different outputs, which methods
     natively handling the multioutput case (e.g. decision trees, nearest
     neighbors, neural networks) may do better.
 
-    [`type_of_target`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target "(in scikit-learn v1.9)") will return
+    [`type_of_target`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target "(in scikit-learn v1.10)") will return
     ‘multiclass-multioutput’ for multiclass multioutput input.
 
 multilabel[#](#term-multilabel "Link to this term")
@@ -1257,13 +1257,13 @@ multi-label[#](#term-multi-label "Link to this term")
 
     Semantically, a multilabel target can be thought of as a set of labels
     for each sample. While not used internally,
-    [`preprocessing.MultiLabelBinarizer`](https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.MultiLabelBinarizer.html#sklearn.preprocessing.MultiLabelBinarizer "(in scikit-learn v1.9)") is provided as a utility to
+    [`preprocessing.MultiLabelBinarizer`](https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.MultiLabelBinarizer.html#sklearn.preprocessing.MultiLabelBinarizer "(in scikit-learn v1.10)") is provided as a utility to
     convert from a list of sets representation to a 2d array or sparse
     matrix. One-hot encoding a multiclass target with
-    [`preprocessing.LabelBinarizer`](https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.LabelBinarizer.html#sklearn.preprocessing.LabelBinarizer "(in scikit-learn v1.9)") turns it into a multilabel
+    [`preprocessing.LabelBinarizer`](https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.LabelBinarizer.html#sklearn.preprocessing.LabelBinarizer "(in scikit-learn v1.10)") turns it into a multilabel
     problem.
 
-    [`type_of_target`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target "(in scikit-learn v1.9)") will return
+    [`type_of_target`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target "(in scikit-learn v1.10)") will return
     ‘multilabel-indicator’ for multilabel input, whether sparse or dense.
 
 multioutput[#](#term-multioutput "Link to this term")
@@ -1283,7 +1283,7 @@ multi-output[#](#term-multi-output "Link to this term")
     is usually only some observed data, [X](#term-X).
 
     If the estimator was not already [fitted](#term-fitted), calling this method
-    should raise a [`exceptions.NotFittedError`](https://scikit-learn.org/dev/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError "(in scikit-learn v1.9)").
+    should raise a [`exceptions.NotFittedError`](https://scikit-learn.org/dev/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError "(in scikit-learn v1.10)").
 
     Output conventions:
 
@@ -1358,7 +1358,7 @@ multi-output[#](#term-multi-output "Link to this term")
 
     One reason to implement `fit_transform` is that performing `fit`
     and `transform` separately would be less efficient than together.
-    [`base.TransformerMixin`](https://scikit-learn.org/dev/modules/generated/sklearn.base.TransformerMixin.html#sklearn.base.TransformerMixin "(in scikit-learn v1.9)") provides a default implementation,
+    [`base.TransformerMixin`](https://scikit-learn.org/dev/modules/generated/sklearn.base.TransformerMixin.html#sklearn.base.TransformerMixin "(in scikit-learn v1.10)") provides a default implementation,
     providing a consistent interface across transformers where
     `fit_transform` is or is not specialized.
 
@@ -1391,9 +1391,9 @@ multi-output[#](#term-multi-output "Link to this term")
     False to only return those parameters not including `__`, i.e. not
     due to indirection via contained estimators.
 
-    Most estimators adopt the definition from [`base.BaseEstimator`](https://scikit-learn.org/dev/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator "(in scikit-learn v1.9)"),
+    Most estimators adopt the definition from [`base.BaseEstimator`](https://scikit-learn.org/dev/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator "(in scikit-learn v1.10)"),
     which simply adopts the parameters defined for `__init__`.
-    [`pipeline.Pipeline`](https://scikit-learn.org/dev/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline "(in scikit-learn v1.9)"), among others, reimplements `get_params`
+    [`pipeline.Pipeline`](https://scikit-learn.org/dev/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline "(in scikit-learn v1.10)"), among others, reimplements `get_params`
     to declare the estimators named in its `steps` parameters as
     themselves being parameters.
 
@@ -1409,7 +1409,7 @@ multi-output[#](#term-multi-output "Link to this term")
     although usually limited to the case where learning can be performed
     online, i.e. the model is usable after each `partial_fit` and there
     is no separate processing needed to finalize the model.
-    [`cluster.Birch`](https://scikit-learn.org/dev/modules/generated/sklearn.cluster.Birch.html#sklearn.cluster.Birch "(in scikit-learn v1.9)") introduces the convention that calling
+    [`cluster.Birch`](https://scikit-learn.org/dev/modules/generated/sklearn.cluster.Birch.html#sklearn.cluster.Birch "(in scikit-learn v1.10)") introduces the convention that calling
     `partial_fit(X)` will produce a model that is not finalized, but the
     model can be finalized by calling `partial_fit()` i.e. without
     passing a further mini-batch.
@@ -1423,7 +1423,7 @@ multi-output[#](#term-multi-output "Link to this term")
     Like `fit`, `partial_fit` should return the estimator object.
 
     To clear the model, a new estimator should be constructed, for instance
-    with [`base.clone`](https://scikit-learn.org/dev/modules/generated/sklearn.base.clone.html#sklearn.base.clone "(in scikit-learn v1.9)").
+    with [`base.clone`](https://scikit-learn.org/dev/modules/generated/sklearn.base.clone.html#sklearn.base.clone "(in scikit-learn v1.10)").
 
     NOTE: Using `partial_fit` after `fit` results in undefined behavior.
 
@@ -1439,7 +1439,7 @@ multi-output[#](#term-multi-output "Link to this term")
     integer.
 
     If the estimator was not already [fitted](#term-fitted), calling this method
-    should raise a [`exceptions.NotFittedError`](https://scikit-learn.org/dev/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError "(in scikit-learn v1.9)").
+    should raise a [`exceptions.NotFittedError`](https://scikit-learn.org/dev/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError "(in scikit-learn v1.10)").
 
     Output conventions:
 
@@ -1454,7 +1454,7 @@ multi-output[#](#term-multi-output "Link to this term")
     :   An array of shape `(n_samples,)` where each value is from 0 to
         `n_clusters - 1` if the corresponding sample is clustered,
         and -1 if the sample is not clustered, as in
-        [`cluster.dbscan`](https://scikit-learn.org/dev/modules/generated/dbscan-function.html#sklearn.cluster.dbscan "(in scikit-learn v1.9)").
+        [`cluster.dbscan`](https://scikit-learn.org/dev/modules/generated/dbscan-function.html#sklearn.cluster.dbscan "(in scikit-learn v1.10)").
 
     outlier detector
     :   An array of shape `(n_samples,)` where each value is -1 for an
@@ -1478,7 +1478,7 @@ multi-output[#](#term-multi-output "Link to this term")
     usually only some observed data, [X](#term-X).
 
     If the estimator was not already [fitted](#term-fitted), calling this method
-    should raise a [`exceptions.NotFittedError`](https://scikit-learn.org/dev/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError "(in scikit-learn v1.9)").
+    should raise a [`exceptions.NotFittedError`](https://scikit-learn.org/dev/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError "(in scikit-learn v1.10)").
 
     Output conventions are like those for [decision\_function](#term-decision_function) except
     in the [binary](#term-binary) classification case, where one column is output
@@ -1488,8 +1488,8 @@ multi-output[#](#term-multi-output "Link to this term")
     Like other methods, `predict_proba` should only be present when the
     estimator can make probabilistic predictions (see [duck typing](#term-duck-typing)).
     This means that the presence of the method may depend on estimator
-    parameters (e.g. in [`linear_model.SGDClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier "(in scikit-learn v1.9)")) or training
-    data (e.g. in [`model_selection.GridSearchCV`](https://scikit-learn.org/dev/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV "(in scikit-learn v1.9)")) and may only
+    parameters (e.g. in [`linear_model.SGDClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier "(in scikit-learn v1.10)")) or training
+    data (e.g. in [`model_selection.GridSearchCV`](https://scikit-learn.org/dev/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV "(in scikit-learn v1.10)")) and may only
     appear after fitting.
 
 `score`[#](#term-score "Link to this term")
@@ -1499,7 +1499,7 @@ multi-output[#](#term-multi-output "Link to this term")
     accuracy is used for classifiers and R^2 for regressors by default.
 
     If the estimator was not already [fitted](#term-fitted), calling this method
-    should raise a [`exceptions.NotFittedError`](https://scikit-learn.org/dev/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError "(in scikit-learn v1.9)").
+    should raise a [`exceptions.NotFittedError`](https://scikit-learn.org/dev/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError "(in scikit-learn v1.10)").
 
     Some estimators implement a custom, estimator-specific score function,
     often the likelihood of the data under the model.
@@ -1512,16 +1512,16 @@ multi-output[#](#term-multi-output "Link to this term")
     factor of the data.
 
     If the estimator was not already [fitted](#term-fitted), calling this method
-    should raise a [`exceptions.NotFittedError`](https://scikit-learn.org/dev/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError "(in scikit-learn v1.9)").
+    should raise a [`exceptions.NotFittedError`](https://scikit-learn.org/dev/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError "(in scikit-learn v1.10)").
 
 `set_params`[#](#term-set_params "Link to this term")
 :   Available in any estimator, takes keyword arguments corresponding to
     keys in [get\_params](#term-get_params). Each is provided a new value to assign
     such that calling `get_params` after `set_params` will reflect the
     changed [parameters](#term-parameters). Most estimators use the implementation in
-    [`base.BaseEstimator`](https://scikit-learn.org/dev/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator "(in scikit-learn v1.9)"), which handles nested parameters and
+    [`base.BaseEstimator`](https://scikit-learn.org/dev/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator "(in scikit-learn v1.10)"), which handles nested parameters and
     otherwise sets the parameter as an attribute on the estimator.
-    The method is overridden in [`pipeline.Pipeline`](https://scikit-learn.org/dev/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline "(in scikit-learn v1.9)") and related
+    The method is overridden in [`pipeline.Pipeline`](https://scikit-learn.org/dev/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline "(in scikit-learn v1.10)") and related
     estimators.
 
 `split`[#](#term-split "Link to this term")
@@ -1539,7 +1539,7 @@ multi-output[#](#term-multi-output "Link to this term")
     with the number of columns fixed after [fitting](#term-fitting).
 
     If the estimator was not already [fitted](#term-fitted), calling this method
-    should raise a [`exceptions.NotFittedError`](https://scikit-learn.org/dev/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError "(in scikit-learn v1.9)").
+    should raise a [`exceptions.NotFittedError`](https://scikit-learn.org/dev/modules/generated/sklearn.exceptions.NotFittedError.html#sklearn.exceptions.NotFittedError "(in scikit-learn v1.10)").
 
 ## Parameters[#](#parameters "Link to this heading")
 
@@ -1582,13 +1582,13 @@ functions or non-estimator constructors.
     1: 1}, {0: 1, 1: 1}]` instead of `[{1:1}, {2:5}, {3:1}, {4:1}]`.
 
     The `class_weight` parameter is validated and interpreted with
-    [`utils.class_weight.compute_class_weight`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.class_weight.compute_class_weight.html#sklearn.utils.class_weight.compute_class_weight "(in scikit-learn v1.9)").
+    [`utils.class_weight.compute_class_weight`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.class_weight.compute_class_weight.html#sklearn.utils.class_weight.compute_class_weight "(in scikit-learn v1.10)").
 
 `cv`[#](#term-cv "Link to this term")
 :   Determines a cross validation splitting strategy, as used in
     cross-validation based routines. `cv` is also available in estimators
-    such as [`multioutput.ClassifierChain`](https://scikit-learn.org/dev/modules/generated/sklearn.multioutput.ClassifierChain.html#sklearn.multioutput.ClassifierChain "(in scikit-learn v1.9)") or
-    [`calibration.CalibratedClassifierCV`](https://scikit-learn.org/dev/modules/generated/sklearn.calibration.CalibratedClassifierCV.html#sklearn.calibration.CalibratedClassifierCV "(in scikit-learn v1.9)") which use the predictions
+    such as [`multioutput.ClassifierChain`](https://scikit-learn.org/dev/modules/generated/sklearn.multioutput.ClassifierChain.html#sklearn.multioutput.ClassifierChain "(in scikit-learn v1.10)") or
+    [`calibration.CalibratedClassifierCV`](https://scikit-learn.org/dev/modules/generated/sklearn.calibration.CalibratedClassifierCV.html#sklearn.calibration.CalibratedClassifierCV "(in scikit-learn v1.10)") which use the predictions
     of one estimator as training data for another, to not overfit the
     training supervision.
 
@@ -1596,12 +1596,12 @@ functions or non-estimator constructors.
 
     * An integer, specifying the number of folds in K-fold cross
       validation. K-fold will be stratified over classes if the estimator
-      is a classifier (determined by [`base.is_classifier`](https://scikit-learn.org/dev/modules/generated/sklearn.base.is_classifier.html#sklearn.base.is_classifier "(in scikit-learn v1.9)")) and the
+      is a classifier (determined by [`base.is_classifier`](https://scikit-learn.org/dev/modules/generated/sklearn.base.is_classifier.html#sklearn.base.is_classifier "(in scikit-learn v1.10)")) and the
       [targets](#term-targets) may represent a binary or multiclass (but not
       multioutput) classification problem (determined by
-      [`utils.multiclass.type_of_target`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target "(in scikit-learn v1.9)")).
+      [`utils.multiclass.type_of_target`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.multiclass.type_of_target.html#sklearn.utils.multiclass.type_of_target "(in scikit-learn v1.10)")).
     * A [cross-validation splitter](#term-cross-validation-splitter) instance. Refer to the
-      [User Guide](https://scikit-learn.org/dev/modules/cross_validation.html#cross-validation "(in scikit-learn v1.9)") for splitters available
+      [User Guide](https://scikit-learn.org/dev/modules/cross_validation.html#cross-validation "(in scikit-learn v1.10)") for splitters available
       within Scikit-learn.
     * An iterable yielding train/test splits.
 
@@ -1609,22 +1609,22 @@ functions or non-estimator constructors.
     all is an option), the default is 5-fold.
 
     `cv` values are validated and interpreted with
-    [`model_selection.check_cv`](https://scikit-learn.org/dev/modules/generated/sklearn.model_selection.check_cv.html#sklearn.model_selection.check_cv "(in scikit-learn v1.9)").
+    [`model_selection.check_cv`](https://scikit-learn.org/dev/modules/generated/sklearn.model_selection.check_cv.html#sklearn.model_selection.check_cv "(in scikit-learn v1.10)").
 
 `kernel`[#](#term-kernel "Link to this term")
 :   Specifies the kernel function to be used by Kernel Method algorithms.
-    For example, the estimators [`svm.SVC`](https://scikit-learn.org/dev/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC "(in scikit-learn v1.9)") and
-    [`gaussian_process.GaussianProcessClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.gaussian_process.GaussianProcessClassifier.html#sklearn.gaussian_process.GaussianProcessClassifier "(in scikit-learn v1.9)") both have a
+    For example, the estimators [`svm.SVC`](https://scikit-learn.org/dev/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC "(in scikit-learn v1.10)") and
+    [`gaussian_process.GaussianProcessClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.gaussian_process.GaussianProcessClassifier.html#sklearn.gaussian_process.GaussianProcessClassifier "(in scikit-learn v1.10)") both have a
     `kernel` parameter that takes the name of the kernel to use as string
     or a callable kernel function used to compute the kernel matrix. For
-    more reference, see the [Kernel Approximation](https://scikit-learn.org/dev/modules/kernel_approximation.html#kernel-approximation "(in scikit-learn v1.9)") and the
-    [Gaussian Processes](https://scikit-learn.org/dev/modules/gaussian_process.html#gaussian-process "(in scikit-learn v1.9)") user guides.
+    more reference, see the [Kernel Approximation](https://scikit-learn.org/dev/modules/kernel_approximation.html#kernel-approximation "(in scikit-learn v1.10)") and the
+    [Gaussian Processes](https://scikit-learn.org/dev/modules/gaussian_process.html#gaussian-process "(in scikit-learn v1.10)") user guides.
 
 `max_iter`[#](#term-max_iter "Link to this term")
 :   For estimators involving iterative optimization, this determines the
     maximum number of iterations to be performed in [fit](#term-fit). If
     `max_iter` iterations are run without convergence, a
-    [`exceptions.ConvergenceWarning`](https://scikit-learn.org/dev/modules/generated/sklearn.exceptions.ConvergenceWarning.html#sklearn.exceptions.ConvergenceWarning "(in scikit-learn v1.9)") should be raised. Note that the
+    [`exceptions.ConvergenceWarning`](https://scikit-learn.org/dev/modules/generated/sklearn.exceptions.ConvergenceWarning.html#sklearn.exceptions.ConvergenceWarning "(in scikit-learn v1.10)") should be raised. Note that the
     interpretation of “a single iteration” is inconsistent across
     estimators: some, but not all, use it to mean a single epoch (i.e. a
     pass over every sample in the data).
@@ -1642,11 +1642,11 @@ functions or non-estimator constructors.
     similar interface, i.e. a `cache` method) can be used.
 
     `memory` values are validated and interpreted with
-    [`utils.validation.check_memory`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.validation.check_memory.html#sklearn.utils.validation.check_memory "(in scikit-learn v1.9)").
+    [`utils.validation.check_memory`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.validation.check_memory.html#sklearn.utils.validation.check_memory "(in scikit-learn v1.10)").
 
 `metric`[#](#term-metric "Link to this term")
 :   As a parameter, this is the scheme for determining the distance between
-    two data points. See [`metrics.pairwise_distances`](https://scikit-learn.org/dev/modules/generated/sklearn.metrics.pairwise_distances.html#sklearn.metrics.pairwise_distances "(in scikit-learn v1.9)"). In practice,
+    two data points. See [`metrics.pairwise_distances`](https://scikit-learn.org/dev/modules/generated/sklearn.metrics.pairwise_distances.html#sklearn.metrics.pairwise_distances "(in scikit-learn v1.10)"). In practice,
     for some algorithms, an improper distance metric (one that does not
     obey the triangle inequality, such as Cosine Distance) may be used.
 
@@ -1685,7 +1685,7 @@ functions or non-estimator constructors.
     might be used in some configuration.
 
     For more details on the use of `joblib` and its interactions with
-    scikit-learn, please refer to our [parallelism notes](https://scikit-learn.org/dev/computing/parallelism.html#parallelism "(in scikit-learn v1.9)").
+    scikit-learn, please refer to our [parallelism notes](https://scikit-learn.org/dev/computing/parallelism.html#parallelism "(in scikit-learn v1.10)").
 
 `pos_label`[#](#term-pos_label "Link to this term")
 :   Value with which positive labels must be encoded in binary
@@ -1702,7 +1702,7 @@ functions or non-estimator constructors.
 
     The passed value will have an effect on the reproducibility of the
     results returned by the function ([fit](#term-fit), [split](#term-split), or any
-    other function like [`k_means`](https://scikit-learn.org/dev/modules/generated/sklearn.cluster.k_means.html#sklearn.cluster.k_means "(in scikit-learn v1.9)")). `random_state`’s
+    other function like [`k_means`](https://scikit-learn.org/dev/modules/generated/sklearn.cluster.k_means.html#sklearn.cluster.k_means "(in scikit-learn v1.10)")). `random_state`’s
     value may be:
 
     None (default)
@@ -1725,21 +1725,21 @@ functions or non-estimator constructors.
         multiple times will reuse the same instance, and
         will produce different results.
 
-    [`utils.check_random_state`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.check_random_state.html#sklearn.utils.check_random_state "(in scikit-learn v1.9)") is used internally to validate the
+    [`utils.check_random_state`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.check_random_state.html#sklearn.utils.check_random_state "(in scikit-learn v1.10)") is used internally to validate the
     input `random_state` and return a [`RandomState`](https://numpy.org/devdocs/reference/random/legacy.html#numpy.random.RandomState "(in NumPy v2.5.dev0)")
     instance.
 
     For more details on how to control the randomness of scikit-learn
-    objects and avoid common pitfalls, you may refer to [Controlling randomness](https://scikit-learn.org/dev/common_pitfalls.html#randomness "(in scikit-learn v1.9)").
+    objects and avoid common pitfalls, you may refer to [Controlling randomness](https://scikit-learn.org/dev/common_pitfalls.html#randomness "(in scikit-learn v1.10)").
 
 `scoring`[#](#term-scoring "Link to this term")
 :   Specifies the score function to be maximized (usually by [cross
-    validation](https://scikit-learn.org/dev/modules/cross_validation.html#cross-validation "(in scikit-learn v1.9)")), or – in some cases – multiple score
+    validation](https://scikit-learn.org/dev/modules/cross_validation.html#cross-validation "(in scikit-learn v1.10)")), or – in some cases – multiple score
     functions to be reported. The score function can be a string accepted
-    by [`metrics.get_scorer`](https://scikit-learn.org/dev/modules/generated/sklearn.metrics.get_scorer.html#sklearn.metrics.get_scorer "(in scikit-learn v1.9)") or a callable [scorer](#term-scorer), not to be
+    by [`metrics.get_scorer`](https://scikit-learn.org/dev/modules/generated/sklearn.metrics.get_scorer.html#sklearn.metrics.get_scorer "(in scikit-learn v1.10)") or a callable [scorer](#term-scorer), not to be
     confused with an [evaluation metric](#term-evaluation-metric), as the latter have a more
     diverse API. `scoring` may also be set to None, in which case the
-    estimator’s [score](#term-score) method is used. See [The scoring parameter: defining model evaluation rules](https://scikit-learn.org/dev/modules/model_evaluation.html#scoring-parameter "(in scikit-learn v1.9)")
+    estimator’s [score](#term-score) method is used. See [The scoring parameter: defining model evaluation rules](https://scikit-learn.org/dev/modules/model_evaluation.html#scoring-parameter "(in scikit-learn v1.10)")
     in the User Guide.
 
     Where multiple metrics can be evaluated, `scoring` may be given
@@ -1749,7 +1749,7 @@ functions or non-estimator constructors.
     another parameter such as `refit` maybe used for this purpose.
 
     The `scoring` parameter is validated and interpreted using
-    [`metrics.check_scoring`](https://scikit-learn.org/dev/modules/generated/sklearn.metrics.check_scoring.html#sklearn.metrics.check_scoring "(in scikit-learn v1.9)").
+    [`metrics.check_scoring`](https://scikit-learn.org/dev/modules/generated/sklearn.metrics.check_scoring.html#sklearn.metrics.check_scoring "(in scikit-learn v1.10)").
 
 `verbose`[#](#term-verbose "Link to this term")
 :   Logging is not handled very consistently in Scikit-learn at present,
@@ -1764,7 +1764,7 @@ functions or non-estimator constructors.
 `warm_start`[#](#term-warm_start "Link to this term")
 :   When fitting an estimator repeatedly on the same dataset, but for
     multiple parameter values (such as to find the value maximizing
-    performance as in [grid search](https://scikit-learn.org/dev/modules/grid_search.html#grid-search "(in scikit-learn v1.9)")), it may be possible
+    performance as in [grid search](https://scikit-learn.org/dev/modules/grid_search.html#grid-search "(in scikit-learn v1.10)")), it may be possible
     to reuse aspects of the model learned from the previous parameter value,
     saving time. When `warm_start` is true, the existing [fitted](#term-fitted)
     model [attributes](#term-attributes) are used to initialize the new model
@@ -1775,7 +1775,7 @@ functions or non-estimator constructors.
     is an interaction between `warm_start` and the parameter controlling
     the number of iterations of the estimator.
 
-    For estimators imported from [`ensemble`](https://scikit-learn.org/dev/api/sklearn.ensemble.html#module-sklearn.ensemble "(in scikit-learn v1.9)"),
+    For estimators imported from [`ensemble`](https://scikit-learn.org/dev/api/sklearn.ensemble.html#module-sklearn.ensemble "(in scikit-learn v1.10)"),
     `warm_start` will interact with `n_estimators` or `max_iter`.
     For these models, the number of iterations, reported via
     `len(estimators_)` or `n_iter_`, corresponds the total number of
@@ -1815,7 +1815,7 @@ See concept [attribute](#term-attribute).
     (numerically, or lexicographically for strings).
 
     `classes_` and the mapping to indices is often managed with
-    [`preprocessing.LabelEncoder`](https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.LabelEncoder.html#sklearn.preprocessing.LabelEncoder "(in scikit-learn v1.9)").
+    [`preprocessing.LabelEncoder`](https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.LabelEncoder.html#sklearn.preprocessing.LabelEncoder "(in scikit-learn v1.10)").
 
 `components_`[#](#term-components_ "Link to this term")
 :   An affine transformation matrix of shape `(n_components, n_features)`
@@ -1842,7 +1842,7 @@ See concept [attribute](#term-attribute).
     transformers.
 
 `embedding_`[#](#term-embedding_ "Link to this term")
-:   An embedding of the training data in [manifold learning](https://scikit-learn.org/dev/modules/manifold.html#manifold "(in scikit-learn v1.9)") estimators, with shape `(n_samples, n_components)`,
+:   An embedding of the training data in [manifold learning](https://scikit-learn.org/dev/modules/manifold.html#manifold "(in scikit-learn v1.10)") estimators, with shape `(n_samples, n_components)`,
     identical to the output of [fit\_transform](#term-fit_transform). See also
     [labels\_](#term-labels_).
 
@@ -1869,7 +1869,7 @@ See concept [sample property](#term-sample-property).
     Each value is an identifier such that, in a supporting
     [CV splitter](#term-CV-splitter), samples from some `groups` value may not
     appear in both a training set and its corresponding test set.
-    See [Cross-validation iterators for grouped data](https://scikit-learn.org/dev/modules/cross_validation.html#group-cv "(in scikit-learn v1.9)").
+    See [Cross-validation iterators for grouped data](https://scikit-learn.org/dev/modules/cross_validation.html#group-cv "(in scikit-learn v1.10)").
 
 `sample_weight`[#](#term-sample_weight "Link to this term")
 :   A relative weight for each sample. Intuitively, if all weights are
@@ -1887,7 +1887,7 @@ See concept [sample property](#term-sample-property).
 
     This is not entirely the case where other parameters of the model
     consider the number of samples in a region, as with `min_samples` in
-    [`cluster.DBSCAN`](https://scikit-learn.org/dev/modules/generated/sklearn.cluster.DBSCAN.html#sklearn.cluster.DBSCAN "(in scikit-learn v1.9)"). In this case, a count of samples becomes
+    [`cluster.DBSCAN`](https://scikit-learn.org/dev/modules/generated/sklearn.cluster.DBSCAN.html#sklearn.cluster.DBSCAN "(in scikit-learn v1.10)"). In this case, a count of samples becomes
     to a sum of their weights.
 
     In classification, sample weights can also be specified as a function

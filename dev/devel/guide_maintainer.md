@@ -102,7 +102,7 @@ and bug fixes. Any major enhancement or new feature should be excluded.
   Integration](https://en.wikipedia.org/wiki/Continuous_integration). The CD
   workflow on GitHub Actions is also used to automatically create nightly builds
   and publish packages for the development branch of scikit-learn. See also
-  [Installing nightly builds](https://scikit-learn.org/dev/install.html#install-nightly-builds "(in scikit-learn v1.9)").
+  [Installing nightly builds](https://scikit-learn.org/dev/install.html#install-nightly-builds "(in scikit-learn v1.10)").
 * Once all the CD jobs have completed successfully in the PR, merge it with the
   `[cd build]` marker in the commit message. This time the results will be
   uploaded to the staging area. You should then be able to upload the generated
@@ -239,7 +239,7 @@ Suppose that we are preparing the release `0.5.0`.
   Integration](https://en.wikipedia.org/wiki/Continuous_integration). The CD
   workflow on GitHub Actions is also used to automatically create nightly builds
   and publish packages for the development branch of scikit-learn. See also
-  [Installing nightly builds](https://scikit-learn.org/dev/install.html#install-nightly-builds "(in scikit-learn v1.9)").
+  [Installing nightly builds](https://scikit-learn.org/dev/install.html#install-nightly-builds "(in scikit-learn v1.10)").
 * Once all the CD jobs have completed successfully in the PR, merge it with the
   `[cd build]` marker in the commit message. This time the results will be
   uploaded to the staging area. You should then be able to upload the generated
@@ -436,7 +436,7 @@ Suppose that we are preparing the release `0.4.1`.
   Integration](https://en.wikipedia.org/wiki/Continuous_integration). The CD
   workflow on GitHub Actions is also used to automatically create nightly builds
   and publish packages for the development branch of scikit-learn. See also
-  [Installing nightly builds](https://scikit-learn.org/dev/install.html#install-nightly-builds "(in scikit-learn v1.9)").
+  [Installing nightly builds](https://scikit-learn.org/dev/install.html#install-nightly-builds "(in scikit-learn v1.10)").
 * Once all the CD jobs have completed successfully in the PR, merge it with the
   `[cd build]` marker in the commit message. This time the results will be
   uploaded to the staging area. You should then be able to upload the generated
@@ -585,7 +585,7 @@ builds and uploads the documentation automatically.
 
 ## Experimental Features[#](#experimental-features "Link to this heading")
 
-The [`sklearn.experimental`](https://scikit-learn.org/dev/api/sklearn.experimental.html#module-sklearn.experimental "(in scikit-learn v1.9)") module was introduced in 0.21 and contains
+The [`sklearn.experimental`](https://scikit-learn.org/dev/api/sklearn.experimental.html#module-sklearn.experimental "(in scikit-learn v1.10)") module was introduced in 0.21 and contains
 experimental features and estimators that are subject to change without
 deprecation cycle.
 
@@ -627,7 +627,7 @@ modules. Note that using `from sklearn.experimental import *` ****does not work*
 
 > **Note**
 > Some experimental classes and functions may not be included in the
-[`sklearn.experimental`](https://scikit-learn.org/dev/api/sklearn.experimental.html#module-sklearn.experimental "(in scikit-learn v1.9)") module, e.g., `sklearn.datasets.fetch_openml`.
+[`sklearn.experimental`](https://scikit-learn.org/dev/api/sklearn.experimental.html#module-sklearn.experimental "(in scikit-learn v1.10)") module, e.g., `sklearn.datasets.fetch_openml`.
 
 Once the feature becomes stable, remove all occurrences of
 `enable_my_experimental_feature` in the scikit-learn code base and make the

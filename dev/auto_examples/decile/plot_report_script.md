@@ -5,7 +5,7 @@ to download the full example code or to run this example in your browser via Jup
 # plot\_report with examples[#](#plot-report-with-examples "Link to this heading")
 
 An example showing the [`report`](../../modules/generated/scikitplot.decile.kds.report.html#scikitplot.decile.kds.report "scikitplot.decile.kds.report") function
-with a scikit-learn classifier (e.g., [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.9)")) instance.
+with a scikit-learn classifier (e.g., [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.10)")) instance.
 
 ```
 # Authors: The scikit-plots developers
@@ -111,7 +111,7 @@ LABELS INFO:
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: model evaluation](../../_tags/model-workflow-model-evaluation.html) [plot-type: line](../../_tags/plot-type-line.html) [plot-type: decile](../../_tags/plot-type-decile.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 1.497 seconds)
+****Total running time of the script:**** (0 minutes 1.249 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo6.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/decile/plot_report_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo6.svg)](../../lite/lab/index.html?path=auto_examples/decile/plot_report_script.ipynb)
 

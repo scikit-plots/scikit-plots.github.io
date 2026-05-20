@@ -1,6 +1,6 @@
 # Decomposition[#](#decomposition "Link to this heading")
 
-Examples related to the [`decomposition`](../../apis/scikitplot.api.html#module-scikitplot.api.decomposition "scikitplot.api.decomposition") submodule with e.g. [`PCA`](https://scikit-learn.org/dev/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA "(in scikit-learn v1.9)") instance.
+Examples related to the [`decomposition`](../../apis/scikitplot.api.html#module-scikitplot.api.decomposition "scikitplot.api.decomposition") submodule with e.g. [`PCA`](https://scikit-learn.org/dev/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA "(in scikit-learn v1.10)") instance.
 
 ![](../../_images/sphx_glr_plot_pca_2d_projection_script_thumb.png)
 

@@ -1,6 +1,6 @@
 # plot\_response[#](#plot-response "Link to this heading")
 
-scikitplot.decile.plot\_response(**plot\_input**, **\***, **highlight\_ntile=None**, **highlight\_how='plot\_text'**, **autopct='%.2f%%'**, **line\_kws=None**, **ref\_line\_kws=None**, **legend\_kws=None**, **grid\_kws=None**, **axes\_kws=None**, **annotation\_kws=None**, **footer\_kws=None**, **save\_fig=True**, **save\_fig\_filename=''**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/decile/_decile_modelplotpy.py#L2538)[#](#scikitplot.decile.plot_response "Link to this definition")
+scikitplot.decile.plot\_response(**plot\_input**, **\***, **highlight\_ntile=None**, **highlight\_how='plot\_text'**, **autopct='%.2f%%'**, **line\_kws=None**, **ref\_line\_kws=None**, **legend\_kws=None**, **grid\_kws=None**, **axes\_kws=None**, **annotation\_kws=None**, **footer\_kws=None**, **save\_fig=True**, **save\_fig\_filename=''**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/decile/_decile_modelplotpy.py#L2538)[#](#scikitplot.decile.plot_response "Link to this definition")
 :   Plot response curve.
 
     Parameters:
@@ -93,7 +93,7 @@ scikitplot.decile.plot\_response(**plot\_input**, **\***, **highlight\_ntile=Non
         * ****kwargs**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"))
 
     Return type:
-    :   [**Axes**](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes "(in Matplotlib v3.12.0.dev87+g5ffcca935)")
+    :   [**Axes**](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes "(in Matplotlib v3.12.0.dev91+gee4f47040)")
 
     > **See also**
     > [`plot_cumresponse`](scikitplot.decile.plot_cumresponse.html#scikitplot.decile.plot_cumresponse "scikitplot.decile.plot_cumresponse"), [`plot_cumlift`](scikitplot.decile.plot_cumlift.html#scikitplot.decile.plot_cumlift "scikitplot.decile.plot_cumlift"), [`plot_cumgains`](scikitplot.decile.plot_cumgains.html#scikitplot.decile.plot_cumgains "scikitplot.decile.plot_cumgains")

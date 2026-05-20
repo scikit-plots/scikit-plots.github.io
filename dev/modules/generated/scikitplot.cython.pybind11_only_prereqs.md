@@ -1,6 +1,6 @@
 # pybind11\_only\_prereqs[#](#pybind11-only-prereqs "Link to this heading")
 
-scikitplot.cython.pybind11\_only\_prereqs()[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/cython/_custom_compiler.py#L520)[#](#scikitplot.cython.pybind11_only_prereqs "Link to this definition")
+scikitplot.cython.pybind11\_only\_prereqs()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/cython/_custom_compiler.py#L520)[#](#scikitplot.cython.pybind11_only_prereqs "Link to this definition")
 :   Check prerequisites pybind11 only.
 
     Only pybind11 is required. Cython and setuptools are NOT required

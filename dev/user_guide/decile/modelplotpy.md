@@ -20,7 +20,7 @@ your modelling efforts easily to business colleagues.
 Examples
 
 * [Introduction to modelplotpy](../../auto_examples/decile/plot_modelplotpy_script.html#sphx-glr-auto-examples-decile-plot-modelplotpy-script-py): Example usage of
-  [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.9)") using the `bank dataset`
+  [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.10)") using the `bank dataset`
 
 ### plot cumresponse[#](#plot-cumresponse "Link to this heading")
 
@@ -29,7 +29,7 @@ Examples
 Examples
 
 * [Introduction to modelplotpy](../../auto_examples/decile/plot_modelplotpy_script.html#sphx-glr-auto-examples-decile-plot-modelplotpy-script-py): Example usage of
-  [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.9)") using the `bank dataset`
+  [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.10)") using the `bank dataset`
 
 ### plot cumlift[#](#plot-cumlift "Link to this heading")
 
@@ -38,7 +38,7 @@ Examples
 Examples
 
 * [Introduction to modelplotpy](../../auto_examples/decile/plot_modelplotpy_script.html#sphx-glr-auto-examples-decile-plot-modelplotpy-script-py): Example usage of
-  [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.9)") using the `bank dataset`
+  [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.10)") using the `bank dataset`
 
 ### plot cumgains[#](#plot-cumgains "Link to this heading")
 
@@ -47,7 +47,7 @@ Examples
 Examples
 
 * [Introduction to modelplotpy](../../auto_examples/decile/plot_modelplotpy_script.html#sphx-glr-auto-examples-decile-plot-modelplotpy-script-py): Example usage of
-  [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.9)") using the `bank dataset`
+  [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.10)") using the `bank dataset`
 
 ### plot all[#](#plot-all "Link to this heading")
 
@@ -56,7 +56,7 @@ Examples
 Examples
 
 * [Introduction to modelplotpy](../../auto_examples/decile/plot_modelplotpy_script.html#sphx-glr-auto-examples-decile-plot-modelplotpy-script-py): Example usage of
-  [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.9)") using the `bank dataset`
+  [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.10)") using the `bank dataset`
 
 ## modelplotpy financial[#](#modelplotpy-financial "Link to this heading")
 
@@ -67,7 +67,7 @@ Examples
 Examples
 
 * [Introduction to modelplotpy](../../auto_examples/decile/plot_modelplotpy_script.html#sphx-glr-auto-examples-decile-plot-modelplotpy-script-py): Example usage of
-  [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.9)") using the `bank dataset`
+  [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.10)") using the `bank dataset`
 
 ### plot profit[#](#plot-profit "Link to this heading")
 
@@ -76,7 +76,7 @@ Examples
 Examples
 
 * [Introduction to modelplotpy](../../auto_examples/decile/plot_modelplotpy_script.html#sphx-glr-auto-examples-decile-plot-modelplotpy-script-py): Example usage of
-  [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.9)") using the `bank dataset`
+  [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.10)") using the `bank dataset`
 
 ### plot roi[#](#plot-roi "Link to this heading")
 
@@ -85,4 +85,4 @@ Examples
 Examples
 
 * [Introduction to modelplotpy](../../auto_examples/decile/plot_modelplotpy_script.html#sphx-glr-auto-examples-decile-plot-modelplotpy-script-py): Example usage of
-  [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.9)") using the `bank dataset`
+  [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.10)") using the `bank dataset`

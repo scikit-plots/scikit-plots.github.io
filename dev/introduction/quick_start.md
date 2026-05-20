@@ -22,13 +22,13 @@ A common way to assess a classifier’s performance is through its confusion mat
 1. ****Load the Dataset****:
    We’ll use the digits dataset, which contains features and labels for classification.
 2. ****Initialize the Classifier****:
-   Create a [`RandomForestClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier "(in scikit-learn v1.9)") with specified parameters.
+   Create a [`RandomForestClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier "(in scikit-learn v1.10)") with specified parameters.
 3. ****Generate Predictions****:
-   Use [`cross_val_predict`](https://scikit-learn.org/dev/modules/generated/sklearn.model_selection.cross_val_predict.html#sklearn.model_selection.cross_val_predict "(in scikit-learn v1.9)") to obtain predicted labels through cross-validation. This function provides cross-validated estimates for each sample point, which helps in evaluating metrics like accuracy, precision, recall, and the confusion matrix.
+   Use [`cross_val_predict`](https://scikit-learn.org/dev/modules/generated/sklearn.model_selection.cross_val_predict.html#sklearn.model_selection.cross_val_predict "(in scikit-learn v1.10)") to obtain predicted labels through cross-validation. This function provides cross-validated estimates for each sample point, which helps in evaluating metrics like accuracy, precision, recall, and the confusion matrix.
 4. ****Plot the Confusion Matrix****:
    Use [`plot_classifier_eval`](../modules/generated/scikitplot.api.metrics.plot_classifier_eval.html#scikitplot.api.metrics.plot_classifier_eval "scikitplot.api.metrics.plot_classifier_eval") to visualize the confusion matrix.
 5. ****Display the Plot****:
-   Optionally, use [`show`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show "(in Matplotlib v3.12.0.dev87+g5ffcca935)") to display the plot.
+   Optionally, use [`show`](https://matplotlib.org/devdocs/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show "(in Matplotlib v3.12.0.dev91+gee4f47040)") to display the plot.
 
 Here’s the code to illustrate the process:
 

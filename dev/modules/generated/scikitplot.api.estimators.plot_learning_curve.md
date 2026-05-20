@@ -1,6 +1,6 @@
 # plot\_learning\_curve[#](#plot-learning-curve "Link to this heading")
 
-scikitplot.api.estimators.plot\_learning\_curve(**estimator**, **X**, **y**, **\***, **train\_sizes=None**, **cv=None**, **scoring=None**, **n\_jobs=None**, **verbose=0**, **shuffle=False**, **random\_state=None**, **fit\_params=None**, **title='Learning Curves'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/api/estimators/_classifier/_learning_curve.py#L41)[#](#scikitplot.api.estimators.plot_learning_curve "Link to this definition")
+scikitplot.api.estimators.plot\_learning\_curve(**estimator**, **X**, **y**, **\***, **train\_sizes=None**, **cv=None**, **scoring=None**, **n\_jobs=None**, **verbose=0**, **shuffle=False**, **random\_state=None**, **fit\_params=None**, **title='Learning Curves'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/api/estimators/_classifier/_learning_curve.py#L41)[#](#scikitplot.api.estimators.plot_learning_curve "Link to this definition")
 :   Generates a plot of the train and test learning curves for a classifier.
 
     The learning curves plot the performance of a classifier as a function of the number of
@@ -37,7 +37,7 @@ scikitplot.api.estimators.plot\_learning\_curve(**estimator**, **X**, **y**, **\
             binary or multiclass, `StratifiedKFold` is used. In all other
             cases, `KFold` is used.
 
-            Refer [User Guide](https://scikit-learn.org/dev/modules/cross_validation.html#cross-validation "(in scikit-learn v1.9)") for the various
+            Refer [User Guide](https://scikit-learn.org/dev/modules/cross_validation.html#cross-validation "(in scikit-learn v1.10)") for the various
             cross-validation strategies that can be used here.
 
         ****scoring****str, callable, or None, optional, default=None

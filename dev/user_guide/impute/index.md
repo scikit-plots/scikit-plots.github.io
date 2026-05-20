@@ -40,7 +40,7 @@ computing imputations from those neighbors.
 
 ## Motivation[#](#motivation "Link to this heading")
 
-Unlike exact KNN imputation [`KNNImputer`](https://scikit-learn.org/dev/modules/generated/sklearn.impute.KNNImputer.html#sklearn.impute.KNNImputer "(in scikit-learn v1.9)"), using Annoy allows:
+Unlike exact KNN imputation [`KNNImputer`](https://scikit-learn.org/dev/modules/generated/sklearn.impute.KNNImputer.html#sklearn.impute.KNNImputer "(in scikit-learn v1.10)"), using Annoy allows:
 - Faster neighbor retrieval in high-dimensional data
 - Memory-efficient indexing of large datasets
 - Sharing of prebuilt indexes across processes
@@ -87,5 +87,5 @@ print(X_imputed)
 
 ## Comparison[#](#comparison "Link to this heading")
 
-* Similar in usage to [`KNNImputer`](https://scikit-learn.org/dev/modules/generated/sklearn.impute.KNNImputer.html#sklearn.impute.KNNImputer "(in scikit-learn v1.9)"), but faster on large, high-dimensional datasets
+* Similar in usage to [`KNNImputer`](https://scikit-learn.org/dev/modules/generated/sklearn.impute.KNNImputer.html#sklearn.impute.KNNImputer "(in scikit-learn v1.10)"), but faster on large, high-dimensional datasets
 * Provides a trade-off between accuracy and speed via Annoy parameters

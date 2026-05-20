@@ -1,6 +1,6 @@
 # Stats[#](#stats "Link to this heading")
 
-Examples related to the [`stats`](../../apis/scikitplot.stats.html#module-scikitplot.stats "scikitplot.stats") submodule with e.g. [`LinearRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression "(in scikit-learn v1.9)") instance.
+Examples related to the [`stats`](../../apis/scikitplot.stats.html#module-scikitplot.stats "scikitplot.stats") submodule with e.g. [`LinearRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression "(in scikit-learn v1.10)") instance.
 
 ![](../../_images/sphx_glr_plot_gaussian_mixture_models_thumb.png)
 

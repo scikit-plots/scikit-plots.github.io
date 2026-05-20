@@ -1,7 +1,7 @@
 # MLflow[#](#mlflow-examples "Link to this heading")
 
 Examples related to the [`mlflow`](../../apis/scikitplot.mlflow.html#module-scikitplot.mlflow "scikitplot.mlflow") submodule
-with a scikit-learn regressor (e.g., [`LinearRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression "(in scikit-learn v1.9)")) instance.
+with a scikit-learn regressor (e.g., [`LinearRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression "(in scikit-learn v1.10)")) instance.
 
 ```
 # 💡mlflow Need mlflow

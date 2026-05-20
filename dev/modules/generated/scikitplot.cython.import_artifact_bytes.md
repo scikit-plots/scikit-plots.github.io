@@ -1,6 +1,6 @@
 # import\_artifact\_bytes[#](#import-artifact-bytes "Link to this heading")
 
-scikitplot.cython.import\_artifact\_bytes(**data**, **\***, **module\_name**, **artifact\_filename**, **temp\_dir=None**, **key=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/cython/_public.py#L802)[#](#scikitplot.cython.import_artifact_bytes "Link to this definition")
+scikitplot.cython.import\_artifact\_bytes(**data**, **\***, **module\_name**, **artifact\_filename**, **temp\_dir=None**, **key=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/cython/_public.py#L802)[#](#scikitplot.cython.import_artifact_bytes "Link to this definition")
 :   Import a compiled extension artifact from raw bytes.
 
     Parameters:

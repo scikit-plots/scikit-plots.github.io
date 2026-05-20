@@ -1,6 +1,6 @@
 # plot\_feature\_importances[#](#plot-feature-importances "Link to this heading")
 
-scikitplot.api.estimators.plot\_feature\_importances(**estimator**, **\***, **feature\_names=None**, **class\_index=None**, **threshold=None**, **title='Feature Importances'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **cmap='PiYG'**, **order=None**, **orientation='vertical'**, **x\_tick\_rotation=None**, **bar\_padding=11**, **digits=4**, **display\_bar\_label=True**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/api/estimators/_classifier/_feature_importances.py#L44)[#](#scikitplot.api.estimators.plot_feature_importances "Link to this definition")
+scikitplot.api.estimators.plot\_feature\_importances(**estimator**, **\***, **feature\_names=None**, **class\_index=None**, **threshold=None**, **title='Feature Importances'**, **title\_fontsize='large'**, **text\_fontsize='medium'**, **cmap='PiYG'**, **order=None**, **orientation='vertical'**, **x\_tick\_rotation=None**, **bar\_padding=11**, **digits=4**, **display\_bar\_label=True**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/api/estimators/_classifier/_feature_importances.py#L44)[#](#scikitplot.api.estimators.plot_feature_importances "Link to this definition")
 :   Generate a plot of a sklearn model’s feature importances.
 
     This function handles different types of classifiers and their respective
@@ -10,20 +10,20 @@ scikitplot.api.estimators.plot\_feature\_importances(**estimator**, **\***, **fe
 
     Supports models like:
 
-    * [`LinearRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression "(in scikit-learn v1.9)")
-    * [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.9)")
-    * [`KNeighborsClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier "(in scikit-learn v1.9)")
-    * [`LinearSVC`](https://scikit-learn.org/dev/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC "(in scikit-learn v1.9)")
-    * [`SVC`](https://scikit-learn.org/dev/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC "(in scikit-learn v1.9)")
-    * [`DecisionTreeClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier "(in scikit-learn v1.9)")
-    * [`RandomForestClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier "(in scikit-learn v1.9)")
-    * [`PCA`](https://scikit-learn.org/dev/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA "(in scikit-learn v1.9)")
+    * [`LinearRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression "(in scikit-learn v1.10)")
+    * [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.10)")
+    * [`KNeighborsClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier "(in scikit-learn v1.10)")
+    * [`LinearSVC`](https://scikit-learn.org/dev/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC "(in scikit-learn v1.10)")
+    * [`SVC`](https://scikit-learn.org/dev/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC "(in scikit-learn v1.10)")
+    * [`DecisionTreeClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier "(in scikit-learn v1.10)")
+    * [`RandomForestClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier "(in scikit-learn v1.10)")
+    * [`PCA`](https://scikit-learn.org/dev/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA "(in scikit-learn v1.10)")
     * [“XGBoost Python API”](https://xgboost.readthedocs.io/en/stable/python/python_api.html#module-xgboost.sklearn)
     * [“CatBoost Python API”](https://catboost.ai/en/docs/concepts/python-quickstart)
 
     Parameters:
     :   ****estimator****fitted estimator object
-        :   Fitted classifier or a fitted [`Pipeline`](https://scikit-learn.org/dev/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline "(in scikit-learn v1.9)")
+        :   Fitted classifier or a fitted [`Pipeline`](https://scikit-learn.org/dev/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline "(in scikit-learn v1.10)")
             in which the last estimator is a classifier.
 
         ****feature\_names****list of str, optional, default=None

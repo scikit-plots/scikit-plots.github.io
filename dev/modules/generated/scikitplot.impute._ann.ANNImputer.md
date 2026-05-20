@@ -1,11 +1,11 @@
 # ANNImputer[#](#annimputer "Link to this heading")
 
-class scikitplot.impute.\_ann.ANNImputer(**\***, **missing\_values=nan**, **backend='annoy'**, **index\_access='external'**, **index\_store\_path=None**, **on\_disk\_build=False**, **n\_trees=-1**, **search\_k=-1**, **n\_neighbors=5**, **weights='uniform'**, **metric='angular'**, **initial\_strategy='mean'**, **fill\_value=None**, **copy=True**, **add\_indicator=False**, **keep\_empty\_features=False**, **n\_jobs=None**, **random\_state=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/impute/_ann.py#L109)[#](#scikitplot.impute._ann.ANNImputer "Link to this definition")
+class scikitplot.impute.\_ann.ANNImputer(**\***, **missing\_values=nan**, **backend='annoy'**, **index\_access='external'**, **index\_store\_path=None**, **on\_disk\_build=False**, **n\_trees=-1**, **search\_k=-1**, **n\_neighbors=5**, **weights='uniform'**, **metric='angular'**, **initial\_strategy='mean'**, **fill\_value=None**, **copy=True**, **add\_indicator=False**, **keep\_empty\_features=False**, **n\_jobs=None**, **random\_state=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/impute/_ann.py#L109)[#](#scikitplot.impute._ann.ANNImputer "Link to this definition")
 :   Approximate K-nearest-neighbours (KNN) imputer with pluggable ANN backends.
 
     [`ANNImputer`](#scikitplot.impute._ann.ANNImputer "scikitplot.impute._ann.ANNImputer") performs vector-based imputation by querying an
     approximate nearest-neighbours (ANN) index instead of using exact
-    brute-force distances as in [`KNNImputer`](https://scikit-learn.org/dev/modules/generated/sklearn.impute.KNNImputer.html#sklearn.impute.KNNImputer "(in scikit-learn v1.9)").
+    brute-force distances as in [`KNNImputer`](https://scikit-learn.org/dev/modules/generated/sklearn.impute.KNNImputer.html#sklearn.impute.KNNImputer "(in scikit-learn v1.10)").
 
     Two backends are currently supported:
 
@@ -166,7 +166,7 @@ class scikitplot.impute.\_ann.ANNImputer(**\***, **missing\_values=nan**, **back
         ****initial\_strategy****{‘mean’, ‘median’, ‘most\_frequent’, ‘constant’}, default=’mean’
         :   Which strategy to use to initialize the missing values when building
             the ANN index. This is analogous to the `strategy` parameter in
-            [`SimpleImputer`](https://scikit-learn.org/dev/modules/generated/sklearn.impute.SimpleImputer.html#sklearn.impute.SimpleImputer "(in scikit-learn v1.9)"):
+            [`SimpleImputer`](https://scikit-learn.org/dev/modules/generated/sklearn.impute.SimpleImputer.html#sklearn.impute.SimpleImputer "(in scikit-learn v1.10)"):
 
             * `'mean'`: use the column-wise mean (ignoring NaNs).
             * `'median'`: use the column-wise median (ignoring NaNs).
@@ -233,7 +233,7 @@ class scikitplot.impute.\_ann.ANNImputer(**\***, **missing\_values=nan**, **back
             with `n_trees`.
 
     Attributes:
-    :   ****indicator\_****[`MissingIndicator`](https://scikit-learn.org/dev/modules/generated/sklearn.impute.MissingIndicator.html#sklearn.impute.MissingIndicator "(in scikit-learn v1.9)")
+    :   ****indicator\_****[`MissingIndicator`](https://scikit-learn.org/dev/modules/generated/sklearn.impute.MissingIndicator.html#sklearn.impute.MissingIndicator "(in scikit-learn v1.10)")
         :   Indicator used to add binary indicators for missing values.
             `None` if add\_indicator is False.
 
@@ -276,16 +276,16 @@ class scikitplot.impute.\_ann.ANNImputer(**\***, **missing\_values=nan**, **back
             object itself (model-as-a-service pattern).
 
     > **See also**
-    > [`sklearn.neighbors`](https://scikit-learn.org/dev/api/sklearn.neighbors.html#module-sklearn.neighbors "(in scikit-learn v1.9)")
+    > [`sklearn.neighbors`](https://scikit-learn.org/dev/api/sklearn.neighbors.html#module-sklearn.neighbors "(in scikit-learn v1.10)")
     :   The k-nearest neighbors algorithms.
 
-    [`sklearn.neighbors.NearestNeighbors`](https://scikit-learn.org/dev/modules/generated/sklearn.neighbors.NearestNeighbors.html#sklearn.neighbors.NearestNeighbors "(in scikit-learn v1.9)")
+    [`sklearn.neighbors.NearestNeighbors`](https://scikit-learn.org/dev/modules/generated/sklearn.neighbors.NearestNeighbors.html#sklearn.neighbors.NearestNeighbors "(in scikit-learn v1.10)")
     :   Unsupervised learner for implementing neighbor searches.
 
-    [`sklearn.neighbors.KNeighborsTransformer`](https://scikit-learn.org/dev/modules/generated/sklearn.neighbors.KNeighborsTransformer.html#sklearn.neighbors.KNeighborsTransformer "(in scikit-learn v1.9)")
+    [`sklearn.neighbors.KNeighborsTransformer`](https://scikit-learn.org/dev/modules/generated/sklearn.neighbors.KNeighborsTransformer.html#sklearn.neighbors.KNeighborsTransformer "(in scikit-learn v1.10)")
     :   Transform X into a (weighted) graph of k nearest neighbors.
 
-    [`sklearn.impute.KNNImputer`](https://scikit-learn.org/dev/modules/generated/sklearn.impute.KNNImputer.html#sklearn.impute.KNNImputer "(in scikit-learn v1.9)")
+    [`sklearn.impute.KNNImputer`](https://scikit-learn.org/dev/modules/generated/sklearn.impute.KNNImputer.html#sklearn.impute.KNNImputer "(in scikit-learn v1.10)")
     :   Multivariate imputer that estimates missing features using nearest samples. Exact KNN-based imputer using brute-force search.
 
     `sklearn_ann.kneighbors.annoy.AnnoyTransformer`
@@ -348,7 +348,7 @@ class scikitplot.impute.\_ann.ANNImputer(**\***, **missing\_values=nan**, **back
     ```
     Go BackOpen In Tab
 
-    delete\_external\_index()[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/impute/_privacy.py#L318)[#](#scikitplot.impute._ann.ANNImputer.delete_external_index "Link to this definition")
+    delete\_external\_index()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/impute/_privacy.py#L318)[#](#scikitplot.impute._ann.ANNImputer.delete_external_index "Link to this definition")
     :   Delete the external index file referenced by `index_path_`.
 
         This helper removes the file on disk if `index_path_` is
@@ -360,7 +360,7 @@ class scikitplot.impute.\_ann.ANNImputer(**\***, **missing\_values=nan**, **back
         Any [`OSError`](https://docs.python.org/3/library/exceptions.html#OSError "(in Python v3.14)") raised by [`os.remove`](https://docs.python.org/3/library/os.html#os.remove "(in Python v3.14)") will propagate
         to the caller.
 
-    fit(**X**, **y=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/impute/_ann.py#L1047)[#](#scikitplot.impute._ann.ANNImputer.fit "Link to this definition")
+    fit(**X**, **y=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/impute/_ann.py#L1047)[#](#scikitplot.impute._ann.ANNImputer.fit "Link to this definition")
     :   Fit the imputer on X and build the underlying ANN index.
 
         This step:
@@ -370,7 +370,7 @@ class scikitplot.impute.\_ann.ANNImputer(**\***, **missing\_values=nan**, **back
         * builds the backend-specific ANN index, and
         * fits the missing-value indicator (if enabled).
 
-    fit\_transform(**X**, **y=None**, **\*\*fit\_params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/../sklearn/base.py#L851)[#](#scikitplot.impute._ann.ANNImputer.fit_transform "Link to this definition")
+    fit\_transform(**X**, **y=None**, **\*\*fit\_params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/../sklearn/base.py#L851)[#](#scikitplot.impute._ann.ANNImputer.fit_transform "Link to this definition")
     :   Fit to data, then transform it.
 
         Fits transformer to `X` and `y` with optional parameters `fit_params`
@@ -391,21 +391,21 @@ class scikitplot.impute.\_ann.ANNImputer(**\***, **missing\_values=nan**, **back
         :   ****X\_new****ndarray array of shape (n\_samples, n\_features\_new)
             :   Transformed array.
 
-    get\_feature\_names\_out(**input\_features=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/impute/_ann.py#L1693)[#](#scikitplot.impute._ann.ANNImputer.get_feature_names_out "Link to this definition")
+    get\_feature\_names\_out(**input\_features=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/impute/_ann.py#L1693)[#](#scikitplot.impute._ann.ANNImputer.get_feature_names_out "Link to this definition")
     :   Return output feature names, including indicator features if used.
 
-    get\_metadata\_routing()[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/../sklearn/utils/_metadata_requests.py#L1550)[#](#scikitplot.impute._ann.ANNImputer.get_metadata_routing "Link to this definition")
+    get\_metadata\_routing()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/../sklearn/utils/_metadata_requests.py#L1550)[#](#scikitplot.impute._ann.ANNImputer.get_metadata_routing "Link to this definition")
     :   Get metadata routing of this object.
 
-        Please check [User Guide](https://scikit-learn.org/dev/metadata_routing.html#metadata-routing "(in scikit-learn v1.9)") on how the routing
+        Please check [User Guide](https://scikit-learn.org/dev/metadata_routing.html#metadata-routing "(in scikit-learn v1.10)") on how the routing
         mechanism works.
 
         Returns:
         :   ****routing****MetadataRequest
-            :   A [`MetadataRequest`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.metadata_routing.MetadataRequest.html#sklearn.utils.metadata_routing.MetadataRequest "(in scikit-learn v1.9)") encapsulating
+            :   A [`MetadataRequest`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.metadata_routing.MetadataRequest.html#sklearn.utils.metadata_routing.MetadataRequest "(in scikit-learn v1.10)") encapsulating
                 routing information.
 
-    get\_params(**deep=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/../sklearn/base.py#L240)[#](#scikitplot.impute._ann.ANNImputer.get_params "Link to this definition")
+    get\_params(**deep=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/../sklearn/base.py#L240)[#](#scikitplot.impute._ann.ANNImputer.get_params "Link to this definition")
     :   Get parameters for this estimator.
 
         Parameters:
@@ -417,10 +417,10 @@ class scikitplot.impute.\_ann.ANNImputer(**\***, **missing\_values=nan**, **back
         :   ****params****dict
             :   Parameter names mapped to their values.
 
-    set\_output(**\***, **transform=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/../sklearn/utils/_set_output.py#L389)[#](#scikitplot.impute._ann.ANNImputer.set_output "Link to this definition")
+    set\_output(**\***, **transform=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/../sklearn/utils/_set_output.py#L389)[#](#scikitplot.impute._ann.ANNImputer.set_output "Link to this definition")
     :   Set output container.
 
-        See [Introducing the set\_output API](https://scikit-learn.org/dev/auto_examples/miscellaneous/plot_set_output.html#sphx-glr-auto-examples-miscellaneous-plot-set-output-py "(in scikit-learn v1.9)")
+        See [Introducing the set\_output API](https://scikit-learn.org/dev/auto_examples/miscellaneous/plot_set_output.html#sphx-glr-auto-examples-miscellaneous-plot-set-output-py "(in scikit-learn v1.10)")
         for an example on how to use the API.
 
         Parameters:
@@ -438,11 +438,11 @@ class scikitplot.impute.\_ann.ANNImputer(**\***, **missing\_values=nan**, **back
         :   ****self****estimator instance
             :   Estimator instance.
 
-    set\_params(**\*\*params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/../sklearn/base.py#L338)[#](#scikitplot.impute._ann.ANNImputer.set_params "Link to this definition")
+    set\_params(**\*\*params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/../sklearn/base.py#L338)[#](#scikitplot.impute._ann.ANNImputer.set_params "Link to this definition")
     :   Set the parameters of this estimator.
 
         The method works on simple estimators as well as on nested objects
-        (such as [`Pipeline`](https://scikit-learn.org/dev/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline "(in scikit-learn v1.9)")). The latter have
+        (such as [`Pipeline`](https://scikit-learn.org/dev/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline "(in scikit-learn v1.10)")). The latter have
         parameters of the form `<component>__<parameter>` so that it’s
         possible to update each component of a nested object.
 
@@ -461,5 +461,5 @@ class scikitplot.impute.\_ann.ANNImputer(**\***, **missing\_values=nan**, **back
         For other values, [`AttributeError`](https://docs.python.org/3/library/exceptions.html#AttributeError "(in Python v3.14)") is raised by
         `OutsourcedIndexMixin._get_index`.
 
-    transform(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/impute/_ann.py#L1622)[#](#scikitplot.impute._ann.ANNImputer.transform "Link to this definition")
+    transform(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/impute/_ann.py#L1622)[#](#scikitplot.impute._ann.ANNImputer.transform "Link to this definition")
     :   Impute missing values in X using approximate nearest neighbors.

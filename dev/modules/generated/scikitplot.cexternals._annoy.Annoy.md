@@ -1,6 +1,6 @@
 # Annoy[#](#annoy "Link to this heading")
 
-class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/cexternals/_annoy/__init__.py#L)[#](#scikitplot.cexternals._annoy.Annoy "Link to this definition")
+class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/cexternals/_annoy/__init__.py#L)[#](#scikitplot.cexternals._annoy.Annoy "Link to this definition")
 :   Compiled with GCC/Clang. Using 512-bit AVX instructions.
 
     Approximate Nearest Neighbors index (Annoy) with a small, lazy C-extension wrapper.
@@ -832,7 +832,7 @@ class scikitplot.cexternals.\_annoy.Annoy[[source]](https://github.com/scikit-pl
         Notes
 
         This is intended to make Annoy behave like a scikit-learn estimator for
-        tools such as [`sklearn.base.clone`](https://scikit-learn.org/dev/modules/generated/sklearn.base.clone.html#sklearn.base.clone "(in scikit-learn v1.9)") and parameter grids.
+        tools such as [`sklearn.base.clone`](https://scikit-learn.org/dev/modules/generated/sklearn.base.clone.html#sklearn.base.clone "(in scikit-learn v1.10)") and parameter grids.
 
     info(**include\_n\_items=True**, **include\_n\_trees=True**, **include\_memory=None**) → [dict](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")[#](#scikitplot.cexternals._annoy.Annoy.info "Link to this definition")
     :   Return a structured summary of the index.

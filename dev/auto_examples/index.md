@@ -1,3 +1,3 @@
 🤓 Scikit-plots Examples & Tutorials
   
- 0.5.dev0+git.20260519.287271b - May 19, 2026 14:55 UTC
+ 0.5.dev0+git.20260520.c2567fd - May 20, 2026 14:58 UTC

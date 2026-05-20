@@ -1,6 +1,6 @@
 # project\_markers[#](#project-markers "Link to this heading")
 
-scikitplot.mlflow.project\_markers(**markers**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/mlflow/_project.py#L256)[#](#scikitplot.mlflow.project_markers "Link to this definition")
+scikitplot.mlflow.project\_markers(**markers**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/mlflow/_project.py#L256)[#](#scikitplot.mlflow.project_markers "Link to this definition")
 :   Temporarily override module default markers for a block.
 
     Parameters:

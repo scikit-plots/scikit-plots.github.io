@@ -1,6 +1,6 @@
 # \_\_version\_\_[#](#version "Link to this heading")
 
-scikitplot.\_\_version\_\_ = '0.5.dev0+git.20260519.287271b'[#](#scikitplot.__version__ "Link to this definition")
+scikitplot.\_\_version\_\_ = '0.5.dev0+git.20260520.c2567fd'[#](#scikitplot.__version__ "Link to this definition")
 :   str(object=’’) -> str
     str(bytes\_or\_buffer[, encoding[, errors]]) -> str
 

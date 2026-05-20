@@ -1,6 +1,6 @@
 # config\_context[#](#config-context "Link to this heading")
 
-scikitplot.config\_context(**\***, **assume\_finite=None**, **working\_memory=None**, **display=None**, **array\_api\_dispatch=None**, **transform\_output=None**, **skip\_parameter\_validation=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/config/_config.py#L240)[#](#scikitplot.config_context "Link to this definition")
+scikitplot.config\_context(**\***, **assume\_finite=None**, **working\_memory=None**, **display=None**, **array\_api\_dispatch=None**, **transform\_output=None**, **skip\_parameter\_validation=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/config/_config.py#L240)[#](#scikitplot.config_context "Link to this definition")
 :   Context manager for global scikit-plots configuration.
 
     Parameters:
@@ -30,14 +30,14 @@ scikitplot.config\_context(**\***, **assume\_finite=None**, **working\_memory=No
         :   Use Array API dispatching when inputs follow the Array API standard.
             Default is False.
 
-            See the [User Guide](https://scikit-learn.org/dev/modules/array_api.html#array-api "(in scikit-learn v1.9)") for more details.
+            See the [User Guide](https://scikit-learn.org/dev/modules/array_api.html#array-api "(in scikit-learn v1.10)") for more details.
 
             Added in version 0.4.
 
         ****transform\_output****str, default=None
         :   Configure output of `transform` and `fit_transform`.
 
-            See [Introducing the set\_output API](https://scikit-learn.org/dev/auto_examples/miscellaneous/plot_set_output.html#sphx-glr-auto-examples-miscellaneous-plot-set-output-py "(in scikit-learn v1.9)")
+            See [Introducing the set\_output API](https://scikit-learn.org/dev/auto_examples/miscellaneous/plot_set_output.html#sphx-glr-auto-examples-miscellaneous-plot-set-output-py "(in scikit-learn v1.10)")
             for an example on how to use the API.
 
             * `"default"`: Default output format of a transformer

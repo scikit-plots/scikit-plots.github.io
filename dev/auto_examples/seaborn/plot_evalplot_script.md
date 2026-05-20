@@ -5,7 +5,7 @@ to download the full example code or to run this example in your browser via Jup
 # plot\_evalplot\_script with examples[#](#plot-evalplot-script-with-examples "Link to this heading")
 
 An example showing the [`evalplot`](../../modules/generated/scikitplot.seaborn.evalplot.html#scikitplot.seaborn.evalplot "scikitplot.seaborn.evalplot") function
-with a scikit-learn classifier (e.g., [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.9)")) instance.
+with a scikit-learn classifier (e.g., [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.10)")) instance.
 
 ```
 # Authors: The scikit-plots developers
@@ -335,7 +335,7 @@ import seaborn as sns
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: model evaluation](../../_tags/model-workflow-model-evaluation.html) [plot-type: line](../../_tags/plot-type-line.html) [plot-type: eval](../../_tags/plot-type-eval.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 1.725 seconds)
+****Total running time of the script:**** (0 minutes 1.738 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo16.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/seaborn/plot_evalplot_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo16.svg)](../../lite/lab/index.html?path=auto_examples/seaborn/plot_evalplot_script.ipynb)
 

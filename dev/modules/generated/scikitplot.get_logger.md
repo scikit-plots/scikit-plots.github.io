@@ -1,6 +1,6 @@
 # get\_logger[#](#get-logger "Link to this heading")
 
-scikitplot.get\_logger()[[source]](https://github.com/scikit-plots/scikit-plots/blob/287271b/scikitplot/logging.py#L1126)[#](#scikitplot.get_logger "Link to this definition")
+scikitplot.get\_logger()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/logging.py#L1126)[#](#scikitplot.get_logger "Link to this definition")
 :   Return SP (scikitplot) logger instance.
 
     Returns:
