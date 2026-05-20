@@ -1,6 +1,6 @@
 # cython\_import\_result[#](#cython-import-result "Link to this heading")
 
-scikitplot.cython.cython\_import\_result(**pyx\_path**, **\***, **module\_name=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/cython/_public.py#L436)[#](#scikitplot.cython.cython_import_result "Link to this definition")
+scikitplot.cython.cython\_import\_result(**pyx\_path**, **\***, **module\_name=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/cython/_public.py#L436)[#](#scikitplot.cython.cython_import_result "Link to this definition")
 :   Compile/import a Cython module from a `.pyx` file.
 
     Parameters:

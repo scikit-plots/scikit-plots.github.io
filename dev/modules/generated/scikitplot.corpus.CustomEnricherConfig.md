@@ -1,6 +1,6 @@
 # CustomEnricherConfig[#](#customenricherconfig "Link to this heading")
 
-class scikitplot.corpus.CustomEnricherConfig(**custom\_tokenizer=None**, **custom\_lemmatizer=None**, **custom\_stemmer=None**, **custom\_keyword\_extractor=None**, **custom\_stopwords=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/corpus/_custom_hooks.py#L540)[#](#scikitplot.corpus.CustomEnricherConfig "Link to this definition")
+class scikitplot.corpus.CustomEnricherConfig(**custom\_tokenizer=None**, **custom\_lemmatizer=None**, **custom\_stemmer=None**, **custom\_keyword\_extractor=None**, **custom\_stopwords=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/corpus/_custom_hooks.py#L540)[#](#scikitplot.corpus.CustomEnricherConfig "Link to this definition")
 :   Custom backend callables for [`CustomNLPEnricher`](scikitplot.corpus.CustomNLPEnricher.html#scikitplot.corpus.CustomNLPEnricher "scikitplot.corpus.CustomNLPEnricher").
 
     Every field is optional. When set it ****replaces**** the corresponding

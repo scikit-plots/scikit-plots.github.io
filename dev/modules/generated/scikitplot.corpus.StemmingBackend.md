@@ -1,6 +1,6 @@
 # StemmingBackend[#](#stemmingbackend "Link to this heading")
 
-class scikitplot.corpus.StemmingBackend(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/corpus/_chunkers/_word.py#L228)[#](#scikitplot.corpus.StemmingBackend "Link to this definition")
+class scikitplot.corpus.StemmingBackend(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/corpus/_chunkers/_word.py#L228)[#](#scikitplot.corpus.StemmingBackend "Link to this definition")
 :   Stemming algorithm.
 
     Attributes:
@@ -24,15 +24,15 @@ class scikitplot.corpus.StemmingBackend(**value**)[[source]](https://github.com/
             `Callable[[str], str]` stored in
             [`WordChunkerConfig.custom_stemmer`](scikitplot.corpus.WordChunkerConfig.html#scikitplot.corpus.WordChunkerConfig.custom_stemmer "scikitplot.corpus.WordChunkerConfig.custom_stemmer").
 
-    CUSTOM = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.CUSTOM "Link to this definition")
+    CUSTOM = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.CUSTOM "Link to this definition")
 
-    LANCASTER = 'lancaster'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.LANCASTER "Link to this definition")
+    LANCASTER = 'lancaster'[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.LANCASTER "Link to this definition")
 
-    NONE = 'none'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.NONE "Link to this definition")
+    NONE = 'none'[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.NONE "Link to this definition")
 
-    PORTER = 'porter'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.PORTER "Link to this definition")
+    PORTER = 'porter'[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.PORTER "Link to this definition")
 
-    SNOWBALL = 'snowball'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.SNOWBALL "Link to this definition")
+    SNOWBALL = 'snowball'[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/corpus/_chunkers/_word.py#L)[#](#scikitplot.corpus.StemmingBackend.SNOWBALL "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.corpus.StemmingBackend.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

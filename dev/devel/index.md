@@ -1,3 +1,3 @@
 Scikit-plots Contributing
   
- 0.5.dev0+git.20260520.c2567fd - May 20, 2026 14:58 UTC
+ 0.5.dev0+git.20260520.82d02fb - May 20, 2026 19:33 UTC

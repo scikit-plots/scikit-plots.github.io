@@ -1,6 +1,6 @@
 # bootstrap[#](#bootstrap "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.bootstrap(**data**, **bootnum=100**, **samples=None**, **bootfunc=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/cexternals/_astropy/stats/funcs.py#L998)[#](#scikitplot.cexternals._astropy.stats.bootstrap "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.bootstrap(**data**, **bootnum=100**, **samples=None**, **bootfunc=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/cexternals/_astropy/stats/funcs.py#L998)[#](#scikitplot.cexternals._astropy.stats.bootstrap "Link to this definition")
 :   Performs bootstrap resampling on numpy arrays.
 
     Bootstrap resampling is used to understand confidence intervals of sample

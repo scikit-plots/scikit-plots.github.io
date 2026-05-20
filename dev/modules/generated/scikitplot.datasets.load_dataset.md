@@ -1,6 +1,6 @@
 # load\_dataset[#](#load-dataset "Link to this heading")
 
-scikitplot.datasets.load\_dataset(**name**, **cache=True**, **data\_home=None**, **\*\*kws**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/datasets/_load_dataset.py#L76)[#](#scikitplot.datasets.load_dataset "Link to this definition")
+scikitplot.datasets.load\_dataset(**name**, **cache=True**, **data\_home=None**, **\*\*kws**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/datasets/_load_dataset.py#L76)[#](#scikitplot.datasets.load_dataset "Link to this definition")
 :   Load an example dataset from the online repository (requires internet).
 
     This function provides quick access to a small number of example datasets

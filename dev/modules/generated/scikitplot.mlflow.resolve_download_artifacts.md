@@ -1,6 +1,6 @@
 # resolve\_download\_artifacts[#](#resolve-download-artifacts "Link to this heading")
 
-scikitplot.mlflow.resolve\_download\_artifacts(**mlflow\_module**, **\***, **client=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/mlflow/_compat.py#L52)[#](#scikitplot.mlflow.resolve_download_artifacts "Link to this definition")
+scikitplot.mlflow.resolve\_download\_artifacts(**mlflow\_module**, **\***, **client=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/mlflow/_compat.py#L52)[#](#scikitplot.mlflow.resolve_download_artifacts "Link to this definition")
 :   Resolve a canonical artifact download function across MLflow versions.
 
     Parameters:

@@ -1,6 +1,6 @@
 # to\_numpy\_arrays[#](#to-numpy-arrays "Link to this heading")
 
-scikitplot.corpus.to\_numpy\_arrays(**documents**, **\***, **include\_text=True**, **include\_raw\_tensor=True**, **include\_embedding=True**, **include\_metadata=True**, **dtype\_map=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/corpus/_adapters.py#L784)[#](#scikitplot.corpus.to_numpy_arrays "Link to this definition")
+scikitplot.corpus.to\_numpy\_arrays(**documents**, **\***, **include\_text=True**, **include\_raw\_tensor=True**, **include\_embedding=True**, **include\_metadata=True**, **dtype\_map=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/corpus/_adapters.py#L784)[#](#scikitplot.corpus.to_numpy_arrays "Link to this definition")
 :   Convert documents to a dict of NumPy arrays suitable for batch ML.
 
     Parameters:

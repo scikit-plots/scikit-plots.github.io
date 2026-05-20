@@ -148,13 +148,13 @@ else:
 ```
 ```
 Workflows: ['churn_basic']
-Copied workflow to: tmpubklnrd2/workflow_copy
+Copied workflow to: tmpez14ctfy/workflow_copy
 Files: ['cli.py', 'hpo.py', 'predict.py', 'train.py']
 
 Run:
-  python tmpubklnrd2/workflow_copy/cli.py train --help
-  python tmpubklnrd2/workflow_copy/cli.py hpo --help
-  python tmpubklnrd2/workflow_copy/cli.py predict --help
+  python tmpez14ctfy/workflow_copy/cli.py train --help
+  python tmpez14ctfy/workflow_copy/cli.py hpo --help
+  python tmpez14ctfy/workflow_copy/cli.py predict --help
 
 Single-module extension imported from copied folder:
   m.square(12) = 144
@@ -171,7 +171,7 @@ Package extension imported from copied folder:
 
 Tags: [domain: cython](../../_tags/domain-cython.html) [plot-type: cython](../../_tags/plot-type-cython.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 1.103 seconds)
+****Total running time of the script:**** (0 minutes 1.164 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_09_workflow_templates_cli.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/cython/plot_09_workflow_templates_cli.ipynb)
 

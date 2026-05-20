@@ -1,6 +1,6 @@
 # SecurityPolicy[#](#securitypolicy "Link to this heading")
 
-class scikitplot.mlflow.SecurityPolicy(**allowed\_tracking\_uri\_schemes=frozenset({'file', 'http', 'https', 'sqlite'})**, **block\_cloud\_metadata\_hosts=True**, **allow\_spawn\_server=True**, **allow\_dev\_mode=False**, **allow\_disable\_security\_middleware=False**, **allow\_cors\_wildcard=False**, **blocked\_env\_key\_prefixes=frozenset({'LD\_'})**, **max\_env\_value\_length=65536**, **max\_env\_pairs=256**, **block\_path\_traversal=True**, **block\_shell\_metacharacters\_in\_args=True**, **block\_header\_injection=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/mlflow/_security.py#L170)[#](#scikitplot.mlflow.SecurityPolicy "Link to this definition")
+class scikitplot.mlflow.SecurityPolicy(**allowed\_tracking\_uri\_schemes=frozenset({'file', 'http', 'https', 'sqlite'})**, **block\_cloud\_metadata\_hosts=True**, **allow\_spawn\_server=True**, **allow\_dev\_mode=False**, **allow\_disable\_security\_middleware=False**, **allow\_cors\_wildcard=False**, **blocked\_env\_key\_prefixes=frozenset({'LD\_'})**, **max\_env\_value\_length=65536**, **max\_env\_pairs=256**, **block\_path\_traversal=True**, **block\_shell\_metacharacters\_in\_args=True**, **block\_header\_injection=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/mlflow/_security.py#L170)[#](#scikitplot.mlflow.SecurityPolicy "Link to this definition")
 :   Declarative security policy for [`scikitplot.mlflow`](../../apis/scikitplot.mlflow.html#module-scikitplot.mlflow "scikitplot.mlflow") operations.
 
     Parameters:
@@ -106,7 +106,7 @@ class scikitplot.mlflow.SecurityPolicy(**allowed\_tracking\_uri\_schemes=frozens
 
     max\_env\_value\_length: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = 65536[#](#scikitplot.mlflow.SecurityPolicy.max_env_value_length "Link to this definition")
 
-    validate\_cli\_arg\_value(**value**, **\***, **context='cli arg'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/mlflow/_security.py#L569)[#](#scikitplot.mlflow.SecurityPolicy.validate_cli_arg_value "Link to this definition")
+    validate\_cli\_arg\_value(**value**, **\***, **context='cli arg'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/mlflow/_security.py#L569)[#](#scikitplot.mlflow.SecurityPolicy.validate_cli_arg_value "Link to this definition")
     :   Validate a CLI argument value against shell metacharacter injection.
 
         Parameters:
@@ -132,7 +132,7 @@ class scikitplot.mlflow.SecurityPolicy(**allowed\_tracking\_uri\_schemes=frozens
         Return type:
         :   None
 
-    validate\_env\_item(**key**, **value**, **\***, **context='extra\_env'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/mlflow/_security.py#L451)[#](#scikitplot.mlflow.SecurityPolicy.validate_env_item "Link to this definition")
+    validate\_env\_item(**key**, **value**, **\***, **context='extra\_env'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/mlflow/_security.py#L451)[#](#scikitplot.mlflow.SecurityPolicy.validate_env_item "Link to this definition")
     :   Validate a single environment variable key-value pair.
 
         Parameters:
@@ -161,7 +161,7 @@ class scikitplot.mlflow.SecurityPolicy(**allowed\_tracking\_uri\_schemes=frozens
         Return type:
         :   None
 
-    validate\_env\_mapping(**env**, **\***, **context='extra\_env'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/mlflow/_security.py#L500)[#](#scikitplot.mlflow.SecurityPolicy.validate_env_mapping "Link to this definition")
+    validate\_env\_mapping(**env**, **\***, **context='extra\_env'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/mlflow/_security.py#L500)[#](#scikitplot.mlflow.SecurityPolicy.validate_env_mapping "Link to this definition")
     :   Validate an entire environment variable mapping.
 
         Parameters:
@@ -186,7 +186,7 @@ class scikitplot.mlflow.SecurityPolicy(**allowed\_tracking\_uri\_schemes=frozens
         Return type:
         :   None
 
-    validate\_path(**path**, **\***, **context='path'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/mlflow/_security.py#L535)[#](#scikitplot.mlflow.SecurityPolicy.validate_path "Link to this definition")
+    validate\_path(**path**, **\***, **context='path'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/mlflow/_security.py#L535)[#](#scikitplot.mlflow.SecurityPolicy.validate_path "Link to this definition")
     :   Validate a filesystem path against path traversal.
 
         Parameters:
@@ -210,7 +210,7 @@ class scikitplot.mlflow.SecurityPolicy(**allowed\_tracking\_uri\_schemes=frozens
         Return type:
         :   None
 
-    validate\_server\_config(**cfg**, **\***, **context='server config'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/mlflow/_security.py#L326)[#](#scikitplot.mlflow.SecurityPolicy.validate_server_config "Link to this definition")
+    validate\_server\_config(**cfg**, **\***, **context='server config'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/mlflow/_security.py#L326)[#](#scikitplot.mlflow.SecurityPolicy.validate_server_config "Link to this definition")
     :   Validate a [`ServerConfig`](scikitplot.mlflow.ServerConfig.html#scikitplot.mlflow.ServerConfig "scikitplot.mlflow.ServerConfig") under this policy.
 
         Parameters:
@@ -240,7 +240,7 @@ class scikitplot.mlflow.SecurityPolicy(**allowed\_tracking\_uri\_schemes=frozens
         `cors_allowed_origins`, `allowed_hosts`, `x_frame_options`,
         `gunicorn_opts`, `uvicorn_opts`, `waitress_opts`, `extra_args`.
 
-    validate\_session\_config(**cfg**, **\***, **context='session config'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/mlflow/_security.py#L405)[#](#scikitplot.mlflow.SecurityPolicy.validate_session_config "Link to this definition")
+    validate\_session\_config(**cfg**, **\***, **context='session config'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/mlflow/_security.py#L405)[#](#scikitplot.mlflow.SecurityPolicy.validate_session_config "Link to this definition")
     :   Validate a [`SessionConfig`](scikitplot.mlflow.SessionConfig.html#scikitplot.mlflow.SessionConfig "scikitplot.mlflow.SessionConfig") under this policy.
 
         Parameters:
@@ -269,7 +269,7 @@ class scikitplot.mlflow.SecurityPolicy(**allowed\_tracking\_uri\_schemes=frozens
         Validated fields: `tracking_uri`, `registry_uri`, `env_file`,
         `extra_env`.
 
-    validate\_tracking\_uri(**uri**, **\***, **context='tracking\_uri'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/mlflow/_security.py#L264)[#](#scikitplot.mlflow.SecurityPolicy.validate_tracking_uri "Link to this definition")
+    validate\_tracking\_uri(**uri**, **\***, **context='tracking\_uri'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/mlflow/_security.py#L264)[#](#scikitplot.mlflow.SecurityPolicy.validate_tracking_uri "Link to this definition")
     :   Validate a tracking or registry URI under this policy.
 
         Parameters:

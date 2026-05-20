@@ -1,6 +1,6 @@
 # plot\_response[#](#plot-response "Link to this heading")
 
-scikitplot.decile.plot\_response(**plot\_input**, **\***, **highlight\_ntile=None**, **highlight\_how='plot\_text'**, **autopct='%.2f%%'**, **line\_kws=None**, **ref\_line\_kws=None**, **legend\_kws=None**, **grid\_kws=None**, **axes\_kws=None**, **annotation\_kws=None**, **footer\_kws=None**, **save\_fig=True**, **save\_fig\_filename=''**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c2567fd/scikitplot/decile/_decile_modelplotpy.py#L2538)[#](#scikitplot.decile.plot_response "Link to this definition")
+scikitplot.decile.plot\_response(**plot\_input**, **\***, **highlight\_ntile=None**, **highlight\_how='plot\_text'**, **autopct='%.2f%%'**, **line\_kws=None**, **ref\_line\_kws=None**, **legend\_kws=None**, **grid\_kws=None**, **axes\_kws=None**, **annotation\_kws=None**, **footer\_kws=None**, **save\_fig=True**, **save\_fig\_filename=''**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/decile/_decile_modelplotpy.py#L2538)[#](#scikitplot.decile.plot_response "Link to this definition")
 :   Plot response curve.
 
     Parameters:
