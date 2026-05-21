@@ -1455,6 +1455,21 @@
         var ph  = (typeof cfg.panelSearchPlaceholder === 'string' &&
             cfg.panelSearchPlaceholder) || 'Ask AI about these docs\u2026';
 
+        var bar = document.createElement('div');
+        bar.className = 'ai-assistant-searchbar' +
+            (mini ? ' ai-assistant-searchbar--mini' : '');
+
+        var icon = document.createElement('span');
+        icon.setAttribute('aria-hidden', 'true');
+        icon.innerHTML = ICONS.searchAI;     // ICONS constant — safe.
+        bar.appendChild(icon);
+
+        var inp = document.createElement('input');
+        inp.type = 'text';
+        inp.setAttribute('aria-label', ph);
+        inp.placeholder = ph;
+        bar.appendChild(inp);
+
         var kbdLabel = _shortcutLabel();
         if (kbdLabel) {
             var hint = document.createElement('span');
@@ -1472,25 +1487,10 @@
                     hint.appendChild(document.createTextNode('+'));
                 }
             });
-            subbar.appendChild(hint);
+            bar.appendChild(hint);
         } else {
-            subbar.appendChild(document.createElement('span')); // spacer
+            bar.appendChild(document.createElement('span')); // spacer
         }
-
-        var bar = document.createElement('div');
-        bar.className = 'ai-assistant-searchbar' +
-            (mini ? ' ai-assistant-searchbar--mini' : '');
-
-        var icon = document.createElement('span');
-        icon.setAttribute('aria-hidden', 'true');
-        icon.innerHTML = ICONS.searchAI;     // ICONS constant — safe.
-        bar.appendChild(icon);
-
-        var inp = document.createElement('input');
-        inp.type = 'text';
-        inp.setAttribute('aria-label', ph);
-        inp.placeholder = ph;
-        bar.appendChild(inp);
 
         function _go() {
             var q = inp.value.trim();
