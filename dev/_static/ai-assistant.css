@@ -1110,15 +1110,41 @@ body.ai-assistant-resizing .ai-assistant-panel {
 }
 
 /* ─── R7: keyboard-shortcut hint chip ───────────────────────────────────────
-   A subtle "kbd" pill shown in the header area; content is config-driven. */
+   A subtle "kbd" pill shown in the panel header sub-bar; config-driven.
+   The keyboard SVG (ICONS.keyboard) carries no width/height attrs — only a
+   viewBox — so without an explicit CSS size it defaults to 300×150px and
+   becomes invisible inside the flex row.  The rules below fix that and ensure
+   the icon colour adapts correctly to both light and dark themes. */
 
 .ai-assistant-panel-kbd-hint {
     display: inline-flex;
     align-items: center;
     gap: 0.3rem;
     font-size: 0.68rem;
+    /* Light-mode muted tone — readable on the white/light panel surface. */
     color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
 }
+
+/* Wrapper span that holds the SVG icon (aria-hidden="true").
+   line-height:0 eliminates the extra inline-block descent gap. */
+.ai-assistant-panel-kbd-hint > span[aria-hidden] {
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+}
+
+/* Constrain the SVG to a legible 12 × 12 px icon.
+   stroke:currentColor is already on the element attribute but restating it
+   in CSS prevents any theme stylesheet from accidentally overriding it.
+   flex-shrink:0 stops the icon from collapsing in narrow containers. */
+.ai-assistant-panel-kbd-hint > span[aria-hidden] svg {
+    width: 12px;
+    height: 12px;
+    stroke: currentColor;
+    fill: none;
+    flex-shrink: 0;
+}
+
 .ai-assistant-panel-kbd-hint kbd {
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     font-size: 0.66rem;
@@ -1128,6 +1154,13 @@ body.ai-assistant-resizing .ai-assistant-panel {
     border-bottom-width: 2px;
     border-radius: 4px;
     color: inherit;
+}
+
+/* Dark-mode: lighten the muted tone so the icon and kbd labels stay clearly
+   legible against the dark panel surface.  The kbd chip gets a translucent
+   white background (unchanged from before). */
+[data-bs-theme="dark"] .ai-assistant-panel-kbd-hint {
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #9aa0a6));
 }
 [data-bs-theme="dark"] .ai-assistant-panel-kbd-hint kbd {
     background: rgba(255, 255, 255, 0.07);
