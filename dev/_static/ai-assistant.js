@@ -1455,6 +1455,28 @@
         var ph  = (typeof cfg.panelSearchPlaceholder === 'string' &&
             cfg.panelSearchPlaceholder) || 'Ask AI about these docs\u2026';
 
+        var kbdLabel = _shortcutLabel();
+        if (kbdLabel) {
+            var hint = document.createElement('span');
+            hint.className = 'ai-assistant-panel-kbd-hint';
+            var hIcon = document.createElement('span');
+            hIcon.setAttribute('aria-hidden', 'true');
+            hIcon.innerHTML = ICONS.keyboard;        // ICONS constant — safe.
+            hint.appendChild(hIcon);
+            // Render each chord token as its own <kbd>.
+            kbdLabel.split('+').forEach(function (tok, i, arr) {
+                var k = document.createElement('kbd');
+                k.textContent = tok.trim();
+                hint.appendChild(k);
+                if (i < arr.length - 1) {
+                    hint.appendChild(document.createTextNode('+'));
+                }
+            });
+            subbar.appendChild(hint);
+        } else {
+            subbar.appendChild(document.createElement('span')); // spacer
+        }
+
         var bar = document.createElement('div');
         bar.className = 'ai-assistant-searchbar' +
             (mini ? ' ai-assistant-searchbar--mini' : '');
