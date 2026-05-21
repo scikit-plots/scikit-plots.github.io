@@ -1488,7 +1488,7 @@
         var kbdLabel = _shortcutLabel();
         if (kbdLabel) {
             var hint = document.createElement('span');
-            hint.className = 'ai-assistant-panel-kbd-hint';
+            hint.className = 'ai-assistant-searchbar-kbd-hint';
             var hIcon = document.createElement('span');
             hIcon.setAttribute('aria-hidden', 'true');
             hIcon.innerHTML = ICONS.keyboard;        // ICONS constant — safe.
