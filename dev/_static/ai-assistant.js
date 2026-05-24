@@ -1269,10 +1269,29 @@
      * derives one client-side via _deriveDefaultScale so older injected
      * configs do not silently break.
      */
+    /**
+     * Default emoji option set — 11 options on a signed-integer scale
+     * (-5 … -1, 0, +1 … +5).  Odd-11 includes the neutral midpoint (0) so
+     * the user always has a clear "no opinion" option.  The visual gradient
+     * goes from most negative (😡) through neutral (😐) to most positive (🤩),
+     * giving the user an intuitive left-to-right sweep.
+     *
+     * Counts 2+ are supported.  Emoji size is auto-scaled by CSS
+     * (data-count + data-tier on the options row) so all buttons fit,
+     * wrapping to multiple rows for counts above 10.
+     */
     var _FEEDBACK_DEFAULTS = [
-        { emoji: '\uD83D\uDE41', title: 'No',           value: 'negative' },
-        { emoji: '\uD83D\uDE10', title: 'Not sure',     value: 'neutral'  },
-        { emoji: '\uD83D\uDE00', title: 'Yes, it was!', value: 'positive' },
+        { emoji: '\uD83D\uDE21', title: 'Terrible',       value: 'terrible'          },  // 😡 -5
+        { emoji: '\uD83D\uDE1E', title: 'Poor',           value: 'poor'              },  // 😞 -4
+        { emoji: '\uD83D\uDE1F', title: 'Unsatisfied',    value: 'unsatisfied'       },  // 😟 -3
+        { emoji: '\uD83D\uDE41', title: 'No',             value: 'negative'          },  // 🙁 -2
+        { emoji: '\uD83D\uDE11', title: 'Not really',     value: 'slightly_negative' },  // 😑 -1
+        { emoji: '\uD83D\uDE10', title: 'Neutral',        value: 'neutral'           },  // 😐  0
+        { emoji: '\uD83D\uDE42', title: 'Somewhat',       value: 'slightly_positive' },  // 🙂 +1
+        { emoji: '\uD83D\uDE0A', title: 'Mostly yes',     value: 'mostly_positive'   },  // 😊 +2
+        { emoji: '\uD83D\uDE04', title: 'Good',           value: 'good'              },  // 😄 +3
+        { emoji: '\uD83D\uDE01', title: 'Very good',      value: 'very_good'         },  // 😁 +4
+        { emoji: '\uD83E\uDD29', title: 'Excellent!',     value: 'excellent'         },  // 🤩 +5
     ];
 
     /**
@@ -1286,7 +1305,7 @@
      * @returns {number[]}
      */
     function _deriveDefaultScale(n) {
-        if (typeof n !== 'number' || n < 2) return [-1, 0, 1];
+        if (typeof n !== 'number' || n < 2) return [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5]; // 11-emoji fallback
         var k = Math.floor(n / 2);
         var out = [];
         if (n % 2 === 1) {
@@ -1299,10 +1318,42 @@
     }
 
     /**
+     * Map an emoji count to a CSS layout tier (1–8).
+     *
+     * Tiers drive ``data-tier`` on the options row, which the CSS uses to
+     * pick font-size, padding, and flex-wrap rules independently of
+     * ``data-count``.  ``data-count`` is preserved for backward
+     * compatibility with any external CSS that targets it directly.
+     *
+     * Tier map:
+     *   1 → 2–3    (single row, largest buttons)
+     *   2 → 4–5    (single row)
+     *   3 → 6–7    (single row)
+     *   4 → 8–9    (single row)
+     *   5 → 10     (single row, smallest single-row size)
+     *   6 → 11–15  (multi-row wrap, medium buttons)
+     *   7 → 16–20  (multi-row wrap, smaller buttons)
+     *   8 → 21+    (multi-row wrap, compact buttons)
+     *
+     * @param {number} n  Number of emoji options (≥ 2).
+     * @returns {number}  Tier index 1–8.
+     */
+    function _getFeedbackTier(n) {
+        if (n <= 3)  return 1;
+        if (n <= 5)  return 2;
+        if (n <= 7)  return 3;
+        if (n <= 9)  return 4;
+        if (n <= 10) return 5;
+        if (n <= 15) return 6;
+        if (n <= 20) return 7;
+        return 8;
+    }
+
+    /**
      * Build a per-answer feedback block.  Options, question, and thanks copy
-     * are all config-driven (ai_assistant_panel_feedback_*).  3 emoji options
-     * by default, up to 5 supported.  Rendered inline under each assistant
-     * bubble for granular per-answer model-training data collection.
+     * are all config-driven (ai_assistant_panel_feedback_*).  11 emoji options
+     * by default, 2+ supported (any count ≥ 2).  Rendered inline under each
+     * assistant bubble for granular per-answer model-training data collection.
      *
      * Developer note: on submit, the rating + free text are dispatched as a
      * `ai-assistant-feedback` CustomEvent on `document` AND, if configured,
@@ -1360,7 +1411,7 @@
 
         var opts = Array.isArray(cfg.panelFeedbackOptions) &&
             cfg.panelFeedbackOptions.length >= 2
-            ? cfg.panelFeedbackOptions.slice(0, 5)
+            ? cfg.panelFeedbackOptions.slice()   // defensive copy, no upper cap — any count ≥ 2
             : _FEEDBACK_DEFAULTS;
 
         // Parallel numeric scale.  Prefer the server-resolved
@@ -1443,6 +1494,12 @@
             });
             optRow.appendChild(b);
         });
+        // ── Count + tier attributes drive CSS adaptive sizing ─────────────
+        // data-count: exact emoji count (backward compat for any external CSS).
+        // data-tier:  coarse layout tier (1–8) used by the built-in CSS rules
+        //             to pick font-size, padding, gap, and flex-wrap strategy.
+        optRow.setAttribute('data-count', String(opts.length));
+        optRow.setAttribute('data-tier',  String(_getFeedbackTier(opts.length)));
         wrap.appendChild(optRow);
 
         var ta = document.createElement('textarea');
