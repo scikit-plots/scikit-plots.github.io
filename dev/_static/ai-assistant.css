@@ -1045,24 +1045,83 @@ body.ai-assistant-resizing .ai-assistant-panel {
     flex-wrap: wrap;
 }
 .ai-assistant-panel-feedback-btn {
+    /* flex so emoji and score sit side-by-side inside the pill */
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
     font-size: 1.15rem;
     line-height: 1;
-    padding: 0.3rem 0.5rem;
+    padding: 0.3rem 0.55rem;
     background: transparent;
     border: 1px solid var(--pst-color-border, var(--color-foreground-border, #d6d9dc));
-    border-radius: 8px;
+    border-radius: 20px;          /* pill shape for a modern look */
     cursor: pointer;
-    transition: transform 0.12s ease, border-color 0.15s ease,
-                background-color 0.15s ease;
+    transition: transform 0.12s ease, border-color 0.18s ease,
+                background-color 0.18s ease, box-shadow 0.18s ease;
+    white-space: nowrap;
 }
 .ai-assistant-panel-feedback-btn:hover {
-    transform: translateY(-2px) scale(1.05);
+    transform: translateY(-2px) scale(1.07);
     border-color: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
 }
+
+/* ── Score chip: the small "+1" / "0" / "-1" text shown on selection ─────── */
+.ai-fbk-score {
+    display: none;                /* hidden until button is pressed */
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    vertical-align: middle;
+}
+.ai-assistant-panel-feedback-btn[aria-pressed="true"] .ai-fbk-score {
+    display: inline;              /* reveal on press */
+}
+
+/* ── Positive (+1 and above): lime-green pill ─────────────────────────────── */
+.ai-assistant-panel-feedback-btn[data-sentiment="positive"][aria-pressed="true"] {
+    background: #22c55e;
+    border-color: #16a34a;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(34, 197, 94, 0.40);
+}
+.ai-assistant-panel-feedback-btn[data-sentiment="positive"][aria-pressed="true"]:hover {
+    background: #16a34a;
+    border-color: #15803d;
+}
+
+/* ── Negative (-1 and below): red pill ───────────────────────────────────── */
+.ai-assistant-panel-feedback-btn[data-sentiment="negative"][aria-pressed="true"] {
+    background: #ef4444;
+    border-color: #dc2626;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.38);
+}
+.ai-assistant-panel-feedback-btn[data-sentiment="negative"][aria-pressed="true"]:hover {
+    background: #dc2626;
+    border-color: #b91c1c;
+}
+
+/* ── Neutral (0): brand-colour pill (unchanged behaviour) ─────────────────── */
+.ai-assistant-panel-feedback-btn[data-sentiment="neutral"][aria-pressed="true"],
 .ai-assistant-panel-feedback-btn[aria-pressed="true"] {
     background: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
     border-color: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    color: #fff;
 }
+
+/* Positive/negative rules must override the generic [aria-pressed] above.
+   Specificity is equal so source order wins — keep these AFTER the generic rule. */
+.ai-assistant-panel-feedback-btn[data-sentiment="positive"][aria-pressed="true"] {
+    background: #22c55e;
+    border-color: #16a34a;
+}
+.ai-assistant-panel-feedback-btn[data-sentiment="negative"][aria-pressed="true"] {
+    background: #ef4444;
+    border-color: #dc2626;
+}
+
 .ai-assistant-panel-feedback-btn:focus         { outline: none; }
 .ai-assistant-panel-feedback-btn:focus-visible {
     outline: 2px solid var(--pst-color-primary, var(--color-brand-primary, #2980b9));

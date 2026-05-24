@@ -1395,10 +1395,30 @@
             var b = document.createElement('button');
             b.className = 'ai-assistant-panel-feedback-btn';
             b.type = 'button';
-            b.textContent = o.emoji || '\u2753';
 
             // Numeric value for this emoji (signed integer).
             var num = scale[idx];
+
+            // ── Sentiment attribute drives CSS colour rules ────────────────
+            // positive (>0) → lime-green, negative (<0) → red, neutral → brand
+            var sentiment = num > 0 ? 'positive' : (num < 0 ? 'negative' : 'neutral');
+            b.setAttribute('data-sentiment', sentiment);
+
+            // ── Inner markup: emoji span + hidden score chip ───────────────
+            // The score chip (".ai-fbk-score") is kept hidden via CSS and only
+            // revealed (display:inline) when aria-pressed="true", giving instant
+            // visual feedback: selected button, sentiment colour, and numeric value.
+            var emojiSpan = document.createElement('span');
+            emojiSpan.setAttribute('aria-hidden', 'true');   // emoji is decorative
+            emojiSpan.textContent = o.emoji || '\u2753';
+
+            var scoreSpan = document.createElement('span');
+            scoreSpan.className = 'ai-fbk-score';
+            scoreSpan.textContent = num > 0 ? ('+' + num) : String(num);
+            scoreSpan.setAttribute('aria-hidden', 'true');   // announced via aria-label
+
+            b.appendChild(emojiSpan);
+            b.appendChild(scoreSpan);
 
             // Hover/aria tooltip: ALWAYS surfaces the signed numeric value so
             // the final user knows what they are sending.  Format:
