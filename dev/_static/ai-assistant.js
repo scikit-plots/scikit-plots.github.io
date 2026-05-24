@@ -1249,12 +1249,54 @@
 
     // ── R5: feedback block ────────────────────────────────────────────────────
 
-    /** Default emoji option set (3). Config may supply 3–5 custom options. */
+    /**
+     * Default emoji option set (3 options, signed-integer scale [-1, 0, +1]).
+     *
+     * Why signed integers and not strings (e.g. "positive"/"neutral"/"negative"):
+     *
+     *   • Strings cannot be averaged, thresholded, or subtracted to compute
+     *     deltas — they are unusable as a model-training signal.
+     *   • Signed integers centred on zero are the canonical Likert encoding;
+     *     downstream consumers can group, average, or threshold directly.
+     *   • The numeric value is computed server-side (see
+     *     ``_resolve_feedback_scale`` in __init__.py) and shipped to the
+     *     widget as ``cfg.panelFeedbackScale`` — a parallel list aligned with
+     *     ``cfg.panelFeedbackOptions`` so the two arrays cannot drift.
+     *
+     * The defaults below stay as a UI-only fallback for the case where the
+     * doc author has not configured any options at all.  When the config
+     * supplies options but no parallel scale (older builds) the JS still
+     * derives one client-side via _deriveDefaultScale so older injected
+     * configs do not silently break.
+     */
     var _FEEDBACK_DEFAULTS = [
-        { emoji: '\uD83D\uDE00', title: 'Yes, it was!', value: 'positive' },
+        { emoji: '\uD83D\uDE41', title: 'No',           value: 'negative' },
         { emoji: '\uD83D\uDE10', title: 'Not sure',     value: 'neutral'  },
-        { emoji: '\uD83D\uDE41', title: 'No',            value: 'negative' },
+        { emoji: '\uD83D\uDE00', title: 'Yes, it was!', value: 'positive' },
     ];
+
+    /**
+     * Client-side fallback scale for the no-server-side-scale case.
+     * Matches the server-side ``_generate_symmetric_scale`` exactly:
+     *
+     *   odd  N -> (-k, ..., -1, 0, +1, ..., +k)  (sum = 0, midpoint 0)
+     *   even N -> (-k, ..., -1, +1, ..., +k)     (sum = 0, no midpoint)
+     *
+     * @param {number} n  Number of options (>=2).
+     * @returns {number[]}
+     */
+    function _deriveDefaultScale(n) {
+        if (typeof n !== 'number' || n < 2) return [-1, 0, 1];
+        var k = Math.floor(n / 2);
+        var out = [];
+        if (n % 2 === 1) {
+            for (var i = -k; i <= k; i++) out.push(i);
+        } else {
+            for (var j = -k; j < 0; j++) out.push(j);
+            for (var m = 1; m <= k; m++) out.push(m);
+        }
+        return out;
+    }
 
     /**
      * Build a per-answer feedback block.  Options, question, and thanks copy
@@ -1262,19 +1304,51 @@
      * by default, up to 5 supported.  Rendered inline under each assistant
      * bubble for granular per-answer model-training data collection.
      *
-     * Developer note: the chosen rating + free text are dispatched as a
+     * Developer note: on submit, the rating + free text are dispatched as a
      * `ai-assistant-feedback` CustomEvent on `document` AND, if configured,
      * console-logged.  Doc authors hook the event for their own analytics —
      * the extension itself stores nothing and sends nothing.
      *
-     * User note: each answer carries its own independent feedback block so
-     * every exchange can be rated separately.
+     * The event payload (``event.detail``) shape — version 1:
      *
-     * @param {number} answerIndex  Zero-based index of this assistant answer
-     *                              (tracks which answers have been rated).
+     *     {
+     *       schemaVersion : 1,                  // for forward compatibility
+     *       ratingValue   : -1 | 0 | +1 | ...,  // SIGNED INT (training signal)
+     *       ratingLabel   : "negative" | ...,   // string (humans / dashboards)
+     *       rating        : "negative" | ...,   // legacy alias = ratingLabel
+     *       message       : "free-text...",
+     *       query         : "the user's question",   // NEW
+     *       answer        : "the model's full reply", // NEW
+     *       model         : { id, provider, model } | null,  // NEW (Phase B)
+     *       answerIndex   : 0,
+     *       page          : "https://docs.example.com/x.html",
+     *       ts            : 1716517200000,
+     *       sessionId     : "c0c5f8a0-..."    // crypto.randomUUID — idempotency
+     *     }
+     *
+     * Backward compatibility: the legacy ``detail.rating`` string field is
+     * preserved as an alias of ``ratingLabel`` so existing listeners keep
+     * working without change.
+     *
+     * User note: each answer carries its own independent feedback block so
+     * every exchange can be rated separately.  The numeric value of each
+     * emoji is shown on hover (title attribute + data-value), so the final
+     * user is always aware of what they are submitting.
+     *
+     * @param {number} answerIndex     Zero-based index of this assistant
+     *                                 answer (tracks which answers have been
+     *                                 rated independently).
+     * @param {string} [answerText]    The assistant reply text being rated;
+     *                                 forwarded in the event payload so the
+     *                                 data is usable as a (q, a, rating)
+     *                                 training tuple.
+     * @param {string} [questionText]  The paired user question for the same
+     *                                 reason.  Both fields are optional so
+     *                                 the legacy callsite (no args beyond
+     *                                 answerIndex) keeps working unchanged.
      * @returns {HTMLElement|null}
      */
-    function _buildFeedbackBlock(answerIndex) {
+    function _buildFeedbackBlock(answerIndex, answerText, questionText) {
         var cfg = window.AI_ASSISTANT_CONFIG || {};
         if (cfg.panelFeedback === false) return null;     // opt-out
         if (_feedbackGivenSet.has(answerIndex)) return null;
@@ -1289,6 +1363,20 @@
             ? cfg.panelFeedbackOptions.slice(0, 5)
             : _FEEDBACK_DEFAULTS;
 
+        // Parallel numeric scale.  Prefer the server-resolved
+        // cfg.panelFeedbackScale when present (canonical) and only fall back
+        // to the client-side derivation for older builds without that field.
+        // We never trust cfg.panelFeedbackScale if its length disagrees with
+        // opts.length — explicit mismatch ⇒ re-derive (no silent truncation).
+        var scale;
+        if (Array.isArray(cfg.panelFeedbackScale) &&
+            cfg.panelFeedbackScale.length === opts.length &&
+            cfg.panelFeedbackScale.every(function (v) { return typeof v === 'number'; })) {
+            scale = cfg.panelFeedbackScale.slice();
+        } else {
+            scale = _deriveDefaultScale(opts.length);
+        }
+
         var wrap = document.createElement('div');
         wrap.className = 'ai-assistant-panel-feedback ai-assistant-panel-feedback--inline';
 
@@ -1300,17 +1388,34 @@
         var optRow = document.createElement('div');
         optRow.className = 'ai-assistant-panel-feedback-options';
 
-        var chosen = { value: null };
-        opts.forEach(function (o) {
+        // Track BOTH the label (legacy) and the numeric value.  The numeric
+        // value is the training signal; the label is for humans.
+        var chosen = { label: null, value: null };
+        opts.forEach(function (o, idx) {
             var b = document.createElement('button');
             b.className = 'ai-assistant-panel-feedback-btn';
             b.type = 'button';
             b.textContent = o.emoji || '\u2753';
-            b.title = o.title || '';
-            b.setAttribute('aria-label', o.title || o.value || 'feedback');
+
+            // Numeric value for this emoji (signed integer).
+            var num = scale[idx];
+
+            // Hover/aria tooltip: ALWAYS surfaces the signed numeric value so
+            // the final user knows what they are sending.  Format:
+            //     "<title> (+1)"      or
+            //     "<title> (-1)"      or
+            //     "<title> ( 0)"      ← single space pad to align in tooltips
+            // When the option has no title we still show "(+N)" alone.
+            var sign = num > 0 ? '+' + num : (num === 0 ? ' 0' : String(num));
+            var tip = o.title ? (o.title + ' (' + sign + ')') : ('(' + sign + ')');
+            b.title = tip;
+            b.setAttribute('aria-label', tip);
+            b.setAttribute('data-value', String(num));
             b.setAttribute('aria-pressed', 'false');
+
             b.addEventListener('click', function () {
-                chosen.value = o.value || o.title || o.emoji;
+                chosen.label = o.value || o.title || o.emoji;
+                chosen.value = num;
                 optRow.querySelectorAll('button').forEach(function (x) {
                     x.setAttribute('aria-pressed', 'false');
                 });
@@ -1334,13 +1439,51 @@
         submit.textContent = (typeof cfg.panelFeedbackSubmit === 'string' &&
             cfg.panelFeedbackSubmit) || 'Send feedback';
         submit.addEventListener('click', function () {
+            // Compute a stable session-scoped idempotency key.  We use the
+            // built-in crypto.randomUUID when available (modern browsers);
+            // a deterministic fallback keyed on page + ts + answerIndex is
+            // safe for older browsers because the event consumer can dedupe
+            // on (page, answerIndex, ts) just as well.
+            var sid;
+            try {
+                if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+                    sid = window.crypto.randomUUID();
+                }
+            } catch (_) {}
+            if (!sid) {
+                sid = 'fb-' + (location ? location.pathname : 'p') +
+                      '-' + answerIndex + '-' + Date.now();
+            }
+
+            // The model-attribution block.  Today (Phase A) the panel only
+            // knows a single model name from cfg.panelApiModel — surface it
+            // verbatim so the training pipeline can group by model even with
+            // the single-model contract.  Phase B will replace this with the
+            // actively-chosen entry from cfg.panelApiModels.
+            var modelInfo = null;
+            if (typeof cfg.panelApiModel === 'string' && cfg.panelApiModel) {
+                modelInfo = {
+                    id:       cfg.panelApiModel,
+                    provider: 'anthropic',      // Phase A: implicit
+                    model:    cfg.panelApiModel,
+                };
+            }
+
             var detail = {
-                rating: chosen.value,
-                message: ta.value.trim(),
-                answerIndex: answerIndex,
-                page: location ? location.href : '',
-                ts: Date.now(),
+                schemaVersion: 1,
+                ratingValue:   chosen.value,        // SIGNED INT
+                ratingLabel:   chosen.label,        // string
+                rating:        chosen.label,        // legacy alias (back-compat)
+                message:       ta.value.trim(),
+                query:         (typeof questionText === 'string') ? questionText : '',
+                answer:        (typeof answerText === 'string') ? answerText : '',
+                model:         modelInfo,
+                answerIndex:   answerIndex,
+                page:          location ? location.href : '',
+                ts:            Date.now(),
+                sessionId:     sid,
             };
+
             // Dev-friendly hook — doc authors attach their own analytics.
             try {
                 document.dispatchEvent(new CustomEvent(
@@ -2146,9 +2289,13 @@
             // ── R5: per-answer inline feedback block ──────────────────────────
             // Count how many assistant answers precede this one so each gets a
             // unique stable index for independent feedback tracking.
+            //
+            // Pass the answer text (this bubble) and the paired user question
+            // (retryQ, resolved a few lines above) so the dispatched event
+            // payload is a complete (q, a, rating, message) training tuple.
             var answerIndex = body.querySelectorAll(
                 '.ai-assistant-panel-feedback').length;
-            var fb = _buildFeedbackBlock(answerIndex);
+            var fb = _buildFeedbackBlock(answerIndex, text, retryQ);
             if (fb) body.appendChild(fb);
         }
     }
