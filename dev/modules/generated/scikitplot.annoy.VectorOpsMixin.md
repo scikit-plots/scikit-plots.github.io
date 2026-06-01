@@ -1,6 +1,6 @@
 # VectorOpsMixin[#](#vectoropsmixin "Link to this heading")
 
-class scikitplot.annoy.VectorOpsMixin[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_vectors.py#L272)[#](#scikitplot.annoy.VectorOpsMixin "Link to this definition")
+class scikitplot.annoy.VectorOpsMixin[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_vectors.py#L272)[#](#scikitplot.annoy.VectorOpsMixin "Link to this definition")
 :   User-facing neighbor queries for Annoy-like backends.
 
     This mixin exposes explicit per-query helpers ([`query_by_item`](#scikitplot.annoy.VectorOpsMixin.query_by_item "scikitplot.annoy.VectorOpsMixin.query_by_item"),
@@ -14,7 +14,7 @@ class scikitplot.annoy.VectorOpsMixin[[source]](https://github.com/scikit-plots/
     `sklearn.neighbors.NearestNeighbors.kneighbors` (which returns distances
     first). The order is intentional and documented.
 
-    kneighbors(**X**, **n\_neighbors=5**, **\***, **search\_k=-1**, **include\_distances=True**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**, **output\_type='vector'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_vectors.py#L661)[#](#scikitplot.annoy.VectorOpsMixin.kneighbors "Link to this definition")
+    kneighbors(**X**, **n\_neighbors=5**, **\***, **search\_k=-1**, **include\_distances=True**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**, **output\_type='vector'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_vectors.py#L661)[#](#scikitplot.annoy.VectorOpsMixin.kneighbors "Link to this definition")
     :   Find k nearest neighbors for one or more query vectors.
 
         This is a sklearn-like convenience wrapper that returns rectangular arrays.
@@ -75,7 +75,7 @@ class scikitplot.annoy.VectorOpsMixin[[source]](https://github.com/scikit-plots/
             * ****output\_type**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'item'****,** **'vector'****]**)
 
         Return type:
-        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")]
+        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")]
 
         > **See also**
         > [`query_by_vector`](#scikitplot.annoy.VectorOpsMixin.query_by_vector "scikitplot.annoy.VectorOpsMixin.query_by_vector")
@@ -84,7 +84,7 @@ class scikitplot.annoy.VectorOpsMixin[[source]](https://github.com/scikit-plots/
         [`kneighbors_graph`](#scikitplot.annoy.VectorOpsMixin.kneighbors_graph "scikitplot.annoy.VectorOpsMixin.kneighbors_graph")
         :   CSR kNN graph.
 
-    kneighbors\_graph(**X**, **n\_neighbors=5**, **\***, **search\_k=-1**, **mode='connectivity'**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**, **output\_type='item'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_vectors.py#L769)[#](#scikitplot.annoy.VectorOpsMixin.kneighbors_graph "Link to this definition")
+    kneighbors\_graph(**X**, **n\_neighbors=5**, **\***, **search\_k=-1**, **mode='connectivity'**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**, **output\_type='item'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_vectors.py#L769)[#](#scikitplot.annoy.VectorOpsMixin.kneighbors_graph "Link to this definition")
     :   Compute the k-neighbors graph (CSR) for query vectors.
 
         Parameters:
@@ -149,7 +149,7 @@ class scikitplot.annoy.VectorOpsMixin[[source]](https://github.com/scikit-plots/
         > [`kneighbors`](#scikitplot.annoy.VectorOpsMixin.kneighbors "scikitplot.annoy.VectorOpsMixin.kneighbors")
         :   Dense kNN results.
 
-    query\_by\_item(**item**, **n\_neighbors**, **\***, **search\_k=-1**, **include\_distances=False**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_vectors.py#L291)[#](#scikitplot.annoy.VectorOpsMixin.query_by_item "Link to this definition")
+    query\_by\_item(**item**, **n\_neighbors**, **\***, **search\_k=-1**, **include\_distances=False**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_vectors.py#L291)[#](#scikitplot.annoy.VectorOpsMixin.query_by_item "Link to this definition")
     :   Query neighbors by stored item id.
 
         Parameters:
@@ -202,7 +202,7 @@ class scikitplot.annoy.VectorOpsMixin[[source]](https://github.com/scikit-plots/
             * ****copy**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
 
         Return type:
-        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")]
+        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")]
 
         > **See also**
         > [`query_by_vector`](#scikitplot.annoy.VectorOpsMixin.query_by_vector "scikitplot.annoy.VectorOpsMixin.query_by_vector")
@@ -215,7 +215,7 @@ class scikitplot.annoy.VectorOpsMixin[[source]](https://github.com/scikit-plots/
 
         Exclusions are applied deterministically in the order returned by the backend.
 
-    query\_by\_vector(**vector**, **n\_neighbors**, **\***, **search\_k=-1**, **include\_distances=False**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_vectors.py#L472)[#](#scikitplot.annoy.VectorOpsMixin.query_by_vector "Link to this definition")
+    query\_by\_vector(**vector**, **n\_neighbors**, **\***, **search\_k=-1**, **include\_distances=False**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_vectors.py#L472)[#](#scikitplot.annoy.VectorOpsMixin.query_by_vector "Link to this definition")
     :   Query neighbors by an explicit vector.
 
         Parameters:
@@ -271,7 +271,7 @@ class scikitplot.annoy.VectorOpsMixin[[source]](https://github.com/scikit-plots/
             * ****copy**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
 
         Return type:
-        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")]
+        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")]
 
         > **See also**
         > [`query_by_item`](#scikitplot.annoy.VectorOpsMixin.query_by_item "scikitplot.annoy.VectorOpsMixin.query_by_item")
@@ -286,7 +286,7 @@ class scikitplot.annoy.VectorOpsMixin[[source]](https://github.com/scikit-plots/
         If `exclude_self=True` and no exact `0.0` distance candidate is returned
         in the first position, no additional self-exclusion is applied.
 
-    query\_vectors\_by\_item(**item**, **n\_neighbors**, **\***, **search\_k=-1**, **include\_distances=False**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**, **dtype=<class 'numpy.float32'>**, **output\_type='vector'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_vectors.py#L400)[#](#scikitplot.annoy.VectorOpsMixin.query_vectors_by_item "Link to this definition")
+    query\_vectors\_by\_item(**item**, **n\_neighbors**, **\***, **search\_k=-1**, **include\_distances=False**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**, **dtype=<class 'numpy.float32'>**, **output\_type='vector'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_vectors.py#L400)[#](#scikitplot.annoy.VectorOpsMixin.query_vectors_by_item "Link to this definition")
     :   Query neighbor vectors by stored item id.
 
         This is a convenience wrapper over [`query_by_item`](#scikitplot.annoy.VectorOpsMixin.query_by_item "scikitplot.annoy.VectorOpsMixin.query_by_item") that materializes
@@ -325,13 +325,13 @@ class scikitplot.annoy.VectorOpsMixin[[source]](https://github.com/scikit-plots/
             * ****output\_type**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'item'****,** **'vector'****]**)
 
         Return type:
-        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")]
+        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")]
 
         > **See also**
         > [`query_vectors_by_vector`](#scikitplot.annoy.VectorOpsMixin.query_vectors_by_vector "scikitplot.annoy.VectorOpsMixin.query_vectors_by_vector")
         :   Vector query returning vectors (or ids).
 
-    query\_vectors\_by\_vector(**vector**, **n\_neighbors**, **\***, **search\_k=-1**, **include\_distances=False**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**, **dtype=<class 'numpy.float32'>**, **output\_type='vector'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_vectors.py#L583)[#](#scikitplot.annoy.VectorOpsMixin.query_vectors_by_vector "Link to this definition")
+    query\_vectors\_by\_vector(**vector**, **n\_neighbors**, **\***, **search\_k=-1**, **include\_distances=False**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**, **dtype=<class 'numpy.float32'>**, **output\_type='vector'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_vectors.py#L583)[#](#scikitplot.annoy.VectorOpsMixin.query_vectors_by_vector "Link to this definition")
     :   Query neighbor vectors by an explicit vector.
 
         Convenience wrapper over [`query_by_vector`](#scikitplot.annoy.VectorOpsMixin.query_by_vector "scikitplot.annoy.VectorOpsMixin.query_by_vector"). By default it returns
@@ -371,7 +371,7 @@ class scikitplot.annoy.VectorOpsMixin[[source]](https://github.com/scikit-plots/
             * ****output\_type**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'item'****,** **'vector'****]**)
 
         Return type:
-        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")]
+        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")]
 
         > **See also**
         > [`query_vectors_by_item`](#scikitplot.annoy.VectorOpsMixin.query_vectors_by_item "scikitplot.annoy.VectorOpsMixin.query_vectors_by_item")

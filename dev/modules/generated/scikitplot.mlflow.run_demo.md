@@ -1,6 +1,6 @@
 # run\_demo[#](#run-demo "Link to this heading")
 
-scikitplot.mlflow.run\_demo(**\***, **profile='local'**, **project\_root=None**, **open\_ui\_seconds=10.0**, **experiment\_name=None**, **fmt='toml'**, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/mlflow/_workflow.py#L211)[#](#scikitplot.mlflow.run_demo "Link to this definition")
+scikitplot.mlflow.run\_demo(**\***, **profile='local'**, **project\_root=None**, **open\_ui\_seconds=10.0**, **experiment\_name=None**, **fmt='toml'**, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/mlflow/_workflow.py#L211)[#](#scikitplot.mlflow.run_demo "Link to this definition")
 :   Run a beginner-friendly end-to-end demo workflow.
 
     The workflow demonstrates:

@@ -1,6 +1,6 @@
 # PlottingMixin[#](#plottingmixin "Link to this heading")
 
-class scikitplot.annoy.PlottingMixin[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_plotting.py#L159)[#](#scikitplot.annoy.PlottingMixin "Link to this definition")
+class scikitplot.annoy.PlottingMixin[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_plotting.py#L159)[#](#scikitplot.annoy.PlottingMixin "Link to this definition")
 :   Mixin that adds convenient plotting methods to high-level Annoy wrappers.
 
     The mixin assumes the **host class** is Annoy-like (implements
@@ -21,7 +21,7 @@ class scikitplot.annoy.PlottingMixin[[source]](https://github.com/scikit-plots/s
       `scikitplot.cexternals._annoy._plotting`.
     * All methods are deterministic given index contents and parameters.
 
-    plot\_index(**labels=None**, **\***, **ids=None**, **projection='pca'**, **dims=(0**, **1)**, **center=True**, **maxabs=False**, **l2\_normalize=False**, **dtype=<class 'numpy.float32'>**, **ax=None**, **title=None**, **plot\_kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_plotting.py#L231)[#](#scikitplot.annoy.PlottingMixin.plot_index "Link to this definition")
+    plot\_index(**labels=None**, **\***, **ids=None**, **projection='pca'**, **dims=(0**, **1)**, **center=True**, **maxabs=False**, **l2\_normalize=False**, **dtype=<class 'numpy.float32'>**, **ax=None**, **title=None**, **plot\_kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_plotting.py#L231)[#](#scikitplot.annoy.PlottingMixin.plot_index "Link to this definition")
     :   Plot this index as a 2D scatter plot.
 
         This is a thin wrapper around `plot_annoy_index` that uses
@@ -49,7 +49,7 @@ class scikitplot.annoy.PlottingMixin[[source]](https://github.com/scikit-plots/s
             * ****plot\_kwargs**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
 
         Return type:
-        :   [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
+        :   [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
 
         > **See also**
         > `plot_annoy_index`
@@ -80,7 +80,7 @@ class scikitplot.annoy.PlottingMixin[[source]](https://github.com/scikit-plots/s
         ```
         Go BackOpen In Tab
 
-    plot\_knn\_edges(**y2**, **\***, **ids=None**, **k=10**, **search\_k=-1**, **ax=None**, **line\_kwargs=None**, **undirected=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_plotting.py#L304)[#](#scikitplot.annoy.PlottingMixin.plot_knn_edges "Link to this definition")
+    plot\_knn\_edges(**y2**, **\***, **ids=None**, **k=10**, **search\_k=-1**, **ax=None**, **line\_kwargs=None**, **undirected=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_plotting.py#L304)[#](#scikitplot.annoy.PlottingMixin.plot_knn_edges "Link to this definition")
     :   Overlay kNN edges onto an existing 2D index plot.
 
         This is a thin wrapper around `plot_annoy_knn_edges` that uses
@@ -95,7 +95,7 @@ class scikitplot.annoy.PlottingMixin[[source]](https://github.com/scikit-plots/s
             :   The axes that were drawn on.
 
         Parameters:
-        :   * ****y2**** ([**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)"))
+        :   * ****y2**** ([**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"))
             * ****ids**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]** **|** **None**)
             * ****k**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
             * ****search\_k**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))

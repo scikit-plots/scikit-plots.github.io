@@ -1,6 +1,6 @@
 # probplot[#](#probplot "Link to this heading")
 
-scikitplot.externals.\_probscale.probplot(**data**, **ax=None**, **plottype='prob'**, **dist=None**, **probax='x'**, **problabel=None**, **datascale='linear'**, **datalabel=None**, **bestfit=False**, **return\_best\_fit\_results=False**, **estimate\_ci=False**, **ci\_kws=None**, **pp\_kws=None**, **scatter\_kws=None**, **line\_kws=None**, **\*\*fgkwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/externals/_probscale/viz.py#L13)[#](#scikitplot.externals._probscale.probplot "Link to this definition")
+scikitplot.externals.\_probscale.probplot(**data**, **ax=None**, **plottype='prob'**, **dist=None**, **probax='x'**, **problabel=None**, **datascale='linear'**, **datalabel=None**, **bestfit=False**, **return\_best\_fit\_results=False**, **estimate\_ci=False**, **ci\_kws=None**, **pp\_kws=None**, **scatter\_kws=None**, **line\_kws=None**, **\*\*fgkwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/externals/_probscale/viz.py#L13)[#](#scikitplot.externals._probscale.probplot "Link to this definition")
 :   Probability, percentile, and quantile plots.
 
     Parameters:
@@ -100,13 +100,13 @@ scikitplot.externals.\_probscale.probplot(**data**, **ax=None**, **plottype='pro
     `viz.fit_line`
 
 
-    [`numpy.polyfit`](https://numpy.org/devdocs/reference/generated/numpy.polyfit.html#numpy.polyfit "(in NumPy v2.5.dev0)")
+    [`numpy.polyfit`](https://numpy.org/devdocs/reference/generated/numpy.polyfit.html#numpy.polyfit "(in NumPy v2.6.dev0)")
 
 
-    [`scipy.stats.probplot`](https://scipy.github.io/devdocs/reference/generated/scipy.stats.probplot.html#scipy.stats.probplot "(in SciPy v1.18.0.dev)")
+    [`scipy.stats.probplot`](https://scipy.github.io/devdocs/reference/generated/scipy.stats.probplot.html#scipy.stats.probplot "(in SciPy v1.19.0.dev)")
 
 
-    [`scipy.stats.mstats.plotting_positions`](https://scipy.github.io/devdocs/reference/generated/scipy.stats.mstats.plotting_positions.html#scipy.stats.mstats.plotting_positions "(in SciPy v1.18.0.dev)")
+    [`scipy.stats.mstats.plotting_positions`](https://scipy.github.io/devdocs/reference/generated/scipy.stats.mstats.plotting_positions.html#scipy.stats.mstats.plotting_positions "(in SciPy v1.19.0.dev)")
 
     Examples
 

@@ -71,6 +71,25 @@
     var _isListening = false;
 
     /**
+     * AbortController for the current in-flight panel API fetch.
+     * Cancelled (and replaced) whenever a new question is submitted so
+     * stale streaming responses never race with the new turn.
+     * @type {AbortController|null}
+     */
+    var _fetchAbortController = null;
+
+    /**
+     * Maximum number of turns stored in `_transcript` (and persisted to
+     * sessionStorage).  Prevents unbounded memory growth in very long sessions.
+     * Each turn is one user message or one assistant/error reply; this cap is
+     * applied BEFORE the new turn is appended so the array never exceeds it.
+     * Value is intentionally generous (200 turns ≈ 100 Q&A pairs) — most
+     * real-world sessions are under 20.  Configurable via
+     * ``cfg.panelMaxTranscriptTurns`` in conf.py.
+     */
+    var _TRANSCRIPT_MAX_TURNS_DEFAULT = 200;
+
+    /**
      * Feature-flag defaults — last line of defence when the injected
      * window.AI_ASSISTANT_CONFIG.features dict is missing/partial.
      *
@@ -123,6 +142,15 @@
         exportTxt:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>',
         copyAns:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>',
         privacy:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+        // ── Listen / Text-to-Speech ───────────────────────────────────────────
+        // Speaker-wave icon used for TTS "Listen" button in the action row.
+        // Three arc lines indicate audio output (commonly used for "speaker" or
+        // "volume" across all major design systems — Feather, Heroicons, Lucide).
+        listen:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>',
+        // Same icon in "stop" state (filled polygon → playing indicator).
+        listenStop: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" opacity="0.2"/><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="16" y1="8" x2="22" y2="8"/><line x1="16" y1="12" x2="22" y2="12"/><line x1="16" y1="16" x2="22" y2="16"/></svg>',
+        // Vertical three-dot "more" icon for the expandable action-row submenu.
+        moreVert: '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5"  r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>',
         searchAI: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><path d="M8 11h6M11 8v6" stroke-width="1.5"/></svg>',
         keyboard: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/></svg>',
         retry:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.5"/></svg>',
@@ -858,10 +886,15 @@
     }
 
     function getMarkdownUrl() {
-        var clean = window.location.href.split('#')[0];
-        if (clean.endsWith('.html')) return clean.replace(/\.html$/, '.md');
-        if (clean.endsWith('/'))     return clean + 'index.md';
-        return clean + '.md';
+        // Strip query string AND fragment before rewriting the extension.
+        // Rationale: window.location.href.split('#')[0] removes fragments but
+        // leaves ?query=params.  A URL like "/page.html?v=2" ends in "?v=2",
+        // so /\.html$/ would never match — the .md URL would be wrong.
+        // Splitting on both '?' and '#' gives the bare path every time.
+        var bare = window.location.href.split('?')[0].split('#')[0];
+        if (bare.endsWith('.html')) return bare.replace(/\.html$/, '.md');
+        if (bare.endsWith('/'))     return bare + 'index.md';
+        return bare + '.md';
     }
 
     // ── Action handlers ───────────────────────────────────────────────────────
@@ -895,6 +928,17 @@
 
             var prompt = promptTpl.replace('{url}', getMarkdownUrl());
             var aiUrl  = urlTpl.replace('{prompt}', encodeURIComponent(prompt));
+
+            // Client-side URL-scheme guard (belt-and-suspenders; server validates
+            // url_template at build time, but defence-in-depth is cheap here).
+            // Only http:// and https:// are safe to window.open; anything else
+            // (javascript:, data:, blob:, vbscript:, …) must be rejected.
+            if (!/^https?:\/\//i.test(aiUrl)) {
+                console.error('AI Assistant: Blocked unsafe URL scheme in provider "' + providerKey + '":', aiUrl.slice(0, 50));
+                showNotification('AI provider URL is not a valid HTTP(S) address.', true);
+                return;
+            }
+
             window.open(aiUrl, '_blank', 'noopener,noreferrer');
             closeDropdown();
         } catch (err) {
@@ -910,11 +954,24 @@
             if (!tool)   { showNotification('MCP tool configuration not found.', true); return; }
 
             if (tool.type === 'claude_desktop') {
+                var mcpbUrl = (typeof tool.mcpb_url === 'string') ? tool.mcpb_url.trim() : '';
+                // Scheme validation: only mcpb:// or https:// are legitimate download URLs.
+                // Reject javascript:, data:, blob:, ftp:, or any other scheme before
+                // triggering a file download — prevents malicious package substitution.
+                if (!mcpbUrl) {
+                    showNotification('MCP tool "' + toolKey + '" has no mcpb_url.', true);
+                    return;
+                }
+                if (!/^(?:mcpb|https):\/\//i.test(mcpbUrl)) {
+                    console.error('AI Assistant: Blocked unsafe mcpb_url scheme for tool "' + toolKey + '":', mcpbUrl.slice(0, 60));
+                    showNotification('MCP tool download URL must use mcpb:// or https://.', true);
+                    return;
+                }
                 var urlPath;
-                try { urlPath = new URL(tool.mcpb_url).pathname; }
+                try { urlPath = new URL(mcpbUrl).pathname; }
                 catch (_urlErr) { showNotification('MCP tool "' + toolKey + '" has an invalid mcpb_url.', true); return; }
                 var a = document.createElement('a');
-                a.href = tool.mcpb_url;
+                a.href = mcpbUrl;
                 a.download = urlPath.split('/').pop() || (toolKey + '.zip');
                 document.body.appendChild(a);
                 a.click();
@@ -928,7 +985,22 @@
                 var mcpCfg = { name: tool.server_name || toolKey, type: tool.transport || 'sse' };
                 if (tool.transport === 'stdio') { mcpCfg.command = tool.command; if (tool.args) mcpCfg.args = tool.args; }
                 else mcpCfg.url = tool.server_url;
-                window.open('vscode:mcp/install?' + encodeURIComponent(JSON.stringify(mcpCfg)), '_self');
+
+                // vscode:// is a custom URI scheme — window.open(_self) would try to
+                // navigate away from the page, which silently fails in most browsers
+                // (the page stays, but the user gets no feedback if VS Code is not
+                // installed).  Use a hidden <a> click instead: it triggers the OS
+                // protocol handler without changing window.location, and is the
+                // documented VS Code MCP installation mechanism.
+                var vsUrl = 'vscode:mcp/install?' + encodeURIComponent(JSON.stringify(mcpCfg));
+                var vsLink = document.createElement('a');
+                vsLink.href = vsUrl;
+                // rel="noopener" is a no-op on same-frame navigations but harmless;
+                // omit target so the protocol handler fires without page navigation.
+                document.body.appendChild(vsLink);
+                vsLink.click();
+                document.body.removeChild(vsLink);
+                showNotification('Opening VS Code MCP install…');
                 closeDropdown();
                 return;
             }
@@ -1143,11 +1215,31 @@
 
     /**
      * Record a message in the single source of truth and persist.
+     *
+     * Enforces a configurable maximum turn count to prevent unbounded
+     * sessionStorage growth and JSON serialisation slowdown.  Oldest turns
+     * are evicted from the head when the cap is exceeded.
+     *
      * @param {string} role  'user' | 'assistant' | 'error'
      * @param {string} text
      */
     function _recordMessage(role, text) {
+        var cfg = window.AI_ASSISTANT_CONFIG || {};
+        var maxTurns = (typeof cfg.panelMaxTranscriptTurns === 'number' &&
+                        cfg.panelMaxTranscriptTurns > 0)
+            ? Math.floor(cfg.panelMaxTranscriptTurns)
+            : _TRANSCRIPT_MAX_TURNS_DEFAULT;
+
         _transcript.push({ role: role, text: text, ts: Date.now() });
+
+        // Trim head (oldest entries) when cap is exceeded.
+        // Removing pairs (user + assistant) keeps conversations coherent, but
+        // a simple slice from the left is safe — the welcome screen is not in
+        // the transcript array, only actual message turns.
+        if (_transcript.length > maxTurns) {
+            _transcript = _transcript.slice(_transcript.length - maxTurns);
+        }
+
         _saveTranscript();
     }
 
@@ -1211,13 +1303,223 @@
     /**
      * R6 — Copy a single answer's text to the clipboard.
      * Prefers data-raw (the original markdown string) over the rendered HTML
-     * text content so the copy is clean and re-usable outside the panel.
+     * text content so the copy is clean and reusable outside the panel.
      * @param {string} text  The exact bubble text (from `_transcript`).
      * @param {HTMLElement} [bubbleEl]  Optional bubble element for data-raw.
      */
     function copyAnswer(text, bubbleEl) {
         var raw = (bubbleEl && bubbleEl.getAttribute('data-raw')) || text;
         copyToClipboard(raw, false);
+    }
+
+    // ── TTS: Text-to-Speech (Web Speech Synthesis API) ───────────────────────
+    //
+    // Uses window.speechSynthesis — the correct Web platform TTS API (NOT
+    // SpeechRecognition, which handles mic input, not audio output).
+    // Degrades gracefully: if the API is absent the Listen button is simply
+    // not rendered by _buildBubbleMore().
+    //
+    // Three states cycle on repeated button clicks:
+    //   idle    → playing   (aria-pressed="true"  + pulse animation via CSS)
+    //   playing → paused    (aria-pressed="paused" + yellow tint via CSS)
+    //   paused  → playing   (resumes from paused position)
+    //   playing → idle      (auto-reset when speech ends or on cancel)
+    //
+    // Only one utterance plays at a time — starting TTS on a new bubble
+    // cancels any previously playing one.
+
+    /** Currently active TTS button element (null when idle). */
+    var _activeTTSBtn = null;
+
+    /**
+     * Reset the TTS button to its idle state.
+     * Called when speech ends, errors, or is interrupted by a new utterance.
+     * @param {HTMLElement} btn  The Listen button element.
+     */
+    function _resetTTSBtn(btn) {
+        if (!btn) return;
+        btn.setAttribute('aria-pressed', 'false');
+        btn.innerHTML = ICONS.listen;
+        var lbl = document.createElement('span');
+        lbl.textContent = 'Listen';
+        btn.appendChild(lbl);
+        if (_activeTTSBtn === btn) _activeTTSBtn = null;
+    }
+
+    /**
+     * Toggle TTS playback for an assistant bubble.
+     *
+     * Parameters
+     * ----------
+     * btn : HTMLElement
+     *     The "Listen" button element.  Its aria-pressed attribute drives
+     *     the CSS state machine (idle / playing / paused).
+     * text : string
+     *     Raw text of the assistant reply (plain-text; markdown stripped).
+     */
+    function _panelTTSToggle(btn, text) {
+        // Guard: API unavailable (old browser, iOS WKWebView, etc.)
+        if (!('speechSynthesis' in window)) {
+            showNotification('Text-to-speech is not supported in this browser.', true);
+            return;
+        }
+
+        var state = btn.getAttribute('aria-pressed') || 'false';
+
+        // ── Idle → Playing ────────────────────────────────────────────────
+        if (state === 'false') {
+            // Cancel any other active utterance first.
+            if (_activeTTSBtn && _activeTTSBtn !== btn) {
+                window.speechSynthesis.cancel();
+                _resetTTSBtn(_activeTTSBtn);
+            }
+
+            // Strip markdown syntax for cleaner speech (bold, code fences, etc.)
+            var cleanText = text
+                .replace(/```[\s\S]*?```/g, 'code block.')
+                .replace(/`([^`]+)`/g, '$1')
+                .replace(/#{1,6}\s/g, '')
+                .replace(/\*\*([^*]+)\*\*/g, '$1')
+                .replace(/\*([^*]+)\*/g, '$1')
+                .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+                .replace(/---+/g, '.')
+                .trim();
+
+            var utterance = new window.SpeechSynthesisUtterance(cleanText);
+            utterance.lang  = document.documentElement.lang || 'en-US';
+            utterance.rate  = 1.0;
+            utterance.pitch = 1.0;
+
+            utterance.onstart = function () {
+                btn.setAttribute('aria-pressed', 'true');
+                btn.innerHTML = ICONS.listenStop;
+                var lbl = document.createElement('span');
+                lbl.textContent = 'Stop';
+                btn.appendChild(lbl);
+                _activeTTSBtn = btn;
+            };
+
+            utterance.onend = utterance.onerror = function () {
+                _resetTTSBtn(btn);
+            };
+
+            utterance.onpause = function () {
+                btn.setAttribute('aria-pressed', 'paused');
+                // Keep listenStop icon; CSS provides the yellow tint.
+            };
+
+            utterance.onresume = function () {
+                btn.setAttribute('aria-pressed', 'true');
+            };
+
+            window.speechSynthesis.speak(utterance);
+            return;
+        }
+
+        // ── Playing → Paused ──────────────────────────────────────────────
+        if (state === 'true') {
+            window.speechSynthesis.pause();
+            btn.setAttribute('aria-pressed', 'paused');
+            btn.innerHTML = ICONS.listen;
+            var lblP = document.createElement('span');
+            lblP.textContent = 'Resume';
+            btn.appendChild(lblP);
+            return;
+        }
+
+        // ── Paused → Playing ──────────────────────────────────────────────
+        if (state === 'paused') {
+            window.speechSynthesis.resume();
+            btn.setAttribute('aria-pressed', 'true');
+            btn.innerHTML = ICONS.listenStop;
+            var lblR = document.createElement('span');
+            lblR.textContent = 'Stop';
+            btn.appendChild(lblR);
+            return;
+        }
+    }
+
+    /**
+     * Build the expandable "⋯ More ▾" action-row menu button and its submenu.
+     *
+     * Architecture (data-first, extensible):
+     *   • `.ai-assistant-panel-bubble-action-more` wraps toggle + submenu.
+     *   • `data-open="true|false"` on the submenu drives CSS visibility —
+     *     no JS state needed beyond toggling the attribute.
+     *   • New actions (Translate, Export, Share) are added as buttons inside
+     *     the menu without changing this function's signature.
+     *
+     * @param {string} answerText  Plain-text answer for TTS playback.
+     * @returns {HTMLElement}  The wrapper element (relative-positioned anchor).
+     */
+    function _buildBubbleMore(answerText) {
+        var wrapper = document.createElement('div');
+        wrapper.className = 'ai-assistant-panel-bubble-action-more';
+
+        // ── "⋯ More ▾" toggle button ──────────────────────────────────────
+        var toggleBtn = document.createElement('button');
+        toggleBtn.className =
+            'ai-assistant-panel-bubble-action ' +
+            'ai-assistant-panel-bubble-action--more-toggle';
+        toggleBtn.type = 'button';
+        toggleBtn.setAttribute('aria-label', 'More actions');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        toggleBtn.setAttribute('aria-haspopup', 'true');
+        toggleBtn.innerHTML = ICONS.moreVert;
+        var moreLbl = document.createElement('span');
+        moreLbl.textContent = 'More';
+        toggleBtn.appendChild(moreLbl);
+
+        // ── Submenu (hidden by default via data-open="false") ─────────────
+        var menu = document.createElement('div');
+        menu.className = 'ai-assistant-panel-bubble-action-more-menu';
+        menu.setAttribute('role', 'menu');
+        menu.setAttribute('data-open', 'false');
+
+        // ── Listen (TTS) button inside the menu ───────────────────────────
+        // Only rendered when the Web Speech Synthesis API is available.
+        if ('speechSynthesis' in window) {
+            var listenBtn = document.createElement('button');
+            listenBtn.className =
+                'ai-assistant-panel-bubble-action ' +
+                'ai-assistant-panel-bubble-action--listen';
+            listenBtn.type = 'button';
+            listenBtn.setAttribute('role', 'menuitem');
+            listenBtn.setAttribute('aria-pressed', 'false');
+            listenBtn.setAttribute('aria-label', 'Read this answer aloud');
+            listenBtn.title = 'Listen — read answer aloud';
+            listenBtn.innerHTML = ICONS.listen;
+            var listenLbl = document.createElement('span');
+            listenLbl.textContent = 'Listen';
+            listenBtn.appendChild(listenLbl);
+            (function (btn, text) {
+                btn.addEventListener('click', function (e) {
+                    e.stopPropagation();   // don't bubble to global click-close
+                    _panelTTSToggle(btn, text);
+                });
+            }(listenBtn, answerText));
+            menu.appendChild(listenBtn);
+        }
+
+        // ── Toggle click handler ──────────────────────────────────────────
+        toggleBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var isOpen = menu.getAttribute('data-open') === 'true';
+            menu.setAttribute('data-open', isOpen ? 'false' : 'true');
+            toggleBtn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+        });
+
+        // ── Close menu when focus leaves the wrapper ──────────────────────
+        wrapper.addEventListener('focusout', function (e) {
+            if (!wrapper.contains(e.relatedTarget)) {
+                menu.setAttribute('data-open', 'false');
+                toggleBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        wrapper.appendChild(toggleBtn);
+        wrapper.appendChild(menu);
+        return wrapper;
     }
 
     /**
@@ -2876,6 +3178,11 @@
         var body = document.createElement('div');
         body.className = 'ai-assistant-panel-body';
         body.id = 'ai-assistant-panel-body';
+        // aria-live="polite" — screen readers announce new content (AI replies,
+        // typing indicators) without interrupting the user's current speech.
+        // "polite" is correct here; "assertive" would be intrusive.
+        body.setAttribute('aria-live', 'polite');
+        body.setAttribute('aria-relevant', 'additions');
 
         // Load any persisted conversation (single source of truth).  If it
         // is non-empty, replay it; otherwise show the welcome + suggestions.
@@ -3569,6 +3876,10 @@
                 actions.appendChild(retryBtn);
             }
 
+            // ── "⋯ More ▾" expandable submenu (contains Listen and future actions)
+            var moreWrapper = _buildBubbleMore(text);
+            actions.appendChild(moreWrapper);
+
             body.appendChild(actions);
 
             // ── R5: per-answer inline feedback block ──────────────────────────
@@ -3666,6 +3977,18 @@
         var rawText = input.value.trim();
         if (!rawText) return;
 
+        // ── Cancel any in-flight request before starting a new one ───────
+        // Without this, rapid submits fire multiple concurrent fetches; the
+        // older response can arrive AFTER the newer one, producing
+        // out-of-order replies in the panel.  AbortController.abort() causes
+        // the pending fetch() to reject with AbortError — caught in the
+        // catch block below and silently ignored (no error bubble shown for
+        // intentional cancellations).
+        if (_fetchAbortController) {
+            _fetchAbortController.abort();
+        }
+        _fetchAbortController = new AbortController();
+
         // Stop speech if active
         _stopSpeechRecognition();
         _dismissSpeakBanner();
@@ -3693,8 +4016,16 @@
                 await _panelStubReply(questionText);
             }
         } catch (err) {
-            console.error('AI Assistant panel error:', err);
-            _appendPanelMessage('Sorry, something went wrong: ' + err.message, 'error');
+            // AbortError is thrown when _fetchAbortController.abort() is
+            // called (i.e. the user submitted a new question before this
+            // one completed).  Do NOT show an error bubble for intentional
+            // cancellations — the new question's handler will show its own reply.
+            if (err && err.name === 'AbortError') {
+                // Intentional cancellation — swallow silently.
+            } else {
+                console.error('AI Assistant panel error:', err);
+                _appendPanelMessage('Sorry, something went wrong: ' + err.message, 'error');
+            }
         } finally {
             if (body) _hideTypingIndicator(body);
             input.disabled = false;
@@ -3885,6 +4216,7 @@
             method:  'POST',
             headers: { 'Content-Type': 'application/json' },
             body:    body,
+            signal:  _fetchAbortController ? _fetchAbortController.signal : undefined,
         });
 
         if (!response.ok) {
@@ -3935,6 +4267,7 @@
             method:  'POST',
             headers: { 'Content-Type': 'application/json' },
             body:    bodyStr,
+            signal:  _fetchAbortController ? _fetchAbortController.signal : undefined,
         });
 
         if (!response.ok) {
@@ -3986,6 +4319,10 @@
         var reader = response.body.getReader();
         var decoder = new TextDecoder();
         var sseBuf = '';
+        // Track the current SSE event type (RFC 6455 §10.1):
+        // Lines beginning with "event:" set the event type for the NEXT
+        // "data:" line.  Reset to "message" after each dispatch.
+        var sseEventType = 'message';
 
         try {
             while (true) {
@@ -3996,8 +4333,46 @@
                 sseBuf = lines.pop();
                 for (var li = 0; li < lines.length; li++) {
                     var ln = lines[li].trim();
-                    if (!ln || ln === 'data: [DONE]') continue;
+                    if (!ln) {
+                        // Empty line = SSE event boundary: reset event type
+                        sseEventType = 'message';
+                        continue;
+                    }
+                    // Track event: field (sets type for subsequent data:)
+                    if (ln.startsWith('event: ')) {
+                        sseEventType = ln.slice(7).trim();
+                        continue;
+                    }
+                    if (ln === 'data: [DONE]') {
+                        sseEventType = 'message';
+                        continue;
+                    }
                     if (ln.startsWith('data: ')) {
+                        // Server-sent event: error — surface message to user.
+                        // Some SSE servers emit "event: error\ndata: {...}" on
+                        // rate-limit, auth failure, or upstream API errors.
+                        // Without this branch they are silently dropped.
+                        if (sseEventType === 'error') {
+                            var errPayload = ln.slice(6);
+                            var errMsg = '';
+                            try {
+                                var ep = JSON.parse(errPayload);
+                                errMsg = (ep && (ep.error || ep.message || ep.detail)) || errPayload;
+                            } catch (_) { errMsg = errPayload; }
+                            console.error('AI Assistant: SSE server error event:', errMsg);
+                            // Replace streaming bubble with error bubble so the
+                            // user sees the failure, not an empty reply.
+                            if (streamBubble && streamBubble.parentNode) {
+                                streamBubble.parentNode.removeChild(streamBubble);
+                            }
+                            _appendPanelMessage(
+                                'The AI server reported an error: ' +
+                                String(errMsg).slice(0, 200),
+                                'error'
+                            );
+                            sseEventType = 'message';
+                            return;  // abort further SSE processing
+                        }
                         try {
                             var parsed = JSON.parse(ln.slice(6));
                             var delta = parsed.choices && parsed.choices[0] && parsed.choices[0].delta;
@@ -4008,6 +4383,7 @@
                                 if (panelBody) panelBody.scrollTop = panelBody.scrollHeight;
                             }
                         } catch (_pe) {}
+                        sseEventType = 'message';
                     }
                 }
             }
@@ -4021,6 +4397,8 @@
         if (panelBody && accumulated) {
             var acts = document.createElement('div');
             acts.className = 'ai-assistant-panel-bubble-actions';
+
+            // Copy button
             var cb2 = document.createElement('button');
             cb2.className = 'ai-assistant-panel-bubble-action';
             cb2.type = 'button';
@@ -4033,6 +4411,37 @@
                 cb2.addEventListener('click', function () { copyAnswer(ft, bEl); });
             }(accumulated, streamBubble));
             acts.appendChild(cb2);
+
+            // Retry button — walk _transcript for the last user turn
+            (function (answerText) {
+                var retryQ2 = null;
+                for (var ri = _transcript.length - 1; ri >= 0; ri--) {
+                    if (_transcript[ri].role === 'user') { retryQ2 = _transcript[ri].text; break; }
+                }
+                if (retryQ2) {
+                    var rb2 = document.createElement('button');
+                    rb2.className = 'ai-assistant-panel-bubble-action';
+                    rb2.type = 'button';
+                    rb2.setAttribute('aria-label', 'Retry this answer');
+                    rb2.title = 'Retry — re-send the same question';
+                    rb2.innerHTML = ICONS.retry;
+                    var rl2 = document.createElement('span'); rl2.textContent = 'Retry';
+                    rb2.appendChild(rl2);
+                    rb2.addEventListener('click', function () {
+                        var pi = document.getElementById('ai-assistant-panel-input');
+                        if (!pi) return;
+                        pi.value = retryQ2;
+                        _updateSendBtnState();
+                        handleAIPanelSubmit();
+                    });
+                    acts.appendChild(rb2);
+                }
+            }(accumulated));
+
+            // "⋯ More ▾" — extensible submenu (contains Listen + future actions)
+            var moreW2 = _buildBubbleMore(accumulated);
+            acts.appendChild(moreW2);
+
             panelBody.appendChild(acts);
 
             var fbIdx2 = panelBody.querySelectorAll('.ai-assistant-panel-feedback').length;
@@ -4042,7 +4451,7 @@
         if (panelBody) panelBody.scrollTop = panelBody.scrollHeight;
     }
 
-        async function _panelStubReply(_question) {
+    async function _panelStubReply(_question) {
         await new Promise(function (resolve) { setTimeout(resolve, 400); });
         _appendPanelMessage(
             'This AI assistant panel is running in stub mode (no live API calls).\n\n' +

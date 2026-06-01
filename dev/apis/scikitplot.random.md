@@ -1,6 +1,6 @@
 # scikitplot.random[#](#module-scikitplot.random "Link to this heading")
 
-Random Number Generation (Numpy-Like [`Generator`](https://numpy.org/devdocs/reference/random/generator.html#numpy.random.Generator "(in NumPy v2.5.dev0)")) [[1]](#r1ee9154da2eb-1) [[2]](#r1ee9154da2eb-2) [[3]](#r1ee9154da2eb-3).
+Random Number Generation (Numpy-Like [`Generator`](https://numpy.org/devdocs/reference/random/generator.html#numpy.random.Generator "(in NumPy v2.6.dev0)")) [[1]](#r1ee9154da2eb-1) [[2]](#r1ee9154da2eb-2) [[3]](#r1ee9154da2eb-3).
 
 Use `default_rng()` to create a `Generator` and call its methods.
 
@@ -49,7 +49,7 @@ Go BackOpen In Tab
 
 ****User guide.**** See the [Random](../user_guide/random/index.html#random-index) section for further details.
 
-## Random Number Generation (Numpy-Like [`Generator`](https://numpy.org/devdocs/reference/random/generator.html#numpy.random.Generator "(in NumPy v2.5.dev0)")).[#](#random-number-generation-numpy-like-generator "Link to this heading")
+## Random Number Generation (Numpy-Like [`Generator`](https://numpy.org/devdocs/reference/random/generator.html#numpy.random.Generator "(in NumPy v2.6.dev0)")).[#](#random-number-generation-numpy-like-generator "Link to this heading")
 
 ****User guide.**** See the [Random](../user_guide/random/index.html#random-index) section for further details.
 

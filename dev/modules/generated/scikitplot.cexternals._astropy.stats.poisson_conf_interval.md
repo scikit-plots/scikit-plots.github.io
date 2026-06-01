@@ -1,6 +1,6 @@
 # poisson\_conf\_interval[#](#poisson-conf-interval "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.poisson\_conf\_interval(**n**, **interval='root-n'**, **sigma=1.0**, **background=0.0**, **confidence\_level=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/cexternals/_astropy/stats/funcs.py#L508)[#](#scikitplot.cexternals._astropy.stats.poisson_conf_interval "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.poisson\_conf\_interval(**n**, **interval='root-n'**, **sigma=1.0**, **background=0.0**, **confidence\_level=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/cexternals/_astropy/stats/funcs.py#L508)[#](#scikitplot.cexternals._astropy.stats.poisson_conf_interval "Link to this definition")
 :   Poisson parameter confidence interval given observed counts.
 
     Parameters:
@@ -30,14 +30,14 @@ scikitplot.cexternals.\_astropy.stats.poisson\_conf\_interval(**n**, **interval=
             and upper limits, respectively, for each element in `n`.
 
     Parameters:
-    :   * ****n**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")**[**[**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**,** **...****]****,** [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.5.dev0)")**[****\_ScalarT****]****]**)
+    :   * ****n**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")**[**[**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**,** **...****]****,** [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")**[****\_ScalarT****]****]**)
         * ****interval**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'root-n'****,** **'root-n-0'****,** **'pearson'****,** **'sherpagehrels'****,** **'frequentist-confidence'****,** **'kraft-burrows-nousek'****]**)
         * ****sigma**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
         * ****background**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
         * ****confidence\_level**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") **|** **None**)
 
     Return type:
-    :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), …], [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.5.dev0)")[**\_ScalarT**]]
+    :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), …], [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")[**\_ScalarT**]]
 
     Notes
 

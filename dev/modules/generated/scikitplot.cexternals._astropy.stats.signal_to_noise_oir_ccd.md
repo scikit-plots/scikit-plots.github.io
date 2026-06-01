@@ -1,6 +1,6 @@
 # signal\_to\_noise\_oir\_ccd[#](#signal-to-noise-oir-ccd "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.signal\_to\_noise\_oir\_ccd(**t**, **source\_eps**, **sky\_eps**, **dark\_eps**, **rd**, **npix**, **gain=1.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/cexternals/_astropy/stats/funcs.py#L947)[#](#scikitplot.cexternals._astropy.stats.signal_to_noise_oir_ccd "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.signal\_to\_noise\_oir\_ccd(**t**, **source\_eps**, **sky\_eps**, **dark\_eps**, **rd**, **npix**, **gain=1.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/cexternals/_astropy/stats/funcs.py#L947)[#](#scikitplot.cexternals._astropy.stats.signal_to_noise_oir_ccd "Link to this definition")
 :   Computes the signal to noise ratio for source being observed in the
     optical/IR using a CCD.
 
@@ -41,7 +41,7 @@ scikitplot.cexternals.\_astropy.stats.signal\_to\_noise\_oir\_ccd(**t**, **sourc
         :   Signal to noise ratio calculated from the inputs
 
     Parameters:
-    :   * ****t**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") **|** [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")**[**[**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**,** **...****]****,** [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.5.dev0)")**[****\_ScalarT****]****]**)
+    :   * ****t**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") **|** [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")**[**[**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**,** **...****]****,** [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")**[****\_ScalarT****]****]**)
         * ****source\_eps**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
         * ****sky\_eps**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
         * ****dark\_eps**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
@@ -50,4 +50,4 @@ scikitplot.cexternals.\_astropy.stats.signal\_to\_noise\_oir\_ccd(**t**, **sourc
         * ****gain**** ([**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)"))
 
     Return type:
-    :   [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") | [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), …], [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.5.dev0)")[**\_ScalarT**]]
+    :   [float](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)") | [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), …], [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")[**\_ScalarT**]]

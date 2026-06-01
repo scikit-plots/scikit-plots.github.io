@@ -1,6 +1,6 @@
 # logsumexp[#](#logsumexp "Link to this heading")
 
-scikitplot.cexperimental.\_logsumexp.logsumexp(**a**, **axis=None**, **b=None**, **keepdims=False**, **return\_sign=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/cexperimental/_logsumexp.py#L58)[#](#scikitplot.cexperimental._logsumexp.logsumexp "Link to this definition")
+scikitplot.cexperimental.\_logsumexp.logsumexp(**a**, **axis=None**, **b=None**, **keepdims=False**, **return\_sign=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/cexperimental/_logsumexp.py#L58)[#](#scikitplot.cexperimental._logsumexp.logsumexp "Link to this definition")
 :   Compute the log of the sum of exponentials of input elements.
 
     Parameters:
@@ -49,7 +49,7 @@ scikitplot.cexperimental.\_logsumexp.logsumexp(**a**, **axis=None**, **b=None**,
             If `return_sign` is False, only one result is returned.
 
     > **See also**
-    > [`numpy.logaddexp`](https://numpy.org/devdocs/reference/generated/numpy.logaddexp.html#numpy.logaddexp "(in NumPy v2.5.dev0)"), [`numpy.logaddexp2`](https://numpy.org/devdocs/reference/generated/numpy.logaddexp2.html#numpy.logaddexp2 "(in NumPy v2.5.dev0)")
+    > [`numpy.logaddexp`](https://numpy.org/devdocs/reference/generated/numpy.logaddexp.html#numpy.logaddexp "(in NumPy v2.6.dev0)"), [`numpy.logaddexp2`](https://numpy.org/devdocs/reference/generated/numpy.logaddexp2.html#numpy.logaddexp2 "(in NumPy v2.6.dev0)")
 
     Notes
 

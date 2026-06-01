@@ -1,6 +1,6 @@
 # Index[#](#index "Link to this heading")
 
-class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_base.py#L77)[#](#scikitplot.annoy.Index "Link to this definition")
+class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_base.py#L77)[#](#scikitplot.annoy.Index "Link to this definition")
 :   High-level ANNoy index composed from mixins.
 
     Parameters:
@@ -177,7 +177,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         ```
         Go BackOpen In Tab
 
-    add\_items(**X**, **ids=None**, **\***, **start\_id=None**, **accept\_sparse='error'**, **ensure\_all\_finite=True**, **copy=False**, **dtype=<class 'numpy.float32'>**, **order='C'**, **check\_unique\_ids=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_ndarray.py#L376)[#](#scikitplot.annoy.Index.add_items "Link to this definition")
+    add\_items(**X**, **ids=None**, **\***, **start\_id=None**, **accept\_sparse='error'**, **ensure\_all\_finite=True**, **copy=False**, **dtype=<class 'numpy.float32'>**, **order='C'**, **check\_unique\_ids=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_ndarray.py#L376)[#](#scikitplot.annoy.Index.add_items "Link to this definition")
     :   Add many vectors to the index.
 
         Parameters:
@@ -238,7 +238,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             * ****check\_unique\_ids**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
 
         Return type:
-        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")
+        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")
 
         > **See also**
         > [`get_item_vectors`](#scikitplot.annoy.Index.get_item_vectors "scikitplot.annoy.Index.get_item_vectors")
@@ -555,7 +555,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         ```
         Go BackOpen In Tab
 
-    classmethod from\_bytes(**data**, **\***, **f=None**, **metric=None**, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_io.py#L318)[#](#scikitplot.annoy.Index.from_bytes "Link to this definition")
+    classmethod from\_bytes(**data**, **\***, **f=None**, **metric=None**, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_io.py#L318)[#](#scikitplot.annoy.Index.from_bytes "Link to this definition")
     :   Construct a new index and load it from serialized bytes.
 
         Parameters:
@@ -603,7 +603,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         For `data` if fed `to_bytes(format='native') required params
         ``f``, `metric`.
 
-    classmethod from\_json(**path**, **\***, **load=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_meta.py#L426)[#](#scikitplot.annoy.Index.from_json "Link to this definition")
+    classmethod from\_json(**path**, **\***, **load=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_meta.py#L426)[#](#scikitplot.annoy.Index.from_json "Link to this definition")
     :   Load metadata from JSON and construct an index.
 
         Parameters:
@@ -613,7 +613,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         Return type:
         :   Self
 
-    classmethod from\_low\_level(**obj**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_base.py#L270)[#](#scikitplot.annoy.Index.from_low_level "Link to this definition")
+    classmethod from\_low\_level(**obj**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_base.py#L270)[#](#scikitplot.annoy.Index.from_low_level "Link to this definition")
     :   Create a new [`Index`](#scikitplot.annoy.Index "scikitplot.annoy.Index") from a low-level instance.
 
         The new object is rebuilt by round-tripping through Annoy’s native
@@ -668,7 +668,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         This method is deterministic. It always constructs a new index from the
         serialized payload; it does not share low-level state between objects.
 
-    classmethod from\_metadata(**metadata**, **\***, **load=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_meta.py#L257)[#](#scikitplot.annoy.Index.from_metadata "Link to this definition")
+    classmethod from\_metadata(**metadata**, **\***, **load=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_meta.py#L257)[#](#scikitplot.annoy.Index.from_metadata "Link to this definition")
     :   Construct an index from a metadata payload.
 
         Parameters:
@@ -712,7 +712,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
 
         [`from_yaml`](#scikitplot.annoy.Index.from_yaml "scikitplot.annoy.Index.from_yaml")
 
-    classmethod from\_yaml(**path**, **\***, **load=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_meta.py#L460)[#](#scikitplot.annoy.Index.from_yaml "Link to this definition")
+    classmethod from\_yaml(**path**, **\***, **load=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_meta.py#L460)[#](#scikitplot.annoy.Index.from_yaml "Link to this definition")
     :   Load metadata from YAML and construct an index (requires PyYAML).
 
         Parameters:
@@ -779,7 +779,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             IndexError
             :   If `i` is out of range.
 
-    get\_item\_vectors(**ids=None**, **\***, **dtype=<class 'numpy.float32'>**, **start=0**, **stop=None**, **n\_rows=None**, **return\_ids=False**, **validate\_vector\_len=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_ndarray.py#L509)[#](#scikitplot.annoy.Index.get_item_vectors "Link to this definition")
+    get\_item\_vectors(**ids=None**, **\***, **dtype=<class 'numpy.float32'>**, **start=0**, **stop=None**, **n\_rows=None**, **return\_ids=False**, **validate\_vector\_len=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_ndarray.py#L509)[#](#scikitplot.annoy.Index.get_item_vectors "Link to this definition")
     :   Fetch many vectors as a dense NumPy array.
 
         Parameters:
@@ -825,7 +825,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             * ****validate\_vector\_len**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
 
         Return type:
-        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")]
+        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")]
 
         > **See also**
         > [`to_numpy`](#scikitplot.annoy.Index.to_numpy "scikitplot.annoy.Index.to_numpy")
@@ -1043,7 +1043,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         ```
         Go BackOpen In Tab
 
-    iter\_item\_vectors(**ids=None**, **\***, **start=0**, **stop=None**, **with\_ids=True**, **dtype=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_ndarray.py#L605)[#](#scikitplot.annoy.Index.iter_item_vectors "Link to this definition")
+    iter\_item\_vectors(**ids=None**, **\***, **start=0**, **stop=None**, **with\_ids=True**, **dtype=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_ndarray.py#L605)[#](#scikitplot.annoy.Index.iter_item_vectors "Link to this definition")
     :   Iterate vectors without allocating a dense matrix.
 
         Parameters:
@@ -1068,13 +1068,13 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             * ****dtype**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)") **|** **None**)
 
         Return type:
-        :   [**Iterator**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterator "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")]]
+        :   [**Iterator**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterator "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")]]
 
         > **See also**
         > [`get_item_vectors`](#scikitplot.annoy.Index.get_item_vectors "scikitplot.annoy.Index.get_item_vectors")
         :   Dense export.
 
-    kneighbors(**X**, **n\_neighbors=5**, **\***, **search\_k=-1**, **include\_distances=True**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**, **output\_type='vector'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_vectors.py#L661)[#](#scikitplot.annoy.Index.kneighbors "Link to this definition")
+    kneighbors(**X**, **n\_neighbors=5**, **\***, **search\_k=-1**, **include\_distances=True**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**, **output\_type='vector'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_vectors.py#L661)[#](#scikitplot.annoy.Index.kneighbors "Link to this definition")
     :   Find k nearest neighbors for one or more query vectors.
 
         This is a sklearn-like convenience wrapper that returns rectangular arrays.
@@ -1135,7 +1135,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             * ****output\_type**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'item'****,** **'vector'****]**)
 
         Return type:
-        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")]
+        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")]
 
         > **See also**
         > [`query_by_vector`](#scikitplot.annoy.Index.query_by_vector "scikitplot.annoy.Index.query_by_vector")
@@ -1144,7 +1144,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         [`kneighbors_graph`](#scikitplot.annoy.Index.kneighbors_graph "scikitplot.annoy.Index.kneighbors_graph")
         :   CSR kNN graph.
 
-    kneighbors\_graph(**X**, **n\_neighbors=5**, **\***, **search\_k=-1**, **mode='connectivity'**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**, **output\_type='item'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_vectors.py#L769)[#](#scikitplot.annoy.Index.kneighbors_graph "Link to this definition")
+    kneighbors\_graph(**X**, **n\_neighbors=5**, **\***, **search\_k=-1**, **mode='connectivity'**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**, **output\_type='item'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_vectors.py#L769)[#](#scikitplot.annoy.Index.kneighbors_graph "Link to this definition")
     :   Compute the k-neighbors graph (CSR) for query vectors.
 
         Parameters:
@@ -1248,7 +1248,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         The in-memory index must have been constructed with the same dimension
         and metric as the on-disk file.
 
-    classmethod load\_bundle(**manifest\_filename='manifest.json'**, **index\_filename='index.ann'**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_io.py#L211)[#](#scikitplot.annoy.Index.load_bundle "Link to this definition")
+    classmethod load\_bundle(**manifest\_filename='manifest.json'**, **index\_filename='index.ann'**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_io.py#L211)[#](#scikitplot.annoy.Index.load_bundle "Link to this definition")
     :   Load a directory bundle created by [`save_bundle`](#scikitplot.annoy.Index.save_bundle "scikitplot.annoy.Index.save_bundle").
 
         Parameters:
@@ -1283,7 +1283,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         Return type:
         :   Self
 
-    classmethod load\_index(**f**, **metric**, **path**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_io.py#L109)[#](#scikitplot.annoy.Index.load_index "Link to this definition")
+    classmethod load\_index(**f**, **metric**, **path**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_io.py#L109)[#](#scikitplot.annoy.Index.load_index "Link to this definition")
     :   Load (mmap) an Annoy index file into this object.
 
         Parameters:
@@ -1350,11 +1350,11 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             :   Canonical metric name, or None if not configured yet.
 
             > **See also**
-            > * [`cosine`](https://scipy.github.io/devdocs/reference/generated/scipy.spatial.distance.cosine.html#scipy.spatial.distance.cosine "(in SciPy v1.18.0.dev)")
-            * [`euclidean`](https://scipy.github.io/devdocs/reference/generated/scipy.spatial.distance.euclidean.html#scipy.spatial.distance.euclidean "(in SciPy v1.18.0.dev)")
-            * [`cityblock`](https://scipy.github.io/devdocs/reference/generated/scipy.spatial.distance.cityblock.html#scipy.spatial.distance.cityblock "(in SciPy v1.18.0.dev)")
-            * [`dot`](https://scipy.github.io/devdocs/reference/generated/scipy.sparse.coo_array.dot.html#scipy.sparse.coo_array.dot "(in SciPy v1.18.0.dev)")
-            * [`hamming`](https://scipy.github.io/devdocs/reference/generated/scipy.spatial.distance.hamming.html#scipy.spatial.distance.hamming "(in SciPy v1.18.0.dev)")
+            > * [`cosine`](https://scipy.github.io/devdocs/reference/generated/scipy.spatial.distance.cosine.html#scipy.spatial.distance.cosine "(in SciPy v1.19.0.dev)")
+            * [`euclidean`](https://scipy.github.io/devdocs/reference/generated/scipy.spatial.distance.euclidean.html#scipy.spatial.distance.euclidean "(in SciPy v1.19.0.dev)")
+            * [`cityblock`](https://scipy.github.io/devdocs/reference/generated/scipy.spatial.distance.cityblock.html#scipy.spatial.distance.cityblock "(in SciPy v1.19.0.dev)")
+            * [`dot`](https://scipy.github.io/devdocs/reference/generated/scipy.sparse.coo_array.dot.html#scipy.sparse.coo_array.dot "(in SciPy v1.19.0.dev)")
+            * [`hamming`](https://scipy.github.io/devdocs/reference/generated/scipy.spatial.distance.hamming.html#scipy.spatial.distance.hamming "(in SciPy v1.19.0.dev)")
 
         Notes
 
@@ -1442,7 +1442,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
     property pickle\_mode: [Literal](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")['auto', 'disk', 'byte'][#](#scikitplot.annoy.Index.pickle_mode "Link to this definition")
     :   Persist strategy used by [`PickleMixin`](scikitplot.annoy.PickleMixin.html#scikitplot.annoy.PickleMixin "scikitplot.annoy.PickleMixin").
 
-    plot\_index(**labels=None**, **\***, **ids=None**, **projection='pca'**, **dims=(0**, **1)**, **center=True**, **maxabs=False**, **l2\_normalize=False**, **dtype=<class 'numpy.float32'>**, **ax=None**, **title=None**, **plot\_kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_plotting.py#L231)[#](#scikitplot.annoy.Index.plot_index "Link to this definition")
+    plot\_index(**labels=None**, **\***, **ids=None**, **projection='pca'**, **dims=(0**, **1)**, **center=True**, **maxabs=False**, **l2\_normalize=False**, **dtype=<class 'numpy.float32'>**, **ax=None**, **title=None**, **plot\_kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_plotting.py#L231)[#](#scikitplot.annoy.Index.plot_index "Link to this definition")
     :   Plot this index as a 2D scatter plot.
 
         This is a thin wrapper around `plot_annoy_index` that uses
@@ -1470,7 +1470,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             * ****plot\_kwargs**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **None**)
 
         Return type:
-        :   [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
+        :   [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")]
 
         > **See also**
         > `plot_annoy_index`
@@ -1501,7 +1501,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         ```
         Go BackOpen In Tab
 
-    plot\_knn\_edges(**y2**, **\***, **ids=None**, **k=10**, **search\_k=-1**, **ax=None**, **line\_kwargs=None**, **undirected=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_plotting.py#L304)[#](#scikitplot.annoy.Index.plot_knn_edges "Link to this definition")
+    plot\_knn\_edges(**y2**, **\***, **ids=None**, **k=10**, **search\_k=-1**, **ax=None**, **line\_kwargs=None**, **undirected=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_plotting.py#L304)[#](#scikitplot.annoy.Index.plot_knn_edges "Link to this definition")
     :   Overlay kNN edges onto an existing 2D index plot.
 
         This is a thin wrapper around `plot_annoy_knn_edges` that uses
@@ -1516,7 +1516,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             :   The axes that were drawn on.
 
         Parameters:
-        :   * ****y2**** ([**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)"))
+        :   * ****y2**** ([**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"))
             * ****ids**** ([**Sequence**](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.14)")**[**[**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)")**]** **|** **None**)
             * ****k**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
             * ****search\_k**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
@@ -1566,7 +1566,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
 
         * This flag does not retroactively change already-loaded mappings.
 
-    query\_by\_item(**item**, **n\_neighbors**, **\***, **search\_k=-1**, **include\_distances=False**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_vectors.py#L291)[#](#scikitplot.annoy.Index.query_by_item "Link to this definition")
+    query\_by\_item(**item**, **n\_neighbors**, **\***, **search\_k=-1**, **include\_distances=False**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_vectors.py#L291)[#](#scikitplot.annoy.Index.query_by_item "Link to this definition")
     :   Query neighbors by stored item id.
 
         Parameters:
@@ -1619,7 +1619,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             * ****copy**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
 
         Return type:
-        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")]
+        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")]
 
         > **See also**
         > [`query_by_vector`](#scikitplot.annoy.Index.query_by_vector "scikitplot.annoy.Index.query_by_vector")
@@ -1632,7 +1632,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
 
         Exclusions are applied deterministically in the order returned by the backend.
 
-    query\_by\_vector(**vector**, **n\_neighbors**, **\***, **search\_k=-1**, **include\_distances=False**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_vectors.py#L472)[#](#scikitplot.annoy.Index.query_by_vector "Link to this definition")
+    query\_by\_vector(**vector**, **n\_neighbors**, **\***, **search\_k=-1**, **include\_distances=False**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_vectors.py#L472)[#](#scikitplot.annoy.Index.query_by_vector "Link to this definition")
     :   Query neighbors by an explicit vector.
 
         Parameters:
@@ -1688,7 +1688,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             * ****copy**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
 
         Return type:
-        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")]
+        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")]
 
         > **See also**
         > [`query_by_item`](#scikitplot.annoy.Index.query_by_item "scikitplot.annoy.Index.query_by_item")
@@ -1703,7 +1703,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         If `exclude_self=True` and no exact `0.0` distance candidate is returned
         in the first position, no additional self-exclusion is applied.
 
-    query\_vectors\_by\_item(**item**, **n\_neighbors**, **\***, **search\_k=-1**, **include\_distances=False**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**, **dtype=<class 'numpy.float32'>**, **output\_type='vector'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_vectors.py#L400)[#](#scikitplot.annoy.Index.query_vectors_by_item "Link to this definition")
+    query\_vectors\_by\_item(**item**, **n\_neighbors**, **\***, **search\_k=-1**, **include\_distances=False**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**, **dtype=<class 'numpy.float32'>**, **output\_type='vector'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_vectors.py#L400)[#](#scikitplot.annoy.Index.query_vectors_by_item "Link to this definition")
     :   Query neighbor vectors by stored item id.
 
         This is a convenience wrapper over [`query_by_item`](#scikitplot.annoy.Index.query_by_item "scikitplot.annoy.Index.query_by_item") that materializes
@@ -1742,13 +1742,13 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             * ****output\_type**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'item'****,** **'vector'****]**)
 
         Return type:
-        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")]
+        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")]
 
         > **See also**
         > [`query_vectors_by_vector`](#scikitplot.annoy.Index.query_vectors_by_vector "scikitplot.annoy.Index.query_vectors_by_vector")
         :   Vector query returning vectors (or ids).
 
-    query\_vectors\_by\_vector(**vector**, **n\_neighbors**, **\***, **search\_k=-1**, **include\_distances=False**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**, **dtype=<class 'numpy.float32'>**, **output\_type='vector'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_vectors.py#L583)[#](#scikitplot.annoy.Index.query_vectors_by_vector "Link to this definition")
+    query\_vectors\_by\_vector(**vector**, **n\_neighbors**, **\***, **search\_k=-1**, **include\_distances=False**, **exclude\_self=False**, **exclude\_item\_ids=None**, **ensure\_all\_finite=True**, **copy=False**, **dtype=<class 'numpy.float32'>**, **output\_type='vector'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_vectors.py#L583)[#](#scikitplot.annoy.Index.query_vectors_by_vector "Link to this definition")
     :   Query neighbor vectors by an explicit vector.
 
         Convenience wrapper over [`query_by_vector`](#scikitplot.annoy.Index.query_by_vector "scikitplot.annoy.Index.query_by_vector"). By default it returns
@@ -1788,7 +1788,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             * ****output\_type**** ([**Literal**](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.14)")**[****'item'****,** **'vector'****]**)
 
         Return type:
-        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")]
+        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)") | [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"), [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")]
 
         > **See also**
         > [`query_vectors_by_item`](#scikitplot.annoy.Index.query_vectors_by_item "scikitplot.annoy.Index.query_vectors_by_item")
@@ -1910,7 +1910,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         The output file will be overwritten if it already exists.
         Use prefault=None to fall back to the stored [`prefault`](#scikitplot.annoy.Index.prefault "scikitplot.annoy.Index.prefault") setting.
 
-    save\_bundle(**manifest\_filename='manifest.json'**, **index\_filename='index.ann'**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_io.py#L164)[#](#scikitplot.annoy.Index.save_bundle "Link to this definition")
+    save\_bundle(**manifest\_filename='manifest.json'**, **index\_filename='index.ann'**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_io.py#L164)[#](#scikitplot.annoy.Index.save_bundle "Link to this definition")
     :   Save a **directory bundle** containing metadata + the index file.
 
         The bundle contains:
@@ -1942,7 +1942,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         Return type:
         :   [list](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]
 
-    save\_index(**path**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_io.py#L70)[#](#scikitplot.annoy.Index.save_index "Link to this definition")
+    save\_index(**path**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_io.py#L70)[#](#scikitplot.annoy.Index.save_index "Link to this definition")
     :   Persist the Annoy index to disk.
 
         Parameters:
@@ -2126,7 +2126,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         [`set_verbose`](#scikitplot.annoy.Index.set_verbose "scikitplot.annoy.Index.set_verbose")
         :   Set the verbosity level (callable setter).
 
-    to\_bytes(**format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_io.py#L263)[#](#scikitplot.annoy.Index.to_bytes "Link to this definition")
+    to\_bytes(**format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_io.py#L263)[#](#scikitplot.annoy.Index.to_bytes "Link to this definition")
     :   Serialize the built index to bytes (backend `serialize`).
 
         Parameters:
@@ -2167,7 +2167,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         “Canonical” blobs trade load time for portability: deserialization rebuilds
         the index with `n_jobs=1` for deterministic reconstruction.
 
-    to\_json(**path=None**, **\***, **indent=2**, **sort\_keys=True**, **ensure\_ascii=False**, **include\_info=True**, **strict=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_meta.py#L377)[#](#scikitplot.annoy.Index.to_json "Link to this definition")
+    to\_json(**path=None**, **\***, **indent=2**, **sort\_keys=True**, **ensure\_ascii=False**, **include\_info=True**, **strict=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_meta.py#L377)[#](#scikitplot.annoy.Index.to_json "Link to this definition")
     :   Serialize [`to_metadata`](#scikitplot.annoy.Index.to_metadata "scikitplot.annoy.Index.to_metadata") to JSON.
 
         Parameters:
@@ -2211,7 +2211,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
 
         [`to_metadata`](#scikitplot.annoy.Index.to_metadata "scikitplot.annoy.Index.to_metadata")
 
-    to\_metadata(**\***, **include\_info=True**, **strict=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_meta.py#L154)[#](#scikitplot.annoy.Index.to_metadata "Link to this definition")
+    to\_metadata(**\***, **include\_info=True**, **strict=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_meta.py#L154)[#](#scikitplot.annoy.Index.to_metadata "Link to this definition")
     :   Export a serializable metadata payload.
 
         Parameters:
@@ -2252,7 +2252,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
 
         [`to_yaml`](#scikitplot.annoy.Index.to_yaml "scikitplot.annoy.Index.to_yaml")
 
-    to\_numpy(**ids=None**, **\***, **dtype=<class 'numpy.float32'>**, **start=0**, **stop=None**, **n\_rows=None**, **validate\_vector\_len=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_ndarray.py#L571)[#](#scikitplot.annoy.Index.to_numpy "Link to this definition")
+    to\_numpy(**ids=None**, **\***, **dtype=<class 'numpy.float32'>**, **start=0**, **stop=None**, **n\_rows=None**, **validate\_vector\_len=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_ndarray.py#L571)[#](#scikitplot.annoy.Index.to_numpy "Link to this definition")
     :   Export vectors to a dense NumPy array.
 
         > **See also**
@@ -2281,9 +2281,9 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
             * ****validate\_vector\_len**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
 
         Return type:
-        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")
+        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")
 
-    to\_pandas(**ids=None**, **\***, **dtype=<class 'numpy.float32'>**, **start=0**, **stop=None**, **n\_rows=None**, **id\_location='index'**, **id\_name='id'**, **columns=None**, **validate\_vector\_len=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_ndarray.py#L681)[#](#scikitplot.annoy.Index.to_pandas "Link to this definition")
+    to\_pandas(**ids=None**, **\***, **dtype=<class 'numpy.float32'>**, **start=0**, **stop=None**, **n\_rows=None**, **id\_location='index'**, **id\_name='id'**, **columns=None**, **validate\_vector\_len=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_ndarray.py#L681)[#](#scikitplot.annoy.Index.to_pandas "Link to this definition")
     :   Export vectors to a pandas `DataFrame`.
 
         Parameters:
@@ -2339,7 +2339,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         [`to_scipy_csr`](#scikitplot.annoy.Index.to_scipy_csr "scikitplot.annoy.Index.to_scipy_csr")
         :   Export as SciPy CSR.
 
-    to\_scipy\_csr(**ids=None**, **\***, **dtype=<class 'numpy.float32'>**, **start=0**, **stop=None**, **n\_rows=None**, **validate\_vector\_len=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_ndarray.py#L642)[#](#scikitplot.annoy.Index.to_scipy_csr "Link to this definition")
+    to\_scipy\_csr(**ids=None**, **\***, **dtype=<class 'numpy.float32'>**, **start=0**, **stop=None**, **n\_rows=None**, **validate\_vector\_len=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_ndarray.py#L642)[#](#scikitplot.annoy.Index.to_scipy_csr "Link to this definition")
     :   Export vectors as a SciPy CSR matrix.
 
         Returns:
@@ -2368,7 +2368,7 @@ class scikitplot.annoy.Index[[source]](https://github.com/scikit-plots/scikit-pl
         [`to_pandas`](#scikitplot.annoy.Index.to_pandas "scikitplot.annoy.Index.to_pandas")
         :   Export as pandas DataFrame.
 
-    to\_yaml(**path=None**, **\***, **include\_info=True**, **strict=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/annoy/_mixins/_meta.py#L439)[#](#scikitplot.annoy.Index.to_yaml "Link to this definition")
+    to\_yaml(**path=None**, **\***, **include\_info=True**, **strict=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/annoy/_mixins/_meta.py#L439)[#](#scikitplot.annoy.Index.to_yaml "Link to this definition")
     :   Serialize [`to_metadata`](#scikitplot.annoy.Index.to_metadata "scikitplot.annoy.Index.to_metadata") to YAML (requires PyYAML).
 
         Parameters:

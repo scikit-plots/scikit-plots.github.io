@@ -1,6 +1,6 @@
 # Modality[#](#modality "Link to this heading")
 
-class scikitplot.corpus.Modality(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/corpus/_schema.py#L132)[#](#scikitplot.corpus.Modality "Link to this definition")
+class scikitplot.corpus.Modality(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/corpus/_schema.py#L132)[#](#scikitplot.corpus.Modality "Link to this definition")
 :   Primary content modality of a [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus.CorpusDocument").
 
     Notes
@@ -38,19 +38,19 @@ class scikitplot.corpus.Modality(**value**)[[source]](https://github.com/scikit-
     ```
     Go BackOpen In Tab
 
-    AUDIO = 'audio'[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.Modality.AUDIO "Link to this definition")
+    AUDIO = 'audio'[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.Modality.AUDIO "Link to this definition")
     :   Audio waveform — `raw_tensor` shape is `(samples,)` float32.
 
-    IMAGE = 'image'[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.Modality.IMAGE "Link to this definition")
+    IMAGE = 'image'[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.Modality.IMAGE "Link to this definition")
     :   Raster image tensor — `raw_tensor` shape is `(H, W, C)` uint8.
 
-    MULTIMODAL = 'multimodal'[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.Modality.MULTIMODAL "Link to this definition")
+    MULTIMODAL = 'multimodal'[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.Modality.MULTIMODAL "Link to this definition")
     :   Both `text` and `raw_tensor` are present (e.g. image + OCR).
 
-    TEXT = 'text'[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.Modality.TEXT "Link to this definition")
+    TEXT = 'text'[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.Modality.TEXT "Link to this definition")
     :   Plain text content — `raw_tensor` is `None`.
 
-    VIDEO = 'video'[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.Modality.VIDEO "Link to this definition")
+    VIDEO = 'video'[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.Modality.VIDEO "Link to this definition")
     :   Video frame tensor — `raw_tensor` shape is `(T, H, W, C)` uint8.
 
     capitalize(**/**)[#](#scikitplot.corpus.Modality.capitalize "Link to this definition")

@@ -1,6 +1,6 @@
 # get\_include[#](#get-include "Link to this heading")
 
-scikitplot.cexternals.\_f2py.get\_include()[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/cexternals/_f2py/__init__.py#L33)[#](#scikitplot.cexternals._f2py.get_include "Link to this definition")
+scikitplot.cexternals.\_f2py.get\_include()[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/cexternals/_f2py/__init__.py#L33)[#](#scikitplot.cexternals._f2py.get_include "Link to this definition")
 :   Return the directory that contains the `fortranobject.c` and `.h` files.
 
     > **Note**
@@ -19,7 +19,7 @@ scikitplot.cexternals.\_f2py.get\_include()[[source]](https://github.com/scikit-
             `fortranobject.h`.
 
     > **See also**
-    > [`numpy.get_include`](https://numpy.org/devdocs/reference/generated/numpy.get_include.html#numpy.get_include "(in NumPy v2.5.dev0)")
+    > [`numpy.get_include`](https://numpy.org/devdocs/reference/generated/numpy.get_include.html#numpy.get_include "(in NumPy v2.6.dev0)")
     :   function that returns the numpy include directory
 
     Notes

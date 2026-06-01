@@ -1,6 +1,6 @@
 # KissBitGenerator[#](#kissbitgenerator "Link to this heading")
 
-class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSeedSequence]]=None**, **int bit\_width: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissBitGenerator "Link to this definition")
+class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSeedSequence]]=None**, **int bit\_width: [int](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") = None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissBitGenerator "Link to this definition")
 :   NumPy-compatible BitGenerator using KISS algorithm with complete serialization.
 
     Parameters:
@@ -44,7 +44,7 @@ class scikitplot.random.KissBitGenerator(**seed: Optional[Union[int**, **KissSee
     [`default_rng`](scikitplot.random.default_rng.html#scikitplot.random.default_rng "scikitplot.random.default_rng")
     :   Convenience function to create generator
 
-    [`numpy.random.BitGenerator`](https://numpy.org/devdocs/reference/random/bit_generators/generated/numpy.random.BitGenerator.html#numpy.random.BitGenerator "(in NumPy v2.5.dev0)")
+    [`numpy.random.BitGenerator`](https://numpy.org/devdocs/reference/random/bit_generators/generated/numpy.random.BitGenerator.html#numpy.random.BitGenerator "(in NumPy v2.6.dev0)")
     :   NumPy’s BitGenerator base class
 
     Notes

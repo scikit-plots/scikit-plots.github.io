@@ -1,6 +1,6 @@
 # KissSeedSequence[#](#kissseedsequence "Link to this heading")
 
-class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=()**, **pool\_size=4**, **n\_children\_spawned=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissSeedSequence "Link to this definition")
+class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=()**, **pool\_size=4**, **n\_children\_spawned=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissSeedSequence "Link to this definition")
 :   Seed sequence compatible with numpy.random.SeedSequence.
 
     Parameters:
@@ -64,7 +64,7 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
     [`default_rng`](scikitplot.random.default_rng.html#scikitplot.random.default_rng "scikitplot.random.default_rng")
     :   Convenience function to create generator
 
-    [`numpy.random.SeedSequence`](https://numpy.org/devdocs/reference/random/bit_generators/generated/numpy.random.SeedSequence.html#numpy.random.SeedSequence "(in NumPy v2.5.dev0)")
+    [`numpy.random.SeedSequence`](https://numpy.org/devdocs/reference/random/bit_generators/generated/numpy.random.SeedSequence.html#numpy.random.SeedSequence "(in NumPy v2.6.dev0)")
     :   NumPy’s seed sequence implementation
 
     Notes
@@ -154,10 +154,10 @@ class scikitplot.random.KissSeedSequence(**entropy=None**, **\***, **spawn\_key=
 
         Parameters:
         :   * ****n\_words**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
-            * ****dtype**** ([**type**](https://docs.python.org/3/library/functions.html#type "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.5.dev0)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **\_HasDType****[**[**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.5.dev0)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]****]** **|** **\_HasNumPyDType****[**[**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.5.dev0)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]****]** **|** [**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **\_DTypeDict** **|** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
+            * ****dtype**** ([**type**](https://docs.python.org/3/library/functions.html#type "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **\_HasDType****[**[**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]****]** **|** **\_HasNumPyDType****[**[**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]****]** **|** [**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** [**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**]** **|** **\_DTypeDict** **|** [**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
 
         Return type:
-        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), …], [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.5.dev0)")[**uint32** | **uint64**]]
+        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), …], [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")[**uint32** | **uint64**]]
 
         Notes
 

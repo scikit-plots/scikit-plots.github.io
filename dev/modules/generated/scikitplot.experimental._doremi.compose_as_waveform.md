@@ -1,6 +1,6 @@
 # compose\_as\_waveform[#](#compose-as-waveform "Link to this heading")
 
-scikitplot.experimental.\_doremi.compose\_as\_waveform(**composition='\n# Format: NoteOctave-Duration\n# NoteOctave: Musical note + octave number (e.g., G4 means G in the 4th octave)\n# Duration: Length of the note (relative)\n#   1   = quarter note\n#  0.5  = eighth note\n#   2   = half note\n#\n# Happy Birthday Melody — Western notation with lyrics:\n\nG4-0.5    -  G4-0.25   -  A4-0.5    -  G4-0.5    -  C5-0.5    -  B4-1\n# "Happy"    "birth-"   "day"     "to"     "you"\n\nG4-0.5    -  G4-0.25   -  A4-0.5    -  G4-0.5    -  D5-0.5    -  C5-1\n# "Happy"    "birth-"   "day"     "to"     "you"\n\nG4-0.5    -  G4-0.25   -  G5-0.5    -  E5-0.5    -  C5-0.5    -  B4-0.5    -  A4-1\n# "Happy"    "birth-"   "day"     "dear"    "[Name]"\n\nF5-0.5    -  F5-0.25   -  E5-0.5    -  C5-0.5    -  D5-0.5    -  C5-1\n# "Happy"    "birth-"   "day"     "to"     "you"\n'**, **envelope='hann'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/experimental/_doremi/composer.py#L67)[#](#scikitplot.experimental._doremi.compose_as_waveform "Link to this definition")
+scikitplot.experimental.\_doremi.compose\_as\_waveform(**composition='\n# Format: NoteOctave-Duration\n# NoteOctave: Musical note + octave number (e.g., G4 means G in the 4th octave)\n# Duration: Length of the note (relative)\n#   1   = quarter note\n#  0.5  = eighth note\n#   2   = half note\n#\n# Happy Birthday Melody — Western notation with lyrics:\n\nG4-0.5    -  G4-0.25   -  A4-0.5    -  G4-0.5    -  C5-0.5    -  B4-1\n# "Happy"    "birth-"   "day"     "to"     "you"\n\nG4-0.5    -  G4-0.25   -  A4-0.5    -  G4-0.5    -  D5-0.5    -  C5-1\n# "Happy"    "birth-"   "day"     "to"     "you"\n\nG4-0.5    -  G4-0.25   -  G5-0.5    -  E5-0.5    -  C5-0.5    -  B4-0.5    -  A4-1\n# "Happy"    "birth-"   "day"     "dear"    "[Name]"\n\nF5-0.5    -  F5-0.25   -  E5-0.5    -  C5-0.5    -  D5-0.5    -  C5-1\n# "Happy"    "birth-"   "day"     "to"     "you"\n'**, **envelope='hann'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/experimental/_doremi/composer.py#L67)[#](#scikitplot.experimental._doremi.compose_as_waveform "Link to this definition")
 :   Generate a concatenated waveform from a musical composition input.
 
     Parameters:
@@ -30,7 +30,7 @@ scikitplot.experimental.\_doremi.compose\_as\_waveform(**composition='\n# Format
         * ****envelope**** (**Union****[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**,** **callable****[****[****np.ndarray****,** [**float**](https://docs.python.org/3/library/functions.html#float "(in Python v3.14)")**]****,** **np.ndarray****]****,** **None****]**)
 
     Return type:
-    :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")
+    :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")
 
     Notes
 

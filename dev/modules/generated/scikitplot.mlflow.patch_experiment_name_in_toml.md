@@ -1,6 +1,6 @@
 # patch\_experiment\_name\_in\_toml[#](#patch-experiment-name-in-toml "Link to this heading")
 
-scikitplot.mlflow.patch\_experiment\_name\_in\_toml(**path**, **\***, **experiment\_name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/mlflow/_workflow.py#L183)[#](#scikitplot.mlflow.patch_experiment_name_in_toml "Link to this definition")
+scikitplot.mlflow.patch\_experiment\_name\_in\_toml(**path**, **\***, **experiment\_name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/mlflow/_workflow.py#L183)[#](#scikitplot.mlflow.patch_experiment_name_in_toml "Link to this definition")
 :   Patch `experiment_name = ...` in a TOML config deterministically.
 
     Parameters:

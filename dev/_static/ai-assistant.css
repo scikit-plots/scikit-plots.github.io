@@ -568,7 +568,9 @@
     padding: 0.3rem 0.75rem;
     cursor: pointer;
     text-align: center;
-    transition: background-color 0.15s ease, border-color 0.15s ease;
+    /* transition is defined once at the bottom patch section (merged with
+       transform+box-shadow). See the "Chip hover: subtle lift" comment block.
+       Do NOT add transition here — CSS last-wins would partially override it. */
     white-space: normal;
     word-break: break-word;
 }
@@ -766,7 +768,12 @@
     pointer-events: none;
 }
 
-/* Send button gets brand accent when active (has text to send) */
+/* Send button: pre-filled icon tint (transparent background state).
+ * NOTE: This rule ONLY applies before the filled-background rule below
+ * (line ~2126) takes over.  It is the colour seen in the single frame
+ * between the class being added and the background paint completing.
+ * Do NOT move this below the filled rule — the cascade would break it.
+ * The filled rule sets color:#fff; the bottom patch must NOT override it. */
 .ai-assistant-panel-footer-btn--send.has-text {
     color: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
 }
@@ -860,6 +867,9 @@
     font-family: inherit;
     transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
     white-space: nowrap;
+    /* Prevent the 300ms tap delay on touch devices (iOS Safari, Android Chrome)
+       without disabling pinch-zoom — exactly what manipulation provides.      */
+    touch-action: manipulation;
 }
 
 .ai-assistant-panel-trigger:hover {
@@ -1102,6 +1112,114 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 }
 [data-bs-theme="dark"] .ai-assistant-panel-bubble-action:hover {
     background: rgba(255, 255, 255, 0.06);
+}
+
+/* ─── Action-row expandable "… More" menu ─────────────────────────────────────
+ *
+ * Architecture (data-first, JS-minimal):
+ *   • .ai-assistant-panel-bubble-action-more  — wrapper, relative position anchor
+ *   • .ai-assistant-panel-bubble-action--more-toggle — the "⋯ More" button
+ *   • .ai-assistant-panel-bubble-action-more-menu — hidden submenu
+ *
+ * Visibility contract:
+ *   [data-open="false"] (default) → menu hidden
+ *   [data-open="true"]            → menu visible (JS sets attribute)
+ *
+ * The menu floats above the action row (bottom: 100%) so it never overlaps
+ * the bubble text.  z-index matches the panel's own z-index to stay on top.
+ *
+ * Extension contract: future actions (Translate, TTS language picker, …)
+ * are added as new buttons inside .ai-assistant-panel-bubble-action-more-menu
+ * without any CSS changes — the layout is flex-column and grows automatically.
+ */
+
+.ai-assistant-panel-bubble-action-more {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* "⋯ More" toggle inherits all .ai-assistant-panel-bubble-action styles.
+   The chevron text is rotated when the menu is open.                        */
+.ai-assistant-panel-bubble-action--more-toggle[aria-expanded="true"] {
+    background: var(--pst-color-surface, var(--color-background-secondary, #f0f1f3));
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-bubble-action--more-toggle[aria-expanded="true"] {
+    background: rgba(255, 255, 255, 0.10);
+}
+
+/* Submenu: floats above the button row, left-aligned with the toggle.       */
+.ai-assistant-panel-bubble-action-more-menu {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 0.3rem);
+    left: 0;
+    z-index: 99999;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.3rem;
+    min-width: 9rem;
+    background: var(--pst-color-surface, var(--color-background-primary, #fff));
+    border: 1px solid var(--pst-color-border, var(--color-foreground-border, #e1e4e5));
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14),
+                0 2px  6px rgba(0, 0, 0, 0.08);
+}
+
+.ai-assistant-panel-bubble-action-more-menu[data-open="true"] {
+    display: flex;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-bubble-action-more-menu {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45),
+                0 2px  6px rgba(0, 0, 0, 0.28);
+    background: var(--pst-color-surface, var(--color-background-primary, #1b1e21));
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+/* Items inside the submenu are full-width.                                   */
+.ai-assistant-panel-bubble-action-more-menu
+    .ai-assistant-panel-bubble-action {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+}
+
+/* ─── Listen (TTS) button state ──────────────────────────────────────────────
+ *
+ * Three states:
+ *   idle     — default; neutral muted colour
+ *   playing  — brand-primary accent + pulse animation (aria-pressed="true")
+ *   paused   — yellow accent (aria-pressed="mixed" when paused mid-playback)
+ *
+ * aria-pressed is the correct semantics for a toggle action button that does
+ * not own a separate "pressed" element.  "true" = currently speaking.
+ */
+
+.ai-assistant-panel-bubble-action--listen[aria-pressed="true"] {
+    color: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    background: rgba(41, 128, 185, 0.10);
+    animation: ai-listen-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes ai-listen-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.55; }
+}
+
+.ai-assistant-panel-bubble-action--listen[aria-pressed="paused"] {
+    color: #c49a00;
+    background: rgba(196, 154, 0, 0.10);
+}
+
+/* prefers-reduced-motion: stop the listen pulse animation                    */
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-panel-bubble-action--listen[aria-pressed="true"] {
+        animation: none;
+    }
 }
 
 /* ─── R5: feedback block ("Was this helpful?") ──────────────────────────────
@@ -1686,13 +1804,71 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     background: rgba(255, 255, 255, 0.07);
 }
 
-/* Respect reduced-motion users for every new animated affordance. */
+/* Respect reduced-motion users for every animated affordance.
+ *
+ * FIX: The original block only covered 4 selectors.  Missing:
+ *   - .ai-assistant-panel (slide-in opacity+transform animation)
+ *   - .ai-assistant-typing-dot (bounce animation)
+ *   - .ai-assistant-panel-bubble--streaming (pulse animation)
+ *   - .ai-assistant-dropdown-icon (rotate transition)
+ *   - .ai-assistant-panel-chip (lift transform on hover)
+ *   - .ai-assistant-panel-footer-btn--send.has-text (scale transform)
+ */
 @media (prefers-reduced-motion: reduce) {
+    /* Existing selections */
     .ai-assistant-panel-resizer,
     .ai-assistant-panel-feedback-btn,
     .ai-assistant-panel-bubble-action,
     .ai-assistant-searchbar { transition: none; }
     .ai-assistant-panel-feedback-btn:hover { transform: none; }
+
+    /* Panel slide-in: skip opacity/transform animation; just show the panel */
+    .ai-assistant-panel {
+        transition: none;
+        opacity: 1;
+        transform: none;
+    }
+    .ai-assistant-panel.ai-assistant-panel--open {
+        opacity: 1;
+        transform: none;
+    }
+
+    /* Typing indicator: stop bounce */
+    .ai-assistant-typing-dot {
+        animation: none;
+        opacity: 0.6;
+    }
+
+    /* Streaming bubble: stop pulse */
+    .ai-assistant-panel-bubble--streaming {
+        animation: none;
+        border-left: 2px solid var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    }
+
+    /* Dropdown icon: no rotation transition */
+    .ai-assistant-dropdown-icon {
+        transition: none;
+    }
+
+    /* Chip: no lift transform */
+    .ai-assistant-panel-chip {
+        transition: none;
+    }
+    .ai-assistant-panel-chip:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    /* Send button: no scale */
+    .ai-assistant-panel-footer-btn--send.has-text {
+        transform: none;
+        transition: none;
+    }
+
+    /* Mic pulse: stop recording animation */
+    .ai-assistant-panel-footer-btn--mic.recording {
+        animation: none;
+    }
 }
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -2068,6 +2244,10 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     color: #fff;
 }
 .ai-assistant-panel-footer-btn--send.has-text:hover {
+    /* Fallback for browsers without color-mix() (Safari < 16.2, Chromium < 111):
+       a plain rgba darkens the brand colour enough to communicate hover state.
+       color-mix() version is added after so it wins when supported.          */
+    background-color: rgba(33, 103, 149, 0.95);
     background-color: color-mix(
         in srgb,
         var(--pst-color-primary, #2980b9) 88%,
@@ -2076,12 +2256,11 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     color: #fff;
 }
 
-/* Inline model picker inside action bar: compact, no border on focus-ring. */
-.ai-assistant-panel-inline-model-picker {
-    height: 1.75rem;
-    max-width: 8rem;
-    font-size: 0.75rem;
-}
+/* NOTE: .ai-assistant-panel-inline-model-picker compact overrides are already
+   applied above in the Phase B footer-actions section. The duplicate definition
+   that was here (height: 1.75rem, max-width: 8rem, font-size: 0.75rem) was
+   removed because CSS cascades last-wins — the duplicate silently overrode the
+   earlier rule's height: 2rem, producing an inconsistent picker size. */
 
 [data-bs-theme="dark"] .ai-assistant-panel-footer-actions {
     border-top-color: rgba(255, 255, 255, 0.08);
@@ -2515,21 +2694,37 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     background: #74aa9c !important;
 }
 
-/* ─── Model picker row: align badge with radio ────────────────────────────── */
-
-.ai-assistant-panel-model-row {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-}
+/* NOTE: .ai-assistant-panel-model-row is defined once above (lines ~1756).
+   align-items: center is set there. Do NOT add a second definition here —
+   it was removed because the duplicate override silently killed flex-start
+   alignment on the radio+badge layout, causing badge misalignment. */
 
 /* ─── Improved send button accent ─────────────────────────────────────────── */
+/*
+ * BUG-FIX (SVG visibility): This rule MUST NOT set `color`.
+ *
+ * Cascade order for .ai-assistant-panel-footer-btn--send.has-text:
+ *   Rule A (line ~772)  : color = brand-primary   (transparent-bg state)
+ *   Rule B (line ~2126) : background = brand-primary; color = #fff  ← fills button
+ *   Rule C (this rule)  : must NOT redeclare color
+ *
+ * If this rule declares `color: var(--pst-color-primary)` it overrides Rule B's
+ * `color: #fff`, making the SVG stroke (currentColor) match the brand-coloured
+ * background — completely invisible. This was the reported "turquoise on turquoise"
+ * SVG bug. The fix is to omit `color` here entirely: Rule B's #fff stays as the
+ * winning declared value for all three rules at this selector.
+ *
+ * opacity: 1 is belt-and-suspenders (the disabled state sets 0.35; active send
+ * must always be fully opaque). transform provides the subtle scale affordance.
+ */
 
 .ai-assistant-panel-footer-btn--send.has-text {
-    color: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    /* color: intentionally omitted — Rule B above supplies color:#fff which      */
+    /* ensures the send-arrow SVG (stroke:currentColor) is white against the      */
+    /* brand-coloured background.  Never add color here.                          */
     opacity: 1;
     transform: scale(1.08);
-    transition: transform 0.12s ease, color 0.12s ease;
+    transition: transform 0.12s ease, background-color 0.15s ease;
 }
 
 /* ─── Welcome screen polish ───────────────────────────────────────────────── */
@@ -2539,13 +2734,23 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 }
 
 /* ─── Chip hover: subtle lift ─────────────────────────────────────────────── */
+/*
+ * FIX: The original bottom patch added `transition: transform, box-shadow`
+ * here, which silently REPLACED the `transition: background-color, border-color`
+ * set on .ai-assistant-panel-chip above. CSS last-wins means color transitions
+ * were lost. The correct fix is one unified transition covering all four props.
+ * This rule REPLACES the chip transition declaration above (which has been
+ * removed from its original location and merged here).
+ */
 
 .ai-assistant-panel-chip {
-    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    transition: background-color 0.15s ease,
+                border-color    0.15s ease,
+                transform       0.12s ease,
+                box-shadow      0.12s ease;
 }
 
 .ai-assistant-panel-chip:hover {
-    transform: translateY(-1px);
+    transform:  translateY(-1px);
     box-shadow: 0 2px 6px rgba(0,0,0,0.12);
 }
-

@@ -1,6 +1,6 @@
 # MatchMode[#](#matchmode "Link to this heading")
 
-class scikitplot.corpus.MatchMode(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/corpus/_schema.py#L804)[#](#scikitplot.corpus.MatchMode "Link to this definition")
+class scikitplot.corpus.MatchMode(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/corpus/_schema.py#L804)[#](#scikitplot.corpus.MatchMode "Link to this definition")
 :   Search mode for intertextual matching queries against a corpus index.
 
     Notes
@@ -29,16 +29,16 @@ class scikitplot.corpus.MatchMode(**value**)[[source]](https://github.com/scikit
     ```
     Go BackOpen In Tab
 
-    HYBRID = 'hybrid'[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.MatchMode.HYBRID "Link to this definition")
+    HYBRID = 'hybrid'[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.MatchMode.HYBRID "Link to this definition")
     :   Reciprocal Rank Fusion of KEYWORD and SEMANTIC scores.
 
-    KEYWORD = 'keyword'[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.MatchMode.KEYWORD "Link to this definition")
+    KEYWORD = 'keyword'[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.MatchMode.KEYWORD "Link to this definition")
     :   BM25 / TF-IDF match on `tokens` or `keywords`.
 
-    SEMANTIC = 'semantic'[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.MatchMode.SEMANTIC "Link to this definition")
+    SEMANTIC = 'semantic'[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.MatchMode.SEMANTIC "Link to this definition")
     :   Approximate nearest-neighbour search on `embedding`.
 
-    STRICT = 'strict'[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.MatchMode.STRICT "Link to this definition")
+    STRICT = 'strict'[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.MatchMode.STRICT "Link to this definition")
     :   Exact substring match within `text`.
 
     capitalize(**/**)[#](#scikitplot.corpus.MatchMode.capitalize "Link to this definition")

@@ -77,7 +77,7 @@ the original pull request.
 
 But let’s say the author is okay with you taking over…
 
-First, [Create a fork of pandas](https://pandas.pydata.org/docs/dev/development/contributing.html#contributing-forking "(in pandas)").
+First, [Create a fork of pandas](https://pandas.pydata.org/docs/dev/development/contributing.html#contributing-forking "(in pandas v3.1.0.dev0+974.ge652ee88a5)").
 Now, you need to point a remote to the pull request author’s fork.
 In this example, the author’s username is `octocat` and the pull request
 branch name is `cool-feature` that is tied to pull request number 99999:

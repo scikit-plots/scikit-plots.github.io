@@ -16,7 +16,7 @@ This module provides Cython implementations of several mathematical functions
 often used in statistical and machine learning contexts,
 such as the expit (sigmoid) function, its logarithm, and the logit function.
 These functions are scalar and typed versions of functions commonly
-found in libraries like [`scipy.special`](https://scipy.github.io/devdocs/reference/special.html#module-scipy.special "(in SciPy v1.18.0.dev)").
+found in libraries like [`scipy.special`](https://scipy.github.io/devdocs/reference/special.html#module-scipy.special "(in SciPy v1.19.0.dev)").
 
 The module leverages Cython’s fused types to handle different numeric types
 (`double`, `float`, `long double`) in a single function definition,

@@ -1,6 +1,6 @@
 # get\_security\_policy[#](#get-security-policy "Link to this heading")
 
-scikitplot.mlflow.get\_security\_policy()[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/mlflow/_security.py#L671)[#](#scikitplot.mlflow.get_security_policy "Link to this definition")
+scikitplot.mlflow.get\_security\_policy()[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/mlflow/_security.py#L671)[#](#scikitplot.mlflow.get_security_policy "Link to this definition")
 :   Return the currently active [`SecurityPolicy`](scikitplot.mlflow.SecurityPolicy.html#scikitplot.mlflow.SecurityPolicy "scikitplot.mlflow.SecurityPolicy"), or `None`.
 
     Returns:

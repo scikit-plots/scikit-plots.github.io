@@ -1,6 +1,6 @@
 # AlwaysStdErrHandler[#](#alwaysstderrhandler "Link to this heading")
 
-class scikitplot.logging.AlwaysStdErrHandler(**stream=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/logging.py#L916)[#](#scikitplot.logging.AlwaysStdErrHandler "Link to this definition")
+class scikitplot.logging.AlwaysStdErrHandler(**stream=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/logging.py#L916)[#](#scikitplot.logging.AlwaysStdErrHandler "Link to this definition")
 :   A custom logging handler inherited from [`StreamHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.StreamHandler "(in Python v3.14)").
 
     That enforces the use of a specific output stream: either standard error
@@ -34,13 +34,13 @@ class scikitplot.logging.AlwaysStdErrHandler(**stream=None**)[[source]](https://
     Historically, this handler tried to default to stderr except in notebooks.
     This behavior is preserved through the default arguments in the base class.
 
-    acquire()[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/../../logging/__init__.py#L922)[#](#scikitplot.logging.AlwaysStdErrHandler.acquire "Link to this definition")
+    acquire()[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/../../logging/__init__.py#L922)[#](#scikitplot.logging.AlwaysStdErrHandler.acquire "Link to this definition")
     :   Acquire the I/O thread lock.
 
-    addFilter(**filter**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/../../logging/__init__.py#L801)[#](#scikitplot.logging.AlwaysStdErrHandler.addFilter "Link to this definition")
+    addFilter(**filter**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/../../logging/__init__.py#L801)[#](#scikitplot.logging.AlwaysStdErrHandler.addFilter "Link to this definition")
     :   Add the specified filter to this handler.
 
-    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/../../logging/__init__.py#L998)[#](#scikitplot.logging.AlwaysStdErrHandler.close "Link to this definition")
+    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/../../logging/__init__.py#L998)[#](#scikitplot.logging.AlwaysStdErrHandler.close "Link to this definition")
     :   Tidy up any resources used by the handler.
 
         This version removes the handler from an internal map of handlers,
@@ -48,10 +48,10 @@ class scikitplot.logging.AlwaysStdErrHandler(**stream=None**)[[source]](https://
         should ensure that this gets called from overridden close()
         methods.
 
-    createLock()[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/../../logging/__init__.py#L912)[#](#scikitplot.logging.AlwaysStdErrHandler.createLock "Link to this definition")
+    createLock()[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/../../logging/__init__.py#L912)[#](#scikitplot.logging.AlwaysStdErrHandler.createLock "Link to this definition")
     :   Acquire a thread lock for serializing access to the underlying I/O.
 
-    emit(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/../../logging/__init__.py#L1098)[#](#scikitplot.logging.AlwaysStdErrHandler.emit "Link to this definition")
+    emit(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/../../logging/__init__.py#L1098)[#](#scikitplot.logging.AlwaysStdErrHandler.emit "Link to this definition")
     :   Emit a record.
 
         If a formatter is specified, it is used to format the record.
@@ -61,7 +61,7 @@ class scikitplot.logging.AlwaysStdErrHandler(**stream=None**)[[source]](https://
         has an ‘encoding’ attribute, it is used to determine how to do the
         output to the stream.
 
-    filter(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/../../logging/__init__.py#L815)[#](#scikitplot.logging.AlwaysStdErrHandler.filter "Link to this definition")
+    filter(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/../../logging/__init__.py#L815)[#](#scikitplot.logging.AlwaysStdErrHandler.filter "Link to this definition")
     :   Determine if a record is loggable by consulting all the filters.
 
         The default is to allow the record to be logged; any filter can veto
@@ -70,18 +70,18 @@ class scikitplot.logging.AlwaysStdErrHandler(**stream=None**)[[source]](https://
 
         Changed in version 3.2: Allow filters to be just callables.
 
-    flush()[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/../../logging/__init__.py#L1087)[#](#scikitplot.logging.AlwaysStdErrHandler.flush "Link to this definition")
+    flush()[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/../../logging/__init__.py#L1087)[#](#scikitplot.logging.AlwaysStdErrHandler.flush "Link to this definition")
     :   Flushes the stream.
 
-    format(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/../../logging/__init__.py#L942)[#](#scikitplot.logging.AlwaysStdErrHandler.format "Link to this definition")
+    format(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/../../logging/__init__.py#L942)[#](#scikitplot.logging.AlwaysStdErrHandler.format "Link to this definition")
     :   Format the specified record.
 
         If a formatter is set, use it. Otherwise, use the default formatter
         for the module.
 
-    get\_name()[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/../../logging/__init__.py#L896)[#](#scikitplot.logging.AlwaysStdErrHandler.get_name "Link to this definition")
+    get\_name()[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/../../logging/__init__.py#L896)[#](#scikitplot.logging.AlwaysStdErrHandler.get_name "Link to this definition")
 
-    handle(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/../../logging/__init__.py#L965)[#](#scikitplot.logging.AlwaysStdErrHandler.handle "Link to this definition")
+    handle(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/../../logging/__init__.py#L965)[#](#scikitplot.logging.AlwaysStdErrHandler.handle "Link to this definition")
     :   Conditionally emit the specified logging record.
 
         Emission depends on filters which may have been added to the handler.
@@ -89,7 +89,7 @@ class scikitplot.logging.AlwaysStdErrHandler(**stream=None**)[[source]](https://
         the I/O thread lock. Returns whether the filter passed the record for
         emission.
 
-    handleError(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/../../logging/__init__.py#L1016)[#](#scikitplot.logging.AlwaysStdErrHandler.handleError "Link to this definition")
+    handleError(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/../../logging/__init__.py#L1016)[#](#scikitplot.logging.AlwaysStdErrHandler.handleError "Link to this definition")
     :   Handle errors which occur during an emit() call.
 
         This method should be called from handlers when an exception is
@@ -107,26 +107,26 @@ class scikitplot.logging.AlwaysStdErrHandler(**stream=None**)[[source]](https://
         :   str | None
             :   The current handler object name if provided, otherwise None.
 
-    release()[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/../../logging/__init__.py#L929)[#](#scikitplot.logging.AlwaysStdErrHandler.release "Link to this definition")
+    release()[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/../../logging/__init__.py#L929)[#](#scikitplot.logging.AlwaysStdErrHandler.release "Link to this definition")
     :   Release the I/O thread lock.
 
-    removeFilter(**filter**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/../../logging/__init__.py#L808)[#](#scikitplot.logging.AlwaysStdErrHandler.removeFilter "Link to this definition")
+    removeFilter(**filter**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/../../logging/__init__.py#L808)[#](#scikitplot.logging.AlwaysStdErrHandler.removeFilter "Link to this definition")
     :   Remove the specified filter from this handler.
 
-    setFormatter(**fmt**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/../../logging/__init__.py#L983)[#](#scikitplot.logging.AlwaysStdErrHandler.setFormatter "Link to this definition")
+    setFormatter(**fmt**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/../../logging/__init__.py#L983)[#](#scikitplot.logging.AlwaysStdErrHandler.setFormatter "Link to this definition")
     :   Set the formatter for this handler.
 
-    setLevel(**level**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/../../logging/__init__.py#L936)[#](#scikitplot.logging.AlwaysStdErrHandler.setLevel "Link to this definition")
+    setLevel(**level**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/../../logging/__init__.py#L936)[#](#scikitplot.logging.AlwaysStdErrHandler.setLevel "Link to this definition")
     :   Set the logging level of this handler. level must be an int or a str.
 
-    setStream(**stream**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/../../logging/__init__.py#L1120)[#](#scikitplot.logging.AlwaysStdErrHandler.setStream "Link to this definition")
+    setStream(**stream**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/../../logging/__init__.py#L1120)[#](#scikitplot.logging.AlwaysStdErrHandler.setStream "Link to this definition")
     :   Sets the StreamHandler’s stream to the specified value,
         if it is different.
 
         Returns the old stream, if the stream was changed, or None
         if it wasn’t.
 
-    set\_name(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/../../logging/__init__.py#L899)[#](#scikitplot.logging.AlwaysStdErrHandler.set_name "Link to this definition")
+    set\_name(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/../../logging/__init__.py#L899)[#](#scikitplot.logging.AlwaysStdErrHandler.set_name "Link to this definition")
 
     property stream: IO[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")][#](#scikitplot.logging.AlwaysStdErrHandler.stream "Link to this definition")
     :   Get the current logging stream.

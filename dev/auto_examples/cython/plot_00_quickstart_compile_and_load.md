@@ -63,7 +63,7 @@ _print_prereq_summary(report)
 ```
 ```
 Prereq ok: False
-  - cython: ok=True, version=3.2.4
+  - cython: ok=True, version=3.2.5
   - setuptools: ok=True, version=79.0.1
 
 ```
@@ -167,39 +167,39 @@ else:
 /home/circleci/.pyenv/versions/3.11.15/lib/python3.11/site-packages/_distutils_hack/__init__.py:53: UserWarning: Reliance on distutils from stdlib is deprecated. Users must rely on setuptools to provide the distutils module. Avoid importing distutils or import setuptools first, and avoid setting SETUPTOOLS_USE_DISTUTILS=stdlib. Register concerns at https://github.com/pypa/setuptools/issues/new?template=distutils-deprecation.yml
   warnings.warn(
 
-Compiled module name: scikitplot_cython_2b754df9a69f375f
+Compiled module name: scikitplot_cython_3464939529e20b40
 f(10) = 100
 
 BuildResult (metadata):
-  module_name : scikitplot_cython_cdc86d4f26d1826c
-  cache key   : cdc86d4f26d1826c0dd1fb42d5e916dacc2f92a69a3df9e6e7f0008c9b10203a
-  build dir   : /home/circleci/.cache/scikitplot/cython/cdc86d4f26d1826c0dd1fb42d5e916dacc2f92a69a3df9e6e7f0008c9b10203a
-  artifact    : /home/circleci/.cache/scikitplot/cython/cdc86d4f26d1826c0dd1fb42d5e916dacc2f92a69a3df9e6e7f0008c9b10203a/scikitplot_cython_cdc86d4f26d1826c.cpython-311-x86_64-linux-gnu.so
+  module_name : scikitplot_cython_721b1483cfa67e06
+  cache key   : 721b1483cfa67e066e832793599b70857e6a51e00d0daea856e0a96f9c1276ad
+  build dir   : /home/circleci/.cache/scikitplot/cython/721b1483cfa67e066e832793599b70857e6a51e00d0daea856e0a96f9c1276ad
+  artifact    : /home/circleci/.cache/scikitplot/cython/721b1483cfa67e066e832793599b70857e6a51e00d0daea856e0a96f9c1276ad/scikitplot_cython_721b1483cfa67e06.cpython-311-x86_64-linux-gnu.so
   used_cache  : False
-  created_utc : 2026-05-20T19:37:26Z
+  created_utc : 2026-06-01T17:58:57Z
 g(10) = 11
 
 Re-imported from cache key:
-  module: scikitplot_cython_cdc86d4f26d1826c
+  module: scikitplot_cython_721b1483cfa67e06
   g(10) : 11
 
 Imported via alias: quickstart_g
-  module: scikitplot_cython_cdc86d4f26d1826c
+  module: scikitplot_cython_721b1483cfa67e06
   g(10) : 11
 
 Profile comparison (keys):
-  fast-debug: cdc86d4f26d1826c0dd1fb42d5e916dacc2f92a69a3df9e6e7f0008c9b10203a
-  release   : f83561673aae6a832b8dbc37e07968faadba2966f47e7ac3b4294d54534ad213
+  fast-debug: 721b1483cfa67e066e832793599b70857e6a51e00d0daea856e0a96f9c1276ad
+  release   : 21cc42f98ad1851f5ecdf14b0b8c5d154b6690477858a0fea4ff22b986f088b8
   keys differ: True
 
 Cache stats snapshot:
-CacheStats(cache_root=PosixPath('/home/circleci/.cache/scikitplot/cython'), n_modules=3, n_packages=0, total_bytes=2015954, pinned_aliases=1, pinned_keys=1, newest_mtime_utc='2026-05-20T19:37:26Z', oldest_mtime_utc='2026-05-20T19:37:25Z')
+CacheStats(cache_root=PosixPath('/home/circleci/.cache/scikitplot/cython'), n_modules=3, n_packages=0, total_bytes=2016182, pinned_aliases=1, pinned_keys=1, newest_mtime_utc='2026-06-01T17:58:58Z', oldest_mtime_utc='2026-06-01T17:58:57Z')
 
 ```
 
 Tags: [domain: cython](../../_tags/domain-cython.html) [plot-type: cython](../../_tags/plot-type-cython.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 2.453 seconds)
+****Total running time of the script:**** (0 minutes 2.694 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_00_quickstart_compile_and_load.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/cython/plot_00_quickstart_compile_and_load.ipynb)
 

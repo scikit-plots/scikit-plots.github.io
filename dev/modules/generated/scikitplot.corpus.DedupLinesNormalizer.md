@@ -1,6 +1,6 @@
 # DedupLinesNormalizer[#](#deduplinesnormalizer "Link to this heading")
 
-class scikitplot.corpus.DedupLinesNormalizer(**ignore\_whitespace=True**, **min\_line\_length=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/corpus/_normalizers/_normalizer.py#L431)[#](#scikitplot.corpus.DedupLinesNormalizer "Link to this definition")
+class scikitplot.corpus.DedupLinesNormalizer(**ignore\_whitespace=True**, **min\_line\_length=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/corpus/_normalizers/_normalizer.py#L431)[#](#scikitplot.corpus.DedupLinesNormalizer "Link to this definition")
 :   Remove exact duplicate lines while preserving first-occurrence order.
 
     Useful for de-noising OCR output and web-scraped text which often
@@ -32,7 +32,7 @@ class scikitplot.corpus.DedupLinesNormalizer(**ignore\_whitespace=True**, **min\
     ```
     Go BackOpen In Tab
 
-    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/corpus/_normalizers/_normalizer.py#L469)[#](#scikitplot.corpus.DedupLinesNormalizer.normalize_doc "Link to this definition")
+    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/corpus/_normalizers/_normalizer.py#L469)[#](#scikitplot.corpus.DedupLinesNormalizer.normalize_doc "Link to this definition")
     :   Remove duplicate lines from the document text.
 
         Parameters:

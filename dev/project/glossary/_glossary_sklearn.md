@@ -45,7 +45,7 @@ API[#](#term-API "Link to this term")
 array-like[#](#term-array-like "Link to this term")
 :   The most common data format for **input** to Scikit-learn estimators and
     functions, array-like is any type object for which
-    [`numpy.asarray`](https://numpy.org/devdocs/reference/generated/numpy.asarray.html#numpy.asarray "(in NumPy v2.5.dev0)") will produce an array of appropriate shape
+    [`numpy.asarray`](https://numpy.org/devdocs/reference/generated/numpy.asarray.html#numpy.asarray "(in NumPy v2.6.dev0)") will produce an array of appropriate shape
     (usually 1 or 2-dimensional) of appropriate dtype (usually numeric).
 
     This includes:
@@ -53,8 +53,8 @@ array-like[#](#term-array-like "Link to this term")
     * a numpy array
     * a list of numbers
     * a list of length-k lists of numbers for some fixed length k
-    * a [`pandas.DataFrame`](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas)") with all columns numeric
-    * a numeric [`pandas.Series`](https://pandas.pydata.org/docs/dev/reference/api/pandas.Series.html#pandas.Series "(in pandas)")
+    * a [`pandas.DataFrame`](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas v3.1.0.dev0+974.ge652ee88a5)") with all columns numeric
+    * a numeric [`pandas.Series`](https://pandas.pydata.org/docs/dev/reference/api/pandas.Series.html#pandas.Series "(in pandas v3.1.0.dev0+974.ge652ee88a5)")
 
     It excludes:
 
@@ -557,7 +557,7 @@ memory map[#](#term-memory-map "Link to this term")
 memory mapping[#](#term-memory-mapping "Link to this term")
 :   A memory efficiency strategy that keeps data on disk rather than
     copying it into main memory. Memory maps can be created for arrays
-    that can be read, written, or both, using [`numpy.memmap`](https://numpy.org/devdocs/reference/generated/numpy.memmap.html#numpy.memmap "(in NumPy v2.5.dev0)"). When
+    that can be read, written, or both, using [`numpy.memmap`](https://numpy.org/devdocs/reference/generated/numpy.memmap.html#numpy.memmap "(in NumPy v2.6.dev0)"). When
     using [joblib](#term-joblib) to parallelize operations in Scikit-learn, it
     may automatically memmap large arrays to reduce memory duplication
     overhead in multiprocessing.
@@ -688,7 +688,7 @@ pairwise metrics[#](#term-pairwise-metrics "Link to this term")
     See also [precomputed](#term-precomputed) and [metric](#term-metric).
 
     Note that for most distance metrics, we rely on implementations from
-    [`scipy.spatial.distance`](https://scipy.github.io/devdocs/reference/spatial.distance.html#module-scipy.spatial.distance "(in SciPy v1.18.0.dev)"), but may reimplement for efficiency in
+    [`scipy.spatial.distance`](https://scipy.github.io/devdocs/reference/spatial.distance.html#module-scipy.spatial.distance "(in SciPy v1.19.0.dev)"), but may reimplement for efficiency in
     our context. The [`metrics.DistanceMetric`](https://scikit-learn.org/dev/modules/generated/sklearn.metrics.DistanceMetric.html#sklearn.metrics.DistanceMetric "(in scikit-learn v1.10)") interface is used to implement
     distance metrics for integration with efficient neighbors search.
 
@@ -783,7 +783,7 @@ sparse matrix[#](#term-sparse-matrix "Link to this term")
 sparse graph[#](#term-sparse-graph "Link to this term")
 :   A representation of two-dimensional numeric data that is more memory
     efficient the corresponding dense numpy array where almost all elements
-    are zero. We use the [`scipy.sparse`](https://scipy.github.io/devdocs/reference/sparse.html#module-scipy.sparse "(in SciPy v1.18.0.dev)") framework, which provides
+    are zero. We use the [`scipy.sparse`](https://scipy.github.io/devdocs/reference/sparse.html#module-scipy.sparse "(in SciPy v1.19.0.dev)") framework, which provides
     several underlying sparse data representations, or **formats**.
     Some formats are more efficient than others for particular tasks, and
     when a particular format provides especial benefit, we try to document
@@ -805,7 +805,7 @@ sparse graph[#](#term-sparse-graph "Link to this term")
         matrices](#term-multilabel-indicator-matrices).
 
     graph semantics
-    :   As with [`scipy.sparse.csgraph`](https://scipy.github.io/devdocs/reference/sparse.csgraph.html#module-scipy.sparse.csgraph "(in SciPy v1.18.0.dev)"), explicit zeros are
+    :   As with [`scipy.sparse.csgraph`](https://scipy.github.io/devdocs/reference/sparse.csgraph.html#module-scipy.sparse.csgraph "(in SciPy v1.19.0.dev)"), explicit zeros are
         interpreted as the number 0, but implicit zeros indicate a masked
         or absent value, such as the absence of an edge between two
         vertices of a graph, where an explicit value indicates an edge’s
@@ -935,7 +935,7 @@ estimators[#](#term-estimators "Link to this term")
 
     * [parameters](#term-parameters) provided in object construction or with
       [set\_params](#term-set_params);
-    * the global [`numpy.random`](https://numpy.org/devdocs/reference/random/index.html#module-numpy.random "(in NumPy v2.5.dev0)") random state if the estimator’s
+    * the global [`numpy.random`](https://numpy.org/devdocs/reference/random/index.html#module-numpy.random "(in NumPy v2.6.dev0)") random state if the estimator’s
       [random\_state](#term-random_state) parameter is set to None; and
     * any data or [sample properties](#term-sample-properties) passed to the most recent
       call to [fit](#term-fit), [fit\_transform](#term-fit_transform) or [fit\_predict](#term-fit_predict),
@@ -1706,7 +1706,7 @@ functions or non-estimator constructors.
     value may be:
 
     None (default)
-    :   Use the global random state instance from [`numpy.random`](https://numpy.org/devdocs/reference/random/index.html#module-numpy.random "(in NumPy v2.5.dev0)").
+    :   Use the global random state instance from [`numpy.random`](https://numpy.org/devdocs/reference/random/index.html#module-numpy.random "(in NumPy v2.6.dev0)").
         Calling the function multiple times will reuse
         the same instance, and will produce different results.
 
@@ -1719,14 +1719,14 @@ functions or non-estimator constructors.
         random seeds are 0 and [42](https://en.wikipedia.org/wiki/Answer_to_the_Ultimate_Question_of_Life%2C_the_Universe%2C_and_Everything).
         Integer values must be in the range `[0, 2**32 - 1]`.
 
-    A [`numpy.random.RandomState`](https://numpy.org/devdocs/reference/random/legacy.html#numpy.random.RandomState "(in NumPy v2.5.dev0)") instance
+    A [`numpy.random.RandomState`](https://numpy.org/devdocs/reference/random/legacy.html#numpy.random.RandomState "(in NumPy v2.6.dev0)") instance
     :   Use the provided random state, only affecting other users
         of that same random state instance. Calling the function
         multiple times will reuse the same instance, and
         will produce different results.
 
     [`utils.check_random_state`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.check_random_state.html#sklearn.utils.check_random_state "(in scikit-learn v1.10)") is used internally to validate the
-    input `random_state` and return a [`RandomState`](https://numpy.org/devdocs/reference/random/legacy.html#numpy.random.RandomState "(in NumPy v2.5.dev0)")
+    input `random_state` and return a [`RandomState`](https://numpy.org/devdocs/reference/random/legacy.html#numpy.random.RandomState "(in NumPy v2.6.dev0)")
     instance.
 
     For more details on how to control the randomness of scikit-learn

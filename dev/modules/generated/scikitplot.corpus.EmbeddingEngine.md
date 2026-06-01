@@ -1,6 +1,6 @@
 # EmbeddingEngine[#](#embeddingengine "Link to this heading")
 
-class scikitplot.corpus.EmbeddingEngine(**model\_name='paraphrase-multilingual-mpnet-base-v2'**, **backend='sentence\_transformers'**, **custom\_fn=None**, **cache\_dir=None**, **enable\_cache=True**, **batch\_size=64**, **normalize=True**, **dtype=<class 'numpy.float32'>**, **show\_progress\_bar=False**, **device=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/corpus/_embeddings/_embedding.py#L362)[#](#scikitplot.corpus.EmbeddingEngine "Link to this definition")
+class scikitplot.corpus.EmbeddingEngine(**model\_name='paraphrase-multilingual-mpnet-base-v2'**, **backend='sentence\_transformers'**, **custom\_fn=None**, **cache\_dir=None**, **enable\_cache=True**, **batch\_size=64**, **normalize=True**, **dtype=<class 'numpy.float32'>**, **show\_progress\_bar=False**, **device=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/corpus/_embeddings/_embedding.py#L362)[#](#scikitplot.corpus.EmbeddingEngine "Link to this definition")
 :   Multi-backend sentence embedding engine with SHA-256 file caching.
 
     Produces a 2-D `float32` numpy array of shape `(n_texts, dim)`
@@ -68,7 +68,7 @@ class scikitplot.corpus.EmbeddingEngine(**model\_name='paraphrase-multilingual-m
     Parameters:
     :   * ****model\_name**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
         * ****backend**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"))
-        * ****custom\_fn**** ([**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")**[****[**[**List**](https://docs.python.org/3/library/typing.html#typing.List "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]****]****,** [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")**[**[**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**,** **...****]****,** [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.5.dev0)")**[****float32****]****]****]** **|** **None**)
+        * ****custom\_fn**** ([**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")**[****[**[**List**](https://docs.python.org/3/library/typing.html#typing.List "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]****]****,** [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")**[**[**tuple**](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")**[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)")**,** **...****]****,** [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")**[****float32****]****]****]** **|** **None**)
         * ****cache\_dir**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") **|** **None**)
         * ****enable\_cache**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
         * ****batch\_size**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"))
@@ -153,14 +153,14 @@ class scikitplot.corpus.EmbeddingEngine(**model\_name='paraphrase-multilingual-m
 
     cache\_dir: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.EmbeddingEngine.cache_dir "Link to this definition")
 
-    custom\_fn: [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[[List](https://docs.python.org/3/library/typing.html#typing.List "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]], [ndarray](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), ...], [dtype](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.5.dev0)")[float32]]] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.EmbeddingEngine.custom_fn "Link to this definition")
+    custom\_fn: [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.14)")[[[List](https://docs.python.org/3/library/typing.html#typing.List "(in Python v3.14)")[[str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")]], [ndarray](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), ...], [dtype](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")[float32]]] | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.EmbeddingEngine.custom_fn "Link to this definition")
 
     device: [str](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") | [None](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)") = None[#](#scikitplot.corpus.EmbeddingEngine.device "Link to this definition")
 
-    dtype[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/../numpy/__init__.py#L)[#](#scikitplot.corpus.EmbeddingEngine.dtype "Link to this definition")
+    dtype[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/../numpy/__init__.py#L)[#](#scikitplot.corpus.EmbeddingEngine.dtype "Link to this definition")
     :   alias of `float32`
 
-    embed(**texts**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/corpus/_embeddings/_embedding.py#L539)[#](#scikitplot.corpus.EmbeddingEngine.embed "Link to this definition")
+    embed(**texts**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/corpus/_embeddings/_embedding.py#L539)[#](#scikitplot.corpus.EmbeddingEngine.embed "Link to this definition")
     :   Compute embeddings for `texts` without caching.
 
         Parameters:
@@ -184,7 +184,7 @@ class scikitplot.corpus.EmbeddingEngine(**model\_name='paraphrase-multilingual-m
         :   ****texts**** ([**list**](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)")**[**[**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")**]**)
 
         Return type:
-        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), …], [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.5.dev0)")[**float32**]]
+        :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), …], [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")[**float32**]]
 
         Examples
 
@@ -200,7 +200,7 @@ class scikitplot.corpus.EmbeddingEngine(**model\_name='paraphrase-multilingual-m
         ```
         Go BackOpen In Tab
 
-    embed\_documents(**documents**, **input\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/corpus/_embeddings/_embedding.py#L688)[#](#scikitplot.corpus.EmbeddingEngine.embed_documents "Link to this definition")
+    embed\_documents(**documents**, **input\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/corpus/_embeddings/_embedding.py#L688)[#](#scikitplot.corpus.EmbeddingEngine.embed_documents "Link to this definition")
     :   Embed a list of `CorpusDocument`
         instances in-place (sets `doc.embedding` on each).
 
@@ -235,7 +235,7 @@ class scikitplot.corpus.EmbeddingEngine(**model\_name='paraphrase-multilingual-m
         ```
         Go BackOpen In Tab
 
-    embed\_with\_cache(**texts**, **input\_path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/corpus/_embeddings/_embedding.py#L605)[#](#scikitplot.corpus.EmbeddingEngine.embed_with_cache "Link to this definition")
+    embed\_with\_cache(**texts**, **input\_path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/corpus/_embeddings/_embedding.py#L605)[#](#scikitplot.corpus.EmbeddingEngine.embed_with_cache "Link to this definition")
     :   Compute embeddings with file caching keyed to `input_path`.
 
         Parameters:
@@ -265,7 +265,7 @@ class scikitplot.corpus.EmbeddingEngine(**model\_name='paraphrase-multilingual-m
             * ****input\_path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.14)"))
 
         Return type:
-        :   [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), …], [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.5.dev0)")[**float32**]], [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")]
+        :   [tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")[[tuple](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.14)"), …], [**dtype**](https://numpy.org/devdocs/reference/generated/numpy.dtype.html#numpy.dtype "(in NumPy v2.6.dev0)")[**float32**]], [bool](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)")]
 
         Examples
 

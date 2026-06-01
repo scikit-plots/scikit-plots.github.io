@@ -1,6 +1,6 @@
 # play\_waveform[#](#play-waveform "Link to this heading")
 
-scikitplot.experimental.\_doremi.play\_waveform(**music**, **rate=None**, **file\_path=None**, **blocking=True**, **backend='auto'**, **save\_generated=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/82d02fb/scikitplot/experimental/_doremi/waveform_playback.py#L62)[#](#scikitplot.experimental._doremi.play_waveform "Link to this definition")
+scikitplot.experimental.\_doremi.play\_waveform(**music**, **rate=None**, **file\_path=None**, **blocking=True**, **backend='auto'**, **save\_generated=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/experimental/_doremi/waveform_playback.py#L62)[#](#scikitplot.experimental._doremi.play_waveform "Link to this definition")
 :   Play audio from a NumPy array using either IPython (for Jupyter) or sounddevice.
 
     Parameters:
@@ -45,7 +45,7 @@ scikitplot.experimental.\_doremi.play\_waveform(**music**, **rate=None**, **file
         :   If audio playback fails.
 
     Parameters:
-    :   * ****music**** ([**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.5.dev0)"))
+    :   * ****music**** ([**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)"))
         * ****rate**** ([**int**](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)") **|** **None**)
         * ****file\_path**** ([**str**](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)") **|** **None**)
         * ****blocking**** ([**bool**](https://docs.python.org/3/library/functions.html#bool "(in Python v3.14)"))
