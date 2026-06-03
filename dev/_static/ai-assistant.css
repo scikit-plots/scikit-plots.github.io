@@ -3222,8 +3222,13 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     overflow: hidden;   /* clip any sub-pixel overflow on fractional viewports */
 }
 
-/* Individual bar ─────────────────────────────────────────────────────────── */
-
+/* ─── Individual bar: JS-driven height from AnalyserNode, smooth transition ─── */
+/*
+ * CSS animation is intentionally absent.  Bar heights are set directly by the
+ * _startVizLoops() rAF loop from real Web Audio API frequency bin data.
+ * The height transition (0.04 s) smooths frame-to-frame changes without
+ * introducing visible lag.  background-color transitions on active state.
+ */
 .ai-mic-bar {
     display: block;
     width: 2px;
@@ -3233,138 +3238,22 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
         var(--color-foreground-secondary, rgba(0, 0, 0, 0.22))
     );
     flex-shrink: 0;
-    /* Smooth height transition for real-time level data if supplied via JS */
-    transition: height 0.06s ease, background-color 0.15s ease;
+    /* height set by JS; transition smooths per-frame amplitude changes    */
+    transition: height 0.04s ease-out, background-color 0.15s ease;
 }
 
 [data-bs-theme="dark"] .ai-mic-bar {
     background: rgba(255, 255, 255, 0.25);
 }
 
-/* Active / recording — bars animate in a staggered waveform ─────────────── */
-/*
- * [data-active="true"] is set by _setMicActiveState() when recording starts.
- * CSS drives the full animation so zero JS is needed for the visual loop.
- * The brand primary colour connects the bars to the recording state, matching
- * the existing .ai-assistant-panel-footer-btn--mic.recording accent (#e74c3c
- * for the mic icon itself remains unchanged — different semantic signal).
- */
-
+/* Active / recording — brand accent colour.
+ * No animation: real-time AnalyserNode data replaces CSS animation entirely.
+ * Adding animation here would conflict with inline style.height from JS.  */
 .ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar {
     background: var(
         --pst-color-primary,
         var(--color-brand-primary, #2980b9)
     );
-    animation: ai-mic-bar-pulse 0.65s infinite ease-in-out;
-}
-
-/* Staggered delays → symmetric waveform ripple across 100 bars.
- * Edges pulse first (0.00s), center bars pulse last (0.35s) — mirrors the
- * natural shape of a spoken-word audio waveform.                              */
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(1) { animation-delay: 0.00s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(2) { animation-delay: 0.01s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(3) { animation-delay: 0.01s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(4) { animation-delay: 0.02s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(5) { animation-delay: 0.03s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(6) { animation-delay: 0.04s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(7) { animation-delay: 0.04s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(8) { animation-delay: 0.05s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(9) { animation-delay: 0.06s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(10) { animation-delay: 0.06s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(11) { animation-delay: 0.07s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(12) { animation-delay: 0.08s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(13) { animation-delay: 0.08s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(14) { animation-delay: 0.09s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(15) { animation-delay: 0.10s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(16) { animation-delay: 0.11s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(17) { animation-delay: 0.11s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(18) { animation-delay: 0.12s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(19) { animation-delay: 0.13s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(20) { animation-delay: 0.13s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(21) { animation-delay: 0.14s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(22) { animation-delay: 0.15s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(23) { animation-delay: 0.16s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(24) { animation-delay: 0.16s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(25) { animation-delay: 0.17s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(26) { animation-delay: 0.18s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(27) { animation-delay: 0.18s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(28) { animation-delay: 0.19s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(29) { animation-delay: 0.20s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(30) { animation-delay: 0.21s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(31) { animation-delay: 0.21s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(32) { animation-delay: 0.22s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(33) { animation-delay: 0.23s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(34) { animation-delay: 0.23s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(35) { animation-delay: 0.24s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(36) { animation-delay: 0.25s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(37) { animation-delay: 0.25s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(38) { animation-delay: 0.26s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(39) { animation-delay: 0.27s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(40) { animation-delay: 0.28s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(41) { animation-delay: 0.28s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(42) { animation-delay: 0.29s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(43) { animation-delay: 0.30s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(44) { animation-delay: 0.30s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(45) { animation-delay: 0.31s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(46) { animation-delay: 0.32s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(47) { animation-delay: 0.33s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(48) { animation-delay: 0.33s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(49) { animation-delay: 0.34s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(50) { animation-delay: 0.35s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(51) { animation-delay: 0.35s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(52) { animation-delay: 0.34s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(53) { animation-delay: 0.33s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(54) { animation-delay: 0.33s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(55) { animation-delay: 0.32s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(56) { animation-delay: 0.31s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(57) { animation-delay: 0.30s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(58) { animation-delay: 0.30s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(59) { animation-delay: 0.29s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(60) { animation-delay: 0.28s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(61) { animation-delay: 0.28s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(62) { animation-delay: 0.27s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(63) { animation-delay: 0.26s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(64) { animation-delay: 0.25s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(65) { animation-delay: 0.25s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(66) { animation-delay: 0.24s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(67) { animation-delay: 0.23s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(68) { animation-delay: 0.23s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(69) { animation-delay: 0.22s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(70) { animation-delay: 0.21s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(71) { animation-delay: 0.21s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(72) { animation-delay: 0.20s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(73) { animation-delay: 0.19s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(74) { animation-delay: 0.18s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(75) { animation-delay: 0.18s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(76) { animation-delay: 0.17s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(77) { animation-delay: 0.16s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(78) { animation-delay: 0.16s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(79) { animation-delay: 0.15s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(80) { animation-delay: 0.14s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(81) { animation-delay: 0.13s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(82) { animation-delay: 0.13s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(83) { animation-delay: 0.12s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(84) { animation-delay: 0.11s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(85) { animation-delay: 0.11s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(86) { animation-delay: 0.10s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(87) { animation-delay: 0.09s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(88) { animation-delay: 0.08s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(89) { animation-delay: 0.08s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(90) { animation-delay: 0.07s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(91) { animation-delay: 0.06s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(92) { animation-delay: 0.06s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(93) { animation-delay: 0.05s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(94) { animation-delay: 0.04s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(95) { animation-delay: 0.04s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(96) { animation-delay: 0.03s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(97) { animation-delay: 0.02s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(98) { animation-delay: 0.01s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(99) { animation-delay: 0.01s; }
-.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar:nth-child(100) { animation-delay: 0.00s; }
-
-@keyframes ai-mic-bar-pulse {
-    0%, 100% { height: 2px;  }
-    50%       { height: 18px; }
 }
 
 [data-bs-theme="dark"] .ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar {
@@ -3372,6 +3261,36 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
         --pst-color-primary,
         var(--color-brand-primary, #5ba3d0)
     );
+}
+
+.ai-assistant-mic-origin-warning {
+    margin: 10px 0;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: #fff8e1;
+    border: 1px solid #ffcc80;
+    color: #664d03;
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.ai-assistant-mic-origin-warning code {
+    font-family: monospace;
+    padding: 0.1rem 0.3rem;
+    border-radius: 4px;
+    background: rgba(0,0,0,0.06);
+    color: inherit;
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-origin-warning {
+    background: #332701;
+    border-color: #664d03;
+    color: #ffecb5;
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-origin-warning code {
+    background: rgba(255,255,255,0.08);
+    color: inherit;
 }
 
 /* ─── Row 2: hold-to-record ──────────────────────────────────────────────── */
@@ -3519,9 +3438,12 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
         transition: opacity 0.1s ease;
         transform: none !important;
     }
+    /* Level bars: JS skips rAF loop on prefers-reduced-motion.
+     * Bars hold their idle sinusoidal heights (set on HTML creation).
+     * The data-active colour change still signals "recording" state.  */
     .ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar {
-        animation: none;
-        height: 12px !important; /* !important overrides per-bar inline style.height set in JS */
+        height: 12px;   /* static mid-height visible during recording    */
+        transition: none;
     }
     .ai-assistant-mic-toggle-track,
     .ai-assistant-mic-toggle-thumb {
@@ -4415,11 +4337,79 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
 
 /* Slightly taller item when subtitle is present (handled naturally by flex gap) */
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   FOOTER SOUNDBAR — real-time decibel waveform, scrolling right → left
+   ─────────────────────────────────────────────────────────────────────────
+   JS (_startVizLoops) drives bar heights from Web Audio AnalyserNode RMS
+   amplitude data.  Each _SOUNDBAR_TICK_MS (80 ms) tick the ring buffer
+   shifts left and the newest amplitude fills the rightmost bar — a
+   scrolling oscilloscope where time flows right to left.
+
+   Structure (built in createAIPanel):
+     div#ai-assistant-footer-soundbar.ai-assistant-footer-soundbar   ← container
+       div.ai-assistant-footer-soundbar-bar × _SOUNDBAR_BARS (20)    ← bars
+
+   States
+   ──────
+   Inactive → max-width:0 + overflow:hidden hides the container entirely.
+              Bars exist in DOM at _SOUNDBAR_MIN_H (2 px); no layout jump.
+   Active   → data-active attribute added; max-width expands to reveal bars.
+              _startVizLoops() interval updates heights from live RMS data.
+              New samples appear RIGHT; old samples exit LEFT.
+   Stop     → data-active removed; max-width collapses; _stopVizLoops()
+              resets bars to 2 px silence height.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Container — always in flex layout; collapsed/expanded via max-width */
+.ai-assistant-footer-soundbar {
+    display: inline-flex;
+    align-items: flex-end;       /* bars grow upward from the bottom edge */
+    gap: 2px;
+    height: 18px;
+    flex-shrink: 0;
+    overflow: hidden;             /* clip bars cleanly at container edges   */
+    max-width: 0;                 /* collapsed = invisible, zero-width      */
+    transition: max-width 0.18s ease;   /* smooth slide-open on activation  */
+}
+
+/* Revealed when mic is active — 20×3px + 19×2px = 98px content */
+.ai-assistant-footer-soundbar[data-active] {
+    max-width: 100px;
+}
+
+/* Individual bars — JS sets inline style.height from RMS amplitude per tick.
+ * Always brand-primary; visible only while recording (inside [data-active]).
+ * CSS height transition (0.06 s) smooths per-tick amplitude changes.       */
+.ai-assistant-footer-soundbar-bar {
+    display: block;
+    width: 3px;
+    height: 2px;                 /* _SOUNDBAR_MIN_H — JS overrides each tick */
+    border-radius: 2px;
+    flex-shrink: 0;
+    background: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2980b9)
+    );
+    transition: height 0.06s ease-out;
+}
+
+[data-bs-theme="dark"] .ai-assistant-footer-soundbar-bar {
+    background: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #5ba3d0)
+    );
+}
+
 @media (prefers-reduced-motion: reduce) {
     .ai-assistant-mic-permission-bar {
         transition: none;
     }
     .ai-assistant-mic-perm-urlbar-mic {
         animation: none;
+    }
+    /* Soundbar: JS skips tick loop on prefers-reduced-motion.
+     * Bars remain at 2 px silence height — zero motion.               */
+    .ai-assistant-footer-soundbar-bar {
+        transition: none;
     }
 }

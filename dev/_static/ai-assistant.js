@@ -79,39 +79,6 @@
     var _MODEL_RADIO_GROUP = 'ai-assistant-model-group';
 
     /**
-     * Web Speech API recognition instance (lazy, created on first mic click).
-     * @type {SpeechRecognition|null}
-     */
-    var _speechRecognition = null;
-
-    /**
-     * True when the SpeechRecognition instance has finished its last session
-     * and is safe to call .start() again.  Starts true (no instance yet →
-     * trivially safe).  Set to false when .start() is called; restored to
-     * true inside the onend handler.
-     *
-     * This bridges the async gap between calling stop() and onend firing:
-     * if _doStart() is invoked while the engine is still winding down,
-     * it queues the start in _pendingSpeechStart instead of throwing
-     * InvalidStateError.
-     */
-    var _speechRecognitionEnded = true;
-
-    /**
-     * True when _doStart() was called while _speechRecognitionEnded was
-     * still false (i.e. the engine hadn't fired onend yet).  The onend
-     * handler checks this flag and calls _doStart() immediately after the
-     * engine becomes idle, so rapid hold-release-hold sequences always start.
-     */
-    var _pendingSpeechStart = false;
-
-    /** True when speech recognition is actively listening. */
-    var _isListening = false;
-    var _micPointerHeld = false;
-    var _speechStartPending = false;
-    var _recognitionFlushing = false;
-
-    /**
      * Whether hold-to-record mode is active.
      * In hold mode: pointerdown on the mic button starts recognition,
      * pointerup / pointerleave stops it — matching the Claude.ai interaction.
@@ -183,6 +150,63 @@
      * @type {MediaStream|null}
      */
     var _micWarmStream = null;
+
+    // ── Web Audio API visualisation — module-level singletons ────────────────
+
+    /**
+     * Idle sinusoidal heights for the 100 mic popup level bars.
+     *
+     * Values rise from 2 px at the edges to 13 px at the centre, mirroring
+     * the natural envelope of a spoken-word audio waveform.  Shared between
+     * _buildMicHoverPopup (initial heights) and _stopVizLoops (reset heights)
+     * so there is exactly one source of truth for the idle shape.
+     *
+     * @type {number[]}
+     */
+    var _IDLE_LEVEL_HEIGHTS = [
+        2,2,3,3,3,4,4,4,5,5,5,6,6,6,7,7,7,8,8,8,9,9,9,9,
+        10,10,10,10,11,11,11,11,11,12,12,12,12,12,12,12,
+        13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,
+        13,13,13,13,12,12,12,12,12,12,12,11,11,11,11,11,
+        10,10,10,10,9,9,9,9,8,8,8,7,7,7,6,6,6,5,5,5,4,4,4,3,3,3,2,2
+    ];
+
+    /** Number of bars in the footer soundbar ring buffer. @type {number} */
+    var _SOUNDBAR_BARS    = 20;
+
+    /** Silence / minimum bar height in px. @type {number} */
+    var _SOUNDBAR_MIN_H   = 2;
+
+    /** Full-scale / maximum bar height in px (capped to container). @type {number} */
+    var _SOUNDBAR_MAX_H   = 16;
+
+    /** Milliseconds between ring-buffer amplitude snapshots. @type {number} */
+    var _SOUNDBAR_TICK_MS = 80;
+
+    /** Silence floor for mic popup level bars in px. @type {number} */
+    var _MIC_LEVEL_MIN_H  = 2;
+
+    /** Full-scale peak for mic popup level bars in px. @type {number} */
+    var _MIC_LEVEL_MAX_H  = 18;
+
+    /** Web Audio AudioContext — created per session, closed in _disconnectWebAudio. @type {AudioContext|null} */
+    var _audioCtx         = null;
+
+    /** AnalyserNode fed from the mic stream — provides frequency / time-domain data. @type {AnalyserNode|null} */
+    var _analyserNode     = null;
+
+    /** MediaStreamAudioSourceNode that connects the mic track to _analyserNode. @type {MediaStreamAudioSourceNode|null} */
+    var _audioSrcNode     = null;
+
+    /** requestAnimationFrame handle for the mic popup level-bars loop. @type {number|null} */
+    var _vizRafId         = null;
+
+    /** setInterval handle for the footer soundbar ring-buffer tick. @type {number|null} */
+    var _soundbarTickId   = null;
+
+    /** Ring buffer of pixel heights for the footer soundbar (length = _SOUNDBAR_BARS). @type {number[]} */
+    var _soundbarHeights  = [];
+
 
     /**
      * AbortController for the current in-flight panel API fetch.
@@ -3572,9 +3596,31 @@
         });
         footerActions.appendChild(attachBtn);
 
-        // Right-side action cluster: model ▾ | mic | send
+        // Right-side action cluster: [soundbar?] | model ▾ | mic | send
         var footerActionsRight = document.createElement('div');
         footerActionsRight.className = 'ai-assistant-panel-footer-actions-right';
+
+        // ── Footer soundbar (real-time decibel waveform) ─────────────────────
+        //
+        // _SOUNDBAR_BARS (20) bar elements form the ring-buffer backing store.
+        // CSS max-width:0 hides the container until _setMicActiveState(true)
+        // adds data-active.  _startVizLoops() then updates bar heights from
+        // live AnalyserNode RMS data every _SOUNDBAR_TICK_MS (80 ms).
+        // aria-hidden="true" — decorative; recording state is conveyed via
+        // the mic button aria-label ("Stop recording").
+        (function () {
+            var soundbar = document.createElement('div');
+            soundbar.className = 'ai-assistant-footer-soundbar';
+            soundbar.id        = 'ai-assistant-footer-soundbar';
+            soundbar.setAttribute('aria-hidden', 'true');
+            for (var _sb = 0; _sb < _SOUNDBAR_BARS; _sb++) {
+                var bar = document.createElement('div');
+                bar.className  = 'ai-assistant-footer-soundbar-bar';
+                bar.style.height = _SOUNDBAR_MIN_H + 'px';  // silence height
+                soundbar.appendChild(bar);
+            }
+            footerActionsRight.appendChild(soundbar);
+        }());
 
         // Inline model picker (Claude-bar style): [model ▾?]
         // Returns null when no models are configured or panelInlineModelPicker=false.
@@ -4291,7 +4337,7 @@
         // 100 bars; sinusoidal idle heights (2px edges → 13px centre) create
         // a natural waveform silhouette that mirrors spoken-word audio profiles.
         var BAR_COUNT = 100;
-        var _idleHeights = [2,2,3,3,3,4,4,4,5,5,5,6,6,6,7,7,7,8,8,8,9,9,9,9,10,10,10,10,11,11,11,11,11,12,12,12,12,12,12,12,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,12,12,12,12,12,12,12,11,11,11,11,11,10,10,10,10,9,9,9,9,8,8,8,7,7,7,6,6,6,5,5,5,4,4,4,3,3,3,2,2];
+        var _idleHeights = _IDLE_LEVEL_HEIGHTS;  // module-level constant
         for (var _b = 0; _b < BAR_COUNT; _b++) {
             var bar = document.createElement('span');
             bar.className = 'ai-mic-bar';
@@ -5369,6 +5415,47 @@
         statusRow.appendChild(textEl);
         bar.appendChild(statusRow);
 
+        // ── Localhost / file:// warning ──────────────────────────────────────
+
+        var protocol = window.location.protocol;
+        var hostname = window.location.hostname;
+        var showLocalhostWarning =
+            window.location.protocol === 'file:';
+            
+        var insecureOrigin =
+            protocol === 'file:' ||
+            (
+                protocol !== 'https:' &&
+                hostname !== 'localhost' &&
+                hostname !== '127.0.0.1'
+            );
+
+        if (insecureOrigin) {
+
+            var warn = document.createElement('div');
+            warn.className = 'ai-assistant-mic-origin-warning';
+
+            warn.innerHTML =
+                '<strong>Microphone setup warning</strong>'
+                + '<br>'
+                + 'Speech recognition and microphone permissions are most reliable when this page is served from '
+                + '<code>localhost</code> or <code>https://</code>.'
+                + '<br><br>'
+                + 'Avoid opening the application directly using:'
+                + '<br>'
+                + '<code>file:///...</code>'
+                + '<br><br>'
+                + 'Recommended options:'
+                + '<ul>'
+                + '<li><code>python -m http.server 8000</code></li>'
+                + '<li>VS Code Live Server (<code>ritwickdey.LiveServer</code>)</li>'
+                + '<li>VS Code Simple Browser + local web server</li>'
+                + '<li>Any HTTPS-hosted deployment</li>'
+                + '</ul>';
+
+            bar.appendChild(warn);
+        }
+
         // ── URL-bar mockup (visible for prompt + denied states via CSS) ───────
         //
         // Mirrors the browser address-bar permission icon so users immediately
@@ -5734,6 +5821,98 @@
 
     // ── Speech recognition──────────────────────────────────────────────────── ────────────────────────────────────────────────────
 
+
+    /**
+     * Web Speech API recognition instance (lazy, created on first mic click).
+     * @type {SpeechRecognition|null}
+     */
+    var _speechRecognition = null;
+
+    /**
+     * True when the SpeechRecognition instance has finished its last session
+     * and is safe to call .start() again.  Starts true (no instance yet →
+     * trivially safe).  Set to false when .start() is called; restored to
+     * true inside the onend handler.
+     *
+     * This bridges the async gap between calling stop() and onend firing:
+     * if _doStart() is invoked while the engine is still winding down,
+     * it queues the start in _pendingSpeechStart instead of throwing
+     * InvalidStateError.
+     */
+    var _speechRecognitionEnded = true;
+
+    /**
+     * True when _doStart() was called while _speechRecognitionEnded was
+     * still false (i.e. the engine hadn't fired onend yet).  The onend
+     * handler checks this flag and calls _doStart() immediately after the
+     * engine becomes idle, so rapid hold-release-hold sequences always start.
+     */
+    var _pendingSpeechStart = false;
+
+    /** True when speech recognition is actively listening. */
+    var _isListening = false;
+    var _micPointerHeld = false;
+    var _speechStartPending = false;
+    var _recognitionFlushing = false;
+
+    /**
+     * Textarea value captured at the moment recording begins.
+     *
+     * Purpose
+     * ───────
+     * In continuous mode the engine delivers multiple onresult events.
+     * Each event supplies only the transcripts produced SINCE the last
+     * final result (via e.resultIndex), so we must keep a record of
+     * what was already in the textarea when the session started.  Every
+     * onresult call rebuilds the displayed value as:
+     *   _speechBaseText + _speechFinalText + current-interim
+     * which guarantees the user's pre-existing text is never lost and
+     * no phrase is ever appended more than once.
+     *
+     * Reset in onstart — NOT in onend — so that rapid stop-start cycles
+     * (user stops, immediately restarts) correctly treat any text
+     * committed in the previous session as the new baseline.
+     *
+     * @type {string}
+     */
+    var _speechBaseText = '';
+
+    /**
+     * Running concatenation of all isFinal transcripts committed during
+     * the current recording session.
+     *
+     * Each time onresult delivers a final result the trimmed transcript
+     * is space-joined onto this string.  Together with _speechBaseText
+     * it forms the permanent portion of the textarea content; the
+     * interim portion is shown live but never persisted here.
+     *
+     * Reset to '' in onstart so every new session starts clean.
+     *
+     * @type {string}
+     */
+    var _speechFinalText = '';
+
+    /**
+     * Handle for the 30-second recording auto-stop setTimeout.
+     *
+     * Lifecycle
+     * ─────────
+     * • Set   → inside onstart, immediately after _setMicActiveState(true).
+     * • Clear → in _stopSpeechRecognition() (manual stop) and in onend
+     *           (natural or auto-stop end).  Both sites null the handle so
+     *           no stale callback fires after the session has already ended.
+     *
+     * Why not rely on the browser's built-in silence timeout?
+     *   With continuous=true the engine never auto-stops on silence; without
+     *   this timer the user would record indefinitely.  30 s is the target
+     *   maximum session length — matches the prior 8-10 s browser default
+     *   extended to a user-visible "generous" ceiling while still preventing
+     *   runaway sessions that silently drain battery and capture audio.
+     *
+     * @type {number|null}
+     */
+    var _recordingAutoStopTimer = null;
+
     /**
      * True when the browser supports the Web Speech API recognition interface.
      * @returns {boolean}
@@ -5759,31 +5938,124 @@
 
         if (!_speechRecognition) {
             _speechRecognition = new SpeechRecognition();
-            _speechRecognition.continuous     = false;
-            _speechRecognition.interimResults = false;
+            _speechRecognition.continuous     = true;   // keep engine alive for up to 30 s
+            _speechRecognition.interimResults = true;   // required for continuous; final-only commits handled in onresult
             _speechRecognition.lang           = navigator.language || 'en-US';
 
             _speechRecognition.onstart = function () {
                 _speechStartPending = false;
+                if (_micHoldMode && !_micPointerHeld) {
+                    _speechStartPending = false;
+                    _pendingSpeechStart = false;
+                    _stopSpeechRecognition();
+                    return;
+                }
                 _isListening = true;
                 _setMicActiveState(true);
+
+                // ── Snapshot textarea for repetition-free accumulation ────────
+                // Capture the textarea's current value as the immutable base for
+                // this session.  onresult rebuilds the displayed value each time
+                // as: _speechBaseText + _speechFinalText + current-interim, so
+                // no phrase is ever appended twice regardless of how many
+                // continuous-mode events fire.
+                // Reset _speechFinalText so finals from any prior session do not
+                // bleed into this one.  Snapshotting here (onstart) rather than
+                // onend means a rapid stop→start cycle sees the post-committed
+                // textarea as its new baseline automatically.
+                var _inputSnap = document.getElementById('ai-assistant-panel-input');
+                _speechBaseText  = _inputSnap ? _inputSnap.value : '';
+                _speechFinalText = '';
+
+                // ── 30-second auto-stop ───────────────────────────────────────
+                // Clear any stale timer first (guards against rapid start/stop).
+                // The callback calls _stopSpeechRecognition() so onend fires
+                // normally, delivering any buffered final transcript before the
+                // session closes — identical behaviour to the user pressing stop.
+                clearTimeout(_recordingAutoStopTimer);
+                _recordingAutoStopTimer = setTimeout(function () {
+                    _recordingAutoStopTimer = null;
+                    if (_isListening) { _stopSpeechRecognition(); }
+                }, 30000);
             };
 
             _speechRecognition.onresult = function (e) {
-                _recognitionFlushing = true;
-                var transcript = Array.from(e.results)
-                    .map(function (r) { return r[0].transcript; })
-                    .join(' ')
-                    .trim();
-                var input = document.getElementById('ai-assistant-panel-input');
-                if (input && transcript) {
-                    input.value = (input.value ? input.value + ' ' : '') + transcript;
-                    _updateSendBtnState();
-                    input.focus();
+                // ── Continuous-mode safe accumulation ─────────────────────────
+                //
+                // Problem with Array.from(e.results):
+                //   In continuous mode the engine keeps the results array alive
+                //   across events.  Iterating from index 0 every time means each
+                //   earlier phrase is re-appended on every subsequent event,
+                //   producing rapidly growing duplicate text in the textarea.
+                //
+                // Fix — iterate from e.resultIndex:
+                //   The Web Speech API contract guarantees that results[0 …
+                //   resultIndex-1] were delivered in previous events and must not
+                //   be re-processed.  Only results[resultIndex … length-1] are new.
+                //
+                // isFinal gating:
+                //   isFinal=true  → committed phrase; append to _speechFinalText.
+                //   isFinal=false → interim hypothesis; show as live preview but
+                //                   never persist so it never duplicates.
+                //
+                // Textarea composition on every event:
+                //   _speechBaseText  (captured in onstart, never changes mid-session)
+                //   + _speechFinalText (all committed phrases this session)
+                //   + interimText      (current hypothesis, replaced each event)
+                //
+                var hasFinal    = false;
+                var interimText = '';
+
+                for (var i = e.resultIndex; i < e.results.length; i++) {
+                    var r    = e.results[i];
+                    var text = r[0].transcript.trim();
+                    if (!text) { continue; }
+
+                    if (r.isFinal) {
+                        // Space-join committed phrases; guard leading space when
+                        // _speechFinalText is empty (first phrase of the session).
+                        _speechFinalText = _speechFinalText
+                            ? _speechFinalText + ' ' + text
+                            : text;
+                        hasFinal = true;
+                    } else {
+                        // Multiple interim segments within one event are joined
+                        // with a space to produce a single coherent preview.
+                        interimText = interimText
+                            ? interimText + ' ' + text
+                            : text;
+                    }
                 }
-                setTimeout(function () {
+
+                // _recognitionFlushing gates the onend restart-guard.
+                // Set true ONLY on a final result: interim-only events must not
+                // suppress the automatic restart that hold-to-record depends on.
+                _recognitionFlushing = hasFinal;
+
+                try {
+                    var input = document.getElementById('ai-assistant-panel-input');
+                    if (!input) { return; }
+
+                    // Rebuild textarea value from the three layers.
+                    // The separation into committed + preview avoids any string
+                    // mutation of _speechFinalText for the interim portion.
+                    var committed = _speechFinalText;
+                    var preview   = interimText
+                        ? (committed ? committed + ' ' + interimText : interimText)
+                        : committed;
+                    var full = _speechBaseText
+                        ? (preview ? _speechBaseText + ' ' + preview : _speechBaseText)
+                        : preview;
+
+                    input.value = full;
+                    _autoResizeInput(input);
+                    _updateSendBtnState();
+                    // Only steal focus after a committed result — do not interrupt
+                    // the user if they are typing alongside an interim preview.
+                    if (hasFinal) { input.focus(); }
+                } finally {
                     _recognitionFlushing = false;
-                }, 50);
+                }
             };
 
             // NOTE: Do NOT release _micPinTrack or _micWarmStream here.
@@ -5795,6 +6067,16 @@
             // new audio capture session — and therefore from re-showing the
             // permission indicator — on every hold-to-record press.
             _speechRecognition.onend = function () {
+
+                // ── Clear auto-stop timer (natural or auto end) ───────────────
+                // The engine may reach onend via: (a) the user stopping manually
+                // through _stopSpeechRecognition(), (b) the 30-second timer
+                // callback itself, or (c) the browser's own silence detection.
+                // _stopSpeechRecognition() already clears the timer, but cases
+                // (b) and (c) arrive here without going through that function, so
+                // guard here too.  clearTimeout(null) is a safe no-op.
+                clearTimeout(_recordingAutoStopTimer);
+                _recordingAutoStopTimer = null;
 
                 _speechStartPending = false;
                 _speechRecognitionEnded = true;
@@ -5846,7 +6128,12 @@
                 } else {
                     _pendingSpeechStart = false;
                 }
-
+                if (e.error === 'no-speech') {
+                    _speechStartPending = false;
+                    _pendingSpeechStart = false;
+                    _speechRecognitionEnded = true;
+                    return;
+                }
                 if (
                     e.error !== 'aborted' &&
                     e.error !== 'no-speech'
@@ -5949,6 +6236,14 @@
     }
 
     function _stopSpeechRecognition() {
+        // ── Cancel the 30-second auto-stop timer immediately ─────────────────
+        // Must run before _speechRecognition.stop() so the timer callback
+        // never fires after the session has already been torn down manually.
+        // Nulling the handle prevents a second clearTimeout on a stale id
+        // (harmless but needlessly confusing in profiler traces).
+        clearTimeout(_recordingAutoStopTimer);
+        _recordingAutoStopTimer = null;
+
         // Do NOT detach handlers and do NOT null the instance.
         //
         // Root cause of the repeated-permission-prompt bug:
@@ -5982,8 +6277,246 @@
         _setMicActiveState(false);
     }
 
+
+    // ── Web Audio API — real-time visualisation ───────────────────────────────
+
     /**
-     * Update the mic button, speak-banner, and voice-level bars visual state.
+     * Create an AudioContext and connect the mic MediaStream to an AnalyserNode.
+     *
+     * Called by _setMicActiveState(true) after _micWarmStream is live.
+     * Idempotent — if _audioCtx already exists the call is a no-op.
+     * The audio signal is connected analyser → nowhere (no destination):
+     * pure analysis with zero echo or feedback risk.
+     *
+     * Parameters
+     * ----------
+     * stream : MediaStream | null
+     *     Live microphone stream from _micWarmStream.  When null, the function
+     *     returns silently — viz loops will read zeros and bars stay at minimum
+     *     height (graceful degradation on unsupported browsers).
+     *
+     * Notes
+     * -----
+     * fftSize 256 → 128 frequency bins.  smoothingTimeConstant 0.80 gives
+     * visually responsive but non-jittery bar heights.  One AudioContext per
+     * recording session keeps total context count within the browser limit (6).
+     */
+    function _connectWebAudio(stream) {
+        if (!stream || _audioCtx) { return; }
+        try {
+            var AudioCtxCtor = window.AudioContext || window.webkitAudioContext;
+            if (!AudioCtxCtor) { return; }
+            _audioCtx              = new AudioCtxCtor();
+            _analyserNode          = _audioCtx.createAnalyser();
+            _analyserNode.fftSize                  = 256;
+            _analyserNode.smoothingTimeConstant    = 0.80;
+            _audioSrcNode = _audioCtx.createMediaStreamSource(stream);
+            _audioSrcNode.connect(_analyserNode);
+            // NOT connected to _audioCtx.destination — analysis only, no playback
+        } catch (err) {
+            console.warn('AI Assistant: Web Audio connect failed:', err);
+            _audioCtx     = null;
+            _analyserNode = null;
+            _audioSrcNode = null;
+        }
+    }
+
+    /**
+     * Disconnect and close the Web Audio graph built by _connectWebAudio.
+     *
+     * Idempotent — safe to call when no graph exists (all null → early-return).
+     * Called internally by _stopVizLoops().
+     */
+    function _disconnectWebAudio() {
+        if (_audioSrcNode) {
+            try { _audioSrcNode.disconnect(); } catch (_e) {}
+            _audioSrcNode = null;
+        }
+        if (_analyserNode) {
+            try { _analyserNode.disconnect(); } catch (_e) {}
+            _analyserNode = null;
+        }
+        if (_audioCtx) {
+            try { _audioCtx.close(); } catch (_e) {}
+            _audioCtx = null;
+        }
+    }
+
+    /**
+     * Read current RMS amplitude from _analyserNode as a value in [0, 1].
+     *
+     * Uses the time-domain buffer (getByteTimeDomainData) rather than the
+     * frequency buffer because RMS of the raw waveform is a direct proxy
+     * for perceived loudness and maps naturally to bar height.
+     *
+     * Returns
+     * -------
+     * number
+     *     RMS amplitude in [0, 1].  Returns 0 when no analyser is connected.
+     *
+     * Notes
+     * -----
+     * Time-domain values are unsigned 8-bit [0..255], centred at 128 (silence).
+     * Subtracting 128 normalises to [-128..127]; dividing by 128 gives [-1..1].
+     * Squaring, averaging, and square-rooting gives RMS in [0, 1].
+     */
+    function _readRmsAmplitude() {
+        if (!_analyserNode) { return 0; }
+        var buf = new Uint8Array(_analyserNode.fftSize);
+        _analyserNode.getByteTimeDomainData(buf);
+        var sum = 0;
+        for (var i = 0; i < buf.length; i++) {
+            var v = (buf[i] - 128) / 128;
+            sum += v * v;
+        }
+        return Math.sqrt(sum / buf.length);
+    }
+
+    /**
+     * Start both real-time visualisation loops.
+     *
+     * Loop 1 — rAF (level bars):
+     *   Maps 128 AnalyserNode frequency bins → 100 mic popup bars at ~60 fps.
+     *   Each bar height is proportional to the energy in its frequency bin.
+     *
+     * Loop 2 — setInterval (footer soundbar):
+     *   Appends one RMS amplitude sample to the ring buffer every
+     *   _SOUNDBAR_TICK_MS (80 ms).  The buffer scrolls left so new samples
+     *   appear on the right, creating a scrolling oscilloscope timeline.
+     *
+     * Idempotent — already-running loops are not duplicated.
+     *
+     * Notes
+     * -----
+     * prefers-reduced-motion: both loops are skipped; bars remain at their
+     * current height.  CSS also applies static heights as a fallback.
+     */
+    function _startVizLoops() {
+        // Honour prefers-reduced-motion — no JS motion
+        if (window.matchMedia &&
+            window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            return;
+        }
+
+        // ── Loop 1: rAF — mic popup level bars ───────────────────────────────
+        if (!_vizRafId) {
+            var levelBarsEl = document.getElementById('ai-assistant-mic-level-bars');
+            if (levelBarsEl) {
+                var _levelBarEls = levelBarsEl.querySelectorAll('.ai-mic-bar');
+                var _freqBuf = _analyserNode
+                    ? new Uint8Array(_analyserNode.frequencyBinCount)  // 128 bins
+                    : null;
+
+                (function _rafTick() {
+                    _vizRafId = requestAnimationFrame(_rafTick);
+
+                    if (!_analyserNode || !_freqBuf) {
+                        // No analyser yet — bars hold their idle heights
+                        return;
+                    }
+                    _analyserNode.getByteFrequencyData(_freqBuf);
+
+                    var barCount = _levelBarEls.length;  // 100
+                    var binCount = _freqBuf.length;      // 128
+
+                    // Map 128 frequency bins → 100 bars via linear interpolation.
+                    // Each bar index i samples bin floor(i * bins / bars).
+                    for (var i = 0; i < barCount; i++) {
+                        var binIdx = Math.floor(i * binCount / barCount);
+                        var rawAmp = _freqBuf[binIdx] / 255;  // [0, 1]
+                        var h = _MIC_LEVEL_MIN_H
+                            + rawAmp * (_MIC_LEVEL_MAX_H - _MIC_LEVEL_MIN_H);
+                        _levelBarEls[i].style.height = h + 'px';
+                    }
+                }());
+            }
+        }
+
+        // ── Loop 2: interval — footer soundbar ring buffer ───────────────────
+        if (!_soundbarTickId) {
+            var soundbarEl = document.getElementById('ai-assistant-footer-soundbar');
+            if (soundbarEl) {
+                var _sbBarEls = soundbarEl.querySelectorAll(
+                    '.ai-assistant-footer-soundbar-bar'
+                );
+                var _sbCount = _sbBarEls.length;  // _SOUNDBAR_BARS
+
+                // Pre-fill ring buffer with silence heights
+                _soundbarHeights = [];
+                for (var _si = 0; _si < _sbCount; _si++) {
+                    _soundbarHeights.push(_SOUNDBAR_MIN_H);
+                }
+
+                _soundbarTickId = setInterval(function () {
+                    var rms = _readRmsAmplitude();
+                    var h   = _SOUNDBAR_MIN_H
+                        + rms * (_SOUNDBAR_MAX_H - _SOUNDBAR_MIN_H);
+                    h = Math.max(_SOUNDBAR_MIN_H, Math.min(_SOUNDBAR_MAX_H, h));
+
+                    // Shift ring buffer left, push new sample on right
+                    _soundbarHeights.shift();
+                    _soundbarHeights.push(h);
+
+                    // Apply heights left-to-right to DOM bars
+                    for (var i = 0; i < _sbCount; i++) {
+                        _sbBarEls[i].style.height = _soundbarHeights[i] + 'px';
+                    }
+                }, _SOUNDBAR_TICK_MS);
+            }
+        }
+    }
+
+    /**
+     * Stop both visualisation loops and reset bars to idle/silence heights.
+     *
+     * Also tears down the Web Audio graph (_disconnectWebAudio) so the
+     * AudioContext is closed before the next recording session starts.
+     * The CSS height transition (0.04–0.06 s) smooths the return to silence
+     * height so bars don't snap abruptly.
+     *
+     * Idempotent — safe to call multiple times or when loops are not running.
+     */
+    function _stopVizLoops() {
+        // Cancel rAF loop
+        if (_vizRafId !== null) {
+            cancelAnimationFrame(_vizRafId);
+            _vizRafId = null;
+        }
+
+        // Cancel soundbar tick loop
+        if (_soundbarTickId !== null) {
+            clearInterval(_soundbarTickId);
+            _soundbarTickId = null;
+        }
+
+        // Reset mic popup level bars to idle sinusoidal heights
+        var levelBarsEl = document.getElementById('ai-assistant-mic-level-bars');
+        if (levelBarsEl) {
+            var bars = levelBarsEl.querySelectorAll('.ai-mic-bar');
+            for (var i = 0; i < bars.length; i++) {
+                bars[i].style.height =
+                    (_IDLE_LEVEL_HEIGHTS[i] !== undefined
+                        ? _IDLE_LEVEL_HEIGHTS[i]
+                        : _MIC_LEVEL_MIN_H) + 'px';
+            }
+        }
+
+        // Reset soundbar bars to silence height
+        var soundbarEl = document.getElementById('ai-assistant-footer-soundbar');
+        if (soundbarEl) {
+            var sbBars = soundbarEl.querySelectorAll('.ai-assistant-footer-soundbar-bar');
+            for (var j = 0; j < sbBars.length; j++) {
+                sbBars[j].style.height = _SOUNDBAR_MIN_H + 'px';
+            }
+        }
+
+        // Tear down the Web Audio graph
+        _disconnectWebAudio();
+    }
+
+    /**
+     * Update the mic button, speak-banner, voice-level bars, and footer
+     * soundbar visual state.
      *
      * @param {boolean} active  True → recording animation; false → idle.
      */
@@ -5992,18 +6525,43 @@
         var bannerBtn = document.getElementById('ai-assistant-panel-speak-banner');
         if (micBtn) {
             micBtn.classList.toggle('recording', active);
-            // Preserve the correct label for the current interaction mode
-            var activeLabel = active ? 'Stop recording' : (_micHoldMode ? 'Press and hold to record' : 'Speak your question');
+            var activeLabel = active
+                ? 'Stop recording'
+                : (_micHoldMode ? 'Press and hold to record' : 'Speak your question');
             micBtn.setAttribute('aria-label', activeLabel);
             micBtn.setAttribute('title',      activeLabel);
         }
         if (bannerBtn) {
             bannerBtn.classList.toggle('recording', active);
         }
-        // Drive voice-level animation via data attribute (CSS handles the rest)
+
+        // Drive voice-level bars colour via data attribute.
+        // JS handles heights; CSS only switches the active brand colour.
         var levelBars = document.getElementById('ai-assistant-mic-level-bars');
         if (levelBars) {
             levelBars.dataset.active = active ? 'true' : 'false';
+        }
+
+        // Drive footer soundbar visibility.
+        // setAttribute / removeAttribute so [data-active] (presence) and
+        // [data-active="true"] (value) selectors both match correctly.
+        var footerSoundbar = document.getElementById('ai-assistant-footer-soundbar');
+        if (footerSoundbar) {
+            if (active) {
+                footerSoundbar.setAttribute('data-active', 'true');
+            } else {
+                footerSoundbar.removeAttribute('data-active');
+            }
+        }
+
+        // Start / stop Web Audio analysis and both visualisation loops.
+        // _connectWebAudio uses the already-acquired _micWarmStream; it is a
+        // no-op when no stream is available (graceful degradation).
+        if (active) {
+            _connectWebAudio(_micWarmStream);
+            _startVizLoops();
+        } else {
+            _stopVizLoops();   // also calls _disconnectWebAudio()
         }
     }
 
