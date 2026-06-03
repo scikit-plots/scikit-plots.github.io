@@ -37,6 +37,10 @@
 (function () {
     'use strict';
 
+    // Guard against multiple injections
+    if (window.SphinxAIAssistantInitialized) return;
+    window.SphinxAIAssistantInitialized = true;
+
     // ── Module-level singletons ───────────────────────────────────────────────
 
     /** Captured synchronously before any async boundary — see note in v1. */
@@ -103,6 +107,9 @@
 
     /** True when speech recognition is actively listening. */
     var _isListening = false;
+    var _micPointerHeld = false;
+    var _speechStartPending = false;
+    var _recognitionFlushing = false;
 
     /**
      * Whether hold-to-record mode is active.
@@ -3612,20 +3619,30 @@
 
             // Hold-to-record: pointerdown → start, pointerup/pointerleave → stop
             micBtnEl.addEventListener('pointerdown', function (e) {
-                if (_micHoldMode) {
-                    e.preventDefault();   // suppress the synthetic click on touch
-                    if (!_isListening) {
-                        _toggleSpeechRecognition();
-                        _dismissSpeakBanner();
-                    }
+                if (!_micHoldMode) return;
+                e.preventDefault();
+                _micPointerHeld = true;
+                try {
+                    micBtnEl.setPointerCapture(e.pointerId);
+                } catch (_) {}
+                if (!_isListening) {
+                    _toggleSpeechRecognition();
                 }
             });
+            var _STOP_FLUSH_MS = 600;
+            var _stopTimer = null;
             micBtnEl.addEventListener('pointerup', function () {
-                if (_micHoldMode && _isListening) { _stopSpeechRecognition(); }
+                // if (_micHoldMode && _isListening) { _stopSpeechRecognition(); }
+                _micPointerHeld = false;
+                if (_micHoldMode) {
+                    _stopSpeechRecognition();
+                }
             });
-            // Safety net: release if pointer leaves the button while held
-            micBtnEl.addEventListener('pointerleave', function () {
-                if (_micHoldMode && _isListening) { _stopSpeechRecognition(); }
+            micBtnEl.addEventListener('pointercancel', function () {
+                _micPointerHeld = false;
+                if (_micHoldMode) {
+                    _stopSpeechRecognition();
+                }
             });
 
             // Click-toggle mode (default / hold=false).
@@ -5746,7 +5763,14 @@
             _speechRecognition.interimResults = false;
             _speechRecognition.lang           = navigator.language || 'en-US';
 
+            _speechRecognition.onstart = function () {
+                _speechStartPending = false;
+                _isListening = true;
+                _setMicActiveState(true);
+            };
+
             _speechRecognition.onresult = function (e) {
+                _recognitionFlushing = true;
                 var transcript = Array.from(e.results)
                     .map(function (r) { return r[0].transcript; })
                     .join(' ')
@@ -5757,6 +5781,9 @@
                     _updateSendBtnState();
                     input.focus();
                 }
+                setTimeout(function () {
+                    _recognitionFlushing = false;
+                }, 50);
             };
 
             // NOTE: Do NOT release _micPinTrack or _micWarmStream here.
@@ -5768,33 +5795,66 @@
             // new audio capture session — and therefore from re-showing the
             // permission indicator — on every hold-to-record press.
             _speechRecognition.onend = function () {
+
+                _speechStartPending = false;
                 _speechRecognitionEnded = true;
                 _isListening = false;
+
                 _setMicActiveState(false);
-                // If the user pressed the button again while we were stopping,
-                // fulfill that queued start now that the engine is idle.
-                if (_pendingSpeechStart) {
+
+                // Only restart if user is STILL holding
+                if (
+                    _pendingSpeechStart &&
+                    !_recognitionFlushing &&
+                    (
+                        !_micHoldMode ||
+                        _micPointerHeld
+                    )
+                ) {
+
                     _pendingSpeechStart = false;
-                    _doStart();
+
+                    setTimeout(function () {
+                        _doStart();
+                    }, 150);
+
+                } else {
+                    _pendingSpeechStart = false;
                 }
             };
 
             _speechRecognition.onerror = function (e) {
-                // NOTE: tracks are intentionally kept alive — same reason as onend.
-                // Instance is also kept alive (same reasoning as onend above).
+
+                _speechStartPending = false;
                 _speechRecognitionEnded = true;
                 _isListening = false;
+
                 _setMicActiveState(false);
-                // Fulfill a queued start unless this was a voluntary abort or a
-                // real error (in which case the notification below tells the user).
-                if (_pendingSpeechStart && e.error !== 'aborted') {
+
+                if (
+                    _pendingSpeechStart &&
+                    e.error !== 'aborted' &&
+                    (
+                        !_micHoldMode ||
+                        _micPointerHeld
+                    )
+                ) {
+
                     _pendingSpeechStart = false;
                     _doStart();
+
                 } else {
                     _pendingSpeechStart = false;
                 }
-                if (e.error !== 'aborted' && e.error !== 'no-speech') {
-                    showNotification('Speech recognition error: ' + e.error, true);
+
+                if (
+                    e.error !== 'aborted' &&
+                    e.error !== 'no-speech'
+                ) {
+                    showNotification(
+                        'Speech recognition error: ' + e.error,
+                        true
+                    );
                 }
             };
         }
@@ -5818,23 +5878,42 @@
         // released when the user changes the selected device in _setMicDevice.
 
         function _doStart() {
+            if (_speechStartPending) {
+                return;
+            }
+            // User already released button while startup was pending
+            if (_micHoldMode && !_micPointerHeld) {
+                _pendingSpeechStart = false;
+                return;
+            }
+            if (_recognitionFlushing) {
+                _pendingSpeechStart = true;
+                return;
+            }
             if (!_speechRecognitionEnded) {
-                // The engine is still winding down from the previous session
-                // (onend has not yet fired).  Queue this start; onend will
-                // call _doStart() as soon as the instance is idle again.
                 _pendingSpeechStart = true;
                 return;
             }
             try {
-                _speechRecognitionEnded = false;   // claim the "running" slot
+                _speechRecognitionEnded = false;
+                _speechStartPending = true;
                 _speechRecognition.start();
-                _isListening = true;
-                _setMicActiveState(true);
+
             } catch (err) {
-                _speechRecognitionEnded = true;    // release slot on failure
+
+                _speechStartPending = false;
+                _speechRecognitionEnded = true;
                 _pendingSpeechStart = false;
-                console.error('AI Assistant: Speech recognition start error:', err);
-                showNotification('Could not start microphone. Check browser permissions.', true);
+
+                console.error(
+                    'AI Assistant: Speech recognition start error:',
+                    err
+                );
+
+                showNotification(
+                    'Could not start microphone. Check browser permissions.',
+                    true
+                );
             }
         }
 
