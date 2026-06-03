@@ -3699,6 +3699,14 @@
                 var next = nowPinned ? 'false' : 'true';
                 micPopup.setAttribute('data-pinned', next);
                 micExpandBtn.setAttribute('aria-expanded', next);
+                // When the popup is closed (next="false"), clear data-dragged so
+                // the next open uses the slide-in animation rather than the
+                // drag-mode opacity-only transition.  If not cleared, a popup
+                // that was dragged in a previous session would permanently suppress
+                // its entry animation on every subsequent open.
+                if (next === 'false') {
+                    micPopup.removeAttribute('data-dragged');
+                }
             });
 
             // ── Keyboard: pin while focus is inside popup ─────────────────────
@@ -3709,14 +3717,26 @@
             });
             // focusout fires when focus leaves any descendant.
             // relatedTarget is the element that WILL receive focus next.
-            // Only unpin when focus leaves both the popup and the wrapper.
+            // Only unpin when focus truly leaves both the popup and the wrapper.
+            //
+            // Guard: skip while the popup is being dragged.  mousedown on the
+            // level row calls e.preventDefault() which usually prevents focus
+            // movement, but an external event (OS permission dialog, window blur
+            // on some browsers) can still emit focusout with relatedTarget=null
+            // — which matches the !focusTarget branch and closes the popup
+            // mid-drag.  data-dragged="true" is set by the drag IIFE (inside
+            // _buildMicHoverPopup) the moment a real drag begins (≥3px move),
+            // so reading it here is a zero-extra-variable guard that fully
+            // decouples the two code sections.
             micPopup.addEventListener('focusout', function (e) {
+                if (micPopup.getAttribute('data-dragged') === 'true') { return; }
                 var focusTarget = e.relatedTarget;
                 if (!focusTarget
                         || (!micPopup.contains(focusTarget)
                             && !micWrapper.contains(focusTarget))) {
                     micPopup.setAttribute('data-pinned', 'false');
                     micExpandBtn.setAttribute('aria-expanded', 'false');
+                    micPopup.removeAttribute('data-dragged');   // Bug 4: reset drag state on close
                 }
             });
 
@@ -3733,6 +3753,7 @@
                     if (micWrapper.contains(e.target)) return;
                     micPopup.setAttribute('data-pinned', 'false');
                     micExpandBtn.setAttribute('aria-expanded', 'false');
+                    micPopup.removeAttribute('data-dragged');   // Bug 4: reset drag state on close
                 }
                 // Use capture so the handler fires before any inner stopPropagation
                 document.addEventListener('click', _closePinnedMicPopup, true);
@@ -3743,6 +3764,7 @@
                 if (e.key === 'Escape') {
                     micPopup.setAttribute('data-pinned', 'false');
                     micExpandBtn.setAttribute('aria-expanded', 'false');
+                    micPopup.removeAttribute('data-dragged');   // Bug 4: reset drag state on close
                     micExpandBtn.focus();
                 }
             });
@@ -4368,7 +4390,14 @@
             _setMicHoldMode(!_micHoldMode);
         });
 
-        holdRow.addEventListener('click', function () {
+        // Clicking the row label/icon (but NOT the toggle button itself) should
+        // also toggle hold mode.  The toggle's own click handler calls
+        // stopPropagation so normally only one handler fires per click, but we
+        // add an explicit guard here so the behaviour is correct even if that
+        // assumption ever breaks (e.g. keyboard synthetic click on holdRow,
+        // assistive-technology double-dispatch on role="button" + nested button).
+        holdRow.addEventListener('click', function (e) {
+            if (toggle.contains(e.target)) { return; }   // already handled above
             _setMicHoldMode(!_micHoldMode);
         });
 
@@ -4483,6 +4512,28 @@
                 if (!_micDragging) return;
                 _micDragging       = false;
                 popup.style.cursor = '';
+
+                // After a real drag the browser synthesizes a click event on
+                // the element under the pointer.  If that element is outside
+                // micWrapper the capture-phase _closePinnedMicPopup listener
+                // would fire and immediately unpin the popup right after the
+                // user releases the drag.
+                //
+                // Guard: mark the popup as having just finished a drag.  The
+                // one-shot capture click listener below reads and clears the
+                // flag before _closePinnedMicPopup (also capture) can act on
+                // it, because listeners registered later in the same phase fire
+                // in registration order.  The flag is also set only when a real
+                // drag occurred (data-dragged="true"), so plain clicks are never
+                // affected.
+                if (popup.getAttribute('data-dragged') === 'true') {
+                    popup.setAttribute('data-just-dragged', 'true');
+                    document.addEventListener('click', function _absorbPostDragClick(ev) {
+                        document.removeEventListener('click', _absorbPostDragClick, true);
+                        popup.removeAttribute('data-just-dragged');
+                        ev.stopPropagation();   // prevent _closePinnedMicPopup
+                    }, true);
+                }
             });
         }());
 
