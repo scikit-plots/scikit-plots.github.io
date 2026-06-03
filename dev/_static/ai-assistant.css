@@ -140,6 +140,7 @@
 /* ─── Dropdown panel ────────────────────────────────────────────────────── */
 
 .ai-assistant-dropdown {
+    /* JS: dropdown.style.display = 'none'; */
     display: none;
     position: absolute;
     z-index: 99999;
@@ -4054,17 +4055,70 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     fill: none;
 }
 
-/* Pulsing outline glow for 'prompt' state */
+/* ==========================================================
+   Theme tokens
+   ========================================================== */
+
+:root {
+    --ai-mic-perm-pulse-rgb: 41, 128, 185;
+    --ai-mic-perm-pulse-opacity: 0.45;
+    --ai-mic-perm-pulse-size: 3px;
+    --ai-mic-perm-pulse-duration: 1.5s;
+}
+
+[data-bs-theme="dark"] {
+    --ai-mic-perm-pulse-rgb: 93, 173, 226;
+    --ai-mic-perm-pulse-opacity: 0.50;
+}
+
+/* Optional future themes */
+
+[data-bs-theme="high-contrast"] {
+    --ai-mic-perm-pulse-rgb: 255, 255, 0;
+    --ai-mic-perm-pulse-opacity: 0.75;
+}
+
+[data-bs-theme="corporate"] {
+    --ai-mic-perm-pulse-rgb: 0, 102, 204;
+    --ai-mic-perm-pulse-opacity: 0.50;
+}
+
+/* ==========================================================
+   Animation definition
+   ========================================================== */
+
 @keyframes ai-mic-perm-pulse {
-    0%,  100% { box-shadow: 0 0 0 0   rgba(41, 128, 185, 0.45); }
-    50%        { box-shadow: 0 0 0 3px rgba(41, 128, 185, 0);     }
+    0%,
+    100% {
+        box-shadow:
+            0 0 0 0
+            rgba(
+                var(--ai-mic-perm-pulse-rgb),
+                var(--ai-mic-perm-pulse-opacity)
+            );
+    }
+
+    50% {
+        box-shadow:
+            0 0 0
+            var(--ai-mic-perm-pulse-size)
+            rgba(
+                var(--ai-mic-perm-pulse-rgb),
+                0
+            );
+    }
 }
 
-[data-bs-theme="dark"] @keyframes ai-mic-perm-pulse {
-    0%,  100% { box-shadow: 0 0 0 0   rgba(93, 173, 226, 0.5); }
-    50%        { box-shadow: 0 0 0 3px rgba(93, 173, 226, 0);    }
-}
+/* ==========================================================
+   Usage
+   ========================================================== */
 
+.ai-mic-perm-active {
+    animation:
+        ai-mic-perm-pulse
+        var(--ai-mic-perm-pulse-duration)
+        infinite;
+}
 
 /* ── Hint label ─────────────────────────────────────────────────────────── */
 /*

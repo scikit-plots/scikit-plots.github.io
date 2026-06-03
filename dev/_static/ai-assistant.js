@@ -965,7 +965,8 @@
         if (dropdownButton) {
             dropdownButton.addEventListener('click', function (e) {
                 e.stopPropagation();
-                var isOpen = dropdown.style.display !== 'none';
+                // var isOpen = dropdown.style.display !== 'block';
+                var isOpen = window.getComputedStyle(dropdown).display !== 'none';
                 if (isOpen) {
                     dropdown.style.display = 'none';
                     dropdownButton.setAttribute('aria-expanded', 'false');
