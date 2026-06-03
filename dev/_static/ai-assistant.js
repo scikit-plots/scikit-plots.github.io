@@ -4248,9 +4248,11 @@
         levelBars.className = 'ai-assistant-mic-level-bars';
         levelBars.id = 'ai-assistant-mic-level-bars';
 
-        // 7 bars; varied idle heights create a natural waveform silhouette
-        var _idleHeights = [3, 6, 4, 10, 4, 6, 3];
-        for (var _b = 0; _b < 7; _b++) {
+        // 100 bars; sinusoidal idle heights (2px edges → 13px centre) create
+        // a natural waveform silhouette that mirrors spoken-word audio profiles.
+        var BAR_COUNT = 100;
+        var _idleHeights = [2,2,3,3,3,4,4,4,5,5,5,6,6,6,7,7,7,8,8,8,9,9,9,9,10,10,10,10,11,11,11,11,11,12,12,12,12,12,12,12,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,12,12,12,12,12,12,12,11,11,11,11,11,10,10,10,10,9,9,9,9,8,8,8,7,7,7,6,6,6,5,5,5,4,4,4,3,3,3,2,2];
+        for (var _b = 0; _b < BAR_COUNT; _b++) {
             var bar = document.createElement('span');
             bar.className = 'ai-mic-bar';
             bar.style.height = _idleHeights[_b] + 'px';
@@ -4392,15 +4394,20 @@
         // ── Drag-to-move popup ────────────────────────────────────────────────
         //
         // The voice-level row (.ai-assistant-mic-popup-row--level) is the drag
-        // handle (grab-cursor affordance set in CSS).  On the FIRST drag the
-        // popup is promoted from position:absolute (inside the wrapper) to
-        // position:fixed at its current screen coordinates, giving it freedom to
-        // travel anywhere in the viewport beyond the panel's clip boundary.
-        // Subsequent drags update the already-fixed top/left directly.
+        // handle (grab-cursor affordance set in CSS).  On the FIRST real drag
+        // (mousemove ≥ 3px from mousedown origin) the popup is promoted from
+        // position:absolute (inside the wrapper) to position:fixed at its current
+        // screen coordinates, giving it freedom to travel beyond the panel's clip
+        // boundary.  Subsequent drags update the already-fixed top/left directly.
         //
         // Behaviour contract:
         //   • Left-button (button === 0) only.
         //   • preventDefault() on mousedown prevents unintended text selection.
+        //   • Promotion to fixed is deferred until first mousemove (≥ 3px) so that
+        //     a plain click on the level row NEVER sets data-dragged — this is the
+        //     root-cause fix for "bars disappear when clicking": the old code set
+        //     data-dragged on mousedown, which triggered the CSS opacity transition
+        //     and briefly hid/flash-showed the popup before data-pinned reasserted.
         //   • document-level mousemove / mouseup give reliable tracking even
         //     when the cursor momentarily leaves the popup during fast moves.
         //   • The `data-dragged="true"` attribute lets CSS suppress the wrapper-
@@ -4417,27 +4424,57 @@
                 if (!e.target.closest('.ai-assistant-mic-popup-row--level')) return;
                 e.preventDefault();                            // no text selection
 
-                // First drag: promote from absolute to fixed at screen position
+                _micDragging = true;
+                _originX     = e.clientX;
+                _originY     = e.clientY;
+
+                // Capture start position now for already-promoted popups;
+                // for first-drag cases it is captured in the mousemove handler
+                // after promotion (see below), avoiding a stale-rect read.
+                if (popup.getAttribute('data-dragged') === 'true') {
+                    _startLeft = parseFloat(popup.style.left) || 0;
+                    _startTop  = parseFloat(popup.style.top)  || 0;
+                }
+
+                popup.style.cursor = 'grabbing';
+            });
+
+            document.addEventListener('mousemove', function (e) {
+                if (!_micDragging) return;
+
+                // ── First drag: promote from absolute to fixed ────────────────
+                // Only promote after a meaningful movement (≥ 3px Manhattan
+                // distance) so an accidental mousedown+mouseup (click) on the
+                // level row never sets data-dragged and never triggers the CSS
+                // opacity transition that momentarily hid bars on click.
                 if (popup.getAttribute('data-dragged') !== 'true') {
-                    var rect = popup.getBoundingClientRect();
+                    var moved = Math.abs(e.clientX - _originX)
+                              + Math.abs(e.clientY - _originY);
+                    if (moved < 3) { return; }                 // below threshold
+
+                    // Snapshot the popup's current viewport position BEFORE
+                    // changing position:absolute → fixed so the visual location
+                    // is preserved during the mode switch.
+                    var rect     = popup.getBoundingClientRect();
                     popup.style.position = 'fixed';
                     popup.style.top      = rect.top  + 'px';
                     popup.style.left     = rect.left + 'px';
                     popup.style.bottom   = 'auto';
                     popup.style.right    = 'auto';
                     popup.setAttribute('data-dragged', 'true');
+
+                    // Re-read after promotion (inline styles now authoritative)
+                    _startLeft = parseFloat(popup.style.left) || 0;
+                    _startTop  = parseFloat(popup.style.top)  || 0;
+                    // Reset origin so the first move delta is computed correctly
+                    // from the post-promotion base position.
+                    _originX   = e.clientX;
+                    _originY   = e.clientY;
+                    // Fall through — delta is 0 this frame so no visible jump,
+                    // but removing the early return means drag starts tracking
+                    // immediately (no 1-frame stutter / lag on drag-start).
                 }
 
-                _micDragging = true;
-                _originX     = e.clientX;
-                _originY     = e.clientY;
-                _startLeft   = parseFloat(popup.style.left) || 0;
-                _startTop    = parseFloat(popup.style.top)  || 0;
-                popup.style.cursor = 'grabbing';
-            });
-
-            document.addEventListener('mousemove', function (e) {
-                if (!_micDragging) return;
                 popup.style.left = (_startLeft + (e.clientX - _originX)) + 'px';
                 popup.style.top  = (_startTop  + (e.clientY - _originY)) + 'px';
             });
@@ -4907,8 +4944,9 @@
      * {displayName, settingsUrl, steps, legacySteps}
      *     displayName  : string        browser name for the UI badge
      *     settingsUrl  : string|null   paste-into-address-bar URL (null = none available)
-     *     steps        : string[]      ordered steps for current/new method
+     *     steps        : string[]      ordered steps for current / new-UI method
      *     legacySteps  : string[]      alternative steps for older browser versions
+     *                                  OR address-bar icon method
      *
      * Notes
      * -----
@@ -4918,13 +4956,26 @@
      *   COPIED by the user and pasted into the address bar manually.
      *   Firefox's about:preferences#privacy can technically be opened via
      *   window.open() from within Firefox, but we surface it as copy-paste for
-     *   consistency across browsers.
-     *   Safari has no deep-link URL at all; step-by-step instructions are the
-     *   only option.
+     *   consistency across all browsers.
+     *   Safari has no internal deep-link URL at all; step-by-step instructions
+     *   are the only option.
      *
-     * User: The "Steps" list describes the current (new-UI) method.  The
-     *   "Alternative method" list describes the older / address-bar-icon approach
-     *   that works across all recent versions.
+     * User — "Steps" describes the new/current UI method (Settings URL or menu).
+     *   "Alternative method" describes the address-bar icon approach which works
+     *   across all recent versions of each browser.
+     *
+     * Chrome 117+ note: Google replaced the padlock icon with a "site information"
+     *   icon that looks like a tune/sliders symbol (⊙) or a circle-i (ⓘ).
+     *   Both the new-UI Settings URL and the legacy address-bar icon methods are
+     *   provided so users on any Chrome version can follow along.
+     *
+     * Firefox note: Firefox shows a red crossed microphone icon at the RIGHT end
+     *   of the address bar when a site's mic access was blocked. Clicking it
+     *   opens an inline permission panel — the fastest per-site fix method.
+     *   The about:preferences#privacy route works for all Firefox versions.
+     *
+     * Safari note: macOS Ventura (13)+ renamed "Preferences" to "Settings".
+     *   Both wordings are noted.  iOS permissions live in the system Settings app.
      */
     function _getBrowserSettingsInfo() {
         var browser = _detectBrowser();
@@ -4933,146 +4984,200 @@
 
         switch (browser) {
 
+            // ── Chrome ────────────────────────────────────────────────────────
+            // Supports the direct siteDetails deep-link (all desktop versions).
+            // Chrome 117+ replaced the lock icon with a site-info/tune icon.
             case 'chrome':
                 return {
                     displayName: 'Chrome',
                     settingsUrl: 'chrome://settings/content/siteDetails?site=' + encoded,
                     steps: [
-                        'Copy the URL below, paste it into Chrome\u2019s address bar and press Enter',
-                        'Scroll to \u201cMicrophone\u201d under Permissions',
-                        'Change \u201cBlock\u201d to \u201cAllow\u201d',
-                        'Close the Settings tab and reload this page'
+                        'Copy the URL below and paste it into Chrome\u2019s address bar, then press Enter',
+                        'The Site Settings page for \u201c' + host + '\u201d opens directly',
+                        'Scroll to \u201cMicrophone\u201d under the Permissions section',
+                        'Change the setting from \u201cBlock\u201d to \u201cAllow\u201d',
+                        'Close the Settings tab, then reload this page'
                     ],
                     legacySteps: [
-                        'Click the \uD83D\uDD12 lock icon at the left of the address bar',
-                        'Click \u201cSite settings\u201d from the dropdown',
-                        'Find \u201cMicrophone\u201d and set it to \u201cAllow\u201d',
-                        'Reload the page'
+                        'Look at the LEFT end of the address bar while on this page:',
+                        '\u2022 Chrome 117 and later: click the \u22d9 tune or \u24d8 site-info icon',
+                        '\u2022 Older Chrome: click the \uD83D\uDD12 padlock icon',
+                        'Select \u201cSite settings\u201d from the dropdown that appears',
+                        'Find \u201cMicrophone\u201d and change it to \u201cAllow\u201d',
+                        'Close Settings and reload this page',
+                        '\u2014 Global alternative: paste chrome://settings/content/microphone into a new tab to view and manage all sites at once'
                     ]
                 };
 
+            // ── Microsoft Edge ────────────────────────────────────────────────
+            // Edge 87+ supports the same siteDetails deep-link as Chromium.
+            // Edge 118+ also replaced the padlock with an info/tune icon.
             case 'edge':
                 return {
                     displayName: 'Edge',
                     settingsUrl: 'edge://settings/content/siteDetails?site=' + encoded,
                     steps: [
-                        'Copy the URL below, paste it into Edge\u2019s address bar and press Enter',
+                        'Copy the URL below and paste it into Edge\u2019s address bar, then press Enter',
+                        'The Site Permissions page for \u201c' + host + '\u201d opens directly',
                         'Scroll to \u201cMicrophone\u201d under Permissions',
-                        'Change \u201cBlock\u201d to \u201cAllow\u201d',
-                        'Close the Settings tab and reload this page'
+                        'Change the setting from \u201cBlock\u201d to \u201cAllow\u201d',
+                        'Close the Settings tab, then reload this page'
                     ],
                     legacySteps: [
-                        'Click the \uD83D\uDD12 lock or \u24D8 info icon at the left of the address bar',
-                        'Click \u201cPermissions for this site\u201d',
+                        'Look at the LEFT end of the address bar while on this page:',
+                        '\u2022 Edge 118 and later: click the \u24d8 info or \u22d9 tune icon',
+                        '\u2022 Older Edge: click the \uD83D\uDD12 padlock icon',
+                        'Click \u201cPermissions for this site\u201d from the panel that opens',
                         'Find \u201cMicrophone\u201d and set it to \u201cAllow\u201d',
-                        'Reload the page'
+                        'Close the panel and reload this page',
+                        '\u2014 Global alternative: paste edge://settings/content/microphone into a new tab to view and manage all sites at once'
                     ]
                 };
 
+            // ── Opera ─────────────────────────────────────────────────────────
+            // Opera Chromium (15+) supports the same siteDetails deep-link.
             case 'opera':
                 return {
                     displayName: 'Opera',
                     settingsUrl: 'opera://settings/content/siteDetails?site=' + encoded,
                     steps: [
-                        'Copy the URL below, paste it into Opera\u2019s address bar and press Enter',
+                        'Copy the URL below and paste it into Opera\u2019s address bar, then press Enter',
+                        'The Site Settings page for \u201c' + host + '\u201d opens directly',
                         'Find \u201cMicrophone\u201d under Permissions',
                         'Change the setting to \u201cAllow\u201d',
-                        'Reload the page'
+                        'Close the Settings tab, then reload this page'
                     ],
                     legacySteps: [
-                        'Click the lock or shield icon in the address bar',
-                        'Click \u201cSite settings\u201d or \u201cManage permissions\u201d',
-                        'Set Microphone to \u201cAllow\u201d and reload'
+                        'Click the \uD83D\uDD12 lock, shield, or \u24d8 info icon at the LEFT of the address bar',
+                        'Click \u201cSite settings\u201d or \u201cManage permissions\u201d from the dropdown',
+                        'Find \u201cMicrophone\u201d and set it to \u201cAllow\u201d',
+                        'Reload this page',
+                        '\u2014 Global alternative: paste opera://settings/content/microphone into a new tab to view and manage all sites at once'
                     ]
                 };
 
+            // ── Brave ─────────────────────────────────────────────────────────
+            // Brave (Chromium-based) supports the same siteDetails deep-link.
             case 'brave':
                 return {
                     displayName: 'Brave',
                     settingsUrl: 'brave://settings/content/siteDetails?site=' + encoded,
                     steps: [
-                        'Copy the URL below, paste it into Brave\u2019s address bar and press Enter',
+                        'Copy the URL below and paste it into Brave\u2019s address bar, then press Enter',
+                        'The Site Settings page for \u201c' + host + '\u201d opens directly',
                         'Find \u201cMicrophone\u201d under Permissions',
                         'Change the setting to \u201cAllow\u201d',
-                        'Reload the page'
+                        'Close the Settings tab, then reload this page'
                     ],
                     legacySteps: [
-                        'Click the lion icon or \uD83D\uDD12 lock icon in the address bar',
-                        'Under \u201cSite permissions\u201d find Microphone',
-                        'Set to \u201cAllow\u201d and reload'
+                        'Click the \uD83E\uDD81 lion icon at the RIGHT of the address bar (Brave Shields)',
+                        '\u2014 OR \u2014 click the \uD83D\uDD12 padlock or \u24d8 info icon at the LEFT of the address bar',
+                        'Click \u201cSite permissions\u201d or \u201cSite settings\u201d',
+                        'Find \u201cMicrophone\u201d and set it to \u201cAllow\u201d',
+                        'Reload this page',
+                        '\u2014 Global alternative: paste brave://settings/content/microphone into a new tab to view and manage all sites at once'
                     ]
                 };
 
+            // ── Firefox ───────────────────────────────────────────────────────
+            // Firefox does NOT expose a site-specific deep-link URL; the closest
+            // is about:preferences#privacy which shows the global Permissions list.
+            // Firefox also shows a red mic icon at the RIGHT of the address bar
+            // when a site has been blocked — clicking it is the fastest method.
+            // about:permissions (per-site) was removed in Firefox 47; use
+            // about:preferences#privacy → Microphone → Settings instead.
             case 'firefox':
                 return {
                     displayName: 'Firefox',
                     settingsUrl: 'about:preferences#privacy',
                     steps: [
-                        'Copy the URL below, open a new Firefox tab, paste it in and press Enter',
-                        'Scroll to the \u201cPermissions\u201d section',
+                        'Copy the URL below, open a new Firefox tab, paste it in, then press Enter',
+                        'Scroll down to the \u201cPermissions\u201d section',
                         'Click \u201cSettings\u2026\u201d next to \u201cUse the Microphone\u201d',
-                        'Find \u201c' + host + '\u201d and set Status to \u201cAllow\u201d',
+                        'Find \u201c' + host + '\u201d in the list and change Status to \u201cAllow\u201d',
                         'Click \u201cSave Changes\u201d, then reload this page'
                     ],
                     legacySteps: [
-                        'Click the \uD83D\uDD12 lock or shield icon in the address bar',
-                        'Click \u201cConnection secure\u201d \u2192 \u201cMore information\u2026\u201d',
-                        'Open the \u201cPermissions\u201d tab',
-                        'Find \u201cUse the Microphone\u201d \u2192 uncheck \u201cUse default\u201d \u2192 tick \u201cAllow\u201d',
-                        'Close the dialog and reload'
+                        'Fastest fix \u2014 look at the RIGHT end of the address bar:',
+                        'If you see a red crossed-out microphone icon (\uD83C\uDFA4 with a line), click it',
+                        'Select \u201cAllow Microphone\u201d or \u201cTemporarily Blocked\u201d to re-enable',
+                        '\u2014 Firefox 128 and later: click the \uD83D\uDD12 padlock icon \u2192 open the Permissions section in the Site Privacy Panel',
+                        '\u2014 Older Firefox: click the \uD83D\uDD12 padlock or \uD83D\uDEE1\uFE0F shield icon at the LEFT of the address bar',
+                        'Click \u201cConnection secure\u201d \u2192 then the arrow (\u203a) \u2192 \u201cMore Information\u2026\u201d',
+                        'In the Page Info dialog, click the \u201cPermissions\u201d tab',
+                        'Find \u201cUse the Microphone\u201d \u2192 uncheck \u201cUse Default\u201d \u2192 select \u201cAllow\u201d',
+                        'Close the dialog and reload this page'
                     ]
                 };
 
+            // ── Safari ────────────────────────────────────────────────────────
+            // Safari has no internal URL scheme for site permissions; all paths
+            // go through system Settings (iOS) or the Safari Settings menu (macOS).
+            // macOS Ventura (13+) renamed \u201cPreferences\u201d to \u201cSettings\u201d.
             case 'safari': {
                 var isMobile = /iphone|ipad|ipod/i.test(navigator.userAgent);
                 if (isMobile) {
+                    // iOS / iPadOS: permissions live in the system Settings app
                     return {
                         displayName: 'Safari (iOS)',
                         settingsUrl: null,
                         steps: [
-                            'Open the iOS \u2699\uFE0F Settings app',
+                            'Open the iOS \u2699\uFE0F Settings app (grey gear icon on the home screen)',
                             'Scroll down and tap \u201cSafari\u201d',
-                            'Tap \u201cMicrophone\u201d and set it to \u201cAllow\u201d (or \u201cAsk\u201d)',
-                            'Return to this page and try again'
+                            'Tap \u201cMicrophone\u201d and set the permission to \u201cAllow\u201d or \u201cAsk\u201d',
+                            'Return to this page and try the microphone again'
                         ],
                         legacySteps: [
-                            'Open Settings \u2192 Privacy & Security \u2192 Microphone',
-                            'Enable the toggle next to Safari',
-                            'Return to this page'
+                            'Alternative per-app path \u2014 iOS Settings app:',
+                            'Go to Settings \u2192 Privacy & Security \u2192 Microphone',
+                            'Find \u201cSafari\u201d in the list and enable the toggle',
+                            'Return to this page',
+                            '\u2014 OR for per-site control \u2014',
+                            'Open Settings \u2192 Safari \u2192 Settings for Websites \u2192 Microphone',
+                            'Find \u201c' + host + '\u201d and set to \u201cAllow\u201d'
                         ]
                     };
                 }
+                // macOS Safari
                 return {
                     displayName: 'Safari',
                     settingsUrl: null,
                     steps: [
-                        'Open the \u201cSafari\u201d menu \u2192 \u201cSettings\u2026\u201d (or press \u2318,)',
-                        'Click the \u201cWebsites\u201d tab',
-                        'Select \u201cMicrophone\u201d in the left sidebar',
-                        'Find \u201c' + host + '\u201d and set it to \u201cAllow\u201d'
+                        'While on this page, click \u201cSafari\u201d in the menu bar',
+                        'Click \u201cSettings for This Website\u2026\u201d (or press \u2303\u2318S)',
+                        'In the permissions sheet that appears, set \u201cMicrophone\u201d to \u201cAllow\u201d',
+                        'Close the sheet \u2014 permission takes effect immediately'
                     ],
                     legacySteps: [
-                        'Click the page icon or \uD83D\uDD12 lock in the Smart Search field',
+                        'Global path (works in all macOS Safari versions):',
+                        'Click \u201cSafari\u201d in the menu bar \u2192 \u201cSettings\u2026\u201d or \u201cPreferences\u2026\u201d (\u2318,)',
+                        'Click the \u201cWebsites\u201d tab',
+                        'Select \u201cMicrophone\u201d in the left sidebar',
+                        'Find \u201c' + host + '\u201d in the right panel and set it to \u201cAllow\u201d',
+                        '\u2014 OR address-bar method \u2014',
+                        'Click the \u201cAA\u201d or page icon in the Smart Search field (address bar)',
                         'Click \u201cWebsite Settings\u2026\u201d',
-                        'Set Microphone to \u201cAllow\u201d and close the sheet'
+                        'Set \u201cMicrophone\u201d to \u201cAllow\u201d and close the sheet'
                     ]
                 };
             }
 
+            // ── Unknown / other browser ───────────────────────────────────────
             default:
                 return {
                     displayName: 'your browser',
                     settingsUrl: null,
                     steps: [
-                        'Click the lock or info icon at the left of the address bar',
-                        'Find \u201cMicrophone\u201d or \u201cPermissions\u201d',
-                        'Set Microphone to \u201cAllow\u201d',
-                        'Reload the page'
+                        'Look at the LEFT end of the address bar for a lock, info, or tune icon',
+                        'Click it and look for \u201cSite settings\u201d, \u201cPermissions\u201d, or \u201cSite permissions\u201d',
+                        'Find \u201cMicrophone\u201d and set it to \u201cAllow\u201d',
+                        'Reload this page'
                     ],
                     legacySteps: [
-                        'Open your browser\u2019s Settings',
-                        'Search for \u201cSite permissions\u201d or \u201cContent settings\u201d',
-                        'Find Microphone and allow this site'
+                        'Open your browser\u2019s Settings (usually \u2039\u22ee\u203a or gear icon in the toolbar)',
+                        'Search for \u201cSite permissions\u201d, \u201cContent settings\u201d, or \u201cPrivacy\u201d',
+                        'Find \u201cMicrophone\u201d and allow access for \u201c' + host + '\u201d',
+                        'Reload this page'
                     ]
                 };
         }
@@ -5112,7 +5217,11 @@
         if (/usb/i.test(l)) { return 'USB microphone'; }
         if (/built.?in|internal/i.test(l)) { return 'Built-in microphone'; }
         if (/hdmi|displayport|display audio/i.test(l)) { return 'Display / HDMI'; }
-        return '';
+        // Physical microphones that do not match any specific pattern above
+        // (e.g. unlabelled hardware mics, proprietary interface mics, studio
+        // interfaces) are still real host-level audio inputs.  Label them so
+        // users can distinguish them from virtual/loopback entries in the list.
+        return 'Host microphone';
     }
 
     /**
