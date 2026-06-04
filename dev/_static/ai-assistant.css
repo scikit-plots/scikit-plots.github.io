@@ -1622,8 +1622,7 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 .ai-assistant-panel-kbd-hint {
     display: inline-flex;
     align-items: center;
-    gap: 0.3rem;
-    font-size: 0.68rem;
+    font-size: 0.5rem;
     /* Light-mode muted tone — readable on the white/light panel surface. */
     color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
     /* Interactive: left-click = minimize, right-click = close. */
@@ -1631,7 +1630,8 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     touch-action: manipulation;  /* eliminate 300 ms tap delay on touch devices */
     user-select: none;
     border-radius: 4px;
-    padding: 0.15rem 0.25rem;
+    gap: 0.03rem;
+    padding: 0;
     transition: opacity 0.15s ease, background 0.12s ease;
 }
 
@@ -1648,17 +1648,18 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
    in CSS prevents any theme stylesheet from accidentally overriding it.
    flex-shrink:0 stops the icon from collapsing in narrow containers. */
 .ai-assistant-panel-kbd-hint > span[aria-hidden] svg {
-    width: 12px;
-    height: 12px;
+    width: 11px;
+    height: 11px;
     stroke: currentColor;
     fill: none;
     flex-shrink: 0;
+    margin: 0 0.25rem;
 }
 
 .ai-assistant-panel-kbd-hint kbd {
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: 0.66rem;
-    padding: 0.05rem 0.3rem;
+    font-size: 0.5rem;
+    padding: 0.1rem 0.1rem;
     background: var(--pst-color-surface, var(--color-background-secondary, #eef0f2));
     border: 1px solid var(--pst-color-border, var(--color-foreground-border, #d0d4d8));
     border-bottom-width: 2px;
@@ -1990,7 +1991,7 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 
 /* ─── Progressive right-cluster overflow — per-item smooth collapse ──────────
    JS assigns [data-overflow-hidden] to each button individually, keyed to
-   panel-width thresholds (Privacy 460 → Terms 400 → Share 350 → Model 300 px).
+   panel-width thresholds (Model 575 → Privacy 475 → Terms 350 → Share 300 px).
    max-width transitions from its natural content width down to 0 so the item
    squeezes closed in place.  opacity fades in parallel so the text/icon fades
    as the element collapses — no sudden pop-in or pop-out.
@@ -2009,7 +2010,7 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
    CSS always uses the DESTINATION state's transition, so the two rules give
    physically correct decelerate-in / accelerate-out behaviour. */
 .ai-assistant-panel-subbar-right > button:not(.ai-assistant-panel-subbar-overflow-btn) {
-    max-width: 16rem;       /* generous cap — actual rendered width is auto/content */
+    max-width: 11rem;       /* generous cap — actual rendered width is auto/content */
     overflow: hidden;
     white-space: nowrap;
     flex-shrink: 0;
@@ -2043,11 +2044,11 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
    one at a time right → left, 70 ms apart, so each departure is individually visible.
    In normal use JS crosses one threshold at a time, so only one carriage animates
    per resize step — the stagger acts as a graceful safety net here.
-   DOM positions: 1=Privacy  2=Terms  3=Model  4=Share  5=⋯btn */
-.ai-assistant-panel-subbar-right > button:nth-child(4)[data-overflow-hidden] { transition-delay: 0ms;  }  /* Share   — exits first  */
-.ai-assistant-panel-subbar-right > button:nth-child(3)[data-overflow-hidden] { transition-delay: 70ms; }  /* Model                 */
-.ai-assistant-panel-subbar-right > button:nth-child(2)[data-overflow-hidden] { transition-delay: 140ms;}  /* Terms                 */
-.ai-assistant-panel-subbar-right > button:nth-child(1)[data-overflow-hidden] { transition-delay: 210ms;}  /* Privacy — exits last  */
+   DOM positions: 1=Model  2=Privacy  3=Terms  4=Share  5=⋯btn */
+.ai-assistant-panel-subbar-right > button:nth-child(1)[data-overflow-hidden] { transition-delay: 210ms; } /* Model — exits last    */
+.ai-assistant-panel-subbar-right > button:nth-child(2)[data-overflow-hidden] { transition-delay: 140ms;}  /* Privacy               */
+.ai-assistant-panel-subbar-right > button:nth-child(3)[data-overflow-hidden] { transition-delay: 70ms;}   /* Terms                 */
+.ai-assistant-panel-subbar-right > button:nth-child(4)[data-overflow-hidden] { transition-delay: 0ms;  }  /* Share — exits first   */
 
 /* Model-selection sheet — list of radio rows. */
 .ai-assistant-panel-model-list {
@@ -2267,7 +2268,7 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 
 /* ── Small-screen icon-only fallback ──────────────────────────────────────
  * Mirrors the model-link sub-bar pattern: always in the DOM, visibility
- * toggled by CSS at ≤ 460 px (same breakpoint as .ai-assistant-panel-
+ * toggled by CSS at ≤ 575 px (same breakpoint as .ai-assistant-panel-
  * model-link-label collapse).  The icon is 15 × 15 px to match the other
  * .ai-assistant-panel-footer-btn SVG icons in the same action bar. */
 .ai-assistant-panel-inline-picker-icon {
@@ -2287,8 +2288,8 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 /* Hamburger overflow popover — positioned absolute relative to panel. */
 .ai-assistant-panel-hamburger {
     position: absolute;
-    top: 3.2rem;            /* below the sub-bar */
-    left: 0.5rem;
+    top: 4.5rem;            /* below the sub-bar */
+    left: 2rem;
     z-index: 5;
     display: none;
     flex-direction: column;
@@ -2369,7 +2370,7 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
  * Also collapses the footer inline model picker from its full pill form
  * (dot + label + chevron) to a single model icon — same breakpoint, same
  * logic as .ai-assistant-panel-model-link-label above. */
-@media (max-width: 460px) {
+@media (max-width: 575px) {
     /* Sub-bar right-cluster: hide text labels, keep icons */
     .ai-assistant-panel-share-link span:not([aria-hidden]),
     .ai-assistant-panel-terms-link,
@@ -2536,7 +2537,7 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
    data-anchor="right" is set by the overflow button before opening. */
 .ai-assistant-panel-hamburger[data-anchor="right"] {
     left: auto;
-    right: 0.5rem;
+    right: 1.8rem;
 }
 
 /* ─── Footer action bar (Claude-style two-row input layout) ─────────────────

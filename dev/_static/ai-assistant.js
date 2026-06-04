@@ -3865,9 +3865,9 @@
             pop.appendChild(item);
         }
 
+        addItem(ICONS.model,    'Choose a model',            hooks && hooks.onModel);
         addItem(ICONS.privacy,  'Privacy & Responsibility',  hooks && hooks.onPrivacy);
         addItem(ICONS.terms,    'Terms of Service',          hooks && hooks.onTerms);
-        addItem(ICONS.model,    'Choose a model',            hooks && hooks.onModel);
         addItem(ICONS.share,    'Share',                     hooks && hooks.onShare);
 
         // Keyboard shortcut hint row — shown at the bottom of the menu when a
@@ -3995,11 +3995,11 @@
         btn.title = initLabel;
 
         // ── Small-screen icon-only fallback ────────────────────────────────
-        // On narrow viewports (≤ 460 px) the pill collapses to this single
+        // On narrow viewports (≤ 575 px) the pill collapses to this single
         // model icon, hiding the dot, label, and chevron.  Mirrors the exact
         // same logic used by .ai-assistant-panel-model-link in the sub-bar:
         // the icon is always in the DOM; CSS controls visibility at the
-        // breakpoint defined in the @media (max-width: 460px) block.
+        // breakpoint defined in the @media (max-width: 575px) block.
         var iconOnly = document.createElement('span');
         iconOnly.className = 'ai-assistant-panel-inline-picker-icon';
         iconOnly.setAttribute('aria-hidden', 'true');
@@ -4349,7 +4349,6 @@
             (window.AI_ASSISTANT_CONFIG &&
              window.AI_ASSISTANT_CONFIG.panelPrivacyLinkText) ||
             'Privacy & Responsibility';
-        rightCluster.appendChild(privacyLink);
 
         // Terms-of-Service link — sibling of Privacy, same CSS class so the
         // theme styling cascades automatically.
@@ -4361,7 +4360,6 @@
             termsLink.textContent =
                 (cfgRef.panelTermsLinkText) || 'Terms of Service';
             termsLink.setAttribute('aria-label', 'Open Terms of Service');
-            rightCluster.appendChild(termsLink);
         }
 
         // Model picker button (sheet entry-point).  Shown when any panel
@@ -4393,7 +4391,6 @@
 
             modelLink.setAttribute('aria-label', 'Choose a model');
             modelLink.title = 'Choose a model';
-            rightCluster.appendChild(modelLink);
         }
 
         // Share button — opens the Share sheet.
@@ -4411,8 +4408,15 @@
             shareLink.appendChild(shareLbl);
             shareLink.setAttribute('aria-label', 'Share this page');
             shareLink.title = 'Share this page';
-            rightCluster.appendChild(shareLink);
         }
+
+        // Append right-cluster items in visual left→right order:
+        //   Model | Privacy | Terms | Share | ⋯
+        // Items that are null (feature-flagged off) are silently skipped.
+        if (modelLink)  rightCluster.appendChild(modelLink);
+        rightCluster.appendChild(privacyLink);
+        if (termsLink)  rightCluster.appendChild(termsLink);
+        if (shareLink)  rightCluster.appendChild(shareLink);
 
         // Right overflow toggle button — collapsed representation of the
         // entire right cluster when the panel is too narrow to show individual
@@ -4781,25 +4785,23 @@
         if (speakBannerEl) panel.appendChild(speakBannerEl);
 
         panel.appendChild(footer);
-
-        // R2: privacy/responsibility slide-over (absolute, covers panel).
-        var privacySheet = _buildPrivacySheet();
-        panel.appendChild(privacySheet);
         // NOTE: The routed listener below (via _openSheet) is the single
         // authoritative opener.  A direct listener here was removed — it
         // fired before _openSheet closed any already-open sheet, creating a
         // one-microtask window where two sheets shared data-open="true", and
         // it would bypass the aria-expanded + focus management wired into
         // _openSheet by Phase 2 fixes.
-
-        // ── Phase B: additional slide-over sheets + hamburger popover ──────
         //
+        // ── Phase B: additional slide-over sheets + hamburger popover ──────
         // Each sheet uses the exact same data-open contract as the privacy
         // sheet so the existing CSS animation and a11y semantics cover them
         // for free.  Only one sheet may be open at a time — opening one
         // closes the others, which keeps the panel readable on small screens.
         var modelSheet = _buildModelSheet();
         panel.appendChild(modelSheet);
+        // R2: privacy/responsibility slide-over (absolute, covers panel).
+        var privacySheet = _buildPrivacySheet();
+        panel.appendChild(privacySheet);
 
         var termsSheet = (cfgRef.panelTerms !== false) ? _buildTermsSheet() : null;
         if (termsSheet) panel.appendChild(termsSheet);
@@ -4840,7 +4842,7 @@
          *   _closeSheet which restores focus to the originating button.
          */
         function _openSheet(target) {
-            [privacySheet, modelSheet, termsSheet, shareSheet].forEach(function (s) {
+            [modelSheet, privacySheet, termsSheet, shareSheet].forEach(function (s) {
                 if (!s) return;
                 s.setAttribute('data-open', (s === target) ? 'true' : 'false');
             });
@@ -4950,10 +4952,10 @@
         var hamburgerMenuEl = null;
         if (hamburgerBtn) {
             hamburgerMenuEl = _buildHamburgerMenu({
+                onModel:   modelLink   ? function () { _openSheet(modelSheet); }   : null,
                 onPrivacy: function () { _openSheet(privacySheet); },
                 onTerms:   termsSheet  ? function () { _openSheet(termsSheet); }   : null,
                 onShare:   shareSheet  ? function () { _openSheet(shareSheet); }   : null,
-                onModel:   modelLink   ? function () { _openSheet(modelSheet); }   : null,
             });
             panel.appendChild(hamburgerMenuEl);
 
@@ -5005,10 +5007,10 @@
              * of collapsing the entire cluster at once.  Priority order (first
              * to last to hide):
              *
-             *   privacyLink  460 px
-             *   termsLink    400 px
-             *   shareLink    350 px
-             *   modelLink    300 px
+             *   modelLink    575 px
+             *   privacyLink  475 px
+             *   termsLink    350 px
+             *   shareLink    300 px
              *
              * Sets [data-overflow-hidden] on each item so CSS max-width + opacity
              * transitions can animate the collapse.  Sets [data-overflow-visible]
@@ -5021,12 +5023,12 @@
              */
             function _updateSubbarOverflow(w) {
                 var slots = [
-                    // Hide order: rightmost carriage departs first (Share → Model → Terms → Privacy)
-                    // DOM order is: Privacy(1) Terms(2) Model(3) Share(4) — so Share is visually rightmost.
-                    { el: shareLink,   px: 460 },   /* rightmost — exits into tunnel first  */
-                    { el: modelLink,   px: 400 },
+                    // Hide order: rightmost carriage departs first.
+                    // Visual order left→right: Model | Privacy | Terms | Share
+                    { el: modelLink,   px: 575 },   /* leftmost  — exits last   */
+                    { el: privacyLink, px: 475 },
                     { el: termsLink,   px: 350 },
-                    { el: privacyLink, px: 300 },   /* leftmost  — exits last               */
+                    { el: shareLink,   px: 300 },   /* rightmost — exits first  */
                 ];
                 var anyHidden = false;
                 for (var si = 0; si < slots.length; si++) {
@@ -5110,7 +5112,7 @@
         // registered inside each sheet builder call sheet.setAttribute directly
         // (they run before _closeSheet exists); we add a second listener here
         // which performs the focus restoration after the flag is already 'false'.
-        [privacySheet, modelSheet, termsSheet, shareSheet].forEach(function (s) {
+        [modelSheet, privacySheet, termsSheet, shareSheet].forEach(function (s) {
             if (!s) return;
             var closeBtn = s.querySelector('button[id$="-close"]');
             if (!closeBtn) return;
