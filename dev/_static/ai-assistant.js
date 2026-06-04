@@ -2637,6 +2637,456 @@
         return _findModel(cfg.panelApiModels, id);
     }
 
+    // ── Phase C: Effort level, extended-thinking, and coming-soon features ──────
+
+    /**
+     * Ordered effort-level definitions displayed inside the model sheet.
+     *
+     * Each object carries:
+     *   ``id``    – canonical storage key (lowercase, stable across releases).
+     *   ``label`` – visible button text.
+     *   ``hint``  – one-word sub-label beneath the button.
+     *   ``desc``  – one-sentence description shown below the segmented control.
+     *
+     * Extending: append entries here and the builder loop handles them
+     * automatically.  The grid column count is hard-coded to 4 in CSS; adding
+     * a fifth entry requires updating ``grid-template-columns`` on
+     * ``.ai-assistant-panel-effort-seg``.
+     */
+    var _EFFORT_LEVELS = [
+        { id: 'low',    label: 'Low',    hint: 'Quick',
+          desc: 'Fast, concise answers. Best for simple lookups and short questions.' },
+        { id: 'medium', label: 'Medium', hint: 'Balanced',
+          desc: 'Balanced quality and speed — the sweet spot for most tasks.' },
+        { id: 'high',   label: 'High',   hint: 'Deep',
+          desc: 'Thorough analysis. Best for research, writing, and code review.' },
+        { id: 'max',    label: 'Max',    hint: 'Best',
+          desc: 'Maximum reasoning quality. Slowest, but most complete and accurate.' },
+    ];
+
+    /**
+     * Coming-soon feature placeholders shown in the model sheet footer.
+     *
+     * Each object carries:
+     *   ``label`` – feature name (also used as lookup key in _FUTURE_ICONS).
+     *   ``desc``  – one-sentence description.
+     *
+     * Extend by appending here.  Icons are resolved via ``_FUTURE_ICONS`` below.
+     */
+    var _FUTURE_FEATURES = [
+        { label: 'Temperature',    desc: 'Creativity vs. precision dial' },
+        { label: 'Context window', desc: 'Set max tokens for context' },
+        { label: 'Tool routing',   desc: 'Enable or disable individual tools' },
+        { label: 'System prompt',  desc: 'Per-session custom instructions' },
+    ];
+
+    /**
+     * SVG icon map for coming-soon feature items.
+     *
+     * Each value must be safe inner-HTML (no user content, only hardcoded SVG
+     * paths).  Unmapped labels fall back to ``ICONS.model`` so every item
+     * always shows an icon.
+     */
+    var _FUTURE_ICONS = {
+        'Temperature':
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"' +
+            ' stroke-linecap="round" stroke-linejoin="round">' +
+            '<circle cx="12" cy="12" r="3"/>' +
+            '<path d="M12 1v4m0 14v4M4.22 4.22l2.83 2.83m9.9 9.9 2.83 2.83' +
+            'M1 12h4m14 0h4M4.22 19.78l2.83-2.83m9.9-9.9 2.83-2.83"/></svg>',
+        'Context window':
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"' +
+            ' stroke-linecap="round" stroke-linejoin="round">' +
+            '<path d="M8 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3' +
+            'm8-18h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3m-4-9H9m6 4H9m6-8H9"/></svg>',
+        'Tool routing':
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"' +
+            ' stroke-linecap="round" stroke-linejoin="round">' +
+            '<line x1="4" y1="6" x2="20" y2="6"/>' +
+            '<line x1="4" y1="12" x2="20" y2="12"/>' +
+            '<line x1="4" y1="18" x2="12" y2="18"/></svg>',
+        'System prompt':
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"' +
+            ' stroke-linecap="round" stroke-linejoin="round">' +
+            '<path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>' +
+            '<path d="m18.5 2.5 3 3-10 10H8v-3.5l10.5-9.5z"/></svg>',
+    };
+
+    // ── Effort: sessionStorage-backed persistence ──────────────────────────────
+
+    /** sessionStorage key for the user's chosen effort level. */
+    var _EFFORT_KEY = 'ai-assistant-effort-level';
+
+    /**
+     * Return the persisted effort level id, defaulting to ``'medium'``.
+     * Falls back silently when sessionStorage is blocked.
+     *
+     * @returns {string}
+     */
+    function _getEffortLevel() {
+        try { return sessionStorage.getItem(_EFFORT_KEY) || 'medium'; } catch (_) { return 'medium'; }
+    }
+
+    /**
+     * Persist the chosen effort level.  Best-effort — failures are silent.
+     *
+     * @param {string} id  One of the ids defined in ``_EFFORT_LEVELS``.
+     */
+    function _setEffortLevel(id) {
+        if (typeof id !== 'string' || !id) return;
+        try { sessionStorage.setItem(_EFFORT_KEY, id); } catch (_) {}
+    }
+
+    // ── Thinking: sessionStorage-backed persistence ────────────────────────────
+
+    /** sessionStorage key for the extended-reasoning toggle state. */
+    var _THINKING_KEY = 'ai-assistant-thinking-on';
+
+    /** sessionStorage key for the thinking token budget. */
+    var _THINKING_BUDGET_KEY = 'ai-assistant-thinking-budget';
+
+    /**
+     * Return whether extended reasoning is currently enabled.
+     *
+     * @returns {boolean}
+     */
+    function _getThinkingOn() {
+        try { return sessionStorage.getItem(_THINKING_KEY) === 'true'; } catch (_) { return false; }
+    }
+
+    /**
+     * Persist the thinking toggle state.
+     *
+     * @param {boolean} on
+     */
+    function _setThinkingOn(on) {
+        try { sessionStorage.setItem(_THINKING_KEY, on ? 'true' : 'false'); } catch (_) {}
+    }
+
+    /**
+     * Return the persisted token budget, clamped to [500, 16000].
+     * Defaults to 5000 when unset or out-of-range.
+     *
+     * @returns {number}
+     */
+    function _getThinkingBudget() {
+        try {
+            var v = parseInt(sessionStorage.getItem(_THINKING_BUDGET_KEY), 10);
+            return (isFinite(v) && v >= 500 && v <= 16000) ? v : 5000;
+        } catch (_) { return 5000; }
+    }
+
+    /**
+     * Persist the thinking token budget.
+     *
+     * @param {number} v  Tokens; caller ensures value is within [500, 16000].
+     */
+    function _setThinkingBudget(v) {
+        try { sessionStorage.setItem(_THINKING_BUDGET_KEY, String(v)); } catch (_) {}
+    }
+
+    // ── Sheet-section DOM helpers ──────────────────────────────────────────────
+
+    /**
+     * Build a labeled section divider for the model sheet.
+     *
+     * Renders as:
+     *   LABEL ───────────────────
+     *
+     * The rule line is ``aria-hidden`` so screen readers skip it.
+     *
+     * Parameters
+     * ----------
+     * label : string
+     *     Section heading text (uppercase by CSS, not by content).
+     *
+     * Returns
+     * -------
+     * HTMLElement
+     *     A ``<div class="ai-assistant-panel-sheet-section">`` containing the
+     *     label + rule row, ready for content to be appended by the caller.
+     */
+    function _buildSheetSection(label) {
+        var section = document.createElement('div');
+        section.className = 'ai-assistant-panel-sheet-section';
+
+        var head = document.createElement('div');
+        head.className = 'ai-assistant-panel-sheet-section-head';
+
+        var lbl = document.createElement('span');
+        lbl.className = 'ai-assistant-panel-sheet-section-label';
+        lbl.textContent = label;
+
+        var rule = document.createElement('span');
+        rule.className = 'ai-assistant-panel-sheet-section-rule';
+        rule.setAttribute('aria-hidden', 'true');
+
+        head.appendChild(lbl);
+        head.appendChild(rule);
+        section.appendChild(head);
+        return section;
+    }
+
+    /**
+     * Append the effort, thinking, and coming-soon sections to a model sheet.
+     *
+     * This helper is called from both the normal and stub-mode (no models
+     * configured) code paths inside ``_buildModelSheet()`` to guarantee the
+     * sections appear regardless of whether any models are defined.
+     *
+     * Dispatches custom events on the document:
+     *   ``ai-assistant-effort-change``         – when effort level changes.
+     *   ``ai-assistant-thinking-change``       – when thinking toggle flips.
+     *   ``ai-assistant-thinking-budget-change``– when token budget changes.
+     *
+     * All event details are plain objects safe for structured-clone.
+     * Callers can react via ``document.addEventListener()``.
+     *
+     * Parameters
+     * ----------
+     * sheet : HTMLElement
+     *     The model-sheet root element to append sections to.
+     *
+     * Notes
+     * -----
+     * Developer: CustomEvent is wrapped in try/catch so the function never
+     *   throws in environments where CustomEvent is unavailable (old WebViews).
+     *
+     * Developer: sessionStorage access is always wrapped in try/catch because
+     *   it may throw in Safari private mode, cross-origin iframes, and when
+     *   storage quota is exceeded.
+     */
+    function _appendModelSheetSections(sheet) {
+
+        // ── §A  Effort level ───────────────────────────────────────────────────
+
+        var effortSection = _buildSheetSection('Effort');
+
+        var effortSeg = document.createElement('div');
+        effortSeg.className = 'ai-assistant-panel-effort-seg';
+        effortSeg.setAttribute('role', 'radiogroup');
+        effortSeg.setAttribute('aria-label', 'Response effort level');
+
+        var effortDesc = document.createElement('p');
+        effortDesc.className = 'ai-assistant-panel-effort-desc';
+
+        var activeEffort = _getEffortLevel();
+
+        _EFFORT_LEVELS.forEach(function (ef) {
+            var btn = document.createElement('button');
+            btn.className = 'ai-assistant-panel-effort-btn';
+            btn.setAttribute('role', 'radio');
+            btn.setAttribute('aria-checked', ef.id === activeEffort ? 'true' : 'false');
+            btn.dataset.effortId = ef.id;
+            btn.type = 'button';
+
+            var efLbl = document.createElement('span');
+            efLbl.className = 'ai-assistant-panel-effort-lbl';
+            efLbl.textContent = ef.label;
+
+            var efHint = document.createElement('span');
+            efHint.className = 'ai-assistant-panel-effort-hint';
+            efHint.textContent = ef.hint;
+            efHint.setAttribute('aria-hidden', 'true');
+
+            btn.appendChild(efLbl);
+            btn.appendChild(efHint);
+
+            // Set initial description for the pre-selected level.
+            if (ef.id === activeEffort) { effortDesc.textContent = ef.desc; }
+
+            btn.addEventListener('click', function () {
+                activeEffort = ef.id;
+                _setEffortLevel(ef.id);
+                effortDesc.textContent = ef.desc;
+                effortSeg.querySelectorAll('.ai-assistant-panel-effort-btn')
+                    .forEach(function (b) {
+                        b.setAttribute('aria-checked',
+                            b.dataset.effortId === activeEffort ? 'true' : 'false');
+                    });
+                try {
+                    document.dispatchEvent(new CustomEvent(
+                        'ai-assistant-effort-change',
+                        { detail: { id: ef.id }, bubbles: false }
+                    ));
+                } catch (_) {}
+            });
+
+            effortSeg.appendChild(btn);
+        });
+
+        effortSection.appendChild(effortSeg);
+        effortSection.appendChild(effortDesc);
+        sheet.appendChild(effortSection);
+
+        // ── §B  Extended reasoning (thinking) ─────────────────────────────────
+
+        var thinkingSection = _buildSheetSection('Thinking');
+
+        var thinkingRow = document.createElement('div');
+        thinkingRow.className = 'ai-assistant-panel-thinking-row';
+
+        // Left side: title + hint
+        var thinkingText = document.createElement('div');
+        thinkingText.className = 'ai-assistant-panel-thinking-text';
+
+        var thinkingTitle = document.createElement('div');
+        thinkingTitle.className = 'ai-assistant-panel-thinking-title';
+        thinkingTitle.textContent = 'Extended reasoning';
+
+        var thinkingHint = document.createElement('div');
+        thinkingHint.className = 'ai-assistant-panel-thinking-hint';
+
+        var thinkingOn = _getThinkingOn();
+        thinkingHint.textContent = thinkingOn
+            ? 'Deeper analysis, slightly slower responses'
+            : 'Faster, more concise responses';
+
+        thinkingText.appendChild(thinkingTitle);
+        thinkingText.appendChild(thinkingHint);
+
+        // Right side: toggle pill
+        var thinkingToggle = document.createElement('button');
+        thinkingToggle.className = 'ai-assistant-panel-thinking-toggle';
+        thinkingToggle.type = 'button';
+        thinkingToggle.setAttribute('role', 'switch');
+        thinkingToggle.setAttribute('aria-pressed', thinkingOn ? 'true' : 'false');
+        thinkingToggle.setAttribute('aria-label', 'Enable extended reasoning');
+
+        var thinkingThumb = document.createElement('span');
+        thinkingThumb.className = 'ai-assistant-panel-thinking-toggle-thumb';
+        thinkingThumb.setAttribute('aria-hidden', 'true');
+        thinkingToggle.appendChild(thinkingThumb);
+
+        thinkingRow.appendChild(thinkingText);
+        thinkingRow.appendChild(thinkingToggle);
+
+        // Token budget area (visible only when thinking is on)
+        var budgetArea = document.createElement('div');
+        budgetArea.className = 'ai-assistant-panel-budget-area';
+        if (thinkingOn) { budgetArea.setAttribute('data-visible', 'true'); }
+
+        var budgetHeader = document.createElement('div');
+        budgetHeader.className = 'ai-assistant-panel-budget-header';
+
+        var budgetLabel = document.createElement('span');
+        budgetLabel.className = 'ai-assistant-panel-budget-label';
+        budgetLabel.textContent = 'Token budget';
+
+        var budgetValue = document.createElement('span');
+        budgetValue.className = 'ai-assistant-panel-budget-value';
+        var currentBudget = _getThinkingBudget();
+        budgetValue.textContent = currentBudget.toLocaleString();
+
+        budgetHeader.appendChild(budgetLabel);
+        budgetHeader.appendChild(budgetValue);
+
+        var budgetRange = document.createElement('input');
+        budgetRange.type = 'range';
+        budgetRange.className = 'ai-assistant-panel-budget-range';
+        budgetRange.min = '500';
+        budgetRange.max = '16000';
+        budgetRange.step = '500';
+        budgetRange.value = String(currentBudget);
+        budgetRange.setAttribute('aria-label', 'Token budget for extended reasoning');
+
+        budgetRange.addEventListener('input', function () {
+            var v = parseInt(budgetRange.value, 10);
+            budgetValue.textContent = v.toLocaleString();
+            _setThinkingBudget(v);
+            try {
+                document.dispatchEvent(new CustomEvent(
+                    'ai-assistant-thinking-budget-change',
+                    { detail: { budget: v }, bubbles: false }
+                ));
+            } catch (_) {}
+        });
+
+        var budgetTicks = document.createElement('div');
+        budgetTicks.className = 'ai-assistant-panel-budget-ticks';
+        budgetTicks.setAttribute('aria-hidden', 'true');
+
+        var tickMin = document.createElement('span');
+        tickMin.className = 'ai-assistant-panel-budget-tick';
+        tickMin.textContent = '500';
+        var tickMax = document.createElement('span');
+        tickMax.className = 'ai-assistant-panel-budget-tick';
+        tickMax.textContent = '16 000';
+
+        budgetTicks.appendChild(tickMin);
+        budgetTicks.appendChild(tickMax);
+        budgetArea.appendChild(budgetHeader);
+        budgetArea.appendChild(budgetRange);
+        budgetArea.appendChild(budgetTicks);
+
+        // Wire the toggle: flip state, update UI, persist, dispatch event.
+        thinkingToggle.addEventListener('click', function () {
+            thinkingOn = !thinkingOn;
+            _setThinkingOn(thinkingOn);
+            thinkingToggle.setAttribute('aria-pressed', thinkingOn ? 'true' : 'false');
+            thinkingHint.textContent = thinkingOn
+                ? 'Deeper analysis, slightly slower responses'
+                : 'Faster, more concise responses';
+            budgetArea.setAttribute('data-visible', thinkingOn ? 'true' : 'false');
+            try {
+                document.dispatchEvent(new CustomEvent(
+                    'ai-assistant-thinking-change',
+                    { detail: { on: thinkingOn, budget: _getThinkingBudget() },
+                      bubbles: false }
+                ));
+            } catch (_) {}
+        });
+
+        thinkingSection.appendChild(thinkingRow);
+        thinkingSection.appendChild(budgetArea);
+        sheet.appendChild(thinkingSection);
+
+        // ── §C  Coming-soon feature placeholders ───────────────────────────────
+
+        var futureSection = _buildSheetSection('Coming soon');
+
+        var futureList = document.createElement('div');
+        futureList.className = 'ai-assistant-panel-future-list';
+        // Entire section is decorative — no interactive targets inside.
+        futureList.setAttribute('aria-hidden', 'true');
+
+        _FUTURE_FEATURES.forEach(function (f) {
+            var item = document.createElement('div');
+            item.className = 'ai-assistant-panel-future-item';
+
+            var icon = document.createElement('span');
+            icon.className = 'ai-assistant-panel-future-icon';
+            // Only hardcoded SVG — no user content reaches innerHTML here.
+            icon.innerHTML = _FUTURE_ICONS[f.label] || ICONS.model;
+
+            var text = document.createElement('div');
+            text.className = 'ai-assistant-panel-future-text';
+
+            var name = document.createElement('div');
+            name.className = 'ai-assistant-panel-future-name';
+            name.textContent = f.label;       // textContent — XSS-safe.
+
+            var sub = document.createElement('div');
+            sub.className = 'ai-assistant-panel-future-sub';
+            sub.textContent = f.desc;         // textContent — XSS-safe.
+
+            text.appendChild(name);
+            text.appendChild(sub);
+
+            var badge = document.createElement('span');
+            badge.className = 'ai-assistant-panel-future-badge';
+            badge.textContent = 'Soon';
+
+            item.appendChild(icon);
+            item.appendChild(text);
+            item.appendChild(badge);
+            futureList.appendChild(item);
+        });
+
+        futureSection.appendChild(futureList);
+        sheet.appendChild(futureSection);
+    }
+
     // ── Phase B: Model selection sheet (sibling of privacy sheet) ─────────────
 
     /**
@@ -2700,7 +3150,14 @@
                 'No models are configured. Set ' +
                 'ai_assistant_panel_api_models in conf.py to enable the picker.';
             bodyEl.appendChild(empty);
-            sheet.appendChild(bodyEl);
+            // Wrap in the unified scroll container even for the stub case so
+            // that effort / thinking / future sections are always inside the
+            // scrollable region and never overflow the sheet frame.
+            var scrollElEmpty = document.createElement('div');
+            scrollElEmpty.className = 'ai-assistant-panel-sheet-scroll';
+            scrollElEmpty.appendChild(bodyEl);
+            sheet.appendChild(scrollElEmpty);
+            _appendModelSheetSections(scrollElEmpty);
             return sheet;
         }
 
@@ -2821,7 +3278,17 @@
             bodyEl.appendChild(row);
         });
 
-        sheet.appendChild(bodyEl);
+        // ── Unified scroll wrapper ─────────────────────────────────────────
+        // All model rows + effort/thinking/future sections are placed inside
+        // a single scrollEl so the entire sheet body scrolls together.
+        // CSS: .ai-assistant-panel-sheet-scroll  (flex:1; overflow-y:auto)
+        // The bodyEl's own overflow is overridden to `visible` by the
+        // .ai-assistant-panel-privacy-body.ai-assistant-panel-model-list rule.
+        var scrollEl = document.createElement('div');
+        scrollEl.className = 'ai-assistant-panel-sheet-scroll';
+        scrollEl.appendChild(bodyEl);
+        sheet.appendChild(scrollEl);
+        _appendModelSheetSections(scrollEl);
         return sheet;
     }
 
