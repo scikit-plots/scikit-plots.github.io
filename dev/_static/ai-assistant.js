@@ -3580,9 +3580,8 @@
         addItem(ICONS.share,    'Share',                     hooks && hooks.onShare);
 
         // Keyboard shortcut hint row — shown at the bottom of the menu when a
-        // shortcut is configured.  Non-interactive (aria-hidden); its purpose
-        // is to remind the user of the panel toggle key without needing to look
-        // at the external kbd-hint in the subbar.
+        // shortcut is configured.  Now interactive: left-click = minimize,
+        // right-click = close (same contract as the header minimize icon-btn).
         var kbdHintLabel = _shortcutLabel();
         if (kbdHintLabel) {
             var sep = document.createElement('hr');
@@ -3592,7 +3591,10 @@
 
             var kbdRow = document.createElement('div');
             kbdRow.className = 'ai-assistant-panel-hamburger-kbd-row';
-            kbdRow.setAttribute('aria-hidden', 'true');
+            kbdRow.setAttribute('role', 'menuitem');
+            kbdRow.setAttribute('tabindex', '0');
+            kbdRow.setAttribute('aria-label', 'Minimize panel (right-click to close)');
+            kbdRow.title = 'Left-click: minimize  \u00b7  Right-click: close';
 
             var kbdIcon = document.createElement('span');
             kbdIcon.setAttribute('aria-hidden', 'true');
@@ -3605,6 +3607,26 @@
                 kbdRow.appendChild(k);
                 if (i < arr.length - 1) {
                     kbdRow.appendChild(document.createTextNode('+'));
+                }
+            });
+
+            // Left-click: close hamburger menu then minimize panel.
+            kbdRow.addEventListener('click', function () {
+                pop.setAttribute('data-open', 'false');
+                minimizeAIPanel();
+            });
+            // Right-click: close hamburger menu then fully close panel.
+            kbdRow.addEventListener('contextmenu', function (e) {
+                e.preventDefault();
+                pop.setAttribute('data-open', 'false');
+                closeAIPanel();
+            });
+            // Keyboard: Enter / Space mirrors the left-click action.
+            kbdRow.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    pop.setAttribute('data-open', 'false');
+                    minimizeAIPanel();
                 }
             });
 
@@ -3984,6 +4006,10 @@
         if (kbdLabel) {
             var hint = document.createElement('span');
             hint.className = 'ai-assistant-panel-kbd-hint';
+            hint.setAttribute('role', 'button');
+            hint.setAttribute('tabindex', '0');
+            hint.setAttribute('aria-label', 'Minimize panel (right-click to close)');
+            hint.title = 'Left-click: minimize  \u00b7  Right-click: close';
             var hIcon = document.createElement('span');
             hIcon.setAttribute('aria-hidden', 'true');
             hIcon.innerHTML = ICONS.keyboard;        // ICONS constant — safe.
@@ -3995,6 +4021,20 @@
                 hint.appendChild(k);
                 if (i < arr.length - 1) {
                     hint.appendChild(document.createTextNode('+'));
+                }
+            });
+            // Left-click: minimize panel.
+            hint.addEventListener('click', function () { minimizeAIPanel(); });
+            // Right-click: fully close panel.
+            hint.addEventListener('contextmenu', function (e) {
+                e.preventDefault();
+                closeAIPanel();
+            });
+            // Keyboard: Enter / Space mirrors the left-click action.
+            hint.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    minimizeAIPanel();
                 }
             });
             leftCluster.appendChild(hint);
@@ -4671,6 +4711,11 @@
         closeBtn.addEventListener('click', closeAIPanel);
 
         minimizeBtn.addEventListener('click', function () { minimizeAIPanel(); });
+        // Right-click on the minimize button: fully close (mirrors kbd-hint / kbd-row contract).
+        minimizeBtn.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+            closeAIPanel();
+        });
 
         maximizeBtn.addEventListener('click', function () {
             var isMax = panel.getAttribute('data-maximized') === 'true';

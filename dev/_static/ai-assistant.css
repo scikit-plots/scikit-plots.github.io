@@ -17,7 +17,7 @@
     overflow-x: visible !important;
     overflow: visible !important;
     z-index: 99999;
-    margin-top: 0.7rem;
+    margin-top: 0.3rem;
 }
 
 .ai-assistant-container img {
@@ -345,15 +345,17 @@
 /* ─── Panel root ────────────────────────────────────────────────────────── */
 
 .ai-assistant-panel {
+    /* resize: both; overflow: auto; */
     position: fixed;
-    bottom: 1.5rem;
-    right: 1.5rem;
+    bottom: 0.3rem;
+    right: 0.3rem;
     z-index: 99999;
     width: 360px;
-    max-width: calc(100vw - 2rem);
+    /* height: min(520px, calc(100vh - 1rem)); */
 
     /* Default (normal) state height */
-    max-height: min(520px, calc(100vh - 2rem));
+    max-height: calc(100vh - 1rem);
+    max-width: calc(100vw - 1rem);
 
     display: none;          /* JS sets display:flex when open */
     flex-direction: column;
@@ -404,13 +406,13 @@
     /* Actual height (not just max-height) so the panel fills the viewport
        vertically regardless of message count — the body flex-child absorbs
        the remaining space. */
-    height: calc(100vh - 3rem);
-    max-height: calc(100vh - 2rem);   /* keep as guard for safe measure */
+    height: calc(100vh - 1rem);
+    max-height: calc(100vh - 1rem);   /* keep as guard for safe measure */
     /* Expand width significantly on maximize — was 520px, now uses most of
        the viewport so both X and Y grow on maximize. */
-    width: min(960px, calc(100vw - 3rem));
-    bottom: 1.5rem;
-    right: 1.5rem;
+    width: min(960px, calc(100vw - 1rem));
+    bottom: 0.3rem;
+    right: 0.3rem;
     border-radius: 12px;
 }
 
@@ -1620,6 +1622,12 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     font-size: 0.68rem;
     /* Light-mode muted tone — readable on the white/light panel surface. */
     color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+    /* Interactive: left-click = minimize, right-click = close. */
+    cursor: pointer;
+    user-select: none;
+    border-radius: 4px;
+    padding: 0.15rem 0.25rem;
+    transition: opacity 0.15s ease, background 0.12s ease;
 }
 
 /* Wrapper span that holds the SVG icon (aria-hidden="true").
@@ -1661,6 +1669,11 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 }
 [data-bs-theme="dark"] .ai-assistant-panel-kbd-hint kbd {
     background: rgba(255, 255, 255, 0.07);
+}
+/* Hover: subtle background tint signals the element is clickable. */
+.ai-assistant-panel-kbd-hint:hover {
+    opacity: 0.75;
+    background: rgba(127, 127, 127, 0.1);
 }
 
 /* ─── R2: privacy / responsibility sheet ────────────────────────────────────
@@ -2372,9 +2385,17 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     padding: 0.25rem 0.55rem 0.3rem;
     font-size: 0.68rem;
     color: var(--pst-color-text-muted, var(--color-foreground-secondary, #888));
-    pointer-events: none;
+    /* Interactive: left-click = minimize, right-click = close. */
+    cursor: pointer;
+    user-select: none;
+    border-radius: 4px;
     white-space: nowrap;
     opacity: 0.8;
+    transition: opacity 0.15s ease, background 0.12s ease;
+}
+.ai-assistant-panel-hamburger-kbd-row:hover {
+    opacity: 1;
+    background: rgba(127, 127, 127, 0.1);
 }
 .ai-assistant-panel-hamburger-kbd-row > span[aria-hidden] svg {
     width: 0.75rem;
