@@ -2119,12 +2119,31 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     min-width: 0;
 }
 
-/* Chevron SVG */
-.ai-assistant-panel-inline-model-picker svg {
+/* Chevron SVG — scoped to .chev span so the icon-only SVG stays full opacity */
+.ai-assistant-panel-inline-picker-chev svg {
     width: 12px;
     height: 12px;
     flex-shrink: 0;
     opacity: 0.6;
+}
+
+/* ── Small-screen icon-only fallback ──────────────────────────────────────
+ * Mirrors the model-link sub-bar pattern: always in the DOM, visibility
+ * toggled by CSS at ≤ 460 px (same breakpoint as .ai-assistant-panel-
+ * model-link-label collapse).  The icon is 15 × 15 px to match the other
+ * .ai-assistant-panel-footer-btn SVG icons in the same action bar. */
+.ai-assistant-panel-inline-picker-icon {
+    display: none;              /* hidden at wide widths — full pill shown */
+    align-items: center;
+    line-height: 0;
+    flex-shrink: 0;
+}
+.ai-assistant-panel-inline-picker-icon svg {
+    width: 15px;
+    height: 15px;
+    stroke: currentColor;
+    fill: none;
+    flex-shrink: 0;
 }
 
 /* Hamburger overflow popover — positioned absolute relative to panel. */
@@ -2207,11 +2226,38 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 }
 
 /* On narrow viewports collapse the right-cluster labels — keep icons only.
- * Hamburger preserves access to every entry-point. */
+ * Hamburger preserves access to every entry-point.
+ *
+ * Also collapses the footer inline model picker from its full pill form
+ * (dot + label + chevron) to a single model icon — same breakpoint, same
+ * logic as .ai-assistant-panel-model-link-label above. */
 @media (max-width: 460px) {
+    /* Sub-bar right-cluster: hide text labels, keep icons */
     .ai-assistant-panel-share-link span:not([aria-hidden]),
     .ai-assistant-panel-terms-link,
     .ai-assistant-panel-model-link-label {
+        display: none;
+    }
+
+    /* Footer inline model picker: collapse pill → bare icon button.
+     * Reset the pill chrome (border, min-width, padding) so the button
+     * looks and feels like the other icon-only footer buttons (mic, send). */
+    .ai-assistant-panel-inline-model-picker {
+        min-width: unset;
+        max-width: unset;
+        border: none;
+        border-radius: 6px;
+        padding: 0.35rem 0.4rem;    /* matches .ai-assistant-panel-footer-btn */
+        background: transparent;
+    }
+    /* Show the model SVG icon (hidden by default above) */
+    .ai-assistant-panel-inline-picker-icon {
+        display: inline-flex;
+    }
+    /* Hide the pill-only elements: dot, label, chevron */
+    .ai-assistant-panel-inline-picker-dot,
+    .ai-assistant-panel-inline-picker-label,
+    .ai-assistant-panel-inline-picker-chev {
         display: none;
     }
 }

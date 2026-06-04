@@ -2811,8 +2811,11 @@
                 row.setAttribute('data-checked', 'true');
                 // Sync inline picker if present.
                 _syncInlinePickers(id);
-                // Close the sheet on selection.
-                sheet.setAttribute('data-open', 'false');
+                // Sheet closure is handled by the row click listener wired in
+                // createAIPanel after _closeSheet is in scope.  Using that path
+                // ensures aria-expanded is reset and focus returns to the opener
+                // for every close path (different model, same model, × button,
+                // Escape) — Issue 4 parity for model row selection.
             });
 
             bodyEl.appendChild(row);
@@ -3210,6 +3213,18 @@
         btn.setAttribute('aria-label', 'Choose a model \u2014 current: ' + initLabel);
         btn.title = initLabel;
 
+        // ── Small-screen icon-only fallback ────────────────────────────────
+        // On narrow viewports (≤ 460 px) the pill collapses to this single
+        // model icon, hiding the dot, label, and chevron.  Mirrors the exact
+        // same logic used by .ai-assistant-panel-model-link in the sub-bar:
+        // the icon is always in the DOM; CSS controls visibility at the
+        // breakpoint defined in the @media (max-width: 460px) block.
+        var iconOnly = document.createElement('span');
+        iconOnly.className = 'ai-assistant-panel-inline-picker-icon';
+        iconOnly.setAttribute('aria-hidden', 'true');
+        iconOnly.innerHTML = ICONS.model;   // ICONS constant — safe.
+        btn.appendChild(iconOnly);
+
         // ── Provider badge dot ──────────────────────────────────────────────
         var dot = document.createElement('span');
         dot.className = 'ai-assistant-panel-inline-picker-dot';
@@ -3229,7 +3244,10 @@
         btn.appendChild(lbl);
 
         // ── Chevron ─────────────────────────────────────────────────────────
+        // Class added so the narrow-screen rule can hide it by class name
+        // (safer than :last-child which depends on DOM order).
         var chev = document.createElement('span');
+        chev.className = 'ai-assistant-panel-inline-picker-chev';
         chev.setAttribute('aria-hidden', 'true');
         chev.innerHTML = ICONS.chevronDown;   // ICONS constant — safe.
         btn.appendChild(chev);
@@ -4235,6 +4253,39 @@
             closeBtn.addEventListener('click', function () { _closeSheet(s); });
         });
 
+        // Close the model sheet on any model-row click — whether the user
+        // selects a different model OR re-clicks the already-active one.
+        //
+        // Why click instead of change:
+        //   A radio 'change' event does NOT fire when the already-checked radio
+        //   is clicked, so the change handler alone cannot close the sheet when
+        //   the user confirms their current model selection.
+        //
+        // Why _closeSheet (not setAttribute):
+        //   Routes through the same path as the × button and Escape key so
+        //   aria-expanded is reset and keyboard focus always returns to the
+        //   element that opened the sheet (Issue 4 parity for row selection).
+        //
+        // Info-link guard:
+        //   Clicking the external info <a> inside a row must NOT close the
+        //   sheet — the user is reading model information, not confirming a
+        //   selection.  e.target.closest() is supported by all browsers that
+        //   support the rest of this codebase; no polyfill required.
+        if (modelSheet) {
+            modelSheet.querySelectorAll('.ai-assistant-panel-model-row')
+                .forEach(function (row) {
+                    row.addEventListener('click', function (e) {
+                        // Guard: ignore clicks that land on or inside the info link.
+                        if (e.target &&
+                            typeof e.target.closest === 'function' &&
+                            e.target.closest('.ai-assistant-panel-model-info')) {
+                            return;
+                        }
+                        _closeSheet(modelSheet);
+                    });
+                });
+        }
+
         sendBtn.addEventListener('click', handleAIPanelSubmit);
 
         input.addEventListener('keydown', function (e) {
@@ -5088,6 +5139,7 @@
         if (!showSettings) { return; }
 
         var info = _getBrowserSettingsInfo();
+        console.log('info=', info);
 
         // Browser badge
         var badge = settSec.querySelector('.ai-assistant-mic-perm-settings-browser');
@@ -5123,6 +5175,10 @@
 
         // Steps list
         var stepsList = settSec.querySelector('.ai-assistant-mic-perm-settings-steps');
+        console.log(
+        'steps count=',
+        stepsList ? stepsList.children.length : 'missing'
+        );
         if (stepsList) {
             stepsList.innerHTML = '';
             info.steps.forEach(function (step) {
@@ -5705,12 +5761,10 @@
             legacyToggle.textContent = (!expanded ? '\u25BC ' : '\u25B6 ')
                 + 'Alternative / older-browser method';
         });
-
         settSec.appendChild(legacyToggle);
         settSec.appendChild(legacyBody);
 
         bar.appendChild(settSec);
-
         return bar;
     }
 
