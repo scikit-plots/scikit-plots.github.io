@@ -3240,6 +3240,7 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     flex-shrink: 0;
     /* height set by JS; transition smooths per-frame amplitude changes    */
     transition: height 0.04s ease-out, background-color 0.15s ease;
+    will-change: height;
 }
 
 [data-bs-theme="dark"] .ai-mic-bar {
@@ -3593,16 +3594,36 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 }
 
 
+/* ─── Device label + subtitle wrapper ───────────────────────────────────── */
+/*
+ * Two-line label: primary device name (truncated) above a muted category
+ * subtitle ("System default", "Communications", "Host microphone", etc.).
+ *
+ * flex: 1 1 auto absorbs all available space between the row left edge and
+ * the checkmark on the right.  min-width: 0 is required on flex children to
+ * allow overflow: hidden / text-overflow: ellipsis to work inside a flexbox.
+ * overflow: hidden prevents long hardware names from widening the popup.
+ */
+
+.ai-assistant-mic-device-label-wrap {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    gap: 0.1rem;
+}
+
+
 /* ─── Device name label ──────────────────────────────────────────────────── */
 /*
- * flex: 1 1 auto + overflow:hidden + text-overflow:ellipsis → graceful
- * truncation for long hardware names like "Mikrofon Dizisi (Realtek(R) Audio)".
- * The full name is available via the title attribute (tooltip).
+ * Primary hardware name line inside the label wrapper.
+ * flex grow/shrink is now on the parent .ai-assistant-mic-device-label-wrap;
+ * the name span only needs overflow clipping and ellipsis.
+ * The full name is available via the title attribute (browser tooltip).
  */
 
 .ai-assistant-mic-device-name {
-    flex: 1 1 auto;
-    min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -3625,6 +3646,36 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 /* Selected item — slightly bolder to reinforce the active state */
 .ai-assistant-mic-device-item[aria-checked="true"] .ai-assistant-mic-device-name {
     font-weight: 500;
+}
+
+
+/* ─── Device category subtitle ───────────────────────────────────────────── */
+/*
+ * Muted second line: category hint rendered by _categorizeMicDevice().
+ * Examples: "System default", "Communications", "Host microphone",
+ *           "Bluetooth headset", "USB microphone".
+ * aria-hidden="true" in JS — purely decorative; the name alone identifies
+ * the device to screen readers.
+ */
+
+.ai-assistant-mic-device-subtitle {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.615rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(
+        --pst-color-text-muted,
+        var(--color-foreground-secondary, #999)
+    );
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-device-subtitle {
+    color: var(
+        --pst-color-text-muted,
+        var(--color-foreground-secondary, #6b7280)
+    );
 }
 
 
@@ -4300,97 +4351,102 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
 }
 
 
-/* ════════════════════════════════════════════════════════════════════════════
-   Device item label wrapper + subtitle
-   (.ai-assistant-mic-device-label-wrap, .ai-assistant-mic-device-subtitle)
-   ════════════════════════════════════════════════════════════════════════════ */
-
-/* Replaces the bare nameSpan inside each device item with a stacked wrapper */
-.ai-assistant-mic-device-label-wrap {
-    flex: 1 1 auto;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.05rem;
-}
-
-/* Device category subtitle: "Loopback / monitor", "Virtual device", etc. */
-.ai-assistant-mic-device-subtitle {
-    font-size: 0.565rem;
-    font-weight: 400;
-    line-height: 1.2;
-    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #888));
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-[data-bs-theme="dark"] .ai-assistant-mic-device-subtitle {
-    color: var(--pst-color-text-muted, #6b7a8a);
-}
-
-/* Loopback/monitor — orange tint to make it visually distinct */
-.ai-assistant-mic-device-item
-    .ai-assistant-mic-device-subtitle:not(:empty) {
-    opacity: 0.85;
-}
-
-/* Slightly taller item when subtitle is present (handled naturally by flex gap) */
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   FOOTER SOUNDBAR — real-time decibel waveform, scrolling right → left
+   FOOTER SOUNDBAR — real-time decibel waveform, newest sample right
    ─────────────────────────────────────────────────────────────────────────
-   JS (_startVizLoops) drives bar heights from Web Audio AnalyserNode RMS
-   amplitude data.  Each _SOUNDBAR_TICK_MS (80 ms) tick the ring buffer
-   shifts left and the newest amplitude fills the rightmost bar — a
-   scrolling oscilloscope where time flows right to left.
+   Architecture
+   ────────────
+   JS (_startVizLoops) builds bar elements at recording-start via
+   _rebuildSoundbarBars(), sizing them to the current viewport.
+   _computeSoundbarBarCount() picks the bar count from a 4-step
+   breakpoint table that mirrors the CSS max-width breakpoints below.
 
-   Structure (built in createAIPanel):
-     div#ai-assistant-footer-soundbar.ai-assistant-footer-soundbar   ← container
-       div.ai-assistant-footer-soundbar-bar × _SOUNDBAR_BARS (20)    ← bars
+   RMS amplitude from the Web Audio AnalyserNode drives bar heights
+   every _SOUNDBAR_TICK_MS (80 ms).  The ring buffer scrolls:
+   newest sample appears on the RIGHT, oldest exits on the LEFT.
+   \`justify-content: flex-end\` anchors the rightmost (newest) bars
+   to the right edge; CSS \`overflow: hidden\` clips the leftmost
+   (oldest) bars on narrow viewports.
+
+   Bar opacity is proportional to height: 0.30 at silence, 1.00 at
+   peak.  JS sets style.opacity each tick — no CSS keyframes needed.
+
+   Responsive bar counts / max-widths (bar×3px + gap×2px + 6px slack):
+     ≥ 768 px  →  24 bars →  max-width: 124 px  (desktop / tablet)
+     480–767 px  →  16 bars →  max-width:  84 px  (large phone)
+     360–479 px  →  12 bars →  max-width:  64 px  (phone)
+       < 360 px  →   8 bars →  max-width:  44 px  (small phone)
 
    States
    ──────
-   Inactive → max-width:0 + overflow:hidden hides the container entirely.
-              Bars exist in DOM at _SOUNDBAR_MIN_H (2 px); no layout jump.
-   Active   → data-active attribute added; max-width expands to reveal bars.
-              _startVizLoops() interval updates heights from live RMS data.
-              New samples appear RIGHT; old samples exit LEFT.
-   Stop     → data-active removed; max-width collapses; _stopVizLoops()
-              resets bars to 2 px silence height.
+   Inactive → max-width: 0 + opacity: 0 collapses container.
+             No layout shift; zero battery impact.
+   Active   → data-active added by JS; max-width + opacity expand.
+             _startVizLoops() builds bars and starts the tick loop.
+   Stop     → data-active removed; container collapses;
+             _stopVizLoops() resets heights and opacity to idle.
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/* Container — always in flex layout; collapsed/expanded via max-width */
+/* Container — collapsed when idle, expands rightward on data-active */
 .ai-assistant-footer-soundbar {
     display: inline-flex;
-    align-items: flex-end;       /* bars grow upward from the bottom edge */
+    align-items: flex-end;          /* bars grow upward from bottom           */
+    justify-content: flex-end;      /* newest bars anchored to RIGHT edge     */
     gap: 2px;
-    height: 18px;
+    height: 20px;
     flex-shrink: 0;
-    overflow: hidden;             /* clip bars cleanly at container edges   */
-    max-width: 0;                 /* collapsed = invisible, zero-width      */
-    transition: max-width 0.18s ease;   /* smooth slide-open on activation  */
+    overflow: hidden;               /* clips oldest (left) bars on narrow vp  */
+    max-width: 0;
+    opacity: 0;
+    transition: max-width 0.22s ease, opacity 0.18s ease;
 }
 
-/* Revealed when mic is active — 20×3px + 19×2px = 98px content */
+/* Revealed when mic is active — desktop / tablet (≥ 768 px): 24 bars */
 .ai-assistant-footer-soundbar[data-active] {
-    max-width: 100px;
+    max-width: 124px;   /* 24 × 3px + 23 × 2px = 118px + 6px slack */
+    opacity: 1;
 }
 
-/* Individual bars — JS sets inline style.height from RMS amplitude per tick.
- * Always brand-primary; visible only while recording (inside [data-active]).
- * CSS height transition (0.06 s) smooths per-tick amplitude changes.       */
+/* Large phone (480–767 px): 16 bars */
+@media (max-width: 767px) {
+    .ai-assistant-footer-soundbar[data-active] {
+        max-width: 84px;   /* 16 × 3 + 15 × 2 = 78 + 6 */
+    }
+}
+
+/* Phone (360–479 px): 12 bars */
+@media (max-width: 479px) {
+    .ai-assistant-footer-soundbar[data-active] {
+        max-width: 64px;   /* 12 × 3 + 11 × 2 = 58 + 6 */
+    }
+}
+
+/* Very small phone (< 360 px): 8 bars */
+@media (max-width: 359px) {
+    .ai-assistant-footer-soundbar[data-active] {
+        max-width: 44px;   /* 8 × 3 + 7 × 2 = 38 + 6 */
+    }
+}
+
+/* Individual bars:
+ *   height  — set by JS from RMS amplitude (2 px silence → 16 px full scale)
+ *   opacity — set by JS proportional to height (0.30 silence → 1.0 peak)
+ *   Both transitions smooth per-tick changes without snapping.              */
 .ai-assistant-footer-soundbar-bar {
     display: block;
     width: 3px;
-    height: 2px;                 /* _SOUNDBAR_MIN_H — JS overrides each tick */
-    border-radius: 2px;
+    height: 2px;
+    min-height: 2px;
+    border-radius: 3px;
     flex-shrink: 0;
+    opacity: 0.30;
     background: var(
         --pst-color-primary,
         var(--color-brand-primary, #2980b9)
     );
-    transition: height 0.06s ease-out;
+    transition: height 0.07s ease-out, opacity 0.07s ease-out;
+    will-change: height, opacity;
 }
 
 [data-bs-theme="dark"] .ai-assistant-footer-soundbar-bar {
@@ -4407,9 +4463,13 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
     .ai-assistant-mic-perm-urlbar-mic {
         animation: none;
     }
-    /* Soundbar: JS skips tick loop on prefers-reduced-motion.
-     * Bars remain at 2 px silence height — zero motion.               */
+    /* Soundbar: JS skips the tick loop; bars hold 2px silence height.
+     * Container still appears so the user sees it's present — just static. */
     .ai-assistant-footer-soundbar-bar {
+        transition: none;
+        opacity: 0.45;
+    }
+    .ai-assistant-footer-soundbar {
         transition: none;
     }
 }

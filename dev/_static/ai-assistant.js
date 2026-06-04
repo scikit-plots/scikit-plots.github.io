@@ -154,21 +154,31 @@
     // ── Web Audio API visualisation — module-level singletons ────────────────
 
     /**
-     * Idle sinusoidal heights for the 100 mic popup level bars.
+     * Idle sinusoidal heights for the 100 mic popup level bars (px).
      *
-     * Values rise from 2 px at the edges to 13 px at the centre, mirroring
-     * the natural envelope of a spoken-word audio waveform.  Shared between
-     * _buildMicHoverPopup (initial heights) and _stopVizLoops (reset heights)
-     * so there is exactly one source of truth for the idle shape.
+     * 100-element look-up table: values rise from 2 px at the edges to 13 px
+     * at the centre following a half-sine arch
+     *   h[i] = max(2, round(2 + 11 * sin(π × i / 99)))
+     * This mirrors the natural envelope of a spoken-word audio waveform and
+     * provides a visually balanced resting state.
+     *
+     * Shared between _buildMicHoverPopup (initial bar heights on DOM creation)
+     * and _stopVizLoops (bar reset when recording stops) so there is exactly
+     * one source of truth for the idle shape.
      *
      * @type {number[]}
      */
     var _IDLE_LEVEL_HEIGHTS = [
-        2,2,3,3,3,4,4,4,5,5,5,6,6,6,7,7,7,8,8,8,9,9,9,9,
-        10,10,10,10,11,11,11,11,11,12,12,12,12,12,12,12,
-        13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,
-        13,13,13,13,12,12,12,12,12,12,12,11,11,11,11,11,
-        10,10,10,10,9,9,9,9,8,8,8,7,7,7,6,6,6,5,5,5,4,4,4,3,3,3,2,2
+        2,2,3,3,3,4,4,4,5,5,
+        5,6,6,6,7,7,7,8,8,8,
+        9,9,9,9,10,10,10,10,11,11,
+        11,11,11,12,12,12,12,12,12,12,
+        13,13,13,13,13,13,13,13,13,13,
+        13,13,13,13,13,13,13,13,13,13,
+        12,12,12,12,12,12,12,11,11,11,
+        11,11,10,10,10,10,9,9,9,9,
+        8,8,8,7,7,7,6,6,6,5,
+        5,5,4,4,4,3,3,3,2,2
     ];
 
     /** Number of bars in the footer soundbar ring buffer. @type {number} */
@@ -206,6 +216,99 @@
 
     /** Ring buffer of pixel heights for the footer soundbar (length = _SOUNDBAR_BARS). @type {number[]} */
     var _soundbarHeights  = [];
+
+    /**
+     * Number of bars in the mic popup VU meter level visualiser.
+     *
+     * 100 bars represent the full standard 0-100 dB level scale.
+     * At 2 px per bar + 1 px gap the strip is 299 px — fits inside the
+     * 330 px popup min-width with 31 px to spare.
+     *
+     * Rendering cost: 100 style.height writes per rAF frame (~16 ms budget)
+     * is negligible on all modern and legacy mobile devices.
+     *
+     * @type {number}
+     */
+    var _MIC_LEVEL_BAR_COUNT = 100;
+
+    // ── VU meter constants (module-level, immutable) ──────────────────────
+    //
+    // Standard dBFS-to-bar mapping for the 100-bar popup level visualiser.
+    //
+    // dBFS floor  = -40 dBFS  — practical voice/mic lower bound.
+    //               Signals below this threshold are treated as silence.
+    // dBFS range  =  40 dB    — floor (-40) to full scale (0 dBFS).
+    // Bar index   = round((dBFS - floor) / range × 100), clamped 0-100.
+    //
+    // Colour zones (standard broadcast/audio convention):
+    //   bars  0-59  primary/blue   → -40…-16.4 dBFS  (safe speech level)
+    //   bars 60-79  amber #f59e0b  → -16…-8.4  dBFS  (loud / hot)
+    //   bars 80-99  red   #ef4444  →  -8…-0.4  dBFS  (peak / clip risk)
+
+    /** dBFS silence floor (signals below this → bar index 0). @type {number} */
+    var _VU_DB_FLOOR    = -40;
+
+    /** dBFS working range (floor to full scale). @type {number} */
+    var _VU_DB_RANGE    =  40;
+
+    /** First bar index of the amber (loud) zone. @type {number} */
+    var _VU_ZONE_AMBER  = 60;
+
+    /** First bar index of the red (peak) zone. @type {number} */
+    var _VU_ZONE_RED    = 80;
+
+    /** Amber zone bar colour. @type {string} */
+    var _VU_COLOR_AMBER = '#f59e0b';
+
+    /** Red / peak zone bar colour. @type {string} */
+    var _VU_COLOR_RED   = '#ef4444';
+
+    /**
+     * Frames a newly raised peak bar is held before decay begins (~670 ms at
+     * 60 fps; 40 frames × 16.7 ms).
+     * @type {number}
+     */
+    var _VU_PEAK_HOLD   = 40;
+
+    /**
+     * Frames between each 1-bar downward decay step once hold expires
+     * (~50 ms per bar at 60 fps; full 100-bar sweep ≈ 5 s).
+     * @type {number}
+     */
+    var _VU_PEAK_DECAY  = 3;
+
+    // ── VU meter mutable state (reset on each _startVizLoops call) ────────
+
+    /** Highest bar index seen in the current hold window. @type {number} */
+    var _vuPeakBar      = 0;
+
+    /** Frames elapsed since _vuPeakBar was last raised. @type {number} */
+    var _vuPeakHold     = 0;
+
+    /** Frame counter driving the decay cadence. @type {number} */
+    var _vuPeakDecay    = 0;
+    /**
+     * requestAnimationFrame polyfill.
+     *
+     * Standard since Chrome 24 / Firefox 23 / Safari 6.1 / IE 10.
+     * Falls back to a 16 ms setTimeout (≈ 60 fps) on legacy Android 4.x
+     * WebView and very old desktop browsers.
+     *
+     * @type {function}
+     */
+    var _RAF = (window.requestAnimationFrame
+             || window.webkitRequestAnimationFrame
+             || window.mozRequestAnimationFrame
+             || function (cb) { return window.setTimeout(cb, 16); });
+    /**
+     * cancelAnimationFrame polyfill paired with _RAF above.
+     *
+     * @type {function}
+     */
+    var _CAF = (window.cancelAnimationFrame
+             || window.webkitCancelAnimationFrame
+             || window.mozCancelAnimationFrame
+             || window.clearTimeout);
 
 
     /**
@@ -3600,25 +3703,18 @@
         var footerActionsRight = document.createElement('div');
         footerActionsRight.className = 'ai-assistant-panel-footer-actions-right';
 
-        // ── Footer soundbar (real-time decibel waveform) ─────────────────────
+        // ── Footer soundbar: container only — bars built dynamically in _startVizLoops
         //
-        // _SOUNDBAR_BARS (20) bar elements form the ring-buffer backing store.
-        // CSS max-width:0 hides the container until _setMicActiveState(true)
-        // adds data-active.  _startVizLoops() then updates bar heights from
-        // live AnalyserNode RMS data every _SOUNDBAR_TICK_MS (80 ms).
-        // aria-hidden="true" — decorative; recording state is conveyed via
-        // the mic button aria-label ("Stop recording").
+        // Bar count is determined at recording-start from the viewport width
+        // (_computeSoundbarBarCount) so it is always right for the device.
+        // CSS controls visibility (max-width: 0 → active max-width);
+        // JS manages bar elements, heights, and opacity per tick.
         (function () {
             var soundbar = document.createElement('div');
             soundbar.className = 'ai-assistant-footer-soundbar';
             soundbar.id        = 'ai-assistant-footer-soundbar';
             soundbar.setAttribute('aria-hidden', 'true');
-            for (var _sb = 0; _sb < _SOUNDBAR_BARS; _sb++) {
-                var bar = document.createElement('div');
-                bar.className  = 'ai-assistant-footer-soundbar-bar';
-                bar.style.height = _SOUNDBAR_MIN_H + 'px';  // silence height
-                soundbar.appendChild(bar);
-            }
+            // No bars here — _rebuildSoundbarBars() creates them in _startVizLoops.
             footerActionsRight.appendChild(soundbar);
         }());
 
@@ -4336,7 +4432,7 @@
 
         // 100 bars; sinusoidal idle heights (2px edges → 13px centre) create
         // a natural waveform silhouette that mirrors spoken-word audio profiles.
-        var BAR_COUNT = 100;
+        var BAR_COUNT = _MIC_LEVEL_BAR_COUNT;  // 100 bars — 0-100 dBFS VU meter scale
         var _idleHeights = _IDLE_LEVEL_HEIGHTS;  // module-level constant
         for (var _b = 0; _b < BAR_COUNT; _b++) {
             var bar = document.createElement('span');
@@ -6306,18 +6402,22 @@
         try {
             var AudioCtxCtor = window.AudioContext || window.webkitAudioContext;
             if (!AudioCtxCtor) { return; }
-            _audioCtx              = new AudioCtxCtor();
-            _analyserNode          = _audioCtx.createAnalyser();
-            _analyserNode.fftSize                  = 256;
-            _analyserNode.smoothingTimeConstant    = 0.80;
+            _audioCtx             = new AudioCtxCtor();
+            _analyserNode         = _audioCtx.createAnalyser();
+            _analyserNode.fftSize                = 256;   // 128 bins
+            _analyserNode.smoothingTimeConstant  = 0.80;
             _audioSrcNode = _audioCtx.createMediaStreamSource(stream);
             _audioSrcNode.connect(_analyserNode);
-            // NOT connected to _audioCtx.destination — analysis only, no playback
+            // NOT connected to destination — analysis only, zero echo/feedback.
+            // iOS Safari suspends AudioContext between gestures; resume immediately.
+            // Non-fatal: if the promise rejects, viz loops silently fall back to
+            // the "no analyser" path (idle heights only).
+            if (_audioCtx.state === 'suspended') {
+                _audioCtx.resume().catch(function () {});
+            }
         } catch (err) {
             console.warn('AI Assistant: Web Audio connect failed:', err);
-            _audioCtx     = null;
-            _analyserNode = null;
-            _audioSrcNode = null;
+            _audioCtx = null; _analyserNode = null; _audioSrcNode = null;
         }
     }
 
@@ -6391,60 +6491,186 @@
      * prefers-reduced-motion: both loops are skipped; bars remain at their
      * current height.  CSS also applies static heights as a fallback.
      */
+    /**
+     * Return the number of footer soundbar bars that fit for the current
+     * viewport width.  Matches the CSS responsive max-width breakpoints so
+     * the bar count and CSS-revealed width are always in sync.
+     *
+     * Returns
+     * -------
+     * number
+     *     One of: 8 (< 360 px) | 12 (360–479 px) | 16 (480–767 px) | 24 (≥ 768 px).
+     */
+    function _computeSoundbarBarCount() {
+        var vw = (window.innerWidth || document.documentElement.clientWidth || 320);
+        if (vw < 360) return 8;
+        if (vw < 480) return 12;
+        if (vw < 768) return 16;
+        return 24;
+    }
+
+    /**
+     * (Re)build soundbar bar elements to match the target count `n`.
+     *
+     * Idempotent: leaves the DOM untouched when the count is already correct.
+     * Each new bar starts at _SOUNDBAR_MIN_H (2 px) and 0.30 opacity.
+     *
+     * Parameters
+     * ----------
+     * soundbarEl : HTMLElement
+     *     The soundbar container element.
+     * n : number
+     *     Target bar count (8 | 12 | 16 | 24).
+     *
+     * Returns
+     * -------
+     * NodeList
+     *     Live NodeList of `.ai-assistant-footer-soundbar-bar` elements.
+     */
+    function _rebuildSoundbarBars(soundbarEl, n) {
+        var existing = soundbarEl.querySelectorAll('.ai-assistant-footer-soundbar-bar');
+        if (existing.length === n) { return existing; }
+        while (soundbarEl.firstChild) { soundbarEl.removeChild(soundbarEl.firstChild); }
+        for (var i = 0; i < n; i++) {
+            var b = document.createElement('div');
+            b.className       = 'ai-assistant-footer-soundbar-bar';
+            b.style.height    = _SOUNDBAR_MIN_H + 'px';
+            b.style.opacity   = '0.30';
+            soundbarEl.appendChild(b);
+        }
+        return soundbarEl.querySelectorAll('.ai-assistant-footer-soundbar-bar');
+    }
+
     function _startVizLoops() {
-        // Honour prefers-reduced-motion — no JS motion
+        // ── prefers-reduced-motion: skip all JS animation ─────────────────
         if (window.matchMedia &&
-            window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             return;
         }
 
-        // ── Loop 1: rAF — mic popup level bars ───────────────────────────────
+        var raf = (_RAF || requestAnimationFrame);
+
+        // ── iOS / legacy AudioContext resume ──────────────────────────────
+        // iOS Safari suspends AudioContext between user gestures; resume
+        // proactively.  The .catch() guard makes this non-fatal.
+        if (_audioCtx && _audioCtx.state === 'suspended') {
+            _audioCtx.resume().catch(function () {});
+        }
+
+        // ── Loop 1: rAF — mic popup VU meter level bars (~60 fps) ─────────
+        //
+        // Standard 0-100 dBFS VU meter architecture:
+        //
+        //   Source   → _readRmsAmplitude() → RMS in [0, 1]
+        //   Mapping  → dBFS = 20×log10(rms)
+        //   Scale    → level = (dBFS - floor) / range × barCount, clamped 0-barCount
+        //   Display  → bars 0…level-1 = active (zone colour, max height)
+        //              bars level…N-1 = silent (idle sinusoidal height, muted)
+        //   Peak     → _vuPeakBar held for _VU_PEAK_HOLD frames,
+        //              then decays 1 bar every _VU_PEAK_DECAY frames.
+        //
+        // Colour zones (broadcast convention):
+        //   0-59   primary (CSS --pst-color-primary)  safe speech  -40…-16.4 dBFS
+        //   60-79  amber  _VU_COLOR_AMBER              loud/hot     -16…-8.4  dBFS
+        //   80-99  red    _VU_COLOR_RED                peak/clip     -8…-0.4  dBFS
         if (!_vizRafId) {
             var levelBarsEl = document.getElementById('ai-assistant-mic-level-bars');
             if (levelBarsEl) {
-                var _levelBarEls = levelBarsEl.querySelectorAll('.ai-mic-bar');
-                var _freqBuf = _analyserNode
-                    ? new Uint8Array(_analyserNode.frequencyBinCount)  // 128 bins
-                    : null;
+                var _lbEls   = levelBarsEl.querySelectorAll('.ai-mic-bar');
+                var _lbCount = _lbEls.length;  // _MIC_LEVEL_BAR_COUNT = 100
+
+                // Reset VU peak state at loop start so a new session begins clean.
+                _vuPeakBar   = 0;
+                _vuPeakHold  = 0;
+                _vuPeakDecay = 0;
 
                 (function _rafTick() {
-                    _vizRafId = requestAnimationFrame(_rafTick);
+                    _vizRafId = raf(_rafTick);
 
-                    if (!_analyserNode || !_freqBuf) {
-                        // No analyser yet — bars hold their idle heights
+                    if (!_analyserNode) {
+                        // No analyser yet — hold idle sinusoidal heights
                         return;
                     }
-                    _analyserNode.getByteFrequencyData(_freqBuf);
 
-                    var barCount = _levelBarEls.length;  // 100
-                    var binCount = _freqBuf.length;      // 128
+                    // ── 1. Compute VU level (0-_lbCount) from RMS ─────────
+                    var rms   = _readRmsAmplitude();
+                    //   Clamp rms away from zero before log to avoid -Infinity.
+                    var dBFS  = 20 * Math.log10(rms < 1e-9 ? 1e-9 : rms);
+                    //   Map dBFS → bar index: floor=-40, range=40 dB, scale=_lbCount.
+                    var level = Math.round((dBFS - _VU_DB_FLOOR) / _VU_DB_RANGE * _lbCount);
+                    level     = level < 0 ? 0 : (level > _lbCount ? _lbCount : level);
 
-                    // Map 128 frequency bins → 100 bars via linear interpolation.
-                    // Each bar index i samples bin floor(i * bins / bars).
-                    for (var i = 0; i < barCount; i++) {
-                        var binIdx = Math.floor(i * binCount / barCount);
-                        var rawAmp = _freqBuf[binIdx] / 255;  // [0, 1]
-                        var h = _MIC_LEVEL_MIN_H
-                            + rawAmp * (_MIC_LEVEL_MAX_H - _MIC_LEVEL_MIN_H);
-                        _levelBarEls[i].style.height = h + 'px';
+                    // ── 2. Peak hold + decay ───────────────────────────────
+                    if (level >= _vuPeakBar) {
+                        // New or equal peak: reset hold timer.
+                        _vuPeakBar   = level;
+                        _vuPeakHold  = 0;
+                        _vuPeakDecay = 0;
+                    } else {
+                        _vuPeakHold++;
+                        if (_vuPeakHold > _VU_PEAK_HOLD) {
+                            // Hold expired: decay one bar every _VU_PEAK_DECAY frames.
+                            _vuPeakDecay++;
+                            if (_vuPeakDecay >= _VU_PEAK_DECAY) {
+                                _vuPeakDecay = 0;
+                                if (_vuPeakBar > 0) { _vuPeakBar--; }
+                            }
+                        }
+                    }
+
+                    // ── 3. Render bars ────────────────────────────────────
+                    //   Active bar (i < level): max height, zone colour.
+                    //   Peak bar  (i === _vuPeakBar, _vuPeakBar > 0, i >= level):
+                    //             max height, zone colour (held above active stack).
+                    //   Idle bar  (everything else): idle sinusoidal height,
+                    //             background cleared so CSS inactive colour applies.
+                    for (var i = 0; i < _lbCount; i++) {
+                        var isActive = (i < level);
+                        var isPeak   = (!isActive && i === _vuPeakBar && _vuPeakBar > 0);
+
+                        if (isActive || isPeak) {
+                            _lbEls[i].style.height = _MIC_LEVEL_MAX_H + 'px';
+                            // Zone colour via inline style (overrides CSS active default).
+                            // Empty string lets the CSS rule supply the primary colour so
+                            // it respects --pst-color-primary and dark-mode overrides.
+                            if (i >= _VU_ZONE_RED) {
+                                _lbEls[i].style.background = _VU_COLOR_RED;
+                            } else if (i >= _VU_ZONE_AMBER) {
+                                _lbEls[i].style.background = _VU_COLOR_AMBER;
+                            } else {
+                                _lbEls[i].style.background = '';
+                            }
+                        } else {
+                            // Return to idle sinusoidal height; clear inline colour so
+                            // the CSS inactive rule (muted/dark) applies correctly.
+                            _lbEls[i].style.height = (
+                                _IDLE_LEVEL_HEIGHTS[i] !== undefined
+                                    ? _IDLE_LEVEL_HEIGHTS[i]
+                                    : _MIC_LEVEL_MIN_H
+                            ) + 'px';
+                            _lbEls[i].style.background = '';
+                        }
                     }
                 }());
             }
         }
 
-        // ── Loop 2: interval — footer soundbar ring buffer ───────────────────
+        // ── Loop 2: interval — footer soundbar ring buffer (80 ms) ────────
         if (!_soundbarTickId) {
             var soundbarEl = document.getElementById('ai-assistant-footer-soundbar');
             if (soundbarEl) {
-                var _sbBarEls = soundbarEl.querySelectorAll(
-                    '.ai-assistant-footer-soundbar-bar'
-                );
-                var _sbCount = _sbBarEls.length;  // _SOUNDBAR_BARS
+                // Build bar count optimal for this viewport
+                var _sbCount  = _computeSoundbarBarCount();
+                var _sbBarEls = _rebuildSoundbarBars(soundbarEl, _sbCount);
 
-                // Pre-fill ring buffer with silence heights
+                // Pre-warm: seed ring buffer with a soft 2-cycle sine wave
+                // (2–4 px) so bars look organic from the very first tick.
+                // Real audio amplitude immediately overwrites these values.
                 _soundbarHeights = [];
                 for (var _si = 0; _si < _sbCount; _si++) {
-                    _soundbarHeights.push(_SOUNDBAR_MIN_H);
+                    var _t  = _si / Math.max(1, _sbCount - 1); // 0 → 1
+                    var _sw = Math.abs(Math.sin(_t * Math.PI * 2));
+                    _soundbarHeights.push(_SOUNDBAR_MIN_H + _sw * 2); // 2 – 4 px
                 }
 
                 _soundbarTickId = setInterval(function () {
@@ -6453,13 +6679,17 @@
                         + rms * (_SOUNDBAR_MAX_H - _SOUNDBAR_MIN_H);
                     h = Math.max(_SOUNDBAR_MIN_H, Math.min(_SOUNDBAR_MAX_H, h));
 
-                    // Shift ring buffer left, push new sample on right
+                    // Shift ring buffer left; push newest sample on right
                     _soundbarHeights.shift();
                     _soundbarHeights.push(h);
 
-                    // Apply heights left-to-right to DOM bars
+                    // Apply heights + proportional opacity to all bars
                     for (var i = 0; i < _sbCount; i++) {
-                        _sbBarEls[i].style.height = _soundbarHeights[i] + 'px';
+                        var bh  = _soundbarHeights[i];
+                        // opacity: 0.30 at silence → 1.00 at full scale
+                        var opc = (0.30 + 0.70 * (bh / _SOUNDBAR_MAX_H)).toFixed(2);
+                        _sbBarEls[i].style.height  = bh + 'px';
+                        _sbBarEls[i].style.opacity = opc;
                     }
                 }, _SOUNDBAR_TICK_MS);
             }
@@ -6477,19 +6707,23 @@
      * Idempotent — safe to call multiple times or when loops are not running.
      */
     function _stopVizLoops() {
-        // Cancel rAF loop
+        // ── Cancel rAF loop (mic popup level bars) ────────────────────────
         if (_vizRafId !== null) {
-            cancelAnimationFrame(_vizRafId);
+            (_CAF || cancelAnimationFrame)(_vizRafId);
             _vizRafId = null;
         }
-
-        // Cancel soundbar tick loop
+        // ── Cancel soundbar tick loop ─────────────────────────────────────
         if (_soundbarTickId !== null) {
             clearInterval(_soundbarTickId);
             _soundbarTickId = null;
         }
-
-        // Reset mic popup level bars to idle sinusoidal heights
+        // ── Reset VU meter peak-hold state ────────────────────────────────
+        _vuPeakBar   = 0;
+        _vuPeakHold  = 0;
+        _vuPeakDecay = 0;
+        // ── Reset mic popup level bars to idle sinusoidal heights ─────────
+        // Clear inline background so the CSS inactive colour (muted) applies.
+        // Clear inline height so the idle arch from _IDLE_LEVEL_HEIGHTS shows.
         var levelBarsEl = document.getElementById('ai-assistant-mic-level-bars');
         if (levelBarsEl) {
             var bars = levelBarsEl.querySelectorAll('.ai-mic-bar');
@@ -6498,19 +6732,19 @@
                     (_IDLE_LEVEL_HEIGHTS[i] !== undefined
                         ? _IDLE_LEVEL_HEIGHTS[i]
                         : _MIC_LEVEL_MIN_H) + 'px';
+                bars[i].style.background = '';  // restore CSS inactive colour
             }
         }
-
-        // Reset soundbar bars to silence height
+        // ── Reset soundbar bars: silence height + dimmed opacity ──────────
         var soundbarEl = document.getElementById('ai-assistant-footer-soundbar');
         if (soundbarEl) {
             var sbBars = soundbarEl.querySelectorAll('.ai-assistant-footer-soundbar-bar');
             for (var j = 0; j < sbBars.length; j++) {
-                sbBars[j].style.height = _SOUNDBAR_MIN_H + 'px';
+                sbBars[j].style.height  = _SOUNDBAR_MIN_H + 'px';
+                sbBars[j].style.opacity = '0.30';
             }
         }
-
-        // Tear down the Web Audio graph
+        // ── Tear down Web Audio graph ─────────────────────────────────────
         _disconnectWebAudio();
     }
 
