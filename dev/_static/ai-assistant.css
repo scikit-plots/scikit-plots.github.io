@@ -974,7 +974,9 @@
     width: 18px;
     height: 18px;
     cursor: nwse-resize;
-    z-index: 99999;
+    /* z-index one step above left/top grips so the corner wins at the
+       18×18 overlap now that both edge grips extend to top:0 / left:0. */
+    z-index: 100000;
     /* Visual affordance: two short diagonal ticks, theme-aware. */
     background:
         linear-gradient(135deg,
@@ -1016,13 +1018,14 @@ body.ai-assistant-resizing .ai-assistant-panel {
 }
 
 /* ─── Left-edge grip (X / width only) ───────────────────────────────────────
-   A thin invisible strip along the left border.  Avoids the top 18px corner
-   to prevent overlap with the top-left diagonal grip. */
+   A thin invisible strip along the full left border.  Extends to top:0 so
+   the entire left edge is a horizontal-resize target — the corner grip at
+   z-index:100000 takes priority at the shared 18×18 corner. */
 
 .ai-assistant-panel-resizer-left {
     position: absolute;
     left: 0;
-    top: 18px;          /* clear the corner grip */
+    top: 0;               /* full-height: was 18px; corner grip wins at top via z-index */
     bottom: 0;
     width: 6px;
     cursor: ew-resize;
@@ -1042,13 +1045,14 @@ body.ai-assistant-resizing .ai-assistant-panel {
 .ai-assistant-panel-resizer-left:hover { opacity: 0.55; }
 
 /* ─── Top-edge grip (Y / height only) ───────────────────────────────────────
-   A thin invisible strip along the top border.  Avoids the left 18px corner
-   to prevent overlap with the top-left diagonal grip. */
+   A thin invisible strip along the full top border.  Extends to left:0 so
+   the entire top edge is a vertical-resize target — the corner grip at
+   z-index:100000 takes priority at the shared 18×18 corner. */
 
 .ai-assistant-panel-resizer-top {
     position: absolute;
     top: 0;
-    left: 18px;         /* clear the corner grip */
+    left: 0;              /* full-width: was 18px; corner grip wins at left via z-index */
     right: 0;
     height: 6px;
     cursor: ns-resize;
@@ -1970,6 +1974,59 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     flex-direction: column;
     gap: 0.4rem;
 }
+
+/* The model-list body lives inside .ai-assistant-panel-sheet-scroll which now
+   owns the vertical overflow for the entire sheet body.  Remove the local
+   scroll so the two scroll roots do not fight each other.  The base
+   .ai-assistant-panel-privacy-body rule supplies padding/font/color; this
+   compound rule (higher specificity) only overrides the overflow property. */
+.ai-assistant-panel-privacy-body.ai-assistant-panel-model-list {
+    overflow: visible;
+}
+
+/* ─── Model sheet: unified scrollable body ───────────────────────────────────
+   JS creates this wrapper in _buildModelSheet() and appends to it:
+     1. the model-list body  (.ai-assistant-panel-privacy-body.ai-assistant-panel-model-list)
+     2. the effort section   (§A)
+     3. the thinking section (§B)
+     4. the coming-soon section (§C)
+   All four children scroll together so effort/thinking/future are never
+   clipped or forced outside the panel frame.
+   The fade-mask at the bottom is a discoverability hint — it reveals that
+   more content exists below the visible fold. */
+.ai-assistant-panel-sheet-scroll {
+    flex: 1 1 auto;
+    min-height: 0;          /* required: flex child must shrink below content height */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    /* Scroll-hint fade: last 2.5rem fades to transparent */
+    mask-image: linear-gradient(
+        to bottom,
+        black calc(100% - 2.5rem),
+        transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        black calc(100% - 2.5rem),
+        transparent 100%
+    );
+    scrollbar-width: thin;
+}
+.ai-assistant-panel-sheet-scroll::-webkit-scrollbar { width: 4px; }
+.ai-assistant-panel-sheet-scroll::-webkit-scrollbar-track { background: transparent; }
+.ai-assistant-panel-sheet-scroll::-webkit-scrollbar-thumb {
+    background: rgba(127, 127, 127, 0.35);
+    border-radius: 2px;
+}
+/* Bottom padding sentinel: sits below the last section and keeps content
+   visible past the fade mask when scrolled to the bottom. */
+.ai-assistant-panel-sheet-scroll::after {
+    content: '';
+    display: block;
+    height: 2.5rem;
+    flex-shrink: 0;
+}
 .ai-assistant-panel-model-row {
     display: flex;
     align-items: flex-start;
@@ -2868,6 +2925,425 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
    align-items: center is set there. Do NOT add a second definition here —
    it was removed because the duplicate override silently killed flex-start
    alignment on the radio+badge layout, causing badge misalignment. */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MODEL SHEET — Phase C additions (effort, thinking, coming-soon)
+   ─────────────────────────────────────────────────────────────────────────
+   Architecture
+   ────────────
+   ``_appendModelSheetSections()`` in JS appends three named sections to the
+   model-sheet element after the model-list body.  Each section is wrapped in
+   ``.ai-assistant-panel-sheet-section`` (built by ``_buildSheetSection()``)
+   which provides the labelled rule divider.
+
+   Section §A  Effort     – 4-button segmented control (Low / Medium / High / Max).
+   Section §B  Thinking   – toggle pill + collapsible token-budget range input.
+   Section §C  Coming soon– read-only feature-preview rows, aria-hidden.
+
+   All classes use the same three-layer CSS-variable fallback chain as the
+   rest of this stylesheet:
+     1. ``--pst-color-*``  (PyData Sphinx Theme — auto dark-mode)
+     2. ``--color-*``      (Furo theme compat)
+     3. Hardcoded safe value (last-resort baseline)
+
+   Dark mode uses ``[data-bs-theme="dark"]`` (Bootstrap 5 / PyData convention).
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Section wrapper (shared by §A, §B, §C) ────────────────────────────── */
+
+.ai-assistant-panel-sheet-section {
+    margin-top: 0.85rem;
+    /* Horizontal gutters: match the 1rem left/right padding of the
+       .ai-assistant-panel-privacy-body model-list above. */
+    padding: 0 1rem;
+}
+
+/* Labelled rule: LABEL ─────── */
+.ai-assistant-panel-sheet-section-head {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.ai-assistant-panel-sheet-section-label {
+    font-size: 0.67rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* The horizontal rule that fills the remaining row width. */
+.ai-assistant-panel-sheet-section-rule {
+    flex: 1;
+    height: 1px;
+    background: var(
+        --pst-color-border,
+        var(--color-foreground-border, #e1e4e5)
+    );
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-sheet-section-rule {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ─── §A  Effort segmented control ─────────────────────────────────────── */
+
+/* 4-column grid container.
+ * Adding a fifth entry requires changing grid-template-columns to repeat(5,1fr).
+ * The inner padding + 3px gap produce a single-unit visual affordance. */
+.ai-assistant-panel-effort-seg {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+    padding: 3px;
+    background: var(
+        --pst-color-on-background,
+        var(--color-background-secondary, #f0f1f2)
+    );
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, #e1e4e5)
+    );
+    border-radius: 8px;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-effort-seg {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Individual effort-level button */
+.ai-assistant-panel-effort-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 5px 3px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+    font: inherit;
+    transition: background-color 0.15s ease, border-color 0.15s ease,
+                box-shadow 0.15s ease;
+}
+
+.ai-assistant-panel-effort-btn:hover {
+    background: rgba(127, 127, 127, 0.1);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-effort-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Selected state — raised card over the trough */
+.ai-assistant-panel-effort-btn[aria-checked="true"] {
+    background: var(
+        --pst-color-surface,
+        var(--color-background-primary, #fff)
+    );
+    border-color: var(
+        --pst-color-border,
+        var(--color-foreground-border, rgba(127, 127, 127, 0.35))
+    );
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-effort-btn[aria-checked="true"] {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+.ai-assistant-panel-effort-btn:focus         { outline: none; }
+.ai-assistant-panel-effort-btn:focus-visible {
+    outline: 2px solid var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    outline-offset: 1px;
+}
+
+.ai-assistant-panel-effort-lbl {
+    font-size: 0.78rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+}
+
+.ai-assistant-panel-effort-hint {
+    font-size: 0.64rem;
+    line-height: 1.2;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #6a737d));
+}
+
+/* One-sentence description updated on each selection. */
+.ai-assistant-panel-effort-desc {
+    margin: 0.45rem 0 0;
+    padding: 0 0.1rem;
+    font-size: 0.78rem;
+    line-height: 1.45;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #555));
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-effort-desc {
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #9aa0a6));
+}
+
+/* ─── §B  Extended-reasoning (thinking) row ─────────────────────────────── */
+
+/* Row: [text block] [toggle pill] */
+.ai-assistant-panel-thinking-row {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+/* Left text block */
+.ai-assistant-panel-thinking-text {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.ai-assistant-panel-thinking-title {
+    font-size: 0.82rem;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+}
+
+.ai-assistant-panel-thinking-hint {
+    margin-top: 0.1rem;
+    font-size: 0.72rem;
+    line-height: 1.3;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #6a737d));
+}
+
+/* Toggle pill — 32 × 18 px, matching the HTML prototype */
+.ai-assistant-panel-thinking-toggle {
+    position: relative;
+    width: 32px;
+    height: 18px;
+    border-radius: 9px;
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, rgba(127, 127, 127, 0.5))
+    );
+    background: var(
+        --pst-color-on-background,
+        var(--color-background-secondary, #d8d8d8)
+    );
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.ai-assistant-panel-thinking-toggle[aria-pressed="true"] {
+    background: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    border-color: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+}
+
+.ai-assistant-panel-thinking-toggle:focus         { outline: none; }
+.ai-assistant-panel-thinking-toggle:focus-visible {
+    outline: 2px solid var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    outline-offset: 2px;
+}
+
+/* Sliding thumb */
+.ai-assistant-panel-thinking-toggle-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(127, 127, 127, 0.7);
+    transition: left 0.2s ease, background-color 0.2s ease;
+    pointer-events: none;
+}
+
+.ai-assistant-panel-thinking-toggle[aria-pressed="true"]
+.ai-assistant-panel-thinking-toggle-thumb {
+    left: 16px;
+    background: #fff;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-thinking-toggle {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-thinking-toggle[aria-pressed="true"] {
+    background: var(--pst-color-primary, var(--color-brand-primary, #5ba3d0));
+    border-color: var(--pst-color-primary, var(--color-brand-primary, #5ba3d0));
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-panel-thinking-toggle,
+    .ai-assistant-panel-thinking-toggle-thumb {
+        transition: none;
+    }
+}
+
+/* ─── §B  Token budget slider (inside thinking section) ─────────────────── */
+
+/* Hidden by default; JS sets [data-visible="true"] when thinking is on. */
+.ai-assistant-panel-budget-area {
+    display: none;
+    margin-top: 0.65rem;
+}
+
+.ai-assistant-panel-budget-area[data-visible="true"] {
+    display: block;
+}
+
+/* Header: "Token budget" label + live numeric value */
+.ai-assistant-panel-budget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.35rem;
+}
+
+.ai-assistant-panel-budget-label {
+    font-size: 0.78rem;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #555));
+}
+
+/* Live value updates via JS on 'input' event. */
+.ai-assistant-panel-budget-value {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-budget-value {
+    color: var(--pst-color-primary, var(--color-brand-primary, #5ba3d0));
+}
+
+/* Range input — accent-color provides the track/thumb tint in modern browsers. */
+.ai-assistant-panel-budget-range {
+    display: block;
+    width: 100%;
+    accent-color: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+}
+
+/* Min / max tick labels below the slider */
+.ai-assistant-panel-budget-ticks {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.2rem;
+}
+
+.ai-assistant-panel-budget-tick {
+    font-size: 0.64rem;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #aaa));
+}
+
+/* ─── §C  Coming-soon feature placeholders ──────────────────────────────── */
+
+/* Entire list is aria-hidden (no interactive targets).
+ * Reduced opacity signals the section is not yet available. */
+.ai-assistant-panel-future-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    opacity: 0.5;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Individual feature row */
+.ai-assistant-panel-future-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.45rem 0.55rem;
+    border-radius: 7px;
+    background: var(
+        --pst-color-on-background,
+        var(--color-background-secondary, #f5f5f5)
+    );
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-future-item {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* SVG icon wrapper — square, matches .ai-assistant-panel-model-info size */
+.ai-assistant-panel-future-icon {
+    width: 1.1rem;
+    height: 1.1rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #6a737d));
+}
+
+.ai-assistant-panel-future-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Text block */
+.ai-assistant-panel-future-text {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.ai-assistant-panel-future-name {
+    font-size: 0.82rem;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+}
+
+.ai-assistant-panel-future-sub {
+    margin-top: 0.1rem;
+    font-size: 0.7rem;
+    line-height: 1.3;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #6a737d));
+}
+
+/* "Soon" badge pill */
+.ai-assistant-panel-future-badge {
+    flex-shrink: 0;
+    font-size: 0.59rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.14rem 0.38rem;
+    border-radius: 4px;
+    background: var(
+        --pst-color-border,
+        var(--color-foreground-border, #e1e4e5)
+    );
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #6a737d));
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-future-badge {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.45);
+}
+
+/* Extend reduced-motion to cover the thinking toggle thumb. */
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-panel-thinking-toggle,
+    .ai-assistant-panel-thinking-toggle-thumb,
+    .ai-assistant-panel-effort-btn {
+        transition: none;
+    }
+}
+
+
 
 /* ─── Improved send button accent ─────────────────────────────────────────── */
 /*
