@@ -4998,10 +4998,60 @@
         // gracefully.  Falls back to the existing viewport-based @media rule on
         // browsers that don't support ResizeObserver (IE11, very old Safari).
         if (typeof ResizeObserver !== 'undefined') {
+            /**
+             * Progressive right-cluster overflow.
+             *
+             * Hides subbar-right items one-by-one as the panel narrows instead
+             * of collapsing the entire cluster at once.  Priority order (first
+             * to last to hide):
+             *
+             *   privacyLink  460 px
+             *   termsLink    400 px
+             *   shareLink    350 px
+             *   modelLink    300 px
+             *
+             * Sets [data-overflow-hidden] on each item so CSS max-width + opacity
+             * transitions can animate the collapse.  Sets [data-overflow-visible]
+             * on the overflow button once any item is hidden so it fades in with a
+             * 60 ms delay (items start squeezing before the ⋯ button appears).
+             *
+             * Items configured as null (feature-flagged off) are silently skipped.
+             *
+             * @param {number} w - Panel content rect width in pixels.
+             */
+            function _updateSubbarOverflow(w) {
+                var slots = [
+                    // Hide order: rightmost carriage departs first (Share → Model → Terms → Privacy)
+                    // DOM order is: Privacy(1) Terms(2) Model(3) Share(4) — so Share is visually rightmost.
+                    { el: shareLink,   px: 460 },   /* rightmost — exits into tunnel first  */
+                    { el: modelLink,   px: 400 },
+                    { el: termsLink,   px: 350 },
+                    { el: privacyLink, px: 300 },   /* leftmost  — exits last               */
+                ];
+                var anyHidden = false;
+                for (var si = 0; si < slots.length; si++) {
+                    var slot = slots[si];
+                    if (!slot.el) continue;
+                    if (w < slot.px) {
+                        slot.el.setAttribute('data-overflow-hidden', '');
+                        anyHidden = true;
+                    } else {
+                        slot.el.removeAttribute('data-overflow-hidden');
+                    }
+                }
+                // Overflow button: fade in as soon as any item is hidden.
+                if (anyHidden) {
+                    rightOverflowBtn.setAttribute('data-overflow-visible', '');
+                } else {
+                    rightOverflowBtn.removeAttribute('data-overflow-visible');
+                }
+                // Left cluster: kbd-hint collapses only at very narrow widths.
+                panel.setAttribute('data-narrow', w < 300 ? 'true' : 'false');
+            }
             var _subbarRO = new ResizeObserver(function (entries) {
                 var w = entries[0] && entries[0].contentRect && entries[0].contentRect.width;
                 if (typeof w !== 'number') return;
-                panel.setAttribute('data-narrow', w < 360 ? 'true' : 'false');
+                _updateSubbarOverflow(w);
             });
             _subbarRO.observe(panel);
         }

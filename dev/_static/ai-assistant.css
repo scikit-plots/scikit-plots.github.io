@@ -1954,8 +1954,9 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 }
 .ai-assistant-panel-subbar-right {
     margin-left: auto;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;          /* carriages never wrap to a new line */
     justify-content: flex-end;
+    overflow: hidden;           /* clip carriages as they exit to the right */
 }
 
 /* Model picker button in the sub-bar: pill with icon + label + chevron. */
@@ -1986,6 +1987,67 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     width: 0.9rem;
     height: 0.9rem;
 }
+
+/* ─── Progressive right-cluster overflow — per-item smooth collapse ──────────
+   JS assigns [data-overflow-hidden] to each button individually, keyed to
+   panel-width thresholds (Privacy 460 → Terms 400 → Share 350 → Model 300 px).
+   max-width transitions from its natural content width down to 0 so the item
+   squeezes closed in place.  opacity fades in parallel so the text/icon fades
+   as the element collapses — no sudden pop-in or pop-out.
+   The parent flex gap is preserved; the 0.28 s squeeze is short enough that
+   the transient gap gap (≤ 0.5 rem, ≤ 0.28 s) is imperceptible in practice. */
+
+/* ─── Train-carriage collapse: each button is one carriage ──────────────────
+   transform-origin: right center  →  the RIGHT edge is the tunnel entrance.
+   The carriage collapses from its left side toward the right (tunnel mouth),
+   while also drifting rightward — exactly like a train car receding into a
+   tunnel: it moves right AND gets narrower until it vanishes.
+
+   Two asymmetric transitions are declared:
+     • This (base) rule's transition fires on ARRIVAL  (attribute removed) → ease-out
+     • The [data-overflow-hidden] rule's transition fires on DEPARTURE      → ease-in
+   CSS always uses the DESTINATION state's transition, so the two rules give
+   physically correct decelerate-in / accelerate-out behaviour. */
+.ai-assistant-panel-subbar-right > button:not(.ai-assistant-panel-subbar-overflow-btn) {
+    max-width: 16rem;       /* generous cap — actual rendered width is auto/content */
+    overflow: hidden;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transform-origin: right center;              /* tunnel mouth is on the right       */
+    transform: translateX(0) scaleX(1);          /* carriage at platform, full width   */
+    /* Arrival easing: ease-out — carriage decelerates as it pulls into the station */
+    transition:
+        max-width  0.28s cubic-bezier(0, 0.55, 0.45, 1),
+        opacity    0.22s cubic-bezier(0, 0.55, 0.45, 1),
+        transform  0.28s cubic-bezier(0, 0.55, 0.45, 1);
+}
+
+/* Departure state: carriage moves right AND narrows to zero — train entering a tunnel.
+   transform-origin: right center (inherited from base) keeps the right edge pinned
+   so the carriage squishes from its LEFT side toward the tunnel mouth on the right.
+   translateX drifts the whole carriage (including the pinned right edge) into the
+   ⋯ button's territory so it visually disappears behind it.
+   Departure easing: ease-in — carriage starts slow then accelerates into the tunnel. */
+.ai-assistant-panel-subbar-right > button[data-overflow-hidden] {
+    max-width:     0 !important;
+    opacity:       0 !important;
+    transform:     translateX(1.2rem) scaleX(0) !important;   /* slides right + crushes to zero */
+    pointer-events: none;
+    transition:
+        max-width  0.30s cubic-bezier(0.4, 0, 1, 0.45),
+        opacity    0.22s cubic-bezier(0.4, 0, 1, 0.45),
+        transform  0.30s cubic-bezier(0.4, 0, 1, 0.45);
+}
+
+/* Stagger: in the fast-resize fallback (all hidden simultaneously), carriages depart
+   one at a time right → left, 70 ms apart, so each departure is individually visible.
+   In normal use JS crosses one threshold at a time, so only one carriage animates
+   per resize step — the stagger acts as a graceful safety net here.
+   DOM positions: 1=Privacy  2=Terms  3=Model  4=Share  5=⋯btn */
+.ai-assistant-panel-subbar-right > button:nth-child(4)[data-overflow-hidden] { transition-delay: 0ms;  }  /* Share   — exits first  */
+.ai-assistant-panel-subbar-right > button:nth-child(3)[data-overflow-hidden] { transition-delay: 70ms; }  /* Model                 */
+.ai-assistant-panel-subbar-right > button:nth-child(2)[data-overflow-hidden] { transition-delay: 140ms;}  /* Terms                 */
+.ai-assistant-panel-subbar-right > button:nth-child(1)[data-overflow-hidden] { transition-delay: 210ms;}  /* Privacy — exits last  */
 
 /* Model-selection sheet — list of radio rows. */
 .ai-assistant-panel-model-list {
@@ -2339,12 +2401,16 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 }
 
 /* ─── Right overflow toggle button ──────────────────────────────────────────
-   Collapsed representation of the entire right cluster on narrow panels.
-   Visibility is data-driven (data-narrow="true" on panel root) so the
-   breakpoint reacts to actual panel width, not viewport width. */
+   Fades in progressively as items collapse; JS sets [data-overflow-visible]
+   once any right-cluster item is hidden.  opacity + max-width participates in
+   the same transition system as the cluster buttons above, with a 60 ms delay
+   so items begin squeezing before the ⋯ button appears — creating a natural
+   "one thing hides, then the menu appears" sequence rather than a simultaneous
+   swap.  margin-left: -0.5rem when hidden cancels the parent flex gap so the
+   button takes zero effective space in the layout while collapsed.           */
 
 .ai-assistant-panel-subbar-overflow-btn {
-    display: none;                 /* hidden by default — wide panels show full cluster */
+    display: inline-flex;          /* always in flex flow; max-width/opacity hides it */
     align-items: center;
     justify-content: center;
     width: 1.75rem;
@@ -2356,7 +2422,31 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     cursor: pointer;
     border-radius: 6px;
     flex-shrink: 0;
-    transition: color 0.15s ease, background-color 0.15s ease;
+    /* Collapsed by default; JS sets [data-overflow-visible] to reveal */
+    max-width: 0;
+    margin-left: -0.5rem;          /* cancel parent gap while hidden            */
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    /* transform-origin: left center — button expands from its LEFT edge,
+       the side facing the arriving carriages, like a tunnel mouth opening. */
+    transform-origin: left center;
+    transform: translateX(0.8rem) scaleX(0.15);   /* compressed, waiting behind tunnel mouth */
+    transition:
+        max-width        0.26s cubic-bezier(0, 0.55, 0.45, 1) 0.10s,  /* ease-out, slight delay */
+        opacity          0.22s ease                            0.14s,  /* fades in after max-width opens */
+        transform        0.26s cubic-bezier(0, 0.55, 0.45, 1) 0.10s,  /* expands + slides into position */
+        margin-left      0.26s ease                            0.10s,
+        color            0.15s ease,
+        background-color 0.15s ease;
+}
+/* Visible state: at least one cluster item is hidden */
+.ai-assistant-panel-subbar-overflow-btn[data-overflow-visible] {
+    max-width: 2rem;               /* wider than 1.75rem icon — allows smooth grow */
+    opacity: 1;
+    margin-left: 0;                /* natural flex gap handles spacing            */
+    transform: translateX(0) scaleX(1);   /* fully open at the platform           */
+    pointer-events: auto;
 }
 .ai-assistant-panel-subbar-overflow-btn svg {
     width: 1rem;
@@ -2427,15 +2517,19 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     border-color: rgba(255, 255, 255, 0.18);
 }
 
-/* Narrow panel (< 360px): collapse right cluster, show overflow button; collapse external kbd-hint. */
-[data-narrow="true"] .ai-assistant-panel-subbar-right > :not(.ai-assistant-panel-subbar-overflow-btn) {
-    display: none !important;
-}
-[data-narrow="true"] .ai-assistant-panel-subbar-overflow-btn {
-    display: inline-flex;
-}
+/* Very narrow panel (< 300px): collapse left-cluster kbd-hint only.
+   Right-cluster items collapse individually via [data-overflow-hidden] above;
+   no blanket right-cluster hide is needed here. */
 [data-narrow="true"] .ai-assistant-panel-kbd-hint {
     display: none;
+}
+
+/* Honour prefers-reduced-motion for the new progressive-overflow transitions */
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-panel-subbar-right > button:not(.ai-assistant-panel-subbar-overflow-btn),
+    .ai-assistant-panel-subbar-overflow-btn {
+        transition: opacity 0.01s;   /* instant toggle — no motion, still state-correct */
+    }
 }
 
 /* Hamburger popover positioning: left-anchor (default) vs right-anchor.
