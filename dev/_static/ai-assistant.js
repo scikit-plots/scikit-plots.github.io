@@ -4584,19 +4584,32 @@
         //
         // The voice-level row (.ai-assistant-mic-popup-row--level) is the drag
         // handle (grab-cursor affordance set in CSS).  On the FIRST real drag
-        // (mousemove ≥ 3px from mousedown origin) the popup is promoted from
-        // position:absolute (inside the wrapper) to position:fixed at its current
-        // screen coordinates, giving it freedom to travel beyond the panel's clip
-        // boundary.  Subsequent drags update the already-fixed top/left directly.
+        // (mousemove ≥ 3px from mousedown origin) the popup's CSS bottom/right
+        // anchors are replaced with explicit top/left offsets relative to its
+        // offsetParent (.ai-assistant-mic-wrapper, position:relative).
+        // Subsequent drags update those top/left values directly.
+        //
+        // WHY NOT position:fixed?
+        //   .ai-assistant-panel carries transform:translateY(0) scale(1) when
+        //   open.  Any non-"none" transform — even an identity one — creates a
+        //   new CSS containing block for position:fixed descendants (CSS spec
+        //   §9.3).  This means a fixed popup's top/left are interpreted as
+        //   offsets from the panel's border edge, not the viewport, so setting
+        //   them to getBoundingClientRect() viewport values places the popup
+        //   far off-screen and it cannot be recovered without a page refresh.
+        //   Keeping position:absolute and working in offsetParent coordinates
+        //   avoids the issue entirely.  All ancestors have overflow:visible so
+        //   the popup travels freely outside its containing box.
         //
         // Behaviour contract:
         //   • Left-button (button === 0) only.
         //   • preventDefault() on mousedown prevents unintended text selection.
-        //   • Promotion to fixed is deferred until first mousemove (≥ 3px) so that
-        //     a plain click on the level row NEVER sets data-dragged — this is the
-        //     root-cause fix for "bars disappear when clicking": the old code set
-        //     data-dragged on mousedown, which triggered the CSS opacity transition
-        //     and briefly hid/flash-showed the popup before data-pinned reasserted.
+        //   • top/left override is deferred until first mousemove (≥ 3px) so
+        //     that a plain click on the level row NEVER sets data-dragged — this
+        //     is the root-cause fix for "bars disappear when clicking": the old
+        //     code set data-dragged on mousedown, which triggered the CSS opacity
+        //     transition and briefly hid/flash-showed the popup before
+        //     data-pinned reasserted.
         //   • document-level mousemove / mouseup give reliable tracking even
         //     when the cursor momentarily leaves the popup during fast moves.
         //   • The `data-dragged="true"` attribute lets CSS suppress the wrapper-
@@ -4631,8 +4644,8 @@
             document.addEventListener('mousemove', function (e) {
                 if (!_micDragging) return;
 
-                // ── First drag: promote from absolute to fixed ────────────────
-                // Only promote after a meaningful movement (≥ 3px Manhattan
+                // ── First drag: anchor top/left in offsetParent space ─────────
+                // Only activate after a meaningful movement (≥ 3px Manhattan
                 // distance) so an accidental mousedown+mouseup (click) on the
                 // level row never sets data-dragged and never triggers the CSS
                 // opacity transition that momentarily hid bars on click.
@@ -4641,22 +4654,32 @@
                               + Math.abs(e.clientY - _originY);
                     if (moved < 3) { return; }                 // below threshold
 
-                    // Snapshot the popup's current viewport position BEFORE
-                    // changing position:absolute → fixed so the visual location
-                    // is preserved during the mode switch.
-                    var rect     = popup.getBoundingClientRect();
-                    popup.style.position = 'fixed';
-                    popup.style.top      = rect.top  + 'px';
-                    popup.style.left     = rect.left + 'px';
-                    popup.style.bottom   = 'auto';
-                    popup.style.right    = 'auto';
+                    // Convert the popup's current viewport position into
+                    // offsetParent-relative (micWrapper) coordinates.
+                    //
+                    // getBoundingClientRect() accounts for ancestor transforms
+                    // visually.  Since the panel's transform is scale(1) (no
+                    // distortion), 1 viewport-px == 1 wrapper-px, so viewport
+                    // deltas translate directly to offsetParent deltas.
+                    //
+                    // clientTop/clientLeft correct for any border on offsetParent
+                    // (currently 0 for micWrapper, but included for robustness).
+                    var popupRect  = popup.getBoundingClientRect();
+                    var opEl       = popup.offsetParent || document.documentElement;
+                    var opRect     = opEl.getBoundingClientRect();
+                    popup.style.top    = (popupRect.top  - opRect.top  - (opEl.clientTop  || 0)) + 'px';
+                    popup.style.left   = (popupRect.left - opRect.left - (opEl.clientLeft || 0)) + 'px';
+                    popup.style.bottom = 'auto';
+                    popup.style.right  = 'auto';
+                    // position stays 'absolute' — do NOT set position:fixed.
+                    // See IIFE comment above for the full technical rationale.
                     popup.setAttribute('data-dragged', 'true');
 
-                    // Re-read after promotion (inline styles now authoritative)
+                    // Re-read after layout update (inline styles now authoritative)
                     _startLeft = parseFloat(popup.style.left) || 0;
                     _startTop  = parseFloat(popup.style.top)  || 0;
                     // Reset origin so the first move delta is computed correctly
-                    // from the post-promotion base position.
+                    // from the new base position.
                     _originX   = e.clientX;
                     _originY   = e.clientY;
                     // Fall through — delta is 0 this frame so no visible jump,

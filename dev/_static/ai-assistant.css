@@ -3121,7 +3121,11 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 
 /* ── Dragged-popup overrides ─────────────────────────────────────────────────
  *
- * Once the user drags the popup it is promoted to position:fixed.
+ * Once the user drags the popup, JS converts its CSS bottom/right anchors to
+ * explicit top/left offsets in offsetParent coordinates (position stays
+ * absolute — see the drag IIFE in _buildMicHoverPopup for the full rationale
+ * on why position:fixed is NOT used here).
+ *
  * data-dragged="true" (set by JS) enables these overrides:
  *
  *   1. Replace slide-in transform with a plain opacity fade — the popup's
@@ -3144,7 +3148,7 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     transition: opacity 0.14s ease;
 }
 
-/* Visible state when dragged + pinned — stay fully visible at fixed position.
+/* Visible state when dragged + pinned — stay fully visible at dragged position.
  *
  * transition: none  — suppresses the opacity 0→1 fade that [data-dragged]
  *   introduces via its own transition declaration (specificity 0,2,0, source-
