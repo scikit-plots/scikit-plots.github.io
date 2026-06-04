@@ -471,6 +471,7 @@
     background: transparent;
     border: none;
     cursor: pointer;
+    touch-action: manipulation;  /* eliminate 300 ms tap delay on touch devices */
     color: var(--pst-color-text-muted, var(--color-foreground-secondary, #666));
     line-height: 1;
     padding: 0.25rem;
@@ -755,6 +756,7 @@
     background: transparent;
     border: none;
     cursor: pointer;
+    touch-action: manipulation;  /* eliminate 300 ms tap delay on touch devices */
     padding: 0.35rem 0.4rem;
     display: flex;
     align-items: center;
@@ -832,6 +834,7 @@
     font-size: 0.8rem;
     color: var(--pst-color-text-muted, var(--color-foreground-secondary, #555));
     cursor: pointer;
+    touch-action: manipulation;  /* eliminate 300 ms tap delay on touch devices */
     border: 1px solid var(
         --pst-color-border,
         var(--color-foreground-border, #ddd)
@@ -1118,6 +1121,7 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     border: 1px solid transparent;
     border-radius: 5px;
     cursor: pointer;
+    touch-action: manipulation;  /* eliminate 300 ms tap delay on touch devices */
     font-family: inherit;
     transition: background-color 0.15s ease, color 0.15s ease;
 }
@@ -1624,6 +1628,7 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
     /* Interactive: left-click = minimize, right-click = close. */
     cursor: pointer;
+    touch-action: manipulation;  /* eliminate 300 ms tap delay on touch devices */
     user-select: none;
     border-radius: 4px;
     padding: 0.15rem 0.25rem;
@@ -1756,6 +1761,7 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
     text-decoration: underline;
     cursor: pointer;
+    touch-action: manipulation;  /* eliminate 300 ms tap delay on touch devices */
 }
 .ai-assistant-panel-privacy-link:hover {
     color: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
@@ -3061,7 +3067,7 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     background: rgba(255, 255, 255, 0.08);
 }
 
-/* Selected state — raised card over the trough */
+/* Selected state — raised card over the through */
 .ai-assistant-panel-effort-btn[aria-checked="true"] {
     background: var(
         --pst-color-surface,

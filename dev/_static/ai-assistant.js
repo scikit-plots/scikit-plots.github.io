@@ -508,6 +508,297 @@
         return n;
     }
 
+    // ── Touch utilities ───────────────────────────────────────────────────────
+    //
+    // Three pure helpers that power the haptic feedback system:
+    //
+    //   _isTouchDevice()               — detects touch-primary input.
+    //   _hapticFeedback(pattern)       — fires the Web Vibration API safely.
+    //   _attachLongPress(el, …)        — distinguishes short-tap from long-press
+    //                                    using Pointer Events, with ghost-click
+    //                                    prevention and per-gesture haptics.
+    //
+    // Integration points (where _hapticFeedback / _attachLongPress are wired):
+    //   • All header icon buttons  (close / minimize / maximize / new-chat / export)
+    //   • Keyboard-shortcut hint   (subbar left cluster)
+    //   • Hamburger kbdRow         (hamburger menu minimize row)
+    //   • Hamburger button + right-overflow button
+    //   • Speak-with-assistant banner
+    //   • Attach button
+    //   • Mic button               (pointerdown in hold mode; click in toggle mode)
+    //   • Send button
+    //   • Floating trigger pill    (tap = restore; long-press = close fully)
+
+    /**
+     * Detect whether the primary input device is a touchscreen.
+     *
+     * Two independent checks are combined:
+     *
+     *   1. ``navigator.maxTouchPoints > 0`` — hardware capability register
+     *      (Chrome, Firefox, Edge, Safari 13+; reliable on physical devices).
+     *   2. ``matchMedia('(pointer: coarse)')`` — CSS Level 4 interaction media
+     *      feature; true when the primary pointer is imprecise (finger/stylus).
+     *
+     * Combining both guards against:
+     *   • Windows machines with a touch digitizer but mouse attached
+     *     (maxTouchPoints > 0, pointer: fine → returns false correctly).
+     *   • Browsers that implement one API but not the other.
+     *
+     * Returns
+     * -------
+     * boolean
+     *     ``true`` when a touch-primary device is detected.
+     *
+     * Notes
+     * -----
+     * Developer: Result is evaluated fresh on every call (not cached) to
+     *   stay accurate across tests and unusual hybrid-input environments.
+     *   Cache the result at the call site when calling in a hot path.
+     * User: Detection is best-effort; pointer emulators and hybrid
+     *   touch/mouse devices may occasionally return false positives.
+     */
+    function _isTouchDevice() {
+        return (
+            navigator.maxTouchPoints > 0 ||
+            (window.matchMedia && window.matchMedia('(pointer: coarse)').matches)
+        );
+    }
+
+    /**
+     * Fire a haptic vibration pattern via the Web Vibration API.
+     *
+     * Silently no-ops when any of the following conditions are true:
+     *   – ``navigator.vibrate`` is absent (iOS Safari, all desktop browsers).
+     *   – ``prefers-reduced-motion: reduce`` is set — mirrors the CSS contract
+     *     used to suppress animations throughout this file.
+     *   – The API throws for any reason (iframe sandboxing, document hidden,
+     *     OS vibration override, quota, unknown browser quirk).
+     *
+     * Parameters
+     * ----------
+     * pattern : number | number[]
+     *     Vibration duration in milliseconds, or an alternating
+     *     ``[vibrate, pause, vibrate, …]`` array passed directly to
+     *     ``navigator.vibrate()``.  Longer values produce stronger haptic
+     *     feedback on most hardware.  Recommended constants:
+     *
+     *         ``[8]``           — light confirmatory tap (button press).
+     *         ``[12]``          — medium tap (start / stop recording).
+     *         ``[12, 40, 12]``  — double-tap pulse (long-press confirm).
+     *
+     * Returns
+     * -------
+     * void
+     *
+     * Notes
+     * -----
+     * Developer: The Vibration API requires an active user-gesture in the
+     *   call stack.  Always invoke from a synchronous ``click`` or
+     *   ``pointerdown`` handler — never from a ``setTimeout``, ``Promise``
+     *   resolution, or async callback.
+     * User: Vibration respects the OS "do not disturb" / vibration switch;
+     *   the browser cannot override a hardware-level silence setting.
+     *
+     * References
+     * ----------
+     * https://developer.mozilla.org/en-US/docs/Web/API/Navigator/vibrate
+     */
+    function _hapticFeedback(pattern) {
+        if (!navigator.vibrate) return;
+        try {
+            if (window.matchMedia &&
+                    window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                return;
+            }
+            navigator.vibrate(pattern);
+        } catch (_) {}
+    }
+
+    /**
+     * Attach long-press and short-tap pointer handlers to an element.
+     *
+     * Uses the W3C Pointer Events API (not Touch Events) so the same code
+     * path handles mouse, stylus, and touch without user-agent sniffing.
+     *
+     * Interaction model
+     * -----------------
+     * ``pointerdown`` → start hold timer (``opts.threshold`` ms)
+     *
+     *   ├─ ``pointerup`` before timer fires
+     *   │     → short tap: ``hapticTap`` + ``onShortTap(e)``
+     *   │
+     *   ├─ ``pointermove`` > ``opts.maxMovePx`` CSS px
+     *   │     → cancel timer (scroll-intent detected); no action fires
+     *   │
+     *   ├─ ``pointercancel``
+     *   │     → cancel timer; no action
+     *   │
+     *   └─ timer fires (hold complete)
+     *         → long press: ``hapticLongPress`` + ``onLongPress(e)``
+     *         → on touch devices: ghost-click absorber set for 400 ms
+     *
+     * Ghost-click prevention
+     * ----------------------
+     * On touch devices the browser synthesises a ``click`` event ≈300 ms
+     * after ``pointerup`` even when ``touch-action: manipulation`` is set
+     * (manipulation only removes the double-tap-zoom delay, not the
+     * synthetic click).  After a long-press fires, a one-shot capture-phase
+     * ``click`` listener on ``document`` absorbs that synthetic click so
+     * existing ``click`` handlers (e.g. the trigger-pill restore listener)
+     * cannot accidentally re-trigger after the long-press action completes.
+     *
+     * Parameters
+     * ----------
+     * element : HTMLElement
+     *     Target element.
+     * onShortTap : function | null
+     *     Called on short tap after haptic fires.  Pass ``null`` when an
+     *     existing ``click`` listener already handles the primary action so
+     *     the two do not double-invoke the same logic.
+     * onLongPress : function | null
+     *     Called after the hold threshold.  Pass ``null`` when only haptic
+     *     feedback is needed for the long-press gesture.
+     * opts : object, optional
+     *     threshold       : number          — hold duration in ms (default 500).
+     *     hapticTap       : number|number[]|null
+     *                         — vibration for short tap (default ``[8]``).
+     *                           Pass ``null`` to suppress (use when a
+     *                           ``pointerdown`` listener already fires haptic).
+     *     hapticLongPress : number|number[] — vibration for long press
+     *                                          (default ``[12, 40, 12]``).
+     *     maxMovePx       : number          — drift-cancel threshold in CSS px
+     *                                          (default 8).
+     *
+     * Returns
+     * -------
+     * function
+     *     Cleanup function.  Removes all attached listeners and clears any
+     *     pending timer.  Call when the element leaves the DOM to prevent
+     *     ghost listeners accumulating across panel rebuilds.
+     *
+     * Notes
+     * -----
+     * Developer: Do NOT attach to the mic button — it owns its own dedicated
+     *   ``pointerdown``/``pointerup`` contract for hold-to-record.  Add haptic
+     *   calls inline inside those handlers instead (see mic section below).
+     * Developer: The cleanup return value mirrors the pattern used by
+     *   ``_attachResizer`` so teardown is consistent across utilities.
+     * User: Moving the pointer/finger more than ``opts.maxMovePx`` CSS px
+     *   during the hold cancels the long-press timer (scroll-intent detection)
+     *   without suppressing the normal short-tap action from any click handler.
+     *
+     * Examples
+     * --------
+     * >>> // Trigger pill: tap = restore panel (existing click handler),
+     * >>> //               long-press = close panel fully.
+     * >>> _attachLongPress(triggerEl, null, function () { closeAIPanel(); }, {
+     * ...     hapticTap:       null,          // pointerdown listener handles it
+     * ...     hapticLongPress: [12, 40, 12],
+     * ... });
+     */
+    function _attachLongPress(element, onShortTap, onLongPress, opts) {
+        var threshold = (opts && opts.threshold       != null) ? opts.threshold       : 500;
+        var hapticTap = (opts && opts.hapticTap       !== undefined)
+                            ? opts.hapticTap : [8];
+        var hapticLP  = (opts && opts.hapticLongPress != null) ? opts.hapticLongPress : [12, 40, 12];
+        var maxMovePx = (opts && opts.maxMovePx       != null) ? opts.maxMovePx       : 8;
+
+        var _timer         = null;
+        var _startX        = 0;
+        var _startY        = 0;
+        var _longFired     = false;
+        var _active        = false;
+        var _captureHandle = null;
+
+        function _cancelTimer() {
+            if (_timer) { clearTimeout(_timer); _timer = null; }
+            _longFired = false;
+            _active    = false;
+        }
+
+        function _onPointerDown(e) {
+            // Left-button / touch only — ignore secondary buttons (right-click).
+            if (e.button != null && e.button !== 0) return;
+            _active    = true;
+            _longFired = false;
+            _startX    = e.clientX;
+            _startY    = e.clientY;
+            // Capture the pointer stream so pointermove / pointerup always reach
+            // this element even if the finger drifts off it.
+            try { element.setPointerCapture(e.pointerId); } catch (_) {}
+
+            _timer = setTimeout(function () {
+                if (!_active) return;
+                _longFired = true;
+                _active    = false;
+                _hapticFeedback(hapticLP);
+                if (typeof onLongPress === 'function') onLongPress(e);
+
+                // Absorb the synthetic click that fires ≈300 ms after pointerup
+                // on touch devices so no existing click handler re-triggers.
+                if (_isTouchDevice()) {
+                    _captureHandle = function (ev) {
+                        ev.stopPropagation();
+                        ev.preventDefault();
+                    };
+                    document.addEventListener('click', _captureHandle, true);
+                    setTimeout(function () {
+                        if (_captureHandle) {
+                            document.removeEventListener('click', _captureHandle, true);
+                            _captureHandle = null;
+                        }
+                    }, 400);
+                }
+            }, threshold);
+        }
+
+        function _onPointerMove(e) {
+            if (!_active) return;
+            var dx = e.clientX - _startX;
+            var dy = e.clientY - _startY;
+            // Cancel the long-press if the pointer drifts (scroll intent).
+            if (Math.sqrt(dx * dx + dy * dy) > maxMovePx) {
+                _cancelTimer();
+            }
+        }
+
+        function _onPointerUp() {
+            // If the timer already fired (long press) or was cancelled (move),
+            // both _active and !_longFired would be false — nothing to do.
+            if (!_active && !_longFired) return;
+            var wasActive = _active;
+            _cancelTimer();   // clears timer; resets _longFired, _active
+            if (wasActive) {
+                // Short tap: long-press timer never fired.
+                if (hapticTap != null) _hapticFeedback(hapticTap);
+                if (typeof onShortTap === 'function') onShortTap();
+            }
+        }
+
+        function _onPointerCancel() {
+            _cancelTimer();
+        }
+
+        element.addEventListener('pointerdown',   _onPointerDown);
+        element.addEventListener('pointermove',   _onPointerMove);
+        element.addEventListener('pointerup',     _onPointerUp);
+        element.addEventListener('pointercancel', _onPointerCancel);
+
+        // Return a cleanup handle so the caller can remove listeners if the
+        // element is ever detached (prevents ghost-listener accumulation).
+        return function cleanup() {
+            _cancelTimer();
+            if (_captureHandle) {
+                document.removeEventListener('click', _captureHandle, true);
+                _captureHandle = null;
+            }
+            element.removeEventListener('pointerdown',   _onPointerDown);
+            element.removeEventListener('pointermove',   _onPointerMove);
+            element.removeEventListener('pointerup',     _onPointerUp);
+            element.removeEventListener('pointercancel', _onPointerCancel);
+        };
+    }
+
     // ── Lightweight Markdown → safe HTML renderer ─────────────────────────────
     //
     // Renders a strict subset of Markdown that AI assistants commonly emit:
@@ -3612,6 +3903,7 @@
 
             // Left-click: close hamburger menu then minimize panel.
             kbdRow.addEventListener('click', function () {
+                _hapticFeedback([8]);
                 pop.setAttribute('data-open', 'false');
                 minimizeAIPanel();
             });
@@ -3957,12 +4249,14 @@
         // R3: clear conversation without page refresh ("Start a new chat").
         var newChatBtn = _createIconBtn('new-chat', 'Start a new chat', ICONS.newChat);
         newChatBtn.title = 'Start a new chat';
+        newChatBtn.addEventListener('pointerdown', function () { _hapticFeedback([8]); });
         newChatBtn.addEventListener('click', clearConversation);
 
         // R4: export the conversation as a plain-text download.
         var exportBtn = _createIconBtn(
             'export', 'Export AI conversation as txt', ICONS.exportTxt);
         exportBtn.title = 'Export AI conversation as txt';
+        exportBtn.addEventListener('pointerdown', function () { _hapticFeedback([8]); });
         exportBtn.addEventListener('click', exportConversation);
 
         headerActions.appendChild(newChatBtn);
@@ -4024,7 +4318,7 @@
                 }
             });
             // Left-click: minimize panel.
-            hint.addEventListener('click', function () { minimizeAIPanel(); });
+            hint.addEventListener('click', function () { _hapticFeedback([8]); minimizeAIPanel(); });
             // Right-click: fully close panel.
             hint.addEventListener('contextmenu', function (e) {
                 e.preventDefault();
@@ -4175,6 +4469,7 @@
             speakBannerEl.appendChild(speakText);
 
             speakBannerEl.addEventListener('click', function () {
+                _hapticFeedback([8]);
                 _toggleSpeechRecognition();
             });
         }
@@ -4218,6 +4513,7 @@
         attachBtn.setAttribute('title', 'Add attachment or context');
         attachBtn.innerHTML = ICONS.plus;   // ICONS constant — safe.
         attachBtn.addEventListener('click', function () {
+            _hapticFeedback([8]);
             panel.dispatchEvent(new CustomEvent('ai-assistant-attach', {
                 bubbles: true, cancelable: true,
             }));
@@ -4287,6 +4583,7 @@
             // Hold-to-record: pointerdown → start, pointerup/pointerleave → stop
             micBtnEl.addEventListener('pointerdown', function (e) {
                 if (!_micHoldMode) return;
+                _hapticFeedback([12]);   // medium pulse — confirms recording has started
                 e.preventDefault();
                 _micPointerHeld = true;
                 try {
@@ -4324,6 +4621,7 @@
             // (.ai-assistant-mic-expand-btn) so the two concerns are fully decoupled.
             micBtnEl.addEventListener('click', function () {
                 if (!_micHoldMode) {
+                    _hapticFeedback([8]);
                     _toggleSpeechRecognition();
                     _dismissSpeakBanner();
                 }
@@ -4661,6 +4959,7 @@
 
             // Left hamburger: anchor popover to the left edge.
             hamburgerBtn.addEventListener('click', function (e) {
+                _hapticFeedback([8]);
                 e.stopPropagation();
                 hamburgerMenuEl.setAttribute('data-anchor', 'left');
                 var open = hamburgerMenuEl.getAttribute('data-open') === 'true';
@@ -4683,6 +4982,7 @@
         // Right overflow button: anchor the shared hamburger popover to the
         // right edge of the subbar — visible on narrow panels only (CSS).
         rightOverflowBtn.addEventListener('click', function (e) {
+            _hapticFeedback([8]);
             e.stopPropagation();
             if (!hamburgerMenuEl) return;
             hamburgerMenuEl.setAttribute('data-anchor', 'right');
@@ -4708,9 +5008,10 @@
 
         // ── Events ────────────────────────────────────────────────────────────
 
+        closeBtn.addEventListener('pointerdown', function () { _hapticFeedback([8]); });
         closeBtn.addEventListener('click', closeAIPanel);
 
-        minimizeBtn.addEventListener('click', function () { minimizeAIPanel(); });
+        minimizeBtn.addEventListener('click', function () { _hapticFeedback([8]); minimizeAIPanel(); });
         // Right-click on the minimize button: fully close (mirrors kbd-hint / kbd-row contract).
         minimizeBtn.addEventListener('contextmenu', function (e) {
             e.preventDefault();
@@ -4718,6 +5019,7 @@
         });
 
         maximizeBtn.addEventListener('click', function () {
+            _hapticFeedback([8]);
             var isMax = panel.getAttribute('data-maximized') === 'true';
             if (isMax) {
                 // ── Restore ────────────────────────────────────────────────────
@@ -4798,6 +5100,7 @@
                 });
         }
 
+        sendBtn.addEventListener('pointerdown', function () { _hapticFeedback([8]); });
         sendBtn.addEventListener('click', handleAIPanelSubmit);
 
         input.addEventListener('keydown', function (e) {
@@ -4873,7 +5176,19 @@
         trigger.appendChild(iconWrap);
         trigger.appendChild(label);
 
+        // Tap haptic fires on physical press (pointerdown) for immediate feedback.
+        trigger.addEventListener('pointerdown', function () { _hapticFeedback([8]); });
         trigger.addEventListener('click', function () { restoreAIPanel(); });
+
+        // Long-press (500 ms hold): close the panel completely rather than restore.
+        // onShortTap is null — the click handler above manages the normal tap action.
+        // hapticTap is null  — the pointerdown listener above already fired on press.
+        // Ghost-click absorber inside _attachLongPress prevents the subsequent
+        // synthetic click from re-triggering restoreAIPanel() after closeAIPanel().
+        _attachLongPress(trigger, null, function () { closeAIPanel(); }, {
+            hapticTap:       null,
+            hapticLongPress: [12, 40, 12],
+        });
 
         return trigger;
     }
@@ -6108,7 +6423,7 @@
         var hostname = window.location.hostname;
         var showLocalhostWarning =
             window.location.protocol === 'file:';
-            
+
         var insecureOrigin =
             protocol === 'file:' ||
             (
