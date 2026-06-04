@@ -37,6 +37,10 @@
 (function () {
     'use strict';
 
+    // Guard against multiple injections
+    if (window.SphinxAIAssistantInitialized) return;
+    window.SphinxAIAssistantInitialized = true;
+
     // ── Module-level singletons ───────────────────────────────────────────────
 
     /** Captured synchronously before any async boundary — see note in v1. */
@@ -75,13 +79,237 @@
     var _MODEL_RADIO_GROUP = 'ai-assistant-model-group';
 
     /**
-     * Web Speech API recognition instance (lazy, created on first mic click).
-     * @type {SpeechRecognition|null}
+     * Whether hold-to-record mode is active.
+     * In hold mode: pointerdown on the mic button starts recognition,
+     * pointerup / pointerleave stops it — matching the Claude.ai interaction.
+     * In toggle mode (default): click toggles recognition on/off.
+     *
+     * Persisted in localStorage so the preference survives page reloads.
+     * Falls back gracefully when localStorage is unavailable (private mode,
+     * storage quota exceeded, cross-origin iframe, etc.).
      */
-    var _speechRecognition = null;
+    var _micHoldMode = (function () {
+        try {
+            return localStorage.getItem('ai-assistant-mic-hold-mode') === 'true';
+        } catch (_) {
+            return false;
+        }
+    }());
 
-    /** True when speech recognition is actively listening. */
-    var _isListening = false;
+    /**
+     * Selected microphone device ID.
+     *
+     * The Web Speech API exposes no direct device-selection parameter.
+     * Workaround: acquire a getUserMedia stream on the chosen device BEFORE
+     * calling SpeechRecognition.start() — the browser reuses the active track.
+     *
+     * Empty string = browser default (no getUserMedia pre-pin).
+     * Persisted to localStorage so the preference survives page reloads.
+     * Silently falls back when storage is unavailable (private mode, quota, etc.).
+     */
+    var _micDeviceId = (function () {
+        try {
+            return localStorage.getItem('ai-assistant-mic-device-id') || '';
+        } catch (_) {
+            return '';
+        }
+    }());
+
+    /**
+     * Cached list of available audio input devices.
+     * Populated by _enumMicDevices(); empty until first popup open.
+     *
+     * @type {Array<{deviceId:string, label:string}>}
+     */
+    var _micDevices = [];
+
+    /**
+     * MediaStreamTrack acquired to pin a non-default device for Web Speech API.
+     *
+     * Kept alive ACROSS hold-to-record presses for the same device so the
+     * browser never needs to re-prompt.  Released only when the selected device
+     * changes (via _setMicDevice) or when _releaseMicPinTrack is called explicitly.
+     *
+     * @type {MediaStreamTrack|null}
+     */
+    var _micPinTrack = null;
+
+    /**
+     * Persistent warm MediaStream that keeps the microphone permission live for
+     * the entire page session.
+     *
+     * Acquired once (on first popup open or first recording) via
+     * _acquireMicWarmStream().  Holding an active track prevents Chromium and
+     * Safari from revoking the origin's mic permission between recognition
+     * sessions, which is what causes the browser to re-prompt on every
+     * hold-to-record press.
+     *
+     * Released only via _releaseMicWarmStream() when the selected device changes
+     * so the next call to _acquireMicWarmStream() re-acquires on the new device.
+     *
+     * @type {MediaStream|null}
+     */
+    var _micWarmStream = null;
+
+    // ── Web Audio API visualisation — module-level singletons ────────────────
+
+    /**
+     * Idle sinusoidal heights for the 100 mic popup level bars (px).
+     *
+     * 100-element look-up table: values rise from 2 px at the edges to 13 px
+     * at the centre following a half-sine arch
+     *   h[i] = max(2, round(2 + 11 * sin(π × i / 99)))
+     * This mirrors the natural envelope of a spoken-word audio waveform and
+     * provides a visually balanced resting state.
+     *
+     * Shared between _buildMicHoverPopup (initial bar heights on DOM creation)
+     * and _stopVizLoops (bar reset when recording stops) so there is exactly
+     * one source of truth for the idle shape.
+     *
+     * @type {number[]}
+     */
+    var _IDLE_LEVEL_HEIGHTS = [
+        2,2,3,3,3,4,4,4,5,5,
+        5,6,6,6,7,7,7,8,8,8,
+        9,9,9,9,10,10,10,10,11,11,
+        11,11,11,12,12,12,12,12,12,12,
+        13,13,13,13,13,13,13,13,13,13,
+        13,13,13,13,13,13,13,13,13,13,
+        12,12,12,12,12,12,12,11,11,11,
+        11,11,10,10,10,10,9,9,9,9,
+        8,8,8,7,7,7,6,6,6,5,
+        5,5,4,4,4,3,3,3,2,2
+    ];
+
+    /** Number of bars in the footer soundbar ring buffer. @type {number} */
+    var _SOUNDBAR_BARS    = 20;
+
+    /** Silence / minimum bar height in px. @type {number} */
+    var _SOUNDBAR_MIN_H   = 2;
+
+    /** Full-scale / maximum bar height in px (capped to container). @type {number} */
+    var _SOUNDBAR_MAX_H   = 16;
+
+    /** Milliseconds between ring-buffer amplitude snapshots. @type {number} */
+    var _SOUNDBAR_TICK_MS = 80;
+
+    /** Silence floor for mic popup level bars in px. @type {number} */
+    var _MIC_LEVEL_MIN_H  = 2;
+
+    /** Full-scale peak for mic popup level bars in px. @type {number} */
+    var _MIC_LEVEL_MAX_H  = 18;
+
+    /** Web Audio AudioContext — created per session, closed in _disconnectWebAudio. @type {AudioContext|null} */
+    var _audioCtx         = null;
+
+    /** AnalyserNode fed from the mic stream — provides frequency / time-domain data. @type {AnalyserNode|null} */
+    var _analyserNode     = null;
+
+    /** MediaStreamAudioSourceNode that connects the mic track to _analyserNode. @type {MediaStreamAudioSourceNode|null} */
+    var _audioSrcNode     = null;
+
+    /** requestAnimationFrame handle for the mic popup level-bars loop. @type {number|null} */
+    var _vizRafId         = null;
+
+    /** setInterval handle for the footer soundbar ring-buffer tick. @type {number|null} */
+    var _soundbarTickId   = null;
+
+    /** Ring buffer of pixel heights for the footer soundbar (length = _SOUNDBAR_BARS). @type {number[]} */
+    var _soundbarHeights  = [];
+
+    /**
+     * Number of bars in the mic popup VU meter level visualiser.
+     *
+     * 100 bars represent the full standard 0-100 dB level scale.
+     * At 2 px per bar + 1 px gap the strip is 299 px — fits inside the
+     * 330 px popup min-width with 31 px to spare.
+     *
+     * Rendering cost: 100 style.height writes per rAF frame (~16 ms budget)
+     * is negligible on all modern and legacy mobile devices.
+     *
+     * @type {number}
+     */
+    var _MIC_LEVEL_BAR_COUNT = 100;
+
+    // ── VU meter constants (module-level, immutable) ──────────────────────
+    //
+    // Standard dBFS-to-bar mapping for the 100-bar popup level visualiser.
+    //
+    // dBFS floor  = -40 dBFS  — practical voice/mic lower bound.
+    //               Signals below this threshold are treated as silence.
+    // dBFS range  =  40 dB    — floor (-40) to full scale (0 dBFS).
+    // Bar index   = round((dBFS - floor) / range × 100), clamped 0-100.
+    //
+    // Colour zones (standard broadcast/audio convention):
+    //   bars  0-59  primary/blue   → -40…-16.4 dBFS  (safe speech level)
+    //   bars 60-79  amber #f59e0b  → -16…-8.4  dBFS  (loud / hot)
+    //   bars 80-99  red   #ef4444  →  -8…-0.4  dBFS  (peak / clip risk)
+
+    /** dBFS silence floor (signals below this → bar index 0). @type {number} */
+    var _VU_DB_FLOOR    = -40;
+
+    /** dBFS working range (floor to full scale). @type {number} */
+    var _VU_DB_RANGE    =  40;
+
+    /** First bar index of the amber (loud) zone. @type {number} */
+    var _VU_ZONE_AMBER  = 60;
+
+    /** First bar index of the red (peak) zone. @type {number} */
+    var _VU_ZONE_RED    = 80;
+
+    /** Amber zone bar colour. @type {string} */
+    var _VU_COLOR_AMBER = '#f59e0b';
+
+    /** Red / peak zone bar colour. @type {string} */
+    var _VU_COLOR_RED   = '#ef4444';
+
+    /**
+     * Frames a newly raised peak bar is held before decay begins (~670 ms at
+     * 60 fps; 40 frames × 16.7 ms).
+     * @type {number}
+     */
+    var _VU_PEAK_HOLD   = 40;
+
+    /**
+     * Frames between each 1-bar downward decay step once hold expires
+     * (~50 ms per bar at 60 fps; full 100-bar sweep ≈ 5 s).
+     * @type {number}
+     */
+    var _VU_PEAK_DECAY  = 3;
+
+    // ── VU meter mutable state (reset on each _startVizLoops call) ────────
+
+    /** Highest bar index seen in the current hold window. @type {number} */
+    var _vuPeakBar      = 0;
+
+    /** Frames elapsed since _vuPeakBar was last raised. @type {number} */
+    var _vuPeakHold     = 0;
+
+    /** Frame counter driving the decay cadence. @type {number} */
+    var _vuPeakDecay    = 0;
+    /**
+     * requestAnimationFrame polyfill.
+     *
+     * Standard since Chrome 24 / Firefox 23 / Safari 6.1 / IE 10.
+     * Falls back to a 16 ms setTimeout (≈ 60 fps) on legacy Android 4.x
+     * WebView and very old desktop browsers.
+     *
+     * @type {function}
+     */
+    var _RAF = (window.requestAnimationFrame
+             || window.webkitRequestAnimationFrame
+             || window.mozRequestAnimationFrame
+             || function (cb) { return window.setTimeout(cb, 16); });
+    /**
+     * cancelAnimationFrame polyfill paired with _RAF above.
+     *
+     * @type {function}
+     */
+    var _CAF = (window.cancelAnimationFrame
+             || window.webkitCancelAnimationFrame
+             || window.mozCancelAnimationFrame
+             || window.clearTimeout);
+
 
     /**
      * AbortController for the current in-flight panel API fetch.
@@ -278,6 +506,297 @@
         var n = parseInt(val, 10);
         if (!isFinite(n) || n < min || n > max) return fallback;
         return n;
+    }
+
+    // ── Touch utilities ───────────────────────────────────────────────────────
+    //
+    // Three pure helpers that power the haptic feedback system:
+    //
+    //   _isTouchDevice()               — detects touch-primary input.
+    //   _hapticFeedback(pattern)       — fires the Web Vibration API safely.
+    //   _attachLongPress(el, …)        — distinguishes short-tap from long-press
+    //                                    using Pointer Events, with ghost-click
+    //                                    prevention and per-gesture haptics.
+    //
+    // Integration points (where _hapticFeedback / _attachLongPress are wired):
+    //   • All header icon buttons  (close / minimize / maximize / new-chat / export)
+    //   • Keyboard-shortcut hint   (subbar left cluster)
+    //   • Hamburger kbdRow         (hamburger menu minimize row)
+    //   • Hamburger button + right-overflow button
+    //   • Speak-with-assistant banner
+    //   • Attach button
+    //   • Mic button               (pointerdown in hold mode; click in toggle mode)
+    //   • Send button
+    //   • Floating trigger pill    (tap = restore; long-press = close fully)
+
+    /**
+     * Detect whether the primary input device is a touchscreen.
+     *
+     * Two independent checks are combined:
+     *
+     *   1. ``navigator.maxTouchPoints > 0`` — hardware capability register
+     *      (Chrome, Firefox, Edge, Safari 13+; reliable on physical devices).
+     *   2. ``matchMedia('(pointer: coarse)')`` — CSS Level 4 interaction media
+     *      feature; true when the primary pointer is imprecise (finger/stylus).
+     *
+     * Combining both guards against:
+     *   • Windows machines with a touch digitizer but mouse attached
+     *     (maxTouchPoints > 0, pointer: fine → returns false correctly).
+     *   • Browsers that implement one API but not the other.
+     *
+     * Returns
+     * -------
+     * boolean
+     *     ``true`` when a touch-primary device is detected.
+     *
+     * Notes
+     * -----
+     * Developer: Result is evaluated fresh on every call (not cached) to
+     *   stay accurate across tests and unusual hybrid-input environments.
+     *   Cache the result at the call site when calling in a hot path.
+     * User: Detection is best-effort; pointer emulators and hybrid
+     *   touch/mouse devices may occasionally return false positives.
+     */
+    function _isTouchDevice() {
+        return (
+            navigator.maxTouchPoints > 0 ||
+            (window.matchMedia && window.matchMedia('(pointer: coarse)').matches)
+        );
+    }
+
+    /**
+     * Fire a haptic vibration pattern via the Web Vibration API.
+     *
+     * Silently no-ops when any of the following conditions are true:
+     *   – ``navigator.vibrate`` is absent (iOS Safari, all desktop browsers).
+     *   – ``prefers-reduced-motion: reduce`` is set — mirrors the CSS contract
+     *     used to suppress animations throughout this file.
+     *   – The API throws for any reason (iframe sandboxing, document hidden,
+     *     OS vibration override, quota, unknown browser quirk).
+     *
+     * Parameters
+     * ----------
+     * pattern : number | number[]
+     *     Vibration duration in milliseconds, or an alternating
+     *     ``[vibrate, pause, vibrate, …]`` array passed directly to
+     *     ``navigator.vibrate()``.  Longer values produce stronger haptic
+     *     feedback on most hardware.  Recommended constants:
+     *
+     *         ``[8]``           — light confirmatory tap (button press).
+     *         ``[12]``          — medium tap (start / stop recording).
+     *         ``[12, 40, 12]``  — double-tap pulse (long-press confirm).
+     *
+     * Returns
+     * -------
+     * void
+     *
+     * Notes
+     * -----
+     * Developer: The Vibration API requires an active user-gesture in the
+     *   call stack.  Always invoke from a synchronous ``click`` or
+     *   ``pointerdown`` handler — never from a ``setTimeout``, ``Promise``
+     *   resolution, or async callback.
+     * User: Vibration respects the OS "do not disturb" / vibration switch;
+     *   the browser cannot override a hardware-level silence setting.
+     *
+     * References
+     * ----------
+     * https://developer.mozilla.org/en-US/docs/Web/API/Navigator/vibrate
+     */
+    function _hapticFeedback(pattern) {
+        if (!navigator.vibrate) return;
+        try {
+            if (window.matchMedia &&
+                    window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                return;
+            }
+            navigator.vibrate(pattern);
+        } catch (_) {}
+    }
+
+    /**
+     * Attach long-press and short-tap pointer handlers to an element.
+     *
+     * Uses the W3C Pointer Events API (not Touch Events) so the same code
+     * path handles mouse, stylus, and touch without user-agent sniffing.
+     *
+     * Interaction model
+     * -----------------
+     * ``pointerdown`` → start hold timer (``opts.threshold`` ms)
+     *
+     *   ├─ ``pointerup`` before timer fires
+     *   │     → short tap: ``hapticTap`` + ``onShortTap(e)``
+     *   │
+     *   ├─ ``pointermove`` > ``opts.maxMovePx`` CSS px
+     *   │     → cancel timer (scroll-intent detected); no action fires
+     *   │
+     *   ├─ ``pointercancel``
+     *   │     → cancel timer; no action
+     *   │
+     *   └─ timer fires (hold complete)
+     *         → long press: ``hapticLongPress`` + ``onLongPress(e)``
+     *         → on touch devices: ghost-click absorber set for 400 ms
+     *
+     * Ghost-click prevention
+     * ----------------------
+     * On touch devices the browser synthesises a ``click`` event ≈300 ms
+     * after ``pointerup`` even when ``touch-action: manipulation`` is set
+     * (manipulation only removes the double-tap-zoom delay, not the
+     * synthetic click).  After a long-press fires, a one-shot capture-phase
+     * ``click`` listener on ``document`` absorbs that synthetic click so
+     * existing ``click`` handlers (e.g. the trigger-pill restore listener)
+     * cannot accidentally re-trigger after the long-press action completes.
+     *
+     * Parameters
+     * ----------
+     * element : HTMLElement
+     *     Target element.
+     * onShortTap : function | null
+     *     Called on short tap after haptic fires.  Pass ``null`` when an
+     *     existing ``click`` listener already handles the primary action so
+     *     the two do not double-invoke the same logic.
+     * onLongPress : function | null
+     *     Called after the hold threshold.  Pass ``null`` when only haptic
+     *     feedback is needed for the long-press gesture.
+     * opts : object, optional
+     *     threshold       : number          — hold duration in ms (default 500).
+     *     hapticTap       : number|number[]|null
+     *                         — vibration for short tap (default ``[8]``).
+     *                           Pass ``null`` to suppress (use when a
+     *                           ``pointerdown`` listener already fires haptic).
+     *     hapticLongPress : number|number[] — vibration for long press
+     *                                          (default ``[12, 40, 12]``).
+     *     maxMovePx       : number          — drift-cancel threshold in CSS px
+     *                                          (default 8).
+     *
+     * Returns
+     * -------
+     * function
+     *     Cleanup function.  Removes all attached listeners and clears any
+     *     pending timer.  Call when the element leaves the DOM to prevent
+     *     ghost listeners accumulating across panel rebuilds.
+     *
+     * Notes
+     * -----
+     * Developer: Do NOT attach to the mic button — it owns its own dedicated
+     *   ``pointerdown``/``pointerup`` contract for hold-to-record.  Add haptic
+     *   calls inline inside those handlers instead (see mic section below).
+     * Developer: The cleanup return value mirrors the pattern used by
+     *   ``_attachResizer`` so teardown is consistent across utilities.
+     * User: Moving the pointer/finger more than ``opts.maxMovePx`` CSS px
+     *   during the hold cancels the long-press timer (scroll-intent detection)
+     *   without suppressing the normal short-tap action from any click handler.
+     *
+     * Examples
+     * --------
+     * >>> // Trigger pill: tap = restore panel (existing click handler),
+     * >>> //               long-press = close panel fully.
+     * >>> _attachLongPress(triggerEl, null, function () { closeAIPanel(); }, {
+     * ...     hapticTap:       null,          // pointerdown listener handles it
+     * ...     hapticLongPress: [12, 40, 12],
+     * ... });
+     */
+    function _attachLongPress(element, onShortTap, onLongPress, opts) {
+        var threshold = (opts && opts.threshold       != null) ? opts.threshold       : 500;
+        var hapticTap = (opts && opts.hapticTap       !== undefined)
+                            ? opts.hapticTap : [8];
+        var hapticLP  = (opts && opts.hapticLongPress != null) ? opts.hapticLongPress : [12, 40, 12];
+        var maxMovePx = (opts && opts.maxMovePx       != null) ? opts.maxMovePx       : 8;
+
+        var _timer         = null;
+        var _startX        = 0;
+        var _startY        = 0;
+        var _longFired     = false;
+        var _active        = false;
+        var _captureHandle = null;
+
+        function _cancelTimer() {
+            if (_timer) { clearTimeout(_timer); _timer = null; }
+            _longFired = false;
+            _active    = false;
+        }
+
+        function _onPointerDown(e) {
+            // Left-button / touch only — ignore secondary buttons (right-click).
+            if (e.button != null && e.button !== 0) return;
+            _active    = true;
+            _longFired = false;
+            _startX    = e.clientX;
+            _startY    = e.clientY;
+            // Capture the pointer stream so pointermove / pointerup always reach
+            // this element even if the finger drifts off it.
+            try { element.setPointerCapture(e.pointerId); } catch (_) {}
+
+            _timer = setTimeout(function () {
+                if (!_active) return;
+                _longFired = true;
+                _active    = false;
+                _hapticFeedback(hapticLP);
+                if (typeof onLongPress === 'function') onLongPress(e);
+
+                // Absorb the synthetic click that fires ≈300 ms after pointerup
+                // on touch devices so no existing click handler re-triggers.
+                if (_isTouchDevice()) {
+                    _captureHandle = function (ev) {
+                        ev.stopPropagation();
+                        ev.preventDefault();
+                    };
+                    document.addEventListener('click', _captureHandle, true);
+                    setTimeout(function () {
+                        if (_captureHandle) {
+                            document.removeEventListener('click', _captureHandle, true);
+                            _captureHandle = null;
+                        }
+                    }, 400);
+                }
+            }, threshold);
+        }
+
+        function _onPointerMove(e) {
+            if (!_active) return;
+            var dx = e.clientX - _startX;
+            var dy = e.clientY - _startY;
+            // Cancel the long-press if the pointer drifts (scroll intent).
+            if (Math.sqrt(dx * dx + dy * dy) > maxMovePx) {
+                _cancelTimer();
+            }
+        }
+
+        function _onPointerUp() {
+            // If the timer already fired (long press) or was cancelled (move),
+            // both _active and !_longFired would be false — nothing to do.
+            if (!_active && !_longFired) return;
+            var wasActive = _active;
+            _cancelTimer();   // clears timer; resets _longFired, _active
+            if (wasActive) {
+                // Short tap: long-press timer never fired.
+                if (hapticTap != null) _hapticFeedback(hapticTap);
+                if (typeof onShortTap === 'function') onShortTap();
+            }
+        }
+
+        function _onPointerCancel() {
+            _cancelTimer();
+        }
+
+        element.addEventListener('pointerdown',   _onPointerDown);
+        element.addEventListener('pointermove',   _onPointerMove);
+        element.addEventListener('pointerup',     _onPointerUp);
+        element.addEventListener('pointercancel', _onPointerCancel);
+
+        // Return a cleanup handle so the caller can remove listeners if the
+        // element is ever detached (prevents ghost-listener accumulation).
+        return function cleanup() {
+            _cancelTimer();
+            if (_captureHandle) {
+                document.removeEventListener('click', _captureHandle, true);
+                _captureHandle = null;
+            }
+            element.removeEventListener('pointerdown',   _onPointerDown);
+            element.removeEventListener('pointermove',   _onPointerMove);
+            element.removeEventListener('pointerup',     _onPointerUp);
+            element.removeEventListener('pointercancel', _onPointerCancel);
+        };
     }
 
     // ── Lightweight Markdown → safe HTML renderer ─────────────────────────────
@@ -871,7 +1390,8 @@
         if (dropdownButton) {
             dropdownButton.addEventListener('click', function (e) {
                 e.stopPropagation();
-                var isOpen = dropdown.style.display !== 'none';
+                // var isOpen = dropdown.style.display !== 'block';
+                var isOpen = window.getComputedStyle(dropdown).display !== 'none';
                 if (isOpen) {
                     dropdown.style.display = 'none';
                     dropdownButton.setAttribute('aria-expanded', 'false');
@@ -2408,6 +2928,456 @@
         return _findModel(cfg.panelApiModels, id);
     }
 
+    // ── Phase C: Effort level, extended-thinking, and coming-soon features ──────
+
+    /**
+     * Ordered effort-level definitions displayed inside the model sheet.
+     *
+     * Each object carries:
+     *   ``id``    – canonical storage key (lowercase, stable across releases).
+     *   ``label`` – visible button text.
+     *   ``hint``  – one-word sub-label beneath the button.
+     *   ``desc``  – one-sentence description shown below the segmented control.
+     *
+     * Extending: append entries here and the builder loop handles them
+     * automatically.  The grid column count is hard-coded to 4 in CSS; adding
+     * a fifth entry requires updating ``grid-template-columns`` on
+     * ``.ai-assistant-panel-effort-seg``.
+     */
+    var _EFFORT_LEVELS = [
+        { id: 'low',    label: 'Low',    hint: 'Quick',
+          desc: 'Fast, concise answers. Best for simple lookups and short questions.' },
+        { id: 'medium', label: 'Medium', hint: 'Balanced',
+          desc: 'Balanced quality and speed — the sweet spot for most tasks.' },
+        { id: 'high',   label: 'High',   hint: 'Deep',
+          desc: 'Thorough analysis. Best for research, writing, and code review.' },
+        { id: 'max',    label: 'Max',    hint: 'Best',
+          desc: 'Maximum reasoning quality. Slowest, but most complete and accurate.' },
+    ];
+
+    /**
+     * Coming-soon feature placeholders shown in the model sheet footer.
+     *
+     * Each object carries:
+     *   ``label`` – feature name (also used as lookup key in _FUTURE_ICONS).
+     *   ``desc``  – one-sentence description.
+     *
+     * Extend by appending here.  Icons are resolved via ``_FUTURE_ICONS`` below.
+     */
+    var _FUTURE_FEATURES = [
+        { label: 'Temperature',    desc: 'Creativity vs. precision dial' },
+        { label: 'Context window', desc: 'Set max tokens for context' },
+        { label: 'Tool routing',   desc: 'Enable or disable individual tools' },
+        { label: 'System prompt',  desc: 'Per-session custom instructions' },
+    ];
+
+    /**
+     * SVG icon map for coming-soon feature items.
+     *
+     * Each value must be safe inner-HTML (no user content, only hardcoded SVG
+     * paths).  Unmapped labels fall back to ``ICONS.model`` so every item
+     * always shows an icon.
+     */
+    var _FUTURE_ICONS = {
+        'Temperature':
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"' +
+            ' stroke-linecap="round" stroke-linejoin="round">' +
+            '<circle cx="12" cy="12" r="3"/>' +
+            '<path d="M12 1v4m0 14v4M4.22 4.22l2.83 2.83m9.9 9.9 2.83 2.83' +
+            'M1 12h4m14 0h4M4.22 19.78l2.83-2.83m9.9-9.9 2.83-2.83"/></svg>',
+        'Context window':
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"' +
+            ' stroke-linecap="round" stroke-linejoin="round">' +
+            '<path d="M8 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3' +
+            'm8-18h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3m-4-9H9m6 4H9m6-8H9"/></svg>',
+        'Tool routing':
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"' +
+            ' stroke-linecap="round" stroke-linejoin="round">' +
+            '<line x1="4" y1="6" x2="20" y2="6"/>' +
+            '<line x1="4" y1="12" x2="20" y2="12"/>' +
+            '<line x1="4" y1="18" x2="12" y2="18"/></svg>',
+        'System prompt':
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"' +
+            ' stroke-linecap="round" stroke-linejoin="round">' +
+            '<path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>' +
+            '<path d="m18.5 2.5 3 3-10 10H8v-3.5l10.5-9.5z"/></svg>',
+    };
+
+    // ── Effort: sessionStorage-backed persistence ──────────────────────────────
+
+    /** sessionStorage key for the user's chosen effort level. */
+    var _EFFORT_KEY = 'ai-assistant-effort-level';
+
+    /**
+     * Return the persisted effort level id, defaulting to ``'medium'``.
+     * Falls back silently when sessionStorage is blocked.
+     *
+     * @returns {string}
+     */
+    function _getEffortLevel() {
+        try { return sessionStorage.getItem(_EFFORT_KEY) || 'medium'; } catch (_) { return 'medium'; }
+    }
+
+    /**
+     * Persist the chosen effort level.  Best-effort — failures are silent.
+     *
+     * @param {string} id  One of the ids defined in ``_EFFORT_LEVELS``.
+     */
+    function _setEffortLevel(id) {
+        if (typeof id !== 'string' || !id) return;
+        try { sessionStorage.setItem(_EFFORT_KEY, id); } catch (_) {}
+    }
+
+    // ── Thinking: sessionStorage-backed persistence ────────────────────────────
+
+    /** sessionStorage key for the extended-reasoning toggle state. */
+    var _THINKING_KEY = 'ai-assistant-thinking-on';
+
+    /** sessionStorage key for the thinking token budget. */
+    var _THINKING_BUDGET_KEY = 'ai-assistant-thinking-budget';
+
+    /**
+     * Return whether extended reasoning is currently enabled.
+     *
+     * @returns {boolean}
+     */
+    function _getThinkingOn() {
+        try { return sessionStorage.getItem(_THINKING_KEY) === 'true'; } catch (_) { return false; }
+    }
+
+    /**
+     * Persist the thinking toggle state.
+     *
+     * @param {boolean} on
+     */
+    function _setThinkingOn(on) {
+        try { sessionStorage.setItem(_THINKING_KEY, on ? 'true' : 'false'); } catch (_) {}
+    }
+
+    /**
+     * Return the persisted token budget, clamped to [500, 16000].
+     * Defaults to 5000 when unset or out-of-range.
+     *
+     * @returns {number}
+     */
+    function _getThinkingBudget() {
+        try {
+            var v = parseInt(sessionStorage.getItem(_THINKING_BUDGET_KEY), 10);
+            return (isFinite(v) && v >= 500 && v <= 16000) ? v : 5000;
+        } catch (_) { return 5000; }
+    }
+
+    /**
+     * Persist the thinking token budget.
+     *
+     * @param {number} v  Tokens; caller ensures value is within [500, 16000].
+     */
+    function _setThinkingBudget(v) {
+        try { sessionStorage.setItem(_THINKING_BUDGET_KEY, String(v)); } catch (_) {}
+    }
+
+    // ── Sheet-section DOM helpers ──────────────────────────────────────────────
+
+    /**
+     * Build a labeled section divider for the model sheet.
+     *
+     * Renders as:
+     *   LABEL ───────────────────
+     *
+     * The rule line is ``aria-hidden`` so screen readers skip it.
+     *
+     * Parameters
+     * ----------
+     * label : string
+     *     Section heading text (uppercase by CSS, not by content).
+     *
+     * Returns
+     * -------
+     * HTMLElement
+     *     A ``<div class="ai-assistant-panel-sheet-section">`` containing the
+     *     label + rule row, ready for content to be appended by the caller.
+     */
+    function _buildSheetSection(label) {
+        var section = document.createElement('div');
+        section.className = 'ai-assistant-panel-sheet-section';
+
+        var head = document.createElement('div');
+        head.className = 'ai-assistant-panel-sheet-section-head';
+
+        var lbl = document.createElement('span');
+        lbl.className = 'ai-assistant-panel-sheet-section-label';
+        lbl.textContent = label;
+
+        var rule = document.createElement('span');
+        rule.className = 'ai-assistant-panel-sheet-section-rule';
+        rule.setAttribute('aria-hidden', 'true');
+
+        head.appendChild(lbl);
+        head.appendChild(rule);
+        section.appendChild(head);
+        return section;
+    }
+
+    /**
+     * Append the effort, thinking, and coming-soon sections to a model sheet.
+     *
+     * This helper is called from both the normal and stub-mode (no models
+     * configured) code paths inside ``_buildModelSheet()`` to guarantee the
+     * sections appear regardless of whether any models are defined.
+     *
+     * Dispatches custom events on the document:
+     *   ``ai-assistant-effort-change``         – when effort level changes.
+     *   ``ai-assistant-thinking-change``       – when thinking toggle flips.
+     *   ``ai-assistant-thinking-budget-change``– when token budget changes.
+     *
+     * All event details are plain objects safe for structured-clone.
+     * Callers can react via ``document.addEventListener()``.
+     *
+     * Parameters
+     * ----------
+     * sheet : HTMLElement
+     *     The model-sheet root element to append sections to.
+     *
+     * Notes
+     * -----
+     * Developer: CustomEvent is wrapped in try/catch so the function never
+     *   throws in environments where CustomEvent is unavailable (old WebViews).
+     *
+     * Developer: sessionStorage access is always wrapped in try/catch because
+     *   it may throw in Safari private mode, cross-origin iframes, and when
+     *   storage quota is exceeded.
+     */
+    function _appendModelSheetSections(sheet) {
+
+        // ── §A  Effort level ───────────────────────────────────────────────────
+
+        var effortSection = _buildSheetSection('Effort');
+
+        var effortSeg = document.createElement('div');
+        effortSeg.className = 'ai-assistant-panel-effort-seg';
+        effortSeg.setAttribute('role', 'radiogroup');
+        effortSeg.setAttribute('aria-label', 'Response effort level');
+
+        var effortDesc = document.createElement('p');
+        effortDesc.className = 'ai-assistant-panel-effort-desc';
+
+        var activeEffort = _getEffortLevel();
+
+        _EFFORT_LEVELS.forEach(function (ef) {
+            var btn = document.createElement('button');
+            btn.className = 'ai-assistant-panel-effort-btn';
+            btn.setAttribute('role', 'radio');
+            btn.setAttribute('aria-checked', ef.id === activeEffort ? 'true' : 'false');
+            btn.dataset.effortId = ef.id;
+            btn.type = 'button';
+
+            var efLbl = document.createElement('span');
+            efLbl.className = 'ai-assistant-panel-effort-lbl';
+            efLbl.textContent = ef.label;
+
+            var efHint = document.createElement('span');
+            efHint.className = 'ai-assistant-panel-effort-hint';
+            efHint.textContent = ef.hint;
+            efHint.setAttribute('aria-hidden', 'true');
+
+            btn.appendChild(efLbl);
+            btn.appendChild(efHint);
+
+            // Set initial description for the pre-selected level.
+            if (ef.id === activeEffort) { effortDesc.textContent = ef.desc; }
+
+            btn.addEventListener('click', function () {
+                activeEffort = ef.id;
+                _setEffortLevel(ef.id);
+                effortDesc.textContent = ef.desc;
+                effortSeg.querySelectorAll('.ai-assistant-panel-effort-btn')
+                    .forEach(function (b) {
+                        b.setAttribute('aria-checked',
+                            b.dataset.effortId === activeEffort ? 'true' : 'false');
+                    });
+                try {
+                    document.dispatchEvent(new CustomEvent(
+                        'ai-assistant-effort-change',
+                        { detail: { id: ef.id }, bubbles: false }
+                    ));
+                } catch (_) {}
+            });
+
+            effortSeg.appendChild(btn);
+        });
+
+        effortSection.appendChild(effortSeg);
+        effortSection.appendChild(effortDesc);
+        sheet.appendChild(effortSection);
+
+        // ── §B  Extended reasoning (thinking) ─────────────────────────────────
+
+        var thinkingSection = _buildSheetSection('Thinking');
+
+        var thinkingRow = document.createElement('div');
+        thinkingRow.className = 'ai-assistant-panel-thinking-row';
+
+        // Left side: title + hint
+        var thinkingText = document.createElement('div');
+        thinkingText.className = 'ai-assistant-panel-thinking-text';
+
+        var thinkingTitle = document.createElement('div');
+        thinkingTitle.className = 'ai-assistant-panel-thinking-title';
+        thinkingTitle.textContent = 'Extended reasoning';
+
+        var thinkingHint = document.createElement('div');
+        thinkingHint.className = 'ai-assistant-panel-thinking-hint';
+
+        var thinkingOn = _getThinkingOn();
+        thinkingHint.textContent = thinkingOn
+            ? 'Deeper analysis, slightly slower responses'
+            : 'Faster, more concise responses';
+
+        thinkingText.appendChild(thinkingTitle);
+        thinkingText.appendChild(thinkingHint);
+
+        // Right side: toggle pill
+        var thinkingToggle = document.createElement('button');
+        thinkingToggle.className = 'ai-assistant-panel-thinking-toggle';
+        thinkingToggle.type = 'button';
+        thinkingToggle.setAttribute('role', 'switch');
+        thinkingToggle.setAttribute('aria-pressed', thinkingOn ? 'true' : 'false');
+        thinkingToggle.setAttribute('aria-label', 'Enable extended reasoning');
+
+        var thinkingThumb = document.createElement('span');
+        thinkingThumb.className = 'ai-assistant-panel-thinking-toggle-thumb';
+        thinkingThumb.setAttribute('aria-hidden', 'true');
+        thinkingToggle.appendChild(thinkingThumb);
+
+        thinkingRow.appendChild(thinkingText);
+        thinkingRow.appendChild(thinkingToggle);
+
+        // Token budget area (visible only when thinking is on)
+        var budgetArea = document.createElement('div');
+        budgetArea.className = 'ai-assistant-panel-budget-area';
+        if (thinkingOn) { budgetArea.setAttribute('data-visible', 'true'); }
+
+        var budgetHeader = document.createElement('div');
+        budgetHeader.className = 'ai-assistant-panel-budget-header';
+
+        var budgetLabel = document.createElement('span');
+        budgetLabel.className = 'ai-assistant-panel-budget-label';
+        budgetLabel.textContent = 'Token budget';
+
+        var budgetValue = document.createElement('span');
+        budgetValue.className = 'ai-assistant-panel-budget-value';
+        var currentBudget = _getThinkingBudget();
+        budgetValue.textContent = currentBudget.toLocaleString();
+
+        budgetHeader.appendChild(budgetLabel);
+        budgetHeader.appendChild(budgetValue);
+
+        var budgetRange = document.createElement('input');
+        budgetRange.type = 'range';
+        budgetRange.className = 'ai-assistant-panel-budget-range';
+        budgetRange.min = '500';
+        budgetRange.max = '16000';
+        budgetRange.step = '500';
+        budgetRange.value = String(currentBudget);
+        budgetRange.setAttribute('aria-label', 'Token budget for extended reasoning');
+
+        budgetRange.addEventListener('input', function () {
+            var v = parseInt(budgetRange.value, 10);
+            budgetValue.textContent = v.toLocaleString();
+            _setThinkingBudget(v);
+            try {
+                document.dispatchEvent(new CustomEvent(
+                    'ai-assistant-thinking-budget-change',
+                    { detail: { budget: v }, bubbles: false }
+                ));
+            } catch (_) {}
+        });
+
+        var budgetTicks = document.createElement('div');
+        budgetTicks.className = 'ai-assistant-panel-budget-ticks';
+        budgetTicks.setAttribute('aria-hidden', 'true');
+
+        var tickMin = document.createElement('span');
+        tickMin.className = 'ai-assistant-panel-budget-tick';
+        tickMin.textContent = '500';
+        var tickMax = document.createElement('span');
+        tickMax.className = 'ai-assistant-panel-budget-tick';
+        tickMax.textContent = '16 000';
+
+        budgetTicks.appendChild(tickMin);
+        budgetTicks.appendChild(tickMax);
+        budgetArea.appendChild(budgetHeader);
+        budgetArea.appendChild(budgetRange);
+        budgetArea.appendChild(budgetTicks);
+
+        // Wire the toggle: flip state, update UI, persist, dispatch event.
+        thinkingToggle.addEventListener('click', function () {
+            thinkingOn = !thinkingOn;
+            _setThinkingOn(thinkingOn);
+            thinkingToggle.setAttribute('aria-pressed', thinkingOn ? 'true' : 'false');
+            thinkingHint.textContent = thinkingOn
+                ? 'Deeper analysis, slightly slower responses'
+                : 'Faster, more concise responses';
+            budgetArea.setAttribute('data-visible', thinkingOn ? 'true' : 'false');
+            try {
+                document.dispatchEvent(new CustomEvent(
+                    'ai-assistant-thinking-change',
+                    { detail: { on: thinkingOn, budget: _getThinkingBudget() },
+                      bubbles: false }
+                ));
+            } catch (_) {}
+        });
+
+        thinkingSection.appendChild(thinkingRow);
+        thinkingSection.appendChild(budgetArea);
+        sheet.appendChild(thinkingSection);
+
+        // ── §C  Coming-soon feature placeholders ───────────────────────────────
+
+        var futureSection = _buildSheetSection('Coming soon');
+
+        var futureList = document.createElement('div');
+        futureList.className = 'ai-assistant-panel-future-list';
+        // Entire section is decorative — no interactive targets inside.
+        futureList.setAttribute('aria-hidden', 'true');
+
+        _FUTURE_FEATURES.forEach(function (f) {
+            var item = document.createElement('div');
+            item.className = 'ai-assistant-panel-future-item';
+
+            var icon = document.createElement('span');
+            icon.className = 'ai-assistant-panel-future-icon';
+            // Only hardcoded SVG — no user content reaches innerHTML here.
+            icon.innerHTML = _FUTURE_ICONS[f.label] || ICONS.model;
+
+            var text = document.createElement('div');
+            text.className = 'ai-assistant-panel-future-text';
+
+            var name = document.createElement('div');
+            name.className = 'ai-assistant-panel-future-name';
+            name.textContent = f.label;       // textContent — XSS-safe.
+
+            var sub = document.createElement('div');
+            sub.className = 'ai-assistant-panel-future-sub';
+            sub.textContent = f.desc;         // textContent — XSS-safe.
+
+            text.appendChild(name);
+            text.appendChild(sub);
+
+            var badge = document.createElement('span');
+            badge.className = 'ai-assistant-panel-future-badge';
+            badge.textContent = 'Soon';
+
+            item.appendChild(icon);
+            item.appendChild(text);
+            item.appendChild(badge);
+            futureList.appendChild(item);
+        });
+
+        futureSection.appendChild(futureList);
+        sheet.appendChild(futureSection);
+    }
+
     // ── Phase B: Model selection sheet (sibling of privacy sheet) ─────────────
 
     /**
@@ -2471,7 +3441,14 @@
                 'No models are configured. Set ' +
                 'ai_assistant_panel_api_models in conf.py to enable the picker.';
             bodyEl.appendChild(empty);
-            sheet.appendChild(bodyEl);
+            // Wrap in the unified scroll container even for the stub case so
+            // that effort / thinking / future sections are always inside the
+            // scrollable region and never overflow the sheet frame.
+            var scrollElEmpty = document.createElement('div');
+            scrollElEmpty.className = 'ai-assistant-panel-sheet-scroll';
+            scrollElEmpty.appendChild(bodyEl);
+            sheet.appendChild(scrollElEmpty);
+            _appendModelSheetSections(scrollElEmpty);
             return sheet;
         }
 
@@ -2493,6 +3470,12 @@
             radio.value = m.id;
             radio.checked = (m.id === activeId);
             radio.className = 'ai-assistant-panel-model-radio';
+            // FIX Issue 15: data-checked mirrors radio.checked at build time so
+            // the :has() fallback (Safari < 15.4, Chrome < 105) shows the
+            // selected-row highlight without requiring a DOM change event.
+            if (m.id === activeId) {
+                row.setAttribute('data-checked', 'true');
+            }
 
             // ── Provider badge (coloured circle) ────────────────────────
             var badge = document.createElement('span');
@@ -2548,24 +3531,55 @@
 
             row.addEventListener('change', function () {
                 if (!radio.checked) return;
-                _setActiveModelId(m.id);
-                // Notify doc authors so they can react (e.g. analytics).
+                // Capture the per-row id once — stable regardless of config changes.
+                var id = m.id;
+                _setActiveModelId(id);
+                // FIX Issue 3: Read the live config at dispatch time so the
+                // CustomEvent payload is never stale.  window.AI_ASSISTANT_CONFIG
+                // may be updated post-DOMContentLoaded in hot-reload and SPA
+                // environments; the build-time `m` snapshot would then carry wrong
+                // provider / model values into analytics handlers.
                 try {
+                    var liveModels = (window.AI_ASSISTANT_CONFIG || {}).panelApiModels;
+                    var liveM = _findModel(
+                        Array.isArray(liveModels) ? liveModels : models, id
+                    );
                     document.dispatchEvent(new CustomEvent(
                         'ai-assistant-model-change',
-                        { detail: { id: m.id, provider: m.provider,
-                                    model: m.model } }));
+                        { detail: liveM
+                            ? { id: liveM.id, provider: liveM.provider,
+                                model: liveM.model }
+                            : { id: id } }
+                    ));
                 } catch (_) {}
+                // FIX Issue 15: keep data-checked in sync so the :has() fallback
+                // (Issue 15 CSS) correctly highlights the newly selected row.
+                sheet.querySelectorAll('.ai-assistant-panel-model-row[data-checked]')
+                    .forEach(function (r) { r.removeAttribute('data-checked'); });
+                row.setAttribute('data-checked', 'true');
                 // Sync inline picker if present.
-                _syncInlinePickers(m.id);
-                // Close the sheet on selection.
-                sheet.setAttribute('data-open', 'false');
+                _syncInlinePickers(id);
+                // Sheet closure is handled by the row click listener wired in
+                // createAIPanel after _closeSheet is in scope.  Using that path
+                // ensures aria-expanded is reset and focus returns to the opener
+                // for every close path (different model, same model, × button,
+                // Escape) — Issue 4 parity for model row selection.
             });
 
             bodyEl.appendChild(row);
         });
 
-        sheet.appendChild(bodyEl);
+        // ── Unified scroll wrapper ─────────────────────────────────────────
+        // All model rows + effort/thinking/future sections are placed inside
+        // a single scrollEl so the entire sheet body scrolls together.
+        // CSS: .ai-assistant-panel-sheet-scroll  (flex:1; overflow-y:auto)
+        // The bodyEl's own overflow is overridden to `visible` by the
+        // .ai-assistant-panel-privacy-body.ai-assistant-panel-model-list rule.
+        var scrollEl = document.createElement('div');
+        scrollEl.className = 'ai-assistant-panel-sheet-scroll';
+        scrollEl.appendChild(bodyEl);
+        sheet.appendChild(scrollEl);
+        _appendModelSheetSections(scrollEl);
         return sheet;
     }
 
@@ -2851,15 +3865,14 @@
             pop.appendChild(item);
         }
 
+        addItem(ICONS.model,    'Choose a model',            hooks && hooks.onModel);
         addItem(ICONS.privacy,  'Privacy & Responsibility',  hooks && hooks.onPrivacy);
         addItem(ICONS.terms,    'Terms of Service',          hooks && hooks.onTerms);
-        addItem(ICONS.model,    'Choose a model',            hooks && hooks.onModel);
         addItem(ICONS.share,    'Share',                     hooks && hooks.onShare);
 
         // Keyboard shortcut hint row — shown at the bottom of the menu when a
-        // shortcut is configured.  Non-interactive (aria-hidden); its purpose
-        // is to remind the user of the panel toggle key without needing to look
-        // at the external kbd-hint in the subbar.
+        // shortcut is configured.  Now interactive: left-click = minimize,
+        // right-click = close (same contract as the header minimize icon-btn).
         var kbdHintLabel = _shortcutLabel();
         if (kbdHintLabel) {
             var sep = document.createElement('hr');
@@ -2869,7 +3882,10 @@
 
             var kbdRow = document.createElement('div');
             kbdRow.className = 'ai-assistant-panel-hamburger-kbd-row';
-            kbdRow.setAttribute('aria-hidden', 'true');
+            kbdRow.setAttribute('role', 'menuitem');
+            kbdRow.setAttribute('tabindex', '0');
+            kbdRow.setAttribute('aria-label', 'Minimize panel (right-click to close)');
+            kbdRow.title = 'Left-click: minimize  \u00b7  Right-click: close';
 
             var kbdIcon = document.createElement('span');
             kbdIcon.setAttribute('aria-hidden', 'true');
@@ -2882,6 +3898,27 @@
                 kbdRow.appendChild(k);
                 if (i < arr.length - 1) {
                     kbdRow.appendChild(document.createTextNode('+'));
+                }
+            });
+
+            // Left-click: close hamburger menu then minimize panel.
+            kbdRow.addEventListener('click', function () {
+                _hapticFeedback([8]);
+                pop.setAttribute('data-open', 'false');
+                minimizeAIPanel();
+            });
+            // Right-click: close hamburger menu then fully close panel.
+            kbdRow.addEventListener('contextmenu', function (e) {
+                e.preventDefault();
+                pop.setAttribute('data-open', 'false');
+                closeAIPanel();
+            });
+            // Keyboard: Enter / Space mirrors the left-click action.
+            kbdRow.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    pop.setAttribute('data-open', 'false');
+                    minimizeAIPanel();
                 }
             });
 
@@ -2957,6 +3994,18 @@
         btn.setAttribute('aria-label', 'Choose a model \u2014 current: ' + initLabel);
         btn.title = initLabel;
 
+        // ── Small-screen icon-only fallback ────────────────────────────────
+        // On narrow viewports (≤ 575 px) the pill collapses to this single
+        // model icon, hiding the dot, label, and chevron.  Mirrors the exact
+        // same logic used by .ai-assistant-panel-model-link in the sub-bar:
+        // the icon is always in the DOM; CSS controls visibility at the
+        // breakpoint defined in the @media (max-width: 575px) block.
+        var iconOnly = document.createElement('span');
+        iconOnly.className = 'ai-assistant-panel-inline-picker-icon';
+        iconOnly.setAttribute('aria-hidden', 'true');
+        iconOnly.innerHTML = ICONS.model;   // ICONS constant — safe.
+        btn.appendChild(iconOnly);
+
         // ── Provider badge dot ──────────────────────────────────────────────
         var dot = document.createElement('span');
         dot.className = 'ai-assistant-panel-inline-picker-dot';
@@ -2976,7 +4025,10 @@
         btn.appendChild(lbl);
 
         // ── Chevron ─────────────────────────────────────────────────────────
+        // Class added so the narrow-screen rule can hide it by class name
+        // (safer than :last-child which depends on DOM order).
         var chev = document.createElement('span');
+        chev.className = 'ai-assistant-panel-inline-picker-chev';
         chev.setAttribute('aria-hidden', 'true');
         chev.innerHTML = ICONS.chevronDown;   // ICONS constant — safe.
         btn.appendChild(chev);
@@ -3197,12 +4249,14 @@
         // R3: clear conversation without page refresh ("Start a new chat").
         var newChatBtn = _createIconBtn('new-chat', 'Start a new chat', ICONS.newChat);
         newChatBtn.title = 'Start a new chat';
+        newChatBtn.addEventListener('pointerdown', function () { _hapticFeedback([8]); });
         newChatBtn.addEventListener('click', clearConversation);
 
         // R4: export the conversation as a plain-text download.
         var exportBtn = _createIconBtn(
             'export', 'Export AI conversation as txt', ICONS.exportTxt);
         exportBtn.title = 'Export AI conversation as txt';
+        exportBtn.addEventListener('pointerdown', function () { _hapticFeedback([8]); });
         exportBtn.addEventListener('click', exportConversation);
 
         headerActions.appendChild(newChatBtn);
@@ -3246,6 +4300,10 @@
         if (kbdLabel) {
             var hint = document.createElement('span');
             hint.className = 'ai-assistant-panel-kbd-hint';
+            hint.setAttribute('role', 'button');
+            hint.setAttribute('tabindex', '0');
+            hint.setAttribute('aria-label', 'Minimize panel (right-click to close)');
+            hint.title = 'Left-click: minimize  \u00b7  Right-click: close';
             var hIcon = document.createElement('span');
             hIcon.setAttribute('aria-hidden', 'true');
             hIcon.innerHTML = ICONS.keyboard;        // ICONS constant — safe.
@@ -3257,6 +4315,20 @@
                 hint.appendChild(k);
                 if (i < arr.length - 1) {
                     hint.appendChild(document.createTextNode('+'));
+                }
+            });
+            // Left-click: minimize panel.
+            hint.addEventListener('click', function () { _hapticFeedback([8]); minimizeAIPanel(); });
+            // Right-click: fully close panel.
+            hint.addEventListener('contextmenu', function (e) {
+                e.preventDefault();
+                closeAIPanel();
+            });
+            // Keyboard: Enter / Space mirrors the left-click action.
+            hint.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    minimizeAIPanel();
                 }
             });
             leftCluster.appendChild(hint);
@@ -3277,7 +4349,6 @@
             (window.AI_ASSISTANT_CONFIG &&
              window.AI_ASSISTANT_CONFIG.panelPrivacyLinkText) ||
             'Privacy & Responsibility';
-        rightCluster.appendChild(privacyLink);
 
         // Terms-of-Service link — sibling of Privacy, same CSS class so the
         // theme styling cascades automatically.
@@ -3289,7 +4360,6 @@
             termsLink.textContent =
                 (cfgRef.panelTermsLinkText) || 'Terms of Service';
             termsLink.setAttribute('aria-label', 'Open Terms of Service');
-            rightCluster.appendChild(termsLink);
         }
 
         // Model picker button (sheet entry-point).  Shown when any panel
@@ -3321,7 +4391,6 @@
 
             modelLink.setAttribute('aria-label', 'Choose a model');
             modelLink.title = 'Choose a model';
-            rightCluster.appendChild(modelLink);
         }
 
         // Share button — opens the Share sheet.
@@ -3339,8 +4408,15 @@
             shareLink.appendChild(shareLbl);
             shareLink.setAttribute('aria-label', 'Share this page');
             shareLink.title = 'Share this page';
-            rightCluster.appendChild(shareLink);
         }
+
+        // Append right-cluster items in visual left→right order:
+        //   Model | Privacy | Terms | Share | ⋯
+        // Items that are null (feature-flagged off) are silently skipped.
+        if (modelLink)  rightCluster.appendChild(modelLink);
+        rightCluster.appendChild(privacyLink);
+        if (termsLink)  rightCluster.appendChild(termsLink);
+        if (shareLink)  rightCluster.appendChild(shareLink);
 
         // Right overflow toggle button — collapsed representation of the
         // entire right cluster when the panel is too narrow to show individual
@@ -3397,6 +4473,7 @@
             speakBannerEl.appendChild(speakText);
 
             speakBannerEl.addEventListener('click', function () {
+                _hapticFeedback([8]);
                 _toggleSpeechRecognition();
             });
         }
@@ -3440,15 +4517,31 @@
         attachBtn.setAttribute('title', 'Add attachment or context');
         attachBtn.innerHTML = ICONS.plus;   // ICONS constant — safe.
         attachBtn.addEventListener('click', function () {
+            _hapticFeedback([8]);
             panel.dispatchEvent(new CustomEvent('ai-assistant-attach', {
                 bubbles: true, cancelable: true,
             }));
         });
         footerActions.appendChild(attachBtn);
 
-        // Right-side action cluster: model ▾ | mic | send
+        // Right-side action cluster: [soundbar?] | model ▾ | mic | send
         var footerActionsRight = document.createElement('div');
         footerActionsRight.className = 'ai-assistant-panel-footer-actions-right';
+
+        // ── Footer soundbar: container only — bars built dynamically in _startVizLoops
+        //
+        // Bar count is determined at recording-start from the viewport width
+        // (_computeSoundbarBarCount) so it is always right for the device.
+        // CSS controls visibility (max-width: 0 → active max-width);
+        // JS manages bar elements, heights, and opacity per tick.
+        (function () {
+            var soundbar = document.createElement('div');
+            soundbar.className = 'ai-assistant-footer-soundbar';
+            soundbar.id        = 'ai-assistant-footer-soundbar';
+            soundbar.setAttribute('aria-hidden', 'true');
+            // No bars here — _rebuildSoundbarBars() creates them in _startVizLoops.
+            footerActionsRight.appendChild(soundbar);
+        }());
 
         // Inline model picker (Claude-bar style): [model ▾?]
         // Returns null when no models are configured or panelInlineModelPicker=false.
@@ -3456,20 +4549,216 @@
         if (inlinePicker) footerActionsRight.appendChild(inlinePicker);
 
         // Microphone button (shown only when speech is supported): [🎤 mic?]
+        //
+        // Structure:
+        //   .ai-assistant-mic-wrapper                 — position:relative anchor
+        //     .ai-assistant-mic-popup                 — hover popup (right-side)
+        //       .ai-assistant-mic-popup-row--level     — voice level bars (top)
+        //       .ai-assistant-mic-popup-sep            — separator
+        //       .ai-assistant-mic-popup-row--hold      — hold-to-record toggle (bottom)
+        //     button.ai-assistant-panel-footer-btn--mic — the mic button itself
+        //
+        // Hover logic: CSS shows the popup when the wrapper is hovered.
+        // Hold-to-record: when _micHoldMode is true, pointerdown/up drives recognition
+        //   instead of click-toggle — matching the Claude.ai "press and hold" pattern.
         var micBtnEl = null;
         if (hasSpeech) {
+            // ── Wrapper ───────────────────────────────────────────────────────
+            var micWrapper = document.createElement('div');
+            micWrapper.className = 'ai-assistant-mic-wrapper';
+
+            // ── Hover popup (right-anchored, floats above action bar) ─────────
+            var micPopup = _buildMicHoverPopup();
+            micWrapper.appendChild(micPopup);
+
+            // ── Mic button ────────────────────────────────────────────────────
             micBtnEl = document.createElement('button');
             micBtnEl.className = 'ai-assistant-panel-footer-btn ai-assistant-panel-footer-btn--mic';
             micBtnEl.id = 'ai-assistant-panel-mic';
             micBtnEl.type = 'button';
-            micBtnEl.setAttribute('aria-label', 'Speak your question');
-            micBtnEl.setAttribute('title', 'Speak your question');
+
+            // Initial label depends on persisted hold mode
+            var _micInitLabel = _micHoldMode ? 'Press and hold to record' : 'Speak your question';
+            micBtnEl.setAttribute('aria-label', _micInitLabel);
+            micBtnEl.setAttribute('title', _micInitLabel);
+            micBtnEl.setAttribute('data-hold', _micHoldMode ? 'true' : 'false');
             micBtnEl.innerHTML = ICONS.mic;   // ICONS constant — safe.
-            micBtnEl.addEventListener('click', function () {
-                _toggleSpeechRecognition();
-                _dismissSpeakBanner();
+
+            // Hold-to-record: pointerdown → start, pointerup/pointerleave → stop
+            micBtnEl.addEventListener('pointerdown', function (e) {
+                if (!_micHoldMode) return;
+                _hapticFeedback([12]);   // medium pulse — confirms recording has started
+                e.preventDefault();
+                _micPointerHeld = true;
+                try {
+                    micBtnEl.setPointerCapture(e.pointerId);
+                } catch (_) {}
+                if (!_isListening) {
+                    _toggleSpeechRecognition();
+                }
             });
-            footerActionsRight.appendChild(micBtnEl);
+            var _STOP_FLUSH_MS = 600;
+            var _stopTimer = null;
+            micBtnEl.addEventListener('pointerup', function () {
+                // if (_micHoldMode && _isListening) { _stopSpeechRecognition(); }
+                _micPointerHeld = false;
+                if (_micHoldMode) {
+                    _stopSpeechRecognition();
+                }
+            });
+            micBtnEl.addEventListener('pointercancel', function () {
+                _micPointerHeld = false;
+                if (_micHoldMode) {
+                    _stopSpeechRecognition();
+                }
+            });
+
+            // Click-toggle mode (default / hold=false).
+            //
+            // Correct interaction chain:
+            //   1. Hover mic wrapper     → CSS reveals the right-side expand-chevron button.
+            //   2. Click expand-chevron  → JS toggles data-pinned on #ai-assistant-mic-popup.
+            //   3. Popup visible only    → when data-pinned="true" (never from hover alone).
+            //
+            // The mic button controls speech recognition ONLY.
+            // Popup visibility is the exclusive responsibility of the expand-chevron button
+            // (.ai-assistant-mic-expand-btn) so the two concerns are fully decoupled.
+            micBtnEl.addEventListener('click', function () {
+                if (!_micHoldMode) {
+                    _hapticFeedback([8]);
+                    _toggleSpeechRecognition();
+                    _dismissSpeakBanner();
+                }
+            });
+
+            micWrapper.appendChild(micBtnEl);
+
+            // ── Right-side expand button (Claude-style hover reveal) ──────────
+            //
+            // Adds a small chevron button to the RIGHT of the mic button that:
+            //   • stays hidden (width 0 / overflow hidden) when not hovering
+            //   • slides in to 2rem on wrapper hover (CSS drives the animation)
+            //   • when clicked, pins / unpins the mic popup via data-pinned
+            //
+            // This mirrors Claude.ai's left-side settings-reveal — placed on
+            // the right so the layout reads: [🎤 mic] [▲ expand]
+            //
+            // DOM structure added:
+            //   .ai-assistant-mic-expand-wrapper   (overflow:hidden, width:0→2rem)
+            //     .ai-assistant-mic-expand-btn     (chevron, aria-expanded)
+            //
+            // Popup interactivity contract:
+            //   data-pinned="true"  → popup visible + pointer-events:auto (CSS)
+            //   data-pinned="false" → back to hover-only visibility
+            //
+            // Keyboard: focusin inside the popup pins it; focusout unpins when
+            //   focus truly leaves (relatedTarget outside popup + wrapper).
+            //   Outside-click handler closes pinned popup.  The outside-click
+            //   listener removes itself when the wrapper leaves the DOM so
+            //   no ghost listeners accumulate across panel rebuilds.
+
+            var micExpandWrapper = document.createElement('div');
+            micExpandWrapper.className = 'ai-assistant-mic-expand-wrapper';
+            micExpandWrapper.setAttribute('aria-hidden', 'true');   // wrapper is decorative
+
+            var micExpandBtn = document.createElement('button');
+            micExpandBtn.className = 'ai-assistant-mic-expand-btn';
+            micExpandBtn.type = 'button';
+            micExpandBtn.setAttribute('aria-label', 'Microphone options');
+            micExpandBtn.setAttribute('title', 'Microphone options');
+            micExpandBtn.setAttribute('aria-haspopup', 'true');
+            micExpandBtn.setAttribute('aria-expanded', 'false');
+            micExpandBtn.setAttribute('aria-controls', 'ai-assistant-mic-popup');
+            micExpandBtn.removeAttribute('aria-hidden');   // focusable — override wrapper
+
+            // Chevron-up SVG: points up (popup appears above); rotates on open
+            micExpandBtn.innerHTML =
+                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"'
+                + ' stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"'
+                + ' aria-hidden="true">'
+                + '<polyline points="18 15 12 9 6 15"/>'
+                + '</svg>';
+
+            // ── Click: pin / unpin popup ──────────────────────────────────────
+            micExpandBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                var nowPinned = micPopup.getAttribute('data-pinned') === 'true';
+                var next = nowPinned ? 'false' : 'true';
+                micPopup.setAttribute('data-pinned', next);
+                micExpandBtn.setAttribute('aria-expanded', next);
+                // When the popup is closed (next="false"), clear data-dragged so
+                // the next open uses the slide-in animation rather than the
+                // drag-mode opacity-only transition.  If not cleared, a popup
+                // that was dragged in a previous session would permanently suppress
+                // its entry animation on every subsequent open.
+                if (next === 'false') {
+                    micPopup.removeAttribute('data-dragged');
+                }
+            });
+
+            // ── Keyboard: pin while focus is inside popup ─────────────────────
+            // focusin fires when any descendant receives focus (bubbles).
+            micPopup.addEventListener('focusin', function () {
+                micPopup.setAttribute('data-pinned', 'true');
+                micExpandBtn.setAttribute('aria-expanded', 'true');
+            });
+            // focusout fires when focus leaves any descendant.
+            // relatedTarget is the element that WILL receive focus next.
+            // Only unpin when focus truly leaves both the popup and the wrapper.
+            //
+            // Guard: skip while the popup is being dragged.  mousedown on the
+            // level row calls e.preventDefault() which usually prevents focus
+            // movement, but an external event (OS permission dialog, window blur
+            // on some browsers) can still emit focusout with relatedTarget=null
+            // — which matches the !focusTarget branch and closes the popup
+            // mid-drag.  data-dragged="true" is set by the drag IIFE (inside
+            // _buildMicHoverPopup) the moment a real drag begins (≥3px move),
+            // so reading it here is a zero-extra-variable guard that fully
+            // decouples the two code sections.
+            micPopup.addEventListener('focusout', function (e) {
+                if (micPopup.getAttribute('data-dragged') === 'true') { return; }
+                var focusTarget = e.relatedTarget;
+                if (!focusTarget
+                        || (!micPopup.contains(focusTarget)
+                            && !micWrapper.contains(focusTarget))) {
+                    micPopup.setAttribute('data-pinned', 'false');
+                    micExpandBtn.setAttribute('aria-expanded', 'false');
+                    micPopup.removeAttribute('data-dragged');   // Bug 4: reset drag state on close
+                }
+            });
+
+            // ── Outside-click: close pinned popup ─────────────────────────────
+            // Self-cleaning: removes itself once the wrapper leaves the DOM so
+            // no ghost handlers accumulate if createAIPanel() is called again.
+            (function () {
+                function _closePinnedMicPopup(e) {
+                    // Self-clean when the wrapper has been removed from the DOM
+                    if (!micWrapper.isConnected) {
+                        document.removeEventListener('click', _closePinnedMicPopup, true);
+                        return;
+                    }
+                    if (micWrapper.contains(e.target)) return;
+                    micPopup.setAttribute('data-pinned', 'false');
+                    micExpandBtn.setAttribute('aria-expanded', 'false');
+                    micPopup.removeAttribute('data-dragged');   // Bug 4: reset drag state on close
+                }
+                // Use capture so the handler fires before any inner stopPropagation
+                document.addEventListener('click', _closePinnedMicPopup, true);
+            }());
+
+            // ── Escape: close from keyboard ───────────────────────────────────
+            micExpandBtn.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    micPopup.setAttribute('data-pinned', 'false');
+                    micExpandBtn.setAttribute('aria-expanded', 'false');
+                    micPopup.removeAttribute('data-dragged');   // Bug 4: reset drag state on close
+                    micExpandBtn.focus();
+                }
+            });
+
+            micExpandWrapper.appendChild(micExpandBtn);
+            micWrapper.appendChild(micExpandWrapper);
+            footerActionsRight.appendChild(micWrapper);
         }
 
         // Send icon button: [➤ send]
@@ -3496,25 +4785,23 @@
         if (speakBannerEl) panel.appendChild(speakBannerEl);
 
         panel.appendChild(footer);
-
-        // R2: privacy/responsibility slide-over (absolute, covers panel).
-        var privacySheet = _buildPrivacySheet();
-        panel.appendChild(privacySheet);
         // NOTE: The routed listener below (via _openSheet) is the single
         // authoritative opener.  A direct listener here was removed — it
         // fired before _openSheet closed any already-open sheet, creating a
         // one-microtask window where two sheets shared data-open="true", and
         // it would bypass the aria-expanded + focus management wired into
         // _openSheet by Phase 2 fixes.
-
-        // ── Phase B: additional slide-over sheets + hamburger popover ──────
         //
+        // ── Phase B: additional slide-over sheets + hamburger popover ──────
         // Each sheet uses the exact same data-open contract as the privacy
         // sheet so the existing CSS animation and a11y semantics cover them
         // for free.  Only one sheet may be open at a time — opening one
         // closes the others, which keeps the panel readable on small screens.
         var modelSheet = _buildModelSheet();
         panel.appendChild(modelSheet);
+        // R2: privacy/responsibility slide-over (absolute, covers panel).
+        var privacySheet = _buildPrivacySheet();
+        panel.appendChild(privacySheet);
 
         var termsSheet = (cfgRef.panelTerms !== false) ? _buildTermsSheet() : null;
         if (termsSheet) panel.appendChild(termsSheet);
@@ -3555,7 +4842,7 @@
          *   _closeSheet which restores focus to the originating button.
          */
         function _openSheet(target) {
-            [privacySheet, modelSheet, termsSheet, shareSheet].forEach(function (s) {
+            [modelSheet, privacySheet, termsSheet, shareSheet].forEach(function (s) {
                 if (!s) return;
                 s.setAttribute('data-open', (s === target) ? 'true' : 'false');
             });
@@ -3665,15 +4952,16 @@
         var hamburgerMenuEl = null;
         if (hamburgerBtn) {
             hamburgerMenuEl = _buildHamburgerMenu({
+                onModel:   modelLink   ? function () { _openSheet(modelSheet); }   : null,
                 onPrivacy: function () { _openSheet(privacySheet); },
                 onTerms:   termsSheet  ? function () { _openSheet(termsSheet); }   : null,
                 onShare:   shareSheet  ? function () { _openSheet(shareSheet); }   : null,
-                onModel:   modelLink   ? function () { _openSheet(modelSheet); }   : null,
             });
             panel.appendChild(hamburgerMenuEl);
 
             // Left hamburger: anchor popover to the left edge.
             hamburgerBtn.addEventListener('click', function (e) {
+                _hapticFeedback([8]);
                 e.stopPropagation();
                 hamburgerMenuEl.setAttribute('data-anchor', 'left');
                 var open = hamburgerMenuEl.getAttribute('data-open') === 'true';
@@ -3696,6 +4984,7 @@
         // Right overflow button: anchor the shared hamburger popover to the
         // right edge of the subbar — visible on narrow panels only (CSS).
         rightOverflowBtn.addEventListener('click', function (e) {
+            _hapticFeedback([8]);
             e.stopPropagation();
             if (!hamburgerMenuEl) return;
             hamburgerMenuEl.setAttribute('data-anchor', 'right');
@@ -3711,21 +5000,78 @@
         // gracefully.  Falls back to the existing viewport-based @media rule on
         // browsers that don't support ResizeObserver (IE11, very old Safari).
         if (typeof ResizeObserver !== 'undefined') {
+            /**
+             * Progressive right-cluster overflow.
+             *
+             * Hides subbar-right items one-by-one as the panel narrows instead
+             * of collapsing the entire cluster at once.  Priority order (first
+             * to last to hide):
+             *
+             *   modelLink    575 px
+             *   privacyLink  475 px
+             *   termsLink    350 px
+             *   shareLink    300 px
+             *
+             * Sets [data-overflow-hidden] on each item so CSS max-width + opacity
+             * transitions can animate the collapse.  Sets [data-overflow-visible]
+             * on the overflow button once any item is hidden so it fades in with a
+             * 60 ms delay (items start squeezing before the ⋯ button appears).
+             *
+             * Items configured as null (feature-flagged off) are silently skipped.
+             *
+             * @param {number} w - Panel content rect width in pixels.
+             */
+            function _updateSubbarOverflow(w) {
+                var slots = [
+                    // Hide order: rightmost carriage departs first.
+                    // Visual order left→right: Model | Privacy | Terms | Share
+                    { el: modelLink,   px: 575 },   /* leftmost  — exits last   */
+                    { el: privacyLink, px: 475 },
+                    { el: termsLink,   px: 350 },
+                    { el: shareLink,   px: 300 },   /* rightmost — exits first  */
+                ];
+                var anyHidden = false;
+                for (var si = 0; si < slots.length; si++) {
+                    var slot = slots[si];
+                    if (!slot.el) continue;
+                    if (w < slot.px) {
+                        slot.el.setAttribute('data-overflow-hidden', '');
+                        anyHidden = true;
+                    } else {
+                        slot.el.removeAttribute('data-overflow-hidden');
+                    }
+                }
+                // Overflow button: fade in as soon as any item is hidden.
+                if (anyHidden) {
+                    rightOverflowBtn.setAttribute('data-overflow-visible', '');
+                } else {
+                    rightOverflowBtn.removeAttribute('data-overflow-visible');
+                }
+                // Left cluster: kbd-hint collapses only at very narrow widths.
+                panel.setAttribute('data-narrow', w < 300 ? 'true' : 'false');
+            }
             var _subbarRO = new ResizeObserver(function (entries) {
                 var w = entries[0] && entries[0].contentRect && entries[0].contentRect.width;
                 if (typeof w !== 'number') return;
-                panel.setAttribute('data-narrow', w < 360 ? 'true' : 'false');
+                _updateSubbarOverflow(w);
             });
             _subbarRO.observe(panel);
         }
 
         // ── Events ────────────────────────────────────────────────────────────
 
+        closeBtn.addEventListener('pointerdown', function () { _hapticFeedback([8]); });
         closeBtn.addEventListener('click', closeAIPanel);
 
-        minimizeBtn.addEventListener('click', function () { minimizeAIPanel(); });
+        minimizeBtn.addEventListener('click', function () { _hapticFeedback([8]); minimizeAIPanel(); });
+        // Right-click on the minimize button: fully close (mirrors kbd-hint / kbd-row contract).
+        minimizeBtn.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+            closeAIPanel();
+        });
 
         maximizeBtn.addEventListener('click', function () {
+            _hapticFeedback([8]);
             var isMax = panel.getAttribute('data-maximized') === 'true';
             if (isMax) {
                 // ── Restore ────────────────────────────────────────────────────
@@ -3766,13 +5112,47 @@
         // registered inside each sheet builder call sheet.setAttribute directly
         // (they run before _closeSheet exists); we add a second listener here
         // which performs the focus restoration after the flag is already 'false'.
-        [privacySheet, modelSheet, termsSheet, shareSheet].forEach(function (s) {
+        [modelSheet, privacySheet, termsSheet, shareSheet].forEach(function (s) {
             if (!s) return;
             var closeBtn = s.querySelector('button[id$="-close"]');
             if (!closeBtn) return;
             closeBtn.addEventListener('click', function () { _closeSheet(s); });
         });
 
+        // Close the model sheet on any model-row click — whether the user
+        // selects a different model OR re-clicks the already-active one.
+        //
+        // Why click instead of change:
+        //   A radio 'change' event does NOT fire when the already-checked radio
+        //   is clicked, so the change handler alone cannot close the sheet when
+        //   the user confirms their current model selection.
+        //
+        // Why _closeSheet (not setAttribute):
+        //   Routes through the same path as the × button and Escape key so
+        //   aria-expanded is reset and keyboard focus always returns to the
+        //   element that opened the sheet (Issue 4 parity for row selection).
+        //
+        // Info-link guard:
+        //   Clicking the external info <a> inside a row must NOT close the
+        //   sheet — the user is reading model information, not confirming a
+        //   selection.  e.target.closest() is supported by all browsers that
+        //   support the rest of this codebase; no polyfill required.
+        if (modelSheet) {
+            modelSheet.querySelectorAll('.ai-assistant-panel-model-row')
+                .forEach(function (row) {
+                    row.addEventListener('click', function (e) {
+                        // Guard: ignore clicks that land on or inside the info link.
+                        if (e.target &&
+                            typeof e.target.closest === 'function' &&
+                            e.target.closest('.ai-assistant-panel-model-info')) {
+                            return;
+                        }
+                        _closeSheet(modelSheet);
+                    });
+                });
+        }
+
+        sendBtn.addEventListener('pointerdown', function () { _hapticFeedback([8]); });
         sendBtn.addEventListener('click', handleAIPanelSubmit);
 
         input.addEventListener('keydown', function (e) {
@@ -3848,7 +5228,19 @@
         trigger.appendChild(iconWrap);
         trigger.appendChild(label);
 
+        // Tap haptic fires on physical press (pointerdown) for immediate feedback.
+        trigger.addEventListener('pointerdown', function () { _hapticFeedback([8]); });
         trigger.addEventListener('click', function () { restoreAIPanel(); });
+
+        // Long-press (500 ms hold): close the panel completely rather than restore.
+        // onShortTap is null — the click handler above manages the normal tap action.
+        // hapticTap is null  — the pointerdown listener above already fired on press.
+        // Ghost-click absorber inside _attachLongPress prevents the subsequent
+        // synthetic click from re-triggering restoreAIPanel() after closeAIPanel().
+        _attachLongPress(trigger, null, function () { closeAIPanel(); }, {
+            hapticTap:       null,
+            hapticLongPress: [12, 40, 12],
+        });
 
         return trigger;
     }
@@ -3933,7 +5325,1645 @@
         if (dropBtn) dropBtn.focus();
     }
 
-    // ── Speech recognition ────────────────────────────────────────────────────
+    // ── Mic hover popup ───────────────────────────────────────────────────────
+
+    /**
+     * Build the mic hover popup element (right-anchored, above the action bar).
+     *
+     * Contains two rows separated by a thin rule:
+     *   1. Voice-level visualization — seven bars driven by CSS animation when
+     *      `data-active="true"` is set on `.ai-assistant-mic-level-bars` via
+     *      `_setMicActiveState`. Bars are purely decorative (aria-hidden).
+     *   2. Hold-to-record row — finger icon + label + on/off toggle switch.
+     *      Clicking the row or the toggle calls `_setMicHoldMode`.
+     *
+     * Visibility contract (CSS-driven):
+     *   • `.ai-assistant-mic-wrapper:hover .ai-assistant-mic-popup` → visible.
+     *   • The popup stays visible while interacting with the toggle (hover does
+     *     not leave the wrapper).
+     *
+     * @returns {HTMLElement}
+     */
+    function _buildMicHoverPopup() {
+        var popup = document.createElement('div');
+        popup.className = 'ai-assistant-mic-popup';
+        popup.id = 'ai-assistant-mic-popup';
+        popup.setAttribute('role', 'group');
+        popup.setAttribute('aria-label', 'Microphone options');
+
+        // ── Row 1: voice level bars ───────────────────────────────────────────
+        var levelRow = document.createElement('div');
+        levelRow.className = 'ai-assistant-mic-popup-row ai-assistant-mic-popup-row--level';
+        levelRow.setAttribute('aria-hidden', 'true');   // decorative
+
+        var levelBars = document.createElement('div');
+        levelBars.className = 'ai-assistant-mic-level-bars';
+        levelBars.id = 'ai-assistant-mic-level-bars';
+
+        // 100 bars; sinusoidal idle heights (2px edges → 13px centre) create
+        // a natural waveform silhouette that mirrors spoken-word audio profiles.
+        var BAR_COUNT = _MIC_LEVEL_BAR_COUNT;  // 100 bars — 0-100 dBFS VU meter scale
+        var _idleHeights = _IDLE_LEVEL_HEIGHTS;  // module-level constant
+        for (var _b = 0; _b < BAR_COUNT; _b++) {
+            var bar = document.createElement('span');
+            bar.className = 'ai-mic-bar';
+            bar.style.height = _idleHeights[_b] + 'px';
+            levelBars.appendChild(bar);
+        }
+
+        levelRow.appendChild(levelBars);
+        popup.appendChild(levelRow);
+
+        // ── Separator ─────────────────────────────────────────────────────────
+        var sep = document.createElement('div');
+        sep.className = 'ai-assistant-mic-popup-sep';
+        sep.setAttribute('aria-hidden', 'true');
+        popup.appendChild(sep);
+
+        // ── Devices section ───────────────────────────────────────────────────
+        //
+        // DOM layout:
+        //   .ai-assistant-mic-devices-section
+        //     .ai-assistant-mic-devices-header   ← "Microphone" group label
+        //     .ai-assistant-mic-device-list       ← async-populated device items
+
+        var devSection = document.createElement('div');
+        devSection.className = 'ai-assistant-mic-devices-section';
+
+        // Group header: mic icon + "Microphone" label (decorative only)
+        var devHeader = document.createElement('div');
+        devHeader.className = 'ai-assistant-mic-devices-header';
+        devHeader.setAttribute('aria-hidden', 'true');
+
+        var devHeaderIcon = document.createElement('span');
+        devHeaderIcon.className = 'ai-assistant-mic-devices-header-icon';
+        devHeaderIcon.setAttribute('aria-hidden', 'true');
+        devHeaderIcon.innerHTML =
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"'
+            + ' stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">'
+            + '<rect x="9" y="2" width="6" height="11" rx="3"/>'
+            + '<path d="M5 10a7 7 0 0 0 14 0"/>'
+            + '<line x1="12" y1="19" x2="12" y2="22"/>'
+            + '<line x1="9" y1="22" x2="15" y2="22"/>'
+            + '</svg>';
+
+        var devHeaderLabel = document.createElement('span');
+        devHeaderLabel.className = 'ai-assistant-mic-devices-header-label';
+        devHeaderLabel.textContent = 'Microphone';
+
+        devHeader.appendChild(devHeaderIcon);
+        devHeader.appendChild(devHeaderLabel);
+        devSection.appendChild(devHeader);
+
+        // Permission bar — shows mic permission state + browser URL-bar guidance
+        // Built once here; updated every popup open by _refreshMicDeviceList.
+        var permBar = _buildMicPermissionBar();
+        devSection.appendChild(permBar);
+
+        // Device list — populated asynchronously when popup is pinned open
+        var devList = document.createElement('div');
+        devList.className = 'ai-assistant-mic-device-list';
+        devList.setAttribute('role', 'group');
+        devList.setAttribute('aria-label', 'Select microphone');
+        devSection.appendChild(devList);
+
+        popup.appendChild(devSection);
+
+        // Separator between devices section and hold-to-record row
+        var sep2 = document.createElement('div');
+        sep2.className = 'ai-assistant-mic-popup-sep';
+        sep2.setAttribute('aria-hidden', 'true');
+        popup.appendChild(sep2);
+
+        // ── Row 2: hold-to-record toggle ──────────────────────────────────────
+        var holdRow = document.createElement('div');
+        holdRow.className = 'ai-assistant-mic-popup-row ai-assistant-mic-popup-row--hold';
+        holdRow.setAttribute('role', 'button');
+        holdRow.setAttribute('tabindex', '-1');
+        holdRow.setAttribute('aria-label', 'Toggle hold-to-record mode');
+
+        var iconSpan = document.createElement('span');
+        iconSpan.className = 'ai-assistant-mic-popup-icon';
+        iconSpan.setAttribute('aria-hidden', 'true');
+        iconSpan.innerHTML =
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"'
+            + ' stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">'
+            + '<path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/>'
+            + '<path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2"/>'
+            + '<path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"/>'
+            + '<path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34'
+            + 'l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>'
+            + '</svg>';
+
+        var label = document.createElement('span');
+        label.className = 'ai-assistant-mic-popup-label';
+        label.textContent = 'Hold to record';
+
+        var toggle = document.createElement('button');
+        toggle.className = 'ai-assistant-mic-popup-toggle';
+        toggle.id = 'ai-assistant-mic-hold-toggle';
+        toggle.type = 'button';
+        toggle.setAttribute('aria-pressed', _micHoldMode ? 'true' : 'false');
+        toggle.setAttribute('aria-label', 'Hold-to-record mode');
+        toggle.setAttribute('title',
+            _micHoldMode ? 'Hold-to-record: ON' : 'Hold-to-record: OFF');
+
+        var track = document.createElement('span');
+        track.className = 'ai-assistant-mic-toggle-track';
+        var thumb = document.createElement('span');
+        thumb.className = 'ai-assistant-mic-toggle-thumb';
+        track.appendChild(thumb);
+        toggle.appendChild(track);
+
+        toggle.addEventListener('click', function (e) {
+            e.stopPropagation();
+            _setMicHoldMode(!_micHoldMode);
+        });
+
+        // Clicking the row label/icon (but NOT the toggle button itself) should
+        // also toggle hold mode.  The toggle's own click handler calls
+        // stopPropagation so normally only one handler fires per click, but we
+        // add an explicit guard here so the behaviour is correct even if that
+        // assumption ever breaks (e.g. keyboard synthetic click on holdRow,
+        // assistive-technology double-dispatch on role="button" + nested button).
+        holdRow.addEventListener('click', function (e) {
+            if (toggle.contains(e.target)) { return; }   // already handled above
+            _setMicHoldMode(!_micHoldMode);
+        });
+
+        holdRow.appendChild(iconSpan);
+        holdRow.appendChild(label);
+        holdRow.appendChild(toggle);
+        popup.appendChild(holdRow);
+
+        // ── Device list: populate on popup open via MutationObserver ──────────
+        //
+        // Re-enumerates on every open so newly plugged-in devices appear without
+        // a page reload.  The first open after permission grant will also return
+        // real labels (not placeholder "Microphone N" strings).
+        (function () {
+            var obs = new MutationObserver(function () {
+                if (popup.getAttribute('data-pinned') === 'true') {
+                    _refreshMicDeviceList(devList);
+                }
+            });
+            obs.observe(popup, { attributes: true, attributeFilter: ['data-pinned'] });
+        }());
+
+        // ── Drag-to-move popup ────────────────────────────────────────────────
+        //
+        // The voice-level row (.ai-assistant-mic-popup-row--level) is the drag
+        // handle (grab-cursor affordance set in CSS).  On the FIRST real drag
+        // (mousemove ≥ 3px from mousedown origin) the popup's CSS bottom/right
+        // anchors are replaced with explicit top/left offsets relative to its
+        // offsetParent (.ai-assistant-mic-wrapper, position:relative).
+        // Subsequent drags update those top/left values directly.
+        //
+        // WHY NOT position:fixed?
+        //   .ai-assistant-panel carries transform:translateY(0) scale(1) when
+        //   open.  Any non-"none" transform — even an identity one — creates a
+        //   new CSS containing block for position:fixed descendants (CSS spec
+        //   §9.3).  This means a fixed popup's top/left are interpreted as
+        //   offsets from the panel's border edge, not the viewport, so setting
+        //   them to getBoundingClientRect() viewport values places the popup
+        //   far off-screen and it cannot be recovered without a page refresh.
+        //   Keeping position:absolute and working in offsetParent coordinates
+        //   avoids the issue entirely.  All ancestors have overflow:visible so
+        //   the popup travels freely outside its containing box.
+        //
+        // Behaviour contract:
+        //   • Left-button (button === 0) only.
+        //   • preventDefault() on mousedown prevents unintended text selection.
+        //   • top/left override is deferred until first mousemove (≥ 3px) so
+        //     that a plain click on the level row NEVER sets data-dragged — this
+        //     is the root-cause fix for "bars disappear when clicking": the old
+        //     code set data-dragged on mousedown, which triggered the CSS opacity
+        //     transition and briefly hid/flash-showed the popup before
+        //     data-pinned reasserted.
+        //   • document-level mousemove / mouseup give reliable tracking even
+        //     when the cursor momentarily leaves the popup during fast moves.
+        //   • The `data-dragged="true"` attribute lets CSS suppress the wrapper-
+        //     hover reveal so visibility is controlled exclusively by data-pinned.
+        //   • No persistent listeners are added — the two document handlers
+        //     are no-ops whenever `_micDragging` is false.
+        (function () {
+            var _micDragging = false;
+            var _originX  = 0, _originY  = 0;
+            var _startLeft = 0, _startTop = 0;
+
+            popup.addEventListener('mousedown', function (e) {
+                if (e.button !== 0) return;                    // left-button only
+                if (!e.target.closest('.ai-assistant-mic-popup-row--level')) return;
+                e.preventDefault();                            // no text selection
+
+                _micDragging = true;
+                _originX     = e.clientX;
+                _originY     = e.clientY;
+
+                // Capture start position now for already-promoted popups;
+                // for first-drag cases it is captured in the mousemove handler
+                // after promotion (see below), avoiding a stale-rect read.
+                if (popup.getAttribute('data-dragged') === 'true') {
+                    _startLeft = parseFloat(popup.style.left) || 0;
+                    _startTop  = parseFloat(popup.style.top)  || 0;
+                }
+
+                popup.style.cursor = 'grabbing';
+            });
+
+            document.addEventListener('mousemove', function (e) {
+                if (!_micDragging) return;
+
+                // ── First drag: anchor top/left in offsetParent space ─────────
+                // Only activate after a meaningful movement (≥ 3px Manhattan
+                // distance) so an accidental mousedown+mouseup (click) on the
+                // level row never sets data-dragged and never triggers the CSS
+                // opacity transition that momentarily hid bars on click.
+                if (popup.getAttribute('data-dragged') !== 'true') {
+                    var moved = Math.abs(e.clientX - _originX)
+                              + Math.abs(e.clientY - _originY);
+                    if (moved < 3) { return; }                 // below threshold
+
+                    // Convert the popup's current viewport position into
+                    // offsetParent-relative (micWrapper) coordinates.
+                    //
+                    // getBoundingClientRect() accounts for ancestor transforms
+                    // visually.  Since the panel's transform is scale(1) (no
+                    // distortion), 1 viewport-px == 1 wrapper-px, so viewport
+                    // deltas translate directly to offsetParent deltas.
+                    //
+                    // clientTop/clientLeft correct for any border on offsetParent
+                    // (currently 0 for micWrapper, but included for robustness).
+                    var popupRect  = popup.getBoundingClientRect();
+                    var opEl       = popup.offsetParent || document.documentElement;
+                    var opRect     = opEl.getBoundingClientRect();
+                    popup.style.top    = (popupRect.top  - opRect.top  - (opEl.clientTop  || 0)) + 'px';
+                    popup.style.left   = (popupRect.left - opRect.left - (opEl.clientLeft || 0)) + 'px';
+                    popup.style.bottom = 'auto';
+                    popup.style.right  = 'auto';
+                    // position stays 'absolute' — do NOT set position:fixed.
+                    // See IIFE comment above for the full technical rationale.
+                    popup.setAttribute('data-dragged', 'true');
+
+                    // Re-read after layout update (inline styles now authoritative)
+                    _startLeft = parseFloat(popup.style.left) || 0;
+                    _startTop  = parseFloat(popup.style.top)  || 0;
+                    // Reset origin so the first move delta is computed correctly
+                    // from the new base position.
+                    _originX   = e.clientX;
+                    _originY   = e.clientY;
+                    // Fall through — delta is 0 this frame so no visible jump,
+                    // but removing the early return means drag starts tracking
+                    // immediately (no 1-frame stutter / lag on drag-start).
+                }
+
+                popup.style.left = (_startLeft + (e.clientX - _originX)) + 'px';
+                popup.style.top  = (_startTop  + (e.clientY - _originY)) + 'px';
+            });
+
+            document.addEventListener('mouseup', function () {
+                if (!_micDragging) return;
+                _micDragging       = false;
+                popup.style.cursor = '';
+
+                // After a real drag the browser synthesizes a click event on
+                // the element under the pointer.  If that element is outside
+                // micWrapper the capture-phase _closePinnedMicPopup listener
+                // would fire and immediately unpin the popup right after the
+                // user releases the drag.
+                //
+                // Guard: mark the popup as having just finished a drag.  The
+                // one-shot capture click listener below reads and clears the
+                // flag before _closePinnedMicPopup (also capture) can act on
+                // it, because listeners registered later in the same phase fire
+                // in registration order.  The flag is also set only when a real
+                // drag occurred (data-dragged="true"), so plain clicks are never
+                // affected.
+                if (popup.getAttribute('data-dragged') === 'true') {
+                    popup.setAttribute('data-just-dragged', 'true');
+                    document.addEventListener('click', function _absorbPostDragClick(ev) {
+                        document.removeEventListener('click', _absorbPostDragClick, true);
+                        popup.removeAttribute('data-just-dragged');
+                        ev.stopPropagation();   // prevent _closePinnedMicPopup
+                    }, true);
+                }
+            });
+        }());
+
+        return popup;
+    }
+
+    /**
+     * Set hold-to-record mode and sync all dependent UI elements.
+     *
+     * Hold mode ON  → pointerdown starts / pointerup stops recognition.
+     * Hold mode OFF → click toggles recognition (default behaviour).
+     *
+     * Persists the preference to localStorage so it survives page reloads.
+     * Silently ignores storage errors (private mode, quota exceeded, etc.).
+     *
+     * @param {boolean} enabled  True = enable hold mode; false = toggle mode.
+     */
+    function _setMicHoldMode(enabled) {
+        _micHoldMode = !!enabled;
+
+        // Persist preference
+        try {
+            localStorage.setItem('ai-assistant-mic-hold-mode', _micHoldMode ? 'true' : 'false');
+        } catch (_) {}
+
+        // Sync toggle button
+        var toggle = document.getElementById('ai-assistant-mic-hold-toggle');
+        if (toggle) {
+            toggle.setAttribute('aria-pressed', _micHoldMode ? 'true' : 'false');
+            toggle.setAttribute('title',
+                _micHoldMode ? 'Hold-to-record: ON' : 'Hold-to-record: OFF');
+        }
+
+        // Sync mic button label and data attribute
+        var micBtn = document.getElementById('ai-assistant-panel-mic');
+        if (micBtn) {
+            micBtn.setAttribute('data-hold', _micHoldMode ? 'true' : 'false');
+            var newLabel = _isListening
+                ? 'Stop recording'
+                : (_micHoldMode ? 'Press and hold to record' : 'Speak your question');
+            micBtn.setAttribute('aria-label', newLabel);
+            micBtn.setAttribute('title', newLabel);
+        }
+    }
+
+    // ── Mic device management ─────────────────────────────────────────────────
+
+    /**
+     * Stop and release the device-pin MediaStreamTrack.
+     *
+     * Idempotent — safe to call when _micPinTrack is already null.
+     * Called from _setMicDevice (on device change) and from the cold-path inside
+     * _toggleSpeechRecognition before re-acquiring a fresh pin track.
+     *
+     * Notes
+     * -----
+     * Do NOT call this on recognition end/stop — the track must stay alive across
+     * hold-to-record presses to prevent browser permission re-prompts.
+     */
+    function _releaseMicPinTrack() {
+        if (_micPinTrack) {
+            try { _micPinTrack.stop(); } catch (_) {}
+            _micPinTrack = null;
+        }
+    }
+
+    /**
+     * Stop and release the warm permission MediaStream.
+     *
+     * Idempotent — safe to call when _micWarmStream is already null.
+     * Called only from _setMicDevice when the selected device changes so the
+     * next _acquireMicWarmStream() re-acquires on the newly selected device.
+     *
+     * Notes
+     * -----
+     * Do NOT call this on recognition end/stop.  The stream must stay alive
+     * across hold-to-record presses to prevent permission re-prompts.
+     */
+    function _releaseMicWarmStream() {
+        if (_micWarmStream) {
+            try {
+                _micWarmStream.getTracks().forEach(function (t) { t.stop(); });
+            } catch (_) {}
+            _micWarmStream = null;
+        }
+    }
+
+    /**
+     * Acquire (or reuse) the persistent warm MediaStream.
+     *
+     * If _micWarmStream already contains at least one live track the callback
+     * is invoked synchronously and no new getUserMedia call is issued — this is
+     * the hot path that executes on every subsequent hold press without any
+     * latency or permission dialog.
+     *
+     * On the cold path (first press or after device change), getUserMedia is
+     * called once with the constraints for the currently selected device.  The
+     * browser shows its permission dialog at most once per origin per device.
+     * After the stream is established the callback is invoked; on failure the
+     * callback receives null and _micWarmStream remains null (recording falls
+     * back to the SpeechRecognition API's own internal stream).
+     *
+     * Parameters
+     * ----------
+     * callback : function(MediaStream|null)
+     *     Invoked when the stream is ready (or on failure).  May be omitted.
+     *
+     * Notes
+     * -----
+     * The constraints honour _micDeviceId so the warm stream is pinned to the
+     * user's chosen device from the first press onward.
+     */
+    function _acquireMicWarmStream(callback) {
+        // Hot path: reuse the existing live stream — zero latency, no dialog.
+        if (_micWarmStream) {
+            var liveTracks = _micWarmStream.getTracks().filter(function (t) {
+                return t.readyState === 'live';
+            });
+            if (liveTracks.length > 0) {
+                if (callback) { callback(_micWarmStream); }
+                return;
+            }
+            // All tracks ended (e.g. device unplugged) — discard stale ref.
+            _micWarmStream = null;
+        }
+
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+            if (callback) { callback(null); }
+            return;
+        }
+
+        // Use exact device constraint when one is selected, otherwise use the
+        // browser default.  Matching the constraint to _micDeviceId ensures the
+        // warm stream actually pins the right hardware from the first use.
+        var constraints = _micDeviceId
+            ? { audio: { deviceId: { exact: _micDeviceId } } }
+            : { audio: true };
+
+        navigator.mediaDevices.getUserMedia(constraints)
+            .then(function (stream) {
+                _micWarmStream = stream;
+                if (callback) { callback(stream); }
+            })
+            .catch(function (err) {
+                console.warn('AI Assistant: Warm stream acquisition failed:', err);
+                _micWarmStream = null;
+                if (callback) { callback(null); }
+            });
+    }
+
+    /**
+     * Guard: prevents duplicate devicechange registrations across popup rebuilds.
+     * Set to true on first call to _enumMicDevices; survives the page lifetime.
+     * @type {boolean}
+     */
+    var _micDeviceChangeListenerAdded = false;
+
+    /**
+     * Enumerate available audio input devices and cache the result.
+     *
+     * Parameters
+     * ----------
+     * callback : function(Array<{deviceId:string, label:string}>, string)
+     *     Invoked with (deviceList, permissionState).
+     *     permissionState is one of: 'granted' | 'denied' | 'prompt' | 'unsupported'.
+     *
+     * Notes
+     * -----
+     * Permission API (Chromium/Edge): navigator.permissions.query({ name:'microphone' })
+     *   resolves before enumerateDevices so the callback always receives an accurate
+     *   state string on first open.
+     *
+     * devicechange (all modern browsers): registered once for the page lifetime so
+     *   newly plugged-in or unplugged devices refresh the list automatically.
+     *
+     * permissionchange: registered on the PermissionStatus object so permission
+     *   revocations in browser Settings update the UI without a page reload.
+     *
+     * Firefox quirk: the Permissions API does not expose 'microphone' on Firefox;
+     *   we catch the rejection and fall back to 'prompt' (safe default).
+     *
+     * Non-secure context (http://): mediaDevices is undefined in modern browsers;
+     *   the function exits immediately with ('unsupported').
+     */
+    function _enumMicDevices(callback) {
+        if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
+            callback([], 'unsupported');
+            return;
+        }
+
+        // ── devicechange: refresh device list on hot-plug (once per page) ───
+        if (!_micDeviceChangeListenerAdded) {
+            _micDeviceChangeListenerAdded = true;
+            try {
+                navigator.mediaDevices.addEventListener('devicechange', function () {
+                    var listEl = document.querySelector('.ai-assistant-mic-device-list');
+                    if (listEl) { _refreshMicDeviceList(listEl); }
+                });
+            } catch (_) {}
+        }
+
+        // ── Core enumeration logic ────────────────────────────────────────────
+        function doEnumerate(permState) {
+            navigator.mediaDevices.enumerateDevices().then(function (devices) {
+                var counter = 0;
+                _micDevices = devices
+                    .filter(function (d) { return d.kind === 'audioinput'; })
+                    .map(function (d) {
+                        counter++;
+                        return {
+                            deviceId: d.deviceId,
+                            label:    d.label || ('Microphone ' + counter)
+                        };
+                    });
+                callback(_micDevices, permState);
+            }).catch(function () {
+                callback([], 'unsupported');
+            });
+        }
+
+        // ── Permissions API: query before enumerate so callback gets real state ─
+        if (navigator.permissions && navigator.permissions.query) {
+            navigator.permissions.query({ name: 'microphone' }).then(function (status) {
+                doEnumerate(status.state); // 'granted' | 'denied' | 'prompt'
+
+                // permissionchange: auto-refresh when user revokes in browser Settings
+                status.onchange = function () {
+                    var listEl = document.querySelector('.ai-assistant-mic-device-list');
+                    if (listEl) { _refreshMicDeviceList(listEl); }
+                };
+            }).catch(function () {
+                // Firefox: Permissions API rejects for 'microphone' — fall back gracefully
+                doEnumerate('prompt');
+            });
+        } else {
+            doEnumerate('prompt');
+        }
+    }
+
+    /**
+     * Select a microphone device and persist the choice.
+     *
+     * Updates all .ai-assistant-mic-device-item aria-checked states in the DOM.
+     * Safe to call whether or not the popup is currently visible.
+     *
+     * Parameters
+     * ----------
+     * deviceId : string
+     *     MediaDeviceInfo.deviceId, or '' / 'default' for the browser default.
+     */
+    function _setMicDevice(deviceId) {
+        var newId = (deviceId === 'default') ? '' : (deviceId || '');
+
+        // Only release existing tracks when the device actually changes.
+        // Re-selecting the same device must not interrupt a live warm stream.
+        if (newId !== _micDeviceId) {
+            _releaseMicPinTrack();
+            _releaseMicWarmStream();
+        }
+
+        _micDeviceId = newId;
+        try {
+            if (_micDeviceId) {
+                localStorage.setItem('ai-assistant-mic-device-id', _micDeviceId);
+            } else {
+                localStorage.removeItem('ai-assistant-mic-device-id');
+            }
+        } catch (_) {}
+        _syncMicDeviceUI();
+    }
+
+    /**
+     * Sync all .ai-assistant-mic-device-item aria-checked attributes to the
+     * current _micDeviceId.
+     *
+     * Decoupled from _setMicDevice so _refreshMicDeviceList can call it after
+     * re-rendering without triggering a redundant localStorage write cycle.
+     */
+    function _syncMicDeviceUI() {
+        var items = document.querySelectorAll('.ai-assistant-mic-device-item');
+        var effectiveId = _micDeviceId || 'default';
+        for (var i = 0; i < items.length; i++) {
+            var active = items[i].getAttribute('data-device-id') === effectiveId;
+            items[i].setAttribute('aria-checked', active ? 'true' : 'false');
+        }
+    }
+
+    /**
+     * Update the permission-bar element to reflect the current permission state.
+     *
+     * Parameters
+     * ----------
+     * permState : string
+     *     One of 'granted' | 'denied' | 'prompt' | 'unsupported'.
+     * hasRealLabels : boolean
+     *     True when at least one device has a real OS-assigned label (i.e. the
+     *     user has already granted permission in a prior session).
+     *
+     * Notes
+     * -----
+     * When permState is 'granted' the bar is hidden via CSS (data-permission="granted").
+     * For 'denied' and 'prompt' the URL-bar mockup becomes visible via CSS.
+     * The aria-live="polite" on the bar ensures screen readers announce changes.
+     */
+    function _updateMicPermissionBar(permState, hasRealLabels) {
+        var bar = document.getElementById('ai-assistant-mic-permission-bar');
+        if (!bar) { return; }
+
+        bar.setAttribute('data-permission', permState);
+
+        var iconEl = bar.querySelector('.ai-assistant-mic-perm-icon');
+        var textEl = bar.querySelector('.ai-assistant-mic-perm-text');
+        if (!iconEl || !textEl) { return; }
+
+        var SVG_CHECK =
+            '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor"'
+            + ' stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"'
+            + ' aria-hidden="true">'
+            + '<polyline points="3 8.5 6.5 12 13 4.5"/>'
+            + '</svg>';
+        var SVG_INFO =
+            '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor"'
+            + ' stroke-width="2" stroke-linecap="round" stroke-linejoin="round"'
+            + ' aria-hidden="true">'
+            + '<circle cx="8" cy="8" r="6.5"/>'
+            + '<line x1="8" y1="7" x2="8" y2="11"/>'
+            + '<circle cx="8" cy="5" r="0.6" fill="currentColor" stroke="none"/>'
+            + '</svg>';
+        var SVG_BLOCK =
+            '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor"'
+            + ' stroke-width="2" stroke-linecap="round" stroke-linejoin="round"'
+            + ' aria-hidden="true">'
+            + '<circle cx="8" cy="8" r="6.5"/>'
+            + '<line x1="10.5" y1="5.5" x2="5.5" y2="10.5"/>'
+            + '<line x1="5.5" y1="5.5" x2="10.5" y2="10.5"/>'
+            + '</svg>';
+
+        if (permState === 'granted') {
+            iconEl.innerHTML = SVG_CHECK;
+            textEl.textContent = 'Microphone permitted';
+        } else if (permState === 'denied') {
+            iconEl.innerHTML = SVG_BLOCK;
+            textEl.textContent = 'Microphone blocked \u2014 see instructions below';
+        } else if (permState === 'unsupported') {
+            iconEl.innerHTML = SVG_INFO;
+            textEl.textContent = 'Permission API not available';
+        } else {
+            // 'prompt': permission not yet decided
+            if (hasRealLabels) {
+                // enumerateDevices already returns real labels — treat as granted
+                iconEl.innerHTML = SVG_CHECK;
+                textEl.textContent = 'Microphone permitted';
+                bar.setAttribute('data-permission', 'granted');
+            } else {
+                iconEl.innerHTML = SVG_INFO;
+                textEl.textContent = 'Click the mic icon in your address bar to allow';
+            }
+        }
+
+        // ── Browser-specific settings guide ───────────────────────────────────
+        //
+        // Populate once per update; the section is hidden for 'granted' and
+        // 'unsupported' by the bar's CSS collapse.
+        var settSec = bar.querySelector('.ai-assistant-mic-perm-settings');
+        if (!settSec) { return; }
+
+        var showSettings = (permState !== 'granted' && permState !== 'unsupported');
+        settSec.style.display = showSettings ? '' : 'none';
+        if (!showSettings) { return; }
+
+        var info = _getBrowserSettingsInfo();
+        console.log('info=', info);
+
+        // Browser badge
+        var badge = settSec.querySelector('.ai-assistant-mic-perm-settings-browser');
+        if (badge) { badge.textContent = info.displayName; }
+
+        // URL row
+        var urlRowEl = settSec.querySelector('.ai-assistant-mic-perm-settings-url-row');
+        var urlCode  = settSec.querySelector('.ai-assistant-mic-perm-settings-url');
+        var copyBtn  = settSec.querySelector('.ai-assistant-mic-perm-settings-copy');
+
+        if (urlRowEl && urlCode && copyBtn) {
+            if (info.settingsUrl) {
+                urlCode.textContent = info.settingsUrl;
+                // Replace onclick each update so the closure captures the current URL
+                copyBtn.onclick = (function (url, btn) {
+                    return function () {
+                        if (navigator.clipboard && navigator.clipboard.writeText) {
+                            navigator.clipboard.writeText(url).then(function () {
+                                var prev = btn.textContent;
+                                btn.textContent = '\u2713 Copied';
+                                setTimeout(function () { btn.textContent = prev; }, 1800);
+                            }).catch(function () { _selectSettingsUrl(urlCode); });
+                        } else {
+                            _selectSettingsUrl(urlCode);
+                        }
+                    };
+                }(info.settingsUrl, copyBtn));
+                urlRowEl.style.display = '';
+            } else {
+                urlRowEl.style.display = 'none';
+            }
+        }
+
+        // Steps list
+        var stepsList = settSec.querySelector('.ai-assistant-mic-perm-settings-steps');
+        console.log(
+        'steps count=',
+        stepsList ? stepsList.children.length : 'missing'
+        );
+        if (stepsList) {
+            stepsList.innerHTML = '';
+            info.steps.forEach(function (step) {
+                var li = document.createElement('li');
+                li.textContent = step;
+                stepsList.appendChild(li);
+            });
+        }
+
+        // Legacy steps list
+        var legacyBody = settSec.querySelector('.ai-assistant-mic-perm-settings-legacy-body');
+        if (legacyBody) {
+            legacyBody.innerHTML = '';
+            info.legacySteps.forEach(function (step) {
+                var li = document.createElement('li');
+                li.textContent = step;
+                legacyBody.appendChild(li);
+            });
+        }
+    }
+
+    /**
+     * Detect the running browser from the user-agent and vendor strings.
+     *
+     * Returns
+     * -------
+     * string
+     *     One of: 'chrome' | 'edge' | 'firefox' | 'opera' | 'brave' | 'safari' | 'other'.
+     *
+     * Notes
+     * -----
+     * Detection order matters: Brave, Edge, and Opera all include "Chrome" in their
+     * UA strings.  Brave is identified via navigator.brave (synchronous flag it
+     * injects); Edge via /edg\//; Opera via /opr\//; then Chrome via vendor.
+     */
+    function _detectBrowser() {
+        var ua     = navigator.userAgent;
+        var vendor = (navigator.vendor || '').toLowerCase();
+        if (navigator.brave)             { return 'brave'; }
+        if (/edg\//i.test(ua))           { return 'edge'; }
+        if (/opr\/|opera/i.test(ua))     { return 'opera'; }
+        if (/firefox/i.test(ua))         { return 'firefox'; }
+        if (/chrome/i.test(ua) && /google/i.test(vendor)) { return 'chrome'; }
+        if (/safari/i.test(ua) && !/chrome/i.test(ua))    { return 'safari'; }
+        return 'other';
+    }
+
+    /**
+     * Return browser-specific microphone permission settings information.
+     *
+     * Returns
+     * -------
+     * {displayName, settingsUrl, steps, legacySteps}
+     *     displayName  : string        browser name for the UI badge
+     *     settingsUrl  : string|null   paste-into-address-bar URL (null = none available)
+     *     steps        : string[]      ordered steps for current / new-UI method
+     *     legacySteps  : string[]      alternative steps for older browser versions
+     *                                  OR address-bar icon method
+     *
+     * Notes
+     * -----
+     * Developer: chrome://, edge://, opera://, brave:// URLs cannot be navigated
+     *   to from a web page via window.open() or an anchor element — all modern
+     *   browsers block cross-scheme navigation from web content.  They must be
+     *   COPIED by the user and pasted into the address bar manually.
+     *   Firefox's about:preferences#privacy can technically be opened via
+     *   window.open() from within Firefox, but we surface it as copy-paste for
+     *   consistency across all browsers.
+     *   Safari has no internal deep-link URL at all; step-by-step instructions
+     *   are the only option.
+     *
+     * User — "Steps" describes the new/current UI method (Settings URL or menu).
+     *   "Alternative method" describes the address-bar icon approach which works
+     *   across all recent versions of each browser.
+     *
+     * Chrome 117+ note: Google replaced the padlock icon with a "site information"
+     *   icon that looks like a tune/sliders symbol (⊙) or a circle-i (ⓘ).
+     *   Both the new-UI Settings URL and the legacy address-bar icon methods are
+     *   provided so users on any Chrome version can follow along.
+     *
+     * Firefox note: Firefox shows a red crossed microphone icon at the RIGHT end
+     *   of the address bar when a site's mic access was blocked. Clicking it
+     *   opens an inline permission panel — the fastest per-site fix method.
+     *   The about:preferences#privacy route works for all Firefox versions.
+     *
+     * Safari note: macOS Ventura (13)+ renamed "Preferences" to "Settings".
+     *   Both wordings are noted.  iOS permissions live in the system Settings app.
+     */
+    function _getBrowserSettingsInfo() {
+        var browser = _detectBrowser();
+        var encoded = encodeURIComponent(window.location.origin);
+        var host    = window.location.hostname || 'this site';
+
+        switch (browser) {
+
+            // ── Chrome ────────────────────────────────────────────────────────
+            // Supports the direct siteDetails deep-link (all desktop versions).
+            // Chrome 117+ replaced the lock icon with a site-info/tune icon.
+            case 'chrome':
+                return {
+                    displayName: 'Chrome',
+                    settingsUrl: 'chrome://settings/content/siteDetails?site=' + encoded,
+                    steps: [
+                        'Copy the URL below and paste it into Chrome\u2019s address bar, then press Enter',
+                        'The Site Settings page for \u201c' + host + '\u201d opens directly',
+                        'Scroll to \u201cMicrophone\u201d under the Permissions section',
+                        'Change the setting from \u201cBlock\u201d to \u201cAllow\u201d',
+                        'Close the Settings tab, then reload this page'
+                    ],
+                    legacySteps: [
+                        'Look at the LEFT end of the address bar while on this page:',
+                        '\u2022 Chrome 117 and later: click the \u22d9 tune or \u24d8 site-info icon',
+                        '\u2022 Older Chrome: click the \uD83D\uDD12 padlock icon',
+                        'Select \u201cSite settings\u201d from the dropdown that appears',
+                        'Find \u201cMicrophone\u201d and change it to \u201cAllow\u201d',
+                        'Close Settings and reload this page',
+                        '\u2014 Global alternative: paste chrome://settings/content/microphone into a new tab to view and manage all sites at once'
+                    ]
+                };
+
+            // ── Microsoft Edge ────────────────────────────────────────────────
+            // Edge 87+ supports the same siteDetails deep-link as Chromium.
+            // Edge 118+ also replaced the padlock with an info/tune icon.
+            case 'edge':
+                return {
+                    displayName: 'Edge',
+                    settingsUrl: 'edge://settings/content/siteDetails?site=' + encoded,
+                    steps: [
+                        'Copy the URL below and paste it into Edge\u2019s address bar, then press Enter',
+                        'The Site Permissions page for \u201c' + host + '\u201d opens directly',
+                        'Scroll to \u201cMicrophone\u201d under Permissions',
+                        'Change the setting from \u201cBlock\u201d to \u201cAllow\u201d',
+                        'Close the Settings tab, then reload this page'
+                    ],
+                    legacySteps: [
+                        'Look at the LEFT end of the address bar while on this page:',
+                        '\u2022 Edge 118 and later: click the \u24d8 info or \u22d9 tune icon',
+                        '\u2022 Older Edge: click the \uD83D\uDD12 padlock icon',
+                        'Click \u201cPermissions for this site\u201d from the panel that opens',
+                        'Find \u201cMicrophone\u201d and set it to \u201cAllow\u201d',
+                        'Close the panel and reload this page',
+                        '\u2014 Global alternative: paste edge://settings/content/microphone into a new tab to view and manage all sites at once'
+                    ]
+                };
+
+            // ── Opera ─────────────────────────────────────────────────────────
+            // Opera Chromium (15+) supports the same siteDetails deep-link.
+            case 'opera':
+                return {
+                    displayName: 'Opera',
+                    settingsUrl: 'opera://settings/content/siteDetails?site=' + encoded,
+                    steps: [
+                        'Copy the URL below and paste it into Opera\u2019s address bar, then press Enter',
+                        'The Site Settings page for \u201c' + host + '\u201d opens directly',
+                        'Find \u201cMicrophone\u201d under Permissions',
+                        'Change the setting to \u201cAllow\u201d',
+                        'Close the Settings tab, then reload this page'
+                    ],
+                    legacySteps: [
+                        'Click the \uD83D\uDD12 lock, shield, or \u24d8 info icon at the LEFT of the address bar',
+                        'Click \u201cSite settings\u201d or \u201cManage permissions\u201d from the dropdown',
+                        'Find \u201cMicrophone\u201d and set it to \u201cAllow\u201d',
+                        'Reload this page',
+                        '\u2014 Global alternative: paste opera://settings/content/microphone into a new tab to view and manage all sites at once'
+                    ]
+                };
+
+            // ── Brave ─────────────────────────────────────────────────────────
+            // Brave (Chromium-based) supports the same siteDetails deep-link.
+            case 'brave':
+                return {
+                    displayName: 'Brave',
+                    settingsUrl: 'brave://settings/content/siteDetails?site=' + encoded,
+                    steps: [
+                        'Copy the URL below and paste it into Brave\u2019s address bar, then press Enter',
+                        'The Site Settings page for \u201c' + host + '\u201d opens directly',
+                        'Find \u201cMicrophone\u201d under Permissions',
+                        'Change the setting to \u201cAllow\u201d',
+                        'Close the Settings tab, then reload this page'
+                    ],
+                    legacySteps: [
+                        'Click the \uD83E\uDD81 lion icon at the RIGHT of the address bar (Brave Shields)',
+                        '\u2014 OR \u2014 click the \uD83D\uDD12 padlock or \u24d8 info icon at the LEFT of the address bar',
+                        'Click \u201cSite permissions\u201d or \u201cSite settings\u201d',
+                        'Find \u201cMicrophone\u201d and set it to \u201cAllow\u201d',
+                        'Reload this page',
+                        '\u2014 Global alternative: paste brave://settings/content/microphone into a new tab to view and manage all sites at once'
+                    ]
+                };
+
+            // ── Firefox ───────────────────────────────────────────────────────
+            // Firefox does NOT expose a site-specific deep-link URL; the closest
+            // is about:preferences#privacy which shows the global Permissions list.
+            // Firefox also shows a red mic icon at the RIGHT of the address bar
+            // when a site has been blocked — clicking it is the fastest method.
+            // about:permissions (per-site) was removed in Firefox 47; use
+            // about:preferences#privacy → Microphone → Settings instead.
+            case 'firefox':
+                return {
+                    displayName: 'Firefox',
+                    settingsUrl: 'about:preferences#privacy',
+                    steps: [
+                        'Copy the URL below, open a new Firefox tab, paste it in, then press Enter',
+                        'Scroll down to the \u201cPermissions\u201d section',
+                        'Click \u201cSettings\u2026\u201d next to \u201cUse the Microphone\u201d',
+                        'Find \u201c' + host + '\u201d in the list and change Status to \u201cAllow\u201d',
+                        'Click \u201cSave Changes\u201d, then reload this page'
+                    ],
+                    legacySteps: [
+                        'Fastest fix \u2014 look at the RIGHT end of the address bar:',
+                        'If you see a red crossed-out microphone icon (\uD83C\uDFA4 with a line), click it',
+                        'Select \u201cAllow Microphone\u201d or \u201cTemporarily Blocked\u201d to re-enable',
+                        '\u2014 Firefox 128 and later: click the \uD83D\uDD12 padlock icon \u2192 open the Permissions section in the Site Privacy Panel',
+                        '\u2014 Older Firefox: click the \uD83D\uDD12 padlock or \uD83D\uDEE1\uFE0F shield icon at the LEFT of the address bar',
+                        'Click \u201cConnection secure\u201d \u2192 then the arrow (\u203a) \u2192 \u201cMore Information\u2026\u201d',
+                        'In the Page Info dialog, click the \u201cPermissions\u201d tab',
+                        'Find \u201cUse the Microphone\u201d \u2192 uncheck \u201cUse Default\u201d \u2192 select \u201cAllow\u201d',
+                        'Close the dialog and reload this page'
+                    ]
+                };
+
+            // ── Safari ────────────────────────────────────────────────────────
+            // Safari has no internal URL scheme for site permissions; all paths
+            // go through system Settings (iOS) or the Safari Settings menu (macOS).
+            // macOS Ventura (13+) renamed \u201cPreferences\u201d to \u201cSettings\u201d.
+            case 'safari': {
+                var isMobile = /iphone|ipad|ipod/i.test(navigator.userAgent);
+                if (isMobile) {
+                    // iOS / iPadOS: permissions live in the system Settings app
+                    return {
+                        displayName: 'Safari (iOS)',
+                        settingsUrl: null,
+                        steps: [
+                            'Open the iOS \u2699\uFE0F Settings app (grey gear icon on the home screen)',
+                            'Scroll down and tap \u201cSafari\u201d',
+                            'Tap \u201cMicrophone\u201d and set the permission to \u201cAllow\u201d or \u201cAsk\u201d',
+                            'Return to this page and try the microphone again'
+                        ],
+                        legacySteps: [
+                            'Alternative per-app path \u2014 iOS Settings app:',
+                            'Go to Settings \u2192 Privacy & Security \u2192 Microphone',
+                            'Find \u201cSafari\u201d in the list and enable the toggle',
+                            'Return to this page',
+                            '\u2014 OR for per-site control \u2014',
+                            'Open Settings \u2192 Safari \u2192 Settings for Websites \u2192 Microphone',
+                            'Find \u201c' + host + '\u201d and set to \u201cAllow\u201d'
+                        ]
+                    };
+                }
+                // macOS Safari
+                return {
+                    displayName: 'Safari',
+                    settingsUrl: null,
+                    steps: [
+                        'While on this page, click \u201cSafari\u201d in the menu bar',
+                        'Click \u201cSettings for This Website\u2026\u201d (or press \u2303\u2318S)',
+                        'In the permissions sheet that appears, set \u201cMicrophone\u201d to \u201cAllow\u201d',
+                        'Close the sheet \u2014 permission takes effect immediately'
+                    ],
+                    legacySteps: [
+                        'Global path (works in all macOS Safari versions):',
+                        'Click \u201cSafari\u201d in the menu bar \u2192 \u201cSettings\u2026\u201d or \u201cPreferences\u2026\u201d (\u2318,)',
+                        'Click the \u201cWebsites\u201d tab',
+                        'Select \u201cMicrophone\u201d in the left sidebar',
+                        'Find \u201c' + host + '\u201d in the right panel and set it to \u201cAllow\u201d',
+                        '\u2014 OR address-bar method \u2014',
+                        'Click the \u201cAA\u201d or page icon in the Smart Search field (address bar)',
+                        'Click \u201cWebsite Settings\u2026\u201d',
+                        'Set \u201cMicrophone\u201d to \u201cAllow\u201d and close the sheet'
+                    ]
+                };
+            }
+
+            // ── Unknown / other browser ───────────────────────────────────────
+            default:
+                return {
+                    displayName: 'your browser',
+                    settingsUrl: null,
+                    steps: [
+                        'Look at the LEFT end of the address bar for a lock, info, or tune icon',
+                        'Click it and look for \u201cSite settings\u201d, \u201cPermissions\u201d, or \u201cSite permissions\u201d',
+                        'Find \u201cMicrophone\u201d and set it to \u201cAllow\u201d',
+                        'Reload this page'
+                    ],
+                    legacySteps: [
+                        'Open your browser\u2019s Settings (usually \u2039\u22ee\u203a or gear icon in the toolbar)',
+                        'Search for \u201cSite permissions\u201d, \u201cContent settings\u201d, or \u201cPrivacy\u201d',
+                        'Find \u201cMicrophone\u201d and allow access for \u201c' + host + '\u201d',
+                        'Reload this page'
+                    ]
+                };
+        }
+    }
+
+    /**
+     * Classify an audio-input device by its OS-assigned label.
+     *
+     * Parameters
+     * ----------
+     * label : string
+     *     MediaDeviceInfo.label as returned by enumerateDevices().
+     *
+     * Returns
+     * -------
+     * string
+     *     Short human-readable category, or '' if no pattern matches.
+     *
+     * Notes
+     * -----
+     * Patterns cover the most common Windows (Stereo Mix, Wave Out), macOS
+     * (BlackHole, Soundflower), and Linux (ALSA monitor) loopback/virtual
+     * device names.  The empty-string fallback is intentional: unlabelled
+     * physical microphones need no category badge.
+     */
+    function _categorizeMicDevice(label) {
+        var l = (label || '').toLowerCase();
+        if (/stereo mix|what u hear|wave out|loopback|monitor/i.test(l)) {
+            return 'Loopback / monitor';
+        }
+        if (/virtual|vb-?cable|blackhole|soundflower|voicemeeter|ndi/i.test(l)) {
+            return 'Virtual device';
+        }
+        if (/bluetooth|wireless|airpods|headset.*bt|bt.*headset/i.test(l)) {
+            return 'Bluetooth / wireless';
+        }
+        if (/usb/i.test(l)) { return 'USB microphone'; }
+        if (/built.?in|internal/i.test(l)) { return 'Built-in microphone'; }
+        if (/hdmi|displayport|display audio/i.test(l)) { return 'Display / HDMI'; }
+        // Physical microphones that do not match any specific pattern above
+        // (e.g. unlabelled hardware mics, proprietary interface mics, studio
+        // interfaces) are still real host-level audio inputs.  Label them so
+        // users can distinguish them from virtual/loopback entries in the list.
+        return 'Host microphone';
+    }
+
+    /**
+     * Select all text content of an element so the user can copy it manually.
+     *
+     * Used as a fallback when the Clipboard API is unavailable (non-secure
+     * context or denied by the browser).
+     *
+     * Parameters
+     * ----------
+     * el : HTMLElement
+     *     Element whose text content should be selected.
+     */
+    function _selectSettingsUrl(el) {
+        try {
+            var range = document.createRange();
+            range.selectNodeContents(el);
+            var sel = window.getSelection();
+            if (sel) { sel.removeAllRanges(); sel.addRange(range); }
+        } catch (_) {}
+    }
+
+    /**
+     * Build the permission-state URL-bar indicator element.
+     *
+     * Returns an .ai-assistant-mic-permission-bar div that is inserted once
+     * into the devices section.  Its data-permission attribute is updated by
+     * _updateMicPermissionBar() each time the popup is opened.
+     *
+     * DOM structure
+     * -------------
+     * .ai-assistant-mic-permission-bar [data-permission]
+     *   .ai-assistant-mic-perm-status
+     *     .ai-assistant-mic-perm-icon          ← SVG status icon
+     *     .ai-assistant-mic-perm-text          ← status message (aria-live)
+     *   .ai-assistant-mic-perm-urlbar          ← browser URL-bar mockup
+     *     .ai-assistant-mic-perm-urlbar-chrome ← address bar chrome
+     *       .ai-assistant-mic-perm-urlbar-lock ← 🔒 lock SVG
+     *       .ai-assistant-mic-perm-urlbar-url  ← hostname text
+     *       .ai-assistant-mic-perm-urlbar-mic  ← 🎤 permission icon (pulsing/blocked)
+     *     .ai-assistant-mic-perm-urlbar-hint   ← "↑ click here" label
+     *
+     * Notes
+     * -----
+     * User: The URL-bar mockup mirrors the permission-icon location in Chrome,
+     *   Edge, Firefox, and Safari — the camera/mic icon appears at the RIGHT
+     *   end of the address bar.  The mockup is aria-hidden; the status text
+     *   above it carries the accessible description.
+     *
+     * Developer: The mockup updates its data-blocked attribute so CSS can swap
+     *   between the pulsing-blue (prompt) and crossed-red (denied) mic icon
+     *   without JavaScript re-rendering.
+     *
+     * @returns {HTMLElement}
+     */
+    function _buildMicPermissionBar() {
+        var bar = document.createElement('div');
+        bar.className = 'ai-assistant-mic-permission-bar';
+        bar.id = 'ai-assistant-mic-permission-bar';
+        bar.setAttribute('data-permission', 'prompt');  // updated by _updateMicPermissionBar
+        bar.setAttribute('aria-live', 'polite');
+
+        // ── Status row ────────────────────────────────────────────────────────
+        var statusRow = document.createElement('div');
+        statusRow.className = 'ai-assistant-mic-perm-status';
+
+        var iconEl = document.createElement('span');
+        iconEl.className = 'ai-assistant-mic-perm-icon';
+        iconEl.setAttribute('aria-hidden', 'true');
+
+        var textEl = document.createElement('span');
+        textEl.className = 'ai-assistant-mic-perm-text';
+        textEl.textContent = 'Checking\u2026';
+
+        statusRow.appendChild(iconEl);
+        statusRow.appendChild(textEl);
+        bar.appendChild(statusRow);
+
+        // ── Localhost / file:// warning ──────────────────────────────────────
+
+        var protocol = window.location.protocol;
+        var hostname = window.location.hostname;
+        var showLocalhostWarning =
+            window.location.protocol === 'file:';
+
+        var insecureOrigin =
+            protocol === 'file:' ||
+            (
+                protocol !== 'https:' &&
+                hostname !== 'localhost' &&
+                hostname !== '127.0.0.1'
+            );
+
+        if (insecureOrigin) {
+
+            var warn = document.createElement('div');
+            warn.className = 'ai-assistant-mic-origin-warning';
+
+            warn.innerHTML =
+                '<strong>Microphone setup warning</strong>'
+                + '<br>'
+                + 'Speech recognition and microphone permissions are most reliable when this page is served from '
+                + '<code>localhost</code> or <code>https://</code>.'
+                + '<br><br>'
+                + 'Avoid opening the application directly using:'
+                + '<br>'
+                + '<code>file:///...</code>'
+                + '<br><br>'
+                + 'Recommended options:'
+                + '<ul>'
+                + '<li><code>python -m http.server 8000</code></li>'
+                + '<li>VS Code Live Server (<code>ritwickdey.LiveServer</code>)</li>'
+                + '<li>VS Code Simple Browser + local web server</li>'
+                + '<li>Any HTTPS-hosted deployment</li>'
+                + '</ul>';
+
+            bar.appendChild(warn);
+        }
+
+        // ── URL-bar mockup (visible for prompt + denied states via CSS) ───────
+        //
+        // Mirrors the browser address-bar permission icon so users immediately
+        // understand where to click.  aria-hidden on the entire mockup because
+        // the status text above is the accessible description.
+        var urlBar = document.createElement('div');
+        urlBar.className = 'ai-assistant-mic-perm-urlbar';
+        urlBar.setAttribute('aria-hidden', 'true');
+
+        var urlChrome = document.createElement('div');
+        urlChrome.className = 'ai-assistant-mic-perm-urlbar-chrome';
+
+        // Lock / security icon (left side of address bar)
+        var lockEl = document.createElement('span');
+        lockEl.className = 'ai-assistant-mic-perm-urlbar-lock';
+        lockEl.innerHTML =
+            '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor"'
+            + ' stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"'
+            + ' aria-hidden="true">'
+            + '<rect x="3.5" y="7" width="9" height="7" rx="1.5"/>'
+            + '<path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/>'
+            + '</svg>';
+
+        // Hostname text (centre of address bar)
+        var urlText = document.createElement('span');
+        urlText.className = 'ai-assistant-mic-perm-urlbar-url';
+        urlText.textContent = (window.location.hostname || 'localhost');
+
+        // Mic permission icon (right end of address bar — the control users click)
+        var micIcon = document.createElement('span');
+        micIcon.className = 'ai-assistant-mic-perm-urlbar-mic';
+        // Mic SVG: body of microphone
+        micIcon.innerHTML =
+            '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor"'
+            + ' stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"'
+            + ' aria-hidden="true">'
+            + '<rect x="5" y="1" width="6" height="8" rx="3"/>'
+            + '<path d="M2.5 7.5a5.5 5.5 0 0 0 11 0"/>'
+            + '<line x1="8" y1="13" x2="8" y2="15"/>'
+            + '<line x1="6" y1="15" x2="10" y2="15"/>'
+            + '</svg>';
+
+        urlChrome.appendChild(lockEl);
+        urlChrome.appendChild(urlText);
+        urlChrome.appendChild(micIcon);
+        urlBar.appendChild(urlChrome);
+
+        // Arrow hint label below the chrome bar
+        var hint = document.createElement('div');
+        hint.className = 'ai-assistant-mic-perm-urlbar-hint';
+        hint.textContent = '\u2191 click the mic icon to allow';
+        urlBar.appendChild(hint);
+
+        bar.appendChild(urlBar);
+
+        // ── Browser-specific settings guide ───────────────────────────────────
+        //
+        // Populated lazily by _updateMicPermissionBar() so the content always
+        // reflects the actual browser at render time.
+        //
+        // DOM structure:
+        //   .ai-assistant-mic-perm-settings
+        //     .ai-assistant-mic-perm-settings-header
+        //       .ai-assistant-mic-perm-settings-browser  ← badge: "Chrome" etc.
+        //       .ai-assistant-mic-perm-settings-title
+        //     .ai-assistant-mic-perm-settings-url-row
+        //       code.ai-assistant-mic-perm-settings-url  ← paste-in URL
+        //       button.ai-assistant-mic-perm-settings-copy
+        //     ol.ai-assistant-mic-perm-settings-steps    ← current method
+        //     button.ai-assistant-mic-perm-settings-legacy-toggle
+        //     ol.ai-assistant-mic-perm-settings-legacy-body ← older method
+        var settSec = document.createElement('div');
+        settSec.className = 'ai-assistant-mic-perm-settings';
+
+        // Header: browser badge + title
+        var settHeader = document.createElement('div');
+        settHeader.className = 'ai-assistant-mic-perm-settings-header';
+
+        var browserBadge = document.createElement('span');
+        browserBadge.className = 'ai-assistant-mic-perm-settings-browser';
+
+        var settTitle = document.createElement('span');
+        settTitle.className = 'ai-assistant-mic-perm-settings-title';
+        settTitle.textContent = 'How to allow microphone:';
+
+        settHeader.appendChild(browserBadge);
+        settHeader.appendChild(settTitle);
+        settSec.appendChild(settHeader);
+
+        // URL row — hidden when no settings URL exists for this browser
+        var urlRowEl = document.createElement('div');
+        urlRowEl.className = 'ai-assistant-mic-perm-settings-url-row';
+
+        var urlCode = document.createElement('code');
+        urlCode.className = 'ai-assistant-mic-perm-settings-url';
+        urlCode.setAttribute('aria-label', 'Settings URL — click Copy or select all text to copy');
+
+        var copyBtn = document.createElement('button');
+        copyBtn.type = 'button';
+        copyBtn.className = 'ai-assistant-mic-perm-settings-copy';
+        copyBtn.setAttribute('aria-label', 'Copy settings URL to clipboard');
+        copyBtn.textContent = 'Copy';
+
+        urlRowEl.appendChild(urlCode);
+        urlRowEl.appendChild(copyBtn);
+        settSec.appendChild(urlRowEl);
+
+        // Steps list — populated by _updateMicPermissionBar
+        var stepsList = document.createElement('ol');
+        stepsList.className = 'ai-assistant-mic-perm-settings-steps';
+        settSec.appendChild(stepsList);
+
+        // Legacy / alternative method — hidden by default, toggle to reveal
+        var legacyToggle = document.createElement('button');
+        legacyToggle.type = 'button';
+        legacyToggle.className = 'ai-assistant-mic-perm-settings-legacy-toggle';
+        legacyToggle.setAttribute('aria-expanded', 'false');
+        legacyToggle.textContent = '\u25B6 Alternative / older-browser method';
+
+        var legacyBody = document.createElement('ol');
+        legacyBody.className = 'ai-assistant-mic-perm-settings-legacy-body';
+        legacyBody.setAttribute('aria-hidden', 'true');
+
+        legacyToggle.addEventListener('click', function () {
+            var expanded = legacyToggle.getAttribute('aria-expanded') === 'true';
+            legacyToggle.setAttribute('aria-expanded', String(!expanded));
+            legacyBody.setAttribute('aria-hidden', String(expanded));
+            legacyToggle.textContent = (!expanded ? '\u25BC ' : '\u25B6 ')
+                + 'Alternative / older-browser method';
+        });
+        settSec.appendChild(legacyToggle);
+        settSec.appendChild(legacyBody);
+
+        bar.appendChild(settSec);
+        return bar;
+    }
+
+    /**
+     * Populate the device list element with available microphone options.
+     *
+     * Renders a loading placeholder, then replaces it with one radio-style item
+     * per device once enumeration resolves.  A synthetic "Default microphone"
+     * entry (deviceId: 'default') is always prepended so the user can revert to
+     * the browser default.  Updates the permission bar after each enumeration.
+     *
+     * Parameters
+     * ----------
+     * listEl : HTMLElement
+     *     Container element (.ai-assistant-mic-device-list) to populate.
+     *
+     * Notes
+     * -----
+     * User: Device labels are empty strings until microphone permission is
+     *   granted.  The popup re-enumerates on every open so real labels appear
+     *   automatically after the first successful recording session.
+     *
+     * Developer: Re-entrant calls (e.g. fast open/close) are naturally serialised
+     *   because each call clears listEl.innerHTML first — only the last async
+     *   result is visible.  If strict serialisation is ever needed, replace the
+     *   innerHTML clear with a generation counter guard.
+     */
+    function _refreshMicDeviceList(listEl) {
+        // Show loading state immediately (synchronous)
+        listEl.innerHTML = '';
+        var loader = document.createElement('div');
+        loader.className = 'ai-assistant-mic-devices-loading';
+        loader.textContent = 'Loading\u2026';
+        listEl.appendChild(loader);
+
+        // Proactively acquire the warm stream before enumerating.
+        //
+        // Browsers only populate real device labels and non-empty deviceIds in
+        // enumerateDevices() AFTER the user has granted microphone permission.
+        // Without a prior getUserMedia call the list shows only placeholder
+        // "Microphone N" labels with deviceId === '' — which this function
+        // filters out, leaving only "Default microphone".
+        //
+        // By calling _acquireMicWarmStream first we:
+        //   (a) trigger the one-time permission dialog (if not yet granted),
+        //   (b) ensure enumerateDevices returns all real devices with labels, and
+        //   (c) establish the warm stream that prevents re-prompting on recording.
+        //
+        // On failure (permission denied, no mediaDevices) we fall through to
+        // _enumMicDevices which handles denied/unsupported states correctly.
+        function doRefresh() {
+            _enumMicDevices(function (devices, permState) {
+                listEl.innerHTML = '';
+
+                // Determine whether labels are real OS names (permission was granted)
+                var hasRealLabels = devices.some(function (d) {
+                    return d.label && !(/^Microphone \d+$/.test(d.label));
+                });
+
+                // Update permission bar — always, regardless of device count
+                _updateMicPermissionBar(permState, hasRealLabels || permState === 'granted');
+
+                // ── Device list assembly ────────────────────────────────────
+                //
+                // Strategy:
+                //   1. "default" entry (deviceId='default') — the OS/browser system
+                //      default.  Chrome/Edge return this with a label like
+                //      "Default – Microphone (Device Name)".  We use the real label
+                //      when available; fall back to "System Default".
+                //   2. "communications" entry (deviceId='communications') — Windows
+                //      Communications Audio Device (separate from the default).
+                //      Included when present; labelled "Communications Device" if
+                //      the browser withholds its name before permission is granted.
+                //   3. All other real audioinput devices — physical mics, loopback
+                //      monitors, virtual cables, Bluetooth headsets, etc.
+                //   4. Phantom entries (deviceId='', label='') — browser is hiding
+                //      device identity before permission.  Excluded; only the
+                //      synthetic "System Default" entry is shown in this state.
+                //
+                // This guarantees at least one selectable entry (System Default)
+                // even before permission is granted, and surfaces every available
+                // input once permission is given.
+
+                // Separate the browser-provided special entries from real devices
+                var browserDefault = null;
+                var browserComms   = null;
+                var real           = [];
+
+                devices.forEach(function (d) {
+                    if (d.deviceId === 'default') {
+                        browserDefault = d;
+                    } else if (d.deviceId === 'communications') {
+                        browserComms = d;
+                    } else if (d.deviceId !== '') {
+                        // Real device with a unique ID — include regardless of label
+                        real.push(d);
+                    }
+                    // deviceId === '' with label === '' → pre-permission phantom, skip
+                });
+
+                // Build ordered list
+                var all = [];
+
+                // 1. System Default — always first
+                all.push({
+                    deviceId: 'default',
+                    label: (browserDefault && browserDefault.label)
+                        ? browserDefault.label
+                        : 'System Default',
+                    subtitle: 'System default'
+                });
+
+                // 2. Communications device (Windows)
+                if (browserComms) {
+                    all.push({
+                        deviceId: 'communications',
+                        label: browserComms.label || 'Communications Device',
+                        subtitle: 'Communications'
+                    });
+                }
+
+                // 3. Physical, loopback, and virtual devices — with category subtitle
+                real.forEach(function (d) {
+                    all.push({
+                        deviceId: d.deviceId,
+                        label:    d.label,
+                        subtitle: _categorizeMicDevice(d.label)
+                    });
+                });
+
+                // Show contextual empty message for denied or no-hardware cases
+                if (permState === 'denied') {
+                    var deniedEl = document.createElement('div');
+                    deniedEl.className = 'ai-assistant-mic-devices-empty';
+                    deniedEl.textContent = 'Microphone blocked \u2014 see instructions above.';
+                    listEl.appendChild(deniedEl);
+                    return;   // do not render device rows when access is blocked
+                }
+
+                if (real.length === 0 && !browserComms) {
+                    var emptyEl = document.createElement('div');
+                    emptyEl.className = 'ai-assistant-mic-devices-empty';
+                    emptyEl.textContent = (permState === 'prompt' && !hasRealLabels)
+                        ? 'Allow microphone to see all available devices'
+                        : 'No microphones found';
+                    listEl.appendChild(emptyEl);
+                    // Fall through — still render the System Default entry
+                }
+
+                all.forEach(function (dev) {
+                    var item = document.createElement('div');
+                    item.className = 'ai-assistant-mic-device-item';
+                    item.setAttribute('role', 'menuitemradio');
+                    item.setAttribute('tabindex', '0');
+                    item.setAttribute('data-device-id', dev.deviceId);
+
+                    var effectiveId = _micDeviceId || 'default';
+                    item.setAttribute('aria-checked', (dev.deviceId === effectiveId) ? 'true' : 'false');
+
+                    // Label + subtitle wrapper
+                    var labelWrap = document.createElement('span');
+                    labelWrap.className = 'ai-assistant-mic-device-label-wrap';
+
+                    var nameSpan = document.createElement('span');
+                    nameSpan.className = 'ai-assistant-mic-device-name';
+                    nameSpan.textContent = dev.label;
+                    nameSpan.title = dev.label;
+                    labelWrap.appendChild(nameSpan);
+
+                    // Subtitle (device category) — omitted when empty
+                    if (dev.subtitle) {
+                        var subSpan = document.createElement('span');
+                        subSpan.className = 'ai-assistant-mic-device-subtitle';
+                        subSpan.textContent = dev.subtitle;
+                        subSpan.setAttribute('aria-hidden', 'true');
+                        labelWrap.appendChild(subSpan);
+                    }
+
+                    // Checkmark (CSS opacity: 0 → 1 on aria-checked="true")
+                    var checkSpan = document.createElement('span');
+                    checkSpan.className = 'ai-assistant-mic-device-check';
+                    checkSpan.setAttribute('aria-hidden', 'true');
+                    checkSpan.innerHTML =
+                        '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor"'
+                        + ' stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">'
+                        + '<polyline points="3 8 7 12 13 5"/>'
+                        + '</svg>';
+
+                    item.appendChild(labelWrap);
+                    item.appendChild(checkSpan);
+
+                    // Click + keyboard activation (IIFE captures stable devId)
+                    (function (devId) {
+                        item.addEventListener('click', function () {
+                            _setMicDevice(devId);
+                        });
+                        item.addEventListener('keydown', function (e) {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                _setMicDevice(devId);
+                            } else if (e.key === 'ArrowDown') {
+                                e.preventDefault();
+                                var next = item.nextElementSibling;
+                                if (next) { next.focus(); }
+                            } else if (e.key === 'ArrowUp') {
+                                e.preventDefault();
+                                var prev = item.previousElementSibling;
+                                if (prev) { prev.focus(); }
+                            }
+                        });
+                    }(dev.deviceId));
+
+                    listEl.appendChild(item);
+                });
+            });
+        }
+
+        // Acquire the warm stream first to ensure real labels are available.
+        // If acquisition fails (denied / no API) doRefresh still runs — the
+        // _enumMicDevices callback will surface the appropriate denied/empty state.
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            _acquireMicWarmStream(function () { doRefresh(); });
+        } else {
+            doRefresh();
+        }
+    }
+
+    // ── Speech recognition──────────────────────────────────────────────────── ────────────────────────────────────────────────────
+
+
+    /**
+     * Web Speech API recognition instance (lazy, created on first mic click).
+     * @type {SpeechRecognition|null}
+     */
+    var _speechRecognition = null;
+
+    /**
+     * True when the SpeechRecognition instance has finished its last session
+     * and is safe to call .start() again.  Starts true (no instance yet →
+     * trivially safe).  Set to false when .start() is called; restored to
+     * true inside the onend handler.
+     *
+     * This bridges the async gap between calling stop() and onend firing:
+     * if _doStart() is invoked while the engine is still winding down,
+     * it queues the start in _pendingSpeechStart instead of throwing
+     * InvalidStateError.
+     */
+    var _speechRecognitionEnded = true;
+
+    /**
+     * True when _doStart() was called while _speechRecognitionEnded was
+     * still false (i.e. the engine hadn't fired onend yet).  The onend
+     * handler checks this flag and calls _doStart() immediately after the
+     * engine becomes idle, so rapid hold-release-hold sequences always start.
+     */
+    var _pendingSpeechStart = false;
+
+    /** True when speech recognition is actively listening. */
+    var _isListening = false;
+    var _micPointerHeld = false;
+    var _speechStartPending = false;
+    var _recognitionFlushing = false;
+
+    /**
+     * Textarea value captured at the moment recording begins.
+     *
+     * Purpose
+     * ───────
+     * In continuous mode the engine delivers multiple onresult events.
+     * Each event supplies only the transcripts produced SINCE the last
+     * final result (via e.resultIndex), so we must keep a record of
+     * what was already in the textarea when the session started.  Every
+     * onresult call rebuilds the displayed value as:
+     *   _speechBaseText + _speechFinalText + current-interim
+     * which guarantees the user's pre-existing text is never lost and
+     * no phrase is ever appended more than once.
+     *
+     * Reset in onstart — NOT in onend — so that rapid stop-start cycles
+     * (user stops, immediately restarts) correctly treat any text
+     * committed in the previous session as the new baseline.
+     *
+     * @type {string}
+     */
+    var _speechBaseText = '';
+
+    /**
+     * Running concatenation of all isFinal transcripts committed during
+     * the current recording session.
+     *
+     * Each time onresult delivers a final result the trimmed transcript
+     * is space-joined onto this string.  Together with _speechBaseText
+     * it forms the permanent portion of the textarea content; the
+     * interim portion is shown live but never persisted here.
+     *
+     * Reset to '' in onstart so every new session starts clean.
+     *
+     * @type {string}
+     */
+    var _speechFinalText = '';
+
+    /**
+     * Handle for the 30-second recording auto-stop setTimeout.
+     *
+     * Lifecycle
+     * ─────────
+     * • Set   → inside onstart, immediately after _setMicActiveState(true).
+     * • Clear → in _stopSpeechRecognition() (manual stop) and in onend
+     *           (natural or auto-stop end).  Both sites null the handle so
+     *           no stale callback fires after the session has already ended.
+     *
+     * Why not rely on the browser's built-in silence timeout?
+     *   With continuous=true the engine never auto-stops on silence; without
+     *   this timer the user would record indefinitely.  30 s is the target
+     *   maximum session length — matches the prior 8-10 s browser default
+     *   extended to a user-visible "generous" ceiling while still preventing
+     *   runaway sessions that silently drain battery and capture audio.
+     *
+     * @type {number|null}
+     */
+    var _recordingAutoStopTimer = null;
 
     /**
      * True when the browser supports the Web Speech API recognition interface.
@@ -3960,57 +6990,723 @@
 
         if (!_speechRecognition) {
             _speechRecognition = new SpeechRecognition();
-            _speechRecognition.continuous     = false;
-            _speechRecognition.interimResults = false;
+            _speechRecognition.continuous     = true;   // keep engine alive for up to 30 s
+            _speechRecognition.interimResults = true;   // required for continuous; final-only commits handled in onresult
             _speechRecognition.lang           = navigator.language || 'en-US';
 
+            _speechRecognition.onstart = function () {
+                _speechStartPending = false;
+                if (_micHoldMode && !_micPointerHeld) {
+                    _speechStartPending = false;
+                    _pendingSpeechStart = false;
+                    _stopSpeechRecognition();
+                    return;
+                }
+                _isListening = true;
+                _setMicActiveState(true);
+
+                // ── Snapshot textarea for repetition-free accumulation ────────
+                // Capture the textarea's current value as the immutable base for
+                // this session.  onresult rebuilds the displayed value each time
+                // as: _speechBaseText + _speechFinalText + current-interim, so
+                // no phrase is ever appended twice regardless of how many
+                // continuous-mode events fire.
+                // Reset _speechFinalText so finals from any prior session do not
+                // bleed into this one.  Snapshotting here (onstart) rather than
+                // onend means a rapid stop→start cycle sees the post-committed
+                // textarea as its new baseline automatically.
+                var _inputSnap = document.getElementById('ai-assistant-panel-input');
+                _speechBaseText  = _inputSnap ? _inputSnap.value : '';
+                _speechFinalText = '';
+
+                // ── 30-second auto-stop ───────────────────────────────────────
+                // Clear any stale timer first (guards against rapid start/stop).
+                // The callback calls _stopSpeechRecognition() so onend fires
+                // normally, delivering any buffered final transcript before the
+                // session closes — identical behaviour to the user pressing stop.
+                clearTimeout(_recordingAutoStopTimer);
+                _recordingAutoStopTimer = setTimeout(function () {
+                    _recordingAutoStopTimer = null;
+                    if (_isListening) { _stopSpeechRecognition(); }
+                }, 30000);
+            };
+
             _speechRecognition.onresult = function (e) {
-                var transcript = Array.from(e.results)
-                    .map(function (r) { return r[0].transcript; })
-                    .join(' ')
-                    .trim();
-                var input = document.getElementById('ai-assistant-panel-input');
-                if (input && transcript) {
-                    input.value = (input.value ? input.value + ' ' : '') + transcript;
+                // ── Continuous-mode safe accumulation ─────────────────────────
+                //
+                // Problem with Array.from(e.results):
+                //   In continuous mode the engine keeps the results array alive
+                //   across events.  Iterating from index 0 every time means each
+                //   earlier phrase is re-appended on every subsequent event,
+                //   producing rapidly growing duplicate text in the textarea.
+                //
+                // Fix — iterate from e.resultIndex:
+                //   The Web Speech API contract guarantees that results[0 …
+                //   resultIndex-1] were delivered in previous events and must not
+                //   be re-processed.  Only results[resultIndex … length-1] are new.
+                //
+                // isFinal gating:
+                //   isFinal=true  → committed phrase; append to _speechFinalText.
+                //   isFinal=false → interim hypothesis; show as live preview but
+                //                   never persist so it never duplicates.
+                //
+                // Textarea composition on every event:
+                //   _speechBaseText  (captured in onstart, never changes mid-session)
+                //   + _speechFinalText (all committed phrases this session)
+                //   + interimText      (current hypothesis, replaced each event)
+                //
+                var hasFinal    = false;
+                var interimText = '';
+
+                for (var i = e.resultIndex; i < e.results.length; i++) {
+                    var r    = e.results[i];
+                    var text = r[0].transcript.trim();
+                    if (!text) { continue; }
+
+                    if (r.isFinal) {
+                        // Space-join committed phrases; guard leading space when
+                        // _speechFinalText is empty (first phrase of the session).
+                        _speechFinalText = _speechFinalText
+                            ? _speechFinalText + ' ' + text
+                            : text;
+                        hasFinal = true;
+                    } else {
+                        // Multiple interim segments within one event are joined
+                        // with a space to produce a single coherent preview.
+                        interimText = interimText
+                            ? interimText + ' ' + text
+                            : text;
+                    }
+                }
+
+                // _recognitionFlushing gates the onend restart-guard.
+                // Set true ONLY on a final result: interim-only events must not
+                // suppress the automatic restart that hold-to-record depends on.
+                _recognitionFlushing = hasFinal;
+
+                try {
+                    var input = document.getElementById('ai-assistant-panel-input');
+                    if (!input) { return; }
+
+                    // Rebuild textarea value from the three layers.
+                    // The separation into committed + preview avoids any string
+                    // mutation of _speechFinalText for the interim portion.
+                    var committed = _speechFinalText;
+                    var preview   = interimText
+                        ? (committed ? committed + ' ' + interimText : interimText)
+                        : committed;
+                    var full = _speechBaseText
+                        ? (preview ? _speechBaseText + ' ' + preview : _speechBaseText)
+                        : preview;
+
+                    input.value = full;
+                    _autoResizeInput(input);
                     _updateSendBtnState();
-                    input.focus();
+                    // Only steal focus after a committed result — do not interrupt
+                    // the user if they are typing alongside an interim preview.
+                    if (hasFinal) { input.focus(); }
+                } finally {
+                    _recognitionFlushing = false;
                 }
             };
 
+            // NOTE: Do NOT release _micPinTrack or _micWarmStream here.
+            // Both streams must survive across recognition sessions so the browser
+            // never re-prompts on the next hold-to-record press.
+            //
+            // IMPORTANT: Do NOT null _speechRecognition here.  Keeping the same
+            // instance alive is the mechanism that prevents Chrome from opening a
+            // new audio capture session — and therefore from re-showing the
+            // permission indicator — on every hold-to-record press.
             _speechRecognition.onend = function () {
-                _setMicActiveState(false);
+
+                // ── Clear auto-stop timer (natural or auto end) ───────────────
+                // The engine may reach onend via: (a) the user stopping manually
+                // through _stopSpeechRecognition(), (b) the 30-second timer
+                // callback itself, or (c) the browser's own silence detection.
+                // _stopSpeechRecognition() already clears the timer, but cases
+                // (b) and (c) arrive here without going through that function, so
+                // guard here too.  clearTimeout(null) is a safe no-op.
+                clearTimeout(_recordingAutoStopTimer);
+                _recordingAutoStopTimer = null;
+
+                _speechStartPending = false;
+                _speechRecognitionEnded = true;
                 _isListening = false;
+
+                _setMicActiveState(false);
+
+                // Only restart if user is STILL holding
+                if (
+                    _pendingSpeechStart &&
+                    !_recognitionFlushing &&
+                    (
+                        !_micHoldMode ||
+                        _micPointerHeld
+                    )
+                ) {
+
+                    _pendingSpeechStart = false;
+
+                    setTimeout(function () {
+                        _doStart();
+                    }, 150);
+
+                } else {
+                    _pendingSpeechStart = false;
+                }
             };
 
             _speechRecognition.onerror = function (e) {
-                _setMicActiveState(false);
+
+                _speechStartPending = false;
+                _speechRecognitionEnded = true;
                 _isListening = false;
-                if (e.error !== 'aborted' && e.error !== 'no-speech') {
-                    showNotification('Speech recognition error: ' + e.error, true);
+
+                _setMicActiveState(false);
+
+                if (
+                    _pendingSpeechStart &&
+                    e.error !== 'aborted' &&
+                    (
+                        !_micHoldMode ||
+                        _micPointerHeld
+                    )
+                ) {
+
+                    _pendingSpeechStart = false;
+                    _doStart();
+
+                } else {
+                    _pendingSpeechStart = false;
+                }
+                if (e.error === 'no-speech') {
+                    _speechStartPending = false;
+                    _pendingSpeechStart = false;
+                    _speechRecognitionEnded = true;
+                    return;
+                }
+                if (
+                    e.error !== 'aborted' &&
+                    e.error !== 'no-speech'
+                ) {
+                    showNotification(
+                        'Speech recognition error: ' + e.error,
+                        true
+                    );
                 }
             };
         }
 
-        try {
-            _speechRecognition.start();
-            _isListening = true;
-            _setMicActiveState(true);
-        } catch (err) {
-            console.error('AI Assistant: Speech recognition start error:', err);
-            showNotification('Could not start microphone. Check browser permissions.', true);
+        // ── Device pin / warm-stream: guarantee mic permission is held ─────────
+        //
+        // The Web Speech API has no direct device-selection parameter.
+        //
+        // Strategy A (specific device selected):
+        //   Acquire a getUserMedia pin track for the chosen device BEFORE calling
+        //   .start().  The browser reuses the active track for the recognition
+        //   session.  The track is kept alive across hold presses (readyState
+        //   check) so getUserMedia is called at most once per device per page load.
+        //
+        // Strategy B (browser default):
+        //   Acquire (or reuse) the persistent warm stream via _acquireMicWarmStream.
+        //   This holds the permission open so .start() never re-prompts, regardless
+        //   of how many times the user presses and releases the hold button.
+        //
+        // In both cases the streams survive recognition end/error — they are only
+        // released when the user changes the selected device in _setMicDevice.
+
+        function _doStart() {
+            if (_speechStartPending) {
+                return;
+            }
+            // User already released button while startup was pending
+            if (_micHoldMode && !_micPointerHeld) {
+                _pendingSpeechStart = false;
+                return;
+            }
+            if (_recognitionFlushing) {
+                _pendingSpeechStart = true;
+                return;
+            }
+            if (!_speechRecognitionEnded) {
+                _pendingSpeechStart = true;
+                return;
+            }
+            try {
+                _speechRecognitionEnded = false;
+                _speechStartPending = true;
+                _speechRecognition.start();
+
+            } catch (err) {
+
+                _speechStartPending = false;
+                _speechRecognitionEnded = true;
+                _pendingSpeechStart = false;
+
+                console.error(
+                    'AI Assistant: Speech recognition start error:',
+                    err
+                );
+
+                showNotification(
+                    'Could not start microphone. Check browser permissions.',
+                    true
+                );
+            }
+        }
+
+        if (_micDeviceId && navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            // Strategy A: specific device.
+            // Reuse the existing live pin track — hot path, zero latency.
+            if (_micPinTrack && _micPinTrack.readyState === 'live') {
+                _doStart();
+                return;
+            }
+            // Cold path: acquire a fresh pin track (first press or after device change).
+            _releaseMicPinTrack();
+            navigator.mediaDevices.getUserMedia({
+                audio: { deviceId: { exact: _micDeviceId } }
+            }).then(function (stream) {
+                var tracks = stream.getAudioTracks();
+                _micPinTrack = tracks.length ? tracks[0] : null;
+                // Keep the full stream as the warm stream so _acquireMicWarmStream
+                // can reuse it and avoid a redundant getUserMedia call.
+                _micWarmStream = stream;
+                _doStart();
+            }).catch(function (err) {
+                // Device unavailable (disconnected, permission denied) — fall back
+                // to the browser default silently so recording still works.
+                console.warn('AI Assistant: Device pin failed, using browser default:', err);
+                _micPinTrack = null;
+                _acquireMicWarmStream(function () { _doStart(); });
+            });
+        } else {
+            // Strategy B: browser default — ensure warm stream is live then start.
+            _acquireMicWarmStream(function () { _doStart(); });
         }
     }
 
     function _stopSpeechRecognition() {
+        // ── Cancel the 30-second auto-stop timer immediately ─────────────────
+        // Must run before _speechRecognition.stop() so the timer callback
+        // never fires after the session has already been torn down manually.
+        // Nulling the handle prevents a second clearTimeout on a stale id
+        // (harmless but needlessly confusing in profiler traces).
+        clearTimeout(_recordingAutoStopTimer);
+        _recordingAutoStopTimer = null;
+
+        // Do NOT detach handlers and do NOT null the instance.
+        //
+        // Root cause of the repeated-permission-prompt bug:
+        //   Discarding (nulling) the SpeechRecognition instance forces Chrome to
+        //   create a fresh instance on the next hold press.  Every new instance
+        //   opens a NEW internal audio capture session, which is what triggers
+        //   the browser permission indicator to reappear each time.
+        //
+        // Fix — keep the same instance alive across hold-release cycles:
+        //   Chrome reuses the existing audio capture session for .start() calls
+        //   on the same instance, so the permission indicator appears only once
+        //   (on the very first press) and never again.
+        //
+        // Use stop() instead of abort():
+        //   stop() signals the engine to finish the current utterance, deliver
+        //   the final onresult transcript, and then fire onend.
+        //   abort() discards the transcript and fires onerror('aborted') before
+        //   onend — the user loses any partial speech that was being recognised.
+        //
+        // Handlers (onresult / onend / onerror) are left attached so they
+        // continue to manage _speechRecognitionEnded and _pendingSpeechStart
+        // correctly for the next hold press.
         if (_speechRecognition && _isListening) {
-            try { _speechRecognition.abort(); } catch (_) {}
+            try { _speechRecognition.stop(); } catch (_) {}
         }
+        // NOTE: _micPinTrack and _micWarmStream are intentionally NOT released here.
+        // Keeping them alive means the browser retains the permission grant between
+        // hold-to-record presses so it never re-prompts.  Tracks are released only
+        // when the selected device changes (see _setMicDevice).
         _isListening = false;
         _setMicActiveState(false);
     }
 
+
+    // ── Web Audio API — real-time visualisation ───────────────────────────────
+
     /**
-     * Update the mic button and speak-banner visual state.
+     * Create an AudioContext and connect the mic MediaStream to an AnalyserNode.
+     *
+     * Called by _setMicActiveState(true) after _micWarmStream is live.
+     * Idempotent — if _audioCtx already exists the call is a no-op.
+     * The audio signal is connected analyser → nowhere (no destination):
+     * pure analysis with zero echo or feedback risk.
+     *
+     * Parameters
+     * ----------
+     * stream : MediaStream | null
+     *     Live microphone stream from _micWarmStream.  When null, the function
+     *     returns silently — viz loops will read zeros and bars stay at minimum
+     *     height (graceful degradation on unsupported browsers).
+     *
+     * Notes
+     * -----
+     * fftSize 256 → 128 frequency bins.  smoothingTimeConstant 0.80 gives
+     * visually responsive but non-jittery bar heights.  One AudioContext per
+     * recording session keeps total context count within the browser limit (6).
+     */
+    function _connectWebAudio(stream) {
+        if (!stream || _audioCtx) { return; }
+        try {
+            var AudioCtxCtor = window.AudioContext || window.webkitAudioContext;
+            if (!AudioCtxCtor) { return; }
+            _audioCtx             = new AudioCtxCtor();
+            _analyserNode         = _audioCtx.createAnalyser();
+            _analyserNode.fftSize                = 256;   // 128 bins
+            _analyserNode.smoothingTimeConstant  = 0.80;
+            _audioSrcNode = _audioCtx.createMediaStreamSource(stream);
+            _audioSrcNode.connect(_analyserNode);
+            // NOT connected to destination — analysis only, zero echo/feedback.
+            // iOS Safari suspends AudioContext between gestures; resume immediately.
+            // Non-fatal: if the promise rejects, viz loops silently fall back to
+            // the "no analyser" path (idle heights only).
+            if (_audioCtx.state === 'suspended') {
+                _audioCtx.resume().catch(function () {});
+            }
+        } catch (err) {
+            console.warn('AI Assistant: Web Audio connect failed:', err);
+            _audioCtx = null; _analyserNode = null; _audioSrcNode = null;
+        }
+    }
+
+    /**
+     * Disconnect and close the Web Audio graph built by _connectWebAudio.
+     *
+     * Idempotent — safe to call when no graph exists (all null → early-return).
+     * Called internally by _stopVizLoops().
+     */
+    function _disconnectWebAudio() {
+        if (_audioSrcNode) {
+            try { _audioSrcNode.disconnect(); } catch (_e) {}
+            _audioSrcNode = null;
+        }
+        if (_analyserNode) {
+            try { _analyserNode.disconnect(); } catch (_e) {}
+            _analyserNode = null;
+        }
+        if (_audioCtx) {
+            try { _audioCtx.close(); } catch (_e) {}
+            _audioCtx = null;
+        }
+    }
+
+    /**
+     * Read current RMS amplitude from _analyserNode as a value in [0, 1].
+     *
+     * Uses the time-domain buffer (getByteTimeDomainData) rather than the
+     * frequency buffer because RMS of the raw waveform is a direct proxy
+     * for perceived loudness and maps naturally to bar height.
+     *
+     * Returns
+     * -------
+     * number
+     *     RMS amplitude in [0, 1].  Returns 0 when no analyser is connected.
+     *
+     * Notes
+     * -----
+     * Time-domain values are unsigned 8-bit [0..255], centred at 128 (silence).
+     * Subtracting 128 normalises to [-128..127]; dividing by 128 gives [-1..1].
+     * Squaring, averaging, and square-rooting gives RMS in [0, 1].
+     */
+    function _readRmsAmplitude() {
+        if (!_analyserNode) { return 0; }
+        var buf = new Uint8Array(_analyserNode.fftSize);
+        _analyserNode.getByteTimeDomainData(buf);
+        var sum = 0;
+        for (var i = 0; i < buf.length; i++) {
+            var v = (buf[i] - 128) / 128;
+            sum += v * v;
+        }
+        return Math.sqrt(sum / buf.length);
+    }
+
+    /**
+     * Start both real-time visualisation loops.
+     *
+     * Loop 1 — rAF (level bars):
+     *   Maps 128 AnalyserNode frequency bins → 100 mic popup bars at ~60 fps.
+     *   Each bar height is proportional to the energy in its frequency bin.
+     *
+     * Loop 2 — setInterval (footer soundbar):
+     *   Appends one RMS amplitude sample to the ring buffer every
+     *   _SOUNDBAR_TICK_MS (80 ms).  The buffer scrolls left so new samples
+     *   appear on the right, creating a scrolling oscilloscope timeline.
+     *
+     * Idempotent — already-running loops are not duplicated.
+     *
+     * Notes
+     * -----
+     * prefers-reduced-motion: both loops are skipped; bars remain at their
+     * current height.  CSS also applies static heights as a fallback.
+     */
+    /**
+     * Return the number of footer soundbar bars that fit for the current
+     * viewport width.  Matches the CSS responsive max-width breakpoints so
+     * the bar count and CSS-revealed width are always in sync.
+     *
+     * Returns
+     * -------
+     * number
+     *     One of: 8 (< 360 px) | 12 (360–479 px) | 16 (480–767 px) | 24 (≥ 768 px).
+     */
+    function _computeSoundbarBarCount() {
+        var vw = (window.innerWidth || document.documentElement.clientWidth || 320);
+        if (vw < 360) return 8;
+        if (vw < 480) return 12;
+        if (vw < 768) return 16;
+        return 24;
+    }
+
+    /**
+     * (Re)build soundbar bar elements to match the target count `n`.
+     *
+     * Idempotent: leaves the DOM untouched when the count is already correct.
+     * Each new bar starts at _SOUNDBAR_MIN_H (2 px) and 0.30 opacity.
+     *
+     * Parameters
+     * ----------
+     * soundbarEl : HTMLElement
+     *     The soundbar container element.
+     * n : number
+     *     Target bar count (8 | 12 | 16 | 24).
+     *
+     * Returns
+     * -------
+     * NodeList
+     *     Live NodeList of `.ai-assistant-footer-soundbar-bar` elements.
+     */
+    function _rebuildSoundbarBars(soundbarEl, n) {
+        var existing = soundbarEl.querySelectorAll('.ai-assistant-footer-soundbar-bar');
+        if (existing.length === n) { return existing; }
+        while (soundbarEl.firstChild) { soundbarEl.removeChild(soundbarEl.firstChild); }
+        for (var i = 0; i < n; i++) {
+            var b = document.createElement('div');
+            b.className       = 'ai-assistant-footer-soundbar-bar';
+            b.style.height    = _SOUNDBAR_MIN_H + 'px';
+            b.style.opacity   = '0.30';
+            soundbarEl.appendChild(b);
+        }
+        return soundbarEl.querySelectorAll('.ai-assistant-footer-soundbar-bar');
+    }
+
+    function _startVizLoops() {
+        // ── prefers-reduced-motion: skip all JS animation ─────────────────
+        if (window.matchMedia &&
+                window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            return;
+        }
+
+        var raf = (_RAF || requestAnimationFrame);
+
+        // ── iOS / legacy AudioContext resume ──────────────────────────────
+        // iOS Safari suspends AudioContext between user gestures; resume
+        // proactively.  The .catch() guard makes this non-fatal.
+        if (_audioCtx && _audioCtx.state === 'suspended') {
+            _audioCtx.resume().catch(function () {});
+        }
+
+        // ── Loop 1: rAF — mic popup VU meter level bars (~60 fps) ─────────
+        //
+        // Standard 0-100 dBFS VU meter architecture:
+        //
+        //   Source   → _readRmsAmplitude() → RMS in [0, 1]
+        //   Mapping  → dBFS = 20×log10(rms)
+        //   Scale    → level = (dBFS - floor) / range × barCount, clamped 0-barCount
+        //   Display  → bars 0…level-1 = active (zone colour, max height)
+        //              bars level…N-1 = silent (idle sinusoidal height, muted)
+        //   Peak     → _vuPeakBar held for _VU_PEAK_HOLD frames,
+        //              then decays 1 bar every _VU_PEAK_DECAY frames.
+        //
+        // Colour zones (broadcast convention):
+        //   0-59   primary (CSS --pst-color-primary)  safe speech  -40…-16.4 dBFS
+        //   60-79  amber  _VU_COLOR_AMBER              loud/hot     -16…-8.4  dBFS
+        //   80-99  red    _VU_COLOR_RED                peak/clip     -8…-0.4  dBFS
+        if (!_vizRafId) {
+            var levelBarsEl = document.getElementById('ai-assistant-mic-level-bars');
+            if (levelBarsEl) {
+                var _lbEls   = levelBarsEl.querySelectorAll('.ai-mic-bar');
+                var _lbCount = _lbEls.length;  // _MIC_LEVEL_BAR_COUNT = 100
+
+                // Reset VU peak state at loop start so a new session begins clean.
+                _vuPeakBar   = 0;
+                _vuPeakHold  = 0;
+                _vuPeakDecay = 0;
+
+                (function _rafTick() {
+                    _vizRafId = raf(_rafTick);
+
+                    if (!_analyserNode) {
+                        // No analyser yet — hold idle sinusoidal heights
+                        return;
+                    }
+
+                    // ── 1. Compute VU level (0-_lbCount) from RMS ─────────
+                    var rms   = _readRmsAmplitude();
+                    //   Clamp rms away from zero before log to avoid -Infinity.
+                    var dBFS  = 20 * Math.log10(rms < 1e-9 ? 1e-9 : rms);
+                    //   Map dBFS → bar index: floor=-40, range=40 dB, scale=_lbCount.
+                    var level = Math.round((dBFS - _VU_DB_FLOOR) / _VU_DB_RANGE * _lbCount);
+                    level     = level < 0 ? 0 : (level > _lbCount ? _lbCount : level);
+
+                    // ── 2. Peak hold + decay ───────────────────────────────
+                    if (level >= _vuPeakBar) {
+                        // New or equal peak: reset hold timer.
+                        _vuPeakBar   = level;
+                        _vuPeakHold  = 0;
+                        _vuPeakDecay = 0;
+                    } else {
+                        _vuPeakHold++;
+                        if (_vuPeakHold > _VU_PEAK_HOLD) {
+                            // Hold expired: decay one bar every _VU_PEAK_DECAY frames.
+                            _vuPeakDecay++;
+                            if (_vuPeakDecay >= _VU_PEAK_DECAY) {
+                                _vuPeakDecay = 0;
+                                if (_vuPeakBar > 0) { _vuPeakBar--; }
+                            }
+                        }
+                    }
+
+                    // ── 3. Render bars ────────────────────────────────────
+                    //   Active bar (i < level): max height, zone colour.
+                    //   Peak bar  (i === _vuPeakBar, _vuPeakBar > 0, i >= level):
+                    //             max height, zone colour (held above active stack).
+                    //   Idle bar  (everything else): idle sinusoidal height,
+                    //             background cleared so CSS inactive colour applies.
+                    for (var i = 0; i < _lbCount; i++) {
+                        var isActive = (i < level);
+                        var isPeak   = (!isActive && i === _vuPeakBar && _vuPeakBar > 0);
+
+                        if (isActive || isPeak) {
+                            _lbEls[i].style.height = _MIC_LEVEL_MAX_H + 'px';
+                            // Zone colour via inline style (overrides CSS active default).
+                            // Empty string lets the CSS rule supply the primary colour so
+                            // it respects --pst-color-primary and dark-mode overrides.
+                            if (i >= _VU_ZONE_RED) {
+                                _lbEls[i].style.background = _VU_COLOR_RED;
+                            } else if (i >= _VU_ZONE_AMBER) {
+                                _lbEls[i].style.background = _VU_COLOR_AMBER;
+                            } else {
+                                _lbEls[i].style.background = '';
+                            }
+                        } else {
+                            // Return to idle sinusoidal height; clear inline colour so
+                            // the CSS inactive rule (muted/dark) applies correctly.
+                            _lbEls[i].style.height = (
+                                _IDLE_LEVEL_HEIGHTS[i] !== undefined
+                                    ? _IDLE_LEVEL_HEIGHTS[i]
+                                    : _MIC_LEVEL_MIN_H
+                            ) + 'px';
+                            _lbEls[i].style.background = '';
+                        }
+                    }
+                }());
+            }
+        }
+
+        // ── Loop 2: interval — footer soundbar ring buffer (80 ms) ────────
+        if (!_soundbarTickId) {
+            var soundbarEl = document.getElementById('ai-assistant-footer-soundbar');
+            if (soundbarEl) {
+                // Build bar count optimal for this viewport
+                var _sbCount  = _computeSoundbarBarCount();
+                var _sbBarEls = _rebuildSoundbarBars(soundbarEl, _sbCount);
+
+                // Pre-warm: seed ring buffer with a soft 2-cycle sine wave
+                // (2–4 px) so bars look organic from the very first tick.
+                // Real audio amplitude immediately overwrites these values.
+                _soundbarHeights = [];
+                for (var _si = 0; _si < _sbCount; _si++) {
+                    var _t  = _si / Math.max(1, _sbCount - 1); // 0 → 1
+                    var _sw = Math.abs(Math.sin(_t * Math.PI * 2));
+                    _soundbarHeights.push(_SOUNDBAR_MIN_H + _sw * 2); // 2 – 4 px
+                }
+
+                _soundbarTickId = setInterval(function () {
+                    var rms = _readRmsAmplitude();
+                    var h   = _SOUNDBAR_MIN_H
+                        + rms * (_SOUNDBAR_MAX_H - _SOUNDBAR_MIN_H);
+                    h = Math.max(_SOUNDBAR_MIN_H, Math.min(_SOUNDBAR_MAX_H, h));
+
+                    // Shift ring buffer left; push newest sample on right
+                    _soundbarHeights.shift();
+                    _soundbarHeights.push(h);
+
+                    // Apply heights + proportional opacity to all bars
+                    for (var i = 0; i < _sbCount; i++) {
+                        var bh  = _soundbarHeights[i];
+                        // opacity: 0.30 at silence → 1.00 at full scale
+                        var opc = (0.30 + 0.70 * (bh / _SOUNDBAR_MAX_H)).toFixed(2);
+                        _sbBarEls[i].style.height  = bh + 'px';
+                        _sbBarEls[i].style.opacity = opc;
+                    }
+                }, _SOUNDBAR_TICK_MS);
+            }
+        }
+    }
+
+    /**
+     * Stop both visualisation loops and reset bars to idle/silence heights.
+     *
+     * Also tears down the Web Audio graph (_disconnectWebAudio) so the
+     * AudioContext is closed before the next recording session starts.
+     * The CSS height transition (0.04–0.06 s) smooths the return to silence
+     * height so bars don't snap abruptly.
+     *
+     * Idempotent — safe to call multiple times or when loops are not running.
+     */
+    function _stopVizLoops() {
+        // ── Cancel rAF loop (mic popup level bars) ────────────────────────
+        if (_vizRafId !== null) {
+            (_CAF || cancelAnimationFrame)(_vizRafId);
+            _vizRafId = null;
+        }
+        // ── Cancel soundbar tick loop ─────────────────────────────────────
+        if (_soundbarTickId !== null) {
+            clearInterval(_soundbarTickId);
+            _soundbarTickId = null;
+        }
+        // ── Reset VU meter peak-hold state ────────────────────────────────
+        _vuPeakBar   = 0;
+        _vuPeakHold  = 0;
+        _vuPeakDecay = 0;
+        // ── Reset mic popup level bars to idle sinusoidal heights ─────────
+        // Clear inline background so the CSS inactive colour (muted) applies.
+        // Clear inline height so the idle arch from _IDLE_LEVEL_HEIGHTS shows.
+        var levelBarsEl = document.getElementById('ai-assistant-mic-level-bars');
+        if (levelBarsEl) {
+            var bars = levelBarsEl.querySelectorAll('.ai-mic-bar');
+            for (var i = 0; i < bars.length; i++) {
+                bars[i].style.height =
+                    (_IDLE_LEVEL_HEIGHTS[i] !== undefined
+                        ? _IDLE_LEVEL_HEIGHTS[i]
+                        : _MIC_LEVEL_MIN_H) + 'px';
+                bars[i].style.background = '';  // restore CSS inactive colour
+            }
+        }
+        // ── Reset soundbar bars: silence height + dimmed opacity ──────────
+        var soundbarEl = document.getElementById('ai-assistant-footer-soundbar');
+        if (soundbarEl) {
+            var sbBars = soundbarEl.querySelectorAll('.ai-assistant-footer-soundbar-bar');
+            for (var j = 0; j < sbBars.length; j++) {
+                sbBars[j].style.height  = _SOUNDBAR_MIN_H + 'px';
+                sbBars[j].style.opacity = '0.30';
+            }
+        }
+        // ── Tear down Web Audio graph ─────────────────────────────────────
+        _disconnectWebAudio();
+    }
+
+    /**
+     * Update the mic button, speak-banner, voice-level bars, and footer
+     * soundbar visual state.
      *
      * @param {boolean} active  True → recording animation; false → idle.
      */
@@ -4019,11 +7715,43 @@
         var bannerBtn = document.getElementById('ai-assistant-panel-speak-banner');
         if (micBtn) {
             micBtn.classList.toggle('recording', active);
-            micBtn.setAttribute('aria-label', active ? 'Stop recording' : 'Speak your question');
-            micBtn.setAttribute('title',      active ? 'Stop recording' : 'Speak your question');
+            var activeLabel = active
+                ? 'Stop recording'
+                : (_micHoldMode ? 'Press and hold to record' : 'Speak your question');
+            micBtn.setAttribute('aria-label', activeLabel);
+            micBtn.setAttribute('title',      activeLabel);
         }
         if (bannerBtn) {
             bannerBtn.classList.toggle('recording', active);
+        }
+
+        // Drive voice-level bars colour via data attribute.
+        // JS handles heights; CSS only switches the active brand colour.
+        var levelBars = document.getElementById('ai-assistant-mic-level-bars');
+        if (levelBars) {
+            levelBars.dataset.active = active ? 'true' : 'false';
+        }
+
+        // Drive footer soundbar visibility.
+        // setAttribute / removeAttribute so [data-active] (presence) and
+        // [data-active="true"] (value) selectors both match correctly.
+        var footerSoundbar = document.getElementById('ai-assistant-footer-soundbar');
+        if (footerSoundbar) {
+            if (active) {
+                footerSoundbar.setAttribute('data-active', 'true');
+            } else {
+                footerSoundbar.removeAttribute('data-active');
+            }
+        }
+
+        // Start / stop Web Audio analysis and both visualisation loops.
+        // _connectWebAudio uses the already-acquired _micWarmStream; it is a
+        // no-op when no stream is available (graceful degradation).
+        if (active) {
+            _connectWebAudio(_micWarmStream);
+            _startVizLoops();
+        } else {
+            _stopVizLoops();   // also calls _disconnectWebAudio()
         }
     }
 
@@ -4424,11 +8152,32 @@
         var pageMarkdown = '';
         try { pageMarkdown = await convertToMarkdown(); } catch (_) {}
 
-        var systemPrompt = pageMarkdown
+        // FIX Issue 7: configurable token and context limits.
+        // Global defaults come from cfg; per-model overrides take precedence.
+        // _safeInt(val, min, max, fallback) — defined at module level.
+        var maxTokens    = _safeInt(cfg.panelMaxTokens,    1, 32000,  1000);
+        var contextLimit = _safeInt(cfg.panelContextLimit, 100, 200000, 8000);
+        if (activeModel) {
+            // Per-model entry can override the global limits — e.g. a smaller
+            // model on a free-tier endpoint may need a tighter context window.
+            if (activeModel.max_tokens)
+                maxTokens    = _safeInt(activeModel.max_tokens,    1, 32000,  maxTokens);
+            if (activeModel.context_limit)
+                contextLimit = _safeInt(activeModel.context_limit, 100, 200000, contextLimit);
+        }
+
+        // FIX Issue 7: configurable system prompt via cfg.panelSystemPrompt.
+        // Use {context} as the template variable for the page markdown block.
+        var defaultSystemPrompt = pageMarkdown
             ? 'You are a helpful documentation assistant. Answer questions ' +
               'about the following documentation page.\n\n---\n' +
-              pageMarkdown.slice(0, 8000) + '\n---'
+              pageMarkdown.slice(0, contextLimit) + '\n---'
             : 'You are a helpful documentation assistant.';
+        var systemPrompt = (typeof cfg.panelSystemPrompt === 'string' &&
+                            cfg.panelSystemPrompt)
+            ? cfg.panelSystemPrompt.replace('{context}',
+                pageMarkdown.slice(0, contextLimit))
+            : defaultSystemPrompt;
 
         // ── 4. Build request body ─────────────────────────────────────────
         // Anthropic uses a distinct body shape (system at top level).
@@ -4440,14 +8189,14 @@
         if (isAnthropic) {
             body = JSON.stringify({
                 model:      modelName,
-                max_tokens: 1000,
+                max_tokens: maxTokens,
                 system:     systemPrompt,
                 messages:   [{ role: 'user', content: question }],
             });
         } else {
             body = JSON.stringify({
                 model:      modelName,
-                max_tokens: 1000,
+                max_tokens: maxTokens,
                 stream:     false,   // overwritten below when streaming is on
                 messages: [
                     { role: 'system', content: systemPrompt },

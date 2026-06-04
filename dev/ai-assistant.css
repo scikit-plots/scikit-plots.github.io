@@ -17,7 +17,7 @@
     overflow-x: visible !important;
     overflow: visible !important;
     z-index: 99999;
-    margin-top: 0.7rem;
+    margin-top: 0.3rem;
 }
 
 .ai-assistant-container img {
@@ -140,6 +140,7 @@
 /* ─── Dropdown panel ────────────────────────────────────────────────────── */
 
 .ai-assistant-dropdown {
+    /* JS: dropdown.style.display = 'none'; */
     display: none;
     position: absolute;
     z-index: 99999;
@@ -344,15 +345,17 @@
 /* ─── Panel root ────────────────────────────────────────────────────────── */
 
 .ai-assistant-panel {
+    /* resize: both; overflow: auto; */
     position: fixed;
-    bottom: 1.5rem;
-    right: 1.5rem;
+    bottom: 0.3rem;
+    right: 0.3rem;
     z-index: 99999;
     width: 360px;
-    max-width: calc(100vw - 2rem);
+    /* height: min(520px, calc(100vh - 1rem)); */
 
     /* Default (normal) state height */
-    max-height: min(520px, calc(100vh - 2rem));
+    max-height: calc(100vh - 1rem);
+    max-width: calc(100vw - 1rem);
 
     display: none;          /* JS sets display:flex when open */
     flex-direction: column;
@@ -403,13 +406,13 @@
     /* Actual height (not just max-height) so the panel fills the viewport
        vertically regardless of message count — the body flex-child absorbs
        the remaining space. */
-    height: calc(100vh - 3rem);
-    max-height: calc(100vh - 2rem);   /* keep as guard for safe measure */
+    height: calc(100vh - 1rem);
+    max-height: calc(100vh - 1rem);   /* keep as guard for safe measure */
     /* Expand width significantly on maximize — was 520px, now uses most of
        the viewport so both X and Y grow on maximize. */
-    width: min(960px, calc(100vw - 3rem));
-    bottom: 1.5rem;
-    right: 1.5rem;
+    width: min(960px, calc(100vw - 1rem));
+    bottom: 0.3rem;
+    right: 0.3rem;
     border-radius: 12px;
 }
 
@@ -468,6 +471,7 @@
     background: transparent;
     border: none;
     cursor: pointer;
+    touch-action: manipulation;  /* eliminate 300 ms tap delay on touch devices */
     color: var(--pst-color-text-muted, var(--color-foreground-secondary, #666));
     line-height: 1;
     padding: 0.25rem;
@@ -686,6 +690,16 @@
 }
 
 /* Unified input-group wrapper — border goes here, not on individual elements */
+/*
+ * overflow: visible — MUST stay visible so the mic hover-popup (position:absolute,
+ * bottom: calc(100%+0.45rem)) can escape above this box and remain interactive.
+ * overflow:hidden was previously here to clip children to border-radius, but:
+ *   • All children (textarea, action bar, buttons) have transparent backgrounds,
+ *     so there is nothing to clip — the rounded corners are purely on this
+ *     element's own background+border, which border-radius always clips regardless.
+ *   • overflow:hidden ALSO clips the ::before bridge pseudo-element that bridges
+ *     the hover gap, destroying hover continuity as the cursor moves into the popup.
+ */
 .ai-assistant-panel-input-group {
     display: flex;
     flex-direction: column;    /* Claude-style: textarea on top, action bar below */
@@ -700,7 +714,7 @@
         --pst-color-background,
         var(--color-background-primary, #fff)
     );
-    overflow: hidden;
+    overflow: visible;         /* must be visible — see note above */
     transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
@@ -742,6 +756,7 @@
     background: transparent;
     border: none;
     cursor: pointer;
+    touch-action: manipulation;  /* eliminate 300 ms tap delay on touch devices */
     padding: 0.35rem 0.4rem;
     display: flex;
     align-items: center;
@@ -819,6 +834,7 @@
     font-size: 0.8rem;
     color: var(--pst-color-text-muted, var(--color-foreground-secondary, #555));
     cursor: pointer;
+    touch-action: manipulation;  /* eliminate 300 ms tap delay on touch devices */
     border: 1px solid var(
         --pst-color-border,
         var(--color-foreground-border, #ddd)
@@ -963,7 +979,9 @@
     width: 18px;
     height: 18px;
     cursor: nwse-resize;
-    z-index: 99999;
+    /* z-index one step above left/top grips so the corner wins at the
+       18×18 overlap now that both edge grips extend to top:0 / left:0. */
+    z-index: 100000;
     /* Visual affordance: two short diagonal ticks, theme-aware. */
     background:
         linear-gradient(135deg,
@@ -1005,13 +1023,14 @@ body.ai-assistant-resizing .ai-assistant-panel {
 }
 
 /* ─── Left-edge grip (X / width only) ───────────────────────────────────────
-   A thin invisible strip along the left border.  Avoids the top 18px corner
-   to prevent overlap with the top-left diagonal grip. */
+   A thin invisible strip along the full left border.  Extends to top:0 so
+   the entire left edge is a horizontal-resize target — the corner grip at
+   z-index:100000 takes priority at the shared 18×18 corner. */
 
 .ai-assistant-panel-resizer-left {
     position: absolute;
     left: 0;
-    top: 18px;          /* clear the corner grip */
+    top: 0;               /* full-height: was 18px; corner grip wins at top via z-index */
     bottom: 0;
     width: 6px;
     cursor: ew-resize;
@@ -1031,13 +1050,14 @@ body.ai-assistant-resizing .ai-assistant-panel {
 .ai-assistant-panel-resizer-left:hover { opacity: 0.55; }
 
 /* ─── Top-edge grip (Y / height only) ───────────────────────────────────────
-   A thin invisible strip along the top border.  Avoids the left 18px corner
-   to prevent overlap with the top-left diagonal grip. */
+   A thin invisible strip along the full top border.  Extends to left:0 so
+   the entire top edge is a vertical-resize target — the corner grip at
+   z-index:100000 takes priority at the shared 18×18 corner. */
 
 .ai-assistant-panel-resizer-top {
     position: absolute;
     top: 0;
-    left: 18px;         /* clear the corner grip */
+    left: 0;              /* full-width: was 18px; corner grip wins at left via z-index */
     right: 0;
     height: 6px;
     cursor: ns-resize;
@@ -1101,6 +1121,7 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     border: 1px solid transparent;
     border-radius: 5px;
     cursor: pointer;
+    touch-action: manipulation;  /* eliminate 300 ms tap delay on touch devices */
     font-family: inherit;
     transition: background-color 0.15s ease, color 0.15s ease;
 }
@@ -1601,10 +1622,17 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 .ai-assistant-panel-kbd-hint {
     display: inline-flex;
     align-items: center;
-    gap: 0.3rem;
-    font-size: 0.68rem;
+    font-size: 0.5rem;
     /* Light-mode muted tone — readable on the white/light panel surface. */
     color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+    /* Interactive: left-click = minimize, right-click = close. */
+    cursor: pointer;
+    touch-action: manipulation;  /* eliminate 300 ms tap delay on touch devices */
+    user-select: none;
+    border-radius: 4px;
+    gap: 0.03rem;
+    padding: 0;
+    transition: opacity 0.15s ease, background 0.12s ease;
 }
 
 /* Wrapper span that holds the SVG icon (aria-hidden="true").
@@ -1620,17 +1648,18 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
    in CSS prevents any theme stylesheet from accidentally overriding it.
    flex-shrink:0 stops the icon from collapsing in narrow containers. */
 .ai-assistant-panel-kbd-hint > span[aria-hidden] svg {
-    width: 12px;
-    height: 12px;
+    width: 11px;
+    height: 11px;
     stroke: currentColor;
     fill: none;
     flex-shrink: 0;
+    margin: 0 0.25rem;
 }
 
 .ai-assistant-panel-kbd-hint kbd {
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: 0.66rem;
-    padding: 0.05rem 0.3rem;
+    font-size: 0.5rem;
+    padding: 0.1rem 0.1rem;
     background: var(--pst-color-surface, var(--color-background-secondary, #eef0f2));
     border: 1px solid var(--pst-color-border, var(--color-foreground-border, #d0d4d8));
     border-bottom-width: 2px;
@@ -1647,6 +1676,11 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 [data-bs-theme="dark"] .ai-assistant-panel-kbd-hint kbd {
     background: rgba(255, 255, 255, 0.07);
 }
+/* Hover: subtle background tint signals the element is clickable. */
+.ai-assistant-panel-kbd-hint:hover {
+    opacity: 0.75;
+    background: rgba(127, 127, 127, 0.1);
+}
 
 /* ─── R2: privacy / responsibility sheet ────────────────────────────────────
    A slide-over inside the panel (not a separate dialog) so it inherits the
@@ -1656,13 +1690,33 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     position: absolute;
     inset: 0;
     z-index: 99999;
-    display: none;
+    /* FIX Issue 10: keep display:flex always so the sheet can be transitioned.
+       visibility+opacity give a smooth fade-in/out; pointer-events:none prevents
+       interaction while hidden.  display:none → flex cannot be CSS-transitioned
+       and causes an abrupt snap that is jarring for all users and especially
+       problematic for screen-reader users (no perceptible animation cue). */
+    display: flex;
     flex-direction: column;
     background: var(--pst-color-surface, var(--color-background-primary, #fff));
     border-radius: 12px;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    /* delay visibility:hidden until after the opacity fade completes */
+    transition: opacity 0.18s ease, visibility 0s linear 0.18s;
 }
 .ai-assistant-panel-privacy[data-open="true"] {
-    display: flex;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    /* remove delay on open so the sheet is immediately interactive */
+    transition: opacity 0.18s ease, visibility 0s linear 0s;
+}
+/* Respect the user's OS-level motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-panel-privacy {
+        transition: none;
+    }
 }
 .ai-assistant-panel-privacy-head {
     display: flex;
@@ -1708,6 +1762,7 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
     text-decoration: underline;
     cursor: pointer;
+    touch-action: manipulation;  /* eliminate 300 ms tap delay on touch devices */
 }
 .ai-assistant-panel-privacy-link:hover {
     color: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
@@ -1900,8 +1955,9 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 }
 .ai-assistant-panel-subbar-right {
     margin-left: auto;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;          /* carriages never wrap to a new line */
     justify-content: flex-end;
+    overflow: hidden;           /* clip carriages as they exit to the right */
 }
 
 /* Model picker button in the sub-bar: pill with icon + label + chevron. */
@@ -1915,7 +1971,8 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     height: 0.9rem;
 }
 .ai-assistant-panel-model-link-label {
-    max-width: 12ch;
+    max-width: 7.5rem;  /* by model name 12ch */
+    min-width: 7rem;  /* by model name */
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -1933,24 +1990,175 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     height: 0.9rem;
 }
 
+/* ─── Progressive right-cluster overflow — per-item smooth collapse ──────────
+   JS assigns [data-overflow-hidden] to each button individually, keyed to
+   panel-width thresholds (Model 575 → Privacy 475 → Terms 350 → Share 300 px).
+   max-width transitions from its natural content width down to 0 so the item
+   squeezes closed in place.  opacity fades in parallel so the text/icon fades
+   as the element collapses — no sudden pop-in or pop-out.
+   The parent flex gap is preserved; the 0.28 s squeeze is short enough that
+   the transient gap gap (≤ 0.5 rem, ≤ 0.28 s) is imperceptible in practice. */
+
+/* ─── Train-carriage collapse: each button is one carriage ──────────────────
+   transform-origin: right center  →  the RIGHT edge is the tunnel entrance.
+   The carriage collapses from its left side toward the right (tunnel mouth),
+   while also drifting rightward — exactly like a train car receding into a
+   tunnel: it moves right AND gets narrower until it vanishes.
+
+   Two asymmetric transitions are declared:
+     • This (base) rule's transition fires on ARRIVAL  (attribute removed) → ease-out
+     • The [data-overflow-hidden] rule's transition fires on DEPARTURE      → ease-in
+   CSS always uses the DESTINATION state's transition, so the two rules give
+   physically correct decelerate-in / accelerate-out behaviour. */
+.ai-assistant-panel-subbar-right > button:not(.ai-assistant-panel-subbar-overflow-btn) {
+    max-width: 11rem;       /* generous cap — actual rendered width is auto/content */
+    overflow: hidden;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transform-origin: right center;              /* tunnel mouth is on the right       */
+    transform: translateX(0) scaleX(1);          /* carriage at platform, full width   */
+    /* Arrival easing: ease-out — carriage decelerates as it pulls into the station */
+    transition:
+        max-width  0.28s cubic-bezier(0, 0.55, 0.45, 1),
+        opacity    0.22s cubic-bezier(0, 0.55, 0.45, 1),
+        transform  0.28s cubic-bezier(0, 0.55, 0.45, 1);
+}
+
+/* Departure state: carriage moves right AND narrows to zero — train entering a tunnel.
+   transform-origin: right center (inherited from base) keeps the right edge pinned
+   so the carriage squishes from its LEFT side toward the tunnel mouth on the right.
+   translateX drifts the whole carriage (including the pinned right edge) into the
+   ⋯ button's territory so it visually disappears behind it.
+   Departure easing: ease-in — carriage starts slow then accelerates into the tunnel. */
+.ai-assistant-panel-subbar-right > button[data-overflow-hidden] {
+    max-width:     0 !important;
+    opacity:       0 !important;
+    transform:     translateX(1.2rem) scaleX(0) !important;   /* slides right + crushes to zero */
+    pointer-events: none;
+    transition:
+        max-width  0.30s cubic-bezier(0.4, 0, 1, 0.45),
+        opacity    0.22s cubic-bezier(0.4, 0, 1, 0.45),
+        transform  0.30s cubic-bezier(0.4, 0, 1, 0.45);
+}
+
+/* Stagger: in the fast-resize fallback (all hidden simultaneously), carriages depart
+   one at a time right → left, 70 ms apart, so each departure is individually visible.
+   In normal use JS crosses one threshold at a time, so only one carriage animates
+   per resize step — the stagger acts as a graceful safety net here.
+   DOM positions: 1=Model  2=Privacy  3=Terms  4=Share  5=⋯btn */
+.ai-assistant-panel-subbar-right > button:nth-child(1)[data-overflow-hidden] { transition-delay: 210ms; } /* Model — exits last    */
+.ai-assistant-panel-subbar-right > button:nth-child(2)[data-overflow-hidden] { transition-delay: 140ms;}  /* Privacy               */
+.ai-assistant-panel-subbar-right > button:nth-child(3)[data-overflow-hidden] { transition-delay: 70ms;}   /* Terms                 */
+.ai-assistant-panel-subbar-right > button:nth-child(4)[data-overflow-hidden] { transition-delay: 0ms;  }  /* Share — exits first   */
+
 /* Model-selection sheet — list of radio rows. */
 .ai-assistant-panel-model-list {
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
 }
+
+/* The model-list body lives inside .ai-assistant-panel-sheet-scroll which now
+   owns the vertical overflow for the entire sheet body.  Remove the local
+   scroll so the two scroll roots do not fight each other.  The base
+   .ai-assistant-panel-privacy-body rule supplies padding/font/color; this
+   compound rule (higher specificity) only overrides the overflow property. */
+.ai-assistant-panel-privacy-body.ai-assistant-panel-model-list {
+    overflow: visible;
+}
+
+/* ─── Model sheet: unified scrollable body ───────────────────────────────────
+   JS creates this wrapper in _buildModelSheet() and appends to it:
+     1. the model-list body  (.ai-assistant-panel-privacy-body.ai-assistant-panel-model-list)
+     2. the effort section   (§A)
+     3. the thinking section (§B)
+     4. the coming-soon section (§C)
+   All four children scroll together so effort/thinking/future are never
+   clipped or forced outside the panel frame.
+   The fade-mask at the bottom is a discoverability hint — it reveals that
+   more content exists below the visible fold. */
+.ai-assistant-panel-sheet-scroll {
+    flex: 1 1 auto;
+    min-height: 0;          /* required: flex child must shrink below content height */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    /* Scroll-hint fade: last 2.5rem fades to transparent */
+    mask-image: linear-gradient(
+        to bottom,
+        black calc(100% - 2.5rem),
+        transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        black calc(100% - 2.5rem),
+        transparent 100%
+    );
+    scrollbar-width: thin;
+}
+.ai-assistant-panel-sheet-scroll::-webkit-scrollbar { width: 4px; }
+.ai-assistant-panel-sheet-scroll::-webkit-scrollbar-track { background: transparent; }
+.ai-assistant-panel-sheet-scroll::-webkit-scrollbar-thumb {
+    background: rgba(127, 127, 127, 0.35);
+    border-radius: 2px;
+}
+/* Bottom padding sentinel: sits below the last section and keeps content
+   visible past the fade mask when scrolled to the bottom. */
+.ai-assistant-panel-sheet-scroll::after {
+    content: '';
+    display: block;
+    height: 2.5rem;
+    flex-shrink: 0;
+}
 .ai-assistant-panel-model-row {
     display: flex;
     align-items: flex-start;
     gap: 0.6rem;
     padding: 0.5rem 0.6rem;
-    border: 1px solid currentColor;
-    border-color: rgba(127, 127, 127, 0.25);
+    /* FIX Issue 8: single border declaration — the prior code set
+       `border: 1px solid currentColor` then immediately overrode border-color
+       with `border-color: rgba(...)`.  Minifiers may reorder declarations and
+       break the override silently.  Declare the final value directly. */
+    border: 1px solid rgba(127, 127, 127, 0.25);
     border-radius: 8px;
     cursor: pointer;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 .ai-assistant-panel-model-row:hover {
     border-color: rgba(127, 127, 127, 0.55);
+    background-color: rgba(127, 127, 127, 0.04);
+}
+[data-bs-theme="dark"] .ai-assistant-panel-model-row {
+    border-color: rgba(255, 255, 255, 0.14);
+}
+[data-bs-theme="dark"] .ai-assistant-panel-model-row:hover {
+    border-color: rgba(255, 255, 255, 0.32);
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+/* ── Issue 15: selected model row highlight ─────────────────────────────────
+   :has(input:checked) is baseline 2023 (Chrome 105+, Firefox 121+,
+   Safari 15.4+).  For older browsers the JS in _buildModelSheet sets and
+   clears [data-checked="true"] on selection — the [data-checked] rules below
+   serve as the fallback.  Both rules apply the same visual so neither is
+   redundant when both are supported. */
+.ai-assistant-panel-model-row:has(input:checked) {
+    border-color: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    background-color: rgba(41, 128, 185, 0.05);
+}
+[data-bs-theme="dark"] .ai-assistant-panel-model-row:has(input:checked) {
+    border-color: rgba(91, 163, 208, 0.6);
+    background-color: rgba(91, 163, 208, 0.08);
+}
+/* Legacy fallback — set/cleared by _buildModelSheet change handler and on
+   initial build (Issue 15 JS fix). */
+.ai-assistant-panel-model-row[data-checked="true"] {
+    border-color: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    background-color: rgba(41, 128, 185, 0.05);
+}
+[data-bs-theme="dark"] .ai-assistant-panel-model-row[data-checked="true"] {
+    border-color: rgba(91, 163, 208, 0.6);
+    background-color: rgba(91, 163, 208, 0.08);
 }
 .ai-assistant-panel-model-radio {
     margin-top: 0.2rem;
@@ -1994,39 +2202,95 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     height: 0.9rem;
 }
 
-/* Inline footer model picker — sized to match other footer buttons. */
+/* Inline model picker — button variant (Issue 1 replaces native <select>).
+   Issue 9/14: border now uses the CSS variable chain so custom themes are
+   respected; font-size, min-width, and line-height are made explicit so the
+   pill is legible across OS/browser font-size defaults. */
 .ai-assistant-panel-inline-model-picker {
-    appearance: none;
-    -webkit-appearance: none;
-    font: inherit;
-    color: inherit;
-    background: transparent;
-    border: 1px solid rgba(127, 127, 127, 0.3);
-    border-radius: 6px;
-    padding: 0 0.4rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.15rem 0.4rem 0.15rem 0.35rem;
+    min-width: 5.5rem;
     max-width: 10rem;
     height: 2rem;
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, rgba(127, 127, 127, 0.3))
+    );
+    border-radius: 6px;
+    font: inherit;
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1.35;
+    color: inherit;
+    background: transparent;
     cursor: pointer;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+    white-space: nowrap;
+    overflow: hidden;
 }
 .ai-assistant-panel-inline-model-picker:hover {
-    border-color: rgba(127, 127, 127, 0.6);
+    border-color: var(--pst-color-primary, var(--color-brand-primary, rgba(41, 128, 185, 0.6)));
+    background-color: rgba(41, 128, 185, 0.05);
 }
+.ai-assistant-panel-inline-model-picker:focus         { outline: none; }
+.ai-assistant-panel-inline-model-picker:focus-visible {
+    outline: 2px solid var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    outline-offset: 1px;
+}
+
+/* Provider badge dot inside the inline picker pill */
+.ai-assistant-panel-inline-picker-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: var(--ai-badge-default, #aaa);
+    transition: background-color 0.15s ease, opacity 0.15s ease;
+}
+
+/* Truncated label — takes all available space between dot and chevron */
 .ai-assistant-panel-inline-picker-label {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-weight: bold;
-    font-size: 0.8rem;
-    /* line-height: 0.8; */
-    max-width: 20ch;
+    flex: 1 1 auto;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    min-width: 0;
+}
+
+/* Chevron SVG — scoped to .chev span so the icon-only SVG stays full opacity */
+.ai-assistant-panel-inline-picker-chev svg {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+    opacity: 0.6;
+}
+
+/* ── Small-screen icon-only fallback ──────────────────────────────────────
+ * Mirrors the model-link sub-bar pattern: always in the DOM, visibility
+ * toggled by CSS at ≤ 575 px (same breakpoint as .ai-assistant-panel-
+ * model-link-label collapse).  The icon is 15 × 15 px to match the other
+ * .ai-assistant-panel-footer-btn SVG icons in the same action bar. */
+.ai-assistant-panel-inline-picker-icon {
+    display: none;              /* hidden at wide widths — full pill shown */
+    align-items: center;
+    line-height: 0;
+    flex-shrink: 0;
+}
+.ai-assistant-panel-inline-picker-icon svg {
+    width: 15px;
+    height: 15px;
+    stroke: currentColor;
+    fill: none;
+    flex-shrink: 0;
 }
 
 /* Hamburger overflow popover — positioned absolute relative to panel. */
 .ai-assistant-panel-hamburger {
     position: absolute;
-    top: 3.2rem;            /* below the sub-bar */
-    left: 0.5rem;
+    top: 4.5rem;            /* below the sub-bar */
+    left: 2rem;
     z-index: 5;
     display: none;
     flex-direction: column;
@@ -2102,22 +2366,53 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 }
 
 /* On narrow viewports collapse the right-cluster labels — keep icons only.
- * Hamburger preserves access to every entry-point. */
-@media (max-width: 460px) {
+ * Hamburger preserves access to every entry-point.
+ *
+ * Also collapses the footer inline model picker from its full pill form
+ * (dot + label + chevron) to a single model icon — same breakpoint, same
+ * logic as .ai-assistant-panel-model-link-label above. */
+@media (max-width: 575px) {
+    /* Sub-bar right-cluster: hide text labels, keep icons */
     .ai-assistant-panel-share-link span:not([aria-hidden]),
     .ai-assistant-panel-terms-link,
     .ai-assistant-panel-model-link-label {
         display: none;
     }
+
+    /* Footer inline model picker: collapse pill → bare icon button.
+     * Reset the pill chrome (border, min-width, padding) so the button
+     * looks and feels like the other icon-only footer buttons (mic, send). */
+    .ai-assistant-panel-inline-model-picker {
+        min-width: unset;
+        max-width: unset;
+        border: none;
+        border-radius: 6px;
+        padding: 0.35rem 0.4rem;    /* matches .ai-assistant-panel-footer-btn */
+        background: transparent;
+    }
+    /* Show the model SVG icon (hidden by default above) */
+    .ai-assistant-panel-inline-picker-icon {
+        display: inline-flex;
+    }
+    /* Hide the pill-only elements: dot, label, chevron */
+    .ai-assistant-panel-inline-picker-dot,
+    .ai-assistant-panel-inline-picker-label,
+    .ai-assistant-panel-inline-picker-chev {
+        display: none;
+    }
 }
 
 /* ─── Right overflow toggle button ──────────────────────────────────────────
-   Collapsed representation of the entire right cluster on narrow panels.
-   Visibility is data-driven (data-narrow="true" on panel root) so the
-   breakpoint reacts to actual panel width, not viewport width. */
+   Fades in progressively as items collapse; JS sets [data-overflow-visible]
+   once any right-cluster item is hidden.  opacity + max-width participates in
+   the same transition system as the cluster buttons above, with a 60 ms delay
+   so items begin squeezing before the ⋯ button appears — creating a natural
+   "one thing hides, then the menu appears" sequence rather than a simultaneous
+   swap.  margin-left: -0.5rem when hidden cancels the parent flex gap so the
+   button takes zero effective space in the layout while collapsed.           */
 
 .ai-assistant-panel-subbar-overflow-btn {
-    display: none;                 /* hidden by default — wide panels show full cluster */
+    display: inline-flex;          /* always in flex flow; max-width/opacity hides it */
     align-items: center;
     justify-content: center;
     width: 1.75rem;
@@ -2129,7 +2424,31 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     cursor: pointer;
     border-radius: 6px;
     flex-shrink: 0;
-    transition: color 0.15s ease, background-color 0.15s ease;
+    /* Collapsed by default; JS sets [data-overflow-visible] to reveal */
+    max-width: 0;
+    margin-left: -0.5rem;          /* cancel parent gap while hidden            */
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    /* transform-origin: left center — button expands from its LEFT edge,
+       the side facing the arriving carriages, like a tunnel mouth opening. */
+    transform-origin: left center;
+    transform: translateX(0.8rem) scaleX(0.15);   /* compressed, waiting behind tunnel mouth */
+    transition:
+        max-width        0.26s cubic-bezier(0, 0.55, 0.45, 1) 0.10s,  /* ease-out, slight delay */
+        opacity          0.22s ease                            0.14s,  /* fades in after max-width opens */
+        transform        0.26s cubic-bezier(0, 0.55, 0.45, 1) 0.10s,  /* expands + slides into position */
+        margin-left      0.26s ease                            0.10s,
+        color            0.15s ease,
+        background-color 0.15s ease;
+}
+/* Visible state: at least one cluster item is hidden */
+.ai-assistant-panel-subbar-overflow-btn[data-overflow-visible] {
+    max-width: 2rem;               /* wider than 1.75rem icon — allows smooth grow */
+    opacity: 1;
+    margin-left: 0;                /* natural flex gap handles spacing            */
+    transform: translateX(0) scaleX(1);   /* fully open at the platform           */
+    pointer-events: auto;
 }
 .ai-assistant-panel-subbar-overflow-btn svg {
     width: 1rem;
@@ -2164,9 +2483,17 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     padding: 0.25rem 0.55rem 0.3rem;
     font-size: 0.68rem;
     color: var(--pst-color-text-muted, var(--color-foreground-secondary, #888));
-    pointer-events: none;
+    /* Interactive: left-click = minimize, right-click = close. */
+    cursor: pointer;
+    user-select: none;
+    border-radius: 4px;
     white-space: nowrap;
     opacity: 0.8;
+    transition: opacity 0.15s ease, background 0.12s ease;
+}
+.ai-assistant-panel-hamburger-kbd-row:hover {
+    opacity: 1;
+    background: rgba(127, 127, 127, 0.1);
 }
 .ai-assistant-panel-hamburger-kbd-row > span[aria-hidden] svg {
     width: 0.75rem;
@@ -2192,22 +2519,26 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     border-color: rgba(255, 255, 255, 0.18);
 }
 
-/* Narrow panel (< 360px): collapse right cluster, show overflow button; collapse external kbd-hint. */
-[data-narrow="true"] .ai-assistant-panel-subbar-right > :not(.ai-assistant-panel-subbar-overflow-btn) {
-    display: none !important;
-}
-[data-narrow="true"] .ai-assistant-panel-subbar-overflow-btn {
-    display: inline-flex;
-}
+/* Very narrow panel (< 300px): collapse left-cluster kbd-hint only.
+   Right-cluster items collapse individually via [data-overflow-hidden] above;
+   no blanket right-cluster hide is needed here. */
 [data-narrow="true"] .ai-assistant-panel-kbd-hint {
     display: none;
+}
+
+/* Honour prefers-reduced-motion for the new progressive-overflow transitions */
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-panel-subbar-right > button:not(.ai-assistant-panel-subbar-overflow-btn),
+    .ai-assistant-panel-subbar-overflow-btn {
+        transition: opacity 0.01s;   /* instant toggle — no motion, still state-correct */
+    }
 }
 
 /* Hamburger popover positioning: left-anchor (default) vs right-anchor.
    data-anchor="right" is set by the overflow button before opening. */
 .ai-assistant-panel-hamburger[data-anchor="right"] {
     left: auto;
-    right: 0.5rem;
+    right: 1.8rem;
 }
 
 /* ─── Footer action bar (Claude-style two-row input layout) ─────────────────
@@ -2700,24 +3031,442 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     border-color: rgba(255,255,255,0.12);
 }
 
-/* ─── HuggingFace accent (for future per-provider theming) ────────────────── */
+/* ─── Provider badge color fallbacks ──────────────────────────────────────
+   FIX Issue 12: removed !important.  JS always sets badge.style.background
+   via _providerColor() (inline style — higher specificity than class rules).
+   Using !important here fought cfg.providerColors runtime overrides for these
+   three providers while leaving all other providers (groq, cerebras, mistral,
+   etc.) on the JS-only path — asymmetric, undocumented behavior.
+   These rules now serve ONLY as CSS-side fallbacks for SSR/no-JS contexts.
+   The JS inline style wins for all runtime config-driven scenarios. */
 
-[data-provider="huggingface"] .ai-assistant-panel-model-badge {
-    background: #ff9d00 !important;
-}
-
-[data-provider="anthropic"] .ai-assistant-panel-model-badge {
-    background: #c96442 !important;
-}
-
-[data-provider="openai"] .ai-assistant-panel-model-badge {
-    background: #74aa9c !important;
-}
+[data-provider="huggingface"] .ai-assistant-panel-model-badge { background: #ff9d00; }
+[data-provider="anthropic"]   .ai-assistant-panel-model-badge { background: #c96442; }
+[data-provider="openai"]      .ai-assistant-panel-model-badge { background: #74aa9c; }
 
 /* NOTE: .ai-assistant-panel-model-row is defined once above (lines ~1756).
    align-items: center is set there. Do NOT add a second definition here —
    it was removed because the duplicate override silently killed flex-start
    alignment on the radio+badge layout, causing badge misalignment. */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MODEL SHEET — Phase C additions (effort, thinking, coming-soon)
+   ─────────────────────────────────────────────────────────────────────────
+   Architecture
+   ────────────
+   ``_appendModelSheetSections()`` in JS appends three named sections to the
+   model-sheet element after the model-list body.  Each section is wrapped in
+   ``.ai-assistant-panel-sheet-section`` (built by ``_buildSheetSection()``)
+   which provides the labelled rule divider.
+
+   Section §A  Effort     – 4-button segmented control (Low / Medium / High / Max).
+   Section §B  Thinking   – toggle pill + collapsible token-budget range input.
+   Section §C  Coming soon– read-only feature-preview rows, aria-hidden.
+
+   All classes use the same three-layer CSS-variable fallback chain as the
+   rest of this stylesheet:
+     1. ``--pst-color-*``  (PyData Sphinx Theme — auto dark-mode)
+     2. ``--color-*``      (Furo theme compat)
+     3. Hardcoded safe value (last-resort baseline)
+
+   Dark mode uses ``[data-bs-theme="dark"]`` (Bootstrap 5 / PyData convention).
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Section wrapper (shared by §A, §B, §C) ────────────────────────────── */
+
+.ai-assistant-panel-sheet-section {
+    margin-top: 0.85rem;
+    /* Horizontal gutters: match the 1rem left/right padding of the
+       .ai-assistant-panel-privacy-body model-list above. */
+    padding: 0 1rem;
+}
+
+/* Labelled rule: LABEL ─────── */
+.ai-assistant-panel-sheet-section-head {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.ai-assistant-panel-sheet-section-label {
+    font-size: 0.67rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* The horizontal rule that fills the remaining row width. */
+.ai-assistant-panel-sheet-section-rule {
+    flex: 1;
+    height: 1px;
+    background: var(
+        --pst-color-border,
+        var(--color-foreground-border, #e1e4e5)
+    );
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-sheet-section-rule {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ─── §A  Effort segmented control ─────────────────────────────────────── */
+
+/* 4-column grid container.
+ * Adding a fifth entry requires changing grid-template-columns to repeat(5,1fr).
+ * The inner padding + 3px gap produce a single-unit visual affordance. */
+.ai-assistant-panel-effort-seg {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+    padding: 3px;
+    background: var(
+        --pst-color-on-background,
+        var(--color-background-secondary, #f0f1f2)
+    );
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, #e1e4e5)
+    );
+    border-radius: 8px;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-effort-seg {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Individual effort-level button */
+.ai-assistant-panel-effort-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 5px 3px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+    font: inherit;
+    transition: background-color 0.15s ease, border-color 0.15s ease,
+                box-shadow 0.15s ease;
+}
+
+.ai-assistant-panel-effort-btn:hover {
+    background: rgba(127, 127, 127, 0.1);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-effort-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Selected state — raised card over the through */
+.ai-assistant-panel-effort-btn[aria-checked="true"] {
+    background: var(
+        --pst-color-surface,
+        var(--color-background-primary, #fff)
+    );
+    border-color: var(
+        --pst-color-border,
+        var(--color-foreground-border, rgba(127, 127, 127, 0.35))
+    );
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-effort-btn[aria-checked="true"] {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+.ai-assistant-panel-effort-btn:focus         { outline: none; }
+.ai-assistant-panel-effort-btn:focus-visible {
+    outline: 2px solid var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    outline-offset: 1px;
+}
+
+.ai-assistant-panel-effort-lbl {
+    font-size: 0.78rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+}
+
+.ai-assistant-panel-effort-hint {
+    font-size: 0.64rem;
+    line-height: 1.2;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #6a737d));
+}
+
+/* One-sentence description updated on each selection. */
+.ai-assistant-panel-effort-desc {
+    margin: 0.45rem 0 0;
+    padding: 0 0.1rem;
+    font-size: 0.78rem;
+    line-height: 1.45;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #555));
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-effort-desc {
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #9aa0a6));
+}
+
+/* ─── §B  Extended-reasoning (thinking) row ─────────────────────────────── */
+
+/* Row: [text block] [toggle pill] */
+.ai-assistant-panel-thinking-row {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+/* Left text block */
+.ai-assistant-panel-thinking-text {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.ai-assistant-panel-thinking-title {
+    font-size: 0.82rem;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+}
+
+.ai-assistant-panel-thinking-hint {
+    margin-top: 0.1rem;
+    font-size: 0.72rem;
+    line-height: 1.3;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #6a737d));
+}
+
+/* Toggle pill — 32 × 18 px, matching the HTML prototype */
+.ai-assistant-panel-thinking-toggle {
+    position: relative;
+    width: 32px;
+    height: 18px;
+    border-radius: 9px;
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, rgba(127, 127, 127, 0.5))
+    );
+    background: var(
+        --pst-color-on-background,
+        var(--color-background-secondary, #d8d8d8)
+    );
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.ai-assistant-panel-thinking-toggle[aria-pressed="true"] {
+    background: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    border-color: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+}
+
+.ai-assistant-panel-thinking-toggle:focus         { outline: none; }
+.ai-assistant-panel-thinking-toggle:focus-visible {
+    outline: 2px solid var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    outline-offset: 2px;
+}
+
+/* Sliding thumb */
+.ai-assistant-panel-thinking-toggle-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(127, 127, 127, 0.7);
+    transition: left 0.2s ease, background-color 0.2s ease;
+    pointer-events: none;
+}
+
+.ai-assistant-panel-thinking-toggle[aria-pressed="true"]
+.ai-assistant-panel-thinking-toggle-thumb {
+    left: 16px;
+    background: #fff;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-thinking-toggle {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-thinking-toggle[aria-pressed="true"] {
+    background: var(--pst-color-primary, var(--color-brand-primary, #5ba3d0));
+    border-color: var(--pst-color-primary, var(--color-brand-primary, #5ba3d0));
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-panel-thinking-toggle,
+    .ai-assistant-panel-thinking-toggle-thumb {
+        transition: none;
+    }
+}
+
+/* ─── §B  Token budget slider (inside thinking section) ─────────────────── */
+
+/* Hidden by default; JS sets [data-visible="true"] when thinking is on. */
+.ai-assistant-panel-budget-area {
+    display: none;
+    margin-top: 0.65rem;
+}
+
+.ai-assistant-panel-budget-area[data-visible="true"] {
+    display: block;
+}
+
+/* Header: "Token budget" label + live numeric value */
+.ai-assistant-panel-budget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.35rem;
+}
+
+.ai-assistant-panel-budget-label {
+    font-size: 0.78rem;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #555));
+}
+
+/* Live value updates via JS on 'input' event. */
+.ai-assistant-panel-budget-value {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-budget-value {
+    color: var(--pst-color-primary, var(--color-brand-primary, #5ba3d0));
+}
+
+/* Range input — accent-color provides the track/thumb tint in modern browsers. */
+.ai-assistant-panel-budget-range {
+    display: block;
+    width: 100%;
+    accent-color: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+}
+
+/* Min / max tick labels below the slider */
+.ai-assistant-panel-budget-ticks {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.2rem;
+}
+
+.ai-assistant-panel-budget-tick {
+    font-size: 0.64rem;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #aaa));
+}
+
+/* ─── §C  Coming-soon feature placeholders ──────────────────────────────── */
+
+/* Entire list is aria-hidden (no interactive targets).
+ * Reduced opacity signals the section is not yet available. */
+.ai-assistant-panel-future-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    opacity: 0.5;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Individual feature row */
+.ai-assistant-panel-future-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.45rem 0.55rem;
+    border-radius: 7px;
+    background: var(
+        --pst-color-on-background,
+        var(--color-background-secondary, #f5f5f5)
+    );
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-future-item {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* SVG icon wrapper — square, matches .ai-assistant-panel-model-info size */
+.ai-assistant-panel-future-icon {
+    width: 1.1rem;
+    height: 1.1rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #6a737d));
+}
+
+.ai-assistant-panel-future-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Text block */
+.ai-assistant-panel-future-text {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.ai-assistant-panel-future-name {
+    font-size: 0.82rem;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #1a1a1a));
+}
+
+.ai-assistant-panel-future-sub {
+    margin-top: 0.1rem;
+    font-size: 0.7rem;
+    line-height: 1.3;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #6a737d));
+}
+
+/* "Soon" badge pill */
+.ai-assistant-panel-future-badge {
+    flex-shrink: 0;
+    font-size: 0.59rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.14rem 0.38rem;
+    border-radius: 4px;
+    background: var(
+        --pst-color-border,
+        var(--color-foreground-border, #e1e4e5)
+    );
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #6a737d));
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-future-badge {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.45);
+}
+
+/* Extend reduced-motion to cover the thinking toggle thumb. */
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-panel-thinking-toggle,
+    .ai-assistant-panel-thinking-toggle-thumb,
+    .ai-assistant-panel-effort-btn {
+        transition: none;
+    }
+}
+
+
 
 /* ─── Improved send button accent ─────────────────────────────────────────── */
 /*
@@ -2773,4 +3522,1603 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
 .ai-assistant-panel-chip:hover {
     transform:  translateY(-1px);
     box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MIC HOVER POPUP — Right-side panel (voice level + hold-to-record)
+   ─────────────────────────────────────────────────────────────────────────
+   Mirrors the Claude.ai mic hover interaction but anchors the popup to the
+   RIGHT edge of the mic button (instead of a left-side slide-in).
+
+   DOM structure:
+     .ai-assistant-mic-wrapper                 — position:relative anchor
+       .ai-assistant-mic-popup                 — absolute popup, right-anchored
+         .ai-assistant-mic-popup-row--level     — voice-level bars (top)
+         .ai-assistant-mic-popup-sep            — separator rule
+         .ai-assistant-mic-popup-row--hold      — hold-to-record toggle (bottom)
+       button.ai-assistant-panel-footer-btn--mic — the mic button itself
+
+   Visibility contract (CSS):
+     Hidden  : opacity 0; pointer-events none; transform translateX(6px)+translateY(3px)
+     Visible : .ai-assistant-mic-wrapper:hover .ai-assistant-mic-popup
+               OR .ai-assistant-mic-popup[data-pinned="true"]
+
+   Hold-to-record state (JS):
+     .ai-assistant-mic-popup-toggle[aria-pressed="true"] → toggle ON visual
+     .ai-assistant-mic-level-bars[data-active="true"]    → bars animate
+   ─────────────────────────────────────────────────────────────────────────
+   PURELY ADDITIVE. No existing selector is modified.
+   Three-layer colour fallback:  --pst-color-*  →  --color-*  →  hard value.
+   Dark mode via [data-bs-theme="dark"] (PyData/Bootstrap 5 convention).
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Wrapper: position anchor ───────────────────────────────────────────── */
+/*
+ * overflow: visible on every element in the chain from input-group down to
+ * the wrapper — belt-and-suspenders so a future edit can't silently re-clip.
+ *   input-group          → fixed above (was overflow:hidden)
+ *   footer-actions       → no overflow set (default visible) — explicit here
+ *   footer-actions-right → no overflow set (default visible) — explicit here
+ *   mic-wrapper          → must be visible; popup escapes upward out of it
+ */
+.ai-assistant-panel-footer-actions,
+.ai-assistant-panel-footer-actions-right,
+.ai-assistant-mic-wrapper {
+    overflow: visible;
+}
+
+.ai-assistant-mic-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* ─── Hover bridge — wrapper side (cursor entering gap from below) ────────── */
+/*
+ * The popup floats 0.45rem above the wrapper (bottom: calc(100%+0.45rem)).
+ * Without a bridge the cursor crosses a dead zone when moving from the buttons
+ * up toward the popup — :hover drops and the popup vanishes before the user
+ * can interact with it.
+ *
+ * The ::before pseudo-element fills that gap upward so the wrapper stays
+ * :hover while the cursor crosses.
+ *
+ * left: -200px  — extends leftward to cover the popup's min-width (152px)
+ *                 plus padding.  The popup is right-aligned (right:0) and
+ *                 widens to the left; the bridge must be at least as wide.
+ */
+.ai-assistant-mic-wrapper::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: -200px;    /* ≥ popup min-width from right edge — covers full popup width */
+    right: 0;
+    height: 0.55rem; /* ≥ popup gap of 0.45rem */
+}
+
+/* ─── Right-side expand button wrapper ───────────────────────────────────── */
+/*
+ * Mirrors Claude.ai's left-side settings-reveal pattern but placed to the
+ * RIGHT of the mic button so the layout reads:  [mic] [expand ▲]
+ *
+ * width: 0 + overflow:hidden collapses the expand slot from view.
+ * On wrapper hover the slot opens to 2rem (32 px) — the same hit-area as
+ * every other footer icon button — revealing the chevron expand button.
+ *
+ * The transition (width 0.15s) matches Claude's duration-150 utility.
+ */
+.ai-assistant-mic-expand-wrapper {
+    overflow: hidden;
+    width: 0;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    transition: width 0.15s ease-out;
+}
+
+.ai-assistant-mic-wrapper:hover .ai-assistant-mic-expand-wrapper {
+    width: 2rem;   /* 32 px — matches other footer icon-button hit-areas */
+}
+
+/* ─── Expand button ──────────────────────────────────────────────────────── */
+/*
+ * The chevron/caret button that pins/unpins the mic popup.
+ *
+ * Visual states:
+ *   • wrapper not hovered → opacity 0 (button present but invisible; the
+ *     wrapper width is 0 so it never receives mouse events in this state).
+ *   • wrapper hovered → wrapper width expands to 2rem; button fades to
+ *     opacity 1 and becomes interactive.
+ *   • [aria-expanded="true"] → chevron rotates 180° (points down) to signal
+ *     the popup is currently pinned open.
+ *
+ * Colour follows the same three-layer fallback as all other panel controls.
+ */
+.ai-assistant-mic-expand-btn {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    color: var(
+        --pst-color-text-muted,
+        var(--color-foreground-secondary, #888)
+    );
+    opacity: 0;
+    padding: 0;
+    transition:
+        opacity           0.15s ease,
+        background-color  0.12s ease,
+        color             0.12s ease;
+}
+
+/* Button fades in as the expand-wrapper width opens */
+.ai-assistant-mic-wrapper:hover .ai-assistant-mic-expand-btn {
+    opacity: 1;
+}
+
+.ai-assistant-mic-expand-btn:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+    color: var(
+        --pst-color-text-base,
+        var(--color-foreground-primary, #1a1a1a)
+    );
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-expand-btn:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(
+        --pst-color-text-base,
+        var(--color-foreground-primary, #e4e6ea)
+    );
+}
+
+.ai-assistant-mic-expand-btn:active {
+    background-color: rgba(0, 0, 0, 0.12);
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-expand-btn:active {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Keyboard focus ring */
+.ai-assistant-mic-expand-btn:focus         { outline: none; }
+.ai-assistant-mic-expand-btn:focus-visible {
+    outline: 2px solid var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2980b9)
+    );
+    outline-offset: -2px;
+    border-radius: 0.5rem;
+}
+
+/* Chevron SVG inside the expand button */
+.ai-assistant-mic-expand-btn svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    stroke: currentColor;
+    fill: none;
+    transition: transform 0.15s ease;
+}
+
+/* Chevron flips when popup is pinned open */
+.ai-assistant-mic-expand-btn[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+}
+
+/* ─── Popup container ────────────────────────────────────────────────────── */
+/*
+ * bottom: calc(100% + 0.45rem)  — floats above the action bar with a gap.
+ * right: 0                      — right-aligns with the mic button's edge.
+ * transform origin on the right ensures the slide-in reads as coming from
+ * the right, matching the request ("another side right side").
+ */
+
+.ai-assistant-mic-popup {
+    position: absolute;
+    bottom: calc(100% + 0.45rem);
+    right: 0;
+    z-index: 99999;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    min-width: 330px;   /* 100 bars×2px + 99 gaps×1px = 299px; net content ≈ 303px after padding */
+    padding: 0.3rem;
+
+    background: var(
+        --pst-color-surface,
+        var(--color-background-primary, #fff)
+    );
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, #e1e4e5)
+    );
+    border-radius: 10px;
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.13),
+        0 2px  6px rgba(0, 0, 0, 0.07);
+
+    /* Hidden state */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(6px) translateY(3px);
+    transition:
+        opacity    0.14s ease,
+        transform  0.14s ease;
+}
+
+/* Visible state — expand-button click (data-pinned="true") only.
+ * The popup NEVER appears on hover; hover is used solely to reveal the
+ * expand-chevron button (.ai-assistant-mic-expand-btn) via a separate rule. */
+.ai-assistant-mic-popup[data-pinned="true"] {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0) translateY(0);
+}
+
+/* ── Dragged-popup overrides ─────────────────────────────────────────────────
+ *
+ * Once the user drags the popup, JS converts its CSS bottom/right anchors to
+ * explicit top/left offsets in offsetParent coordinates (position stays
+ * absolute — see the drag IIFE in _buildMicHoverPopup for the full rationale
+ * on why position:fixed is NOT used here).
+ *
+ * data-dragged="true" (set by JS) enables these overrides:
+ *
+ *   1. Replace slide-in transform with a plain opacity fade — the popup's
+ *      visual position is now governed by top/left, not transform.
+ *   2. Visibility is still controlled exclusively by data-pinned="true".
+ *
+ * No hover-cancel rules are needed here because the base visible-state rule
+ * above already omits the hover selector entirely.
+ *
+ * Specificity (class=0,1,0 + attribute=0,1,0 each):
+ *   .ai-assistant-mic-popup[data-dragged="true"]                    → 0,2,0
+ *   .ai-assistant-mic-popup[data-dragged="true"][data-pinned="true"] → 0,3,0 (wins)
+ */
+
+/* Hidden state when dragged — opacity fade only, no transform offset */
+.ai-assistant-mic-popup[data-dragged="true"] {
+    opacity: 0;
+    pointer-events: none;
+    transform: none;
+    transition: opacity 0.14s ease;
+}
+
+/* Visible state when dragged + pinned — stay fully visible at dragged position.
+ *
+ * transition: none  — suppresses the opacity 0→1 fade that [data-dragged]
+ *   introduces via its own transition declaration (specificity 0,2,0, source-
+ *   order win over [data-pinned]).  Without this override the popup flickers
+ *   invisible for ~140 ms every time a drag begins, because the browser sees
+ *   the opacity jump from 0 (dragged rule) to 1 (this rule) and animates it.
+ *   Setting transition:none here (specificity 0,3,0) wins outright and keeps
+ *   the popup solid throughout the entire drag interaction. */
+.ai-assistant-mic-popup[data-dragged="true"][data-pinned="true"] {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+    transition: none;
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-popup {
+    background: var(
+        --pst-color-surface,
+        var(--color-background-primary, #1e2124)
+    );
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.45),
+        0 2px  6px rgba(0, 0, 0, 0.28);
+}
+
+/* ─── Generic row ────────────────────────────────────────────────────────── */
+
+.ai-assistant-mic-popup-row {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.28rem 0.4rem;
+    border-radius: 7px;
+    transition: background-color 0.12s ease;
+    min-height: 1.85rem;
+}
+
+/* ─── Separator ──────────────────────────────────────────────────────────── */
+
+.ai-assistant-mic-popup-sep {
+    height: 1px;
+    margin: 0.15rem 0.4rem;
+    background: var(
+        --pst-color-border,
+        var(--color-foreground-border, #e8e8e8)
+    );
+    flex-shrink: 0;
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-popup-sep {
+    background: rgba(255, 255, 255, 0.10);
+}
+
+/* ─── Row 1: voice level visualization ──────────────────────────────────── */
+
+.ai-assistant-mic-popup-row--level {
+    justify-content: center;
+    gap: 0.2rem;
+    padding: 0.35rem 0.55rem;
+    cursor: grab;        /* drag-handle affordance for the movable popup    */
+    user-select: none;   /* prevent text selection while dragging           */
+}
+
+.ai-assistant-mic-popup-row--level:active {
+    cursor: grabbing;
+}
+
+.ai-assistant-mic-level-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 1px;
+    height: 24px;
+    /* 100 bars × 2px + 99 gaps × 1px = 299px — popup min-width is 330px (≈ 303px net) */
+    overflow: hidden;   /* clip any sub-pixel overflow on fractional viewports */
+}
+
+/* ─── Individual bar: JS-driven height from AnalyserNode, smooth transition ─── */
+/*
+ * CSS animation is intentionally absent.  Bar heights are set directly by the
+ * _startVizLoops() rAF loop from real Web Audio API frequency bin data.
+ * The height transition (0.04 s) smooths frame-to-frame changes without
+ * introducing visible lag.  background-color transitions on active state.
+ */
+.ai-mic-bar {
+    display: block;
+    width: 2px;
+    border-radius: 2px;
+    background: var(
+        --pst-color-text-muted,
+        var(--color-foreground-secondary, rgba(0, 0, 0, 0.22))
+    );
+    flex-shrink: 0;
+    /* height set by JS; transition smooths per-frame amplitude changes    */
+    transition: height 0.04s ease-out, background-color 0.15s ease;
+    will-change: height;
+}
+
+[data-bs-theme="dark"] .ai-mic-bar {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Active / recording — brand accent colour.
+ * No animation: real-time AnalyserNode data replaces CSS animation entirely.
+ * Adding animation here would conflict with inline style.height from JS.  */
+.ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar {
+    background: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2980b9)
+    );
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar {
+    background: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #5ba3d0)
+    );
+}
+
+.ai-assistant-mic-origin-warning {
+    margin: 10px 0;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: #fff8e1;
+    border: 1px solid #ffcc80;
+    color: #664d03;
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.ai-assistant-mic-origin-warning code {
+    font-family: monospace;
+    padding: 0.1rem 0.3rem;
+    border-radius: 4px;
+    background: rgba(0,0,0,0.06);
+    color: inherit;
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-origin-warning {
+    background: #332701;
+    border-color: #664d03;
+    color: #ffecb5;
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-origin-warning code {
+    background: rgba(255,255,255,0.08);
+    color: inherit;
+}
+
+/* ─── Row 2: hold-to-record ──────────────────────────────────────────────── */
+
+.ai-assistant-mic-popup-row--hold {
+    cursor: pointer;
+    user-select: none;
+}
+
+.ai-assistant-mic-popup-row--hold:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-popup-row--hold:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* Finger / pointer icon */
+.ai-assistant-mic-popup-icon {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    color: var(
+        --pst-color-text-muted,
+        var(--color-foreground-secondary, #888)
+    );
+}
+
+.ai-assistant-mic-popup-icon svg {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+    stroke: currentColor;
+    fill: none;
+}
+
+/* Label text */
+.ai-assistant-mic-popup-label {
+    flex: 1 1 auto;
+    font-size: 0.71rem;
+    font-weight: 500;
+    line-height: 1.2;
+    white-space: nowrap;
+    color: var(
+        --pst-color-text-base,
+        var(--color-foreground-primary, #1a1a1a)
+    );
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-popup-label {
+    color: var(
+        --pst-color-text-base,
+        var(--color-foreground-primary, #e4e6ea)
+    );
+}
+
+/* ─── Toggle switch ──────────────────────────────────────────────────────── */
+/*
+ * Compact pill toggle: 26 × 14 px track, 10 × 10 px thumb.
+ * OFF: grey track, thumb left.   ON: brand track, thumb right.
+ * aria-pressed drives the state — JS sets "true"/"false" via _setMicHoldMode.
+ */
+
+.ai-assistant-mic-popup-toggle {
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    padding: 2px;          /* widens the click / touch target slightly */
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 4px;
+    transition: outline-color 0.15s ease;
+}
+
+.ai-assistant-mic-toggle-track {
+    display: inline-block;
+    position: relative;
+    width: 26px;
+    height: 14px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.18);
+    transition: background-color 0.18s ease;
+    flex-shrink: 0;
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-toggle-track {
+    background: rgba(255, 255, 255, 0.22);
+}
+
+.ai-assistant-mic-toggle-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
+    transition: transform 0.18s ease;
+}
+
+/* ON state — brand-coloured track + thumb shifted right */
+.ai-assistant-mic-popup-toggle[aria-pressed="true"] .ai-assistant-mic-toggle-track {
+    background: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2980b9)
+    );
+}
+.ai-assistant-mic-popup-toggle[aria-pressed="true"] .ai-assistant-mic-toggle-thumb {
+    transform: translateX(12px);
+}
+
+/* Focus ring — keyboard accessible */
+.ai-assistant-mic-popup-toggle:focus         { outline: none; }
+.ai-assistant-mic-popup-toggle:focus-visible {
+    outline: 2px solid var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2980b9)
+    );
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* ─── Mic button data-hold visual hint ───────────────────────────────────── */
+/*
+ * When hold mode is ON, a subtle brand-tinted border on the mic button
+ * signals the changed interaction model without cluttering the idle UI.
+ * The standard hover/focus rules from .ai-assistant-panel-footer-btn are
+ * inherited and remain unchanged.
+ */
+
+.ai-assistant-panel-footer-btn--mic[data-hold="true"] {
+    outline: 1.5px solid var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2980b9)
+    );
+    outline-offset: -1px;
+}
+
+/* ─── Reduced-motion overrides ───────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-mic-popup {
+        transition: opacity 0.1s ease;
+        transform: none !important;
+    }
+    /* Level bars: JS skips rAF loop on prefers-reduced-motion.
+     * Bars hold their idle sinusoidal heights (set on HTML creation).
+     * The data-active colour change still signals "recording" state.  */
+    .ai-assistant-mic-level-bars[data-active="true"] .ai-mic-bar {
+        height: 12px;   /* static mid-height visible during recording    */
+        transition: none;
+    }
+    .ai-assistant-mic-toggle-track,
+    .ai-assistant-mic-toggle-thumb {
+        transition: none;
+    }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MIC DEVICE SELECTION — addition to MIC HOVER POPUP section
+   New nodes inside .ai-assistant-mic-popup:
+     .ai-assistant-mic-devices-section
+       .ai-assistant-mic-devices-header
+         .ai-assistant-mic-devices-header-icon
+         .ai-assistant-mic-devices-header-label
+       .ai-assistant-mic-device-list
+         .ai-assistant-mic-device-item ×N  (role=menuitemradio)
+           .ai-assistant-mic-device-name
+           .ai-assistant-mic-device-check
+   State:
+     .ai-assistant-mic-device-item[aria-checked="true"]  → selected visual
+     .ai-assistant-mic-devices-loading                    → async loading state
+     .ai-assistant-mic-devices-empty                      → no-devices state
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+
+/* ─── Devices section container ──────────────────────────────────────────── */
+
+.ai-assistant-mic-devices-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+
+/* ─── Group header ────────────────────────────────────────────────────────── */
+/*
+ * Decorative "Microphone" label above the device list.
+ * aria-hidden="true" in JS — purely visual, not read by screen readers
+ * (the device list group carries its own aria-label="Select microphone").
+ */
+
+.ai-assistant-mic-devices-header {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.55rem 0.15rem;
+    pointer-events: none;
+    user-select: none;
+}
+
+.ai-assistant-mic-devices-header-icon {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    color: var(
+        --pst-color-text-muted,
+        var(--color-foreground-secondary, #888)
+    );
+}
+
+.ai-assistant-mic-devices-header-icon svg {
+    width: 11px;
+    height: 11px;
+    stroke: currentColor;
+    fill: none;
+    flex-shrink: 0;
+}
+
+.ai-assistant-mic-devices-header-label {
+    font-size: 0.655rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    color: var(
+        --pst-color-text-muted,
+        var(--color-foreground-secondary, #999)
+    );
+    white-space: nowrap;
+}
+
+
+/* ─── Device list container ──────────────────────────────────────────────── */
+/*
+ * max-height + overflow-y:auto → compact scroll for 4+ devices.
+ * overscroll-behavior:contain   → prevents page scroll while scrolling list.
+ */
+
+.ai-assistant-mic-device-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-height: 130px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+/* Thin custom scrollbar — keeps the popup visually tight */
+.ai-assistant-mic-device-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.ai-assistant-mic-device-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ai-assistant-mic-device-list::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 2px;
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-device-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+
+/* ─── Individual device row ──────────────────────────────────────────────── */
+
+.ai-assistant-mic-device-item {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.28rem 0.55rem;
+    border-radius: 6px;
+    cursor: pointer;
+    user-select: none;
+    outline: none;
+    transition: background-color 0.1s ease;
+}
+
+.ai-assistant-mic-device-item:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-device-item:hover {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.ai-assistant-mic-device-item:focus-visible {
+    outline: 2px solid var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2980b9)
+    );
+    outline-offset: -2px;
+    border-radius: 6px;
+}
+
+
+/* ─── Device label + subtitle wrapper ───────────────────────────────────── */
+/*
+ * Two-line label: primary device name (truncated) above a muted category
+ * subtitle ("System default", "Communications", "Host microphone", etc.).
+ *
+ * flex: 1 1 auto absorbs all available space between the row left edge and
+ * the checkmark on the right.  min-width: 0 is required on flex children to
+ * allow overflow: hidden / text-overflow: ellipsis to work inside a flexbox.
+ * overflow: hidden prevents long hardware names from widening the popup.
+ */
+
+.ai-assistant-mic-device-label-wrap {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    gap: 0.1rem;
+}
+
+
+/* ─── Device name label ──────────────────────────────────────────────────── */
+/*
+ * Primary hardware name line inside the label wrapper.
+ * flex grow/shrink is now on the parent .ai-assistant-mic-device-label-wrap;
+ * the name span only needs overflow clipping and ellipsis.
+ * The full name is available via the title attribute (browser tooltip).
+ */
+
+.ai-assistant-mic-device-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.71rem;
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(
+        --pst-color-text-base,
+        var(--color-foreground-primary, #1a1a1a)
+    );
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-device-name {
+    color: var(
+        --pst-color-text-base,
+        var(--color-foreground-primary, #e4e6ea)
+    );
+}
+
+/* Selected item — slightly bolder to reinforce the active state */
+.ai-assistant-mic-device-item[aria-checked="true"] .ai-assistant-mic-device-name {
+    font-weight: 500;
+}
+
+
+/* ─── Device category subtitle ───────────────────────────────────────────── */
+/*
+ * Muted second line: category hint rendered by _categorizeMicDevice().
+ * Examples: "System default", "Communications", "Host microphone",
+ *           "Bluetooth headset", "USB microphone".
+ * aria-hidden="true" in JS — purely decorative; the name alone identifies
+ * the device to screen readers.
+ */
+
+.ai-assistant-mic-device-subtitle {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.615rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(
+        --pst-color-text-muted,
+        var(--color-foreground-secondary, #999)
+    );
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-device-subtitle {
+    color: var(
+        --pst-color-text-muted,
+        var(--color-foreground-secondary, #6b7280)
+    );
+}
+
+
+/* ─── Checkmark icon ─────────────────────────────────────────────────────── */
+/*
+ * Hidden by default (opacity: 0; width reserved so layout does not shift).
+ * Visible only when the parent item has aria-checked="true".
+ * opacity transition gives a smooth appear/disappear effect.
+ */
+
+.ai-assistant-mic-device-check {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    opacity: 0;
+    color: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2980b9)
+    );
+    transition: opacity 0.12s ease;
+}
+
+.ai-assistant-mic-device-check svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    stroke: currentColor;
+    fill: none;
+}
+
+.ai-assistant-mic-device-item[aria-checked="true"] .ai-assistant-mic-device-check {
+    opacity: 1;
+}
+
+
+/* ─── Loading and empty states ───────────────────────────────────────────── */
+
+.ai-assistant-mic-devices-loading,
+.ai-assistant-mic-devices-empty {
+    padding: 0.3rem 0.55rem;
+    font-size: 0.685rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.3;
+    color: var(
+        --pst-color-text-muted,
+        var(--color-foreground-secondary, #999)
+    );
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-devices-loading,
+[data-bs-theme="dark"] .ai-assistant-mic-devices-empty {
+    color: var(
+        --pst-color-text-muted,
+        var(--color-foreground-secondary, #6b7280)
+    );
+}
+
+
+/* ─── Reduced-motion overrides ───────────────────────────────────────────── */
+/*
+ * Disable the checkmark fade and device-item hover transition for users
+ * who have requested reduced motion via prefers-reduced-motion.
+ */
+
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-mic-device-check {
+        transition: none;
+    }
+    .ai-assistant-mic-device-item {
+        transition: none;
+    }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MIC PERMISSION BAR — browser URL-bar permission indicator
+   ─────────────────────────────────────────────────────────────────────────
+   Inserted directly into .ai-assistant-mic-devices-section, between the
+   group header (.ai-assistant-mic-devices-header) and the device list
+   (.ai-assistant-mic-device-list).
+
+   New DOM nodes:
+     .ai-assistant-mic-permission-bar [data-permission]
+       .ai-assistant-mic-perm-status
+         .ai-assistant-mic-perm-icon       ← SVG status icon
+         .ai-assistant-mic-perm-text       ← status message (aria-live)
+       .ai-assistant-mic-perm-urlbar       ← browser address-bar mockup
+         .ai-assistant-mic-perm-urlbar-chrome
+           .ai-assistant-mic-perm-urlbar-lock   ← 🔒 SVG
+           .ai-assistant-mic-perm-urlbar-url    ← hostname text
+           .ai-assistant-mic-perm-urlbar-mic    ← 🎤 SVG (pulsing/blocked)
+         .ai-assistant-mic-perm-urlbar-hint     ← "↑ click here" label
+
+   State via data-permission:
+     "granted"     → bar collapses (max-height:0, invisible), URL bar hidden
+     "prompt"      → info styling (blue), URL bar visible with pulsing mic
+     "denied"      → error styling (red/orange), URL bar with blocked mic
+     "unsupported" → neutral, URL bar hidden
+
+   Three-layer colour fallback throughout: --pst-color-* → --color-* → literal.
+   Dark mode via [data-bs-theme="dark"].
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+
+/* ─── Container ──────────────────────────────────────────────────────────── */
+/*
+ * max-height transition gives a smooth collapse when permission becomes
+ * 'granted'.  overflow:hidden required for the animation to work.
+ * The bar is always rendered in the DOM; only CSS hides/reveals it.
+ */
+
+.ai-assistant-mic-permission-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.28rem;
+    overflow: hidden;
+    max-height: 640px;    /* large enough for settings guide; collapses to 0 on granted */
+    margin: 0.15rem 0.2rem 0.1rem;
+    padding: 0.3rem 0.45rem 0.32rem;
+    border-radius: 6px;
+    transition: max-height 0.25s ease, opacity 0.2s ease, padding 0.2s ease;
+
+    /* Prompt (default): soft blue info tint */
+    background: rgba(41, 128, 185, 0.08);
+    border: 1px solid rgba(41, 128, 185, 0.22);
+}
+
+/* Granted → collapse + hide completely */
+.ai-assistant-mic-permission-bar[data-permission="granted"] {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    opacity: 0;
+    border-color: transparent;
+    pointer-events: none;
+}
+
+/* Denied → red/orange tint */
+.ai-assistant-mic-permission-bar[data-permission="denied"] {
+    background: rgba(192, 57, 43, 0.07);
+    border-color: rgba(192, 57, 43, 0.25);
+}
+
+/* Unsupported → neutral grey */
+.ai-assistant-mic-permission-bar[data-permission="unsupported"] {
+    background: transparent;
+    border-color: rgba(128, 128, 128, 0.2);
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-permission-bar {
+    background: rgba(52, 152, 219, 0.11);
+    border-color: rgba(52, 152, 219, 0.25);
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-permission-bar[data-permission="denied"] {
+    background: rgba(231, 76, 60, 0.12);
+    border-color: rgba(231, 76, 60, 0.28);
+}
+
+
+/* ─── Status row (icon + text) ───────────────────────────────────────────── */
+
+.ai-assistant-mic-perm-status {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.ai-assistant-mic-perm-icon {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    width: 13px;
+    height: 13px;
+    color: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+}
+
+/* Denied → red icon */
+.ai-assistant-mic-permission-bar[data-permission="denied"] .ai-assistant-mic-perm-icon {
+    color: var(--pst-color-danger, #c0392b);
+}
+
+.ai-assistant-mic-perm-icon svg {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+    stroke: currentColor;
+    fill: none;
+}
+
+.ai-assistant-mic-perm-text {
+    flex: 1 1 auto;
+    font-size: 0.665rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--pst-color-primary, var(--color-brand-primary, #2469a0));
+    white-space: normal;          /* allow wrapping for longer messages */
+}
+
+.ai-assistant-mic-permission-bar[data-permission="denied"] .ai-assistant-mic-perm-text {
+    color: var(--pst-color-danger, #c0392b);
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-perm-text {
+    color: var(--pst-color-primary, var(--color-brand-primary, #5dade2));
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-permission-bar[data-permission="denied"]
+    .ai-assistant-mic-perm-text {
+    color: #e57373;
+}
+
+
+/* ─── URL-bar mockup ─────────────────────────────────────────────────────── */
+/*
+ * Hidden for 'granted' and 'unsupported' states (handled by the container
+ * collapse above).  Visible for 'prompt' and 'denied'.
+ */
+
+.ai-assistant-mic-perm-urlbar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+/* Hide URL bar for granted / unsupported */
+.ai-assistant-mic-permission-bar[data-permission="granted"]   .ai-assistant-mic-perm-urlbar,
+.ai-assistant-mic-permission-bar[data-permission="unsupported"] .ai-assistant-mic-perm-urlbar {
+    display: none;
+}
+
+
+/* ── Address-bar chrome ─────────────────────────────────────────────────── */
+/*
+ * Mimics the browser address bar: rounded pill with lock left, URL centre,
+ * mic permission icon right.  The mic icon pulses for 'prompt' and shows a
+ * crossed/blocked visual for 'denied'.
+ */
+
+.ai-assistant-mic-perm-urlbar-chrome {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.2rem 0.35rem;
+    background: var(
+        --pst-color-surface,
+        var(--color-background-primary, #f5f6fa)
+    );
+    border: 1px solid var(
+        --pst-color-border,
+        var(--color-foreground-border, #d0d3d9)
+    );
+    border-radius: 99px;       /* pill shape — matches real browser chrome */
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-perm-urlbar-chrome {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+
+/* ── Lock icon ─────────────────────────────────────────────────────────── */
+
+.ai-assistant-mic-perm-urlbar-lock {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    color: #6c757d;
+}
+
+.ai-assistant-mic-perm-urlbar-lock svg {
+    width: 10px;
+    height: 10px;
+    stroke: currentColor;
+    fill: none;
+}
+
+
+/* ── Hostname text ──────────────────────────────────────────────────────── */
+
+.ai-assistant-mic-perm-urlbar-url {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.6rem;
+    font-weight: 400;
+    line-height: 1;
+    color: var(
+        --pst-color-text-base,
+        var(--color-foreground-primary, #444)
+    );
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-perm-urlbar-url {
+    color: var(
+        --pst-color-text-base,
+        var(--color-foreground-primary, #ccc)
+    );
+}
+
+
+/* ── Mic permission icon (right end of address bar) ─────────────────────── */
+/*
+ * 'prompt' state: pulsing blue ring animation (draws user's eye to it).
+ * 'denied' state: orange/red with a small ✕ overlay (blocked visual).
+ *
+ * The pulsing animation uses a CSS outline glow rather than scale/transform
+ * so it does not shift surrounding layout.
+ */
+
+.ai-assistant-mic-perm-urlbar-mic {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    position: relative;
+
+    /* Prompt state: blue tint */
+    color: var(--pst-color-primary, var(--color-brand-primary, #2980b9));
+    background: rgba(41, 128, 185, 0.12);
+    animation: ai-mic-perm-pulse 2s ease-in-out infinite;
+}
+
+/* Denied state: orange/red blocked appearance */
+.ai-assistant-mic-permission-bar[data-permission="denied"]
+    .ai-assistant-mic-perm-urlbar-mic {
+    color: #c0392b;
+    background: rgba(192, 57, 43, 0.12);
+    animation: none;
+}
+
+.ai-assistant-mic-perm-urlbar-mic svg {
+    width: 11px;
+    height: 11px;
+    stroke: currentColor;
+    fill: none;
+}
+
+/* ==========================================================
+   Theme tokens
+   ========================================================== */
+
+:root {
+    --ai-mic-perm-pulse-rgb: 41, 128, 185;
+    --ai-mic-perm-pulse-opacity: 0.45;
+    --ai-mic-perm-pulse-size: 3px;
+    --ai-mic-perm-pulse-duration: 1.5s;
+}
+
+[data-bs-theme="dark"] {
+    --ai-mic-perm-pulse-rgb: 93, 173, 226;
+    --ai-mic-perm-pulse-opacity: 0.50;
+}
+
+/* Optional future themes */
+
+[data-bs-theme="high-contrast"] {
+    --ai-mic-perm-pulse-rgb: 255, 255, 0;
+    --ai-mic-perm-pulse-opacity: 0.75;
+}
+
+[data-bs-theme="corporate"] {
+    --ai-mic-perm-pulse-rgb: 0, 102, 204;
+    --ai-mic-perm-pulse-opacity: 0.50;
+}
+
+/* ==========================================================
+   Animation definition
+   ========================================================== */
+
+@keyframes ai-mic-perm-pulse {
+    0%,
+    100% {
+        box-shadow:
+            0 0 0 0
+            rgba(
+                var(--ai-mic-perm-pulse-rgb),
+                var(--ai-mic-perm-pulse-opacity)
+            );
+    }
+
+    50% {
+        box-shadow:
+            0 0 0
+            var(--ai-mic-perm-pulse-size)
+            rgba(
+                var(--ai-mic-perm-pulse-rgb),
+                0
+            );
+    }
+}
+
+/* ==========================================================
+   Usage
+   ========================================================== */
+
+.ai-mic-perm-active {
+    animation:
+        ai-mic-perm-pulse
+        var(--ai-mic-perm-pulse-duration)
+        infinite;
+}
+
+/* ── Hint label ─────────────────────────────────────────────────────────── */
+/*
+ * Small arrow label pointing up toward the mic icon in the chrome bar.
+ * Right-aligned to sit below the mic icon column.
+ */
+
+.ai-assistant-mic-perm-urlbar-hint {
+    font-size: 0.595rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.2;
+    text-align: right;
+    padding-right: 0.2rem;
+    color: var(
+        --pst-color-text-muted,
+        var(--color-foreground-secondary, #888)
+    );
+    user-select: none;
+    pointer-events: none;
+}
+
+.ai-assistant-mic-permission-bar[data-permission="denied"]
+    .ai-assistant-mic-perm-urlbar-hint {
+    color: var(--pst-color-danger, #c0392b);
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-perm-urlbar-hint {
+    color: var(
+        --pst-color-text-muted,
+        var(--color-foreground-secondary, #6b7280)
+    );
+}
+
+
+/* ─── Reduced-motion overrides ───────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-mic-permission-bar {
+        transition: none;
+    }
+    .ai-assistant-mic-perm-urlbar-mic {
+        animation: none;
+    }
+}
+
+
+/* ════════════════════════════════════════════════════════════════════════════
+   Browser-specific settings guide
+   (.ai-assistant-mic-perm-settings)
+
+   Shown inside .ai-assistant-mic-permission-bar for 'prompt' and 'denied'
+   states.  Hidden via JS (display:none) when permission is already granted.
+
+   DOM:
+     .ai-assistant-mic-perm-settings
+       .ai-assistant-mic-perm-settings-header
+         .ai-assistant-mic-perm-settings-browser   ← badge: "Chrome" etc.
+         .ai-assistant-mic-perm-settings-title
+       .ai-assistant-mic-perm-settings-url-row
+         code.ai-assistant-mic-perm-settings-url   ← paste-in URL
+         button.ai-assistant-mic-perm-settings-copy
+       ol.ai-assistant-mic-perm-settings-steps     ← current method
+       button.ai-assistant-mic-perm-settings-legacy-toggle
+       ol.ai-assistant-mic-perm-settings-legacy-body ← older method (hidden)
+   ════════════════════════════════════════════════════════════════════════════ */
+
+.ai-assistant-mic-perm-settings {
+    display: flex;
+    flex-direction: column;
+    gap: 0.26rem;
+    margin-top: 0.15rem;
+    padding-top: 0.25rem;
+    border-top: 1px solid rgba(41, 128, 185, 0.18);
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-perm-settings {
+    border-top-color: rgba(93, 173, 226, 0.2);
+}
+
+.ai-assistant-mic-permission-bar[data-permission="denied"] .ai-assistant-mic-perm-settings {
+    border-top-color: rgba(192, 57, 43, 0.2);
+}
+
+
+/* ─── Header row ─────────────────────────────────────────────────────────── */
+
+.ai-assistant-mic-perm-settings-header {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+/* Browser name badge: "Chrome", "Firefox", "Edge" etc. */
+.ai-assistant-mic-perm-settings-browser {
+    display: inline-block;
+    flex-shrink: 0;
+    padding: 0.05rem 0.32rem;
+    border-radius: 3px;
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 1.5;
+    color: var(--pst-color-primary, var(--color-brand-primary, #2469a0));
+    background: rgba(41, 128, 185, 0.13);
+    border: 1px solid rgba(41, 128, 185, 0.22);
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-perm-settings-browser {
+    color: var(--pst-color-primary, #5dade2);
+    background: rgba(93, 173, 226, 0.13);
+    border-color: rgba(93, 173, 226, 0.25);
+}
+
+.ai-assistant-mic-perm-settings-title {
+    font-size: 0.63rem;
+    font-weight: 600;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #333));
+    line-height: 1.3;
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-perm-settings-title {
+    color: var(--pst-color-text-base, #ddd);
+}
+
+
+/* ─── URL row (copy-paste URL + Copy button) ─────────────────────────────── */
+
+.ai-assistant-mic-perm-settings-url-row {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--pst-color-border, var(--color-foreground-border, #cdd));
+}
+
+[data-bs-theme="dark"] .ai-assistant-mic-perm-settings-url-row {
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+code.ai-assistant-mic-perm-settings-url {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    padding: 0.22rem 0.4rem;
+    font-size: 0.585rem;
+    font-family: ui-monospace, 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+    line-height: 1.45;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #333));
+    background: var(--pst-color-surface, var(--color-background-primary, #f5f6fa));
+    border: none;
+    cursor: text;
+    user-select: all;   /* single-click selects all for easy manual copy */
+}
+
+[data-bs-theme="dark"] code.ai-assistant-mic-perm-settings-url {
+    color: #cdd;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+button.ai-assistant-mic-perm-settings-copy {
+    flex-shrink: 0;
+    padding: 0 0.45rem;
+    font-size: 0.595rem;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    border: none;
+    border-left: 1px solid var(--pst-color-border, var(--color-foreground-border, #cdd));
+    border-radius: 0;
+    background: rgba(41, 128, 185, 0.1);
+    color: var(--pst-color-primary, var(--color-brand-primary, #2469a0));
+    transition: background 0.15s ease;
+    white-space: nowrap;
+}
+
+button.ai-assistant-mic-perm-settings-copy:hover {
+    background: rgba(41, 128, 185, 0.2);
+}
+
+button.ai-assistant-mic-perm-settings-copy:active {
+    background: rgba(41, 128, 185, 0.3);
+}
+
+[data-bs-theme="dark"] button.ai-assistant-mic-perm-settings-copy {
+    background: rgba(93, 173, 226, 0.12);
+    color: #5dade2;
+    border-left-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-bs-theme="dark"] button.ai-assistant-mic-perm-settings-copy:hover {
+    background: rgba(93, 173, 226, 0.22);
+}
+
+
+/* ─── Steps list (current / new method) ─────────────────────────────────── */
+
+ol.ai-assistant-mic-perm-settings-steps,
+ol.ai-assistant-mic-perm-settings-legacy-body {
+    margin: 0;
+    padding-left: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.13rem;
+}
+
+ol.ai-assistant-mic-perm-settings-steps li,
+ol.ai-assistant-mic-perm-settings-legacy-body li {
+    font-size: 0.62rem;
+    line-height: 1.45;
+    color: var(--pst-color-text-base, var(--color-foreground-primary, #444));
+}
+
+[data-bs-theme="dark"] ol.ai-assistant-mic-perm-settings-steps li,
+[data-bs-theme="dark"] ol.ai-assistant-mic-perm-settings-legacy-body li {
+    color: var(--pst-color-text-base, #c8d0da);
+}
+
+
+/* ─── Legacy toggle button ───────────────────────────────────────────────── */
+
+button.ai-assistant-mic-perm-settings-legacy-toggle {
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.595rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--pst-color-text-muted, var(--color-foreground-secondary, #777));
+    text-align: left;
+    transition: color 0.15s ease;
+}
+
+button.ai-assistant-mic-perm-settings-legacy-toggle:hover {
+    color: var(--pst-color-primary, var(--color-brand-primary, #2469a0));
+}
+
+[data-bs-theme="dark"] button.ai-assistant-mic-perm-settings-legacy-toggle {
+    color: var(--pst-color-text-muted, #7a8a99);
+}
+
+[data-bs-theme="dark"] button.ai-assistant-mic-perm-settings-legacy-toggle:hover {
+    color: #5dade2;
+}
+
+/* Legacy body — hidden until toggle is activated */
+ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
+    display: none;
+}
+
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   FOOTER SOUNDBAR — real-time decibel waveform, newest sample right
+   ─────────────────────────────────────────────────────────────────────────
+   Architecture
+   ────────────
+   JS (_startVizLoops) builds bar elements at recording-start via
+   _rebuildSoundbarBars(), sizing them to the current viewport.
+   _computeSoundbarBarCount() picks the bar count from a 4-step
+   breakpoint table that mirrors the CSS max-width breakpoints below.
+
+   RMS amplitude from the Web Audio AnalyserNode drives bar heights
+   every _SOUNDBAR_TICK_MS (80 ms).  The ring buffer scrolls:
+   newest sample appears on the RIGHT, oldest exits on the LEFT.
+   \`justify-content: flex-end\` anchors the rightmost (newest) bars
+   to the right edge; CSS \`overflow: hidden\` clips the leftmost
+   (oldest) bars on narrow viewports.
+
+   Bar opacity is proportional to height: 0.30 at silence, 1.00 at
+   peak.  JS sets style.opacity each tick — no CSS keyframes needed.
+
+   Responsive bar counts / max-widths (bar×3px + gap×2px + 6px slack):
+     ≥ 768 px  →  24 bars →  max-width: 124 px  (desktop / tablet)
+     480–767 px  →  16 bars →  max-width:  84 px  (large phone)
+     360–479 px  →  12 bars →  max-width:  64 px  (phone)
+       < 360 px  →   8 bars →  max-width:  44 px  (small phone)
+
+   States
+   ──────
+   Inactive → max-width: 0 + opacity: 0 collapses container.
+             No layout shift; zero battery impact.
+   Active   → data-active added by JS; max-width + opacity expand.
+             _startVizLoops() builds bars and starts the tick loop.
+   Stop     → data-active removed; container collapses;
+             _stopVizLoops() resets heights and opacity to idle.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Container — collapsed when idle, expands rightward on data-active */
+.ai-assistant-footer-soundbar {
+    display: inline-flex;
+    align-items: flex-end;          /* bars grow upward from bottom           */
+    justify-content: flex-end;      /* newest bars anchored to RIGHT edge     */
+    gap: 2px;
+    height: 20px;
+    flex-shrink: 0;
+    overflow: hidden;               /* clips oldest (left) bars on narrow vp  */
+    max-width: 0;
+    opacity: 0;
+    transition: max-width 0.22s ease, opacity 0.18s ease;
+}
+
+/* Revealed when mic is active — desktop / tablet (≥ 768 px): 24 bars */
+.ai-assistant-footer-soundbar[data-active] {
+    max-width: 124px;   /* 24 × 3px + 23 × 2px = 118px + 6px slack */
+    opacity: 1;
+}
+
+/* Large phone (480–767 px): 16 bars */
+@media (max-width: 767px) {
+    .ai-assistant-footer-soundbar[data-active] {
+        max-width: 84px;   /* 16 × 3 + 15 × 2 = 78 + 6 */
+    }
+}
+
+/* Phone (360–479 px): 12 bars */
+@media (max-width: 479px) {
+    .ai-assistant-footer-soundbar[data-active] {
+        max-width: 64px;   /* 12 × 3 + 11 × 2 = 58 + 6 */
+    }
+}
+
+/* Very small phone (< 360 px): 8 bars */
+@media (max-width: 359px) {
+    .ai-assistant-footer-soundbar[data-active] {
+        max-width: 44px;   /* 8 × 3 + 7 × 2 = 38 + 6 */
+    }
+}
+
+/* Individual bars:
+ *   height  — set by JS from RMS amplitude (2 px silence → 16 px full scale)
+ *   opacity — set by JS proportional to height (0.30 silence → 1.0 peak)
+ *   Both transitions smooth per-tick changes without snapping.              */
+.ai-assistant-footer-soundbar-bar {
+    display: block;
+    width: 3px;
+    height: 2px;
+    min-height: 2px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    opacity: 0.30;
+    background: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #2980b9)
+    );
+    transition: height 0.07s ease-out, opacity 0.07s ease-out;
+    will-change: height, opacity;
+}
+
+[data-bs-theme="dark"] .ai-assistant-footer-soundbar-bar {
+    background: var(
+        --pst-color-primary,
+        var(--color-brand-primary, #5ba3d0)
+    );
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-mic-permission-bar {
+        transition: none;
+    }
+    .ai-assistant-mic-perm-urlbar-mic {
+        animation: none;
+    }
+    /* Soundbar: JS skips the tick loop; bars hold 2px silence height.
+     * Container still appears so the user sees it's present — just static. */
+    .ai-assistant-footer-soundbar-bar {
+        transition: none;
+        opacity: 0.45;
+    }
+    .ai-assistant-footer-soundbar {
+        transition: none;
+    }
 }
