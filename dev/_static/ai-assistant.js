@@ -3578,9 +3578,708 @@
         var scrollEl = document.createElement('div');
         scrollEl.className = 'ai-assistant-panel-sheet-scroll';
         scrollEl.appendChild(bodyEl);
+        _attachModelFilter(scrollEl, bodyEl, models);
         sheet.appendChild(scrollEl);
         _appendModelSheetSections(scrollEl);
         return sheet;
+    }
+
+    /**
+     * Attach a filter bar and pagination controls to the model-sheet scroll wrapper.
+     *
+     * Injected DOM structure inside scrollEl after this call:
+     *
+     *   scrollEl
+     *     filterBar   ← inserted BEFORE bodyEl (search + scope chips + meta row)
+     *     bodyEl      ← model-row labels (never removed; only display toggled)
+     *     _pagBar     ← inserted AFTER bodyEl (page buttons; hidden when not needed)
+     *     … effort / thinking / future sections (added later)
+     *
+     * Invariants
+     * ----------
+     * • The currently-checked radio row is NEVER hidden — it stays visible with a
+     *   "selected" badge when it falls outside the current filter result set.
+     * • ARIA radiogroup semantics are preserved: rows remain in the DOM; only
+     *   their CSS display property is toggled (display:flex / display:none).
+     * • Filter state (query, scope, sort, page) persists while the sheet is open.
+     * • Calling this function more than once on the same scrollEl is a safe no-op
+     *   (guarded by dataset.filterAttached).
+     *
+     * Parameters
+     * ----------
+     * scrollEl : HTMLElement
+     *     The .ai-assistant-panel-sheet-scroll wrapper element.
+     * bodyEl : HTMLElement
+     *     The .ai-assistant-panel-model-list radiogroup container.
+     * models : Array
+     *     The panelApiModels config array passed to _buildModelSheet.
+     *
+     * Notes
+     * -----
+     * Developer: Filter state resets only via explicit user action (clear button,
+     *   Escape key).  It intentionally persists across sheet open/close cycles so
+     *   the user returns to their last search context.
+     * Developer: _safeInt() is used (already defined in IIFE scope) to bound the
+     *   configurable page size.
+     */
+    function _attachModelFilter(scrollEl, bodyEl, models) {
+
+        // ── Guard: idempotent — safe to call more than once ───────────────────
+        if (scrollEl.dataset.filterAttached === 'true') return;
+
+        // ── Threshold: only attach when there are enough models to warrant it ─
+        // Configurable: set panelFilterThreshold in conf.py (default 2).
+        var cfg = window.AI_ASSISTANT_CONFIG || {};
+        var THRESHOLD = _safeInt(cfg.panelFilterThreshold, 1, 9999, 2);
+        if (!models || models.length < THRESHOLD) return;
+
+        scrollEl.dataset.filterAttached = 'true';
+
+        // Page size: configurable via conf.py panelFilterPageSize; bounded 1–200.
+        // Developer note: values > 200 are clamped to 200 to prevent unresponsive
+        // rendering on very large model lists.
+        var PAGE_SIZE = _safeInt(cfg.panelFilterPageSize, 1, 200, 10);
+
+        // ── Filter state ──────────────────────────────────────────────────────
+        var _query = '';        // lowercase trimmed search string; '' = no filter
+        var _scope = 'all';     // which field to search: 'all'|'title'|'provider'|'desc'|'id'
+        var _sort  = 'default'; // sort order: 'default'|'az'|'za'|'provider'
+        var _page  = 0;         // 0-indexed current page
+
+        // ── Snapshot rows from DOM once at init ───────────────────────────────
+        // Rows are never added/removed by this module; only display is toggled.
+        var _rows = Array.prototype.slice.call(
+            bodyEl.querySelectorAll('.ai-assistant-panel-model-row')
+        );
+        if (_rows.length === 0) return;
+
+        // Pre-extract lowercase text per row (O(n) once; avoids repeated DOM reads).
+        var _rowData = _rows.map(function (row, i) {
+            var titleEl = row.querySelector('.ai-assistant-panel-model-title');
+            var subEl   = row.querySelector('.ai-assistant-panel-model-sub');
+            var descEl  = row.querySelector('.ai-assistant-panel-model-desc');
+            var id      = (row.getAttribute('data-id') || '').toLowerCase();
+            var title   = titleEl ? titleEl.textContent.toLowerCase() : '';
+            var sub     = subEl   ? subEl.textContent.toLowerCase()   : '';
+            var desc    = descEl  ? descEl.textContent.toLowerCase()  : '';
+            return {
+                row:     row,
+                id:      id,
+                title:   title,
+                sub:     sub,
+                desc:    desc,
+                all:     title + ' ' + sub + ' ' + desc + ' ' + id,
+                origIdx: i   // stable original order for 'Default' sort
+            };
+        });
+
+        // ── SVG constants (inline; no external file dependency; not user input) ─
+        var _SVG_SEARCH =
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"' +
+            ' stroke-width="2" stroke-linecap="round" stroke-linejoin="round"' +
+            ' aria-hidden="true"><circle cx="11" cy="11" r="8"/>' +
+            '<line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>';
+
+        var _SVG_CLOSE =
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"' +
+            ' stroke-width="2" stroke-linecap="round" aria-hidden="true">' +
+            '<line x1="18" y1="6" x2="6" y2="18"/>' +
+            '<line x1="6" y1="6" x2="18" y2="18"/></svg>';
+
+        var _SVG_PREV =
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"' +
+            ' stroke-width="2" stroke-linecap="round" stroke-linejoin="round"' +
+            ' aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>';
+
+        var _SVG_NEXT =
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"' +
+            ' stroke-width="2" stroke-linecap="round" stroke-linejoin="round"' +
+            ' aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>';
+
+        // ── Empty state element (appended to bodyEl; shown when 0 results) ────
+        // All user-visible text is set via textContent — never innerHTML.
+        var _emptyEl = document.createElement('div');
+        _emptyEl.className = 'ai-assistant-panel-filter-empty';
+        _emptyEl.style.display = 'none';
+
+        var _emptyIcon = document.createElement('span');
+        _emptyIcon.className = 'ai-assistant-panel-filter-empty-icon';
+        _emptyIcon.setAttribute('aria-hidden', 'true');
+        _emptyIcon.innerHTML = _SVG_SEARCH;   // safe: static SVG constant
+
+        var _emptyMsg = document.createElement('p');
+
+        var _emptyClearBtn = document.createElement('button');
+        _emptyClearBtn.type = 'button';
+        _emptyClearBtn.className = 'ai-assistant-panel-filter-clear-all';
+        _emptyClearBtn.textContent = 'Clear filter';
+        _emptyClearBtn.addEventListener('click', function () { _clearFilter(); });
+
+        _emptyEl.appendChild(_emptyIcon);
+        _emptyEl.appendChild(_emptyMsg);
+        _emptyEl.appendChild(_emptyClearBtn);
+        bodyEl.appendChild(_emptyEl);
+
+        // ── Outside-filter badge: added to the checked row when it is filtered out ─
+        function _ensureOutsideBadge(row) {
+            if (row.querySelector('.ai-assistant-panel-filter-outside-badge')) return;
+            var badge = document.createElement('span');
+            badge.className = 'ai-assistant-panel-filter-outside-badge';
+            badge.textContent = 'selected';
+            badge.setAttribute('aria-label', 'currently selected — not in current filter');
+            row.appendChild(badge);
+        }
+        function _removeOutsideBadge(row) {
+            var b = row.querySelector('.ai-assistant-panel-filter-outside-badge');
+            if (b) b.parentNode.removeChild(b);
+        }
+
+        // ── Filter helpers ────────────────────────────────────────────────────
+        function _getSearchField(d) {
+            switch (_scope) {
+                case 'title':    return d.title;
+                case 'provider': return d.sub;
+                case 'desc':     return d.desc;
+                case 'id':       return d.id;
+                default:         return d.all;
+            }
+        }
+
+        function _matchesQuery(d) {
+            if (!_query) return true;
+            return _getSearchField(d).indexOf(_query) !== -1;
+        }
+
+        function _applySort(items) {
+            var copy = items.slice();
+            if (_sort === 'az') {
+                copy.sort(function (a, b) {
+                    return a.title.localeCompare(b.title);
+                });
+            } else if (_sort === 'za') {
+                copy.sort(function (a, b) {
+                    return b.title.localeCompare(a.title);
+                });
+            } else if (_sort === 'provider') {
+                copy.sort(function (a, b) {
+                    return a.sub.localeCompare(b.sub);
+                });
+            } else {
+                // Default: restore original config order.
+                copy.sort(function (a, b) {
+                    return a.origIdx - b.origIdx;
+                });
+            }
+            return copy;
+        }
+
+        // ── Smart page-range builder ──────────────────────────────────────────
+        //
+        // Produces a mixed array of page indices (numbers) and '...' sentinels
+        // for display in the pagination row.  Always shows: first page, last page,
+        // current page, and one page either side of current.  No Set/Array.from
+        // dependency — compatible with the ES5-syntax style of this IIFE.
+        //
+        // Examples (0-indexed internally, 1-indexed in UI):
+        //   _buildPageRange(0, 3)  → [0, 1, 2]
+        //   _buildPageRange(5, 10) → [0, '...', 4, 5, 6, '...', 9]
+        //   _buildPageRange(1, 10) → [0, 1, 2, '...', 9]
+        function _buildPageRange(current, total) {
+            if (total <= 7) {
+                var all = [];
+                for (var i = 0; i < total; i++) all.push(i);
+                return all;
+            }
+            // Collect unique "always-show" page indices into a plain object.
+            var shown = {};
+            shown[0] = true;
+            shown[total - 1] = true;
+            shown[current] = true;
+            if (current - 1 >= 0)    shown[current - 1] = true;
+            if (current + 1 < total) shown[current + 1] = true;
+
+            var keys = [];
+            var k;
+            for (k in shown) {
+                if (Object.prototype.hasOwnProperty.call(shown, k)) {
+                    keys.push(parseInt(k, 10));
+                }
+            }
+            keys.sort(function (a, b) { return a - b; });
+
+            var result = [];
+            for (var j = 0; j < keys.length; j++) {
+                if (j > 0 && keys[j] - keys[j - 1] > 1) result.push('...');
+                result.push(keys[j]);
+            }
+            return result;
+        }
+
+        // ── Debounce utility ──────────────────────────────────────────────────
+        function _debounce(fn, ms) {
+            var timer = null;
+            return function () {
+                var ctx = this, args = arguments;
+                clearTimeout(timer);
+                timer = setTimeout(function () { fn.apply(ctx, args); }, ms);
+            };
+        }
+
+        // ── Clear all filter state ────────────────────────────────────────────
+        function _clearFilter() {
+            _query = '';
+            _scope = 'all';
+            _sort  = 'default';
+            _page  = 0;
+            _input.value = '';
+            _updateChips();
+            _updateSortLabel();
+            _render();
+            _input.focus();
+        }
+
+        // ── Sync chip active states to _scope ─────────────────────────────────
+        function _updateChips() {
+            _chips.forEach(function (chip) {
+                var active = chip.getAttribute('data-scope') === _scope;
+                chip.setAttribute('aria-pressed', active ? 'true' : 'false');
+                chip.classList.toggle('ai-assistant-panel-filter-chip--active', active);
+            });
+        }
+
+        // ── Sync sort button label to _sort ───────────────────────────────────
+        var _SORT_LABELS = {
+            'default':  'Sort',
+            'az':       'A \u2192 Z',
+            'za':       'Z \u2192 A',
+            'provider': 'Provider'
+        };
+
+        function _updateSortLabel() {
+            _sortLabelSpan.textContent = _SORT_LABELS[_sort] || 'Sort';
+            _sortBtn.classList.toggle(
+                'ai-assistant-panel-filter-sort--active',
+                _sort !== 'default'
+            );
+        }
+
+        // ── Main render ───────────────────────────────────────────────────────
+        //
+        // Pure display pass: derives visibility from state, never mutates state.
+        // Called after every state change (query, scope, sort, page).
+        function _render() {
+            // 1. Find currently checked row — must always remain visible.
+            var checkedRow = null;
+            var ci;
+            for (ci = 0; ci < _rows.length; ci++) {
+                var radio = _rows[ci].querySelector('input[type="radio"]');
+                if (radio && radio.checked) { checkedRow = _rows[ci]; break; }
+            }
+
+            // 2. Filter: apply query against selected scope field.
+            var filtered = _rowData.filter(_matchesQuery);
+
+            // 3. Sort filtered results.
+            var sorted = _applySort(filtered);
+
+            // 4. Clamp page index within valid range (handles filter narrowing pages).
+            var totalPages = sorted.length > 0
+                ? Math.ceil(sorted.length / PAGE_SIZE)
+                : 1;
+            if (_page >= totalPages) _page = totalPages - 1;
+            if (_page < 0) _page = 0;
+
+            // 5. Compute current page slice.
+            var start = _page * PAGE_SIZE;
+            var pageSlice = sorted.slice(start, start + PAGE_SIZE);
+
+            // Build O(1) page-membership lookup keyed on origIdx.
+            var inSlice = {};
+            pageSlice.forEach(function (d) { inSlice[d.origIdx] = true; });
+
+            // 6. Apply visibility to every row.
+            _rowData.forEach(function (d) {
+                var onPage    = !!inSlice[d.origIdx];
+                var isChecked = (d.row === checkedRow);
+                var show      = onPage || isChecked;
+
+                d.row.style.display = show ? 'flex' : 'none';
+
+                if (isChecked && !onPage) {
+                    _ensureOutsideBadge(d.row);
+                } else {
+                    _removeOutsideBadge(d.row);
+                }
+            });
+
+            // 6b. Reorder visible rows in the DOM to match the sorted page
+            // order.  When all rows fit on a single page every row is visible
+            // regardless of sort, so only toggling display has no effect —
+            // the browser keeps the original insertion order.
+            // bodyEl.appendChild on an already-attached node MOVES it (no
+            // clone, no removal event), making this O(n) and allocation-free.
+            // Hidden rows are left in place; their position is irrelevant.
+            pageSlice.forEach(function (d) {
+                bodyEl.appendChild(d.row);
+            });
+            // If the checked row is outside the current page slice it was
+            // rendered at the top of the loop above — keep it visually
+            // anchored before the page slice by prepending it now.
+            if (checkedRow && !inSlice[_rowData.filter(function (d) {
+                return d.row === checkedRow;
+            })[0].origIdx]) {
+                bodyEl.insertBefore(checkedRow, bodyEl.querySelector(
+                    '.ai-assistant-panel-model-row[style*="flex"]'
+                ) || _emptyEl);
+            }
+
+            // 7. Empty state — shown when the query matches 0 rows.
+            if (sorted.length === 0) {
+                _emptyEl.style.display = 'flex';
+                // textContent is safe for user-supplied _query.
+                _emptyMsg.textContent = _query
+                    ? 'No models match \u201C' + _query + '\u201D'
+                    : 'No models in this view';
+            } else {
+                _emptyEl.style.display = 'none';
+            }
+
+            // 8. Update ARIA-live meta line (announced by screen readers).
+            _updateMeta(sorted.length, totalPages);
+
+            // 9. Update pagination bar.
+            _renderPagination(totalPages, sorted.length);
+
+            // 10. Toggle clear (×) button — only visible when there is a query.
+            _clearBtn.style.display = _query ? 'flex' : 'none';
+        }
+
+        function _updateMeta(totalFiltered, totalPages) {
+            var allCount = _rowData.length;
+            var text;
+            if (_query || _sort !== 'default') {
+                text = totalFiltered + ' of ' + allCount +
+                    ' model' + (allCount !== 1 ? 's' : '');
+            } else {
+                text = allCount + ' model' + (allCount !== 1 ? 's' : '');
+            }
+            _countEl.textContent = text;
+
+            if (totalFiltered > PAGE_SIZE && totalPages > 1) {
+                _pageInfoEl.textContent =
+                    '\u00B7 Page ' + (_page + 1) + ' of ' + totalPages;
+                _pageInfoEl.style.display = '';
+            } else {
+                _pageInfoEl.style.display = 'none';
+            }
+        }
+
+        function _renderPagination(totalPages, totalFiltered) {
+            // innerHTML cleared — rebuilt from static constants only (no user data).
+            _pagBar.innerHTML = '';
+            if (totalPages <= 1 || totalFiltered <= PAGE_SIZE) {
+                _pagBar.style.display = 'none';
+                return;
+            }
+            _pagBar.style.display = 'flex';
+
+            // Previous button
+            var prevBtn = document.createElement('button');
+            prevBtn.type = 'button';
+            prevBtn.className = 'ai-assistant-panel-filter-pg-btn';
+            prevBtn.setAttribute('aria-label', 'Previous page');
+            prevBtn.disabled = (_page === 0);
+            prevBtn.innerHTML = _SVG_PREV;   // safe: static constant
+            prevBtn.addEventListener('click', function () {
+                if (_page > 0) { _page--; _render(); }
+            });
+            _pagBar.appendChild(prevBtn);
+
+            // Page number buttons with smart ellipsis
+            var numsWrap = document.createElement('div');
+            numsWrap.className = 'ai-assistant-panel-filter-pg-numbers';
+
+            var pageRange = _buildPageRange(_page, totalPages);
+            pageRange.forEach(function (p) {
+                if (p === '...') {
+                    var ellipsis = document.createElement('span');
+                    ellipsis.className = 'ai-assistant-panel-filter-pg-ellipsis';
+                    ellipsis.textContent = '\u2026';
+                    ellipsis.setAttribute('aria-hidden', 'true');
+                    numsWrap.appendChild(ellipsis);
+                } else {
+                    var pgBtn = document.createElement('button');
+                    pgBtn.type = 'button';
+                    var isActive = (p === _page);
+                    pgBtn.className = 'ai-assistant-panel-filter-pg-num' +
+                        (isActive ? ' ai-assistant-panel-filter-pg-num--active' : '');
+                    // textContent: p is a number from _buildPageRange (not user input).
+                    pgBtn.textContent = String(p + 1);  // 1-indexed for display
+                    pgBtn.setAttribute('aria-label', 'Page ' + (p + 1));
+                    pgBtn.setAttribute('aria-current', isActive ? 'page' : 'false');
+                    (function (pageIdx) {
+                        pgBtn.addEventListener('click', function () {
+                            if (_page !== pageIdx) { _page = pageIdx; _render(); }
+                        });
+                    }(p));
+                    numsWrap.appendChild(pgBtn);
+                }
+            });
+            _pagBar.appendChild(numsWrap);
+
+            // Next button
+            var nextBtn = document.createElement('button');
+            nextBtn.type = 'button';
+            nextBtn.className = 'ai-assistant-panel-filter-pg-btn';
+            nextBtn.setAttribute('aria-label', 'Next page');
+            nextBtn.disabled = (_page === totalPages - 1);
+            nextBtn.innerHTML = _SVG_NEXT;   // safe: static constant
+            nextBtn.addEventListener('click', function () {
+                if (_page < totalPages - 1) { _page++; _render(); }
+            });
+            _pagBar.appendChild(nextBtn);
+        }
+
+        // ── Build the filter bar DOM ──────────────────────────────────────────
+
+        var filterBar = document.createElement('div');
+        filterBar.className = 'ai-assistant-panel-filter-bar';
+        filterBar.setAttribute('role', 'search');
+        filterBar.setAttribute('aria-label', 'Filter models');
+
+        // Row 1 ── search input + sort button ─────────────────────────────────
+        var row1 = document.createElement('div');
+        row1.className = 'ai-assistant-panel-filter-row';
+
+        // Search wrap: icon + input + clear button
+        var searchWrap = document.createElement('div');
+        searchWrap.className = 'ai-assistant-panel-filter-search-wrap';
+
+        var searchIconEl = document.createElement('span');
+        searchIconEl.className = 'ai-assistant-panel-filter-search-icon';
+        searchIconEl.setAttribute('aria-hidden', 'true');
+        searchIconEl.innerHTML = _SVG_SEARCH;   // safe: static constant
+
+        var _input = document.createElement('input');
+        _input.type = 'search';
+        _input.className = 'ai-assistant-panel-filter-input';
+        _input.placeholder = 'Search models\u2026';
+        _input.setAttribute('aria-label', 'Search models');
+        _input.setAttribute('autocomplete', 'off');
+        _input.setAttribute('spellcheck', 'false');
+
+        var _clearBtn = document.createElement('button');
+        _clearBtn.type = 'button';
+        _clearBtn.className = 'ai-assistant-panel-filter-clear';
+        _clearBtn.setAttribute('aria-label', 'Clear search');
+        _clearBtn.title = 'Clear search';
+        _clearBtn.style.display = 'none';
+        _clearBtn.innerHTML = _SVG_CLOSE;   // safe: static constant
+        _clearBtn.addEventListener('click', function () { _clearFilter(); });
+
+        searchWrap.appendChild(searchIconEl);
+        searchWrap.appendChild(_input);
+        searchWrap.appendChild(_clearBtn);
+
+        // Sort wrap: button + dropdown menu
+        var sortWrap = document.createElement('div');
+        sortWrap.className = 'ai-assistant-panel-filter-sort-wrap';
+
+        var _sortBtn = document.createElement('button');
+        _sortBtn.type = 'button';
+        _sortBtn.className = 'ai-assistant-panel-filter-sort';
+        _sortBtn.setAttribute('aria-label', 'Sort models');
+        _sortBtn.setAttribute('aria-expanded', 'false');
+        _sortBtn.setAttribute('aria-haspopup', 'listbox');
+
+        var _sortLabelSpan = document.createElement('span');
+        _sortLabelSpan.textContent = 'Sort';
+
+        var sortChevron = document.createElement('span');
+        sortChevron.className = 'ai-assistant-panel-filter-sort-chevron';
+        sortChevron.setAttribute('aria-hidden', 'true');
+        sortChevron.innerHTML =
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"' +
+            ' stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">' +
+            '<polyline points="6 9 12 15 18 9"/></svg>';
+
+        _sortBtn.appendChild(_sortLabelSpan);
+        _sortBtn.appendChild(sortChevron);
+
+        var _sortMenu = document.createElement('div');
+        _sortMenu.className = 'ai-assistant-panel-filter-sort-menu';
+        _sortMenu.setAttribute('role', 'listbox');
+        _sortMenu.setAttribute('aria-label', 'Sort order');
+        _sortMenu.style.display = 'none';
+
+        var _SORT_OPTIONS = [
+            { id: 'default',  label: 'Default order'  },
+            { id: 'az',       label: 'Name A \u2192 Z' },
+            { id: 'za',       label: 'Name Z \u2192 A' },
+            { id: 'provider', label: 'By provider'     }
+        ];
+
+        _SORT_OPTIONS.forEach(function (opt) {
+            var item = document.createElement('button');
+            item.type = 'button';
+            item.className = 'ai-assistant-panel-filter-sort-item';
+            item.setAttribute('role', 'option');
+            item.setAttribute('data-sort-id', opt.id);
+            item.textContent = opt.label;   // safe: static constant
+            (function (sortId) {
+                item.addEventListener('click', function () {
+                    _sort = sortId;
+                    _page = 0;
+                    _updateSortLabel();
+                    _closeSortMenu();
+                    _render();
+                });
+            }(opt.id));
+            _sortMenu.appendChild(item);
+        });
+
+        // Sort menu open / close helpers
+        var _sortMenuOpen = false;
+
+        function _openSortMenu() {
+            _sortMenuOpen = true;
+            _sortMenu.style.display = 'block';
+            _sortBtn.setAttribute('aria-expanded', 'true');
+        }
+        function _closeSortMenu() {
+            _sortMenuOpen = false;
+            _sortMenu.style.display = 'none';
+            _sortBtn.setAttribute('aria-expanded', 'false');
+        }
+
+        _sortBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            _sortMenuOpen ? _closeSortMenu() : _openSortMenu();
+        });
+        _sortBtn.addEventListener('keydown', function (e) {
+            if ((e.key === 'Escape' || e.keyCode === 27) && _sortMenuOpen) {
+                e.stopPropagation();
+                _closeSortMenu();
+            }
+        });
+        // Prevent menu-item clicks from bubbling to document (which closes the menu).
+        _sortMenu.addEventListener('click', function (e) { e.stopPropagation(); });
+
+        sortWrap.appendChild(_sortBtn);
+        sortWrap.appendChild(_sortMenu);
+
+        row1.appendChild(searchWrap);
+        row1.appendChild(sortWrap);
+
+        // Row 2 ── scope chips ─────────────────────────────────────────────────
+        var row2 = document.createElement('div');
+        row2.className = 'ai-assistant-panel-filter-chips-row';
+        row2.setAttribute('role', 'group');
+        row2.setAttribute('aria-label', 'Search scope');
+
+        var _CHIP_DEFS = [
+            { scope: 'all',      label: 'All'         },
+            { scope: 'title',    label: 'Name'        },
+            { scope: 'provider', label: 'Provider'    },
+            { scope: 'desc',     label: 'Description' },
+            { scope: 'id',       label: 'ID'          }
+        ];
+
+        var _chips = [];
+        _CHIP_DEFS.forEach(function (def) {
+            var chip = document.createElement('button');
+            chip.type = 'button';
+            chip.className = 'ai-assistant-panel-filter-chip';
+            chip.setAttribute('data-scope', def.scope);
+            chip.setAttribute('aria-pressed', def.scope === 'all' ? 'true' : 'false');
+            if (def.scope === 'all') {
+                chip.classList.add('ai-assistant-panel-filter-chip--active');
+            }
+            chip.textContent = def.label;   // safe: static constant
+            (function (scopeId) {
+                chip.addEventListener('click', function () {
+                    _scope = scopeId;
+                    _page  = 0;
+                    _updateChips();
+                    _render();
+                });
+            }(def.scope));
+            row2.appendChild(chip);
+            _chips.push(chip);
+        });
+
+        // Row 3 ── meta: count + page info (ARIA live region) ─────────────────
+        var row3 = document.createElement('div');
+        row3.className = 'ai-assistant-panel-filter-meta';
+        row3.setAttribute('aria-live', 'polite');
+        row3.setAttribute('aria-atomic', 'true');
+
+        var _countEl    = document.createElement('span');
+        _countEl.className = 'ai-assistant-panel-filter-count';
+
+        var _pageInfoEl = document.createElement('span');
+        _pageInfoEl.className = 'ai-assistant-panel-filter-page-info';
+        _pageInfoEl.style.display = 'none';
+
+        row3.appendChild(_countEl);
+        row3.appendChild(_pageInfoEl);
+
+        filterBar.appendChild(row1);
+        filterBar.appendChild(row2);
+        filterBar.appendChild(row3);
+
+        // ── Pagination bar (inserted after bodyEl, before effort sections) ─────
+        var _pagBar = document.createElement('div');
+        _pagBar.className = 'ai-assistant-panel-filter-pagination';
+        _pagBar.style.display = 'none';
+
+        // ── Wire input events ─────────────────────────────────────────────────
+        var _debouncedRender = _debounce(function () {
+            _page = 0;
+            _render();
+        }, 300);
+
+        _input.addEventListener('input', function () {
+            _query = _input.value.trim().toLowerCase();
+            _debouncedRender();
+        });
+
+        // Escape key: clear search when a query is active.
+        _input.addEventListener('keydown', function (e) {
+            if ((e.key === 'Escape' || e.keyCode === 27) && _query) {
+                e.stopPropagation();
+                _clearFilter();
+            }
+        });
+
+        // Close sort menu on any outside click (global listener).
+        document.addEventListener('click', function () { _closeSortMenu(); });
+
+        // ── Badge refresh on model selection ─────────────────────────────────
+        // The row `change` listener in _buildModelSheet cannot reach _render()
+        // (different closure scope).  A delegated listener on bodyEl handles
+        // every radio `change` that bubbles up and re-renders the badge state
+        // so the outside-badge moves to (or off) the newly selected row
+        // immediately — without waiting for the next filter / sort / page event.
+        bodyEl.addEventListener('change', function (e) {
+            if (e.target && e.target.type === 'radio') {
+                _render();
+            }
+        });
+
+        // ── Inject into DOM ───────────────────────────────────────────────────
+        // filterBar goes BEFORE bodyEl inside scrollEl.
+        scrollEl.insertBefore(filterBar, bodyEl);
+        // _pagBar goes AFTER bodyEl (bodyEl.nextSibling is null at this call site
+        // because _appendModelSheetSections has not run yet).
+        if (bodyEl.nextSibling) {
+            scrollEl.insertBefore(_pagBar, bodyEl.nextSibling);
+        } else {
+            scrollEl.appendChild(_pagBar);
+        }
+
+        // ── Initial render ────────────────────────────────────────────────────
+        _render();
     }
 
     /**
