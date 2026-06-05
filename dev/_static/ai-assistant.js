@@ -405,6 +405,13 @@
         // ── UI-improvement additions ──────────────────────────────────────────
         plus:        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>',
         overflowH:   '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>',
+        // ── Project links additions ───────────────────────────────────────────
+        // GitHub mark (official path — monochromatic, works on any background).
+        github:      '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>',
+        // Globe / world icon — website / documentation home.
+        globe:       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
+        // External-link arrow — shown inside link cards as a launch indicator.
+        externalLink:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>',
     };
 
     // ── Provider accent colours (mirrors _PROVIDER_COLORS in __init__.py) ──────
@@ -4508,6 +4515,152 @@
         return sheet;
     }
 
+
+    // ── Project Links sheet ───────────────────────────────────────────────────
+
+    /**
+     * Build the "Project Links" slide-over sheet.
+     *
+     * Shows two hero cards — Source Repository (GitHub) and Project Website —
+     * each rendered as a tappable card that opens the configured URL in a new
+     * tab.  Both cards and the sheet itself are fully customisable via
+     * ``window.AI_ASSISTANT_CONFIG``.
+     *
+     * Configuration keys read from cfg
+     * ---------------------------------
+     * panelLinks          bool    Master switch. false → sheet not built.
+     * panelLinksTitle     string  Sheet header text.  Default: "Project Links".
+     * panelLinksHtml      string  When non-empty, replaces the built-in cards
+     *                             with trusted author HTML (same pattern as
+     *                             panelPrivacyHtml / panelTermsHtml).
+     * panelSourceUrl      string  GitHub / source repository URL.
+     * panelSourceLabel    string  Card heading.  Default: "Source Repository".
+     * panelSourceDesc     string  Card sub-text shown beneath the heading.
+     * panelSiteUrl        string  Project website URL.
+     * panelSiteLabel      string  Card heading.  Default: "Project Website".
+     * panelSiteDesc       string  Card sub-text shown beneath the heading.
+     *
+     * Returns
+     * -------
+     * HTMLElement
+     *     The assembled sheet element (data-open="false" initially).
+     */
+    function _buildLinksSheet() {
+        var cfg    = window.AI_ASSISTANT_CONFIG || {};
+        var title  = (typeof cfg.panelLinksTitle === 'string' && cfg.panelLinksTitle)
+                     || 'Project Links';
+
+        var sheet = document.createElement('div');
+        sheet.className = 'ai-assistant-panel-privacy ai-assistant-panel-links-sheet';
+        sheet.id        = 'ai-assistant-panel-links-sheet';
+        sheet.setAttribute('data-open', 'false');
+
+        var head   = document.createElement('div');
+        head.className = 'ai-assistant-panel-privacy-head';
+        var hStrong = document.createElement('strong');
+        hStrong.textContent = title;
+        var hClose  = _createIconBtn('links-close', 'Close ' + title, ICONS.close);
+        hClose.addEventListener('click', function () {
+            sheet.setAttribute('data-open', 'false');
+        });
+        head.appendChild(hStrong);
+        head.appendChild(hClose);
+        sheet.appendChild(head);
+
+        var bodyEl = document.createElement('div');
+        bodyEl.className = 'ai-assistant-panel-privacy-body ai-assistant-panel-links-body';
+
+        if (typeof cfg.panelLinksHtml === 'string' && cfg.panelLinksHtml) {
+            bodyEl.innerHTML = cfg.panelLinksHtml;
+        } else {
+            function _buildLinkCard(iconHtml, heading, desc, url, accent) {
+                if (!url || !_isSafeHref(url)) return null;
+                var card = document.createElement('a');
+                card.className  = 'ai-assistant-panel-link-card';
+                card.href       = url;
+                card.target     = '_blank';
+                card.rel        = 'noopener noreferrer';
+                card.setAttribute('aria-label', heading + ' \u2014 opens in a new tab');
+                if (accent) card.style.setProperty('--ai-link-card-accent', accent);
+
+                var ic = document.createElement('span');
+                ic.className = 'ai-assistant-panel-link-card-icon';
+                ic.setAttribute('aria-hidden', 'true');
+                ic.innerHTML = iconHtml;
+                card.appendChild(ic);
+
+                var txt = document.createElement('span');
+                txt.className = 'ai-assistant-panel-link-card-text';
+
+                var h = document.createElement('strong');
+                h.textContent = heading;
+                txt.appendChild(h);
+
+                if (desc) {
+                    var d = document.createElement('span');
+                    d.className = 'ai-assistant-panel-link-card-desc';
+                    d.textContent = desc;
+                    txt.appendChild(d);
+                }
+
+                var urlBadge = document.createElement('span');
+                urlBadge.className = 'ai-assistant-panel-link-card-url';
+                try {
+                    var parsed = new URL(url);
+                    urlBadge.textContent = parsed.hostname + parsed.pathname.replace(/\/$/, '');
+                } catch (_) { urlBadge.textContent = url; }
+                txt.appendChild(urlBadge);
+                card.appendChild(txt);
+
+                var arrow = document.createElement('span');
+                arrow.className = 'ai-assistant-panel-link-card-arrow';
+                arrow.setAttribute('aria-hidden', 'true');
+                arrow.innerHTML = ICONS.externalLink;
+                card.appendChild(arrow);
+
+                return card;
+            }
+
+            var sourceUrl   = (typeof cfg.panelSourceUrl   === 'string') ? cfg.panelSourceUrl   : '';
+            var sourceLabel = (typeof cfg.panelSourceLabel  === 'string' && cfg.panelSourceLabel)
+                              ? cfg.panelSourceLabel : 'Source Repository';
+            var sourceDesc  = (typeof cfg.panelSourceDesc  === 'string') ? cfg.panelSourceDesc  : '';
+            var siteUrl     = (typeof cfg.panelSiteUrl     === 'string') ? cfg.panelSiteUrl     : '';
+            var siteLabel   = (typeof cfg.panelSiteLabel   === 'string' && cfg.panelSiteLabel)
+                              ? cfg.panelSiteLabel   : 'Project Website';
+            var siteDesc    = (typeof cfg.panelSiteDesc    === 'string') ? cfg.panelSiteDesc    : '';
+
+            var sourceCard = _buildLinkCard(
+                ICONS.github, sourceLabel, sourceDesc, sourceUrl,
+                'var(--ai-github-accent, #24292f)'
+            );
+            // Extra class lets CSS dark-mode override target this card only.
+            if (sourceCard) sourceCard.classList.add('ai-assistant-panel-source-card');
+
+            var siteCard   = _buildLinkCard(
+                ICONS.globe,  siteLabel,   siteDesc,   siteUrl,
+                'var(--ai-site-accent, var(--ai-accent, #2563eb))'
+            );
+            if (siteCard) siteCard.classList.add('ai-assistant-panel-site-card');
+
+            if (sourceCard) bodyEl.appendChild(sourceCard);
+            if (siteCard)   bodyEl.appendChild(siteCard);
+
+            if (!sourceCard && !siteCard) {
+                var empty = document.createElement('p');
+                empty.className = 'ai-assistant-panel-links-empty';
+                empty.textContent =
+                    'No project links configured. Set ai_assistant_panel_source_url ' +
+                    'and ai_assistant_panel_site_url in conf.py.';
+                bodyEl.appendChild(empty);
+            }
+        }
+
+        sheet.appendChild(bodyEl);
+        return sheet;
+    }
+
+
     /**
      * Copy the current page URL to the clipboard with a small toast.
      * Best-effort; silently no-ops if the browser blocks clipboard access.
@@ -4568,6 +4721,7 @@
         addItem(ICONS.privacy,  'Privacy & Responsibility',  hooks && hooks.onPrivacy);
         addItem(ICONS.terms,    'Terms of Service',          hooks && hooks.onTerms);
         addItem(ICONS.share,    'Share',                     hooks && hooks.onShare);
+        addItem(ICONS.github,   'Project Links',             hooks && hooks.onLinks);
 
         // Keyboard shortcut hint row — shown at the bottom of the menu when a
         // shortcut is configured.  Now interactive: left-click = minimize,
@@ -5032,6 +5186,33 @@
             });
             leftCluster.appendChild(hint);
         }
+
+        // ── Left cluster: Source (GitHub) button ──────────────────────────────
+        // Shown when panelSource !== false AND panelSourceUrl is a valid URL.
+        // Clicking opens the Links sheet (same _openSheet contract as all other
+        // sheets).  Built here so the element is available to wire() below.
+        var sourceBtn = null;
+        if (cfgRef.panelSource !== false) {
+            sourceBtn = document.createElement('button');
+            sourceBtn.type = 'button';
+            sourceBtn.className =
+                'ai-assistant-panel-subbar-link-btn ai-assistant-panel-source-btn';
+            var sourceIc = document.createElement('span');
+            sourceIc.setAttribute('aria-hidden', 'true');
+            sourceIc.innerHTML = ICONS.github;   // ICONS constant — safe.
+            sourceBtn.appendChild(sourceIc);
+            var sourceLbl = document.createElement('span');
+            sourceLbl.textContent =
+                (cfgRef.panelSourceBtnLabel) || 'Source';
+            sourceBtn.appendChild(sourceLbl);
+            sourceBtn.setAttribute(
+                'aria-label',
+                (cfgRef.panelSourceBtnLabel || 'Source') + ' \u2014 open project links'
+            );
+            sourceBtn.title = 'View project source & links';
+            leftCluster.appendChild(sourceBtn);
+        }
+
         subbar.appendChild(leftCluster);
 
         // ── Right cluster: model · privacy · terms · share ──
@@ -5110,12 +5291,36 @@
         }
 
         // Append right-cluster items in visual left→right order:
-        //   Model | Privacy | Terms | Share | ⋯
+        //   Model | Privacy | Terms | Share | Site | ⋯
         // Items that are null (feature-flagged off) are silently skipped.
         if (modelLink)  rightCluster.appendChild(modelLink);
         rightCluster.appendChild(privacyLink);
         if (termsLink)  rightCluster.appendChild(termsLink);
         if (shareLink)  rightCluster.appendChild(shareLink);
+
+        // ── Right cluster: Site (website) button — after Share ────────────────
+        // Counterpart to sourceBtn.  Opens the same Links sheet from the right
+        // side so the user can reach project links from either subbar edge.
+        var siteBtn = null;
+        if (cfgRef.panelSite !== false) {
+            siteBtn = document.createElement('button');
+            siteBtn.type = 'button';
+            siteBtn.className =
+                'ai-assistant-panel-subbar-link-btn ai-assistant-panel-site-btn';
+            var siteIc = document.createElement('span');
+            siteIc.setAttribute('aria-hidden', 'true');
+            siteIc.innerHTML = ICONS.globe;   // ICONS constant — safe.
+            siteBtn.appendChild(siteIc);
+            var siteLbl = document.createElement('span');
+            siteLbl.textContent = (cfgRef.panelSiteBtnLabel) || 'Website';
+            siteBtn.appendChild(siteLbl);
+            siteBtn.setAttribute(
+                'aria-label',
+                (cfgRef.panelSiteBtnLabel || 'Website') + ' \u2014 open project links'
+            );
+            siteBtn.title = 'Visit project website & links';
+            rightCluster.appendChild(siteBtn);
+        }
 
         // Right overflow toggle button — collapsed representation of the
         // entire right cluster when the panel is too narrow to show individual
@@ -5508,6 +5713,12 @@
         var shareSheet = (cfgRef.panelShare !== false) ? _buildShareSheet() : null;
         if (shareSheet) panel.appendChild(shareSheet);
 
+        // Links sheet — source repository + project website cards.
+        // Built when panelLinks !== false (default true).  Both sourceBtn and
+        // siteBtn in the sub-bar open this same sheet via _openSheet.
+        var linksSheet = (cfgRef.panelLinks !== false) ? _buildLinksSheet() : null;
+        if (linksSheet) panel.appendChild(linksSheet);
+
         /**
          * Open exactly one sheet at a time.  Pass null to close all.
          * @param {HTMLElement|null} target
@@ -5541,7 +5752,7 @@
          *   _closeSheet which restores focus to the originating button.
          */
         function _openSheet(target) {
-            [modelSheet, privacySheet, termsSheet, shareSheet].forEach(function (s) {
+            [modelSheet, privacySheet, termsSheet, shareSheet, linksSheet].forEach(function (s) {
                 if (!s) return;
                 s.setAttribute('data-open', (s === target) ? 'true' : 'false');
             });
@@ -5628,6 +5839,31 @@
             shareLink.addEventListener('click', function () { _openSheet(shareSheet); });
         }
 
+        // Wire Source and Site buttons → linksSheet (or direct URL fallback).
+        // When the links sheet is disabled (panelLinks: false), each button
+        // falls back to opening its configured URL directly in a new tab so the
+        // user is never stranded with a non-functional button.
+        function _openLinksOrUrl(url) {
+            if (linksSheet) {
+                _openSheet(linksSheet);
+            } else if (url && _isSafeHref(url)) {
+                try {
+                    var w = window.open(url, '_blank', 'noopener,noreferrer');
+                    if (w) { try { w.opener = null; } catch (_) {} }
+                } catch (_) {}
+            }
+        }
+        if (sourceBtn) {
+            sourceBtn.addEventListener('click', function () {
+                _openLinksOrUrl(cfgRef.panelSourceUrl || '');
+            });
+        }
+        if (siteBtn) {
+            siteBtn.addEventListener('click', function () {
+                _openLinksOrUrl(cfgRef.panelSiteUrl || '');
+            });
+        }
+
         // Sync the sub-bar model-link label with the active model whenever
         // the user changes it (via sheet or inline picker).  Reusing the
         // same DOM event the helpers already dispatch means there is exactly
@@ -5655,6 +5891,7 @@
                 onPrivacy: function () { _openSheet(privacySheet); },
                 onTerms:   termsSheet  ? function () { _openSheet(termsSheet); }   : null,
                 onShare:   shareSheet  ? function () { _openSheet(shareSheet); }   : null,
+                onLinks:   linksSheet  ? function () { _openSheet(linksSheet); }   : null,
             });
             panel.appendChild(hamburgerMenuEl);
 
@@ -5811,7 +6048,7 @@
         // registered inside each sheet builder call sheet.setAttribute directly
         // (they run before _closeSheet exists); we add a second listener here
         // which performs the focus restoration after the flag is already 'false'.
-        [modelSheet, privacySheet, termsSheet, shareSheet].forEach(function (s) {
+        [modelSheet, privacySheet, termsSheet, shareSheet, linksSheet].forEach(function (s) {
             if (!s) return;
             var closeBtn = s.querySelector('button[id$="-close"]');
             if (!closeBtn) return;

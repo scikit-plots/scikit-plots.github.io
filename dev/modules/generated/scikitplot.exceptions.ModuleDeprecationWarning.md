@@ -1,6 +1,6 @@
 # ModuleDeprecationWarning[#](#moduledeprecationwarning "Link to this heading")
 
-exception scikitplot.exceptions.ModuleDeprecationWarning[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/exceptions.py#L287)[#](#scikitplot.exceptions.ModuleDeprecationWarning "Link to this definition")
+exception scikitplot.exceptions.ModuleDeprecationWarning[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/exceptions.py#L287)[#](#scikitplot.exceptions.ModuleDeprecationWarning "Link to this definition")
 :   Module deprecation warning.
 
     > **Warning**

@@ -44,7 +44,7 @@ pipeline
 
 ```
 ```
-<scikitplot.corpus._pipeline.CorpusPipeline object at 0x7c0f51f83b50>
+<scikitplot.corpus._pipeline.CorpusPipeline object at 0x74353c83bb10>
 
 ```
 

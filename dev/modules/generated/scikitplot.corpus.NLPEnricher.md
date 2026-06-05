@@ -1,6 +1,6 @@
 # NLPEnricher[#](#nlpenricher "Link to this heading")
 
-class scikitplot.corpus.NLPEnricher(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/corpus/_enrichers/_nlp_enricher.py#L505)[#](#scikitplot.corpus.NLPEnricher "Link to this definition")
+class scikitplot.corpus.NLPEnricher(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_enrichers/_nlp_enricher.py#L505)[#](#scikitplot.corpus.NLPEnricher "Link to this definition")
 :   Pipeline component that populates NLP enrichment fields on
     [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument").
 
@@ -48,7 +48,7 @@ class scikitplot.corpus.NLPEnricher(**config=None**)[[source]](https://github.co
     ```
     Go BackOpen In Tab
 
-    enrich\_documents(**documents**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/corpus/_enrichers/_nlp_enricher.py#L556)[#](#scikitplot.corpus.NLPEnricher.enrich_documents "Link to this definition")
+    enrich\_documents(**documents**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_enrichers/_nlp_enricher.py#L556)[#](#scikitplot.corpus.NLPEnricher.enrich_documents "Link to this definition")
     :   Enrich a batch of `CorpusDocument` instances.
 
         Parameters:

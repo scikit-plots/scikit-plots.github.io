@@ -1,6 +1,6 @@
 # load\_project\_config\_toml[#](#load-project-config-toml "Link to this heading")
 
-scikitplot.mlflow.load\_project\_config\_toml(**path**, **\***, **profile='local'**, **project\_root=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/mlflow/_project.py#L761)[#](#scikitplot.mlflow.load_project_config_toml "Link to this definition")
+scikitplot.mlflow.load\_project\_config\_toml(**path**, **\***, **profile='local'**, **project\_root=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/mlflow/_project.py#L761)[#](#scikitplot.mlflow.load_project_config_toml "Link to this definition")
 :   Load project MLflow config from a TOML file.
 
     Parameters:

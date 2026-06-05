@@ -1,6 +1,6 @@
 # SentenceBackend[#](#sentencebackend "Link to this heading")
 
-class scikitplot.corpus.SentenceBackend(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/corpus/_chunkers/_sentence.py#L239)[#](#scikitplot.corpus.SentenceBackend "Link to this definition")
+class scikitplot.corpus.SentenceBackend(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_chunkers/_sentence.py#L239)[#](#scikitplot.corpus.SentenceBackend "Link to this definition")
 :   Supported sentence-splitting backends.
 
     Attributes:
@@ -23,13 +23,13 @@ class scikitplot.corpus.SentenceBackend(**value**)[[source]](https://github.com/
             [`SentenceChunkerConfig.custom_splitter`](scikitplot.corpus.SentenceChunkerConfig.html#scikitplot.corpus.SentenceChunkerConfig.custom_splitter "scikitplot.corpus.SentenceChunkerConfig.custom_splitter"). Use PySBD,
             CAMeL Tools, Stanza, or any custom segmenter.
 
-    CUSTOM = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/corpus/_chunkers/_sentence.py#L)[#](#scikitplot.corpus.SentenceBackend.CUSTOM "Link to this definition")
+    CUSTOM = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_chunkers/_sentence.py#L)[#](#scikitplot.corpus.SentenceBackend.CUSTOM "Link to this definition")
 
-    NLTK = 'nltk'[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/corpus/_chunkers/_sentence.py#L)[#](#scikitplot.corpus.SentenceBackend.NLTK "Link to this definition")
+    NLTK = 'nltk'[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_chunkers/_sentence.py#L)[#](#scikitplot.corpus.SentenceBackend.NLTK "Link to this definition")
 
-    REGEX = 'regex'[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/corpus/_chunkers/_sentence.py#L)[#](#scikitplot.corpus.SentenceBackend.REGEX "Link to this definition")
+    REGEX = 'regex'[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_chunkers/_sentence.py#L)[#](#scikitplot.corpus.SentenceBackend.REGEX "Link to this definition")
 
-    SPACY = 'spacy'[[source]](https://github.com/scikit-plots/scikit-plots/blob/829d7a7/scikitplot/corpus/_chunkers/_sentence.py#L)[#](#scikitplot.corpus.SentenceBackend.SPACY "Link to this definition")
+    SPACY = 'spacy'[[source]](https://github.com/scikit-plots/scikit-plots/blob/6d916ad/scikitplot/corpus/_chunkers/_sentence.py#L)[#](#scikitplot.corpus.SentenceBackend.SPACY "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.corpus.SentenceBackend.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

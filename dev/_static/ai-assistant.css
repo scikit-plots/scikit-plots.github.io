@@ -5885,3 +5885,262 @@ ol.ai-assistant-mic-perm-settings-legacy-body[aria-hidden="true"] {
         padding: 0.13rem 0.45rem;
     }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PROJECT LINKS — subbar buttons & Links slide-over sheet
+   ═══════════════════════════════════════════════════════════════════════════
+   Added by the panelLinks / panelSource / panelSite feature.
+
+   Architecture:
+     • Two compact icon-label buttons live in the subbar:
+         sourceBtn  — left cluster, after the hamburger hint (GitHub icon)
+         siteBtn    — right cluster, after the Share button (Globe icon)
+       Both share `.ai-assistant-panel-subbar-link-btn` as a base class and
+       carry an additional specific class for per-role overrides.
+     • The Links slide-over sheet contains rich card elements
+       (`.ai-assistant-panel-link-card`) for each configured link.
+   ─────────────────────────────────────────────────────────────────────── */
+
+/* ── Subbar link buttons (shared base) ──────────────────────────────────── */
+.ai-assistant-panel-subbar-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.28rem;
+    background: none;
+    border: none;
+    padding: 0.18rem 0.4rem;
+    margin: 0;
+    font: inherit;
+    font-size: 0.68rem;
+    font-weight: 500;
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+    cursor: pointer;
+    border-radius: 5px;
+    touch-action: manipulation;
+    transition: color 0.15s ease, background 0.15s ease;
+    white-space: nowrap;
+}
+.ai-assistant-panel-subbar-link-btn svg {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+    fill: currentColor;
+    stroke: none;
+}
+
+/* ── GitHub source button — left cluster ────────────────────────────────── */
+.ai-assistant-panel-source-btn:hover {
+    color: #24292f;
+    background: rgba(36, 41, 47, 0.08);
+}
+[data-bs-theme="dark"] .ai-assistant-panel-source-btn:hover,
+.dark .ai-assistant-panel-source-btn:hover {
+    color: #e6edf3;
+    background: rgba(230, 237, 243, 0.1);
+}
+
+/* ── Globe / website button — right cluster ─────────────────────────────── */
+/* Globe uses stroke paths, not fill paths */
+.ai-assistant-panel-site-btn svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+}
+.ai-assistant-panel-site-btn:hover {
+    color: var(--pst-color-primary, var(--color-brand-primary, #2563eb));
+    background: color-mix(
+        in srgb,
+        var(--pst-color-primary, var(--color-brand-primary, #2563eb)) 10%,
+        transparent
+    );
+}
+
+/* ── Narrow-panel: hide button labels, show icon only ────────────────────── */
+[data-narrow] .ai-assistant-panel-subbar-link-btn span:last-child {
+    display: none;
+}
+
+/* ── Links sheet body ────────────────────────────────────────────────────── */
+.ai-assistant-panel-links-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+}
+
+/* ── Individual link card ────────────────────────────────────────────────── */
+/*
+ * Each card is an <a> element that spans the full sheet width.
+ * The left accent stripe colour is injected inline by JS via
+ *   --ai-link-card-accent  (e.g. #24292f for GitHub, #2563eb for the site).
+ * Hover lifts the card slightly for a modern tactile feel.
+ */
+.ai-assistant-panel-link-card {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.85rem 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--pst-color-border,
+                         var(--color-foreground-border, #d6d9dc));
+    border-left: 3.5px solid
+        var(--ai-link-card-accent,
+            var(--pst-color-primary, #2563eb));
+    background: var(--pst-color-surface,
+                    var(--color-background-secondary, #f6f7f8));
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: transform 0.13s ease,
+                box-shadow 0.13s ease,
+                border-color 0.13s ease;
+    position: relative;
+}
+.ai-assistant-panel-link-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
+    border-color: var(--ai-link-card-accent,
+                      var(--pst-color-primary, #2563eb));
+}
+.ai-assistant-panel-link-card:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* ── Card icon column ────────────────────────────────────────────────────── */
+.ai-assistant-panel-link-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: color-mix(
+        in srgb,
+        var(--ai-link-card-accent,
+            var(--pst-color-primary, #2563eb)) 12%,
+        transparent
+    );
+    flex-shrink: 0;
+    color: var(--ai-link-card-accent,
+               var(--pst-color-primary, #2563eb));
+}
+.ai-assistant-panel-link-card-icon svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    stroke: none;
+}
+/* Globe icon uses stroke paths */
+.ai-assistant-panel-site-card .ai-assistant-panel-link-card-icon svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+}
+
+/* ── Card text column ────────────────────────────────────────────────────── */
+.ai-assistant-panel-link-card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.18rem;
+    flex: 1;
+    min-width: 0;
+}
+.ai-assistant-panel-link-card-text strong {
+    font-size: 0.83rem;
+    font-weight: 600;
+    color: var(--pst-color-on-background,
+               var(--color-foreground-primary, #1a1a2e));
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.ai-assistant-panel-link-card-desc {
+    font-size: 0.72rem;
+    color: var(--pst-color-text-muted,
+               var(--color-foreground-muted, #6a737d));
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.ai-assistant-panel-link-card-url {
+    font-size: 0.66rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+    color: var(--ai-link-card-accent,
+               var(--pst-color-primary, #2563eb));
+    opacity: 0.85;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ── External-link arrow ─────────────────────────────────────────────────── */
+.ai-assistant-panel-link-card-arrow {
+    display: flex;
+    align-items: center;
+    color: var(--pst-color-text-muted,
+               var(--color-foreground-muted, #6a737d));
+    opacity: 0.55;
+    flex-shrink: 0;
+    transition: opacity 0.13s ease, transform 0.13s ease;
+}
+.ai-assistant-panel-link-card:hover .ai-assistant-panel-link-card-arrow {
+    opacity: 1;
+    transform: translate(2px, -2px);
+}
+.ai-assistant-panel-link-card-arrow svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+}
+
+/* ── Empty-state fallback ────────────────────────────────────────────────── */
+.ai-assistant-panel-links-empty {
+    font-size: 0.78rem;
+    color: var(--pst-color-text-muted,
+               var(--color-foreground-muted, #6a737d));
+    padding: 1rem 0;
+    text-align: center;
+}
+
+/* ── Dark-mode overrides ─────────────────────────────────────────────────── */
+[data-bs-theme="dark"] .ai-assistant-panel-link-card,
+.dark .ai-assistant-panel-link-card {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+[data-bs-theme="dark"] .ai-assistant-panel-link-card:hover,
+.dark .ai-assistant-panel-link-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+[data-bs-theme="dark"] .ai-assistant-panel-link-card-text strong,
+.dark .ai-assistant-panel-link-card-text strong {
+    color: #e2e8f0;
+}
+
+/* ── GitHub accent colour override for dark mode ────────────────────────── */
+/* In dark mode GitHub black (#24292f) is illegible — lighten to the GitHub
+   dark-mode foreground (#e6edf3) so card icon & border remain readable.    */
+[data-bs-theme="dark"] .ai-assistant-panel-source-card,
+.dark .ai-assistant-panel-source-card {
+    --ai-link-card-accent: #8b949e; /* GitHub muted-grey — legible on dark bg */
+}
+
+/* ── Mobile / narrow viewport adjustments ───────────────────────────────── */
+@media (max-width: 480px) {
+    .ai-assistant-panel-link-card {
+        gap: 0.65rem;
+        padding: 0.7rem 0.8rem;
+    }
+    .ai-assistant-panel-link-card-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 6px;
+    }
+    .ai-assistant-panel-link-card-icon svg {
+        width: 15px;
+        height: 15px;
+    }
+}
