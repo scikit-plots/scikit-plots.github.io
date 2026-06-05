@@ -395,6 +395,9 @@
         searchAI: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><path d="M8 11h6M11 8v6" stroke-width="1.5"/></svg>',
         keyboard: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/></svg>',
         retry:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.5"/></svg>',
+        // Share-up icon: tray with arrow emerging upward — the universal
+        // "share" symbol on iOS / macOS / Android. Used for per-answer sharing.
+        shareAns: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>',
         // ── Phase B additions — mirror _ICON_META in _static/__init__.py ──
         model:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/><line x1="2" y1="9" x2="4" y2="9"/><line x1="2" y1="15" x2="4" y2="15"/><line x1="20" y1="9" x2="22" y2="9"/><line x1="20" y1="15" x2="22" y2="15"/></svg>',
         terms:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>',
@@ -992,6 +995,7 @@
         return el;
     }
 
+    // [HH:mm]   [Copy]   [Share]   [Retry]   [… More ▾]
     function createButton() {
         var container = document.createElement('div');
         container.className = 'ai-assistant-button';
@@ -1901,7 +1905,10 @@
             var who = m.role === 'user' ? 'You'
                 : m.role === 'assistant' ? title
                 : 'Error';
-            lines.push('[' + who + ']');
+            // ISO 8601 tag appended when available — enables unambiguous
+            // chronological attribution in feedback reports, diffs, and imports.
+            var tsTag = m.ts ? '  [' + new Date(m.ts).toISOString() + ']' : '';
+            lines.push('[' + who + ']' + tsTag);
             lines.push(m.text);
             lines.push('');
         });
@@ -1927,6 +1934,124 @@
     function copyAnswer(text, bubbleEl) {
         var raw = (bubbleEl && bubbleEl.getAttribute('data-raw')) || text;
         copyToClipboard(raw, false);
+    }
+
+    /**
+     * Share a single answer — with its paired question for recipient context.
+     *
+     * Delivery tiers (tried in order, first available wins):
+     *
+     * 1. Web Share API — native share sheet on Android, iOS, and Chromium
+     *    desktop (Windows / macOS).  Lets the user pick their own target
+     *    (messaging app, email, notes, …).
+     * 2. Async Clipboard API — modern browsers, same-origin HTTPS or localhost.
+     * 3. ``execCommand('copy')`` — legacy fallback (older browsers, HTTP).
+     *
+     * Payload format
+     * --------------
+     * ::
+     *
+     *     Q: <question>
+     *
+     *     A: <answer (plain markdown)>
+     *
+     *     — AI Assistant · https://docs.example.com/page
+     *
+     * The question prefix and attribution footer are omitted when unavailable.
+     * Using raw markdown (``data-raw``) keeps the payload clean and re-usable
+     * outside the panel — no HTML entities or render artefacts.
+     *
+     * Parameters
+     * ----------
+     * answerText : string
+     *     The exact bubble text from ``_transcript``.
+     * questionText : string | null
+     *     The paired user question, or ``null`` when unavailable.
+     * bubbleEl : HTMLElement | null
+     *     The assistant bubble element; used to read ``data-raw``.
+     * btn : HTMLElement | null
+     *     The Share button; its label is flashed ("Shared!" / "Copied!") for
+     *     1.6 s as a visual confirmation then restored.
+     *
+     * Notes
+     * -----
+     * User: On mobile the native share sheet appears immediately.  On desktop
+     *   without Web Share API the Q+A block is placed on the clipboard and a
+     *   brief toast confirms it.  Paste anywhere to share.
+     *
+     * Developer: ``writeClipboard`` and ``execCmdCopy`` are nested closures —
+     *   they capture ``payload``, ``flash``, and ``showNotification`` from the
+     *   enclosing scope.  No module-level state is written.  ``AbortError`` /
+     *   ``NotAllowedError`` from ``navigator.share`` are intentionally silent
+     *   (user cancelled — no error toast needed).
+     */
+    function _shareAnswer(answerText, questionText, bubbleEl, btn) {
+        var raw     = (bubbleEl && bubbleEl.getAttribute('data-raw')) || answerText;
+        var cfg     = window.AI_ASSISTANT_CONFIG || {};
+        var aiName  = cfg.panelTitle || 'AI Assistant';
+        var pageUrl = (typeof location !== 'undefined') ? location.href : '';
+
+        // Self-contained Q+A payload — recipient reads it without the source page.
+        var payload = (questionText ? 'Q: ' + questionText + '\n\nA: ' : '') + raw;
+        if (pageUrl) payload += '\n\n\u2014 ' + aiName + ' \u00b7 ' + pageUrl;
+
+        // Flash button label for 1.6 s then restore — primary visual confirmation.
+        function flash(label) {
+            if (!btn) return;
+            var lbl = btn.querySelector('span');
+            if (!lbl) return;
+            var orig = lbl.textContent;
+            lbl.textContent = label;
+            btn.disabled = true;
+            setTimeout(function () { lbl.textContent = orig; btn.disabled = false; }, 1600);
+        }
+
+        // Tier 2b: textarea execCommand fallback (no Clipboard API).
+        function execCmdCopy() {
+            var ta = document.createElement('textarea');
+            ta.value = payload;
+            ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none';
+            document.body.appendChild(ta);
+            ta.select();
+            try {
+                document.execCommand('copy');
+                showNotification('Q & A copied \u2014 ready to share.');
+                flash('Copied!');
+            } catch (_) {
+                showNotification('Could not copy \u2014 please try again.', true);
+            }
+            document.body.removeChild(ta);
+        }
+
+        // Tier 2a: async Clipboard API (modern browsers, HTTPS / localhost).
+        function writeClipboard() {
+            if (typeof navigator !== 'undefined' &&
+                    navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(payload)
+                    .then(function () {
+                        showNotification('Q & A copied \u2014 ready to share.');
+                        flash('Copied!');
+                    })
+                    .catch(function () { execCmdCopy(); });
+            } else {
+                execCmdCopy();
+            }
+        }
+
+        // Tier 1: Web Share API — native share sheet (mobile + modern desktop).
+        if (typeof navigator !== 'undefined' && typeof navigator.share === 'function') {
+            navigator.share({ title: questionText || aiName, text: payload })
+                .then(function () { flash('Shared!'); })
+                .catch(function (err) {
+                    // AbortError / NotAllowedError = user cancelled — stay silent.
+                    if (!err || (err.name !== 'AbortError' && err.name !== 'NotAllowedError')) {
+                        writeClipboard();
+                    }
+                });
+            return;
+        }
+
+        writeClipboard();
     }
 
     // ── TTS: Text-to-Speech (Web Speech Synthesis API) ───────────────────────
@@ -2069,6 +2194,120 @@
      * @param {string} answerText  Plain-text answer for TTS playback.
      * @returns {HTMLElement}  The wrapper element (relative-positioned anchor).
      */
+    /**
+     * Build a semantic ``<time>`` element for an assistant / error bubble's
+     * action row.  Placed **before** the Copy button so information precedes
+     * interactive controls (WCAG 1.3.2 meaningful sequence).
+     *
+     * Display
+     * -------
+     * ``HH:mm``  — 24-hour clock, both fields zero-padded (e.g. ``09:04``).
+     *
+     * Accessibility
+     * -------------
+     * ``datetime`` attribute: ISO 8601 extended string from
+     * ``Date.prototype.toISOString()`` (e.g. ``2024-01-15T14:30:00.000Z``).
+     * Used by assistive technology, parsers, and export consumers.
+     *
+     * ``aria-label``: locale-aware long-form description for screen readers
+     * (e.g. "Sent at Mon, 15 Jan 2024, 14:30").
+     *
+     * ``title``: initially the same long-form date; updated to a relative
+     * string (``"5 minutes ago"``) on ``mouseenter`` for sighted hover users.
+     *
+     * Parameters
+     * ----------
+     * ts : number
+     *     Unix timestamp in milliseconds (``Date.now()``).  When absent or
+     *     non-finite the element is returned empty with ``aria-hidden="true"``
+     *     — the ``margin-right: auto`` spacer still holds the layout constant
+     *     so Copy / Retry / More stay right-aligned regardless.
+     *     [HH:mm]   [Copy]   [Share]   [Retry]   [… More ▾]
+     *
+     * Returns
+     * -------
+     * HTMLTimeElement
+     *     Fully attributed ``<time>`` ready to prepend to the action row.
+     *
+     * Notes
+     * -----
+     * User: The element is purely informational — it has no role, no tabindex,
+     *   and no click handler.  Keyboard and pointer users interact only with
+     *   the sibling action buttons.
+     *
+     * Developer: ``tabular-nums`` prevents the ``HH:mm`` width from jittering
+     *   when digits change (relevant when replaying transcripts quickly).
+     *   The relative-time listener captures ``ts`` and ``fullLabel`` in its
+     *   closure — no external state is needed.
+     */
+    function _buildBubbleTimeEl(ts) {
+        var el = document.createElement('time');
+        el.className = 'ai-assistant-panel-bubble-time';
+
+        // Guard: missing or invalid timestamp — return invisible spacer only.
+        if (!ts || !isFinite(ts)) {
+            el.setAttribute('aria-hidden', 'true');
+            return el;
+        }
+
+        var d  = new Date(ts);
+        var hh = ('0' + d.getHours()).slice(-2);
+        var mm = ('0' + d.getMinutes()).slice(-2);
+
+        // Short display: HH:mm (24-hour, leading zeros).
+        el.textContent = hh + ':' + mm;
+
+        // datetime attribute — ISO 8601 extended (machine-readable, HTML spec
+        // compliant, consumed by assistive tech and conversation export).
+        el.setAttribute('datetime', d.toISOString());
+
+        // Human-readable label for screen readers; locale-aware, 24-hour clock.
+        var fullLabel = d.toLocaleString(
+            (typeof navigator !== 'undefined' && navigator.language) || 'en',
+            {
+                weekday: 'short',
+                year:    'numeric',
+                month:   'short',
+                day:     'numeric',
+                hour:    '2-digit',
+                minute:  '2-digit',
+                hour12:  false,
+            }
+        );
+        el.setAttribute('aria-label', 'Sent at ' + fullLabel);
+        el.title = fullLabel;   // static full-date tooltip by default
+
+        // ── Relative-time tooltip on hover ────────────────────────────────
+        // Dynamically computes "X min ago" / "X hours ago" / date-only on
+        // mouseenter so the tooltip stays accurate for long conversations.
+        // mouseleave restores the full absolute date (consistent with the
+        // aria-label so screen-reader and pointer users see the same info).
+        el.addEventListener('mouseenter', function () {
+            var diff = Date.now() - ts;
+            var mins = Math.round(diff / 60000);
+            var rel;
+            if (mins < 1) {
+                rel = 'Just now';
+            } else if (mins < 60) {
+                rel = mins + (mins === 1 ? ' min ago' : ' mins ago');
+            } else {
+                var hrs = Math.round(mins / 60);
+                if (hrs < 24) {
+                    rel = hrs + (hrs === 1 ? ' hour ago' : ' hours ago');
+                } else {
+                    rel = d.toLocaleDateString(
+                        (typeof navigator !== 'undefined' && navigator.language) || 'en',
+                        { weekday: 'short', month: 'short', day: 'numeric' }
+                    );
+                }
+            }
+            el.title = rel;
+        });
+        el.addEventListener('mouseleave', function () { el.title = fullLabel; });
+
+        return el;
+    }
+
     function _buildBubbleMore(answerText) {
         var wrapper = document.createElement('div');
         wrapper.className = 'ai-assistant-panel-bubble-action-more';
@@ -2189,7 +2428,7 @@
      */
     function _replayTranscript(body) {
         _transcript.forEach(function (m) {
-            _renderBubble(body, m.text, m.role);
+            _renderBubble(body, m.text, m.role, undefined, m.ts);
         });
         body.scrollTop = body.scrollHeight;
     }
@@ -4751,8 +4990,8 @@
             kbdRow.className = 'ai-assistant-panel-hamburger-kbd-row';
             kbdRow.setAttribute('role', 'menuitem');
             kbdRow.setAttribute('tabindex', '0');
-            kbdRow.setAttribute('aria-label', 'Minimize panel (right-click: close \u00b7 Shift+right-click: browser menu)');
-            kbdRow.title = 'Left-click: minimize  \u00b7  Right-click: close  \u00b7  Shift+right-click: browser menu';
+            kbdRow.setAttribute('aria-label', 'Minimize panel (right-click to close)');
+            kbdRow.title = 'Left-click: minimize  \u00b7  Right-click: close';
 
             var kbdIcon = document.createElement('span');
             kbdIcon.setAttribute('aria-hidden', 'true');
@@ -4775,10 +5014,7 @@
                 minimizeAIPanel();
             });
             // Right-click: close hamburger menu then fully close panel.
-            // Shift+right-click: pass through so the browser's native context
-            // menu appears (mirrors the standard browser bypass convention).
             kbdRow.addEventListener('contextmenu', function (e) {
-                if (e.shiftKey) { return; }   // Shift+right-click → native browser menu
                 e.preventDefault();
                 pop.setAttribute('data-open', 'false');
                 closeAIPanel();
@@ -5172,8 +5408,8 @@
             hint.className = 'ai-assistant-panel-kbd-hint';
             hint.setAttribute('role', 'button');
             hint.setAttribute('tabindex', '0');
-            hint.setAttribute('aria-label', 'Minimize panel (right-click: close \u00b7 Shift+right-click: browser menu)');
-            hint.title = 'Left-click: minimize  \u00b7  Right-click: close  \u00b7  Shift+right-click: browser menu';
+            hint.setAttribute('aria-label', 'Minimize panel (right-click to close)');
+            hint.title = 'Left-click: minimize  \u00b7  Right-click: close';
             var hIcon = document.createElement('span');
             hIcon.setAttribute('aria-hidden', 'true');
             hIcon.innerHTML = ICONS.keyboard;        // ICONS constant — safe.
@@ -5190,10 +5426,7 @@
             // Left-click: minimize panel.
             hint.addEventListener('click', function () { _hapticFeedback([8]); minimizeAIPanel(); });
             // Right-click: fully close panel.
-            // Shift+right-click: pass through so the browser's native context
-            // menu appears (mirrors the standard browser bypass convention).
             hint.addEventListener('contextmenu', function (e) {
-                if (e.shiftKey) { return; }   // Shift+right-click → native browser menu
                 e.preventDefault();
                 closeAIPanel();
             });
@@ -5289,8 +5522,12 @@
             modelChev.innerHTML = ICONS.chevronDown;
             modelLink.appendChild(modelChev);
 
-            modelLink.setAttribute('aria-label', 'Choose a model');
-            modelLink.title = 'Choose a model';
+            // Dynamic aria-label and title: mirrors the inline-picker format
+            // "Choose a model — current: <label>" so screen readers and the
+            // browser tooltip both surface the currently-selected model name.
+            var _initModelText = activeNow ? (activeNow.label || activeNow.id) : 'Model';
+            modelLink.setAttribute('aria-label', 'Choose a model \u2014 current: ' + _initModelText);
+            modelLink.title = _initModelText;
         }
 
         // Share button — opens the Share sheet.
@@ -5902,8 +6139,13 @@
                 var d = ev && ev.detail;
                 if (!d || typeof d.id !== 'string') return;
                 var m = _findModel(cfgRef.panelApiModels || [], d.id);
+                var text = m ? (m.label || m.id) : d.id;
                 var lbl = modelLink.querySelector('.ai-assistant-panel-model-link-label');
-                if (lbl) lbl.textContent = m ? (m.label || m.id) : d.id;
+                if (lbl) lbl.textContent = text;
+                // Keep aria-label and title in sync with the selected model —
+                // same format used by the inline-picker btn._syncState().
+                modelLink.setAttribute('aria-label', 'Choose a model \u2014 current: ' + text);
+                modelLink.title = text;
             });
         }
 
@@ -6029,9 +6271,7 @@
 
         minimizeBtn.addEventListener('click', function () { _hapticFeedback([8]); minimizeAIPanel(); });
         // Right-click on the minimize button: fully close (mirrors kbd-hint / kbd-row contract).
-        // Shift+right-click: pass through to the browser's native context menu.
         minimizeBtn.addEventListener('contextmenu', function (e) {
-            if (e.shiftKey) { return; }   // Shift+right-click → native browser menu
             e.preventDefault();
             closeAIPanel();
         });
@@ -9583,7 +9823,7 @@
      *                                  If omitted, Retry walks _transcript
      *                                  to find the preceding user turn.
      */
-    function _renderBubble(body, text, role, question) {
+    function _renderBubble(body, text, role, question, ts) {
         var bubble = document.createElement('div');
         bubble.className = 'ai-assistant-panel-bubble ai-assistant-panel-bubble--' + role;
 
@@ -9601,9 +9841,24 @@
         body.appendChild(bubble);
 
         if (role === 'assistant' || role === 'error') {
-            // ── R6: action row — Copy + Retry ─────────────────────────────────
+            // ── R6: action row — Copy + Share + Retry ─────────────────────────
             var actions = document.createElement('div');
             actions.className = 'ai-assistant-panel-bubble-actions';
+
+            // Timestamp — prepended before Copy so information precedes action
+            // (WCAG 1.3.2).  margin-right: auto in CSS pushes buttons right.
+            actions.appendChild(_buildBubbleTimeEl(ts));
+
+            // Hoist question resolution before Copy so Share (inserted between
+            // Copy and Retry) can use it without a second _transcript walk —
+            // single source of truth, resolved once.
+            // Prefers the explicit `question` param, then walks _transcript back.
+            var retryQ = question || (function () {
+                for (var i = _transcript.length - 1; i >= 0; i--) {
+                    if (_transcript[i].role === 'user') return _transcript[i].text;
+                }
+                return null;
+            }());
 
             // Copy button
             var copyBtn = document.createElement('button');
@@ -9618,15 +9873,24 @@
             copyBtn.addEventListener('click', function () { copyAnswer(text, bubble); });
             actions.appendChild(copyBtn);
 
+            // Share button — between Copy and Retry (OpenAI-inspired).
+            // Payload = "Q: <question>\n\nA: <answer>\n\n— AI · <url>"
+            // so the recipient receives full context without visiting the source.
+            // retryQ already resolved above; direct closure is safe (no loop).
+            var shareBtn = document.createElement('button');
+            shareBtn.className = 'ai-assistant-panel-bubble-action';
+            shareBtn.type = 'button';
+            shareBtn.setAttribute('aria-label', 'Share this answer');
+            shareBtn.title = 'Share Q \u0026 A \u2014 send question + answer to another app or clipboard';
+            shareBtn.innerHTML = ICONS.shareAns;   // ICONS constant — safe.
+            var shareLbl = document.createElement('span');
+            shareLbl.textContent = 'Share';
+            shareBtn.appendChild(shareLbl);
+            shareBtn.addEventListener('click', function () { _shareAnswer(text, retryQ, bubble, shareBtn); });
+            actions.appendChild(shareBtn);
+
             // Retry button — re-submits the paired user question.
-            // Resolve the question to repeat: prefer the explicit param, then
-            // walk _transcript backwards to find the last user turn.
-            var retryQ = question || (function () {
-                for (var i = _transcript.length - 1; i >= 0; i--) {
-                    if (_transcript[i].role === 'user') return _transcript[i].text;
-                }
-                return null;
-            }());
+            // retryQ resolved above (hoisted so Share can use it too).
             if (retryQ) {
                 var retryBtn = document.createElement('button');
                 retryBtn.className = 'ai-assistant-panel-bubble-action';
@@ -9731,7 +9995,9 @@
         if (suggestions) suggestions.remove();
 
         _recordMessage(role, text);   // single source of truth
-        _renderBubble(body, text, role);
+        // Read the timestamp just stored — _recordMessage always pushes before
+        // returning and JS is single-threaded, so the last entry is ours.
+        _renderBubble(body, text, role, undefined, _transcript[_transcript.length - 1].ts);
         // _renderBubble already appended: bubble → action row → feedback block.
         // No further DOM manipulation needed here.
 
@@ -10186,10 +10452,23 @@
 
         streamBubble.classList.remove('ai-assistant-panel-bubble--streaming');
         _recordMessage('assistant', accumulated || '(no response)');
+        // Read the timestamp just stored — same single-threaded guarantee as
+        // _appendPanelMessage: the last _transcript entry is this streamed reply.
+        var streamTs = _transcript[_transcript.length - 1].ts;
 
         if (panelBody && accumulated) {
             var acts = document.createElement('div');
             acts.className = 'ai-assistant-panel-bubble-actions';
+
+            // Timestamp — prepended before Copy so information precedes action.
+            acts.appendChild(_buildBubbleTimeEl(streamTs));
+
+            // Hoist question resolution before Copy so Share can reuse it without
+            // a second _transcript walk — single source of truth, resolved once.
+            var retryQ2 = null;
+            for (var rj2 = _transcript.length - 1; rj2 >= 0; rj2--) {
+                if (_transcript[rj2].role === 'user') { retryQ2 = _transcript[rj2].text; break; }
+            }
 
             // Copy button
             var cb2 = document.createElement('button');
@@ -10205,31 +10484,43 @@
             }(accumulated, streamBubble));
             acts.appendChild(cb2);
 
-            // Retry button — walk _transcript for the last user turn
-            (function (answerText) {
-                var retryQ2 = null;
-                for (var ri = _transcript.length - 1; ri >= 0; ri--) {
-                    if (_transcript[ri].role === 'user') { retryQ2 = _transcript[ri].text; break; }
-                }
-                if (retryQ2) {
-                    var rb2 = document.createElement('button');
-                    rb2.className = 'ai-assistant-panel-bubble-action';
-                    rb2.type = 'button';
-                    rb2.setAttribute('aria-label', 'Retry this answer');
-                    rb2.title = 'Retry — re-send the same question';
-                    rb2.innerHTML = ICONS.retry;
-                    var rl2 = document.createElement('span'); rl2.textContent = 'Retry';
-                    rb2.appendChild(rl2);
+            // Share button — between Copy and Retry (OpenAI-inspired).
+            // Payload = "Q: <question>\n\nA: <answer>\n\n— AI · <url>"
+            // so the recipient receives full context without visiting the source.
+            (function (ans, q, bbl) {
+                var sb2 = document.createElement('button');
+                sb2.className = 'ai-assistant-panel-bubble-action';
+                sb2.type = 'button';
+                sb2.setAttribute('aria-label', 'Share this answer');
+                sb2.title = 'Share Q \u0026 A \u2014 send question + answer to another app or clipboard';
+                sb2.innerHTML = ICONS.shareAns;
+                var sl2 = document.createElement('span'); sl2.textContent = 'Share';
+                sb2.appendChild(sl2);
+                sb2.addEventListener('click', function () { _shareAnswer(ans, q, bbl, sb2); });
+                acts.appendChild(sb2);
+            }(accumulated, retryQ2, streamBubble));
+
+            // Retry button — retryQ2 hoisted above so Share can use it too.
+            if (retryQ2) {
+                var rb2 = document.createElement('button');
+                rb2.className = 'ai-assistant-panel-bubble-action';
+                rb2.type = 'button';
+                rb2.setAttribute('aria-label', 'Retry this answer');
+                rb2.title = 'Retry \u2014 re-send the same question';
+                rb2.innerHTML = ICONS.retry;
+                var rl2 = document.createElement('span'); rl2.textContent = 'Retry';
+                rb2.appendChild(rl2);
+                (function (q) {
                     rb2.addEventListener('click', function () {
                         var pi = document.getElementById('ai-assistant-panel-input');
                         if (!pi) return;
-                        pi.value = retryQ2;
+                        pi.value = q;
                         _updateSendBtnState();
                         handleAIPanelSubmit();
                     });
-                    acts.appendChild(rb2);
-                }
-            }(accumulated));
+                }(retryQ2));
+                acts.appendChild(rb2);
+            }
 
             // "⋯ More ▾" — extensible submenu (contains Listen + future actions)
             var moreW2 = _buildBubbleMore(accumulated);

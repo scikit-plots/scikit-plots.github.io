@@ -1160,6 +1160,53 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     padding-left: 0.1rem;
 }
 
+/* ─── Bubble timestamp (HH:mm display) ───────────────────────────────────────
+ *
+ * Semantic <time> element prepended to every assistant / error action row.
+ * The display shows HH:mm (24-hour, leading zeros); the datetime attribute
+ * carries the full ISO 8601 string for assistive technology, parsers, and
+ * conversation-export consumers.
+ *
+ * Layout strategy
+ * ---------------
+ * [HH:mm]   [Copy]   [Share]   [Retry]   [… More ▾]
+ * ``margin-right: auto`` pushes Copy / Retry / More to the trailing (right)
+ * edge — the same convention used by messaging apps (iMessage, WhatsApp,
+ * Telegram) where timestamps anchor left and action affordances anchor right.
+ * This works at zero cost inside the existing flex container.
+ *
+ * Empty-spacer contract
+ * ----------------------
+ * When ``ts`` is absent (old persisted entries without a timestamp field) the
+ * element has no text content and is ``aria-hidden``.  It is still rendered so
+ * the layout remains constant — buttons do not jump to the left edge.
+ *
+ * tabular-nums
+ * ------------
+ * ``font-variant-numeric: tabular-nums`` fixes the digit width so the HH:mm
+ * label never causes a layout shift when the transcript is replayed quickly
+ * (hour or minute digit changes between sequential entries).
+ */
+.ai-assistant-panel-bubble-time {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15rem 0.35rem;
+    font-size: 0.72rem;                 /* matches .ai-assistant-panel-bubble-action */
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums; /* fixed-width digits — no layout jitter */
+    color: var(--pst-color-text-muted, var(--color-foreground-muted, #6a737d));
+    opacity: 0.70;
+    user-select: none;
+    cursor: default;
+    flex-shrink: 0;
+    /* push Copy / Retry / More to trailing edge */
+    /* margin-right: auto; */
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-bubble-time {
+    opacity: 0.55;
+}
+
 .ai-assistant-panel-bubble-action {
     display: inline-flex;
     align-items: center;
