@@ -1850,6 +1850,15 @@
      * R3 — Clear the conversation WITHOUT a page refresh.
      * Resets the single source of truth and rebuilds the body to its
      * initial welcome/suggestions state.
+     *
+     * Notes
+     * -----
+     * Developer: The speak banner lives on the panel element (not the body),
+     *   so body.innerHTML = '' does NOT remove it.  However _dismissSpeakBanner()
+     *   sets banner.style.display = 'none' when the user sends their first message.
+     *   That inline style persists across resets, leaving the banner invisible on
+     *   a fresh conversation.  We must explicitly restore it here so the banner
+     *   reappears every time the user starts a new chat session.
      */
     function clearConversation() {
         _transcript = [];
@@ -1859,6 +1868,11 @@
         if (!body) return;
         body.innerHTML = '';
         _renderWelcome(body);
+        // Restore speak banner — _dismissSpeakBanner() sets inline display:none
+        // when the user sends a message; clear it so the banner is visible again
+        // on a fresh conversation exactly as it was on first page load.
+        var banner = document.getElementById('ai-assistant-panel-speak-banner');
+        if (banner) { banner.style.display = ''; }
         var input = document.getElementById('ai-assistant-panel-input');
         if (input) { input.value = ''; _updateSendBtnState(); input.focus(); }
         showNotification('Conversation cleared', false);
@@ -5527,11 +5541,19 @@
             // The mic button controls speech recognition ONLY.
             // Popup visibility is the exclusive responsibility of the expand-chevron button
             // (.ai-assistant-mic-expand-btn) so the two concerns are fully decoupled.
+            //
+            // NOTE: _dismissSpeakBanner() must NOT be called here.
+            //   The speak banner serves dual purpose: it is the "Speak with your
+            //   assistant" discovery prompt AND the recording-state indicator
+            //   (.recording class + pulse animation + text change via _bannerSetRecording).
+            //   Hiding it on mic click destroys the recording feedback the user expects
+            //   to see on the banner while speaking.  The correct and only dismissal
+            //   point is _submitQuestion() — after the user has actually sent a message,
+            //   which signals they have engaged with the feature.
             micBtnEl.addEventListener('click', function () {
                 if (!_micHoldMode) {
                     _hapticFeedback([8]);
                     _toggleSpeechRecognition();
-                    _dismissSpeakBanner();
                 }
             });
 
@@ -5602,7 +5624,20 @@
 
             // ── Keyboard: pin while focus is inside popup ─────────────────────
             // focusin fires when any descendant receives focus (bubbles).
+            //
+            // GUARD: only set data-pinned when it is not already 'true'.
+            //
+            // The DOM spec requires setAttribute to queue a MutationObserver
+            // record even when the new value equals the existing value.  Without
+            // this guard, every focusin triggered by clicking a device item
+            // (tabindex="0" → focus moves into the already-pinned popup) would
+            // silently fire _refreshMicDeviceList, which synchronously wipes
+            // listEl.innerHTML between pointerdown and click.  The device item
+            // is removed from the DOM before click can reach it, the browser
+            // retargets click to the list container, and _setMicDevice is never
+            // called — so the selection appears broken.
             micPopup.addEventListener('focusin', function () {
+                if (micPopup.getAttribute('data-pinned') === 'true') { return; }
                 micPopup.setAttribute('data-pinned', 'true');
                 micExpandBtn.setAttribute('aria-expanded', 'true');
             });
@@ -6437,13 +6472,28 @@
         // Re-enumerates on every open so newly plugged-in devices appear without
         // a page reload.  The first open after permission grant will also return
         // real labels (not placeholder "Microphone N" strings).
+        //
+        // IMPORTANT: attributeOldValue:true is required so the callback can
+        // distinguish a real open transition (false/null → 'true') from a no-op
+        // setAttribute call (already 'true' → 'true').  The DOM spec queues a
+        // mutation record for both cases, so checking oldValue is the only way
+        // to suppress spurious refreshes.  This is the second line of defence;
+        // the focusin handler guard above is the primary prevention.
         (function () {
-            var obs = new MutationObserver(function () {
-                if (popup.getAttribute('data-pinned') === 'true') {
-                    _refreshMicDeviceList(devList);
+            var obs = new MutationObserver(function (mutations) {
+                for (var i = 0; i < mutations.length; i++) {
+                    if (mutations[i].oldValue !== 'true'
+                            && popup.getAttribute('data-pinned') === 'true') {
+                        _refreshMicDeviceList(devList);
+                        break;   // one refresh per mutation batch is enough
+                    }
                 }
             });
-            obs.observe(popup, { attributes: true, attributeFilter: ['data-pinned'] });
+            obs.observe(popup, {
+                attributes:       true,
+                attributeFilter:  ['data-pinned'],
+                attributeOldValue: true
+            });
         }());
 
         // ── Drag-to-move popup ────────────────────────────────────────────────
