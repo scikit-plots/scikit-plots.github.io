@@ -4751,8 +4751,8 @@
             kbdRow.className = 'ai-assistant-panel-hamburger-kbd-row';
             kbdRow.setAttribute('role', 'menuitem');
             kbdRow.setAttribute('tabindex', '0');
-            kbdRow.setAttribute('aria-label', 'Minimize panel (right-click to close)');
-            kbdRow.title = 'Left-click: minimize  \u00b7  Right-click: close';
+            kbdRow.setAttribute('aria-label', 'Minimize panel (right-click: close \u00b7 Shift+right-click: browser menu)');
+            kbdRow.title = 'Left-click: minimize  \u00b7  Right-click: close  \u00b7  Shift+right-click: browser menu';
 
             var kbdIcon = document.createElement('span');
             kbdIcon.setAttribute('aria-hidden', 'true');
@@ -4775,7 +4775,10 @@
                 minimizeAIPanel();
             });
             // Right-click: close hamburger menu then fully close panel.
+            // Shift+right-click: pass through so the browser's native context
+            // menu appears (mirrors the standard browser bypass convention).
             kbdRow.addEventListener('contextmenu', function (e) {
+                if (e.shiftKey) { return; }   // Shift+right-click → native browser menu
                 e.preventDefault();
                 pop.setAttribute('data-open', 'false');
                 closeAIPanel();
@@ -5169,8 +5172,8 @@
             hint.className = 'ai-assistant-panel-kbd-hint';
             hint.setAttribute('role', 'button');
             hint.setAttribute('tabindex', '0');
-            hint.setAttribute('aria-label', 'Minimize panel (right-click to close)');
-            hint.title = 'Left-click: minimize  \u00b7  Right-click: close';
+            hint.setAttribute('aria-label', 'Minimize panel (right-click: close \u00b7 Shift+right-click: browser menu)');
+            hint.title = 'Left-click: minimize  \u00b7  Right-click: close  \u00b7  Shift+right-click: browser menu';
             var hIcon = document.createElement('span');
             hIcon.setAttribute('aria-hidden', 'true');
             hIcon.innerHTML = ICONS.keyboard;        // ICONS constant — safe.
@@ -5187,7 +5190,10 @@
             // Left-click: minimize panel.
             hint.addEventListener('click', function () { _hapticFeedback([8]); minimizeAIPanel(); });
             // Right-click: fully close panel.
+            // Shift+right-click: pass through so the browser's native context
+            // menu appears (mirrors the standard browser bypass convention).
             hint.addEventListener('contextmenu', function (e) {
+                if (e.shiftKey) { return; }   // Shift+right-click → native browser menu
                 e.preventDefault();
                 closeAIPanel();
             });
@@ -5624,20 +5630,7 @@
 
             // ── Keyboard: pin while focus is inside popup ─────────────────────
             // focusin fires when any descendant receives focus (bubbles).
-            //
-            // GUARD: only set data-pinned when it is not already 'true'.
-            //
-            // The DOM spec requires setAttribute to queue a MutationObserver
-            // record even when the new value equals the existing value.  Without
-            // this guard, every focusin triggered by clicking a device item
-            // (tabindex="0" → focus moves into the already-pinned popup) would
-            // silently fire _refreshMicDeviceList, which synchronously wipes
-            // listEl.innerHTML between pointerdown and click.  The device item
-            // is removed from the DOM before click can reach it, the browser
-            // retargets click to the list container, and _setMicDevice is never
-            // called — so the selection appears broken.
             micPopup.addEventListener('focusin', function () {
-                if (micPopup.getAttribute('data-pinned') === 'true') { return; }
                 micPopup.setAttribute('data-pinned', 'true');
                 micExpandBtn.setAttribute('aria-expanded', 'true');
             });
@@ -6036,7 +6029,9 @@
 
         minimizeBtn.addEventListener('click', function () { _hapticFeedback([8]); minimizeAIPanel(); });
         // Right-click on the minimize button: fully close (mirrors kbd-hint / kbd-row contract).
+        // Shift+right-click: pass through to the browser's native context menu.
         minimizeBtn.addEventListener('contextmenu', function (e) {
+            if (e.shiftKey) { return; }   // Shift+right-click → native browser menu
             e.preventDefault();
             closeAIPanel();
         });
@@ -6472,28 +6467,13 @@
         // Re-enumerates on every open so newly plugged-in devices appear without
         // a page reload.  The first open after permission grant will also return
         // real labels (not placeholder "Microphone N" strings).
-        //
-        // IMPORTANT: attributeOldValue:true is required so the callback can
-        // distinguish a real open transition (false/null → 'true') from a no-op
-        // setAttribute call (already 'true' → 'true').  The DOM spec queues a
-        // mutation record for both cases, so checking oldValue is the only way
-        // to suppress spurious refreshes.  This is the second line of defence;
-        // the focusin handler guard above is the primary prevention.
         (function () {
-            var obs = new MutationObserver(function (mutations) {
-                for (var i = 0; i < mutations.length; i++) {
-                    if (mutations[i].oldValue !== 'true'
-                            && popup.getAttribute('data-pinned') === 'true') {
-                        _refreshMicDeviceList(devList);
-                        break;   // one refresh per mutation batch is enough
-                    }
+            var obs = new MutationObserver(function () {
+                if (popup.getAttribute('data-pinned') === 'true') {
+                    _refreshMicDeviceList(devList);
                 }
             });
-            obs.observe(popup, {
-                attributes:       true,
-                attributeFilter:  ['data-pinned'],
-                attributeOldValue: true
-            });
+            obs.observe(popup, { attributes: true, attributeFilter: ['data-pinned'] });
         }());
 
         // ── Drag-to-move popup ────────────────────────────────────────────────
