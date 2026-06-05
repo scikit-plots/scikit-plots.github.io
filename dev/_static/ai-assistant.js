@@ -8366,6 +8366,25 @@
     /** All isFinal transcripts committed during the current session. */
     var _bannerFinalText    = '';
 
+    /**
+     * True once the first onresult event fires in the current session.
+     * Gates RMS silence detection so the user can click the banner and take a
+     * moment to start speaking without the engine auto-stopping prematurely.
+     * Reset to false on every onstart.
+     */
+    var _bannerHasSpoken    = false;
+
+    /**
+     * True while a getUserMedia() call is in-flight (between _bannerBegin()
+     * and the .then()/.catch() resolution).  Lets _bannerToggle() detect the
+     * "awaiting permission" state and route a second click to _bannerStop().
+     * Cleared by the .then()/.catch() handlers and by _bannerStop().
+     */
+    var _bannerAwaiting     = false;
+
+    /** setInterval handle for the banner mini soundbar animation. */
+    var _bannerMiniSbTimer  = null;
+
     // ── Tuning constants ──────────────────────────────────────────────────────
 
     /** Session hard-cap in ms. */
@@ -8393,6 +8412,20 @@
      */
     var _BANNER_GAP_MS      = 2000;
 
+    /**
+     * Grace period (ms) after onstart before RMS silence detection can trigger.
+     * Silence detection is armed once this period elapses OR the first onresult
+     * fires — whichever comes first.  Prevents premature auto-stop when the user
+     * clicks the banner and then pauses before beginning to speak.
+     */
+    var _BANNER_GRACE_MS     = 3000;
+
+    /** Number of vertical bars in the banner mini soundbar. */
+    var _BANNER_MINI_SB_BARS = 5;
+
+    /** Tick interval (ms) for the banner mini soundbar animation. */
+    var _BANNER_MINI_SB_MS   = 80;
+
     // ─────────────────────────────────────────────────────────────────────────
 
     /**
@@ -8410,7 +8443,7 @@
             );
             return;
         }
-        if (_bannerActive || _bannerStarting) {
+        if (_bannerActive || _bannerStarting || _bannerAwaiting) {
             _bannerStop(false);
         } else {
             _bannerBegin();
@@ -8427,16 +8460,66 @@
      * permission denied), _bannerDoStart() is called directly without an
      * audio graph.  Silence detection then falls back to the result-gap
      * timer strategy (reset on every onresult; fires after _BANNER_GAP_MS).
+     *
+     * iOS Safari compatibility
+     * ────────────────────────
+     * iOS Safari suspends AudioContext objects created outside a synchronous
+     * user-gesture handler, and in some versions silently refuses to resume
+     * them.  The AudioContext is therefore created HERE — synchronously within
+     * the click → _bannerToggle() → _bannerBegin() call stack — before any
+     * async boundary.  _bannerConnectAudio() reuses this pre-created context
+     * to attach the MediaStream once getUserMedia resolves.
+     *
+     * Cancellation race guard
+     * ───────────────────────
+     * getUserMedia is asynchronous; the user may click Stop before it resolves.
+     * _bannerAwaiting is set true here and cleared by _bannerStop() on cancel.
+     * The .then() handler checks this flag to detect cancellation and releases
+     * the acquired stream immediately without starting recognition.
      */
     function _bannerBegin() {
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            // Pre-create AudioContext synchronously while still inside the user
+            // gesture.  This is the ONLY reliable path on iOS Safari (≥ 14.5).
+            if (!_bannerAudioCtx) {
+                var AC = window.AudioContext || window.webkitAudioContext;
+                if (AC) {
+                    try {
+                        _bannerAudioCtx = new AC();
+                    } catch (_acErr) {
+                        _bannerAudioCtx = null;   // proceed without Web Audio
+                    }
+                }
+            }
+
+            _bannerAwaiting = true;
             navigator.mediaDevices.getUserMedia({ audio: true })
                 .then(function (stream) {
+                    // Detect cancellation: _bannerStop() sets _bannerAwaiting=false.
+                    // If it is still true, the user has NOT cancelled — proceed.
+                    var cancelled = !_bannerAwaiting;
+                    _bannerAwaiting = false;
+
+                    if (cancelled) {
+                        // Release the stream immediately; don't start recognition.
+                        try {
+                            stream.getTracks().forEach(function (t) { t.stop(); });
+                        } catch (_e) {}
+                        _bannerDisconnectAudio();
+                        return;
+                    }
+
                     _bannerStream = stream;
                     _bannerConnectAudio(stream);
                     _bannerDoStart();
                 })
                 .catch(function (err) {
+                    _bannerAwaiting = false;
+                    // Close the pre-created AudioContext — no stream means no graph.
+                    if (_bannerAudioCtx) {
+                        try { _bannerAudioCtx.close(); } catch (_e) {}
+                        _bannerAudioCtx = null;
+                    }
                     // Permission denied or hardware unavailable — proceed without
                     // Web Audio.  The user will see normal recognition behaviour;
                     // silence detection degrades to result-gap timer only.
@@ -8487,6 +8570,7 @@
                 _bannerActive       = true;
                 _bannerEnded        = false;
                 _bannerPendingStart = false;
+                _bannerHasSpoken    = false;   // arm grace period; silence detection gates on this
 
                 // Snapshot the textarea so the same continuous-mode accumulation
                 // strategy used by the shared engine applies here too:
@@ -8514,6 +8598,9 @@
 
             // ── onresult ─────────────────────────────────────────────────────
             _bannerRec.onresult = function (e) {
+                // Arm silence detection — user has begun speaking this session.
+                _bannerHasSpoken = true;
+
                 var inp = document.getElementById('ai-assistant-panel-input');
                 if (!inp) { return; }
 
@@ -8652,6 +8739,7 @@
      *             normal user-initiated or auto-triggered stops.
      */
     function _bannerStop(abort) {
+        _bannerAwaiting = false;   // cancel any in-flight getUserMedia result
         _bannerClearTimers();
         _bannerPendingStart = false;
 
@@ -8685,41 +8773,62 @@
         _bannerResultTimer = null;
         cancelAnimationFrame(_bannerSilenceRaf);
         _bannerSilenceRaf = null;
+        clearInterval(_bannerMiniSbTimer);
+        _bannerMiniSbTimer = null;
     }
 
     /**
-     * Set / clear the .recording class and aria-label on the banner button.
+     * Set / clear the .recording class, aria-label, title, visible text span,
+     * and mini soundbar on the banner button.
      *
      * Parameters
      * ----------
      * active : boolean
-     *     True  → button styled as "recording" (pulsing red).
-     *     False → button reverts to idle state.
+     *     True  → button styled as "recording" (pulsing red); text → "Listening…".
+     *     False → button reverts to idle state; text → "Speak with your assistant".
+     *
+     * Notes
+     * -----
+     * The span textContent is updated so sighted users see the live state without
+     * relying solely on the aria-label (which is announced by screen readers only).
+     * The mini soundbar is started when recording with Web Audio available, and its
+     * DOM element is removed on idle; the interval handle is cleared by
+     * _bannerClearTimers() which always runs before _bannerSetRecording(false).
      */
     function _bannerSetRecording(active) {
         var btn = document.getElementById('ai-assistant-panel-speak-banner');
         if (!btn) { return; }
+
         btn.classList.toggle('recording', active);
-        btn.setAttribute(
-            'aria-label',
-            active ? 'Stop recording' : 'Speak with your assistant'
-        );
-        btn.setAttribute(
-            'title',
-            active ? 'Stop recording' : 'Speak with your assistant'
-        );
+
+        var label = active ? 'Stop recording'          : 'Speak with your assistant';
+        var text  = active ? 'Listening… tap to stop' : 'Speak with your assistant';
+        btn.setAttribute('aria-label', label);
+        btn.setAttribute('title',      label);
+
+        var span = btn.querySelector('span');
+        if (span) { span.textContent = text; }
+
+        // Mini soundbar: create+start when recording + analyser live; remove on idle.
+        // The interval is already cleared by _bannerClearTimers() before this call.
+        var existingSb = btn.querySelector('.ai-assistant-banner-soundbar');
+        if (active) {
+            if (!existingSb && _bannerAnalyser) {
+                _bannerStartMiniSoundbar(btn);
+            }
+        } else {
+            if (existingSb) { btn.removeChild(existingSb); }
+        }
     }
 
     // ── Banner Web Audio — RMS silence detection ──────────────────────────────
 
     /**
-     * Connect a live MediaStream to an AnalyserNode for RMS measurement.
+     * Connect a live MediaStream to the pre-created AnalyserNode for RMS measurement.
      *
      * The graph is: MediaStreamAudioSourceNode → AnalyserNode (no destination).
      * This is a pure analysis graph — no sound is played back and there is zero
      * risk of echo or feedback regardless of speaker / headphone configuration.
-     *
-     * Idempotent: if _bannerAudioCtx already exists the call is a no-op.
      *
      * Parameters
      * ----------
@@ -8728,17 +8837,23 @@
      *
      * Notes
      * -----
-     * iOS Safari suspends AudioContext objects on creation; we resume immediately
-     * so the analyser starts delivering data without waiting for a user gesture.
-     * fftSize 256 → 128 frequency bins; smooth constant 0.80 matches the main
-     * shared engine's settings for consistent RMS characteristics.
+     * The AudioContext is pre-created synchronously in _bannerBegin() to satisfy
+     * the iOS Safari requirement that AudioContext objects be constructed within
+     * a synchronous user-gesture handler.  This function only attaches the
+     * MediaStream to the already-live context; it does NOT create a new context.
+     *
+     * If _bannerAudioCtx is null (pre-creation failed or unavailable), this
+     * function is a safe no-op — the caller falls back to result-gap timer
+     * silence detection.
+     *
+     * fftSize 256 → 128 frequency bins; smoothingTimeConstant 0.80 matches the
+     * main shared engine for consistent RMS characteristics.
      */
     function _bannerConnectAudio(stream) {
-        if (!stream || _bannerAudioCtx) { return; }
+        if (!stream || !_bannerAudioCtx) { return; }
+        // Idempotent: skip if already connected (shouldn't occur, but guard it).
+        if (_bannerAnalyser) { return; }
         try {
-            var AC = window.AudioContext || window.webkitAudioContext;
-            if (!AC) { return; }
-            _bannerAudioCtx = new AC();
             _bannerAnalyser = _bannerAudioCtx.createAnalyser();
             _bannerAnalyser.fftSize               = 256;
             _bannerAnalyser.smoothingTimeConstant = 0.80;
@@ -8749,8 +8864,7 @@
                 _bannerAudioCtx.resume().catch(function () {});
             }
         } catch (err) {
-            console.warn('AI Assistant banner: Web Audio unavailable:', err);
-            _bannerAudioCtx = null;
+            console.warn('AI Assistant banner: Web Audio stream connection failed:', err);
             _bannerAnalyser = null;
             _bannerAudioSrc = null;
         }
@@ -8825,7 +8939,21 @@
      *   onerror) so it never fires after the session has ended.
      * • Self-terminates by returning without rescheduling when !_bannerActive.
      *
-     * Algorithm
+     * Grace period + _bannerHasSpoken guard
+     * ──────────────────────────────────────
+     * Silence detection is deliberately disabled until one of the following
+     * conditions is met (whichever comes first):
+     *
+     *   1. _bannerHasSpoken becomes true — the first onresult has fired,
+     *      confirming the user has started speaking.
+     *   2. _BANNER_GRACE_MS elapses — safety valve that arms detection even
+     *      when the speech engine never fires onresult (e.g. very quiet
+     *      environment or network delay); prevents infinite silent sessions.
+     *
+     * Without this guard, clicking the banner and pausing > 1.5 s before
+     * speaking would cause premature auto-stop before the user had begun.
+     *
+     * Algorithm (after grace period arms)
      * ─────────
      * Maintains lastSoundAt in closure.  Every frame:
      *   RMS > threshold → reset lastSoundAt (user is speaking).
@@ -8836,15 +8964,27 @@
     function _bannerStartRmsSilence() {
         cancelAnimationFrame(_bannerSilenceRaf);
 
+        var startedAt   = Date.now();
         var lastSoundAt = Date.now();
 
         function tick() {
             if (!_bannerActive) { return; }
 
+            var now    = Date.now();
+            var graced = (now - startedAt) >= _BANNER_GRACE_MS;
+
+            // Hold off silence counting until the user has spoken OR the grace
+            // period has elapsed — prevents premature stop on slow starters.
+            if (!_bannerHasSpoken && !graced) {
+                lastSoundAt = now;   // keep the silence clock reset
+                _bannerSilenceRaf = requestAnimationFrame(tick);
+                return;
+            }
+
             var rms = _bannerReadRms();
             if (rms > _BANNER_SILENCE_RMS) {
-                lastSoundAt = Date.now();
-            } else if (Date.now() - lastSoundAt >= _BANNER_SILENCE_MS) {
+                lastSoundAt = now;
+            } else if (now - lastSoundAt >= _BANNER_SILENCE_MS) {
                 // Sustained silence detected — stop cleanly (flush final transcript)
                 _bannerStop(false);
                 return;
@@ -8854,6 +8994,65 @@
         }
 
         _bannerSilenceRaf = requestAnimationFrame(tick);
+    }
+
+    /**
+     * Create and animate the banner mini soundbar inside the banner button.
+     *
+     * Renders _BANNER_MINI_SB_BARS vertical bars driven by the live RMS
+     * amplitude from _bannerAnalyser.  Each bar receives a phase-offset sine
+     * factor so bars animate independently and organically even at low RMS.
+     *
+     * The soundbar container (`<div class="ai-assistant-banner-soundbar">`) is
+     * appended to btn and removed by _bannerSetRecording(false).
+     * The interval handle is stored in _bannerMiniSbTimer and cleared by
+     * _bannerClearTimers() which always runs before _bannerSetRecording(false).
+     *
+     * Parameters
+     * ----------
+     * btn : HTMLElement
+     *     The banner button element to append the soundbar into.
+     *
+     * Notes
+     * -----
+     * prefers-reduced-motion: the tick callback returns immediately when the
+     * media query matches, leaving bars at their 2 px silence height.
+     */
+    function _bannerStartMiniSoundbar(btn) {
+        clearInterval(_bannerMiniSbTimer);
+
+        var reducedMotion = window.matchMedia &&
+            window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        var sb = document.createElement('div');
+        sb.className = 'ai-assistant-banner-soundbar';
+        sb.setAttribute('aria-hidden', 'true');
+
+        var bars = [];
+        for (var i = 0; i < _BANNER_MINI_SB_BARS; i++) {
+            var b = document.createElement('span');
+            b.className    = 'ai-assistant-banner-soundbar-bar';
+            b.style.height = '2px';
+            sb.appendChild(b);
+            bars.push(b);
+        }
+        btn.appendChild(sb);
+
+        if (reducedMotion) { return; }   // bars remain at silence height
+
+        _bannerMiniSbTimer = setInterval(function () {
+            if (!_bannerActive) { return; }
+            var rms = _bannerReadRms();
+            var now = Date.now();
+            for (var j = 0; j < bars.length; j++) {
+                // Independent phase shift per bar → organic animation
+                var phase  = (now / 180) + j * 1.2;
+                var factor = 0.45 + 0.55 * Math.abs(Math.sin(phase));
+                var h      = Math.round(2 + rms * 10 * factor);
+                h = h < 2 ? 2 : (h > 12 ? 12 : h);
+                bars[j].style.height = h + 'px';
+            }
+        }, _BANNER_MINI_SB_MS);
     }
 
     // ── End banner engine ─────────────────────────────────────────────────────

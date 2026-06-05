@@ -881,6 +881,39 @@
     border-color: rgba(231, 76, 60, 0.70);
 }
 
+/* Banner mini soundbar — rendered inline inside the banner button while recording.
+ * 5 bars driven by JS RMS amplitude; shown only when Web Audio graph is live.
+ * Uses currentColor so bars inherit the recording red (#e74c3c) automatically. */
+.ai-assistant-banner-soundbar {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 14px;
+    flex-shrink: 0;
+    margin-left: 2px;
+    overflow: hidden;
+}
+
+.ai-assistant-banner-soundbar-bar {
+    display: block;
+    width: 2px;
+    height: 2px;
+    min-height: 2px;
+    border-radius: 2px;
+    flex-shrink: 0;
+    background: currentColor;      /* inherits #e74c3c from .recording rule */
+    opacity: 0.80;
+    transition: height 0.07s ease-out;
+    will-change: height;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-banner-soundbar-bar {
+        transition: none;
+        height: 4px;               /* static mid-height — visible but not distracting */
+    }
+}
+
 /* ─── Floating "Ask Us" trigger icon ─────────────────────────────────────── */
 /*
  * When the panel is minimized (or not yet opened), a compact pill-shaped
