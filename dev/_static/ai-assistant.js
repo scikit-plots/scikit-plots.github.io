@@ -5378,7 +5378,7 @@
 
             speakBannerEl.addEventListener('click', function () {
                 _hapticFeedback([8]);
-                _toggleSpeechRecognition();
+                _bannerToggle();
             });
         }
 
@@ -8266,7 +8266,597 @@
     }
 
 
-    // ── Web Audio API — real-time visualisation ───────────────────────────────
+    // ── Banner-only independent speech recognition engine ─────────────────────
+    //
+    // Purpose
+    // ───────
+    // The speak-banner button (class="ai-assistant-panel-speak-banner") needs
+    // a "click to start / click to stop" flow with:
+    //   • 30-second hard-cap auto-stop.
+    //   • 1.5-second silence auto-stop when Web Audio is available.
+    //   • 2-second result-gap silence fallback when Web Audio is unavailable.
+    //
+    // Why a separate engine and not _toggleSpeechRecognition?
+    // ────────────────────────────────────────────────────────
+    // The shared engine's _doStart() and onstart both contain this guard:
+    //
+    //   if (_micHoldMode && !_micPointerHeld) { return; }
+    //
+    // _micPointerHeld is only set true by pointerdown events on the footer
+    // mic button, so banner clicks (which never fire pointerdown) are always
+    // blocked when hold-mode is on.  Coupling the banner to hold-mode state
+    // is semantically wrong — the banner is always click-to-toggle regardless
+    // of what the footer mic is doing.
+    //
+    // This engine is therefore FULLY INDEPENDENT:
+    //   • Its own SpeechRecognition instance (_bannerRec, kept alive to avoid
+    //     repeated permission prompts — same rationale as the shared engine).
+    //   • Its own state variables (no aliasing of _isListening, _micHoldMode, …).
+    //   • Its own Web Audio graph (acquired fresh on each start; released on stop).
+    //   • Writes transcript to the same textarea as the footer mic does.
+    //   • Toggles .recording on the banner button for visual / ARIA feedback.
+    //
+    // Cross-browser compatibility
+    // ───────────────────────────
+    // Chrome / Edge   : full Web Audio + SpeechRecognition — silence detection active.
+    // Firefox         : SpeechRecognition absent → _speechSupported() returns false →
+    //                   _bannerToggle() shows notification and returns; no crash.
+    // iOS Safari      : SpeechRecognition works; getUserMedia may be restricted →
+    //                   _bannerBegin() catches the rejection and falls back to
+    //                   recognition-only mode (30s timer + result-gap timer).
+    // Legacy / unknown: fail _speechSupported() early; no crash.
+    // ─────────────────────────────────────────────────────────────────────────
+
+    /** SpeechRecognition instance for the banner (kept alive across sessions). */
+    var _bannerRec          = null;
+
+    /** True while the banner engine is actively recognising speech. */
+    var _bannerActive       = false;
+
+    /**
+     * True when SpeechRecognition.onend (or onerror) has fired and the engine
+     * is in the idle state.  Mirrors _speechRecognitionEnded for the shared engine.
+     */
+    var _bannerEnded        = true;
+
+    /**
+     * True between .start() and onstart — the engine is winding up.
+     * Guards against double .start() calls.
+     */
+    var _bannerStarting     = false;
+
+    /**
+     * True when _bannerDoStart() was called while _bannerEnded was still false.
+     * onend/onerror checks this and calls _bannerDoStart() after the engine idles,
+     * matching the _pendingSpeechStart pattern in the shared engine.
+     */
+    var _bannerPendingStart = false;
+
+    /** Handle for the 30-second hard-cap setTimeout. */
+    var _bannerAutoTimer    = null;
+
+    /**
+     * Handle for the result-gap silence fallback setTimeout.
+     * Reset on every onresult; fires after _BANNER_GAP_MS of no new results.
+     * Only used when _bannerAnalyser is unavailable (no Web Audio).
+     */
+    var _bannerResultTimer  = null;
+
+    /**
+     * requestAnimationFrame handle for the RMS silence detection loop.
+     * Only used when _bannerAnalyser is available.
+     */
+    var _bannerSilenceRaf   = null;
+
+    /** AudioContext for banner silence detection. */
+    var _bannerAudioCtx     = null;
+
+    /** AnalyserNode for reading RMS amplitude. */
+    var _bannerAnalyser     = null;
+
+    /** MediaStreamAudioSourceNode feeding the analyser. */
+    var _bannerAudioSrc     = null;
+
+    /** MediaStream from getUserMedia — released on _bannerDisconnectAudio(). */
+    var _bannerStream       = null;
+
+    /** Textarea value snapshot taken at session start (avoids duplicate text). */
+    var _bannerBaseText     = '';
+
+    /** All isFinal transcripts committed during the current session. */
+    var _bannerFinalText    = '';
+
+    // ── Tuning constants ──────────────────────────────────────────────────────
+
+    /** Session hard-cap in ms. */
+    var _BANNER_MAX_MS      = 30000;
+
+    /**
+     * Duration of sustained silence (in ms) before auto-stop when Web Audio
+     * RMS detection is active.  1500 ms ≈ 1.5 seconds — noticeably shorter
+     * than a comfortable sentence pause but long enough to avoid cutting off
+     * mid-phrase breath pauses.
+     */
+    var _BANNER_SILENCE_MS  = 1500;
+
+    /**
+     * RMS amplitude threshold.  Samples below this value are treated as silent.
+     * 0.015 ≈ −36 dBFS; sits comfortably above thermal noise and well below
+     * normal conversational speech so it is robust across microphone hardware.
+     */
+    var _BANNER_SILENCE_RMS = 0.015;
+
+    /**
+     * Duration (ms) of no new recognition results before auto-stop in the
+     * Web-Audio-unavailable fallback path.  Slightly longer than _BANNER_SILENCE_MS
+     * to compensate for result-delivery latency in the speech engine.
+     */
+    var _BANNER_GAP_MS      = 2000;
+
+    // ─────────────────────────────────────────────────────────────────────────
+
+    /**
+     * Toggle banner recognition on/off.
+     *
+     * Entry point called by the banner button click handler.
+     * Click while idle  → calls _bannerBegin() to start.
+     * Click while active/starting → calls _bannerStop(false) to stop cleanly.
+     */
+    function _bannerToggle() {
+        if (!_speechSupported()) {
+            showNotification(
+                'Speech recognition is not supported in this browser.',
+                true
+            );
+            return;
+        }
+        if (_bannerActive || _bannerStarting) {
+            _bannerStop(false);
+        } else {
+            _bannerBegin();
+        }
+    }
+
+    /**
+     * Acquire a getUserMedia stream for Web Audio silence detection, then
+     * start the recognition engine.
+     *
+     * Graceful degradation path
+     * ─────────────────────────
+     * If getUserMedia is unavailable (legacy browser, iOS restriction, or
+     * permission denied), _bannerDoStart() is called directly without an
+     * audio graph.  Silence detection then falls back to the result-gap
+     * timer strategy (reset on every onresult; fires after _BANNER_GAP_MS).
+     */
+    function _bannerBegin() {
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .then(function (stream) {
+                    _bannerStream = stream;
+                    _bannerConnectAudio(stream);
+                    _bannerDoStart();
+                })
+                .catch(function (err) {
+                    // Permission denied or hardware unavailable — proceed without
+                    // Web Audio.  The user will see normal recognition behaviour;
+                    // silence detection degrades to result-gap timer only.
+                    console.warn(
+                        'AI Assistant banner: getUserMedia failed, '
+                        + 'using recognition-only fallback:',
+                        err
+                    );
+                    _bannerDoStart();
+                });
+        } else {
+            _bannerDoStart();
+        }
+    }
+
+    /**
+     * Internal: call SpeechRecognition.start() once the engine is truly idle.
+     *
+     * If the engine is still winding down (_bannerEnded === false), sets
+     * _bannerPendingStart so that onend/onerror restarts automatically —
+     * exactly the same deferred-start pattern used by the shared engine.
+     */
+    function _bannerDoStart() {
+        if (_bannerStarting) { return; }
+
+        if (!_bannerEnded) {
+            _bannerPendingStart = true;
+            return;
+        }
+
+        var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+        // Create the instance once and keep it alive across sessions to avoid
+        // Chrome opening a new audio-capture session (which re-shows the
+        // permission indicator) on every start.
+        if (!_bannerRec) {
+            _bannerRec = new SR();
+
+            // continuous=true: engine keeps running until explicitly stopped.
+            // interimResults=true: required for real-time textarea preview.
+            _bannerRec.continuous     = true;
+            _bannerRec.interimResults = true;
+            _bannerRec.lang           = navigator.language || 'en-US';
+
+            // ── onstart ──────────────────────────────────────────────────────
+            _bannerRec.onstart = function () {
+                _bannerStarting     = false;
+                _bannerActive       = true;
+                _bannerEnded        = false;
+                _bannerPendingStart = false;
+
+                // Snapshot the textarea so the same continuous-mode accumulation
+                // strategy used by the shared engine applies here too:
+                //   displayed value = _bannerBaseText + _bannerFinalText + interim
+                var inp = document.getElementById('ai-assistant-panel-input');
+                _bannerBaseText  = inp ? inp.value : '';
+                _bannerFinalText = '';
+
+                // Visual / ARIA feedback
+                _bannerSetRecording(true);
+
+                // 30-second hard cap — cleared in _bannerClearTimers()
+                clearTimeout(_bannerAutoTimer);
+                _bannerAutoTimer = setTimeout(function () {
+                    _bannerAutoTimer = null;
+                    if (_bannerActive) { _bannerStop(false); }
+                }, _BANNER_MAX_MS);
+
+                // Start RMS silence detection when Web Audio graph is live.
+                // Falls back to result-gap timer path (set in onresult) otherwise.
+                if (_bannerAnalyser) {
+                    _bannerStartRmsSilence();
+                }
+            };
+
+            // ── onresult ─────────────────────────────────────────────────────
+            _bannerRec.onresult = function (e) {
+                var inp = document.getElementById('ai-assistant-panel-input');
+                if (!inp) { return; }
+
+                var hasFinal    = false;
+                var interimText = '';
+
+                // Iterate from e.resultIndex (not 0) to avoid re-appending earlier
+                // phrases — identical contract to the shared engine's onresult.
+                for (var i = e.resultIndex; i < e.results.length; i++) {
+                    var r    = e.results[i];
+                    var text = r[0].transcript.trim();
+                    if (!text) { continue; }
+
+                    if (r.isFinal) {
+                        _bannerFinalText = _bannerFinalText
+                            ? _bannerFinalText + ' ' + text
+                            : text;
+                        hasFinal = true;
+                    } else {
+                        interimText = interimText
+                            ? interimText + ' ' + text
+                            : text;
+                    }
+                }
+
+                // Rebuild textarea: base + finals + interim
+                var committed = _bannerFinalText;
+                var preview   = interimText
+                    ? (committed ? committed + ' ' + interimText : interimText)
+                    : committed;
+                var full = _bannerBaseText
+                    ? (preview ? _bannerBaseText + ' ' + preview : _bannerBaseText)
+                    : preview;
+
+                inp.value = full;
+                _autoResizeInput(inp);
+                _updateSendBtnState();
+                if (hasFinal) { inp.focus(); }
+
+                // Fallback silence detection: reset the result-gap countdown on
+                // every recognition event.  Only active when _bannerAnalyser is
+                // unavailable (RMS loop not running).
+                if (!_bannerAnalyser) {
+                    clearTimeout(_bannerResultTimer);
+                    _bannerResultTimer = setTimeout(function () {
+                        if (_bannerActive) { _bannerStop(false); }
+                    }, _BANNER_GAP_MS);
+                }
+            };
+
+            // ── onend ─────────────────────────────────────────────────────────
+            // Fired after both .stop() and natural engine termination.
+            // Do NOT re-enable the session automatically (unlike the shared
+            // engine's hold-to-record restart) — the banner is click-to-toggle.
+            _bannerRec.onend = function () {
+                _bannerClearTimers();
+                _bannerStarting     = false;
+                _bannerActive       = false;
+                _bannerEnded        = true;
+                _bannerSetRecording(false);
+                _bannerDisconnectAudio();
+
+                // Restart only if _bannerDoStart() was called while we were
+                // winding down (rapid double-click, programmatic re-trigger).
+                if (_bannerPendingStart) {
+                    _bannerPendingStart = false;
+                    setTimeout(function () { _bannerDoStart(); }, 150);
+                }
+            };
+
+            // ── onerror ───────────────────────────────────────────────────────
+            _bannerRec.onerror = function (e) {
+                _bannerClearTimers();
+                _bannerStarting     = false;
+                _bannerActive       = false;
+                _bannerEnded        = true;
+                _bannerSetRecording(false);
+                _bannerDisconnectAudio();
+
+                // Surface actionable errors to the user; swallow no-speech /
+                // aborted which are informational / programmatic respectively.
+                if (e.error === 'not-allowed' ||
+                    e.error === 'service-not-allowed') {
+                    showNotification(
+                        'Microphone access denied. '
+                        + 'Allow microphone access in your browser settings.',
+                        true
+                    );
+                } else if (
+                    e.error !== 'aborted' &&
+                    e.error !== 'no-speech'
+                ) {
+                    showNotification(
+                        'Speech recognition error: ' + e.error,
+                        true
+                    );
+                }
+
+                // Honour a pending restart unless the session was deliberately
+                // aborted (e.g. by _bannerStop(true)).
+                if (_bannerPendingStart && e.error !== 'aborted') {
+                    _bannerPendingStart = false;
+                    _bannerDoStart();
+                } else {
+                    _bannerPendingStart = false;
+                }
+            };
+        }
+
+        try {
+            _bannerEnded    = false;
+            _bannerStarting = true;
+            _bannerRec.start();
+        } catch (err) {
+            _bannerStarting     = false;
+            _bannerEnded        = true;
+            _bannerPendingStart = false;
+            console.error('AI Assistant banner: recognition start error:', err);
+            showNotification(
+                'Could not start microphone. Check browser permissions.',
+                true
+            );
+        }
+    }
+
+    /**
+     * Stop the banner recognition engine.
+     *
+     * Parameters
+     * ----------
+     * abort : boolean
+     *     True  → SpeechRecognition.abort() — discards any partial transcript
+     *             and fires onerror('aborted') then onend.  Use for hard resets.
+     *     False → SpeechRecognition.stop()  — flushes the final onresult event
+     *             so the user's last phrase is committed before onend.  Use for
+     *             normal user-initiated or auto-triggered stops.
+     */
+    function _bannerStop(abort) {
+        _bannerClearTimers();
+        _bannerPendingStart = false;
+
+        if (_bannerRec && (_bannerActive || _bannerStarting)) {
+            try {
+                if (abort) {
+                    _bannerRec.abort();
+                } else {
+                    _bannerRec.stop();
+                }
+            } catch (_e) {}
+        }
+
+        // Update state and UI immediately — onend will confirm but UI must be
+        // responsive (especially on mobile where onend can be slow).
+        _bannerActive   = false;
+        _bannerStarting = false;
+        _bannerSetRecording(false);
+        _bannerDisconnectAudio();
+    }
+
+    /**
+     * Clear all banner timers and the RAF silence loop.
+     * Called from _bannerStop(), onend, and onerror to guarantee cleanup
+     * regardless of which exit path is taken.
+     */
+    function _bannerClearTimers() {
+        clearTimeout(_bannerAutoTimer);
+        _bannerAutoTimer = null;
+        clearTimeout(_bannerResultTimer);
+        _bannerResultTimer = null;
+        cancelAnimationFrame(_bannerSilenceRaf);
+        _bannerSilenceRaf = null;
+    }
+
+    /**
+     * Set / clear the .recording class and aria-label on the banner button.
+     *
+     * Parameters
+     * ----------
+     * active : boolean
+     *     True  → button styled as "recording" (pulsing red).
+     *     False → button reverts to idle state.
+     */
+    function _bannerSetRecording(active) {
+        var btn = document.getElementById('ai-assistant-panel-speak-banner');
+        if (!btn) { return; }
+        btn.classList.toggle('recording', active);
+        btn.setAttribute(
+            'aria-label',
+            active ? 'Stop recording' : 'Speak with your assistant'
+        );
+        btn.setAttribute(
+            'title',
+            active ? 'Stop recording' : 'Speak with your assistant'
+        );
+    }
+
+    // ── Banner Web Audio — RMS silence detection ──────────────────────────────
+
+    /**
+     * Connect a live MediaStream to an AnalyserNode for RMS measurement.
+     *
+     * The graph is: MediaStreamAudioSourceNode → AnalyserNode (no destination).
+     * This is a pure analysis graph — no sound is played back and there is zero
+     * risk of echo or feedback regardless of speaker / headphone configuration.
+     *
+     * Idempotent: if _bannerAudioCtx already exists the call is a no-op.
+     *
+     * Parameters
+     * ----------
+     * stream : MediaStream
+     *     Live microphone stream from getUserMedia.
+     *
+     * Notes
+     * -----
+     * iOS Safari suspends AudioContext objects on creation; we resume immediately
+     * so the analyser starts delivering data without waiting for a user gesture.
+     * fftSize 256 → 128 frequency bins; smooth constant 0.80 matches the main
+     * shared engine's settings for consistent RMS characteristics.
+     */
+    function _bannerConnectAudio(stream) {
+        if (!stream || _bannerAudioCtx) { return; }
+        try {
+            var AC = window.AudioContext || window.webkitAudioContext;
+            if (!AC) { return; }
+            _bannerAudioCtx = new AC();
+            _bannerAnalyser = _bannerAudioCtx.createAnalyser();
+            _bannerAnalyser.fftSize               = 256;
+            _bannerAnalyser.smoothingTimeConstant = 0.80;
+            _bannerAudioSrc = _bannerAudioCtx.createMediaStreamSource(stream);
+            _bannerAudioSrc.connect(_bannerAnalyser);
+            // NOT connected to destination — analysis only; zero echo/feedback.
+            if (_bannerAudioCtx.state === 'suspended') {
+                _bannerAudioCtx.resume().catch(function () {});
+            }
+        } catch (err) {
+            console.warn('AI Assistant banner: Web Audio unavailable:', err);
+            _bannerAudioCtx = null;
+            _bannerAnalyser = null;
+            _bannerAudioSrc = null;
+        }
+    }
+
+    /**
+     * Disconnect and close the Web Audio graph.  Idempotent and safe to call
+     * when no graph is present.  Also stops all tracks on _bannerStream so the
+     * browser removes the microphone indicator in the tab bar.
+     */
+    function _bannerDisconnectAudio() {
+        cancelAnimationFrame(_bannerSilenceRaf);
+        _bannerSilenceRaf = null;
+
+        if (_bannerAudioSrc) {
+            try { _bannerAudioSrc.disconnect(); } catch (_e) {}
+            _bannerAudioSrc = null;
+        }
+        if (_bannerAnalyser) {
+            try { _bannerAnalyser.disconnect(); } catch (_e) {}
+            _bannerAnalyser = null;
+        }
+        if (_bannerAudioCtx) {
+            try { _bannerAudioCtx.close(); } catch (_e) {}
+            _bannerAudioCtx = null;
+        }
+        if (_bannerStream) {
+            try {
+                _bannerStream.getTracks().forEach(function (t) { t.stop(); });
+            } catch (_e) {}
+            _bannerStream = null;
+        }
+    }
+
+    /**
+     * Read the current RMS amplitude from _bannerAnalyser.
+     *
+     * Returns
+     * -------
+     * number
+     *     RMS in [0, 1].  Returns 1 (treated as "sound present") when no
+     *     analyser is connected — guarantees the silence loop never fires
+     *     without a live audio graph.
+     *
+     * Notes
+     * -----
+     * Uses time-domain data (getByteTimeDomainData) rather than frequency data.
+     * Values are unsigned 8-bit [0..255] centred at 128 (silence = flat line).
+     * Subtracting 128 and dividing by 128 normalises to [-1..1].
+     * RMS = sqrt( mean( v² ) ).
+     */
+    function _bannerReadRms() {
+        if (!_bannerAnalyser) { return 1; }
+        var buf = new Uint8Array(_bannerAnalyser.fftSize);
+        _bannerAnalyser.getByteTimeDomainData(buf);
+        var sum = 0;
+        for (var i = 0; i < buf.length; i++) {
+            var v = (buf[i] - 128) / 128;
+            sum += v * v;
+        }
+        return Math.sqrt(sum / buf.length);
+    }
+
+    /**
+     * requestAnimationFrame loop that auto-stops recognition after
+     * _BANNER_SILENCE_MS of sustained RMS silence.
+     *
+     * Lifecycle
+     * ─────────
+     * • Started by onstart when _bannerAnalyser is available.
+     * • Cancelled by _bannerClearTimers() (called from _bannerStop, onend,
+     *   onerror) so it never fires after the session has ended.
+     * • Self-terminates by returning without rescheduling when !_bannerActive.
+     *
+     * Algorithm
+     * ─────────
+     * Maintains lastSoundAt in closure.  Every frame:
+     *   RMS > threshold → reset lastSoundAt (user is speaking).
+     *   RMS ≤ threshold → check elapsed since lastSoundAt.
+     *     ≥ _BANNER_SILENCE_MS → call _bannerStop(false) and exit loop.
+     *     <  _BANNER_SILENCE_MS → reschedule (silence not yet sustained).
+     */
+    function _bannerStartRmsSilence() {
+        cancelAnimationFrame(_bannerSilenceRaf);
+
+        var lastSoundAt = Date.now();
+
+        function tick() {
+            if (!_bannerActive) { return; }
+
+            var rms = _bannerReadRms();
+            if (rms > _BANNER_SILENCE_RMS) {
+                lastSoundAt = Date.now();
+            } else if (Date.now() - lastSoundAt >= _BANNER_SILENCE_MS) {
+                // Sustained silence detected — stop cleanly (flush final transcript)
+                _bannerStop(false);
+                return;
+            }
+
+            _bannerSilenceRaf = requestAnimationFrame(tick);
+        }
+
+        _bannerSilenceRaf = requestAnimationFrame(tick);
+    }
+
+    // ── End banner engine ─────────────────────────────────────────────────────
 
     /**
      * Create an AudioContext and connect the mic MediaStream to an AnalyserNode.
@@ -8943,6 +9533,7 @@
 
         // Stop speech if active
         _stopSpeechRecognition();
+        _bannerStop(false);
         _dismissSpeakBanner();
 
         var MAX_CHARS    = 4000;

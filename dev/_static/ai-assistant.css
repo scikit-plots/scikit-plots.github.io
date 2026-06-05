@@ -863,6 +863,24 @@
     border-color: rgba(255,255,255,0.12);
 }
 
+/* Banner button active (recording) state — mirrors footer mic .recording style */
+.ai-assistant-panel-speak-banner.recording {
+    color: #e74c3c;
+    border-color: #e74c3c;
+    background-color: rgba(231, 76, 60, 0.08);
+    animation: ai-mic-pulse 1.2s ease-in-out infinite;
+}
+
+.ai-assistant-panel-speak-banner.recording svg {
+    color: #e74c3c;
+    stroke: #e74c3c;
+}
+
+[data-bs-theme="dark"] .ai-assistant-panel-speak-banner.recording {
+    background-color: rgba(231, 76, 60, 0.18);
+    border-color: rgba(231, 76, 60, 0.70);
+}
+
 /* ─── Floating "Ask Us" trigger icon ─────────────────────────────────────── */
 /*
  * When the panel is minimized (or not yet opened), a compact pill-shaped
