@@ -995,7 +995,6 @@
         return el;
     }
 
-    // [HH:mm]   [Copy]   [Share]   [Retry]   [… More ▾]
     function createButton() {
         var container = document.createElement('div');
         container.className = 'ai-assistant-button';
@@ -2222,7 +2221,6 @@
      *     non-finite the element is returned empty with ``aria-hidden="true"``
      *     — the ``margin-right: auto`` spacer still holds the layout constant
      *     so Copy / Retry / More stay right-aligned regardless.
-     *     [HH:mm]   [Copy]   [Share]   [Retry]   [… More ▾]
      *
      * Returns
      * -------
@@ -9840,6 +9838,25 @@
 
         body.appendChild(bubble);
 
+        // User bubble: minimal action row — timestamp only.
+        //
+        // Mirrors the assistant action row layout but contains only the <time>
+        // element; no Copy / Share / Retry affordances are needed for outgoing
+        // messages.  The `--user` modifier pins the row to the trailing (right)
+        // edge via `align-self: flex-end` so it stays visually attached to the
+        // user bubble above it, matching the messaging-app convention (iMessage,
+        // WhatsApp, Telegram) where send-time sits under the bubble on its side.
+        //
+        // Guard: skip the row entirely when `ts` is absent or non-finite (old
+        // persisted transcript entries that pre-date timestamp recording) so no
+        // empty DOM node is introduced.
+        if (role === 'user' && ts && isFinite(ts)) {
+            var userActs = document.createElement('div');
+            userActs.className = 'ai-assistant-panel-bubble-actions ai-assistant-panel-bubble-actions--user';
+            userActs.appendChild(_buildBubbleTimeEl(ts));
+            body.appendChild(userActs);
+        }
+
         if (role === 'assistant' || role === 'error') {
             // ── R6: action row — Copy + Share + Retry ─────────────────────────
             var actions = document.createElement('div');
@@ -10465,10 +10482,11 @@
 
             // Hoist question resolution before Copy so Share can reuse it without
             // a second _transcript walk — single source of truth, resolved once.
-            var retryQ2 = null;
-            for (var rj2 = _transcript.length - 1; rj2 >= 0; rj2--) {
-                if (_transcript[rj2].role === 'user') { retryQ2 = _transcript[rj2].text; break; }
-            }
+            // Array.findLast (ES2023): declarative reverse scan — no mutable
+            // sentinel, no manual break — semantically identical to the IIFE
+            // used in the non-streaming _renderBubble path above.
+            var _lastUser = _transcript.findLast(function (m) { return m.role === 'user'; });
+            var retryQ2 = _lastUser ? _lastUser.text : null;
 
             // Copy button
             var cb2 = document.createElement('button');
@@ -10529,7 +10547,7 @@
             panelBody.appendChild(acts);
 
             var fbIdx2 = panelBody.querySelectorAll('.ai-assistant-panel-feedback').length;
-            var fb2 = _buildFeedbackBlock(fbIdx2, accumulated, null);
+            var fb2 = _buildFeedbackBlock(fbIdx2, accumulated, retryQ2);
             if (fb2) panelBody.appendChild(fb2);
         }
         if (panelBody) panelBody.scrollTop = panelBody.scrollHeight;

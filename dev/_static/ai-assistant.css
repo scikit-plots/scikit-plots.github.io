@@ -1160,6 +1160,26 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
     padding-left: 0.1rem;
 }
 
+/* User-bubble action row: timestamp only, anchored to the trailing (right)
+ * edge so it sits under the user bubble exactly as the send-time does in
+ * iMessage / WhatsApp / Telegram.
+ *
+ * align-self: flex-end  — mirrors .ai-assistant-panel-bubble--user; makes the
+ *   row shrink-wrap its content (the single <time> element) and pin to the
+ *   right within the flex-column panel body.
+ * padding-left: 0       — no left indent needed when trailing-aligned.
+ * padding-right: 0.35rem — matches the <time> internal padding so the digit
+ *   sits flush with the right edge of the user bubble above it.
+ * margin-bottom: 0      — user bubbles don't need the extra spacing that
+ *   assistant action rows carry (they have no buttons below them).
+ */
+.ai-assistant-panel-bubble-actions--user {
+    align-self: flex-end;
+    padding-left: 0;
+    padding-right: 0.35rem;
+    margin-bottom: 0;
+}
+
 /* ─── Bubble timestamp (HH:mm display) ───────────────────────────────────────
  *
  * Semantic <time> element prepended to every assistant / error action row.
@@ -1169,7 +1189,6 @@ body.ai-assistant-resizing-y .ai-assistant-panel-resizer-top { opacity: 1; }
  *
  * Layout strategy
  * ---------------
- * [HH:mm]   [Copy]   [Share]   [Retry]   [… More ▾]
  * ``margin-right: auto`` pushes Copy / Retry / More to the trailing (right)
  * edge — the same convention used by messaging apps (iMessage, WhatsApp,
  * Telegram) where timestamps anchor left and action affordances anchor right.
